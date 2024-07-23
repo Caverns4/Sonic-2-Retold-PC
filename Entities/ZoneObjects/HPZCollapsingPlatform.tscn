@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwvcenr2nfs74"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/CollapsePlatform.gd" id="1_kc31n"]
+[ext_resource type="TileSet" uid="uid://ctbov0uv4xqwe" path="res://Tileset/Levels/HPZ_Tiles.tres" id="2_5eqia"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ia0sb"]
+size = Vector2(96, 16)
+
+[node name="AdvancedPlatform" type="Area2D"]
+position = Vector2(2704, 1186)
+collision_layer = 0
+collision_mask = 4096
+script = ExtResource("1_kc31n")
+tile = NodePath("Tiles")
+speed = 6.0
+soundDelay = 0.0
+
+[node name="Tiles" type="TileMap" parent="."]
+tile_set = ExtResource("2_5eqia")
+format = 2
+layer_0/name = "default"
+layer_0/tile_data = PackedInt32Array(65534, 131072, 0, 65535, 131072, 0, 0, 327680, 0, 1, 327680, 0, 2, 393216, 0, 131070, 131072, 2, 131071, 131072, 2, 65533, 65536, 0, 131069, 65536, 2, 65536, 327680, 2, 65537, 327680, 2, 65538, 393216, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_ia0sb")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

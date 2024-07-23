@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://jgm0h2yu3hvb"]
+
+[ext_resource type="Script" path="res://Entities/Enemies/Redz.gd" id="1_acnt1"]
+[ext_resource type="Texture2D" uid="uid://c80rud4lvtufe" path="res://Graphics/Enemies/Badnik_Redz.png" id="2_ufqqm"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(20, 32)
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(28, 33)
+
+[node name="Redz" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 16384
+collision_mask = 15
+floor_max_angle = 1.0472
+floor_snap_length = 4.0
+script = ExtResource("1_acnt1")
+
+[node name="CollissionMask" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("1")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 528384
+
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-1, -0.5)
+shape = SubResource("2")
+
+[node name="Redz" type="Sprite2D" parent="."]
+texture = ExtResource("2_ufqqm")
+hframes = 3
+vframes = 2
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+z_index = -100
+position = Vector2(-2.27374e-13, -2.27374e-13)
+scale = Vector2(3.2, 3.2)
+rect = Rect2(-80, -10, 160, 20)
+
+[node name="FloorCheck" type="RayCast2D" parent="."]
+position = Vector2(-11, 16)
+target_position = Vector2(0, 14)
+hit_from_inside = true
+
+[connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]

@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1xhc4uh26inb"]
+
+[ext_resource type="AudioStream" uid="uid://dh4rsaka62ph4" path="res://Audio/SFX/Gimmicks/Switch.wav" id="1"]
+[ext_resource type="Script" path="res://Scripts/Misc/PauseManager.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://dv6m30yo07el2" path="res://Graphics/HUD/hud_pause.png" id="2_s4sog"]
+
+[node name="Pause" type="Control"]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2")
+
+[node name="PauseCover" type="ColorRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.780392)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseText" type="Sprite2D" parent="Control"]
+position = Vector2(20, 0)
+texture = ExtResource("2_s4sog")
+
+[node name="PauseMenu" type="Control" parent="."]
+anchors_preset = 0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+theme_override_constants/separation = 8
+
+[node name="MenuVert" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="MenuMusicVolume" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1")
+volume_db = -10.0
+bus = &"Music"

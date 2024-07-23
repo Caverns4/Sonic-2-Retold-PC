@@ -1,0 +1,401 @@
+[gd_scene load_steps=28 format=3 uid="uid://qs5dmtxxf1w1"]
+
+[ext_resource type="Script" path="res://Scripts/Level/Title.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://kowpuw3ugms1" path="res://Graphics/title/TitleEmblem.png" id="3_ckds7"]
+[ext_resource type="FontFile" uid="uid://ml62eqfe7avn" path="res://Graphics/Fonts/small_font.png" id="3_yuhp3"]
+[ext_resource type="Texture2D" uid="uid://bgbuxncngj8e4" path="res://Graphics/title/TailsTitle.png" id="4_d2xjp"]
+[ext_resource type="Texture2D" uid="uid://dt51ojxk80oqh" path="res://Graphics/Items/Rings/Ring.tres" id="4_vmy7g"]
+[ext_resource type="Texture2D" uid="uid://de5i6e2h1ov1c" path="res://Graphics/title/SonicTitle.png" id="5_tsdwn"]
+[ext_resource type="Texture2D" uid="uid://c2xdraklm0ah7" path="res://Graphics/title/TitleMenu.png" id="6_0yyi7"]
+[ext_resource type="Texture2D" uid="uid://doln6jqb428tw" path="res://Graphics/Backgrounds/EHZ/EHZ_BG.png" id="7_nqfhx"]
+[ext_resource type="Shader" path="res://Shaders/PaletteSwapRow.gdshader" id="8_s4ljr"]
+[ext_resource type="Texture2D" uid="uid://ysgv52sem1qo" path="res://Graphics/Palettes/ehz_waterpal.png" id="9_yhc4v"]
+[ext_resource type="Texture2D" uid="uid://cet8xh8m1yo00" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_B.png" id="10_ewoub"]
+[ext_resource type="Texture2D" uid="uid://4v6st0kn7iu3" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_J.png" id="11_iuwdh"]
+[ext_resource type="Texture2D" uid="uid://bilh8mmllo20h" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_C.png" id="12_wi6su"]
+[ext_resource type="Texture2D" uid="uid://cm2mbxogvegh3" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_D.png" id="13_omy54"]
+[ext_resource type="Texture2D" uid="uid://bygwshjael2ef" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_E.png" id="14_in710"]
+[ext_resource type="Texture2D" uid="uid://dcgwn1vgnituw" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_F.png" id="15_aqby8"]
+[ext_resource type="Texture2D" uid="uid://ctdp0nelf8gc8" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_G.png" id="16_d7xs6"]
+[ext_resource type="Texture2D" uid="uid://chn1gkg56tjh2" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_H.png" id="17_wtkxm"]
+[ext_resource type="Texture2D" uid="uid://doqoa4fu15431" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_I.png" id="18_fshej"]
+
+[sub_resource type="Animation" id="2"]
+length = 0.001
+
+[sub_resource type="Animation" id="1"]
+resource_name = "TitleAssemble"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Cover:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.4),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 1,
+"values": [Vector2(1, 1e-05), Vector2(1, 1e-05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cover/Back:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.3, 1.4, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Labels:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.3, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pb3yv"]
+_data = {
+"RESET": SubResource("2"),
+"TitleAssemble": SubResource("1")
+}
+
+[sub_resource type="Curve" id="Curve_x626m"]
+_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_nd4eu"]
+offsets = PackedFloat32Array(0.294461, 0.466472, 0.769679, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ssy0q"]
+shader = ExtResource("8_s4ljr")
+shader_parameter/amount = 4.0
+shader_parameter/palRows = 4.0
+shader_parameter/row = 1.0
+shader_parameter/approximation = 0.0
+shader_parameter/paletteTexture = ExtResource("9_yhc4v")
+
+[sub_resource type="Animation" id="Animation_hwwp8"]
+resource_name = "RESET"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:material:shader_parameter/row")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 2.0, 3.0, 4.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h6h70"]
+_data = {
+"RESET": SubResource("Animation_hwwp8")
+}
+
+[node name="TitleScreen" type="Node2D"]
+script = ExtResource("2")
+
+[node name="Worlds" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(160, 112)
+texture = ExtResource("3_ckds7")
+region_rect = Rect2(2, 173, 182, 36)
+
+[node name="Title_Tails" type="Sprite2D" parent="Worlds"]
+position = Vector2(-36, -40)
+texture = ExtResource("4_d2xjp")
+region_rect = Rect2(190, 173, 17, 36)
+
+[node name="Title_Sonic" type="Sprite2D" parent="Worlds"]
+position = Vector2(33.354, -46.4)
+texture = ExtResource("5_tsdwn")
+offset = Vector2(8, 1)
+region_rect = Rect2(214, 173, 15, 36)
+
+[node name="Camera2D" type="Camera2D" parent="Worlds"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Back" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 32.0
+color = Color(0, 0, 0, 1)
+
+[node name="Cover" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+pivot_offset = Vector2(0, 70)
+color = Color(0.533333, 0.533333, 0.533333, 1)
+
+[node name="Labels" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Version" type="Label" parent="CanvasLayer/Labels"]
+modulate = Color(1, 1, 0, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -22.0
+offset_right = 136.0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_yuhp3")
+text = "2024.07.19.1"
+vertical_alignment = 2
+uppercase = true
+
+[node name="Date" type="Label" parent="CanvasLayer/Labels"]
+modulate = Color(1, 1, 0, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -11.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_yuhp3")
+text = "IKEY ILEX"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="TitleMenu" type="Control" parent="CanvasLayer/Labels"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Text" type="RichTextLabel" parent="CanvasLayer/Labels/TitleMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -12.0
+offset_right = 54.5
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("3_yuhp3")
+bbcode_enabled = true
+text = "[color=#eeee00]1 PLAYER[/color]
+
+2 PLAYER VS"
+scroll_active = false
+
+[node name="MenuIcon" type="Sprite2D" parent="CanvasLayer/Labels/TitleMenu"]
+position = Vector2(-56, 4)
+texture = ExtResource("6_0yyi7")
+
+[node name="Cover" type="CanvasLayer" parent="."]
+layer = 0
+visible = false
+
+[node name="Back" type="ColorRect" parent="Cover"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -320.0
+offset_bottom = -224.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleAnimate" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pb3yv")
+}
+autoplay = "TitleAssemble"
+
+[node name="Celebrations" type="CPUParticles2D" parent="."]
+position = Vector2(152, 112)
+emitting = false
+amount = 32
+preprocess = 0.5
+texture = ExtResource("4_vmy7g")
+emission_shape = 2
+emission_sphere_radius = 128.0
+direction = Vector2(0, -1)
+gravity = Vector2(0, 300)
+initial_velocity_max = 212.39
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_x626m")
+color_ramp = SubResource("Gradient_nd4eu")
+hue_variation_min = -0.39
+hue_variation_max = 0.68
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_limit_end = Vector2(0, 256)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.013, 0.05)
+motion_mirroring = Vector2(512, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+offset_right = 512.0
+offset_bottom = 112.0
+texture = ExtResource("7_nqfhx")
+stretch_mode = 1
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.013, 0.05)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer2"]
+material = SubResource("ShaderMaterial_ssy0q")
+offset_top = 80.0
+offset_right = 512.0
+offset_bottom = 104.0
+texture = ExtResource("10_ewoub")
+stretch_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground/ParallaxLayer2"]
+libraries = {
+"": SubResource("AnimationLibrary_h6h70")
+}
+autoplay = "RESET"
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.25, 0.05)
+motion_mirroring = Vector2(512, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer3"]
+offset_top = 112.0
+offset_right = 512.0
+offset_bottom = 144.0
+texture = ExtResource("11_iuwdh")
+stretch_mode = 1
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.3, 0.05)
+motion_mirroring = Vector2(16, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer4"]
+offset_top = 144.0
+offset_right = 512.0
+offset_bottom = 152.0
+texture = ExtResource("12_wi6su")
+stretch_mode = 1
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.325, 0.05)
+motion_mirroring = Vector2(16, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer5"]
+offset_top = 152.0
+offset_right = 512.0
+offset_bottom = 160.0
+texture = ExtResource("13_omy54")
+stretch_mode = 1
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.35, 0.05)
+motion_mirroring = Vector2(16, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer6"]
+offset_top = 160.0
+offset_right = 512.0
+offset_bottom = 168.0
+texture = ExtResource("14_in710")
+stretch_mode = 1
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.4, 0.05)
+motion_mirroring = Vector2(16, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer7"]
+offset_top = 168.0
+offset_right = 512.0
+offset_bottom = 176.0
+texture = ExtResource("15_aqby8")
+stretch_mode = 1
+
+[node name="ParallaxLayer8" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.45, 0.05)
+motion_mirroring = Vector2(16, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer8"]
+offset_top = 176.0
+offset_right = 512.0
+offset_bottom = 184.0
+texture = ExtResource("16_d7xs6")
+stretch_mode = 1
+
+[node name="ParallaxLayer9" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.05)
+motion_mirroring = Vector2(16, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer9"]
+offset_top = 184.0
+offset_right = 512.0
+offset_bottom = 192.0
+texture = ExtResource("17_wtkxm")
+stretch_mode = 1
+
+[node name="ParallaxLayer10" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.55, 0.05)
+motion_mirroring = Vector2(16, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer10"]
+offset_top = 192.0
+offset_right = 512.0
+offset_bottom = 200.0
+texture = ExtResource("18_fshej")
+stretch_mode = 1
+
+[node name="ParallaxLayer11" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.6, 0.05)
+motion_mirroring = Vector2(16, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer11"]
+offset_top = 208.0
+offset_right = 512.0
+offset_bottom = 224.0
+texture = ExtResource("18_fshej")
+stretch_mode = 1
+
+[node name="ParallaxLayer12" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.7, 0.05)
+motion_mirroring = Vector2(16, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer12"]
+offset_top = 224.0
+offset_right = 512.0
+offset_bottom = 240.0
+texture = ExtResource("18_fshej")
+stretch_mode = 1

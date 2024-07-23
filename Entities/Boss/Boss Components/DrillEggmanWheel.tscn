@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5mitgaj2uh62"]
+
+[ext_resource type="Texture2D" uid="uid://wsytdhn6ttft" path="res://Graphics/Boss/Boss_DrillEggman_Parts.png" id="1_4d1uu"]
+[ext_resource type="Script" path="res://Entities/Boss/Boss Components/DrillEggmanWheel.gd" id="1_btldt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iq8q7"]
+size = Vector2(30, 30)
+
+[node name="DrillEggmanWheel" type="RigidBody2D"]
+collision_layer = 0
+can_sleep = false
+script = ExtResource("1_btldt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4d1uu")
+hframes = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_iq8q7")
+debug_color = Color(1, 1, 1, 0)

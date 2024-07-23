@@ -1,0 +1,166 @@
+[gd_scene load_steps=19 format=3 uid="uid://bcoqgftnr4isn"]
+
+[ext_resource type="Script" path="res://Scripts/Boss/RobotnikTemplate.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://bvhfglhmpystw" path="res://Audio/SFX/Boss/Hit.wav" id="2"]
+[ext_resource type="Texture2D" uid="uid://6ds1jcc8jmyf" path="res://Graphics/Boss/Eggmobile.png" id="3"]
+[ext_resource type="AudioStream" uid="uid://beo0rjyvqkyfe" path="res://Audio/SFX/Boss/Explode.wav" id="4"]
+[ext_resource type="Texture2D" uid="uid://c31pi0okhicpx" path="res://Graphics/Boss/Eggmobile_Top.png" id="4_qaw8p"]
+[ext_resource type="Texture2D" uid="uid://d0i06mnbra5yc" path="res://Graphics/Boss/Robotnik.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://dam0q6u1k8paq" path="res://Graphics/Boss/Jet.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://bf0ytf63vlq5c" path="res://Graphics/Boss/EggmobileFlash.png" id="7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gg6r"]
+atlas = ExtResource("5")
+region = Rect2(0, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41324"]
+atlas = ExtResource("5")
+region = Rect2(0, 16, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vr3ju"]
+atlas = ExtResource("5")
+region = Rect2(0, 48, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4lk1"]
+atlas = ExtResource("5")
+region = Rect2(0, 32, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkgp8"]
+atlas = ExtResource("5")
+region = Rect2(0, 64, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5w20l"]
+atlas = ExtResource("5")
+region = Rect2(0, 80, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1afxm"]
+atlas = ExtResource("5")
+region = Rect2(0, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8m5w5"]
+atlas = ExtResource("5")
+region = Rect2(0, 16, 64, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x1amu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gg6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41324")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vr3ju")
+}],
+"loop": true,
+"name": &"exploded",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4lk1")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkgp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5w20l")
+}],
+"loop": true,
+"name": &"laugh",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1afxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8m5w5")
+}],
+"loop": true,
+"name": &"move",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="5"]
+size = Vector2(48, 48)
+
+[node name="Robotnik" type="CharacterBody2D"]
+z_index = 1
+collision_layer = 16384
+collision_mask = 0
+script = ExtResource("1")
+
+[node name="EggMobile" type="Sprite2D" parent="."]
+position = Vector2(0, 19)
+texture = ExtResource("3")
+offset = Vector2(0, -8)
+
+[node name="EggmobileFlame" type="Sprite2D" parent="EggMobile"]
+visible = false
+position = Vector2(36, -8)
+texture = ExtResource("6")
+
+[node name="Eggmobile_Top" type="Sprite2D" parent="EggMobile"]
+position = Vector2(10, -48)
+texture = ExtResource("4_qaw8p")
+
+[node name="Robotnik" type="AnimatedSprite2D" parent="EggMobile"]
+z_index = -1
+position = Vector2(0, -32)
+sprite_frames = SubResource("SpriteFrames_x1amu")
+animation = &"laugh"
+
+[node name="EggFlash" type="Sprite2D" parent="EggMobile"]
+visible = false
+texture = ExtResource("7")
+offset = Vector2(0, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("5")
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2")
+bus = &"SFX"
+
+[node name="Explode" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4")
+bus = &"SFX"
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 528384
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+modulate = Color(1, 0, 0, 1)
+shape = SubResource("5")
+
+[node name="LeftPoint" type="Node2D" parent="."]
+position = Vector2(-72, 0)
+
+[node name="RightPoint" type="Node2D" parent="."]
+position = Vector2(72, 0)
+
+[node name="SmokeTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="AnimationTime" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="defeated" from="." to="." method="_on_boss_defeated"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_DamageArea_area_entered"]
+[connection signal="area_exited" from="HitBox" to="." method="_on_HitBox_area_exited"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="HitBox" to="." method="_on_body_exited"]
+[connection signal="timeout" from="SmokeTimer" to="." method="_on_SmokeTimer_timeout"]
