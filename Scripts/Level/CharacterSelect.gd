@@ -2,13 +2,18 @@ extends Node2D
 
 
 @export var music = preload("res://Audio/Soundtrack/s2br_Options.ogg")
-@export var nextZone = load("res://Scene/Zones/Emerald Hill Zone Act 1.tscn")
+@export var nextZone = load("res://Scene/Zones/EmeraldHill1.tscn")
 var selected = false
 
 # character labels, the amount of labels in here determines the total amount of options, see the set character option at the end for settings
 var characterLabels = ["Sonic and Tails", "Sonic", "Tails", "Knuckles", "Amy"]
 # level labels, the amount of labels in here determines the total amount of options, see set level option at the end for settings
-var levelLabels = ["Emerald Hill Zone Act 1", "Emerald Hill Zone Act 2", "Hill Top Zone Act 1", "Hidden Palce Zone Act 1"]
+var levelLabels = [
+	"Emerald Hill Zone Act 1",
+	"Emerald Hill Zone Act 2",
+	"Hidden Palce Zone Act 1",
+	"Hill Top Zone Act 1"
+	]
 # character id lines up with characterLabels
 var characterID = 0
 # level id lines up with levelLabels
@@ -99,13 +104,13 @@ func _input(event):
 					
 			# set the level
 			match(levelID):
-				0: # Base Zone Act 1
-					Global.nextZone = load("res://Scene/Zones/Emerald Hill Zone Act 1.tscn")
-				1: # Base Zone Act 2
+				0: # Emerald Zone Act 1
+					Global.nextZone = load("res://Scene/Zones/EmeraldHill1.tscn")
+				1: # Emerald Zone Act 2
 					Global.nextZone = load("res://Scene/Zones/Emerald Hill Zone Act 2.tscn")
 				2: # Emerald Zone Act 1
-					Global.nextZone = load("res://Scene/Zones/Hill Top Zone Act 1.tscn")
-				3: # Emerald Zone Act 1
 					Global.nextZone = load("res://Scene/Zones/Hidden Palace 1.tscn")
+				3: # Emerald Zone Act 1
+					Global.nextZone = load("res://Scene/Zones/Hill Top Zone Act 1.tscn")
 			
 			Global.main.change_scene_to_file(Global.nextZone,"FadeOut","FadeOut",1)

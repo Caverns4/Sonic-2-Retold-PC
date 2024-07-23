@@ -1,7 +1,7 @@
 extends Node2D
 
 
-@export var level = preload("res://Scene/Zones/Emerald Hill Zone Act 1.tscn");
+@export var level = preload("res://Scene/Zones/EmeraldHill1.tscn");
 
 @onready var screen1 = $GridContainer/SubViewportContainer1/SubViewport
 @onready var screen2 = $GridContainer/SubViewportContainer2/SubViewport

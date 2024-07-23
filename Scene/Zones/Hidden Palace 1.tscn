@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_snbg3"]
 [ext_resource type="AudioStream" uid="uid://c1u2xm7bdke30" path="res://Audio/Soundtrack/JewelGrottoZone.ogg" id="2_kujum"]
+[ext_resource type="PackedScene" uid="uid://cyh8p6ji14r0t" path="res://Scene/Zones/Hill Top Zone Act 1.tscn" id="3_pk35w"]
 [ext_resource type="Shader" path="res://Shaders/PaletteSwapRow.gdshader" id="4_hudaq"]
-[ext_resource type="PackedScene" uid="uid://chl5yuyt7k10t" path="res://Scene/Zones/Emerald Hill Zone Act 1.tscn" id="4_k525o"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_avawk"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="5_gd4l3"]
 [ext_resource type="Texture2D" uid="uid://d00d25b0d4hcy" path="res://Graphics/Palettes/hpz_Waterfallpal.png" id="5_y0ob8"]
@@ -51,7 +51,7 @@ _data = {
 script = ExtResource("1_snbg3")
 music = ExtResource("2_kujum")
 music2P = ExtResource("2_kujum")
-nextZone = ExtResource("4_k525o")
+nextZone = ExtResource("3_pk35w")
 animal1 = 8
 animal2 = 5
 defaultLeftBoundry = 0
