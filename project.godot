@@ -15,7 +15,8 @@ run/main_scene="res://Scene/Main.tscn"
 config/features=PackedStringArray("4.2")
 boot_splash/bg_color=Color(0.454524, 0.454524, 0.454524, 1)
 boot_splash/image="res://icon.png"
-config/icon="res://icon.png"
+config/icon="res://sonic.png"
+config/windows_native_icon="res://sonic.ico"
 
 [autoload]
 
