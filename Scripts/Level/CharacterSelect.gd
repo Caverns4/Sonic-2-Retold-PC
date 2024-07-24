@@ -11,7 +11,7 @@ var characterLabels = ["Sonic and Tails", "Sonic", "Tails", "Knuckles", "Amy"]
 var levelLabels = [
 	"Emerald Hill Zone Act 1",
 	"Emerald Hill Zone Act 2",
-	"Hidden Palce Zone Act 1",
+	"Hidden Palace Zone Act 1",
 	"Hill Top Zone Act 1"
 	]
 # character id lines up with characterLabels

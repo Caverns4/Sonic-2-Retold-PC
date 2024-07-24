@@ -1245,10 +1245,11 @@ next/edge1 = &"edge2"
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 5
 material = ExtResource("1")
+position = Vector2(0, 4)
 texture = ExtResource("2")
 offset = Vector2(0, -8)
 hframes = 16
-vframes = 18
+vframes = 8
 
 [node name="DashDust" type="AnimatedSprite2D" parent="Sprite2D"]
 visible = false

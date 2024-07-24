@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c30uceea18q1w"]
+[gd_scene load_steps=31 format=3 uid="uid://c30uceea18q1w"]
 
 [ext_resource type="Texture2D" uid="uid://dloxtqer7p78l" path="res://Graphics/HUD/hud_lives.png" id="2_cfvjc"]
 [ext_resource type="Material" uid="uid://bveqi5m5ihsgj" path="res://Shaders/PlayerPalette.tres" id="2_xy7bp"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bbm5bncrd1o4k" path="res://Graphics/HUD/LevelCards/EdgePattern.png" id="10_xpi0a"]
 [ext_resource type="FontFile" uid="uid://corcgkvvv7msb" path="res://Graphics/HUD/LevelCards/font/TitleCard_Normal.png" id="11_6cefa"]
 [ext_resource type="Material" uid="uid://uh2c8jbp8qwd" path="res://Shaders/WaterPalette.tres" id="13_1ly2g"]
+[ext_resource type="Texture2D" uid="uid://60ak1q0xrn1s" path="res://Graphics/HUD/hud_gametimeover.png" id="15_7eshx"]
 [ext_resource type="AudioStream" uid="uid://c3tsd0xi30f6s" path="res://Audio/Soundtrack/s2br_GameOver.ogg" id="15_y325l"]
 [ext_resource type="AudioStream" uid="uid://dh4rsaka62ph4" path="res://Audio/SFX/Gimmicks/Switch.wav" id="16"]
 [ext_resource type="AudioStream" uid="uid://clgobastngtvy" path="res://Audio/SFX/Misc/Score.wav" id="17"]
@@ -836,7 +837,7 @@ stretch_mode = 2
 [node name="PatternLeft" type="Control" parent="LevelCard"]
 anchors_preset = 0
 anchor_bottom = 1.0
-offset_bottom = 33632.0
+offset_bottom = 34976.0
 
 [node name="PatternLeft" type="TextureRect" parent="LevelCard/PatternLeft"]
 layout_mode = 1
@@ -860,7 +861,7 @@ anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_top = -32.0
-offset_bottom = 33344.0
+offset_bottom = 34688.0
 
 [node name="PatternRight" type="TextureRect" parent="LevelCard/RightRatio/PatternRight"]
 layout_mode = 1
@@ -869,9 +870,9 @@ anchor_left = 1.0
 anchor_top = 0.003
 anchor_right = 1.0
 anchor_bottom = 0.003
-offset_top = -69.472
-offset_right = 11392.0
-offset_bottom = 186.528
+offset_top = -73.504
+offset_right = 11648.0
+offset_bottom = 182.496
 grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("10_xpi0a")
@@ -938,7 +939,8 @@ offset_top = 56.0
 offset_right = -94.0
 offset_bottom = 82.0
 theme_override_fonts/font = ExtResource("11_6cefa")
-text = "SONIC got"
+text = " SONIC got"
+horizontal_alignment = 2
 uppercase = true
 
 [node name="Through" type="Label" parent="LevelClear"]
@@ -1027,12 +1029,14 @@ grow_vertical = 2
 [node name="Game" type="Sprite2D" parent="GameOver"]
 position = Vector2(-256, 0)
 scale = Vector2(1, 1e-05)
+texture = ExtResource("15_7eshx")
 offset = Vector2(-40, 0)
 vframes = 3
 
 [node name="Over" type="Sprite2D" parent="GameOver"]
 position = Vector2(256, 0)
 scale = Vector2(1, 1e-05)
+texture = ExtResource("15_7eshx")
 offset = Vector2(40, 0)
 vframes = 3
 frame = 2

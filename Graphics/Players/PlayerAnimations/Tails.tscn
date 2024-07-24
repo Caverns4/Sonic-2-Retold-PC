@@ -1624,7 +1624,7 @@ position = Vector2(0, -4)
 texture = ExtResource("2")
 offset = Vector2(0, -4)
 hframes = 16
-vframes = 18
+vframes = 8
 script = ExtResource("5")
 
 [node name="DashDust" type="AnimatedSprite2D" parent="Sprite2D"]
@@ -1642,7 +1642,7 @@ rotation = 6.28318
 texture = ExtResource("2")
 offset = Vector2(-5, -8)
 hframes = 16
-vframes = 18
+vframes = 8
 frame = 10
 script = ExtResource("4")
 

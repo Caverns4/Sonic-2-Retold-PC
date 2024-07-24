@@ -1220,9 +1220,10 @@ autoplay = "idle"
 z_index = 5
 material = ExtResource("1_sk1gs")
 texture = ExtResource("2_vki44")
-offset = Vector2(0, -5)
+offset = Vector2(1, 0)
 hframes = 16
-vframes = 18
+vframes = 8
+frame = 68
 
 [node name="DashDust" type="AnimatedSprite2D" parent="Sprite2D"]
 visible = false
@@ -1245,5 +1246,6 @@ libraries = {
 [node name="CenterReference" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0.501961)
+position = Vector2(16, 0)
 texture = ExtResource("4_nx0xn")
 hframes = 4

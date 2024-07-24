@@ -23,7 +23,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.501),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [112, 113]
+"values": [106, 107]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -141,7 +141,7 @@ z_index = 2
 position = Vector2(-8, -4)
 texture = ExtResource("4")
 hframes = 16
-vframes = 18
+vframes = 8
 frame = 31
 
 [node name="TailsTails" type="Sprite2D" parent="UI/Labels/CharacterOrigin/Tails"]
@@ -149,16 +149,16 @@ z_index = -1
 position = Vector2(1, 0)
 texture = ExtResource("4")
 hframes = 16
-vframes = 18
+vframes = 8
 frame = 10
 
 [node name="Knuckles" type="Sprite2D" parent="UI/Labels/CharacterOrigin"]
 visible = false
 z_index = 3
-position = Vector2(0, -8)
+position = Vector2(0, -4)
 texture = ExtResource("7")
 hframes = 16
-vframes = 18
+vframes = 8
 frame = 5
 region_rect = Rect2(402, 468, 38, 36)
 
@@ -168,7 +168,7 @@ z_index = 3
 position = Vector2(0, -1)
 texture = ExtResource("6_nah0p")
 hframes = 16
-vframes = 18
+vframes = 8
 region_rect = Rect2(488, 8, 32, 40)
 
 [node name="CharacterAnimations" type="AnimationPlayer" parent="UI/Labels/CharacterOrigin"]
