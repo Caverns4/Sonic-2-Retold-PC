@@ -53,7 +53,7 @@ func _ready():
 	set_menu(menu)
 
 func _process(delta):
-	_unhandled_input(Input)
+	_unhandledInput(Input)
 
 func _input(event):
 	# check if paused and visible, otherwise cancel it out
@@ -112,7 +112,7 @@ func _input(event):
 						Global.main.reset_game()
 	pass
 
-func _unhandled_input(event):
+func _unhandledInput(event):
 	# check if paused and visible, otherwise cancel it out
 	#if !get_tree().paused or !visible:
 	#	return null

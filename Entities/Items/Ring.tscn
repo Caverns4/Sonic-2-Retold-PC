@@ -1,10 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://dggjdwwkl527b"]
+[gd_scene load_steps=12 format=3 uid="uid://dggjdwwkl527b"]
 
 [ext_resource type="Script" path="res://Scripts/Objects/Ring.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cpcs473co21gu" path="res://Graphics/Items/Rings/Ring3.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://csoc5oj6qsv2n" path="res://Graphics/Items/Rings/Ring1.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://blq8n7iy1j0jh" path="res://Graphics/Items/Rings/Ring2.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://dxdognx60rps2" path="res://Graphics/Items/Rings/Ring4.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://cl80t4id3eten" path="res://Graphics/Items/Rings/Ring5.png" id="6_1sjch"]
+[ext_resource type="Texture2D" uid="uid://b5o1eomq4v72" path="res://Graphics/Items/Rings/Ring6.png" id="7_bskpg"]
+[ext_resource type="Texture2D" uid="uid://dqke0313rh44t" path="res://Graphics/Items/Rings/Ring7.png" id="8_j8ige"]
+[ext_resource type="Texture2D" uid="uid://bu1ebm1assqjj" path="res://Graphics/Items/Rings/Ring8.png" id="9_gi015"]
 
 [sub_resource type="SpriteFrames" id="2"]
 animations = [{
@@ -20,10 +24,22 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1sjch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bskpg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_j8ige")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gi015")
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 20.0
 }]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -37,6 +53,8 @@ script = ExtResource("1")
 z_index = 4
 sprite_frames = SubResource("2")
 autoplay = "default"
+frame = 1
+frame_progress = 0.60374
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
