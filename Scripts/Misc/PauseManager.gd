@@ -52,64 +52,15 @@ var lastIpnut = Vector2.ZERO #Last saved direction input.
 func _ready():
 	set_menu(menu)
 
+func _process(delta):
+	_unhandled_input(Input)
+
 func _input(event):
 	# check if paused and visible, otherwise cancel it out
 	if !get_tree().paused or !visible:
 		return null
-		
-	var inputCue = Input.get_vector("gm_left","gm_right","gm_up","gm_down")
-	inputCue.x = round(inputCue.x)
-	inputCue.y = round(inputCue.y)
-	
-	if (inputCue.x < 0 or inputCue.x > 0) and inputCue != lastIpnut:
-		subSoundStep = 0.2
-		soundStepDelay = 0
-	
-	# change menu options
-	if Input.is_action_just_pressed("gm_down"):
-		choose_option(option+1)
-	elif Input.is_action_just_pressed("gm_up"):
-		choose_option(option-1)
-	
-	# Volume controls
-	elif ((inputCue.x < 0 or inputCue.x > 0) and menu == MENUS.OPTIONS
-	and inputCue != lastIpnut):
-		var inputDir = inputCue.x
-		
-		# set audio busses
-		var getBus = "SFX"
-		if option > 0:
-			getBus = "Music"
-		var soundExample = [$MenuVert,$MenuMusicVolume]
-		
-		match(option):
-			0, 1: # Volume
-				if soundStepDelay <= 0:
-					soundExample[option].play()
-					AudioServer.set_bus_volume_db(AudioServer.get_bus_index(getBus),clamp(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(getBus))+inputDir*soundStep,clampSounds[0],clampSounds[1]))
-					AudioServer.set_bus_mute(AudioServer.get_bus_index(getBus),AudioServer.get_bus_volume_db(AudioServer.get_bus_index(getBus)) <= clampSounds[0])
-					soundStepDelay = subSoundStep
-					if subSoundStep > 0:
-						soundStepDelay -= 0.1
-				else:
-					soundStepDelay -= 0.1
-			2: # Scale
-				if (
-				inputCue.x < 0 or
-				inputCue.x > 0
-				) and (
-				(get_window().mode != Window.MODE_EXCLUSIVE_FULLSCREEN) and 
-				(get_window().mode != Window.MODE_FULLSCREEN)
-				) and(
-				inputCue != lastIpnut
-				):
-					Global.zoomSize = clamp(Global.zoomSize+inputDir,zoomClamp[0],zoomClamp[1])
-					get_window().set_size(get_viewport().get_visible_rect().size*Global.zoomSize)
-		
-		$PauseMenu/VBoxContainer.get_child(option+1).get_child(0).text = update_text(option+1)
-	
 	# menu button activate
-	elif event.is_action_pressed("gm_pause") or event.is_action_pressed("gm_action"):
+	if event.is_action_pressed("gm_pause") or event.is_action_pressed("gm_action"):
 		match(menu): # menu handles
 			MENUS.MAIN: # main menu
 				match(option): # Options
@@ -159,6 +110,66 @@ func _input(event):
 					1: # ok
 						await get_tree().process_frame
 						Global.main.reset_game()
+	pass
+
+func _unhandled_input(event):
+	# check if paused and visible, otherwise cancel it out
+	#if !get_tree().paused or !visible:
+	#	return null
+	#Get input vector, round to -1, 0, or 1
+	var inputCue = Input.get_vector("gm_left","gm_right","gm_up","gm_down")
+	inputCue.x = round(inputCue.x)
+	inputCue.y = round(inputCue.y)
+	
+	# change up/down menu options
+	if inputCue.y > 0 and inputCue.y != lastIpnut.y:
+		choose_option(option+1)
+	elif inputCue.y < 0 and inputCue.y != lastIpnut.y:
+		choose_option(option-1)
+	
+	if (inputCue.x == 0) and menu == MENUS.OPTIONS:
+		subSoundStep = 0
+		soundStepDelay = 0
+	# If input Cue X doesn't = 0 in the options menu
+	elif (inputCue.x != 0) and menu == MENUS.OPTIONS:
+		
+		#Prepare delay timer for volume update
+		if inputCue.x != lastIpnut.x and subSoundStep == 0:
+			subSoundStep = 2.0
+			soundStepDelay = 0
+		
+		# set audio busses
+		var getBus = "SFX"
+		if option > 0:
+			getBus = "Music"
+		var soundExample = [$MenuVert,$MenuMusicVolume]
+		
+		match(option):
+			0, 1: # Volume
+				if soundStepDelay <= 0:
+					soundExample[option].play()
+					AudioServer.set_bus_volume_db(AudioServer.get_bus_index(getBus
+					),clamp(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(getBus)
+					)+inputCue.x*soundStep,clampSounds[0],clampSounds[1]))
+					AudioServer.set_bus_mute(AudioServer.get_bus_index(getBus
+					),AudioServer.get_bus_volume_db(AudioServer.get_bus_index(getBus)
+					) <= clampSounds[0])
+					soundStepDelay = subSoundStep
+				else:
+					soundStepDelay -= 0.1
+			2: # Scale
+				if (
+				inputCue.x != 0
+				) and (
+				(get_window().mode != Window.MODE_EXCLUSIVE_FULLSCREEN) and 
+				(get_window().mode != Window.MODE_FULLSCREEN)
+				) and(
+				inputCue != lastIpnut
+				):
+					Global.zoomSize = clamp(Global.zoomSize+inputCue.x,zoomClamp[0],zoomClamp[1])
+					get_window().set_size(get_viewport().get_visible_rect().size*Global.zoomSize)
+		
+		$PauseMenu/VBoxContainer.get_child(option+1).get_child(0).text = update_text(option+1)
 	lastIpnut = inputCue
 	
 
