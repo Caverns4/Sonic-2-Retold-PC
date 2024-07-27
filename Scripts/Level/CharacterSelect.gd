@@ -28,8 +28,8 @@ var levelIcons = [ #Use this list to get the number of selectable entries
 	8,
 	6,
 	6,
-	2,
-	2
+	3,
+	3
 ]
 # character id lines up with characterLabels
 var characterID = 0
@@ -132,6 +132,8 @@ func _input(event):
 					Global.nextZone = load("res://Scene/Zones/Hidden Palace 1.tscn")
 				4: # Hill Top Zone 1
 					Global.nextZone = load("res://Scene/Zones/Hill Top Zone Act 1.tscn")
+				6: # Chemical Plant Zone 1
+					Global.nextZone = load("res://Scene/Zones/ChunkZone.tscn")
 				_: # Invalid Entry
 					Global.nextZone = load("res://Scene/Zones/EmeraldHill1.tscn")
 			
