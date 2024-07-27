@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctrttev1yu74h"
-path="res://.godot/imported/HTZ_BG.png-8398a5ef0c46931de30668d107491957.ctex"
+uid="uid://b2gtcpaq2n2ji"
+path="res://.godot/imported/HPZ_BGB.png-2ee35eb682683b2a13e96eb2f917f9b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Backgrounds/HTZ/HTZ_BG.png"
-dest_files=["res://.godot/imported/HTZ_BG.png-8398a5ef0c46931de30668d107491957.ctex"]
+source_file="res://Graphics/Backgrounds/HPZ/HPZ_BGB.png"
+dest_files=["res://.godot/imported/HPZ_BGB.png-2ee35eb682683b2a13e96eb2f917f9b0.ctex"]
 
 [params]
 
