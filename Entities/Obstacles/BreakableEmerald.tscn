@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bacwcm8ro80d5"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/BreakableBlock.gd" id="1_o1ryd"]
+[ext_resource type="Texture2D" uid="uid://m5g2wbori5f1" path="res://Graphics/Objects_Zone/HPZ_Emerald.png" id="2_gu2fl"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(62, 32)
+
+[node name="BreakableEmerald" type="StaticBody2D"]
+collision_layer = 8192
+collision_mask = 0
+script = ExtResource("1_o1ryd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_gu2fl")

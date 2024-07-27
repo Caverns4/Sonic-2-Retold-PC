@@ -4,6 +4,12 @@ extends Node2D
 @export var length = 12
 @export var smoothDrop = true #Turn to false to match sonic 1 bridges
 @export var texture = preload("res://Graphics/Gimmicks/bridge_log.png")
+@export var texture2 = preload("res://Graphics/Gimmicks/bridge_log.png")
+@export var texture3 = preload("res://Graphics/Gimmicks/bridge_log.png")
+
+var frameCount = 0 #Count up
+var frameDiff = [0,0,0,0,0,1,1,1,1,1]
+
 var dropIndex = 1
 var maxDepression = 0
 
@@ -35,6 +41,7 @@ func _ready():
 func _process(_delta):
 	if Engine.is_editor_hint():
 		queue_redraw()
+	frameCount=wrapi(frameCount+1,0,frameDiff.size()*4)
 
 func _physics_process(delta):
 	if !Engine.is_editor_hint():
@@ -90,8 +97,19 @@ func _physics_process(delta):
 			
 			# remove floor() if you are not making a pixel perfect game
 			bridges[i].position.y = lerp(bridges[i].position.y,floor(maxDepression * sin(90 * deg_to_rad(logDistance))),delta*10)
-		
+			if texture2 != null:
+				animateBridgeLog(bridges[i],logDistance)
 
+func animateBridgeLog(bridgeLog,logDist):
+	var texArray = [texture,texture,texture2,texture3]	
+	var curFrame = logDist * (texArray.size()-1)
+	curFrame = max(0,curFrame-(frameDiff[frameCount/4]))
+	
+	if maxDepression > 0 and buffer:
+		bridgeLog.texture = texArray[curFrame]
+	else:
+		bridgeLog.texture = texArray[0]
+	pass
 
 # add players to array when entering or exiting area
 func _on_PlayerCheck_body_entered(body):

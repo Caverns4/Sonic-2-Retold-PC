@@ -643,7 +643,7 @@ func _process(delta):
 			airTimer -= delta
 		elif currentState != STATES.DIE: # Drown (kill checks if air timer is greater then 0)
 			$BubbleTimer.start(0.1)
-			kill(false)
+			kill(true)
 	else:
 		airTimer = defaultAirTime
 	

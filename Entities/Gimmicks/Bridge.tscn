@@ -12,6 +12,8 @@ size = Vector2(16, 8)
 [node name="Bridge" type="Node2D"]
 process_priority = 10
 script = ExtResource("2")
+texture2 = null
+texture3 = null
 
 [node name="Bridge" type="CharacterBody2D" parent="."]
 process_priority = 10
