@@ -8,12 +8,18 @@ var selected = false
 # character labels, the amount of labels in here determines the total amount of options, see the set character option at the end for settings
 var characterLabels = ["Sonic and Tails", "Sonic", "Tails", "Knuckles", "Amy"]
 # level labels, the amount of labels in here determines the total amount of options, see set level option at the end for settings
-var levelLabels = [
-	"Emerald Hill Zone Act 1",
-	"Emerald Hill Zone Act 2",
-	"Hidden Palace Zone Act 1",
-	"Hill Top Zone Act 1"
+var levelLabels = [ #Every one of these is a line.
+	"Emerald Hill    1",
+	"Emerald Hill    2",
+	"Hidden Palace   1",
+	"Hill Top        1"
 	]
+var levelIcons = [
+	0,
+	0,
+	8,
+	6
+]
 # character id lines up with characterLabels
 var characterID = 0
 # level id lines up with levelLabels
@@ -48,6 +54,7 @@ func _input(event):
 		
 		$UI/Labels/Control/Character.text = characterLabels[characterID]
 		$UI/Labels/Control/Level.text = levelLabels[levelID]
+		$UI/LevelIcon.frame = levelIcons[levelID]
 		
 		# turn on and off visibility of the characters based on the current selection
 		match(characterID):

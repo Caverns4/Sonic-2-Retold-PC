@@ -167,7 +167,7 @@ offset_right = 136.0
 grow_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_yuhp3")
-text = "2024.07.23.1"
+text = "2024.07.25.1"
 vertical_alignment = 2
 uppercase = true
 
@@ -244,7 +244,7 @@ libraries = {
 autoplay = "TitleAssemble"
 
 [node name="Celebrations" type="CPUParticles2D" parent="."]
-position = Vector2(152, 112)
+position = Vector2(256, 112)
 emitting = false
 amount = 32
 preprocess = 0.5

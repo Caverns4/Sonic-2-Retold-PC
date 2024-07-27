@@ -30,7 +30,12 @@ func _process(delta):
 	#$BigCog.rotate(-delta*2*speed)
 	#$BigCog/CogCircle.rotate(delta*2*speed)
 	#$Sonic/Cog.rotate(-delta*1.5*speed)
-	if $Worlds.global_position.x == 4400 and !titleEnd:
+	$Celebrations.global_position.x += 2
+	
+	if $Worlds.global_position.x == 4300:
+		$Celebrations.emitting = true
+	
+	if $Worlds.global_position.x == 4600 and !titleEnd:
 		menuActive = false
 		titleEnd = true
 		Global.main.change_scene_to_file(returnScene,"FadeOut","FadeOut",1)
@@ -56,13 +61,15 @@ func MenuOptionChosen(choice):
 		0:
 			titleEnd = true
 			Global.main.change_scene_to_file(nextScene,"FadeOut","FadeOut",1)
-			$Celebrations.emitting = true
 		1:
 			titleEnd = true
 			Global.TwoPlayer = true
 			nextScene = preload("res://Scene/TwoPlayerMode.tscn")
 			Global.PlayerChar1 = Global.CHARACTERS.SONIC
 			Global.PlayerChar2 = Global.CHARACTERS.TAILS
+			Global.main.change_scene_to_file(nextScene,"FadeOut","FadeOut",1)
+		2:
+			titleEnd = true
 			Global.main.change_scene_to_file(nextScene,"FadeOut","FadeOut",1)
 	
 	
