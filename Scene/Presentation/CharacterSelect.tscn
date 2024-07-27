@@ -156,7 +156,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CharacterOrigin" type="Node2D" parent="UI/Labels"]
-position = Vector2(160, 97)
+position = Vector2(200, 176)
 
 [node name="Sonic" type="Sprite2D" parent="UI/Labels/CharacterOrigin"]
 z_index = 3
@@ -226,22 +226,6 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("3")
 text = "Sonic and Tails"
 horizontal_alignment = 1
-vertical_alignment = 2
-uppercase = true
-
-[node name="Level" type="Label" parent="UI/Labels/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 152.0
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("3")
-text = "Emerald Hill    1"
 uppercase = true
 
 [node name="LevelsRight" type="Label" parent="UI/Labels/Control"]
@@ -256,8 +240,42 @@ offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3")
-text = "Column 2        1"
+text = "OIL OCEAN      1"
 uppercase = true
+
+[node name="LevelsLeft" type="RichTextLabel" parent="UI/Labels/Control"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 144.0
+offset_bottom = 200.0
+theme_override_fonts/normal_font = ExtResource("3")
+bbcode_enabled = true
+text = "EMERALD HILL    1
+                2
+
+AQUATIC RUIN    1
+                2
+
+CHEMICAL PLANT  1
+                2
+
+CASINO NIGHT    1
+                2
+
+WOOOD GADGET    1
+                2
+
+HILL TOP        1
+                2
+
+MYSTIC CAVE     1
+                2
+
+HIDDEN PALACE   1
+                2"
+scroll_active = false
+autowrap_mode = 0
 
 [node name="Cover" type="CanvasLayer" parent="."]
 layer = 0

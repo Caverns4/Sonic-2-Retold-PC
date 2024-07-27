@@ -8,17 +8,28 @@ var selected = false
 # character labels, the amount of labels in here determines the total amount of options, see the set character option at the end for settings
 var characterLabels = ["Sonic and Tails", "Sonic", "Tails", "Knuckles", "Amy"]
 # level labels, the amount of labels in here determines the total amount of options, see set level option at the end for settings
-var levelLabels = [ #Every one of these is a line.
+var levelLabels = [ #Every one of these is a line, and some are skipped.
 	"Emerald Hill    1",
-	"Emerald Hill    2",
+	"                2",
+	"",
 	"Hidden Palace   1",
-	"Hill Top        1"
+	"                2",
+	"",
+	"Hill Top        1",
+	"                2",
+	"",
+	"Chemical PLant  1",
+	"                2"
 	]
-var levelIcons = [
+var levelIcons = [ #Use this list to get the number of selectable entries
 	0,
 	0,
 	8,
-	6
+	8,
+	6,
+	6,
+	2,
+	2
 ]
 # character id lines up with characterLabels
 var characterID = 0
@@ -34,6 +45,10 @@ func _ready():
 	if nextZone != null:
 		Global.nextZone = nextZone
 
+func _process(delta):
+		$UI/Labels/Control/Character.text = characterLabels[characterID]
+		levelSelect_UpdateText()
+
 func _input(event):
 	if !selected:
 		
@@ -47,14 +62,10 @@ func _input(event):
 			if  inputCue.x > 0:
 				characterID = wrapi(characterID+1,0,characterLabels.size())
 			if inputCue.y > 0:
-				levelID = wrapi(levelID+1,0,levelLabels.size())
+				levelID = wrapi(levelID+1,0,levelIcons.size())
 			if inputCue.y < 0:
-				levelID = wrapi(levelID-1,0,levelLabels.size())
+				levelID = wrapi(levelID-1,0,levelIcons.size())
 		lastInput = inputCue
-		
-		$UI/Labels/Control/Character.text = characterLabels[characterID]
-		$UI/Labels/Control/Level.text = levelLabels[levelID]
-		$UI/LevelIcon.frame = levelIcons[levelID]
 		
 		# turn on and off visibility of the characters based on the current selection
 		match(characterID):
@@ -115,9 +126,30 @@ func _input(event):
 					Global.nextZone = load("res://Scene/Zones/EmeraldHill1.tscn")
 				1: # Emerald Zone Act 2
 					Global.nextZone = load("res://Scene/Zones/Emerald Hill Zone Act 2.tscn")
-				2: # Emerald Zone Act 1
+				2: # Hidden Palace Zone 2
 					Global.nextZone = load("res://Scene/Zones/Hidden Palace 1.tscn")
-				3: # Emerald Zone Act 1
+				3: # Hidden Palace Zone 2
+					Global.nextZone = load("res://Scene/Zones/Hidden Palace 1.tscn")
+				4: # Hill Top Zone 1
 					Global.nextZone = load("res://Scene/Zones/Hill Top Zone Act 1.tscn")
+				_: # Invalid Entry
+					Global.nextZone = load("res://Scene/Zones/EmeraldHill1.tscn")
 			
 			Global.main.change_scene_to_file(Global.nextZone,"FadeOut","FadeOut",1)
+
+func levelSelect_UpdateText(): # levelID
+	$UI/Labels/Control/LevelsRight.text = str(levelID)
+	var j = 0 #Which line to highlight
+	var k = 0 #Which label entry to retrieve(In other word, the "real" selection ID
+	var textFieldLeft = $UI/Labels/Control/LevelsLeft
+	textFieldLeft.text = ""
+	for i in levelLabels.size():
+		if levelLabels[i] != "":
+			j +=1
+		if j == levelID+1:
+			k = j
+			textFieldLeft.text += "[color=#eeee00]" + str(levelLabels[i]).to_upper() + "[/color]\n"
+			$UI/Labels/Control/LevelsRight.text += "  " + str(j)
+		else:
+			textFieldLeft.text += str(levelLabels[i]).to_upper() + "\n"
+	$UI/LevelIcon.frame = levelIcons[k-1]
