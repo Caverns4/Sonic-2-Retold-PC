@@ -167,7 +167,7 @@ offset_right = 136.0
 grow_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_yuhp3")
-text = "2024.07.25.1"
+text = "2024.07.27.2"
 vertical_alignment = 2
 uppercase = true
 
@@ -207,9 +207,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -40.5
+offset_left = -40.0
 offset_top = -12.0
-offset_right = 54.5
+offset_right = 56.0
 offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -219,6 +219,7 @@ text = "[color=#eeee00]1 PLAYER[/color]
 
 2 PLAYER VS"
 scroll_active = false
+autowrap_mode = 0
 
 [node name="MenuIcon" type="Sprite2D" parent="CanvasLayer/Labels/TitleMenu"]
 position = Vector2(-56, 4)

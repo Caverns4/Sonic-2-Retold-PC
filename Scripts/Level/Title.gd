@@ -11,7 +11,7 @@ var menuIconYOff = [4,20,12]
 var menuText = [
 	"[color=#eeee00]1 PLAYER[/color]\n\n2 PLAYER VS",
 	"1 PLAYER\n\n[color=eeee00]2 PLAYER VS[/color]",
-	"\n[color=eeee00]DEBUG MENU[/color]"
+	"\n[color=eeee00]LEVEL SELECT[/color]"
 ]
 
 
@@ -60,6 +60,7 @@ func MenuOptionChosen(choice):
 	match menuEntry:
 		0:
 			titleEnd = true
+			nextScene = preload("res://Scene/Zones/EmeraldHill1.tscn")
 			Global.main.change_scene_to_file(nextScene,"FadeOut","FadeOut",1)
 		1:
 			titleEnd = true

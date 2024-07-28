@@ -53,6 +53,9 @@ func _ready():
 	set_menu(menu)
 
 func _process(delta):
+	# check if paused and visible, otherwise cancel it out
+	if !get_tree().paused or !visible:
+		return null
 	_unhandledInput(Input)
 
 func _input(event):

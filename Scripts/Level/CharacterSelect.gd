@@ -67,37 +67,7 @@ func _input(event):
 				levelID = wrapi(levelID-1,0,levelIcons.size())
 		lastInput = inputCue
 		
-		# turn on and off visibility of the characters based on the current selection
-		match(characterID):
-			0: # Sonic and Tails
-				$UI/Labels/CharacterOrigin/Sonic.visible = true
-				$UI/Labels/CharacterOrigin/Tails.visible = true
-				$UI/Labels/CharacterOrigin/Sonic.position.x = 8
-				$UI/Labels/CharacterOrigin/Tails.position.x = -8
-				$UI/Labels/CharacterOrigin/Knuckles.visible = false
-				$UI/Labels/CharacterOrigin/Amy.visible = false
-			1: # Sonic
-				$UI/Labels/CharacterOrigin/Sonic.visible = true
-				$UI/Labels/CharacterOrigin/Sonic.position.x = 0
-				$UI/Labels/CharacterOrigin/Tails.visible = false
-				$UI/Labels/CharacterOrigin/Knuckles.visible = false
-				$UI/Labels/CharacterOrigin/Amy.visible = false
-			2: # Tails
-				$UI/Labels/CharacterOrigin/Sonic.visible = false
-				$UI/Labels/CharacterOrigin/Tails.visible = true
-				$UI/Labels/CharacterOrigin/Tails.position.x = 0
-				$UI/Labels/CharacterOrigin/Knuckles.visible = false
-				$UI/Labels/CharacterOrigin/Amy.visible = false
-			3: # Knuckles
-				$UI/Labels/CharacterOrigin/Sonic.visible = false
-				$UI/Labels/CharacterOrigin/Tails.visible = false
-				$UI/Labels/CharacterOrigin/Knuckles.visible = true
-				$UI/Labels/CharacterOrigin/Amy.visible = false
-			4: # Amy
-				$UI/Labels/CharacterOrigin/Sonic.visible = false
-				$UI/Labels/CharacterOrigin/Tails.visible = false
-				$UI/Labels/CharacterOrigin/Knuckles.visible = false
-				$UI/Labels/CharacterOrigin/Amy.visible = true
+		UpdateCharacterSelect()
 		
 		# finish character select if start is pressed
 		if event.is_action_pressed("gm_pause"):
@@ -135,12 +105,44 @@ func _input(event):
 				6: # Chemical Plant Zone 1
 					Global.nextZone = load("res://Scene/Zones/ChunkZone.tscn")
 				_: # Invalid Entry
-					Global.nextZone = load("res://Scene/Zones/EmeraldHill1.tscn")
+					Global.nextZone = load("res://Scene/Presentation/Title.tscn")
 			
 			Global.main.change_scene_to_file(Global.nextZone,"FadeOut","FadeOut",1)
+			
+func UpdateCharacterSelect():
+	# turn on and off visibility of the characters based on the current selection
+	match(characterID):
+		0: # Sonic and Tails
+			$UI/Labels/CharacterOrigin/Sonic.visible = true
+			$UI/Labels/CharacterOrigin/Tails.visible = true
+			$UI/Labels/CharacterOrigin/Sonic.position.x = 8
+			$UI/Labels/CharacterOrigin/Tails.position.x = -8
+			$UI/Labels/CharacterOrigin/Knuckles.visible = false
+			$UI/Labels/CharacterOrigin/Amy.visible = false
+		1: # Sonic
+			$UI/Labels/CharacterOrigin/Sonic.visible = true
+			$UI/Labels/CharacterOrigin/Sonic.position.x = 0
+			$UI/Labels/CharacterOrigin/Tails.visible = false
+			$UI/Labels/CharacterOrigin/Knuckles.visible = false
+			$UI/Labels/CharacterOrigin/Amy.visible = false
+		2: # Tails
+			$UI/Labels/CharacterOrigin/Sonic.visible = false
+			$UI/Labels/CharacterOrigin/Tails.visible = true
+			$UI/Labels/CharacterOrigin/Tails.position.x = 0
+			$UI/Labels/CharacterOrigin/Knuckles.visible = false
+			$UI/Labels/CharacterOrigin/Amy.visible = false
+		3: # Knuckles
+			$UI/Labels/CharacterOrigin/Sonic.visible = false
+			$UI/Labels/CharacterOrigin/Tails.visible = false
+			$UI/Labels/CharacterOrigin/Knuckles.visible = true
+			$UI/Labels/CharacterOrigin/Amy.visible = false
+		4: # Amy
+			$UI/Labels/CharacterOrigin/Sonic.visible = false
+			$UI/Labels/CharacterOrigin/Tails.visible = false
+			$UI/Labels/CharacterOrigin/Knuckles.visible = false
+			$UI/Labels/CharacterOrigin/Amy.visible = true
 
 func levelSelect_UpdateText(): # levelID
-	$UI/Labels/Control/LevelsRight.text = str(levelID)
 	var j = 0 #Which line to highlight
 	var k = 0 #Which label entry to retrieve(In other word, the "real" selection ID
 	var textFieldLeft = $UI/Labels/Control/LevelsLeft
@@ -151,7 +153,6 @@ func levelSelect_UpdateText(): # levelID
 		if j == levelID+1:
 			k = j
 			textFieldLeft.text += "[color=#eeee00]" + str(levelLabels[i]).to_upper() + "[/color]\n"
-			$UI/Labels/Control/LevelsRight.text += "  " + str(j)
 		else:
 			textFieldLeft.text += str(levelLabels[i]).to_upper() + "\n"
 	$UI/LevelIcon.frame = levelIcons[k-1]
