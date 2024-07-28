@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c30uceea18q1w"]
+[gd_scene load_steps=32 format=3 uid="uid://c30uceea18q1w"]
 
 [ext_resource type="Texture2D" uid="uid://dloxtqer7p78l" path="res://Graphics/HUD/hud_lives.png" id="2_cfvjc"]
 [ext_resource type="Material" uid="uid://bveqi5m5ihsgj" path="res://Shaders/PlayerPalette.tres" id="2_xy7bp"]
@@ -12,6 +12,7 @@
 [ext_resource type="FontFile" uid="uid://28kaiptskglh" path="res://Graphics/HUD/LevelCards/font/s2br_TitleCardFont.png" id="10_hdf42"]
 [ext_resource type="Texture2D" uid="uid://bbm5bncrd1o4k" path="res://Graphics/HUD/LevelCards/EdgePattern.png" id="10_xpi0a"]
 [ext_resource type="FontFile" uid="uid://corcgkvvv7msb" path="res://Graphics/HUD/LevelCards/font/TitleCard_Normal.png" id="11_6cefa"]
+[ext_resource type="Texture2D" uid="uid://bulw3223o3c01" path="res://Graphics/HUD/LevelCards/TitleCardRetold.png" id="11_7g7rf"]
 [ext_resource type="Material" uid="uid://uh2c8jbp8qwd" path="res://Shaders/WaterPalette.tres" id="13_1ly2g"]
 [ext_resource type="Texture2D" uid="uid://60ak1q0xrn1s" path="res://Graphics/HUD/hud_gametimeover.png" id="15_7eshx"]
 [ext_resource type="AudioStream" uid="uid://c3tsd0xi30f6s" path="res://Audio/Soundtrack/s2br_GameOver.ogg" id="15_y325l"]
@@ -152,7 +153,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(67, 0), Vector2(67, 0), Vector2(67, -203)]
+"values": [Vector2(64, 0), Vector2(64, 0), Vector2(64, -203)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -190,6 +191,18 @@ tracks/8/keys = {
 "update": 0,
 "values": [Vector2(240, 104), Vector2(720, 104)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Retold Text:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(160, 176), Vector2(640, 176)]
+}
 
 [sub_resource type="Animation" id="2"]
 length = 0.001
@@ -215,7 +228,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(65.5, -203)]
+"values": [Vector2(64, -203)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -325,6 +338,18 @@ tracks/10/keys = {
 "update": 0,
 "values": [Vector2(328, 120)]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Retold Text:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(640, 176)]
+}
 
 [sub_resource type="Animation" id="3"]
 resource_name = "Start"
@@ -432,7 +457,7 @@ tracks/8/path = NodePath("Act:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 1.1, 1.7),
+"times": PackedFloat32Array(0, 0.7, 1.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(720, 104), Vector2(720, 104), Vector2(240, 104)]
@@ -444,7 +469,7 @@ tracks/9/path = NodePath("Zone:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 1.1, 1.7),
+"times": PackedFloat32Array(0, 0.7, 1.2),
 "transitions": PackedFloat32Array(0.5, 1, 1),
 "update": 0,
 "values": [Vector2(512, 108), Vector2(512, 108), Vector2(32, 108)]
@@ -456,7 +481,7 @@ tracks/10/path = NodePath("LevelName:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0, 0.5, 1.1),
+"times": PackedFloat32Array(0, 0.5, 0.9),
 "transitions": PackedFloat32Array(0.5, 1, 1),
 "update": 0,
 "values": [Vector2(512, 64), Vector2(512, 64), Vector2(32, 64)]
@@ -483,7 +508,19 @@ tracks/12/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(67, -203), Vector2(67, 0)]
+"values": [Vector2(64, -203), Vector2(64, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Retold Text:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(640, 176), Vector2(640, 176), Vector2(160, 176)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fgko3"]
@@ -826,9 +863,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 65.5
+offset_left = -256.0
 offset_top = -203.0
-offset_right = 254.5
+offset_right = -222.0
 grow_horizontal = 2
 size_flags_stretch_ratio = 0.0
 texture = ExtResource("7_ccygi")
@@ -870,9 +907,9 @@ anchor_left = 1.0
 anchor_top = 0.003
 anchor_right = 1.0
 anchor_bottom = 0.003
-offset_top = 32.0
-offset_right = 13088.0
-offset_bottom = 288.0
+offset_top = -76.192
+offset_right = 13798.4
+offset_bottom = 179.808
 grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("10_xpi0a")
@@ -907,12 +944,17 @@ theme_override_fonts/font = ExtResource("10_hdf42")
 text = "EMERALD HILL"
 uppercase = true
 
+[node name="Retold Text" type="Sprite2D" parent="LevelCard"]
+position = Vector2(640, 176)
+texture = ExtResource("11_7g7rf")
+
 [node name="CardMover" type="AnimationPlayer" parent="LevelCard"]
+process_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_15hsr")
 }
 autoplay = "Slider"
-speed_scale = 4.0
+speed_scale = 1.9375
 
 [node name="CardPlayer" type="AnimationPlayer" parent="LevelCard"]
 libraries = {

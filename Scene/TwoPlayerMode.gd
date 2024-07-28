@@ -27,6 +27,6 @@ func _ready():
 	#var player2 = gameLevel.find_child("Player 2")
 	#player2.reparent(screen2)
 
-func _process(delta):
+func _process(_delta):
 	
 	pass

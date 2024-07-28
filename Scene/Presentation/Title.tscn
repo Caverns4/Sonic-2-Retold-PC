@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://qs5dmtxxf1w1"]
+[gd_scene load_steps=29 format=3 uid="uid://qs5dmtxxf1w1"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Title.gd" id="2"]
-[ext_resource type="Texture2D" uid="uid://kowpuw3ugms1" path="res://Graphics/title/TitleEmblem.png" id="3_ckds7"]
+[ext_resource type="Texture2D" uid="uid://eih0pbfohmyc" path="res://Graphics/title/TitleEmblem_Final.png" id="2_oku5l"]
+[ext_resource type="Texture2D" uid="uid://d1g4mtdkr6al" path="res://Graphics/title/Title_RETOLD.png" id="3_vbbsi"]
 [ext_resource type="FontFile" uid="uid://ml62eqfe7avn" path="res://Graphics/Fonts/small_font.png" id="3_yuhp3"]
 [ext_resource type="Texture2D" uid="uid://bgbuxncngj8e4" path="res://Graphics/title/TailsTitle.png" id="4_d2xjp"]
 [ext_resource type="Texture2D" uid="uid://dt51ojxk80oqh" path="res://Graphics/Items/Rings/Ring.tres" id="4_vmy7g"]
@@ -113,8 +114,13 @@ script = ExtResource("2")
 [node name="Worlds" type="Sprite2D" parent="."]
 z_index = 2
 position = Vector2(160, 112)
-texture = ExtResource("3_ckds7")
+texture = ExtResource("2_oku5l")
 region_rect = Rect2(2, 173, 182, 36)
+
+[node name="RetoldText" type="Sprite2D" parent="Worlds"]
+z_index = 1
+position = Vector2(0, 48)
+texture = ExtResource("3_vbbsi")
 
 [node name="Title_Tails" type="Sprite2D" parent="Worlds"]
 position = Vector2(-36, -40)
@@ -167,7 +173,7 @@ offset_right = 136.0
 grow_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_yuhp3")
-text = "2024.07.27.2"
+text = "2024.07.27.3"
 vertical_alignment = 2
 uppercase = true
 

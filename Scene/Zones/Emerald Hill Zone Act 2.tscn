@@ -27,10 +27,10 @@
 [ext_resource type="PackedScene" uid="uid://cfteqnft5ynr7" path="res://Entities/Hazards/Spikes.tscn" id="24_lcbul"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="25_nuubr"]
 [ext_resource type="PackedScene" uid="uid://bct374kjctkxr" path="res://Entities/Items/Checkpoint.tscn" id="26_1nuku"]
-[ext_resource type="PackedScene" uid="uid://cv2pymcpiotcw" path="res://Entities/Boss/Boss Components/DrillEggman_Car.tscn" id="27_n7ocq"]
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="28_03dm3"]
 [ext_resource type="PackedScene" uid="uid://b4oxfl2msl6e6" path="res://Entities/Enemies/Chomper.tscn" id="28_i0rfm"]
 [ext_resource type="PackedScene" uid="uid://4rs745vaqki1" path="res://Entities/Enemies/Coconuts.tscn" id="29_k6j2f"]
+[ext_resource type="PackedScene" uid="uid://cma7d8l5wmqmd" path="res://Entities/Items/LampPost.tscn" id="29_kpnm4"]
 [ext_resource type="PackedScene" uid="uid://c1ldunfxhq0he" path="res://Entities/Obstacles/ForceAngleSides.tscn" id="30_cvaq5"]
 [ext_resource type="PackedScene" uid="uid://ds7bmlo2s41ji" path="res://Entities/Enemies/BuzzBomber.tscn" id="30_lc0cp"]
 [ext_resource type="PackedScene" uid="uid://bgodeg4oddje6" path="res://Entities/MainObjects/BoundrySetter.tscn" id="31_s5xoe"]
@@ -629,15 +629,19 @@ position = Vector2(4736, 874)
 
 [node name="Checkpoint2" parent="ItemsHolder" instance=ExtResource("26_1nuku")]
 position = Vector2(6272, 236)
+checkPointID = 1
 
 [node name="Checkpoint3" parent="ItemsHolder" instance=ExtResource("26_1nuku")]
 position = Vector2(7104, 1198)
+checkPointID = 2
 
 [node name="Checkpoint4" parent="ItemsHolder" instance=ExtResource("26_1nuku")]
 position = Vector2(8376, 648)
+checkPointID = 3
 
-[node name="Checkpoint5" parent="ItemsHolder" instance=ExtResource("26_1nuku")]
+[node name="LampPost" parent="ItemsHolder" instance=ExtResource("29_kpnm4")]
 position = Vector2(10104, 1004)
+checkPointID = 4
 
 [node name="Badniks" type="Node2D" parent="."]
 
@@ -737,9 +741,6 @@ format = 2
 layer_0/tile_data = PackedInt32Array(2819053, 0, 65536, 2819059, 0, 65536, 2819065, 0, 65536, 2425840, 0, 65536, 2425846, 0, 65536, 2032627, 0, 65536, 10616944, 0, 65536, 10616950, 0, 65536, 10616956, 0, 65536, 10616938, 0, 65536, 10617008, 0, 65536, 10617001, 0, 65536, 10617015, 0, 65536, 11600160, 0, 65536, 11600154, 0, 65536, 11600166, 0, 65536, 13304268, 0, 65536, 13304256, 0, 65536, 13304262, 0, 65536, 13828676, 0, 65536, 11666004, 0, 65536, 12321364, 0, 65536, 12976723, 0, 65536, 13566541, 0, 65536, 7997035, 0, 65536, 7145072, 0, 65536, 6751871, 0, 65536, 7145103, 0, 65536, 7997076, 0, 65536, 5899787, 0, 65536, 5047824, 0, 65536, 4654623, 0, 65536, 5047855, 0, 65536, 5899828, 0, 65536, 14287915, 0, 65536, 13435952, 0, 65536, 13042751, 0, 65536, 13435983, 0, 65536, 14287956, 0, 65536, 16385163, 0, 65536, 15533200, 0, 65536, 15139999, 0, 65536, 15533231, 0, 65536, 16385204, 0, 65536, 12191851, 0, 65536, 11339888, 0, 65536, 10946687, 0, 65536, 11339919, 0, 65536, 12191892, 0, 65536, 7274755, 0, 65536, 7274761, 0, 65536, 7274767, 0, 65536, 11535180, 0, 65536, 11535186, 0, 65536, 10945306, 0, 65536, 8651546, 0, 65536, 9437978, 0, 65536, 10158874, 0, 65536, 13370153, 0, 65536, 13370159, 0, 65536, 13370165, 0, 65536, 15729610, 0, 65536, 16253915, 0, 65536, 15926226, 0, 65536, 9634736, 0, 65536, 10027966, 0, 65536, 9831351, 0, 65536, 10814424, 0, 65536, 10552271, 0, 65536, 10290119, 0, 65536, 7079069, 0, 65536, 7079075, 0, 65536, 7079081, 0, 65536, 7079063, 0, 65536, 6685850, 0, 65536, 6685856, 0, 65536, 6685862, 0, 65536, 6292637, 0, 65536, 6292643, 0, 65536, 5899424, 0, 65536, 7734613, 0, 65536, 7734619, 0, 65536, 13502098, 0, 65536, 13895314, 0, 65536, 13305494, 0, 65536, 13698710, 0, 65536, 14091926, 0, 65536, 13502106, 0, 65536, 13895322, 0, 65536, 14092044, 0, 65536, 14092049, 0, 65536, 14092054, 0, 65536, 14092059, 0, 65536, 14092039, 0, 65536, 13764361, 0, 65536, 13764366, 0, 65536, 13764371, 0, 65536, 13764376, 0, 65536, 17827367, 0, 65536, 17827399, 0, 65536, 17827404, 0, 65536, 17827384, 0, 65536, 17827379, 0, 65536, 11535751, 0, 65536, 11535763, 0, 65536, 11535768, 0, 65536, 11535783, 0, 65536, 11535788, 0, 65536, 11535800, 0, 65536, 11535878, 0, 65536, 11535883, 0, 65536, 11535895, 0, 65536, 17827891, 0, 65536, 17827896, 0, 65536, 17827928, 0, 65536, 17827923, 0, 65536, 17827959, 0, 65536, 17827943, 0, 65536, 17827948, 0, 65536, 17827911, 0, 65536, 18614443, 0, 65536, 18614437, 0, 65536, 18614449, 0, 65536, 15272165, 0, 65536, 14944496, 0, 65536, 14551289, 0, 65536, 14223618, 0, 65536, 14027023, 0, 65536, 14223643, 0, 65536, 15010097, 0, 65536, 15272250, 0, 65536, 14551333, 0, 65536, 11077349, 0, 65536, 10749680, 0, 65536, 10356473, 0, 65536, 10028802, 0, 65536, 9832207, 0, 65536, 10028827, 0, 65536, 10356517, 0, 65536, 10815281, 0, 65536, 11077434, 0, 65536, 11077446, 0, 65536, 10749777, 0, 65536, 10356570, 0, 65536, 10028899, 0, 65536, 9832304, 0, 65536, 10028924, 0, 65536, 10356614, 0, 65536, 10815378, 0, 65536, 11077531, 0, 65536, 11077542, 0, 65536, 10749873, 0, 65536, 10356666, 0, 65536, 10028995, 0, 65536, 9832400, 0, 65536, 10029020, 0, 65536, 10356710, 0, 65536, 10815474, 0, 65536, 11077627, 0, 65536, 9111833, 0, 65536, 8784155, 0, 65536, 9111839, 0, 65536, 8784161, 0, 65536, 9111845, 0, 65536, 8784168, 0, 65536, 9111851, 0, 65536, 7274927, 0, 65536, 7274933, 0, 65536, 7274939, 0, 65536, 7274945, 0, 65536, 15927790, 0, 65536, 15927796, 0, 65536, 15927802, 0, 65536)
 
 [node name="Boss" type="Node2D" parent="."]
-
-[node name="DrillEggmanCar" parent="Boss" instance=ExtResource("27_n7ocq")]
-position = Vector2(217, 643)
 
 [node name="SignpostNew" parent="." instance=ExtResource("28_03dm3")]
 position = Vector2(10945, 1089)

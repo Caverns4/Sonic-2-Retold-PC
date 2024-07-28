@@ -9,7 +9,7 @@ var cloudSpeeds = [0] #the speed each cloud layer should move at, auto-generated
 func _ready():
 	pass
 
-func _process(delta):
+func _process(_delta):
 	$ParallaxLayerD.motion_offset.x -= 0.125
 	$ParallaxLayerE.motion_offset.x -= 0.25
 	$ParallaxLayerF.motion_offset.x -= 0.375

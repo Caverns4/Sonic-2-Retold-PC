@@ -124,5 +124,5 @@ func remove_player(player):
 		# reset player animation
 		player.animator.play("current")
 		# Clean out the player from all player-linked arrays.
-		var getIndex = players.find(player)
+		var _getIndex = players.find(player)
 		players.erase(player)

@@ -8,6 +8,7 @@ var titleEnd = false
 var menuActive = false
 var menuEntry = 0
 var menuIconYOff = [4,20,12]
+var particlesDone = false
 var menuText = [
 	"[color=#eeee00]1 PLAYER[/color]\n\n2 PLAYER VS",
 	"1 PLAYER\n\n[color=eeee00]2 PLAYER VS[/color]",
@@ -24,18 +25,19 @@ func _process(delta):
 	if $CanvasLayer/Labels.visible == true and !titleEnd:
 		menuActive = true
 	
-	$Worlds.global_position.x += 2
+	$Worlds.global_position.x += (4*60*delta)
 	# animate cogs
 	#$BackCog.rotate(delta*speed)
 	#$BigCog.rotate(-delta*2*speed)
 	#$BigCog/CogCircle.rotate(delta*2*speed)
 	#$Sonic/Cog.rotate(-delta*1.5*speed)
-	$Celebrations.global_position.x += 2
+	$Celebrations.global_position.x += (4*60*delta)
 	
-	if $Worlds.global_position.x == 4300:
+	if $Worlds.global_position.x >= 3760 and particlesDone == false:
 		$Celebrations.emitting = true
+		particlesDone = true
 	
-	if $Worlds.global_position.x == 4600 and !titleEnd:
+	if $Worlds.global_position.x >= 4600 and !titleEnd:
 		menuActive = false
 		titleEnd = true
 		Global.main.change_scene_to_file(returnScene,"FadeOut","FadeOut",1)
@@ -51,12 +53,11 @@ func _input(event):
 	
 	# end title on start press
 	if event.is_action_pressed("gm_pause") and !titleEnd and menuActive:
-		MenuOptionChosen(menuEntry)
+		MenuOptionChosen()
 		
-func MenuOptionChosen(choice):
+func MenuOptionChosen():
 	#if Global.music.get_playback_position() < 14.0:
 	#	Global.music.seek(14.0)
-	
 	match menuEntry:
 		0:
 			titleEnd = true

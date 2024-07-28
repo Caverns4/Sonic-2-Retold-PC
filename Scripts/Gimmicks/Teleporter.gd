@@ -10,7 +10,7 @@ func _ready():
 		# delete orb reference
 		$OrbReference.queue_free()
 
-func _process(delta):
+func _process(_delta):
 	if !Engine.is_editor_hint():
 		# beam flashing (only flash if active)
 		$Beam.visible = (!$Beam.visible and active)

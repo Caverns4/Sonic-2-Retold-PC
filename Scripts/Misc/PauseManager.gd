@@ -52,7 +52,7 @@ var lastIpnut = Vector2.ZERO #Last saved direction input.
 func _ready():
 	set_menu(menu)
 
-func _process(delta):
+func _process(_delta):
 	# check if paused and visible, otherwise cancel it out
 	if !get_tree().paused or !visible:
 		return null
@@ -115,7 +115,7 @@ func _input(event):
 						Global.main.reset_game()
 	pass
 
-func _unhandledInput(event):
+func _unhandledInput(_event):
 	# check if paused and visible, otherwise cancel it out
 	#if !get_tree().paused or !visible:
 	#	return null

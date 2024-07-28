@@ -242,7 +242,7 @@ position = Vector2(4311, 897)
 leftAngle = 90.0
 
 [node name="ForceAngleSides3" parent="Entities" instance=ExtResource("18_u1d8p")]
-position = Vector2(5337, 641)
+position = Vector2(5336, 642)
 leftAngle = 90.0
 
 [node name="ForceAngleSides4" parent="Entities" instance=ExtResource("18_u1d8p")]

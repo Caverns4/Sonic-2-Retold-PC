@@ -3,20 +3,18 @@ extends EnemyBase
 var Projectile = preload("res://Entities/Enemies/Projectiles/CoconutProjectile.tscn")
 var coconut = null
 
-var x_range = 96
-var attack_timer = 1
-
 enum STATE{IDLE,CLIMB,THROW}
 var state = STATE.IDLE
 
-var climbTimes = [
-	0.5333333333333333,
-	0.4,
-	0.2666666666666667,
-	0.6666666666666667,
-	0.5333333333333333,
-	0.2666666666666667
-	] #Timer for each climb
+var climbTimes = [ #Values from Sonic 2. Divide by 60.0
+	32,
+	24,
+	16,
+	40,
+	32,
+	16
+	]
+
 var climbSpeeds = [1,-1] #y speeds
 var climb_state = 0 #Which climbing routine to do
 var timer_over = false
@@ -30,18 +28,17 @@ func _process(delta):
 	match state:
 		STATE.IDLE:
 			if timer_over:
-				startClimbing()
+				startClimbing(delta)
 			if targets.size() > 0:
-				attack_timer = clamp(attack_timer-1,0,255) #Always
-				if attack_timer == 0:
+				if throw_nut == true:
 					LookAtPlayer()
-					attack_timer = 32*2
-					$ActionTimer.start(8/60)
+					$ThrowTimer.start(32/60.0)
+					$ActionTimer.start(8/60.0)
 					state = STATE.THROW
 		STATE.CLIMB:
 			if timer_over:
 				timer_over = false
-				$ActionTimer.start(0.25)
+				$ActionTimer.start(16/60.0)
 				$ThrowTimer.set_paused(false)
 				velocity.y = 0
 				animator.play("RESET")
@@ -49,13 +46,13 @@ func _process(delta):
 		STATE.THROW:
 			if !animator.is_playing():
 				animator.play("CLIMB")
-				startClimbing()
+				startClimbing(delta)
 			
 			if timer_over:
 				throwCoconut()
 				timer_over = false
 	
-	global_position.y += velocity.y
+	global_position.y += (velocity.y*60*delta)
 	super(delta)
 	
 func LookAtPlayer():
@@ -77,17 +74,16 @@ func GetClosestPlayerDistance():
 		if closest > j:
 			closest = j
 			finaldist = round(targets[i].global_position.x)
-	#print(finaldist)
 	return finaldist
 
-func startClimbing():
+func startClimbing(_delta):
 	if climb_state >= climbTimes.size():
 		climb_state = 0
 	timer_over = false
-	$ActionTimer.start(climbTimes[climb_state])
+	$ActionTimer.start(climbTimes[climb_state]/60.0)
 	$ThrowTimer.set_paused(true)
 	var t = wrapi(climb_state,0,(climbSpeeds.size()))
-	velocity.y = climbSpeeds[t]/2.0
+	velocity.y = climbSpeeds[t]
 	climb_state += 1
 	animator.play("CLIMB")
 	state = STATE.CLIMB
@@ -103,10 +99,8 @@ func throwCoconut():
 	coconut.velocity.x = 0-(scale.x * 50)
 	coconut.velocity.y = -1 * 100
 
-
 func _on_player_check_body_entered(body):
 	targets.append(body)
-	
 
 func _on_player_check_body_exited(body):
 	targets.erase(body)
@@ -116,4 +110,5 @@ func _on_action_timer_timeout():
 	$ActionTimer.stop()
 
 func _on_throw_timer_timeout():
-	throw_nut = true
+	if state == STATE.IDLE:
+		throw_nut = true

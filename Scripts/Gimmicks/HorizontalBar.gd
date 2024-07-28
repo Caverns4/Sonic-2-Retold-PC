@@ -174,7 +174,7 @@ func _process_player_x_movement(_delta, player, playerIndex, xInput):
 		
 	return 0
 		
-func _process_player_shimmy_animation(player, xInput):
+func _process_player_shimmy_animation(player):
 	if (player.movement.x == 0):
 		player.animator.pause()
 	else:
@@ -295,7 +295,7 @@ func process_game(_delta):
 		#TODO: Only do this stuff is the state is up launch or down launch
 		match playersMode[playerIndex]:
 			PLAYER_MODE.SHIMMY:
-				_process_player_shimmy_animation(i, xInput)
+				_process_player_shimmy_animation(i)
 			PLAYER_MODE.LAUNCH_UP:
 				_process_player_launch_up(i, playerIndex)
 			PLAYER_MODE.LAUNCH_DOWN:
