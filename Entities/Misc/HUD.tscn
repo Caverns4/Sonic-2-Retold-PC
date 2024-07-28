@@ -874,7 +874,7 @@ stretch_mode = 2
 [node name="PatternLeft" type="Control" parent="LevelCard"]
 anchors_preset = 0
 anchor_bottom = 1.0
-offset_bottom = 35872.0
+offset_bottom = 36320.0
 
 [node name="PatternLeft" type="TextureRect" parent="LevelCard/PatternLeft"]
 layout_mode = 1
@@ -898,7 +898,7 @@ anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_top = -32.0
-offset_bottom = 35584.0
+offset_bottom = 36032.0
 
 [node name="PatternRight" type="TextureRect" parent="LevelCard/RightRatio/PatternRight"]
 layout_mode = 1
@@ -907,9 +907,9 @@ anchor_left = 1.0
 anchor_top = 0.003
 anchor_right = 1.0
 anchor_bottom = 0.003
-offset_top = -76.192
-offset_right = 13798.4
-offset_bottom = 179.808
+offset_top = -77.536
+offset_right = 13926.4
+offset_bottom = 178.464
 grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("10_xpi0a")
