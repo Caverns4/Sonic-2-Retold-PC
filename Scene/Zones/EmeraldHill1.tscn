@@ -234,28 +234,28 @@ layer_2/tile_data = PackedInt32Array(2621620, 2, 0, 2687156, 2, 1, 2752692, 2, 2
 position = Vector2(0, 1)
 
 [node name="ForceAngleSides" parent="Entities" instance=ExtResource("18_u1d8p")]
-position = Vector2(1239, 643)
-leftAngle = 90.0
+position = Vector2(1238, 642)
+leftAngle = 88.0
 
 [node name="ForceAngleSides2" parent="Entities" instance=ExtResource("18_u1d8p")]
-position = Vector2(4311, 897)
-leftAngle = 90.0
+position = Vector2(4310, 899)
+leftAngle = 88.0
 
 [node name="ForceAngleSides3" parent="Entities" instance=ExtResource("18_u1d8p")]
-position = Vector2(5336, 642)
-leftAngle = 90.0
+position = Vector2(5334, 643)
+leftAngle = 88.0
 
 [node name="ForceAngleSides4" parent="Entities" instance=ExtResource("18_u1d8p")]
-position = Vector2(7511, 897)
-leftAngle = 90.0
+position = Vector2(7510, 899)
+leftAngle = 88.0
 
 [node name="ForceAngleSides5" parent="Entities" instance=ExtResource("18_u1d8p")]
-position = Vector2(9305, 835)
-leftAngle = 90.0
+position = Vector2(9302, 835)
+leftAngle = 88.0
 
 [node name="ForceAngleSides6" parent="Entities" instance=ExtResource("18_u1d8p")]
-position = Vector2(2585, 577)
-rightAngle = 90.0
+position = Vector2(2586, 579)
+rightAngle = 88.0
 
 [node name="LayerSwitcher" parent="Entities" instance=ExtResource("19_fxa4t")]
 position = Vector2(4089, 418)
