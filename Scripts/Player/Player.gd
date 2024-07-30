@@ -62,7 +62,7 @@ var enemyCounter = 0
 # 8 Jump
 # 9 Jump release velocity
 
-enum CHARACTERS {SONIC, TAILS, KNUCKLES, AMY, MIGHTY, RAY, ESPIO}
+enum CHARACTERS {SONIC, TAILS, KNUCKLES, AMY, MIGHTY, RAY}
 var character = CHARACTERS.SONIC
 
 # 0 = Sonic, 1 = Tails, 2 = Knuckles, 3 = Shoes, 4 = Super Sonic
@@ -232,6 +232,7 @@ var sonicanimations =  preload("res://Graphics/Players/PlayerAnimations/Sonic.ts
 var tailsAnimations = preload("res://Graphics/Players/PlayerAnimations/Tails.tscn")
 var knucklesAnimations = preload("res://Graphics/Players/PlayerAnimations/Knuckles.tscn")
 var amyAnimations = preload("res://Graphics/Players/PlayerAnimations/Amy.tscn")
+var mightyAnimations = preload("res://Graphics/Players/PlayerAnimations/Sonic_Beta.tscn")
 
 # Get sfx list
 @onready var sfx = $SFX.get_children()
@@ -321,7 +322,6 @@ func _ready():
 				playerPal.set_shader_parameter("row",0)
 				playerPal.set_shader_parameter("paletteTexture",load("res://Graphics/Palettes/SuperAmy.png"))
 				
-			#CHARACTERS.AMY:
 			#CHARACTERS.MIGHTY:
 			#CHARACTERS.RAY:
 			#CHARACTERS.ESPIO:
@@ -390,6 +390,18 @@ func _ready():
 			spriteController = amy
 			get_node("OldSprite").queue_free()
 			maxCharGroundHeight = 12 # adjust height distance to prevent clipping off floors (amy's smaller)
+		CHARACTERS.MIGHTY:
+			#Set sprites
+			currentHitbox = HITBOXESSONIC
+			get_node("Sonic").name = "OldSprite"
+			await get_tree().process_frame
+			var mighty = mightyAnimations.instantiate()
+			add_child(mighty)
+			sprite = mighty.get_node("Sprite2D")
+			animator = mighty.get_node("PlayerAnimation")
+			superAnimator = mighty.get_node_or_null("SuperPalette")
+			spriteController = mighty
+			get_node("OldSprite").queue_free()
 			
 	
 	# run switch physics to ensure character specific physics

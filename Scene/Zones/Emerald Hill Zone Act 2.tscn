@@ -640,9 +640,9 @@ checkPointID = 3
 
 [node name="Checkpoint5" parent="ItemsHolder" instance=ExtResource("26_1nuku")]
 position = Vector2(10104, 1004)
+checkPointID = 4
 
 [node name="Badniks" type="Node2D" parent="."]
-visible = false
 
 [node name="Chomper" parent="Badniks" instance=ExtResource("28_i0rfm")]
 position = Vector2(880, 852)

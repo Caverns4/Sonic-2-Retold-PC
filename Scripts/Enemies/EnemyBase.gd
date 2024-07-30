@@ -20,7 +20,7 @@ func _process(delta):
 				# check player is not on floor
 				if !i.ground:
 					# subtract from velocity if velocity is less then 0 or below enemy (use current velocity to avoid clipping issues)
-					if (i.movement.y < 0 or i.global_position.y-(i.velocity.y*delta) > global_position.y):
+					if i.movement.y < 0 or (i.global_position.y-(i.velocity.y*delta) > global_position.y):
 						i.movement.y -= 60*sign(i.velocity.y)
 					else:
 					# reverse vertical velocity

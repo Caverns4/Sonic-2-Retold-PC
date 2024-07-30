@@ -1,6 +1,6 @@
 extends Node2D
 
-#Dummied out; Waterfalls will be handled by tilemaps
+#Dummied out for now. Todo: Rewrite for HPZ waterfalls
 
 func _ready():
 	pass

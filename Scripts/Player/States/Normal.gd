@@ -21,7 +21,9 @@ var playerIdles = [
 # Knuckles
 ["idle1"],
 # Amy
-["idle1","idle1","idle1","idle1","idle1","idle1","idle1","idle1","idle2","idle3"] # Note: like Tails, Amy loops on idle3
+["idle1","idle1","idle1","idle1","idle1","idle1","idle1","idle1","idle2","idle3"], # Note: like Tails, Amy loops on idle3
+# MIGHTY
+["idle1","idle2","idle3","idle4","idle5"]
 ]
 
 func state_exit():

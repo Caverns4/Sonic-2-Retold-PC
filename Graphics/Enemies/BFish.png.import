@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpameodghn8p5"
-path="res://.godot/imported/Betafish_2.png-531c8d2ab8471673a4a11c07411bb316.ctex"
+uid="uid://duqbkmg0cgbf7"
+path="res://.godot/imported/BFish.png-76a657b54e347a66d44d155c9e49640c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Enemies/Betafish_2.png"
-dest_files=["res://.godot/imported/Betafish_2.png-531c8d2ab8471673a4a11c07411bb316.ctex"]
+source_file="res://Graphics/Enemies/BFish.png"
+dest_files=["res://.godot/imported/BFish.png-76a657b54e347a66d44d155c9e49640c.ctex"]
 
 [params]
 

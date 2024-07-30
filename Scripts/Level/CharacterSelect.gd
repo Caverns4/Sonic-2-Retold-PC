@@ -94,7 +94,8 @@ func _input(event):
 					Global.PlayerChar1 = Global.CHARACTERS.KNUCKLES
 				4: # Amy
 					Global.PlayerChar1 = Global.CHARACTERS.AMY
-					
+				5: # Amy
+					Global.PlayerChar1 = Global.CHARACTERS.MIGHTY
 			# set the level
 			match(levelID):
 				0: # Emerald Zone Act 1
@@ -116,7 +117,7 @@ func _input(event):
 				9: # Oil Ocean Zone 2
 					Global.nextZone = load("res://Scene/Zones/OilOcean1.tscn")
 				_: # Invalid Entry
-					Global.nextZone = load("res://Scene/Presentation/Title.tscn")
+					Global.nextZone = load("res://Scene/Zones/BaseZone.tscn")
 			
 			Global.main.change_scene_to_file(Global.nextZone,"FadeOut","FadeOut",1)
 			
