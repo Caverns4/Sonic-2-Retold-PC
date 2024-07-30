@@ -17,12 +17,14 @@ var menuText = [
 
 var parallaxBackgrounds = [
 	"res://Scene/Backgrounds/00-EmeraldHill.tscn",
-	"res://Scene/Backgrounds/01-HiddenPalace.tscn"
+	"res://Scene/Backgrounds/01-HiddenPalace.tscn",
+	"res://Scene/Backgrounds/02-HillTop.tscn"
 ]
 
 var paraOffsets = [
 	0,
-	-216
+	-216,
+	0
 ]
 
 
