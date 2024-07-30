@@ -19,17 +19,22 @@ var levelLabels = [ #Every one of these is a line, and some are skipped.
 	"                2",
 	"",
 	"Chemical PLant  1",
+	"                2",
+	"",
+	"Oil Ocean       1",
 	"                2"
 	]
 var levelIcons = [ #Use this list to get the number of selectable entries
 	0,
 	0,
-	8,
-	8,
-	6,
-	6,
+	1,
+	1,
+	2,
+	2,
 	3,
-	3
+	3,
+	4,
+	4
 ]
 # character id lines up with characterLabels
 var characterID = 0
@@ -102,8 +107,14 @@ func _input(event):
 					Global.nextZone = load("res://Scene/Zones/Hidden Palace 1.tscn")
 				4: # Hill Top Zone 1
 					Global.nextZone = load("res://Scene/Zones/Hill Top Zone Act 1.tscn")
+				5: # Hill Top Zone 2
+					Global.nextZone = load("res://Scene/Zones/Hill Top Zone Act 1.tscn")
 				6: # Chemical Plant Zone 1
 					Global.nextZone = load("res://Scene/Zones/ChunkZone.tscn")
+				8: # Oil Ocean Zone 1
+					Global.nextZone = load("res://Scene/Zones/OilOcean1.tscn")
+				9: # Oil Ocean Zone 2
+					Global.nextZone = load("res://Scene/Zones/OilOcean1.tscn")
 				_: # Invalid Entry
 					Global.nextZone = load("res://Scene/Presentation/Title.tscn")
 			

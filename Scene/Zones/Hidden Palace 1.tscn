@@ -1,7 +1,7 @@
 [gd_scene load_steps=37 format=3 uid="uid://cun7sa0v2mwiq"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_snbg3"]
-[ext_resource type="AudioStream" uid="uid://c1u2xm7bdke30" path="res://Audio/Soundtrack/JewelGrottoZone.ogg" id="2_kujum"]
+[ext_resource type="AudioStream" uid="uid://c1u2xm7bdke30" path="res://Audio/Soundtrack/s2br_JewelGrotto.ogg" id="2_1887m"]
 [ext_resource type="PackedScene" uid="uid://cyh8p6ji14r0t" path="res://Scene/Zones/Hill Top Zone Act 1.tscn" id="3_pk35w"]
 [ext_resource type="Shader" path="res://Shaders/PaletteSwapRow.gdshader" id="4_hudaq"]
 [ext_resource type="Texture2D" uid="uid://nn40nosrp62d" path="res://Graphics/Backgrounds/HPZ/HPZ_BGA.png" id="4_y8mxh"]
@@ -66,8 +66,9 @@ _data = {
 
 [node name="HiddenPalace1" type="Node2D"]
 script = ExtResource("1_snbg3")
-music = ExtResource("2_kujum")
-music2P = ExtResource("2_kujum")
+zoneID = 1
+music = ExtResource("2_1887m")
+music2P = ExtResource("2_1887m")
 nextZone = ExtResource("3_pk35w")
 animal1 = 8
 animal2 = 5

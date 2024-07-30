@@ -32,6 +32,7 @@ shader_parameter/paletteTexture = ExtResource("6_soyrw")
 
 [node name="HillTopZoneAct1" type="Node2D"]
 script = ExtResource("1_ijtho")
+zoneID = 2
 music = ExtResource("2_y1o2m")
 music2P = ExtResource("2_y1o2m")
 defaultLeftBoundry = 0

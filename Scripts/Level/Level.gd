@@ -1,7 +1,8 @@
 extends Node2D
 
-@export var music = preload("res://Audio/Soundtrack/EmeraldHillZoneAct1.ogg")
-@export var music2P = preload("res://Audio/Soundtrack/EmeraldHillZone2P.ogg")
+@export var zoneID = 0
+@export var music = preload("res://Audio/Soundtrack/s2br_EmeraldHilll.ogg")
+@export var music2P = preload("res://Audio/Soundtrack/s2br_Tropical.ogg")
 @export var nextZone = load("res://Scene/Zones/BaseZone.tscn")
 
 @export_enum("Bird", "Squirrel", "Rabbit", "Chicken", "Penguin", "Seal", "Pig", "Eagle", "Mouse", "Monkey", "Turtle", "Bear")var animal1 = 0
@@ -44,6 +45,7 @@ func _ready():
 
 # used for stage starts, also used for returning from special stages
 func level_reset_data(playCard = true):
+	Global.savedZoneID = zoneID
 	# music handling
 	if Global.music != null:
 		if music != null:

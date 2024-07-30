@@ -15,11 +15,29 @@ var menuText = [
 	"\n[color=eeee00]LEVEL SELECT[/color]"
 ]
 
+var parallaxBackgrounds = [
+	"res://Scene/Backgrounds/00-EmeraldHill.tscn",
+	"res://Scene/Backgrounds/01-HiddenPalace.tscn"
+]
+
+var paraOffsets = [
+	0,
+	-216
+]
+
 
 func _ready():
 	Global.TwoPlayer = false
 	Global.music.stream = music
 	Global.music.play()
+	
+	var zoneIndex = min(Global.savedZoneID,parallaxBackgrounds.size()-1)
+	var parallax = parallaxBackgrounds[zoneIndex]
+	var scene = load(parallax)
+	var instance = scene.instantiate()
+	instance.scroll_base_offset.y = paraOffsets[zoneIndex]
+	
+	add_child(instance)
 
 func _process(delta):
 	if $CanvasLayer/Labels.visible == true and !titleEnd:

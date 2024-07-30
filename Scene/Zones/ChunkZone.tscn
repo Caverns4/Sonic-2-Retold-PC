@@ -478,6 +478,7 @@ pattern_5 = SubResource("TileMapPattern_vpvfn")
 
 [node name="ChunkZone" type="Node2D"]
 script = ExtResource("2")
+zoneID = 3
 music = ExtResource("2_8olfy")
 music2P = ExtResource("2_8olfy")
 nextZone = ExtResource("50")

@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cx126ulu8rjba"]
+
+[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_0c4n0"]
+[ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="1_ny62r"]
+[ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_ystwd"]
+[ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="2_en17v"]
+
+[node name="OilOcean1" type="Node2D"]
+script = ExtResource("1_0c4n0")
+zoneID = 4
+music = ExtResource("2_en17v")
+music2P = ExtResource("2_en17v")
+defaultLeftBoundry = 0
+defaultTopBoundry = 0
+defaultRightBoundry = 16384
+defaultBottomBoundry = 2048
+
+[node name="HUD" parent="." instance=ExtResource("1_ystwd")]
+playLevelCard = false
+
+[node name="Player" parent="." instance=ExtResource("1_ny62r")]
+position = Vector2(96, 1708)
