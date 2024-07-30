@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://do1li36ao5kvn"]
+[gd_scene load_steps=17 format=3 uid="uid://do1li36ao5kvn"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
-[ext_resource type="AudioStream" uid="uid://dlgpinnh0yca3" path="res://Audio/Soundtrack/MetropolisZoneAct1.ogg" id="2_af3qy"]
-[ext_resource type="AudioStream" uid="uid://bgld7yxe6ndhy" path="res://Audio/Soundtrack/s2br_SpecialStage.ogg" id="2_e70po"]
+[ext_resource type="AudioStream" uid="uid://hikbyuhih7uc" path="res://Audio/Soundtrack/s2br_ChemicalPlant.ogg" id="2_8olfy"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="4"]
 [ext_resource type="Texture2D" uid="uid://cd1iap13jbekb" path="res://Graphics/Backgrounds/CPZ/CPZ_BG.png" id="5_17vtq"]
 [ext_resource type="PackedScene" uid="uid://dkn7hhll7o4or" path="res://Entities/MainObjects/LayerSwitcher.tscn" id="7"]
@@ -479,8 +478,8 @@ pattern_5 = SubResource("TileMapPattern_vpvfn")
 
 [node name="ChunkZone" type="Node2D"]
 script = ExtResource("2")
-music = ExtResource("2_e70po")
-music2P = ExtResource("2_af3qy")
+music = ExtResource("2_8olfy")
+music2P = ExtResource("2_8olfy")
 nextZone = ExtResource("50")
 defaultLeftBoundry = 0
 defaultTopBoundry = 0
