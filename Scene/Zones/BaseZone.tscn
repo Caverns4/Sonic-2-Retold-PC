@@ -1697,7 +1697,7 @@ region_enabled = true
 region_rect = Rect2(0, 16, 64, 80)
 
 [node name="DrillEggmanCar" parent="." instance=ExtResource("65_qxlhm")]
-position = Vector2(4353, 784)
+position = Vector2(4514, 787)
 
 [connection signal="body_entered" from="Platforms/MCZCollapsePlatform" to="Platforms/MCZCollapsePlatform" method="_on_body_entered"]
 [connection signal="body_exited" from="Platforms/MCZCollapsePlatform" to="Platforms/MCZCollapsePlatform" method="_on_body_exited"]

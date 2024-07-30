@@ -85,6 +85,9 @@ func _physics_process(delta):
 					getTiles.remove_at(i)
 					# decrease i so we don't skip any tiles
 					i -= 1
+					#Wait 8 seconds before deletion
+					await get_tree().create_timer(4.0).timeout
+					queue_free()
 
 # check for players
 func _on_body_entered(body):
