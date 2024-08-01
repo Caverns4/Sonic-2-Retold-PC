@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxk253s6p41vr"]
+
+[ext_resource type="Script" path="res://Entities/Boss/Boss Components/DrillEggman_Car.gd" id="1_harxd"]
+[ext_resource type="Texture2D" uid="uid://svwmdhvvxrws" path="res://Graphics/Boss/Boss_DrillEggman.png" id="2_ugcdw"]
+[ext_resource type="PackedScene" uid="uid://d3oh77l2rriqf" path="res://Entities/Boss/Boss Components/DrillEggmanWheel.tscn" id="3_fandu"]
+[ext_resource type="PackedScene" uid="uid://chglpnog4mvjp" path="res://Entities/Boss/Boss Components/DrillEggmanDrill.tscn" id="4_t5geu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3h3o"]
+size = Vector2(94, 29)
+
+[node name="DrillEggmanCar" type="CharacterBody2D"]
+z_index = 1
+collision_layer = 16384
+collision_mask = 0
+script = ExtResource("1_harxd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_b3h3o")
+
+[node name="DrillEggmanWheel" parent="." instance=ExtResource("3_fandu")]
+position = Vector2(-38, 15)
+wheelType = "Back"
+
+[node name="DrillEggmanWheel3" parent="." instance=ExtResource("3_fandu")]
+position = Vector2(15, 15)
+wheelType = "Back"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ugcdw")
+
+[node name="DrillEggmanWheel2" parent="." instance=ExtResource("3_fandu")]
+position = Vector2(-21, 15)
+
+[node name="DrillEggmanWheel4" parent="." instance=ExtResource("3_fandu")]
+position = Vector2(36, 15)
+
+[node name="DrillEggmanDrill" parent="." instance=ExtResource("4_t5geu")]
+z_index = 2
+position = Vector2(-54, 8)

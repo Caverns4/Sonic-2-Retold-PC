@@ -290,157 +290,156 @@ layer_1/tile_data = PackedInt32Array(11468975, 0, 42, 11468992, 0, 40, 11469023,
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TileMap"]
 
 [node name="Entities" type="Node2D" parent="."]
-position = Vector2(0, 1024)
 
 [node name="PulsatingOrb" parent="Entities" instance=ExtResource("12_k2dso")]
-position = Vector2(840, 384)
+position = Vector2(840, 1408)
 
 [node name="WaterLevel" parent="Entities" instance=ExtResource("12_uche6")]
-position = Vector2(128, 1536)
+position = Vector2(128, 2560)
 
 [node name="PulsatingOrb2" parent="Entities" instance=ExtResource("12_k2dso")]
-position = Vector2(1120, 400)
+position = Vector2(1120, 1424)
 
 [node name="PulsatingOrb3" parent="Entities" instance=ExtResource("12_k2dso")]
-position = Vector2(1496, 320)
+position = Vector2(1496, 1344)
 
 [node name="PulsatingOrb4" parent="Entities" instance=ExtResource("12_k2dso")]
-position = Vector2(1632, 1424)
+position = Vector2(1632, 2448)
 
 [node name="PulsatingOrb5" parent="Entities" instance=ExtResource("12_k2dso")]
-position = Vector2(1864, 1408)
+position = Vector2(1864, 2432)
 
 [node name="PulsatingOrb6" parent="Entities" instance=ExtResource("12_k2dso")]
-position = Vector2(1864, 1328)
+position = Vector2(1864, 2352)
 
 [node name="PulsatingOrb7" parent="Entities" instance=ExtResource("12_k2dso")]
-position = Vector2(2776, 1376)
+position = Vector2(2776, 2400)
 
 [node name="PulsatingOrb8" parent="Entities" instance=ExtResource("12_k2dso")]
-position = Vector2(1832, 992)
+position = Vector2(1832, 2016)
 
 [node name="PulsatingOrb9" parent="Entities" instance=ExtResource("12_k2dso")]
-position = Vector2(1832, 800)
+position = Vector2(1832, 1824)
 
 [node name="PulsatingOrb10" parent="Entities" instance=ExtResource("12_k2dso")]
-position = Vector2(2136, 832)
+position = Vector2(2136, 1856)
 
 [node name="PulsatingOrb11" parent="Entities" instance=ExtResource("12_k2dso")]
-position = Vector2(3032, 864)
+position = Vector2(3032, 1888)
 
 [node name="Bridge" parent="Entities" instance=ExtResource("24_dn43t")]
-position = Vector2(2440, 904)
+position = Vector2(2440, 1928)
 length = 16
 texture = ExtResource("25_nqwvl")
 texture2 = ExtResource("26_jym6y")
 texture3 = ExtResource("27_xx7sk")
 
 [node name="Bridge2" parent="Entities" instance=ExtResource("24_dn43t")]
-position = Vector2(2824, 1800)
+position = Vector2(2824, 2824)
 length = 16
 texture = ExtResource("25_nqwvl")
 texture2 = ExtResource("26_jym6y")
 texture3 = ExtResource("27_xx7sk")
 
 [node name="Bridge4" parent="Entities" instance=ExtResource("24_dn43t")]
-position = Vector2(3592, 1800)
+position = Vector2(3592, 2824)
 length = 16
 texture = ExtResource("25_nqwvl")
 texture2 = ExtResource("26_jym6y")
 texture3 = ExtResource("27_xx7sk")
 
 [node name="Bridge3" parent="Entities" instance=ExtResource("24_dn43t")]
-position = Vector2(3208, 776)
+position = Vector2(3208, 1800)
 length = 16
 texture = ExtResource("25_nqwvl")
 texture2 = ExtResource("26_jym6y")
 texture3 = ExtResource("27_xx7sk")
 
 [node name="PulsatingOrb12" parent="Entities" instance=ExtResource("12_k2dso")]
-position = Vector2(2504, 1664)
+position = Vector2(2504, 2688)
 
 [node name="PulsatingOrb13" parent="Entities" instance=ExtResource("12_k2dso")]
-position = Vector2(3896, 1344)
+position = Vector2(3896, 2368)
 
 [node name="PulsatingOrb14" parent="Entities" instance=ExtResource("12_k2dso")]
-position = Vector2(4440, 1216)
+position = Vector2(4440, 2240)
 
 [node name="PulsatingOrb15" parent="Entities" instance=ExtResource("12_k2dso")]
-position = Vector2(4568, 1248)
+position = Vector2(4568, 2272)
 
 [node name="BreakableEmerald" parent="Entities" instance=ExtResource("28_mdsvx")]
-position = Vector2(5568, 1264)
+position = Vector2(5568, 2288)
 
 [node name="BreakableEmerald2" parent="Entities" instance=ExtResource("28_mdsvx")]
-position = Vector2(6463, 1392)
+position = Vector2(6463, 2416)
 
 [node name="ForceRoll" parent="Entities" instance=ExtResource("31_0ksti")]
-position = Vector2(1728, 488)
+position = Vector2(1728, 1512)
 scale = Vector2(4, 10)
 forceDirection = 3
 
 [node name="BoundrySetter" parent="Entities" instance=ExtResource("32_mtqr5")]
-position = Vector2(7600, -752)
+position = Vector2(7600, 272)
 leftBoundry = 7104
 rightBoundry = 9776
 bottomBoundry = 1024
 
 [node name="BoundrySetter2" parent="Entities" instance=ExtResource("32_mtqr5")]
-position = Vector2(6689, 1776)
+position = Vector2(6689, 2800)
 leftBoundry = 6400
 rightBoundry = 9776
 bottomBoundry = 3072
 
 [node name="BoundrySetter3" parent="Entities" instance=ExtResource("32_mtqr5")]
-position = Vector2(643, 392)
+position = Vector2(643, 1416)
 rightBoundry = 9776
 bottomBoundry = 3072
 
 [node name="BoundrySetter4" parent="Entities" instance=ExtResource("32_mtqr5")]
-position = Vector2(9616, -368)
+position = Vector2(9616, 656)
 leftBoundry = 9290
 topBoundry = 512
 rightBoundry = 9776
 bottomBoundry = 800
 
 [node name="Spring" parent="Entities" instance=ExtResource("31_ir4cg")]
-position = Vector2(1936, 1592)
+position = Vector2(1936, 2616)
 killTransSpeed = true
 
 [node name="SetWaterLevel" parent="Entities" instance=ExtResource("37_i58hy")]
-position = Vector2(7248, -96)
+position = Vector2(7248, 928)
 scale = Vector2(2, 96)
 
 [node name="BubbleGenerator" parent="Entities" instance=ExtResource("39_1erbe")]
-position = Vector2(3436, 1784)
+position = Vector2(3436, 2808)
 
 [node name="ForceRoll2" parent="Entities" instance=ExtResource("31_0ksti")]
-position = Vector2(1225, 1144)
+position = Vector2(1225, 2168)
 scale = Vector2(6, 36)
 
 [node name="ForceRoll3" parent="Entities" instance=ExtResource("31_0ksti")]
-position = Vector2(1512, 752)
+position = Vector2(1512, 1776)
 scale = Vector2(30, 23)
 forceDirection = 0
 
 [node name="WaterSlide" parent="Entities" instance=ExtResource("34_ic05i")]
-position = Vector2(7168, -672)
+position = Vector2(7168, 352)
 scale = Vector2(80, 11)
 speed = 600.0
 
 [node name="Spring2" parent="Entities" instance=ExtResource("31_ir4cg")]
-position = Vector2(3968, 1776)
+position = Vector2(3968, 2800)
 scale = Vector2(-1, 1)
 springDirection = 3
 
 [node name="HpzPlatformSpawner" parent="Entities" instance=ExtResource("41_64hll")]
-position = Vector2(2560, 1152)
+position = Vector2(2560, 2176)
 
 [node name="HpzPlatformSpawner2" parent="Entities" instance=ExtResource("41_64hll")]
-position = Vector2(2688, 1186)
+position = Vector2(2688, 2210)
 
 [node name="HpzPlatformSpawner3" parent="Entities" instance=ExtResource("41_64hll")]
-position = Vector2(3248, 1280)
+position = Vector2(3248, 2304)
 
 [node name="Hazards" type="Node2D" parent="."]
 
@@ -493,27 +492,26 @@ position = Vector2(8912, 1008)
 position = Vector2(8944, 1008)
 
 [node name="ItemsHolder" type="Node2D" parent="."]
-position = Vector2(0, 1024)
 
 [node name="Monitor" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
-position = Vector2(2928, 1200)
+position = Vector2(2928, 2224)
 item = 3
 
 [node name="Monitor2" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
-position = Vector2(1776, 368)
+position = Vector2(1776, 1392)
 
 [node name="Monitor3" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
-position = Vector2(2065, 496)
+position = Vector2(2065, 1520)
 item = 10
 
 [node name="Monitor4" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
-position = Vector2(2096, 496)
+position = Vector2(2096, 1520)
 
 [node name="Monitor5" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
-position = Vector2(2127, 496)
+position = Vector2(2127, 1520)
 
 [node name="Monitor6" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
-position = Vector2(5392, 1008)
+position = Vector2(5392, 2032)
 
 [node name="Badniks" type="Node2D" parent="."]
 
