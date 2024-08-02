@@ -226,7 +226,7 @@ texture = ExtResource("14_fxhk0")
 stretch_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("2_k7p1e")]
-position = Vector2(96, 687)
+position = Vector2(10096, 687)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("16_f6qbm")
@@ -745,11 +745,8 @@ layer_0/tile_data = PackedInt32Array(2819053, 0, 65536, 2819059, 0, 65536, 28190
 
 [node name="Boss" type="Node2D" parent="."]
 
-[node name="DrillEggmanCar" parent="Boss" instance=ExtResource("33_c3tig")]
-position = Vector2(10881, 1059)
-
 [node name="HelicopterEggman" parent="Boss" instance=ExtResource("34_b33uc")]
-position = Vector2(10818, 976)
+position = Vector2(10945, 978)
 
 [node name="BossBoundrySetter" parent="Boss" instance=ExtResource("24_esprp")]
 position = Vector2(10776, 1024)
@@ -760,5 +757,12 @@ keepRightLocked = false
 lockLeft = false
 lockTop = false
 
+[node name="DrillEggmanCar" parent="Boss" instance=ExtResource("33_c3tig")]
+top_level = true
+position = Vector2(11076, 1060)
+
 [node name="Capsule" parent="." instance=ExtResource("36_lirhm")]
 position = Vector2(11266, 1059)
+
+[connection signal="boss_start" from="Boss/BossBoundrySetter" to="Boss/DrillEggmanCar" method="_on_boss_boundry_setter_boss_start"]
+[connection signal="carTouched" from="Boss/DrillEggmanCar" to="Boss/HelicopterEggman" method="_on_drill_eggman_car_car_touched"]

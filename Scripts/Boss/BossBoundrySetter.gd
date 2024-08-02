@@ -25,6 +25,8 @@ extends Area2D
 
 var bossActive = false
 
+signal boss_start()
+
 func _on_BoundrySetter_body_entered(body):
 	if !Engine.is_editor_hint():
 		$CollisionShape2D.set.call_deferred("disabled",true)
@@ -49,6 +51,8 @@ func _on_BoundrySetter_body_entered(body):
 					Global.main.set_volume(-50)
 					await Global.main.volume_set
 					Global.main.set_volume(0,100)
+					
+					emit_signal("boss_start")
 					
 					Global.bossMusic.play()
 					boss.active = true

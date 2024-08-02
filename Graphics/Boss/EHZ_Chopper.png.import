@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbloyreqnle13"
-path="res://.godot/imported/Sonic_Worlds_Next_Logo.png-615bf20c02cb2cf482d82dc3bff2e1aa.ctex"
+uid="uid://btepj3b18ug5d"
+path="res://.godot/imported/EHZ_Chopper.png-9483d9a11db78d1ac57abb945215db0c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/title/Sonic_Worlds_Next_Logo.png"
-dest_files=["res://.godot/imported/Sonic_Worlds_Next_Logo.png-615bf20c02cb2cf482d82dc3bff2e1aa.ctex"]
+source_file="res://Graphics/Boss/EHZ_Chopper.png"
+dest_files=["res://.godot/imported/EHZ_Chopper.png-9483d9a11db78d1ac57abb945215db0c.ctex"]
 
 [params]
 

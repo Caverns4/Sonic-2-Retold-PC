@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export_enum("Front","Back") var wheelType: String = "Front"
 var anim = "Front_RESET"
+var free = false
 
 func _ready():
 	if wheelType == "Back":
@@ -11,7 +12,10 @@ func _ready():
 
 func _physics_process(delta):
 	if !is_on_floor():
-		velocity.y += 9.8*delta
+		#velocity.y += 9.8*delta
+		velocity.y += (0.09375/GlobalFunctions.div_by_delta(delta))
+	elif is_on_floor() and free:
+		velocity.y = -100
 	else:
 		velocity.y = 0
 	move_and_slide()

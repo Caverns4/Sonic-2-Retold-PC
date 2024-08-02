@@ -1,9 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://bfcfm2qdipj7y"]
+[gd_scene load_steps=23 format=3 uid="uid://bfcfm2qdipj7y"]
 
-[ext_resource type="Script" path="res://Scripts/Boss/RobotnikTemplate.gd" id="1_2jxl4"]
+[ext_resource type="Script" path="res://Entities/Boss/Boss Components/HelicopterEggman.gd" id="1_adpj0"]
 [ext_resource type="Texture2D" uid="uid://6ds1jcc8jmyf" path="res://Graphics/Boss/Eggmobile.png" id="2_aqbo8"]
 [ext_resource type="Texture2D" uid="uid://dam0q6u1k8paq" path="res://Graphics/Boss/Jet.png" id="3_0ilxg"]
-[ext_resource type="Texture2D" uid="uid://c31pi0okhicpx" path="res://Graphics/Boss/Eggmobile_Top.png" id="4_3mhh2"]
+[ext_resource type="Texture2D" uid="uid://btepj3b18ug5d" path="res://Graphics/Boss/EHZ_Chopper.png" id="3_koewv"]
 [ext_resource type="Texture2D" uid="uid://d0i06mnbra5yc" path="res://Graphics/Boss/Robotnik.png" id="5_jym61"]
 [ext_resource type="Texture2D" uid="uid://bf0ytf63vlq5c" path="res://Graphics/Boss/EggmobileFlash.png" id="6_xqm3u"]
 [ext_resource type="AudioStream" uid="uid://bvhfglhmpystw" path="res://Audio/SFX/Boss/Hit.wav" id="7_2eda8"]
@@ -96,28 +96,123 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="5"]
 size = Vector2(48, 48)
 
+[sub_resource type="Animation" id="Animation_7tsso"]
+resource_name = "CLOSE"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EggMobile/Eggmobile_Top:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EggMobile/Eggmobile_Top:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(10, -48), Vector2(10, -37)]
+}
+
+[sub_resource type="Animation" id="Animation_8aw2f"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EggMobile/Eggmobile_Top:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EggMobile/Eggmobile_Top:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, -36)]
+}
+
+[sub_resource type="Animation" id="Animation_mavgo"]
+resource_name = "SPIN"
+length = 0.2
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EggMobile/Eggmobile_Top:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 4, 0, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EggMobile/Eggmobile_Top:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, -48)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fbdxo"]
+_data = {
+"CLOSE": SubResource("Animation_7tsso"),
+"RESET": SubResource("Animation_8aw2f"),
+"SPIN": SubResource("Animation_mavgo")
+}
+
 [node name="HelicopterEggman" type="CharacterBody2D"]
 z_index = 1
 collision_layer = 16384
-collision_mask = 0
-script = ExtResource("1_2jxl4")
+collision_mask = 8388608
+script = ExtResource("1_adpj0")
 
 [node name="EggMobile" type="Sprite2D" parent="."]
 position = Vector2(0, 19)
 texture = ExtResource("2_aqbo8")
 offset = Vector2(0, -8)
 
+[node name="Eggmobile_Top" type="Sprite2D" parent="EggMobile"]
+z_index = -1
+z_as_relative = false
+position = Vector2(10, -36)
+texture = ExtResource("3_koewv")
+vframes = 8
+frame = 7
+
 [node name="EggmobileFlame" type="Sprite2D" parent="EggMobile"]
 visible = false
 position = Vector2(36, -8)
 texture = ExtResource("3_0ilxg")
 
-[node name="Eggmobile_Top" type="Sprite2D" parent="EggMobile"]
-position = Vector2(10, -48)
-texture = ExtResource("4_3mhh2")
-
 [node name="Robotnik" type="AnimatedSprite2D" parent="EggMobile"]
-z_index = -1
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_x1amu")
 animation = &"laugh"
@@ -139,7 +234,7 @@ stream = ExtResource("8_i8hwd")
 bus = &"SFX"
 
 [node name="HitBox" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 8388608
 collision_mask = 528384
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
@@ -147,7 +242,7 @@ modulate = Color(1, 0, 0, 1)
 shape = SubResource("5")
 
 [node name="LeftPoint" type="Node2D" parent="."]
-position = Vector2(-72, 0)
+position = Vector2(-512, 0)
 
 [node name="RightPoint" type="Node2D" parent="."]
 position = Vector2(72, 0)
@@ -157,6 +252,12 @@ wait_time = 0.1
 
 [node name="AnimationTime" type="Timer" parent="."]
 one_shot = true
+
+[node name="Helicopter" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fbdxo")
+}
+autoplay = "SPIN"
 
 [connection signal="defeated" from="." to="." method="_on_boss_defeated"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_DamageArea_area_entered"]
