@@ -113,11 +113,11 @@ func _input(event):
 				6: # Chemical Plant Zone 1
 					Global.nextZone = load("res://Scene/Zones/ChunkZone.tscn")
 				8: # Oil Ocean Zone 1
-					Global.nextZone = load("res://Scene/Zones/OilOcean1.tscn")
-				9: # Oil Ocean Zone 2
-					Global.nextZone = load("res://Scene/Zones/OilOcean1.tscn")
-				_: # Invalid Entry
 					Global.nextZone = load("res://Scene/Zones/BaseZone.tscn")
+				9: # Oil Ocean Zone 2
+					Global.nextZone = load("res://Scene/Zones/BaseZoneAct2.tscn")
+				_: # Invalid Entry
+					Global.nextZone = load("res://Scene/Zones/AquaticRuin1.tscn")
 			
 			Global.main.change_scene_to_file(Global.nextZone,"FadeOut","FadeOut",1)
 			
