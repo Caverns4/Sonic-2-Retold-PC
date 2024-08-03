@@ -200,7 +200,6 @@ texture = ExtResource("2_aqbo8")
 offset = Vector2(0, -8)
 
 [node name="Eggmobile_Top" type="Sprite2D" parent="EggMobile"]
-z_index = -1
 z_as_relative = false
 position = Vector2(10, -36)
 texture = ExtResource("3_koewv")
@@ -242,7 +241,7 @@ modulate = Color(1, 0, 0, 1)
 shape = SubResource("5")
 
 [node name="LeftPoint" type="Node2D" parent="."]
-position = Vector2(-512, 0)
+position = Vector2(-632, 0)
 
 [node name="RightPoint" type="Node2D" parent="."]
 position = Vector2(72, 0)

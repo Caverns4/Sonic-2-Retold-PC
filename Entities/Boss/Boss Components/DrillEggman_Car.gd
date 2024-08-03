@@ -31,6 +31,8 @@ func _ready():
 	tires[3].top_level = true
 	tires[3].global_position.y = global_position.y
 	parent = get_tree().get_root().find_child("HelicopterEggman",true,false)
+	if !parent:
+		queue_free()
 	top_level = true
 
 func _process(delta):
@@ -38,8 +40,22 @@ func _process(delta):
 		match phase:
 			0:
 				position.x = parent.position.x
+			1:
+				if pilot:
+					# Pick a target (Really sloppily done)
+					if currentPoint == 0 and global_position.x < parent.getPose[0].x:
+						currentPoint = 1
+					if currentPoint != 0 and global_position.x > parent.getPose[1].x:
+						currentPoint = 0
+					# Move to target
+					if currentPoint == 0:
+						direction = -1
+					else:
+						direction = 1
+					velocity.x = direction*100
+					parent.direction = direction
 			_:
-				if !dead:
+				if pilot:
 					debugControl()
 	elif dead:
 		velocity.y += (0.09375/GlobalFunctions.div_by_delta(delta))
@@ -54,22 +70,27 @@ func _physics_process(delta):
 	#End of step: Always tell the Boss Eggman where I am
 	if parent.phase == 0:
 		parent.targetPosition = global_position + Vector2(0,-11)
-	elif !dead:
+	elif pilot:
 		parent.global_position = global_position + Vector2(0,-11)
 	
 
 func SetTirePositions():
-	tires[0].position.x = position.x + (-38 * direction)
-	tires[1].position.x = position.x + (-20 * direction)
-	tires[2].position.x = position.x + (15 * direction)
-	tires[3].position.x = position.x + (36 * direction)
+	var tireOffsets = [-38,-20,12,36]
+	
 	for i in tires.size():
+		tires[i].position.x = position.x - (tireOffsets[i] * direction)
 		tires[i].updateAnim(velocity.x)
 	#Update the Vehicle itself
 	var posbuff = (tires[0].global_position.y + tires[1].global_position.y)/2
 	posbuff += (tires[2].global_position.y + tires[3].global_position.y)/2
 	posbuff = round(posbuff/2) - 16
 	global_position.y = posbuff
+	
+	if direction > 0:
+		$Sprite2D.flip_h = true
+	else:
+		$Sprite2D.flip_h = false
+	
 
 func debugControl():
 	if phase != 0 and pilot:
@@ -93,6 +114,7 @@ func UpdateDrillIfAttached():
 
 func Die():
 	dead = true
+	pilot = false
 	velocity = Vector2.ZERO
 	tires[0].velocity.x = 100.0
 	tires[1].velocity.x = -100.0
@@ -109,7 +131,8 @@ func _on_area_2d_area_entered(area): #Await Eggman to enter
 	if phase == 0 and active and !dead:
 		emit_signal("carTouched")
 		velocity = Vector2.ZERO
-		await get_tree().create_timer(1.0)
+		currentPoint = 0
+		await get_tree().create_timer(3.0)
 		phase = 1
 
 

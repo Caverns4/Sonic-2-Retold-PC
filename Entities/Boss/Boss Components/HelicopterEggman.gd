@@ -26,7 +26,8 @@ func _ready():
 	# run laugh function for everytime the boss gets hit
 	connect("hit_player",Callable(self,"do_laugh"))
 	drillCar = get_tree().get_root().find_child("DrillEggmanCar",true,false)
-	drillCar.connect("carTouched",Callable(self,"_on_drill_eggman_car_car_position"))
+	if drillCar:
+		drillCar.connect("carTouched",Callable(self,"_on_drill_eggman_car_car_position"))
 	hp = 255 #Can't kill Eggman til he lands, but can damage him for fun
 
 func _process(delta):
@@ -71,14 +72,14 @@ func _physics_process(delta):
 	# move boss
 	global_position += velocity*delta
 	# check if alive
-	if active and !dead:
+	if active and !dead and drillCar:
 		# boss phase
 		match(phase):
 			0: # intro
 				# move to center between positions
 				if global_position.x > (getPose[0].lerp(getPose[1],0.5)).x and !readyEnterCar:
 					velocity = ((getPose[0].lerp(getPose[1],0.5)-global_position)*60).limit_length(64)
-					velocity.y = 10.0
+					velocity.y = 12.0
 				elif readyEnterCar and global_position.y < targetPosition.y:
 					velocity.x = 0.0
 					velocity.y = 20.0
@@ -91,7 +92,7 @@ func _physics_process(delta):
 					hp = 8
 					phase = 1
 					drillCar.pilot = true
-			1: # main attack
+			_: # Controlled by external object.
 				pass
 				# reset hover position
 				#global_position.y = global_position.y-hoverOffset
@@ -102,18 +103,7 @@ func _physics_process(delta):
 				#velocity = getPosition.limit_length(64)
 				# now move the hover position back
 				#global_position.y = global_position.y+hoverOffset
-				
-				# set scale to face the current point position
-				#if is_equal_approx(global_position.x,getPose[currentPoint].x):
-				#	scale.x = abs(scale.x)*remap(currentPoint,0,1,-1,1)
-				
-				# increase attack timer
-				#attackTimer += delta
-				
-				# switch positions after 5 seconds
-				#if attackTimer >= 5:
-				#	currentPoint = 1-currentPoint
-				#	attackTimer = 0
+
 	
 	# default reactions (use animation time to avoid running this every frame)
 	if $AnimationTime.is_stopped():
@@ -155,8 +145,9 @@ func updateDirection():
 func _on_boss_defeated():
 	# set dead to true
 	dead = true
-	drillCar.Die()
-	drillCar.z_index = 0
+	if drillCar:
+		drillCar.Die()
+		drillCar.z_index = 0
 	# hit animation for 1.5 seconds (see the dead section in _process)
 	set_animation("hit",1.5)
 	# set velocity to 0 to prevent moving

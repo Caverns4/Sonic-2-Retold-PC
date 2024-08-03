@@ -462,8 +462,8 @@ position = Vector2(10070, 1028)
 leftAngle = 88.0
 
 [node name="BoundrySetter" parent="Entity" instance=ExtResource("31_s5xoe")]
-position = Vector2(10527, 977)
-leftBoundry = 9952
+position = Vector2(10567, 977)
+leftBoundry = 10368
 topBoundry = 768
 setRight = false
 rightBoundry = 11392
@@ -746,10 +746,11 @@ layer_0/tile_data = PackedInt32Array(2819053, 0, 65536, 2819059, 0, 65536, 28190
 [node name="Boss" type="Node2D" parent="."]
 
 [node name="HelicopterEggman" parent="Boss" instance=ExtResource("34_b33uc")]
-position = Vector2(10945, 978)
+position = Vector2(10919, 978)
 
 [node name="BossBoundrySetter" parent="Boss" instance=ExtResource("24_esprp")]
-position = Vector2(10776, 1024)
+position = Vector2(10744, 1024)
+scale = Vector2(1, 3)
 bossPath = NodePath("../HelicopterEggman")
 keepLeftLocked = false
 keepTopLocked = false
@@ -759,10 +760,10 @@ lockTop = false
 
 [node name="DrillEggmanCar" parent="Boss" instance=ExtResource("33_c3tig")]
 top_level = true
-position = Vector2(11076, 1060)
+position = Vector2(11002, 1060)
 
 [node name="Capsule" parent="." instance=ExtResource("36_lirhm")]
-position = Vector2(11266, 1059)
+position = Vector2(11264, 1060)
 
 [connection signal="boss_start" from="Boss/BossBoundrySetter" to="Boss/DrillEggmanCar" method="_on_boss_boundry_setter_boss_start"]
 [connection signal="carTouched" from="Boss/DrillEggmanCar" to="Boss/HelicopterEggman" method="_on_drill_eggman_car_car_touched"]

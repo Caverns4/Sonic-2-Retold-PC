@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://hj3tt0gklwba"]
+[gd_scene load_steps=73 format=3 uid="uid://hj3tt0gklwba"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://bjavywoj00j1j" path="res://Scene/Zones/BaseZoneAct2.tscn" id="2_8ek7k"]
@@ -63,7 +63,6 @@
 [ext_resource type="PackedScene" uid="uid://bmljesie1ogkd" path="res://Entities/Backgrounds/GHZWaterfall.tscn" id="61_cuooh"]
 [ext_resource type="AudioStream" uid="uid://uu55iumak4r5" path="res://Audio/SFX/Ambiance/waterfall.wav" id="62_7xffd"]
 [ext_resource type="Texture2D" uid="uid://cfrumqj5mt4q3" path="res://Graphics/Tiles/WorldsTiles/HydoPipe.png" id="64_d1r0g"]
-[ext_resource type="PackedScene" uid="uid://bxk253s6p41vr" path="res://Entities/Boss/Boss Components/DrillEggmanCar.tscn" id="65_3va7k"]
 [ext_resource type="PackedScene" uid="uid://bbf1sa8l70ygh" path="res://Entities/Gimmicks/fan.tscn" id="65_iomqv"]
 [ext_resource type="PackedScene" uid="uid://bfcfm2qdipj7y" path="res://Entities/Boss/Boss Components/HelicopterEggman.tscn" id="66_8q7wk"]
 
@@ -277,7 +276,7 @@ position = Vector2(32, -48)
 shape = SubResource("RectangleShape2D_jc8ku")
 
 [node name="MCZCollapsePlatform4" type="Area2D" parent="Platforms"]
-position = Vector2(2688, 560)
+position = Vector2(2624, 560)
 collision_layer = 0
 collision_mask = 4096
 script = ExtResource("12_ri3yl")
@@ -484,9 +483,9 @@ position = Vector2(4404, 114)
 springDirection = 5
 
 [node name="Spring14" parent="Entity" instance=ExtResource("15_sn1cn")]
-position = Vector2(5296, 144)
+position = Vector2(5072, 200)
 type = 1
-springDirection = 5
+springDirection = 4
 
 [node name="Spring15" parent="Entity" instance=ExtResource("15_sn1cn")]
 position = Vector2(5136, 1304)
@@ -535,7 +534,7 @@ position = Vector2(4304, 200)
 springDirection = 4
 
 [node name="Spring7" parent="Entity" instance=ExtResource("15_sn1cn")]
-position = Vector2(2704, 688)
+position = Vector2(2639, 704)
 type = 1
 springDirection = 4
 
@@ -828,7 +827,7 @@ script = ExtResource("38_8ssba")
 currentCharacter = 2
 
 [node name="ConveyorBelt" parent="Entity" instance=ExtResource("39_8a2xw")]
-position = Vector2(5264, 84)
+position = Vector2(5440, 368)
 constant_linear_velocity = Vector2(-60, 0)
 speed = -60
 length = 7
@@ -1675,18 +1674,17 @@ texture = ExtResource("64_d1r0g")
 region_enabled = true
 region_rect = Rect2(0, 16, 64, 80)
 
-[node name="DrillEggmanCar" parent="." instance=ExtResource("65_3va7k")]
-position = Vector2(4490, 824)
-
 [node name="BossBoundrySetter" parent="." instance=ExtResource("59_g4kjd")]
 position = Vector2(4365, 776)
 bossPath = NodePath("../HelicopterEggman")
 keepLeftLocked = false
+keepTopLocked = false
 keepRightLocked = false
+keepBottomLocked = false
 lockRight = false
 
 [node name="HelicopterEggman" parent="." instance=ExtResource("66_8q7wk")]
-position = Vector2(4588, 699)
+position = Vector2(4560, 744)
 
 [connection signal="body_entered" from="Platforms/MCZCollapsePlatform" to="Platforms/MCZCollapsePlatform" method="_on_body_entered"]
 [connection signal="body_exited" from="Platforms/MCZCollapsePlatform" to="Platforms/MCZCollapsePlatform" method="_on_body_exited"]
