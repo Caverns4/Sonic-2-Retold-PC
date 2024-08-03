@@ -3,8 +3,9 @@ extends CharacterBody2D
 var active = false #If this is active at all
 var direction = -1 #-1 or 1
 var phase = 0 #The phase of this machine
-var dead = false 
+var dead = false
 var pilot = false
+var readyToLaunch = false #If true, shoot the drill when the player is in front
 
 var currentPoint = 1 #The point for the boss to move toward while alive
 
@@ -16,7 +17,7 @@ var currentPoint = 1 #The point for the boss to move toward while alive
 	$DrillEggmanWheel3,
 	$DrillEggmanWheel4
 	]
-#@onready var drill = $DrillEggmanDrill
+@onready var drill = $DrillEggmanDrill
 var parent = null #The parent node, should be Helicopter Eggman
 
 signal carTouched()
@@ -88,8 +89,10 @@ func SetTirePositions():
 	
 	if direction > 0:
 		$Sprite2D.flip_h = true
+		$DrillLaunchBox/CollisionShape2D.position.x = 150
 	else:
 		$Sprite2D.flip_h = false
+		$DrillLaunchBox/CollisionShape2D.position.x = -150
 	
 
 func debugControl():
@@ -104,28 +107,28 @@ func debugControl():
 		parent.direction = direction
 
 func UpdateDrillIfAttached():
-	#drill.global_position.x = global_position.x + (-54 * direction)
-	#drill.global_position.y = global_position.y + 8
-	#if direction > 0:
-	#	drill.get_child(0).flip_h = false #Sprite2D
-	#else:
-	#	drill.get_child(0).flip_h = true #Sprite2D
-	pass
+	if drill:
+		drill.global_position.x = global_position.x - (-54 * direction)
+		drill.global_position.y = global_position.y + 8
+		drill.scale.x = -1.0 * direction
 
 func Die():
 	dead = true
 	pilot = false
 	velocity = Vector2.ZERO
 	tires[0].velocity.x = 100.0
-	tires[1].velocity.x = -100.0
-	tires[2].velocity.x = 100.0
-	tires[3].velocity.x = -100.0
+	tires[1].velocity.x = 200.0
+	tires[2].velocity.x = -100.0
+	tires[3].velocity.x = -200.0
 	tires[0].free = true
 	tires[1].free = true
 	tires[2].free = true
 	tires[3].free = true
+	if drill: drill.monitoring = false
 
-
+func playMotor():
+	$AudioStreamPlayer2D.play()
+	if drill: drill.monitoring = true
 
 func _on_area_2d_area_entered(area): #Await Eggman to enter
 	if phase == 0 and active and !dead:
@@ -139,3 +142,12 @@ func _on_area_2d_area_entered(area): #Await Eggman to enter
 func _on_boss_boundry_setter_boss_start():
 	if !active:
 		active = true
+
+func _on_drill_launch_box_body_entered(body):
+	if readyToLaunch and drill:
+		drill.free = true
+		drill.position = drill.global_position
+		drill.direction = direction
+		drill.top_level = true
+		drill = null
+		readyToLaunch = false

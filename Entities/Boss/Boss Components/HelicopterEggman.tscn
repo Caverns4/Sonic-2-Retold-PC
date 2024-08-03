@@ -121,7 +121,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.9, 1.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(10, -48), Vector2(10, -37)]
+"values": [Vector2(10, -48), Vector2(10, -36)]
 }
 
 [sub_resource type="Animation" id="Animation_8aw2f"]
@@ -214,7 +214,6 @@ texture = ExtResource("3_0ilxg")
 [node name="Robotnik" type="AnimatedSprite2D" parent="EggMobile"]
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_x1amu")
-animation = &"laugh"
 
 [node name="EggFlash" type="Sprite2D" parent="EggMobile"]
 visible = false

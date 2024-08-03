@@ -1,14 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxk253s6p41vr"]
+[gd_scene load_steps=9 format=3 uid="uid://bxk253s6p41vr"]
 
 [ext_resource type="Script" path="res://Entities/Boss/Boss Components/DrillEggman_Car.gd" id="1_harxd"]
 [ext_resource type="Texture2D" uid="uid://svwmdhvvxrws" path="res://Graphics/Boss/Boss_DrillEggman.png" id="2_ugcdw"]
 [ext_resource type="PackedScene" uid="uid://d3oh77l2rriqf" path="res://Entities/Boss/Boss Components/DrillEggmanWheel.tscn" id="3_fandu"]
+[ext_resource type="AudioStream" uid="uid://b0tfpt3vui0yd" path="res://Audio/SFX/Boss/Motor.wav" id="4_v5v2r"]
+[ext_resource type="PackedScene" uid="uid://0mfj8m5mj8a6" path="res://Entities/Boss/Boss Components/DrillEggmanDrill.tscn" id="5_gje8e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b3h3o"]
 size = Vector2(94, 29)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pcjmw"]
 size = Vector2(20, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0x5hy"]
+size = Vector2(222.5, 70)
 
 [node name="DrillEggmanCar" type="CharacterBody2D"]
 z_index = 1
@@ -44,4 +49,23 @@ collision_mask = 8388608
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_pcjmw")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_v5v2r")
+volume_db = -5.0
+max_distance = 6000.0
+
+[node name="DrillEggmanDrill" parent="." instance=ExtResource("5_gje8e")]
+position = Vector2(-53, 8)
+monitoring = false
+
+[node name="DrillLaunchBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DrillLaunchBox"]
+position = Vector2(-150, -16)
+shape = SubResource("RectangleShape2D_0x5hy")
+debug_color = Color(1, 1, 0, 0.301961)
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="DrillLaunchBox" to="." method="_on_drill_launch_box_body_entered"]

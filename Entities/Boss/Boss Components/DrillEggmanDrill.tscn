@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://0mfj8m5mj8a6"]
+
+[ext_resource type="Script" path="res://Entities/Boss/Boss Components/DrillEggmanDrill.gd" id="1_pdn8n"]
+[ext_resource type="Texture2D" uid="uid://wsytdhn6ttft" path="res://Graphics/Boss/Boss_DrillEggman_Parts.png" id="1_pn6x0"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(32, 32)
+
+[node name="DrillEggmanDrill" type="Area2D"]
+collision_layer = 0
+collision_mask = 4096
+script = ExtResource("1_pdn8n")
+
+[node name="LavaTile" type="Sprite2D" parent="."]
+texture = ExtResource("1_pn6x0")
+hframes = 7
+frame = 4
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color(1, 0, 0, 0.584314)
+shape = SubResource("1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

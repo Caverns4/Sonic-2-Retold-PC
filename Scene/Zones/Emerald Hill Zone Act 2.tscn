@@ -226,7 +226,7 @@ texture = ExtResource("14_fxhk0")
 stretch_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("2_k7p1e")]
-position = Vector2(10096, 687)
+position = Vector2(96, 687)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("16_f6qbm")
@@ -746,7 +746,7 @@ layer_0/tile_data = PackedInt32Array(2819053, 0, 65536, 2819059, 0, 65536, 28190
 [node name="Boss" type="Node2D" parent="."]
 
 [node name="HelicopterEggman" parent="Boss" instance=ExtResource("34_b33uc")]
-position = Vector2(10919, 978)
+position = Vector2(10919, 954)
 
 [node name="BossBoundrySetter" parent="Boss" instance=ExtResource("24_esprp")]
 position = Vector2(10744, 1024)

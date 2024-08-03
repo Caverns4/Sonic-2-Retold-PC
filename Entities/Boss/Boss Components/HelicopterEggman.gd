@@ -51,11 +51,11 @@ func _process(delta):
 			if deathTimer > 1.5:
 				if deathTimer-delta <= 1.5:
 					set_animation("exploded",1.5)
-					velocity.y = 200
+					#velocity.y = 200
 			# if above 0.5 seconds left, move the momentum upwards until it's about -200
 			elif deathTimer > 0.5:
 				if velocity.y > -200:
-					velocity.y -= 400*delta
+					velocity.y -= 100*delta
 				
 				# if the next step is going to be below 0.5 seconds then stop moving
 				if deathTimer-delta <= 0.5:
@@ -64,11 +64,11 @@ func _process(delta):
 			# start running away once timer hits 0
 			if deathTimer <= 0:
 				velocity = Vector2(200,-25)
-				scale.x = -abs(scale.x)
+				direction = 1
+				#scale.x = -abs(scale.x)
 				emit_signal("boss_over")
 
 func _physics_process(delta):
-	super(delta)
 	# move boss
 	global_position += velocity*delta
 	# check if alive
@@ -86,25 +86,18 @@ func _physics_process(delta):
 				elif readyEnterCar and global_position.y > targetPosition.y:
 					global_position = targetPosition
 					topAnimator.play("CLOSE")
-					if flashTimer <= 0:
-						set_animation("laugh") #laugh
+					#if flashTimer <= 0:
+					set_animation("laugh") #laugh
 					velocity = Vector2.ZERO
 					hp = 8
 					phase = 1
 					drillCar.pilot = true
+					drillCar.playMotor()
 			_: # Controlled by external object.
-				pass
-				# reset hover position
-				#global_position.y = global_position.y-hoverOffset
-				# change the hover
-				#hoverOffset = move_toward(hoverOffset,cos(Global.levelTime*4)*4,delta*10)
-				# move
-				#var getPosition = (getPose[currentPoint]-global_position)*60
-				#velocity = getPosition.limit_length(64)
-				# now move the hover position back
-				#global_position.y = global_position.y+hoverOffset
-
-	
+				if hp <= 1:
+					drillCar.readyToLaunch = true
+					
+	super(delta)
 	# default reactions (use animation time to avoid running this every frame)
 	if $AnimationTime.is_stopped():
 		# if moving, then run move animation
@@ -117,6 +110,13 @@ func _physics_process(delta):
 	if flashTimer > 0:
 		set_animation("hit",flashTimer)
 	
+
+func updateHoveringPos(delta):
+	# change the hover offset
+	global_position.y = global_position.y-hoverOffset
+	hoverOffset = move_toward(hoverOffset,cos(Global.levelTime*4)*4,delta*10)
+	global_position.y = global_position.y+hoverOffset
+
 
 # animation to play, time is how long the animation should play for until it stops
 func set_animation(animation = "default", time = 0.0):
