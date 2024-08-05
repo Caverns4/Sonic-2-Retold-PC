@@ -21,7 +21,7 @@ layer_0/name = "default"
 layer_0/tile_data = PackedInt32Array(65534, 131072, 0, 65535, 131072, 0, 0, 327680, 0, 1, 327680, 0, 2, 393216, 0, 131070, 131072, 2, 131071, 131072, 2, 65533, 65536, 0, 131069, 65536, 2, 65536, 327680, 2, 65537, 327680, 2, 65538, 393216, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 8)
+position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_ia0sb")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
