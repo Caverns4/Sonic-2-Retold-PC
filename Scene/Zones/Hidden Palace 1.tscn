@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cun7sa0v2mwiq"]
+[gd_scene load_steps=48 format=3 uid="uid://cun7sa0v2mwiq"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_snbg3"]
 [ext_resource type="AudioStream" uid="uid://bg1fcuqr8mk1d" path="res://Audio/Soundtrack/s2br_Jewel.ogg" id="2_tvhrw"]
@@ -42,6 +42,7 @@
 [ext_resource type="PackedScene" uid="uid://bkib68ja7giiv" path="res://Entities/Gimmicks/SetWaterLevel.tscn" id="37_i58hy"]
 [ext_resource type="PackedScene" uid="uid://cejf7f3r45h0c" path="res://Entities/Gimmicks/BubbleGenerator.tscn" id="39_1erbe"]
 [ext_resource type="PackedScene" uid="uid://c5vnnbgmagq6" path="res://Entities/ZoneObjects/HPZ_Platform_Spawner.tscn" id="41_64hll"]
+[ext_resource type="PackedScene" uid="uid://bxkm8u0ltthxd" path="res://Entities/Enemies/BBat.tscn" id="41_q7ijj"]
 [ext_resource type="PackedScene" uid="uid://c2t7hwn0iln3x" path="res://Entities/Obstacles/Elevator.tscn" id="43_x67w5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0lg1j"]
@@ -554,6 +555,11 @@ position = Vector2(5744, 2866)
 
 [node name="Redz7" parent="Badniks" instance=ExtResource("9_7pp8m")]
 position = Vector2(4340, 1776)
+
+[node name="BBat" parent="Badniks" instance=ExtResource("41_q7ijj")]
+position = Vector2(751, 1380)
+collision_layer = 16399
+collision_mask = 1
 
 [node name="SignpostNew" parent="." instance=ExtResource("33_piux2")]
 position = Vector2(9632, 768)

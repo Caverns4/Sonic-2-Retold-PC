@@ -19,13 +19,16 @@ func _process(delta):
 			if (i.get_collision_layer_value(20) or i.supTime > 0 or forceDamage):
 				# check player is not on floor
 				if !i.ground:
-					# subtract from velocity if velocity is less then 0 or below enemy (use current velocity to avoid clipping issues)
-					if i.movement.y < 0 or (i.global_position.y-(i.velocity.y*delta) > global_position.y):
-						i.movement.y -= 60*sign(i.velocity.y)
+					if i.movement.y > 0 and i.global_position.y < global_position.y:
+						# Bounce high upward
+						i.movement.y = -i.movement.y
+					elif i.movement.y <= 0:
+						# Bounce slightly down
+						i.movement.y = i.movement.y + (1000*delta)
 					else:
-					# reverse vertical velocity
-						i.movement.y = -i.velocity.y
-						if i.shield == i.SHIELDS.BUBBLE:
+						# Bounce slightly up
+						i.movement.y = i.movement.y - (1000*delta)
+					if i.shield == i.SHIELDS.BUBBLE:
 							i.emit_enemy_bounce()
 				# destroy
 				Global.add_score(global_position,Global.SCORE_COMBO[min(Global.SCORE_COMBO.size()-1,i.enemyCounter)])

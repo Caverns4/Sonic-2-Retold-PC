@@ -297,3 +297,5 @@ libraries = {
 "": SubResource("AnimationLibrary_fgem7")
 }
 autoplay = "Reset"
+
+[node name="Badniks" type="Node2D" parent="."]

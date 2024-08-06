@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxkm8u0ltthxd"]
+
+[ext_resource type="Script" path="res://Entities/Enemies/BBat.gd" id="1_fm812"]
+[ext_resource type="Texture2D" uid="uid://cv5q8ba5j6djs" path="res://Graphics/Enemies/Badnik_BBat.png" id="2_gcfrw"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(10, 26)
+
+[node name="BBat" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 16384
+collision_mask = 0
+script = ExtResource("1_fm812")
+
+[node name="CollissionMask" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 528384
+
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+modulate = Color(1, 0, 0, 1)
+shape = SubResource("1")
+
+[node name="BBatSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_gcfrw")
+vframes = 8
+
+[node name="BBatWings" type="Sprite2D" parent="BBatSprite"]
+texture = ExtResource("2_gcfrw")
+vframes = 8
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BBatSprite"]
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(1.90735e-06, -1.90735e-06)
+scale = Vector2(6.4, 6.4)
+rect = Rect2(-20, -10, 40, 30)
+
+[connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
