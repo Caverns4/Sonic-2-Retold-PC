@@ -863,9 +863,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 64.0
+offset_left = -256.0
 offset_top = -203.0
-offset_right = 98.0
+offset_right = -222.0
 grow_horizontal = 2
 size_flags_stretch_ratio = 0.0
 texture = ExtResource("7_ccygi")
@@ -907,9 +907,9 @@ anchor_left = 1.0
 anchor_top = 0.003
 anchor_right = 1.0
 anchor_bottom = 0.003
-offset_top = 32.0
-offset_right = 14662.4
-offset_bottom = 288.0
+offset_top = -86.944
+offset_right = 14822.4
+offset_bottom = 169.056
 grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("10_xpi0a")
@@ -917,7 +917,6 @@ stretch_mode = 1
 
 [node name="Act" type="Sprite2D" parent="LevelCard"]
 position = Vector2(240, 104)
-scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_3i4aq")
 centered = false
 hframes = 4
@@ -997,7 +996,6 @@ uppercase = true
 
 [node name="Act" type="Sprite2D" parent="LevelClear"]
 position = Vector2(528, 75)
-scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_3i4aq")
 centered = false
 hframes = 4

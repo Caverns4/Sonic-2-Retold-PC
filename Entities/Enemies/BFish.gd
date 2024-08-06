@@ -47,7 +47,6 @@ func _physics_process(delta):
 		
 		if Global.waterLevel != null and global_position.y > Global.waterLevel:
 			bubbleTimer += 1*delta
-			print(bubbleTimer)
 			if bubbleTimer > 2.0:
 				var bubble = Bubble.instantiate()
 				# pick either 0 or 1 for the bubble type
