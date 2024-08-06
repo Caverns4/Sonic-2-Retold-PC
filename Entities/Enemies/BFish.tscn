@@ -12,7 +12,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BFiishSprite:frame")
+tracks/0/path = NodePath("Sprite2D/BFishSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -43,19 +43,23 @@ collision_mask = 528384
 modulate = Color(1, 0, 0, 1)
 shape = SubResource("1")
 
-[node name="BFiishSprite" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Node2D" parent="."]
+
+[node name="BFishSprite" type="Sprite2D" parent="Sprite2D"]
 texture = ExtResource("2_8mvhu")
 hframes = 4
 vframes = 2
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-position = Vector2(1.90735e-06, -1.90735e-06)
-scale = Vector2(6.4, 6.4)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_t0ehu")
 }
+autoplay = "RESET"
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(1.90735e-06, -1.90735e-06)
+scale = Vector2(6.4, 6.4)
 
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]

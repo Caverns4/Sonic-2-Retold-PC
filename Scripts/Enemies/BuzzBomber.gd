@@ -67,8 +67,7 @@ func calc_dir():
 	# check that it's not 0 so it doesn't become invisible
 	if getDir != 0:
 		$Sprite2D.scale.x = -getDir
-	
-		
+
 
 func _draw():
 	if Engine.is_editor_hint():
@@ -77,26 +76,20 @@ func _draw():
 		# first bomber pose
 		draw_texture_rect_region(sprite.texture,
 		Rect2(Vector2(travelDistance,0).rotated(deg_to_rad(flyDirection))-size/2,
-		size)
-		,Rect2(Vector2(0,0),
-		size)
-		,Color(1,1,1,0.5))
+		size),Rect2(Vector2(0,0),
+		size),Color(1,1,1,0.5))
 		
 		# second bomber pose
 		draw_texture_rect_region(sprite.texture,
 		Rect2(Vector2(-travelDistance,0).rotated(deg_to_rad(flyDirection))-size/2,
-		size)
-		,Rect2(Vector2(0,0),
-		size)
-		,Color(1,1,1,0.5))
+		size),Rect2(Vector2(0,0),
+		size),Color(1,1,1,0.5))
 		
 		# estimated movement
 		draw_texture_rect_region(sprite.texture,
 		Rect2(Vector2(travelDistance*clamp(editorOffset,-1,1),0).rotated(deg_to_rad(flyDirection))-size/2,
-		size)
-		,Rect2(Vector2(0,0),
-		size)
-		,Color(1,1,1,0.5))
+		size),Rect2(Vector2(0,0),
+		size),Color(1,1,1,0.5))
 
 
 func _on_PlayerCheck_body_entered(_body):

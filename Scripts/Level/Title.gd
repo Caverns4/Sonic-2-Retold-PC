@@ -39,8 +39,8 @@ func _ready():
 	var scene = load(parallax)
 	var instance = scene.instantiate()
 	instance.scroll_base_offset.y = paraOffsets[zoneIndex]
-	
 	add_child(instance)
+	UpdateMenuDisplay()
 
 func _process(delta):
 	if $CanvasLayer/Labels.visible == true and !titleEnd:

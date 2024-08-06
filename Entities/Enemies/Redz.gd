@@ -51,7 +51,7 @@ func _physics_process(delta):
 	
 	# Set animation frame (tire swaps 5 times a second, in half a second (animTime is multiplied by 2), and drop arms when 0.2 seconds to the next number)
 	if velocity.x != 0:
-		$Redz.frame = (floor(fmod(animTime*5,2))*2)+max(0,floor(animTime+0.2)) + 3
+		$Redz.frame = (floor(fmod(animTime*5,2))*2)+max(0,floor(animTime+0.2)) + 2
 	else:
 		$Redz.frame = 0	
 	# Moto bug smoke
