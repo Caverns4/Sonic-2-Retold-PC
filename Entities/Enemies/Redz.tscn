@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://c80rud4lvtufe" path="res://Graphics/Enemies/Badnik_Redz.png" id="2_ufqqm"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(20, 32)
+size = Vector2(22, 32)
 
 [sub_resource type="RectangleShape2D" id="2"]
-size = Vector2(27, 32)
+size = Vector2(22, 32)
 
 [node name="Redz" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 16384
@@ -17,7 +17,6 @@ floor_snap_length = 4.0
 script = ExtResource("1_acnt1")
 
 [node name="CollissionMask" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0)
 shape = SubResource("1")
 
 [node name="DamageArea" type="Area2D" parent="."]
@@ -35,7 +34,7 @@ vframes = 2
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 z_index = -100
-position = Vector2(-2.27374e-13, -2.27374e-13)
+position = Vector2(-1, -2.71051e-20)
 scale = Vector2(3.2, 3.2)
 rect = Rect2(-80, -10, 160, 20)
 
