@@ -24,10 +24,11 @@ func _process(delta):
 						i.movement.y = -i.movement.y
 					elif i.movement.y <= 0:
 						# Bounce slightly down
-						i.movement.y = i.movement.y + (1000*delta)
+						i.movement.y += 200
 					else:
 						# Bounce slightly up
-						i.movement.y = i.movement.y - (1000*delta)
+						i.movement.y = min (i.movement.y,0)
+						i.movement.y -= 100
 					if i.shield == i.SHIELDS.BUBBLE:
 							i.emit_enemy_bounce()
 				# destroy
