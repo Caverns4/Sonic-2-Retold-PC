@@ -196,7 +196,6 @@ offset_right = 512.0
 offset_bottom = 8.0
 texture = ExtResource("12_242na")
 stretch_mode = 1
-flip_h = true
 flip_v = true
 
 [node name="LayerBtm6" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -209,7 +208,6 @@ offset_right = 512.0
 offset_bottom = 8.0
 texture = ExtResource("11_swjic")
 stretch_mode = 1
-flip_h = true
 flip_v = true
 
 [node name="LayerBtm5" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -222,7 +220,6 @@ offset_right = 512.0
 offset_bottom = 16.0
 texture = ExtResource("10_n1xoj")
 stretch_mode = 1
-flip_h = true
 flip_v = true
 
 [node name="LayerBtm4" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -235,7 +232,6 @@ offset_right = 512.0
 offset_bottom = 32.0
 texture = ExtResource("9_dop27")
 stretch_mode = 1
-flip_h = true
 flip_v = true
 
 [node name="LayerBtm3" type="ParallaxLayer" parent="ParallaxBackground"]

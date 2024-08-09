@@ -46,7 +46,7 @@ func _process(delta):
 			parent.animator.play("spinDash")
 			parent.set_state(parent.STATES.SPINDASH)
 		# peelout (Sonic only)
-		#elif (parent.movement.x == 0 and parent.inputs[parent.INPUTS.YINPUT] < 0 and parent.character == parent.CHARACTERS.SONIC):
+		#elif (parent.movement.x == 0 and parent.inputs[parent.INPUTS.YINPUT] < 0 and parent.character == Global.CHARACTERS.SONIC):
 		#	parent.sfx[2].play()
 		#	parent.sfx[2].pitch_scale = 1
 		#	parent.spindashPower = 0
@@ -118,19 +118,19 @@ func _process(delta):
 				else:
 					match (parent.character):
 						
-						parent.CHARACTERS.TAILS:
+						Global.CHARACTERS.TAILS:
 							if getR: # keep flipping until right sensor (relevent) isn't colliding
 								parent.direction = -parent.direction
 							parent.animator.play("edge1")
 						
-						parent.CHARACTERS.KNUCKLES:
+						Global.CHARACTERS.KNUCKLES:
 							if getR: # keep flipping until right sensor (relevent) isn't colliding
 								parent.direction = -parent.direction
 							if parent.animator.current_animation != "edge1" and parent.animator.current_animation != "edge2":
 								parent.animator.play("edge1")
 								parent.animator.queue("edge2")
 								
-						parent.CHARACTERS.AMY:
+						Global.CHARACTERS.AMY:
 							if getR: # keep flipping until right sensor (relevent) isn't colliding
 								parent.direction = -parent.direction
 							#far edge

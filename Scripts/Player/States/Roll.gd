@@ -6,7 +6,7 @@ func _process(_delta):
 	if parent.inputs[parent.INPUTS.ACTION] == 1 or parent.inputs[parent.INPUTS.ACTION2] == 1 or parent.inputs[parent.INPUTS.ACTION3] == 1:
 		# use parent.action_jump("roll",false) to have jump lock similar to sonic 1-3
 		# true replicates CD and Mania
-		if parent.character == parent.CHARACTERS.SONIC:
+		if parent.character == Global.CHARACTERS.SONIC:
 			parent.action_jump("roll",true)
 		else:
 			parent.action_jump("roll",false)

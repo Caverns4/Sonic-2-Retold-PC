@@ -38,13 +38,15 @@ func TriggerSignpostSinglePlayer():
 		# play spinner
 		$Signpost/Animator.play("Spinner")
 		match player.character:
-			1:
+			Global.CHARACTERS.TAILS:
 				$Signpost/Animator.queue("Tails")
-			2:
+			Global.CHARACTERS.KNUCKLES:
 				$Signpost/Animator.queue("Knuckles")
-			3:
+			Global.CHARACTERS.AMY:
+				$Signpost/Animator.queue("Amy")
+			Global.CHARACTERS.MIGHTY:
 				$Signpost/Animator.queue("Mighty")
-			4:
+			Global.CHARACTERS.RAY:
 				$Signpost/Animator.queue("Ray")
 			_:
 				$Signpost/Animator.queue("Sonic")

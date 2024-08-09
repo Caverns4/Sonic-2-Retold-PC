@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://l26y1wupkm3f"]
+[gd_scene load_steps=14 format=3 uid="uid://l26y1wupkm3f"]
 
 [ext_resource type="Material" uid="uid://bveqi5m5ihsgj" path="res://Shaders/PlayerPalette.tres" id="1_kh2rr"]
 [ext_resource type="Texture2D" uid="uid://t0a50iu2sqj1" path="res://Graphics/Items/goal_signs.png" id="2_0uxmf"]
@@ -21,22 +21,6 @@ tracks/0/keys = {
 "values": [6]
 }
 
-[sub_resource type="Animation" id="Animation_52uwv"]
-resource_name = "Amy"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [7]
-}
-
 [sub_resource type="Animation" id="Animation_aqfav"]
 length = 0.001
 tracks/0/type = "value"
@@ -50,22 +34,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_bq4v2"]
-resource_name = "Ray"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [8]
 }
 
 [sub_resource type="Animation" id="Animation_5csr5"]
@@ -117,12 +85,61 @@ tracks/0/keys = {
 "values": [5]
 }
 
+[sub_resource type="Animation" id="Animation_52uwv"]
+resource_name = "Amy"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
+[sub_resource type="Animation" id="Animation_bq4v2"]
+resource_name = "Ray"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
+[sub_resource type="Animation" id="Animation_dsuan"]
+resource_name = "Ray"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3s12x"]
 _data = {
+"Amy": SubResource("Animation_52uwv"),
 "Knuckles": SubResource("Animation_x71vt"),
-"Mighty": SubResource("Animation_52uwv"),
+"Mighty": SubResource("Animation_bq4v2"),
 "RESET": SubResource("Animation_aqfav"),
-"Ray": SubResource("Animation_bq4v2"),
+"Ray": SubResource("Animation_dsuan"),
 "Sonic": SubResource("Animation_5csr5"),
 "Spinner": SubResource("Animation_a8oop"),
 "Tails": SubResource("Animation_g2rwe")
