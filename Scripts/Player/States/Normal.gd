@@ -12,17 +12,14 @@ var actionPressed = false
 # you'll want to increase this for the number of playable characters
 var playerIdles = [
 # SONIC
-["idle1","idle2","idle2","idle2","idle2","idle3",
-"idle4","idle4","idle4","idle4","idle4","idle4","idle4","idle4","idle4","idle4",
-"idle4","idle4","idle4","idle4","idle4","idle4","idle4","idle4","idle4","idle4",
-"idle5"],
+["idle1","idle1"],
 # Tails
 ["idle1"], # Note: Tails idle loops on idle one, to add more idles make sure to disable his idle1 loop
 # Knuckles
 ["idle1"],
 # Amy
 ["idle1","idle1","idle1","idle1","idle1","idle1","idle1","idle1","idle2","idle3"], # Note: like Tails, Amy loops on idle3
-# MIGHTY
+# Mighty
 ["idle1","idle2","idle3","idle4","idle5"]
 ]
 
@@ -105,14 +102,14 @@ func _process(delta):
 						
 						# loop through idle animations to see if there is an idle match
 						var matchIdleCheck = false
-						for i in playerIdles[parent.character]:
+						for i in playerIdles[parent.character-1]:
 							if parent.lastActiveAnimation == i:
 								matchIdleCheck = true
 						
 						if parent.lastActiveAnimation != "idle" and !matchIdleCheck or !parent.animator.is_playing():
 							parent.animator.play("idle")
 							# queue player specific idle animations
-							for i in playerIdles[parent.character]:
+							for i in playerIdles[parent.character-1]:
 								parent.animator.queue(i)
 				
 				else:
