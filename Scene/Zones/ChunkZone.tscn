@@ -1,22 +1,23 @@
-[gd_scene load_steps=11 format=3 uid="uid://do1li36ao5kvn"]
+[gd_scene load_steps=12 format=3 uid="uid://do1li36ao5kvn"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://hikbyuhih7uc" path="res://Audio/Soundtrack/s2br_ChemicalPlant.ogg" id="2_8olfy"]
+[ext_resource type="AudioStream" uid="uid://wxtewiyg2uti" path="res://Audio/Soundtrack/s2br_2PResults.ogg" id="3_x0c1p"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://hj3tt0gklwba" path="res://Scene/Zones/BaseZone.tscn" id="4_asnpp"]
 [ext_resource type="Texture2D" uid="uid://cb4g20txkbrrj" path="res://Graphics/Backgrounds/CPZ/CPZBGNA_Top.png" id="5_0jt3w"]
 [ext_resource type="Texture2D" uid="uid://co3ynxkastuk1" path="res://Graphics/Backgrounds/CPZ/CPZ_BG_Bottom.png" id="6_apxab"]
 [ext_resource type="TileSet" uid="uid://degtrdfi1sc00" path="res://Tileset/Levels/CPZ.tres" id="6_vi2dq"]
 [ext_resource type="PackedScene" uid="uid://dkn7hhll7o4or" path="res://Entities/MainObjects/LayerSwitcher.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://4q0hpddgto2k" path="res://Entities/Gimmicks/Spring.tscn" id="10_pxcy8"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="18"]
-[ext_resource type="PackedScene" uid="uid://qs5dmtxxf1w1" path="res://Scene/Presentation/Title.tscn" id="50"]
 
 [node name="ChunkZone" type="Node2D"]
 script = ExtResource("2")
 zoneID = 3
 music = ExtResource("2_8olfy")
-music2P = ExtResource("2_8olfy")
-nextZone = ExtResource("50")
+music2P = ExtResource("3_x0c1p")
+nextZone = ExtResource("4_asnpp")
 animal1 = 2
 animal2 = 7
 defaultLeftBoundry = 0

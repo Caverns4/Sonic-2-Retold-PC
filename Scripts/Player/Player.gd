@@ -1072,12 +1072,12 @@ func hit_player(damagePoint = global_position, damageType = 0, soundID = 6):
 		if water:
 			movement = movement*0.5
 
-		#Todo: Parnet ringcount
+		#Todo: Parent ringcount
 		disconect_from_floor()
 		set_state(STATES.HIT)
 		invTime = 120
 		# Ring loss
-		if (shield == SHIELDS.NONE and rings > 0 and playerControl == 1):
+		if (shield == SHIELDS.NONE and rings > 0 and (playerControl == 1 or Global.TwoPlayer)):
 			sfx[9].play()
 			ringDisTime = 64.0/60.0 # ignore rings for 64 frames
 			var ringCount = 0
@@ -1103,7 +1103,7 @@ func hit_player(damagePoint = global_position, damageType = 0, soundID = 6):
 					ringAngle = 101.25 # Reset angle
 				get_parent().add_child(ring)
 			rings = 0
-		elif shield == SHIELDS.NONE and playerControl == 1:
+		elif shield == SHIELDS.NONE and (playerControl == 1 or Global.TwoPlayer):
 			kill(false)
 		else:
 			sfx[soundID].play()
@@ -1113,13 +1113,13 @@ func hit_player(damagePoint = global_position, damageType = 0, soundID = 6):
 	return false
 
 func get_ring():
-	if playerControl == 1:
+	if playerControl == 1 or Global.TwoPlayer:
 		rings += 1
 		sfx[7+ringChannel].play()
 		sfx[7].play()
 		ringChannel = int(!ringChannel)
 		
-	elif partner != null and Global.TwoPlayer == false:
+	elif partner != null:
 		partner.get_ring()
 	
 func kill(forced):
