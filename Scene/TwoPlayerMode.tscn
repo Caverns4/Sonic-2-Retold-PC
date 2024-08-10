@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scene/TwoPlayerMode.gd" id="1_mkyg5"]
 
 [node name="TwoPlayerMode" type="Node2D"]
+z_index = 50
 script = ExtResource("1_mkyg5")
 
 [node name="GridContainer" type="GridContainer" parent="."]
@@ -13,19 +14,22 @@ size_flags_horizontal = 3
 size_flags_vertical = 2
 
 [node name="SubViewportContainer1" type="SubViewportContainer" parent="GridContainer"]
-custom_minimum_size = Vector2(0, 224)
+custom_minimum_size = Vector2(0, 112)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 2
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="GridContainer/SubViewportContainer1"]
+disable_3d = true
 handle_input_locally = false
-size = Vector2i(320, 224)
+size = Vector2i(320, 112)
 size_2d_override_stretch = true
+render_target_clear_mode = 2
 render_target_update_mode = 4
 
-[node name="Camera2D" type="Camera2D" parent="GridContainer/SubViewportContainer1/SubViewport"]
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/SubViewportContainer1/SubViewport"]
+centered = false
 
 [node name="SubViewportContainer2" type="SubViewportContainer" parent="GridContainer"]
 custom_minimum_size = Vector2(320, 224)
@@ -34,8 +38,13 @@ size_flags_horizontal = 3
 size_flags_vertical = 10
 
 [node name="SubViewport" type="SubViewport" parent="GridContainer/SubViewportContainer2"]
+disable_3d = true
 handle_input_locally = false
 size = Vector2i(320, 224)
+render_target_clear_mode = 2
 render_target_update_mode = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/SubViewportContainer2/SubViewport"]
+centered = false
 
 [node name="Camera2D" type="Camera2D" parent="GridContainer/SubViewportContainer2/SubViewport"]

@@ -72,8 +72,6 @@ defaultTopBoundry = 0
 defaultRightBoundry = 11008
 defaultBottomBoundry = 1024
 
-[node name="HUD" parent="." instance=ExtResource("2_yrcwh")]
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_limit_end = Vector2(0, 256)
 
@@ -213,6 +211,8 @@ offset_right = 512.0
 offset_bottom = 240.0
 texture = ExtResource("14_8vykf")
 stretch_mode = 1
+
+[node name="HUD" parent="." instance=ExtResource("2_yrcwh")]
 
 [node name="Player" parent="." instance=ExtResource("15_005t2")]
 position = Vector2(96, 656)

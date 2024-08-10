@@ -51,7 +51,10 @@ func _ready():
 		Global.nextZone = nextZone
 
 func _process(delta):
-		$UI/Labels/Control/Character.text = characterLabels[characterID]
+		if !Global.TwoPlayer:
+			$UI/Labels/Control/Character.text = characterLabels[characterID]
+		else:
+			$UI/Labels/Control/Character.text = ""
 		levelSelect_UpdateText()
 
 func _input(event):
@@ -62,9 +65,9 @@ func _input(event):
 		inputCue.y = round(inputCue.y)
 		if inputCue != lastInput:
 			# select character rotation
-			if inputCue.x < 0:
+			if inputCue.x < 0 and !Global.TwoPlayer:
 				characterID = wrapi(characterID-1,0,characterLabels.size())
-			if  inputCue.x > 0:
+			if  inputCue.x > 0 and !Global.TwoPlayer:
 				characterID = wrapi(characterID+1,0,characterLabels.size())
 			if inputCue.y > 0:
 				levelID = wrapi(levelID+1,0,levelIcons.size())
@@ -77,7 +80,6 @@ func _input(event):
 		# finish character select if start is pressed
 		if event.is_action_pressed("gm_pause"):
 			selected = true
-			Global.TwoPlayer = false
 			# set player 2 to none to prevent redundant code
 			Global.PlayerChar2 = Global.CHARACTERS.NONE
 			

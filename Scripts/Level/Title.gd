@@ -87,7 +87,6 @@ func MenuOptionChosen():
 		1:
 			titleEnd = true
 			Global.TwoPlayer = true
-			nextScene = preload("res://Scene/TwoPlayerMode.tscn")
 			Global.PlayerChar1 = Global.CHARACTERS.SONIC
 			Global.PlayerChar2 = Global.CHARACTERS.TAILS
 			Global.main.change_scene_to_file(nextScene,"FadeOut","FadeOut",1)

@@ -19,6 +19,8 @@ extends Node2D
 @export var setDefaultBottom = true
 @export var defaultBottomBoundry = 100000000
 
+var twoPlayerWindow = preload("res://Scene/TwoPlayerScreenView.tscn")
+
 # was loaded is used for room loading, this can prevent overwriting global information, see Global.gd for more information on scene loading
 var wasLoaded = false
 
@@ -40,6 +42,10 @@ func _ready():
 		Global.hardBorderBottom  = defaultBottomBoundry
 	
 	level_reset_data(false)
+	
+	if Global.TwoPlayer == true:
+		var twoPlayerScene = twoPlayerWindow.instantiate()
+		add_child(twoPlayerScene)
 	
 	wasLoaded = true
 
