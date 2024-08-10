@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_snbg3"]
 [ext_resource type="AudioStream" uid="uid://bg1fcuqr8mk1d" path="res://Audio/Soundtrack/s2br_Jewel.ogg" id="2_tvhrw"]
-[ext_resource type="PackedScene" uid="uid://do1li36ao5kvn" path="res://Scene/Zones/ChunkZone.tscn" id="3_3w2yb"]
+[ext_resource type="PackedScene" uid="uid://cyh8p6ji14r0t" path="res://Scene/Zones/Hill Top Zone Act 1.tscn" id="3_pk35w"]
 [ext_resource type="Shader" path="res://Shaders/PaletteSwapRow.gdshader" id="4_hudaq"]
 [ext_resource type="Texture2D" uid="uid://nn40nosrp62d" path="res://Graphics/Backgrounds/HPZ/HPZ_BGA.png" id="4_y8mxh"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_avawk"]
@@ -80,7 +80,7 @@ script = ExtResource("1_snbg3")
 zoneID = 1
 music = ExtResource("2_tvhrw")
 music2P = ExtResource("2_tvhrw")
-nextZone = ExtResource("3_3w2yb")
+nextZone = ExtResource("3_pk35w")
 animal1 = 8
 animal2 = 5
 defaultLeftBoundry = 0

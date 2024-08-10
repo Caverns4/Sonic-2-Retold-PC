@@ -82,13 +82,12 @@ func InitEndOfAct():
 		for i in stateCancelList:
 			if i == player.currentState:
 				player.set_state(player.STATES.AIR)
-		if !Global.TwoPlayer:
-			# set inputs to right
-			player.inputs[player.INPUTS.XINPUT] = 1
-			player.inputs[player.INPUTS.YINPUT] = 0
-			player.inputs[player.INPUTS.ACTION] = 0
-			# make partner move too
-			if player.get("partner") != null:
-				player.partner.inputs[player.INPUTS.XINPUT] = 1
-				player.partner.inputs[player.INPUTS.YINPUT] = 0
-				player.partner.inputs[player.INPUTS.ACTION] = 0
+		# set inputs to right
+		player.inputs[player.INPUTS.XINPUT] = 1
+		player.inputs[player.INPUTS.YINPUT] = 0
+		player.inputs[player.INPUTS.ACTION] = 0
+		# make partner move too
+		if player.get("partner") != null:
+			player.partner.inputs[player.INPUTS.XINPUT] = 1
+			player.partner.inputs[player.INPUTS.YINPUT] = 0
+			player.partner.inputs[player.INPUTS.ACTION] = 0
