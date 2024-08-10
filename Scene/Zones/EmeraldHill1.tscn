@@ -1243,8 +1243,8 @@ position = Vector2(9888, 648)
 [node name="Ring204" parent="Rings" instance=ExtResource("32_xmgm7")]
 position = Vector2(9952, 672)
 
+[node name="Ring207" parent="Rings" instance=ExtResource("32_xmgm7")]
+position = Vector2(8760, 296)
+
 [node name="SignpostNew" parent="." instance=ExtResource("32_x5cj3")]
 position = Vector2(10816, 772)
-
-[node name="Ring" parent="." instance=ExtResource("32_xmgm7")]
-position = Vector2(8760, 296)

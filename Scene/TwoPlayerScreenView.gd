@@ -9,8 +9,6 @@ extends Control
 
 # Player memory
 var players = []
-var player1 = null
-var player2 = null
 var playersReady = false
 
 # Called when the node enters the scene tree for the first time.
@@ -24,20 +22,14 @@ func _physics_process(delta):
 	if playersReady == false:
 		QueueUpPlayers()
 	else:
-		
-		#for i in player1.get_children():
-		#	if i is Camera2D:
-		#		cameraPlayer1.position = i.global_position
-		#for i in player2.get_children():
-		#	if i is Camera2D:
-		#		cameraPlayer2.position = i.global_position
-		cameraPlayer1.global_position = floor(player1.global_position)
-		cameraPlayer2.global_position = floor(player2.global_position)
-		pass
+		cameraPlayer1.global_position = players[0].camera.global_position
+		cameraPlayer1.limit_bottom = players[0].camera.limit_bottom
+		cameraPlayer1.limit_right = players[0].camera.limit_right
+		cameraPlayer2.global_position = players[1].camera.global_position
+		cameraPlayer2.limit_bottom = players[1].camera.limit_bottom
+		cameraPlayer2.limit_right = players[1].camera.limit_right
 
 func QueueUpPlayers():
 	players = get_tree().get_nodes_in_group("Player")
 	if players.size() and players.size() > 1:
-		player1 = players[0]
-		player2 = players[1]
 		playersReady = true

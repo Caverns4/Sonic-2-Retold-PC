@@ -64,6 +64,8 @@ var specialStageID = 0
 var levelTime = 0 # the timer that counts down while the level isn't completed or in a special ring
 var globalTimer = 0 # global timer, used as reference for animations
 var maxTime = 60*10
+
+enum ZONES{EMERALD_HILL,HIDDEN_PALACE,HILL_TOP,CHEMICAL_PLANT,OIL_OCEAN}
 var savedZoneID = 0 # Last played zone. Will mainly be used for the Title Screen.
 
 # water level of the current level, setting this to null will disable the water

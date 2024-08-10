@@ -12,6 +12,9 @@ var Explosion = preload("res://Entities/Misc/BadnickSmoke.tscn")
 
 
 func _ready():
+	if Global.TwoPlayer:
+		item = 0
+	
 	# set frame
 	$Item.frame = item+2
 	# Life Icon (life icons are a special case)
@@ -103,7 +106,7 @@ func physics_collision(body, hitVector):
 		# Bounce from below
 		if hitVector.x != 0:
 			# check conditions for interaction (and the player is the first player)
-			if body.movement.y >= 0 and body.movement.x != 0 and body.playerControl == 1:
+			if body.movement.y >= 0 and body.movement.x != 0 and (body.playerControl == 1 or Global.TwoPlayer):
 				playerTouch = body
 				destroy()
 			else:
@@ -111,8 +114,7 @@ func physics_collision(body, hitVector):
 				body.movement.x = 0
 		# check if player is not an ai or spindashing
 		# if they are then destroy
-		if (body.playerControl == 1 or Global.TwoPlayer
-		) and body.currentState != body.STATES.SPINDASH:
+		if (body.playerControl == 1 or Global.TwoPlayer) and body.currentState != body.STATES.SPINDASH:
 			body.movement.y = -abs(body.movement.y)
 			
 			if body.currentState == body.STATES.ROLL:
