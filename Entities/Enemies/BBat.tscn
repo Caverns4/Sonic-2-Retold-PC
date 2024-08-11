@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bxkm8u0ltthxd"]
+[gd_scene load_steps=13 format=3 uid="uid://bxkm8u0ltthxd"]
 
 [ext_resource type="Script" path="res://Entities/Enemies/BBat.gd" id="1_fm812"]
 [ext_resource type="Texture2D" uid="uid://cv5q8ba5j6djs" path="res://Graphics/Enemies/Badnik_BBat.png" id="2_gcfrw"]
+[ext_resource type="Script" path="res://Scripts/Objects/Hazard.gd" id="3_fcpdh"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(10, 26)
@@ -46,6 +47,72 @@ tracks/2/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hitbox:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_j4egx"]
+resource_name = "ATTACK"
+length = 0.2
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BBatWings:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BBatWings:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hitbox:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_04l0t"]
 resource_name = "WARMUP"
@@ -75,6 +142,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 0, 1, 0, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hitbox:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_nourt"]
@@ -116,6 +195,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hitbox:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hitbox:monitorable")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_e5pl2"]
@@ -162,13 +265,17 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_56wle"]
 _data = {
 "AIM": SubResource("Animation_2qbc6"),
+"ATTACK": SubResource("Animation_j4egx"),
 "COOLDOWN": SubResource("Animation_04l0t"),
 "RESET": SubResource("Animation_nourt"),
 "WARMUP": SubResource("Animation_e5pl2")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mf3u2"]
+size = Vector2(60, 8)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k0tlg"]
-size = Vector2(256, 128)
+size = Vector2(192, 128)
 
 [node name="BBat" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 16384
@@ -200,19 +307,37 @@ libraries = {
 "": SubResource("AnimationLibrary_56wle")
 }
 
+[node name="Hitbox" type="Area2D" parent="BBatSprite"]
+collision_layer = 0
+collision_mask = 4096
+script = ExtResource("3_fcpdh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BBatSprite/Hitbox"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_mf3u2")
+debug_color = Color(0.478431, 0, 0, 0.501961)
+
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(1.90735e-06, -1.90735e-06)
 scale = Vector2(6.4, 6.4)
 rect = Rect2(-20, -10, 40, 30)
 
-[node name="PlayerCheck" type="Area2D" parent="."]
+[node name="PlayerSensor" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4096
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCheck"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSensor"]
 position = Vector2(0, 64)
 shape = SubResource("RectangleShape2D_k0tlg")
+
+[node name="SeekTimer" type="Timer" parent="."]
+wait_time = 0.5
 
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
+[connection signal="body_entered" from="BBatSprite/Hitbox" to="BBatSprite/Hitbox" method="_on_body_entered"]
+[connection signal="body_exited" from="BBatSprite/Hitbox" to="BBatSprite/Hitbox" method="_on_body_exited"]
+[connection signal="body_entered" from="PlayerSensor" to="." method="_on_player_sensor_body_entered"]
+[connection signal="body_exited" from="PlayerSensor" to="." method="_on_player_sensor_body_exited"]
+[connection signal="timeout" from="SeekTimer" to="." method="_on_seek_timer_timeout"]

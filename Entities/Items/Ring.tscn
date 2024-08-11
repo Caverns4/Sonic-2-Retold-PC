@@ -53,8 +53,6 @@ script = ExtResource("1")
 z_index = 4
 sprite_frames = SubResource("2")
 autoplay = "default"
-frame = 1
-frame_progress = 0.60374
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
