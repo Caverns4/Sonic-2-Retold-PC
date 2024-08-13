@@ -115,8 +115,12 @@ func physics_collision(body, hitVector):
 
 func _on_Diagonal_body_entered(body):
 	# diagonal springs are pretty straightforward
+	body.currentState = body.STATES.AIR
 	body.position.x = position.x
-	body.movement = hitDirection.rotated(rotation).rotated(-body.rotation)*speed[type]*60
+	body.position.y = position.y-8
+	#body.movement = hitDirection.rotated(rotation).rotated(-body.rotation)*speed[type]*60
+	#body.movement = hitDirection.rotated(rotation)*(speed[type]*60)
+	body.movement = hitDirection*(speed[type]*60)
 	$SpringAnimator.play(animList[animID])
 	if (hitDirection.y < 0):
 		body.set_state(body.STATES.AIR)

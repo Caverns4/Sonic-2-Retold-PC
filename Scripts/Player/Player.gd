@@ -545,6 +545,7 @@ func _process(delta):
 	if (supTime > 0):
 		if !isSuper:
 			supTime -= delta
+			
 		else:
 			$InvincibilityBarrier.visible = false
 			# Animate Palette
@@ -574,6 +575,7 @@ func _process(delta):
 			if Global.currentTheme == 0 and Global.effectTheme.is_playing():
 				Global.music.play()
 				Global.effectTheme.stop()
+				invTime = 60
 	
 	if (shoeTime > 0):
 		shoeTime -= delta
