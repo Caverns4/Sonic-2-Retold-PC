@@ -3,13 +3,8 @@ extends EnemyBase
 @export var x_range = 128 #The limit in each direction the BBat can go before not chasing farther
 @onready var animator = $BBatSprite/AnimationPlayer
 
-# Todo: Custom behavior.
-# Idle for 1 second; look for targets for 1 second
-# If no targets are found, idle again.
-# If target is in range, watch them briefly, spin wings
-# If player is still in range, get their X position, swoop down at them, Hitbox active
-# After diving and returning to origin.y, cool down animation for 1 second
-# Idle
+enum STATES{IDLE,SEEKING,WARMUP,DIVE,COOLDOWN}
+var state = STATES.IDLE
 
 var targets = [] # targets in the sensor area
 var lookingForTargets = false # If the BBat is awaiting an enemy
@@ -21,9 +16,6 @@ var origin = Vector2.ZERO #Home position. Used to check if the BBat should go no
 var direction = 1
 var attackTimer = 0.0
 
-enum STATES{IDLE,SEEKING,WARMUP,DIVE,COOLDOWN}
-var state = STATES.IDLE
-
 func _ready():
 	origin = global_position
 
@@ -34,12 +26,12 @@ func _physics_process(delta):
 	match state:
 		STATES.IDLE:
 			updateHoveringPos(delta)
-			await get_tree().create_timer(0.25).timeout
-			if targets:
+			if targets and lookingForTargets:
 				state = STATES.SEEKING
 				animator.play("WARMUP")
 				#print ("Seeking")
-				$SeekTimer.start(0.01)
+				$SeekTimer.start(0.02)
+				
 		STATES.SEEKING: # While awaiting $SeekTimer
 			updateHoveringPos(delta)
 			if targets:
@@ -110,38 +102,58 @@ func _on_player_sensor_body_exited(body):
 	#print("Exited" + str(targets))
 
 func _on_seek_timer_timeout():
-	if state == STATES.SEEKING:
-		if targets:
-			state = STATES.WARMUP
-			animator.play("AIM")
-			#print ("Warmup")
-			LookAtPlayer()
-			$SeekTimer.start(0.5)
-		else:
-			state = STATES.IDLE
-			animator.play("RESET")
-			#print ("Idle")
-	elif state == STATES.WARMUP:
-		var stillInRange = false
-		for i in targets.size():
-			if targets[i] == currentTarget:
-				stillInRange = true
-		var currentTargetSavedPos = currentTarget.global_position
-		
-		if stillInRange and currentTargetSavedPos.y > origin.y:
-			LookAtPlayer()
-			var diveXDist = 128*direction
-			diveTargetPoints = [global_position,
-			currentTarget.global_position + Vector2(0,64),
-			Vector2(global_position.x - diveXDist, origin.y)]
-			state = STATES.DIVE
-			animator.play("ATTACK")
-			#print ("Attack")
-		else:
-			state = STATES.IDLE
-			animator.play("RESET")
-			#print ("Idle")
-	elif state == STATES.COOLDOWN:
-		state = STATES.IDLE
-		animator.play("RESET")
-		#print ("Idle")
+	match state:
+		STATES.IDLE:
+			lookingForTargets = true
+		STATES.SEEKING:
+			if targets:
+				state = STATES.WARMUP
+				animator.play("AIM")
+				LookAtPlayer()
+				$SeekTimer.start(0.5)
+			else:
+				BBatReturnToIdleState()
+		STATES.WARMUP:
+			currentTarget = Picktarget(targets)
+			
+			if currentTarget:
+				SetupDive()
+				state = STATES.DIVE
+				animator.play("ATTACK")
+			else:
+				BBatReturnToIdleState()
+		STATES.COOLDOWN:
+			BBatReturnToIdleState()
+
+func BBatReturnToIdleState():
+	state = STATES.IDLE
+	animator.play("RESET")
+	lookingForTargets = false
+	#print ("Idle")
+	$SeekTimer.start(1.0)
+
+func Picktarget(targets):
+	# Probably bad practice but it works so ¯\_(ツ)_/¯
+	var stillInRange = false
+	for i in targets.size():
+		if targets[i] == currentTarget:
+			stillInRange = true
+	
+	if stillInRange and currentTarget.global_position.y > origin.y:
+		return currentTarget
+	else:
+		return null
+
+func SetupDive():
+	LookAtPlayer()
+	var diveXDist = 128*direction
+	if global_position.x < (origin.x - x_range):
+		diveXDist = -128
+		scale.x = -1
+	elif global_position.x > (origin.x + x_range):
+		diveXDist = 128
+		scale.x = 1
+	diveTargetPoints = [global_position,
+	currentTarget.global_position + Vector2(0,64),
+	Vector2(global_position.x - diveXDist, origin.y)]
+	

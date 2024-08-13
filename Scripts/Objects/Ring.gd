@@ -59,7 +59,8 @@ func _physics_process(delta):
 
 func _on_Hitbox_body_entered(body):
 	if (player != body):
-		player = body
+		if (!scattered) or (scattered and lifetime < (3.3)):
+			player = body
 
 
 func _on_Hitbox_body_exited(body):

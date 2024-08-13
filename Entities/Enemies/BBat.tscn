@@ -331,7 +331,8 @@ position = Vector2(0, 64)
 shape = SubResource("RectangleShape2D_k0tlg")
 
 [node name="SeekTimer" type="Timer" parent="."]
-wait_time = 0.5
+one_shot = true
+autostart = true
 
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]

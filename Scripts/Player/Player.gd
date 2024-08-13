@@ -590,7 +590,7 @@ func _process(delta):
 		if (invTime <= 0):
 			invTime = 0
 			visible = true
-	if (ringDisTime > 0):
+	if (ringDisTime > 0) and currentState != STATES.HIT:
 		ringDisTime -= delta
 
 	# Rings 1up
@@ -1079,7 +1079,8 @@ func hit_player(damagePoint = global_position, damageType = 0, soundID = 6):
 		# Ring loss
 		if (shield == SHIELDS.NONE and rings > 0 and (playerControl == 1 or Global.TwoPlayer)):
 			sfx[9].play()
-			ringDisTime = 64.0/60.0 # ignore rings for 64 frames
+			ringDisTime = 30.0/60.0 # ignore rings for 64 frames
+			ringDisTime = 6.0/60.0 # ignore rings for 1/10th second after hurt
 			var ringCount = 0
 			var ringAngle = 101.25
 			var ringAlt = false
