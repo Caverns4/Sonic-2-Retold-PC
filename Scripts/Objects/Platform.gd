@@ -19,14 +19,19 @@ var platformDepth = 4
 
 func _ready():
 	# Change platform shape
-	$Platform/Shape3D.shape.size.x = platformSprite.get_size().x
-	$Platform/Shape3D.shape.size.y = platformDepth/2.0
-	$Platform/Shape3D.position.y = -(platformSprite.get_size().y/2.0)+(platformDepth/2.0)
-	if fullySolid == true:
+	if fullySolid:
+		$Platform/Shape3D.shape.size.x = platformSprite.get_size().x
+		$Platform/Shape3D.shape.size.y = platformSprite.get_size().y
+		$Platform/Shape3D.position.y = (platformDepth*2.0)
 		$Platform/Shape3D.one_way_collision = false
 		$Platform.set_collision_layer_value(2,true)
 		$Platform.set_collision_layer_value(3,true)
 		$Platform.set_collision_layer_value(4,true)
+	else:
+		$Platform/Shape3D.shape.size.x = platformSprite.get_size().x
+		$Platform/Shape3D.shape.size.y = platformDepth/2.0
+		$Platform/Shape3D.position.y = -(platformSprite.get_size().y/2.0)+(platformDepth/2.0)
+
 	if !Engine.is_editor_hint():
 		# Change platform sprite texture
 		$Platform/Sprite2D.texture = platformSprite
@@ -36,9 +41,14 @@ func _ready():
 
 func _process(delta):
 	if Engine.is_editor_hint():
-		$Platform/Shape3D.shape.size.x = platformSprite.get_size().x
-		$Platform/Shape3D.shape.size.y = platformDepth/2.0
-		$Platform/Shape3D.position.y = -(platformSprite.get_size().y/2.0)+(platformDepth/2.0)
+		if fullySolid:
+			$Platform/Shape3D.shape.size.x = platformSprite.get_size().x
+			$Platform/Shape3D.shape.size.y = platformSprite.get_size().y
+			$Platform/Shape3D.position.y = (platformDepth*2.0)
+		else:
+			$Platform/Shape3D.shape.size.x = platformSprite.get_size().x
+			$Platform/Shape3D.shape.size.y = platformDepth/2.0
+			$Platform/Shape3D.position.y = -(platformSprite.get_size().y/2.0)+(platformDepth/2.0)
 		queue_redraw()
 		# Offset timer for the editor to display
 		offsetTimer = wrapf(offsetTimer+(delta*speed),0,PI*2)
@@ -52,8 +62,6 @@ func _physics_process(delta):
 			$Platform.position = (getPos+Vector2(0,dropDistance)).round()
 		else:
 			$Platform.translate(Vector2(0,fallSpeed))
-		
-		
 		
 		# drop
 		

@@ -252,7 +252,7 @@ stretch_mode = 1
 zoneName = "HILL TOP"
 
 [node name="Player" parent="." instance=ExtResource("15_l0d7g")]
-position = Vector2(112, 540)
+position = Vector2(112, 940)
 
 [node name="TileMap" type="TileMap" parent="."]
 material = SubResource("ShaderMaterial_xpnng")
@@ -306,7 +306,7 @@ autoplay = "Reset"
 [node name="Badniks" type="Node2D" parent="."]
 
 [node name="Orbinaut" parent="Badniks" instance=ExtResource("22_ydut8")]
-position = Vector2(1204, 1058)
+position = Vector2(1697, 974)
 
 [node name="Earthquakes" type="TileMap" parent="."]
 tile_set = ExtResource("16_qpoa7")
