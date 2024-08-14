@@ -1,12 +1,6 @@
 @tool
 extends Node2D
 
-# Elevators differ from Platforms in several key ways
-# 1: They do not begin moving until a player stands on them
-# 2: Once they reach their end position, thet pause for a time
-# 3: Once the return home, they do not move again until the Player triggers them
-# 4: The do not drop when stood on
-
 @export var platformSprite = preload("res://Graphics/Tiles/WorldsTiles/Platform.png")
 
 @export var endPosition = Vector2(0,256) # End travel point for platform
@@ -45,12 +39,16 @@ func _process(delta):
 		$Platform/Shape3D.position.y = -(platformSprite.get_size().y/2.0)+(platformDepth/2.0)
 		queue_redraw()
 		# Offset timer for the editor to display
-		offsetTimer = wrapf(offsetTimer+(delta*speed),0,PI*2)
+		offsetTimer = wrapf(offsetTimer-(delta*speed),0,PI*2)
 
 func _physics_process(delta):
 	if !Engine.is_editor_hint():
 		# Sync the position up to tween between the start and end point based on level time
-		var getPos = (endPosition*(cos((activeTimer*speed)+offset)*0.5+0.5))
+		var getPos = (
+			endPosition*(
+				cos((activeTimer*speed)+offset)*0.5+0.5
+				)
+			)
 		
 		match state:
 			STATES.IDLE:
@@ -58,27 +56,23 @@ func _physics_process(delta):
 				if activated: 
 					state = STATES.PATHTO
 					activeTimer = 0.0
-					#print("State PathTo")
 			STATES.PATHTO:
 				#Zoom to target point endPos, inc state when target reached
-				activeTimer+=(1.0*delta)
+				activeTimer+=(delta)
 				if round(getPos) == Vector2.ZERO:
 					state = STATES.COUNTDOWN
-					#print("State Countdown")
 			STATES.COUNTDOWN:
 			#Wait for Player to get off, await Timer waitTime
 				activated = false
 				#await get_tree().create_timer(waitTime).timeout
 				if round(getPos) == Vector2.ZERO:
 					state = STATES.PATHFROM
-					#print("State PathFrom")
 			STATES.PATHFROM:
 				# Return home, set active to false, state = SATES.IDLE
-				activeTimer+=(1.0*delta)
+				activeTimer+=(delta)
 				if round(getPos) == endPosition:
 					activated = false
 					state = STATES.IDLE
-					#print("State Idle")
 		# set platform to rounded position to prevent jittering
 		$Platform.position = (getPos).round()
 

@@ -15,7 +15,6 @@ script = ExtResource("1_n1lml")
 process_priority = 10
 collision_layer = 8193
 collision_mask = 0
-sync_to_physics = false
 script = ExtResource("2_h8iaq")
 
 [node name="Shape3D" type="CollisionShape2D" parent="Platform"]
