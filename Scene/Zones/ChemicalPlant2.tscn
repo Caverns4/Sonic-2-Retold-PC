@@ -26,6 +26,8 @@ defaultRightBoundry = 12800
 defaultBottomBoundry = 2048
 
 [node name="HUD" parent="." instance=ExtResource("1_sbiln")]
+zoneName = "CHEMICAL PLANT"
+act = 2
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_base_scale = Vector2(1, 0.23)

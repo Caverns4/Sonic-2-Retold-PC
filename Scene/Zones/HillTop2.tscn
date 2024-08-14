@@ -185,6 +185,8 @@ texture = ExtResource("15_5bkij")
 stretch_mode = 1
 
 [node name="HUD" parent="." instance=ExtResource("16_sexxm")]
+zoneName = "HILL TOP"
+act = 2
 
 [node name="Player" parent="." instance=ExtResource("17_tx1dq")]
 position = Vector2(96, 240)

@@ -53,6 +53,7 @@ defaultBottomBoundry = 2048
 metadata/_edit_vertical_guides_ = [3600.0]
 
 [node name="HUD" parent="." instance=ExtResource("4")]
+zoneName = "OIL OCEAN"
 act = 2
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
