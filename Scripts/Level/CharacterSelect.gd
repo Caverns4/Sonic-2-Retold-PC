@@ -114,6 +114,8 @@ func _input(event):
 					Global.nextZone = load("res://Scene/Zones/HillTop2.tscn")
 				6: # Chemical Plant Zone 1
 					Global.nextZone = load("res://Scene/Zones/ChunkZone.tscn")
+				7: # Chemical Plant Zone 2
+					Global.nextZone = load("res://Scene/Zones/ChemicalPlant2.tscn")
 				8: # Oil Ocean Zone 1
 					Global.nextZone = load("res://Scene/Zones/BaseZone.tscn")
 				9: # Oil Ocean Zone 2
