@@ -34,6 +34,7 @@ _data = {
 collision_layer = 16384
 collision_mask = 0
 script = ExtResource("1")
+distance = 24
 
 [node name="CollissionMask" type="CollisionShape2D" parent="."]
 shape = SubResource("1")
@@ -47,7 +48,7 @@ modulate = Color(1, 0, 0, 1)
 shape = SubResource("1")
 
 [node name="Orb" type="Area2D" parent="."]
-position = Vector2(0, -32)
+position = Vector2(0, -24)
 collision_layer = 0
 collision_mask = 4096
 script = ExtResource("3")
@@ -57,6 +58,7 @@ modulate = Color(1, 0, 0, 1)
 shape = SubResource("1")
 
 [node name="orb" type="Sprite2D" parent="Orb"]
+position = Vector2(0, -8)
 texture = ExtResource("3_d185y")
 hframes = 6
 
@@ -64,6 +66,7 @@ hframes = 6
 libraries = {
 "": SubResource("AnimationLibrary_0hno6")
 }
+autoplay = "RESET"
 
 [node name="orbinaut" type="Sprite2D" parent="."]
 texture = ExtResource("4_fw8n4")
