@@ -25,7 +25,9 @@ var parallaxBackgrounds = [
 var paraOffsets = [
 	0,
 	-216,
-	0
+	0,
+	0,
+	0,
 ]
 
 

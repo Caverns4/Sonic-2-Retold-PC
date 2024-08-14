@@ -147,7 +147,7 @@ func _on_boss_defeated():
 	dead = true
 	if drillCar:
 		drillCar.Die()
-		drillCar.z_index = 0
+		#drillCar.z_index = 0
 	# hit animation for 1.5 seconds (see the dead section in _process)
 	set_animation("hit",1.5)
 	# set velocity to 0 to prevent moving
