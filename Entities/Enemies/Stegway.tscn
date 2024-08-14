@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvaf3mpyum5at"]
+
+[ext_resource type="Script" path="res://Entities/Enemies/Stegway.gd" id="1_3811d"]
+[ext_resource type="Texture2D" uid="uid://bwbirkbtmiumq" path="res://Graphics/Enemies/stegway.png" id="2_jmtwq"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(42, 29.5)
+
+[node name="Stegway" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 16384
+collision_mask = 0
+script = ExtResource("1_3811d")
+
+[node name="CollissionMask" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("1")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 528384
+
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(0, 1)
+shape = SubResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jmtwq")
+hframes = 3
+vframes = 3
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(1.90735e-06, -1.90735e-06)
+scale = Vector2(6.4, 6.4)
+
+[connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
