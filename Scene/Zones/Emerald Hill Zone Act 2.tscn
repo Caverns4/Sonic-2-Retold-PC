@@ -437,7 +437,7 @@ leftLayer = 0
 
 [node name="ForceAngleSides" parent="Entity" instance=ExtResource("30_cvaq5")]
 position = Vector2(1302, 770)
-rightAngle = 88.0
+rightAngle = 86.0
 
 [node name="ForceAngleSides2" parent="Entity" instance=ExtResource("30_cvaq5")]
 position = Vector2(4058, 670)
@@ -451,15 +451,15 @@ rightAngle = -35.0
 
 [node name="ForceAngleSides4" parent="Entity" instance=ExtResource("30_cvaq5")]
 position = Vector2(6360, 898)
-leftAngle = 88.0
+leftAngle = 86.0
 
 [node name="ForceAngleSides5" parent="Entity" instance=ExtResource("30_cvaq5")]
 position = Vector2(9302, 1154)
-leftAngle = 88.0
+leftAngle = 86.0
 
 [node name="ForceAngleSides6" parent="Entity" instance=ExtResource("30_cvaq5")]
 position = Vector2(10070, 1028)
-leftAngle = 88.0
+leftAngle = 86.0
 
 [node name="BoundrySetter" parent="Entity" instance=ExtResource("31_s5xoe")]
 position = Vector2(10567, 977)
