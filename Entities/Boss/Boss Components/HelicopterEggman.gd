@@ -79,7 +79,7 @@ func _physics_process(delta):
 				# move to center between positions
 				if global_position.x > (getPose[0].lerp(getPose[1],0.5)).x and !readyEnterCar:
 					velocity = ((getPose[0].lerp(getPose[1],0.5)-global_position)*60).limit_length(64)
-					velocity.y = 12.0
+					velocity.y = 18.0
 				elif readyEnterCar and global_position.y < targetPosition.y:
 					velocity.x = 0.0
 					velocity.y = 20.0

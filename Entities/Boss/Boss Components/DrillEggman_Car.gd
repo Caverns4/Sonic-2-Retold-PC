@@ -116,15 +116,22 @@ func Die():
 	dead = true
 	pilot = false
 	velocity = Vector2.ZERO
-	tires[0].velocity.x = 100.0
-	tires[1].velocity.x = 200.0
-	tires[2].velocity.x = -100.0
-	tires[3].velocity.x = -200.0
+	tires[0].velocity.x = 200.0
+	tires[1].velocity.x = 300.0
+	tires[2].velocity.x = -200.0
+	tires[3].velocity.x = -300.0
 	tires[0].free = true
 	tires[1].free = true
 	tires[2].free = true
 	tires[3].free = true
-	if drill: drill.monitoring = false
+	if drill:
+		drill.monitoring = false
+		drill.free = true
+		drill.position = drill.global_position
+		drill.direction = direction
+		drill.top_level = true
+		drill = null
+		readyToLaunch = false
 
 func playMotor():
 	$AudioStreamPlayer2D.play()
