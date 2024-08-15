@@ -750,9 +750,7 @@ position = Vector2(10919, 954)
 
 [node name="BossBoundrySetter" parent="Boss" instance=ExtResource("24_esprp")]
 position = Vector2(10744, 1024)
-scale = Vector2(1, 3)
 bossPath = NodePath("../HelicopterEggman")
-keepLeftLocked = false
 keepTopLocked = false
 keepRightLocked = false
 lockLeft = false
