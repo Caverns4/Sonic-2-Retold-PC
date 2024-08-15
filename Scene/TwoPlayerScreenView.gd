@@ -18,7 +18,7 @@ func _ready():
 	viewport2.world_2d = get_viewport().world_2d
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _physics_process(_delta):
 	if playersReady == false:
 		QueueUpPlayers()
 	else:

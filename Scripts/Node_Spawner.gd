@@ -3,7 +3,7 @@ extends Node2D
 @export var resource = preload("res://Entities/Items/Ring.tscn")
 @export var timeSpan = 4.0
 
-func _process(delta):
+func _process(_delta):
 	if get_child_count() <= 0:
 		await get_tree().create_timer(timeSpan).timeout
 		respawn()

@@ -50,9 +50,8 @@ func InitEndOfAct():
 	if Global.stageClearPhase == 0 and player:
 		# play spinner
 		$Signpost/Animator.play("Spinner")
-		var finalAnim = player.character
-		if Global.TwoPlayer and winner:
-			finalAnim = winner
+		#if Global.TwoPlayer and winner:
+		#	finalAnim = winner
 		match player.character:
 			Global.CHARACTERS.TAILS:
 				$Signpost/Animator.queue("Tails")

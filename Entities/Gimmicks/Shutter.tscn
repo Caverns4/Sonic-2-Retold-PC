@@ -5,7 +5,7 @@
 
 [sub_resource type="RectangleShape2D" id="1"]
 resource_local_to_scene = true
-size = Vector2(8, 32)
+size = Vector2(16, 64)
 
 [node name="Shutter" type="CharacterBody2D"]
 collision_layer = 8207
@@ -19,7 +19,8 @@ texture = ExtResource("1")
 shape = SubResource("1")
 
 [node name="OpenShutter" type="Area2D" parent="."]
-position = Vector2(-80, 0)
+position = Vector2(-32, 0)
+scale = Vector2(3, 1)
 collision_layer = 0
 collision_mask = 4096
 

@@ -103,7 +103,7 @@ func _physics_process(delta):
 func animateBridgeLog(bridgeLog,logDist):
 	var texArray = [texture,texture,texture2,texture3]	
 	var curFrame = logDist * (texArray.size()-1)
-	curFrame = max(0,round(curFrame-(frameDiff[frameCount/4])))
+	curFrame = max(0,round(curFrame-(frameDiff[frameCount/4.0])))
 	
 	if maxDepression > 0 and buffer:
 		bridgeLog.texture = texArray[curFrame]

@@ -87,7 +87,6 @@ func calc_dir():
 
 func _draw():
 	if Engine.is_editor_hint():
-		var sprite = $Sprite2D/BFishSprite
 		var size = Vector2(sprite.texture.get_width()/sprite.hframes,sprite.texture.get_height()/sprite.vframes)
 		# first bomber pose
 		draw_texture_rect_region(sprite.texture,

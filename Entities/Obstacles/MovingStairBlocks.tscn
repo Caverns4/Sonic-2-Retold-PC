@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://16gkbxuhm76g"]
+
+[ext_resource type="Script" path="res://Scripts/Gimmicks/MovingStairBlocks.gd" id="1_cxcto"]
+[ext_resource type="Texture2D" uid="uid://dxrqrsfax58dq" path="res://Graphics/Obstacles/Blocks/CPZ Block.png" id="2_l20qw"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+resource_local_to_scene = true
+size = Vector2(32, 32)
+
+[node name="MovingStairBlocks" type="Node2D"]
+process_priority = 10
+script = ExtResource("1_cxcto")
+speed = 1.0
+
+[node name="Platform" type="AnimatableBody2D" parent="."]
+process_priority = 10
+position = Vector2(-48, -48)
+collision_layer = 8192
+collision_mask = 0
+
+[node name="Shape3D" type="CollisionShape2D" parent="Platform"]
+modulate = Color(1, 1, 1, 0.0980392)
+shape = SubResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform"]
+texture = ExtResource("2_l20qw")
+
+[node name="Platform2" type="AnimatableBody2D" parent="."]
+process_priority = 10
+position = Vector2(-16, -16)
+collision_layer = 8192
+collision_mask = 0
+
+[node name="Shape3D" type="CollisionShape2D" parent="Platform2"]
+modulate = Color(1, 1, 1, 0.0980392)
+shape = SubResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform2"]
+texture = ExtResource("2_l20qw")
+
+[node name="Platform3" type="AnimatableBody2D" parent="."]
+process_priority = 10
+position = Vector2(16, 16)
+collision_layer = 8192
+collision_mask = 0
+
+[node name="Shape3D" type="CollisionShape2D" parent="Platform3"]
+modulate = Color(1, 1, 1, 0.0980392)
+shape = SubResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform3"]
+texture = ExtResource("2_l20qw")
+
+[node name="Platform4" type="AnimatableBody2D" parent="."]
+process_priority = 10
+position = Vector2(48, 48)
+collision_layer = 8192
+collision_mask = 0
+
+[node name="Shape3D" type="CollisionShape2D" parent="Platform4"]
+modulate = Color(1, 1, 1, 0.0980392)
+shape = SubResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform4"]
+texture = ExtResource("2_l20qw")
