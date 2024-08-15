@@ -1,20 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://da8b7n7dgsr43"]
+[gd_scene load_steps=4 format=3 uid="uid://xbidybme3tde"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/EnemyBase.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://beqh6fywjj4lt" path="res://Graphics/Enemies/Badnik_Sol.png" id="2_3oo2o"]
+[ext_resource type="Script" path="res://Scripts/Enemies/EnemyBase.gd" id="1_y2k22"]
+[ext_resource type="Texture2D" uid="uid://blms2khcx3knr" path="res://Graphics/Enemies/Spiny_Floor.png" id="2_thbk4"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(8, 8)
+size = Vector2(28, 16)
 
-[node name="EnemyBase" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Spiny" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 16384
 collision_mask = 0
-script = ExtResource("1")
+script = ExtResource("1_y2k22")
 
 [node name="CollissionMask" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
 shape = SubResource("1")
 
 [node name="DamageArea" type="Area2D" parent="."]
+position = Vector2(0, -8)
 collision_layer = 0
 collision_mask = 528384
 
@@ -22,13 +24,15 @@ collision_mask = 528384
 modulate = Color(1, 0, 0, 1)
 shape = SubResource("1")
 
-[node name="orbinaut" type="Sprite2D" parent="."]
-texture = ExtResource("2_3oo2o")
-hframes = 3
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("2_thbk4")
+vframes = 3
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-position = Vector2(1.90735e-06, -1.90735e-06)
-scale = Vector2(6.4, 6.4)
+position = Vector2(0, 5.96046e-08)
+scale = Vector2(6.4, 6.5)
+rect = Rect2(-15, -10, 30, 10)
 
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]

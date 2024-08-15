@@ -1057,7 +1057,7 @@ position = Vector2(8528, 1104)
 position = Vector2(8552, 1104)
 
 [node name="BoundrySetter" parent="." instance=ExtResource("25_muh8a")]
-position = Vector2(10080, 1023)
+position = Vector2(10080, 1024)
 leftBoundry = 9856
 setTop = false
 setRight = false

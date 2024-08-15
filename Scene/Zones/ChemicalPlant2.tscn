@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b73oxpdf64ys2"]
+[gd_scene load_steps=13 format=3 uid="uid://b73oxpdf64ys2"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_r8kv3"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_sbiln"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dkn7hhll7o4or" path="res://Entities/MainObjects/LayerSwitcher.tscn" id="9_bhtgv"]
 [ext_resource type="PackedScene" uid="uid://c8djwr7o6d6f7" path="res://Entities/Enemies/Octus.tscn" id="10_anddn"]
 [ext_resource type="PackedScene" uid="uid://cvaf3mpyum5at" path="res://Entities/Enemies/Stegway.tscn" id="11_sjyhs"]
+[ext_resource type="PackedScene" uid="uid://xbidybme3tde" path="res://Entities/Enemies/Spiny.tscn" id="12_xgv68"]
 
 [node name="ChemicalPlant2" type="Node2D"]
 script = ExtResource("1_r8kv3")
@@ -85,7 +86,10 @@ leftLayer = 0
 points = PackedVector2Array(1130, 244)
 
 [node name="Octus" parent="Badniks" instance=ExtResource("10_anddn")]
-position = Vector2(1136, 244)
+position = Vector2(172, 308)
 
 [node name="Stegway" parent="Badniks" instance=ExtResource("11_sjyhs")]
-position = Vector2(1224, 240)
+position = Vector2(810, 304)
+
+[node name="Spiny" parent="Badniks" instance=ExtResource("12_xgv68")]
+position = Vector2(986, 256)
