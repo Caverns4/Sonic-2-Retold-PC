@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://deaxge481u7mk"]
+[gd_scene load_steps=21 format=3 uid="uid://deaxge481u7mk"]
 
 [ext_resource type="Texture2D" uid="uid://doln6jqb428tw" path="res://Graphics/Backgrounds/EHZ/EHZ_BG.png" id="1_h12tx"]
 [ext_resource type="Shader" path="res://Shaders/PaletteSwapRow.gdshader" id="2_85vdc"]
@@ -13,13 +13,49 @@
 [ext_resource type="Texture2D" uid="uid://chn1gkg56tjh2" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_H.png" id="11_gmb7a"]
 [ext_resource type="Texture2D" uid="uid://doqoa4fu15431" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_I.png" id="12_xgogs"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dr61r"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i2ssp"]
 shader = ExtResource("2_85vdc")
 shader_parameter/amount = 4.0
 shader_parameter/palRows = 4.0
 shader_parameter/row = 1.0
 shader_parameter/approximation = 0.0
 shader_parameter/paletteTexture = ExtResource("3_i4tmo")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gefi2"]
+atlas = ExtResource("4_mbm2e")
+region = Rect2(0, 0, 512, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_beyfr"]
+atlas = ExtResource("4_mbm2e")
+region = Rect2(0, 32, 512, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbaqy"]
+atlas = ExtResource("4_mbm2e")
+region = Rect2(0, 64, 512, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5v3c"]
+atlas = ExtResource("4_mbm2e")
+region = Rect2(0, 96, 512, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b2d52"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gefi2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_beyfr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbaqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5v3c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_hwwp8"]
 resource_name = "RESET"
@@ -28,7 +64,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:material:shader_parameter/row")
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/row")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -51,22 +87,19 @@ motion_mirroring = Vector2(512, 0)
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxLayer"]
 offset_right = 512.0
-offset_bottom = 112.0
+offset_bottom = 80.0
 texture = ExtResource("1_h12tx")
 stretch_mode = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.013, 0.05)
 
-[node name="TextureRect" type="TextureRect" parent="ParallaxLayer2"]
-material = SubResource("ShaderMaterial_dr61r")
-offset_top = 80.0
-offset_right = 512.0
-offset_bottom = 104.0
-texture = ExtResource("4_mbm2e")
-stretch_mode = 1
-metadata/_edit_use_anchors_ = true
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxLayer2"]
+material = SubResource("ShaderMaterial_i2ssp")
+position = Vector2(0, 80)
+sprite_frames = SubResource("SpriteFrames_b2d52")
+frame_progress = 0.97222
+centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxLayer2"]
 libraries = {
@@ -84,7 +117,6 @@ offset_right = 512.0
 offset_bottom = 144.0
 texture = ExtResource("5_25dt4")
 stretch_mode = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.3, 0.05)
@@ -96,7 +128,6 @@ offset_right = 512.0
 offset_bottom = 152.0
 texture = ExtResource("6_mal70")
 stretch_mode = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.325, 0.05)
@@ -108,7 +139,6 @@ offset_right = 512.0
 offset_bottom = 160.0
 texture = ExtResource("7_xlcxv")
 stretch_mode = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.35, 0.05)
@@ -120,7 +150,6 @@ offset_right = 512.0
 offset_bottom = 168.0
 texture = ExtResource("8_hnl7o")
 stretch_mode = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxLayer7" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.4, 0.05)
@@ -132,7 +161,6 @@ offset_right = 512.0
 offset_bottom = 176.0
 texture = ExtResource("9_2ehrt")
 stretch_mode = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxLayer8" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.45, 0.05)
@@ -144,7 +172,6 @@ offset_right = 512.0
 offset_bottom = 184.0
 texture = ExtResource("10_cfsvv")
 stretch_mode = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxLayer9" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.5, 0.05)
@@ -156,7 +183,6 @@ offset_right = 512.0
 offset_bottom = 192.0
 texture = ExtResource("11_gmb7a")
 stretch_mode = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxLayer10" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.55, 0.05)
@@ -168,7 +194,6 @@ offset_right = 512.0
 offset_bottom = 200.0
 texture = ExtResource("12_xgogs")
 stretch_mode = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxLayer11" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.6, 0.05)
@@ -180,7 +205,6 @@ offset_right = 512.0
 offset_bottom = 224.0
 texture = ExtResource("12_xgogs")
 stretch_mode = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxLayer12" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.7, 0.05)
@@ -192,4 +216,3 @@ offset_right = 512.0
 offset_bottom = 240.0
 texture = ExtResource("12_xgogs")
 stretch_mode = 1
-metadata/_edit_use_anchors_ = true

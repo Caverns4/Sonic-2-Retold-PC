@@ -75,6 +75,3 @@ func destroy():
 	animal.global_position = global_position
 	# free node
 	queue_free()
-
-
-
