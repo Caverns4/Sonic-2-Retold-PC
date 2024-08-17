@@ -79,6 +79,7 @@ tile_set = ExtResource("6_vi2dq")
 metadata/_edit_lock_ = true
 
 [node name="Level_Layout" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="Low" type="TileMapLayer" parent="Level_Layout"]
 use_parent_material = true
@@ -95,6 +96,7 @@ tile_set = ExtResource("6_vi2dq")
 position = Vector2(96, 492)
 
 [node name="Entiities" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="LayerSwitcher3" parent="Entiities" instance=ExtResource("7")]
 position = Vector2(896, 592)
@@ -452,7 +454,24 @@ position = Vector2(3728, 1418)
 position = Vector2(3824, 1418)
 behavior = 1
 
+[node name="MackWormSpawner9" parent="Hazards" instance=ExtResource("27_3y0tj")]
+position = Vector2(6512, 1608)
+behavior = 3
+
+[node name="MackWormSpawner10" parent="Hazards" instance=ExtResource("27_3y0tj")]
+position = Vector2(6672, 1736)
+behavior = 2
+
+[node name="MackWormSpawner11" parent="Hazards" instance=ExtResource("27_3y0tj")]
+position = Vector2(8976, 1096)
+behavior = 2
+
+[node name="InvisibleBarrier" parent="Hazards" instance=ExtResource("20_q00bb")]
+position = Vector2(8304, 928)
+scale = Vector2(1, 4)
+
 [node name="Floating Platforms" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="Elevator" parent="Floating Platforms" instance=ExtResource("14_s2njc")]
 position = Vector2(5728, 1296)
@@ -606,6 +625,7 @@ script = ExtResource("11_gpbo7")
 split = true
 
 [node name="ItemsHolder" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="Monitor" parent="ItemsHolder" instance=ExtResource("16_plbr0")]
 position = Vector2(960, 496)
@@ -700,6 +720,7 @@ position = Vector2(8640, 488)
 checkPointID = 4
 
 [node name="Rings" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="Ring" parent="Rings" instance=ExtResource("23_mydf5")]
 position = Vector2(192, 432)

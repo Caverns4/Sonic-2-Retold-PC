@@ -19,16 +19,23 @@ func _process(delta):
 			if (i.get_collision_layer_value(20) or i.supTime > 0 or forceDamage):
 				# check player is not on floor
 				if !i.ground:
-					if i.movement.y > 0 and i.global_position.y < global_position.y:
+					if i.movement.y > 0:
 						# Bounce high upward
 						i.movement.y = -i.movement.y
-					elif i.movement.y <= 0:
+					else:
 						# Bounce slightly down
 						i.movement.y += 200
-					else:
-						# Bounce slightly up
-						i.movement.y = min (i.movement.y,0)
-						i.movement.y -= 100
+						
+					#if i.movement.y > 0 and i.global_position.y < global_position.y:
+					#	# Bounce high upward
+					#	i.movement.y = -i.movement.y
+					#elif i.movement.y <= 0:
+					#	# Bounce slightly down
+					#	i.movement.y += 200
+					#else:
+					#	# Bounce slightly up
+					#	i.movement.y = min (i.movement.y,0)
+					#	i.movement.y -= 100
 					if i.shield == i.SHIELDS.BUBBLE:
 							i.emit_enemy_bounce()
 				# destroy
