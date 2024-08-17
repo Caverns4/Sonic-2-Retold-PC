@@ -5,7 +5,7 @@
 
 [sub_resource type="RectangleShape2D" id="1"]
 resource_local_to_scene = true
-size = Vector2(32, 32)
+size = Vector2(32, 320)
 
 [node name="MovingStairBlocks" type="Node2D"]
 process_priority = 10
@@ -20,10 +20,13 @@ collision_mask = 0
 
 [node name="Shape3D" type="CollisionShape2D" parent="Platform"]
 modulate = Color(1, 1, 1, 0.0980392)
+scale = Vector2(1, 0.1)
 shape = SubResource("1")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platform"]
 texture = ExtResource("2_l20qw")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
 
 [node name="Platform2" type="AnimatableBody2D" parent="."]
 process_priority = 10
@@ -33,10 +36,13 @@ collision_mask = 0
 
 [node name="Shape3D" type="CollisionShape2D" parent="Platform2"]
 modulate = Color(1, 1, 1, 0.0980392)
+scale = Vector2(1, 0.1)
 shape = SubResource("1")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platform2"]
 texture = ExtResource("2_l20qw")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
 
 [node name="Platform3" type="AnimatableBody2D" parent="."]
 process_priority = 10
@@ -46,10 +52,13 @@ collision_mask = 0
 
 [node name="Shape3D" type="CollisionShape2D" parent="Platform3"]
 modulate = Color(1, 1, 1, 0.0980392)
+scale = Vector2(1, 0.1)
 shape = SubResource("1")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platform3"]
 texture = ExtResource("2_l20qw")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
 
 [node name="Platform4" type="AnimatableBody2D" parent="."]
 process_priority = 10
@@ -59,7 +68,10 @@ collision_mask = 0
 
 [node name="Shape3D" type="CollisionShape2D" parent="Platform4"]
 modulate = Color(1, 1, 1, 0.0980392)
+scale = Vector2(1, 0.1)
 shape = SubResource("1")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platform4"]
 texture = ExtResource("2_l20qw")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)

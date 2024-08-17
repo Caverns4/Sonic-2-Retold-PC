@@ -1,8 +1,8 @@
 [gd_scene load_steps=47 format=4 uid="uid://cou8y8ungkjfx"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_iwot3"]
+[ext_resource type="PackedScene" uid="uid://qs5dmtxxf1w1" path="res://Scene/Presentation/Title.tscn" id="2_7ttdp"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="2_k7p1e"]
-[ext_resource type="PackedScene" uid="uid://cun7sa0v2mwiq" path="res://Scene/Zones/Hidden Palace 1.tscn" id="2_q3xjw"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="2_t1gf1"]
 [ext_resource type="Texture2D" uid="uid://doln6jqb428tw" path="res://Graphics/Backgrounds/EHZ/EHZ_BG.png" id="3_fvh65"]
 [ext_resource type="Shader" path="res://Shaders/PaletteSwapRow.gdshader" id="4_24sym"]
@@ -112,7 +112,7 @@ sources/0 = SubResource("TileSetScenesCollectionSource_oeepv")
 
 [node name="EmeraldHillZoneAct2" type="Node2D"]
 script = ExtResource("1_iwot3")
-nextZone = ExtResource("2_q3xjw")
+nextZone = ExtResource("2_7ttdp")
 defaultLeftBoundry = 0
 defaultTopBoundry = 0
 defaultRightBoundry = 11392

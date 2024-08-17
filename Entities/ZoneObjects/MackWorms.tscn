@@ -1,0 +1,96 @@
+[gd_scene load_steps=14 format=3 uid="uid://byg2uok0rarxo"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Hazard.gd" id="1_q88ep"]
+[ext_resource type="Texture2D" uid="uid://b45phaaxoygci" path="res://Graphics/Objects_Zone/MackWorm.png" id="2_y7tm4"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dsgb"]
+atlas = ExtResource("2_y7tm4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ppvv"]
+atlas = ExtResource("2_y7tm4")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fb240"]
+atlas = ExtResource("2_y7tm4")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvu7d"]
+atlas = ExtResource("2_y7tm4")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eoux6"]
+atlas = ExtResource("2_y7tm4")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ca3dd"]
+atlas = ExtResource("2_y7tm4")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdjvd"]
+atlas = ExtResource("2_y7tm4")
+region = Rect2(0, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acd7i"]
+atlas = ExtResource("2_y7tm4")
+region = Rect2(0, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqm5t"]
+atlas = ExtResource("2_y7tm4")
+region = Rect2(0, 128, 16, 16)
+
+[sub_resource type="SpriteFrames" id="4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7dsgb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ppvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fb240")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvu7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eoux6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca3dd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdjvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acd7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqm5t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="MackWorns" type="Area2D"]
+collision_layer = 0
+collision_mask = 4096
+script = ExtResource("1_q88ep")
+damageType = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+shape = SubResource("1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("4")
+autoplay = "default"
+frame_progress = 0.644551
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

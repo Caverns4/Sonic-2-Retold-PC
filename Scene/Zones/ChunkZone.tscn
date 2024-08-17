@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://do1li36ao5kvn"]
+[gd_scene load_steps=28 format=4 uid="uid://do1li36ao5kvn"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://hikbyuhih7uc" path="res://Audio/Soundtrack/s2br_ChemicalPlant.ogg" id="2_8olfy"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="23_mydf5"]
 [ext_resource type="PackedScene" uid="uid://cma7d8l5wmqmd" path="res://Entities/Items/LampPost.tscn" id="23_ogxdu"]
 [ext_resource type="PackedScene" uid="uid://bgodeg4oddje6" path="res://Entities/MainObjects/BoundrySetter.tscn" id="25_muh8a"]
+[ext_resource type="PackedScene" uid="uid://ijfhnqwrjcfj" path="res://Entities/ZoneObjects/MackWormSpawner.tscn" id="27_3y0tj"]
 
 [node name="ChunkZone" type="Node2D"]
 script = ExtResource("2")
@@ -50,27 +51,32 @@ scroll_limit_end = Vector2(0, 768)
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.25, 1)
 motion_mirroring = Vector2(768, 0)
+metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("5_0jt3w")
 stretch_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.5, 1)
 motion_mirroring = Vector2(768, 0)
+metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer2"]
 offset_top = 304.0
 offset_right = 768.0
 offset_bottom = 768.0
 texture = ExtResource("6_apxab")
+metadata/_edit_lock_ = true
 
 [node name="AnimatedBG" type="TileMapLayer" parent="ParallaxBackground/ParallaxLayer2"]
 use_parent_material = true
 tile_map_data = PackedByteArray("AAAAABIAAQAAAAIAAAACABIAAQAAAAIAAAAEABIAAQAAAAIAAAAGABIAAQAAAAIAAAAIABIAAQAAAAIAAAAKABIAAQAAAAIAAAAMABIAAQAAAAIAAAAOABIAAQAAAAIAAAAQABIAAQAAAAIAAAASABIAAQAAAAIAAAAUABIAAQAAAAIAAAAWABIAAQAAAAIAAAAYABIAAQAAAAIAAAAaABIAAQAAAAIAAAAcABIAAQAAAAIAAAAeABIAAQAAAAIAAAAgABIAAQAAAAIAAAAiABIAAQAAAAIAAAAkABIAAQAAAAIAAAAmABIAAQAAAAIAAAAIAB8AAQAAAAEAAAALAB8AAQAAAAEAAAAOAB8AAQAAAAEAAAAYAB8AAQAAAAEAAAAbAB8AAQAAAAEAAAAeAB8AAQAAAAEAAAAhACMAAQAAAAEAAAAlACMAAQAAAAEAAAAhACsAAQAAAAEAAAAlACsAAQAAAAEAAAAbACgAAQAAAAEAAAALACgAAQAAAAEAAAAIABwAAQAAAAAAAAAIAB0AAQAAAAAAAAAIAB4AAQAAAAAAAAAIACAAAQAAAAAAAAAIACEAAQAAAAAAAAAIACIAAQAAAAAAAAALACIAAQAAAAAAAAALACEAAQAAAAAAAAALACAAAQAAAAAAAAALAB0AAQAAAAAAAAALABwAAQAAAAAAAAALAB4AAQAAAAAAAAAOABwAAQAAAAAAAAAOAB0AAQAAAAAAAAAOAB4AAQAAAAAAAAAOACAAAQAAAAAAAAAOACEAAQAAAAAAAAAOACIAAQAAAAAAAAAYACIAAQAAAAAAAAAYACEAAQAAAAAAAAAYACAAAQAAAAAAAAAYAB4AAQAAAAAAAAAYAB0AAQAAAAAAAAAYABwAAQAAAAAAAAAbABwAAQAAAAAAAAAbAB0AAQAAAAAAAAAbAB4AAQAAAAAAAAAeABwAAQAAAAAAAAAeAB0AAQAAAAAAAAAeAB4AAQAAAAAAAAAeACAAAQAAAAAAAAAeACEAAQAAAAAAAAAeACIAAQAAAAAAAAAbACAAAQAAAAAAAAAbACEAAQAAAAAAAAAbACIAAQAAAAAAAAAhACAAAQAAAAAAAAAhACEAAQAAAAAAAAAhACIAAQAAAAAAAAAhACQAAQAAAAAAAAAhACUAAQAAAAAAAAAhACYAAQAAAAAAAAAhACgAAQAAAAAAAAAhACkAAQAAAAAAAAAhACoAAQAAAAAAAAAdACoAAQAAAAAAAAAdACkAAQAAAAAAAAAdACgAAQAAAAAAAAAZACgAAQAAAAAAAAAZACkAAQAAAAAAAAAZACoAAQAAAAAAAAAlACoAAQAAAAAAAAAlACkAAQAAAAAAAAAlACgAAQAAAAAAAAAlACYAAQAAAAAAAAAlACUAAQAAAAAAAAAlACQAAQAAAAAAAAAlACIAAQAAAAAAAAAlACEAAQAAAAAAAAAlACAAAQAAAAAAAAAhACwAAQAAAAAAAAAhAC0AAQAAAAAAAAAhAC4AAQAAAAAAAAAlAC4AAQAAAAAAAAAlAC0AAQAAAAAAAAAlACwAAQAAAAAAAAAJACgAAQAAAAAAAAAJACkAAQAAAAAAAAAJACoAAQAAAAAAAAANACoAAQAAAAAAAAANACkAAQAAAAAAAAANACgAAQAAAAAAAAAoABIAAQAAAAIAAAAqABIAAQAAAAIAAAAsABIAAQAAAAIAAAAuABIAAQAAAAIAAAA=")
 tile_set = ExtResource("6_vi2dq")
+metadata/_edit_lock_ = true
 
 [node name="Level_Layout" type="Node2D" parent="."]
 
@@ -416,11 +422,42 @@ setRight = false
 rightBoundry = 10448
 bottomBoundry = 1112
 
+[node name="Hazards" type="Node2D" parent="."]
+
+[node name="MackWormSpawner" parent="Hazards" instance=ExtResource("27_3y0tj")]
+position = Vector2(4368, 649)
+
+[node name="MackWormSpawner2" parent="Hazards" instance=ExtResource("27_3y0tj")]
+position = Vector2(4464, 649)
+behavior = 1
+
+[node name="MackWormSpawner3" parent="Hazards" instance=ExtResource("27_3y0tj")]
+position = Vector2(3216, 1418)
+
+[node name="MackWormSpawner4" parent="Hazards" instance=ExtResource("27_3y0tj")]
+position = Vector2(3312, 1418)
+behavior = 1
+
+[node name="MackWormSpawner5" parent="Hazards" instance=ExtResource("27_3y0tj")]
+position = Vector2(3472, 1418)
+
+[node name="MackWormSpawner6" parent="Hazards" instance=ExtResource("27_3y0tj")]
+position = Vector2(3568, 1418)
+behavior = 1
+
+[node name="MackWormSpawner7" parent="Hazards" instance=ExtResource("27_3y0tj")]
+position = Vector2(3728, 1418)
+
+[node name="MackWormSpawner8" parent="Hazards" instance=ExtResource("27_3y0tj")]
+position = Vector2(3824, 1418)
+behavior = 1
+
 [node name="Floating Platforms" type="Node2D" parent="."]
 
 [node name="Elevator" parent="Floating Platforms" instance=ExtResource("14_s2njc")]
 position = Vector2(5728, 1296)
 platformSprite = ExtResource("15_wn01l")
+endPosition = Vector2(0, 192)
 speed = 0.5
 
 [node name="Elevator3" parent="Floating Platforms" instance=ExtResource("14_s2njc")]
@@ -497,7 +534,7 @@ position = Vector2(8384, 928)
 speed = 0.5
 
 [node name="MovingStairBlocks7" parent="Floating Platforms" instance=ExtResource("19_exxvg")]
-position = Vector2(5696, 1624)
+position = Vector2(5696, 1600)
 speed = 0.5
 direction = 1
 

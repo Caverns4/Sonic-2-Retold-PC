@@ -28,13 +28,15 @@ _data = {
 
 [node name="Octus" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 16384
-collision_mask = 0
+collision_mask = 273
 script = ExtResource("1_28rdy")
 
 [node name="CollissionMask" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
 shape = SubResource("1")
 
 [node name="DamageArea" type="Area2D" parent="."]
+position = Vector2(0, -4)
 collision_layer = 0
 collision_mask = 528384
 
@@ -43,7 +45,7 @@ modulate = Color(1, 0, 0, 1)
 shape = SubResource("1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -4)
+position = Vector2(0, -8)
 texture = ExtResource("2_dvyci")
 hframes = 3
 vframes = 3

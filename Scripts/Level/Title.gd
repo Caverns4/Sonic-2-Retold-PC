@@ -84,7 +84,7 @@ func MenuOptionChosen():
 	match menuEntry:
 		0:
 			titleEnd = true
-			nextScene = preload("res://Scene/Zones/EmeraldHill1.tscn")
+			nextScene = preload("res://Scene/Zones/ChunkZone.tscn")
 			Global.main.change_scene_to_file(nextScene,"FadeOut","FadeOut",1)
 		1:
 			titleEnd = true
@@ -101,4 +101,3 @@ func UpdateMenuDisplay():
 	$CanvasLayer/Labels/TitleMenu/MenuIcon.position.y = menuIconYOff[menuEntry]
 	$CanvasLayer/Labels/TitleMenu/Text.text = menuText[menuEntry]
 	#$CanvasLayer/Labels/TitleMenu/Text.append_text(menuText[menuEntry])
-
