@@ -1,7 +1,7 @@
 extends PhysicsObject
+# Sonic, Knuckle, and Mighty
 const HITBOXESSONIC = {NORMAL = Vector2(9,19)*2, ROLL = Vector2(7,14)*2, CROUCH = Vector2(9,11)*2, GLIDE = Vector2(10,10)*2, HORIZONTAL = Vector2(22,9)*2}
 const HITBOXESTAILS = {NORMAL = Vector2(9,15)*2, ROLL = Vector2(7,14)*2, CROUCH = Vector2(9,9.5)*2, GLIDE = Vector2(10,10)*2, HORIZONTAL = Vector2(22,9)*2}
-const HITBOXESKNUCKLES = {NORMAL = Vector2(9,19)*2, ROLL = Vector2(7,14)*2, CROUCH = Vector2(9,11)*2, GLIDE = Vector2(10,10)*2, HORIZONTAL = Vector2(22,9)*2}
 const HITBOXESAMY = {NORMAL = Vector2(9,15)*2, ROLL = Vector2(7,11)*2, CROUCH = Vector2(9,9.5)*2, GLIDE = Vector2(10,10)*2, HORIZONTAL = Vector2(22,9)*2}
 var currentHitbox = HITBOXESSONIC
 
@@ -64,44 +64,41 @@ var enemyCounter = 0
 
 var character = Global.CHARACTERS.SONIC
 
+#The jump heights of characters, seperate from the physics list.
+var jumpHeights = [
+	6.5*60, # Sonic, Tails, Amy, Mighty, Supers besides Sonic and Knuckles
+	6*60,   # Knuckles & Super Knuckles
+	8*60    # Super Sonic
+]
+
+var jumpHeightsWater = [
+	3.5*60,
+	3*60,
+	3.5*60
+]
+
 # 0 = Sonic, 1 = Unused, 2 = Knuckles, 3 = Shoes, 4 = Super Sonic
 
 var physicsList = [
-# 0 Sonic
-[0.046875, 0.5, 0.046875, 6*60, 0.09375, 0.046875*0.5, 0.125, 0.21875, 6.5*60, 4],
-# 1 Tails leftover (Uses Sonic's setting now)
-[0.046875, 0.5, 0.046875, 6*60, 0.09375, 0.046875*0.5, 0.125, 0.21875, 6.5*60, 4],
-# 2 Knuckles
-[0.046875, 0.5, 0.046875, 6*60, 0.09375, 0.046875*0.5, 0.125, 0.21875, 6*60, 4],
-# 3 Shoes (remove *0.5 for original rolling friction)
-[0.09375, 0.5, 0.09375, 12*60, 0.1875, 0.046875*0.5, 0.125, 0.21875, 6.5*60, 4],
-# 4 Super Sonic
-[0.1875, 1, 0.046875, 10*60, 0.375, 0.0234375, 0.125, 0.21875, 8*60, 4],
-# 5 Super Forms besides Sonic
-[0.09375, 0.75, 0.046875, 8*60, 0.1875, 0.0234375, 0.125, 0.21875, 6.5*60, 4],
-# 6 Super Knuckles
-[0.09375, 0.75, 0.046875, 8*60, 0.1875, 0.0234375, 0.125, 0.21875, 6*60, 4],
-# 7 Shoes Knuckles (small jump) (remove *0.5 for original rolling friction)
-[0.09375, 0.5, 0.09375, 12*60, 0.1875, 0.046875*0.5, 0.125, 0.21875, 6*60, 4],
+# 0 Sonic (Primary Character physics)
+[0.046875, 0.5, 0.046875, 6*60, 0.09375, 0.046875*0.5, 0.125, 0.21875, 4],
+# 1 Shoes (remove *0.5 for original rolling friction)
+[0.09375, 0.5, 0.09375, 12*60, 0.1875, 0.046875*0.5, 0.125, 0.21875, 4],
+# 2 Super Sonic
+[0.1875, 1, 0.046875, 10*60, 0.375, 0.0234375, 0.125, 0.21875, 4],
+# 3 Super Forms besides Sonic
+[0.09375, 0.75, 0.046875, 8*60, 0.1875, 0.0234375, 0.125, 0.21875, 4],
 ]
 
 var waterPhysicsList = [
 # 0 Sonic (Primary Character physics)
-[0.046875/2.0, 0.5/2.0, 0.046875/2.0, 6*60/2.0, 0.09375/2.0, 0.046875*0.5, 0.125, 0.0625, 3.5*60, 2],
-# 1 Tails leftover (Uses Sonic's setting now)
-[0.046875/2.0, 0.5/2.0, 0.046875/2.0, 6*60/2.0, 0.09375/2.0, 0.046875*0.5, 0.125, 0.0625, 3.5*60, 2],
-# 2 Knuckles
-[0.046875/2.0, 0.5/2.0, 0.046875/2.0, 6*60/2.0, 0.09375/2.0, 0.046875*0.5, 0.125, 0.0625, 3*60, 2],
-# 3 Shoes
-[0.046875/2.0, 0.5/2.0, 0.046875/2.0, 6*60/2.0, 0.09375/2.0, 0.046875*0.5, 0.125, 0.0625, 3.5*60, 2],
-# 4 Super Sonic
-[0.09375, 0.5, 0.046875, 5*60, 0.1875, 0.046875, 0.125, 0.0625, 3.5*60, 2],
-# 5 Super Forms besides Sonic
-[0.046875, 0.375, 0.046875, 4*60, 0.09375, 0.0234375, 0.125, 0.0625, 3.5*60, 2],
-# 6 Super Knuckles
-[0.046875, 0.375, 0.046875, 4*60, 0.09375, 0.0234375, 0.125, 0.0625, 3*60, 2],
-# 7 Shoes Knuckles (small jump)
-[0.046875/2.0, 0.5/2.0, 0.046875/2.0, 6*60/2.0, 0.09375/2.0, 0.046875*0.5, 0.125, 0.0625, 3*60, 2],
+[0.046875/2.0, 0.5/2.0, 0.046875/2.0, 6*60/2.0, 0.09375/2.0, 0.046875*0.5, 0.125, 0.0625, 2],
+# 1 Shoes
+[0.046875/2.0, 0.5/2.0, 0.046875/2.0, 6*60/2.0, 0.09375/2.0, 0.046875*0.5, 0.125, 0.0625, 2],
+# 2 Super Sonic
+[0.09375, 0.5, 0.046875, 5*60, 0.1875, 0.046875, 0.125, 0.0625, 2],
+# 3 Super Forms besides Sonic
+[0.046875, 0.375, 0.046875, 4*60, 0.09375, 0.0234375, 0.125, 0.0625, 2],
 ]
 
 # ================
@@ -366,7 +363,7 @@ func _ready():
 			get_node("OldSprite").queue_free()
 		Global.CHARACTERS.KNUCKLES:
 			# Set sprites
-			currentHitbox = HITBOXESKNUCKLES
+			currentHitbox = HITBOXESSONIC
 			get_node("Sonic").name = "OldSprite"
 			var knuckles = knucklesAnimations.instantiate()
 			add_child(knuckles)
@@ -1237,27 +1234,15 @@ func determine_physics():
 	match (character):
 		Global.CHARACTERS.SONIC:
 			if isSuper:
-				return 4 # Super Sonic
+				return 2 # Super Sonic
 			elif shoeTime > 0:
-				return 3 # Shoes
+				return 1 # Shoes
 			return 0 # Default
-		Global.CHARACTERS.TAILS:
-			if isSuper:
-				return 5 # Super Tails
-			elif shoeTime > 0:
-				return 3 # Shoes
-			return 0 # Default
-		Global.CHARACTERS.KNUCKLES:
-			if isSuper:
-				return 6 # Super Knuckles
-			elif shoeTime > 0:
-				return 7 # Shoes with Knuckles' jump
-			return 2 # Knuckles
 	#Anyone who isn't a special case:
 	if isSuper:
-		return 5 # Super Tails
+		return 3 # Super
 	elif shoeTime > 0:
-		return 3 # Shoes
+		return 1 # Shoes
 	return 0 #Default to Sonic 
 
 
@@ -1274,8 +1259,19 @@ func switch_physics(isWater = water):
 	rollfrc = getList[5]
 	rolldec = getList[6]
 	grv = getList[7]
-	jmp = getList[8]
-	releaseJmp = getList[9]
+	# For Jump height:
+	var i = 0
+	if character == Global.CHARACTERS.KNUCKLES:
+		i = 1
+	if character == Global.CHARACTERS.SONIC and isSuper:
+		i = 2
+	if !isWater:
+		releaseJmp = 4
+		jmp = jumpHeights[i]
+	else:
+		releaseJmp = 2
+		jmp = jumpHeightsWater[i]
+	
 
 
 

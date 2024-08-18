@@ -1,7 +1,7 @@
 [gd_scene load_steps=66 format=3 uid="uid://sbta787c4fwk"]
 
 [ext_resource type="Material" uid="uid://bveqi5m5ihsgj" path="res://Shaders/PlayerPalette.tres" id="1_h4o3a"]
-[ext_resource type="Texture2D" uid="uid://cqk04hqgn2v8b" path="res://Graphics/Players/Sonic_Beta.png" id="2_apay2"]
+[ext_resource type="Texture2D" uid="uid://cgq1nmr34au7o" path="res://Graphics/Players/Mighty.png" id="2_n3qsv"]
 [ext_resource type="Texture2D" uid="uid://dlomjk6vm15ep" path="res://Graphics/Misc/DashDust.png" id="3_qj7mf"]
 [ext_resource type="Texture2D" uid="uid://dvqglf8dididc" path="res://Graphics/Items/shield_plain.png" id="4_eakdf"]
 
@@ -17,7 +17,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -4)]
+"values": [Vector2(0, -5)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1261,11 +1261,10 @@ autoplay = "idle"
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 5
 material = ExtResource("1_h4o3a")
-texture = ExtResource("2_apay2")
-offset = Vector2(0, -4)
+texture = ExtResource("2_n3qsv")
+offset = Vector2(0, -5)
 hframes = 16
-vframes = 8
-frame = 53
+vframes = 6
 
 [node name="DashDust" type="AnimatedSprite2D" parent="Sprite2D"]
 visible = false
@@ -1275,7 +1274,7 @@ frame = 3
 offset = Vector2(-9, -4)
 
 [node name="CrouchBox" type="CollisionShape2D" parent="."]
-position = Vector2(0, 9)
+position = Vector2(0, 8)
 shape = SubResource("111")
 disabled = true
 

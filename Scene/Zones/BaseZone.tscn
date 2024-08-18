@@ -509,7 +509,7 @@ position = Vector2(4200, 761)
 
 [node name="Monitor10" parent="Monitors" instance=ExtResource("8_8svvy")]
 position = Vector2(4080, 832)
-item = 4
+item = 7
 
 [node name="Hazards" type="Node2D" parent="."]
 

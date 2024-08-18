@@ -19,7 +19,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -4)]
+"values": [Vector2(0, -5)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1251,7 +1251,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-5, -8)]
+"values": [Vector2(-5, -7)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1586,7 +1586,7 @@ z_index = 5
 material = ExtResource("1")
 position = Vector2(0, -4)
 texture = ExtResource("2")
-offset = Vector2(0, -4)
+offset = Vector2(0, -5)
 hframes = 16
 vframes = 8
 script = ExtResource("5")
@@ -1604,7 +1604,7 @@ show_behind_parent = true
 material = ExtResource("1")
 rotation = 6.28318
 texture = ExtResource("2")
-offset = Vector2(-5, -8)
+offset = Vector2(-5, -7)
 hframes = 16
 vframes = 8
 frame = 10
@@ -1618,7 +1618,7 @@ libraries = {
 autoplay = "default"
 
 [node name="CrouchBox" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6.5)
+position = Vector2(0, 5.5)
 shape = SubResource("122")
 disabled = true
 
