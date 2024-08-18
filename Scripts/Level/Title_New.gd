@@ -1,9 +1,10 @@
 extends Node2D
 
 @export var music = preload("res://Audio/Soundtrack/s2br_TitleScreen.ogg")
-@export var speed = 0
-@export var nextScene = load("res://Scene/Presentation/CharacterSelect.tscn")
+@export var nextZone = load("res://Scene/Zones/ChunkZone.tscn")
+@export var testScene = load("res://Scene/Presentation/CharacterSelect.tscn")
 @export var returnScene = load("res://Scene/Presentation/PoweredByWorlds.tscn")
+
 var titleEnd = false
 var menuActive = false
 var menuEntry = 0
@@ -43,6 +44,8 @@ func _ready():
 	instance.scroll_base_offset.y = paraOffsets[zoneIndex]
 	add_child(instance)
 	UpdateMenuDisplay()
+	if nextZone != null:
+		Global.nextZone = nextZone
 
 func _process(delta):
 	if $CanvasLayer/Labels.visible == true and !titleEnd:
@@ -84,20 +87,18 @@ func MenuOptionChosen():
 	match menuEntry:
 		0:
 			titleEnd = true
-			nextScene = preload("res://Scene/Zones/ChunkZone.tscn")
-			Global.main.change_scene_to_file(nextScene,"FadeOut","FadeOut",1)
+			Global.main.change_scene_to_file(nextZone,"FadeOut","FadeOut",1)
 		1:
 			titleEnd = true
 			Global.TwoPlayer = true
 			Global.PlayerChar1 = Global.CHARACTERS.SONIC
 			Global.PlayerChar2 = Global.CHARACTERS.TAILS
-			Global.main.change_scene_to_file(nextScene,"FadeOut","FadeOut",1)
+			Global.main.change_scene_to_file(testScene,"FadeOut","FadeOut",1)
 		2:
 			titleEnd = true
-			Global.main.change_scene_to_file(nextScene,"FadeOut","FadeOut",1)
+			Global.main.change_scene_to_file(testScene,"FadeOut","FadeOut",1)
 	
 	
 func UpdateMenuDisplay():
 	$CanvasLayer/Labels/TitleMenu/MenuIcon.position.y = menuIconYOff[menuEntry]
 	$CanvasLayer/Labels/TitleMenu/Text.text = menuText[menuEntry]
-	#$CanvasLayer/Labels/TitleMenu/Text.append_text(menuText[menuEntry])

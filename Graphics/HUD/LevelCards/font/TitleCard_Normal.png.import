@@ -13,10 +13,13 @@ dest_files=["res://.godot/imported/TitleCard_Normal.png-ab6c2fe500a61b3747d89b63
 [params]
 
 character_ranges=PackedStringArray("65-91", "32")
+kerning_pairs=PackedStringArray()
 columns=11
 rows=3
 image_margin=Rect2i(0, 0, 0, 0)
 character_margin=Rect2i(0, 0, 0, 0)
+ascent=0
+descent=0
 fallbacks=[]
 compress=true
 scaling_mode=2
