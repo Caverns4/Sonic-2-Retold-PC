@@ -7,8 +7,8 @@ enum STATES{IDLE,SEEKING,WARMUP,DIVE,COOLDOWN}
 var state = STATES.IDLE
 
 var targets = [] # targets in the sensor area
-var lookingForTargets = false # If the BBat is awaiting an enemy
-var currentTarget = null # The target picks from targets. used to reemmber a player.
+var lookingForTargets = false # If the enemy is scanning for a target.
+var currentTarget = null # The target picked from targets. used to remember the player.
 var diveTargetPoints = []
 
 var hoverOffset = 0.0
