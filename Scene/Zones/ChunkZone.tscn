@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://do1li36ao5kvn"]
+[gd_scene load_steps=29 format=4 uid="uid://do1li36ao5kvn"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://hikbyuhih7uc" path="res://Audio/Soundtrack/s2br_ChemicalPlant.ogg" id="2_8olfy"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://cma7d8l5wmqmd" path="res://Entities/Items/LampPost.tscn" id="23_ogxdu"]
 [ext_resource type="PackedScene" uid="uid://bgodeg4oddje6" path="res://Entities/MainObjects/BoundrySetter.tscn" id="25_muh8a"]
 [ext_resource type="PackedScene" uid="uid://ijfhnqwrjcfj" path="res://Entities/ZoneObjects/MackWormSpawner.tscn" id="27_3y0tj"]
+[ext_resource type="PackedScene" uid="uid://xbidybme3tde" path="res://Entities/Enemies/Spiny.tscn" id="28_s6xc8"]
 
 [node name="ChunkZone" type="Node2D"]
 script = ExtResource("2")
@@ -711,13 +712,17 @@ checkPointID = 1
 position = Vector2(5824, 80)
 checkPointID = 2
 
+[node name="LampPost5" parent="ItemsHolder" instance=ExtResource("23_ogxdu")]
+position = Vector2(6120, 1512)
+checkPointID = 3
+
 [node name="LampPost3" parent="ItemsHolder" instance=ExtResource("23_ogxdu")]
 position = Vector2(7936, 744)
-checkPointID = 3
+checkPointID = 4
 
 [node name="LampPost4" parent="ItemsHolder" instance=ExtResource("23_ogxdu")]
 position = Vector2(8640, 488)
-checkPointID = 4
+checkPointID = 5
 
 [node name="Rings" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -1179,3 +1184,37 @@ position = Vector2(8528, 1104)
 position = Vector2(8552, 1104)
 
 [node name="Badniks" type="Node2D" parent="."]
+
+[node name="Spiny" parent="Badniks" instance=ExtResource("28_s6xc8")]
+position = Vector2(2384, 896)
+
+[node name="Spiny2" parent="Badniks" instance=ExtResource("28_s6xc8")]
+position = Vector2(2312, 895)
+
+[node name="Spiny3" parent="Badniks" instance=ExtResource("28_s6xc8")]
+position = Vector2(3072, 448)
+
+[node name="Spiny4" parent="Badniks" instance=ExtResource("28_s6xc8")]
+position = Vector2(3160, 448)
+
+[node name="Spiny5" parent="Badniks" instance=ExtResource("28_s6xc8")]
+position = Vector2(3128, 1408)
+
+[node name="Spiny6" parent="Badniks" instance=ExtResource("28_s6xc8")]
+position = Vector2(4160, 1344)
+
+[node name="Spiny7" parent="Badniks" instance=ExtResource("28_s6xc8")]
+position = Vector2(5448, 1024)
+
+[node name="Spiny8" parent="Badniks" instance=ExtResource("28_s6xc8")]
+position = Vector2(4456, 384)
+
+[node name="Spiny9" parent="Badniks" instance=ExtResource("28_s6xc8")]
+position = Vector2(4584, 384)
+
+[node name="Spiny10" parent="Badniks" instance=ExtResource("28_s6xc8")]
+position = Vector2(6584, 1280)
+
+[node name="Spiny11" parent="Badniks" instance=ExtResource("28_s6xc8")]
+position = Vector2(9472, 1200)
+rotation = -1.5708
