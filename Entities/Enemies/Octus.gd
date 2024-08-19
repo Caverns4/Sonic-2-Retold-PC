@@ -71,6 +71,7 @@ func _physics_process(delta: float) -> void:
 					state = STATES.LAND
 				else:
 					state = STATES.FLEE
+					$VisibleOnScreenEnabler2D.queue_free()
 		STATES.LAND:
 			if stateTimer == 0.0:
 				MoveWithGravity(delta)
