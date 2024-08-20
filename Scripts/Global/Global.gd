@@ -100,7 +100,7 @@ signal stage_started
 var nodeMemory = []
 
 # Game settings
-var zoomSize = 1
+var zoomSize = 2
 
 # Hazard type references
 enum HAZARDS {NORMAL, FIRE, ELEC, WATER}

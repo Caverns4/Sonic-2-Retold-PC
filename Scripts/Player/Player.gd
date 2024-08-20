@@ -726,7 +726,7 @@ func _physics_process(delta):
 			movement.x = 0
 		# disable pushing wall
 		if inputs[INPUTS.XINPUT] != sign(pushingWall):
-			pushingWall = 0 #BUGFIX?
+			pushingWall = 0
 		
 	elif pushingWall != 0:
 		# count down pushingwall

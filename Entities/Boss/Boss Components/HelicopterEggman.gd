@@ -23,7 +23,7 @@ var targetPosition = Vector2.ZERO
 func _ready():
 	# move to the set currentPoint position before the boss starts (plus 128 pixels higher)
 	global_position = getPose[currentPoint]
-	# run laugh function for everytime the boss gets hit
+	# run laugh function for every time the player gets hit
 	connect("hit_player",Callable(self,"do_laugh"))
 	drillCar = get_tree().get_root().find_child("DrillEggmanCar",true,false)
 	if drillCar:

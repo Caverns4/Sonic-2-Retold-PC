@@ -39,8 +39,6 @@ func _ready():
 		if i is StateMover:
 			states.append(i)
 		
-	pass # Replace with function body.
-	
 	origin = Vector2(position)
 	
 	if states.size() > 0:

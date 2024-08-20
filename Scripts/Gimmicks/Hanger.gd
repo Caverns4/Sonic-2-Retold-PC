@@ -172,8 +172,6 @@ func physics_process_disconnected(_delta, player, index):
 		
 	connect_grab(player, index)
 
-	pass
-
 # This function is responsible for connecting grabs in the first place *and* for
 # disconnecting grabs if the player contacts the ground while grabbing.
 func _physics_process(delta):
@@ -254,7 +252,6 @@ func disconnect_grab(player, index, deliberate, jumpUpwards=false):
 	
 	# lower playerContacts value one... I guess in case anything else accesses this in the same process pass.
 	_playerContacts -= 1
-	pass
 	
 func checkPlayerDisconnectByAction(player):
 	if playerCarryAI:
