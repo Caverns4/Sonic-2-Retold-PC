@@ -7,7 +7,7 @@ var elecPart = preload("res://Entities/Misc/ElecParticles.tscn")
 # drop dash variables
 var dropSpeedAmy = [6,10]
 var dropSpeedSonic = [8,12] #the base speed for a drop dash, second is super
-var dropMax = [12,13]   #the top speed for a drop dash, second is super
+var dropMax = [12,16]   #the top speed for a drop dash, second is super
 var dropTimer = 0
 
 var lockDir = false

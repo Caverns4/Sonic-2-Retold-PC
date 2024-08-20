@@ -33,7 +33,6 @@ zoneName = "CHEMICAL PLANT"
 act = 2
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-visible = false
 scroll_base_scale = Vector2(1, 0.23)
 scroll_limit_end = Vector2(0, 768)
 
