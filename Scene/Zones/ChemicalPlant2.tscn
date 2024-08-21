@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://b73oxpdf64ys2"]
+[gd_scene load_steps=41 format=4 uid="uid://b73oxpdf64ys2"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_r8kv3"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_sbiln"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="26_peo5d"]
 [ext_resource type="PackedScene" uid="uid://ijfhnqwrjcfj" path="res://Entities/ZoneObjects/MackWormSpawner.tscn" id="27_ijc7b"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="30_5k5ut"]
+[ext_resource type="PackedScene" uid="uid://cma7d8l5wmqmd" path="res://Entities/Items/LampPost.tscn" id="30_8ycur"]
 [ext_resource type="PackedScene" uid="uid://xbidybme3tde" path="res://Entities/Enemies/Spiny.tscn" id="30_po1yj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_da7so"]
@@ -464,6 +465,12 @@ position = Vector2(7472, 1912)
 
 [node name="Spring9" parent="Entities" instance=ExtResource("13_fvoj7")]
 position = Vector2(7440, 1912)
+
+[node name="Spring10" parent="Entities" instance=ExtResource("13_fvoj7")]
+position = Vector2(4592, 504)
+
+[node name="Spring11" parent="Entities" instance=ExtResource("13_fvoj7")]
+position = Vector2(3568, 696)
 
 [node name="Floating Platforms" type="Node2D" parent="."]
 
@@ -904,6 +911,25 @@ position = Vector2(2384, 432)
 position = Vector2(1808, 112)
 item = 3
 
+[node name="LampPost" parent="ItemsHolder" instance=ExtResource("30_8ycur")]
+position = Vector2(3640, 1256)
+
+[node name="LampPost2" parent="ItemsHolder" instance=ExtResource("30_8ycur")]
+position = Vector2(4416, 872)
+checkPointID = 1
+
+[node name="LampPost3" parent="ItemsHolder" instance=ExtResource("30_8ycur")]
+position = Vector2(7232, 744)
+checkPointID = 2
+
+[node name="LampPost4" parent="ItemsHolder" instance=ExtResource("30_8ycur")]
+position = Vector2(8512, 168)
+checkPointID = 3
+
+[node name="LampPost5" parent="ItemsHolder" instance=ExtResource("30_8ycur")]
+position = Vector2(11712, 1256)
+checkPointID = 4
+
 [node name="Rings" type="Node2D" parent="."]
 
 [node name="Ring" parent="Rings" instance=ExtResource("10_bnv7v")]
@@ -999,9 +1025,3 @@ texture = SubResource("ImageTexture_hxxfn")
 script = ExtResource("25_7q6q8")
 split = true
 splitChance = 50
-
-[node name="Spring" parent="." instance=ExtResource("13_fvoj7")]
-position = Vector2(4592, 504)
-
-[node name="Spring2" parent="." instance=ExtResource("13_fvoj7")]
-position = Vector2(3568, 696)
