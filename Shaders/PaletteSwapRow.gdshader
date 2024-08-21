@@ -11,20 +11,20 @@ void fragment(){
 		vec3 pal = texture(paletteTexture,UV).rgb;
 		vec3 repal = pal;
 		vec3 color = texture(TEXTURE,UV).rgb;
-		
+
 		vec3 new_color = color;
-		
+
 		for (float i = 1.0; i<=amount; i++){
 			pal = texture(paletteTexture,vec2(i/(amount+1.0),0)).rgb;
 			repal = texture(paletteTexture,vec2(i/(amount+1.0),(row-1.0)/(palRows-1.0))).rgb;
-			
+
 			if (distance(pal,color) - distance(new_color, color) <= approximation) {
 				new_color = repal;
 				// set i to end loop if a match was already found
 				i = amount+1.0;
 			}
 		}
-		
+
 		COLOR.rgb = new_color;
 		COLOR.a  = texture(TEXTURE,UV).a;
 	} else {

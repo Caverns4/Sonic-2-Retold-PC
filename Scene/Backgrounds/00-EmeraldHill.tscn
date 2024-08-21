@@ -1,7 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://deaxge481u7mk"]
+[gd_scene load_steps=19 format=3 uid="uid://deaxge481u7mk"]
 
 [ext_resource type="Texture2D" uid="uid://doln6jqb428tw" path="res://Graphics/Backgrounds/EHZ/EHZ_BG.png" id="1_h12tx"]
-[ext_resource type="Shader" path="res://Shaders/PaletteSwapRow.gdshader" id="2_85vdc"]
+[ext_resource type="Shader" path="res://Shaders/PaletteSwapRow_Timerbased.gdshader" id="2_uv63v"]
 [ext_resource type="Texture2D" uid="uid://ysgv52sem1qo" path="res://Graphics/Palettes/ehz_waterpal.png" id="3_i4tmo"]
 [ext_resource type="Texture2D" uid="uid://cet8xh8m1yo00" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_B.png" id="4_mbm2e"]
 [ext_resource type="Texture2D" uid="uid://4v6st0kn7iu3" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_J.png" id="5_25dt4"]
@@ -13,12 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://chn1gkg56tjh2" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_H.png" id="11_gmb7a"]
 [ext_resource type="Texture2D" uid="uid://doqoa4fu15431" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_I.png" id="12_xgogs"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i2ssp"]
-shader = ExtResource("2_85vdc")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_023dl"]
+shader = ExtResource("2_uv63v")
 shader_parameter/amount = 4.0
 shader_parameter/palRows = 4.0
-shader_parameter/row = 1.0
 shader_parameter/approximation = 0.0
+shader_parameter/time_scale = 0.1
 shader_parameter/paletteTexture = ExtResource("3_i4tmo")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gefi2"]
@@ -57,28 +57,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_hwwp8"]
-resource_name = "RESET"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/row")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [1.0, 2.0, 3.0, 4.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_h6h70"]
-_data = {
-"RESET": SubResource("Animation_hwwp8")
-}
-
 [node name="00-EmeraldHill" type="ParallaxBackground"]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
@@ -95,17 +73,11 @@ stretch_mode = 1
 motion_scale = Vector2(0.013, 0.05)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxLayer2"]
-material = SubResource("ShaderMaterial_i2ssp")
+material = SubResource("ShaderMaterial_023dl")
 position = Vector2(0, 80)
 sprite_frames = SubResource("SpriteFrames_b2d52")
 frame_progress = 0.97222
 centered = false
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxLayer2"]
-libraries = {
-"": SubResource("AnimationLibrary_h6h70")
-}
-autoplay = "RESET"
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.25, 0.05)

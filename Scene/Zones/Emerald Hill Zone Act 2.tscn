@@ -1,11 +1,11 @@
-[gd_scene load_steps=47 format=4 uid="uid://cou8y8ungkjfx"]
+[gd_scene load_steps=45 format=4 uid="uid://cou8y8ungkjfx"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_iwot3"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="2_k7p1e"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="2_t1gf1"]
 [ext_resource type="PackedScene" uid="uid://c58ontqoxjuti" path="res://Scene/Presentation/PoweredByWorlds.tscn" id="2_y3pow"]
 [ext_resource type="Texture2D" uid="uid://doln6jqb428tw" path="res://Graphics/Backgrounds/EHZ/EHZ_BG.png" id="3_fvh65"]
-[ext_resource type="Shader" path="res://Shaders/PaletteSwapRow.gdshader" id="4_24sym"]
+[ext_resource type="Shader" path="res://Shaders/PaletteSwapRow_Timerbased.gdshader" id="4_y5gnw"]
 [ext_resource type="Texture2D" uid="uid://ysgv52sem1qo" path="res://Graphics/Palettes/ehz_waterpal.png" id="5_wfgyf"]
 [ext_resource type="Texture2D" uid="uid://cet8xh8m1yo00" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_B.png" id="6_pdv5y"]
 [ext_resource type="Texture2D" uid="uid://4v6st0kn7iu3" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_J.png" id="7_mfkfo"]
@@ -37,12 +37,12 @@
 [ext_resource type="PackedScene" uid="uid://bfcfm2qdipj7y" path="res://Entities/Boss/Boss Components/HelicopterEggman.tscn" id="34_b33uc"]
 [ext_resource type="PackedScene" uid="uid://bjuh5cvbt06af" path="res://Entities/MainObjects/Capsule.tscn" id="36_lirhm"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_axd1m"]
-shader = ExtResource("4_24sym")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bkq3j"]
+shader = ExtResource("4_y5gnw")
 shader_parameter/amount = 4.0
 shader_parameter/palRows = 4.0
-shader_parameter/row = 1.0
 shader_parameter/approximation = 0.0
+shader_parameter/time_scale = 0.1
 shader_parameter/paletteTexture = ExtResource("5_wfgyf")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gefi2"]
@@ -81,28 +81,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_hwwp8"]
-resource_name = "RESET"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/row")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [1.0, 2.0, 3.0, 4.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_h6h70"]
-_data = {
-"RESET": SubResource("Animation_hwwp8")
-}
-
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_oeepv"]
 scenes/1/scene = ExtResource("23_e41eb")
 
@@ -135,17 +113,11 @@ stretch_mode = 1
 motion_scale = Vector2(0.013, 0.05)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-material = SubResource("ShaderMaterial_axd1m")
+material = SubResource("ShaderMaterial_bkq3j")
 position = Vector2(0, 80)
 sprite_frames = SubResource("SpriteFrames_jjfr2")
 frame_progress = 0.279355
 centered = false
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground/ParallaxLayer2"]
-libraries = {
-"": SubResource("AnimationLibrary_h6h70")
-}
-autoplay = "RESET"
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.25, 0.05)

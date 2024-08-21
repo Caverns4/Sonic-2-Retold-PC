@@ -1,10 +1,10 @@
-[gd_scene load_steps=43 format=4 uid="uid://caxc44uymh48a"]
+[gd_scene load_steps=41 format=4 uid="uid://caxc44uymh48a"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_8ynvh"]
 [ext_resource type="PackedScene" uid="uid://cou8y8ungkjfx" path="res://Scene/Zones/Emerald Hill Zone Act 2.tscn" id="2_w0xgd"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="2_yrcwh"]
 [ext_resource type="Texture2D" uid="uid://doln6jqb428tw" path="res://Graphics/Backgrounds/EHZ/EHZ_BG.png" id="3_0qf6q"]
-[ext_resource type="Shader" path="res://Shaders/PaletteSwapRow.gdshader" id="4_o7lt7"]
+[ext_resource type="Shader" path="res://Shaders/PaletteSwapRow_Timerbased.gdshader" id="4_o5nmk"]
 [ext_resource type="Texture2D" uid="uid://ysgv52sem1qo" path="res://Graphics/Palettes/ehz_waterpal.png" id="5_7j63o"]
 [ext_resource type="Texture2D" uid="uid://cet8xh8m1yo00" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_B.png" id="6_0auib"]
 [ext_resource type="Texture2D" uid="uid://4v6st0kn7iu3" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_J.png" id="7_gdhds"]
@@ -36,11 +36,11 @@
 [ext_resource type="PackedScene" uid="uid://bgodeg4oddje6" path="res://Entities/MainObjects/BoundrySetter.tscn" id="34_s73fn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7a2nl"]
-shader = ExtResource("4_o7lt7")
+shader = ExtResource("4_o5nmk")
 shader_parameter/amount = 4.0
 shader_parameter/palRows = 4.0
-shader_parameter/row = 1.0
 shader_parameter/approximation = 0.0
+shader_parameter/time_scale = 0.1
 shader_parameter/paletteTexture = ExtResource("5_7j63o")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gefi2"]
@@ -79,28 +79,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_hwwp8"]
-resource_name = "RESET"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/row")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [1.0, 2.0, 3.0, 4.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_h6h70"]
-_data = {
-"RESET": SubResource("Animation_hwwp8")
-}
-
 [node name="EmeraldHill1" type="Node2D"]
 script = ExtResource("1_8ynvh")
 nextZone = ExtResource("2_w0xgd")
@@ -130,14 +108,8 @@ motion_mirroring = Vector2(512, 0)
 material = SubResource("ShaderMaterial_7a2nl")
 position = Vector2(0, 80)
 sprite_frames = SubResource("SpriteFrames_jqiqi")
-frame_progress = 0.0170745
+frame_progress = 0.361388
 centered = false
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground/ParallaxLayer2"]
-libraries = {
-"": SubResource("AnimationLibrary_h6h70")
-}
-autoplay = "RESET"
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.25, 0.05)
