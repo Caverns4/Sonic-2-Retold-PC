@@ -1,6 +1,7 @@
-[gd_scene load_steps=88 format=3 uid="uid://dmrtm7r6hfbfr"]
+[gd_scene load_steps=89 format=3 uid="uid://dmrtm7r6hfbfr"]
 
 [ext_resource type="Texture2D" uid="uid://bihgasvpr4jyb" path="res://Graphics/Items/invincible_stars.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://nmefqhyltnjt" path="res://Graphics/Misc/explosion2.png" id="1_odgmf"]
 [ext_resource type="Script" path="res://Scripts/Misc/FreeOnAnimationCompletion.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://bu6a2evw5s7ne" path="res://Graphics/Misc/water_splash.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://bu207ncbrfjm3" path="res://Graphics/Misc/skid_dust.png" id="4"]
@@ -8,31 +9,34 @@
 [ext_resource type="Texture2D" uid="uid://7hwanyy5pso6" path="res://Graphics/Misc/SuperSparkles.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://c3em2xm0y2fip" path="res://Graphics/Items/Rings/RingSparkle.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://cciqyn4fgs3st" path="res://Graphics/Enemies/MotobugSmoke.png" id="8"]
-[ext_resource type="Texture2D" uid="uid://ckc0rilx6w0dq" path="res://Graphics/Misc/explosion3.png" id="9"]
 
-[sub_resource type="AtlasTexture" id="189"]
-atlas = ExtResource("9")
-region = Rect2(0, 0, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0lbq"]
+atlas = ExtResource("1_odgmf")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="190"]
-atlas = ExtResource("9")
-region = Rect2(24, 0, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qetwm"]
+atlas = ExtResource("1_odgmf")
+region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="191"]
-atlas = ExtResource("9")
-region = Rect2(48, 0, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_efiqx"]
+atlas = ExtResource("1_odgmf")
+region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="192"]
-atlas = ExtResource("9")
-region = Rect2(72, 0, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4rrm"]
+atlas = ExtResource("1_odgmf")
+region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="193"]
-atlas = ExtResource("9")
-region = Rect2(96, 0, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_58wip"]
+atlas = ExtResource("1_odgmf")
+region = Rect2(128, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="194"]
-atlas = ExtResource("9")
-region = Rect2(120, 0, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ed2s3"]
+atlas = ExtResource("1_odgmf")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08b1h"]
+atlas = ExtResource("1_odgmf")
+region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="170"]
 atlas = ExtResource("5")
@@ -322,22 +326,25 @@ region = Rect2(217, 0, 31, 31)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("189")
+"texture": SubResource("AtlasTexture_e0lbq")
 }, {
 "duration": 1.0,
-"texture": SubResource("190")
+"texture": SubResource("AtlasTexture_qetwm")
 }, {
 "duration": 1.0,
-"texture": SubResource("191")
+"texture": SubResource("AtlasTexture_efiqx")
 }, {
 "duration": 1.0,
-"texture": SubResource("192")
+"texture": SubResource("AtlasTexture_k4rrm")
 }, {
 "duration": 1.0,
-"texture": SubResource("193")
+"texture": SubResource("AtlasTexture_58wip")
 }, {
 "duration": 1.0,
-"texture": SubResource("194")
+"texture": SubResource("AtlasTexture_ed2s3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08b1h")
 }],
 "loop": false,
 "name": &"BossExplosion",
@@ -624,6 +631,9 @@ animations = [{
 
 [node name="GenericParticle" type="AnimatedSprite2D"]
 sprite_frames = SubResource("157")
+animation = &"BossExplosion"
+frame = 6
+frame_progress = 1.0
 script = ExtResource("2")
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
