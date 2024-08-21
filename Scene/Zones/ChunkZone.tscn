@@ -551,11 +551,9 @@ scale = Vector2(1, 4)
 
 [node name="MovingStairBlocks6" parent="Floating Platforms" instance=ExtResource("19_exxvg")]
 position = Vector2(8384, 928)
-speed = 0.5
 
 [node name="MovingStairBlocks7" parent="Floating Platforms" instance=ExtResource("19_exxvg")]
 position = Vector2(5696, 1600)
-speed = 0.5
 direction = 1
 
 [node name="VacumTubes" type="Node2D" parent="."]

@@ -55,7 +55,7 @@ func _process(delta):
 
 func _physics_process(delta):
 	if !Engine.is_editor_hint():
-		stateTimer = stateTimer+(delta*speed)
+		stateTimer = stateTimer+(delta*(speed/2.0))
 		positionChildren(delta)
 		if stateTimer >= 1.0:
 			if direction > 0:
