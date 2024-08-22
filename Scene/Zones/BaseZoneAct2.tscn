@@ -1,38 +1,19 @@
-[gd_scene load_steps=24 format=3 uid="uid://bjavywoj00j1j"]
+[gd_scene load_steps=15 format=3 uid="uid://bjavywoj00j1j"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="2_533ik"]
 [ext_resource type="PackedScene" uid="uid://qs5dmtxxf1w1" path="res://Scene/Presentation/Title.tscn" id="2_l4fq6"]
-[ext_resource type="Script" path="res://Scripts/Objects/StateMovers/StateMoverPositional.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="4"]
 [ext_resource type="Texture2D" uid="uid://m4fuu16t6dkk" path="res://Graphics/Backgrounds/OOZ/OOZBG.png" id="4_wqbil"]
 [ext_resource type="Script" path="res://Scripts/Objects/StateMovers/StateMoverMaster.gd" id="5"]
-[ext_resource type="Script" path="res://Scripts/Objects/StateMovers/StateMoverPathFollower.gd" id="6"]
 [ext_resource type="PackedScene" uid="uid://cxxmrbgw17gnw" path="res://Entities/Gimmicks/CNZBarrel.tscn" id="7"]
 [ext_resource type="Script" path="res://Scripts/Objects/StateMovers/StateMoverTranslational.gd" id="8"]
 [ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="10"]
 [ext_resource type="PackedScene" uid="uid://ra3mqewhj6kl" path="res://Entities/Hazards/Saw.tscn" id="11"]
-[ext_resource type="PackedScene" uid="uid://blwewyk2fnrew" path="res://Entities/Gimmicks/Shutter.tscn" id="12"]
 [ext_resource type="PackedScene" uid="uid://dvmttrmkfraht" path="res://Entities/Gimmicks/CNZTrampolineBarrel.tscn" id="13"]
-[ext_resource type="Texture2D" uid="uid://dwvek120iiiv" path="res://Graphics/Obstacles/Walls/shutterCNZ.png" id="14"]
-[ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="15"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="18"]
 [ext_resource type="PackedScene" uid="uid://urapmknlu0s5" path="res://Entities/Gimmicks/HorizontalBar.tscn" id="22_ethvu"]
-[ext_resource type="PackedScene" uid="uid://4q0hpddgto2k" path="res://Entities/Gimmicks/Spring.tscn" id="23_n1r7l"]
-[ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="38"]
-
-[sub_resource type="Curve2D" id="3"]
-_data = {
-"points": PackedVector2Array(3.96875, 1.21875, -3.96875, -1.21875, 200, -127.045, 44.7997, 7.96145, -44.7997, -7.96145, 166, -137.049, -4.96932, 29.6596, 4.96932, -29.6596, 125, -210.075, -33.7037, 2.82747, 33.7037, -2.82747, 201, -235.084, -20.4407, 32.7477, 20.4407, -32.7477, 303, -280.1, 0, 0, 0, 0, 345, -342.122)
-}
-point_count = 6
-
-[sub_resource type="Curve2D" id="4"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 345, -342, 43.4479, -26.939, -43.4479, 26.939, 135, -306, 16.8361, -31.63, -16.8361, 31.63, 44, -224, 0, 0, 0, 0, 0, 0)
-}
-point_count = 4
 
 [node name="BaseZoneAct2" type="Node2D"]
 script = ExtResource("2")
@@ -89,39 +70,6 @@ position = Vector2(397, 714)
 
 [node name="Ring6" parent="Entities/Rings" instance=ExtResource("10")]
 position = Vector2(432, 696)
-
-[node name="PlatformStatefulMover" type="Node2D" parent="Entities"]
-position = Vector2(241, 716)
-script = ExtResource("5")
-
-[node name="Platform" parent="Entities/PlatformStatefulMover" instance=ExtResource("38")]
-endPosition = Vector2(0, 0)
-
-[node name="PositionalState_0" type="Node2D" parent="Entities/PlatformStatefulMover"]
-position = Vector2(135, -24)
-script = ExtResource("3")
-
-[node name="PositionalState_1" type="Node2D" parent="Entities/PlatformStatefulMover"]
-position = Vector2(200, -127)
-script = ExtResource("3")
-nextState = 2
-
-[node name="PathFollowerState_2" type="Node2D" parent="Entities/PlatformStatefulMover"]
-script = ExtResource("6")
-moveTime = 8.0
-nextState = 3
-
-[node name="Path2D" type="Path2D" parent="Entities/PlatformStatefulMover/PathFollowerState_2"]
-scale = Vector2(1, 0.999644)
-curve = SubResource("3")
-
-[node name="PathFollowerState_3" type="Node2D" parent="Entities/PlatformStatefulMover"]
-script = ExtResource("6")
-moveTime = 6.0
-nextState = 0
-
-[node name="Path2D" type="Path2D" parent="Entities/PlatformStatefulMover/PathFollowerState_3"]
-curve = SubResource("4")
 
 [node name="PlatformStatefulMover2" type="Node2D" parent="Entities"]
 position = Vector2(576, 705)
@@ -191,41 +139,18 @@ position = Vector2(608, 784)
 scale = Vector2(6, 1)
 collision_mask = 8192
 
-[node name="InvisibleBarrier2" parent="Entities" instance=ExtResource("9")]
-position = Vector2(880, 736)
-scale = Vector2(1, 2)
-collision_mask = 8192
-
-[node name="InvisibleBarrier3" parent="Entities" instance=ExtResource("9")]
-position = Vector2(704, 560)
-scale = Vector2(3, 1)
-collision_mask = 8192
-
 [node name="InvisibleBarrier4" parent="Entities" instance=ExtResource("9")]
 position = Vector2(528, 736)
 scale = Vector2(1, 2)
 collision_mask = 8192
 
-[node name="Shutter" parent="Entities" instance=ExtResource("12")]
-z_index = -40
-position = Vector2(920, 608)
-texture = ExtResource("14")
-
 [node name="CNZTrampolineBarrel" parent="Entities" instance=ExtResource("13")]
 position = Vector2(1056, 641)
 
-[node name="Monitor" parent="Entities" instance=ExtResource("15")]
-position = Vector2(656, 464)
-item = 4
-
 [node name="HorizontalBar" parent="." instance=ExtResource("22_ethvu")]
-position = Vector2(864, 235)
+position = Vector2(704, 568)
 width = 320
 allowBrake = true
 allowDownwardDetach = true
 drawLeftAnchor = false
 drawRightAnchor = false
-
-[node name="Spring" parent="." instance=ExtResource("23_n1r7l")]
-z_index = -99
-position = Vector2(938, 360)

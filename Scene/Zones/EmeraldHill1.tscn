@@ -368,14 +368,16 @@ endPosition = Vector2(128, 0)
 [node name="Platform6" parent="Entities" instance=ExtResource("22_vde0v")]
 position = Vector2(7836, 448)
 platformSprite = ExtResource("23_2h6tp")
+endPosition = Vector2(192, 0)
 
 [node name="Platform7" parent="Entities" instance=ExtResource("22_vde0v")]
-position = Vector2(8216, 436)
+position = Vector2(8176, 432)
 platformSprite = ExtResource("23_2h6tp")
-endPosition = Vector2(128, 0)
+endPosition = Vector2(192, 0)
+offset = 96.0
 
 [node name="Platform8" parent="Entities" instance=ExtResource("22_vde0v")]
-position = Vector2(8448, 400)
+position = Vector2(8512, 400)
 platformSprite = ExtResource("23_2h6tp")
 endPosition = Vector2(0, 0)
 fallTimer = 1.0
@@ -1175,31 +1177,31 @@ position = Vector2(10136, 584)
 position = Vector2(10184, 584)
 
 [node name="Ring173" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(9744, 408)
+position = Vector2(9712, 408)
 
 [node name="Ring174" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(9768, 408)
+position = Vector2(9736, 408)
 
 [node name="Ring175" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(9720, 408)
+position = Vector2(9688, 408)
 
 [node name="Ring176" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(9696, 408)
+position = Vector2(9664, 408)
 
 [node name="Ring177" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(9792, 408)
+position = Vector2(9760, 408)
 
 [node name="Ring178" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(9704, 384)
+position = Vector2(9672, 384)
 
 [node name="Ring179" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(9728, 384)
+position = Vector2(9696, 384)
 
 [node name="Ring180" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(9752, 384)
+position = Vector2(9720, 384)
 
 [node name="Ring181" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(9776, 384)
+position = Vector2(9744, 384)
 
 [node name="Ring182" parent="Rings" instance=ExtResource("32_xmgm7")]
 position = Vector2(4640, 680)

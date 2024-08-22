@@ -2,7 +2,8 @@
 extends Node2D
 
 @export var platformSprite = preload("res://Graphics/Obstacles/Blocks/CPZ Block.png")
-@export var speed = 0.5 # How fast to move
+@export_enum("two","four") var childCount = 1
+@export var speed = 1.0 # How fast to move
 @export_enum("Clockwise","Counter-Clockwise") var direction = 0
 
 # The taget position of each child stair block, in order, by phase, clockwise
@@ -15,14 +16,15 @@ var maxFrames = 1
 
 # Each target pos relative to center, in order of child, by phase
 var targetPositions = [
-	[Vector2(-48,-48),Vector2(-16,-16),Vector2( 16, 16),Vector2( 48, 48)],
+	[Vector2(-48,-48),Vector2( 48, 48),Vector2(-16,-16),Vector2( 16, 16)],
 	# + x
-	[Vector2( 48,-48),Vector2( 16,-16),Vector2(-16, 16),Vector2(-48, 48)],
+	[Vector2( 48,-48),Vector2(-48, 48),Vector2( 16,-16),Vector2(-16, 16)],
 	# + y
-	[Vector2( 48, 48),Vector2( 16, 16),Vector2(-16,-16),Vector2(-48,-48)],
+	[Vector2( 48, 48),Vector2(-48,-48),Vector2( 16, 16),Vector2(-16,-16)],
 	# - x
-	[Vector2(-48, 48),Vector2(-16, 16),Vector2( 16,-16),Vector2( 48,-48)],
+	[Vector2(-48, 48),Vector2( 48,-48),Vector2(-16, 16),Vector2( 16,-16)],
 ]
+
 var stateTimer = 0.0
 
 var offsetTimer = 0 #To be used for editor preview if I feel like figuring it out
@@ -30,12 +32,19 @@ var offsetTimer = 0 #To be used for editor preview if I feel like figuring it ou
 func _ready():
 	maxFrames = platformSprite.get_height()/32
 	if !Engine.is_editor_hint():
+		if childCount == 0:
+			get_child(1).queue_free()
+			get_child(2).queue_free()
 		# Change platform sprite texture
 		for i in get_child_count():
 			var temp = get_child(i)
+			temp.visible = true
 			for j in temp.get_child_count():
 				if temp.get_child(j) is Sprite2D:
 					temp.get_child(j).texture = platformSprite
+				elif temp.get_child(j) is CollisionShape2D:
+					temp.get_child(j).shape.size.x = platformSprite.get_size().x
+					temp.get_child(j).shape.size.y = platformSprite.get_size().x
 	else:
 		for i in get_child_count():
 			var temp = get_child(i)
@@ -47,8 +56,8 @@ func _ready():
 
 func _process(delta):
 	if Engine.is_editor_hint():
-		$Platform/Shape3D.shape.size.x = platformSprite.get_size().x
-		$Platform/Shape3D.shape.size.y = platformSprite.get_size().y
+		#$Platform/Shape3D.shape.size.x = platformSprite.get_size().x
+		#$Platform/Shape3D.shape.size.y = platformSprite.get_size().x
 		queue_redraw()
 		# Offset timer for the editor to display
 		offsetTimer = wrapf(offsetTimer+(delta*speed),0,PI*2)
@@ -65,11 +74,6 @@ func _physics_process(delta):
 			stateTimer = 0
 			phase = wrapi(phase,0,targetPositions.size())
 		setvframeOfChildren(delta)
-	#if !Engine.is_editor_hint():
-	#	# Sync the position up to tween between the start and end point based on level time
-	#	var getPos = (endPosition*(cos((Global.globalTimer*speed))*0.5+0.5))
-	#	# set platform to rounded position to prevent jittering
-	#	$Platform.position = (getPos).round()
 
 func positionChildren(delta):
 	var getPos = Vector2.ZERO
@@ -92,3 +96,22 @@ func setvframeOfChildren(delta):
 		for j in temp.get_child_count():
 			if temp.get_child(j) is Sprite2D:
 				temp.get_child(j).set_region_rect(Rect2(0,(spriteFrame*32),32,32))
+
+func _draw():
+	if Engine.is_editor_hint():
+		# Draw the platform positions for the editor
+		var drawVec = targetPositions[0]
+		if direction > 0:
+			drawVec = targetPositions[1]
+		var drawLoop = ((childCount + 1) * 2) #Number of times to draw
+		
+		for i in drawLoop:
+			draw_texture_rect(
+				platformSprite,
+				Rect2(drawVec[i].x - (platformSprite.get_size().x/2)
+				,drawVec[i].y - (platformSprite.get_size().x/2)
+				,platformSprite.get_size().x
+				,platformSprite.get_size().x),
+				true,
+				Color(1,1,1,1.0)
+			)

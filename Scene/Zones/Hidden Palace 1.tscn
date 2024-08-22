@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://cun7sa0v2mwiq"]
+[gd_scene load_steps=48 format=4 uid="uid://cun7sa0v2mwiq"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_snbg3"]
 [ext_resource type="AudioStream" uid="uid://bg1fcuqr8mk1d" path="res://Audio/Soundtrack/s2br_Jewel.ogg" id="2_tvhrw"]
@@ -43,6 +43,7 @@
 [ext_resource type="PackedScene" uid="uid://cejf7f3r45h0c" path="res://Entities/Gimmicks/BubbleGenerator.tscn" id="39_1erbe"]
 [ext_resource type="PackedScene" uid="uid://c5vnnbgmagq6" path="res://Entities/ZoneObjects/HPZ_Platform_Spawner.tscn" id="41_64hll"]
 [ext_resource type="PackedScene" uid="uid://bxkm8u0ltthxd" path="res://Entities/Enemies/BBat.tscn" id="41_q7ijj"]
+[ext_resource type="PackedScene" uid="uid://cvaf3mpyum5at" path="res://Entities/Enemies/Stegway.tscn" id="42_ftvul"]
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="42_s707l"]
 [ext_resource type="PackedScene" uid="uid://c2t7hwn0iln3x" path="res://Entities/Obstacles/Elevator.tscn" id="43_x67w5"]
 
@@ -571,6 +572,9 @@ position = Vector2(2810, 1392)
 
 [node name="BBat6" parent="Badniks" instance=ExtResource("41_q7ijj")]
 position = Vector2(3878, 2064)
+
+[node name="Stegway" parent="Badniks" instance=ExtResource("42_ftvul")]
+position = Vector2(4032, 1328)
 
 [node name="Rings" type="Node2D" parent="."]
 
