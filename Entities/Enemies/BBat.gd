@@ -1,5 +1,7 @@
 extends EnemyBase
 
+const WAIT_TIMER = 0.25
+
 @export var x_range = 128 #The limit in each direction the BBat can go before not chasing farther
 @onready var animator = $BBatSprite/AnimationPlayer
 
@@ -30,7 +32,7 @@ func _physics_process(delta):
 				state = STATES.SEEKING
 				animator.play("WARMUP")
 				#print ("Seeking")
-				$SeekTimer.start(0.02)
+				$SeekTimer.start(WAIT_TIMER)
 				
 		STATES.SEEKING: # While awaiting $SeekTimer
 			updateHoveringPos(delta)
@@ -51,7 +53,7 @@ func _physics_process(delta):
 				animator.play("COOLDOWN")
 				state = STATES.COOLDOWN
 				#print ("Cooldown")
-				$SeekTimer.start(0.5)
+				$SeekTimer.start(WAIT_TIMER)
 		STATES.COOLDOWN:
 			updateHoveringPos(delta)
 	pass
@@ -110,7 +112,7 @@ func _on_seek_timer_timeout():
 				state = STATES.WARMUP
 				animator.play("AIM")
 				LookAtPlayer()
-				$SeekTimer.start(0.5)
+				$SeekTimer.start(WAIT_TIMER)
 			else:
 				BBatReturnToIdleState()
 		STATES.WARMUP:
@@ -130,7 +132,7 @@ func BBatReturnToIdleState():
 	animator.play("RESET")
 	lookingForTargets = false
 	#print ("Idle")
-	$SeekTimer.start(1.0)
+	$SeekTimer.start(WAIT_TIMER)
 
 func Picktarget(targets):
 	# Probably bad practice but it works so ¯\_(ツ)_/¯

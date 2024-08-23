@@ -43,7 +43,7 @@ func _ready():
 	var instance = scene.instantiate()
 	instance.scroll_base_offset.y = paraOffsets[zoneIndex]
 	add_child(instance)
-	UpdateMenuDisplay()
+	#UpdateMenuDisplay()
 	if nextZone != null:
 		Global.nextZone = nextZone
 
@@ -69,13 +69,13 @@ func _process(delta):
 		Global.main.change_scene_to_file(returnScene,"FadeOut","FadeOut",1)
 
 func _input(event):
-	if menuActive and !titleEnd:
-		if Input.is_action_just_pressed("gm_down"):
-			menuEntry +=1
-		if Input.is_action_just_pressed("gm_up"):
-			menuEntry -=1
-	menuEntry = wrapi(menuEntry,0,3)
-	UpdateMenuDisplay()
+	#if menuActive and !titleEnd:
+	#	if Input.is_action_just_pressed("gm_down"):
+	#		menuEntry +=1
+	#	if Input.is_action_just_pressed("gm_up"):
+	#		menuEntry -=1
+	#menuEntry = wrapi(menuEntry,0,3)
+	#UpdateMenuDisplay()
 	
 	# end title on start press
 	if event.is_action_pressed("gm_pause") and !titleEnd and menuActive:
@@ -84,6 +84,9 @@ func _input(event):
 func MenuOptionChosen():
 	#if Global.music.get_playback_position() < 14.0:
 	#	Global.music.seek(14.0)
+	if Input.is_action_pressed("gm_action") and menuEntry == 0:
+		menuEntry = 2
+	
 	match menuEntry:
 		0:
 			titleEnd = true

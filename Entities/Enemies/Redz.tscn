@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://jgm0h2yu3hvb"]
+[gd_scene load_steps=9 format=3 uid="uid://jgm0h2yu3hvb"]
 
 [ext_resource type="Script" path="res://Entities/Enemies/Redz.gd" id="1_acnt1"]
 [ext_resource type="Texture2D" uid="uid://c80rud4lvtufe" path="res://Graphics/Enemies/Badnik_Redz.png" id="2_ufqqm"]
@@ -8,6 +8,62 @@ size = Vector2(22, 32)
 
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(22, 32)
+
+[sub_resource type="Animation" id="Animation_usbbl"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Redz:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_1syo1"]
+resource_name = "SHOOT"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Redz:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_povsi"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Redz:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 5, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_34x7i"]
+_data = {
+"RESET": SubResource("Animation_usbbl"),
+"SHOOT": SubResource("Animation_1syo1"),
+"WALK": SubResource("Animation_povsi")
+}
 
 [node name="Redz" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 16384
@@ -33,15 +89,19 @@ hframes = 3
 vframes = 2
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+visible = false
 z_index = -100
-position = Vector2(-1, -2.71051e-20)
-scale = Vector2(3.2, 3.2)
-rect = Rect2(-80, -10, 160, 20)
+rect = Rect2(-160, -16, 320, 32)
 
 [node name="FloorCheck" type="RayCast2D" parent="."]
 position = Vector2(-11, 16)
 target_position = Vector2(0, 14)
 hit_from_inside = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_34x7i")
+}
 
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]

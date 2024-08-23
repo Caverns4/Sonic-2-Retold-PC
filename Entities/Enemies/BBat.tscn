@@ -331,6 +331,7 @@ position = Vector2(0, 64)
 shape = SubResource("RectangleShape2D_k0tlg")
 
 [node name="SeekTimer" type="Timer" parent="."]
+wait_time = 0.25
 one_shot = true
 autostart = true
 

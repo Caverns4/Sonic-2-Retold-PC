@@ -22,6 +22,9 @@ var levelLabels = [ #Every one of these is a line, and some are skipped.
 	"                2",
 	"",
 	"Oil Ocean       1",
+	"                2",
+	"",
+	"Neo Green Hill  1",
 	"                2"
 	]
 var levelIcons = [ #Use this list to get the number of selectable entries
@@ -34,7 +37,9 @@ var levelIcons = [ #Use this list to get the number of selectable entries
 	3,
 	3,
 	4,
-	4
+	4,
+	5,
+	5
 ]
 # character id lines up with characterLabels
 var characterID = 0
@@ -107,7 +112,7 @@ func _input(event):
 				2: # Hidden Palace Zone 2
 					Global.nextZone = load("res://Scene/Zones/Hidden Palace 1.tscn")
 				3: # Hidden Palace Zone 2
-					Global.nextZone = load("res://Scene/Zones/Hidden Palace 1.tscn")
+					Global.nextZone = load("res://Scene/Zones/Hidden Palace 2.tscn")
 				4: # Hill Top Zone 1
 					Global.nextZone = load("res://Scene/Zones/Hill Top Zone Act 1.tscn")
 				5: # Hill Top Zone 2
@@ -121,7 +126,7 @@ func _input(event):
 				9: # Oil Ocean Zone 2
 					Global.nextZone = load("res://Scene/Zones/BaseZoneAct2.tscn")
 				_: # Invalid Entry
-					Global.nextZone = load("res://Scene/Zones/AquaticRuin1.tscn")
+					Global.nextZone = load("res://Scene/Zones/BaseZone.tscn")
 			
 			Global.main.change_scene_to_file(Global.nextZone,"FadeOut","FadeOut",1)
 			

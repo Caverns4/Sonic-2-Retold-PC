@@ -1,0 +1,41 @@
+[gd_scene load_steps=10 format=3 uid="uid://cx126ulu8rjba"]
+
+[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_am56i"]
+[ext_resource type="AudioStream" uid="uid://bjoynvot2wdjm" path="res://Audio/Soundtrack/s2br_HiddenPalace.ogg" id="2_gep0b"]
+[ext_resource type="PackedScene" uid="uid://caxc44uymh48a" path="res://Scene/Zones/EmeraldHill1.tscn" id="3_hlq5q"]
+[ext_resource type="AudioStream" uid="uid://bg1fcuqr8mk1d" path="res://Audio/Soundtrack/s2br_Jewel.ogg" id="3_l7lxm"]
+[ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="4_wuxis"]
+[ext_resource type="Texture2D" uid="uid://tdr31l1fyfos" path="res://Graphics/Palettes/HPZ_Pal_Dry.png" id="5_wwaju"]
+[ext_resource type="Texture2D" uid="uid://cqxsc88x0mm7k" path="res://Graphics/Palettes/HPZ_Pal_Wet.png" id="6_ba11y"]
+[ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="7_jydxi"]
+[ext_resource type="TileSet" uid="uid://ctbov0uv4xqwe" path="res://Tileset/Levels/HPZ_Tiles.tres" id="8_kdydy"]
+
+[node name="HiddenPalace2" type="Node2D"]
+script = ExtResource("1_am56i")
+zoneID = 1
+music = ExtResource("2_gep0b")
+music2P = ExtResource("3_l7lxm")
+nextZone = ExtResource("3_hlq5q")
+animal1 = 8
+animal2 = 5
+defaultLeftBoundry = 0
+defaultTopBoundry = 0
+defaultRightBoundry = 16384
+defaultBottomBoundry = 2048
+
+[node name="HUD" parent="." instance=ExtResource("4_wuxis")]
+zoneName = "HIDDEN PALACE"
+act = 2
+waterSourceColor = ExtResource("5_wwaju")
+waterReplaceColor = ExtResource("6_ba11y")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("7_jydxi")]
+position = Vector2(96, 1708)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("8_kdydy")
+format = 2
+layer_0/name = "Defaul"
+layer_0/tile_data = PackedInt32Array(7077893, 131072, 0, 7077894, 131072, 0, 7077895, 131072, 0, 7077896, 131072, 0)

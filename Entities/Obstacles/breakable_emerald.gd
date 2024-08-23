@@ -1,24 +1,10 @@
 extends StaticBody2D
-@export var pieces = Vector2(2,2)
-@export var SpriteTexture = preload("res://Graphics/Obstacles/Blocks/breakable_block.png")
+#variant of the breakable object
+
+var pieces = Vector2(2,2)
 var Piece = preload("res://Entities/Misc/BlockPiece.tscn")
 @export var sound = preload("res://Audio/SFX/Gimmicks/Collapse.wav")
 @export var score = true
-
-
-func _ready() -> void:
-	# Change platform shape
-	$CollisionShape2D.shape.size.x = SpriteTexture.get_size().x
-	$CollisionShape2D.shape.size.y = SpriteTexture.get_size().y
-	# Updat Platform Sprite
-	if !Engine.is_editor_hint():
-		# Change platform sprite texture
-		$Sprite2D.texture = SpriteTexture
-
-func _process(delta):
-	if Engine.is_editor_hint():
-		$Sprite2D.texture = SpriteTexture
-		queue_redraw()
 
 func physics_collision(body, hitVector):
 	# check if physics object is coming down and check for a bit where the player isn't on floor
@@ -63,8 +49,3 @@ func physics_collision(body, hitVector):
 				get_parent().add_child(piece)
 				
 	return true
-
-func _draw():
-	if Engine.is_editor_hint():
-		#draw_texture(SpriteTexture,SpriteTexture.get_size()/2,Color.WHITE)
-		draw_texture(SpriteTexture,-SpriteTexture.get_size()/2,Color(1,1,1,0.25))
