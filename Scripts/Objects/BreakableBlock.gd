@@ -1,3 +1,4 @@
+@tool
 extends StaticBody2D
 @export var pieces = Vector2(2,2)
 @export var SpriteTexture = preload("res://Graphics/Obstacles/Blocks/breakable_block.png")
@@ -11,7 +12,10 @@ func _ready() -> void:
 	$CollisionShape2D.shape.size.x = SpriteTexture.get_size().x
 	$CollisionShape2D.shape.size.y = SpriteTexture.get_size().y
 	# Updat Platform Sprite
-	if !Engine.is_editor_hint():
+	if Engine.is_editor_hint():
+		# Change platform sprite texture
+		$Sprite2D.texture = SpriteTexture
+	else:
 		# Change platform sprite texture
 		$Sprite2D.texture = SpriteTexture
 
@@ -67,4 +71,4 @@ func physics_collision(body, hitVector):
 func _draw():
 	if Engine.is_editor_hint():
 		#draw_texture(SpriteTexture,SpriteTexture.get_size()/2,Color.WHITE)
-		draw_texture(SpriteTexture,-SpriteTexture.get_size()/2,Color(1,1,1,0.25))
+		draw_texture(SpriteTexture,-SpriteTexture.get_size()/2,Color.WHITE)

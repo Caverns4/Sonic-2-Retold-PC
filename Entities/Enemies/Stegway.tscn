@@ -1,10 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvaf3mpyum5at"]
+[gd_scene load_steps=6 format=3 uid="uid://cvaf3mpyum5at"]
 
 [ext_resource type="Script" path="res://Entities/Enemies/Stegway.gd" id="1_3811d"]
 [ext_resource type="Texture2D" uid="uid://bwbirkbtmiumq" path="res://Graphics/Enemies/stegway.png" id="2_jmtwq"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(42, 29.5)
+
+[sub_resource type="Animation" id="Animation_mexa1"]
+resource_name = "RESET"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s2w5h"]
+_data = {
+"RESET": SubResource("Animation_mexa1")
+}
 
 [node name="Stegway" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 16384
@@ -32,6 +40,11 @@ vframes = 3
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(1.90735e-06, -1.90735e-06)
 scale = Vector2(6.4, 6.4)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_s2w5h")
+}
 
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]

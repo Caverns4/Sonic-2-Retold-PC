@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://b73oxpdf64ys2"]
+[gd_scene load_steps=43 format=4 uid="uid://b73oxpdf64ys2"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_r8kv3"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_sbiln"]
@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://xbidybme3tde" path="res://Entities/Enemies/Spiny.tscn" id="30_po1yj"]
 [ext_resource type="PackedScene" uid="uid://cejf7f3r45h0c" path="res://Entities/Gimmicks/BubbleGenerator.tscn" id="35_hf0o7"]
 [ext_resource type="Script" path="res://Scripts/Objects/StateMovers/StateMoverMaster.gd" id="35_nnyam"]
+[ext_resource type="PackedScene" uid="uid://6hnjqkn2cl62" path="res://Entities/Gimmicks/CPZTippingPipe.tscn" id="36_4srbb"]
 [ext_resource type="Script" path="res://Scripts/Objects/StateMovers/StateMoverPositional.gd" id="36_nvh8p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_da7so"]
@@ -1125,3 +1126,9 @@ position = Vector2(128, -88)
 script = ExtResource("36_nvh8p")
 moveTime = 2.0
 nextState = 0
+
+[node name="CPZTippingPipe" parent="." instance=ExtResource("36_4srbb")]
+position = Vector2(11536, 1296)
+
+[node name="CPZTippingPipe2" parent="." instance=ExtResource("36_4srbb")]
+position = Vector2(144, 208)
