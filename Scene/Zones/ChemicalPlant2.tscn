@@ -526,6 +526,67 @@ position = Vector2(9120, 1976)
 [node name="Shutter5" parent="Entities" instance=ExtResource("12_lofkv")]
 position = Vector2(7240, 1696)
 
+[node name="CPZTippingPipe" parent="Entities" instance=ExtResource("36_4srbb")]
+position = Vector2(6928, 784)
+delay = 128.0
+
+[node name="CPZTippingPipe2" parent="Entities" instance=ExtResource("36_4srbb")]
+position = Vector2(6960, 784)
+delay = 96.0
+
+[node name="CPZTippingPipe3" parent="Entities" instance=ExtResource("36_4srbb")]
+position = Vector2(6992, 784)
+delay = 80.0
+
+[node name="CPZTippingPipe4" parent="Entities" instance=ExtResource("36_4srbb")]
+position = Vector2(7024, 784)
+delay = 64.0
+
+[node name="CPZTippingPipe9" parent="Entities" instance=ExtResource("36_4srbb")]
+position = Vector2(11536, 1296)
+
+[node name="CPZTippingPipe10" parent="Entities" instance=ExtResource("36_4srbb")]
+position = Vector2(11568, 1296)
+delay = 16.0
+
+[node name="CPZTippingPipe11" parent="Entities" instance=ExtResource("36_4srbb")]
+position = Vector2(11600, 1296)
+delay = 32.0
+
+[node name="CPZTippingPipe12" parent="Entities" instance=ExtResource("36_4srbb")]
+position = Vector2(11632, 1296)
+delay = 48.0
+
+[node name="CPZTippingPipe13" parent="Entities" instance=ExtResource("36_4srbb")]
+position = Vector2(11888, 1296)
+
+[node name="CPZTippingPipe14" parent="Entities" instance=ExtResource("36_4srbb")]
+position = Vector2(11856, 1296)
+delay = 16.0
+
+[node name="CPZTippingPipe15" parent="Entities" instance=ExtResource("36_4srbb")]
+position = Vector2(11824, 1296)
+delay = 32.0
+
+[node name="CPZTippingPipe16" parent="Entities" instance=ExtResource("36_4srbb")]
+position = Vector2(11792, 1296)
+delay = 48.0
+
+[node name="CPZTippingPipe5" parent="Entities" instance=ExtResource("36_4srbb")]
+position = Vector2(7056, 784)
+delay = 48.0
+
+[node name="CPZTippingPipe6" parent="Entities" instance=ExtResource("36_4srbb")]
+position = Vector2(7088, 784)
+delay = 32.0
+
+[node name="CPZTippingPipe7" parent="Entities" instance=ExtResource("36_4srbb")]
+position = Vector2(7120, 784)
+delay = 16.0
+
+[node name="CPZTippingPipe8" parent="Entities" instance=ExtResource("36_4srbb")]
+position = Vector2(7152, 784)
+
 [node name="Floating Platforms" type="Node2D" parent="."]
 
 [node name="Platform" parent="Floating Platforms" instance=ExtResource("13_w6liy")]
@@ -611,13 +672,6 @@ dropSlightly = false
 
 [node name="Platform7" parent="Floating Platforms" instance=ExtResource("13_w6liy")]
 position = Vector2(6168, 1800)
-platformSprite = ExtResource("19_bygnn")
-endPosition = Vector2(208, 0)
-offset = 0.5
-dropSlightly = false
-
-[node name="Platform11" parent="Floating Platforms" instance=ExtResource("13_w6liy")]
-position = Vector2(6936, 776)
 platformSprite = ExtResource("19_bygnn")
 endPosition = Vector2(208, 0)
 offset = 0.5
@@ -1126,9 +1180,3 @@ position = Vector2(128, -88)
 script = ExtResource("36_nvh8p")
 moveTime = 2.0
 nextState = 0
-
-[node name="CPZTippingPipe" parent="." instance=ExtResource("36_4srbb")]
-position = Vector2(11536, 1296)
-
-[node name="CPZTippingPipe2" parent="." instance=ExtResource("36_4srbb")]
-position = Vector2(144, 208)
