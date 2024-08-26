@@ -108,7 +108,7 @@ func _input(event):
 				0: # Emerald Zone Act 1
 					Global.nextZone = load("res://Scene/Zones/EmeraldHill1.tscn")
 				1: # Emerald Zone Act 2
-					Global.nextZone = load("res://Scene/Zones/Emerald Hill Zone Act 2.tscn")
+					Global.nextZone = load("res://Scene/Zones/EmeraldHill2.tscn")
 				2: # Hidden Palace Zone 2
 					Global.nextZone = load("res://Scene/Zones/Hidden Palace 1.tscn")
 				3: # Hidden Palace Zone 2

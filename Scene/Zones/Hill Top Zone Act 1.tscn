@@ -324,11 +324,6 @@ position = Vector2(4832, 1040)
 scale = Vector2(-1, 1)
 endDistance = 448
 
-[node name="Breakable" parent="Entities" instance=ExtResource("26_w6quw")]
-position = Vector2(1832, 1012)
-pieces = Vector2(3, 2)
-SpriteTexture = ExtResource("27_vnla0")
-
 [node name="Breakable2" parent="Entities" instance=ExtResource("26_w6quw")]
 position = Vector2(4184, 820)
 pieces = Vector2(3, 2)
@@ -487,7 +482,7 @@ dropSlightly = false
 fullySolid = true
 
 [node name="Platform5" parent="FloatingPlatform" instance=ExtResource("9_0ltuq")]
-position = Vector2(1928, 976)
+position = Vector2(1920, 984)
 platformSprite = ExtResource("21_s1sna")
 endPosition = Vector2(0, 8)
 dropSlightly = false

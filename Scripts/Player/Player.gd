@@ -881,11 +881,11 @@ func _physics_process(delta):
 		# crusher deaths NOTE: the translate and visibility is used for stuff like the sky sanctuary teleporters, visibility check is for stuff like the carnival night barrels
 		if (crushSensorLeft.get_overlapping_areas() + crushSensorLeft.get_overlapping_bodies()).size() > 0 and \
 			(crushSensorRight.get_overlapping_areas() + crushSensorRight.get_overlapping_bodies()).size() > 0 and (!translate or visible):
-			kill(false)
+			kill(true)
 
 		if (crushSensorUp.get_overlapping_areas() + crushSensorUp.get_overlapping_bodies()).size() > 0 and \
 			(crushSensorDown.get_overlapping_areas() + crushSensorDown.get_overlapping_bodies()).size() > 0 and (!translate or visible):
-			kill(false)
+			kill(true)
 
 # Input buttons
 func set_inputs():

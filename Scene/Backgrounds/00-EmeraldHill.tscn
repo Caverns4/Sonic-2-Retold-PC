@@ -76,6 +76,7 @@ motion_scale = Vector2(0.013, 0.05)
 material = SubResource("ShaderMaterial_023dl")
 position = Vector2(0, 80)
 sprite_frames = SubResource("SpriteFrames_b2d52")
+autoplay = "default"
 frame_progress = 0.97222
 centered = false
 

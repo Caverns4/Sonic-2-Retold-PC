@@ -38,4 +38,3 @@ position = Vector2(96, 1708)
 tile_set = ExtResource("8_kdydy")
 format = 2
 layer_0/name = "Defaul"
-layer_0/tile_data = PackedInt32Array(7077893, 131072, 0, 7077894, 131072, 0, 7077895, 131072, 0, 7077896, 131072, 0)

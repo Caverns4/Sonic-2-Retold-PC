@@ -65,7 +65,7 @@ animal1 = 8
 animal2 = 5
 defaultLeftBoundry = 0
 defaultTopBoundry = 0
-defaultRightBoundry = 9864
+defaultRightBoundry = 9880
 defaultBottomBoundry = 3072
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -375,20 +375,8 @@ forceDirection = 3
 position = Vector2(7600, 272)
 leftBoundry = 7104
 setRight = false
-rightBoundry = 9800
+rightBoundry = 9864
 bottomBoundry = 1024
-
-[node name="BoundrySetter2" parent="Entities" instance=ExtResource("32_mtqr5")]
-position = Vector2(6689, 2800)
-leftBoundry = 6400
-setRight = false
-rightBoundry = 9800
-bottomBoundry = 3072
-
-[node name="BoundrySetter3" parent="Entities" instance=ExtResource("32_mtqr5")]
-position = Vector2(643, 1416)
-rightBoundry = 9800
-bottomBoundry = 3072
 
 [node name="BoundrySetter4" parent="Entities" instance=ExtResource("32_mtqr5")]
 position = Vector2(9616, 656)

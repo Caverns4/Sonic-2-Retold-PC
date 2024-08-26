@@ -1530,7 +1530,7 @@ collision_layer = 0
 collision_mask = 2097152
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CrushSensorDown"]
-position = Vector2(0, 2)
+position = Vector2(0, 1)
 shape = SubResource("169")
 
 [node name="WaterSurface" type="AnimatedSprite2D" parent="."]

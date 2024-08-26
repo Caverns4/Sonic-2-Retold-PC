@@ -53,7 +53,7 @@ func _process(delta):
 						direction = -1
 					else:
 						direction = 1
-					velocity.x = direction*100
+					velocity.x = direction*125
 					parent.direction = direction
 			_:
 				if pilot:

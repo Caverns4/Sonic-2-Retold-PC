@@ -1,7 +1,7 @@
 [gd_scene load_steps=41 format=4 uid="uid://caxc44uymh48a"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_8ynvh"]
-[ext_resource type="PackedScene" uid="uid://cou8y8ungkjfx" path="res://Scene/Zones/Emerald Hill Zone Act 2.tscn" id="2_w0xgd"]
+[ext_resource type="PackedScene" uid="uid://cou8y8ungkjfx" path="res://Scene/Zones/EmeraldHill2.tscn" id="2_w0xgd"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="2_yrcwh"]
 [ext_resource type="Texture2D" uid="uid://doln6jqb428tw" path="res://Graphics/Backgrounds/EHZ/EHZ_BG.png" id="3_0qf6q"]
 [ext_resource type="Shader" path="res://Shaders/PaletteSwapRow_Timerbased.gdshader" id="4_o5nmk"]
@@ -84,7 +84,7 @@ script = ExtResource("1_8ynvh")
 nextZone = ExtResource("2_w0xgd")
 defaultLeftBoundry = 0
 defaultTopBoundry = 0
-defaultRightBoundry = 11008
+defaultRightBoundry = 11064
 defaultBottomBoundry = 1024
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -108,6 +108,7 @@ motion_mirroring = Vector2(512, 0)
 material = SubResource("ShaderMaterial_7a2nl")
 position = Vector2(0, 80)
 sprite_frames = SubResource("SpriteFrames_jqiqi")
+autoplay = "default"
 frame_progress = 0.361388
 centered = false
 
