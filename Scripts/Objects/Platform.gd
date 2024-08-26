@@ -97,7 +97,7 @@ func _draw():
 	if Engine.is_editor_hint():
 		# Draw the platform positions for the editor
 		if speed > 0 or endPosition != Vector2.ZERO:
-			draw_texture(platformSprite,-platformSprite.get_size()/2,Color(1,1,1,0.25))
-			draw_texture(platformSprite,endPosition-platformSprite.get_size()/2,Color(1,0.5,0.5,0.1))
+			draw_texture(platformSprite,-platformSprite.get_size()/2,Color(1,1,1,0.5))
+			draw_texture(platformSprite,endPosition-platformSprite.get_size()/2,Color(1,1,1,0.5))
 			draw_texture(platformSprite,(endPosition*(cos(offsetTimer+offset)*0.5+0.5))-platformSprite.get_size()/2,Color.WHITE)
 			draw_line(Vector2.ZERO,endPosition,Color.GREEN)
