@@ -1,7 +1,7 @@
 extends Node
 
 #Two Player Mode flag. Either false or true.
-@export var TwoPlayer = false
+var TwoPlayer = false
 # player pointers (0 is usually player 1)
 var players = []
 # main object reference

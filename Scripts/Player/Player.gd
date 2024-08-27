@@ -49,58 +49,51 @@ var pushingWall = 0
 
 var enemyCounter = 0
 
-# physics list
-# order
+var character = Global.CHARACTERS.SONIC
+
+# physics list order
 # 0 Acceleration
 # 1 Deceleration
 # 2 Friction
 # 3 Top Speed
-# 4 Air Acceleration 
+# 4 Air Acceleration (No longer used, air accel is always Ground accel * 2)
 # 5 Rolling Friction 
 # 6 Rolling Deceleration
 # 7 Gravity
-# 8 Jump
-# 9 Jump release velocity
-
-var character = Global.CHARACTERS.SONIC
-
-#The jump heights of characters, seperate from the physics list.
-var jumpHeights = [
-	6.5*60, # Sonic, Tails, Amy, Mighty, Supers besides Sonic and Knuckles
-	6*60,   # Knuckles & Super Knuckles
-	8*60    # Super Sonic
-]
-
-var jumpHeightsWater = [
-	3.5*60,
-	3*60,
-	3.5*60
-]
-
-# 0 = Sonic, 1 = Unused, 2 = Knuckles, 3 = Shoes, 4 = Super Sonic
+# 8 Jump release velocity
 
 var physicsList = [
 # 0 Sonic (Primary Character physics)
-[0.046875, 0.5, 0.046875, 6*60, 0.09375, 0.046875*0.5, 0.125, 0.21875, 4],
+[12/256.0, 0.50, 12/256.0, 6*60, 24/256.0, 12/256.0, 32/256.0, 56/256.0, 4],
 # 1 Shoes (remove *0.5 for original rolling friction)
-[0.09375, 0.5, 0.09375, 12*60, 0.1875, 0.046875*0.5, 0.125, 0.21875, 4],
+[24/256.0, 0.50, 24/256.0,12*60, 48/256.0, 12/256.0, 32/256.0, 56/256.0, 4],
 # 2 Super Sonic
-[0.1875, 1, 0.046875, 10*60, 0.375, 0.0234375, 0.125, 0.21875, 4],
+[48/256.0, 1.00, 12/256.0,10*60, 96/256.0,  6/256.0, 32/256.0, 56/256.0, 4],
 # 3 Super Forms besides Sonic
-[0.09375, 0.75, 0.046875, 8*60, 0.1875, 0.0234375, 0.125, 0.21875, 4],
+[24/256.0, 0.75, 12/256.0, 8*60, 48/256.0,  6/256.0, 32/256.0, 56/256.0, 4],
 ]
 
+var waterPhysicsListNew = [
+# 0 Sonic (Primary Character physics)
+[ 8/256.0, 0.250,  8/256.0, 4*60, 16/256.0, 8/256.0, 32/256.0, 16/256.0, 2],
+# 1 Speed Shoes
+[12/256.0, 0.250, 12/256.0, 8*60, 12/256.0, 8/256.0, 32/256.0, 16/256.0, 2],
+# 2 Super Sonic
+[12/256.0, 0.500, 12/256.0, 8*60, 48/256.0,12/256.0, 32/256.0, 16/256.0, 2],
+# 3 Super Forms besides Sonic
+[12/256.0, 0.375, 12/256.0,8*60, 24/256.0, 8/256.0, 32/256.0, 16/256.0, 2],
+]
+#Depricated
 var waterPhysicsList = [
 # 0 Sonic (Primary Character physics)
 [0.046875/2.0, 0.5/2.0, 0.046875/2.0, 6*60/2.0, 0.09375/2.0, 0.046875*0.5, 0.125, 0.0625, 2],
-# 1 Shoes
+# 1 Speed Shoes
 [0.046875/2.0, 0.5/2.0, 0.046875/2.0, 6*60/2.0, 0.09375/2.0, 0.046875*0.5, 0.125, 0.0625, 2],
 # 2 Super Sonic
 [0.09375, 0.5, 0.046875, 5*60, 0.1875, 0.046875, 0.125, 0.0625, 2],
 # 3 Super Forms besides Sonic
 [0.046875, 0.375, 0.046875, 4*60, 0.09375, 0.0234375, 0.125, 0.0625, 2],
 ]
-
 # ================
 
 var Ring = preload("res://Entities/Items/Ring.tscn")
@@ -244,6 +237,7 @@ var cameraMargin = 16
 var poleGrabID = null
 
 # Enemy related
+@warning_ignore("unused_signal")
 signal enemy_bounced
 
 func _ready():
@@ -1235,9 +1229,6 @@ func determine_physics():
 		Global.CHARACTERS.SONIC:
 			if isSuper:
 				return 2 # Super Sonic
-			elif shoeTime > 0:
-				return 1 # Shoes
-			return 0 # Default
 	#Anyone who isn't a special case:
 	if isSuper:
 		return 3 # Super
@@ -1245,33 +1236,37 @@ func determine_physics():
 		return 1 # Shoes
 	return 0 #Default to Sonic 
 
+func determine_jump_property():
+	if !water:
+		match (character):
+			Global.CHARACTERS.SONIC:
+				if isSuper:
+					return 8*60
+			Global.CHARACTERS.KNUCKLES:
+				return 6*60
+		return 6.5*60
+	else:
+		match (character):
+			Global.CHARACTERS.KNUCKLES:
+				return 3*60
+		return 3.5*60
 
 func switch_physics(isWater = water):
 	var physicsID = determine_physics()
 	var getList = physicsList[max(0,physicsID)]
 	if isWater:
-		getList = waterPhysicsList[max(0,physicsID)]
+		getList = waterPhysicsListNew[max(0,physicsID)]
 	acc = getList[0]
 	dec = getList[1]
 	frc = getList[2]
 	top = getList[3]
-	air = getList[4]
+	air = getList[0]*2.0
 	rollfrc = getList[5]
 	rolldec = getList[6]
 	grv = getList[7]
+	releaseJmp = getList[8]
 	# For Jump height:
-	var i = 0
-	if character == Global.CHARACTERS.KNUCKLES:
-		i = 1
-	if character == Global.CHARACTERS.SONIC and isSuper:
-		i = 2
-	if !isWater:
-		releaseJmp = 4
-		jmp = jumpHeights[i]
-	else:
-		releaseJmp = 2
-		jmp = jumpHeightsWater[i]
-	
+	jmp = determine_jump_property()
 
 
 

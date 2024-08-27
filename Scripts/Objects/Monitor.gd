@@ -8,12 +8,24 @@ var playerTouch = null
 var isActive = true
 @export_enum("Ring", "Speed Shoes", "Invincibility", "Shield", "Elec Shield", "Fire Shield",
 "Bubble Shield", "Super", "Blue Ring", "Boost", "1up") var item = 0
+
+enum ITEMTYPES{RING,SPEED_SHOES,INVINCIBILITY, SHIELD, ELECSHIELD, FIRESHIELD,
+BUBBLESHIELD,SUPER,TELEPORT,BOOST,LIFEP1,LIFEP2,QMARK}
+
+var twoPlayerItems = [
+	ITEMTYPES.RING,
+	ITEMTYPES.SPEED_SHOES,
+	ITEMTYPES.INVINCIBILITY,
+	ITEMTYPES.SHIELD,
+	ITEMTYPES.TELEPORT
+]
+
 var Explosion = preload("res://Entities/Misc/BadnickSmoke.tscn")
 
 
 func _ready():
 	if Global.TwoPlayer:
-		item = 0
+		item = ITEMTYPES.QMARK
 	
 	# set frame
 	$Item.frame = item+2
