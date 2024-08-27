@@ -38,8 +38,9 @@ hframes = 3
 vframes = 3
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+visible = false
 position = Vector2(1.90735e-06, -1.90735e-06)
-scale = Vector2(6.4, 6.4)
+rect = Rect2(-160, -112, 320, 224)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

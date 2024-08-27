@@ -542,7 +542,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-256, 56), Vector2(64, 56)]
+"values": [Vector2(-256, 64), Vector2(64, 64)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -554,7 +554,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-256, 80), Vector2(64, 80)]
+"values": [Vector2(-256, 88), Vector2(64, 88)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -566,7 +566,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(520, 68), Vector2(256, 68)]
+"values": [Vector2(520, 72), Vector2(256, 72)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -593,7 +593,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-256, 56)]
+"values": [Vector2(-256, 64)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -605,7 +605,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-256, 80)]
+"values": [Vector2(-256, 88)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -617,7 +617,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(528, 75)]
+"values": [Vector2(528, 72)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -908,7 +908,7 @@ anchor_top = 0.003
 anchor_right = 1.0
 anchor_bottom = 0.003
 offset_top = -86.944
-offset_right = 14822.4
+offset_right = 15110.4
 offset_bottom = 169.056
 grow_horizontal = 0
 grow_vertical = 2
@@ -976,9 +976,9 @@ size_flags_vertical = 2
 [node name="Passed" type="Label" parent="LevelClear"]
 layout_mode = 0
 offset_left = -256.0
-offset_top = 56.0
+offset_top = 64.0
 offset_right = -94.0
-offset_bottom = 82.0
+offset_bottom = 90.0
 theme_override_fonts/font = ExtResource("11_6cefa")
 text = " SONIC got"
 horizontal_alignment = 2
@@ -987,15 +987,15 @@ uppercase = true
 [node name="Through" type="Label" parent="LevelClear"]
 layout_mode = 0
 offset_left = -256.0
-offset_top = 80.0
+offset_top = 88.0
 offset_right = -58.0
-offset_bottom = 106.0
+offset_bottom = 114.0
 theme_override_fonts/font = ExtResource("11_6cefa")
 text = "through act"
 uppercase = true
 
 [node name="Act" type="Sprite2D" parent="LevelClear"]
-position = Vector2(528, 75)
+position = Vector2(528, 72)
 texture = ExtResource("9_3i4aq")
 centered = false
 hframes = 4
@@ -1013,17 +1013,18 @@ region_enabled = true
 region_rect = Rect2(0, 0, 80, 32)
 
 [node name="ScoreText" type="Sprite2D" parent="LevelClear/Tally"]
-position = Vector2(0, -16)
+position = Vector2(0, 32)
 texture = ExtResource("10_ddlv5")
 centered = false
-region_enabled = true
+vframes = 5
+frame = 3
 region_rect = Rect2(0, 0, 40, 16)
 
 [node name="ScoreNumber" type="Label" parent="LevelClear/Tally"]
 offset_left = 104.0
-offset_top = -16.0
-offset_right = 104.0
-offset_bottom = -16.0
+offset_top = 32.0
+offset_right = 112.0
+offset_bottom = 48.0
 theme_override_fonts/font = ExtResource("6_synv7")
 text = "0"
 

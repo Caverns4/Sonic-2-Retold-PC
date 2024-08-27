@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bjavywoj00j1j"]
+[gd_scene load_steps=16 format=4 uid="uid://bjavywoj00j1j"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="2_533ik"]
@@ -6,14 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="4"]
 [ext_resource type="Texture2D" uid="uid://m4fuu16t6dkk" path="res://Graphics/Backgrounds/OOZ/OOZBG.png" id="4_wqbil"]
 [ext_resource type="Script" path="res://Scripts/Objects/StateMovers/StateMoverMaster.gd" id="5"]
+[ext_resource type="TileSet" uid="uid://be1npc2ur6gou" path="res://Tileset/Levels/OOZ.tres" id="6_crde5"]
 [ext_resource type="PackedScene" uid="uid://cxxmrbgw17gnw" path="res://Entities/Gimmicks/CNZBarrel.tscn" id="7"]
 [ext_resource type="Script" path="res://Scripts/Objects/StateMovers/StateMoverTranslational.gd" id="8"]
 [ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="10"]
 [ext_resource type="PackedScene" uid="uid://ra3mqewhj6kl" path="res://Entities/Hazards/Saw.tscn" id="11"]
 [ext_resource type="PackedScene" uid="uid://dvmttrmkfraht" path="res://Entities/Gimmicks/CNZTrampolineBarrel.tscn" id="13"]
+[ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="16_mordc"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="18"]
-[ext_resource type="PackedScene" uid="uid://urapmknlu0s5" path="res://Entities/Gimmicks/HorizontalBar.tscn" id="22_ethvu"]
 
 [node name="BaseZoneAct2" type="Node2D"]
 script = ExtResource("2")
@@ -45,6 +46,10 @@ offset_bottom = 40.0
 texture = ExtResource("4_wqbil")
 
 [node name="Level_Layout" type="Node2D" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Level_Layout"]
+tile_map_data = PackedByteArray("AAAAADAAAAAMAAAAAAABADAAAAANAAAAAAACADAAAAAMAAAAAAADADAAAAANAAAAAAAEADAAAAAMAAAAAAAFADAAAAANAAAAAAAGADAAAAAMAAAAAAAHADAAAAANAAAAAAAIADAAAAAMAAAAAAAJADAAAAANAAAAAAAKADAAAAAMAAAAAAALADAAAAANAAAAAAAMADAAAAAMAAAAAAANADAAAAANAAAAAAAOADAAAAAMAAAAAAAPADAAAAANAAAAAAAQADAAAAAMAAAAAAARADAAAAANAAAAAAASADAAAAAMAAAAAAATADAAAAANAAAAAAAUADAAAAAMAAAAAAAVADAAAAANAAAAAAAAADEAAAACAAEAAAABADEAAAACAAEAAAACADEAAAACAAEAAAADADEAAAACAAEAAAAEADEAAAACAAEAAAAFADEAAAACAAEAAAAGADEAAAACAAEAAAAHADEAAAACAAEAAAAIADEAAAACAAEAAAAJADEAAAACAAEAAAAKADEAAAACAAEAAAALADEAAAACAAEAAAAMADEAAAACAAEAAAANADEAAAACAAEAAAAOADEAAAACAAEAAAAPADEAAAACAAEAAAAQADEAAAACAAEAAAARADEAAAACAAEAAAASADEAAAACAAEAAAATADEAAAACAAEAAAAUADEAAAACAAEAAAAVADEAAAACAAEAAAAWADAAAAAMAAAAAAAXADAAAAANAAAAAAAYADAAAAAMAAAAAAAZADAAAAANAAAAAAAaADAAAAAMAAAAAAAbADAAAAANAAAAAAAcADAAAAAMAAAAAAAdADAAAAANAAAAAAAeADAAAAAMAAAAAAAfADAAAAANAAAAAAAWADEAAAACAAEAAAAXADEAAAACAAEAAAAYADEAAAACAAEAAAAZADEAAAACAAEAAAAaADEAAAACAAEAAAAbADEAAAACAAEAAAAcADEAAAACAAEAAAAdADEAAAACAAEAAAAeADEAAAACAAEAAAAfADEAAAACAAEAAAA=")
+tile_set = ExtResource("6_crde5")
 
 [node name="Player" parent="." instance=ExtResource("18")]
 position = Vector2(69, 734)
@@ -139,18 +144,60 @@ position = Vector2(608, 784)
 scale = Vector2(6, 1)
 collision_mask = 8192
 
-[node name="InvisibleBarrier4" parent="Entities" instance=ExtResource("9")]
-position = Vector2(528, 736)
-scale = Vector2(1, 2)
-collision_mask = 8192
-
 [node name="CNZTrampolineBarrel" parent="Entities" instance=ExtResource("13")]
 position = Vector2(1056, 641)
 
-[node name="HorizontalBar" parent="." instance=ExtResource("22_ethvu")]
-position = Vector2(704, 568)
-width = 320
-allowBrake = true
-allowDownwardDetach = true
-drawLeftAnchor = false
-drawRightAnchor = false
+[node name="Monitor" parent="." instance=ExtResource("16_mordc")]
+position = Vector2(64, 648)
+
+[node name="Monitor2" parent="." instance=ExtResource("16_mordc")]
+position = Vector2(96, 648)
+item = 1
+
+[node name="Monitor3" parent="." instance=ExtResource("16_mordc")]
+position = Vector2(128, 648)
+item = 2
+
+[node name="Monitor4" parent="." instance=ExtResource("16_mordc")]
+position = Vector2(160, 648)
+item = 3
+
+[node name="Monitor5" parent="." instance=ExtResource("16_mordc")]
+position = Vector2(192, 648)
+item = 4
+
+[node name="Monitor6" parent="." instance=ExtResource("16_mordc")]
+position = Vector2(224, 648)
+item = 5
+
+[node name="Monitor7" parent="." instance=ExtResource("16_mordc")]
+position = Vector2(256, 648)
+item = 6
+
+[node name="Monitor8" parent="." instance=ExtResource("16_mordc")]
+position = Vector2(288, 648)
+item = 7
+
+[node name="Monitor9" parent="." instance=ExtResource("16_mordc")]
+position = Vector2(320, 648)
+item = 8
+
+[node name="Monitor10" parent="." instance=ExtResource("16_mordc")]
+position = Vector2(352, 648)
+item = 9
+
+[node name="Monitor11" parent="." instance=ExtResource("16_mordc")]
+position = Vector2(384, 648)
+item = 10
+
+[node name="Monitor12" parent="." instance=ExtResource("16_mordc")]
+position = Vector2(416, 648)
+item = 11
+
+[node name="Monitor13" parent="." instance=ExtResource("16_mordc")]
+position = Vector2(448, 648)
+item = 12
+
+[node name="Monitor14" parent="." instance=ExtResource("16_mordc")]
+position = Vector2(480, 648)
+item = 13

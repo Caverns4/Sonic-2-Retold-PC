@@ -12,8 +12,10 @@ var hud = null
 var checkPoints = []
 # reference for the current checkpoint
 var currentCheckPoint = -1
+var currentCheckPointP2 = -1
 # the current level time from when the checkpoint got hit
 var checkPointTime = 0
+var checkPointTimeP2 = 0
 
 # the starting room, this is loaded on game resets, you may want to change this
 var startScene = preload("res://Scene/Presentation/Title.tscn")
@@ -58,6 +60,9 @@ var soundChannel = AudioStreamPlayer.new()
 var score = 0
 var lives = 3
 var continues = 0
+
+var scoreP2 = 0
+var livesP2 = 3
 # emeralds use bitwise flag operations, the equivelent for 7 emeralds would be 128
 var emeralds = 0
 # emerald bit flags
@@ -147,7 +152,9 @@ func reset_values():
 	specialStageID = 0
 	checkPoints = []
 	checkPointTime = 0
+	checkPointTimeP2 = 0
 	currentCheckPoint = -1
+	currentCheckPointP2 = -1
 	animals = [0,1]
 	nodeMemory = []
 	nextZone = load("res://Scene/Zones/BaseZone.tscn")

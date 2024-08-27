@@ -2,6 +2,8 @@ extends Area2D
 var active = false
 @export var checkPointID = 0
 
+var PlayerMemory = [] #List of Players that have triggered this Checkpoint
+
 func _ready():
 	# add self to global check point list (it's cleared in the stage start script in global)
 	Global.checkPoints.append(self)
@@ -29,8 +31,15 @@ func activate():
 
 func _on_Checkpoint_body_entered(body):
 	# do the spin and activate
-	if !active:
+	if !active and !Global.TwoPlayer:
 		if body.playerControl == 1:
 			$Spinner.play("spin")
 			$Checkpoint.play()
 			activate()
+	if Global.TwoPlayer and !PlayerMemory.has(body):
+			$Spinner.play("spin")
+			$Checkpoint.play()
+			activate()
+			PlayerMemory.append(body)
+			body.respawnPosition = global_position
+	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://gklj3ebdwveu"]
+[gd_scene load_steps=18 format=3 uid="uid://gklj3ebdwveu"]
 
 [ext_resource type="Texture2D" uid="uid://bf6cekji71vif" path="res://Graphics/Items/MonitorIcons.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://c8qtrmw44es3g" path="res://Graphics/Items/monitors.png" id="2"]
@@ -14,10 +14,6 @@ size = Vector2(30, 30)
 atlas = ExtResource("2")
 region = Rect2(32, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="2"]
-atlas = ExtResource("2")
-region = Rect2(0, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="3"]
 atlas = ExtResource("2")
 region = Rect2(0, 32, 32, 32)
@@ -25,6 +21,10 @@ region = Rect2(0, 32, 32, 32)
 [sub_resource type="AtlasTexture" id="4"]
 atlas = ExtResource("2")
 region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("2")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="6"]
 animations = [{
@@ -37,9 +37,6 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("2")
-}, {
 "duration": 1.0,
 "texture": SubResource("3")
 }, {
@@ -54,6 +51,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("3")
+}, {
+"duration": 1.0,
+"texture": SubResource("2")
 }],
 "loop": true,
 "name": &"default",
@@ -217,11 +217,15 @@ tracks/3/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_cv3ee"]
+resource_name = "new_animation"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b4dus"]
 _data = {
 "DestroyMonitor": SubResource("7"),
 "RESET": SubResource("8"),
-"fadeIcon": SubResource("9")
+"fadeIcon": SubResource("9"),
+"new_animation": SubResource("Animation_cv3ee")
 }
 
 [node name="Monitor" type="CharacterBody2D"]
@@ -242,7 +246,7 @@ frame = 2
 [node name="Monitor" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("6")
 autoplay = "default"
-frame = 1
+frame_progress = 0.275708
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 libraries = {

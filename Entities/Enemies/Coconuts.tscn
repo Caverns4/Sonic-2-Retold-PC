@@ -91,6 +91,7 @@ hframes = 3
 position = Vector2(7, -20)
 
 [node name="PlayerCheck" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 4096
 
@@ -99,6 +100,7 @@ position = Vector2(0, 64)
 shape = SubResource("RectangleShape2D_w5qup")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+visible = false
 position = Vector2(2.27374e-13, -2.27374e-13)
 rect = Rect2(-160, -112, 320, 224)
 

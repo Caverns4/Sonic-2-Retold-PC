@@ -48,6 +48,7 @@ var forceDirection = 0
 var pushingWall = 0
 
 var enemyCounter = 0
+var respawnPosition = Vector2.ZERO
 
 var character = Global.CHARACTERS.SONIC
 

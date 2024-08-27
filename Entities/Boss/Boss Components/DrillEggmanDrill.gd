@@ -5,5 +5,5 @@ var free = false
 
 func _physics_process(delta):
 	if free:
-		global_position.x += (200 * direction * delta)
+		global_position.x += (180 * direction * delta)
 	pass

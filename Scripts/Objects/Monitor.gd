@@ -7,10 +7,10 @@ var yspeed = 0
 var playerTouch = null
 var isActive = true
 @export_enum("Ring", "Speed Shoes", "Invincibility", "Shield", "Elec Shield", "Fire Shield",
-"Bubble Shield", "Super", "Blue Ring", "Boost", "1up") var item = 0
+"Bubble Shield", "Super", "Teleport", "Boost","Eggman","?", "Extra Life", "Tails Life") var item = 0
 
 enum ITEMTYPES{RING,SPEED_SHOES,INVINCIBILITY, SHIELD, ELECSHIELD, FIRESHIELD,
-BUBBLESHIELD,SUPER,TELEPORT,BOOST,LIFEP1,LIFEP2,QMARK}
+BUBBLESHIELD,SUPER,TELEPORT,BOOST,EGGMAN,QMARK,LIFEP1,LIFEP2}
 
 var twoPlayerItems = [
 	ITEMTYPES.RING,
@@ -24,19 +24,22 @@ var Explosion = preload("res://Entities/Misc/BadnickSmoke.tscn")
 
 
 func _ready():
-	if Global.TwoPlayer:
-		item = ITEMTYPES.QMARK
+	if !Engine.is_editor_hint():
+		if Global.TwoPlayer:
+			item = ITEMTYPES.QMARK
 	
-	# set frame
-	$Item.frame = item+2
-	# Life Icon (life icons are a special case)
-	if item == 10 and !Engine.is_editor_hint():
-		$Item.frame = item+1+Global.PlayerChar1
+		# set frame
+		$Item.frame = item+2
+		# Life Icon (life icons are a special case)
+		if item == ITEMTYPES.LIFEP1 and !Engine.is_editor_hint():
+			$Item.frame = item + 1 + Global.PlayerChar1
+		if item == ITEMTYPES.LIFEP2 and !Engine.is_editor_hint():
+			$Item.frame = item + Global.PlayerChar2
 	
 
 func _process(_delta):
 	# update for editor
-	if (Engine.is_editor_hint()):
+	if Engine.is_editor_hint():
 		$Item.frame = item+2
 
 func destroy():
@@ -60,17 +63,17 @@ func destroy():
 	await $Animator.animation_changed
 	# enable effect
 	match (item):
-		0: # Rings
+		ITEMTYPES.RING: # Rings
 			playerTouch.rings += 10
 			$SFX/Ring.play()
-		1: # Speed Shoes
+		ITEMTYPES.SPEED_SHOES: # Speed Shoes
 			if !playerTouch.get("isSuper"):
 				playerTouch.shoeTime = 20
 				playerTouch.switch_physics()
 				Global.currentTheme = 1
 				Global.effectTheme.stream = Global.themes[Global.currentTheme]
 				Global.effectTheme.play()
-		2: # Invincibility
+		ITEMTYPES.INVINCIBILITY: # Invincibility
 			if !playerTouch.get("isSuper"):
 				playerTouch.supTime = 20
 				playerTouch.shieldSprite.visible = false # turn off barrier for stars
@@ -78,23 +81,33 @@ func destroy():
 				Global.currentTheme = 0
 				Global.effectTheme.stream = Global.themes[Global.currentTheme]
 				Global.effectTheme.play()
-		3: # Shield
+		ITEMTYPES.SHIELD: # Shield
 			playerTouch.set_shield(playerTouch.SHIELDS.NORMAL)
-		4: # Elec
+		ITEMTYPES.ELECSHIELD: # Elec
 			playerTouch.set_shield(playerTouch.SHIELDS.ELEC)
-		5: # Fire
+		ITEMTYPES.FIRESHIELD: # Fire
 			playerTouch.set_shield(playerTouch.SHIELDS.FIRE)
-		6: # Bubble
+		ITEMTYPES.BUBBLESHIELD: # Bubble
 			playerTouch.set_shield(playerTouch.SHIELDS.BUBBLE)
-		7: # Super
+		ITEMTYPES.SUPER: # Super
 			playerTouch.rings += 50
 			if !playerTouch.get("isSuper"):
 				playerTouch.set_state(playerTouch.STATES.SUPER)
-		10: # 1up
+		ITEMTYPES.LIFEP1: # 1up
 			Global.life.play()
 			Global.lives += 1
 			Global.effectTheme.volume_db = -100
 			Global.music.volume_db = -100
+		ITEMTYPES.LIFEP2: #2-Player 1up
+			Global.life.play()
+			Global.livesP2 +=1
+			Global.effectTheme.volume_db = -100
+			Global.music.volume_db = -100
+		ITEMTYPES.EGGMAN:
+			playerTouch.kill(false)
+		ITEMTYPES.QMARK:
+			pass
+
 
 func _physics_process(delta):
 	if !Engine.is_editor_hint():

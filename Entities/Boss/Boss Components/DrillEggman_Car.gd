@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+const DRIVE_SPEED = 120 #2 ppf, 60 FPS = 120
+
 var active = false #If this is active at all
 var direction = -1 #-1 or 1
 var phase = 0 #The phase of this machine
@@ -53,7 +55,7 @@ func _process(delta):
 						direction = -1
 					else:
 						direction = 1
-					velocity.x = direction*125
+					velocity.x = direction*DRIVE_SPEED
 					parent.direction = direction
 			_:
 				if pilot:

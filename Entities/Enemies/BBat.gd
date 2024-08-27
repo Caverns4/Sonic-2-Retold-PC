@@ -20,6 +20,8 @@ var attackTimer = 0.0
 
 func _ready():
 	origin = global_position
+	$VisibleOnScreenEnabler2D.visible = true
+	$PlayerSensor.visible = true
 
 func _process(delta):
 	super(delta)

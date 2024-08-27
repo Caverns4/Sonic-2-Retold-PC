@@ -11,6 +11,7 @@ var Particle = preload("res://Entities/Misc/GenericParticle.tscn")
 func _ready():
 	defaultMovement = false
 	direction = -sign(scale.x)
+	$VisibleOnScreenEnabler2D.visible = true
 
 func _physics_process(delta):
 	# Dirction checks

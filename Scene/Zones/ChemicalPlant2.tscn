@@ -973,7 +973,7 @@ item = 6
 
 [node name="Monitor2" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(9344, 368)
-item = 10
+item = 12
 
 [node name="Monitor30" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(8976, 1968)
@@ -1021,7 +1021,7 @@ item = 10
 
 [node name="Monitor17" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(2672, 1264)
-item = 9
+item = 10
 
 [node name="Monitor18" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(304, 752)
@@ -1452,13 +1452,13 @@ position = Vector2(5248, 1728)
 position = Vector2(5272, 1728)
 
 [node name="Ring95" parent="Rings" instance=ExtResource("10_bnv7v")]
-position = Vector2(7336, 1240)
+position = Vector2(7336, 1248)
 
 [node name="Ring96" parent="Rings" instance=ExtResource("10_bnv7v")]
-position = Vector2(7360, 1240)
+position = Vector2(7360, 1248)
 
 [node name="Ring97" parent="Rings" instance=ExtResource("10_bnv7v")]
-position = Vector2(7384, 1240)
+position = Vector2(7384, 1248)
 
 [node name="Ring98" parent="Rings" instance=ExtResource("10_bnv7v")]
 position = Vector2(8744, 1088)

@@ -551,7 +551,7 @@ position = Vector2(6249, 242)
 
 [node name="Monitor10" parent="ItemsHolder" instance=ExtResource("28_etcp3")]
 position = Vector2(8433, 720)
-item = 10
+item = 12
 
 [node name="Badniks" type="Node2D" parent="."]
 metadata/_edit_lock_ = true

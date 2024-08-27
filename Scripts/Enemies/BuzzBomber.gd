@@ -24,6 +24,9 @@ var fire = null
 func _ready():
 	# clear fire if destroyed before shooting
 	var _con = connect("destroyed",Callable(self,"clear_fire"))
+	if !Engine.is_editor_hint():
+		$VisibleOnScreenEnabler2D.visible = true
+		$Sprite2D/PlayerCheck.visible = true
 
 func _process(delta):
 	if Engine.is_editor_hint():

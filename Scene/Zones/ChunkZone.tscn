@@ -544,19 +544,19 @@ dropSlightly = false
 
 [node name="MovingStairBlocks" parent="Floating Platforms" instance=ExtResource("19_exxvg")]
 position = Vector2(6720, 128)
-speed = 0.3
+speed = 0.5
 
 [node name="MovingStairBlocks3" parent="Floating Platforms" instance=ExtResource("19_exxvg")]
 position = Vector2(6976, 128)
-speed = 0.3
+speed = 0.5
 
 [node name="MovingStairBlocks4" parent="Floating Platforms" instance=ExtResource("19_exxvg")]
 position = Vector2(7232, 128)
-speed = 0.3
+speed = 0.5
 
 [node name="MovingStairBlocks5" parent="Floating Platforms" instance=ExtResource("19_exxvg")]
 position = Vector2(7488, 128)
-speed = 0.3
+speed = 0.5
 
 [node name="MovingStairBlocks2" parent="Floating Platforms" instance=ExtResource("19_exxvg")]
 position = Vector2(5569, 1056)
@@ -679,7 +679,7 @@ position = Vector2(8496, 496)
 
 [node name="Monitor5" parent="ItemsHolder" instance=ExtResource("16_plbr0")]
 position = Vector2(7744, 112)
-item = 10
+item = 12
 
 [node name="Monitor6" parent="ItemsHolder" instance=ExtResource("16_plbr0")]
 position = Vector2(9328, 752)
@@ -745,21 +745,25 @@ position = Vector2(3772, 1072)
 position = Vector2(4272, 1512)
 checkPointID = 1
 
+[node name="LampPost6" parent="ItemsHolder" instance=ExtResource("23_ogxdu")]
+position = Vector2(5184, 232)
+checkPointID = 2
+
 [node name="LampPost2" parent="ItemsHolder" instance=ExtResource("23_ogxdu")]
 position = Vector2(5824, 80)
-checkPointID = 2
+checkPointID = 3
 
 [node name="LampPost5" parent="ItemsHolder" instance=ExtResource("23_ogxdu")]
 position = Vector2(6120, 1512)
-checkPointID = 3
+checkPointID = 4
 
 [node name="LampPost3" parent="ItemsHolder" instance=ExtResource("23_ogxdu")]
 position = Vector2(7936, 744)
-checkPointID = 4
+checkPointID = 5
 
 [node name="LampPost4" parent="ItemsHolder" instance=ExtResource("23_ogxdu")]
 position = Vector2(8640, 488)
-checkPointID = 5
+checkPointID = 6
 
 [node name="Rings" type="Node2D" parent="."]
 metadata/_edit_lock_ = true

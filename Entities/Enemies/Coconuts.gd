@@ -24,6 +24,10 @@ var targets = [] #Players in the PlayerCheckBody
 
 @onready var animator = $AnimationPlayer
 
+func _ready() -> void:
+	$VisibleOnScreenEnabler2D.visible = true
+	$PlayerCheck.visible = true
+
 func _process(delta):
 	match state:
 		STATE.IDLE:

@@ -1,5 +1,6 @@
 extends EnemyBase
 
+const WALK_SPEED = 60
 const IDLE_TIME = 1.0
 const GRAVITY = 600
 
@@ -26,7 +27,7 @@ func _physics_process(delta):
 	
 	match state:
 		STATES.WALK:
-			velocity.x = direction*60
+			velocity.x = direction*WALK_SPEED
 			# Edge check
 			if (is_on_wall() or !$FloorCheck.is_colliding()):
 				stateTimer = IDLE_TIME
