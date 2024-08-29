@@ -897,6 +897,7 @@ offset_bottom = 40.0
 grow_vertical = 2
 
 [node name="Text" type="Sprite2D" parent="P2Counters"]
+position = Vector2(8, 0)
 texture = ExtResource("5_kre34")
 centered = false
 region_enabled = true
@@ -934,7 +935,7 @@ region_rect = Rect2(0, 64, 40, 16)
 
 [node name="Icon2" type="Sprite2D" parent="P2Counters"]
 material = ExtResource("2_xy7bp")
-position = Vector2(8, -24)
+position = Vector2(8, -16)
 texture = ExtResource("2_cfvjc")
 centered = false
 vframes = 7
@@ -1016,8 +1017,9 @@ anchor_left = 1.0
 anchor_top = 0.003
 anchor_right = 1.0
 anchor_bottom = 0.003
+offset_left = -32.0
 offset_top = -86.944
-offset_right = 16390.4
+offset_right = 16806.4
 offset_bottom = 169.056
 grow_horizontal = 0
 grow_vertical = 2
@@ -1096,9 +1098,9 @@ uppercase = true
 [node name="Through" type="Label" parent="LevelClear"]
 layout_mode = 0
 offset_left = -256.0
-offset_top = 88.0
+offset_top = 108.0
 offset_right = -58.0
-offset_bottom = 114.0
+offset_bottom = 134.0
 theme_override_fonts/font = ExtResource("11_6cefa")
 text = "through act"
 uppercase = true

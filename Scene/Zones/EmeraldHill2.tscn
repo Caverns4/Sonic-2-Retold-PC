@@ -419,7 +419,7 @@ springDirection = 4
 killTransSpeed = true
 
 [node name="Spring14" parent="Entity" instance=ExtResource("21_kclfh")]
-position = Vector2(8176, 1223)
+position = Vector2(8176, 1224)
 killTransSpeed = true
 
 [node name="Spring15" parent="Entity" instance=ExtResource("21_kclfh")]

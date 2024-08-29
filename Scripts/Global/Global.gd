@@ -31,6 +31,7 @@ const SCORE_COMBO = [1,2,3,4,4,4,4,4,4,4,4,4,4,4,4,5]
 
 # timerActive sets if the stage timer should be going
 var timerActive = false
+var timerActiveP2 = false
 var gameOver = false
 
 # stage clear is used to identify the current state of the stage clear sequence
@@ -69,6 +70,7 @@ var emeralds = 0
 enum EMERALD {RED = 1, BLUE = 2, GREEN = 4, YELLOW = 8, CYAN = 16, SILVER = 32, PURPLE = 64}
 var specialStageID = 0
 var levelTime = 0 # the timer that counts down while the level isn't completed or in a special ring
+var levelTimeP2 = 0
 var globalTimer = 0 # global timer, used as reference for animations
 var maxTime = 60*10
 
@@ -136,8 +138,11 @@ func _ready():
 
 func _process(delta):
 	# do a check for certain variables, if it's all clear then count the level timer up
-	if stageClearPhase == 0 and !gameOver and !get_tree().paused and timerActive:
+	if timerActive and stageClearPhase == 0 and !get_tree().paused:
 		levelTime += delta
+		
+	if timerActiveP2 and !get_tree().paused:
+		levelTimeP2 += delta
 	# count global timer if game isn't paused
 	if !get_tree().paused:
 		globalTimer += delta
@@ -145,9 +150,11 @@ func _process(delta):
 # reset values, self explanatory, put any variables to their defaults in here
 func reset_values():
 	lives = 3
+	livesP2 = 3
 	score = 0
 	continues = 0
 	levelTime = 0
+	levelTimeP2 = 0
 	emeralds = 0
 	specialStageID = 0
 	checkPoints = []

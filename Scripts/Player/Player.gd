@@ -261,10 +261,10 @@ func _ready():
 	camera.drag_vertical_enabled = true
 	_con = connect("positionChanged",Callable(self,"on_position_changed"))
 	camera.global_position = global_position
+	respawnPosition = global_position
 	
 	# Tails carry stuff
 	$TailsCarryBox/HitBox.disabled = true
-	
 	
 	# verify that we're not an ai
 	if (playerControl == 1):
@@ -1120,6 +1120,7 @@ func get_ring():
 	
 func kill(forced):
 	if !(get_tree().current_scene is MainGameScene) && forced == false:
+		sfx[6].play()
 		return false
 	if currentState != STATES.DIE:
 		disconect_from_floor()
@@ -1152,7 +1153,7 @@ func kill(forced):
 			sfx[25].play()
 		set_state(STATES.DIE,currentHitbox.NORMAL)
 		
-		if playerControl == 1:
+		if playerControl == 1 and !Global.TwoPlayer:
 			Global.main.sceneCanPause = false # stop the ability to pause
 
 func respawn():

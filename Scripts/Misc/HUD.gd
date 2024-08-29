@@ -47,10 +47,9 @@ func _ready():
 	
 	# stop timer from counting during stage start up and set global hud to self
 	Global.timerActive = false
+	Global.timerActiveP2 = false
 	Global.hud = self
-	# Set character Icon
-	$LifeCounter/Icon.frame = Global.PlayerChar1-1
-	
+
 	if Global.TwoPlayer:
 		$Counters.visible = false
 		$P1Counters.visible = true
@@ -104,6 +103,7 @@ func _ready():
 		Global.emit_stage_start()
 		get_tree().paused = false
 	Global.timerActive = true
+	Global.timerActiveP2 = true
 	# replace "sonic" in stage clear to match the player clear string
 	$LevelClear/Passed.text = $LevelClear/Passed.text.replace("SONIC",characterNames[Global.PlayerChar1-1])
 	# set the act clear frame
@@ -120,7 +120,8 @@ func _process(delta):
 	# uncomment below (and remove above line) for mili seconds
 	timeText.text = "%2d" % floor(timeClamp/60) + ":" + str(fmod(floor(timeClamp),60)).pad_zeros(2) + ":" + str(fmod(floor(timeClamp*100),100)).pad_zeros(2)
 	$P1Counters/Text/TimeNumbers.text = timeText.text
-	$P2Counters/Text/TimeNumbers.text = timeText.text
+	timeClamp = min(Global.levelTimeP2,Global.maxTime-1)
+	$P2Counters/Text/TimeNumbers.text = "%2d" % floor(timeClamp/60) + ":" + str(fmod(floor(timeClamp),60)).pad_zeros(2) + ":" + str(fmod(floor(timeClamp*100),100)).pad_zeros(2)
 	
 	# check that there's player, if there is then track the focus players ring count
 	var playerCount = Global.players.size()
