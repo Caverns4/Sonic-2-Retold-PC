@@ -14,10 +14,14 @@ BUBBLESHIELD,SUPER,TELEPORT,BOOST,EGGMAN,QMARK,LIFEP1,LIFEP2}
 
 var twoPlayerItems = [
 	ITEMTYPES.RING,
+	ITEMTYPES.RING,
 	ITEMTYPES.SPEED_SHOES,
 	ITEMTYPES.INVINCIBILITY,
 	ITEMTYPES.SHIELD,
-	ITEMTYPES.TELEPORT
+	ITEMTYPES.TELEPORT,
+	ITEMTYPES.EGGMAN,
+	ITEMTYPES.LIFEP1,
+	ITEMTYPES.LIFEP2
 ]
 
 var Explosion = preload("res://Entities/Misc/BadnickSmoke.tscn")
@@ -44,6 +48,14 @@ func _process(_delta):
 
 func destroy():
 	# skip if not activated
+	if Global.TwoPlayer:
+		item = twoPlayerItems.pick_random()
+		$Item.frame = item+2
+		if item == ITEMTYPES.LIFEP1:
+			$Item.frame = item + 1 + Global.PlayerChar1
+		if item == ITEMTYPES.LIFEP2:
+			$Item.frame = item + Global.PlayerChar2
+	
 	if !isActive:
 		return false
 	# create explosion

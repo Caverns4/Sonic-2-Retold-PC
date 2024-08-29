@@ -51,6 +51,19 @@ func _ready():
 	# Set character Icon
 	$LifeCounter/Icon.frame = Global.PlayerChar1-1
 	
+	if Global.TwoPlayer:
+		$Counters.visible = false
+		$P1Counters.visible = true
+		$P2Counters.visible = true
+		# Set character Icon
+		$LifeCounter/Icon.frame = Global.PlayerChar2-1
+	else:
+		$Counters.visible = true
+		$P1Counters.visible = false
+		$P2Counters.visible = false
+		# Set character Icon
+		$LifeCounter/Icon.frame = Global.PlayerChar1-1
+	
 	# play level card routine if level card is true
 	if playLevelCard:
 		# set level card
@@ -106,13 +119,24 @@ func _process(delta):
 	#timeText.text = "%2d" % floor(timeClamp/60) + ":" + str(fmod(floor(timeClamp),60)).pad_zeros(2)
 	# uncomment below (and remove above line) for mili seconds
 	timeText.text = "%2d" % floor(timeClamp/60) + ":" + str(fmod(floor(timeClamp),60)).pad_zeros(2) + ":" + str(fmod(floor(timeClamp*100),100)).pad_zeros(2)
+	$P1Counters/Text/TimeNumbers.text = timeText.text
+	$P2Counters/Text/TimeNumbers.text = timeText.text
 	
-	# cehck that there's player, if there is then track the focus players ring count
-	if (Global.players.size() > 0):
+	# check that there's player, if there is then track the focus players ring count
+	var playerCount = Global.players.size()
+	if (playerCount > 0):
 		ringText.text = "%3d" % Global.players[focusPlayer].rings
+		$P1Counters/Text/RingCount.text = "%3d" % Global.players[0].rings
+	if (playerCount > 1):
+		$P2Counters/Text/RingCount.text = "%3d" % Global.players[1].rings
+		
 	
 	# track lives with leading 0s
-	lifeText.text = "%3d" % Global.lives
+	if !Global.TwoPlayer:
+		lifeText.text = "%3d" % Global.lives
+	else:
+		lifeText.text = "%3d" % Global.livesP2
+		$P2Counters/Icon2/LifeText.text = "%3d" % Global.lives
 	
 	# Water Overlay
 	

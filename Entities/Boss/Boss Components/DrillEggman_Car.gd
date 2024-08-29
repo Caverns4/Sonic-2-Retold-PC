@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+
+@export var drillSound = preload("res://Audio/SFX/Boss/Motor.wav")
+
 const DRIVE_SPEED = 120 #2 ppf, 60 FPS = 120
 
 var active = false #If this is active at all
@@ -136,7 +139,7 @@ func Die():
 		readyToLaunch = false
 
 func playMotor():
-	$AudioStreamPlayer2D.play()
+	Global.play_sound(drillSound)
 	if drill: drill.monitoring = true
 
 func _on_area_2d_area_entered(area): #Await Eggman to enter

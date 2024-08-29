@@ -1,10 +1,13 @@
 extends BossBase
 
+@export var entrySound = preload("res://Audio/SFX/Boss/helicopter.wav")
+
 var deathTimer = 3
 var dead = false
 
 # you can use these to control behaviour
 var phase = 0
+var soundTimer = 0.0
 
 @onready var getPose = [$LeftPoint.global_position,$RightPoint.global_position]
 var currentPoint = 1
@@ -80,6 +83,7 @@ func _physics_process(delta):
 				if global_position.x > (getPose[0].lerp(getPose[1],0.5)).x and !readyEnterCar:
 					velocity = ((getPose[0].lerp(getPose[1],0.5)-global_position)*60).limit_length(64)
 					velocity.y = 18.0
+					play_intro(delta)
 				elif readyEnterCar and global_position.y < targetPosition.y:
 					velocity.x = 0.0
 					velocity.y = 20.0
@@ -158,6 +162,12 @@ func _on_boss_defeated():
 # do a laugh for 1 second
 func do_laugh():
 	set_animation("laugh",1)
+
+func play_intro(delta):
+	soundTimer -= delta
+	if soundTimer <= 0.0:
+		Global.play_sound(entrySound)
+		soundTimer = 0.3
 
 func _on_SmokeTimer_timeout():
 	# check that deathtimer's still going and that we are actually dead

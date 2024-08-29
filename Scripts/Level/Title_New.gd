@@ -86,6 +86,8 @@ func MenuOptionChosen():
 	#	Global.music.seek(14.0)
 	if Input.is_action_pressed("gm_action") and menuEntry == 0:
 		menuEntry = 2
+	if Input.is_action_pressed("gm_action3"):
+		Global.TwoPlayer = true
 	
 	match menuEntry:
 		0:

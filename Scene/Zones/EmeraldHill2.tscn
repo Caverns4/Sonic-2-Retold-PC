@@ -716,47 +716,36 @@ position = Vector2(7002, 1128)
 
 [node name="BuzzBomber" parent="Badniks" instance=ExtResource("31_icx4h")]
 position = Vector2(1784, 632)
-flyDirection = 0.0
 
 [node name="BuzzBomber2" parent="Badniks" instance=ExtResource("31_icx4h")]
 position = Vector2(1896, 592)
-flyDirection = 0.0
 
 [node name="BuzzBomber3" parent="Badniks" instance=ExtResource("31_icx4h")]
 position = Vector2(3420, 825)
-flyDirection = 0.0
 
 [node name="BuzzBomber4" parent="Badniks" instance=ExtResource("31_icx4h")]
 position = Vector2(3888, 536)
-flyDirection = 0.0
 
 [node name="BuzzBomber5" parent="Badniks" instance=ExtResource("31_icx4h")]
 position = Vector2(4264, 608)
-flyDirection = 0.0
 
 [node name="BuzzBomber6" parent="Badniks" instance=ExtResource("31_icx4h")]
 position = Vector2(5464, 568)
-flyDirection = 0.0
 
 [node name="BuzzBomber7" parent="Badniks" instance=ExtResource("31_icx4h")]
 position = Vector2(6280, 876)
-flyDirection = 0.0
 
 [node name="BuzzBomber8" parent="Badniks" instance=ExtResource("31_icx4h")]
 position = Vector2(7224, 1144)
-flyDirection = 0.0
 
 [node name="BuzzBomber9" parent="Badniks" instance=ExtResource("31_icx4h")]
 position = Vector2(7712, 832)
-flyDirection = 0.0
 
 [node name="BuzzBomber10" parent="Badniks" instance=ExtResource("31_icx4h")]
 position = Vector2(8112, 768)
-flyDirection = 0.0
 
 [node name="BuzzBomber11" parent="Badniks" instance=ExtResource("31_icx4h")]
 position = Vector2(9984, 864)
-flyDirection = 0.0
 
 [node name="Rings" type="Node2D" parent="."]
 metadata/_edit_lock_ = true

@@ -5,6 +5,7 @@ extends EnemyBase
 
 var Projectile = preload("res://Entities/Enemies/Projectiles/BuzzBomberProjectile.tscn")
 
+@export var bulletSound = preload("res://Audio/SFX/Objects/Projectile.wav")
 @export var flyDirection = 0.0 # (float,-180.0,180.0)
 @export var travelDistance = 256
 @export var speed = 100
@@ -125,6 +126,7 @@ func _on_PlayerCheck_body_entered(_body):
 		$Timer.start(16.0/60.0)
 		await $Timer.timeout
 		# check that fire hasn't been deleted
+		Global.play_sound(bulletSound)
 		if wrFire.get_ref():
 			# move projectile
 			fire.velocity = Vector2(120*side,120)

@@ -24,7 +24,7 @@ func _process(delta):
 						i.movement.y = -i.movement.y
 					else:
 						# Bounce slightly down
-						i.movement.y += 200
+						i.movement.y += 120
 						
 					#if i.movement.y > 0 and i.global_position.y < global_position.y:
 					#	# Bounce high upward
