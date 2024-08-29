@@ -175,6 +175,7 @@ func add_score(position = Vector2.ZERO,value = 0):
 # use a check function to see if a score increase would go above 50,000
 func check_score_life(scoreAdd = 0):
 	if fmod(score,50000) > fmod(score+scoreAdd,50000):
+		Global.life.stop()
 		life.play()
 		lives += 1
 		effectTheme.volume_db = -100

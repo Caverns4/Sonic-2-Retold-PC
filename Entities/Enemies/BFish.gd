@@ -25,6 +25,9 @@ var startPosition: Vector2
 var bubbleTimer = 0.0
 var Bubble = preload("res://Entities/Misc/Bubbles.tscn")
 
+func _ready():
+	$VisibleOnScreenEnabler2D.visible = true
+
 func _process(delta):
 	if Engine.is_editor_hint():
 		queue_redraw()
@@ -105,5 +108,3 @@ func _draw():
 		Rect2(Vector2(travelDistance*clamp(editorOffset,-1,1),0).rotated(deg_to_rad(swimDirection))-size/2,
 		size),Rect2(Vector2(0,0),
 		size),Color(1,1,1,0.5))
-
-

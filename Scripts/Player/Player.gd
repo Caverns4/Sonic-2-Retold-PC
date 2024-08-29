@@ -591,6 +591,7 @@ func _process(delta):
 	if rings >= ring1upCounter:
 		ring1upCounter += 100
 		# award 1up
+		Global.life.stop()
 		Global.life.play()
 		Global.lives += 1
 		Global.effectTheme.volume_db = -100

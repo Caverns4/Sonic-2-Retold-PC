@@ -35,6 +35,7 @@ func _process(_delta):
 					Global.CHARACTERS.SONIC:
 						# set ability used to true to prevent multiple uses
 						parent.abilityUsed = true
+						parent.airControl = true
 						# check that the invincibility barrier isn't visible
 						if !$"../../InvincibilityBarrier".visible:
 							match (parent.shield):
@@ -104,16 +105,19 @@ func _process(_delta):
 					Global.CHARACTERS.TAILS:
 						# prevent double tap flight (aka super jumps)
 						if not parent.any_action_held():
+							parent.airControl = true
 							parent.set_state(parent.STATES.FLY)
 					# Knuckles gliding
 					Global.CHARACTERS.KNUCKLES:
 						# set initial movement
 						parent.movement = Vector2(parent.direction*4*60,max(parent.movement.y,0))
 						parent.set_state(parent.STATES.GLIDE,parent.currentHitbox.GLIDE)
+						parent.airControl = true
 					# Amy hammer drop dash
 					Global.CHARACTERS.AMY:
 						# set ability used to true to prevent multiple uses
 						parent.abilityUsed = true
+						parent.airControl = true
 						# enable insta shield hitbox if hammer drop dashing
 						parent.shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled = (parent.animator.current_animation == "dropDash")
 						# play hammer sound

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://85umccwskeyx"]
+
+[ext_resource type="Texture2D" uid="uid://d6m23ulvmhff" path="res://Graphics/Gimmicks/HTZ_SeeSaw.png" id="1_og7mm"]
+[ext_resource type="Script" path="res://Scripts/Gimmicks/htz_see_saw.gd" id="1_tvndd"]
+
+[node name="HtzSeeSaw" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_tvndd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = ExtResource("1_og7mm")
+vframes = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-48, -8, 48, -48, 48, 0, -48, 0)

@@ -105,20 +105,26 @@ func destroy():
 			playerTouch.rings += 50
 			if !playerTouch.get("isSuper"):
 				playerTouch.set_state(playerTouch.STATES.SUPER)
+		ITEMTYPES.TELEPORT:
+			pass
+		ITEMTYPES.BOOST:
+			pass
+		ITEMTYPES.EGGMAN:
+			playerTouch.hit_player(global_position,0,6)
+		ITEMTYPES.QMARK:
+			pass
 		ITEMTYPES.LIFEP1: # 1up
+			Global.life.stop()
 			Global.life.play()
 			Global.lives += 1
 			Global.effectTheme.volume_db = -100
 			Global.music.volume_db = -100
 		ITEMTYPES.LIFEP2: #2-Player 1up
+			Global.life.stop()
 			Global.life.play()
 			Global.livesP2 +=1
 			Global.effectTheme.volume_db = -100
 			Global.music.volume_db = -100
-		ITEMTYPES.EGGMAN:
-			playerTouch.kill(false)
-		ITEMTYPES.QMARK:
-			pass
 
 
 func _physics_process(delta):

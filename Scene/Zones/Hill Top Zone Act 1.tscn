@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://cyh8p6ji14r0t"]
+[gd_scene load_steps=41 format=4 uid="uid://cyh8p6ji14r0t"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_ijtho"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="2_vefax"]
@@ -36,6 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://cfteqnft5ynr7" path="res://Entities/Hazards/Spikes.tscn" id="30_82wuk"]
 [ext_resource type="PackedScene" uid="uid://ctg1aeiewvyvj" path="res://Entities/Gimmicks/ForceRoll.tscn" id="30_ej03w"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="33_ommvj"]
+[ext_resource type="PackedScene" uid="uid://85umccwskeyx" path="res://Entities/Gimmicks/HTZSeeSaw.tscn" id="37_geevq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xpnng"]
 shader = ExtResource("5_ijjkm")
@@ -481,13 +482,6 @@ endPosition = Vector2(0, 64)
 dropSlightly = false
 fullySolid = true
 
-[node name="Platform5" parent="FloatingPlatform" instance=ExtResource("9_0ltuq")]
-position = Vector2(1920, 984)
-platformSprite = ExtResource("21_s1sna")
-endPosition = Vector2(0, 8)
-dropSlightly = false
-fullySolid = true
-
 [node name="Platform4" parent="FloatingPlatform" instance=ExtResource("9_0ltuq")]
 position = Vector2(2368, 928)
 platformSprite = ExtResource("21_s1sna")
@@ -614,3 +608,6 @@ scale = Vector2(16, 6)
 [node name="InvisibleBarrier10" parent="Earthquake1/QuakeTiles" instance=ExtResource("28_r5ji8")]
 position = Vector2(7488, 1616)
 scale = Vector2(12, 8)
+
+[node name="HtzSeeSaw" parent="." instance=ExtResource("37_geevq")]
+position = Vector2(1936, 1024)
