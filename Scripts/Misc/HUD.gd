@@ -150,14 +150,14 @@ func _process(delta):
 				# if camera exists place the water's y position based on the screen position as the water is a UI overlay
 				$Water/WaterOverlay.position.y = clamp(
 					Global.waterLevel-GlobalFunctions.getCurrentCamera2D().get_screen_center_position().y+(get_viewport().get_visible_rect().size.y/2
-					),0,get_viewport().get_visible_rect().size.y/2)
+					),0,get_viewport().get_visible_rect().size.y)
 			# scale water level to match the visible screen
 			$Water/WaterOverlay.scale.y = clamp(Global.waterLevel-$Water/WaterOverlay.position.y,0,get_viewport().size.y)
 			$Water/WaterOverlay.visible = true
 		else:
 			# if camera exists place the water's y position based on the screen position as the water is a UI overlay
 			$Water/WaterOverlay.position.y = clamp(
-				Global.waterLevel-GlobalFunctions.getCurrentCamera2D().get_screen_center_position().y+(get_viewport().get_visible_rect().size.y/2
+				Global.waterLevel-GlobalFunctions.getCurrentCamera2D().get_screen_center_position().y+(get_viewport().get_visible_rect().size.y/4
 				),0,get_viewport().get_visible_rect().size.y/2)
 			# scale water level to match the visible screen
 			$Water/WaterOverlay.scale.y = clamp(Global.waterLevel-$Water/WaterOverlay.position.y,0,get_viewport().size.y)

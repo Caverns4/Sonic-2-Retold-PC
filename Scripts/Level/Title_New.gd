@@ -13,9 +13,10 @@ var particlesDone = false
 var menuText = [
 	"[color=#eeee00]1 PLAYER[/color]\n\n2 PLAYER VS",
 	"1 PLAYER\n\n[color=eeee00]2 PLAYER VS[/color]",
-	"\n[color=eeee00]LEVEL SELECT[/color]"
+	"\n[color=eeee00]OPTIONS[/color]"
 ]
 
+var scene
 var parallaxBackgrounds = [
 	"res://Scene/Backgrounds/00-EmeraldHill.tscn",
 	"res://Scene/Backgrounds/01-HiddenPalace.tscn",
@@ -31,6 +32,15 @@ var paraOffsets = [
 	0,
 ]
 
+var levelSelectCheat = [
+	Vector2.UP,
+	Vector2.DOWN,
+	Vector2.DOWN,
+	Vector2.DOWN,
+	Vector2.UP
+]
+var cheatInputCount = 0 #Correct inputs
+var lastCheatInput = Vector2.ZERO
 
 func _ready():
 	Global.TwoPlayer = false
@@ -39,10 +49,7 @@ func _ready():
 	
 	var zoneIndex = min(Global.savedZoneID,parallaxBackgrounds.size()-1)
 	var parallax = parallaxBackgrounds[zoneIndex]
-	var scene = load(parallax)
-	var instance = scene.instantiate()
-	instance.scroll_base_offset.y = paraOffsets[zoneIndex]
-	add_child(instance)
+	scene = load(parallax)
 	#UpdateMenuDisplay()
 	if nextZone != null:
 		Global.nextZone = nextZone
@@ -51,19 +58,18 @@ func _process(delta):
 	if $CanvasLayer/Labels.visible == true and !titleEnd:
 		menuActive = true
 	
-	$Worlds.global_position.x += (4*60*delta)
+	$TitleBanner.global_position.x += (4*60*delta)
 	# animate cogs
-	#$BackCog.rotate(delta*speed)
-	#$BigCog.rotate(-delta*2*speed)
-	#$BigCog/CogCircle.rotate(delta*2*speed)
-	#$Sonic/Cog.rotate(-delta*1.5*speed)
 	$Celebrations.global_position.x += (4*60*delta)
 	
-	if $Worlds.global_position.x >= 3760 and particlesDone == false:
+	if !titleEnd:
+		CheckCheatInputs()
+	
+	if $TitleBanner.global_position.x >= 3760 and particlesDone == false:
 		$Celebrations.emitting = true
 		particlesDone = true
 	
-	if $Worlds.global_position.x >= 4600 and !titleEnd:
+	if $TitleBanner.global_position.x >= 4600 and !titleEnd:
 		menuActive = false
 		titleEnd = true
 		Global.main.change_scene_to_file(returnScene,"FadeOut","FadeOut",1)
@@ -74,7 +80,7 @@ func _input(event):
 	#		menuEntry +=1
 	#	if Input.is_action_just_pressed("gm_up"):
 	#		menuEntry -=1
-	#menuEntry = wrapi(menuEntry,0,3)
+	#menuEntry = wrapi(menuEntry,0,2)
 	#UpdateMenuDisplay()
 	
 	# end title on start press
@@ -84,10 +90,11 @@ func _input(event):
 func MenuOptionChosen():
 	#if Global.music.get_playback_position() < 14.0:
 	#	Global.music.seek(14.0)
-	if Input.is_action_pressed("gm_action") and menuEntry == 0:
-		menuEntry = 2
-	if Input.is_action_pressed("gm_action3"):
-		Global.TwoPlayer = true
+	if Global.levelSelectFlag:
+		if Input.is_action_pressed("gm_action") and menuEntry == 0:
+			menuEntry = 2
+		if Input.is_action_pressed("gm_action3"):
+			Global.TwoPlayer = true
 	
 	match menuEntry:
 		0:
@@ -107,3 +114,35 @@ func MenuOptionChosen():
 func UpdateMenuDisplay():
 	$CanvasLayer/Labels/TitleMenu/MenuIcon.position.y = menuIconYOff[menuEntry]
 	$CanvasLayer/Labels/TitleMenu/Text.text = menuText[menuEntry]
+
+func CheckCheatInputs():
+	var inputs = Input.get_vector("gm_left","gm_right","gm_up","ui_down")
+	inputs.x = round(inputs.x)
+	inputs.y = round(inputs.y)
+	#If this input is the same as previous, do nothing.
+	if inputs == lastCheatInput:
+		pass
+	#If this input is null, rmember it, but don't count it against Cheats
+	elif inputs == Vector2.ZERO:
+		lastCheatInput = inputs
+	#in any othe case, consider this a valid cheat attempt
+	else:
+		if !Global.levelSelectFlag:
+			if inputs == levelSelectCheat[cheatInputCount]:
+				cheatInputCount += 1
+				print("Correct input!"+ str(inputs))
+			else:
+				cheatInputCount = 0
+				print("Wrong input!" + str(inputs))
+			if cheatInputCount == levelSelectCheat.size():
+				cheatInputCount = 0
+				$TitleBanner/RingChime.play(0.0)
+				Global.levelSelectFlag = true
+	lastCheatInput = inputs
+
+func InstantiateBG():
+	var zoneIndex = min(Global.savedZoneID,parallaxBackgrounds.size()-1)
+	var instance = scene.instantiate()
+	instance.scroll_base_offset.y = paraOffsets[zoneIndex]
+	add_child(instance)
+	

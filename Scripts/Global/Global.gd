@@ -8,6 +8,8 @@ var players = []
 var main = null
 # hud object reference
 var hud = null
+# Cheats implimented
+var levelSelectFlag = false
 # checkpoint memory
 var checkPoints = []
 # reference for the current checkpoint

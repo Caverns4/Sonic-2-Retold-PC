@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://qs5dmtxxf1w1"]
+[gd_scene load_steps=15 format=3 uid="uid://qs5dmtxxf1w1"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Title_New.gd" id="1_jsjd7"]
 [ext_resource type="Texture2D" uid="uid://eih0pbfohmyc" path="res://Graphics/title/TitleEmblem_Final.png" id="2_oku5l"]
@@ -8,9 +8,46 @@
 [ext_resource type="Texture2D" uid="uid://dt51ojxk80oqh" path="res://Graphics/Items/Rings/Ring.tres" id="4_vmy7g"]
 [ext_resource type="Texture2D" uid="uid://de5i6e2h1ov1c" path="res://Graphics/title/SonicTitle.png" id="5_tsdwn"]
 [ext_resource type="Texture2D" uid="uid://c2xdraklm0ah7" path="res://Graphics/title/TitleMenu.png" id="6_0yyi7"]
+[ext_resource type="AudioStream" uid="uid://jt28gfxybprb" path="res://Audio/SFX/Objects/RingStereo.wav" id="6_fm38o"]
 
 [sub_resource type="Animation" id="2"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TitleBanner/RetoldText:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 48)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TitleBanner/RetoldText:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cover/Back:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="1"]
 resource_name = "TitleAssemble"
@@ -18,38 +55,64 @@ length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Cover:scale")
+tracks/0/path = NodePath("Cover/Back:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 1.4),
-"transitions": PackedFloat32Array(1, -2, 1),
-"update": 1,
-"values": [Vector2(1, 1e-05), Vector2(1, 1e-05), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Cover/Back:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 1.3, 1.4, 1.6, 2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/Labels:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Labels:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 1.3, 1.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TitleBanner/RetoldText:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.3, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 28), Vector2(0, 66), Vector2(0, 48)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TitleBanner/RetoldText:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [-1, 1]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"InstantiateBG"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pb3yv"]
@@ -69,29 +132,33 @@ colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1)
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_jsjd7")
 
-[node name="Worlds" type="Sprite2D" parent="."]
+[node name="TitleBanner" type="Sprite2D" parent="."]
 z_index = 2
 position = Vector2(160, 112)
 texture = ExtResource("2_oku5l")
 region_rect = Rect2(2, 173, 182, 36)
 
-[node name="RetoldText" type="Sprite2D" parent="Worlds"]
+[node name="RetoldText" type="Sprite2D" parent="TitleBanner"]
 z_index = 1
 position = Vector2(0, 48)
 texture = ExtResource("3_vbbsi")
 
-[node name="Title_Tails" type="Sprite2D" parent="Worlds"]
+[node name="Title_Tails" type="Sprite2D" parent="TitleBanner"]
 position = Vector2(-36, -40)
 texture = ExtResource("4_d2xjp")
 region_rect = Rect2(190, 173, 17, 36)
 
-[node name="Title_Sonic" type="Sprite2D" parent="Worlds"]
+[node name="Title_Sonic" type="Sprite2D" parent="TitleBanner"]
 position = Vector2(33.354, -46.4)
 texture = ExtResource("5_tsdwn")
 offset = Vector2(8, 1)
 region_rect = Rect2(214, 173, 15, 36)
 
-[node name="Camera2D" type="Camera2D" parent="Worlds"]
+[node name="Camera2D" type="Camera2D" parent="TitleBanner"]
+
+[node name="RingChime" type="AudioStreamPlayer" parent="TitleBanner"]
+stream = ExtResource("6_fm38o")
+bus = &"SFX"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -113,6 +180,7 @@ pivot_offset = Vector2(0, 70)
 color = Color(0.533333, 0.533333, 0.533333, 1)
 
 [node name="Labels" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -192,17 +260,21 @@ position = Vector2(-56, 4)
 texture = ExtResource("6_0yyi7")
 
 [node name="Cover" type="CanvasLayer" parent="."]
-layer = 0
+layer = -1
 visible = false
+scale = Vector2(64, 64)
+transform = Transform2D(64, 0, 0, 64, 0, 0)
+follow_viewport_scale = 0.001
 
 [node name="Back" type="ColorRect" parent="Cover"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -320.0
-offset_bottom = -224.0
+offset_right = -240.0
+offset_bottom = -160.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
 [node name="TitleAnimate" type="AnimationPlayer" parent="."]
 libraries = {
