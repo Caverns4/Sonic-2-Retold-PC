@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://cyh8p6ji14r0t"]
+[gd_scene load_steps=42 format=4 uid="uid://cyh8p6ji14r0t"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_ijtho"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="2_vefax"]
@@ -37,6 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://ctg1aeiewvyvj" path="res://Entities/Gimmicks/ForceRoll.tscn" id="30_ej03w"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="33_ommvj"]
 [ext_resource type="PackedScene" uid="uid://85umccwskeyx" path="res://Entities/Gimmicks/HTZSeeSaw.tscn" id="37_geevq"]
+[ext_resource type="PackedScene" uid="uid://jgm0h2yu3hvb" path="res://Entities/Enemies/Redz.tscn" id="38_bsrw7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xpnng"]
 shader = ExtResource("5_ijjkm")
@@ -371,10 +372,6 @@ killTransSpeed = true
 position = Vector2(4288, 832)
 killTransSpeed = true
 
-[node name="Spring6" parent="Entities" instance=ExtResource("24_tu1me")]
-position = Vector2(3520, 1112)
-killTransSpeed = true
-
 [node name="Spring2" parent="Entities" instance=ExtResource("24_tu1me")]
 position = Vector2(3472, 848)
 springDirection = 4
@@ -611,3 +608,9 @@ scale = Vector2(12, 8)
 
 [node name="HtzSeeSaw" parent="." instance=ExtResource("37_geevq")]
 position = Vector2(1936, 1024)
+
+[node name="HtzSeeSaw2" parent="." instance=ExtResource("37_geevq")]
+position = Vector2(3520, 1120)
+
+[node name="Redz" parent="." instance=ExtResource("38_bsrw7")]
+position = Vector2(3488, 1032)

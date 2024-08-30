@@ -1,16 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://85umccwskeyx"]
+[gd_scene load_steps=5 format=3 uid="uid://85umccwskeyx"]
 
 [ext_resource type="Texture2D" uid="uid://d6m23ulvmhff" path="res://Graphics/Gimmicks/HTZ_SeeSaw.png" id="1_og7mm"]
 [ext_resource type="Script" path="res://Scripts/Gimmicks/htz_see_saw.gd" id="1_tvndd"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h8qh0"]
+size = Vector2(96, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_63cjf"]
+size = Vector2(96, 8)
+
 [node name="HtzSeeSaw" type="StaticBody2D"]
-collision_mask = 0
+collision_mask = 8192
 script = ExtResource("1_tvndd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -32)
 texture = ExtResource("1_og7mm")
 vframes = 3
+frame = 1
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-48, -8, 48, -48, 48, 0, -48, 0)
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 20480
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_h8qh0")
+debug_color = Color(0.517647, 1, 1, 0.501961)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -28)
+shape = SubResource("RectangleShape2D_63cjf")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

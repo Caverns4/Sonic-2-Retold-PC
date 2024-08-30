@@ -10,6 +10,8 @@ var direction = 1
 var state = STATES.WALK
 var stateTimer = 0
 
+var ground = false
+
 var Particle = preload("res://Entities/Misc/GenericParticle.tscn")
 @onready var animator = $AnimationPlayer
 
@@ -24,6 +26,8 @@ func _physics_process(delta):
 	$Redz.scale.x = abs($Redz.scale.x)*-direction
 	$FloorCheck.position.x = abs($FloorCheck.position.x)*direction
 	$FloorCheck.force_raycast_update()
+	
+	ground = is_on_floor()
 	
 	match state:
 		STATES.WALK:
