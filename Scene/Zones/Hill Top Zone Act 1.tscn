@@ -596,7 +596,7 @@ item = 3
 
 [node name="Monitor8" parent="ItemsHolder" instance=ExtResource("33_ommvj")]
 position = Vector2(4056, 1224)
-item = 10
+item = 13
 
 [node name="Monitor9" parent="ItemsHolder" instance=ExtResource("33_ommvj")]
 position = Vector2(9680, 1554)
