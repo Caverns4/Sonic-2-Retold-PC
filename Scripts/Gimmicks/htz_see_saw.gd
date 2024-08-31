@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+@export var springPower = 20
+
 @onready var sprite = $Sprite2D
 var springSound = preload("res://Audio/SFX/Gimmicks/Springs.wav")
 
@@ -78,7 +80,7 @@ func SpringObjectOnHighEnd():
 		if node is CharacterBody2D and node.ground and countedObjs != weights.size():
 			var yspeed = 0 - (min(32,abs(
 			(node.global_position.x-round(global_position.x+downSide))
-			)))*20
+			)))*springPower
 			if node.get("movement") != null:
 				node.movement.y = yspeed
 				if node.get("airControl") != null: #If this is true, the object is a player

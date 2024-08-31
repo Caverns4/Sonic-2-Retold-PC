@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Gimmicks/htz_see_saw.gd" id="1_tvndd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h8qh0"]
-size = Vector2(88, 64)
+size = Vector2(88, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_63cjf"]
 size = Vector2(8, 8)
@@ -24,7 +24,7 @@ collision_layer = 0
 collision_mask = 20480
 
 [node name="AreaCollision" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -32)
+position = Vector2(0, -34)
 shape = SubResource("RectangleShape2D_h8qh0")
 debug_color = Color(0.517647, 1, 1, 0.501961)
 
