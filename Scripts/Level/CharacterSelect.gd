@@ -114,7 +114,7 @@ func _input(event):
 				3: # Hidden Palace Zone 2
 					Global.nextZone = load("res://Scene/Zones/Hidden Palace 2.tscn")
 				4: # Hill Top Zone 1
-					Global.nextZone = load("res://Scene/Zones/Hill Top Zone Act 1.tscn")
+					Global.nextZone = load("res://Scene/Zones/HillTop1.tscn")
 				5: # Hill Top Zone 2
 					Global.nextZone = load("res://Scene/Zones/HillTop2.tscn")
 				6: # Chemical Plant Zone 1
@@ -125,6 +125,10 @@ func _input(event):
 					Global.nextZone = load("res://Scene/Zones/BaseZone.tscn")
 				9: # Oil Ocean Zone 2
 					Global.nextZone = load("res://Scene/Zones/BaseZoneAct2.tscn")
+				10: # Neo Green Hill Zone 1
+					Global.nextZone = load("res://Scene/Zones/AquaticRuin1.tscn")
+				11: # Neo Green Hill 2
+					Global.nextZone = load("res://Scene/Zones/AquaticRuin2.tscn")
 				_: # Invalid Entry
 					Global.nextZone = load("res://Scene/Zones/BaseZone.tscn")
 			

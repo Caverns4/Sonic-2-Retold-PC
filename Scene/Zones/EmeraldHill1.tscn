@@ -464,6 +464,14 @@ scale = Vector2(-1, 1)
 type = 1
 springDirection = 3
 
+[node name="BoundrySetter" parent="Entities" instance=ExtResource("34_s73fn")]
+position = Vector2(10840, 656)
+leftBoundry = 10600
+topBoundry = 512
+setRight = false
+rightBoundry = 11000
+bottomBoundry = 784
+
 [node name="Hazards" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
@@ -1275,11 +1283,3 @@ position = Vector2(8760, 296)
 
 [node name="SignpostNew" parent="." instance=ExtResource("32_x5cj3")]
 position = Vector2(10816, 772)
-
-[node name="BoundrySetter" parent="." instance=ExtResource("34_s73fn")]
-position = Vector2(10840, 656)
-leftBoundry = 10600
-topBoundry = 512
-setRight = false
-rightBoundry = 11000
-bottomBoundry = 784

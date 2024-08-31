@@ -1,9 +1,10 @@
 extends StaticBody2D
-@export var pieces = Vector2(1,4)
+@export var texture = preload("res://Graphics/Obstacles/Blocks/small_block2.png")
+@export var pieces = Vector2(1,1)
 var Piece = preload("res://Entities/Misc/BlockPiece.tscn")
 @export var sound = preload("res://Audio/SFX/Gimmicks/Collapse.wav")
 
-@export_enum("Normal","Fragile (CD)")var type = 0
+@export_enum("Normal","Fragile")var type = 0
 enum TYPE {NORMAL,CD}
 
 func physics_collision(body, hitVector):
@@ -12,7 +13,7 @@ func physics_collision(body, hitVector):
 		# verify if rolling or knuckles
 		if (body.animator.current_animation == "roll"
 		and (body.currentState == body.STATES.ROLL 
-		and body.ground and abs(body.movement.x) > 4.5*60 or type == TYPE.CD)
+		and body.ground and abs(body.movement.x) > 4.5*60 or (body.ground and type == TYPE.CD))
 		and !get_collision_layer_value(19) 
 		or body.character == Global.CHARACTERS.KNUCKLES
 		or (body.character == Global.CHARACTERS.SONIC and body.isSuper)):

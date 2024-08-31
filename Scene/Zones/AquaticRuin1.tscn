@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8nujtm2r4age"]
+
+[ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_bg171"]
+[ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="2_8wvcy"]
+
+[node name="AquaticRuin1" type="Node2D"]
+
+[node name="HUD" parent="." instance=ExtResource("1_bg171")]
+playLevelCard = false
+
+[node name="Player" parent="." instance=ExtResource("2_8wvcy")]
+position = Vector2(96, 656)

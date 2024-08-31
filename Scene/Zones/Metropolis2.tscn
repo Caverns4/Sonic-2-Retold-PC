@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct2wo24donqxt"]
+
+[ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_f4g8u"]
+[ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="2_ykppd"]
+
+[node name="Metropolis2" type="Node2D"]
+
+[node name="HUD" parent="." instance=ExtResource("1_f4g8u")]
+playLevelCard = false
+
+[node name="Player" parent="." instance=ExtResource("2_ykppd")]
+position = Vector2(96, 656)

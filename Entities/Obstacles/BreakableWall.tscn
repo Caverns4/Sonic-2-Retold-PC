@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cixivj8j3fvsx" path="res://Graphics/Obstacles/Blocks/small_block2.png" id="2"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(16, 64)
+size = Vector2(16, 16)
 
 [node name="BustableWall" type="StaticBody2D"]
 collision_layer = 1114112
@@ -16,5 +16,4 @@ shape = SubResource("1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2")
-region_enabled = true
 region_rect = Rect2(0, 0, 16, 64)

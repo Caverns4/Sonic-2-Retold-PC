@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8bt0u45oqhe6"]
+[gd_scene load_steps=5 format=3 uid="uid://b8bt0u45oqhe6"]
 
 [ext_resource type="Script" path="res://Scripts/Objects/Lava.gd" id="2"]
-[ext_resource type="Texture2D" uid="uid://dokrp08dw7117" path="res://Graphics/Hazards/LavaTiles1.png" id="2_mkgt6"]
-[ext_resource type="Texture2D" uid="uid://hrlm54app0h3" path="res://Graphics/Hazards/LavaTop1.png" id="3_3fxxh"]
+[ext_resource type="Texture2D" uid="uid://bf6cekji71vif" path="res://Graphics/Items/MonitorIcons.png" id="4_35bna"]
 
 [sub_resource type="RectangleShape2D" id="2"]
 resource_local_to_scene = true
@@ -12,6 +11,7 @@ size = Vector2(31, 31)
 size = Vector2(32, 32)
 
 [node name="Lava" type="Area2D"]
+z_index = 30
 collision_layer = 0
 collision_mask = 4096
 script = ExtResource("2")
@@ -25,23 +25,40 @@ collision_mask = 15
 modulate = Color(1, 0, 0, 0.584314)
 shape = SubResource("2")
 
-[node name="LavaTile" type="Sprite2D" parent="."]
-z_index = 10
-position = Vector2(0, 4)
-texture = ExtResource("2_mkgt6")
-region_enabled = true
-region_rect = Rect2(0, 0, 32, 32)
-
-[node name="LavaTop" type="Sprite2D" parent="."]
-z_index = 10
-position = Vector2(0, -16)
-texture = ExtResource("3_3fxxh")
-region_enabled = true
-region_rect = Rect2(0, 0, 32, 8)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color(1, 0, 0, 0.584314)
 shape = SubResource("1")
+
+[node name="TopLeft" type="Sprite2D" parent="."]
+position = Vector2(-16, -16)
+texture = ExtResource("4_35bna")
+centered = false
+hframes = 11
+vframes = 2
+frame = 15
+
+[node name="TopRight" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("4_35bna")
+centered = false
+hframes = 11
+vframes = 2
+frame = 15
+
+[node name="BottomLeft" type="Sprite2D" parent="."]
+position = Vector2(-16, 0)
+texture = ExtResource("4_35bna")
+centered = false
+hframes = 11
+vframes = 2
+frame = 15
+
+[node name="BottomRight" type="Sprite2D" parent="."]
+texture = ExtResource("4_35bna")
+centered = false
+hframes = 11
+vframes = 2
+frame = 15
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
