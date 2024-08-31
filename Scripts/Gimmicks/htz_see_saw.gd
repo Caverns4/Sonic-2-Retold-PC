@@ -1,6 +1,7 @@
 extends StaticBody2D
 
 @onready var sprite = $Sprite2D
+var springSound = preload("res://Audio/SFX/Gimmicks/Springs.wav")
 
 var weights = [] #Objects currently on the platform
 var balanceMemory = 0.0 # Saved weight distribution
@@ -8,9 +9,9 @@ var balance = 0.0 # Current weight distribution
 var direction = 0
 
 var targetYPositions =[
-	[-40,-32,-24,-16, -8,  0], #Heavy on right
-	[-24,-24,-24,-24,-24,-24], #Centered
-	[  0, -8,-16,-24,-32,-40]  #Heavy on Left
+	[-40,-36,-32,-28,-24,-20,-16,-12, -8,-4 ,  0], #Heavy on right
+	[-24,-24,-24,-24,-24,-24,-24,-24,-24,-24,-24], #Centered
+	[  0, -4, -8,-12,-16,-20,-24,-28,-32,-36,-40]  #Heavy on Left
 ]
 
 # Called when the node enters the scene tree for the first time.
@@ -77,9 +78,24 @@ func SpringObjectOnHighEnd():
 		if node is CharacterBody2D and node.ground and countedObjs != weights.size():
 			var yspeed = 0 - (min(32,abs(
 			(node.global_position.x-round(global_position.x+downSide))
-			)))*18
+			)))*20
 			if node.get("movement") != null:
 				node.movement.y = yspeed
+				if node.get("airControl") != null: #If this is true, the object is a player
+					var curAnim = "walk"
+					match(node.animator.current_animation):
+						"walk", "run", "peelOut":
+							curAnim = node.animator.current_animation
+						# if none of the animations match and speed is equal beyond the players top speed, set it to run (default is walk)
+						_:
+							if(abs(node.groundSpeed) >= min(6*60,node.top)):
+								curAnim = "run"
+					node.set_state(node.STATES.AIR)
+					node.airControl = true
+					node.animator.play("spring")
+					node.animator.queue(curAnim)
+					Global.play_sound(springSound)
+				
 			elif node.get("velocity") != null:
 				node.velocity.y = yspeed
 			#print(node.movement.y/16)

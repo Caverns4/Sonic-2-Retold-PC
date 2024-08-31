@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://Scripts/Gimmicks/htz_see_saw.gd" id="1_tvndd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h8qh0"]
-size = Vector2(96, 64)
+size = Vector2(88, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_63cjf"]
-size = Vector2(16, 8)
+size = Vector2(8, 8)
 
 [node name="HtzSeeSaw" type="StaticBody2D"]
 collision_mask = 8192
@@ -33,22 +33,42 @@ position = Vector2(-40, -48)
 shape = SubResource("RectangleShape2D_63cjf")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-24, -40)
+position = Vector2(-32, -44)
 shape = SubResource("RectangleShape2D_63cjf")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-position = Vector2(-8, -32)
+position = Vector2(-24, -40)
 shape = SubResource("RectangleShape2D_63cjf")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
-position = Vector2(8, -24)
+position = Vector2(-16, -36)
 shape = SubResource("RectangleShape2D_63cjf")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
-position = Vector2(24, -16)
+position = Vector2(-8, -32)
 shape = SubResource("RectangleShape2D_63cjf")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="."]
+position = Vector2(0, -28)
+shape = SubResource("RectangleShape2D_63cjf")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="."]
+position = Vector2(8, -24)
+shape = SubResource("RectangleShape2D_63cjf")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="."]
+position = Vector2(16, -20)
+shape = SubResource("RectangleShape2D_63cjf")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="."]
+position = Vector2(24, -16)
+shape = SubResource("RectangleShape2D_63cjf")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="."]
+position = Vector2(32, -12)
+shape = SubResource("RectangleShape2D_63cjf")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="."]
 position = Vector2(40, -8)
 shape = SubResource("RectangleShape2D_63cjf")
 
