@@ -6,7 +6,6 @@ extends StaticBody2D
 var springSound = preload("res://Audio/SFX/Gimmicks/Springs.wav")
 
 var weights = [] #Objects currently on the platform
-var balanceMemory = 0.0 # Saved weight distribution
 var balance = 0.0 # Current weight distribution
 var direction = 0
 
@@ -24,7 +23,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	balanceMemory = balance
+	var balanceMemory = balance
+	var directionMemory = direction
 	balance = 0
 	var tarcount = 0
 	
@@ -37,16 +37,16 @@ func _physics_process(delta: float) -> void:
 	#The rest of the functions only run when function targets are in range.
 	if tarcount > 0:
 		balance = (balance/(tarcount+1)) #Always retrieve a value within range
-		if balance > 8.0:
+		if balance > 12.0:
 			direction = -1
-		elif balance < -8.0:
+		elif balance < -12.0:
 			direction = 1
 		else:
 			direction = 0
 		sprite.frame = 0-direction+1
 		#Only if the change of balance is significanly different
-		if (balanceMemory>(balance+8) or
-		balanceMemory<(balance-8)) and tarcount > 1:
+		if ((balanceMemory>(balance+8) or balanceMemory<(balance-8)) and
+		tarcount > 1 and directionMemory != direction):
 			#direction = clamp(balanceMemory,-1,1)
 			SpringObjectOnHighEnd()
 	PositionCollisionSegment(delta)
@@ -100,6 +100,10 @@ func SpringObjectOnHighEnd():
 				
 			elif node.get("velocity") != null:
 				node.velocity.y = yspeed
+				if node.get("lobForce") != null:
+					node.lobForce = 4.0*sign(global_position.x-node.global_position.x)
+					#print(4.0*sign(global_position.x-node.global_position.x))
+					#node.velocity.x = 4.0*sign(global_position.x-node.global_position.x)
 			#print(node.movement.y/16)
 
 

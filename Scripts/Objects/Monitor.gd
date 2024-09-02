@@ -38,7 +38,11 @@ func _ready():
 		if item == ITEMTYPES.LIFEP1 and !Engine.is_editor_hint():
 			$Item.frame = item + 1 + Global.PlayerChar1
 		if item == ITEMTYPES.LIFEP2 and !Engine.is_editor_hint():
-			$Item.frame = item + Global.PlayerChar2
+			var nextFrame = item + Global.PlayerChar2
+			if Global.PlayerChar2 < Global.CHARACTERS.SONIC:
+				nextFrame = item + 2
+			$Item.frame = nextFrame
+			
 	
 
 func _process(_delta):

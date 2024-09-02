@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://do1li36ao5kvn"]
+[gd_scene load_steps=42 format=4 uid="uid://do1li36ao5kvn"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://hikbyuhih7uc" path="res://Audio/Soundtrack/s2br_ChemicalPlant.ogg" id="2_8olfy"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="18"]
 [ext_resource type="PackedScene" uid="uid://bfjam0ov4pku5" path="res://Entities/Obstacles/BreakableBlock.tscn" id="19_6xbe5"]
 [ext_resource type="PackedScene" uid="uid://16gkbxuhm76g" path="res://Entities/Obstacles/MovingStairBlocks.tscn" id="19_exxvg"]
+[ext_resource type="PackedScene" uid="uid://6hnjqkn2cl62" path="res://Entities/Gimmicks/CPZTippingPipe.tscn" id="20_acygu"]
 [ext_resource type="PackedScene" uid="uid://boeily2dlgq8c" path="res://Entities/Gimmicks/tube_spring.tscn" id="20_m7yec"]
 [ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="20_q00bb"]
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="23_mydf5"]
@@ -47,11 +48,19 @@ shader_parameter/approximation = 0.01
 shader_parameter/time_scale = 0.1
 shader_parameter/paletteTexture = ExtResource("9_iigs8")
 
+[sub_resource type="ImageTexture" id="ImageTexture_ll0mr"]
+
 [sub_resource type="ImageTexture" id="ImageTexture_uybmo"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_iwuua"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_8q1cn"]
 
+[sub_resource type="ImageTexture" id="ImageTexture_d45ix"]
+
 [sub_resource type="ImageTexture" id="ImageTexture_al6xu"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_11gmb"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_mqvvb"]
 
@@ -451,6 +460,21 @@ setRight = false
 rightBoundry = 10448
 bottomBoundry = 1112
 
+[node name="CPZTippingPipe" parent="Entiities" instance=ExtResource("20_acygu")]
+position = Vector2(6288, 1424)
+
+[node name="CPZTippingPipe2" parent="Entiities" instance=ExtResource("20_acygu")]
+position = Vector2(6320, 1424)
+delay = 16.0
+
+[node name="CPZTippingPipe3" parent="Entiities" instance=ExtResource("20_acygu")]
+position = Vector2(6352, 1424)
+delay = 32.0
+
+[node name="CPZTippingPipe4" parent="Entiities" instance=ExtResource("20_acygu")]
+position = Vector2(6384, 1424)
+delay = 48.0
+
 [node name="Hazards" type="Node2D" parent="."]
 
 [node name="MackWormSpawner" parent="Hazards" instance=ExtResource("27_3y0tj")]
@@ -599,6 +623,7 @@ z_index = 21
 points = PackedVector2Array(2192, 904, 2192, 1008, 1936, 1008, 1936, 976, 2034, 976, 2034, 943, 1936, 943, 1936, 1200, 3088, 1200, 3088, 816, 3472, 816, 3472, 432, 3856, 432, 3856, 687.895, 4080, 688, 4080, 720, 3984, 720, 3984, 752, 4240, 752, 4240, 600)
 width = 32.0
 default_color = Color(1, 0, 0, 0.529412)
+texture = SubResource("ImageTexture_ll0mr")
 script = ExtResource("11_gpbo7")
 splitChance = 50
 
@@ -617,8 +642,9 @@ z_index = 21
 points = PackedVector2Array(4240, 1544, 4240, 1648, 3984, 1648, 3984, 1616, 4080, 1616, 4080, 1584, 3856, 1584, 3856, 1200, 3984, 1200, 3984, 688, 4080, 688, 4080, 720, 4048, 720, 4048, 752, 4240, 752, 4240, 600)
 width = 32.0
 default_color = Color(1, 1, 0, 0.501961)
+texture = SubResource("ImageTexture_iwuua")
 script = ExtResource("11_gpbo7")
-split = true
+splitChance = 50
 
 [node name="ZoomTube2Split" type="Line2D" parent="VacumTubes/ZoomTube2"]
 z_index = 21
@@ -635,6 +661,7 @@ z_index = 21
 points = PackedVector2Array(9360, 1288, 9360, 1392, 9584, 1392, 9584, 1328, 9488, 1328, 9488, 1488, 9104, 1488, 9104, 976, 9360, 976, 9359, 816, 9456, 816, 9456, 880, 9232, 880, 9232, 736)
 width = 32.0
 default_color = Color(1, 0, 1, 0.611765)
+texture = SubResource("ImageTexture_d45ix")
 script = ExtResource("11_gpbo7")
 splitChance = 50
 
@@ -652,6 +679,7 @@ z_index = 21
 points = PackedVector2Array(6672, 1288, 6673, 1392, 6896, 1392, 6896, 1328, 6800, 1328, 6800, 1456, 7184, 1456, 7184, 1072, 7696, 1072, 7696, 880, 7824, 880, 7824, 736)
 width = 32.0
 default_color = Color(0, 1, 0, 0.611765)
+texture = SubResource("ImageTexture_11gmb")
 script = ExtResource("11_gpbo7")
 
 [node name="ZoomTube3Split" type="Line2D" parent="VacumTubes/ZoomTube3"]
@@ -661,6 +689,7 @@ default_color = Color(0, 0.337255, 0, 0.6)
 texture = SubResource("ImageTexture_mqvvb")
 script = ExtResource("11_gpbo7")
 split = true
+splitChance = 50
 
 [node name="ItemsHolder" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -726,7 +755,7 @@ position = Vector2(5568, 752)
 
 [node name="Monitor19" parent="ItemsHolder" instance=ExtResource("16_plbr0")]
 position = Vector2(5600, 752)
-item = 10
+item = 12
 
 [node name="Monitor20" parent="ItemsHolder" instance=ExtResource("16_plbr0")]
 position = Vector2(6032, 1520)

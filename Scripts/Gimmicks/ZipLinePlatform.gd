@@ -9,6 +9,7 @@ var direction = 1
 var speed = Vector2.ZERO
 
 @onready var platformSprite = preload("res://Graphics/Objects_Zone/HTZ_ZipPlatform.png")
+var soundEffect = preload("res://Audio/SFX/Gimmicks/HTZ_Liftclick.wav")
 
 #State machine
 enum STATES{IDLE,PATH,COLLAPSE,DEAD}
@@ -39,6 +40,7 @@ func _physics_process(delta):
 					state = STATES.PATH
 			STATES.PATH:
 				motionScale += (96.0*delta)
+				CountDownSound(delta)
 				var getPos = Vector2(motionScale,motionScale/2.0)
 				if motionScale > abs(endDistance):
 					motionScale = abs(endDistance)
@@ -61,6 +63,11 @@ func _physics_process(delta):
 					$Platform.queue_free()
 					state = STATES.DEAD
 
+func CountDownSound(delta):
+	offsetTimer += delta
+	if offsetTimer >= 0.25:
+		Global.play_sound(soundEffect)
+		offsetTimer = 0.0
 
 func _draw():
 	if Engine.is_editor_hint():

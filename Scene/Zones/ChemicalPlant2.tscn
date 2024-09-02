@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://b73oxpdf64ys2"]
+[gd_scene load_steps=42 format=4 uid="uid://b73oxpdf64ys2"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_r8kv3"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_sbiln"]
@@ -28,14 +28,13 @@
 [ext_resource type="Texture2D" uid="uid://b6alf64ktaf3h" path="res://Graphics/Objects_Zone/CPZPlatformMv.png" id="19_bygnn"]
 [ext_resource type="Script" path="res://Scripts/Gimmicks/ZoomTubePath.gd" id="25_7q6q8"]
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="26_peo5d"]
+[ext_resource type="PackedScene" uid="uid://7k14xkpjguop" path="res://Entities/Obstacles/SwingingPlatform.tscn" id="26_xv2b0"]
 [ext_resource type="PackedScene" uid="uid://ijfhnqwrjcfj" path="res://Entities/ZoneObjects/MackWormSpawner.tscn" id="27_ijc7b"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="30_5k5ut"]
 [ext_resource type="PackedScene" uid="uid://cma7d8l5wmqmd" path="res://Entities/Items/LampPost.tscn" id="30_8ycur"]
 [ext_resource type="PackedScene" uid="uid://xbidybme3tde" path="res://Entities/Enemies/Spiny.tscn" id="30_po1yj"]
 [ext_resource type="PackedScene" uid="uid://cejf7f3r45h0c" path="res://Entities/Gimmicks/BubbleGenerator.tscn" id="35_hf0o7"]
-[ext_resource type="Script" path="res://Scripts/Objects/StateMovers/StateMoverMaster.gd" id="35_nnyam"]
 [ext_resource type="PackedScene" uid="uid://6hnjqkn2cl62" path="res://Entities/Gimmicks/CPZTippingPipe.tscn" id="36_4srbb"]
-[ext_resource type="Script" path="res://Scripts/Objects/StateMovers/StateMoverPositional.gd" id="36_nvh8p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_da7so"]
 shader = ExtResource("8_fvcep")
@@ -623,13 +622,16 @@ dropSlightly = false
 
 [node name="MovingStairBlocks" parent="Floating Platforms" instance=ExtResource("16_japjs")]
 position = Vector2(9280, 1760)
+speed = 0.5
 
 [node name="MovingStairBlocks8" parent="Floating Platforms" instance=ExtResource("16_japjs")]
 position = Vector2(9280, 1888)
 childCount = 0
+speed = 0.5
 
 [node name="MovingStairBlocks9" parent="Floating Platforms" instance=ExtResource("16_japjs")]
 position = Vector2(5952, 1952)
+direction = 1
 
 [node name="MovingStairBlocks11" parent="Floating Platforms" instance=ExtResource("16_japjs")]
 position = Vector2(5312, 1248)
@@ -643,9 +645,11 @@ direction = 1
 
 [node name="MovingStairBlocks2" parent="Floating Platforms" instance=ExtResource("16_japjs")]
 position = Vector2(9280, 1632)
+speed = 0.5
 
 [node name="MovingStairBlocks3" parent="Floating Platforms" instance=ExtResource("16_japjs")]
 position = Vector2(9280, 1504)
+speed = 0.5
 
 [node name="MovingStairBlocks10" parent="Floating Platforms" instance=ExtResource("16_japjs")]
 position = Vector2(10176, 1408)
@@ -654,10 +658,12 @@ speed = 0.5
 [node name="MovingStairBlocks4" parent="Floating Platforms" instance=ExtResource("16_japjs")]
 position = Vector2(9280, 1344)
 childCount = 0
+speed = 0.5
 
 [node name="MovingStairBlocks5" parent="Floating Platforms" instance=ExtResource("16_japjs")]
 position = Vector2(9280, 1184)
 childCount = 0
+speed = 0.5
 
 [node name="MovingStairBlocks6" parent="Floating Platforms" instance=ExtResource("16_japjs")]
 position = Vector2(2880, 1312)
@@ -678,21 +684,21 @@ position = Vector2(3776, 1216)
 speed = 0.5
 
 [node name="Platform3" parent="Floating Platforms" instance=ExtResource("13_w6liy")]
-position = Vector2(2528, 696)
+position = Vector2(2528, 712)
 platformSprite = ExtResource("14_3lrrj")
 endPosition = Vector2(0, 96)
 offset = -48.0
 
 [node name="Platform4" parent="Floating Platforms" instance=ExtResource("13_w6liy")]
-position = Vector2(2688, 696)
+position = Vector2(2688, 712)
 platformSprite = ExtResource("14_3lrrj")
 endPosition = Vector2(0, 96)
 offset = 48.0
 
 [node name="Platform12" parent="Floating Platforms" instance=ExtResource("13_w6liy")]
-position = Vector2(4832, 336)
+position = Vector2(4800, 336)
 platformSprite = ExtResource("14_3lrrj")
-endPosition = Vector2(96, 0)
+endPosition = Vector2(128, 0)
 offset = 48.0
 
 [node name="Platform5" parent="Floating Platforms" instance=ExtResource("13_w6liy")]
@@ -745,6 +751,9 @@ speed = 0.5
 [node name="MovingStairBlocks14" parent="Floating Platforms" instance=ExtResource("16_japjs")]
 position = Vector2(3968, 1728)
 speed = 0.5
+
+[node name="Platform2" parent="Floating Platforms" instance=ExtResource("26_xv2b0")]
+position = Vector2(2240, 896)
 
 [node name="Hazards" type="Node2D" parent="."]
 
@@ -884,6 +893,14 @@ scale = Vector2(4, 1)
 position = Vector2(2288, 1184)
 scale = Vector2(1, 6)
 
+[node name="InvisibleBarrier21" parent="Hazards" instance=ExtResource("17_eqgtb")]
+position = Vector2(2784, 1312)
+scale = Vector2(2, 6)
+
+[node name="InvisibleBarrier22" parent="Hazards" instance=ExtResource("17_eqgtb")]
+position = Vector2(2976, 1344)
+scale = Vector2(2, 16)
+
 [node name="InvisibleBarrier11" parent="Hazards" instance=ExtResource("17_eqgtb")]
 position = Vector2(4368, 1600)
 scale = Vector2(1, 4)
@@ -1017,7 +1034,7 @@ position = Vector2(2992, 752)
 
 [node name="Monitor16" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(1936, 1008)
-item = 10
+item = 12
 
 [node name="Monitor17" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(2672, 1264)
@@ -1307,6 +1324,27 @@ position = Vector2(2240, 1072)
 [node name="Ring41" parent="Rings" instance=ExtResource("10_bnv7v")]
 position = Vector2(2264, 1072)
 
+[node name="Ring152" parent="Rings" instance=ExtResource("10_bnv7v")]
+position = Vector2(2472, 912)
+
+[node name="Ring153" parent="Rings" instance=ExtResource("10_bnv7v")]
+position = Vector2(2496, 912)
+
+[node name="Ring155" parent="Rings" instance=ExtResource("10_bnv7v")]
+position = Vector2(2368, 872)
+
+[node name="Ring156" parent="Rings" instance=ExtResource("10_bnv7v")]
+position = Vector2(2392, 872)
+
+[node name="Ring157" parent="Rings" instance=ExtResource("10_bnv7v")]
+position = Vector2(2088, 872)
+
+[node name="Ring158" parent="Rings" instance=ExtResource("10_bnv7v")]
+position = Vector2(2112, 872)
+
+[node name="Ring154" parent="Rings" instance=ExtResource("10_bnv7v")]
+position = Vector2(2520, 912)
+
 [node name="Ring16" parent="Rings" instance=ExtResource("10_bnv7v")]
 position = Vector2(1896, 704)
 
@@ -1317,13 +1355,13 @@ position = Vector2(1920, 704)
 position = Vector2(1944, 704)
 
 [node name="Ring19" parent="Rings" instance=ExtResource("10_bnv7v")]
-position = Vector2(2344, 624)
+position = Vector2(2344, 600)
 
 [node name="Ring20" parent="Rings" instance=ExtResource("10_bnv7v")]
-position = Vector2(2368, 624)
+position = Vector2(2368, 600)
 
 [node name="Ring21" parent="Rings" instance=ExtResource("10_bnv7v")]
-position = Vector2(2392, 624)
+position = Vector2(2392, 600)
 
 [node name="Ring42" parent="Rings" instance=ExtResource("10_bnv7v")]
 position = Vector2(3368, 848)
@@ -1557,7 +1595,7 @@ metadata/_edit_lock_ = true
 position = Vector2(2688, 896)
 
 [node name="Spiny2" parent="Badniks" instance=ExtResource("30_po1yj")]
-position = Vector2(1864, 768)
+position = Vector2(2368, 640)
 
 [node name="Spiny3" parent="Badniks" instance=ExtResource("30_po1yj")]
 position = Vector2(2184, 384)
@@ -1600,6 +1638,7 @@ script = ExtResource("25_7q6q8")
 speed = 10
 hitBoxSize = Vector2(16, 16)
 split = true
+splitChance = 50
 
 [node name="ZoomTube2" type="Line2D" parent="VacumTubes"]
 z_index = 20
@@ -1636,36 +1675,3 @@ script = ExtResource("25_7q6q8")
 hitBoxSize = Vector2(16, 16)
 split = true
 splitChance = 50
-
-[node name="PlatformStatefulMover" type="Node2D" parent="."]
-position = Vector2(2240, 1024)
-script = ExtResource("35_nnyam")
-
-[node name="Platform" parent="PlatformStatefulMover" instance=ExtResource("13_w6liy")]
-position = Vector2(0, 16)
-platformSprite = ExtResource("14_3lrrj")
-endPosition = Vector2(0, 0)
-dropSlightly = false
-
-[node name="PositionalState_0" type="Node2D" parent="PlatformStatefulMover"]
-position = Vector2(0, 16)
-script = ExtResource("36_nvh8p")
-moveTime = 2.0
-nextState = 2
-
-[node name="PositionalState_1" type="Node2D" parent="PlatformStatefulMover"]
-position = Vector2(0, -128)
-script = ExtResource("36_nvh8p")
-moveTime = 2.0
-nextState = 3
-
-[node name="PositionalState_2" type="Node2D" parent="PlatformStatefulMover"]
-position = Vector2(-128, -64)
-script = ExtResource("36_nvh8p")
-moveTime = 2.0
-
-[node name="PositionalState_3" type="Node2D" parent="PlatformStatefulMover"]
-position = Vector2(128, -64)
-script = ExtResource("36_nvh8p")
-moveTime = 2.0
-nextState = 0

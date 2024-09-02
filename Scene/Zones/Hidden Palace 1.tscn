@@ -65,7 +65,7 @@ animal1 = 8
 animal2 = 5
 defaultLeftBoundry = 0
 defaultTopBoundry = 0
-defaultRightBoundry = 9880
+defaultRightBoundry = 9896
 defaultBottomBoundry = 3072
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]

@@ -7,29 +7,29 @@
 [sub_resource type="RectangleShape2D" id="5"]
 size = Vector2(17, 17)
 
-[sub_resource type="AtlasTexture" id="1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ptb3"]
 atlas = ExtResource("2")
-region = Rect2(32, 0, 32, 32)
+region = Rect2(0, 0, 40, 40)
 
-[sub_resource type="AtlasTexture" id="2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uc46i"]
 atlas = ExtResource("2")
-region = Rect2(64, 0, 32, 32)
+region = Rect2(40, 0, 40, 40)
 
-[sub_resource type="AtlasTexture" id="3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vx5j5"]
 atlas = ExtResource("2")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(80, 0, 40, 40)
 
 [sub_resource type="SpriteFrames" id="4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("1")
+"texture": SubResource("AtlasTexture_6ptb3")
 }, {
 "duration": 1.0,
-"texture": SubResource("2")
+"texture": SubResource("AtlasTexture_uc46i")
 }, {
 "duration": 1.0,
-"texture": SubResource("3")
+"texture": SubResource("AtlasTexture_vx5j5")
 }],
 "loop": false,
 "name": &"default",
