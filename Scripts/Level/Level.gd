@@ -10,14 +10,14 @@ extends Node2D
 
 # Boundries
 @export var setDefaultLeft = true
-@export var defaultLeftBoundry  = -100000000
+@export var defaultLeftBoundry  = 0
 @export var setDefaultTop = true
-@export var defaultTopBoundry  = -100000000
+@export var defaultTopBoundry  = 0
 
 @export var setDefaultRight = true
-@export var defaultRightBoundry = 100000000
+@export var defaultRightBoundry = 16384
 @export var setDefaultBottom = true
-@export var defaultBottomBoundry = 100000000
+@export var defaultBottomBoundry = 1024
 
 var twoPlayerWindow = preload("res://Scene/TwoPlayerScreenView.tscn")
 

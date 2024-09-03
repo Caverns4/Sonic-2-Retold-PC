@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://hj3tt0gklwba"]
+[gd_scene load_steps=31 format=4 uid="uid://hj3tt0gklwba"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://bjavywoj00j1j" path="res://Scene/Zones/BaseZoneAct2.tscn" id="2_8ek7k"]
@@ -16,8 +16,6 @@
 [ext_resource type="TileSet" uid="uid://dn42tsjf760q0" path="res://Graphics/Tiles/MCZPlatform.tres" id="13_biut5"]
 [ext_resource type="PackedScene" uid="uid://bgodeg4oddje6" path="res://Entities/MainObjects/BoundrySetter.tscn" id="17_vgt3l"]
 [ext_resource type="PackedScene" uid="uid://cyun8u3qemt5i" path="res://Entities/Gimmicks/ScrewPlatform.tscn" id="21_5kimb"]
-[ext_resource type="PackedScene" uid="uid://cqcgjcw101xxo" path="res://Entities/Enemies/MotoBug.tscn" id="26_0eyk5"]
-[ext_resource type="PackedScene" uid="uid://cvaf3mpyum5at" path="res://Entities/Enemies/Stegway.tscn" id="27_7ebsm"]
 [ext_resource type="PackedScene" uid="uid://c8djwr7o6d6f7" path="res://Entities/Enemies/Octus.tscn" id="28_fcslk"]
 [ext_resource type="PackedScene" uid="uid://deeopkxf5fwh4" path="res://Entities/Obstacles/BreakableWall.tscn" id="30_qg3rj"]
 [ext_resource type="Script" path="res://Scripts/Misc/AltSpawn.gd" id="38_8ssba"]
@@ -223,10 +221,6 @@ music = ExtResource("2_tkxs0")
 nextZone = ExtResource("2_8ek7k")
 animal1 = 4
 animal2 = 5
-defaultLeftBoundry = 0
-defaultTopBoundry = 0
-defaultRightBoundry = 10400
-defaultBottomBoundry = 1024
 
 [node name="HUD" parent="." instance=ExtResource("3_hkybi")]
 zoneName = "OIL OCEAN"
@@ -425,12 +419,6 @@ stream = ExtResource("62_7xffd")
 volume_db = -10.0
 autoplay = true
 max_distance = 1000.0
-
-[node name="Motobug" parent="." instance=ExtResource("26_0eyk5")]
-position = Vector2(9752, 104)
-
-[node name="Stegway" parent="." instance=ExtResource("27_7ebsm")]
-position = Vector2(10264, 176)
 
 [node name="Octus" parent="." instance=ExtResource("28_fcslk")]
 position = Vector2(10328, 192)

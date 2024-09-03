@@ -27,8 +27,6 @@ func _physics_process(delta):
 	$FloorCheck.position.x = abs($FloorCheck.position.x)*direction
 	$FloorCheck.force_raycast_update()
 	
-	ground = is_on_floor()
-	
 	match state:
 		STATES.WALK:
 			velocity.x = direction*WALK_SPEED
@@ -61,6 +59,7 @@ func MoveWithGravity(delta):
 	# TODOConverter40 looks that snap in Godot 4.0 is float, not vector like in Godot 3 - previous value `Vector2.DOWN`
 	set_up_direction(Vector2.UP)
 	move_and_slide()
+	ground = is_on_floor()
 	# Gravity
 	if !is_on_floor():
 		velocity.y += GRAVITY*delta

@@ -30,8 +30,9 @@ var levelLabels = [ #Every one of these is a line, and some are skipped.
 	"                2",
 	"",
 	"Metropolis      1",
-	"                2"
-	]
+	"                2",
+	"",
+	"Player"]
 var levelIcons = [ #Use this list to get the number of selectable entries
 	0,
 	0,
@@ -46,7 +47,8 @@ var levelIcons = [ #Use this list to get the number of selectable entries
 	5,
 	5,
 	6,
-	6
+	6,
+	16
 ]
 # character id lines up with characterLabels
 var characterID = 0
@@ -137,7 +139,8 @@ func _input(event):
 				11: # Neo Green Hill 2
 					Global.nextZone = load("res://Scene/Zones/AquaticRuin2.tscn")
 				_: # Invalid Entry
-					Global.nextZone = load("res://Scene/Zones/BaseZone.tscn")
+					selected = false
+					return
 			
 			Global.main.change_scene_to_file(Global.nextZone,"FadeOut","FadeOut",1)
 			

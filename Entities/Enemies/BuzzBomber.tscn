@@ -93,7 +93,6 @@ hframes = 4
 frame = 3
 
 [node name="PlayerCheck" type="Area2D" parent="Sprite2D"]
-visible = false
 z_index = -1
 collision_layer = 0
 collision_mask = 4096

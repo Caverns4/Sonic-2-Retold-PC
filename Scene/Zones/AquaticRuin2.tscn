@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://s4hdjd5g3p2i"]
+[gd_scene load_steps=4 format=3 uid="uid://s4hdjd5g3p2i"]
 
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_u8gl0"]
+[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_uxs8x"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="2_msrgr"]
 
 [node name="AquaticRuin2" type="Node2D"]
+script = ExtResource("1_uxs8x")
+zoneID = 5
+music = null
+music2P = null
 
 [node name="HUD" parent="." instance=ExtResource("1_u8gl0")]
 playLevelCard = false

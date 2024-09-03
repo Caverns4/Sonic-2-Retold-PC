@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bjavywoj00j1j"]
+[gd_scene load_steps=14 format=4 uid="uid://bjavywoj00j1j"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="2_533ik"]
@@ -7,12 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://m4fuu16t6dkk" path="res://Graphics/Backgrounds/OOZ/OOZBG.png" id="4_wqbil"]
 [ext_resource type="Script" path="res://Scripts/Objects/StateMovers/StateMoverMaster.gd" id="5"]
 [ext_resource type="TileSet" uid="uid://be1npc2ur6gou" path="res://Tileset/Levels/OOZ.tres" id="6_crde5"]
-[ext_resource type="PackedScene" uid="uid://cxxmrbgw17gnw" path="res://Entities/Gimmicks/CNZBarrel.tscn" id="7"]
 [ext_resource type="Script" path="res://Scripts/Objects/StateMovers/StateMoverTranslational.gd" id="8"]
-[ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="10"]
 [ext_resource type="PackedScene" uid="uid://ra3mqewhj6kl" path="res://Entities/Hazards/Saw.tscn" id="11"]
-[ext_resource type="PackedScene" uid="uid://dvmttrmkfraht" path="res://Entities/Gimmicks/CNZTrampolineBarrel.tscn" id="13"]
+[ext_resource type="PackedScene" uid="uid://cqcgjcw101xxo" path="res://Entities/Enemies/MotoBug.tscn" id="13_08f3q"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="16_mordc"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="18"]
 
@@ -24,10 +22,6 @@ music2P = ExtResource("2_533ik")
 nextZone = ExtResource("2_l4fq6")
 animal1 = 4
 animal2 = 5
-defaultLeftBoundry = 0
-defaultTopBoundry = 0
-defaultRightBoundry = 3600
-defaultBottomBoundry = 2048
 metadata/_edit_vertical_guides_ = [3600.0]
 
 [node name="HUD" parent="." instance=ExtResource("4")]
@@ -48,7 +42,7 @@ texture = ExtResource("4_wqbil")
 [node name="Level_Layout" type="Node2D" parent="."]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Level_Layout"]
-tile_map_data = PackedByteArray("AAAAADAAAAAMAAAAAAABADAAAAANAAAAAAACADAAAAAMAAAAAAADADAAAAANAAAAAAAEADAAAAAMAAAAAAAFADAAAAANAAAAAAAGADAAAAAMAAAAAAAHADAAAAANAAAAAAAIADAAAAAMAAAAAAAJADAAAAANAAAAAAAKADAAAAAMAAAAAAALADAAAAANAAAAAAAMADAAAAAMAAAAAAANADAAAAANAAAAAAAOADAAAAAMAAAAAAAPADAAAAANAAAAAAAQADAAAAAMAAAAAAARADAAAAANAAAAAAASADAAAAAMAAAAAAATADAAAAANAAAAAAAUADAAAAAMAAAAAAAVADAAAAANAAAAAAAAADEAAAACAAEAAAABADEAAAACAAEAAAACADEAAAACAAEAAAADADEAAAACAAEAAAAEADEAAAACAAEAAAAFADEAAAACAAEAAAAGADEAAAACAAEAAAAHADEAAAACAAEAAAAIADEAAAACAAEAAAAJADEAAAACAAEAAAAKADEAAAACAAEAAAALADEAAAACAAEAAAAMADEAAAACAAEAAAANADEAAAACAAEAAAAOADEAAAACAAEAAAAPADEAAAACAAEAAAAQADEAAAACAAEAAAARADEAAAACAAEAAAASADEAAAACAAEAAAATADEAAAACAAEAAAAUADEAAAACAAEAAAAVADEAAAACAAEAAAAWADAAAAAMAAAAAAAXADAAAAANAAAAAAAYADAAAAAMAAAAAAAZADAAAAANAAAAAAAaADAAAAAMAAAAAAAbADAAAAANAAAAAAAcADAAAAAMAAAAAAAdADAAAAANAAAAAAAeADAAAAAMAAAAAAAfADAAAAANAAAAAAAWADEAAAACAAEAAAAXADEAAAACAAEAAAAYADEAAAACAAEAAAAZADEAAAACAAEAAAAaADEAAAACAAEAAAAbADEAAAACAAEAAAAcADEAAAACAAEAAAAdADEAAAACAAEAAAAeADEAAAACAAEAAAAfADEAAAACAAEAAAA=")
+tile_map_data = PackedByteArray("AAAAADAAAAAMAAAAAAABADAAAAANAAAAAAACADAAAAAMAAAAAAADADAAAAANAAAAAAAEADAAAAAMAAAAAAAFADAAAAANAAAAAAAGADAAAAAMAAAAAAAHADAAAAANAAAAAAAIADAAAAAMAAAAAAAJADAAAAANAAAAAAAKADAAAAAMAAAAAAALADAAAAANAAAAAAAMADAAAAAMAAAAAAANADAAAAANAAAAAAAOADAAAAAMAAAAAAAPADAAAAANAAAAAAAQADAAAAAMAAAAAAARADAAAAANAAAAAAASADAAAAAMAAAAAAATADAAAAANAAAAAAAUADAAAAAMAAAAAAAVADAAAAANAAAAAAAAADEAAAACAAEAAAABADEAAAACAAEAAAACADEAAAACAAEAAAADADEAAAACAAEAAAAEADEAAAACAAEAAAAFADEAAAACAAEAAAAGADEAAAACAAEAAAAHADEAAAACAAEAAAAIADEAAAACAAEAAAAJADEAAAACAAEAAAAKADEAAAACAAEAAAALADEAAAACAAEAAAAMADEAAAACAAEAAAANADEAAAACAAEAAAAOADEAAAACAAEAAAAPADEAAAACAAEAAAAQADEAAAACAAEAAAARADEAAAACAAEAAAASADEAAAACAAEAAAATADEAAAACAAEAAAAUADEAAAACAAEAAAAVADEAAAACAAEAAAAWADAAAAAMAAAAAAAXADAAAAANAAAAAAAYADAAAAAMAAAAAAAZADAAAAANAAAAAAAaADAAAAAMAAAAAAAbADAAAAANAAAAAAAcADAAAAAMAAAAAAAdADAAAAANAAAAAAAeADAAAAAMAAAAAAAfADAAAAANAAAAAAAWADEAAAACAAEAAAAXADEAAAACAAEAAAAYADEAAAACAAEAAAAZADEAAAACAAEAAAAaADEAAAACAAEAAAAbADEAAAACAAEAAAAcADEAAAACAAEAAAAdADEAAAACAAEAAAAeADEAAAACAAEAAAAfADEAAAACAAEAAAAgADAAAAANAAAAAAAgADEAAAACAAEAAAAhADAAAAAMAAAAAAAhADEAAAACAAEAAAAiADAAAAANAAAAAAAiADEAAAACAAEAAAAjADAAAAAMAAAAAAAjADEAAAACAAEAAAAkADAAAAANAAAAAAAkADEAAAACAAEAAAAlADAAAAAMAAAAAAAlADEAAAACAAEAAAAmADAAAAANAAAAAAAmADEAAAACAAEAAAAnADAAAAAMAAAAAAAnADEAAAACAAEAAAAoADAAAAANAAAAAAAoADEAAAACAAEAAAApADAAAAAMAAAAAAApADEAAAACAAEAAAAqADAAAAANAAAAAAAqADEAAAACAAEAAAArADAAAAAMAAAAAAArADEAAAACAAEAAAAsADAAAAANAAAAAAAsADEAAAACAAEAAAAtADAAAAAMAAAAAAAtADEAAAACAAEAAAAuADAAAAANAAAAAAAuADEAAAACAAEAAAAvADAAAAAMAAAAAAAvADEAAAACAAEAAAAwADAAAAANAAAAAAAwADEAAAACAAEAAAAxADAAAAAMAAAAAAAxADEAAAACAAEAAAAyADAAAAANAAAAAAAyADEAAAACAAEAAAAzADAAAAAMAAAAAAAzADEAAAACAAEAAAA0ADAAAAANAAAAAAA0ADEAAAACAAEAAAA1ADAAAAAMAAAAAAA1ADEAAAACAAEAAAA2ADAAAAANAAAAAAA2ADEAAAACAAEAAAA3ADAAAAAMAAAAAAA3ADEAAAACAAEAAAA4ADAAAAANAAAAAAA4ADEAAAACAAEAAAA5ADAAAAAMAAAAAAA5ADEAAAACAAEAAAA6ADAAAAANAAAAAAA6ADEAAAACAAEAAAA7ADAAAAANAAAAAAA7ADEAAAACAAEAAAA8ADAAAAAMAAAAAAA8ADEAAAACAAEAAAA9ADAAAAANAAAAAAA9ADEAAAACAAEAAAA+ADAAAAAMAAAAAAA+ADEAAAACAAEAAAA/ADAAAAANAAAAAAA/ADEAAAACAAEAAABAADAAAAAMAAAAAABAADEAAAACAAEAAABBADAAAAANAAAAAABBADEAAAACAAEAAABCADAAAAAMAAAAAABCADEAAAACAAEAAABDADAAAAANAAAAAABDADEAAAACAAEAAABEADAAAAAMAAAAAABEADEAAAACAAEAAABFADAAAAANAAAAAABFADEAAAACAAEAAABGADAAAAAMAAAAAABGADEAAAACAAEAAABHADAAAAANAAAAAABHADEAAAACAAEAAABIADAAAAAMAAAAAABIADEAAAACAAEAAABJADAAAAANAAAAAABJADEAAAACAAEAAABKADAAAAAMAAAAAABKADEAAAACAAEAAABLADAAAAANAAAAAABLADEAAAACAAEAAABMADAAAAAMAAAAAABMADEAAAACAAEAAABNADAAAAANAAAAAABNADEAAAACAAEAAABOADAAAAAMAAAAAABOADEAAAACAAEAAABPADAAAAANAAAAAABPADEAAAACAAEAAABQADAAAAAMAAAAAABQADEAAAACAAEAAABRADAAAAANAAAAAABRADEAAAACAAEAAABSADAAAAAMAAAAAABSADEAAAACAAEAAABTADAAAAANAAAAAABTADEAAAACAAEAAABUADAAAAAMAAAAAABUADEAAAACAAEAAABVADAAAAANAAAAAABVADEAAAACAAEAAAA=")
 tile_set = ExtResource("6_crde5")
 
 [node name="Player" parent="." instance=ExtResource("18")]
@@ -76,51 +70,6 @@ position = Vector2(397, 714)
 [node name="Ring6" parent="Entities/Rings" instance=ExtResource("10")]
 position = Vector2(432, 696)
 
-[node name="PlatformStatefulMover2" type="Node2D" parent="Entities"]
-position = Vector2(576, 705)
-script = ExtResource("5")
-
-[node name="CNZBarrel" parent="Entities/PlatformStatefulMover2" instance=ExtResource("7")]
-
-[node name="TranslationalState_0" type="Node2D" parent="Entities/PlatformStatefulMover2"]
-position = Vector2(256, 0)
-script = ExtResource("8")
-
-[node name="TranslationalState_1" type="Node2D" parent="Entities/PlatformStatefulMover2"]
-position = Vector2(0, -64)
-script = ExtResource("8")
-moveTime = 2.0
-nextState = 2
-
-[node name="TranslationalState_2" type="Node2D" parent="Entities/PlatformStatefulMover2"]
-position = Vector2(-256, 0)
-script = ExtResource("8")
-nextState = 3
-
-[node name="TranslationalState_3" type="Node2D" parent="Entities/PlatformStatefulMover2"]
-position = Vector2(0, 64)
-script = ExtResource("8")
-moveTime = 2.0
-nextState = 4
-
-[node name="TranslationalState_4" type="Node2D" parent="Entities/PlatformStatefulMover2"]
-position = Vector2(128, 0)
-script = ExtResource("8")
-moveTime = 2.0
-nextState = 5
-
-[node name="TranslationalState_5" type="Node2D" parent="Entities/PlatformStatefulMover2"]
-position = Vector2(0, -128)
-script = ExtResource("8")
-moveTime = 2.0
-nextState = 6
-
-[node name="TranslationalState_6" type="Node2D" parent="Entities/PlatformStatefulMover2"]
-position = Vector2(-128, 128)
-script = ExtResource("8")
-moveTime = 2.0
-nextState = 0
-
 [node name="StatefulMover3" type="Node2D" parent="Entities"]
 position = Vector2(592, 576)
 script = ExtResource("5")
@@ -139,65 +88,62 @@ position = Vector2(-64, 0)
 script = ExtResource("8")
 nextState = 0
 
-[node name="InvisibleBarrier" parent="Entities" instance=ExtResource("9")]
-position = Vector2(608, 784)
-scale = Vector2(6, 1)
-collision_mask = 8192
+[node name="Items" type="Node2D" parent="."]
 
-[node name="CNZTrampolineBarrel" parent="Entities" instance=ExtResource("13")]
-position = Vector2(1056, 641)
-
-[node name="Monitor" parent="." instance=ExtResource("16_mordc")]
+[node name="Monitor" parent="Items" instance=ExtResource("16_mordc")]
 position = Vector2(64, 648)
 
-[node name="Monitor2" parent="." instance=ExtResource("16_mordc")]
+[node name="Monitor2" parent="Items" instance=ExtResource("16_mordc")]
 position = Vector2(96, 648)
 item = 1
 
-[node name="Monitor3" parent="." instance=ExtResource("16_mordc")]
+[node name="Monitor3" parent="Items" instance=ExtResource("16_mordc")]
 position = Vector2(128, 648)
 item = 2
 
-[node name="Monitor4" parent="." instance=ExtResource("16_mordc")]
+[node name="Monitor4" parent="Items" instance=ExtResource("16_mordc")]
 position = Vector2(160, 648)
 item = 3
 
-[node name="Monitor5" parent="." instance=ExtResource("16_mordc")]
+[node name="Monitor5" parent="Items" instance=ExtResource("16_mordc")]
 position = Vector2(192, 648)
 item = 4
 
-[node name="Monitor6" parent="." instance=ExtResource("16_mordc")]
+[node name="Monitor6" parent="Items" instance=ExtResource("16_mordc")]
 position = Vector2(224, 648)
 item = 5
 
-[node name="Monitor7" parent="." instance=ExtResource("16_mordc")]
+[node name="Monitor7" parent="Items" instance=ExtResource("16_mordc")]
 position = Vector2(256, 648)
 item = 6
 
-[node name="Monitor8" parent="." instance=ExtResource("16_mordc")]
+[node name="Monitor8" parent="Items" instance=ExtResource("16_mordc")]
 position = Vector2(288, 648)
 item = 7
 
-[node name="Monitor9" parent="." instance=ExtResource("16_mordc")]
+[node name="Monitor9" parent="Items" instance=ExtResource("16_mordc")]
 position = Vector2(320, 648)
 item = 8
 
-[node name="Monitor10" parent="." instance=ExtResource("16_mordc")]
+[node name="Monitor10" parent="Items" instance=ExtResource("16_mordc")]
 position = Vector2(352, 648)
 item = 9
 
-[node name="Monitor11" parent="." instance=ExtResource("16_mordc")]
+[node name="Monitor11" parent="Items" instance=ExtResource("16_mordc")]
 position = Vector2(384, 648)
 item = 10
 
-[node name="Monitor12" parent="." instance=ExtResource("16_mordc")]
+[node name="Monitor12" parent="Items" instance=ExtResource("16_mordc")]
 position = Vector2(416, 648)
 item = 11
 
-[node name="Monitor13" parent="." instance=ExtResource("16_mordc")]
+[node name="Monitor13" parent="Items" instance=ExtResource("16_mordc")]
 position = Vector2(448, 648)
 item = 12
 
-[node name="Monitor14" parent="." instance=ExtResource("16_mordc")]
+[node name="Monitor14" parent="Items" instance=ExtResource("16_mordc")]
 position = Vector2(480, 648)
 item = 13
+
+[node name="Motobug" parent="." instance=ExtResource("13_08f3q")]
+position = Vector2(640, 752)

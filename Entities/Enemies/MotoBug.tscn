@@ -1,13 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqcgjcw101xxo"]
+[gd_scene load_steps=9 format=3 uid="uid://cqcgjcw101xxo"]
 
 [ext_resource type="Texture2D" uid="uid://b2qm01hytxx4d" path="res://Graphics/Enemies/Motobug.png" id="1"]
 [ext_resource type="Script" path="res://Scripts/Enemies/MotoBug.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://clihuhs0po6p0" path="res://Graphics/Enemies/BuzzerFlame.png" id="3_ktssx"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(16, 28)
+size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="2"]
-size = Vector2(40, 32)
+size = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_1ykvh"]
+resource_name = "RESET"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flame:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1xngc"]
+_data = {
+"RESET": SubResource("Animation_1ykvh")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y2g5j"]
+size = Vector2(96, 88)
 
 [node name="Motobug" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 16384
@@ -25,10 +51,35 @@ collision_mask = 528384
 modulate = Color(1, 0, 0, 1)
 shape = SubResource("2")
 
-[node name="Motobug" type="Sprite2D" parent="."]
+[node name="SpriteNode" type="Node2D" parent="."]
+
+[node name="Motobug" type="Sprite2D" parent="SpriteNode"]
 position = Vector2(0, -4)
 texture = ExtResource("1")
 hframes = 2
+
+[node name="Flame" type="Sprite2D" parent="SpriteNode"]
+position = Vector2(20, 0)
+texture = ExtResource("3_ktssx")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteNode"]
+libraries = {
+"": SubResource("AnimationLibrary_1xngc")
+}
+autoplay = "RESET"
+
+[node name="PlayerCheck" type="Area2D" parent="SpriteNode"]
+visible = false
+z_index = -1
+position = Vector2(0, -4)
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteNode/PlayerCheck"]
+modulate = Color(1, 1, 1, 0.352941)
+position = Vector2(-40, -12)
+shape = SubResource("RectangleShape2D_y2g5j")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 visible = false
@@ -37,9 +88,11 @@ position = Vector2(-1.90735e-06, -1.90735e-06)
 rect = Rect2(-160, -112, 320, 224)
 
 [node name="FloorCheck" type="RayCast2D" parent="."]
-position = Vector2(-8, 14)
+position = Vector2(-16, 16)
 target_position = Vector2(0, 14)
 
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
+[connection signal="body_entered" from="SpriteNode/PlayerCheck" to="." method="_on_player_check_body_entered"]
+[connection signal="body_exited" from="SpriteNode/PlayerCheck" to="." method="_on_player_check_body_exited"]
