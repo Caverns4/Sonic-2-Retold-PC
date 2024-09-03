@@ -9,6 +9,7 @@ var origin = Vector2.ZERO
 var direction = 1*sign(pivotCenter)
 var lobForce = 0
 var ground = false
+#var movement = Vector2.ZERO #Used to emulat Physics object
 
 func _ready():
 	direction = 1*sign(pivotCenter)

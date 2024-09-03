@@ -5,6 +5,8 @@ extends Node2D
 @export var nextZone = load("res://Scene/Zones/EmeraldHill1.tscn")
 var selected = false
 
+const LEFT_ROWS = 14
+
 # character labels, the amount of labels in here determines the total amount of options, see the set character option at the end for settings
 var characterLabels = ["Sonic and Tails", "Sonic", "Tails", "Knuckles", "Amy"]
 # level labels, the amount of labels in here determines the total amount of options, see set level option at the end for settings
@@ -25,6 +27,9 @@ var levelLabels = [ #Every one of these is a line, and some are skipped.
 	"                2",
 	"",
 	"Neo Green Hill  1",
+	"                2",
+	"",
+	"Metropolis      1",
 	"                2"
 	]
 var levelIcons = [ #Use this list to get the number of selectable entries
@@ -39,7 +44,9 @@ var levelIcons = [ #Use this list to get the number of selectable entries
 	4,
 	4,
 	5,
-	5
+	5,
+	6,
+	6
 ]
 # character id lines up with characterLabels
 var characterID = 0
@@ -171,8 +178,13 @@ func levelSelect_UpdateText(): # levelID
 	var j = 0 #Which line to highlight
 	var k = 0 #Which label entry to retrieve(In other word, the "real" selection ID
 	var textFieldLeft = $UI/Labels/Control/LevelsLeft
+	var textFieldRight = $UI/Labels/Control/LevelsRight
 	textFieldLeft.text = ""
+	textFieldRight.text = ""
 	for i in levelLabels.size():
+		if i > LEFT_ROWS:
+			textFieldLeft = textFieldRight
+			
 		if levelLabels[i] != "":
 			j +=1
 		if j == levelID+1:

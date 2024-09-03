@@ -1070,12 +1070,12 @@ func hit_player(damagePoint = global_position, damageType = 0, soundID = 6):
 		#Todo: Parnet ringcount
 		disconect_from_floor()
 		set_state(STATES.HIT)
-		invTime = 120
+		invTime = 120 # Ivulnerable for 2 seconds. Starts counting *after* landing.
 		# Ring loss
 		if (shield == SHIELDS.NONE and rings > 0 and (playerControl == 1 or Global.TwoPlayer)):
 			sfx[9].play()
-			ringDisTime = 30.0/60.0 # ignore rings for 64 frames
-			ringDisTime = 6.0/60.0 # ignore rings for 1/10th second after hurt
+			#ringDisTime = 30.0/60.0 # ignore rings for 64 frames
+			ringDisTime = 1.0/60.0 # ignore rings for 1/60th second after landing
 			var ringCount = 0
 			var ringAngle = 101.25
 			var ringAlt = false
