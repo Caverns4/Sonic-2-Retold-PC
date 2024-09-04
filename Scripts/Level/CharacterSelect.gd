@@ -8,7 +8,7 @@ var selected = false
 const LEFT_ROWS = 14
 
 # character labels, the amount of labels in here determines the total amount of options, see the set character option at the end for settings
-var characterLabels = ["Sonic and Tails", "Sonic", "Tails", "Knuckles", "Amy"]
+var characterLabels = ["Sonic*Tails", "Sonic", "Tails", "Knuckles", "Amy"]
 # level labels, the amount of labels in here determines the total amount of options, see set level option at the end for settings
 var levelLabels = [ #Every one of these is a line, and some are skipped.
 	"Emerald Hill    1",
@@ -32,6 +32,9 @@ var levelLabels = [ #Every one of these is a line, and some are skipped.
 	"Metropolis      1",
 	"                2",
 	"",
+	"Special Stage",
+	"",
+	"",
 	"Player"]
 var levelIcons = [ #Use this list to get the number of selectable entries
 	0,
@@ -48,27 +51,24 @@ var levelIcons = [ #Use this list to get the number of selectable entries
 	5,
 	6,
 	6,
-	16
+	17,
+	18
 ]
 # character id lines up with characterLabels
 var characterID = 0
 # level id lines up with levelLabels
 var levelID = 0
+var CharacterSelectMenuID = levelIcons.size()
 
 var lastInput = Vector2.ZERO
 
 func _ready():
 	Global.music.stream = music
 	Global.music.play()
-	$UI/Labels/Control/Character.text = characterLabels[characterID]
 	if nextZone != null:
 		Global.nextZone = nextZone
 
 func _process(delta):
-		if !Global.TwoPlayer:
-			$UI/Labels/Control/Character.text = characterLabels[characterID]
-		else:
-			$UI/Labels/Control/Character.text = ""
 		levelSelect_UpdateText()
 
 func _input(event):
@@ -79,10 +79,22 @@ func _input(event):
 		inputCue.y = round(inputCue.y)
 		if inputCue != lastInput:
 			# select character rotation
-			if inputCue.x < 0 and !Global.TwoPlayer:
-				characterID = wrapi(characterID-1,0,characterLabels.size())
-			if  inputCue.x > 0 and !Global.TwoPlayer:
-				characterID = wrapi(characterID+1,0,characterLabels.size())
+			var columnSize = round(LEFT_ROWS/2*1.5)-1
+			if inputCue.x < 0:
+				if levelID == CharacterSelectMenuID-1:
+					characterID = wrapi(characterID-1,0,characterLabels.size())
+				else:
+					levelID = wrapi(levelID-(columnSize),0,levelIcons.size())
+			if  inputCue.x > 0 :
+				if levelID == CharacterSelectMenuID-1:
+					characterID = wrapi(characterID+1,0,characterLabels.size())
+				else:
+					if levelID > CharacterSelectMenuID-1 - columnSize and levelID < columnSize:
+						levelID = CharacterSelectMenuID-1
+					else:
+						levelID = wrapi(levelID+(columnSize),0,levelIcons.size())
+					
+
 			if inputCue.y > 0:
 				levelID = wrapi(levelID+1,0,levelIcons.size())
 			if inputCue.y < 0:
@@ -187,12 +199,17 @@ func levelSelect_UpdateText(): # levelID
 	for i in levelLabels.size():
 		if i > LEFT_ROWS:
 			textFieldLeft = textFieldRight
-			
 		if levelLabels[i] != "":
 			j +=1
 		if j == levelID+1:
 			k = j
-			textFieldLeft.text += "[color=#eeee00]" + str(levelLabels[i]).to_upper() + "[/color]\n"
+			if j == CharacterSelectMenuID:
+				textFieldLeft.text += "[color=#eeee00]" + str(characterLabels[characterID]).to_upper() + "[/color]\n"
+			else:
+				textFieldLeft.text += "[color=#eeee00]" + str(levelLabels[i]).to_upper() + "[/color]\n"
 		else:
-			textFieldLeft.text += str(levelLabels[i]).to_upper() + "\n"
+			if j == CharacterSelectMenuID:
+				textFieldLeft.text += str(characterLabels[characterID]).to_upper()
+			else:
+				textFieldLeft.text += str(levelLabels[i]).to_upper() + "\n"
 	$UI/LevelIcon.frame = levelIcons[k-1]

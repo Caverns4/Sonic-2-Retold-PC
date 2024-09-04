@@ -138,7 +138,9 @@ func change_scene_to_file(scene = null, fadeOut = "", fadeIn = "", length = 1, s
 		if Global.stageClearPhase != 0:
 			Global.currentCheckPoint = -1
 			Global.levelTime = 0
+			Global.levelTimeP2 = 0
 			Global.timerActive = false
+			Global.timerActiveP2 = false
 		Global.globalTimer = 0
 		Global.stageClearPhase = 0
 	

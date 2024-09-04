@@ -280,6 +280,7 @@ func _process(delta):
 			Global.main.change_scene_to_file(null,"FadeOut")
 			await Global.main.scene_faded
 			Global.levelTime = 0
+			Global.levelTimeP2 = 0
 
 # counter count down
 func _on_CounterCount_timeout():

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb4g20txkbrrj"
-path="res://.godot/imported/CPZBGNA_Top.png-f17022675436d4b4e6f727871e1b59f4.ctex"
+uid="uid://bk0t2arr06ftt"
+path="res://.godot/imported/CPZBGBlocks.png-bf1d144a5f7f18e65cc7eb0509fdbb0b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Backgrounds/CPZ/CPZBGNA_Top.png"
-dest_files=["res://.godot/imported/CPZBGNA_Top.png-f17022675436d4b4e6f727871e1b59f4.ctex"]
+source_file="res://Graphics/Backgrounds/CPZ/CPZBGBlocks.png"
+dest_files=["res://.godot/imported/CPZBGBlocks.png-bf1d144a5f7f18e65cc7eb0509fdbb0b.ctex"]
 
 [params]
 
