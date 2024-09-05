@@ -1,77 +1,51 @@
-[gd_scene load_steps=5 format=3 uid="uid://85umccwskeyx"]
+[gd_scene load_steps=6 format=3 uid="uid://85umccwskeyx"]
 
 [ext_resource type="Texture2D" uid="uid://d6m23ulvmhff" path="res://Graphics/Gimmicks/HTZ_SeeSaw.png" id="1_og7mm"]
 [ext_resource type="Script" path="res://Scripts/Gimmicks/htz_see_saw.gd" id="1_tvndd"]
+[ext_resource type="PackedScene" uid="uid://dsr3tet7m2ufv" path="res://Entities/Hazards/Sol.tscn" id="2_w4ph3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h8qh0"]
-size = Vector2(88, 56)
+size = Vector2(88, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_63cjf"]
-size = Vector2(8, 8)
+size = Vector2(88, 8)
 
 [node name="HtzSeeSaw" type="StaticBody2D"]
-collision_layer = 15
+process_physics_priority = 1
+disable_mode = 2
+collision_layer = 8193
 collision_mask = 8192
 script = ExtResource("1_tvndd")
+childScene = ExtResource("2_w4ph3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 6
 position = Vector2(0, -32)
 texture = ExtResource("1_og7mm")
-vframes = 3
+vframes = 4
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 20480
 
 [node name="AreaCollision" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -36)
+position = Vector2(0, -40)
 shape = SubResource("RectangleShape2D_h8qh0")
 debug_color = Color(0.517647, 1, 1, 0.501961)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-40, -48)
+position = Vector2(0, -24)
 shape = SubResource("RectangleShape2D_63cjf")
+one_way_collision = true
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-32, -44)
-shape = SubResource("RectangleShape2D_63cjf")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-44, -14, 44, -46, 44, -40, -44, -6)
+disabled = true
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-position = Vector2(-24, -40)
-shape = SubResource("RectangleShape2D_63cjf")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
-position = Vector2(-16, -36)
-shape = SubResource("RectangleShape2D_63cjf")
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
-position = Vector2(-8, -32)
-shape = SubResource("RectangleShape2D_63cjf")
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="."]
-position = Vector2(0, -28)
-shape = SubResource("RectangleShape2D_63cjf")
-
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="."]
-position = Vector2(8, -24)
-shape = SubResource("RectangleShape2D_63cjf")
-
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="."]
-position = Vector2(16, -20)
-shape = SubResource("RectangleShape2D_63cjf")
-
-[node name="CollisionShape2D9" type="CollisionShape2D" parent="."]
-position = Vector2(24, -16)
-shape = SubResource("RectangleShape2D_63cjf")
-
-[node name="CollisionShape2D10" type="CollisionShape2D" parent="."]
-position = Vector2(32, -12)
-shape = SubResource("RectangleShape2D_63cjf")
-
-[node name="CollisionShape2D11" type="CollisionShape2D" parent="."]
-position = Vector2(40, -8)
-shape = SubResource("RectangleShape2D_63cjf")
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-44, -46, 44, -14, 44, -6, -44, -39)
+disabled = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

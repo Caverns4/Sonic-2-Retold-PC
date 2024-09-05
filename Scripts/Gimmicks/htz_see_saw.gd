@@ -1,14 +1,25 @@
 extends StaticBody2D
 
+@export_enum("left","right") var startDirection = 1
 @export var springPower = 20
+@export var childScene = load("res://Scripts/Enemies/solWeight.gd")
 
 @onready var sprite = $Sprite2D
 var springSound = preload("res://Audio/SFX/Gimmicks/Springs.wav")
 
-var weights = [] #Objects currently on the platform
-var balance = 0.0 # Current weight distribution
-var direction = 0
+const ROTATION_AMOUNT = 26.0 #The max rotation of the object.
 
+var child = null #Child Node if applicable.
+
+
+var balance =   0 # Current weight distribution
+var balanceMemory = 0 #The last state of the platform
+var weights = [] #Objects currently on the platform
+var playerVelMemory = []
+
+
+#depricated
+var direction = 0 
 var targetYPositions =[
 	[-40,-36,-32,-28,-24,-20,-16,-12, -8,-4 ,  0], #Heavy on right
 	[-24,-24,-24,-24,-24,-24,-24,-24,-24,-24,-24], #Centered
@@ -17,12 +28,95 @@ var targetYPositions =[
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
-	pass # Replace with function body.
-
+	#if childScene:
+	#	child = childScene.instantiate()
+	#	get_parent().add_child(child)
+	if startDirection != 0:
+		balance = 1
+	else:
+		balance = -1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	balanceMemory = balance
+	var objectWeights = [] #The weight of each object
+
+	for i in weights.size():
+		var node = weights[i]
+		if node is CharacterBody2D and node.ground:
+			var tempFrame = -1
+			var tempPos = (global_position.x - node.global_position.x)
+			if abs(tempPos) < 8:
+				tempFrame = 0
+			if tempPos < 0:
+				tempFrame = 1
+			objectWeights.append(tempFrame)
+	
+	UpdateMappingsAndCollision(objectWeights,delta)
+
+func UpdateMappingsAndCollision(array,delta):
+	if !array:
+		UpdateCollision(delta)
+		return
+	var temp = 0
+	for i in array.size():
+		temp += array[i]
+	temp = clamp(temp,-1,1)
+	if balance != temp:
+		balance = temp
+	UpdateCollision(delta)
+
+func UpdateCollision(delta):
+	match balance:
+		-1:
+			$CollisionShape2D.disabled = true
+			$CollisionPolygon2D.disabled = false
+			$CollisionPolygon2D2.disabled = true
+		1:
+			$CollisionShape2D.disabled = true
+			$CollisionPolygon2D.disabled = true
+			$CollisionPolygon2D2.disabled = false
+		_:
+			$CollisionShape2D.disabled = false
+			$CollisionPolygon2D.disabled = true
+			$CollisionPolygon2D2.disabled = true
+	
+	sprite.frame = balance+1
+
+	if balance != balanceMemory:
+		for i in weights.size():
+			var node = weights[i]
+			if node is CharacterBody2D:
+				if balance == 0:
+					node.global_position.y = (global_position.y - 52)
+				elif balance < 0:
+					node.global_position.y = (global_position.y - 52
+					+ ((global_position.x - node.global_position.x)/1.5))
+				else:
+					node.global_position.y = (global_position.y - 52
+					- ((global_position.x - node.global_position.x)/1.5))
+
+
+
+func physics_collision(body, hitVector):
+	if hitVector.y > 0 and body.ground:
+		if !weights.has(body):
+			weights.append(body)
+			#print("PLAYER LAND")
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	pass #Now handled by physics collision
+	#weights.append(body)
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if weights.has(body):
+		weights.erase(body)
+		#print("PLAYER LEAVE")
+
+
+
+# Scrapped buggy code
+func ScrapCode(delta):
 	var balanceMemory = balance
 	var directionMemory = direction
 	balance = 0
@@ -97,19 +191,3 @@ func SpringObjectOnHighEnd():
 					node.animator.play("spring")
 					node.animator.queue(curAnim)
 					Global.play_sound(springSound)
-				
-			elif node.get("velocity") != null:
-				node.velocity.y = yspeed
-				if node.get("lobForce") != null:
-					node.lobForce = 4.0*sign(global_position.x-node.global_position.x)
-					#print(4.0*sign(global_position.x-node.global_position.x))
-					#node.velocity.x = 4.0*sign(global_position.x-node.global_position.x)
-			#print(node.movement.y/16)
-
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	weights.append(body)
-
-
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	weights.erase(body)

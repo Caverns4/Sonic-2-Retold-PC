@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://cyh8p6ji14r0t"]
+[gd_scene load_steps=44 format=4 uid="uid://cyh8p6ji14r0t"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_ijtho"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="2_vefax"]
@@ -39,7 +39,6 @@
 [ext_resource type="Texture2D" uid="uid://bsl2k38yish1o" path="res://Graphics/Tiles/WorldsTiles/EHZ_Platform_Small.png" id="34_jkdjx"]
 [ext_resource type="PackedScene" uid="uid://85umccwskeyx" path="res://Entities/Gimmicks/HTZSeeSaw.tscn" id="37_geevq"]
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="38_biojh"]
-[ext_resource type="PackedScene" uid="uid://dsr3tet7m2ufv" path="res://Entities/Hazards/Sol.tscn" id="38_r0c0r"]
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="39_rxisn"]
 [ext_resource type="PackedScene" uid="uid://b8bt0u45oqhe6" path="res://Entities/Hazards/Lava.tscn" id="40_7hrcg"]
 
@@ -652,36 +651,6 @@ shiftTimer = 1.0
 position = Vector2(5576, 1720)
 shiftTimer = 1.0
 
-[node name="SolWeight" parent="Hazards" instance=ExtResource("38_r0c0r")]
-position = Vector2(3560, 1040)
-
-[node name="SolWeight9" parent="Hazards" instance=ExtResource("38_r0c0r")]
-position = Vector2(3672, 1912)
-
-[node name="SolWeight2" parent="Hazards" instance=ExtResource("38_r0c0r")]
-position = Vector2(4336, 752)
-
-[node name="SolWeight8" parent="Hazards" instance=ExtResource("38_r0c0r")]
-position = Vector2(9056, 1848)
-
-[node name="SolWeight3" parent="Hazards" instance=ExtResource("38_r0c0r")]
-position = Vector2(4456, 528)
-
-[node name="SolWeight6" parent="Hazards" instance=ExtResource("38_r0c0r")]
-position = Vector2(5384, 1016)
-
-[node name="SolWeight7" parent="Hazards" instance=ExtResource("38_r0c0r")]
-position = Vector2(5192, 1016)
-
-[node name="SolWeight4" parent="Hazards" instance=ExtResource("38_r0c0r")]
-position = Vector2(3440, 656)
-
-[node name="SolWeight5" parent="Hazards" instance=ExtResource("38_r0c0r")]
-position = Vector2(3440, 656)
-
-[node name="SolWeight10" parent="Hazards" instance=ExtResource("38_r0c0r")]
-position = Vector2(1968, 952)
-
 [node name="Lava" parent="Hazards" instance=ExtResource("40_7hrcg")]
 position = Vector2(1408, 1272)
 size = Vector2(256, 256)
@@ -1235,3 +1204,42 @@ size = Vector2(256, 512)
 
 [node name="SignpostNew" parent="." instance=ExtResource("39_rxisn")]
 position = Vector2(10496, 1824)
+
+[node name="HtzSeeSaw" parent="." instance=ExtResource("37_geevq")]
+position = Vector2(192, 960)
+
+[node name="InvisibleBarrier" parent="." instance=ExtResource("28_r5ji8")]
+position = Vector2(192, 976)
+scale = Vector2(3, 1)
+
+[node name="InvisibleBarrier2" parent="." instance=ExtResource("28_r5ji8")]
+position = Vector2(1936, 1040)
+scale = Vector2(3, 1)
+
+[node name="InvisibleBarrier3" parent="." instance=ExtResource("28_r5ji8")]
+position = Vector2(3520, 1136)
+scale = Vector2(3, 1)
+
+[node name="InvisibleBarrier4" parent="." instance=ExtResource("28_r5ji8")]
+position = Vector2(3400, 752)
+scale = Vector2(3, 1)
+
+[node name="InvisibleBarrier5" parent="." instance=ExtResource("28_r5ji8")]
+position = Vector2(4296, 848)
+scale = Vector2(3, 1)
+
+[node name="InvisibleBarrier6" parent="." instance=ExtResource("28_r5ji8")]
+position = Vector2(4416, 624)
+scale = Vector2(3, 1)
+
+[node name="InvisibleBarrier7" parent="." instance=ExtResource("28_r5ji8")]
+position = Vector2(5232, 1112)
+scale = Vector2(3, 1)
+
+[node name="InvisibleBarrier8" parent="." instance=ExtResource("28_r5ji8")]
+position = Vector2(5424, 1112)
+scale = Vector2(3, 1)
+
+[node name="InvisibleBarrier9" parent="." instance=ExtResource("28_r5ji8")]
+position = Vector2(9016, 1936)
+scale = Vector2(3, 1)

@@ -45,6 +45,7 @@ animations = [{
 }]
 
 [node name="SolWeight" type="CharacterBody2D"]
+top_level = true
 collision_layer = 16384
 script = ExtResource("1_vfq8e")
 
