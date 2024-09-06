@@ -1,27 +1,18 @@
-[gd_scene load_steps=48 format=4 uid="uid://cun7sa0v2mwiq"]
+[gd_scene load_steps=39 format=4 uid="uid://cun7sa0v2mwiq"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_snbg3"]
 [ext_resource type="AudioStream" uid="uid://bg1fcuqr8mk1d" path="res://Audio/Soundtrack/s2br_Jewel.ogg" id="2_tvhrw"]
 [ext_resource type="PackedScene" uid="uid://caxc44uymh48a" path="res://Scene/Zones/EmeraldHill1.tscn" id="3_qu7so"]
-[ext_resource type="Texture2D" uid="uid://nn40nosrp62d" path="res://Graphics/Backgrounds/HPZ/HPZ_BGA.png" id="4_y8mxh"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_avawk"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="5_gd4l3"]
-[ext_resource type="Texture2D" uid="uid://d5p7ukbxbpbl" path="res://Graphics/Backgrounds/HPZ/HPZ_BGI.png" id="5_k8fec"]
 [ext_resource type="Texture2D" uid="uid://d00d25b0d4hcy" path="res://Graphics/Palettes/hpz_Waterfallpal.png" id="5_y0ob8"]
-[ext_resource type="Texture2D" uid="uid://c0h4tk4ags77l" path="res://Graphics/Backgrounds/HPZ/HPZ_BG.png" id="5_yrjgw"]
-[ext_resource type="Texture2D" uid="uid://c4rqq2m44n5hm" path="res://Graphics/Backgrounds/HPZ/HPZ_BGH.png" id="6_myxi8"]
+[ext_resource type="PackedScene" uid="uid://b0xmqvvpy42o3" path="res://Scene/Backgrounds/01-HiddenPalace.tscn" id="7_vtcww"]
 [ext_resource type="Texture2D" uid="uid://tdr31l1fyfos" path="res://Graphics/Palettes/HPZ_Pal_Dry.png" id="8_5gioe"]
-[ext_resource type="Texture2D" uid="uid://b2gtcpaq2n2ji" path="res://Graphics/Backgrounds/HPZ/HPZ_BGB.png" id="8_cuv8j"]
 [ext_resource type="Texture2D" uid="uid://cqxsc88x0mm7k" path="res://Graphics/Palettes/HPZ_Pal_Wet.png" id="9_5b47l"]
 [ext_resource type="PackedScene" uid="uid://jgm0h2yu3hvb" path="res://Entities/Enemies/Redz.tscn" id="9_7pp8m"]
-[ext_resource type="Texture2D" uid="uid://cio6ua8rjm8e2" path="res://Graphics/Backgrounds/HPZ/HPZ_BGC.png" id="9_dop27"]
 [ext_resource type="TileSet" uid="uid://ctbov0uv4xqwe" path="res://Tileset/Levels/HPZ_Tiles.tres" id="9_trtkx"]
-[ext_resource type="Texture2D" uid="uid://w252scvypstq" path="res://Graphics/Backgrounds/HPZ/HPZ_BGD.png" id="10_n1xoj"]
-[ext_resource type="Texture2D" uid="uid://bv7xfawyvcnti" path="res://Graphics/Backgrounds/HPZ/HPZ_BGE.png" id="11_swjic"]
-[ext_resource type="Texture2D" uid="uid://dfrlw6lcbk380" path="res://Graphics/Backgrounds/HPZ/HPZ_BGF.png" id="12_242na"]
 [ext_resource type="PackedScene" uid="uid://ob2r2ewjlvgy" path="res://Entities/ZoneObjects/pulsating_orb.tscn" id="12_k2dso"]
 [ext_resource type="PackedScene" uid="uid://bnn5io8fk2i4h" path="res://Entities/Gimmicks/WaterLevel.tscn" id="12_uche6"]
-[ext_resource type="Texture2D" uid="uid://cqiqh84cctukt" path="res://Graphics/Backgrounds/HPZ/HPZ_BGG.png" id="13_sgq8h"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="15_3aljb"]
 [ext_resource type="Shader" path="res://Shaders/PaletteSwapRow_Timerbased.gdshader" id="19_5e2v3"]
 [ext_resource type="PackedScene" uid="uid://b5bc364w4mjww" path="res://Entities/Enemies/BFish.tscn" id="21_85vku"]
@@ -63,188 +54,15 @@ music2P = ExtResource("2_tvhrw")
 nextZone = ExtResource("3_qu7so")
 animal1 = 8
 animal2 = 5
-defaultLeftBoundry = 0
-defaultTopBoundry = 0
 defaultRightBoundry = 9896
 defaultBottomBoundry = 3072
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-scroll_base_offset = Vector2(0, 480)
-scroll_base_scale = Vector2(0.8, 0.5)
-scroll_limit_end = Vector2(0, 1024)
-
-[node name="LayerTop1" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(512, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/LayerTop1"]
-offset_right = 512.0
-offset_bottom = 128.0
-texture = ExtResource("4_y8mxh")
-stretch_mode = 1
-
-[node name="LayerTop2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 128)
-motion_scale = Vector2(0.9, 1)
-motion_mirroring = Vector2(256, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/LayerTop2"]
-offset_right = 512.0
-offset_bottom = 48.0
-texture = ExtResource("8_cuv8j")
-stretch_mode = 1
-
-[node name="LayerTop3" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 176)
-motion_scale = Vector2(0.8, 1)
-motion_mirroring = Vector2(256, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/LayerTop3"]
-offset_right = 512.0
-offset_bottom = 32.0
-texture = ExtResource("9_dop27")
-stretch_mode = 1
-
-[node name="LayerTop4" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 208)
-motion_scale = Vector2(0.7, 1)
-motion_mirroring = Vector2(256, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/LayerTop4"]
-offset_right = 512.0
-offset_bottom = 16.0
-texture = ExtResource("10_n1xoj")
-stretch_mode = 1
-
-[node name="LayerTop5" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 224)
-motion_scale = Vector2(0.6, 1)
-motion_mirroring = Vector2(256, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/LayerTop5"]
-offset_right = 512.0
-offset_bottom = 8.0
-texture = ExtResource("11_swjic")
-stretch_mode = 1
-
-[node name="LayerTop6" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 232)
-motion_scale = Vector2(0.55, 1)
-motion_mirroring = Vector2(256, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/LayerTop6"]
-offset_right = 512.0
-offset_bottom = 8.0
-texture = ExtResource("12_242na")
-stretch_mode = 1
-
-[node name="LayerTop7" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 240)
-motion_scale = Vector2(0.5, 1)
-motion_mirroring = Vector2(128, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/LayerTop7"]
-offset_right = 512.0
-offset_bottom = 16.0
-texture = ExtResource("13_sgq8h")
-stretch_mode = 1
-
-[node name="LayerFarBack" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 256)
-motion_scale = Vector2(0.5, 1)
-motion_mirroring = Vector2(1024, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/LayerFarBack"]
-material = SubResource("ShaderMaterial_ut8in")
-offset_right = 1024.0
-offset_bottom = 400.0
-texture = ExtResource("5_yrjgw")
-stretch_mode = 1
-
-[node name="LayerBtm7" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 656)
-motion_scale = Vector2(0.55, 1)
-motion_mirroring = Vector2(256, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/LayerBtm7"]
-offset_right = 512.0
-offset_bottom = 8.0
-texture = ExtResource("12_242na")
-stretch_mode = 1
-flip_v = true
-
-[node name="LayerBtm6" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 664)
-motion_scale = Vector2(0.6, 1)
-motion_mirroring = Vector2(256, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/LayerBtm6"]
-offset_right = 512.0
-offset_bottom = 8.0
-texture = ExtResource("11_swjic")
-stretch_mode = 1
-flip_v = true
-
-[node name="LayerBtm5" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 672)
-motion_scale = Vector2(0.7, 1)
-motion_mirroring = Vector2(256, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/LayerBtm5"]
-offset_right = 512.0
-offset_bottom = 16.0
-texture = ExtResource("10_n1xoj")
-stretch_mode = 1
-flip_v = true
-
-[node name="LayerBtm4" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 688)
-motion_scale = Vector2(0.8, 1)
-motion_mirroring = Vector2(256, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/LayerBtm4"]
-offset_right = 512.0
-offset_bottom = 32.0
-texture = ExtResource("9_dop27")
-stretch_mode = 1
-flip_v = true
-
-[node name="LayerBtm3" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 720)
-motion_scale = Vector2(0.9, 1)
-motion_mirroring = Vector2(256, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/LayerBtm3"]
-offset_right = 512.0
-offset_bottom = 48.0
-texture = ExtResource("8_cuv8j")
-stretch_mode = 1
-flip_h = true
-flip_v = true
-
-[node name="LayerBtm2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 768)
-motion_mirroring = Vector2(512, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/LayerBtm2"]
-offset_right = 512.0
-offset_bottom = 128.0
-texture = ExtResource("5_k8fec")
-stretch_mode = 1
-
-[node name="LayerBtm1" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 896)
-motion_mirroring = Vector2(512, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/LayerBtm1"]
-offset_right = 512.0
-offset_bottom = 128.0
-texture = ExtResource("6_myxi8")
-stretch_mode = 1
 
 [node name="HUD" parent="." instance=ExtResource("5_avawk")]
 zoneName = "HIDDEN PALACE"
 waterSourceColor = ExtResource("8_5gioe")
 waterReplaceColor = ExtResource("9_5b47l")
+
+[node name="01-HiddenPalace" parent="." instance=ExtResource("7_vtcww")]
 
 [node name="Level_Layout" type="Node2D" parent="."]
 material = SubResource("ShaderMaterial_ut8in")
@@ -377,7 +195,7 @@ position = Vector2(7600, 272)
 leftBoundry = 7104
 setRight = false
 rightBoundry = 9864
-bottomBoundry = 1024
+bottomBoundry = 992
 
 [node name="BoundrySetter4" parent="Entities" instance=ExtResource("32_mtqr5")]
 position = Vector2(9616, 656)
@@ -424,7 +242,7 @@ position = Vector2(2560, 2176)
 position = Vector2(2688, 2210)
 
 [node name="HpzPlatformSpawner3" parent="Entities" instance=ExtResource("41_64hll")]
-position = Vector2(3408, 2432)
+position = Vector2(3328, 2400)
 
 [node name="HpzPlatformSpawner6" parent="Entities" instance=ExtResource("41_64hll")]
 position = Vector2(9040, 896)
@@ -453,40 +271,40 @@ position = Vector2(7400, 2608)
 metadata/_edit_lock_ = true
 
 [node name="Spikes" parent="Hazards" instance=ExtResource("35_b42q6")]
-position = Vector2(8720, 1008)
+position = Vector2(8720, 976)
 
 [node name="Spikes2" parent="Hazards" instance=ExtResource("35_b42q6")]
-position = Vector2(8752, 1008)
+position = Vector2(8752, 976)
 
 [node name="Spikes3" parent="Hazards" instance=ExtResource("35_b42q6")]
-position = Vector2(8784, 1008)
+position = Vector2(8784, 976)
 
 [node name="Spikes4" parent="Hazards" instance=ExtResource("35_b42q6")]
-position = Vector2(8816, 1008)
+position = Vector2(8816, 976)
 
 [node name="Spikes5" parent="Hazards" instance=ExtResource("35_b42q6")]
-position = Vector2(8848, 1008)
+position = Vector2(8848, 976)
 
 [node name="Spikes6" parent="Hazards" instance=ExtResource("35_b42q6")]
-position = Vector2(8880, 1008)
+position = Vector2(8880, 976)
 
 [node name="Spikes7" parent="Hazards" instance=ExtResource("35_b42q6")]
-position = Vector2(8912, 1008)
+position = Vector2(8912, 976)
 
 [node name="Spikes8" parent="Hazards" instance=ExtResource("35_b42q6")]
-position = Vector2(8944, 1008)
+position = Vector2(8944, 976)
 
 [node name="Spikes9" parent="Hazards" instance=ExtResource("35_b42q6")]
-position = Vector2(8976, 1008)
+position = Vector2(8976, 976)
 
 [node name="Spikes10" parent="Hazards" instance=ExtResource("35_b42q6")]
-position = Vector2(9008, 1008)
+position = Vector2(9008, 976)
 
 [node name="Spikes11" parent="Hazards" instance=ExtResource("35_b42q6")]
-position = Vector2(9040, 1008)
+position = Vector2(9040, 976)
 
 [node name="Spikes12" parent="Hazards" instance=ExtResource("35_b42q6")]
-position = Vector2(9072, 1008)
+position = Vector2(9072, 976)
 
 [node name="ItemsHolder" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
