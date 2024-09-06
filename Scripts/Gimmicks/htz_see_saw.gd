@@ -8,17 +8,17 @@ extends StaticBody2D
 var springSound = preload("res://Audio/SFX/Gimmicks/Springs.wav")
 
 const ROTATION_AMOUNT = 26.0 #The max rotation of the object.
+const LOCK_TIME = 0.1 #Lock time after the See-Saw changes frame.
 
 var child = null #Child Node if applicable.
 
-
+var reactTime = 0 #Time for the See-Saw to stay idle
 var balance =   0 # Current weight distribution
 var balanceMemory = 0 #The last state of the platform
 var weights = [] #Objects currently on the platform
 var playerVelMemory = []
 
-
-#depricated
+#DEPRICATED
 var direction = 0 
 var targetYPositions =[
 	[-40,-36,-32,-28,-24,-20,-16,-12, -8,-4 ,  0], #Heavy on right
@@ -39,6 +39,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	balanceMemory = balance
+	
+	reactTime -= delta
+	if reactTime > 0.0:
+		return
+	
 	var objectWeights = [] #The weight of each object
 
 	for i in weights.size():
@@ -80,9 +85,7 @@ func UpdateCollision(delta):
 			$CollisionShape2D.disabled = false
 			$CollisionPolygon2D.disabled = true
 			$CollisionPolygon2D2.disabled = true
-	
 	sprite.frame = balance+1
-
 	if balance != balanceMemory:
 		for i in weights.size():
 			var node = weights[i]
@@ -95,6 +98,7 @@ func UpdateCollision(delta):
 				else:
 					node.global_position.y = (global_position.y - 52
 					- ((global_position.x - node.global_position.x)/1.5))
+	reactTime = LOCK_TIME
 
 
 

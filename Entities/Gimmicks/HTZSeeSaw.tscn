@@ -8,12 +8,12 @@
 size = Vector2(88, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_63cjf"]
-size = Vector2(88, 8)
+size = Vector2(88, 28)
 
 [node name="HtzSeeSaw" type="StaticBody2D"]
 process_physics_priority = 1
 disable_mode = 2
-collision_layer = 8193
+collision_layer = 8207
 collision_mask = 8192
 script = ExtResource("1_tvndd")
 childScene = ExtResource("2_w4ph3")
@@ -35,16 +35,16 @@ shape = SubResource("RectangleShape2D_h8qh0")
 debug_color = Color(0.517647, 1, 1, 0.501961)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -24)
+position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_63cjf")
 one_way_collision = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-44, -14, 44, -46, 44, -40, -44, -6)
+polygon = PackedVector2Array(-44, -14, 44, -46, 44, 0, -44, 0)
 disabled = true
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-44, -46, 44, -14, 44, -6, -44, -39)
+polygon = PackedVector2Array(-44, -46, 44, -14, 44, 0, -44, 0)
 disabled = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
