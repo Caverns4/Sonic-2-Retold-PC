@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bjavywoj00j1j"]
+[gd_scene load_steps=14 format=4 uid="uid://bjavywoj00j1j"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="2_533ik"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" path="res://Scripts/Objects/StateMovers/StateMoverTranslational.gd" id="8"]
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="10"]
 [ext_resource type="PackedScene" uid="uid://ra3mqewhj6kl" path="res://Entities/Hazards/Saw.tscn" id="11"]
-[ext_resource type="PackedScene" uid="uid://cqcgjcw101xxo" path="res://Entities/Enemies/MotoBug.tscn" id="13_08f3q"]
 [ext_resource type="PackedScene" uid="uid://cvaf3mpyum5at" path="res://Entities/Enemies/Stegway.tscn" id="13_o64ke"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="16_mordc"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="18"]
@@ -147,7 +146,4 @@ position = Vector2(480, 648)
 item = 13
 
 [node name="Stegway" parent="." instance=ExtResource("13_o64ke")]
-position = Vector2(704, 744)
-
-[node name="Motobug" parent="." instance=ExtResource("13_08f3q")]
-position = Vector2(768, 744)
+position = Vector2(704, 752)

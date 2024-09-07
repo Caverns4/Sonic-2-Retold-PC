@@ -1980,6 +1980,8 @@ texture = ExtResource("2_fnsjo")
 14:8/animation_frame_1/duration = 1.0
 14:8/animation_frame_2/duration = 1.0
 14:8/0 = 0
+6:0/0 = 0
+15:0/0 = 0
 
 [resource]
 physics_layer_0/collision_layer = 15

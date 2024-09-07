@@ -384,7 +384,7 @@ position = Vector2(2810, 1392)
 position = Vector2(3878, 2064)
 
 [node name="Stegway" parent="Badniks" instance=ExtResource("42_ftvul")]
-position = Vector2(4032, 1328)
+position = Vector2(8552, 1968)
 
 [node name="Rings" type="Node2D" parent="."]
 

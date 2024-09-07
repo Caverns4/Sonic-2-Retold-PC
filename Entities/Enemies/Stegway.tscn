@@ -1,26 +1,124 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvaf3mpyum5at"]
+[gd_scene load_steps=11 format=3 uid="uid://cvaf3mpyum5at"]
 
 [ext_resource type="Script" path="res://Entities/Enemies/Stegway.gd" id="1_3811d"]
 [ext_resource type="Texture2D" uid="uid://bwbirkbtmiumq" path="res://Graphics/Enemies/stegway.png" id="2_jmtwq"]
+[ext_resource type="Texture2D" uid="uid://clihuhs0po6p0" path="res://Graphics/Enemies/BuzzerFlame.png" id="3_13kku"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(42, 29.5)
+size = Vector2(32, 32)
 
 [sub_resource type="Animation" id="Animation_mexa1"]
 resource_name = "RESET"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteNode/Stegway:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteNode/Flame:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_uy8ie"]
+resource_name = "WALK"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteNode/Stegway:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 3, 4, 1, 2, 5]
+}
+
+[sub_resource type="Animation" id="Animation_8ygeb"]
+resource_name = "CHARGE"
+length = 0.1
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteNode/Stegway:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_nowjg"]
+resource_name = "DASH"
+length = 0.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteNode/Stegway:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteNode/Flame:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s2w5h"]
 _data = {
-"RESET": SubResource("Animation_mexa1")
+"CHARGE": SubResource("Animation_8ygeb"),
+"DASH": SubResource("Animation_nowjg"),
+"RESET": SubResource("Animation_mexa1"),
+"WALK": SubResource("Animation_uy8ie")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tohy3"]
+size = Vector2(64, 96)
 
 [node name="Stegway" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 16384
-collision_mask = 0
+collision_mask = 15
 script = ExtResource("1_3811d")
 
 [node name="CollissionMask" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
 shape = SubResource("1")
 
 [node name="DamageArea" type="Area2D" parent="."]
@@ -29,24 +127,48 @@ collision_mask = 528384
 
 [node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
 modulate = Color(1, 0, 0, 1)
-position = Vector2(0, 1)
 shape = SubResource("1")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="SpriteNode" type="Node2D" parent="."]
+
+[node name="Stegway" type="Sprite2D" parent="SpriteNode"]
 texture = ExtResource("2_jmtwq")
 hframes = 3
 vframes = 3
+
+[node name="Flame" type="Sprite2D" parent="SpriteNode"]
+position = Vector2(28, 7)
+texture = ExtResource("3_13kku")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteNode"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_s2w5h")
+}
+
+[node name="PlayerCheck" type="Area2D" parent="SpriteNode"]
+z_index = -1
+position = Vector2(0, -4)
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteNode/PlayerCheck"]
+modulate = Color(1, 1, 1, 0.352941)
+position = Vector2(-48, -12)
+shape = SubResource("RectangleShape2D_tohy3")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 visible = false
 position = Vector2(1.90735e-06, -1.90735e-06)
 rect = Rect2(-160, -112, 320, 224)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_s2w5h")
-}
+[node name="FloorCheck" type="RayCast2D" parent="."]
+position = Vector2(-18, 16)
+target_position = Vector2(0, 14)
 
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
+[connection signal="body_entered" from="SpriteNode/PlayerCheck" to="." method="_on_player_check_body_entered"]
+[connection signal="body_exited" from="SpriteNode/PlayerCheck" to="." method="_on_player_check_body_exited"]
