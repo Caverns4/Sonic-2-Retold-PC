@@ -258,7 +258,6 @@ texture = ExtResource("13_v4sbg")
 stretch_mode = 1
 
 [node name="HUD" parent="." instance=ExtResource("2_vefax")]
-playLevelCard = false
 zoneName = "HILL TOP"
 
 [node name="Level_Layout" type="Node2D" parent="."]
@@ -337,7 +336,7 @@ pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("27_vnla0")
 
 [node name="Breakable4" parent="Entities" instance=ExtResource("26_w6quw")]
-position = Vector2(4656, 1392)
+position = Vector2(4656, 1396)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("27_vnla0")
 
@@ -480,19 +479,19 @@ scale = Vector2(32, 48)
 position = Vector2(1936, 1024)
 
 [node name="HtzSeeSaw2" parent="Entities" instance=ExtResource("37_geevq")]
-position = Vector2(3520, 1120)
+position = Vector2(3528, 1264)
 
 [node name="HtzSeeSaw10" parent="Entities" instance=ExtResource("37_geevq")]
 position = Vector2(3632, 1992)
 
 [node name="HtzSeeSaw3" parent="Entities" instance=ExtResource("37_geevq")]
-position = Vector2(4296, 832)
+position = Vector2(4288, 952)
 
 [node name="HtzSeeSaw9" parent="Entities" instance=ExtResource("37_geevq")]
 position = Vector2(9016, 1928)
 
 [node name="HtzSeeSaw4" parent="Entities" instance=ExtResource("37_geevq")]
-position = Vector2(4416, 608)
+position = Vector2(4416, 704)
 
 [node name="HtzSeeSaw7" parent="Entities" instance=ExtResource("37_geevq")]
 position = Vector2(5424, 1096)
@@ -517,6 +516,27 @@ leftAngle = 86.0
 [node name="ForceAngleSides8" parent="Entities" instance=ExtResource("31_qjmib")]
 position = Vector2(10072, 1856)
 leftAngle = 86.0
+
+[node name="Spring11" parent="Entities" instance=ExtResource("24_tu1me")]
+position = Vector2(3520, 1112)
+
+[node name="Spring12" parent="Entities" instance=ExtResource("24_tu1me")]
+position = Vector2(4288, 824)
+type = 1
+
+[node name="Spring13" parent="Entities" instance=ExtResource("24_tu1me")]
+position = Vector2(4416, 600)
+
+[node name="Spring14" parent="Entities" instance=ExtResource("24_tu1me")]
+position = Vector2(8944, 1912)
+type = 1
+
+[node name="HtzSeeSaw11" parent="Entities" instance=ExtResource("37_geevq")]
+position = Vector2(192, 960)
+
+[node name="Spring15" parent="Entities" instance=ExtResource("24_tu1me")]
+position = Vector2(3632, 1952)
+type = 1
 
 [node name="FloatingPlatform" type="Node2D" parent="."]
 
@@ -695,6 +715,38 @@ size = Vector2(256, 64)
 position = Vector2(4416, 1736)
 size = Vector2(128, 512)
 
+[node name="InvisibleBarrier2" parent="Hazards" instance=ExtResource("28_r5ji8")]
+position = Vector2(1936, 1040)
+scale = Vector2(3, 1)
+
+[node name="InvisibleBarrier3" parent="Hazards" instance=ExtResource("28_r5ji8")]
+position = Vector2(3520, 1136)
+scale = Vector2(3, 1)
+
+[node name="InvisibleBarrier4" parent="Hazards" instance=ExtResource("28_r5ji8")]
+position = Vector2(3400, 752)
+scale = Vector2(3, 1)
+
+[node name="InvisibleBarrier5" parent="Hazards" instance=ExtResource("28_r5ji8")]
+position = Vector2(4296, 848)
+scale = Vector2(3, 1)
+
+[node name="InvisibleBarrier6" parent="Hazards" instance=ExtResource("28_r5ji8")]
+position = Vector2(4416, 624)
+scale = Vector2(3, 1)
+
+[node name="InvisibleBarrier7" parent="Hazards" instance=ExtResource("28_r5ji8")]
+position = Vector2(5232, 1112)
+scale = Vector2(3, 1)
+
+[node name="InvisibleBarrier8" parent="Hazards" instance=ExtResource("28_r5ji8")]
+position = Vector2(5424, 1112)
+scale = Vector2(3, 1)
+
+[node name="InvisibleBarrier9" parent="Hazards" instance=ExtResource("28_r5ji8")]
+position = Vector2(9016, 1936)
+scale = Vector2(3, 1)
+
 [node name="ItemsHolder" type="Node2D" parent="."]
 
 [node name="Monitor" parent="ItemsHolder" instance=ExtResource("33_ommvj")]
@@ -735,7 +787,7 @@ item = 12
 
 [node name="Monitor8" parent="ItemsHolder" instance=ExtResource("33_ommvj")]
 position = Vector2(4056, 1224)
-item = 13
+item = 12
 
 [node name="Monitor9" parent="ItemsHolder" instance=ExtResource("33_ommvj")]
 position = Vector2(9680, 1554)
@@ -1204,42 +1256,3 @@ size = Vector2(256, 512)
 
 [node name="SignpostNew" parent="." instance=ExtResource("39_rxisn")]
 position = Vector2(10496, 1824)
-
-[node name="HtzSeeSaw" parent="." instance=ExtResource("37_geevq")]
-position = Vector2(192, 960)
-
-[node name="InvisibleBarrier" parent="." instance=ExtResource("28_r5ji8")]
-position = Vector2(192, 976)
-scale = Vector2(3, 1)
-
-[node name="InvisibleBarrier2" parent="." instance=ExtResource("28_r5ji8")]
-position = Vector2(1936, 1040)
-scale = Vector2(3, 1)
-
-[node name="InvisibleBarrier3" parent="." instance=ExtResource("28_r5ji8")]
-position = Vector2(3520, 1136)
-scale = Vector2(3, 1)
-
-[node name="InvisibleBarrier4" parent="." instance=ExtResource("28_r5ji8")]
-position = Vector2(3400, 752)
-scale = Vector2(3, 1)
-
-[node name="InvisibleBarrier5" parent="." instance=ExtResource("28_r5ji8")]
-position = Vector2(4296, 848)
-scale = Vector2(3, 1)
-
-[node name="InvisibleBarrier6" parent="." instance=ExtResource("28_r5ji8")]
-position = Vector2(4416, 624)
-scale = Vector2(3, 1)
-
-[node name="InvisibleBarrier7" parent="." instance=ExtResource("28_r5ji8")]
-position = Vector2(5232, 1112)
-scale = Vector2(3, 1)
-
-[node name="InvisibleBarrier8" parent="." instance=ExtResource("28_r5ji8")]
-position = Vector2(5424, 1112)
-scale = Vector2(3, 1)
-
-[node name="InvisibleBarrier9" parent="." instance=ExtResource("28_r5ji8")]
-position = Vector2(9016, 1936)
-scale = Vector2(3, 1)
