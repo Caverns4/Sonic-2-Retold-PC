@@ -16,7 +16,7 @@ disable_mode = 2
 collision_layer = 8207
 collision_mask = 8192
 script = ExtResource("1_tvndd")
-childScene = ExtResource("2_w4ph3")
+counterWeight = ExtResource("2_w4ph3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 6

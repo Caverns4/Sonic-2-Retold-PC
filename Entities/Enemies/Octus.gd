@@ -54,7 +54,7 @@ func _physics_process(delta: float) -> void:
 					velocity.y = JUMP_VEL
 					animator.play("JUMP")
 					position.y -= 6
-					print("Jump")
+					#print("Jump")
 		STATES.JUMP:
 			MoveWithGravity(delta)
 			if velocity.y >= 0.0:

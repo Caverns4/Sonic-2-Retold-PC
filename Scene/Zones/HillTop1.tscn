@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://cyh8p6ji14r0t"]
+[gd_scene load_steps=45 format=4 uid="uid://cyh8p6ji14r0t"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_ijtho"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="2_vefax"]
@@ -35,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://ctg1aeiewvyvj" path="res://Entities/Gimmicks/ForceRoll.tscn" id="30_ej03w"]
 [ext_resource type="PackedScene" uid="uid://c1ldunfxhq0he" path="res://Entities/Obstacles/ForceAngleSides.tscn" id="31_qjmib"]
 [ext_resource type="Texture2D" uid="uid://ci13nuikdwatn" path="res://Graphics/Tiles/WorldsTiles/EHZ_Platform_Large.png" id="31_ygsss"]
+[ext_resource type="PackedScene" uid="uid://dsr3tet7m2ufv" path="res://Entities/Hazards/Sol.tscn" id="32_08ye7"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="33_ommvj"]
 [ext_resource type="Texture2D" uid="uid://bsl2k38yish1o" path="res://Graphics/Tiles/WorldsTiles/EHZ_Platform_Small.png" id="34_jkdjx"]
 [ext_resource type="PackedScene" uid="uid://85umccwskeyx" path="res://Entities/Gimmicks/HTZSeeSaw.tscn" id="37_geevq"]
@@ -538,6 +539,9 @@ position = Vector2(192, 960)
 position = Vector2(3632, 1952)
 type = 1
 
+[node name="SolWeight" parent="Entities" instance=ExtResource("32_08ye7")]
+position = Vector2(328, 928)
+
 [node name="FloatingPlatform" type="Node2D" parent="."]
 
 [node name="Platform" parent="FloatingPlatform" instance=ExtResource("9_0ltuq")]
@@ -715,20 +719,8 @@ size = Vector2(256, 64)
 position = Vector2(4416, 1736)
 size = Vector2(128, 512)
 
-[node name="InvisibleBarrier3" parent="Hazards" instance=ExtResource("28_r5ji8")]
-position = Vector2(3520, 1136)
-scale = Vector2(3, 1)
-
 [node name="InvisibleBarrier4" parent="Hazards" instance=ExtResource("28_r5ji8")]
 position = Vector2(3400, 752)
-scale = Vector2(3, 1)
-
-[node name="InvisibleBarrier5" parent="Hazards" instance=ExtResource("28_r5ji8")]
-position = Vector2(4296, 848)
-scale = Vector2(3, 1)
-
-[node name="InvisibleBarrier6" parent="Hazards" instance=ExtResource("28_r5ji8")]
-position = Vector2(4416, 624)
 scale = Vector2(3, 1)
 
 [node name="InvisibleBarrier7" parent="Hazards" instance=ExtResource("28_r5ji8")]
@@ -737,10 +729,6 @@ scale = Vector2(3, 1)
 
 [node name="InvisibleBarrier8" parent="Hazards" instance=ExtResource("28_r5ji8")]
 position = Vector2(5424, 1112)
-scale = Vector2(3, 1)
-
-[node name="InvisibleBarrier9" parent="Hazards" instance=ExtResource("28_r5ji8")]
-position = Vector2(9040, 1936)
 scale = Vector2(3, 1)
 
 [node name="ItemsHolder" type="Node2D" parent="."]

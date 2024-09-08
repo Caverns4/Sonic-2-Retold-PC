@@ -2,7 +2,8 @@ extends StaticBody2D
 
 @export_enum("left","right") var startDirection = 1
 @export var springPower = 20
-@export var childScene = load("res://Scripts/Enemies/solWeight.gd")
+
+@export var counterWeight = load("res://Entities/Hazards/Sol.tscn")
 
 @onready var sprite = $Sprite2D
 var springSound = preload("res://Audio/SFX/Gimmicks/Springs.wav")
@@ -28,9 +29,12 @@ var targetYPositions =[
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#if childScene:
-	#	child = childScene.instantiate()
-	#	get_parent().add_child(child)
+	if counterWeight:
+		print("Creating Child")
+		child = counterWeight.instantiate()
+		get_parent().add_child(child)
+		child.global_position = global_position
+		child.global_position.y -= 52
 	if startDirection != 0:
 		balance = 1
 	else:
@@ -49,12 +53,12 @@ func _physics_process(delta: float) -> void:
 	for i in weights.size():
 		var node = weights[i]
 		if node is CharacterBody2D and node.ground:
-			var tempFrame = -1
+			var tempFrame = 1
 			var tempPos = (global_position.x - node.global_position.x)
-			if abs(tempPos) < 8:
+			if abs(tempPos) <= 8:
 				tempFrame = 0
-			if tempPos < 0:
-				tempFrame = 1
+			if tempPos > 8:
+				tempFrame = -1
 			objectWeights.append(tempFrame)
 	
 	UpdateMappingsAndCollision(objectWeights,delta)
