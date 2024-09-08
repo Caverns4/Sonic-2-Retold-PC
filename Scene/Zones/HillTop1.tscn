@@ -488,7 +488,7 @@ position = Vector2(3632, 1992)
 position = Vector2(4288, 952)
 
 [node name="HtzSeeSaw9" parent="Entities" instance=ExtResource("37_geevq")]
-position = Vector2(9016, 1928)
+position = Vector2(9040, 1922)
 
 [node name="HtzSeeSaw4" parent="Entities" instance=ExtResource("37_geevq")]
 position = Vector2(4416, 704)
@@ -528,7 +528,7 @@ type = 1
 position = Vector2(4416, 600)
 
 [node name="Spring14" parent="Entities" instance=ExtResource("24_tu1me")]
-position = Vector2(8944, 1912)
+position = Vector2(8960, 1916)
 type = 1
 
 [node name="HtzSeeSaw11" parent="Entities" instance=ExtResource("37_geevq")]
@@ -715,10 +715,6 @@ size = Vector2(256, 64)
 position = Vector2(4416, 1736)
 size = Vector2(128, 512)
 
-[node name="InvisibleBarrier2" parent="Hazards" instance=ExtResource("28_r5ji8")]
-position = Vector2(1936, 1040)
-scale = Vector2(3, 1)
-
 [node name="InvisibleBarrier3" parent="Hazards" instance=ExtResource("28_r5ji8")]
 position = Vector2(3520, 1136)
 scale = Vector2(3, 1)
@@ -744,7 +740,7 @@ position = Vector2(5424, 1112)
 scale = Vector2(3, 1)
 
 [node name="InvisibleBarrier9" parent="Hazards" instance=ExtResource("28_r5ji8")]
-position = Vector2(9016, 1936)
+position = Vector2(9040, 1936)
 scale = Vector2(3, 1)
 
 [node name="ItemsHolder" type="Node2D" parent="."]
