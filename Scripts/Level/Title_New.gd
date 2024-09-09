@@ -46,9 +46,8 @@ func _ready():
 	Global.TwoPlayer = false
 	Global.music.stream = music
 	Global.music.play()
-	
-	var zoneIndex = min(Global.savedZoneID,parallaxBackgrounds.size()-1)
-	var parallax = parallaxBackgrounds[zoneIndex]
+
+	var parallax = parallaxBackgrounds[min(Global.savedZoneID,parallaxBackgrounds.size()-1)]
 	scene = load(parallax)
 	#UpdateMenuDisplay()
 	if nextZone != null:
@@ -141,8 +140,7 @@ func CheckCheatInputs():
 	lastCheatInput = inputs
 
 func InstantiateBG():
-	var zoneIndex = min(Global.savedZoneID,parallaxBackgrounds.size()-1)
 	var instance = scene.instantiate()
-	instance.scroll_base_offset.y = paraOffsets[zoneIndex]
+	instance.scroll_base_offset.y = paraOffsets[min(Global.savedZoneID,parallaxBackgrounds.size()-1)]
 	add_child(instance)
 	

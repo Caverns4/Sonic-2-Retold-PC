@@ -14,12 +14,13 @@ shader_parameter/paletteTexture = ExtResource("2_ti4hc")
 
 [node name="03-ChemicalPlant" type="ParallaxBackground"]
 layer = -8
-scroll_limit_end = Vector2(0, 768)
+scroll_limit_end = Vector2(0, 1408)
+scroll_ignore_camera_zoom = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_p1smn")
-motion_scale = Vector2(0.1, 0.35)
+motion_scale = Vector2(0.01, 0)
 motion_mirroring = Vector2(768, 0)
 
 [node name="StarLayer" type="TileMapLayer" parent="ParallaxLayer"]
@@ -30,7 +31,7 @@ tile_set = ExtResource("2_2whns")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
 texture_filter = 1
-motion_scale = Vector2(0.2, 0.35)
+motion_scale = Vector2(0.1, 0.4)
 motion_mirroring = Vector2(768, 0)
 
 [node name="CityLayer" type="TileMapLayer" parent="ParallaxLayer2"]
@@ -41,7 +42,7 @@ tile_set = ExtResource("2_2whns")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
 texture_filter = 1
-motion_scale = Vector2(0.4, 0.35)
+motion_scale = Vector2(0.4, 0.4)
 motion_mirroring = Vector2(768, 0)
 
 [node name="Factory" type="TileMapLayer" parent="ParallaxLayer3"]

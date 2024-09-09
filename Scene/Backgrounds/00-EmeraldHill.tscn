@@ -58,6 +58,8 @@ animations = [{
 }]
 
 [node name="00-EmeraldHill" type="ParallaxBackground"]
+scroll_limit_end = Vector2(0, 256)
+scroll_ignore_camera_zoom = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.013, 0.05)
@@ -71,6 +73,7 @@ stretch_mode = 1
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.013, 0.05)
+motion_mirroring = Vector2(512, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxLayer2"]
 material = SubResource("ShaderMaterial_023dl")
@@ -93,7 +96,7 @@ stretch_mode = 1
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.3, 0.05)
-motion_mirroring = Vector2(16, 0)
+motion_mirroring = Vector2(512, 0)
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxLayer4"]
 offset_top = 144.0
@@ -104,7 +107,7 @@ stretch_mode = 1
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.325, 0.05)
-motion_mirroring = Vector2(16, 0)
+motion_mirroring = Vector2(512, 0)
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxLayer5"]
 offset_top = 152.0
@@ -115,7 +118,7 @@ stretch_mode = 1
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.35, 0.05)
-motion_mirroring = Vector2(16, 0)
+motion_mirroring = Vector2(512, 0)
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxLayer6"]
 offset_top = 160.0
@@ -126,7 +129,7 @@ stretch_mode = 1
 
 [node name="ParallaxLayer7" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.4, 0.05)
-motion_mirroring = Vector2(16, 0)
+motion_mirroring = Vector2(512, 0)
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxLayer7"]
 offset_top = 168.0
@@ -137,7 +140,7 @@ stretch_mode = 1
 
 [node name="ParallaxLayer8" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.45, 0.05)
-motion_mirroring = Vector2(16, 0)
+motion_mirroring = Vector2(512, 0)
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxLayer8"]
 offset_top = 176.0
@@ -148,7 +151,7 @@ stretch_mode = 1
 
 [node name="ParallaxLayer9" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.5, 0.05)
-motion_mirroring = Vector2(16, 0)
+motion_mirroring = Vector2(512, 0)
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxLayer9"]
 offset_top = 184.0
@@ -159,7 +162,7 @@ stretch_mode = 1
 
 [node name="ParallaxLayer10" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.55, 0.05)
-motion_mirroring = Vector2(16, 0)
+motion_mirroring = Vector2(512, 0)
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxLayer10"]
 offset_top = 192.0
@@ -170,7 +173,7 @@ stretch_mode = 1
 
 [node name="ParallaxLayer11" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.6, 0.05)
-motion_mirroring = Vector2(16, 0)
+motion_mirroring = Vector2(512, 0)
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxLayer11"]
 offset_top = 208.0
@@ -178,10 +181,11 @@ offset_right = 512.0
 offset_bottom = 224.0
 texture = ExtResource("12_xgogs")
 stretch_mode = 1
+flip_h = true
 
 [node name="ParallaxLayer12" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.7, 0.05)
-motion_mirroring = Vector2(16, 0)
+motion_mirroring = Vector2(512, 0)
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxLayer12"]
 offset_top = 224.0
@@ -189,3 +193,15 @@ offset_right = 512.0
 offset_bottom = 240.0
 texture = ExtResource("12_xgogs")
 stretch_mode = 1
+
+[node name="ParallaxLayer13" type="ParallaxLayer" parent="."]
+position = Vector2(0, 240)
+motion_scale = Vector2(0.8, 0.05)
+motion_mirroring = Vector2(512, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer13"]
+offset_right = 512.0
+offset_bottom = 16.0
+texture = ExtResource("12_xgogs")
+stretch_mode = 1
+flip_h = true

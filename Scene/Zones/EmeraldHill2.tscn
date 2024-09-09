@@ -1,19 +1,8 @@
-[gd_scene load_steps=45 format=4 uid="uid://cou8y8ungkjfx"]
+[gd_scene load_steps=28 format=4 uid="uid://cou8y8ungkjfx"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_p81yk"]
 [ext_resource type="PackedScene" uid="uid://c58ontqoxjuti" path="res://Scene/Presentation/PoweredByWorlds.tscn" id="2_vlt6c"]
-[ext_resource type="Texture2D" uid="uid://doln6jqb428tw" path="res://Graphics/Backgrounds/EHZ/EHZ_BG.png" id="3_jnrj0"]
-[ext_resource type="Shader" path="res://Shaders/PaletteSwapRow_Timerbased.gdshader" id="4_toihw"]
-[ext_resource type="Texture2D" uid="uid://ysgv52sem1qo" path="res://Graphics/Palettes/ehz_waterpal.png" id="5_6q6nm"]
-[ext_resource type="Texture2D" uid="uid://cet8xh8m1yo00" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_B.png" id="6_el0oq"]
-[ext_resource type="Texture2D" uid="uid://4v6st0kn7iu3" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_J.png" id="7_r7kek"]
-[ext_resource type="Texture2D" uid="uid://bilh8mmllo20h" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_C.png" id="8_5fedx"]
-[ext_resource type="Texture2D" uid="uid://cm2mbxogvegh3" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_D.png" id="9_csly4"]
-[ext_resource type="Texture2D" uid="uid://bygwshjael2ef" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_E.png" id="10_iwtsa"]
-[ext_resource type="Texture2D" uid="uid://dcgwn1vgnituw" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_F.png" id="11_x4x8h"]
-[ext_resource type="Texture2D" uid="uid://ctdp0nelf8gc8" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_G.png" id="12_5r5u2"]
-[ext_resource type="Texture2D" uid="uid://chn1gkg56tjh2" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_H.png" id="13_io6f2"]
-[ext_resource type="Texture2D" uid="uid://doqoa4fu15431" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_I.png" id="14_gd2tg"]
+[ext_resource type="PackedScene" uid="uid://deaxge481u7mk" path="res://Scene/Backgrounds/00-EmeraldHill.tscn" id="3_x8p3v"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="15_0dckv"]
 [ext_resource type="TileSet" uid="uid://uplqwsi0o4gi" path="res://Tileset/Levels/EHZ_HTZ_Tiles.tres" id="16_w3q5b"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="17_0brht"]
@@ -37,50 +26,6 @@
 [ext_resource type="PackedScene" uid="uid://bxk253s6p41vr" path="res://Entities/Boss/Boss Components/DrillEggmanCar.tscn" id="35_w4jcd"]
 [ext_resource type="PackedScene" uid="uid://bjuh5cvbt06af" path="res://Entities/MainObjects/Capsule.tscn" id="36_lon64"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bkq3j"]
-shader = ExtResource("4_toihw")
-shader_parameter/amount = 4.0
-shader_parameter/palRows = 4.0
-shader_parameter/approximation = 0.0
-shader_parameter/time_scale = 0.1
-shader_parameter/paletteTexture = ExtResource("5_6q6nm")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gefi2"]
-atlas = ExtResource("6_el0oq")
-region = Rect2(0, 0, 512, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_beyfr"]
-atlas = ExtResource("6_el0oq")
-region = Rect2(0, 32, 512, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kbaqy"]
-atlas = ExtResource("6_el0oq")
-region = Rect2(0, 64, 512, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d5v3c"]
-atlas = ExtResource("6_el0oq")
-region = Rect2(0, 96, 512, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_jjfr2"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gefi2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_beyfr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kbaqy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d5v3c")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_oeepv"]
 scenes/1/scene = ExtResource("32_f5v80")
 
@@ -91,144 +36,10 @@ sources/0 = SubResource("TileSetScenesCollectionSource_oeepv")
 [node name="EmeraldHillZoneAct2" type="Node2D"]
 script = ExtResource("1_p81yk")
 nextZone = ExtResource("2_vlt6c")
-defaultLeftBoundry = 0
-defaultTopBoundry = 0
 defaultRightBoundry = 11392
 defaultBottomBoundry = 1280
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-scroll_limit_end = Vector2(0, 256)
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.013, 0.05)
-motion_mirroring = Vector2(512, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
-offset_right = 512.0
-offset_bottom = 80.0
-texture = ExtResource("3_jnrj0")
-stretch_mode = 1
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.013, 0.05)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-material = SubResource("ShaderMaterial_bkq3j")
-position = Vector2(0, 80)
-sprite_frames = SubResource("SpriteFrames_jjfr2")
-autoplay = "default"
-frame_progress = 0.279355
-centered = false
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.25, 0.05)
-motion_mirroring = Vector2(512, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer3"]
-offset_top = 112.0
-offset_right = 512.0
-offset_bottom = 144.0
-texture = ExtResource("7_r7kek")
-stretch_mode = 1
-
-[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.3, 0.05)
-motion_mirroring = Vector2(16, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer4"]
-offset_top = 144.0
-offset_right = 512.0
-offset_bottom = 152.0
-texture = ExtResource("8_5fedx")
-stretch_mode = 1
-
-[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.325, 0.05)
-motion_mirroring = Vector2(16, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer5"]
-offset_top = 152.0
-offset_right = 512.0
-offset_bottom = 160.0
-texture = ExtResource("9_csly4")
-stretch_mode = 1
-
-[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.35, 0.05)
-motion_mirroring = Vector2(16, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer6"]
-offset_top = 160.0
-offset_right = 512.0
-offset_bottom = 168.0
-texture = ExtResource("10_iwtsa")
-stretch_mode = 1
-
-[node name="ParallaxLayer7" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.4, 0.05)
-motion_mirroring = Vector2(16, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer7"]
-offset_top = 168.0
-offset_right = 512.0
-offset_bottom = 176.0
-texture = ExtResource("11_x4x8h")
-stretch_mode = 1
-
-[node name="ParallaxLayer8" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.45, 0.05)
-motion_mirroring = Vector2(16, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer8"]
-offset_top = 176.0
-offset_right = 512.0
-offset_bottom = 184.0
-texture = ExtResource("12_5r5u2")
-stretch_mode = 1
-
-[node name="ParallaxLayer9" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.5, 0.05)
-motion_mirroring = Vector2(16, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer9"]
-offset_top = 184.0
-offset_right = 512.0
-offset_bottom = 192.0
-texture = ExtResource("13_io6f2")
-stretch_mode = 1
-
-[node name="ParallaxLayer10" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.55, 0.05)
-motion_mirroring = Vector2(16, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer10"]
-offset_top = 192.0
-offset_right = 512.0
-offset_bottom = 200.0
-texture = ExtResource("14_gd2tg")
-stretch_mode = 1
-
-[node name="ParallaxLayer11" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.6, 0.05)
-motion_mirroring = Vector2(16, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer11"]
-offset_top = 208.0
-offset_right = 512.0
-offset_bottom = 224.0
-texture = ExtResource("14_gd2tg")
-stretch_mode = 1
-
-[node name="ParallaxLayer12" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.7, 0.05)
-motion_mirroring = Vector2(16, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer12"]
-offset_top = 224.0
-offset_right = 512.0
-offset_bottom = 240.0
-texture = ExtResource("14_gd2tg")
-stretch_mode = 1
+[node name="00-EmeraldHill" parent="." instance=ExtResource("3_x8p3v")]
 
 [node name="HUD" parent="." instance=ExtResource("15_0dckv")]
 act = 2

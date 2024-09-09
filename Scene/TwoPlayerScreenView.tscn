@@ -22,7 +22,6 @@ size_flags_vertical = 4
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
-disable_3d = true
 handle_input_locally = false
 scaling_3d_mode = 1
 fsr_sharpness = 0.0
@@ -47,7 +46,6 @@ size_flags_vertical = 6
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer2"]
-disable_3d = true
 handle_input_locally = false
 scaling_3d_mode = 1
 fsr_sharpness = 0.0

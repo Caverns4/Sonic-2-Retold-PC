@@ -32,7 +32,7 @@ func _ready() -> void:
 	if counterWeight:
 		print("Creating Child")
 		child = counterWeight.instantiate()
-		get_parent().add_child(child)
+		add_child(child)
 		child.global_position = global_position
 		child.global_position.y -= 52
 	if startDirection != 0:

@@ -584,6 +584,7 @@ func _process(delta):
 		if (invTime <= 0):
 			invTime = 0
 			visible = true
+	
 	if (ringDisTime > 0) and currentState != STATES.HIT:
 		ringDisTime -= delta
 
@@ -1058,7 +1059,9 @@ func set_shield(setShieldID):
 func hit_player(damagePoint = global_position, damageType = 0, soundID = 6):
 	if damageType != 0 and shield == damageType+1:
 		return false
-	if (currentState != STATES.HIT and invTime <= 0 and supTime <= 0 and (shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled or character != Global.CHARACTERS.SONIC)):
+	if (currentState != STATES.HIT and invTime <= 0 and 
+	supTime <= 0 and (shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled 
+	or character != Global.CHARACTERS.SONIC)):
 		movement.x = sign(global_position.x-damagePoint.x)*2*60
 		movement.y = -4*60
 		if (movement.x == 0):
