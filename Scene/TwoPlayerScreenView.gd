@@ -37,9 +37,11 @@ func _physics_process(_delta):
 		QueueUpPlayers()
 	else:
 		cameraPlayer1.global_position = Global.players[0].camera.global_position
+		cameraPlayer1.limit_left = Global.players[0].camera.limit_left
 		cameraPlayer1.limit_bottom = Global.players[0].camera.limit_bottom
 		cameraPlayer1.limit_right = Global.players[0].camera.limit_right
 		cameraPlayer2.global_position = Global.players[1].camera.global_position
+		cameraPlayer2.limit_left = Global.players[1].camera.limit_left
 		cameraPlayer2.limit_bottom = Global.players[1].camera.limit_bottom
 		cameraPlayer2.limit_right = Global.players[1].camera.limit_right
 

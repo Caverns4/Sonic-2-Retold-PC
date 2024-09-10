@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bt7aqgv2h8os6"]
+
+[ext_resource type="Script" path="res://Entities/Obstacles/breakable_floor.gd" id="1_yxa47"]
+[ext_resource type="Texture2D" uid="uid://ck8ve7pl35fv" path="res://Graphics/Obstacles/BreakFloors/HTZ_BreakableFloor1.png" id="2_jt6dt"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(32, 16)
+
+[node name="Breakable" type="StaticBody2D"]
+process_priority = 10
+z_index = 15
+collision_layer = 8192
+collision_mask = 0
+script = ExtResource("1_yxa47")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+process_priority = 10
+texture = ExtResource("2_jt6dt")

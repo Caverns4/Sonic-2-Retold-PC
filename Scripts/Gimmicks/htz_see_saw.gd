@@ -12,6 +12,7 @@ const ROTATION_AMOUNT = 26.0 #The max rotation of the object.
 const LOCK_TIME = 0.1 #Lock time after the See-Saw changes frame.
 
 var child = null #Child Node if applicable.
+var childCreated = false #Just in case so the child sprite won't get created twice.
 
 var reactTime = 0 #Time for the See-Saw to stay idle
 var balance =   0 # Current weight distribution
@@ -29,16 +30,20 @@ var targetYPositions =[
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if counterWeight:
+	if startDirection > 0:
+		balance = 1
+	else:
+		balance = -1
+	
+	if counterWeight and !childCreated:
 		print("Creating Child")
 		child = counterWeight.instantiate()
 		add_child(child)
 		child.global_position = global_position
 		child.global_position.y -= 52
-	if startDirection != 0:
-		balance = 1
-	else:
-		balance = -1
+		child.global_position.x += 32*balance
+		childCreated = true
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:

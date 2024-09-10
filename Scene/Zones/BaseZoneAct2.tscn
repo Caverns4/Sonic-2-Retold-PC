@@ -1,16 +1,15 @@
-[gd_scene load_steps=14 format=4 uid="uid://bjavywoj00j1j"]
+[gd_scene load_steps=13 format=4 uid="uid://bjavywoj00j1j"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="2_533ik"]
 [ext_resource type="PackedScene" uid="uid://qs5dmtxxf1w1" path="res://Scene/Presentation/Title.tscn" id="2_l4fq6"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="4"]
-[ext_resource type="Texture2D" uid="uid://m4fuu16t6dkk" path="res://Graphics/Backgrounds/OOZ/OOZBG.png" id="4_wqbil"]
 [ext_resource type="Script" path="res://Scripts/Objects/StateMovers/StateMoverMaster.gd" id="5"]
 [ext_resource type="TileSet" uid="uid://be1npc2ur6gou" path="res://Tileset/Levels/OOZ.tres" id="6_crde5"]
 [ext_resource type="Script" path="res://Scripts/Objects/StateMovers/StateMoverTranslational.gd" id="8"]
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="10"]
 [ext_resource type="PackedScene" uid="uid://ra3mqewhj6kl" path="res://Entities/Hazards/Saw.tscn" id="11"]
-[ext_resource type="PackedScene" uid="uid://cvaf3mpyum5at" path="res://Entities/Enemies/Stegway.tscn" id="13_o64ke"]
+[ext_resource type="PackedScene" uid="uid://85umccwskeyx" path="res://Entities/Gimmicks/HTZSeeSaw.tscn" id="12_h3k7w"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="16_mordc"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="18"]
 
@@ -28,17 +27,6 @@ metadata/_edit_vertical_guides_ = [3600.0]
 zoneName = "OIL OCEAN"
 act = 2
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.01, 0.075)
-motion_mirroring = Vector2(512, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("4_wqbil")
-
 [node name="Level_Layout" type="Node2D" parent="."]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Level_Layout"]
@@ -53,22 +41,22 @@ position = Vector2(69, 734)
 [node name="Rings" type="Node" parent="Entities"]
 
 [node name="Ring" parent="Entities/Rings" instance=ExtResource("10")]
-position = Vector2(428, 554)
+position = Vector2(312, 632)
 
 [node name="Ring2" parent="Entities/Rings" instance=ExtResource("10")]
-position = Vector2(396, 557)
+position = Vector2(288, 632)
 
 [node name="Ring3" parent="Entities/Rings" instance=ExtResource("10")]
-position = Vector2(367, 563)
+position = Vector2(264, 632)
 
 [node name="Ring4" parent="Entities/Rings" instance=ExtResource("10")]
-position = Vector2(361, 735)
+position = Vector2(128, 688)
 
 [node name="Ring5" parent="Entities/Rings" instance=ExtResource("10")]
-position = Vector2(397, 714)
+position = Vector2(152, 688)
 
 [node name="Ring6" parent="Entities/Rings" instance=ExtResource("10")]
-position = Vector2(432, 696)
+position = Vector2(176, 688)
 
 [node name="StatefulMover3" type="Node2D" parent="Entities"]
 position = Vector2(592, 576)
@@ -91,59 +79,59 @@ nextState = 0
 [node name="Items" type="Node2D" parent="."]
 
 [node name="Monitor" parent="Items" instance=ExtResource("16_mordc")]
-position = Vector2(64, 648)
+position = Vector2(512, 640)
 
 [node name="Monitor2" parent="Items" instance=ExtResource("16_mordc")]
-position = Vector2(96, 648)
+position = Vector2(544, 640)
 item = 1
 
 [node name="Monitor3" parent="Items" instance=ExtResource("16_mordc")]
-position = Vector2(128, 648)
+position = Vector2(576, 640)
 item = 2
 
 [node name="Monitor4" parent="Items" instance=ExtResource("16_mordc")]
-position = Vector2(160, 648)
+position = Vector2(608, 640)
 item = 3
 
 [node name="Monitor5" parent="Items" instance=ExtResource("16_mordc")]
-position = Vector2(192, 648)
+position = Vector2(640, 640)
 item = 4
 
 [node name="Monitor6" parent="Items" instance=ExtResource("16_mordc")]
-position = Vector2(224, 648)
+position = Vector2(672, 640)
 item = 5
 
 [node name="Monitor7" parent="Items" instance=ExtResource("16_mordc")]
-position = Vector2(256, 648)
+position = Vector2(704, 640)
 item = 6
 
 [node name="Monitor8" parent="Items" instance=ExtResource("16_mordc")]
-position = Vector2(288, 648)
+position = Vector2(736, 640)
 item = 7
 
 [node name="Monitor9" parent="Items" instance=ExtResource("16_mordc")]
-position = Vector2(320, 648)
+position = Vector2(768, 640)
 item = 8
 
 [node name="Monitor10" parent="Items" instance=ExtResource("16_mordc")]
-position = Vector2(352, 648)
+position = Vector2(800, 640)
 item = 9
 
 [node name="Monitor11" parent="Items" instance=ExtResource("16_mordc")]
-position = Vector2(384, 648)
+position = Vector2(832, 640)
 item = 10
 
 [node name="Monitor12" parent="Items" instance=ExtResource("16_mordc")]
-position = Vector2(416, 648)
+position = Vector2(864, 640)
 item = 11
 
 [node name="Monitor13" parent="Items" instance=ExtResource("16_mordc")]
-position = Vector2(448, 648)
+position = Vector2(896, 640)
 item = 12
 
 [node name="Monitor14" parent="Items" instance=ExtResource("16_mordc")]
-position = Vector2(480, 648)
+position = Vector2(928, 640)
 item = 13
 
-[node name="Stegway" parent="." instance=ExtResource("13_o64ke")]
-position = Vector2(704, 752)
+[node name="HtzSeeSaw" parent="." instance=ExtResource("12_h3k7w")]
+position = Vector2(256, 768)

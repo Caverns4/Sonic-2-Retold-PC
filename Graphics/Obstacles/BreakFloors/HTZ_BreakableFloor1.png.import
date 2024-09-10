@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m4fuu16t6dkk"
-path="res://.godot/imported/OOZBG.png-3302bd092589137a84d9861e430a327a.ctex"
+uid="uid://ck8ve7pl35fv"
+path="res://.godot/imported/HTZ_BreakableFloor1.png-0dc084391f697a35e8c2b4ac9b398e0d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Backgrounds/OOZ/OOZBG.png"
-dest_files=["res://.godot/imported/OOZBG.png-3302bd092589137a84d9861e430a327a.ctex"]
+source_file="res://Graphics/Obstacles/BreakFloors/HTZ_BreakableFloor1.png"
+dest_files=["res://.godot/imported/HTZ_BreakableFloor1.png-0dc084391f697a35e8c2b4ac9b398e0d.ctex"]
 
 [params]
 

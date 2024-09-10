@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://cyh8p6ji14r0t"]
+[gd_scene load_steps=48 format=4 uid="uid://cyh8p6ji14r0t"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_ijtho"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="2_vefax"]
@@ -35,13 +35,16 @@
 [ext_resource type="PackedScene" uid="uid://ctg1aeiewvyvj" path="res://Entities/Gimmicks/ForceRoll.tscn" id="30_ej03w"]
 [ext_resource type="PackedScene" uid="uid://c1ldunfxhq0he" path="res://Entities/Obstacles/ForceAngleSides.tscn" id="31_qjmib"]
 [ext_resource type="Texture2D" uid="uid://ci13nuikdwatn" path="res://Graphics/Tiles/WorldsTiles/EHZ_Platform_Large.png" id="31_ygsss"]
-[ext_resource type="PackedScene" uid="uid://dsr3tet7m2ufv" path="res://Entities/Hazards/Sol.tscn" id="32_08ye7"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="33_ommvj"]
 [ext_resource type="Texture2D" uid="uid://bsl2k38yish1o" path="res://Graphics/Tiles/WorldsTiles/EHZ_Platform_Small.png" id="34_jkdjx"]
 [ext_resource type="PackedScene" uid="uid://85umccwskeyx" path="res://Entities/Gimmicks/HTZSeeSaw.tscn" id="37_geevq"]
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="38_biojh"]
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="39_rxisn"]
 [ext_resource type="PackedScene" uid="uid://b8bt0u45oqhe6" path="res://Entities/Hazards/Lava.tscn" id="40_7hrcg"]
+[ext_resource type="PackedScene" uid="uid://bt7aqgv2h8os6" path="res://Entities/Obstacles/BreakableFloor.tscn" id="42_0cebl"]
+[ext_resource type="Texture2D" uid="uid://33fwqll5rb60" path="res://Graphics/Obstacles/BreakFloors/HTZ_BreakableFloor2.png" id="43_a0fik"]
+[ext_resource type="Texture2D" uid="uid://c7oef8lrbdbws" path="res://Graphics/Obstacles/BreakFloors/HTZ_BreakableFloor3.png" id="44_n0x2o"]
+[ext_resource type="Texture2D" uid="uid://csu3q4bwre2x4" path="res://Graphics/Obstacles/BreakFloors/HTZ_BreakableFloor4.png" id="45_p5a0n"]
 
 [sub_resource type="Animation" id="Animation_b4rdf"]
 resource_name = "Reset"
@@ -385,6 +388,11 @@ springDirection = 4
 position = Vector2(5760, 304)
 size = Vector2(1, 4)
 
+[node name="LayerSwitcher5" parent="Entities" instance=ExtResource("25_0yxob")]
+position = Vector2(5752, 416)
+size = Vector2(1, 4)
+leftLayer = 0
+
 [node name="LayerSwitcher3" parent="Entities" instance=ExtResource("25_0yxob")]
 position = Vector2(5504, 256)
 size = Vector2(2, 32)
@@ -477,10 +485,10 @@ position = Vector2(8320, 1664)
 scale = Vector2(32, 48)
 
 [node name="HtzSeeSaw" parent="Entities" instance=ExtResource("37_geevq")]
-position = Vector2(1936, 1024)
+position = Vector2(1936, 1026)
 
 [node name="HtzSeeSaw2" parent="Entities" instance=ExtResource("37_geevq")]
-position = Vector2(3528, 1264)
+position = Vector2(3520, 1280)
 
 [node name="HtzSeeSaw10" parent="Entities" instance=ExtResource("37_geevq")]
 position = Vector2(3632, 1992)
@@ -489,7 +497,7 @@ position = Vector2(3632, 1992)
 position = Vector2(4288, 952)
 
 [node name="HtzSeeSaw9" parent="Entities" instance=ExtResource("37_geevq")]
-position = Vector2(9040, 1922)
+position = Vector2(9040, 1920)
 
 [node name="HtzSeeSaw4" parent="Entities" instance=ExtResource("37_geevq")]
 position = Vector2(4416, 704)
@@ -500,11 +508,8 @@ position = Vector2(5424, 1096)
 [node name="HtzSeeSaw8" parent="Entities" instance=ExtResource("37_geevq")]
 position = Vector2(5232, 1096)
 
-[node name="HtzSeeSaw5" parent="Entities" instance=ExtResource("37_geevq")]
-position = Vector2(3400, 736)
-
 [node name="HtzSeeSaw6" parent="Entities" instance=ExtResource("37_geevq")]
-position = Vector2(3400, 736)
+position = Vector2(3392, 740)
 
 [node name="ForceAngleSides6" parent="Entities" instance=ExtResource("31_qjmib")]
 position = Vector2(3288, 1152)
@@ -532,15 +537,43 @@ position = Vector2(4416, 600)
 position = Vector2(8960, 1916)
 type = 1
 
-[node name="HtzSeeSaw11" parent="Entities" instance=ExtResource("37_geevq")]
-position = Vector2(192, 960)
-
 [node name="Spring15" parent="Entities" instance=ExtResource("24_tu1me")]
 position = Vector2(3632, 1952)
 type = 1
 
-[node name="SolWeight" parent="Entities" instance=ExtResource("32_08ye7")]
-position = Vector2(328, 928)
+[node name="Breakable" parent="Entities" instance=ExtResource("42_0cebl")]
+position = Vector2(5680, 456)
+
+[node name="Breakable6" parent="Entities" instance=ExtResource("42_0cebl")]
+position = Vector2(5680, 472)
+SpriteTexture = ExtResource("43_a0fik")
+
+[node name="Breakable7" parent="Entities" instance=ExtResource("42_0cebl")]
+position = Vector2(5680, 488)
+SpriteTexture = ExtResource("44_n0x2o")
+
+[node name="Breakable8" parent="Entities" instance=ExtResource("42_0cebl")]
+position = Vector2(5680, 504)
+SpriteTexture = ExtResource("45_p5a0n")
+
+[node name="Breakable9" parent="Entities" instance=ExtResource("42_0cebl")]
+position = Vector2(5680, 520)
+SpriteTexture = ExtResource("45_p5a0n")
+
+[node name="Breakable10" parent="Entities" instance=ExtResource("42_0cebl")]
+position = Vector2(9392, 1736)
+
+[node name="Breakable11" parent="Entities" instance=ExtResource("42_0cebl")]
+position = Vector2(9392, 1752)
+SpriteTexture = ExtResource("43_a0fik")
+
+[node name="Breakable12" parent="Entities" instance=ExtResource("42_0cebl")]
+position = Vector2(9392, 1768)
+SpriteTexture = ExtResource("44_n0x2o")
+
+[node name="Breakable13" parent="Entities" instance=ExtResource("42_0cebl")]
+position = Vector2(9392, 1784)
+SpriteTexture = ExtResource("45_p5a0n")
 
 [node name="FloatingPlatform" type="Node2D" parent="."]
 
@@ -718,10 +751,6 @@ size = Vector2(256, 64)
 [node name="Lava6" parent="Hazards" instance=ExtResource("40_7hrcg")]
 position = Vector2(4416, 1736)
 size = Vector2(128, 512)
-
-[node name="InvisibleBarrier4" parent="Hazards" instance=ExtResource("28_r5ji8")]
-position = Vector2(3400, 752)
-scale = Vector2(3, 1)
 
 [node name="InvisibleBarrier7" parent="Hazards" instance=ExtResource("28_r5ji8")]
 position = Vector2(5232, 1112)

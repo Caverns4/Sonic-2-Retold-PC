@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://b25bf70l62rjr"]
+[gd_scene load_steps=44 format=4 uid="uid://b25bf70l62rjr"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_o6dl6"]
 [ext_resource type="AudioStream" uid="uid://dhw5trv54kut7" path="res://Audio/Soundtrack/s2br_HillTop.ogg" id="2_5rsgg"]
@@ -31,9 +31,13 @@
 [ext_resource type="PackedScene" uid="uid://c1ldunfxhq0he" path="res://Entities/Obstacles/ForceAngleSides.tscn" id="27_x58qa"]
 [ext_resource type="PackedScene" uid="uid://bfjam0ov4pku5" path="res://Entities/Obstacles/BreakableBlock.tscn" id="28_ppemo"]
 [ext_resource type="Texture2D" uid="uid://cp6jo03lhimqi" path="res://Graphics/Obstacles/Blocks/HTZ_Boulder.png" id="29_86f2p"]
+[ext_resource type="PackedScene" uid="uid://bt7aqgv2h8os6" path="res://Entities/Obstacles/BreakableFloor.tscn" id="30_ic7m8"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="31_43keb"]
+[ext_resource type="Texture2D" uid="uid://33fwqll5rb60" path="res://Graphics/Obstacles/BreakFloors/HTZ_BreakableFloor2.png" id="31_m12r3"]
 [ext_resource type="PackedScene" uid="uid://cfteqnft5ynr7" path="res://Entities/Hazards/Spikes.tscn" id="31_ns8pa"]
+[ext_resource type="Texture2D" uid="uid://c7oef8lrbdbws" path="res://Graphics/Obstacles/BreakFloors/HTZ_BreakableFloor3.png" id="32_c60u2"]
 [ext_resource type="PackedScene" uid="uid://blwewyk2fnrew" path="res://Entities/Gimmicks/Shutter.tscn" id="33_jhyql"]
+[ext_resource type="Texture2D" uid="uid://csu3q4bwre2x4" path="res://Graphics/Obstacles/BreakFloors/HTZ_BreakableFloor4.png" id="33_xkkj3"]
 [ext_resource type="Texture2D" uid="uid://cj4oplowk1x5h" path="res://Graphics/Obstacles/Walls/HTZ_Shutter.png" id="34_8hnrw"]
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="35_4ds1j"]
 [ext_resource type="PackedScene" uid="uid://b8bt0u45oqhe6" path="res://Entities/Hazards/Lava.tscn" id="35_snrfj"]
@@ -525,6 +529,116 @@ texture = ExtResource("34_8hnrw")
 position = Vector2(7176, 1120)
 texture = ExtResource("34_8hnrw")
 
+[node name="Breakable14" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(1712, 1480)
+
+[node name="Breakable15" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(1712, 1496)
+SpriteTexture = ExtResource("31_m12r3")
+
+[node name="Breakable16" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(1712, 1512)
+SpriteTexture = ExtResource("32_c60u2")
+
+[node name="Breakable17" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(1712, 1528)
+SpriteTexture = ExtResource("33_xkkj3")
+
+[node name="Breakable18" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(3120, 1736)
+
+[node name="Breakable19" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(3120, 1752)
+SpriteTexture = ExtResource("31_m12r3")
+
+[node name="Breakable20" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(3120, 1768)
+SpriteTexture = ExtResource("32_c60u2")
+
+[node name="Breakable21" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(3120, 1784)
+SpriteTexture = ExtResource("33_xkkj3")
+
+[node name="Breakable22" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(3120, 1800)
+SpriteTexture = ExtResource("33_xkkj3")
+
+[node name="Breakable23" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(3760, 456)
+
+[node name="Breakable24" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(3760, 472)
+SpriteTexture = ExtResource("31_m12r3")
+
+[node name="Breakable25" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(3760, 488)
+SpriteTexture = ExtResource("32_c60u2")
+
+[node name="Breakable26" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(3760, 504)
+SpriteTexture = ExtResource("33_xkkj3")
+
+[node name="Breakable27" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(3760, 520)
+SpriteTexture = ExtResource("33_xkkj3")
+
+[node name="Breakable28" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(3632, 904)
+
+[node name="Breakable29" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(3632, 920)
+SpriteTexture = ExtResource("31_m12r3")
+
+[node name="Breakable30" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(3632, 936)
+SpriteTexture = ExtResource("32_c60u2")
+
+[node name="Breakable31" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(3632, 952)
+SpriteTexture = ExtResource("33_xkkj3")
+
+[node name="Breakable32" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(3632, 968)
+SpriteTexture = ExtResource("33_xkkj3")
+
+[node name="Breakable33" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(3888, 1224)
+
+[node name="Breakable34" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(3888, 1240)
+SpriteTexture = ExtResource("31_m12r3")
+
+[node name="Breakable35" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(3888, 1256)
+SpriteTexture = ExtResource("32_c60u2")
+
+[node name="Breakable36" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(3888, 1272)
+SpriteTexture = ExtResource("33_xkkj3")
+
+[node name="Breakable37" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(3888, 1288)
+SpriteTexture = ExtResource("33_xkkj3")
+
+[node name="Breakable38" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(7472, 328)
+
+[node name="Breakable39" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(7472, 344)
+SpriteTexture = ExtResource("31_m12r3")
+
+[node name="Breakable40" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(7472, 360)
+SpriteTexture = ExtResource("32_c60u2")
+
+[node name="Breakable41" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(7472, 376)
+SpriteTexture = ExtResource("33_xkkj3")
+
+[node name="Breakable42" parent="Entities" instance=ExtResource("30_ic7m8")]
+position = Vector2(7472, 392)
+SpriteTexture = ExtResource("33_xkkj3")
+
 [node name="Platforms" type="Node2D" parent="."]
 
 [node name="Platform" parent="Platforms" instance=ExtResource("25_mbeia")]
@@ -769,6 +883,12 @@ position = Vector2(10176, 1384)
 size = Vector2(640, 64)
 
 [node name="Badniks" type="Node2D" parent="."]
+
+[node name="Orbinaut" parent="Badniks" instance=ExtResource("39_3lp52")]
+position = Vector2(4096, 1696)
+
+[node name="Orbinaut2" parent="Badniks" instance=ExtResource("39_3lp52")]
+position = Vector2(4032, 336)
 
 [node name="ItemsHolder" type="Node2D" parent="."]
 
@@ -1063,9 +1183,3 @@ tile_set = ExtResource("18_ydh5s")
 
 [node name="SignpostNew" parent="." instance=ExtResource("35_4ds1j")]
 position = Vector2(10560, 1664)
-
-[node name="Orbinaut" parent="." instance=ExtResource("39_3lp52")]
-position = Vector2(4096, 1696)
-
-[node name="Orbinaut2" parent="." instance=ExtResource("39_3lp52")]
-position = Vector2(4032, 336)

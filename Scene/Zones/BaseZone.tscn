@@ -1,10 +1,9 @@
-[gd_scene load_steps=31 format=4 uid="uid://hj3tt0gklwba"]
+[gd_scene load_steps=30 format=4 uid="uid://hj3tt0gklwba"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://bjavywoj00j1j" path="res://Scene/Zones/BaseZoneAct2.tscn" id="2_8ek7k"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="2_tkxs0"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="3_hkybi"]
-[ext_resource type="Texture2D" uid="uid://m4fuu16t6dkk" path="res://Graphics/Backgrounds/OOZ/OOZBG.png" id="5_t3eal"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="5_tgx6m"]
 [ext_resource type="Texture2D" uid="uid://d3fmwymushbdl" path="res://Graphics/Tiles/OOZ/OOZ_Blocks.png" id="7_1tyrn"]
 [ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="7_rjmim"]
@@ -226,17 +225,6 @@ animal2 = 5
 
 [node name="HUD" parent="." instance=ExtResource("3_hkybi")]
 zoneName = "OIL OCEAN"
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.01, 0.075)
-motion_mirroring = Vector2(512, 0)
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("5_t3eal")
 
 [node name="Level_Layout" type="Node2D" parent="."]
 
