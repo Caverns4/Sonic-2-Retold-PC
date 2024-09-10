@@ -427,3 +427,36 @@ func push_vertical():
 			position += (rayHitVec-(normHitVec*(($HitBox.shape.size.y/2)+0.25))-Vector2(0,yGroundDiff).rotated(rotation))
 	# reset movement
 	movement = movementMemory
+
+#Quick and dirty function to flip the vertical sensors and look for a ceiling.
+func check_for_ceiling():
+	var detected = false
+	
+	var maskMemory = verticalSensorLeft.collision_mask
+	# Temporarily wipe masks that will provide eroneus results
+	verticalSensorLeft.set_collision_mask_value(1,false)
+	verticalSensorLeft.set_collision_mask_value(5,false)
+	verticalSensorLeft.set_collision_mask_value(9,false)
+	verticalSensorLeft.set_collision_mask_value(14,false)
+	verticalSensorLeft.set_collision_mask_value(4,true)
+	verticalSensorLeft.set_collision_mask_value(8,true)
+	verticalSensorLeft.set_collision_mask_value(12,true)
+	verticalSensorRight.collision_mask = verticalSensorLeft.collision_mask
+	#Update Sensor Positions
+	verticalSensorLeft.target_position.y = 0-verticalSensorLeft.target_position.y
+	verticalSensorRight.target_position.y = verticalSensorLeft.target_position.y
+	#Force useful detectors
+	verticalSensorLeft.force_update_transform()
+	verticalSensorRight.force_update_transform()
+	verticalSensorLeft.force_raycast_update()
+	verticalSensorRight.force_raycast_update()
+	#Check is there's a collision
+	if verticalSensorLeft.is_colliding() or verticalSensorRight.is_colliding():
+		detected = true
+	#Restore the sensors
+	verticalSensorLeft.target_position.y = 0-verticalSensorLeft.target_position.y
+	verticalSensorRight.target_position.y = verticalSensorLeft.target_position.y
+	verticalSensorLeft.collision_mask = maskMemory
+	verticalSensorRight.collision_mask = maskMemory
+	# Return if a ceiling was detected in collision.
+	return detected

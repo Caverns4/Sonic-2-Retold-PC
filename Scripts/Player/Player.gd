@@ -249,6 +249,8 @@ func _ready():
 	var _con = connect("connectFloor",Callable(self,"land_floor"))
 	_con = connect("connectCeiling",Callable(self,"touch_ceiling"))
 	
+	respawnPosition = global_position
+	
 	# Camera settings
 	get_parent().call_deferred("add_child", (camera))
 	camera.enabled = (playerControl == 1)
@@ -261,7 +263,6 @@ func _ready():
 	camera.drag_vertical_enabled = true
 	_con = connect("positionChanged",Callable(self,"on_position_changed"))
 	camera.global_position = global_position
-	respawnPosition = global_position
 	
 	# Tails carry stuff
 	$TailsCarryBox/HitBox.disabled = true
