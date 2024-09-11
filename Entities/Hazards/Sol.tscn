@@ -20,9 +20,8 @@ animations = [{
 }]
 
 [node name="SolWeight" type="CharacterBody2D"]
-top_level = true
-collision_layer = 16384
-collision_mask = 16399
+collision_layer = 20480
+collision_mask = 8192
 script = ExtResource("1_vfq8e")
 
 [node name="PhysicsLookUp" type="Node" parent="."]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://85umccwskeyx"]
+[gd_scene load_steps=6 format=3 uid="uid://85umccwskeyx"]
 
 [ext_resource type="Texture2D" uid="uid://d6m23ulvmhff" path="res://Graphics/Gimmicks/HTZ_SeeSaw.png" id="1_og7mm"]
 [ext_resource type="Script" path="res://Scripts/Gimmicks/htz_see_saw.gd" id="1_tvndd"]
+[ext_resource type="PackedScene" uid="uid://dsr3tet7m2ufv" path="res://Entities/Hazards/Sol.tscn" id="3_t28x7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h8qh0"]
 size = Vector2(88, 48)
@@ -44,6 +45,9 @@ disabled = true
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-44, -46, 44, -14, 44, 0, -44, 0)
 disabled = true
+
+[node name="SolWeight" parent="." instance=ExtResource("3_t28x7")]
+position = Vector2(32, -52)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
