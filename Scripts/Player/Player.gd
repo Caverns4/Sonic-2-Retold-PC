@@ -5,6 +5,8 @@ const HITBOXESTAILS = {NORMAL = Vector2(9,15)*2, ROLL = Vector2(7,14)*2, CROUCH 
 const HITBOXESAMY = {NORMAL = Vector2(9,15)*2, ROLL = Vector2(7,11)*2, CROUCH = Vector2(9,9.5)*2, GLIDE = Vector2(10,10)*2, HORIZONTAL = Vector2(22,9)*2}
 var currentHitbox = HITBOXESSONIC
 
+const JUMP_BUFFER_TIME = 3.0/60.0 #Time after pressing jump button to buffer the input, in case it's pressed early.
+
 #Sonic's Speed constants
 var acc = 0.046875			#acceleration
 var dec = 0.5				#deceleration
@@ -43,6 +45,7 @@ var airTimer = defaultAirTime
 # force roll variables
 var forceRoll = 0 # each force roll object the player is in, this increments.
 var forceDirection = 0
+var jumpBuffer = 0.0
 
 # collision related values
 var pushingWall = 0
@@ -325,8 +328,10 @@ func _ready():
 			global_position = i.global_position+Vector2(0,8)
 			camera.global_position = i.global_position+Vector2(0,8)
 			Global.levelTime = Global.checkPointTime
+			Global.levelTimeP2 = Global.checkPointTime
 		else:
 			Global.levelTime = 0
+			Global.levelTimeP2 = 0
 	
 	
 	
@@ -534,6 +539,10 @@ func _process(delta):
 		horizontalLockTimer -= delta
 		inputs[INPUTS.XINPUT] = 0
 
+	# jump buffer time
+	if jumpBuffer > 0.0:
+		jumpBuffer -= delta
+
 	# super / invincibility handling
 	if (supTime > 0):
 		if !isSuper:
@@ -667,6 +676,9 @@ func _process(delta):
 	
 	# Set player inputs
 	set_inputs()
+	if any_action_pressed():
+		jumpBuffer = JUMP_BUFFER_TIME
+
 
 func _physics_process(delta):
 	super(delta)
@@ -1399,6 +1411,7 @@ func action_jump(animation = "roll", airJumpControl = true, playSound=true):
 		animator.play(animation)
 		animator.advance(0)
 		movement.y = -jmp
+		jumpBuffer = 0
 		if playSound:
 			sfx[0].play()
 		airControl = airJumpControl
