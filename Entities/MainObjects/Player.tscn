@@ -1,4 +1,4 @@
-[gd_scene load_steps=195 format=3 uid="uid://cioq5saowvqxj"]
+[gd_scene load_steps=201 format=3 uid="uid://cioq5saowvqxj"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://d1e4muavtnun6" path="res://Graphics/Players/PlayerAnimations/Sonic.tscn" id="2"]
@@ -14,7 +14,6 @@
 [ext_resource type="Script" path="res://Scripts/Player/States/Animation.gd" id="12"]
 [ext_resource type="AudioStream" uid="uid://56lyekv8guny" path="res://Audio/SFX/Player/Spike.wav" id="13"]
 [ext_resource type="Script" path="res://Scripts/Player/States/Hit.gd" id="14"]
-[ext_resource type="Texture2D" uid="uid://dvqglf8dididc" path="res://Graphics/Items/shield_plain.png" id="15"]
 [ext_resource type="Texture2D" uid="uid://d20jsqgat6iup" path="res://Graphics/Items/shield_fire.png" id="16"]
 [ext_resource type="Texture2D" uid="uid://dlgef7vglnii5" path="res://Graphics/Items/shield_bubble.png" id="17"]
 [ext_resource type="Texture2D" uid="uid://d34mlpdkwjuru" path="res://Graphics/Items/shield_lightning.png" id="18"]
@@ -23,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://frqq7h80cju8" path="res://Graphics/Items/shield_insta.png" id="20"]
 [ext_resource type="AudioStream" uid="uid://dg4gnjja2ce0s" path="res://Audio/SFX/Player/Shield.wav" id="21"]
 [ext_resource type="AudioStream" uid="uid://dsjw4fa8delw4" path="res://Audio/SFX/Player/Death.wav" id="22"]
+[ext_resource type="Texture2D" uid="uid://bjj8rpibbtgsk" path="res://Graphics/Items/S2Shield.png" id="22_gkej0"]
 [ext_resource type="AudioStream" uid="uid://mbnafvbxgyv5" path="res://Audio/SFX/Objects/RingL.wav" id="23"]
 [ext_resource type="AudioStream" uid="uid://bp70n4gwap68w" path="res://Audio/SFX/Objects/RingR.wav" id="24"]
 [ext_resource type="AudioStream" uid="uid://b657n73e1mhne" path="res://Audio/SFX/Player/RingLoss.wav" id="25"]
@@ -72,7 +72,6 @@ resource_local_to_scene = true
 size = Vector2(18, 38)
 
 [sub_resource type="CanvasItemMaterial" id="2"]
-blend_mode = 5
 
 [sub_resource type="AtlasTexture" id="32"]
 atlas = ExtResource("17")
@@ -110,21 +109,45 @@ region = Rect2(0, 48, 84, 48)
 atlas = ExtResource("17")
 region = Rect2(84, 48, 84, 48)
 
-[sub_resource type="AtlasTexture" id="39"]
-atlas = ExtResource("15")
+[sub_resource type="AtlasTexture" id="AtlasTexture_15y2f"]
+atlas = ExtResource("22_gkej0")
 region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="40"]
-atlas = ExtResource("15")
+[sub_resource type="AtlasTexture" id="AtlasTexture_fo8mq"]
+atlas = ExtResource("22_gkej0")
 region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="41"]
-atlas = ExtResource("15")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnmd5"]
+atlas = ExtResource("22_gkej0")
 region = Rect2(96, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="42"]
-atlas = ExtResource("15")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cg6j"]
+atlas = ExtResource("22_gkej0")
 region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qjuj"]
+atlas = ExtResource("22_gkej0")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6f6ri"]
+atlas = ExtResource("22_gkej0")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgoql"]
+atlas = ExtResource("22_gkej0")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltjc4"]
+atlas = ExtResource("22_gkej0")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvy82"]
+atlas = ExtResource("22_gkej0")
+region = Rect2(384, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0t5a"]
+atlas = ExtResource("22_gkej0")
+region = Rect2(432, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="3"]
 atlas = ExtResource("18")
@@ -477,20 +500,38 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("39")
+"texture": SubResource("AtlasTexture_15y2f")
 }, {
 "duration": 1.0,
-"texture": SubResource("40")
+"texture": SubResource("AtlasTexture_fo8mq")
 }, {
 "duration": 1.0,
-"texture": SubResource("41")
+"texture": SubResource("AtlasTexture_hnmd5")
 }, {
 "duration": 1.0,
-"texture": SubResource("42")
+"texture": SubResource("AtlasTexture_2cg6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qjuj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6f6ri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgoql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltjc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvy82")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0t5a")
 }],
 "loop": true,
 "name": &"Default",
-"speed": 15.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1293,8 +1334,8 @@ visible = false
 z_index = 6
 material = SubResource("2")
 sprite_frames = SubResource("57")
-animation = &"Insta"
-frame = 5
+animation = &"Default"
+frame_progress = 0.536007
 script = ExtResource("19")
 
 [node name="ShieldTimer" type="Timer" parent="Shields"]

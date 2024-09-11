@@ -416,13 +416,13 @@ position = Vector2(3296, 596)
 position = Vector2(792, 516)
 
 [node name="BuzzBomber2" parent="Badniks" instance=ExtResource("30_dys6r")]
-position = Vector2(2334, 476)
+position = Vector2(2344, 488)
 
 [node name="BuzzBomber3" parent="Badniks" instance=ExtResource("30_dys6r")]
-position = Vector2(3768, 776)
+position = Vector2(3768, 800)
 
 [node name="BuzzBomber4" parent="Badniks" instance=ExtResource("30_dys6r")]
-position = Vector2(4160, 848)
+position = Vector2(4160, 832)
 
 [node name="BuzzBomber5" parent="Badniks" instance=ExtResource("30_dys6r")]
 position = Vector2(3777, 376)
@@ -431,19 +431,19 @@ position = Vector2(3777, 376)
 position = Vector2(6274, 152)
 
 [node name="BuzzBomber7" parent="Badniks" instance=ExtResource("30_dys6r")]
-position = Vector2(6808, 296)
+position = Vector2(6656, 208)
 
 [node name="BuzzBomber8" parent="Badniks" instance=ExtResource("30_dys6r")]
-position = Vector2(6420, 464)
+position = Vector2(6464, 464)
 
 [node name="BuzzBomber9" parent="Badniks" instance=ExtResource("30_dys6r")]
-position = Vector2(8360, 472)
+position = Vector2(8320, 480)
 
 [node name="BuzzBomber10" parent="Badniks" instance=ExtResource("30_dys6r")]
-position = Vector2(8512, 520)
+position = Vector2(8448, 512)
 
 [node name="BuzzBomber11" parent="Badniks" instance=ExtResource("30_dys6r")]
-position = Vector2(8984, 836)
+position = Vector2(8984, 824)
 
 [node name="Coconuts" parent="Badniks" instance=ExtResource("31_god8j")]
 position = Vector2(552, 554)
