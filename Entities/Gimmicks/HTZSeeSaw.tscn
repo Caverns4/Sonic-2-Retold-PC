@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://85umccwskeyx"]
+[gd_scene load_steps=5 format=3 uid="uid://85umccwskeyx"]
 
 [ext_resource type="Texture2D" uid="uid://d6m23ulvmhff" path="res://Graphics/Gimmicks/HTZ_SeeSaw.png" id="1_og7mm"]
 [ext_resource type="Script" path="res://Scripts/Gimmicks/htz_see_saw.gd" id="1_tvndd"]
-[ext_resource type="PackedScene" uid="uid://dsr3tet7m2ufv" path="res://Entities/Hazards/Sol.tscn" id="2_w4ph3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h8qh0"]
 size = Vector2(88, 48)
@@ -16,7 +15,6 @@ disable_mode = 2
 collision_layer = 8207
 collision_mask = 8192
 script = ExtResource("1_tvndd")
-counterWeight = ExtResource("2_w4ph3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 6

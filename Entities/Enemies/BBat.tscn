@@ -206,19 +206,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Hitbox:monitorable")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_e5pl2"]
@@ -260,6 +248,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 0, 1, 0, 1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hitbox:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_56wle"]
@@ -310,10 +310,10 @@ libraries = {
 [node name="Hitbox" type="Area2D" parent="BBatSprite"]
 collision_layer = 0
 collision_mask = 4096
+monitoring = false
 script = ExtResource("3_fcpdh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BBatSprite/Hitbox"]
-position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_mf3u2")
 debug_color = Color(0.478431, 0, 0, 0.501961)
 

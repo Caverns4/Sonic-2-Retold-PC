@@ -1,12 +1,11 @@
+@tool
 extends Node2D
 
-#Dummied out for now. Todo: Rewrite for HPZ waterfalls
+@export var maxHeight = 16
 
 func _ready():
 	pass
 	
-func process_editor(_delta):
-	pass
-	
 func _process(delta):
-	pass
+	$WaterLength.size = Vector2(16,maxHeight)
+	$HpzWaterfallBottom.position.y = maxHeight-8

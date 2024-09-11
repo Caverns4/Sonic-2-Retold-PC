@@ -3,7 +3,7 @@ extends StaticBody2D
 @export_enum("left","right") var startDirection = 1
 @export var springPower = 20
 
-@export var counterWeight = load("res://Entities/Hazards/Sol.tscn")
+@export var counterWeight = preload("res://Entities/Hazards/Sol.tscn")
 
 @onready var sprite = $Sprite2D
 var springSound = preload("res://Audio/SFX/Gimmicks/Springs.wav")

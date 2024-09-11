@@ -1,19 +1,32 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmljesie1ogkd"]
+[gd_scene load_steps=5 format=3 uid="uid://bmljesie1ogkd"]
 
-[ext_resource type="Texture2D" uid="uid://c22rne52kgp8m" path="res://Graphics/Backgrounds/GHZWaterfall/waterfall_top.png" id="1"]
-[ext_resource type="Texture2D" uid="uid://c72aiocuafrcs" path="res://Graphics/Backgrounds/GHZWaterfall/waterfall_base_f1.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://csftucfwuge8l" path="res://Graphics/Backgrounds/GHZWaterfall/HPZWaterfall_Top.png" id="2_dd11b"]
 [ext_resource type="Script" path="res://Scripts/Backgrounds/GHZWaterfall.gd" id="3"]
-[ext_resource type="Texture2D" uid="uid://c1ihd8pa6cmfm" path="res://Graphics/Backgrounds/GHZWaterfall/waterfall_base_f4.png" id="4"]
-[ext_resource type="Texture2D" uid="uid://dgepfg45nnq3" path="res://Graphics/Backgrounds/GHZWaterfall/waterfall_base_f3.png" id="5"]
-[ext_resource type="Texture2D" uid="uid://dk5feye43wmqa" path="res://Graphics/Backgrounds/GHZWaterfall/waterfall_base_f2.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://0r50wbhvvr4s" path="res://Graphics/Backgrounds/GHZWaterfall/HPZWaterfall_Bottom.png" id="3_iltnd"]
+[ext_resource type="Texture2D" uid="uid://b25lc2yicnem0" path="res://Graphics/Backgrounds/GHZWaterfall/HPZWaterfall_Length.png" id="4_vgnck"]
 
 [node name="GHZWaterfall" type="Node2D"]
 process_mode = 3
 script = ExtResource("3")
-width = 4.0
-height = 4.0
-drawTop = true
-framePeriod = 0.125
-bodyTextures = [ExtResource("2"), ExtResource("6"), ExtResource("5"), ExtResource("4")]
-topTexture = ExtResource("1")
-topFrames = 4
+
+[node name="HpzWaterfallTop" type="Sprite2D" parent="."]
+z_index = 12
+use_parent_material = true
+position = Vector2(-16, -8)
+texture = ExtResource("2_dd11b")
+centered = false
+
+[node name="WaterLength" type="TextureRect" parent="."]
+z_index = 12
+use_parent_material = true
+offset_left = -16.0
+offset_right = 16.0
+offset_bottom = 40.0
+texture = ExtResource("4_vgnck")
+stretch_mode = 1
+
+[node name="HpzWaterfallBottom" type="Sprite2D" parent="."]
+z_index = 15
+use_parent_material = true
+position = Vector2(0, 32)
+texture = ExtResource("3_iltnd")

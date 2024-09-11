@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c72aiocuafrcs"
-path="res://.godot/imported/waterfall_base_f1.png-10543330fea59b5ce49896792d30f61b.ctex"
+uid="uid://0r50wbhvvr4s"
+path="res://.godot/imported/HPZWaterfall_Bottom.png-fccf0147438cb1da3bc21687ff0349b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Backgrounds/GHZWaterfall/waterfall_base_f1.png"
-dest_files=["res://.godot/imported/waterfall_base_f1.png-10543330fea59b5ce49896792d30f61b.ctex"]
+source_file="res://Graphics/Backgrounds/GHZWaterfall/HPZWaterfall_Bottom.png"
+dest_files=["res://.godot/imported/HPZWaterfall_Bottom.png-fccf0147438cb1da3bc21687ff0349b0.ctex"]
 
 [params]
 

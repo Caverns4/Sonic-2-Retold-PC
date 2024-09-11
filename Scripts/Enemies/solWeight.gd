@@ -14,7 +14,7 @@ var movement = Vector2.ZERO #Used to emulat Physics object
 func _ready():
 	direction = 1*sign(pivotCenter)
 	origin.y = global_position.y
-	origin.x = global_position.x + pivotCenter
+	pass
 
 func _physics_process(delta):
 
