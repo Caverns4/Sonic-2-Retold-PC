@@ -110,6 +110,9 @@ var nodeMemory = []
 
 # Game settings
 var zoomSize = 2
+var aspectRatio = 0 #0 for 4:3, 1 for 16x9 (roughly)
+
+var aspectResolutions = [Vector2(320,224),Vector2(400,224)]
 
 # Hazard type references
 enum HAZARDS {NORMAL, FIRE, ELEC, WATER}
@@ -213,6 +216,8 @@ func save_settings():
 	
 	file.set_value("Resolution","Zoom",zoomSize)
 	file.set_value("Resolution","FullScreen",((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN)))
+	file.set_value("Resolution","ApectRatio",aspectRatio)
+	
 	# save config and close
 	file.save("user://Settings.cfg")
 
@@ -235,4 +240,10 @@ func load_settings():
 	
 	if file.has_section_key("Resolution","FullScreen"):
 		get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (file.get_value("Resolution","FullScreen")) else Window.MODE_WINDOWED
+	
+	if file.has_section_key("Resolution","AsprectRatio"):
+		aspectRatio = file.get_value("Resolution","AsprectRatio")
+		#get_window().set_size(get_viewport().get_visible_rect().size*zoomSize)
+		var resolution = aspectResolutions[aspectRatio]
+		get_window().set_size(resolution * zoomSize)
 	

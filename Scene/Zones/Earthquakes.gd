@@ -4,6 +4,7 @@ extends Node2D
 
 var movementTimer = 0.0
 
+
 var rumbling = preload("res://Audio/SFX/Ambiance/Earthquake.wav")
 
 #Todo

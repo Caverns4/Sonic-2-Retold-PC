@@ -4,6 +4,7 @@ extends Node2D
 @export var music = preload("res://Audio/Soundtrack/s2br_EmeraldHilll.ogg")
 @export var music2P = preload("res://Audio/Soundtrack/s2br_Tropical.ogg")
 @export var nextZone = load("res://Scene/Zones/BaseZone.tscn")
+@export var ringsForPerfect = 999
 
 @export_enum("Bird", "Squirrel", "Rabbit", "Chicken", "Penguin", "Seal", "Pig", "Eagle", "Mouse", "Monkey", "Turtle", "Bear")var animal1 = 0
 @export_enum("Bird", "Squirrel", "Rabbit", "Chicken", "Penguin", "Seal", "Pig", "Eagle", "Mouse", "Monkey", "Turtle", "Bear")var animal2 = 1

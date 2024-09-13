@@ -3,17 +3,18 @@ extends Node2D
 @export var music = preload("res://Audio/Soundtrack/s2br_TitleScreen.ogg")
 @export var nextZone = load("res://Scene/Zones/ChunkZone.tscn")
 @export var testScene = load("res://Scene/Presentation/CharacterSelect.tscn")
-@export var returnScene = load("res://Scene/Presentation/PoweredByWorlds.tscn")
+var returnScene = load("res://Scene/Presentation/PoweredByWorlds.tscn")
+var optionsScene = load("res://Scene/Presentation/OptionsMenu.tscn")
 
 var titleEnd = false
 var menuActive = false
 var menuEntry = 0
-var menuIconYOff = [4,20,12]
+var menuIconYOff = [4,12,20]#[4,20,12]
 var particlesDone = false
 var menuText = [
-	"[color=#eeee00]1 PLAYER[/color]\n\n2 PLAYER VS",
-	"1 PLAYER\n\n[color=eeee00]2 PLAYER VS[/color]",
-	"\n[color=eeee00]OPTIONS[/color]"
+	"[color=#FFFF00]1 PLAYER[/color]\n2 PLAYER VS\nOPTIONS",
+	"1 PLAYER\n[color=#FFFF00]2 PLAYER VS[/color]\nOPTIONS",
+	"1 PLAYER\n2 PLAYER VS\n[color=#FFFF00]OPTIONS[/color]"
 ]
 
 var scene
@@ -74,24 +75,25 @@ func _process(delta):
 		Global.main.change_scene_to_file(returnScene,"FadeOut","FadeOut",1)
 
 func _input(event):
-	#if menuActive and !titleEnd:
-	#	if Input.is_action_just_pressed("gm_down"):
-	#		menuEntry +=1
-	#	if Input.is_action_just_pressed("gm_up"):
-	#		menuEntry -=1
-	#menuEntry = wrapi(menuEntry,0,2)
-	#UpdateMenuDisplay()
+	if menuActive and !titleEnd:
+		if Input.is_action_just_pressed("gm_down"):
+			menuEntry +=1
+		if Input.is_action_just_pressed("gm_up"):
+			menuEntry -=1
+	menuEntry = wrapi(menuEntry,0,3)
+	UpdateMenuDisplay()
 	
 	# end title on start press
 	if event.is_action_pressed("gm_pause") and !titleEnd and menuActive:
-		MenuOptionChosen()
+		if menuEntry !=1:
+			MenuOptionChosen()
 		
 func MenuOptionChosen():
 	#if Global.music.get_playback_position() < 14.0:
 	#	Global.music.seek(14.0)
 	if Global.levelSelectFlag:
 		if Input.is_action_pressed("gm_action") and menuEntry == 0:
-			menuEntry = 2
+			menuEntry = 128
 		if Input.is_action_pressed("gm_action3"):
 			Global.TwoPlayer = true
 	
@@ -107,8 +109,10 @@ func MenuOptionChosen():
 			Global.main.change_scene_to_file(testScene,"FadeOut","FadeOut",1)
 		2:
 			titleEnd = true
+			Global.main.change_scene_to_file(optionsScene,"FadeOut","FadeOut",1)
+		128:
+			titleEnd = true
 			Global.main.change_scene_to_file(testScene,"FadeOut","FadeOut",1)
-	
 	
 func UpdateMenuDisplay():
 	$CanvasLayer/Labels/TitleMenu/MenuIcon.position.y = menuIconYOff[menuEntry]

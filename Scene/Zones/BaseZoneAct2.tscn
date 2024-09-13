@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bjavywoj00j1j"]
+[gd_scene load_steps=12 format=4 uid="uid://bjavywoj00j1j"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="2_533ik"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://Scripts/Objects/StateMovers/StateMoverTranslational.gd" id="8"]
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="10"]
 [ext_resource type="PackedScene" uid="uid://ra3mqewhj6kl" path="res://Entities/Hazards/Saw.tscn" id="11"]
-[ext_resource type="PackedScene" uid="uid://85umccwskeyx" path="res://Entities/Gimmicks/HTZSeeSaw.tscn" id="12_h3k7w"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="16_mordc"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="18"]
 
@@ -132,8 +131,3 @@ item = 12
 [node name="Monitor14" parent="Items" instance=ExtResource("16_mordc")]
 position = Vector2(928, 640)
 item = 13
-
-[node name="HtzSeeSaw" parent="." instance=ExtResource("12_h3k7w")]
-position = Vector2(256, 768)
-startDirection = 0
-counterWeightDamage = false

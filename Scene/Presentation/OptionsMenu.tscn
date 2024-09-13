@@ -1,0 +1,218 @@
+[gd_scene load_steps=8 format=4 uid="uid://b0livp60bisfo"]
+
+[ext_resource type="TileSet" uid="uid://bk1ere21h4285" path="res://Tileset/Menus.tres" id="1_2ksgu"]
+[ext_resource type="Script" path="res://Scene/Presentation/options_menu.gd" id="1_qjo47"]
+[ext_resource type="Texture2D" uid="uid://dm4ejufaxy62s" path="res://Graphics/Menus/MiniCharacters.png" id="3_6udcv"]
+[ext_resource type="FontFile" uid="uid://ml62eqfe7avn" path="res://Graphics/Fonts/small_font.png" id="3_53s41"]
+
+[sub_resource type="Animation" id="1"]
+resource_name = "Animate"
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sonic:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.501),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tails:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Knuckles:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Amy:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [6, 7]
+}
+
+[sub_resource type="Animation" id="2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sonic:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tails:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Knuckles:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Amy:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wio08"]
+_data = {
+"Animate": SubResource("1"),
+"RESET": SubResource("2")
+}
+
+[node name="TwoPlayerMenu" type="Node2D"]
+script = ExtResource("1_qjo47")
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Backdrop" type="Parallax2D" parent="UI"]
+scroll_scale = Vector2(0, 0)
+repeat_size = Vector2(96, 0)
+repeat_times = 8
+
+[node name="Back" type="TileMapLayer" parent="UI/Backdrop"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAADAAAAAAAAAAAAAAADAAEAAAAAAAEAAAAEAAAAAAAAAAEAAAAEAAEAAAAAAAIAAAAFAAAAAAAAAAIAAAAFAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAEAAAABAAAAAAAAAAEAAAABAAEAAAAAAAIAAAACAAAAAAAAAAIAAAACAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAEAAAABAAIAAAAAAAEAAAABAAMAAAAAAAIAAAACAAIAAAAAAAIAAAACAAMAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAEAAAAEAAIAAAAAAAEAAAAEAAMAAAAAAAIAAAAFAAIAAAAAAAIAAAAFAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAEAAAABAAQAAAAAAAEAAAABAAUAAAAAAAIAAAACAAQAAAAAAAIAAAACAAUAAAAAAAAAAAADAAQAAAAAAAAAAAADAAUAAAAAAAEAAAAEAAQAAAAAAAEAAAAEAAUAAAAAAAIAAAAFAAQAAAAAAAIAAAAFAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAEAAAABAAYAAAAAAAEAAAABAAcAAAAAAAIAAAACAAYAAAAAAAIAAAACAAcAAAAAAAAAAAADAAYAAAAAAAAAAAADAAcAAAAAAAEAAAAEAAYAAAAAAAEAAAAEAAcAAAAAAAIAAAAFAAYAAAAAAAIAAAAFAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAEAAAABAAgAAAAAAAEAAAABAAkAAAAAAAIAAAACAAgAAAAAAAIAAAACAAkAAAAAAAAAAAADAAgAAAAAAAAAAAADAAkAAAAAAAEAAAAEAAgAAAAAAAEAAAAEAAkAAAAAAAIAAAAFAAgAAAAAAAIAAAAFAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAEAAAABAAoAAAAAAAEAAAABAAsAAAAAAAIAAAACAAoAAAAAAAIAAAACAAsAAAAAAAAAAAADAAoAAAAAAAAAAAADAAsAAAAAAAEAAAAEAAoAAAAAAAEAAAAEAAsAAAAAAAIAAAAFAAoAAAAAAAIAAAAFAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAEAAAABAAwAAAAAAAEAAAABAA0AAAAAAAIAAAACAAwAAAAAAAIAAAACAA0AAAAAAAAAAAADAAwAAAAAAAAAAAADAA0AAAAAAAEAAAAEAAwAAAAAAAEAAAAEAA0AAAAAAAIAAAAFAAwAAAAAAAIAAAAFAA0AAAAAAAAAAAA=")
+tile_set = ExtResource("1_2ksgu")
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="OptionsMenu" type="RichTextLabel" parent="UI/Control"]
+layout_mode = 0
+offset_left = -76.0
+offset_top = 16.0
+offset_right = 76.0
+offset_bottom = 144.0
+theme_override_fonts/normal_font = ExtResource("3_53s41")
+bbcode_enabled = true
+text = "CHARACTER
+
+SOUND VOLUME
+MUSIC VOLUME
+ASPECT RATIO
+SCALE
+FULLSCREEN
+CONTROLS
+
+TITLE SCREEN"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="CharacterOrigin" type="Node2D" parent="UI/Control"]
+position = Vector2(52, 16)
+
+[node name="Sonic" type="Sprite2D" parent="UI/Control/CharacterOrigin"]
+z_index = 3
+position = Vector2(8, 0)
+texture = ExtResource("3_6udcv")
+hframes = 2
+vframes = 8
+region_rect = Rect2(731, 9, 24, 40)
+region_filter_clip_enabled = true
+
+[node name="Tails" type="Sprite2D" parent="UI/Control/CharacterOrigin"]
+z_index = 2
+position = Vector2(-8, 0)
+texture = ExtResource("3_6udcv")
+hframes = 2
+vframes = 8
+frame = 2
+
+[node name="Knuckles" type="Sprite2D" parent="UI/Control/CharacterOrigin"]
+visible = false
+z_index = 3
+texture = ExtResource("3_6udcv")
+hframes = 2
+vframes = 8
+frame = 4
+region_rect = Rect2(402, 468, 38, 36)
+
+[node name="Amy" type="Sprite2D" parent="UI/Control/CharacterOrigin"]
+visible = false
+z_index = 3
+texture = ExtResource("3_6udcv")
+hframes = 2
+vframes = 8
+frame = 1
+region_rect = Rect2(488, 8, 32, 40)
+
+[node name="CharacterAnimations" type="AnimationPlayer" parent="UI/Control/CharacterOrigin"]
+libraries = {
+"": SubResource("AnimationLibrary_wio08")
+}
+autoplay = "Animate"
+
+[node name="Cover" type="CanvasLayer" parent="."]
+layer = 0
+visible = false
+
+[node name="Back" type="ColorRect" parent="Cover"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(1, 1, 1, 0)

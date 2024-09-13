@@ -47,7 +47,7 @@ var zoomClamp = [1,6]
 var menu = 0 # current menu option
 enum MENUS {MAIN, OPTIONS, RESTART, QUIT}
 var option = 0
-var lastIpnut = Vector2.ZERO #Last saved direction input.
+var lastInput = Vector2.ZERO #Last saved direction input.
 
 func _ready():
 	set_menu(menu)
@@ -125,9 +125,9 @@ func _unhandledInput(_event):
 	inputCue.y = round(inputCue.y)
 	
 	# change up/down menu options
-	if inputCue.y > 0 and inputCue.y != lastIpnut.y:
+	if inputCue.y > 0 and inputCue.y != lastInput.y:
 		choose_option(option+1)
-	elif inputCue.y < 0 and inputCue.y != lastIpnut.y:
+	elif inputCue.y < 0 and inputCue.y != lastInput.y:
 		choose_option(option-1)
 	
 	if (inputCue.x == 0) and menu == MENUS.OPTIONS:
@@ -137,7 +137,7 @@ func _unhandledInput(_event):
 	elif (inputCue.x != 0) and menu == MENUS.OPTIONS:
 		
 		#Prepare delay timer for volume update
-		if inputCue.x != lastIpnut.x and subSoundStep == 0:
+		if inputCue.x != lastInput.x and subSoundStep == 0:
 			subSoundStep = 2.0
 			soundStepDelay = 0
 		
@@ -167,13 +167,13 @@ func _unhandledInput(_event):
 				(get_window().mode != Window.MODE_EXCLUSIVE_FULLSCREEN) and 
 				(get_window().mode != Window.MODE_FULLSCREEN)
 				) and(
-				inputCue != lastIpnut
+				inputCue != lastInput
 				):
 					Global.zoomSize = clamp(Global.zoomSize+inputCue.x,zoomClamp[0],zoomClamp[1])
 					get_window().set_size(get_viewport().get_visible_rect().size*Global.zoomSize)
 		
 		$PauseMenu/VBoxContainer.get_child(option+1).get_child(0).text = update_text(option+1)
-	lastIpnut = inputCue
+	lastInput = inputCue
 	
 
 func choose_option(optionSet = option+1, playSound = true):

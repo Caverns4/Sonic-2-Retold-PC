@@ -7,17 +7,13 @@ var animationFrame = 0
 var maxFrames = 1
 
 const GRAVITY = 800
-const ACCEL = 6
 
-var origin = Vector2.ZERO
 var direction = -1
-
 var ground = false
 var movement = Vector2.ZERO #Used to emulat Physics object
 
 func _ready():
 	direction = -1
-	origin.y = global_position.y
 	updateImage()
 
 func updateImage():
