@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://c4e1wv2sxs1gm"]
+[gd_scene load_steps=10 format=4 uid="uid://c4e1wv2sxs1gm"]
 
 [ext_resource type="TileSet" uid="uid://bk1ere21h4285" path="res://Tileset/Menus.tres" id="2_il2c5"]
 [ext_resource type="FontFile" uid="uid://ml62eqfe7avn" path="res://Graphics/Fonts/small_font.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://dm4ejufaxy62s" path="res://Graphics/Menus/MiniCharacters.png" id="4_416un"]
 [ext_resource type="Script" path="res://Scripts/Level/CharacterSelect.gd" id="5"]
+[ext_resource type="AudioStream" uid="uid://dh4rsaka62ph4" path="res://Audio/SFX/Gimmicks/Switch.wav" id="6_5y3mi"]
 [ext_resource type="Texture2D" uid="uid://d3g0w6uwq7bvj" path="res://Graphics/Menus/Icons_All.png" id="9_3vc3f"]
 
 [sub_resource type="Animation" id="1"]
@@ -263,3 +264,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(1, 1, 1, 0)
+
+[node name="Switch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_5y3mi")
+bus = &"SFX"

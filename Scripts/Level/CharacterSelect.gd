@@ -83,11 +83,13 @@ func _input(event):
 			if inputCue.x < 0:
 				if levelID == CharacterSelectMenuID-1:
 					characterID = wrapi(characterID-1,0,characterLabels.size())
+					$Switch.play()
 				else:
 					levelID = wrapi(levelID-(columnSize),0,levelIcons.size())
 			if  inputCue.x > 0 :
 				if levelID == CharacterSelectMenuID-1:
 					characterID = wrapi(characterID+1,0,characterLabels.size())
+					$Switch.play()
 				else:
 					if levelID > CharacterSelectMenuID-1 - columnSize and levelID < columnSize:
 						levelID = CharacterSelectMenuID-1

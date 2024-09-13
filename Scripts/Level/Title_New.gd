@@ -78,8 +78,10 @@ func _input(event):
 	if menuActive and !titleEnd:
 		if Input.is_action_just_pressed("gm_down"):
 			menuEntry +=1
+			$Switch.play()
 		if Input.is_action_just_pressed("gm_up"):
 			menuEntry -=1
+			$Switch.play()
 	menuEntry = wrapi(menuEntry,0,3)
 	UpdateMenuDisplay()
 	

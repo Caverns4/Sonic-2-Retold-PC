@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://qs5dmtxxf1w1"]
+[gd_scene load_steps=16 format=3 uid="uid://qs5dmtxxf1w1"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Title_New.gd" id="1_jsjd7"]
 [ext_resource type="Texture2D" uid="uid://eih0pbfohmyc" path="res://Graphics/title/TitleEmblem_Final.png" id="2_oku5l"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://de5i6e2h1ov1c" path="res://Graphics/title/SonicTitle.png" id="5_tsdwn"]
 [ext_resource type="Texture2D" uid="uid://c2xdraklm0ah7" path="res://Graphics/title/TitleMenu.png" id="6_0yyi7"]
 [ext_resource type="AudioStream" uid="uid://jt28gfxybprb" path="res://Audio/SFX/Objects/RingStereo.wav" id="6_fm38o"]
+[ext_resource type="AudioStream" uid="uid://dh4rsaka62ph4" path="res://Audio/SFX/Gimmicks/Switch.wav" id="10_b2hcy"]
 
 [sub_resource type="Animation" id="2"]
 length = 0.001
@@ -198,7 +199,7 @@ offset_right = 136.0
 grow_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_yuhp3")
-text = "2024.09.12.01
+text = "2024.09.13.01
 "
 vertical_alignment = 2
 uppercase = true
@@ -296,3 +297,7 @@ scale_amount_curve = SubResource("Curve_x626m")
 color_ramp = SubResource("Gradient_nd4eu")
 hue_variation_min = -0.39
 hue_variation_max = 0.68
+
+[node name="Switch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_b2hcy")
+bus = &"SFX"
