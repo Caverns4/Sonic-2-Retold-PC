@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://cyh8p6ji14r0t"]
+[gd_scene load_steps=49 format=4 uid="uid://cyh8p6ji14r0t"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_ijtho"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="2_vefax"]
@@ -33,6 +33,7 @@
 [ext_resource type="Material" uid="uid://bws13u5msvx7f" path="res://Shaders/Materials/HTZ Palsetter.tres" id="30_2glpn"]
 [ext_resource type="PackedScene" uid="uid://cfteqnft5ynr7" path="res://Entities/Hazards/Spikes.tscn" id="30_82wuk"]
 [ext_resource type="PackedScene" uid="uid://ctg1aeiewvyvj" path="res://Entities/Gimmicks/ForceRoll.tscn" id="30_ej03w"]
+[ext_resource type="Texture2D" uid="uid://beqh6fywjj4lt" path="res://Graphics/Enemies/Badnik_Sol.png" id="31_8xakr"]
 [ext_resource type="PackedScene" uid="uid://c1ldunfxhq0he" path="res://Entities/Obstacles/ForceAngleSides.tscn" id="31_qjmib"]
 [ext_resource type="Texture2D" uid="uid://ci13nuikdwatn" path="res://Graphics/Tiles/WorldsTiles/EHZ_Platform_Large.png" id="31_ygsss"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="33_ommvj"]
@@ -486,30 +487,42 @@ scale = Vector2(32, 48)
 
 [node name="HtzSeeSaw" parent="Entities" instance=ExtResource("37_geevq")]
 position = Vector2(1936, 1026)
+counterWeightSprite = ExtResource("31_8xakr")
 
 [node name="HtzSeeSaw2" parent="Entities" instance=ExtResource("37_geevq")]
-position = Vector2(3520, 1280)
+position = Vector2(3528, 1120)
+counterWeightSprite = ExtResource("31_8xakr")
 
 [node name="HtzSeeSaw10" parent="Entities" instance=ExtResource("37_geevq")]
 position = Vector2(3632, 1992)
+counterWeightSprite = ExtResource("31_8xakr")
 
 [node name="HtzSeeSaw3" parent="Entities" instance=ExtResource("37_geevq")]
-position = Vector2(4288, 952)
+position = Vector2(4288, 836)
+startDirection = 0
+counterWeightSprite = ExtResource("31_8xakr")
 
 [node name="HtzSeeSaw9" parent="Entities" instance=ExtResource("37_geevq")]
 position = Vector2(9040, 1920)
+counterWeightSprite = ExtResource("31_8xakr")
 
 [node name="HtzSeeSaw4" parent="Entities" instance=ExtResource("37_geevq")]
-position = Vector2(4416, 704)
+position = Vector2(4416, 608)
+counterWeightSprite = ExtResource("31_8xakr")
 
 [node name="HtzSeeSaw7" parent="Entities" instance=ExtResource("37_geevq")]
 position = Vector2(5424, 1096)
+startDirection = 0
+counterWeightSprite = ExtResource("31_8xakr")
 
 [node name="HtzSeeSaw8" parent="Entities" instance=ExtResource("37_geevq")]
 position = Vector2(5232, 1096)
+startDirection = 0
+counterWeightSprite = ExtResource("31_8xakr")
 
 [node name="HtzSeeSaw6" parent="Entities" instance=ExtResource("37_geevq")]
 position = Vector2(3392, 740)
+counterWeightSprite = ExtResource("31_8xakr")
 
 [node name="ForceAngleSides6" parent="Entities" instance=ExtResource("31_qjmib")]
 position = Vector2(3288, 1152)
@@ -522,24 +535,6 @@ leftAngle = 86.0
 [node name="ForceAngleSides8" parent="Entities" instance=ExtResource("31_qjmib")]
 position = Vector2(10072, 1856)
 leftAngle = 86.0
-
-[node name="Spring11" parent="Entities" instance=ExtResource("24_tu1me")]
-position = Vector2(3520, 1112)
-
-[node name="Spring12" parent="Entities" instance=ExtResource("24_tu1me")]
-position = Vector2(4288, 824)
-type = 1
-
-[node name="Spring13" parent="Entities" instance=ExtResource("24_tu1me")]
-position = Vector2(4416, 600)
-
-[node name="Spring14" parent="Entities" instance=ExtResource("24_tu1me")]
-position = Vector2(8960, 1916)
-type = 1
-
-[node name="Spring15" parent="Entities" instance=ExtResource("24_tu1me")]
-position = Vector2(3632, 1952)
-type = 1
 
 [node name="Breakable" parent="Entities" instance=ExtResource("42_0cebl")]
 position = Vector2(5680, 456)

@@ -1,33 +1,40 @@
 extends CharacterBody2D
 
-@export var pivotCenter = int(-32)
+@export var counterWeightSprite = preload("res://Graphics/Enemies/Badnik_Sol.png")
+
+var animationTimer = 0.1
+var animationFrame = 0
+var maxFrames = 1
 
 const GRAVITY = 800
 const ACCEL = 6
 
 var origin = Vector2.ZERO
-var direction = 1*sign(pivotCenter)
+var direction = -1
 
 var ground = false
 var movement = Vector2.ZERO #Used to emulat Physics object
 
 func _ready():
-	direction = 1*sign(pivotCenter)
+	direction = -1
 	origin.y = global_position.y
-	pass
+	updateImage()
+
+func updateImage():
+	$Sprite2D.texture = counterWeightSprite
+	var frameSize = $Sprite2D.texture.get_height()
+	maxFrames = round($Sprite2D.texture.get_width()/frameSize)
+	$Sprite2D.hframes = maxFrames
 
 func _physics_process(delta):
-
+	animationTimer -= delta
+	if animationTimer <= 0.0:
+		animationTimer = 0.05
+		animationFrame +=1
+		if animationFrame > maxFrames:
+			animationFrame = 0
+		$Sprite2D.frame = animationFrame
 	MoveWithGravity(delta)
-	#if !is_on_floor():
-	#	ClampXCoords()
-
-func ClampXCoords():
-	var leftBound = origin.x
-	var rightBound = origin.x
-	rightBound += abs(pivotCenter)
-	leftBound -= abs(pivotCenter)
-	global_position.x = clampf(global_position.x,leftBound,rightBound)
 
 func MoveWithGravity(delta):
 	# Velocity movement
@@ -41,3 +48,6 @@ func MoveWithGravity(delta):
 		movement.y += GRAVITY*delta
 	if is_on_floor():
 		movement.y = 0
+
+func clearHurtbox():
+	$SolArea.monitoring = false

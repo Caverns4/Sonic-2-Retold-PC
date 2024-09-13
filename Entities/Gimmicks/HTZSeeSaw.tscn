@@ -47,7 +47,8 @@ polygon = PackedVector2Array(-44, -46, 44, -14, 44, 0, -44, 0)
 disabled = true
 
 [node name="SolWeight" parent="." instance=ExtResource("3_t28x7")]
-position = Vector2(32, -52)
+position = Vector2(32, -56)
+collision_layer = 16384
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

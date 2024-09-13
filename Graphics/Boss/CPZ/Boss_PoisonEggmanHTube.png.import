@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cawl8geou62s2"
-path="res://.godot/imported/LavaTiles4.png-292e3ce748f1631ad918c1e9e5dff6e2.ctex"
+uid="uid://dqggwc5wimt47"
+path="res://.godot/imported/Boss_PoisonEggmanHTube.png-84e316eace6d9e7b0422ccf57b965a3c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Hazards/LavaTiles4.png"
-dest_files=["res://.godot/imported/LavaTiles4.png-292e3ce748f1631ad918c1e9e5dff6e2.ctex"]
+source_file="res://Graphics/Boss/CPZ/Boss_PoisonEggmanHTube.png"
+dest_files=["res://.godot/imported/Boss_PoisonEggmanHTube.png-84e316eace6d9e7b0422ccf57b965a3c.ctex"]
 
 [params]
 

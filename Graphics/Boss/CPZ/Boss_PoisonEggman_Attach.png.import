@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdpouu6cfwxce"
-path="res://.godot/imported/TEST.png-9f292b59d55c7edf8028c54fc9668ce8.ctex"
+uid="uid://cmei7ujrbdqib"
+path="res://.godot/imported/Boss_PoisonEggman_Attach.png-0bb76c22f8330c9ccf8d7faacc86b184.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Hazards/TEST.png"
-dest_files=["res://.godot/imported/TEST.png-9f292b59d55c7edf8028c54fc9668ce8.ctex"]
+source_file="res://Graphics/Boss/CPZ/Boss_PoisonEggman_Attach.png"
+dest_files=["res://.godot/imported/Boss_PoisonEggman_Attach.png-0bb76c22f8330c9ccf8d7faacc86b184.ctex"]
 
 [params]
 

@@ -24,7 +24,7 @@ shape = SubResource("1")
 
 [node name="orbinaut" type="Sprite2D" parent="."]
 texture = ExtResource("2_3oo2o")
-hframes = 3
+hframes = 6
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(1.90735e-06, -1.90735e-06)

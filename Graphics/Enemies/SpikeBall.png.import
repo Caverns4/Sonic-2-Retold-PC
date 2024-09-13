@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2boiuwbrsx7o"
-path="res://.godot/imported/LavaTiles3.png-ce1073b450034c553666346b6cdfa49a.ctex"
+uid="uid://dh4kis5isuoky"
+path="res://.godot/imported/SpikeBall.png-c919298ca4f55e90cbc52d3764377360.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Hazards/LavaTiles3.png"
-dest_files=["res://.godot/imported/LavaTiles3.png-ce1073b450034c553666346b6cdfa49a.ctex"]
+source_file="res://Graphics/Enemies/SpikeBall.png"
+dest_files=["res://.godot/imported/SpikeBall.png-c919298ca4f55e90cbc52d3764377360.ctex"]
 
 [params]
 

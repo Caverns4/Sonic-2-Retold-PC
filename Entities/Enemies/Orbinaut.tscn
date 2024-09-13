@@ -70,7 +70,7 @@ autoplay = "RESET"
 
 [node name="orbinaut" type="Sprite2D" parent="."]
 texture = ExtResource("4_fw8n4")
-hframes = 3
+hframes = 6
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 z_index = -100

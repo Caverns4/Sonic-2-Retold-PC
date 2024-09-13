@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2d6btnsclelg"
-path="res://.godot/imported/LavaTop3.png-04ea02f88c104c38209745f5f75b6df6.ctex"
+uid="uid://cdpouu6cfwxce"
+path="res://.godot/imported/TEST.png-f8a3a382587091af1d7bf9128f921c59.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Hazards/LavaTop3.png"
-dest_files=["res://.godot/imported/LavaTop3.png-04ea02f88c104c38209745f5f75b6df6.ctex"]
+source_file="res://Graphics/Enemies/TEST.png"
+dest_files=["res://.godot/imported/TEST.png-f8a3a382587091af1d7bf9128f921c59.ctex"]
 
 [params]
 

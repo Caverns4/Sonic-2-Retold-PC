@@ -640,7 +640,7 @@ func _process(delta):
 		
 	# Time over
 	if Global.levelTime >= Global.maxTime:
-		kill(true)
+		kill(false)
 		
 	
 	# Water timer
@@ -659,7 +659,7 @@ func _process(delta):
 			airTimer -= delta
 		elif currentState != STATES.DIE: # Drown (kill checks if air timer is greater then 0)
 			$BubbleTimer.start(0.1)
-			kill(true)
+			kill()
 	else:
 		airTimer = defaultAirTime
 	
@@ -826,7 +826,7 @@ func _physics_process(delta):
 		
 		# Death at border bottom
 		if global_position.y > limitBottom:
-			kill(true)
+			kill()
 	
 	
 	
@@ -891,11 +891,11 @@ func _physics_process(delta):
 		# crusher deaths NOTE: the translate and visibility is used for stuff like the sky sanctuary teleporters, visibility check is for stuff like the carnival night barrels
 		if (crushSensorLeft.get_overlapping_areas() + crushSensorLeft.get_overlapping_bodies()).size() > 0 and \
 			(crushSensorRight.get_overlapping_areas() + crushSensorRight.get_overlapping_bodies()).size() > 0 and (!translate or visible):
-			kill(true)
+			kill()
 
 		if (crushSensorUp.get_overlapping_areas() + crushSensorUp.get_overlapping_bodies()).size() > 0 and \
 			(crushSensorDown.get_overlapping_areas() + crushSensorDown.get_overlapping_bodies()).size() > 0 and (!translate or visible):
-			kill(true)
+			kill()
 
 # Input buttons
 func set_inputs():
@@ -1134,8 +1134,8 @@ func get_ring():
 	elif partner != null:
 		partner.get_ring()
 	
-func kill(forced):
-	if !(get_tree().current_scene is MainGameScene) && forced == false:
+func kill(always = true):
+	if !(get_tree().current_scene is MainGameScene) and always == false:
 		sfx[6].play()
 		return false
 	if currentState != STATES.DIE:

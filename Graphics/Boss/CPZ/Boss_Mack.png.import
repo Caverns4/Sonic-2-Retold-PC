@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c181wljtcgu2l"
-path="res://.godot/imported/LavaTiles2.png-559f071a9528e3502fe283558e9126f2.ctex"
+uid="uid://baxfeo3dtic0q"
+path="res://.godot/imported/Boss_Mack.png-41485314aa85ce35ea7943fa35ceb3d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Hazards/LavaTiles2.png"
-dest_files=["res://.godot/imported/LavaTiles2.png-559f071a9528e3502fe283558e9126f2.ctex"]
+source_file="res://Graphics/Boss/CPZ/Boss_Mack.png"
+dest_files=["res://.godot/imported/Boss_Mack.png-41485314aa85ce35ea7943fa35ceb3d1.ctex"]
 
 [params]
 

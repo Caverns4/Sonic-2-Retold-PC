@@ -1,23 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsr3tet7m2ufv"]
+[gd_scene load_steps=6 format=3 uid="uid://dsr3tet7m2ufv"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/sol_area.gd" id="1_palhu"]
 [ext_resource type="Script" path="res://Scripts/Enemies/solWeight.gd" id="1_vfq8e"]
 [ext_resource type="Script" path="res://Scripts/PropertiesLookup.gd" id="2_w8gf6"]
-[ext_resource type="Texture2D" uid="uid://cdpouu6cfwxce" path="res://Graphics/Hazards/TEST.png" id="4_cawvk"]
+[ext_resource type="Texture2D" uid="uid://beqh6fywjj4lt" path="res://Graphics/Enemies/Badnik_Sol.png" id="4_tuqpl"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_hntay"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_cawvk")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
+size = Vector2(16, 8)
 
 [node name="SolWeight" type="CharacterBody2D"]
 collision_layer = 20480
@@ -34,18 +23,15 @@ shape = SubResource("1")
 [node name="SolArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4096
-monitoring = false
 script = ExtResource("1_palhu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SolArea"]
 modulate = Color(1, 0, 0, 0.584314)
 shape = SubResource("1")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -4)
-sprite_frames = SubResource("SpriteFrames_hntay")
-autoplay = "default"
-frame_progress = 0.994723
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_tuqpl")
+hframes = 6
 
 [connection signal="body_entered" from="SolArea" to="SolArea" method="_on_body_entered"]
 [connection signal="body_exited" from="SolArea" to="SolArea" method="_on_body_exited"]
