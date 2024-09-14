@@ -137,30 +137,15 @@ position = Vector2(192, 0)
 tile_map_data = PackedByteArray("AAADAAAAAAAAAAAAAAADAAEAAAAAAAEAAAAEAAAAAAAAAAEAAAAEAAEAAAAAAAIAAAAFAAAAAAAAAAIAAAAFAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAEAAAABAAAAAAAAAAEAAAABAAEAAAAAAAIAAAACAAAAAAAAAAIAAAACAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAEAAAABAAIAAAAAAAEAAAABAAMAAAAAAAIAAAACAAIAAAAAAAIAAAACAAMAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAEAAAAEAAIAAAAAAAEAAAAEAAMAAAAAAAIAAAAFAAIAAAAAAAIAAAAFAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAEAAAABAAQAAAAAAAEAAAABAAUAAAAAAAIAAAACAAQAAAAAAAIAAAACAAUAAAAAAAAAAAADAAQAAAAAAAAAAAADAAUAAAAAAAEAAAAEAAQAAAAAAAEAAAAEAAUAAAAAAAIAAAAFAAQAAAAAAAIAAAAFAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAEAAAABAAYAAAAAAAEAAAABAAcAAAAAAAIAAAACAAYAAAAAAAIAAAACAAcAAAAAAAAAAAADAAYAAAAAAAAAAAADAAcAAAAAAAEAAAAEAAYAAAAAAAEAAAAEAAcAAAAAAAIAAAAFAAYAAAAAAAIAAAAFAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAEAAAABAAgAAAAAAAEAAAABAAkAAAAAAAIAAAACAAgAAAAAAAIAAAACAAkAAAAAAAAAAAADAAgAAAAAAAAAAAADAAkAAAAAAAEAAAAEAAgAAAAAAAEAAAAEAAkAAAAAAAIAAAAFAAgAAAAAAAIAAAAFAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAEAAAABAAoAAAAAAAEAAAABAAsAAAAAAAIAAAACAAoAAAAAAAIAAAACAAsAAAAAAAAAAAADAAoAAAAAAAAAAAADAAsAAAAAAAEAAAAEAAoAAAAAAAEAAAAEAAsAAAAAAAIAAAAFAAoAAAAAAAIAAAAFAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAEAAAABAAwAAAAAAAEAAAABAA0AAAAAAAIAAAACAAwAAAAAAAIAAAACAA0AAAAAAAAAAAADAAwAAAAAAAAAAAADAA0AAAAAAAEAAAAEAAwAAAAAAAEAAAAEAA0AAAAAAAIAAAAFAAwAAAAAAAIAAAAFAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAEAAAABAA4AAAAAAAEAAAABAA8AAAAAAAIAAAACAA4AAAAAAAIAAAACAA8AAAAAAAAAAAADAA4AAAAAAAAAAAADAA8AAAAAAAEAAAAEAA4AAAAAAAEAAAAEAA8AAAAAAAIAAAAFAA4AAAAAAAIAAAAFAA8AAAAAAAAAAAA=")
 tile_set = ExtResource("2_il2c5")
 
-[node name="Front" type="TileMapLayer" parent="UI"]
-use_parent_material = true
-tile_map_data = PackedByteArray("AAANAAkAAAAAAAMAAAANAAoAAAAAAAQAAAANAAsAAAAAAAUAAAAOAAkAAAABAAMAAAAOAAoAAAABAAQAAAAOAAsAAAABAAUAAAAOAAwAAAABAAYAAAAPAAkAAAACAAMAAAAPAAoAAAACAAQAAAAPAAsAAAACAAUAAAAPAAwAAAACAAYAAAAQAAkAAAADAAMAAAAQAAoAAAADAAQAAAAQAAsAAAADAAUAAAAQAAwAAAADAAYAAAARAAkAAAAEAAMAAAARAAoAAAAEAAQAAAARAAsAAAAEAAUAAAARAAwAAAAEAAYAAAASAAkAAAAFAAMAAAASAAoAAAAFAAQAAAASAAsAAAAFAAUAAAA=")
-tile_set = ExtResource("2_il2c5")
-
-[node name="LevelIcon" type="Sprite2D" parent="UI"]
-position = Vector2(240, 160)
-texture = ExtResource("9_3vc3f")
-centered = false
-hframes = 4
-vframes = 5
-
 [node name="Labels" type="Control" parent="UI"]
+layout_direction = 3
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
 grow_horizontal = 2
-grow_vertical = 2
 
-[node name="Control" type="Control" parent="UI/Labels"]
-anchors_preset = 0
-
-[node name="LevelsLeft" type="RichTextLabel" parent="UI/Labels/Control"]
+[node name="LevelsLeft" type="RichTextLabel" parent="UI/Labels"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 16.0
@@ -186,11 +171,21 @@ OIL OCEAN       1
 scroll_active = false
 autowrap_mode = 0
 
-[node name="LevelsRight" type="RichTextLabel" parent="UI/Labels/Control"]
+[node name="LabelsRight" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -320.0
+offset_right = -320.0
+grow_horizontal = 2
+
+[node name="LevelsRight" type="RichTextLabel" parent="UI/LabelsRight"]
+layout_direction = 2
 layout_mode = 0
-offset_left = 168.0
+offset_left = 328.0
 offset_top = 16.0
-offset_right = 304.0
+offset_right = 464.0
 offset_bottom = 144.0
 theme_override_fonts/normal_font = ExtResource("3")
 bbcode_enabled = true
@@ -210,10 +205,10 @@ meta_underlined = false
 hint_underlined = false
 text_direction = 1
 
-[node name="CharacterOrigin" type="Node2D" parent="UI/Labels"]
-position = Vector2(296, 96)
+[node name="CharacterOrigin" type="Node2D" parent="UI/LabelsRight"]
+position = Vector2(456, 88)
 
-[node name="Sonic" type="Sprite2D" parent="UI/Labels/CharacterOrigin"]
+[node name="Sonic" type="Sprite2D" parent="UI/LabelsRight/CharacterOrigin"]
 z_index = 3
 position = Vector2(8, 0)
 texture = ExtResource("4_416un")
@@ -222,7 +217,7 @@ vframes = 8
 region_rect = Rect2(731, 9, 24, 40)
 region_filter_clip_enabled = true
 
-[node name="Tails" type="Sprite2D" parent="UI/Labels/CharacterOrigin"]
+[node name="Tails" type="Sprite2D" parent="UI/LabelsRight/CharacterOrigin"]
 z_index = 2
 position = Vector2(-8, 0)
 texture = ExtResource("4_416un")
@@ -230,7 +225,7 @@ hframes = 2
 vframes = 8
 frame = 2
 
-[node name="Knuckles" type="Sprite2D" parent="UI/Labels/CharacterOrigin"]
+[node name="Knuckles" type="Sprite2D" parent="UI/LabelsRight/CharacterOrigin"]
 visible = false
 z_index = 3
 texture = ExtResource("4_416un")
@@ -239,7 +234,7 @@ vframes = 8
 frame = 4
 region_rect = Rect2(402, 468, 38, 36)
 
-[node name="Amy" type="Sprite2D" parent="UI/Labels/CharacterOrigin"]
+[node name="Amy" type="Sprite2D" parent="UI/LabelsRight/CharacterOrigin"]
 visible = false
 z_index = 3
 texture = ExtResource("4_416un")
@@ -248,11 +243,24 @@ vframes = 8
 frame = 1
 region_rect = Rect2(488, 8, 32, 40)
 
-[node name="CharacterAnimations" type="AnimationPlayer" parent="UI/Labels/CharacterOrigin"]
+[node name="CharacterAnimations" type="AnimationPlayer" parent="UI/LabelsRight/CharacterOrigin"]
 libraries = {
 "": SubResource("AnimationLibrary_wio08")
 }
 autoplay = "Animate"
+
+[node name="Front" type="TileMapLayer" parent="UI/LabelsRight"]
+use_parent_material = true
+position = Vector2(320, 0)
+tile_map_data = PackedByteArray("AAAFAAkAAAABAAMAAAAFAAoAAAABAAQAAAAFAAsAAAABAAUAAAAGAAkAAAACAAMAAAAGAAoAAAACAAQAAAAGAAsAAAACAAUAAAAGAAwAAAACAAYAAAAHAAkAAAADAAMAAAAHAAoAAAADAAQAAAAHAAsAAAADAAUAAAAHAAwAAAADAAYAAAAIAAkAAAAEAAMAAAAIAAoAAAAEAAQAAAAIAAsAAAAEAAUAAAAIAAwAAAAEAAYAAAAJAAkAAAAFAAMAAAAJAAoAAAAFAAQAAAAJAAsAAAAFAAUAAAAEAAkAAAAAAAMAAAAEAAoAAAAAAAQAAAAEAAsAAAAAAAUAAAAFAAwAAAABAAYAAAA=")
+tile_set = ExtResource("2_il2c5")
+
+[node name="LevelIcon" type="Sprite2D" parent="UI/LabelsRight"]
+position = Vector2(416, 160)
+texture = ExtResource("9_3vc3f")
+centered = false
+hframes = 4
+vframes = 5
 
 [node name="Cover" type="CanvasLayer" parent="."]
 layer = 0

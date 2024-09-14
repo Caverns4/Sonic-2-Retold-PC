@@ -162,40 +162,40 @@ func UpdateCharacterSelect():
 	# turn on and off visibility of the characters based on the current selection
 	match(characterID):
 		0: # Sonic and Tails
-			$UI/Labels/CharacterOrigin/Sonic.visible = true
-			$UI/Labels/CharacterOrigin/Tails.visible = true
-			$UI/Labels/CharacterOrigin/Sonic.position.x = 8
-			$UI/Labels/CharacterOrigin/Tails.position.x = -8
-			$UI/Labels/CharacterOrigin/Knuckles.visible = false
-			$UI/Labels/CharacterOrigin/Amy.visible = false
+			$UI/LabelsRight/CharacterOrigin/Sonic.visible = true
+			$UI/LabelsRight/CharacterOrigin/Tails.visible = true
+			$UI/LabelsRight/CharacterOrigin/Sonic.position.x = 8
+			$UI/LabelsRight/CharacterOrigin/Tails.position.x = -8
+			$UI/LabelsRight/CharacterOrigin/Knuckles.visible = false
+			$UI/LabelsRight/CharacterOrigin/Amy.visible = false
 		1: # Sonic
-			$UI/Labels/CharacterOrigin/Sonic.visible = true
-			$UI/Labels/CharacterOrigin/Sonic.position.x = 0
-			$UI/Labels/CharacterOrigin/Tails.visible = false
-			$UI/Labels/CharacterOrigin/Knuckles.visible = false
-			$UI/Labels/CharacterOrigin/Amy.visible = false
+			$UI/LabelsRight/CharacterOrigin/Sonic.visible = true
+			$UI/LabelsRight/CharacterOrigin/Sonic.position.x = 0
+			$UI/LabelsRight/CharacterOrigin/Tails.visible = false
+			$UI/LabelsRight/CharacterOrigin/Knuckles.visible = false
+			$UI/LabelsRight/CharacterOrigin/Amy.visible = false
 		2: # Tails
-			$UI/Labels/CharacterOrigin/Sonic.visible = false
-			$UI/Labels/CharacterOrigin/Tails.visible = true
-			$UI/Labels/CharacterOrigin/Tails.position.x = 0
-			$UI/Labels/CharacterOrigin/Knuckles.visible = false
-			$UI/Labels/CharacterOrigin/Amy.visible = false
+			$UI/LabelsRight/CharacterOrigin/Sonic.visible = false
+			$UI/LabelsRight/CharacterOrigin/Tails.visible = true
+			$UI/LabelsRight/CharacterOrigin/Tails.position.x = 0
+			$UI/LabelsRight/CharacterOrigin/Knuckles.visible = false
+			$UI/LabelsRight/CharacterOrigin/Amy.visible = false
 		3: # Knuckles
-			$UI/Labels/CharacterOrigin/Sonic.visible = false
-			$UI/Labels/CharacterOrigin/Tails.visible = false
-			$UI/Labels/CharacterOrigin/Knuckles.visible = true
-			$UI/Labels/CharacterOrigin/Amy.visible = false
+			$UI/LabelsRight/CharacterOrigin/Sonic.visible = false
+			$UI/LabelsRight/CharacterOrigin/Tails.visible = false
+			$UI/LabelsRight/CharacterOrigin/Knuckles.visible = true
+			$UI/LabelsRight/CharacterOrigin/Amy.visible = false
 		4: # Amy
-			$UI/Labels/CharacterOrigin/Sonic.visible = false
-			$UI/Labels/CharacterOrigin/Tails.visible = false
-			$UI/Labels/CharacterOrigin/Knuckles.visible = false
-			$UI/Labels/CharacterOrigin/Amy.visible = true
+			$UI/LabelsRight/CharacterOrigin/Sonic.visible = false
+			$UI/LabelsRight/CharacterOrigin/Tails.visible = false
+			$UI/LabelsRight/CharacterOrigin/Knuckles.visible = false
+			$UI/LabelsRight/CharacterOrigin/Amy.visible = true
 
 func levelSelect_UpdateText(): # levelID
 	var j = 0 #Which line to highlight
 	var k = 0 #Which label entry to retrieve(In other word, the "real" selection ID
-	var textFieldLeft = $UI/Labels/Control/LevelsLeft
-	var textFieldRight = $UI/Labels/Control/LevelsRight
+	var textFieldLeft = $UI/Labels/LevelsLeft
+	var textFieldRight = $UI/LabelsRight/LevelsRight
 	textFieldLeft.text = ""
 	textFieldRight.text = ""
 	for i in levelLabels.size():
@@ -214,4 +214,4 @@ func levelSelect_UpdateText(): # levelID
 				textFieldLeft.text += str(characterLabels[characterID]).to_upper()
 			else:
 				textFieldLeft.text += str(levelLabels[i]).to_upper() + "\n"
-	$UI/LevelIcon.frame = levelIcons[k-1]
+	$UI/LabelsRight/LevelIcon.frame = levelIcons[k-1]
