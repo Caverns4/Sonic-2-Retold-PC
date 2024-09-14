@@ -161,14 +161,10 @@ func _unhandledInput(_event):
 				else:
 					soundStepDelay -= 0.1
 			2: # Scale
-				if (
-				inputCue.x != 0
-				) and (
+				if (inputCue.x != 0) and (
 				(get_window().mode != Window.MODE_EXCLUSIVE_FULLSCREEN) and 
 				(get_window().mode != Window.MODE_FULLSCREEN)
-				) and(
-				inputCue != lastInput
-				):
+				)and(inputCue != lastInput):
 					Global.zoomSize = clamp(Global.zoomSize+inputCue.x,zoomClamp[0],zoomClamp[1])
 					get_window().set_size(get_viewport().get_visible_rect().size*Global.zoomSize)
 		

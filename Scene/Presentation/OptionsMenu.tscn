@@ -226,3 +226,7 @@ color = Color(1, 1, 1, 0)
 [node name="Switch" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_7ox2b")
 bus = &"SFX"
+
+[node name="MenuMusicVolume" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_7ox2b")
+bus = &"Music"
