@@ -10,6 +10,7 @@ var main = null
 var hud = null
 # Cheats implimented
 var levelSelectFlag = false
+var tailsNameCheat = false #if TRUE, Tails will be called "Miles"
 # checkpoint memory
 var checkPoints = []
 # reference for the current checkpoint

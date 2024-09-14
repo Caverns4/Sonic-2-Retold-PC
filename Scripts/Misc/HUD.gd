@@ -36,7 +36,7 @@ signal tally_clear
 
 # character name strings, used for "[player] has cleared", this matches the players character ID so you'll want to add the characters name in here matching the ID if you want more characters
 # see Global.PlayerChar1
-var characterNames = ["sonic","tails","knuckles","amy","mighty","ray"]
+var characterNames = ["SONIC","TAILS","KNUCKLES","AMY","MIGHTY","RAY"]
 
 func _ready():
 	# error prevention
@@ -50,18 +50,25 @@ func _ready():
 	Global.timerActiveP2 = false
 	Global.hud = self
 
+	var lifeCounterFrame = 0
+
 	if Global.TwoPlayer:
 		$Counters.visible = false
 		$P1Counters.visible = true
 		$P2Counters.visible = true
 		# Set character Icon
-		$LifeCounter/Icon.frame = Global.PlayerChar2-1
+		lifeCounterFrame = Global.PlayerChar2-1
 	else:
 		$Counters.visible = true
 		$P1Counters.visible = false
 		$P2Counters.visible = false
 		# Set character Icon
-		$LifeCounter/Icon.frame = Global.PlayerChar1-1
+		lifeCounterFrame = Global.PlayerChar1-1
+		
+	if lifeCounterFrame == 1 and Global.tailsNameCheat:
+		lifeCounterFrame = 6
+		
+	$LifeCounter/Icon.frame = lifeCounterFrame
 	
 	# play level card routine if level card is true
 	if playLevelCard:
@@ -105,7 +112,10 @@ func _ready():
 	Global.timerActive = true
 	Global.timerActiveP2 = true
 	# replace "sonic" in stage clear to match the player clear string
-	$LevelClear/Passed.text = $LevelClear/Passed.text.replace("SONIC",characterNames[Global.PlayerChar1-1])
+	$LevelClear/SonicGot.text = characterNames[Global.PlayerChar1-1] + " GOT"
+	if Global.tailsNameCheat and Global.PlayerChar1 == Global.CHARACTERS.TAILS:
+		$LevelClear/SonicGot.text = "MILES GOT"
+	
 	# set the act clear frame
 	$LevelClear/Act.frame = act-1
 
@@ -216,12 +226,12 @@ func _process(delta):
 			
 			# show level clear elements
 			$LevelClear.visible = true
-			$LevelClear/Tally/ScoreNumber.text = scoreText.text
+			$LevelClear/TotalText/TallyTotal.text = scoreText.text
 			$LevelClear/Animator.play("LevelClear")
 			
 			# set bonuses
 			ringBonus = floor(Global.players[focusPlayer].rings)*100
-			$LevelClear/Tally/RingNumbers.text = "%6d" % ringBonus
+			$LevelClear/RingBonusText/RingBonus.text = "%6d" % ringBonus
 			timeBonus = 0
 			# bonus time table
 			var bonusTable = [
@@ -240,7 +250,7 @@ func _process(delta):
 				if Global.levelTime < i[0]:
 					timeBonus = i[1]
 			# set bonus text for time
-			$LevelClear/Tally/TimeNumbers.text = "%6d" % timeBonus
+			$LevelClear/TimeBonusText/TimeBonus.text = "%6d" % timeBonus
 			# wait for counter wait time to count down
 			$LevelClear/CounterWait.start()
 			await $LevelClear/CounterWait.timeout
@@ -307,7 +317,8 @@ func _on_CounterCount_timeout():
 		# emit tally clear signal
 		emit_signal("tally_clear")
 	# set the level clear strings to the bonuses
-	$LevelClear/Tally/ScoreNumber.text = scoreText.text
-	$LevelClear/Tally/TimeNumbers.text = "%6d" % timeBonus
-	$LevelClear/Tally/RingNumbers.text = "%6d" % ringBonus
+	$LevelClear/TotalText/TallyTotal.text = scoreText.text
+	$LevelClear/TimeBonusText/TimeBonus.text = "%6d" % timeBonus
+	$LevelClear/PerfectBonusText/PerfectBonus.text = "%6d" % 0
+	$LevelClear/RingBonusText/RingBonus.text = "%6d" % ringBonus
 	

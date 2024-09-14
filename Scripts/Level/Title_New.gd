@@ -144,6 +144,7 @@ func CheckCheatInputs():
 				cheatInputCount = 0
 				$TitleBanner/RingChime.play(0.0)
 				Global.levelSelectFlag = true
+				Global.tailsNameCheat = true
 	lastCheatInput = inputs
 
 func InstantiateBG():
