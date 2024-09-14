@@ -217,19 +217,21 @@ func _physics_process(delta):
 	# Camera look
 	if abs(lookTimer) >= 1:
 		parent.camLookAmount += delta*4*sign(lookTimer)
-	
-	# Apply slope factor
-	# ignore this if not moving for sonic 1 style slopes
-	parent.movement.x += (parent.slp*sin(parent.angle-parent.gravityAngle))/GlobalFunctions.div_by_delta(delta)
-	
+
 	var calcAngle = rad_to_deg(parent.angle-parent.gravityAngle)
 	if (calcAngle < 0):
 		calcAngle += 360
 	
+	# Apply slope factor
+	# ignore this if not moving for sonic 1 and 2 style slopes
+	if (parent.movement.x != 0 or parent.movement.y !=0) or (round(calcAngle) >= 46 and round(calcAngle) <= 315):
+		parent.movement.x += (parent.slp*sin(parent.angle-parent.gravityAngle))/GlobalFunctions.div_by_delta(delta)
+	
 		# if speed below fall speed, slide down slopes and maybe also drop
-	if (abs(parent.movement.x) < parent.fall and calcAngle >= 45 and calcAngle <= 315):
+	if (abs(parent.movement.x) < parent.fall and (calcAngle >= 46 and calcAngle <= 315)):
 		if (round(calcAngle) >= 90 and round(calcAngle) <= 270):
 			parent.disconect_from_floor()
+		parent.groundSpeed = 0
 		parent.horizontalLockTimer = 30.0/60.0
 		
 	# movement

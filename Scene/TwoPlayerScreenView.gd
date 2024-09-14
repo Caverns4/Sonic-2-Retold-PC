@@ -30,11 +30,21 @@ func _ready():
 	QueueUpPlayers()
 	viewport1.world_2d = get_viewport().world_2d
 	viewport2.world_2d = get_viewport().world_2d
+	
+	var resolution = Global.aspectResolutions[Global.aspectRatio]
+	$CanvasLayer/SubViewportContainer.size.x = resolution.x
+	$CanvasLayer/SubViewportContainer2.size.x = resolution.x
+	$CanvasLayer/SubViewportContainer/SubViewport.size = Vector2i(resolution.x,112)
+	$CanvasLayer/SubViewportContainer2/SubViewport.size = Vector2i(resolution.x,112)
+	$CanvasLayer/SubViewportContainer/SubViewport.size_2d_override =  Vector2i(resolution.x,224)
+	$CanvasLayer/SubViewportContainer2/SubViewport.size_2d_override =  Vector2i(resolution.x,224)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
 	if playersReady == false:
 		QueueUpPlayers()
+	elif playersReady == true and !Global.players:
+		queue_free()
 	else:
 		cameraPlayer1.global_position = Global.players[0].camera.global_position
 		cameraPlayer1.limit_left = Global.players[0].camera.limit_left

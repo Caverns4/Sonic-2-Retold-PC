@@ -93,9 +93,10 @@ func _input(event):
 func MenuOptionChosen():
 	#if Global.music.get_playback_position() < 14.0:
 	#	Global.music.seek(14.0)
-	if Global.levelSelectFlag:
-		if Input.is_action_pressed("gm_action") and menuEntry == 0:
+	if Global.tailsNameCheat:
+		if Input.is_action_pressed("gm_action"):
 			menuEntry = 128
+			Global.levelSelectFlag = true
 		if Input.is_action_pressed("gm_action3"):
 			Global.TwoPlayer = true
 	
@@ -133,7 +134,7 @@ func CheckCheatInputs():
 		lastCheatInput = inputs
 	#in any othe case, consider this a valid cheat attempt
 	else:
-		if !Global.levelSelectFlag:
+		if !Global.tailsNameCheat:
 			if inputs == levelSelectCheat[cheatInputCount]:
 				cheatInputCount += 1
 				print("Correct input!"+ str(inputs))
@@ -143,7 +144,7 @@ func CheckCheatInputs():
 			if cheatInputCount == levelSelectCheat.size():
 				cheatInputCount = 0
 				$TitleBanner/RingChime.play(0.0)
-				Global.levelSelectFlag = true
+				#Global.levelSelectFlag = true
 				Global.tailsNameCheat = true
 	lastCheatInput = inputs
 
