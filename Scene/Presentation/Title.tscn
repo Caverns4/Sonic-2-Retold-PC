@@ -248,7 +248,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("3_yuhp3")
 bbcode_enabled = true
-text = "[color=#eeee00]1 PLAYER[/color]
+text = "[color=#ffff00]1 PLAYER[/color]
 2 PLAYER VS
 OPTIONS"
 scroll_active = false

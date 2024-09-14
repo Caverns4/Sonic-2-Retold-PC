@@ -37,7 +37,9 @@ var zoomClamp = [1,6]
 var aspectClamp = ["4x3","16x9"]
 
 func _ready():
-	pass
+	Global.music.stream = music
+	Global.music.play()
+
 
 func _process(delta: float):
 	OptionsMenu_RedrawText()

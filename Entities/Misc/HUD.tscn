@@ -542,7 +542,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-256, 64), Vector2(64, 64)]
+"values": [Vector2(-488, 64), Vector2(-80, 64)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -554,7 +554,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-256, 88), Vector2(64, 88)]
+"values": [Vector2(352, 80), Vector2(-80, 80)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -566,7 +566,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(520, 72), Vector2(256, 72)]
+"values": [Vector2(536, 64), Vector2(112, 64)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -575,14 +575,86 @@ tracks/3/path = NodePath("Tally:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0.3, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-256, 128), Vector2(88, 128)]
+"values": [Vector2(352, 128), Vector2(-80, 128)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tally/RingBonusText:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.333333, 0.833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(160, 16), Vector2(0, 16)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tally/RingNumbers:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.333333, 0.833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(320, 16), Vector2(192, 16)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Tally/PerfectBonusText:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.366667, 0.866667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(352, 32), Vector2(0, 32)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Tally/PerfectNumbers:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.366667, 0.866667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(512, 32), Vector2(192, 32)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Tally/ScoreText:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.4, 0.933333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(552, 48), Vector2(0, 48)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Tally/ScoreNumber:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.4, 0.933333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(640, 48), Vector2(192, 48)]
 }
 
 [sub_resource type="Animation" id="8"]
-length = 0.001
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -593,7 +665,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-256, 64)]
+"values": [Vector2(-80, 64)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -605,7 +677,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-256, 88)]
+"values": [Vector2(-80, 80)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -617,7 +689,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(528, 72)]
+"values": [Vector2(112, 64)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -629,7 +701,79 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-256, 128)]
+"values": [Vector2(-80, 128)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tally/RingBonusText:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 16)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tally/RingNumbers:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(192, 16)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Tally/PerfectBonusText:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 32)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Tally/PerfectNumbers:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(192, 32)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Tally/ScoreText:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 48)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Tally/ScoreNumber:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(192, 48)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_21eah"]
@@ -1017,9 +1161,8 @@ anchor_left = 1.0
 anchor_top = 0.003
 anchor_right = 1.0
 anchor_bottom = 0.003
-offset_left = -32.0
 offset_top = -86.944
-offset_right = 16806.4
+offset_right = 16838.4
 offset_bottom = 169.056
 grow_horizontal = 0
 grow_vertical = 2
@@ -1064,7 +1207,7 @@ libraries = {
 "": SubResource("AnimationLibrary_15hsr")
 }
 autoplay = "Slider"
-speed_scale = 1.9375
+speed_scale = 4.0
 
 [node name="CardPlayer" type="AnimationPlayer" parent="LevelCard"]
 libraries = {
@@ -1076,37 +1219,44 @@ autoplay = "Start"
 process_mode = 1
 visible = false
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
 grow_horizontal = 2
-grow_vertical = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
 [node name="Passed" type="Label" parent="LevelClear"]
-layout_mode = 0
-offset_left = -256.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
 offset_top = 64.0
-offset_right = -94.0
-offset_bottom = 90.0
+offset_right = 82.0
+offset_bottom = 80.0
+grow_horizontal = 2
 theme_override_fonts/font = ExtResource("11_6cefa")
-text = " SONIC got"
-horizontal_alignment = 2
+text = "SONIC got"
+horizontal_alignment = 1
 uppercase = true
 
 [node name="Through" type="Label" parent="LevelClear"]
-layout_mode = 0
-offset_left = -256.0
-offset_top = 108.0
-offset_right = -58.0
-offset_bottom = 134.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 80.0
+offset_right = 118.0
+offset_bottom = 96.0
+grow_horizontal = 2
 theme_override_fonts/font = ExtResource("11_6cefa")
 text = "through act"
 uppercase = true
 
 [node name="Act" type="Sprite2D" parent="LevelClear"]
-position = Vector2(528, 72)
+position = Vector2(112, 64)
 texture = ExtResource("9_3i4aq")
 centered = false
 hframes = 4
@@ -1117,11 +1267,27 @@ libraries = {
 }
 
 [node name="Tally" type="Sprite2D" parent="LevelClear"]
-position = Vector2(-256, 128)
+position = Vector2(-80, 128)
 texture = ExtResource("10_ddlv5")
 centered = false
-region_enabled = true
-region_rect = Rect2(0, 0, 80, 32)
+vframes = 5
+region_rect = Rect2(0, 0, 80, 16)
+
+[node name="RingBonusText" type="Sprite2D" parent="LevelClear/Tally"]
+position = Vector2(0, 16)
+texture = ExtResource("10_ddlv5")
+centered = false
+vframes = 5
+frame = 1
+region_rect = Rect2(0, 0, 40, 16)
+
+[node name="PerfectBonusText" type="Sprite2D" parent="LevelClear/Tally"]
+position = Vector2(0, 32)
+texture = ExtResource("10_ddlv5")
+centered = false
+vframes = 5
+frame = 2
+region_rect = Rect2(0, 0, 40, 16)
 
 [node name="ScoreText" type="Sprite2D" parent="LevelClear/Tally"]
 position = Vector2(0, 48)
@@ -1131,42 +1297,33 @@ vframes = 5
 frame = 3
 region_rect = Rect2(0, 0, 40, 16)
 
-[node name="PerfectText" type="Sprite2D" parent="LevelClear/Tally"]
-visible = false
-position = Vector2(0, 32)
-texture = ExtResource("10_ddlv5")
-centered = false
-vframes = 5
-frame = 2
-region_rect = Rect2(0, 0, 40, 16)
-
 [node name="TimeNumbers" type="Label" parent="LevelClear/Tally"]
-offset_left = 104.0
-offset_right = 104.0
-theme_override_fonts/font = ExtResource("6_synv7")
-text = "0"
-
-[node name="RingNumbers" type="Label" parent="LevelClear/Tally"]
-offset_left = 104.0
-offset_top = 16.0
-offset_right = 104.0
+offset_left = 192.0
+offset_right = 200.0
 offset_bottom = 16.0
 theme_override_fonts/font = ExtResource("6_synv7")
 text = "0"
 
+[node name="RingNumbers" type="Label" parent="LevelClear/Tally"]
+offset_left = 192.0
+offset_top = 16.0
+offset_right = 200.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("6_synv7")
+text = "0"
+
 [node name="PerfectNumbers" type="Label" parent="LevelClear/Tally"]
-visible = false
-offset_left = 104.0
+offset_left = 192.0
 offset_top = 32.0
-offset_right = 112.0
+offset_right = 200.0
 offset_bottom = 48.0
 theme_override_fonts/font = ExtResource("6_synv7")
 text = "0"
 
 [node name="ScoreNumber" type="Label" parent="LevelClear/Tally"]
-offset_left = 104.0
+offset_left = 192.0
 offset_top = 48.0
-offset_right = 112.0
+offset_right = 200.0
 offset_bottom = 64.0
 theme_override_fonts/font = ExtResource("6_synv7")
 text = "0"

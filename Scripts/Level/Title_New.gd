@@ -117,8 +117,9 @@ func MenuOptionChosen():
 			Global.main.change_scene_to_file(testScene,"FadeOut","FadeOut",1)
 	
 func UpdateMenuDisplay():
-	$CanvasLayer/Labels/TitleMenu/MenuIcon.position.y = menuIconYOff[menuEntry]
-	$CanvasLayer/Labels/TitleMenu/Text.text = menuText[menuEntry]
+	if menuActive and !titleEnd:
+		$CanvasLayer/Labels/TitleMenu/MenuIcon.position.y = menuIconYOff[menuEntry]
+		$CanvasLayer/Labels/TitleMenu/Text.text = menuText[menuEntry]
 
 func CheckCheatInputs():
 	var inputs = Input.get_vector("gm_left","gm_right","gm_up","ui_down")
