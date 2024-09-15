@@ -2,22 +2,62 @@ extends Node2D
 
 @export var targetHeight = 512 #distance to move from the starting posistion
 
-var movementTimer = 0.0
+@onready var tileMap = get_child(0)
 
+var movementTimer = 0.0
+var delayTimer = 0.0
+var soundTimer = 0.5
 
 var rumbling = preload("res://Audio/SFX/Ambiance/Earthquake.wav")
+var direction = -1
 
-#Todo
+var bodies = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	
+	var got = false
+	for child in get_children():
+		if child is TileMapLayer and !got:
+			tileMap = child
+			got = true
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_pressed("gm_up_P2"):
-		position.y -= 1
-	if Input.is_action_pressed("gm_down_P2"):
-		position.y += 1
-	pass
+	delayTimer -= delta
+	
+	if bodies and delayTimer <= 0.0:
+		if direction < 0:
+			movementTimer += delta*12
+			StepSoundEffect(delta)
+		else:
+			movementTimer -= delta*12
+			StepSoundEffect(delta)
+		
+		if direction < 0 and movementTimer >= targetHeight:
+			movementTimer = targetHeight
+			delayTimer = 2.0
+			direction = 1
+		elif direction >=0 and movementTimer <= 0:
+			movementTimer = 0.0
+			delayTimer
+			direction = -1
+		
+		tileMap.position.y = round(0-movementTimer)
+		
+
+func StepSoundEffect(delta):
+	soundTimer -= delta
+	if soundTimer <= 0:
+		Global.play_sound(rumbling)
+		soundTimer = 0.5
+		#Also send timer to bodies to rumble camera
+		
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	bodies.append(body)
+	
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	bodies.erase(body)

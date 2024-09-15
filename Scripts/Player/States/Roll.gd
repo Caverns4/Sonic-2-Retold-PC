@@ -44,9 +44,6 @@ func _physics_process(delta):
 		
 		parent.horizontalLockTimer = 30.0/60.0
 	
-	
-	
-	
 	if (parent.movement.x != 0):
 		var checkX = sign(parent.movement.x)
 		if (parent.inputs[parent.INPUTS.XINPUT] != 0 and sign(parent.movement.x) != parent.inputs[parent.INPUTS.XINPUT]):
