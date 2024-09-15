@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://b25bf70l62rjr"]
+[gd_scene load_steps=49 format=4 uid="uid://b25bf70l62rjr"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_o6dl6"]
 [ext_resource type="AudioStream" uid="uid://dhw5trv54kut7" path="res://Audio/Soundtrack/s2br_HillTop.ogg" id="2_5rsgg"]
@@ -45,6 +45,7 @@
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="37_awu3v"]
 [ext_resource type="PackedScene" uid="uid://c155bdyqqmmpl" path="res://Entities/Enemies/Orbinaut.tscn" id="39_3lp52"]
 [ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="40_l2qxi"]
+[ext_resource type="PackedScene" uid="uid://c8ohi5adbflnt" path="res://Entities/Enemies/Rexon.tscn" id="43_3jeuf"]
 [ext_resource type="Script" path="res://Scene/Zones/Earthquakes.gd" id="43_lpn1e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1ntj"]
@@ -782,14 +783,6 @@ endPosition = Vector2(0, 64)
 dropSlightly = false
 fullySolid = true
 
-[node name="Platform24" parent="Platforms" instance=ExtResource("25_mbeia")]
-material = ExtResource("17_kojt6")
-position = Vector2(2496, 1760)
-platformSprite = ExtResource("25_ot6au")
-endPosition = Vector2(0, 64)
-dropSlightly = false
-fullySolid = true
-
 [node name="Platform3" parent="Platforms" instance=ExtResource("25_mbeia")]
 material = ExtResource("17_kojt6")
 position = Vector2(4640, 1816)
@@ -808,7 +801,7 @@ fullySolid = true
 
 [node name="Platform18" parent="Platforms" instance=ExtResource("25_mbeia")]
 material = ExtResource("17_kojt6")
-position = Vector2(9696, 1960)
+position = Vector2(9792, 1960)
 platformSprite = ExtResource("25_ot6au")
 endPosition = Vector2(0, 64)
 offset = 64.0
@@ -964,6 +957,21 @@ position = Vector2(4096, 1696)
 
 [node name="Orbinaut2" parent="Badniks" instance=ExtResource("39_3lp52")]
 position = Vector2(4032, 328)
+
+[node name="Rexon" parent="Badniks" instance=ExtResource("43_3jeuf")]
+position = Vector2(2496, 1776)
+
+[node name="Rexon2" parent="Badniks" instance=ExtResource("43_3jeuf")]
+position = Vector2(3136, 752)
+
+[node name="Rexon3" parent="Badniks" instance=ExtResource("43_3jeuf")]
+position = Vector2(9344, 1984)
+
+[node name="Rexon4" parent="Badniks" instance=ExtResource("43_3jeuf")]
+position = Vector2(9664, 1984)
+
+[node name="Rexon5" parent="Badniks" instance=ExtResource("43_3jeuf")]
+position = Vector2(10304, 1344)
 
 [node name="ItemsHolder" type="Node2D" parent="."]
 
@@ -1498,7 +1506,6 @@ position = Vector2(7488, 192)
 position = Vector2(7552, 160)
 
 [node name="Earthquake" type="Node2D" parent="."]
-visible = false
 material = ExtResource("17_kojt6")
 script = ExtResource("43_lpn1e")
 targetHeight = 640

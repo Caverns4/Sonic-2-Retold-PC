@@ -194,12 +194,13 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -22.0
-offset_right = 136.0
+offset_left = 2.0
+offset_top = -8.0
+offset_right = 138.0
 grow_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_yuhp3")
-text = "2024.09.13.01
+text = "2024.09.14.02
 "
 vertical_alignment = 2
 uppercase = true

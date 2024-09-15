@@ -60,6 +60,16 @@ func destroy():
 		if item == ITEMTYPES.LIFEP2:
 			$Item.frame = item + Global.PlayerChar2
 	
+	if item == ITEMTYPES.SHIELD and !Global.TwoPlayer:
+		var rand = randi_range(0,32)
+		if rand == 3:
+			item = ITEMTYPES.FIRESHIELD
+		elif rand == 12:
+			item = ITEMTYPES.ELECSHIELD
+		elif rand == 27:
+			item = ITEMTYPES.BUBBLESHIELD
+		$Item.frame = item
+	
 	if !isActive:
 		return false
 	# create explosion

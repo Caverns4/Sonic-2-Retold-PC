@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq7iu2jaofqew"]
+
+[ext_resource type="Texture2D" uid="uid://c1u8aco6qtdbl" path="res://Graphics/Misc/Kris.png" id="1_2cfbo"]
+[ext_resource type="Script" path="res://Scripts/Misc/character_cameo_Root.gd" id="1_ltd1b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ij583"]
+size = Vector2(26, 40)
+
+[node name="CharacterCameo" type="Node2D"]
+script = ExtResource("1_ltd1b")
+present = 5
+character = ExtResource("1_2cfbo")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 0
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_ij583")
+
+[node name="CharacterSprite" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("1_2cfbo")
+hframes = 3
