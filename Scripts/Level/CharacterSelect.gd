@@ -8,7 +8,8 @@ var selected = false
 const LEFT_ROWS = 14
 
 # character labels, the amount of labels in here determines the total amount of options, see the set character option at the end for settings
-var characterLabels = ["Sonic*Tails", "Sonic", "Tails", "Knuckles", "Amy"]
+var characterLabels = ["Sonic&Tails", "Sonic", "Tails", "Knuckles", "Amy"]
+var characterLabelsMiles = ["Sonic&Miles", "Sonic", "Miles", "Knuckles", "Amy"]
 # level labels, the amount of labels in here determines the total amount of options, see set level option at the end for settings
 var levelLabels = [ #Every one of these is a line, and some are skipped.
 	"Emerald Hill    1",
@@ -211,12 +212,18 @@ func levelSelect_UpdateText(): # levelID
 		if j == levelID+1:
 			k = j
 			if j == CharacterSelectMenuID:
-				textFieldLeft.text += "[color=#eeee00]" + str(characterLabels[characterID]).to_upper() + "[/color]\n"
+				if Global.tailsNameCheat:
+					textFieldLeft.text += "[color=#eeee00]" + str(characterLabels[characterID]).to_upper() + "[/color]\n"
+				else:
+					textFieldLeft.text += "[color=#eeee00]" + str(characterLabelsMiles[characterID]).to_upper() + "[/color]\n"
 			else:
 				textFieldLeft.text += "[color=#eeee00]" + str(levelLabels[i]).to_upper() + "[/color]\n"
 		else:
 			if j == CharacterSelectMenuID:
-				textFieldLeft.text += str(characterLabels[characterID]).to_upper()
+				if Global.tailsNameCheat:
+					textFieldLeft.text += str(characterLabels[characterID]).to_upper()
+				else:
+					textFieldLeft.text += str(characterLabelsMiles[characterID]).to_upper()
 			else:
 				textFieldLeft.text += str(levelLabels[i]).to_upper() + "\n"
 	$UI/LabelsRight/LevelIcon.frame = levelIcons[k-1]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://b25bf70l62rjr"]
+[gd_scene load_steps=50 format=4 uid="uid://b25bf70l62rjr"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_o6dl6"]
 [ext_resource type="AudioStream" uid="uid://dhw5trv54kut7" path="res://Audio/Soundtrack/s2br_HillTop.ogg" id="2_5rsgg"]
@@ -42,6 +42,7 @@
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="35_4ds1j"]
 [ext_resource type="PackedScene" uid="uid://ctg1aeiewvyvj" path="res://Entities/Gimmicks/ForceRoll.tscn" id="35_ld4b8"]
 [ext_resource type="PackedScene" uid="uid://b8bt0u45oqhe6" path="res://Entities/Hazards/Lava.tscn" id="35_snrfj"]
+[ext_resource type="PackedScene" uid="uid://dq7iu2jaofqew" path="res://Entities/Misc/character_cameo.tscn" id="36_cqqa6"]
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="37_awu3v"]
 [ext_resource type="PackedScene" uid="uid://c155bdyqqmmpl" path="res://Entities/Enemies/Orbinaut.tscn" id="39_3lp52"]
 [ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="40_l2qxi"]
@@ -659,6 +660,9 @@ scale = Vector2(16, 32)
 [node name="ForceRoll3" parent="Entities" instance=ExtResource("35_ld4b8")]
 position = Vector2(4480, 768)
 scale = Vector2(16, 32)
+
+[node name="CharacterCameo" parent="Entities" instance=ExtResource("36_cqqa6")]
+position = Vector2(5603, 1385)
 
 [node name="Platforms" type="Node2D" parent="."]
 
@@ -1518,6 +1522,27 @@ tile_set = ExtResource("18_ydh5s")
 [node name="Lava" parent="Earthquake/EarthquakeTiles" instance=ExtResource("35_snrfj")]
 position = Vector2(6272, 2168)
 size = Vector2(768, 512)
+
+[node name="InvisibleBarrier" parent="Earthquake/EarthquakeTiles" instance=ExtResource("40_l2qxi")]
+position = Vector2(6272, 1072)
+scale = Vector2(28, 5)
+
+[node name="InvisibleBarrier2" parent="Earthquake/EarthquakeTiles" instance=ExtResource("40_l2qxi")]
+position = Vector2(6576, 1016)
+scale = Vector2(6, 2)
+
+[node name="InvisibleBarrier11" parent="Earthquake/EarthquakeTiles" instance=ExtResource("40_l2qxi")]
+position = Vector2(5840, 920)
+scale = Vector2(1, 8)
+
+[node name="InvisibleBarrier12" parent="Earthquake/EarthquakeTiles" instance=ExtResource("40_l2qxi")]
+position = Vector2(5872, 928)
+scale = Vector2(1, 8)
+
+[node name="InvisibleBarrier16" parent="Earthquake/EarthquakeTiles" instance=ExtResource("40_l2qxi")]
+position = Vector2(6200, 952)
+rotation = 1.8326
+scale = Vector2(3.7, 22.825)
 
 [node name="Area2D" type="Area2D" parent="Earthquake"]
 collision_layer = 0

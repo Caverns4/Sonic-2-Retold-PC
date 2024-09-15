@@ -24,6 +24,7 @@ var optionsText = [
 # on or off strings
 var onOff = ["off","on"]
 var characterLabels = ["Sonic&Tails", "Sonic", "Tails", "Knuckles"]
+var characterLabelsMiles = ["Sonic&Miles", "Sonic", "Miles", "Knuckles"]
 # clamp for minimum and maximum sound volume (muted when audio is at lowest)
 var clampSounds = [-40.0,6.0]
 # how much to iterate through (take the total sum then divide it by how many steps we want)

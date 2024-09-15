@@ -255,6 +255,7 @@ tile_set = ExtResource("16_qpoa7")
 position = Vector2(112, 940)
 
 [node name="Entities" type="Node2D" parent="."]
+visible = false
 
 [node name="ZiplinePlat" parent="Entities" instance=ExtResource("25_mwp4l")]
 position = Vector2(416, 912)
@@ -651,6 +652,7 @@ dropSlightly = false
 fullySolid = true
 
 [node name="Hazards" type="Node2D" parent="."]
+visible = false
 
 [node name="Spikes" parent="Hazards" instance=ExtResource("30_82wuk")]
 position = Vector2(2240, 920)
@@ -1279,11 +1281,11 @@ position = Vector2(7040, 1576)
 scale = Vector2(16, 6)
 
 [node name="InvisibleBarrier10" parent="Earthquake/QuakeTiles" instance=ExtResource("28_r5ji8")]
-position = Vector2(7488, 1616)
+position = Vector2(7488, 1680)
 scale = Vector2(12, 8)
 
 [node name="Lava11" parent="Earthquake/QuakeTiles" instance=ExtResource("40_7hrcg")]
-position = Vector2(7488, 1736)
+position = Vector2(7488, 1800)
 size = Vector2(384, 512)
 
 [node name="Area2D" type="Area2D" parent="Earthquake"]

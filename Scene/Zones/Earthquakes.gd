@@ -54,7 +54,8 @@ func StepSoundEffect(delta):
 		Global.play_sound(rumbling)
 		soundTimer = 0.5
 		#Also send timer to bodies to rumble camera
-		
+		for i in bodies.size():
+			bodies[i].cameraShakeTime = 1.0
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	bodies.append(body)

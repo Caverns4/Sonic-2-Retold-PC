@@ -154,6 +154,14 @@ var camLookOff = 0
 var camAdjust = Vector2.ZERO
 var cameraDragLerp = 0
 var camLockTime = 0
+var cameraShakeTime = 0
+
+#Camera Shake Parameters (To be depricated)
+var randomStrength: float = 3.0
+var shakefade: float = 5.0
+var shakeRnd = 0
+var shakeStrength : float = 0.0
+			
 
 # boundries
 var limitLeft = 0
@@ -824,12 +832,18 @@ func _physics_process(delta):
 		else:
 			camera.limit_bottom = limitBottom
 		
+		#rumbling timer
+		if cameraShakeTime > 0.0:
+			cameraShakeTime -= delta
+			shakeStrength = randomStrength
+			
+		if shakeStrength > 0:
+			shakeStrength = lerpf(shakeStrength,0.0,shakefade * delta)
+			camera.offset = RandomOffset()
+		
 		# Death at border bottom
 		if global_position.y > limitBottom:
 			kill()
-	
-	
-	
 	
 	# Stop movement at borders
 	if (global_position.x < limitLeft+cameraMargin or global_position.x > limitRight-cameraMargin):
@@ -896,6 +910,9 @@ func _physics_process(delta):
 		if (crushSensorUp.get_overlapping_areas() + crushSensorUp.get_overlapping_bodies()).size() > 0 and \
 			(crushSensorDown.get_overlapping_areas() + crushSensorDown.get_overlapping_bodies()).size() > 0 and (!translate or visible):
 			kill()
+
+func RandomOffset() -> Vector2:
+	return Vector2(randf_range(-shakeStrength,shakeStrength),randf_range(-shakeStrength,shakeStrength))
 
 # Input buttons
 func set_inputs():

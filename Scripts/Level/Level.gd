@@ -1,6 +1,10 @@
 extends Node2D
 
-@export var zoneID = 0
+@export_enum("Emerald Hill", "Hidden Palace",
+"Hill Top", "Chemical Plant",
+"Oil Ocean", "Aquatic Ruin",
+"Metropolis","Dust Hill",
+"Casino Night","Wood Gadget", "Jewel Grotto") var zoneID = 0
 @export var music = preload("res://Audio/Soundtrack/s2br_EmeraldHilll.ogg")
 @export var music2P = preload("res://Audio/Soundtrack/s2br_Tropical.ogg")
 @export var nextZone = load("res://Scene/Zones/BaseZone.tscn")
