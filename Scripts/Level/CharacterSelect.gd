@@ -212,7 +212,7 @@ func levelSelect_UpdateText(): # levelID
 		if j == levelID+1:
 			k = j
 			if j == CharacterSelectMenuID:
-				if Global.tailsNameCheat:
+				if !Global.tailsNameCheat:
 					textFieldLeft.text += "[color=#eeee00]" + str(characterLabels[characterID]).to_upper() + "[/color]\n"
 				else:
 					textFieldLeft.text += "[color=#eeee00]" + str(characterLabelsMiles[characterID]).to_upper() + "[/color]\n"
@@ -220,7 +220,7 @@ func levelSelect_UpdateText(): # levelID
 				textFieldLeft.text += "[color=#eeee00]" + str(levelLabels[i]).to_upper() + "[/color]\n"
 		else:
 			if j == CharacterSelectMenuID:
-				if Global.tailsNameCheat:
+				if !Global.tailsNameCheat:
 					textFieldLeft.text += str(characterLabels[characterID]).to_upper()
 				else:
 					textFieldLeft.text += str(characterLabelsMiles[characterID]).to_upper()

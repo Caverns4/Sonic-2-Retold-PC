@@ -157,7 +157,7 @@ var camLockTime = 0
 var cameraShakeTime = 0
 
 #Camera Shake Parameters (To be depricated)
-var randomStrength: float = 3.0
+var randomStrength: float = 2.0
 var shakefade: float = 5.0
 var shakeRnd = 0
 var shakeStrength : float = 0.0

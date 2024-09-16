@@ -39,11 +39,11 @@ shape = SubResource("RectangleShape2D_63cjf")
 one_way_collision = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-44, -14, 44, -46, 44, 0, -44, 0)
+polygon = PackedVector2Array(-44, -8, 44, -48, 44, 0, -44, 0)
 disabled = true
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-44, -46, 44, -14, 44, 0, -44, 0)
+polygon = PackedVector2Array(-44, -48, 44, -8, 44, 0, -44, 0)
 disabled = true
 
 [node name="SolWeight" parent="." instance=ExtResource("3_t28x7")]

@@ -4,6 +4,7 @@ extends StaticBody2D
 @export var pieces = Vector2(2,1)
 var Piece = preload("res://Entities/Misc/BlockPiece.tscn")
 @export var sound = preload("res://Audio/SFX/Gimmicks/Collapse.wav")
+@export_enum("Standard","Fragile") var type = 0
 
 func _ready() -> void:
 	# Change platform shape
@@ -26,12 +27,15 @@ func physics_collision(body, hitVector):
 	# check hit is either left or right
 	if hitVector == Vector2.DOWN:
 		# verify if rolling or knuckles
-		if (body.animator.current_animation == "roll"
+		if ((body.animator.current_animation == "roll"
 		and (body.currentState == body.STATES.ROLL)
-		and body.ground) and body.movement.x > 200 and body.angle !=0:
+		and body.ground) and body.movement.x > 200 and body.angle !=0) or (
+		(body.animator.current_animation == "roll") and type == 1
+		):
 			# print(body.movement)
 			# disable physics altering masks
 			set_collision_layer_value(16,false)
+			set_collision_layer_value(14,false)
 			set_collision_mask_value(14,false)
 			# give frame buffer
 			await get_tree().process_frame
@@ -40,6 +44,11 @@ func physics_collision(body, hitVector):
 			Global.play_sound(sound)
 			body.velocity.x = body.velocity.x*0.8
 			body.movement.x = body.movement.x*0.8
+			
+			if type > 0:
+				body.movement.y = 400
+				body.velocity.y = 400
+				body.animator.current_animation = "roll"
 			
 			# generate brekable pieces depending on the pieces vector
 			for i in range(pieces.x):

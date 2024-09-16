@@ -255,7 +255,6 @@ tile_set = ExtResource("16_qpoa7")
 position = Vector2(112, 940)
 
 [node name="Entities" type="Node2D" parent="."]
-visible = false
 
 [node name="ZiplinePlat" parent="Entities" instance=ExtResource("25_mwp4l")]
 position = Vector2(416, 912)
@@ -495,6 +494,7 @@ position = Vector2(5680, 456)
 [node name="Breakable6" parent="Entities" instance=ExtResource("42_0cebl")]
 position = Vector2(5680, 472)
 SpriteTexture = ExtResource("43_a0fik")
+type = null
 
 [node name="Breakable7" parent="Entities" instance=ExtResource("42_0cebl")]
 position = Vector2(5680, 488)
@@ -652,7 +652,6 @@ dropSlightly = false
 fullySolid = true
 
 [node name="Hazards" type="Node2D" parent="."]
-visible = false
 
 [node name="Spikes" parent="Hazards" instance=ExtResource("30_82wuk")]
 position = Vector2(2240, 920)
