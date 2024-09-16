@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://bjavywoj00j1j"]
+[gd_scene load_steps=13 format=4 uid="uid://bjavywoj00j1j"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="2_533ik"]
 [ext_resource type="PackedScene" uid="uid://qs5dmtxxf1w1" path="res://Scene/Presentation/Title.tscn" id="2_l4fq6"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://cm1lcnrr22juy" path="res://Scene/Backgrounds/04-OilOcean.tscn" id="4_wms2a"]
 [ext_resource type="Script" path="res://Scripts/Objects/StateMovers/StateMoverMaster.gd" id="5"]
 [ext_resource type="TileSet" uid="uid://qd7e8tmf376" path="res://Tileset/Levels/OOZ.tres" id="6_crde5"]
 [ext_resource type="Script" path="res://Scripts/Objects/StateMovers/StateMoverTranslational.gd" id="8"]
@@ -21,6 +22,8 @@ nextZone = ExtResource("2_l4fq6")
 animal1 = 4
 animal2 = 5
 metadata/_edit_vertical_guides_ = [3600.0]
+
+[node name="04-OilOcean" parent="." instance=ExtResource("4_wms2a")]
 
 [node name="HUD" parent="." instance=ExtResource("4")]
 zoneName = "OIL OCEAN"

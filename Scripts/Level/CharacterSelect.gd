@@ -8,8 +8,8 @@ var selected = false
 const LEFT_ROWS = 14
 
 # character labels, the amount of labels in here determines the total amount of options, see the set character option at the end for settings
-var characterLabels = ["Sonic&Tails", "Sonic", "Tails", "Knuckles", "Amy"]
-var characterLabelsMiles = ["Sonic&Miles", "Sonic", "Miles", "Knuckles", "Amy"]
+var characterLabels = ["Sonic&Tails", "Sonic", "Tails", "Knuckles", "Amy","Mighty"]
+var characterLabelsMiles = ["Sonic&Miles", "Sonic", "Miles", "Knuckles", "Amy","Mighty"]
 # level labels, the amount of labels in here determines the total amount of options, see set level option at the end for settings
 var levelLabels = [ #Every one of these is a line, and some are skipped.
 	"Emerald Hill    1",
@@ -65,6 +65,7 @@ var CharacterSelectMenuID = levelIcons.size()
 var lastInput = Vector2.ZERO
 
 func _ready():
+	characterID = Global.characterSelectMemory
 	Global.music.stream = music
 	Global.music.play()
 	if nextZone != null:
@@ -163,6 +164,7 @@ func _input(event):
 					return
 			
 			Global.main.change_scene_to_file(Global.nextZone,"FadeOut","FadeOut",1)
+			Global.characterSelectMemory = characterID
 			
 func UpdateCharacterSelect():
 	# turn on and off visibility of the characters based on the current selection
@@ -174,28 +176,39 @@ func UpdateCharacterSelect():
 			$UI/LabelsRight/CharacterOrigin/Tails.position.x = -8
 			$UI/LabelsRight/CharacterOrigin/Knuckles.visible = false
 			$UI/LabelsRight/CharacterOrigin/Amy.visible = false
+			$UI/LabelsRight/CharacterOrigin/Mighty.visible = false
 		1: # Sonic
 			$UI/LabelsRight/CharacterOrigin/Sonic.visible = true
 			$UI/LabelsRight/CharacterOrigin/Sonic.position.x = 0
 			$UI/LabelsRight/CharacterOrigin/Tails.visible = false
 			$UI/LabelsRight/CharacterOrigin/Knuckles.visible = false
 			$UI/LabelsRight/CharacterOrigin/Amy.visible = false
+			$UI/LabelsRight/CharacterOrigin/Mighty.visible = false
 		2: # Tails
 			$UI/LabelsRight/CharacterOrigin/Sonic.visible = false
 			$UI/LabelsRight/CharacterOrigin/Tails.visible = true
 			$UI/LabelsRight/CharacterOrigin/Tails.position.x = 0
 			$UI/LabelsRight/CharacterOrigin/Knuckles.visible = false
 			$UI/LabelsRight/CharacterOrigin/Amy.visible = false
+			$UI/LabelsRight/CharacterOrigin/Mighty.visible = false
 		3: # Knuckles
 			$UI/LabelsRight/CharacterOrigin/Sonic.visible = false
 			$UI/LabelsRight/CharacterOrigin/Tails.visible = false
 			$UI/LabelsRight/CharacterOrigin/Knuckles.visible = true
 			$UI/LabelsRight/CharacterOrigin/Amy.visible = false
+			$UI/LabelsRight/CharacterOrigin/Mighty.visible = false
 		4: # Amy
 			$UI/LabelsRight/CharacterOrigin/Sonic.visible = false
 			$UI/LabelsRight/CharacterOrigin/Tails.visible = false
 			$UI/LabelsRight/CharacterOrigin/Knuckles.visible = false
 			$UI/LabelsRight/CharacterOrigin/Amy.visible = true
+			$UI/LabelsRight/CharacterOrigin/Mighty.visible = false
+		5: # Mighty
+			$UI/LabelsRight/CharacterOrigin/Sonic.visible = false
+			$UI/LabelsRight/CharacterOrigin/Tails.visible = false
+			$UI/LabelsRight/CharacterOrigin/Knuckles.visible = false
+			$UI/LabelsRight/CharacterOrigin/Amy.visible = false
+			$UI/LabelsRight/CharacterOrigin/Mighty.visible = true
 
 func levelSelect_UpdateText(): # levelID
 	var j = 0 #Which line to highlight

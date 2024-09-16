@@ -38,6 +38,7 @@ var zoomClamp = [1,6]
 var aspectClamp = ["4x3","16x9"]
 
 func _ready():
+	characterID = Global.characterSelectMemory
 	Global.music.stream = music
 	Global.music.play()
 
@@ -136,6 +137,7 @@ func _input(event):
 					SetPlayerCharacterIDs()
 					Global.save_settings()
 					Global.main.change_scene_to_file(returnScene,"FadeOut","FadeOut",1)
+					Global.characterSelectMemory = characterID
 
 
 func OptionsMenu_RedrawText():

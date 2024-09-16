@@ -243,6 +243,15 @@ vframes = 8
 frame = 1
 region_rect = Rect2(488, 8, 32, 40)
 
+[node name="Mighty" type="Sprite2D" parent="UI/LabelsRight/CharacterOrigin"]
+visible = false
+z_index = 3
+texture = ExtResource("4_416un")
+hframes = 2
+vframes = 8
+frame = 8
+region_rect = Rect2(488, 8, 32, 40)
+
 [node name="CharacterAnimations" type="AnimationPlayer" parent="UI/LabelsRight/CharacterOrigin"]
 libraries = {
 "": SubResource("AnimationLibrary_wio08")

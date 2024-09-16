@@ -11,6 +11,7 @@ var hud = null
 # Cheats implimented
 var levelSelectFlag = false
 var tailsNameCheat = false #if TRUE, Tails will be called "Miles"
+var characterSelectMemory = 0
 # checkpoint memory
 var checkPoints = []
 # reference for the current checkpoint
@@ -50,6 +51,7 @@ var bossMusic = null
 var effectTheme = null
 var drowning = null
 var life = null
+
 # song themes to play for things like invincibility and speed shoes
 var themes = [preload("res://Audio/Soundtrack/s2br_Invincible.ogg"),
 		preload("res://Audio/Soundtrack/s2br_SuperSonic.ogg"),
