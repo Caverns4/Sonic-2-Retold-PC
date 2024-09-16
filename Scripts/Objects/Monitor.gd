@@ -68,7 +68,7 @@ func destroy():
 			item = ITEMTYPES.ELECSHIELD
 		elif rand == 27:
 			item = ITEMTYPES.BUBBLESHIELD
-		$Item.frame = item
+		$Item.frame = item + 2
 	
 	if !isActive:
 		return false

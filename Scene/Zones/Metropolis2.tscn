@@ -1,9 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://ct2wo24donqxt"]
+[gd_scene load_steps=6 format=3 uid="uid://ct2wo24donqxt"]
 
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_f4g8u"]
+[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_rpqfi"]
+[ext_resource type="AudioStream" uid="uid://dlgpinnh0yca3" path="res://Audio/Soundtrack/s2br_Metropolis.ogg" id="2_5b87d"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="2_ykppd"]
+[ext_resource type="PackedScene" uid="uid://caxc44uymh48a" path="res://Scene/Zones/EmeraldHill1.tscn" id="3_kfgoq"]
 
 [node name="Metropolis2" type="Node2D"]
+script = ExtResource("1_rpqfi")
+zoneID = 6
+music = ExtResource("2_5b87d")
+music2P = ExtResource("2_5b87d")
+nextZone = ExtResource("3_kfgoq")
 
 [node name="HUD" parent="." instance=ExtResource("1_f4g8u")]
 playLevelCard = false

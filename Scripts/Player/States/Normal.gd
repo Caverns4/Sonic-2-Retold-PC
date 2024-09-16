@@ -219,14 +219,9 @@ func _physics_process(delta):
 		parent.camLookAmount += delta*4*sign(lookTimer)
 
 	var parentAngle = rad_to_deg(parent.angle)
-	
 	# Apply slope factor
-	# ignore this if not moving for sonic 1 and 2 style slopes
-	if (parentAngle >= 22 or parentAngle <= -22):
+	if (parentAngle >= 46 or parentAngle <= -45) or parent.movement.x !=0:
 		parent.movement.x += (parent.slp*sin(parent.angle-parent.gravityAngle))/GlobalFunctions.div_by_delta(delta)
-		#print("calcAngle")
-	#else:
-		#print("clear")
 	
 	var calcAngle = rad_to_deg(parent.angle-parent.gravityAngle)
 	if (calcAngle < 0):
