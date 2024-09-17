@@ -62,7 +62,7 @@ scroll_limit_end = Vector2(0, 256)
 scroll_ignore_camera_zoom = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.013, 0.05)
+motion_scale = Vector2(0.01, 0.05)
 motion_mirroring = Vector2(512, 0)
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxLayer"]
@@ -72,10 +72,11 @@ texture = ExtResource("1_h12tx")
 stretch_mode = 1
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.013, 0.05)
+motion_scale = Vector2(0.01, 0.05)
 motion_mirroring = Vector2(512, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxLayer2"]
+self_modulate = Color(1, 1, 1, 0.8)
 material = SubResource("ShaderMaterial_023dl")
 position = Vector2(0, 80)
 sprite_frames = SubResource("SpriteFrames_b2d52")

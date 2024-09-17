@@ -46,8 +46,9 @@ func physics_collision(body, hitVector):
 			body.movement.x = body.movement.x*0.8
 			
 			if type > 0:
-				body.movement.y = 400
-				body.velocity.y = 400
+				body.movement.y = 200
+				body.velocity.y = 200
+				body.ground = false
 				body.animator.current_animation = "roll"
 			
 			# generate brekable pieces depending on the pieces vector
