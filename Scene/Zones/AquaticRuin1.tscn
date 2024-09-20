@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8nujtm2r4age"]
+[gd_scene load_steps=9 format=4 uid="uid://b8nujtm2r4age"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_20uxj"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_bg171"]
 [ext_resource type="PackedScene" uid="uid://s4hdjd5g3p2i" path="res://Scene/Zones/AquaticRuin2.tscn" id="2_2g4qx"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="2_8wvcy"]
 [ext_resource type="AudioStream" uid="uid://ctdnv7vgg1v6k" path="res://Audio/Soundtrack/s2br_NeoGreenHill.ogg" id="2_orsd1"]
+[ext_resource type="PackedScene" uid="uid://jkb87hqbtl0l" path="res://Scene/Backgrounds/05-NeoGreenHill.tscn" id="6_lewi2"]
+[ext_resource type="TileSet" uid="uid://qd7e8tmf376" path="res://Tileset/Levels/OOZ.tres" id="7_8r1q4"]
+[ext_resource type="PackedScene" uid="uid://bnn5io8fk2i4h" path="res://Entities/Gimmicks/WaterLevel.tscn" id="8_jm1vn"]
 
 [node name="AquaticRuin1" type="Node2D"]
 script = ExtResource("1_20uxj")
@@ -14,6 +17,9 @@ music2P = ExtResource("2_orsd1")
 nextZone = ExtResource("2_2g4qx")
 animal1 = 4
 animal2 = 0
+defaultBottomBoundry = 2048
+
+[node name="05-NeoGreenHill" parent="." instance=ExtResource("6_lewi2")]
 
 [node name="HUD" parent="." instance=ExtResource("1_bg171")]
 playLevelCard = false
@@ -22,3 +28,12 @@ playLevelCard = false
 position = Vector2(96, 656)
 
 [node name="Level_Layout" type="Node2D" parent="."]
+
+[node name="Low" type="TileMapLayer" parent="Level_Layout"]
+tile_map_data = PackedByteArray("AAAAACwAAAAMAAAAAAABACwAAAANAAAAAAACACwAAAAMAAAAAAADACwAAAANAAAAAAAEACwAAAAMAAAAAAAFACwAAAANAAAAAAAGACwAAAAMAAAAAAAHACwAAAANAAAAAAAIACwAAAAMAAAAAAAJACwAAAANAAAAAAAKACwAAAAMAAAAAAALACwAAAANAAAAAAAMACwAAAAMAAAAAAANACwAAAANAAAAAAAOACwAAAAMAAAAAAAPACwAAAANAAAAAAAQACwAAAAMAAAAAAARACwAAAANAAAAAAASACwAAAAMAAAAAAATACwAAAANAAAAAAAUACwAAAAMAAAAAAAVACwAAAANAAAAAAAXACwAAAANAAAAAAAYACwAAAAMAAAAAAAWACwAAAAMAAAAAAAZACwAAAANAAAAAAAaACwAAAAMAAAAAAAbACwAAAANAAAAAAAcACwAAAAMAAAAAAAdACwAAAANAAAAAAAeACwAAAAMAAAAAAAfACwAAAANAAAAAAA=")
+tile_set = ExtResource("7_8r1q4")
+
+[node name="Entitites" type="Node2D" parent="."]
+
+[node name="WaterLevel" parent="Entitites" instance=ExtResource("8_jm1vn")]
+position = Vector2(0, 1040)

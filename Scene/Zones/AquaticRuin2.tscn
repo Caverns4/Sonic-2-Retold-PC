@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://s4hdjd5g3p2i"]
+[gd_scene load_steps=7 format=3 uid="uid://s4hdjd5g3p2i"]
 
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_u8gl0"]
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_uxs8x"]
 [ext_resource type="PackedScene" uid="uid://caxc44uymh48a" path="res://Scene/Zones/EmeraldHill1.tscn" id="2_hi4e4"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="2_msrgr"]
 [ext_resource type="AudioStream" uid="uid://ctdnv7vgg1v6k" path="res://Audio/Soundtrack/s2br_NeoGreenHill.ogg" id="2_vjshq"]
+[ext_resource type="PackedScene" uid="uid://jkb87hqbtl0l" path="res://Scene/Backgrounds/05-NeoGreenHill.tscn" id="4_dt52b"]
 
 [node name="AquaticRuin2" type="Node2D"]
 script = ExtResource("1_uxs8x")
@@ -14,6 +15,9 @@ music2P = ExtResource("2_vjshq")
 nextZone = ExtResource("2_hi4e4")
 animal1 = 4
 animal2 = 0
+defaultBottomBoundry = 2048
+
+[node name="05-NeoGreenHill" parent="." instance=ExtResource("4_dt52b")]
 
 [node name="HUD" parent="." instance=ExtResource("1_u8gl0")]
 playLevelCard = false
