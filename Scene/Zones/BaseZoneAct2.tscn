@@ -81,35 +81,35 @@ nextState = 0
 [node name="Items" type="Node2D" parent="."]
 
 [node name="Monitor" parent="Items" instance=ExtResource("16_mordc")]
-position = Vector2(512, 640)
+position = Vector2(640, 640)
 
 [node name="Monitor2" parent="Items" instance=ExtResource("16_mordc")]
-position = Vector2(544, 640)
+position = Vector2(672, 640)
 item = 1
 
 [node name="Monitor3" parent="Items" instance=ExtResource("16_mordc")]
-position = Vector2(576, 640)
+position = Vector2(704, 640)
 item = 2
 
 [node name="Monitor4" parent="Items" instance=ExtResource("16_mordc")]
-position = Vector2(608, 640)
+position = Vector2(448, 752)
 item = 3
 
 [node name="Monitor5" parent="Items" instance=ExtResource("16_mordc")]
-position = Vector2(640, 640)
-item = 4
+position = Vector2(480, 752)
+item = 3
 
 [node name="Monitor6" parent="Items" instance=ExtResource("16_mordc")]
-position = Vector2(672, 640)
-item = 5
+position = Vector2(512, 752)
+item = 3
 
 [node name="Monitor7" parent="Items" instance=ExtResource("16_mordc")]
-position = Vector2(704, 640)
-item = 6
+position = Vector2(544, 752)
+item = 3
 
 [node name="Monitor8" parent="Items" instance=ExtResource("16_mordc")]
 position = Vector2(736, 640)
-item = 7
+item = 3
 
 [node name="Monitor9" parent="Items" instance=ExtResource("16_mordc")]
 position = Vector2(768, 640)
