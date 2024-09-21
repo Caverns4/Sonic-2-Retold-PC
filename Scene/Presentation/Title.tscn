@@ -192,7 +192,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Version" type="Label" parent="CanvasLayer/Labels"]
+[node name="Date2" type="Label" parent="CanvasLayer/Labels"]
 modulate = Color(1, 1, 0, 1)
 layout_mode = 1
 anchors_preset = 2
@@ -204,11 +204,11 @@ offset_right = 138.0
 grow_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_yuhp3")
-text = "2024.09.15.01"
+text = "2024.09.20.01"
 vertical_alignment = 2
 uppercase = true
 
-[node name="Date" type="Label" parent="CanvasLayer/Labels"]
+[node name="Credit" type="Label" parent="CanvasLayer/Labels"]
 modulate = Color(1, 1, 0, 1)
 layout_mode = 1
 anchors_preset = 3
