@@ -271,77 +271,62 @@ position = Vector2(7552, 2648)
 position = Vector2(7400, 2608)
 
 [node name="GHZWaterfall" parent="Entities" instance=ExtResource("38_cmq4r")]
-material = SubResource("ShaderMaterial_ut8in")
 position = Vector2(2200, 2298)
 maxHeight = 196
 
 [node name="GHZWaterfall3" parent="Entities" instance=ExtResource("38_cmq4r")]
-material = SubResource("ShaderMaterial_ut8in")
 position = Vector2(2368, 2552)
 maxHeight = 200
 
 [node name="GHZWaterfall6" parent="Entities" instance=ExtResource("38_cmq4r")]
-material = SubResource("ShaderMaterial_ut8in")
 position = Vector2(2432, 2512)
 maxHeight = 240
 
 [node name="GHZWaterfall7" parent="Entities" instance=ExtResource("38_cmq4r")]
-material = SubResource("ShaderMaterial_ut8in")
 position = Vector2(3904, 1976)
 maxHeight = 230
 
 [node name="GHZWaterfall8" parent="Entities" instance=ExtResource("38_cmq4r")]
-material = SubResource("ShaderMaterial_ut8in")
 position = Vector2(4112, 2200)
 maxHeight = 196
 
 [node name="GHZWaterfall9" parent="Entities" instance=ExtResource("38_cmq4r")]
-material = SubResource("ShaderMaterial_ut8in")
 position = Vector2(4176, 2168)
 maxHeight = 196
 
 [node name="GHZWaterfall10" parent="Entities" instance=ExtResource("38_cmq4r")]
-material = SubResource("ShaderMaterial_ut8in")
 position = Vector2(5960, 2232)
 maxHeight = 612
 
 [node name="GHZWaterfall11" parent="Entities" instance=ExtResource("38_cmq4r")]
-material = SubResource("ShaderMaterial_ut8in")
 position = Vector2(6600, 2488)
 maxHeight = 348
 
 [node name="GHZWaterfall12" parent="Entities" instance=ExtResource("38_cmq4r")]
-material = SubResource("ShaderMaterial_ut8in")
 position = Vector2(7240, 2360)
 maxHeight = 198
 
 [node name="GHZWaterfall13" parent="Entities" instance=ExtResource("38_cmq4r")]
-material = SubResource("ShaderMaterial_ut8in")
 position = Vector2(7312, 176)
 maxHeight = 172
 
 [node name="GHZWaterfall14" parent="Entities" instance=ExtResource("38_cmq4r")]
-material = SubResource("ShaderMaterial_ut8in")
 position = Vector2(9280, 888)
 maxHeight = 132
 
 [node name="GHZWaterfall15" parent="Entities" instance=ExtResource("38_cmq4r")]
-material = SubResource("ShaderMaterial_ut8in")
 position = Vector2(9800, 824)
 maxHeight = 540
 
 [node name="GHZWaterfall2" parent="Entities" instance=ExtResource("38_cmq4r")]
-material = SubResource("ShaderMaterial_ut8in")
 position = Vector2(2056, 2136)
 maxHeight = 96
 
 [node name="GHZWaterfall5" parent="Entities" instance=ExtResource("38_cmq4r")]
-material = SubResource("ShaderMaterial_ut8in")
 position = Vector2(2120, 2168)
 maxHeight = 64
 
 [node name="GHZWaterfall4" parent="Entities" instance=ExtResource("38_cmq4r")]
-material = SubResource("ShaderMaterial_ut8in")
 position = Vector2(2240, 1592)
 maxHeight = 64
 

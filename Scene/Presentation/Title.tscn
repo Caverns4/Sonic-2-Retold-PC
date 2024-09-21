@@ -147,12 +147,16 @@ texture = ExtResource("3_vbbsi")
 [node name="Title_Tails" type="Sprite2D" parent="TitleBanner"]
 position = Vector2(-36, -40)
 texture = ExtResource("4_d2xjp")
+hframes = 5
+frame = 4
 region_rect = Rect2(190, 173, 17, 36)
 
 [node name="Title_Sonic" type="Sprite2D" parent="TitleBanner"]
-position = Vector2(33.354, -46.4)
+position = Vector2(34, -44)
 texture = ExtResource("5_tsdwn")
 offset = Vector2(8, 1)
+hframes = 5
+frame = 3
 region_rect = Rect2(214, 173, 15, 36)
 
 [node name="Camera2D" type="Camera2D" parent="TitleBanner"]
