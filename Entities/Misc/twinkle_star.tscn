@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://0msnmityfdws"]
+
+[ext_resource type="Script" path="res://Scripts/Misc/twinkle_star.gd" id="1_goc7e"]
+[ext_resource type="Texture2D" uid="uid://d0wdb3k17olg" path="res://Graphics/title/TitleStar.png" id="2_c6ryn"]
+[ext_resource type="AudioStream" uid="uid://bfji1k2ys3sgu" path="res://Audio/SFX/Misc/Twinkle.wav" id="3_nksdn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbtnk"]
+atlas = ExtResource("2_c6ryn")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4obt4"]
+atlas = ExtResource("2_c6ryn")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgcdc"]
+atlas = ExtResource("2_c6ryn")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02ne4"]
+atlas = ExtResource("2_c6ryn")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2p4c"]
+atlas = ExtResource("2_c6ryn")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1685"]
+atlas = ExtResource("2_c6ryn")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8ibh"]
+atlas = ExtResource("2_c6ryn")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ydv4g"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbtnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4obt4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgcdc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02ne4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2p4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1685")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8ibh")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"Twinkle",
+"speed": 30.0
+}]
+
+[node name="TwinkleStar" type="Node2D"]
+script = ExtResource("1_goc7e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_ydv4g")
+animation = &"Twinkle"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_nksdn")
+bus = &"SFX"

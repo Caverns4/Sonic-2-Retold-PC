@@ -6,6 +6,7 @@ extends Node2D
 var returnScene = load("res://Scene/Presentation/PoweredByWorlds.tscn")
 var optionsScene = load("res://Scene/Presentation/OptionsMenu.tscn")
 
+var titleScroll = false #If the Title Screen should move
 var titleEnd = false
 var menuActive = false
 var menuEntry = 0
@@ -50,7 +51,7 @@ var lastCheatInput = Vector2.ZERO
 func _ready():
 	Global.TwoPlayer = false
 	Global.music.stream = music
-	Global.music.play()
+	#Global.music.play()
 
 	var parallax = parallaxBackgrounds[min(Global.savedZoneID,parallaxBackgrounds.size()-1)]
 	scene = load(parallax)
@@ -62,9 +63,9 @@ func _process(delta):
 	if $CanvasLayer/Labels.visible == true and !titleEnd:
 		menuActive = true
 	
-	$TitleBanner.global_position.x += (4*60*delta)
-	# animate cogs
-	$Celebrations.global_position.x += (4*60*delta)
+	if titleScroll:
+		$TitleBanner.global_position.x += (4*60*delta)
+		$Celebrations.global_position.x += (4*60*delta)
 	
 	if !titleEnd:
 		CheckCheatInputs()
@@ -156,4 +157,8 @@ func InstantiateBG():
 	var instance = scene.instantiate()
 	instance.scroll_base_offset.y = paraOffsets[min(Global.savedZoneID,parallaxBackgrounds.size()-1)]
 	add_child(instance)
+
+func PlayMusic():
+	Global.music.play()
+	titleScroll = true #Begin scrolling
 	
