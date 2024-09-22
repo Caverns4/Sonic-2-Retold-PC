@@ -7,6 +7,7 @@ var returnScene = load("res://Scene/Presentation/PoweredByWorlds.tscn")
 var optionsScene = load("res://Scene/Presentation/OptionsMenu.tscn")
 
 var titleScroll = false #If the Title Screen should move
+var skipIntro = false #If true, the intro can be skipped.
 var titleEnd = false
 var menuActive = false
 var menuEntry = 0
@@ -27,6 +28,7 @@ var parallaxBackgrounds = [
 	"res://Scene/Backgrounds/04-OilOcean.tscn",
 	"res://Scene/Backgrounds/05-NeoGreenHill.tscn"
 ]
+var sceneInstance = null
 
 var paraOffsets = [
 	0,
@@ -62,6 +64,7 @@ func _ready():
 func _process(delta):
 	if $CanvasLayer/Labels.visible == true and !titleEnd:
 		menuActive = true
+		skipIntro = false
 	
 	if titleScroll:
 		$TitleBanner.global_position.x += (4*60*delta)
@@ -94,6 +97,10 @@ func _input(event):
 	if event.is_action_pressed("gm_pause") and !titleEnd and menuActive:
 		if menuEntry !=1:
 			MenuOptionChosen()
+	elif event.is_action_pressed("gm_pause") and !menuActive and skipIntro:
+		$TitleAnimate.play("RESET")
+		menuActive = true
+		skipIntro = false
 		
 func MenuOptionChosen():
 	#if Global.music.get_playback_position() < 14.0:
@@ -154,11 +161,13 @@ func CheckCheatInputs():
 	lastCheatInput = inputs
 
 func InstantiateBG():
-	var instance = scene.instantiate()
-	instance.scroll_base_offset.y = paraOffsets[min(Global.savedZoneID,parallaxBackgrounds.size()-1)]
-	add_child(instance)
+	if sceneInstance == null:
+		sceneInstance = scene.instantiate()
+		sceneInstance.scroll_base_offset.y = paraOffsets[min(Global.savedZoneID,parallaxBackgrounds.size()-1)]
+		add_child(sceneInstance)
 
 func PlayMusic():
 	Global.music.play()
 	titleScroll = true #Begin scrolling
+	skipIntro = true
 	
