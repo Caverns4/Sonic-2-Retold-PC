@@ -26,7 +26,8 @@ var bubbleTimer = 0.0
 var Bubble = preload("res://Entities/Misc/Bubbles.tscn")
 
 func _ready():
-	$VisibleOnScreenEnabler2D.visible = true
+	if !Engine.is_editor_hint():
+		$VisibleOnScreenEnabler2D.visible = true
 
 func _process(delta):
 	if Engine.is_editor_hint():

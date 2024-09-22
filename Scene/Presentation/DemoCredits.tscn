@@ -22,10 +22,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -168.0
-offset_top = -47.5
-offset_right = 128.0
-offset_bottom = -52.5
+offset_left = -148.0
+offset_top = -52.0
+offset_right = 148.0
+offset_bottom = -57.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_kd5bv")
@@ -36,17 +36,21 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="Credits Text" type="RichTextLabel" parent="."]
-offset_left = -76.0
+layout_mode = 0
+offset_left = -108.0
 offset_top = -4.0
-offset_right = 76.0
+offset_right = 148.0
 offset_bottom = 84.0
 theme_override_fonts/normal_font = ExtResource("2_4wis2")
 bbcode_enabled = true
-text = "Special thanks:
-Sharb
-Techokami
-Dimensionwarped
-Tonlim
-Mainmemory"
+text = "        Special thanks:
+              SEGA
+             Sharb
+           Techokami
+        Dimensionwarped
+  The Sonic modding community
+           Retro KOH
+            Tonlim
+"
 scroll_active = false
 autowrap_mode = 0
