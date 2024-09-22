@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://cymf2w6itqsjk"]
+
+[ext_resource type="FontFile" uid="uid://btb3lh3cpnc6x" path="res://Graphics/Fonts/mid_font.png" id="1_kd5bv"]
+[ext_resource type="FontFile" uid="uid://ml62eqfe7avn" path="res://Graphics/Fonts/small_font.png" id="2_4wis2"]
+
+[node name="DemoCredits" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ThankText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -168.0
+offset_top = -47.5
+offset_right = 128.0
+offset_bottom = -52.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_kd5bv")
+text = "Sonic 2 Retold
+Thank you for playing"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Credits Text" type="RichTextLabel" parent="."]
+offset_left = -76.0
+offset_top = -4.0
+offset_right = 76.0
+offset_bottom = 84.0
+theme_override_fonts/normal_font = ExtResource("2_4wis2")
+bbcode_enabled = true
+text = "Special thanks:
+Sharb
+Techokami
+Dimensionwarped
+Tonlim
+Mainmemory"
+scroll_active = false
+autowrap_mode = 0
