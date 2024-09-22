@@ -52,6 +52,9 @@ func _physics_process(delta: float) -> void:
 			if targets:
 				var waitTime = DASH_CHARGE_TIME
 				
+				if movement.x == 0:
+					movement.x = direction*WALK_SPEED
+				
 				for i in targets.size():
 					var node = targets[i]
 					if (node.get("supTime") != null):
