@@ -20,4 +20,3 @@ func _draw():
 	# show what the water level is gonna be in the editor
 	if Engine.is_editor_hint():
 		draw_line(Vector2(-16,setWaterLevel)/scale,Vector2(16,setWaterLevel)/scale,Color(0,0,1,0.5),1+(1/abs(scale.y)))
-

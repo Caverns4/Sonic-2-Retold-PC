@@ -25,6 +25,9 @@ func _ready() -> void:
 	$VisibleOnScreenEnabler2D.visible = true
 	$SpriteNode/PlayerCheck.visible = true
 	$SpriteNode/Flame.visible = false
+	if direction == 0:
+		direction = 1
+	movement.x = direction*WALK_SPEED
 
 func _physics_process(delta: float) -> void:
 	stateTimer -= delta
@@ -49,11 +52,9 @@ func _physics_process(delta: float) -> void:
 				$SpriteNode/Flame.visible = true
 			EdgeCheck()
 		_: # Walk
+			
 			if targets:
 				var waitTime = DASH_CHARGE_TIME
-				
-				if movement.x == 0:
-					movement.x = direction*WALK_SPEED
 				
 				for i in targets.size():
 					var node = targets[i]

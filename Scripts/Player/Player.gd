@@ -880,7 +880,10 @@ func _physics_process(delta):
 		if global_position.y < Global.waterLevel and water:
 			water = false
 			switch_physics(false)
-			movement.y *= 2
+			if movement.y < -600.0:
+				movement.y *= 2
+			#if movement.y < -1600.0:
+			#	movement.y = -1600.0
 			sfx[17].play()
 			var splash = Particle.instantiate()
 			splash.behaviour = splash.TYPE.FOLLOW_WATER_SURFACE
