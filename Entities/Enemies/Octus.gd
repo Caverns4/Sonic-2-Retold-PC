@@ -107,16 +107,16 @@ func shootBullet():
 	# set position with offset
 	bullet.global_position = bulletPoint.global_position
 	bullet.scale.x = 1
-	bullet.velocity.x = (direction * 200)
+	bullet.velocity.x = 0-(direction * 200)
 
 func LookAtPlayer():
 	var nearestplayer = GetClosestPlayer()
 	if nearestplayer:
 		if nearestplayer.global_position.x > global_position.x:
-			$Sprite2D.scale.x = -1
+			direction = -1
 		else:
-			$Sprite2D.scale.x = 1
-		direction = $Sprite2D.scale.x
+			direction = 1
+		$Sprite2D.scale.x = direction
 
 func GetClosestPlayer():
 	#Return the nearest player by x_pos
