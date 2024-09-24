@@ -6,6 +6,8 @@ var Piece = preload("res://Entities/Misc/BlockPiece.tscn")
 @export var sound = preload("res://Audio/SFX/Gimmicks/Collapse.wav")
 @export_enum("Standard","Fragile") var type = 0
 
+var launchXSpeed = -1
+
 func _ready() -> void:
 	# Change platform shape
 	$CollisionShape2D.shape.size.x = SpriteTexture.get_size().x
@@ -45,7 +47,7 @@ func physics_collision(body, hitVector):
 			body.velocity.x = body.velocity.x*0.8
 			body.movement.x = body.movement.x*0.8
 			
-			if type > 0:
+			if type and type > 0:
 				body.movement.y = 200
 				body.velocity.y = 200
 				body.ground = false
@@ -56,9 +58,10 @@ func physics_collision(body, hitVector):
 				for j in range (pieces.y):
 					var piece = Piece.instantiate()
 					
-					piece.velocity = Vector2(
-					lerp(1,2,i/(max(1,pieces.x-1)))*hitVector.x*(4),
+					piece.velocity = Vector2(launchXSpeed,
 					-pieces.y+j)*60
+					#piece.velocity.x = launchXSpeed
+					launchXSpeed = 0-launchXSpeed
 					
 					var spriteWidth = $Sprite2D.texture.get_width()
 					var spriteHeight = $Sprite2D.texture.get_height()

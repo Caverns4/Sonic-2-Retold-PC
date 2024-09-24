@@ -7,7 +7,7 @@ func _ready():
 	positionIcons()
 	if !Engine.is_editor_hint():
 		$CollisionShape2D.scale = size/32
-		if (get_tree().current_scene is MainGameScene) and !Global.levelSelectFlag:
+		if (get_tree().current_scene is MainGameScene): #and !Global.levelSelectFlag
 			$TopLeft.visible = false
 			$TopRight.visible = false
 			$BottomLeft.visible = false

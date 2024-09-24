@@ -30,10 +30,10 @@ func _process(delta):
 	
 	if bodies and delayTimer <= 0.0:
 		if direction < 0:
-			movementTimer += delta*12
+			movementTimer += delta*14
 			StepSoundEffect(delta)
 		else:
-			movementTimer -= delta*12
+			movementTimer -= delta*14
 			StepSoundEffect(delta)
 		
 		if direction < 0 and movementTimer >= targetHeight:

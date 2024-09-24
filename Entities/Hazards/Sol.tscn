@@ -13,12 +13,12 @@ collision_layer = 20480
 collision_mask = 8192
 script = ExtResource("1_vfq8e")
 
-[node name="PhysicsLookUp" type="Node" parent="."]
-script = ExtResource("2_w8gf6")
-
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 modulate = Color(1, 0, 0, 0.584314)
 shape = SubResource("1")
+
+[node name="PhysicsLookUp" type="Node" parent="."]
+script = ExtResource("2_w8gf6")
 
 [node name="SolArea" type="Area2D" parent="."]
 collision_layer = 0

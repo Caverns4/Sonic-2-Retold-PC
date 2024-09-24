@@ -51,7 +51,7 @@ func _physics_process(delta: float) -> void:
 	clampChildXCoords()
 	reactTime -= delta
 	if reactTime > 0.0:
-		springObjectsOnBoard(delta)
+		#springObjectsOnBoard(delta)
 		return
 	UpdateMappingsAndCollision(delta)
 	# Players cannot spring eachother up; Players can spring the counterweight,
@@ -101,14 +101,22 @@ func UpdateCollision(delta):
 		for i in weights.size():
 			var node = weights[i]
 			if node is CharacterBody2D:
+				var sizeNode = null
+				for j in node.get_child_count(true):
+					if node.get_child(j,true) is CollisionShape2D and !sizeNode:
+						sizeNode = node.get_child(j,true)
+				var nodeHeight = 0
+				if sizeNode:
+					nodeHeight = sizeNode.shape.size.y
+				
 				if balance == 0:
-					node.global_position.y = (global_position.y - 52)
+					node.global_position.y = (global_position.y - 32) - (nodeHeight/2)
 				elif balance < 0:
-					node.global_position.y = (global_position.y - 52
-					+ ((global_position.x - node.global_position.x)/1.5))
+					node.global_position.y = (global_position.y - 32
+					+ ((global_position.x - node.global_position.x)/1.5)) - (nodeHeight/2)
 				else:
-					node.global_position.y = (global_position.y - 52
-					- ((global_position.x - node.global_position.x)/1.5))
+					node.global_position.y = (global_position.y - 32
+					- ((global_position.x - node.global_position.x)/1.5)) - (nodeHeight/2)
 	reactTime = LOCK_TIME
 
 func springObjectsOnBoard(delta):

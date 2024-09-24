@@ -59,7 +59,7 @@ music2P = ExtResource("2_y1o2m")
 nextZone = ExtResource("3_2rym2")
 animal1 = 9
 animal2 = 7
-defaultRightBoundry = 10768
+defaultRightBoundry = 10752
 defaultBottomBoundry = 2048
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -494,7 +494,6 @@ position = Vector2(5680, 456)
 [node name="Breakable6" parent="Entities" instance=ExtResource("42_0cebl")]
 position = Vector2(5680, 472)
 SpriteTexture = ExtResource("43_a0fik")
-type = null
 
 [node name="Breakable7" parent="Entities" instance=ExtResource("42_0cebl")]
 position = Vector2(5680, 488)
