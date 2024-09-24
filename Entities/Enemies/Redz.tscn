@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://jgm0h2yu3hvb"]
+[gd_scene load_steps=10 format=3 uid="uid://jgm0h2yu3hvb"]
 
 [ext_resource type="Script" path="res://Entities/Enemies/Redz.gd" id="1_acnt1"]
 [ext_resource type="Texture2D" uid="uid://c80rud4lvtufe" path="res://Graphics/Enemies/Badnik_Redz.png" id="2_ufqqm"]
@@ -8,6 +8,9 @@ size = Vector2(22, 32)
 
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(22, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y2anh"]
+size = Vector2(128, 256)
 
 [sub_resource type="Animation" id="Animation_usbbl"]
 resource_name = "RESET"
@@ -88,6 +91,21 @@ texture = ExtResource("2_ufqqm")
 hframes = 3
 vframes = 2
 
+[node name="BulletPoint" type="Node2D" parent="Redz"]
+position = Vector2(-8, 0)
+
+[node name="PlayerCheck" type="Area2D" parent="Redz"]
+visible = false
+z_index = -1
+position = Vector2(0, -4)
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Redz/PlayerCheck"]
+modulate = Color(1, 1, 1, 0.352941)
+position = Vector2(-64, 4)
+shape = SubResource("RectangleShape2D_y2anh")
+
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 visible = false
 z_index = -100
@@ -106,3 +124,5 @@ libraries = {
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
+[connection signal="body_entered" from="Redz/PlayerCheck" to="." method="_on_player_check_body_entered"]
+[connection signal="body_exited" from="Redz/PlayerCheck" to="." method="_on_player_check_body_exited"]

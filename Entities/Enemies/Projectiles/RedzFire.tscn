@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://bm4e2oyt0wjbm"]
+
+[ext_resource type="Script" path="res://Entities/Enemies/Projectiles/redz_fire.gd" id="1_xpycd"]
+[ext_resource type="Texture2D" uid="uid://b6xuwowbbovjp" path="res://Graphics/Enemies/RedzFire.png" id="2_bmsdi"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(4, 4)
+
+[sub_resource type="Animation" id="Animation_51ir3"]
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("projectile:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 1, 2, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dvgr6"]
+_data = {
+"RESET": SubResource("Animation_51ir3")
+}
+
+[node name="RedzFire" type="CharacterBody2D"]
+collision_layer = 16384
+collision_mask = 0
+script = ExtResource("1_xpycd")
+damageType = 1
+canBeReflect = false
+
+[node name="CollissionMask" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 528384
+
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+modulate = Color(1, 0, 0, 1)
+shape = SubResource("1")
+
+[node name="projectile" type="Sprite2D" parent="."]
+texture = ExtResource("2_bmsdi")
+hframes = 3
+frame = 1
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(2.1, 2.1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dvgr6")
+}
+autoplay = "RESET"
+
+[connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
