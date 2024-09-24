@@ -882,7 +882,7 @@ func _physics_process(delta):
 			switch_physics(false)
 			if abs(movement.y) <= jmp:
 				movement.y *= 2
-			movement.y = clampf(movement.y,0-(20*60),(20*60))
+			movement.y = clampf(movement.y,0-(16*60),(16*60))
 			sfx[17].play()
 			var splash = Particle.instantiate()
 			splash.behaviour = splash.TYPE.FOLLOW_WATER_SURFACE
