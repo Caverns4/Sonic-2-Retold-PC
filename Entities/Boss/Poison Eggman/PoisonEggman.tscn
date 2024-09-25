@@ -1,41 +1,41 @@
-[gd_scene load_steps=16 format=3 uid="uid://ckrsmw0ki80m7"]
+[gd_scene load_steps=16 format=3 uid="uid://dw4ysdt7fckye"]
 
-[ext_resource type="Script" path="res://Scripts/Boss/BossBase.gd" id="1"]
-[ext_resource type="AudioStream" uid="uid://bvhfglhmpystw" path="res://Audio/SFX/Boss/Hit.wav" id="2"]
-[ext_resource type="Texture2D" uid="uid://6ds1jcc8jmyf" path="res://Graphics/Boss/Eggmobile.png" id="3"]
-[ext_resource type="Texture2D" uid="uid://d0i06mnbra5yc" path="res://Graphics/Boss/Robotnik.png" id="3_4ehki"]
-[ext_resource type="Texture2D" uid="uid://c31pi0okhicpx" path="res://Graphics/Boss/Eggmobile_Top.png" id="4_o6854"]
+[ext_resource type="Script" path="res://Entities/Boss/Poison Eggman/poison_eggman.gd" id="1_30xqr"]
+[ext_resource type="Texture2D" uid="uid://6ds1jcc8jmyf" path="res://Graphics/Boss/Eggmobile.png" id="2_18wch"]
+[ext_resource type="Texture2D" uid="uid://d0i06mnbra5yc" path="res://Graphics/Boss/Robotnik.png" id="3_8p31e"]
+[ext_resource type="Texture2D" uid="uid://c31pi0okhicpx" path="res://Graphics/Boss/Eggmobile_Top.png" id="4_hwtff"]
+[ext_resource type="AudioStream" uid="uid://bvhfglhmpystw" path="res://Audio/SFX/Boss/Hit.wav" id="5_27acd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8gg6r"]
-atlas = ExtResource("3_4ehki")
+atlas = ExtResource("3_8p31e")
 region = Rect2(0, 0, 64, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_41324"]
-atlas = ExtResource("3_4ehki")
+atlas = ExtResource("3_8p31e")
 region = Rect2(0, 16, 64, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vr3ju"]
-atlas = ExtResource("3_4ehki")
+atlas = ExtResource("3_8p31e")
 region = Rect2(0, 48, 64, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v4lk1"]
-atlas = ExtResource("3_4ehki")
+atlas = ExtResource("3_8p31e")
 region = Rect2(0, 32, 64, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kkgp8"]
-atlas = ExtResource("3_4ehki")
+atlas = ExtResource("3_8p31e")
 region = Rect2(0, 64, 64, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5w20l"]
-atlas = ExtResource("3_4ehki")
+atlas = ExtResource("3_8p31e")
 region = Rect2(0, 80, 64, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1afxm"]
-atlas = ExtResource("3_4ehki")
+atlas = ExtResource("3_8p31e")
 region = Rect2(0, 0, 64, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8m5w5"]
-atlas = ExtResource("3_4ehki")
+atlas = ExtResource("3_8p31e")
 region = Rect2(0, 16, 64, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_edd2b"]
@@ -96,16 +96,16 @@ size = Vector2(48, 48)
 [node name="Boss" type="CharacterBody2D"]
 collision_layer = 16384
 collision_mask = 0
-script = ExtResource("1")
+script = ExtResource("1_30xqr")
 
 [node name="EggMobile" type="Sprite2D" parent="."]
 position = Vector2(0, 19)
-texture = ExtResource("3")
+texture = ExtResource("2_18wch")
 offset = Vector2(0, -8)
 
 [node name="Eggmobile_Top" type="Sprite2D" parent="EggMobile"]
 position = Vector2(10, -48)
-texture = ExtResource("4_o6854")
+texture = ExtResource("4_hwtff")
 
 [node name="Robotnik" type="AnimatedSprite2D" parent="EggMobile"]
 z_index = -1
@@ -117,7 +117,7 @@ animation = &"laugh"
 shape = SubResource("5")
 
 [node name="Hit" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2")
+stream = ExtResource("5_27acd")
 bus = &"SFX"
 
 [node name="HitBox" type="Area2D" parent="."]

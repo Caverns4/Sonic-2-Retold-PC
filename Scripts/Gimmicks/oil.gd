@@ -1,8 +1,9 @@
 @tool
 extends Node2D
 
-var Platform = preload("res://Entities/Obstacles/InvisiblePlatform.tscn")
+@export var sinkingSpeed = 16
 
+var Platform = preload("res://Entities/Obstacles/InvisiblePlatform.tscn")
 var playerPlatforms = [] #one node per player
 var weightVals = [] # How long each player's been standing on their respective platform.
 var restPos = 0 #Position the invisible platforms move up to.
@@ -14,6 +15,7 @@ func _ready():
 		var size = Vector2(32*scale.x,32*scale.y)
 		restPos = global_position.y #- (size.y/2)
 		
+		var ID = 1
 		#On init, setup an array for every player.
 		for i in Global.players.size()+1:
 			var node = Platform.instantiate()
@@ -21,6 +23,8 @@ func _ready():
 			playerPlatforms.append(node)
 			weightVals.insert(weightVals.size(),0.0)
 			node.top_level = true
+			node.whichChar = ID
+			ID += 1
 		
 
 func _physics_process(delta: float) -> void:
@@ -39,9 +43,8 @@ func _physics_process(delta: float) -> void:
 			var plat = playerPlatforms[i]
 			plat.global_position.y = restPos + weightVals[i]
 			plat.global_position.x = Global.players[i].global_position.x
-			
 			if plat.get_collision_layer_value(1):
-				weightVals[i] += (delta*16)
+				weightVals[i] += (delta*sinkingSpeed)
 			else:
 				weightVals[i] = 0.0
 
