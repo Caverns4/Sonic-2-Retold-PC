@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://hj3tt0gklwba"]
+[gd_scene load_steps=24 format=4 uid="uid://hj3tt0gklwba"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://bjavywoj00j1j" path="res://Scene/Zones/BaseZoneAct2.tscn" id="2_8ek7k"]
@@ -14,6 +14,7 @@
 [ext_resource type="TileSet" uid="uid://dn42tsjf760q0" path="res://Graphics/Tiles/MCZPlatform.tres" id="13_biut5"]
 [ext_resource type="PackedScene" uid="uid://bgodeg4oddje6" path="res://Entities/MainObjects/BoundrySetter.tscn" id="17_vgt3l"]
 [ext_resource type="PackedScene" uid="uid://cyun8u3qemt5i" path="res://Entities/Gimmicks/ScrewPlatform.tscn" id="21_5kimb"]
+[ext_resource type="PackedScene" uid="uid://bvtk4rs7h7sup" path="res://Entities/Gimmicks/Oil.tscn" id="21_yc6vl"]
 [ext_resource type="PackedScene" uid="uid://c8djwr7o6d6f7" path="res://Entities/Enemies/Octus.tscn" id="28_fcslk"]
 [ext_resource type="PackedScene" uid="uid://dnbjgwbrkknnu" path="res://Entities/Gimmicks/ConveyorBelt.tscn" id="39_8a2xw"]
 [ext_resource type="PackedScene" uid="uid://bnv0qhju3sj1a" path="res://Entities/Hazards/Crusher.tscn" id="53_7lge8"]
@@ -164,6 +165,10 @@ position = Vector2(9872, 40)
 [node name="Octus" parent="." instance=ExtResource("28_fcslk")]
 position = Vector2(720, 1728)
 behavior = 1
+
+[node name="Oil" parent="." instance=ExtResource("21_yc6vl")]
+position = Vector2(16384, 1856)
+scale = Vector2(1024, 1)
 
 [connection signal="body_entered" from="Platforms/MCZCollapsePlatform" to="Platforms/MCZCollapsePlatform" method="_on_body_entered"]
 [connection signal="body_exited" from="Platforms/MCZCollapsePlatform" to="Platforms/MCZCollapsePlatform" method="_on_body_exited"]

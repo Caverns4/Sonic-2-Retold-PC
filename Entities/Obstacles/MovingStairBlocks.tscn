@@ -16,7 +16,7 @@ process_priority = 10
 visible = false
 position = Vector2(-48, -48)
 collision_layer = 8192
-collision_mask = 0
+collision_mask = 2097152
 
 [node name="Shape3D" type="CollisionShape2D" parent="Platform"]
 modulate = Color(1, 1, 1, 0.0980392)
@@ -32,7 +32,7 @@ process_priority = 10
 visible = false
 position = Vector2(48, 48)
 collision_layer = 8192
-collision_mask = 0
+collision_mask = 2097152
 
 [node name="Shape3D" type="CollisionShape2D" parent="Platform4"]
 modulate = Color(1, 1, 1, 0.0980392)
@@ -48,7 +48,7 @@ process_priority = 10
 visible = false
 position = Vector2(-16, -16)
 collision_layer = 8192
-collision_mask = 0
+collision_mask = 2097152
 
 [node name="Shape3D" type="CollisionShape2D" parent="Platform2"]
 modulate = Color(1, 1, 1, 0.0980392)
@@ -64,7 +64,7 @@ process_priority = 10
 visible = false
 position = Vector2(16, 16)
 collision_layer = 8192
-collision_mask = 0
+collision_mask = 2097152
 
 [node name="Shape3D" type="CollisionShape2D" parent="Platform3"]
 modulate = Color(1, 1, 1, 0.0980392)

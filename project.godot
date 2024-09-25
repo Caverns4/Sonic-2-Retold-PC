@@ -227,6 +227,8 @@ ui_reset={
 2d_physics/layer_22="Crusher"
 2d_physics/layer_23="WaterSurface"
 2d_physics/layer_24="Boss"
+2d_physics/layer_31="Player Only"
+2d_physics/layer_32="Partner Only"
 
 [rendering]
 
