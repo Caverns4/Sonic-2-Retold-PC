@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://cyh8p6ji14r0t"]
+[gd_scene load_steps=50 format=4 uid="uid://cyh8p6ji14r0t"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_ijtho"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="2_vefax"]
@@ -45,6 +45,7 @@
 [ext_resource type="PackedScene" uid="uid://bt7aqgv2h8os6" path="res://Entities/Obstacles/BreakableFloor.tscn" id="42_0cebl"]
 [ext_resource type="Texture2D" uid="uid://33fwqll5rb60" path="res://Graphics/Obstacles/BreakFloors/HTZ_BreakableFloor2.png" id="43_a0fik"]
 [ext_resource type="Texture2D" uid="uid://c7oef8lrbdbws" path="res://Graphics/Obstacles/BreakFloors/HTZ_BreakableFloor3.png" id="44_n0x2o"]
+[ext_resource type="PackedScene" uid="uid://c8ohi5adbflnt" path="res://Entities/Enemies/Rexon.tscn" id="45_e3cyb"]
 [ext_resource type="Texture2D" uid="uid://csu3q4bwre2x4" path="res://Graphics/Obstacles/BreakFloors/HTZ_BreakableFloor4.png" id="45_p5a0n"]
 [ext_resource type="PackedScene" uid="uid://dq7iu2jaofqew" path="res://Entities/Misc/character_cameo.tscn" id="47_fuo0d"]
 
@@ -446,7 +447,7 @@ position = Vector2(3528, 1120)
 counterWeightSprite = ExtResource("31_8xakr")
 
 [node name="HtzSeeSaw10" parent="Entities" instance=ExtResource("37_geevq")]
-position = Vector2(3584, 1992)
+position = Vector2(3560, 1992)
 counterWeightSprite = ExtResource("31_8xakr")
 
 [node name="HtzSeeSaw3" parent="Entities" instance=ExtResource("37_geevq")]
@@ -1263,6 +1264,12 @@ position = Vector2(5760, 288)
 [node name="Orbinaut" parent="Badniks" instance=ExtResource("22_ydut8")]
 position = Vector2(3600, 304)
 distance = 20
+
+[node name="Rexon" parent="Badniks" instance=ExtResource("45_e3cyb")]
+position = Vector2(1616, 1856)
+
+[node name="Rexon2" parent="Badniks" instance=ExtResource("45_e3cyb")]
+position = Vector2(4416, 1472)
 
 [node name="Earthquake" type="Node2D" parent="."]
 script = ExtResource("22_p4hee")

@@ -1,18 +1,50 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8ohi5adbflnt"]
+[gd_scene load_steps=5 format=3 uid="uid://c8ohi5adbflnt"]
 
+[ext_resource type="Script" path="res://Scripts/Enemies/rexon.gd" id="1_dscdr"]
 [ext_resource type="Texture2D" uid="uid://c1uecljh2hxsq" path="res://Graphics/Enemies/Rexon.png" id="1_jwynl"]
+[ext_resource type="PackedScene" uid="uid://blun7ipxkwbu5" path="res://Entities/Enemies/RexonHead.tscn" id="2_ulpo3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iix56"]
 size = Vector2(32, 16)
 
-[node name="Rexon" type="StaticBody2D"]
+[node name="Rexon" type="Node2D"]
+script = ExtResource("1_dscdr")
+
+[node name="Rexon Body" type="StaticBody2D" parent="."]
 collision_layer = 15
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rexon Body"]
 shape = SubResource("RectangleShape2D_iix56")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="Rexon Body"]
 texture = ExtResource("1_jwynl")
 vframes = 3
 frame = 2
+
+[node name="Neck1" type="Sprite2D" parent="."]
+position = Vector2(-16, -8)
+texture = ExtResource("1_jwynl")
+vframes = 3
+frame = 1
+
+[node name="Neck2" type="Sprite2D" parent="."]
+position = Vector2(-17, -24)
+texture = ExtResource("1_jwynl")
+vframes = 3
+frame = 1
+
+[node name="Neck3" type="Sprite2D" parent="."]
+position = Vector2(-18, -40)
+texture = ExtResource("1_jwynl")
+vframes = 3
+frame = 1
+
+[node name="Neck4" type="Sprite2D" parent="."]
+position = Vector2(-19, -56)
+texture = ExtResource("1_jwynl")
+vframes = 3
+frame = 1
+
+[node name="RexonHead" parent="." instance=ExtResource("2_ulpo3")]
+position = Vector2(-27, -66)
