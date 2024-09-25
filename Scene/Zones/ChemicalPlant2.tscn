@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://b73oxpdf64ys2"]
+[gd_scene load_steps=45 format=4 uid="uid://b73oxpdf64ys2"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_r8kv3"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_sbiln"]
@@ -36,6 +36,8 @@
 [ext_resource type="PackedScene" uid="uid://xbidybme3tde" path="res://Entities/Enemies/Spiny.tscn" id="30_po1yj"]
 [ext_resource type="PackedScene" uid="uid://cejf7f3r45h0c" path="res://Entities/Gimmicks/BubbleGenerator.tscn" id="35_hf0o7"]
 [ext_resource type="PackedScene" uid="uid://6hnjqkn2cl62" path="res://Entities/Gimmicks/CPZTippingPipe.tscn" id="36_4srbb"]
+[ext_resource type="PackedScene" uid="uid://vh0ailk0432j" path="res://Entities/Boss/BossBoundrySetter.tscn" id="37_6lr32"]
+[ext_resource type="PackedScene" uid="uid://dw4ysdt7fckye" path="res://Entities/Boss/Poison Eggman/PoisonEggman.tscn" id="38_vediw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_da7so"]
 shader = ExtResource("8_fvcep")
@@ -1685,3 +1687,13 @@ script = ExtResource("25_7q6q8")
 hitBoxSize = Vector2(16, 16)
 split = true
 splitChance = 50
+
+[node name="Boss" type="Node2D" parent="."]
+
+[node name="BossBoundrySetter" parent="Boss" instance=ExtResource("37_6lr32")]
+position = Vector2(11712, 1208)
+bossPath = NodePath("../PoisonEggman")
+keepRightLocked = false
+
+[node name="PoisonEggman" parent="Boss" instance=ExtResource("38_vediw")]
+position = Vector2(11712, 1192)
