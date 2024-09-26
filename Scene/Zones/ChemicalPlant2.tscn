@@ -1691,7 +1691,7 @@ splitChance = 50
 [node name="Boss" type="Node2D" parent="."]
 
 [node name="BossBoundrySetter" parent="Boss" instance=ExtResource("37_6lr32")]
-position = Vector2(11712, 1208)
+position = Vector2(11712, 912)
 bossPath = NodePath("../PoisonEggman")
 keepRightLocked = false
 

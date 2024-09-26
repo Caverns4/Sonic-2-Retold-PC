@@ -102,6 +102,7 @@ func _ready():
 		Global.emit_stage_start()
 		# wait for title card animator to finish ending before starting the level timer
 		await $LevelCard/CardPlayer.animation_finished
+		Global.main.sceneCanPause = true
 	else:
 		get_tree().paused = true
 		await get_tree().process_frame # delay unpausing for one frame so the player doesn't die immediately
@@ -219,6 +220,8 @@ func _process(delta):
 		flashTimer -= delta
 	
 	# stage clear handling
+	if Global.stageClearPhase > 0 and Global.main.sceneCanPause:
+		Global.main.sceneCanPause = false
 	if Global.stageClearPhase > 2:
 		# initialize stage clear sequence
 		if !isStageEnding:
