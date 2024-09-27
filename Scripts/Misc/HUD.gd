@@ -18,6 +18,9 @@ extends CanvasLayer
 @export var waterSourceColor = preload("res://Graphics/Palettes/BasePal.png")
 @export var waterReplaceColor = preload("res://Graphics/Palettes/WetPal.png")
 
+@export var ringsForPerfect = 999 # Rings required for a perfect bonus. If the player takes damage, set to impossible value.
+
+
 # used for flashing ui elements (rings, time)
 var flashTimer = 0
 
@@ -27,6 +30,7 @@ var isStageEnding = false
 # level clear bonuses (check _on_CounterCount_timeout)
 var timeBonus = 0
 var ringBonus = 0
+var perfectBonus = 0
 
 # gameOver is used to initialize the game over animation sequence, note: this is for animation, if you want to use the game over status it's in global
 var gameOver = false
@@ -226,6 +230,9 @@ func _process(delta):
 		# initialize stage clear sequence
 		if !isStageEnding:
 			isStageEnding = true
+			if Global.players[0].rings >= ringsForPerfect:
+				$LevelClear/PerfectBonusText.visible = true
+				perfectBonus = 50000
 			
 			# show level clear elements
 			$LevelClear.visible = true
@@ -235,6 +242,7 @@ func _process(delta):
 			# set bonuses
 			ringBonus = floor(Global.players[focusPlayer].rings)*100
 			$LevelClear/RingBonusText/RingBonus.text = "%6d" % ringBonus
+			$LevelClear/PerfectBonusText/PerfectBonus.text = "%6d" % perfectBonus
 			timeBonus = 0
 			# bonus time table
 			var bonusTable = [
@@ -312,6 +320,11 @@ func _on_CounterCount_timeout():
 		Global.check_score_life(100)
 		ringBonus -= 100
 		Global.score += 100
+	elif perfectBonus > 0:
+		# check if adding score would hit the life bonus
+		Global.check_score_life(100)
+		perfectBonus -= 100
+		Global.score += 100
 	else:
 		# stop counter timer and play score sound
 		$LevelClear/Counter.play()
@@ -322,6 +335,6 @@ func _on_CounterCount_timeout():
 	# set the level clear strings to the bonuses
 	$LevelClear/TotalText/TallyTotal.text = scoreText.text
 	$LevelClear/TimeBonusText/TimeBonus.text = "%6d" % timeBonus
-	$LevelClear/PerfectBonusText/PerfectBonus.text = "%6d" % 0
+	$LevelClear/PerfectBonusText/PerfectBonus.text = "%6d" % perfectBonus
 	$LevelClear/RingBonusText/RingBonus.text = "%6d" % ringBonus
 	
