@@ -9,8 +9,9 @@ extends Node2D
 @export var offset = 0.0 # Initial offset, this can be used to offset the movements between other platforms # (float, 0.0, 3.1415)
 @export var waitTime = 4.0 #Wait time in Seconds
 
-var activated = false #If the player has stood on the platform
-var activeTimer = 0.0 #Timespan the ojbect has been active for. Use this instead of level timer.
+var activated = false # If the player has stood on the platform
+var activeTimer = 0.0 # Timespan the ojbect has been active for. Use this instead of level timer.
+var delayTimer = 0.0 #time to wait at the peak of the platform's motion.
 
 #State machine
 enum STATES{IDLE,PATHTO,COUNTDOWN,PATHFROM}
@@ -61,11 +62,12 @@ func _physics_process(delta):
 				activeTimer+=(delta)
 				if round(getPos) == Vector2.ZERO:
 					state = STATES.COUNTDOWN
+					delayTimer = waitTime
 			STATES.COUNTDOWN:
 			#Wait for Player to get off, await Timer waitTime
 				activated = false
-				#await get_tree().create_timer(waitTime).timeout
-				if round(getPos) == Vector2.ZERO:
+				delayTimer -= delta
+				if delayTimer <= 0: #round(getPos) == Vector2.ZERO:
 					state = STATES.PATHFROM
 			STATES.PATHFROM:
 				# Return home, set active to false, state = SATES.IDLE

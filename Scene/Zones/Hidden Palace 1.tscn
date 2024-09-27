@@ -227,6 +227,7 @@ zoneName = "HIDDEN PALACE"
 act = 0
 waterSourceColor = ExtResource("8_5gioe")
 waterReplaceColor = ExtResource("9_5b47l")
+ringsForPerfect = 350
 
 [node name="01-HiddenPalace" parent="." instance=ExtResource("7_vtcww")]
 
@@ -651,7 +652,7 @@ position = Vector2(2560, 2176)
 position = Vector2(2688, 2210)
 
 [node name="HpzPlatformSpawner3" parent="Entities" instance=ExtResource("41_64hll")]
-position = Vector2(3328, 2336)
+position = Vector2(3328, 2320)
 
 [node name="HpzPlatformSpawner11" parent="Entities" instance=ExtResource("41_64hll")]
 position = Vector2(2432, 1472)
@@ -1077,6 +1078,9 @@ position = Vector2(8720, 816)
 [node name="Monitor13" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
 position = Vector2(6928, 2480)
 item = 2
+
+[node name="Monitor23" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
+position = Vector2(6928, 1968)
 
 [node name="Monitor14" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
 position = Vector2(8944, 2224)
@@ -1673,6 +1677,33 @@ position = Vector2(4680, 2032)
 
 [node name="Ring139" parent="Rings" instance=ExtResource("42_s707l")]
 position = Vector2(4704, 2032)
+
+[node name="Ring188" parent="Rings" instance=ExtResource("42_s707l")]
+position = Vector2(7528, 320)
+
+[node name="Ring189" parent="Rings" instance=ExtResource("42_s707l")]
+position = Vector2(7552, 320)
+
+[node name="Ring190" parent="Rings" instance=ExtResource("42_s707l")]
+position = Vector2(7576, 320)
+
+[node name="Ring191" parent="Rings" instance=ExtResource("42_s707l")]
+position = Vector2(8040, 320)
+
+[node name="Ring192" parent="Rings" instance=ExtResource("42_s707l")]
+position = Vector2(8064, 320)
+
+[node name="Ring193" parent="Rings" instance=ExtResource("42_s707l")]
+position = Vector2(8088, 320)
+
+[node name="Ring194" parent="Rings" instance=ExtResource("42_s707l")]
+position = Vector2(9264, 784)
+
+[node name="Ring195" parent="Rings" instance=ExtResource("42_s707l")]
+position = Vector2(9288, 784)
+
+[node name="Ring196" parent="Rings" instance=ExtResource("42_s707l")]
+position = Vector2(9312, 784)
 
 [node name="Ring140" parent="Rings" instance=ExtResource("42_s707l")]
 position = Vector2(4872, 1952)
