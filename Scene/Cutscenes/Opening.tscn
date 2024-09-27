@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhpf6ig75utax"]
+
+[ext_resource type="FontFile" uid="uid://ml62eqfe7avn" path="res://Graphics/Fonts/small_font.png" id="1_p7avf"]
+
+[node name="Opening" type="Node2D"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Labels" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_right = 160.0
+offset_bottom = 224.0
+grow_horizontal = 2
+
+[node name="CustsceneText" type="RichTextLabel" parent="UI/Labels"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 192.0
+offset_right = 128.0
+offset_bottom = 216.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("1_p7avf")
+bbcode_enabled = true
+text = "        Sonic the hedgehog
+
+     went to Westside Island"
+scroll_active = false
+autowrap_mode = 0
+meta_underlined = false
+hint_underlined = false
+text_direction = 1
