@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://b25bf70l62rjr"]
+[gd_scene load_steps=51 format=4 uid="uid://b25bf70l62rjr"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_o6dl6"]
 [ext_resource type="AudioStream" uid="uid://dhw5trv54kut7" path="res://Audio/Soundtrack/s2br_HillTop.ogg" id="2_5rsgg"]
@@ -48,6 +48,7 @@
 [ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="40_l2qxi"]
 [ext_resource type="PackedScene" uid="uid://c8ohi5adbflnt" path="res://Entities/Enemies/Rexon.tscn" id="43_3jeuf"]
 [ext_resource type="Script" path="res://Scene/Zones/Earthquakes.gd" id="43_lpn1e"]
+[ext_resource type="PackedScene" uid="uid://bct374kjctkxr" path="res://Entities/Items/Checkpoint.tscn" id="46_3s8wa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1ntj"]
 size = Vector2(1216, 2048)
@@ -1042,6 +1043,29 @@ item = 12
 
 [node name="Monitor13" parent="ItemsHolder" instance=ExtResource("31_43keb")]
 position = Vector2(10224, 1778)
+
+[node name="Checkpoint" parent="ItemsHolder" instance=ExtResource("46_3s8wa")]
+position = Vector2(1792, 1264)
+
+[node name="Checkpoint2" parent="ItemsHolder" instance=ExtResource("46_3s8wa")]
+position = Vector2(3520, 1520)
+checkPointID = 1
+
+[node name="Checkpoint3" parent="ItemsHolder" instance=ExtResource("46_3s8wa")]
+position = Vector2(4416, 1292)
+checkPointID = 2
+
+[node name="Checkpoint4" parent="ItemsHolder" instance=ExtResource("46_3s8wa")]
+position = Vector2(4912, 1708)
+checkPointID = 3
+
+[node name="Checkpoint5" parent="ItemsHolder" instance=ExtResource("46_3s8wa")]
+position = Vector2(8072, 456)
+checkPointID = 4
+
+[node name="Checkpoint6" parent="ItemsHolder" instance=ExtResource("46_3s8wa")]
+position = Vector2(11328, 1260)
+checkPointID = 4
 
 [node name="Rings" type="Node2D" parent="."]
 

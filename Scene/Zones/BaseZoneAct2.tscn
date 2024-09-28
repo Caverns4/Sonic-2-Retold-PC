@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://bjavywoj00j1j"]
+[gd_scene load_steps=21 format=4 uid="uid://bjavywoj00j1j"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="2_533ik"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="10"]
 [ext_resource type="PackedScene" uid="uid://ra3mqewhj6kl" path="res://Entities/Hazards/Saw.tscn" id="11"]
 [ext_resource type="PackedScene" uid="uid://bvtk4rs7h7sup" path="res://Entities/Gimmicks/Oil.tscn" id="11_4ni42"]
+[ext_resource type="PackedScene" uid="uid://cma7d8l5wmqmd" path="res://Entities/Items/LampPost.tscn" id="13_jxlfr"]
 [ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="14_dvndm"]
 [ext_resource type="Texture2D" uid="uid://cg1q7jjh7dt8d" path="res://Graphics/Objects_Zone/OOZ_Plat.png" id="15_qke1j"]
 [ext_resource type="PackedScene" uid="uid://bgodeg4oddje6" path="res://Entities/MainObjects/BoundrySetter.tscn" id="16_ex1d3"]
@@ -131,6 +132,9 @@ item = 12
 [node name="Monitor14" parent="ItemsHolder" instance=ExtResource("16_mordc")]
 position = Vector2(1128, 1488)
 item = 13
+
+[node name="LampPost" parent="ItemsHolder" instance=ExtResource("13_jxlfr")]
+position = Vector2(1312, 1576)
 
 [node name="Rings" type="Node2D" parent="."]
 
