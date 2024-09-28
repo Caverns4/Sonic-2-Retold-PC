@@ -20,7 +20,7 @@ defaultBottomBoundry = 2048
 [node name="05-NeoGreenHill" parent="." instance=ExtResource("4_dt52b")]
 
 [node name="HUD" parent="." instance=ExtResource("1_u8gl0")]
-playLevelCard = false
+zoneName = "NEO GREEN HILL"
 
 [node name="Player" parent="." instance=ExtResource("2_msrgr")]
 position = Vector2(96, 656)

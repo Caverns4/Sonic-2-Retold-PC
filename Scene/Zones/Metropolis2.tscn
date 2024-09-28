@@ -14,7 +14,8 @@ music2P = ExtResource("2_5b87d")
 nextZone = ExtResource("3_kfgoq")
 
 [node name="HUD" parent="." instance=ExtResource("1_f4g8u")]
-playLevelCard = false
+zoneName = "METROPOLIS"
+act = 2
 
 [node name="Player" parent="." instance=ExtResource("2_ykppd")]
 position = Vector2(96, 656)

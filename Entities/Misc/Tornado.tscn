@@ -1,0 +1,162 @@
+[gd_scene load_steps=23 format=3 uid="uid://oce7phvjxdbv"]
+
+[ext_resource type="Texture2D" uid="uid://cqk04hqgn2v8b" path="res://Graphics/Players/Sonic_Beta.png" id="1_wlsqm"]
+[ext_resource type="Texture2D" uid="uid://efvmmjbj4otb" path="res://Graphics/Misc/Tornado_Main.png" id="2_8cebi"]
+[ext_resource type="Texture2D" uid="uid://c05fsbnx0p7xf" path="res://Graphics/Players/Tails.png" id="2_jit23"]
+[ext_resource type="Texture2D" uid="uid://jea1meugvs4b" path="res://Graphics/Misc/Tornado_Blade.png" id="3_va0b2"]
+[ext_resource type="Texture2D" uid="uid://lguk2n18twhg" path="res://Graphics/Misc/Tornado_Jet.png" id="5_pk086"]
+[ext_resource type="Texture2D" uid="uid://cl12sj2lb8bka" path="res://Graphics/Misc/Tornado_Fire.png" id="6_p5rm2"]
+[ext_resource type="Texture2D" uid="uid://d2xlm7qxec0or" path="res://Graphics/Misc/Tornado_Sonic.png" id="7_pkbdi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kll0"]
+atlas = ExtResource("3_va0b2")
+region = Rect2(0, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6kgl"]
+atlas = ExtResource("3_va0b2")
+region = Rect2(16, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_482ex"]
+atlas = ExtResource("3_va0b2")
+region = Rect2(32, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8bxx"]
+atlas = ExtResource("3_va0b2")
+region = Rect2(48, 0, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gnswb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kll0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6kgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_482ex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8bxx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fubuv"]
+atlas = ExtResource("6_p5rm2")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5c4j8"]
+atlas = ExtResource("6_p5rm2")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kc6t6"]
+atlas = ExtResource("6_p5rm2")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0678s"]
+atlas = ExtResource("6_p5rm2")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yb48n"]
+atlas = ExtResource("6_p5rm2")
+region = Rect2(128, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kug28"]
+atlas = ExtResource("6_p5rm2")
+region = Rect2(160, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7v1lp"]
+atlas = ExtResource("6_p5rm2")
+region = Rect2(192, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijkpv"]
+atlas = ExtResource("6_p5rm2")
+region = Rect2(224, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nnl2y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fubuv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5c4j8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kc6t6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0678s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yb48n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kug28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7v1lp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijkpv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b6v0j"]
+size = Vector2(106, 56)
+
+[node name="Tornado" type="CharacterBody2D"]
+
+[node name="TornadoMain" type="Node2D" parent="."]
+
+[node name="Pilot" type="Node2D" parent="TornadoMain"]
+
+[node name="PilotSonic" type="Sprite2D" parent="TornadoMain/Pilot"]
+position = Vector2(-2, -48)
+texture = ExtResource("1_wlsqm")
+hframes = 16
+vframes = 8
+
+[node name="PilotTails" type="Sprite2D" parent="TornadoMain/Pilot"]
+visible = false
+position = Vector2(-2, -48)
+texture = ExtResource("2_jit23")
+hframes = 16
+vframes = 8
+
+[node name="TornadoBody" type="Sprite2D" parent="TornadoMain"]
+position = Vector2(1, -32)
+texture = ExtResource("2_8cebi")
+
+[node name="Propeller" type="AnimatedSprite2D" parent="TornadoMain"]
+position = Vector2(41, -40)
+sprite_frames = SubResource("SpriteFrames_gnswb")
+frame_progress = 0.152227
+centered = false
+
+[node name="Jet" type="Sprite2D" parent="TornadoMain"]
+visible = false
+position = Vector2(-5, -16)
+texture = ExtResource("5_pk086")
+centered = false
+
+[node name="JetFlame" type="AnimatedSprite2D" parent="TornadoMain/Jet"]
+position = Vector2(-32, 0)
+sprite_frames = SubResource("SpriteFrames_nnl2y")
+frame_progress = 0.00727469
+centered = false
+
+[node name="SONIC" type="Sprite2D" parent="."]
+position = Vector2(0, -40)
+texture = ExtResource("7_pkbdi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -28)
+shape = SubResource("RectangleShape2D_b6v0j")
