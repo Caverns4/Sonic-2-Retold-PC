@@ -1,11 +1,10 @@
 extends Node2D
 
-@export_enum("Emerald Hill", "Hidden Palace",
-"Hill Top", "Chemical Plant",
+@export_enum(
+"Emerald Hill", "Hidden Palace","Hill Top", "Chemical Plant",
 "Oil Ocean", "Neo Green Hill",
-"Metropolis","Dust Hill",
-"Casino Night","Wood Gadget", "Jewel Grotto",
-"Sky Fortress","Death Egg") var zoneID = 0
+"Metropolis","Dust Hill","Casino Night","Wood Gadget",
+"Jewel Grotto","Sky Fortress","Death Egg") var zoneID = 0
 @export var music = preload("res://Audio/Soundtrack/s2br_EmeraldHilll.ogg")
 @export var music2P = preload("res://Audio/Soundtrack/s2br_Tropical.ogg")
 @export var nextZone = load("res://Scene/Zones/BaseZone.tscn")
@@ -30,13 +29,14 @@ var twoPlayerWindow = preload("res://Scene/TwoPlayerScreenView.tscn")
 var wasLoaded = false
 
 func _ready():
+	Global.savedZoneID = zoneID
 	# debuging
 	if !Global.is_main_loaded:
 		return false
 	# skip if scene was loaded
 	if wasLoaded:
 		return false
-	
+
 	if setDefaultLeft:
 		Global.hardBorderLeft  = defaultLeftBoundry
 	if setDefaultRight:
@@ -56,7 +56,6 @@ func _ready():
 
 # used for stage starts, also used for returning from special stages
 func level_reset_data(playCard = true):
-	Global.savedZoneID = zoneID
 	# music handling
 	if Global.music != null:
 		if music != null:

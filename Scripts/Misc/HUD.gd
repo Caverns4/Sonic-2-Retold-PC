@@ -75,7 +75,16 @@ func _ready():
 	$LifeCounter/Icon.frame = lifeCounterFrame
 	
 	# play level card routine if level card is true
-	if playLevelCard:
+	if !playLevelCard:
+		$LevelCard/Banner.visible = false
+		$LevelCard/PatternLeft.visible = false
+		$LevelCard/RightRatio.visible = false
+		$LevelCard/Zone.visible = false
+		$LevelCard/LevelName.visible = false
+		$LevelCard/Act.visible = false
+		$"LevelCard/Retold Text".visible = false
+		
+	if 0 == 0:
 		# set level card
 		$LevelCard.visible = true
 		# set level name strings
@@ -84,7 +93,8 @@ func _ready():
 		# set act graphic
 		$LevelCard/Act.frame = act-1
 		# make visible if act isn't 0 (0 will just be zone)
-		$LevelCard/Act.visible = (act > 0)
+		if playLevelCard:
+			$LevelCard/Act.visible = (act > 0)
 		# make sure level card isn't paused so it can keep playing
 		$LevelCard/CardPlayer.process_mode = PROCESS_MODE_ALWAYS
 		# temporarily let music play during pauses

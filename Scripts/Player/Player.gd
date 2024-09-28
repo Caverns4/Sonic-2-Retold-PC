@@ -7,6 +7,8 @@ var currentHitbox = HITBOXESSONIC
 
 const JUMP_BUFFER_TIME = 3.0/60.0 #Time after pressing jump button to buffer the input, in case it's pressed early.
 
+@export var disablePartner = false
+
 #Sonic's Speed constants
 var acc = 0.046875			#acceleration
 var dec = 0.5				#deceleration
@@ -284,7 +286,7 @@ func _ready():
 		for _i in range(INPUT_MEMORY_LENGTH):
 			inputMemory.append(inputs.duplicate(true))
 		# Partner (if player character 2 isn't none)
-		if Global.PlayerChar2 != Global.CHARACTERS.NONE:
+		if Global.PlayerChar2 != Global.CHARACTERS.NONE and (!disablePartner):
 			partner = Player.instantiate()
 			partner.playerControl = 0
 			partner.z_index = z_index-1

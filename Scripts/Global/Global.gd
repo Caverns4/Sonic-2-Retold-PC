@@ -79,7 +79,9 @@ var levelTimeP2 = 0
 var globalTimer = 0 # global timer, used as reference for animations
 var maxTime = 60*10
 
-enum ZONES{EMERALD_HILL,HIDDEN_PALACE,HILL_TOP,CHEMICAL_PLANT,OIL_OCEAN,NEO_GREEN_HILL,METROPOLIS}
+enum ZONES{EMERALD_HILL,HIDDEN_PALACE,HILL_TOP,CHEMICAL_PLANT,
+OIL_OCEAN,NEO_GREEN_HILL,METROPOLIS,DUST_HILL,CASINO_NIGHT,
+WOOD_GADGET,JEWEL_GROTTO,SKY_FORTRESS,DEATH_EGG}
 var savedZoneID = 0 # Last played zone. Will mainly be used for the Title Screen.
 
 # water level of the current level, setting this to null will disable the water

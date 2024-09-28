@@ -38,21 +38,21 @@ var levelLabels = [ #Every one of these is a line, and some are skipped.
 	"",
 	"Player"]
 var levelIcons = [ #Use this list to get the number of selectable entries
-	0,
-	0,
-	1,
-	1,
-	2,
-	2,
-	3,
-	3,
-	4,
-	4,
-	5,
-	5,
-	6,
-	6,
-	6,
+	Global.ZONES.EMERALD_HILL,
+	Global.ZONES.EMERALD_HILL,
+	Global.ZONES.HIDDEN_PALACE,
+	Global.ZONES.HIDDEN_PALACE,
+	Global.ZONES.HILL_TOP,
+	Global.ZONES.HILL_TOP,
+	Global.ZONES.CHEMICAL_PLANT,
+	Global.ZONES.CHEMICAL_PLANT,
+	Global.ZONES.OIL_OCEAN,
+	Global.ZONES.OIL_OCEAN,
+	Global.ZONES.NEO_GREEN_HILL,
+	Global.ZONES.NEO_GREEN_HILL,
+	Global.ZONES.METROPOLIS,
+	Global.ZONES.METROPOLIS,
+	Global.ZONES.METROPOLIS,
 	17,
 	18
 ]
@@ -240,3 +240,5 @@ func levelSelect_UpdateText(): # levelID
 			else:
 				textFieldLeft.text += str(levelLabels[i]).to_upper() + "\n"
 	$UI/LabelsRight/LevelIcon.frame = levelIcons[k-1]
+	if levelIcons[k-1] <= Global.ZONES.DEATH_EGG:
+		Global.savedZoneID = levelIcons[k-1]
