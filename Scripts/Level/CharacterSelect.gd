@@ -159,6 +159,8 @@ func _input(event):
 					Global.nextZone = load("res://Scene/Zones/Metropolis1.tscn")
 				13: #Metropolis 2
 					Global.nextZone = load("res://Scene/Zones/Metropolis2.tscn")
+				14: #Metropolis 3
+					Global.nextZone = load("res://Scene/Cutscenes/Opening.tscn")
 				_: # Invalid Entry
 					selected = false
 					return
