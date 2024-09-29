@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://bhpf6ig75utax"]
+[gd_scene load_steps=13 format=4 uid="uid://bhpf6ig75utax"]
 
 [ext_resource type="TileSet" uid="uid://ghcr0mgylarb" path="res://Tileset/Island.tres" id="1_c3y53"]
 [ext_resource type="Script" path="res://Scripts/Scene/opening.gd" id="1_d0v3w"]
@@ -6,6 +6,14 @@
 [ext_resource type="Script" path="res://Scripts/Scene/CutsceneTextProcessor.gd" id="2_ibq5w"]
 [ext_resource type="TileSet" uid="uid://uplqwsi0o4gi" path="res://Tileset/Levels/EHZ_HTZ_Tiles.tres" id="3_f67ec"]
 [ext_resource type="PackedScene" uid="uid://oce7phvjxdbv" path="res://Entities/Misc/Tornado.tscn" id="3_x5ayn"]
+[ext_resource type="PackedScene" uid="uid://d1e4muavtnun6" path="res://Graphics/Players/PlayerAnimations/Sonic.tscn" id="7_4l34r"]
+[ext_resource type="PackedScene" uid="uid://by3kgbgiinm60" path="res://Graphics/Players/PlayerAnimations/Tails.tscn" id="8_k7grg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vukj"]
+size = Vector2(20, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wk1bh"]
+size = Vector2(20, 32)
 
 [sub_resource type="Animation" id="Animation_scr5x"]
 resource_name = "RESET"
@@ -194,6 +202,22 @@ position = Vector2(232, 224)
 
 [node name="Tornado" parent="CustsceneObjects" instance=ExtResource("3_x5ayn")]
 position = Vector2(-56, 224)
+
+[node name="CharacterBodySonic" type="CharacterBody2D" parent="CustsceneObjects"]
+position = Vector2(1130, 272)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CustsceneObjects/CharacterBodySonic"]
+shape = SubResource("RectangleShape2D_6vukj")
+
+[node name="Sonic" parent="CustsceneObjects/CharacterBodySonic" instance=ExtResource("7_4l34r")]
+
+[node name="CharacterBodyTails" type="CharacterBody2D" parent="CustsceneObjects"]
+position = Vector2(1216, 272)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CustsceneObjects/CharacterBodyTails"]
+shape = SubResource("RectangleShape2D_wk1bh")
+
+[node name="Sprite2D" parent="CustsceneObjects/CharacterBodyTails" instance=ExtResource("8_k7grg")]
 
 [node name="CutscenePlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../CustsceneObjects")

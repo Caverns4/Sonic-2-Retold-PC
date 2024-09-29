@@ -3,7 +3,7 @@ extends Node2D
 @export_enum(
 "Emerald Hill", "Hidden Palace","Hill Top", "Chemical Plant",
 "Oil Ocean", "Neo Green Hill",
-"Metropolis","Dust Hill","Casino Night","Wood Gadget",
+"Metropolis","Dust Hill","Wood Gadget","Casino Night",
 "Jewel Grotto","Sky Fortress","Death Egg") var zoneID = 0
 @export var music = preload("res://Audio/Soundtrack/s2br_EmeraldHilll.ogg")
 @export var music2P = preload("res://Audio/Soundtrack/s2br_Tropical.ogg")

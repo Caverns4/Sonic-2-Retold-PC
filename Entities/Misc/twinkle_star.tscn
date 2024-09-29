@@ -73,7 +73,7 @@ animations = [{
 script = ExtResource("1_goc7e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = 10
+z_index = 256
 sprite_frames = SubResource("SpriteFrames_ydv4g")
 animation = &"Twinkle"
 
