@@ -228,7 +228,7 @@ zoneName = "HIDDEN PALACE"
 act = 0
 waterSourceColor = ExtResource("8_5gioe")
 waterReplaceColor = ExtResource("9_5b47l")
-ringsForPerfect = 350
+ringsForPerfect = 300
 
 [node name="01-HiddenPalace" parent="." instance=ExtResource("7_vtcww")]
 
