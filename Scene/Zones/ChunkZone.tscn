@@ -78,6 +78,7 @@ defaultBottomBoundry = 2048
 
 [node name="HUD" parent="." instance=ExtResource("4")]
 zoneName = "CHEMICAL PLANT"
+ringsForPerfect = 150
 
 [node name="Level_Layout" type="Node2D" parent="."]
 metadata/_edit_lock_ = true

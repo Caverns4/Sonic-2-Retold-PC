@@ -81,6 +81,7 @@ zoneName = "CHEMICAL PLANT"
 act = 2
 waterSourceColor = ExtResource("6_56ngg")
 waterReplaceColor = ExtResource("7_eewh6")
+ringsForPerfect = 150
 
 [node name="Level_Layout" type="Node2D" parent="."]
 
