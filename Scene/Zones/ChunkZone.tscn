@@ -266,7 +266,7 @@ size = Vector2(1, 14)
 leftLayer = 0
 
 [node name="LayerSwitcher38" parent="Entiities" instance=ExtResource("7")]
-position = Vector2(7432, 1088)
+position = Vector2(7400, 1088)
 size = Vector2(1, 8)
 rightLayer = 1
 leftLayer = 0
