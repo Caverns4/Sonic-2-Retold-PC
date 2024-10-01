@@ -9,7 +9,6 @@
 process_mode = 3
 script = ExtResource("3")
 maxHeight = 32
-animSpeed = 30.0
 
 [node name="WaterTop" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.752941)

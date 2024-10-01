@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://cx126ulu8rjba"]
+[gd_scene load_steps=35 format=4 uid="uid://cx126ulu8rjba"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_am56i"]
 [ext_resource type="PackedScene" uid="uid://caxc44uymh48a" path="res://Scene/Zones/EmeraldHill1.tscn" id="3_70ldm"]
@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://bxkm8u0ltthxd" path="res://Entities/Enemies/BBat.tscn" id="30_my0e0"]
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="30_qxqb8"]
 [ext_resource type="PackedScene" uid="uid://b5bc364w4mjww" path="res://Entities/Enemies/BFish.tscn" id="31_srjks"]
+[ext_resource type="PackedScene" uid="uid://d3l3pbqwkrb80" path="res://Entities/Gimmicks/Geyser.tscn" id="34_4a7yt"]
 
 [node name="HiddenPalace2" type="Node2D"]
 script = ExtResource("1_am56i")
@@ -967,3 +968,6 @@ position = Vector2(928, 424)
 
 [node name="SignpostNew" parent="." instance=ExtResource("30_4l6ux")]
 position = Vector2(11264, 1472)
+
+[node name="Geyser" parent="." instance=ExtResource("34_4a7yt")]
+position = Vector2(504, 1368)

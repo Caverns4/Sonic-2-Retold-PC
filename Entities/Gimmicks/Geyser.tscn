@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3l3pbqwkrb80"]
+
+[ext_resource type="Script" path="res://Scripts/Gimmicks/geyser.gd" id="1_2lu2q"]
+[ext_resource type="Texture2D" uid="uid://524swyhho744" path="res://Graphics/Gimmicks/HPZGeyser.png" id="1_qr3ej"]
+[ext_resource type="Texture2D" uid="uid://86tferhff7o" path="res://Graphics/Gimmicks/HPZGeyser_Extend.png" id="2_ujua3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uj4kt"]
+size = Vector2(64, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8850"]
+size = Vector2(96, 128)
+
+[node name="Geyser" type="Node2D"]
+script = ExtResource("1_2lu2q")
+
+[node name="PlayerOverlap" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerOverlap"]
+shape = SubResource("RectangleShape2D_uj4kt")
+
+[node name="GeyserTopSprite" type="Sprite2D" parent="PlayerOverlap"]
+position = Vector2(0, -32)
+texture = ExtResource("1_qr3ej")
+hframes = 4
+
+[node name="GeyserLength" type="TextureRect" parent="PlayerOverlap"]
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 72.0
+texture = ExtResource("2_ujua3")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="PlayerEntry" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerEntry"]
+position = Vector2(0, -64)
+shape = SubResource("RectangleShape2D_s8850")
+
+[connection signal="body_entered" from="PlayerOverlap" to="." method="_on_player_overlap_body_entered"]
+[connection signal="body_exited" from="PlayerOverlap" to="." method="_on_player_overlap_body_exited"]
+[connection signal="body_entered" from="PlayerEntry" to="." method="_on_player_entry_body_entered"]
+[connection signal="body_exited" from="PlayerEntry" to="." method="_on_player_entry_body_exited"]
