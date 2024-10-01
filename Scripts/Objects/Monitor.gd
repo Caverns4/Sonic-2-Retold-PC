@@ -145,7 +145,7 @@ func _physics_process(delta):
 	if !Engine.is_editor_hint():
 		# if physics are on make em fall
 		if physics:
-			var collide = move_and_collide(Vector2(0,yspeed)*delta)
+			var collide = move_and_collide(Vector2(velocity.x,yspeed)*delta)
 			yspeed += grv/GlobalFunctions.div_by_delta(delta)
 			if collide and yspeed > 0:
 				physics = false

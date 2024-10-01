@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://cyh8p6ji14r0t"]
+[gd_scene load_steps=52 format=4 uid="uid://cyh8p6ji14r0t"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_ijtho"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="2_vefax"]
@@ -49,6 +49,7 @@
 [ext_resource type="PackedScene" uid="uid://c8ohi5adbflnt" path="res://Entities/Enemies/Rexon.tscn" id="45_e3cyb"]
 [ext_resource type="Texture2D" uid="uid://csu3q4bwre2x4" path="res://Graphics/Obstacles/BreakFloors/HTZ_BreakableFloor4.png" id="45_p5a0n"]
 [ext_resource type="PackedScene" uid="uid://dq7iu2jaofqew" path="res://Entities/Misc/character_cameo.tscn" id="47_fuo0d"]
+[ext_resource type="Texture2D" uid="uid://cqy3av3gamy27" path="res://Graphics/Misc/AmyCameo.png" id="50_sbh1x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kki3x"]
 size = Vector2(1416, 2045)
@@ -1321,6 +1322,7 @@ position = Vector2(10496, 1824)
 [node name="CharacterCameo" parent="." instance=ExtResource("47_fuo0d")]
 position = Vector2(2752, 1418)
 present = 5
+characterTexture = ExtResource("50_sbh1x")
 
 [connection signal="body_entered" from="Earthquake/Area2D" to="Earthquake" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Earthquake/Area2D" to="Earthquake" method="_on_area_2d_body_exited"]

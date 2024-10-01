@@ -1,18 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://dq7iu2jaofqew"]
+[gd_scene load_steps=5 format=3 uid="uid://dq7iu2jaofqew"]
 
 [ext_resource type="Texture2D" uid="uid://c1u8aco6qtdbl" path="res://Graphics/Misc/Kris.png" id="1_2cfbo"]
 [ext_resource type="Script" path="res://Scripts/Misc/character_cameo_Root.gd" id="1_ltd1b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6bh0"]
+size = Vector2(256, 152)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ij583"]
 size = Vector2(26, 40)
 
 [node name="CharacterCameo" type="Node2D"]
 script = ExtResource("1_ltd1b")
-character = ExtResource("1_2cfbo")
+
+[node name="PlayerChecker" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerChecker"]
+position = Vector2(0, -52)
+shape = SubResource("RectangleShape2D_q6bh0")
+debug_color = Color(1, 0.6, 1, 0.501961)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 collision_layer = 0
-collision_mask = 15
+collision_mask = 8465
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 4)
@@ -21,3 +32,6 @@ shape = SubResource("RectangleShape2D_ij583")
 [node name="CharacterSprite" type="Sprite2D" parent="CharacterBody2D"]
 texture = ExtResource("1_2cfbo")
 hframes = 3
+
+[connection signal="body_entered" from="PlayerChecker" to="." method="_on_player_checker_body_entered"]
+[connection signal="body_exited" from="PlayerChecker" to="." method="_on_player_checker_body_exited"]

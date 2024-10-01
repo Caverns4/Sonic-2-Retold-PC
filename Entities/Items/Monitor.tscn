@@ -230,6 +230,7 @@ _data = {
 
 [node name="Monitor" type="CharacterBody2D"]
 collision_layer = 98304
+collision_mask = 273
 script = ExtResource("3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
