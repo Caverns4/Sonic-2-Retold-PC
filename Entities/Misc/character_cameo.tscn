@@ -8,7 +8,6 @@ size = Vector2(26, 40)
 
 [node name="CharacterCameo" type="Node2D"]
 script = ExtResource("1_ltd1b")
-present = 5
 character = ExtResource("1_2cfbo")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]

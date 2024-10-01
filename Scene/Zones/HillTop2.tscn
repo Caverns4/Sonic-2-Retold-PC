@@ -680,6 +680,7 @@ scale = Vector2(16, 32)
 
 [node name="CharacterCameo" parent="Entities" instance=ExtResource("36_cqqa6")]
 position = Vector2(5603, 1385)
+present = 5
 
 [node name="Platforms" type="Node2D" parent="."]
 

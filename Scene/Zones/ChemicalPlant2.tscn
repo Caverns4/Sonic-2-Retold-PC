@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://b73oxpdf64ys2"]
+[gd_scene load_steps=46 format=4 uid="uid://b73oxpdf64ys2"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_r8kv3"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_sbiln"]
@@ -38,6 +38,7 @@
 [ext_resource type="PackedScene" uid="uid://6hnjqkn2cl62" path="res://Entities/Gimmicks/CPZTippingPipe.tscn" id="36_4srbb"]
 [ext_resource type="PackedScene" uid="uid://vh0ailk0432j" path="res://Entities/Boss/BossBoundrySetter.tscn" id="37_6lr32"]
 [ext_resource type="PackedScene" uid="uid://dw4ysdt7fckye" path="res://Entities/Boss/Poison Eggman/PoisonEggman.tscn" id="38_vediw"]
+[ext_resource type="PackedScene" uid="uid://dq7iu2jaofqew" path="res://Entities/Misc/character_cameo.tscn" id="39_x42vh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_da7so"]
 shader = ExtResource("8_fvcep")
@@ -1758,3 +1759,6 @@ keepRightLocked = false
 
 [node name="PoisonEggman" parent="Boss" instance=ExtResource("38_vediw")]
 position = Vector2(11712, 1192)
+
+[node name="CharacterCameo" parent="." instance=ExtResource("39_x42vh")]
+position = Vector2(792, 232)

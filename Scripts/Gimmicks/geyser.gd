@@ -46,9 +46,9 @@ func UpdatePosition(delta):
 		waitTime -= delta
 	
 	if trigger or waitTime > 0.0:
-		geyser.position.y = max(geyser.position.y-(delta*120), 0-(64+length))
+		geyser.position.y = max(geyser.position.y-(delta*240), 0-(64+length))
 	else:
-		geyser.position.y = min(geyser.position.y+(delta*120),0)
+		geyser.position.y = min(geyser.position.y+(delta*240),0)
 		
 	if geyser.position.y == 0:
 		$PlayerOverlap.visible = false

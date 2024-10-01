@@ -1320,6 +1320,7 @@ position = Vector2(10496, 1824)
 
 [node name="CharacterCameo" parent="." instance=ExtResource("47_fuo0d")]
 position = Vector2(2752, 1418)
+present = 5
 
 [connection signal="body_entered" from="Earthquake/Area2D" to="Earthquake" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Earthquake/Area2D" to="Earthquake" method="_on_area_2d_body_exited"]

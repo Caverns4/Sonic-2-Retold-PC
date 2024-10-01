@@ -461,19 +461,20 @@ position = Vector2(0, 4)
 shape = SubResource("30")
 
 [node name="Capsule" type="Sprite2D" parent="."]
+z_index = 6
 texture = ExtResource("1")
 region_enabled = true
 region_rect = Rect2(0, 0, 64, 64)
 
 [node name="Switch" type="Sprite2D" parent="."]
-z_index = -1
+z_index = 4
 position = Vector2(0, -40)
 texture = ExtResource("1")
 region_enabled = true
 region_rect = Rect2(64, 0, 32, 16)
 
 [node name="CapsulePiece" type="Sprite2D" parent="."]
-z_index = 1
+z_index = 6
 position = Vector2(0, -16)
 texture = ExtResource("1")
 centered = false
@@ -482,7 +483,7 @@ region_enabled = true
 region_rect = Rect2(88, 16, 16, 24)
 
 [node name="CapsulePiece2" type="Sprite2D" parent="."]
-z_index = 1
+z_index = 6
 position = Vector2(-32, 8)
 texture = ExtResource("1")
 centered = false
@@ -491,7 +492,7 @@ region_enabled = true
 region_rect = Rect2(64, 16, 24, 24)
 
 [node name="CapsulePiece3" type="Sprite2D" parent="."]
-z_index = 1
+z_index = 6
 position = Vector2(8, 8)
 texture = ExtResource("1")
 centered = false
@@ -500,6 +501,8 @@ region_enabled = true
 region_rect = Rect2(104, 16, 24, 24)
 
 [node name="Lock" type="Sprite2D" parent="."]
+z_index = 6
+position = Vector2(0, -24)
 texture = ExtResource("1")
 region_enabled = true
 region_rect = Rect2(96, 0, 16, 16)
