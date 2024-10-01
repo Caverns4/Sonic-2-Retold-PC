@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bt7aqgv2h8os6"]
 
-[ext_resource type="Script" path="res://Entities/Obstacles/breakable_floor.gd" id="1_yxa47"]
+[ext_resource type="Script" path="res://Scripts/Objects/breakable_floor.gd" id="1_yxa47"]
 [ext_resource type="Texture2D" uid="uid://ck8ve7pl35fv" path="res://Graphics/Obstacles/BreakFloors/HTZ_BreakableFloor1.png" id="2_jt6dt"]
 
 [sub_resource type="RectangleShape2D" id="1"]

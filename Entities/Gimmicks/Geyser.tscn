@@ -8,7 +8,7 @@
 size = Vector2(64, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8850"]
-size = Vector2(96, 128)
+size = Vector2(96, 144)
 
 [node name="Geyser" type="Node2D"]
 script = ExtResource("1_2lu2q")
@@ -18,27 +18,28 @@ collision_layer = 0
 collision_mask = 4096
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerOverlap"]
+position = Vector2(0, 72)
 shape = SubResource("RectangleShape2D_uj4kt")
 
 [node name="GeyserTopSprite" type="Sprite2D" parent="PlayerOverlap"]
-position = Vector2(0, -32)
+position = Vector2(0, 32)
 texture = ExtResource("1_qr3ej")
 hframes = 4
 
-[node name="GeyserLength" type="TextureRect" parent="PlayerOverlap"]
-offset_left = -32.0
-offset_right = 32.0
-offset_bottom = 72.0
+[node name="GeyserLongSprite" type="Sprite2D" parent="PlayerOverlap"]
+position = Vector2(-32, 64)
 texture = ExtResource("2_ujua3")
-expand_mode = 1
-stretch_mode = 1
+centered = false
+hframes = 4
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 96)
 
 [node name="PlayerEntry" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4096
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerEntry"]
-position = Vector2(0, -64)
+position = Vector2(0, -72)
 shape = SubResource("RectangleShape2D_s8850")
 
 [connection signal="body_entered" from="PlayerOverlap" to="." method="_on_player_overlap_body_entered"]

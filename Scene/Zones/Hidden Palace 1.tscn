@@ -1,11 +1,10 @@
-[gd_scene load_steps=50 format=4 uid="uid://cun7sa0v2mwiq"]
+[gd_scene load_steps=48 format=4 uid="uid://cun7sa0v2mwiq"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_snbg3"]
 [ext_resource type="AudioStream" uid="uid://bg1fcuqr8mk1d" path="res://Audio/Soundtrack/s2br_Jewel.ogg" id="2_tvhrw"]
 [ext_resource type="PackedScene" uid="uid://cx126ulu8rjba" path="res://Scene/Zones/Hidden Palace 2.tscn" id="3_nd8nl"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_avawk"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="5_gd4l3"]
-[ext_resource type="Texture2D" uid="uid://d00d25b0d4hcy" path="res://Graphics/Palettes/hpz_Waterfallpal.png" id="5_y0ob8"]
 [ext_resource type="PackedScene" uid="uid://b0xmqvvpy42o3" path="res://Scene/Backgrounds/01-HiddenPalace.tscn" id="7_vtcww"]
 [ext_resource type="Texture2D" uid="uid://tdr31l1fyfos" path="res://Graphics/Palettes/HPZ_Pal_Dry.png" id="8_5gioe"]
 [ext_resource type="Texture2D" uid="uid://cqxsc88x0mm7k" path="res://Graphics/Palettes/HPZ_Pal_Wet.png" id="9_5b47l"]
@@ -14,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://ob2r2ewjlvgy" path="res://Entities/ZoneObjects/pulsating_orb.tscn" id="12_k2dso"]
 [ext_resource type="PackedScene" uid="uid://bnn5io8fk2i4h" path="res://Entities/Gimmicks/WaterLevel.tscn" id="12_uche6"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="15_3aljb"]
-[ext_resource type="Shader" path="res://Shaders/PaletteSwapRow_Timerbased.gdshader" id="19_5e2v3"]
 [ext_resource type="PackedScene" uid="uid://b5bc364w4mjww" path="res://Entities/Enemies/BFish.tscn" id="21_85vku"]
 [ext_resource type="PackedScene" uid="uid://bg66ofhfkxsx6" path="res://Entities/Gimmicks/Bridge.tscn" id="24_dn43t"]
 [ext_resource type="Texture2D" uid="uid://dj48h1o7jnddu" path="res://Graphics/Tiles/HPZ/Bridge_Log_HPZ1.png" id="25_nqwvl"]
@@ -33,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://bvvxl5bmelnk1" path="res://Entities/Gimmicks/WaterSlide.tscn" id="34_ic05i"]
 [ext_resource type="PackedScene" uid="uid://cfteqnft5ynr7" path="res://Entities/Hazards/Spikes.tscn" id="35_b42q6"]
 [ext_resource type="Texture2D" uid="uid://56fk5g2ne6pr" path="res://Graphics/Objects_Zone/HPZ_Elevator.png" id="35_r5k02"]
+[ext_resource type="PackedScene" uid="uid://d3l3pbqwkrb80" path="res://Entities/Gimmicks/Geyser.tscn" id="36_al0td"]
 [ext_resource type="PackedScene" uid="uid://bkib68ja7giiv" path="res://Entities/Gimmicks/SetWaterLevel.tscn" id="37_i58hy"]
 [ext_resource type="PackedScene" uid="uid://beebd7dn4ioe1" path="res://Entities/Gimmicks/WindCurrent.tscn" id="37_t74c0"]
 [ext_resource type="PackedScene" uid="uid://bleoc0gltofoh" path="res://Entities/Gimmicks/Teleporter.tscn" id="38_7yfnh"]
@@ -45,14 +44,6 @@
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="42_s707l"]
 [ext_resource type="AudioStream" uid="uid://uu55iumak4r5" path="res://Audio/SFX/Ambiance/waterfall.wav" id="43_hcgxy"]
 [ext_resource type="PackedScene" uid="uid://c2t7hwn0iln3x" path="res://Entities/Obstacles/Elevator.tscn" id="43_x67w5"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ut8in"]
-shader = ExtResource("19_5e2v3")
-shader_parameter/amount = 4.0
-shader_parameter/palRows = 4.0
-shader_parameter/approximation = 0.05
-shader_parameter/time_scale = 0.1
-shader_parameter/paletteTexture = ExtResource("5_y0ob8")
 
 [sub_resource type="Animation" id="Animation_uaefk"]
 resource_name = "OPEN"
@@ -232,9 +223,10 @@ ringsForPerfect = 300
 
 [node name="01-HiddenPalace" parent="." instance=ExtResource("7_vtcww")]
 
-[node name="Level_Layout" type="Node2D" parent="."]
-material = SubResource("ShaderMaterial_ut8in")
-metadata/_edit_lock_ = true
+[node name="Player" parent="." instance=ExtResource("5_gd4l3")]
+position = Vector2(560, 1453)
+
+[node name="Level_Layout" type="Node" parent="."]
 
 [node name="Low" type="TileMapLayer" parent="Level_Layout"]
 use_parent_material = true
@@ -248,10 +240,7 @@ tile_map_data = PackedByteArray("AACvAK8AAAAAACoAAADAAK8AAAAAACgAAADfAK8AAAAAACo
 tile_set = ExtResource("9_trtkx")
 collision_enabled = false
 
-[node name="Player" parent="." instance=ExtResource("5_gd4l3")]
-position = Vector2(560, 1453)
-
-[node name="Currents" type="Node2D" parent="."]
+[node name="Currents" type="Node" parent="."]
 
 [node name="WindCurrent6" parent="Currents" instance=ExtResource("37_t74c0")]
 position = Vector2(10200, 2016)
@@ -303,14 +292,12 @@ volume_db = -6.0
 autoplay = true
 
 [node name="WindCurrent5" parent="Currents" instance=ExtResource("37_t74c0")]
-position = Vector2(7024, 432)
-rotation = -1.03847
+position = Vector2(7128, 304)
 scale = Vector2(11.88, 11.88)
 speed = 200.0
 moveSpeed = 100.0
 
-[node name="Entities" type="Node2D" parent="."]
-metadata/_edit_lock_ = true
+[node name="Entities" type="Node" parent="."]
 
 [node name="PulsatingOrb" parent="Entities" instance=ExtResource("12_k2dso")]
 position = Vector2(840, 1408)
@@ -509,6 +496,10 @@ position = Vector2(6463, 2416)
 z_index = 10
 position = Vector2(11072, 1712)
 
+[node name="BreakableEmerald13" parent="Entities" instance=ExtResource("28_mdsvx")]
+z_index = 10
+position = Vector2(10432, 1584)
+
 [node name="BreakableEmerald6" parent="Entities" instance=ExtResource("28_mdsvx")]
 z_index = 10
 position = Vector2(13504, 2608)
@@ -655,7 +646,8 @@ speed = 600.0
 
 [node name="Spring2" parent="Entities" instance=ExtResource("31_ir4cg")]
 position = Vector2(3968, 2800)
-scale = Vector2(-1, 1)
+rotation = -3.14159
+scale = Vector2(1, -1)
 springDirection = 3
 
 [node name="HpzPlatformSpawner" parent="Entities" instance=ExtResource("41_64hll")]
@@ -835,7 +827,7 @@ animator = NodePath("../../AnimationPlayer")
 animationName = "OPEN"
 
 [node name="Spring5" parent="Entities" instance=ExtResource("31_ir4cg")]
-position = Vector2(10416, 1592)
+position = Vector2(10432, 1592)
 
 [node name="Spring7" parent="Entities" instance=ExtResource("31_ir4cg")]
 position = Vector2(11072, 1720)
@@ -857,7 +849,7 @@ position = Vector2(10304, 1328)
 springDirection = 4
 
 [node name="Spring4" parent="Entities" instance=ExtResource("31_ir4cg")]
-position = Vector2(8456, 2416)
+position = Vector2(8440, 2544)
 type = 1
 springDirection = 2
 
@@ -909,8 +901,40 @@ position = Vector2(11264, 632)
 position = Vector2(7168, 2552)
 travelDistance = 640
 
-[node name="Hazards" type="Node2D" parent="."]
-metadata/_edit_lock_ = true
+[node name="Geyser" parent="Entities" instance=ExtResource("36_al0td")]
+position = Vector2(12432, 376)
+rotation = 1.39626
+scale = Vector2(1, 1)
+minimumVelocity = 8
+
+[node name="Geyser2" parent="Entities" instance=ExtResource("36_al0td")]
+position = Vector2(12464, 296)
+rotation = 1.39626
+scale = Vector2(1, 1)
+minimumVelocity = 8
+
+[node name="Geyser3" parent="Entities" instance=ExtResource("36_al0td")]
+position = Vector2(8904, 992)
+minimumVelocity = 8
+
+[node name="Geyser4" parent="Entities" instance=ExtResource("36_al0td")]
+position = Vector2(6976, 352)
+rotation = 1.39626
+scale = Vector2(1, 1)
+minimumVelocity = 8
+
+[node name="Geyser5" parent="Entities" instance=ExtResource("36_al0td")]
+position = Vector2(7000, 272)
+rotation = 1.39626
+scale = Vector2(1, 1)
+minimumVelocity = 8
+
+[node name="Geyser6" parent="Entities" instance=ExtResource("36_al0td")]
+position = Vector2(8440, 2400)
+rotation = 1.5708
+minimumVelocity = 10
+
+[node name="Hazards" type="Node" parent="."]
 
 [node name="Spikes" parent="Hazards" instance=ExtResource("35_b42q6")]
 position = Vector2(8880, 1264)
@@ -1032,8 +1056,7 @@ position = Vector2(6688, 1256)
 rotation = 0.462512
 scale = Vector2(1, 56)
 
-[node name="ItemsHolder" type="Node2D" parent="."]
-metadata/_edit_lock_ = true
+[node name="ItemsHolder" type="Node" parent="."]
 
 [node name="Monitor" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
 position = Vector2(2928, 2224)
@@ -1132,8 +1155,7 @@ checkPointID = 3
 position = Vector2(12928, 1192)
 checkPointID = 5
 
-[node name="Badniks" type="Node2D" parent="."]
-metadata/_edit_lock_ = true
+[node name="Badniks" type="Node" parent="."]
 
 [node name="Redz" parent="Badniks" instance=ExtResource("9_7pp8m")]
 position = Vector2(1384, 1424)
@@ -1286,7 +1308,7 @@ position = Vector2(11888, 232)
 [node name="Stegway4" parent="Badniks" instance=ExtResource("42_ftvul")]
 position = Vector2(3560, 1264)
 
-[node name="Rings" type="Node2D" parent="."]
+[node name="Rings" type="Node" parent="."]
 
 [node name="Ring" parent="Rings" instance=ExtResource("42_s707l")]
 position = Vector2(697, 1407)
