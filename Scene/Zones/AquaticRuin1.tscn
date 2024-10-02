@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="2_8wvcy"]
 [ext_resource type="AudioStream" uid="uid://ctdnv7vgg1v6k" path="res://Audio/Soundtrack/s2br_NeoGreenHill.ogg" id="2_orsd1"]
 [ext_resource type="PackedScene" uid="uid://jkb87hqbtl0l" path="res://Scene/Backgrounds/05-NeoGreenHill.tscn" id="6_lewi2"]
-[ext_resource type="TileSet" uid="uid://qd7e8tmf376" path="res://Tileset/Levels/OOZ.tres" id="7_8r1q4"]
+[ext_resource type="TileSet" uid="uid://b0b5lpm7k65k5" path="res://Tileset/Levels/NGHZ.tres" id="7_lab03"]
 [ext_resource type="PackedScene" uid="uid://bnn5io8fk2i4h" path="res://Entities/Gimmicks/WaterLevel.tscn" id="8_jm1vn"]
 
 [node name="AquaticRuin1" type="Node2D"]
@@ -31,7 +31,7 @@ position = Vector2(96, 656)
 
 [node name="Low" type="TileMapLayer" parent="Level_Layout"]
 tile_map_data = PackedByteArray("AAAAACwAAAAMAAAAAAABACwAAAANAAAAAAACACwAAAAMAAAAAAADACwAAAANAAAAAAAEACwAAAAMAAAAAAAFACwAAAANAAAAAAAGACwAAAAMAAAAAAAHACwAAAANAAAAAAAIACwAAAAMAAAAAAAJACwAAAANAAAAAAAKACwAAAAMAAAAAAALACwAAAANAAAAAAAMACwAAAAMAAAAAAANACwAAAANAAAAAAAOACwAAAAMAAAAAAAPACwAAAANAAAAAAAQACwAAAAMAAAAAAARACwAAAANAAAAAAASACwAAAAMAAAAAAATACwAAAANAAAAAAAUACwAAAAMAAAAAAAVACwAAAANAAAAAAAXACwAAAANAAAAAAAYACwAAAAMAAAAAAAWACwAAAAMAAAAAAAZACwAAAANAAAAAAAaACwAAAAMAAAAAAAbACwAAAANAAAAAAAcACwAAAAMAAAAAAAdACwAAAANAAAAAAAeACwAAAAMAAAAAAAfACwAAAANAAAAAAA=")
-tile_set = ExtResource("7_8r1q4")
+tile_set = ExtResource("7_lab03")
 
 [node name="Entitites" type="Node2D" parent="."]
 
