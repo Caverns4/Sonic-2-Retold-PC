@@ -8,6 +8,4 @@ func _physics_process(delta: float) -> void:
 		for i in Global.players.size()+1:
 			if (i-1) != whichChar-1:
 				add_collision_exception_with(Global.players[i-1])
-			else:
-				print("Match found")
 		setUp = true
