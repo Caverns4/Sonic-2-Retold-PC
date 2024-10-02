@@ -7,3 +7,6 @@ func physics_collision(body, hitVector):
 			get_parent().doDrop = true
 		if get_parent().get("activated") != null:
 			get_parent().activated = true
+		if get_parent().get("standees") != null:
+			if !get_parent().standees.has(body):
+				get_parent().standees.append(body)

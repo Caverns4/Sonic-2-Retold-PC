@@ -14,8 +14,8 @@ var soundEffect = preload("res://Audio/SFX/Gimmicks/HTZ_Liftclick.wav")
 #State machine
 enum STATES{IDLE,PATH,COLLAPSE,DEAD}
 var state = STATES.IDLE
-
 var offsetTimer = 0
+var standees = []
 
 func _ready():
 	if Engine.is_editor_hint():
@@ -35,7 +35,7 @@ func _physics_process(delta):
 		
 		match state:
 			STATES.IDLE:
-				if activated == true:
+				if activated == true and standees.has(Global.players[0]):
 					motionScale = 0.0
 					state = STATES.PATH
 			STATES.PATH:
