@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c155bdyqqmmpl"]
+[gd_scene load_steps=9 format=3 uid="uid://c155bdyqqmmpl"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Orbinaut.gd" id="1"]
 [ext_resource type="Script" path="res://Scripts/Objects/Hazard.gd" id="3"]
@@ -29,6 +29,9 @@ tracks/0/keys = {
 _data = {
 "RESET": SubResource("Animation_4nuc7")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4fpgw"]
+size = Vector2(128, 128)
 
 [node name="Orbinaut" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 16384
@@ -79,8 +82,19 @@ position = Vector2(-1.90735e-06, -1.90735e-06)
 scale = Vector2(3.2, 3.2)
 rect = Rect2(-80, -56, 160, 112)
 
+[node name="PlayerCheck" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCheck"]
+position = Vector2(-64, 0)
+shape = SubResource("RectangleShape2D_4fpgw")
+
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
 [connection signal="body_entered" from="Orb" to="Orb" method="_on_body_entered"]
 [connection signal="body_exited" from="Orb" to="Orb" method="_on_body_exited"]
+[connection signal="body_entered" from="PlayerCheck" to="." method="_on_player_check_body_entered"]
+[connection signal="body_exited" from="PlayerCheck" to="." method="_on_player_check_body_exited"]

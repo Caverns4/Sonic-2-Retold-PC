@@ -978,9 +978,13 @@ scale = Vector2(16, 2)
 
 [node name="Orbinaut" parent="Badniks" instance=ExtResource("39_3lp52")]
 position = Vector2(4096, 1696)
+speed = 100
+launchOrbs = true
 
 [node name="Orbinaut2" parent="Badniks" instance=ExtResource("39_3lp52")]
-position = Vector2(4032, 328)
+position = Vector2(4024, 344)
+speed = 100
+launchOrbs = true
 
 [node name="Rexon" parent="Badniks" instance=ExtResource("43_3jeuf")]
 position = Vector2(2496, 1776)
@@ -1555,7 +1559,7 @@ position = Vector2(7552, 160)
 [node name="Earthquake" type="Node2D" parent="."]
 material = ExtResource("17_kojt6")
 script = ExtResource("43_lpn1e")
-targetHeight = 768
+targetHeight = 832
 
 [node name="EarthquakeTiles" type="TileMapLayer" parent="Earthquake"]
 use_parent_material = true
@@ -1597,9 +1601,6 @@ shape = SubResource("RectangleShape2D_w1ntj")
 
 [node name="SignpostNew" parent="." instance=ExtResource("35_4ds1j")]
 position = Vector2(11592, 1328)
-
-[node name="Orbinaut" parent="." instance=ExtResource("39_3lp52")]
-position = Vector2(1456, 1400)
 
 [connection signal="body_entered" from="Earthquake/Area2D" to="Earthquake" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Earthquake/Area2D" to="Earthquake" method="_on_area_2d_body_exited"]
