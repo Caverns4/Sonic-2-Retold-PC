@@ -34,7 +34,7 @@ _data = {
 collision_layer = 16384
 collision_mask = 0
 script = ExtResource("1")
-distance = 24
+launchOrbs = null
 
 [node name="CollissionMask" type="CollisionShape2D" parent="."]
 shape = SubResource("1")
@@ -48,7 +48,7 @@ modulate = Color(1, 0, 0, 1)
 shape = SubResource("1")
 
 [node name="Orb" type="Area2D" parent="."]
-position = Vector2(0, -24)
+position = Vector2(0, -20)
 collision_layer = 0
 collision_mask = 4096
 script = ExtResource("3")
@@ -73,9 +73,11 @@ texture = ExtResource("4_fw8n4")
 hframes = 6
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+visible = false
 z_index = -100
 position = Vector2(-1.90735e-06, -1.90735e-06)
 scale = Vector2(3.2, 3.2)
+rect = Rect2(-80, -56, 160, 112)
 
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
