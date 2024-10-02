@@ -157,4 +157,8 @@ libraries = {
 "": SubResource("AnimationLibrary_3avuf")
 }
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-2.38419e-07, 2.38419e-07)
+scale = Vector2(1.6, 1.6)
+
 [connection signal="body_entered" from="DiagonalHitBox" to="." method="_on_Diagonal_body_entered"]
