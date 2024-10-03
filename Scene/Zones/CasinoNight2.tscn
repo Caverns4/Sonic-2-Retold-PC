@@ -1,0 +1,27 @@
+[gd_scene load_steps=8 format=3 uid="uid://brtxcccqfvmca"]
+
+[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_766pe"]
+[ext_resource type="AudioStream" uid="uid://c354qh8pof6fe" path="res://Audio/Soundtrack/s2br_CasinoNight.ogg" id="2_kas0w"]
+[ext_resource type="PackedScene" uid="uid://caxc44uymh48a" path="res://Scene/Zones/EmeraldHill1.tscn" id="3_6vlv4"]
+[ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="3_lgk7y"]
+[ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="4_3n00e"]
+[ext_resource type="PackedScene" uid="uid://bbvj2re4dx40p" path="res://Scene/Backgrounds/09-CasinoNight.tscn" id="4_ryq2u"]
+[ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="5_0mxre"]
+
+[node name="CasinoNight2" type="Node2D"]
+script = ExtResource("1_766pe")
+zoneID = 9
+music = ExtResource("2_kas0w")
+music2P = ExtResource("3_lgk7y")
+nextZone = ExtResource("3_6vlv4")
+animal1 = 11
+animal2 = 0
+
+[node name="09-CasinoNight" parent="." instance=ExtResource("4_ryq2u")]
+
+[node name="HUD" parent="." instance=ExtResource("4_3n00e")]
+zoneName = "METROPOLIS"
+act = 2
+
+[node name="Player" parent="." instance=ExtResource("5_0mxre")]
+position = Vector2(96, 656)

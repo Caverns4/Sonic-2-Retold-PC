@@ -16,6 +16,8 @@ zoneID = 9
 music = ExtResource("2_lgh7f")
 music2P = ExtResource("3_ei1j6")
 nextZone = ExtResource("3_ubxk3")
+animal1 = 11
+animal2 = 0
 
 [node name="09-CasinoNight" parent="." instance=ExtResource("5_vhfwb")]
 

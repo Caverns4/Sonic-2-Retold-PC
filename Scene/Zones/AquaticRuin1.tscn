@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://b8nujtm2r4age"]
+[gd_scene load_steps=11 format=4 uid="uid://b8nujtm2r4age"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_20uxj"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_bg171"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://jkb87hqbtl0l" path="res://Scene/Backgrounds/05-NeoGreenHill.tscn" id="6_lewi2"]
 [ext_resource type="TileSet" uid="uid://b0b5lpm7k65k5" path="res://Tileset/Levels/NGHZ.tres" id="7_lab03"]
 [ext_resource type="PackedScene" uid="uid://bnn5io8fk2i4h" path="res://Entities/Gimmicks/WaterLevel.tscn" id="8_jm1vn"]
+[ext_resource type="Texture2D" uid="uid://dhiwsi7ld5oc3" path="res://Graphics/Gimmicks/NGHZWater01.png" id="9_72v45"]
+[ext_resource type="Texture2D" uid="uid://c2t3av5cda5om" path="res://Graphics/Gimmicks/NGHZWater02.png" id="10_arj82"]
 
 [node name="AquaticRuin1" type="Node2D"]
 script = ExtResource("1_20uxj")
@@ -30,10 +32,11 @@ position = Vector2(96, 656)
 [node name="Level_Layout" type="Node2D" parent="."]
 
 [node name="Low" type="TileMapLayer" parent="Level_Layout"]
-tile_map_data = PackedByteArray("AAAAACwAAAAMAAAAAAABACwAAAANAAAAAAACACwAAAAMAAAAAAADACwAAAANAAAAAAAEACwAAAAMAAAAAAAFACwAAAANAAAAAAAGACwAAAAMAAAAAAAHACwAAAANAAAAAAAIACwAAAAMAAAAAAAJACwAAAANAAAAAAAKACwAAAAMAAAAAAALACwAAAANAAAAAAAMACwAAAAMAAAAAAANACwAAAANAAAAAAAOACwAAAAMAAAAAAAPACwAAAANAAAAAAAQACwAAAAMAAAAAAARACwAAAANAAAAAAASACwAAAAMAAAAAAATACwAAAANAAAAAAAUACwAAAAMAAAAAAAVACwAAAANAAAAAAAXACwAAAANAAAAAAAYACwAAAAMAAAAAAAWACwAAAAMAAAAAAAZACwAAAANAAAAAAAaACwAAAAMAAAAAAAbACwAAAANAAAAAAAcACwAAAAMAAAAAAAdACwAAAANAAAAAAAeACwAAAAMAAAAAAAfACwAAAANAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAADAAAAAAAAAAABAAADEAAAAGAAAAABABADEAAAAFAAAAABACADAAAAABAAAAAAACADEAAAAHAAAAAAADADEAAAAAAAQAAAAEADEAAAAJAAEAABAFADEAAAAIAAEAABAHADAAAAAEAAAAAAAHADEAAAAMAAAAAAA=")
 tile_set = ExtResource("7_lab03")
 
 [node name="Entitites" type="Node2D" parent="."]
 
 [node name="WaterLevel" parent="Entitites" instance=ExtResource("8_jm1vn")]
 position = Vector2(0, 1040)
+waterSurface = [ExtResource("9_72v45"), ExtResource("10_arj82")]
