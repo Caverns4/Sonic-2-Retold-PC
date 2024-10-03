@@ -33,6 +33,9 @@ var levelLabels = [ #Every one of these is a line, and some are skipped.
 	"Metropolis      1",
 	"                2",
 	"                3",
+	"Casino Night    1",
+	"                2",
+	"",
 	"Special Stage",
 	"",
 	"",
@@ -53,6 +56,8 @@ var levelIcons = [ #Use this list to get the number of selectable entries
 	Global.ZONES.METROPOLIS,
 	Global.ZONES.METROPOLIS,
 	Global.ZONES.METROPOLIS,
+	Global.ZONES.CASINO_NIGHT,
+	Global.ZONES.CASINO_NIGHT,
 	17,
 	18
 ]
@@ -161,6 +166,8 @@ func _input(event):
 					Global.nextZone = load("res://Scene/Zones/Metropolis2.tscn")
 				14: #Metropolis 3
 					Global.nextZone = load("res://Scene/Cutscenes/Opening.tscn")
+				15: #Casino Night 1
+					Global.nextZone = load("res://Scene/Zones/CasinoNight1.tscn")
 				_: # Invalid Entry
 					selected = false
 					return
