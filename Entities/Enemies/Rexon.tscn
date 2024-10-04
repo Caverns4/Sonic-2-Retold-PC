@@ -23,28 +23,14 @@ vframes = 3
 frame = 2
 
 [node name="Neck1" type="Sprite2D" parent="."]
-position = Vector2(-16, -8)
-texture = ExtResource("1_jwynl")
-vframes = 3
-frame = 1
-
-[node name="Neck2" type="Sprite2D" parent="."]
-position = Vector2(-17, -24)
-texture = ExtResource("1_jwynl")
-vframes = 3
-frame = 1
-
-[node name="Neck3" type="Sprite2D" parent="."]
-position = Vector2(-18, -40)
-texture = ExtResource("1_jwynl")
-vframes = 3
-frame = 1
-
-[node name="Neck4" type="Sprite2D" parent="."]
-position = Vector2(-19, -56)
+show_behind_parent = true
+position = Vector2(-22, 0)
 texture = ExtResource("1_jwynl")
 vframes = 3
 frame = 1
 
 [node name="RexonHead" parent="." instance=ExtResource("2_ulpo3")]
-position = Vector2(-27, -66)
+position = Vector2(-29, -15)
+
+[node name="BulletPoint" type="Node2D" parent="RexonHead"]
+position = Vector2(-12, 4)
