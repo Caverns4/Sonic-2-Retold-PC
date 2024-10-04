@@ -1,7 +1,7 @@
 extends Node2D
 
 @export_enum("Tube Up", "Tube Down", "Arc Clockwise", "Arc CounterClowise") var behavior = 0
-@export_range (1, 8) var wormCount = 6
+@export_range (1, 128) var wormCount = 6
 @export var gloopSound = preload("res://Audio/SFX/Gimmicks/MegaMackGloop.ogg")
 
 var child = preload("res://Entities/ZoneObjects/MackWorms.tscn")
@@ -13,26 +13,10 @@ var soundCheck = false
 
 # The initial time for each child before moving. * delta when using this.
 var childTimes = [
-	 0.0,
-	 3/60.0,
-	 6/60.0,
-	 9/60.0,
-	12/60.0,
-	15/60.0,
-	18/60.0,
-	21/60.0,
-	24/60.0
+	 0.0
 ]
 # Fake Child velocity.
 var childSpeeds = [
-	Vector2.ZERO,
-	Vector2.ZERO,
-	Vector2.ZERO,
-	Vector2.ZERO,
-	Vector2.ZERO,
-	Vector2.ZERO,
-	Vector2.ZERO,
-	Vector2.ZERO,
 	Vector2.ZERO
 ]
 
@@ -49,6 +33,7 @@ func _ready() -> void:
 		initialPosition.x = origin.x+96
 	
 	var nextChild = null
+	var childTimer = 3/60.0
 	for i in wormCount-1:
 		nextChild = child.instantiate()
 		add_child(nextChild)
@@ -60,6 +45,10 @@ func _ready() -> void:
 			get_child(i).monitoring = false
 			childStates.append(initialState)
 			get_child(i).global_position = initialPosition
+			childTimes.insert(childTimes.size(),childTimer)
+			childTimer += (3/60.0)
+			childSpeeds.insert(childSpeeds.size(),Vector2.ZERO)
+			
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 # Mack Worm movement will be ontrolled entirely in this one script.

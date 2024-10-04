@@ -1282,9 +1282,13 @@ launchOrbs = true
 
 [node name="Rexon" parent="Badniks" instance=ExtResource("45_e3cyb")]
 position = Vector2(1616, 1856)
+neckSegments = 5
 
 [node name="Rexon2" parent="Badniks" instance=ExtResource("45_e3cyb")]
-position = Vector2(4416, 1472)
+position = Vector2(4424, 1472)
+
+[node name="Rexon3" parent="Badniks" instance=ExtResource("45_e3cyb")]
+position = Vector2(4920, 576)
 
 [node name="Earthquake" type="Node2D" parent="."]
 script = ExtResource("22_p4hee")

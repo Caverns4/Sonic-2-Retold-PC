@@ -34,3 +34,8 @@ position = Vector2(-29, -15)
 
 [node name="BulletPoint" type="Node2D" parent="RexonHead"]
 position = Vector2(-12, 4)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+visible = false
+position = Vector2(3.8147e-06, 3.8147e-06)
+rect = Rect2(-160, -112, 320, 224)

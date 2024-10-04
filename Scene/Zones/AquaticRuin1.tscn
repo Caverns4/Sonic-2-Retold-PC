@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://b8nujtm2r4age"]
+[gd_scene load_steps=11 format=4 uid="uid://b8nujtm2r4age"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_20uxj"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_bg171"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://bnn5io8fk2i4h" path="res://Entities/Gimmicks/WaterLevel.tscn" id="8_jm1vn"]
 [ext_resource type="Texture2D" uid="uid://dhiwsi7ld5oc3" path="res://Graphics/Gimmicks/NGHZWater01.png" id="9_72v45"]
 [ext_resource type="Texture2D" uid="uid://c2t3av5cda5om" path="res://Graphics/Gimmicks/NGHZWater02.png" id="10_arj82"]
-[ext_resource type="PackedScene" uid="uid://c8ohi5adbflnt" path="res://Entities/Enemies/Rexon.tscn" id="11_g2a51"]
 
 [node name="AquaticRuin1" type="Node2D"]
 script = ExtResource("1_20uxj")
@@ -48,6 +47,3 @@ collision_enabled = false
 [node name="WaterLevel" parent="Entitites" instance=ExtResource("8_jm1vn")]
 position = Vector2(0, 1024)
 waterSurface = [ExtResource("9_72v45"), ExtResource("10_arj82")]
-
-[node name="Rexon" parent="." instance=ExtResource("11_g2a51")]
-position = Vector2(256, 904)

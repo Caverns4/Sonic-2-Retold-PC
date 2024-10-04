@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var neckSegments = 4
+@export_enum("Left","Right") var direction = 0
 @onready var head = $RexonHead
 @onready var bulletPoint = $RexonHead/BulletPoint
 
@@ -15,14 +16,19 @@ var childPositions = [Vector2.ZERO] #position of each child and the head
 var childVels = [Vector2.ZERO]
 var dead = false
 var swayDist = 0 #Gets manually set in code
-var direction = -1
+var swayDirection = -1
 
 func _ready() -> void:
-	var currentPos = Vector2(-20,0)
+	$VisibleOnScreenEnabler2D.visible = true
+	if direction == 0:
+		direction = -1 #left
+	direction = 0-direction
+	
+	var currentPos = Vector2(20*direction,0)
 	children.append($Neck1)
 	childPositions[0] = currentPos
 	
-	for i in max(0,neckSegments):
+	for i in max(0,neckSegments-1):
 		var node = $Neck1.duplicate(8)
 		add_child(node)
 		children.append(node)
@@ -35,7 +41,6 @@ func _ready() -> void:
 	childPositions.insert(childPositions.size(),currentPos)
 	childVels.insert(childVels.size(),Vector2.ZERO)
 	head.global_position = (global_position + currentPos)
-	#print(childPositions)
 
 func _process(delta: float) -> void:
 	if !head and !dead:
@@ -51,27 +56,32 @@ func _process(delta: float) -> void:
 		for i in childVels.size():
 			childVels[i].y += delta*9.8
 	else:
+		UpdateDirection()
 		#Sway back and forth, each node a little more intenseley.
-		if (swayDist > 4.0 and direction > 0):
-			direction = 0-direction
-		elif(swayDist < -12.0 and direction < 0):
-			direction = 0-direction
+		if (swayDist > 4.0 and swayDirection > 0):
+			swayDirection = 0-swayDirection
+		elif(swayDist < -12.0 and swayDirection < 0):
+			swayDirection = 0-swayDirection
 			ShootBullet()
 		
-		swayDist += sign(direction) * (delta*6)
+		swayDist += sign(swayDirection) * (delta*6)
 		#print(swayDist)
 		var rememberedPosition = Vector2.ZERO
 		for i in children.size():
-			childPositions[i] = rememberedPosition.rotated(deg_to_rad(swayDist))
+			childPositions[i] = rememberedPosition.rotated(deg_to_rad(direction*swayDist))
 			rememberedPosition = childPositions[i]-Vector2(0,12)
 			if i == children.size():
-				childPositions[i] -= Vector2(28,12)
+				childPositions[i] -= Vector2(28*direction,12)
 			else:
-				childPositions[i] -= Vector2(24,0)
+				childPositions[i] -= Vector2(24*direction,0)
 			
 	for i in children.size():
 		childPositions[i] += childVels[i]
 		children[i].global_position = global_position+childPositions[i]
+
+func UpdateDirection():
+	for i in get_child_count():
+		get_child(i).scale.x = direction
 
 func ShootBullet():
 	#print("shoot")
@@ -81,5 +91,5 @@ func ShootBullet():
 	# set position with offset
 	bullet.global_position = bulletPoint.global_position
 	bullet.scale.x = 1
-	bullet.velocity.x = -100*(global_scale.x)
+	bullet.velocity.x = -100*direction
 	bullet.gravity = true
