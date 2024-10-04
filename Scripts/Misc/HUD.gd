@@ -43,6 +43,8 @@ signal tally_clear
 var characterNames = ["SONIC","TAILS","KNUCKLES","AMY","MIGHTY","RAY"]
 
 func _ready():
+	if !Global.airSpeedCap:
+		$Counters/Text.self_modulate = Color.RED
 	# error prevention
 	if !Global.is_main_loaded:
 		return false
@@ -217,7 +219,7 @@ func _process(delta):
 	
 	
 	# HUD flashing text
-	if flashTimer < 0:
+	if flashTimer < 0 and Global.airSpeedCap:
 		flashTimer = 0.1
 		if Global.players.size() > 0:
 			# if ring count at zero, flash rings

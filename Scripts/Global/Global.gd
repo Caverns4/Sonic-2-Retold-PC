@@ -78,6 +78,7 @@ var levelTime = 0 # the timer that counts down while the level isn't completed o
 var levelTimeP2 = 0
 var globalTimer = 0 # global timer, used as reference for animations
 var maxTime = 60*10
+var airSpeedCap = true
 
 enum ZONES{EMERALD_HILL,HIDDEN_PALACE,HILL_TOP,CHEMICAL_PLANT,
 OIL_OCEAN,NEO_GREEN_HILL,METROPOLIS,DUST_HILL,WOOD_GADGET,
@@ -244,14 +245,27 @@ func load_settings():
 	
 	if file.has_section_key("Resolution","Zoom"):
 		zoomSize = file.get_value("Resolution","Zoom")
-		get_window().set_size(get_viewport().get_visible_rect().size*zoomSize)
+		SetupWindowSize()
 	
 	if file.has_section_key("Resolution","FullScreen"):
 		get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (file.get_value("Resolution","FullScreen")) else Window.MODE_WINDOWED
 	
 	if file.has_section_key("Resolution","AspectRatio"):
 		aspectRatio = file.get_value("Resolution","AspectRatio")
+		SetupWindowSize()
+	
+
+func IsFullScreen():
+	if (get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN or 
+	get_window().mode == Window.MODE_FULLSCREEN):
+		return true
+	return false
+
+func SetupWindowSize():
+		var window = get_window()
 		var resolution = aspectResolutions[aspectRatio]
-		get_window().content_scale_size = Vector2i(resolution.x*2, resolution.y*2)
-		get_window().set_size(resolution * Global.zoomSize)
+		window.content_scale_size = Vector2i(resolution.x*2, resolution.y*2)
+		var newSize = Vector2i((get_viewport().get_visible_rect().size*zoomSize).round())
+		window.set_position(window.get_position()+(window.size-newSize)/2)
+		window.set_size(resolution * Global.zoomSize)
 	

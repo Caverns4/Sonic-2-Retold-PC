@@ -168,6 +168,11 @@ func _input(event):
 					Global.nextZone = load("res://Scene/Cutscenes/Opening.tscn")
 				15: #Casino Night 1
 					Global.nextZone = load("res://Scene/Zones/CasinoNight1.tscn")
+					
+				18:
+					Global.airSpeedCap = !Global.airSpeedCap
+					selected = false
+					return
 				_: # Invalid Entry
 					selected = false
 					return
@@ -233,19 +238,26 @@ func levelSelect_UpdateText(): # levelID
 			j +=1
 		if j == levelID+1:
 			k = j
-			if j == CharacterSelectMenuID:
-				if !Global.tailsNameCheat:
-					textFieldLeft.text += "[color=#eeee00]" + str(characterLabels[characterID]).to_upper() + "[/color]\n"
-				else:
-					textFieldLeft.text += "[color=#eeee00]" + str(characterLabelsMiles[characterID]).to_upper() + "[/color]\n"
+			if Global.airSpeedCap:
+				textFieldLeft.text += "[color=#eeee00]"
 			else:
-				textFieldLeft.text += "[color=#eeee00]" + str(levelLabels[i]).to_upper() + "[/color]\n"
+				textFieldLeft.text += "[color=#ee0000]"
+			if j == CharacterSelectMenuID:
+				
+				if !Global.tailsNameCheat:
+					textFieldLeft.text += str(characterLabels[characterID]).to_upper() + "[/color]\n"
+				else:
+					textFieldLeft.text += str(characterLabelsMiles[characterID]).to_upper() + "[/color]\n"
+			else:
+				textFieldLeft.text += str(levelLabels[i]).to_upper() + "[/color]\n"
 		else:
 			if j == CharacterSelectMenuID:
 				if !Global.tailsNameCheat:
 					textFieldLeft.text += str(characterLabels[characterID]).to_upper()
 				else:
 					textFieldLeft.text += str(characterLabelsMiles[characterID]).to_upper()
+				if !Global.airSpeedCap:
+					textFieldLeft.text +="?"
 			else:
 				textFieldLeft.text += str(levelLabels[i]).to_upper() + "\n"
 	$UI/LabelsRight/LevelIcon.frame = levelIcons[k-1]

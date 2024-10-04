@@ -3,6 +3,8 @@ var getCam = null
 var player = null
 var winner = Global.CHARACTERS.NONE
 
+var triggers = []
+
 @onready var screenXSize = GlobalFunctions.get_screen_size().x
 
 func _physics_process(_delta):
@@ -11,48 +13,57 @@ func _physics_process(_delta):
 	if Global.TwoPlayer:
 		TriggerSignpostMultiPlayer()
 	else:
-		TriggerSignpostSinglePlayer() #Temp
-	InitEndOfAct()
+		TriggerSignpostSinglePlayer()
 	
-	# stage clear settings
-	if Global.stageClearPhase != 0:
-		# lock camera to self
-		if getCam:
-			getCam.global_position.x = global_position.x
-		# if player greater then screen and stage clear phase is 2 then activate the stage clear sequence
-		if player:
-			if player.global_position.x > global_position.x+(screenXSize/2) and player.movement.x >= 0 and Global.stageClearPhase == 2:
-				# stage clear won't work is stage clear phase isn't 0
-				Global.stageClearPhase = 0
-				Global.stage_clear()
-				# set stage clear to 3, this will activate the HUD sequence
-				Global.stageClearPhase = 3
+	if !Global.TwoPlayer:
+		InitEndOfAct()
+		# stage clear settings
+		if Global.stageClearPhase != 0:
+			# lock camera to self
+			if getCam:
+				getCam.global_position.x = global_position.x
+			# if player greater then screen and stage clear phase is 2 then activate the stage clear sequence
+			if player:
+				if player.global_position.x > global_position.x+(screenXSize/2) and player.movement.x >= 0 and Global.stageClearPhase == 2:
+					# stage clear won't work is stage clear phase isn't 0
+					Global.stageClearPhase = 0
+					Global.stage_clear()
+					# set stage clear to 3, this will activate the HUD sequence
+					Global.stageClearPhase = 3
 
 func TriggerSignpostMultiPlayer():
-	if Global.players.size()>1:
-		for i in Global.players.size():
-			if Global.players[i].global_position.x > global_position.x and Global.stageClearPhase == 0:
-				player = Global.players[i]
-		if player and !winner:
+	for i in Global.players.size():
+		if Global.players[i].global_position.x > global_position.x and Global.stageClearPhase == 0:
+			player = Global.players[i]
+	if player and !triggers.has(player):
+		triggers.append(player)
+		# Camera limit set
+		player.limitLeft = global_position.x -screenXSize/2
+		player.limitRight = global_position.x +(screenXSize/2)+64
+		getCam = player.camera
+		
+		if !winner:
 			winner = player.character
+		
+		SetSignpostAnimation(winner)
+		
 
 func TriggerSignpostSinglePlayer():
 	if Global.players[0].global_position.x > global_position.x and Global.stageClearPhase == 0:
 		# set player variable
 		player = Global.players[0]
-	
 		# Camera limit set
 		player.limitLeft = global_position.x -screenXSize/2
 		player.limitRight = global_position.x +(screenXSize/2)+64
 		getCam = player.camera
-	
-func InitEndOfAct():
-	if Global.stageClearPhase == 0 and player:
+		SetSignpostAnimation(player.character)
+		# set global stage clear phase to 1, 1 is used to stop the timer (see HUD script)
+		Global.stageClearPhase = 1
+
+func SetSignpostAnimation(character):
 		# play spinner
 		$Signpost/Animator.play("Spinner")
-		#if Global.TwoPlayer and winner:
-		#	finalAnim = winner
-		match player.character:
+		match character:
 			Global.CHARACTERS.TAILS:
 				$Signpost/Animator.queue("Tails")
 			Global.CHARACTERS.KNUCKLES:
@@ -65,11 +76,11 @@ func InitEndOfAct():
 				$Signpost/Animator.queue("Ray")
 			_:
 				$Signpost/Animator.queue("Sonic")
-		
 		$Signpost/GoalPost.play()
-		# set global stage clear phase to 1, 1 is used to stop the timer (see HUD script)
-		Global.stageClearPhase = 1
-		
+
+
+func InitEndOfAct():
+	if Global.stageClearPhase == 1 and player:
 		# wait for spinner to finish
 		await $Signpost/Animator.animation_finished
 		# after finishing spin, set stage clear to 2 and disable the players controls,

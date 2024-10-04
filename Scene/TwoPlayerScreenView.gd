@@ -6,6 +6,7 @@ extends Control
 @onready var cameraPlayer1 = $CanvasLayer/SubViewportContainer/SubViewport/CameraP1
 @onready var cameraPlayer2 = $CanvasLayer/SubViewportContainer2/SubViewport/CameraP2
 
+var alive = 0.0
 
 # Parallax Layers
 var parallaxBackgrounds = [
@@ -14,7 +15,11 @@ var parallaxBackgrounds = [
 	"res://Scene/Backgrounds/02-HillTop.tscn",
 	"res://Scene/Backgrounds/03-ChemicalPlant.tscn",
 	"res://Scene/Backgrounds/04-OilOcean.tscn",
-	"res://Scene/Backgrounds/05-NeoGreenHill.tscn"
+	"res://Scene/Backgrounds/05-NeoGreenHill.tscn",
+	"res://Scene/Backgrounds/09-CasinoNight.tscn",
+	"res://Scene/Backgrounds/09-CasinoNight.tscn",
+	"res://Scene/Backgrounds/09-CasinoNight.tscn",
+	"res://Scene/Backgrounds/09-CasinoNight.tscn",
 ]
 
 # Player memory
@@ -42,7 +47,9 @@ func _ready():
 	$CanvasLayer/SubViewportContainer2/SubViewport.size_2d_override =  Vector2i(resolution.x,224)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(_delta):
+func _physics_process(delta):
+	alive += delta
+	#print(alive)
 	if playersReady == false:
 		QueueUpPlayers()
 	elif playersReady == true and !Global.players:

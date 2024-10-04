@@ -37,6 +37,8 @@ var zoomClamp = [1,6]
 # Aspect Ratio texts
 var aspectClamp = ["4x3","16x9"]
 
+
+
 func _ready():
 	characterID = Global.characterSelectMemory
 	Global.music.stream = music
@@ -99,20 +101,17 @@ func _input(event):
 					else:
 						soundStepDelay -= 0.1
 				3: #Scale
-					if (inputCue.x != 0) and (
-					(get_window().mode != Window.MODE_EXCLUSIVE_FULLSCREEN) and 
-					(get_window().mode != Window.MODE_FULLSCREEN)
-					)and(inputCue != lastInput):
+					if (inputCue.x != 0) and !Global.IsFullScreen() and(inputCue != lastInput):
 						Global.zoomSize = clamp(Global.zoomSize+inputCue.x,zoomClamp[0],zoomClamp[1])
-						get_window().set_size(get_viewport().get_visible_rect().size*Global.zoomSize)
+						Global.SetupWindowSize()
 				4: #aspect ratio
 					if (inputCue.x > 0):
 						Global.aspectRatio = wrapi(Global.aspectRatio+1,0,Global.aspectResolutions.size())
-						var resolution = Global.aspectResolutions[Global.aspectRatio]
-						#get_viewport().size = resolution * Global.zoomSize
-						get_window().content_scale_size = Vector2i(resolution.x*2, resolution.y*2)
-						get_window().set_size(resolution * Global.zoomSize)
-						
+						if !Global.IsFullScreen():
+							Global.SetupWindowSize()
+						else:
+							var resolution = Global.aspectResolutions[Global.aspectRatio]
+							get_window().content_scale_size = Vector2i(resolution.x*2, resolution.y*2)
 				5: #full screen
 					if (inputCue.x != 0):
 						get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (!((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN))) else Window.MODE_WINDOWED
@@ -129,9 +128,25 @@ func _input(event):
 		or event.is_action_pressed("gm_action3")) and !selected:
 			match menuOption:
 				
+				4: #Aspecct Ratio
+					Global.aspectRatio = wrapi(Global.aspectRatio+1,0,Global.aspectResolutions.size())
+					if !Global.IsFullScreen():
+						Global.SetupWindowSize()
+					else:
+						var resolution = Global.aspectResolutions[Global.aspectRatio]
+						get_window().content_scale_size = Vector2i(resolution.x*2, resolution.y*2)
 				5: # full screen
 					get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (!((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN))) else Window.MODE_WINDOWED
-				
+				6: # Controls
+						Global.save_settings()
+						
+						var menu = Global.main
+						menu = menu.get_child(2).get_child(2) #God this is bad
+						print(menu)
+						menu.visible = true
+						visible = false
+						Global.main.wasPaused = false
+						get_tree().paused = true
 				7: #Back to title
 					selected = true
 					SetPlayerCharacterIDs()
@@ -171,7 +186,6 @@ func OptionsMenu_RedrawText():
 					textField.text += str(aspectClamp[Global.aspectRatio])
 				5:
 					textField.text += onOff[int(((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN)))]
-					
 
 		textField.text += "\n\n"
 

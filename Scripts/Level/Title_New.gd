@@ -26,7 +26,8 @@ var parallaxBackgrounds = [
 	"res://Scene/Backgrounds/02-HillTop.tscn",
 	"res://Scene/Backgrounds/03-ChemicalPlant.tscn",
 	"res://Scene/Backgrounds/04-OilOcean.tscn",
-	"res://Scene/Backgrounds/05-NeoGreenHill.tscn"
+	"res://Scene/Backgrounds/05-NeoGreenHill.tscn",
+	"res://Scene/Backgrounds/09-CasinoNight.tscn"
 ]
 var sceneInstance = null
 
