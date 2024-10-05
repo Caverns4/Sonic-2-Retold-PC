@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bwbfc3g6eth1a"]
+
+[node name="07-DustHill" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]

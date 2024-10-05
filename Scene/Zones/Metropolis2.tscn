@@ -12,6 +12,8 @@ zoneID = 6
 music = ExtResource("2_5b87d")
 music2P = ExtResource("2_5b87d")
 nextZone = ExtResource("3_kfgoq")
+animal1 = 9
+animal2 = 7
 
 [node name="HUD" parent="." instance=ExtResource("1_f4g8u")]
 playLevelCard = false

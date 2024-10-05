@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://da47pd80u7kac"]
+
+[node name="08-WoodGadget" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]

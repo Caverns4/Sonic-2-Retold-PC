@@ -12,6 +12,8 @@ zoneID = 6
 music = ExtResource("2_hx3eb")
 music2P = ExtResource("2_hx3eb")
 nextZone = ExtResource("3_yayac")
+animal1 = 9
+animal2 = 7
 
 [node name="HUD" parent="." instance=ExtResource("1_67gif")]
 zoneName = "METROPOLIS"
