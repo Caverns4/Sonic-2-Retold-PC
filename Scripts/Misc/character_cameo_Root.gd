@@ -57,7 +57,7 @@ func _physics_process(delta: float) -> void:
 	UpdateCharacterMotion(delta)
 	# Delete self if way out of bounds
 	if character.global_position.y > 4096:
-		print("Character culled successfully")
+		#print("Character culled successfully")
 		queue_free()
 
 func UpdateCharacterMotion(delta):
@@ -69,7 +69,11 @@ func UpdateCharacterMotion(delta):
 
 func UpdateLookDirection():
 	direction = sign(global_position.x - Global.players[0].global_position.x)
-	character.scale.x = direction
+	#character.global_scale.y = direction
+	if direction > 0:
+		sprite.flip_h = false
+	else:
+		sprite.flip_h = true
 
 func ThrowGift():
 	droppedItem = drop.instantiate()
@@ -78,6 +82,7 @@ func ThrowGift():
 	droppedItem.global_position = global_position
 	droppedItem.physics = true
 	droppedItem.item = present
+	droppedItem.FrameUpdate()
 	droppedItem.velocity.x = 0-60*direction
 	droppedItem.yspeed = 0-SPEED
 

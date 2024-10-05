@@ -50,6 +50,9 @@ func _process(_delta):
 	if Engine.is_editor_hint():
 		$Item.frame = item+2
 
+func FrameUpdate():
+	$Item.frame = item+2
+
 func destroy():
 	# skip if not activated
 	if Global.TwoPlayer:
