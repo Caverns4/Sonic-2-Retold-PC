@@ -9,8 +9,20 @@ extends Node2D
 @export var music2P = preload("res://Audio/Soundtrack/s2br_Tropical.ogg")
 @export var nextZone = load("res://Scene/Zones/BaseZone.tscn")
 
-@export_enum("Bird", "Squirrel", "Rabbit", "Chicken", "Penguin", "Seal", "Pig", "Eagle", "Mouse", "Monkey", "Turtle", "Bear")var animal1 = 0
-@export_enum("Bird", "Squirrel", "Rabbit", "Chicken", "Penguin", "Seal", "Pig", "Eagle", "Mouse", "Monkey", "Turtle", "Bear")var animal2 = 1
+@export_enum("Bird","Squirrel",
+"Rabbit", "Chicken",
+"Penguin", "Seal",
+"Pig", "Eagle",
+"Mouse", "Monkey",
+"Turtle","Bear",
+"Beaver","Fox")var animal1 = 0
+@export_enum("Bird", "Squirrel",
+"Rabbit", "Chicken",
+"Penguin", "Seal",
+"Pig", "Eagle",
+"Mouse", "Monkey",
+"Turtle", "Bear",
+"Beaver","Fox")var animal2 = 1
 
 # Boundries
 @export var setDefaultLeft = true

@@ -168,7 +168,8 @@ func _input(event):
 					Global.nextZone = load("res://Scene/Cutscenes/Opening.tscn")
 				15: #Casino Night 1
 					Global.nextZone = load("res://Scene/Zones/CasinoNight1.tscn")
-					
+				16: #Casino Night 2
+					Global.nextZone = load("res://Scene/Zones/CasinoNight2.tscn")
 				18:
 					Global.airSpeedCap = !Global.airSpeedCap
 					selected = false

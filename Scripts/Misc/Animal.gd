@@ -1,6 +1,12 @@
 extends Node2D
 var animType = 0 # 0 flap, 1 change on fall
-@export_enum("Bird", "Squirrel", "Rabbit", "Chicken", "Penguin", "Seal", "Pig", "Eagle", "Mouse", "Monkey", "Turtle", "Bear")var animal = 0
+@export_enum("Bird", "Squirrel",
+"Rabbit", "Chicken",
+"Penguin", "Seal",
+"Pig", "Eagle",
+"Mouse", "Monkey",
+"Turtle", "Bear",
+"Beaver","Fox")var animal = 0
 
 var animalPhysics = [
 # (Bird)
@@ -27,6 +33,10 @@ Vector2(2.75,3.0),
 Vector2(1.25,2.0),
 # (Bear)
 Vector2(2.0,3.0),
+# (Beaver)
+Vector2(2.0,3.0),
+# (Fox)
+Vector2(2.0,4.0),
 ]
 
 var animTime = 0
@@ -74,6 +84,12 @@ func _ready():
 			animType = 1
 		11: # Bear
 			$animals.region_rect.position.y = 128
+			animType = 1
+		12: # Beaver
+			$animals.region_rect.position.y = 192
+			animType = 1
+		13: # Fox
+			$animals.region_rect.position = Vector2(72,192)
 			animType = 1
 
 func _physics_process(delta):

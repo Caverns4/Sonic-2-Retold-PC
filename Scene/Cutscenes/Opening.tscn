@@ -157,10 +157,10 @@ tracks/10/path = NodePath("CutsceneSonic:animation")
 tracks/10/interp = 0
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(5, 7.5, 9, 9.5, 10.5, 17),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 5, 7.5, 9, 9.5, 10.5, 17),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": ["run", "walk", "crouch", "spinDash", "roll", "walk"]
+"values": ["RESET", "run", "walk", "crouch", "spinDash", "roll", "walk"]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
@@ -293,12 +293,10 @@ position = Vector2(-56, 224)
 
 [node name="CutsceneSonic" parent="CustsceneObjects" instance=ExtResource("7_m56kd")]
 position = Vector2(1032, 272)
-animation = "walk"
 
 [node name="CustsceneTails" parent="CustsceneObjects" instance=ExtResource("8_43024")]
 position = Vector2(1160, 272)
 scale = Vector2(-1, 1)
-animation = "walk"
 
 [node name="CutscenePlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../CustsceneObjects")
