@@ -14,8 +14,9 @@ zoneID = 9
 music = ExtResource("2_kas0w")
 music2P = ExtResource("3_lgk7y")
 nextZone = ExtResource("3_6vlv4")
-animal1 = 11
+animal1 = 13
 animal2 = 0
+defaultBottomBoundry = 2048
 
 [node name="09-CasinoNight" parent="." instance=ExtResource("4_ryq2u")]
 

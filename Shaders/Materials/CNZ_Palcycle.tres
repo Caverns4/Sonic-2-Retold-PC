@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://b2v0ktdlj41ql"]
+
+[ext_resource type="Shader" path="res://Shaders/PaletteSwapRow_Timerbased.gdshader" id="1_gtjai"]
+[ext_resource type="Texture2D" uid="uid://c2fkhnfyn7o07" path="res://Graphics/Palettes/CNZ_Palcycle.png" id="2_dfuef"]
+
+[resource]
+shader = ExtResource("1_gtjai")
+shader_parameter/amount = 9.0
+shader_parameter/palRows = 6.0
+shader_parameter/approximation = 0.0
+shader_parameter/time_scale = 0.09
+shader_parameter/paletteTexture = ExtResource("2_dfuef")

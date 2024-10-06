@@ -4,11 +4,11 @@ uniform float palRows : hint_range(1,255,1);
 //uniform float row : hint_range(1,999,1);
 uniform float approximation : hint_range(0.0,5.0,0.01);
 uniform sampler2D paletteTexture : filter_nearest;
-uniform float time_scale: hint_range(0.0, 10.0, 0.1) = 5.0;
+uniform float time_scale: hint_range(0.0, 10.0, 0.01) = 5.0;
 
 void fragment(){
 	float fac = TIME/time_scale;
-	float row = mod(round(fac),round(palRows))+1.0;
+	float row = mod(round(fac),round(palRows));
 
 	if (row > 1.0) {
 		vec3 pal = texture(paletteTexture,UV).rgb;
