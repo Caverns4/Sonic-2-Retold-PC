@@ -530,7 +530,7 @@ func _process(delta):
 	# set the sprite to match the sprite rotation variable if it's in the rotatable Sprites list
 	if (rotatableSprites.has(animator.current_animation)):
 		# check if player rotation is greater then 45 degrees or current angle doesn't match the gravity's angle or not on the floor
-		if abs(spriteRotation-90) >= 32 or rotation != gravityAngle or !ground:
+		if abs(spriteRotation-90) >= 33 or rotation != gravityAngle or !ground:
 			sprite.rotation = deg_to_rad(snapped(spriteRotation,45)-90)-rotation-gravityAngle
 		else:
 			sprite.rotation = -rotation-gravityAngle
