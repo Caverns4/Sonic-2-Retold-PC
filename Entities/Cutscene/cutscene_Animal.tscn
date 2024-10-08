@@ -9,6 +9,7 @@ size = Vector2(20, 32)
 [node name="CutsceneAnimal" type="CharacterBody2D"]
 collision_layer = 0
 script = ExtResource("1_e0su0")
+blockMovement = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_htiwp")

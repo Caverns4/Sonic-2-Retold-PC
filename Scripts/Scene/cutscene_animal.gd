@@ -12,6 +12,7 @@ var animType = 0 # 0 flap, 1 change on fall
 
 @export_enum("In place","right","left") var behavior = 0
 
+@export var blockMovement = false
 
 var animalPhysics = [
 # (Bird)
@@ -54,13 +55,13 @@ func _physics_process(delta: float):
 	if Engine.is_editor_hint():
 		SetupAnimalArt()
 	else:
-		if !is_on_floor():
-			velocity += get_gravity()*delta
-		else:
-			bouncePower = animalPhysics[animal].y*60
-			velocity.y = 0-bouncePower
-			
-		move_and_slide()
+		if !blockMovement:
+			if !is_on_floor():
+				velocity += get_gravity()*delta
+			else:
+				bouncePower = animalPhysics[animal].y*60
+				velocity.y = 0-bouncePower
+			move_and_slide()
 
 
 func SetupAnimalArt():

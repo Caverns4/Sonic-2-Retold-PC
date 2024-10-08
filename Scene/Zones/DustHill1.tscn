@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cuf10h0hh7iep"]
+[gd_scene load_steps=7 format=3 uid="uid://cuf10h0hh7iep"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_3gh4r"]
+[ext_resource type="AudioStream" uid="uid://c8y5q77kxn4ap" path="res://Audio/Soundtrack/s2br_DustHill.ogg" id="2_pw2ks"]
 [ext_resource type="AudioStream" uid="uid://bg1fcuqr8mk1d" path="res://Audio/Soundtrack/s2br_Jewel.ogg" id="2_vln36"]
 [ext_resource type="PackedScene" uid="uid://caxc44uymh48a" path="res://Scene/Zones/EmeraldHill1.tscn" id="3_08sm7"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="4_uwgof"]
@@ -9,7 +10,7 @@
 [node name="DustHill1" type="Node2D"]
 script = ExtResource("1_3gh4r")
 zoneID = 7
-music = ExtResource("2_vln36")
+music = ExtResource("2_pw2ks")
 music2P = ExtResource("2_vln36")
 nextZone = ExtResource("3_08sm7")
 animal1 = 8

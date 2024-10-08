@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://cuoyniqg8gua3"]
+
+[ext_resource type="Script" path="res://Scripts/Scene/cutscene_eggman.gd" id="1_44o7g"]
+[ext_resource type="Texture2D" uid="uid://6ds1jcc8jmyf" path="res://Graphics/Boss/Eggmobile.png" id="1_vvqax"]
+[ext_resource type="Texture2D" uid="uid://d0i06mnbra5yc" path="res://Graphics/Boss/Robotnik.png" id="2_i4grn"]
+[ext_resource type="Texture2D" uid="uid://c31pi0okhicpx" path="res://Graphics/Boss/Eggmobile_Top.png" id="3_hxbva"]
+[ext_resource type="Texture2D" uid="uid://dam0q6u1k8paq" path="res://Graphics/Boss/Jet.png" id="4_doqox"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3oj5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlxg3"]
+atlas = ExtResource("2_i4grn")
+region = Rect2(0, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjf5x"]
+atlas = ExtResource("2_i4grn")
+region = Rect2(0, 16, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fia5a"]
+atlas = ExtResource("2_i4grn")
+region = Rect2(0, 32, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8ofi"]
+atlas = ExtResource("2_i4grn")
+region = Rect2(0, 64, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dspyg"]
+atlas = ExtResource("2_i4grn")
+region = Rect2(0, 80, 64, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wahvj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlxg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjf5x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fia5a")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8ofi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dspyg")
+}],
+"loop": true,
+"name": &"laugh",
+"speed": 5.0
+}]
+
+[node name="Cutscene_Eggman" type="CharacterBody2D"]
+script = ExtResource("1_44o7g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_t3oj5")
+
+[node name="Eggmobile" type="Sprite2D" parent="."]
+texture = ExtResource("1_vvqax")
+
+[node name="Eggman_Face" type="AnimatedSprite2D" parent="Eggmobile"]
+position = Vector2(0, -24)
+sprite_frames = SubResource("SpriteFrames_wahvj")
+autoplay = "default"
+
+[node name="Eggmobile_Top" type="Sprite2D" parent="Eggmobile"]
+position = Vector2(11, -40)
+texture = ExtResource("3_hxbva")
+
+[node name="Eggmobile_Fire" type="Sprite2D" parent="Eggmobile"]
+visible = false
+z_index = -1
+position = Vector2(35, 0)
+texture = ExtResource("4_doqox")

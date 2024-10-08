@@ -335,12 +335,6 @@ script = ExtResource("1_ed2g8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_wk1bh")
 
-[node name="PlayerAnimation" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_xx6dh")
-}
-autoplay = "RESET"
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 5
 position = Vector2(0, -8)
@@ -355,3 +349,9 @@ offset = Vector2(-2, 0)
 hframes = 16
 vframes = 8
 frame = 10
+
+[node name="PlayerAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xx6dh")
+}
+autoplay = "RESET"
