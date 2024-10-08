@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://d137eh38374f"]
+
+[ext_resource type="Shader" path="res://Shaders/PaletteSwapRow_Timerbased.gdshader" id="1_g3wun"]
+[ext_resource type="Texture2D" uid="uid://d00d25b0d4hcy" path="res://Graphics/Palettes/hpz_Waterfallpal.png" id="2_u6cby"]
+
+[resource]
+shader = ExtResource("1_g3wun")
+shader_parameter/amount = 4.0
+shader_parameter/palRows = 3.0
+shader_parameter/approximation = 0.0
+shader_parameter/time_scale = 0.1
+shader_parameter/paletteTexture = ExtResource("2_u6cby")

@@ -6,7 +6,7 @@
 [resource]
 shader = ExtResource("1_gtjai")
 shader_parameter/amount = 9.0
-shader_parameter/palRows = 6.0
+shader_parameter/palRows = 12.0
 shader_parameter/approximation = 0.0
-shader_parameter/time_scale = 0.09
+shader_parameter/time_scale = 0.1
 shader_parameter/paletteTexture = ExtResource("2_dfuef")
