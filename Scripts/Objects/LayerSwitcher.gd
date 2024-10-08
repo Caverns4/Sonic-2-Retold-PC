@@ -5,8 +5,8 @@ var texture = load("res://Graphics/EditorUI/layer_switchers.png")
 # layer settings, should be self explanatory
 @export var size = Vector2(1,3)
 @export_enum("Horizontal", "Vertical") var orientation = 0
-@export_enum("Low", "High") var rightLayer = 0
 @export_enum("Low", "High") var leftLayer = 1
+@export_enum("Low", "High") var rightLayer = 0
 @export var onlyOnFloor = false
 
 # list of player contacts
