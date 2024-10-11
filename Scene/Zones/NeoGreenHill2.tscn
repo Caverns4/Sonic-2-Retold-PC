@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://ctdnv7vgg1v6k" path="res://Audio/Soundtrack/s2br_NeoGreenHill.ogg" id="2_vjshq"]
 [ext_resource type="PackedScene" uid="uid://jkb87hqbtl0l" path="res://Scene/Backgrounds/05-NeoGreenHill.tscn" id="4_dt52b"]
 
-[node name="AquaticRuin2" type="Node2D"]
+[node name="NeoGreenHill2" type="Node2D"]
 script = ExtResource("1_uxs8x")
 zoneID = 5
 music = ExtResource("2_vjshq")

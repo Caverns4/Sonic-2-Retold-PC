@@ -136,30 +136,30 @@ func _input(event):
 					Global.PlayerChar1 = Global.CHARACTERS.MIGHTY
 			# set the level
 			match(levelID):
-				0: # Emerald Zone Act 1
+				0: # Emerald Hill Act 1
 					Global.nextZone = load("res://Scene/Zones/EmeraldHill1.tscn")
-				1: # Emerald Zone Act 2
+				1: # Emerald Hill Act 2
 					Global.nextZone = load("res://Scene/Zones/EmeraldHill2.tscn")
-				2: # Hidden Palace Zone 2
+				2: # Hidden Palace 2
 					Global.nextZone = load("res://Scene/Zones/Hidden Palace 1.tscn")
-				3: # Hidden Palace Zone 2
+				3: # Hidden Palace 2
 					Global.nextZone = load("res://Scene/Zones/Hidden Palace 2.tscn")
 				4: # Hill Top Zone 1
 					Global.nextZone = load("res://Scene/Zones/HillTop1.tscn")
 				5: # Hill Top Zone 2
 					Global.nextZone = load("res://Scene/Zones/HillTop2.tscn")
-				6: # Chemical Plant Zone 1
+				6: # Chemical Plant 1
 					Global.nextZone = load("res://Scene/Zones/ChunkZone.tscn")
-				7: # Chemical Plant Zone 2
+				7: # Chemical Plant 2
 					Global.nextZone = load("res://Scene/Zones/ChemicalPlant2.tscn")
 				8: # Oil Ocean Zone 1
 					Global.nextZone = load("res://Scene/Zones/BaseZone.tscn")
 				9: # Oil Ocean Zone 2
 					Global.nextZone = load("res://Scene/Zones/BaseZoneAct2.tscn")
-				10: # Neo Green Hill Zone 1
-					Global.nextZone = load("res://Scene/Zones/AquaticRuin1.tscn")
+				10: # Neo Green Hill 1
+					Global.nextZone = load("res://Scene/Zones/NeoGreenHill1.tscn")
 				11: # Neo Green Hill 2
-					Global.nextZone = load("res://Scene/Zones/AquaticRuin2.tscn")
+					Global.nextZone = load("res://Scene/Zones/NeoGreenHill2.tscn")
 				12: #Metropolis 1
 					Global.nextZone = load("res://Scene/Zones/Metropolis1.tscn")
 				13: #Metropolis 2
@@ -257,8 +257,6 @@ func levelSelect_UpdateText(): # levelID
 					textFieldLeft.text += str(characterLabels[characterID]).to_upper()
 				else:
 					textFieldLeft.text += str(characterLabelsMiles[characterID]).to_upper()
-				if !Global.airSpeedCap:
-					textFieldLeft.text +="?"
 			else:
 				textFieldLeft.text += str(levelLabels[i]).to_upper() + "\n"
 	$UI/LabelsRight/LevelIcon.frame = levelIcons[k-1]
