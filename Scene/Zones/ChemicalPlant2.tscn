@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://b73oxpdf64ys2"]
+[gd_scene load_steps=48 format=4 uid="uid://b73oxpdf64ys2"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_r8kv3"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_sbiln"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="26_peo5d"]
 [ext_resource type="PackedScene" uid="uid://7k14xkpjguop" path="res://Entities/Obstacles/SwingingPlatform.tscn" id="26_xv2b0"]
 [ext_resource type="PackedScene" uid="uid://ijfhnqwrjcfj" path="res://Entities/ZoneObjects/MackWormSpawner.tscn" id="27_ijc7b"]
+[ext_resource type="PackedScene" uid="uid://c1rdgr14n8rxh" path="res://Entities/Obstacles/AscendingStairBlocks.tscn" id="28_ckttt"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="30_5k5ut"]
 [ext_resource type="PackedScene" uid="uid://cma7d8l5wmqmd" path="res://Entities/Items/LampPost.tscn" id="30_8ycur"]
 [ext_resource type="PackedScene" uid="uid://xbidybme3tde" path="res://Entities/Enemies/Spiny.tscn" id="30_po1yj"]
@@ -664,14 +665,6 @@ position = Vector2(9280, 1888)
 childCount = 0
 speed = 0.5
 
-[node name="MovingStairBlocks9" parent="Floating Platforms" instance=ExtResource("16_japjs")]
-position = Vector2(5952, 1952)
-direction = 1
-
-[node name="MovingStairBlocks11" parent="Floating Platforms" instance=ExtResource("16_japjs")]
-position = Vector2(5312, 1248)
-speed = 0.5
-
 [node name="MovingStairBlocks15" parent="Floating Platforms" instance=ExtResource("16_japjs")]
 position = Vector2(5088, 384)
 childCount = 0
@@ -687,7 +680,7 @@ position = Vector2(9280, 1504)
 speed = 0.5
 
 [node name="MovingStairBlocks10" parent="Floating Platforms" instance=ExtResource("16_japjs")]
-position = Vector2(10176, 1408)
+position = Vector2(10240, 1408)
 speed = 0.5
 
 [node name="MovingStairBlocks4" parent="Floating Platforms" instance=ExtResource("16_japjs")]
@@ -801,6 +794,12 @@ speed = 0.5
 [node name="Platform2" parent="Floating Platforms" instance=ExtResource("26_xv2b0")]
 position = Vector2(2240, 896)
 
+[node name="AscendingStairBlocks" parent="Floating Platforms" instance=ExtResource("28_ckttt")]
+position = Vector2(5312, 1296)
+
+[node name="AscendingStairBlocks2" parent="Floating Platforms" instance=ExtResource("28_ckttt")]
+position = Vector2(5952, 2032)
+
 [node name="Hazards" type="Node2D" parent="."]
 
 [node name="Spikes" parent="Hazards" instance=ExtResource("17_4h4gd")]
@@ -854,12 +853,6 @@ position = Vector2(5392, 2032)
 [node name="Spikes15" parent="Hazards" instance=ExtResource("17_4h4gd")]
 position = Vector2(5424, 2032)
 
-[node name="Spikes16" parent="Hazards" instance=ExtResource("17_4h4gd")]
-position = Vector2(5904, 2032)
-
-[node name="Spikes17" parent="Hazards" instance=ExtResource("17_4h4gd")]
-position = Vector2(5936, 2032)
-
 [node name="Spikes28" parent="Hazards" instance=ExtResource("17_4h4gd")]
 position = Vector2(8944, 2000)
 
@@ -880,12 +873,6 @@ position = Vector2(8880, 2000)
 
 [node name="Spikes31" parent="Hazards" instance=ExtResource("17_4h4gd")]
 position = Vector2(8848, 2000)
-
-[node name="Spikes18" parent="Hazards" instance=ExtResource("17_4h4gd")]
-position = Vector2(5968, 2032)
-
-[node name="Spikes19" parent="Hazards" instance=ExtResource("17_4h4gd")]
-position = Vector2(6000, 2032)
 
 [node name="Spikes4" parent="Hazards" instance=ExtResource("17_4h4gd")]
 position = Vector2(4096, 880)

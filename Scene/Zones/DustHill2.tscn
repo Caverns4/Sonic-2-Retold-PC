@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://ecnvkbx6eipx"]
+
+[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_ednaa"]
+[ext_resource type="AudioStream" uid="uid://c8y5q77kxn4ap" path="res://Audio/Soundtrack/s2br_DustHill.ogg" id="2_xwbm1"]
+[ext_resource type="AudioStream" uid="uid://bg1fcuqr8mk1d" path="res://Audio/Soundtrack/s2br_Jewel.ogg" id="3_h5jpw"]
+[ext_resource type="PackedScene" uid="uid://caxc44uymh48a" path="res://Scene/Zones/EmeraldHill1.tscn" id="4_mmkko"]
+[ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_57iih"]
+[ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_momm2"]
+
+[node name="DustHill2" type="Node2D"]
+script = ExtResource("1_ednaa")
+zoneID = 7
+music = ExtResource("2_xwbm1")
+music2P = ExtResource("3_h5jpw")
+nextZone = ExtResource("4_mmkko")
+animal1 = 8
+animal2 = 3
+defaultBottomBoundry = 2048
+
+[node name="HUD" parent="." instance=ExtResource("5_57iih")]
+playLevelCard = false
+zoneName = "DUST HILL"
+act = 2
+
+[node name="Player" parent="." instance=ExtResource("6_momm2")]
+position = Vector2(96, 656)
+disablePartner = true
+
+[node name="Level_Layout" type="Node" parent="."]

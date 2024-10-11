@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ct2wo24donqxt"]
+[gd_scene load_steps=7 format=3 uid="uid://ct2wo24donqxt"]
 
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_f4g8u"]
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_rpqfi"]
 [ext_resource type="AudioStream" uid="uid://dlgpinnh0yca3" path="res://Audio/Soundtrack/s2br_Metropolis.ogg" id="2_5b87d"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="2_ykppd"]
 [ext_resource type="PackedScene" uid="uid://caxc44uymh48a" path="res://Scene/Zones/EmeraldHill1.tscn" id="3_kfgoq"]
+[ext_resource type="PackedScene" uid="uid://br54h8eixiokf" path="res://Scene/Backgrounds/06-Metropolis.tscn" id="4_bsr7b"]
 
 [node name="Metropolis2" type="Node2D"]
 script = ExtResource("1_rpqfi")
@@ -14,6 +15,9 @@ music2P = ExtResource("2_5b87d")
 nextZone = ExtResource("3_kfgoq")
 animal1 = 9
 animal2 = 7
+defaultBottomBoundry = 2048
+
+[node name="06-Metropolis" parent="." instance=ExtResource("4_bsr7b")]
 
 [node name="HUD" parent="." instance=ExtResource("1_f4g8u")]
 playLevelCard = false
@@ -23,3 +27,5 @@ act = 2
 [node name="Player" parent="." instance=ExtResource("2_ykppd")]
 position = Vector2(96, 656)
 disablePartner = true
+
+[node name="Level_Layout" type="Node" parent="."]

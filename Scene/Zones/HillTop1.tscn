@@ -436,6 +436,16 @@ scale = Vector2(16, 18)
 position = Vector2(2816, 1008)
 scale = Vector2(16, 18)
 
+[node name="ForceRoll4" parent="Entities" instance=ExtResource("30_ej03w")]
+position = Vector2(5680, 360)
+scale = Vector2(2, 1)
+forceDirection = 3
+
+[node name="ForceRoll5" parent="Entities" instance=ExtResource("30_ej03w")]
+position = Vector2(9392, 1640)
+scale = Vector2(2, 1)
+forceDirection = 3
+
 [node name="ForceRoll3" parent="Entities" instance=ExtResource("30_ej03w")]
 position = Vector2(8320, 1664)
 scale = Vector2(32, 48)
