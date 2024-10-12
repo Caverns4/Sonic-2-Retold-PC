@@ -671,6 +671,21 @@ SpriteTexture = ExtResource("33_xkkj3")
 position = Vector2(1536, 1792)
 scale = Vector2(16, 32)
 
+[node name="ForceRoll4" parent="Entities" instance=ExtResource("35_ld4b8")]
+position = Vector2(1712, 1384)
+scale = Vector2(2, 1)
+forceDirection = 3
+
+[node name="ForceRoll5" parent="Entities" instance=ExtResource("35_ld4b8")]
+position = Vector2(3120, 1640)
+scale = Vector2(2, 1)
+forceDirection = 3
+
+[node name="ForceRoll6" parent="Entities" instance=ExtResource("35_ld4b8")]
+position = Vector2(7472, 232)
+scale = Vector2(2, 1)
+forceDirection = 3
+
 [node name="ForceRoll2" parent="Entities" instance=ExtResource("35_ld4b8")]
 position = Vector2(4224, 512)
 scale = Vector2(16, 32)
