@@ -34,7 +34,7 @@ func _ready() -> void:
 		children.append(node)
 		childPositions.insert(childPositions.size(),currentPos)
 		childVels.insert(childVels.size(),Vector2.ZERO)
-		node.position = (global_position + currentPos)
+		node.global_position = (global_position + currentPos)
 		currentPos -= Vector2(0,12)
 	
 	children.append(head)

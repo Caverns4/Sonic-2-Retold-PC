@@ -88,6 +88,7 @@ func physics_collision(body, hitVector):
 			# set vertical speed
 			body.movement.y = setMove.y
 			body.set_state(body.STATES.AIR)
+			body.disconect_from_floor()
 			if killTransSpeed == true:
 				body.movement.x = 0
 			$SpringAnimator.play(animList[animID])
@@ -117,6 +118,7 @@ func physics_collision(body, hitVector):
 
 func _on_Diagonal_body_entered(body):
 	# diagonal springs are pretty straightforward
+	body.angle = body.gravityAngle
 	body.currentState = body.STATES.AIR
 	body.position.x = position.x
 	body.position.y = position.y-8
