@@ -995,31 +995,31 @@ position = Vector2(10136, 584)
 position = Vector2(10184, 584)
 
 [node name="Ring173" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(9712, 408)
+position = Vector2(9728, 424)
 
 [node name="Ring174" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(9736, 408)
+position = Vector2(9752, 424)
 
 [node name="Ring175" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(9688, 408)
+position = Vector2(9704, 424)
 
 [node name="Ring176" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(9664, 408)
+position = Vector2(9680, 424)
 
 [node name="Ring177" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(9760, 408)
+position = Vector2(9776, 424)
 
 [node name="Ring178" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(9672, 384)
+position = Vector2(9688, 400)
 
 [node name="Ring179" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(9696, 384)
+position = Vector2(9712, 400)
 
 [node name="Ring180" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(9720, 384)
+position = Vector2(9736, 400)
 
 [node name="Ring181" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(9744, 384)
+position = Vector2(9760, 400)
 
 [node name="Ring182" parent="Rings" instance=ExtResource("32_xmgm7")]
 position = Vector2(4640, 680)

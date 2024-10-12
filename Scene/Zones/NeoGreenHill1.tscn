@@ -125,7 +125,7 @@ size = Vector2(1, 32)
 leftLayer = 0
 
 [node name="LayerSwitcher7" parent="Entitites" instance=ExtResource("11_nkv76")]
-position = Vector2(4912, 832)
+position = Vector2(4984, 832)
 size = Vector2(1, 32)
 leftLayer = 0
 
@@ -222,29 +222,31 @@ springDirection = 2
 position = Vector2(5344, 1120)
 platformSprite = ExtResource("14_1yu1u")
 endPosition = Vector2(0, 0)
+fallTimer = 1.0
 
 [node name="Platform2" parent="Platform" instance=ExtResource("13_mfjkp")]
 position = Vector2(5216, 1120)
 platformSprite = ExtResource("14_1yu1u")
 endPosition = Vector2(0, 0)
+fallTimer = 1.0
 
 [node name="Platform3" parent="Platform" instance=ExtResource("13_mfjkp")]
 position = Vector2(7264, 1120)
 platformSprite = ExtResource("14_1yu1u")
 endPosition = Vector2(0, 0)
-fallTimer = 3.0
+fallTimer = 1.0
 
 [node name="Platform4" parent="Platform" instance=ExtResource("13_mfjkp")]
 position = Vector2(7392, 1120)
 platformSprite = ExtResource("14_1yu1u")
 endPosition = Vector2(0, 0)
-fallTimer = 3.0
+fallTimer = 1.0
 
 [node name="Platform5" parent="Platform" instance=ExtResource("13_mfjkp")]
 position = Vector2(9440, 1104)
 platformSprite = ExtResource("14_1yu1u")
 endPosition = Vector2(0, 0)
-fallTimer = 3.0
+fallTimer = 1.0
 
 [node name="ItemsHolder" type="Node" parent="."]
 
