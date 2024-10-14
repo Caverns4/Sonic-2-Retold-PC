@@ -2,7 +2,7 @@ extends Node2D
 
 
 @export var music = preload("res://Audio/Soundtrack/s2br_Options.ogg")
-@export var nextZone = load("res://Scene/Zones/EmeraldHill1.tscn")
+@export var nextZone = load("res://Scene/Presentation/ZoneLoader.tscn")
 var selected = false
 
 const LEFT_ROWS = 20 #Including blank rows
@@ -33,6 +33,12 @@ var levelLabels = [ #Every one of these is a line, and some are skipped.
 	"Metropolis      1",
 	"                2",
 	"                3",
+	"Dust Hill       1",
+	"                2",
+	"",
+	"Wood Gadget     1",
+	"                2",
+	"",
 	"Casino Night    1",
 	"                2",
 	"",
@@ -56,6 +62,10 @@ var levelIcons = [ #Use this list to get the number of selectable entries
 	Global.ZONES.METROPOLIS,
 	Global.ZONES.METROPOLIS,
 	Global.ZONES.METROPOLIS,
+	Global.ZONES.DUST_HILL,
+	Global.ZONES.DUST_HILL,
+	Global.ZONES.WOOD_GADGET,
+	Global.ZONES.WOOD_GADGET,
 	Global.ZONES.CASINO_NIGHT,
 	Global.ZONES.CASINO_NIGHT,
 	17,
@@ -137,40 +147,69 @@ func _input(event):
 			# set the level
 			match(levelID):
 				0: # Emerald Hill Act 1
-					Global.nextZone = load("res://Scene/Zones/EmeraldHill1.tscn")
+					Global.savedZoneID = Global.ZONES.EMERALD_HILL
+					Global.savedActID = 0
 				1: # Emerald Hill Act 2
-					Global.nextZone = load("res://Scene/Zones/EmeraldHill2.tscn")
+					Global.savedZoneID = Global.ZONES.EMERALD_HILL
+					Global.savedActID = 1
 				2: # Hidden Palace 2
-					Global.nextZone = load("res://Scene/Zones/Hidden Palace 1.tscn")
+					Global.savedZoneID = Global.ZONES.HIDDEN_PALACE
+					Global.savedActID = 0
 				3: # Hidden Palace 2
-					Global.nextZone = load("res://Scene/Zones/Hidden Palace 2.tscn")
+					Global.savedZoneID = Global.ZONES.HIDDEN_PALACE
+					Global.savedActID = 1
 				4: # Hill Top Zone 1
-					Global.nextZone = load("res://Scene/Zones/HillTop1.tscn")
+					Global.savedZoneID = Global.ZONES.HILL_TOP
+					Global.savedActID = 0
 				5: # Hill Top Zone 2
-					Global.nextZone = load("res://Scene/Zones/HillTop2.tscn")
+					Global.savedZoneID = Global.ZONES.HILL_TOP
+					Global.savedActID = 1
 				6: # Chemical Plant 1
-					Global.nextZone = load("res://Scene/Zones/ChunkZone.tscn")
+					Global.savedZoneID = Global.ZONES.CHEMICAL_PLANT
+					Global.savedActID = 0
 				7: # Chemical Plant 2
-					Global.nextZone = load("res://Scene/Zones/ChemicalPlant2.tscn")
+					Global.savedZoneID = Global.ZONES.CHEMICAL_PLANT
+					Global.savedActID =1
 				8: # Oil Ocean Zone 1
-					Global.nextZone = load("res://Scene/Zones/BaseZone.tscn")
+					Global.savedZoneID = Global.ZONES.OIL_OCEAN
+					Global.savedActID = 0
 				9: # Oil Ocean Zone 2
-					Global.nextZone = load("res://Scene/Zones/BaseZoneAct2.tscn")
+					Global.savedZoneID = Global.ZONES.OIL_OCEAN
+					Global.savedActID = 1
 				10: # Neo Green Hill 1
-					Global.nextZone = load("res://Scene/Zones/NeoGreenHill1.tscn")
+					Global.savedZoneID = Global.ZONES.NEO_GREEN_HILL
+					Global.savedActID = 0
 				11: # Neo Green Hill 2
-					Global.nextZone = load("res://Scene/Zones/NeoGreenHill2.tscn")
+					Global.savedZoneID = Global.ZONES.NEO_GREEN_HILL
+					Global.savedActID = 1
 				12: #Metropolis 1
-					Global.nextZone = load("res://Scene/Zones/Metropolis1.tscn")
+					Global.savedZoneID = Global.ZONES.METROPOLIS
+					Global.savedActID = 0
 				13: #Metropolis 2
-					Global.nextZone = load("res://Scene/Zones/Metropolis2.tscn")
+					Global.savedZoneID = Global.ZONES.METROPOLIS
+					Global.savedActID = 1
 				14: #Metropolis 3
-					Global.nextZone = load("res://Scene/Cutscenes/Opening.tscn")
-				15: #Casino Night 1
-					Global.nextZone = load("res://Scene/Zones/CasinoNight1.tscn")
-				16: #Casino Night 2
-					Global.nextZone = load("res://Scene/Zones/CasinoNight2.tscn")
-				18:
+					Global.savedZoneID = Global.ZONES.METROPOLIS
+					Global.savedActID = 2
+				15: #Dust Hill 1
+					Global.savedZoneID = Global.ZONES.DUST_HILL
+					Global.savedActID = 0
+				16: #Dust Hill 2
+					Global.savedZoneID = Global.ZONES.DUST_HILL
+					Global.savedActID = 1
+				17: #Wood Gadget 1
+					Global.savedZoneID = Global.ZONES.WOOD_GADGET
+					Global.savedActID = 0
+				18: #Wood Gadget 2
+					Global.savedZoneID = Global.ZONES.WOOD_GADGET
+					Global.savedActID = 1
+				19: #Casino Night 1
+					Global.savedZoneID = Global.ZONES.CASINO_NIGHT
+					Global.savedActID = 0
+				20: #Casino Night 2
+					Global.savedZoneID = Global.ZONES.CASINO_NIGHT
+					Global.savedActID = 1
+				22:
 					Global.airSpeedCap = !Global.airSpeedCap
 					selected = false
 					return

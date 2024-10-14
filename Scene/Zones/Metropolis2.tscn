@@ -20,12 +20,10 @@ defaultBottomBoundry = 2048
 [node name="06-Metropolis" parent="." instance=ExtResource("4_bsr7b")]
 
 [node name="HUD" parent="." instance=ExtResource("1_f4g8u")]
-playLevelCard = false
 zoneName = "METROPOLIS"
 act = 2
 
 [node name="Player" parent="." instance=ExtResource("2_ykppd")]
 position = Vector2(96, 656)
-disablePartner = true
 
 [node name="Level_Layout" type="Node" parent="."]

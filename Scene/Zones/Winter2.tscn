@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://xla7xnuc7cat"]
+
+[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_xqbmm"]
+[ext_resource type="AudioStream" uid="uid://c8y5q77kxn4ap" path="res://Audio/Soundtrack/s2br_DustHill.ogg" id="2_6udsl"]
+[ext_resource type="AudioStream" uid="uid://bg1fcuqr8mk1d" path="res://Audio/Soundtrack/s2br_Jewel.ogg" id="3_cbr0f"]
+[ext_resource type="PackedScene" uid="uid://bsn2mq5y0ftjy" path="res://Scene/Zones/Wood2.tscn" id="4_lipye"]
+[ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_aifnk"]
+[ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_l55ie"]
+
+[node name="Winter2" type="Node2D"]
+script = ExtResource("1_xqbmm")
+zoneID = 11
+music = ExtResource("2_6udsl")
+music2P = ExtResource("3_cbr0f")
+nextZone = ExtResource("4_lipye")
+animal1 = 11
+animal2 = 12
+defaultBottomBoundry = 2048
+
+[node name="HUD" parent="." instance=ExtResource("5_aifnk")]
+playLevelCard = false
+zoneName = "WINTER"
+act = 2
+
+[node name="Player" parent="." instance=ExtResource("6_l55ie")]
+position = Vector2(96, 656)
+disablePartner = true
+
+[node name="Level_Layout" type="Node" parent="."]

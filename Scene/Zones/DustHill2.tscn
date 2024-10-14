@@ -24,6 +24,5 @@ act = 2
 
 [node name="Player" parent="." instance=ExtResource("6_momm2")]
 position = Vector2(96, 656)
-disablePartner = true
 
 [node name="Level_Layout" type="Node" parent="."]

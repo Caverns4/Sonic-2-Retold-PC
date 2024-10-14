@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8fkgce2ikwdg"]
+
+[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_k1fex"]
+[ext_resource type="AudioStream" uid="uid://ccsd05nnbj8ix" path="res://Audio/Soundtrack/s2br_SandShower.ogg" id="2_r5p2q"]
+[ext_resource type="PackedScene" uid="uid://bsn2mq5y0ftjy" path="res://Scene/Zones/Wood2.tscn" id="4_wl05o"]
+[ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_xsa2c"]
+[ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_kv2l8"]
+
+[node name="SandShower2" type="Node2D"]
+script = ExtResource("1_k1fex")
+zoneID = 12
+music = ExtResource("2_r5p2q")
+music2P = ExtResource("2_r5p2q")
+nextZone = ExtResource("4_wl05o")
+animal1 = 11
+animal2 = 12
+defaultBottomBoundry = 2048
+
+[node name="HUD" parent="." instance=ExtResource("5_xsa2c")]
+playLevelCard = false
+zoneName = "WOOD GADGET"
+act = 2
+
+[node name="Player" parent="." instance=ExtResource("6_kv2l8")]
+position = Vector2(96, 656)
+disablePartner = true
+
+[node name="Level_Layout" type="Node" parent="."]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkqhraqyjvy0o"]
+
+[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_03k2s"]
+[ext_resource type="AudioStream" uid="uid://cmtn72t7dtgf" path="res://Audio/Soundtrack/s2br_Tropical.ogg" id="2_30gps"]
+[ext_resource type="PackedScene" uid="uid://bsn2mq5y0ftjy" path="res://Scene/Zones/Wood2.tscn" id="4_ehrki"]
+[ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_aa3nw"]
+[ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_bflto"]
+
+[node name="Tropical2" type="Node2D"]
+script = ExtResource("1_03k2s")
+zoneID = 13
+music = ExtResource("2_30gps")
+nextZone = ExtResource("4_ehrki")
+animal2 = 10
+defaultBottomBoundry = 2048
+
+[node name="HUD" parent="." instance=ExtResource("5_aa3nw")]
+playLevelCard = false
+zoneName = "TROPICAL"
+act = 2
+
+[node name="Player" parent="." instance=ExtResource("6_bflto")]
+position = Vector2(96, 656)
+disablePartner = true
+
+[node name="Level_Layout" type="Node" parent="."]

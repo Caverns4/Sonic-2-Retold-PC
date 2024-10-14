@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://tr33s3gs3j3n"]
+
+[ext_resource type="Script" path="res://Scene/Presentation/zone_loader.gd" id="1_3r84a"]
+[ext_resource type="FontFile" uid="uid://ml62eqfe7avn" path="res://Graphics/Fonts/small_font.png" id="2_q51dt"]
+
+[node name="ZoneLoader" type="CanvasLayer"]
+script = ExtResource("1_3r84a")
+
+[node name="Back" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 32.0
+color = Color(0, 0, 0, 1)
+
+[node name="Date" type="Label" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -8.0
+offset_right = 138.0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_q51dt")
+text = "loading..."
+vertical_alignment = 2
+uppercase = true

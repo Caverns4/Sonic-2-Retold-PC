@@ -2,9 +2,9 @@ extends Node2D
 
 @export_enum(
 "Emerald Hill", "Hidden Palace","Hill Top", "Chemical Plant",
-"Oil Ocean", "Neo Green Hill",
-"Metropolis","Dust Hill","Wood Gadget","Casino Night",
-"Jewel Grotto","Sky Fortress","Death Egg") var zoneID = 0
+"Oil Ocean", "Neo Green Hill","Metropolis","Dust Hill",
+"Wood Gadget","Casino Night","Jewel Grotto","Winter",
+"Sand Shower","Tropical Sun","Sky Fortress","Death Egg") var zoneID = 0
 @export var music = preload("res://Audio/Soundtrack/s2br_EmeraldHilll.ogg")
 @export var music2P = preload("res://Audio/Soundtrack/s2br_Tropical.ogg")
 @export var nextZone = load("res://Scene/Zones/BaseZone.tscn")
@@ -41,6 +41,8 @@ var twoPlayerWindow = preload("res://Scene/TwoPlayerScreenView.tscn")
 var wasLoaded = false
 
 func _ready():
+	Global.effectTheme.stop()
+	Global.bossMusic.stop()
 	Global.savedZoneID = zoneID
 	# debuging
 	if !Global.is_main_loaded:

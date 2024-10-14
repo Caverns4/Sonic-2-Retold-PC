@@ -23,6 +23,5 @@ zoneName = "DUST HILL"
 
 [node name="Player" parent="." instance=ExtResource("5_dhfai")]
 position = Vector2(96, 656)
-disablePartner = true
 
 [node name="Level_Layout" type="Node" parent="."]

@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var music = preload("res://Audio/Soundtrack/s2br_TitleScreen.ogg")
-@export var nextZone = load("res://Scene/Zones/NeoGreenHill1.tscn")
+var nextZone = load("res://Scene/Presentation/ZoneLoader.tscn")
 var testScene = load("res://Scene/Presentation/CharacterSelect.tscn")
 var returnScene = load("res://Scene/Cutscenes/Opening.tscn")
 var optionsScene = load("res://Scene/Presentation/OptionsMenu.tscn")
@@ -30,7 +30,8 @@ var parallaxBackgrounds = [
 	"res://Scene/Backgrounds/06-Metropolis.tscn",
 	"res://Scene/Backgrounds/07-DustHill.tscn",
 	"res://Scene/Backgrounds/08-WoodGadget.tscn",
-	"res://Scene/Backgrounds/09-CasinoNight.tscn"
+	"res://Scene/Backgrounds/09-CasinoNight.tscn",
+	"res://Scene/Backgrounds/07-DustHill.tscn",
 ]
 var sceneInstance = null
 
@@ -41,6 +42,15 @@ var paraOffsets = [
 	0,
 	-256,
 	-256,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
 	0,
 ]
 
@@ -57,13 +67,9 @@ var lastCheatInput = Vector2.ZERO
 func _ready():
 	Global.TwoPlayer = false
 	Global.music.stream = music
-	#Global.music.play()
 
 	var parallax = parallaxBackgrounds[min(Global.savedZoneID,parallaxBackgrounds.size()-1)]
 	scene = load(parallax)
-	#UpdateMenuDisplay()
-	if nextZone != null:
-		Global.nextZone = nextZone
 
 func _process(delta):
 	if $CanvasLayer/Labels.visible == true and !titleEnd:
@@ -119,6 +125,8 @@ func MenuOptionChosen():
 	match menuEntry:
 		0:
 			titleEnd = true
+			Global.savedZoneID = Global.ZONES.NEO_GREEN_HILL
+			Global.savedActID = 0
 			Global.main.change_scene_to_file(nextZone,"FadeOut","FadeOut",1)
 		1:
 			titleEnd = true

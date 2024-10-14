@@ -8,6 +8,7 @@ var texture = load("res://Graphics/EditorUI/layer_switchers.png")
 @export_enum("Low", "High") var leftLayer = 1
 @export_enum("Low", "High") var rightLayer = 0
 @export var onlyOnFloor = false
+@export var affectPriority = false
 
 # list of player contacts
 var playerList = []
@@ -29,15 +30,36 @@ func _physics_process(_delta):
 				if i.ground or not onlyOnFloor:
 					match(orientation):
 						0: #Horizontal
+							var priorityDirection = -1
 							if (i.global_position.x > global_position.x):
 								i.collissionLayer = rightLayer
+								priorityDirection = rightLayer
 							else:
 								i.collissionLayer = leftLayer
+								priorityDirection = leftLayer
+							
+							if affectPriority and priorityDirection >= 0:
+								match priorityDirection:
+									0:
+										i.z_index = i.defaultZIndex
+									1:
+										i.z_index = (i.defaultZIndex)+10
+
 						1: #Vertical
+							var priorityDirection = -1
 							if (i.global_position.y > global_position.y):
 								i.collissionLayer = rightLayer
+								priorityDirection = rightLayer
 							else:
 								i.collissionLayer = leftLayer
+								priorityDirection = leftLayer
+
+							if affectPriority and priorityDirection >= 0:
+								match priorityDirection:
+									0:
+										i.z_index = i.defaultZIndex
+									1:
+										i.z_index = (i.defaultZIndex)+10
 
 func _process(_delta):
 	# update for editor

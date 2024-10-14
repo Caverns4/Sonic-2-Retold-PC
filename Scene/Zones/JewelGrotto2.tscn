@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://6j0cbv72pota"]
+
+[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_a5u21"]
+[ext_resource type="AudioStream" uid="uid://bg1fcuqr8mk1d" path="res://Audio/Soundtrack/s2br_Jewel.ogg" id="3_k6phh"]
+[ext_resource type="PackedScene" uid="uid://bsn2mq5y0ftjy" path="res://Scene/Zones/Wood2.tscn" id="4_wfb8g"]
+[ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_um8eq"]
+[ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_im413"]
+
+[node name="JewelGrotto2" type="Node2D"]
+script = ExtResource("1_a5u21")
+zoneID = 10
+music = ExtResource("3_k6phh")
+music2P = ExtResource("3_k6phh")
+nextZone = ExtResource("4_wfb8g")
+animal1 = 8
+animal2 = 3
+defaultBottomBoundry = 2048
+
+[node name="HUD" parent="." instance=ExtResource("5_um8eq")]
+playLevelCard = false
+zoneName = "JEWEL GROTTO"
+act = 2
+
+[node name="Player" parent="." instance=ExtResource("6_im413")]
+position = Vector2(96, 656)
+
+[node name="Level_Layout" type="Node" parent="."]

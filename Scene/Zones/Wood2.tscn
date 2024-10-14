@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://bsn2mq5y0ftjy"]
+
+[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_vg3f0"]
+[ext_resource type="AudioStream" uid="uid://dlgpinnh0yca3" path="res://Audio/Soundtrack/s2br_Metropolis.ogg" id="2_8cx83"]
+[ext_resource type="PackedScene" uid="uid://caxc44uymh48a" path="res://Scene/Zones/EmeraldHill1.tscn" id="4_bx7rd"]
+[ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_vkwgj"]
+[ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_mtco7"]
+
+[node name="Wood2" type="Node2D"]
+script = ExtResource("1_vg3f0")
+zoneID = 8
+music = ExtResource("2_8cx83")
+music2P = ExtResource("2_8cx83")
+nextZone = ExtResource("4_bx7rd")
+animal1 = 11
+animal2 = 12
+defaultBottomBoundry = 2048
+
+[node name="HUD" parent="." instance=ExtResource("5_vkwgj")]
+zoneName = "WOOD GADGET"
+act = 2
+
+[node name="Player" parent="." instance=ExtResource("6_mtco7")]
+position = Vector2(96, 656)
+disablePartner = true
+
+[node name="Level_Layout" type="Node" parent="."]

@@ -81,9 +81,11 @@ var maxTime = 60*10
 var airSpeedCap = true
 
 enum ZONES{EMERALD_HILL,HIDDEN_PALACE,HILL_TOP,CHEMICAL_PLANT,
-OIL_OCEAN,NEO_GREEN_HILL,METROPOLIS,DUST_HILL,WOOD_GADGET,
-CASINO_NIGHT,JEWEL_GROTTO,SKY_FORTRESS,DEATH_EGG}
+OIL_OCEAN,NEO_GREEN_HILL,METROPOLIS,DUST_HILL,
+WOOD_GADGET,CASINO_NIGHT,JEWEL_GROTTO,WINTER,
+SAND_SHOWER,TROPICAL,SKY_FORTRESS,DEATH_EGG}
 var savedZoneID = 0 # Last played zone. Will mainly be used for the Title Screen.
+var savedActID = 0 # selected act ID
 
 # water level of the current level, setting this to null will disable the water
 var waterLevel = null
@@ -122,6 +124,8 @@ var aspectResolutions = [
 	Vector2(320,224),
 	Vector2(400,224)
 	]
+
+var saveFileSelected = 0 #0 = no save
 
 # Hazard type references
 enum HAZARDS {NORMAL, FIRE, ELEC, WATER}
@@ -268,4 +272,12 @@ func SetupWindowSize():
 		var newSize = Vector2i((get_viewport().get_visible_rect().size*zoomSize).round())
 		window.set_position(window.get_position()+(window.size-newSize)/2)
 		window.set_size(resolution * Global.zoomSize)
+
+
+func SaveGameData():
+	if saveFileSelected == 0:
+		return
+	var filename = "sonic" + str(saveFileSelected) + ".dat"
+	var a = Global.Score*(savedZoneID*4)/30+PlayerChar2*PlayerChar1
+	print(a)
 	
