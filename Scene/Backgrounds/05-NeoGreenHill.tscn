@@ -4,10 +4,10 @@
 
 [node name="05-NeoGreenHill" type="ParallaxBackground"]
 layer = -5
-scroll_base_scale = Vector2(1, 0.5)
+scroll_base_offset = Vector2(0, 128)
+scroll_base_scale = Vector2(1, 0.6)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(1.1, 1)
 motion_mirroring = Vector2(640, 0)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="ParallaxLayer"]

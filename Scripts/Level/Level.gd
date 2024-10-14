@@ -41,8 +41,9 @@ var twoPlayerWindow = preload("res://Scene/TwoPlayerScreenView.tscn")
 var wasLoaded = false
 
 func _ready():
-	Global.effectTheme.stop()
-	Global.bossMusic.stop()
+	if Global.effectTheme:
+		Global.effectTheme.stop()
+		Global.bossMusic.stop()
 	Global.savedZoneID = zoneID
 	# debuging
 	if !Global.is_main_loaded:

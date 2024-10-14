@@ -3,13 +3,13 @@
 [ext_resource type="TileSet" uid="uid://b0b5lpm7k65k5" path="res://Tileset/Levels/NGHZ.tres" id="1_oukwp"]
 
 [node name="05-NeoGreenHill-High" type="ParallaxBackground"]
-layer = -5
-scroll_base_scale = Vector2(1, 0.5)
+layer = 1
+scroll_base_offset = Vector2(0, 128)
+scroll_base_scale = Vector2(1, 0.6)
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
 z_index = 60
 z_as_relative = false
-motion_scale = Vector2(1.1, 1)
 motion_mirroring = Vector2(640, 0)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="ParallaxLayer2"]
