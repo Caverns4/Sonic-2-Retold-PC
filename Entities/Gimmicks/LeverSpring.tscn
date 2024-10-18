@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://kvy8b2y8v76e"]
+
+[ext_resource type="Texture2D" uid="uid://dcjgggeg30x8o" path="res://Graphics/Gimmicks/LeverSpring.png" id="1_bwqm6"]
+[ext_resource type="Script" path="res://Scripts/Gimmicks/lever_spring.gd" id="1_fdf1k"]
+
+[node name="LeverSpring" type="StaticBody2D"]
+script = ExtResource("1_fdf1k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-8, -16)
+texture = ExtResource("1_bwqm6")
+centered = false
+vframes = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(32, -16, -8, 0, 40, 0, 48, -16)
