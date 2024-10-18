@@ -26,6 +26,7 @@ music2P = ExtResource("2_vjshq")
 nextZone = ExtResource("3_tis8u")
 animal1 = 4
 animal2 = 0
+defaultTopBoundry = 384
 defaultRightBoundry = 11648
 defaultBottomBoundry = 2048
 
