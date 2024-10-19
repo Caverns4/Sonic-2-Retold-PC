@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://s4hdjd5g3p2i"]
+[gd_scene load_steps=25 format=4 uid="uid://s4hdjd5g3p2i"]
 
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_u8gl0"]
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_uxs8x"]
@@ -18,7 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://kvy8b2y8v76e" path="res://Entities/Gimmicks/LeverSpring.tscn" id="16_fum15"]
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="17_kyq38"]
 [ext_resource type="PackedScene" uid="uid://bu13a3ewwy81c" path="res://Entities/ZoneObjects/NGHZ_FloatingPillar.tscn" id="18_2tlyd"]
+[ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="18_be0sq"]
 [ext_resource type="PackedScene" uid="uid://bpquddgh4ve1f" path="res://Entities/ZoneObjects/NGHZ_Bottomless_Pillar.tscn" id="18_wgkxu"]
+[ext_resource type="PackedScene" uid="uid://c3yq46ay5g4ov" path="res://Entities/Obstacles/MultiRotatingPlatforms.tscn" id="19_37nbt"]
 [ext_resource type="PackedScene" uid="uid://dx1yhmglo7ril" path="res://Entities/ZoneObjects/NGHZ_FallingPillarPiece.tscn" id="19_jec3u"]
 [ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="20_n7h8v"]
 [ext_resource type="Texture2D" uid="uid://dnly44mdqo8im" path="res://Graphics/Objects_Zone/NGHZ_Platform.png" id="21_7rt3i"]
@@ -358,7 +360,7 @@ position = Vector2(5208, 1792)
 position = Vector2(7448, 1664)
 
 [node name="StaticPillar9" parent="Entities" instance=ExtResource("18_wgkxu")]
-position = Vector2(8040, 1536)
+position = Vector2(7936, 1536)
 
 [node name="StaticPillar7" parent="Entities" instance=ExtResource("18_wgkxu")]
 position = Vector2(6496, 848)
@@ -388,7 +390,7 @@ position = Vector2(5208, 1856)
 position = Vector2(7448, 1728)
 
 [node name="FallingPiece6" parent="Entities" instance=ExtResource("19_jec3u")]
-position = Vector2(8040, 1600)
+position = Vector2(7936, 1600)
 
 [node name="FloatingPillar11" parent="Entities" instance=ExtResource("18_2tlyd")]
 position = Vector2(6256, 1296)
@@ -401,6 +403,42 @@ behavior = 2
 [node name="FloatingPillar13" parent="Entities" instance=ExtResource("18_2tlyd")]
 position = Vector2(7168, 1232)
 behavior = 1
+
+[node name="InvisibleBarrier" parent="Entities" instance=ExtResource("18_be0sq")]
+position = Vector2(2016, 1732)
+scale = Vector2(3, 1)
+
+[node name="InvisibleBarrier2" parent="Entities" instance=ExtResource("18_be0sq")]
+position = Vector2(2560, 1704)
+scale = Vector2(2, 1)
+
+[node name="InvisibleBarrier3" parent="Entities" instance=ExtResource("18_be0sq")]
+position = Vector2(2712, 1764)
+scale = Vector2(2, 1)
+
+[node name="InvisibleBarrier4" parent="Entities" instance=ExtResource("18_be0sq")]
+position = Vector2(3776, 1028)
+scale = Vector2(4, 1)
+
+[node name="InvisibleBarrier9" parent="Entities" instance=ExtResource("18_be0sq")]
+position = Vector2(6496, 1028)
+scale = Vector2(2, 1)
+
+[node name="InvisibleBarrier5" parent="Entities" instance=ExtResource("18_be0sq")]
+position = Vector2(5208, 1956)
+scale = Vector2(4, 1)
+
+[node name="InvisibleBarrier6" parent="Entities" instance=ExtResource("18_be0sq")]
+position = Vector2(7448, 1892)
+scale = Vector2(4, 1)
+
+[node name="InvisibleBarrier8" parent="Entities" instance=ExtResource("18_be0sq")]
+position = Vector2(7936, 1704)
+scale = Vector2(2, 1)
+
+[node name="MultiRotatingPlatforms" parent="Entities" instance=ExtResource("19_37nbt")]
+position = Vector2(7040, 688)
+plat_img = ExtResource("11_xygnf")
 
 [node name="Platforms" type="Node" parent="."]
 

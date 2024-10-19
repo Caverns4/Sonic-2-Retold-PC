@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 
-var delay = 8*60
+var delay = 8.0/60.0
 var activated = false
 var velocity = Vector2.ZERO #Used to make the "fake" physics.
 
@@ -13,12 +13,13 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:	
 	if activated:
+		if $Area2D:
+			$Area2D.queue_free()
 		delay -= delta
 		if delay <= 0.0:
 			velocity.y += 9.8*delta
 			global_position += velocity
 		if $RayCast2D.is_colliding():
-			$Area2D.queue_free()
 			activated = false
 			velocity = Vector2.ZERO
 		while $RayCast2D.is_colliding():
@@ -28,3 +29,4 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	activated = true
+	print("Activated")

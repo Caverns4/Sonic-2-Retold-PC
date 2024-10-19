@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3yq46ay5g4ov"]
+
+[ext_resource type="Texture2D" uid="uid://bxo0l5r5ep0j4" path="res://Graphics/Obstacles/SwingPole.png" id="1_2e360"]
+[ext_resource type="Script" path="res://Scripts/Objects/multi_rotating_platforms.gd" id="1_4foj7"]
+[ext_resource type="Texture2D" uid="uid://cjhwfrg8xifj5" path="res://Graphics/Obstacles/platform_64_2.png" id="2_pnt1a"]
+[ext_resource type="Texture2D" uid="uid://dh42s3d2vapgn" path="res://Graphics/Obstacles/SwingChain.png" id="3_cbeu8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2ehn"]
+resource_local_to_scene = true
+size = Vector2(80, 1)
+
+[node name="MultiRotatingPlatforms" type="Node2D"]
+script = ExtResource("1_4foj7")
+plat_img = ExtResource("2_pnt1a")
+chain_img = ExtResource("3_cbeu8")
+
+[node name="SwingPlatform" type="AnimatableBody2D" parent="."]
+visible = false
+collision_layer = 8193
+collision_mask = 8192
+
+[node name="Shape3D" type="CollisionShape2D" parent="SwingPlatform"]
+modulate = Color(1, 1, 1, 0.0980392)
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_u2ehn")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="SwingPlatform"]
+
+[node name="SwingPole" type="Sprite2D" parent="."]
+texture = ExtResource("1_2e360")

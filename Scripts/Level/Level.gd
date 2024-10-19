@@ -33,7 +33,7 @@ extends Node2D
 @export var setDefaultRight = true
 @export var defaultRightBoundry = 16384
 @export var setDefaultBottom = true
-@export var defaultBottomBoundry = 1024
+@export var defaultBottomBoundry = 2048
 
 var twoPlayerWindow = preload("res://Scene/TwoPlayerScreenView.tscn")
 
