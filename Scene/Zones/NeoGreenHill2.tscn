@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://s4hdjd5g3p2i"]
+[gd_scene load_steps=29 format=4 uid="uid://s4hdjd5g3p2i"]
 
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_u8gl0"]
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_uxs8x"]
@@ -26,6 +26,8 @@
 [ext_resource type="PackedScene" uid="uid://dx1yhmglo7ril" path="res://Entities/ZoneObjects/NGHZ_FallingPillarPiece.tscn" id="19_jec3u"]
 [ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="20_n7h8v"]
 [ext_resource type="Texture2D" uid="uid://dnly44mdqo8im" path="res://Graphics/Objects_Zone/NGHZ_Platform.png" id="21_7rt3i"]
+[ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="26_2mfu1"]
+[ext_resource type="PackedScene" uid="uid://bct374kjctkxr" path="res://Entities/Items/Checkpoint.tscn" id="27_htdtg"]
 
 [node name="NeoGreenHill2" type="Node2D"]
 script = ExtResource("1_uxs8x")
@@ -268,9 +270,6 @@ position = Vector2(7072, 1804)
 
 [node name="BubbleGenerator9" parent="Entities" instance=ExtResource("14_8s6h0")]
 position = Vector2(7584, 1868)
-
-[node name="Capsule" parent="Entities" instance=ExtResource("15_amq1q")]
-position = Vector2(11520, 1200)
 
 [node name="LeverSpring" parent="Entities" instance=ExtResource("16_fum15")]
 position = Vector2(8400, 1648)
@@ -519,5 +518,83 @@ platformSprite = ExtResource("21_7rt3i")
 endPosition = Vector2(0, 128)
 offset = 128.0
 
-[node name="SignpostNew" parent="." instance=ExtResource("17_kyq38")]
+[node name="ItemsHolder" type="Node" parent="."]
+
+[node name="Monitor" parent="ItemsHolder" instance=ExtResource("26_2mfu1")]
+position = Vector2(2832, 1888)
+item = 1
+
+[node name="Monitor2" parent="ItemsHolder" instance=ExtResource("26_2mfu1")]
+position = Vector2(2984, 624)
+item = 2
+
+[node name="Monitor3" parent="ItemsHolder" instance=ExtResource("26_2mfu1")]
+position = Vector2(3368, 1520)
+item = 2
+
+[node name="Monitor4" parent="ItemsHolder" instance=ExtResource("26_2mfu1")]
+position = Vector2(3744, 1392)
+
+[node name="Monitor5" parent="ItemsHolder" instance=ExtResource("26_2mfu1")]
+position = Vector2(3952, 1952)
+
+[node name="Monitor6" parent="ItemsHolder" instance=ExtResource("26_2mfu1")]
+position = Vector2(3552, 676)
+item = 2
+
+[node name="Monitor7" parent="ItemsHolder" instance=ExtResource("26_2mfu1")]
+position = Vector2(5072, 1776)
+
+[node name="Monitor8" parent="ItemsHolder" instance=ExtResource("26_2mfu1")]
+position = Vector2(5104, 1776)
+
+[node name="Monitor9" parent="ItemsHolder" instance=ExtResource("26_2mfu1")]
+position = Vector2(5120, 754)
+
+[node name="Monitor10" parent="ItemsHolder" instance=ExtResource("26_2mfu1")]
+position = Vector2(6736, 1344)
+
+[node name="Monitor11" parent="ItemsHolder" instance=ExtResource("26_2mfu1")]
+position = Vector2(7600, 1154)
+
+[node name="Monitor12" parent="ItemsHolder" instance=ExtResource("26_2mfu1")]
+position = Vector2(7632, 1154)
+
+[node name="Monitor13" parent="ItemsHolder" instance=ExtResource("26_2mfu1")]
+position = Vector2(8000, 1216)
+item = 12
+
+[node name="Monitor14" parent="ItemsHolder" instance=ExtResource("26_2mfu1")]
+position = Vector2(8208, 544)
+
+[node name="Monitor15" parent="ItemsHolder" instance=ExtResource("26_2mfu1")]
+position = Vector2(8240, 544)
+
+[node name="Monitor16" parent="ItemsHolder" instance=ExtResource("26_2mfu1")]
+position = Vector2(8304, 544)
+item = 12
+
+[node name="Monitor17" parent="ItemsHolder" instance=ExtResource("26_2mfu1")]
+position = Vector2(9760, 1008)
+
+[node name="Checkpoint" parent="ItemsHolder" instance=ExtResource("27_htdtg")]
+position = Vector2(2976, 922)
+checkPointID = 1
+
+[node name="Checkpoint2" parent="ItemsHolder" instance=ExtResource("27_htdtg")]
+position = Vector2(4664, 728)
+checkPointID = 2
+
+[node name="Checkpoint3" parent="ItemsHolder" instance=ExtResource("27_htdtg")]
+position = Vector2(6592, 1016)
+checkPointID = 3
+
+[node name="Checkpoint4" parent="ItemsHolder" instance=ExtResource("27_htdtg")]
+position = Vector2(10240, 1080)
+checkPointID = 4
+
+[node name="SignpostNew" parent="ItemsHolder" instance=ExtResource("17_kyq38")]
 position = Vector2(10496, 1168)
+
+[node name="Capsule" parent="ItemsHolder" instance=ExtResource("15_amq1q")]
+position = Vector2(11520, 1200)
