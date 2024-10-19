@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cou82puj0f0t2"
-path="res://.godot/imported/ARZ_PillarLength.png-ea48ead0763987b5dc94903b9ba723c1.ctex"
+uid="uid://cy20p264lkmth"
+path="res://.godot/imported/NGHZ_Pillar.png-2c55d5db2a74f862ef9f9aa3c46f05c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Objects_Zone/ARZ_PillarLength.png"
-dest_files=["res://.godot/imported/ARZ_PillarLength.png-ea48ead0763987b5dc94903b9ba723c1.ctex"]
+source_file="res://Graphics/Objects_Zone/NGHZ_Pillar.png"
+dest_files=["res://.godot/imported/NGHZ_Pillar.png-2c55d5db2a74f862ef9f9aa3c46f05c0.ctex"]
 
 [params]
 

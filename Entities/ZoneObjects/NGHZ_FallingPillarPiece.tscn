@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dx1yhmglo7ril"]
+
+[ext_resource type="Script" path="res://Scripts/Gimmicks/nghz_falling_pillar_piece.gd" id="1_ldvxo"]
+[ext_resource type="Texture2D" uid="uid://dt336wpqvxowp" path="res://Graphics/Objects_Zone/NGHZ_PillarCap.png" id="2_lsn2x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1y15s"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6k83x"]
+size = Vector2(96, 170)
+
+[node name="FallingPiece" type="StaticBody2D"]
+collision_layer = 2105359
+collision_mask = 15
+script = ExtResource("1_ldvxo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_1y15s")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(-16, -16)
+texture = ExtResource("2_lsn2x")
+centered = false
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 107)
+shape = SubResource("RectangleShape2D_6k83x")
+debug_color = Color(1, 0.545098, 1, 0.501961)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 32)
+collision_mask = 273
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

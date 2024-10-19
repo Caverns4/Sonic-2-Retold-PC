@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3akypobmcjwg"
-path="res://.godot/imported/ARZ_PillarTop.png-92dd7a3c73bf6918ae4f19a22f34e986.ctex"
+uid="uid://dt336wpqvxowp"
+path="res://.godot/imported/NGHZ_PillarCap.png-04b33d9c69a474375acbff86bb8ee82c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Objects_Zone/ARZ_PillarTop.png"
-dest_files=["res://.godot/imported/ARZ_PillarTop.png-92dd7a3c73bf6918ae4f19a22f34e986.ctex"]
+source_file="res://Graphics/Objects_Zone/NGHZ_PillarCap.png"
+dest_files=["res://.godot/imported/NGHZ_PillarCap.png-04b33d9c69a474375acbff86bb8ee82c.ctex"]
 
 [params]
 

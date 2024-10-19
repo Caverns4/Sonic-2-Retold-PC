@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://jgm0h2yu3hvb" path="res://Entities/Enemies/Redz.tscn" id="9_7pp8m"]
 [ext_resource type="Material" uid="uid://d137eh38374f" path="res://Shaders/Materials/HPZ_Palcycle.tres" id="9_p2t8f"]
 [ext_resource type="TileSet" uid="uid://ctbov0uv4xqwe" path="res://Tileset/Levels/HPZ_Tiles.tres" id="9_trtkx"]
-[ext_resource type="PackedScene" uid="uid://ob2r2ewjlvgy" path="res://Entities/ZoneObjects/pulsating_orb.tscn" id="12_k2dso"]
+[ext_resource type="PackedScene" uid="uid://ob2r2ewjlvgy" path="res://Entities/ZoneObjects/HPZ_pulsating_orb.tscn" id="12_k2dso"]
 [ext_resource type="PackedScene" uid="uid://bnn5io8fk2i4h" path="res://Entities/Gimmicks/WaterLevel.tscn" id="12_uche6"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="15_3aljb"]
 [ext_resource type="PackedScene" uid="uid://b5bc364w4mjww" path="res://Entities/Enemies/BFish.tscn" id="21_85vku"]

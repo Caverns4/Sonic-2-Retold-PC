@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://beby8y47savhx" path="res://Graphics/Tiles/HPZ/Bridge_Log_HPZ2.png" id="13_cukfh"]
 [ext_resource type="Texture2D" uid="uid://b58jepyxgptjo" path="res://Graphics/Tiles/HPZ/Bridge_Log_HPZ3.png" id="14_58dc7"]
 [ext_resource type="Texture2D" uid="uid://56fk5g2ne6pr" path="res://Graphics/Objects_Zone/HPZ_Elevator.png" id="14_nrkn0"]
-[ext_resource type="PackedScene" uid="uid://ob2r2ewjlvgy" path="res://Entities/ZoneObjects/pulsating_orb.tscn" id="15_841ao"]
+[ext_resource type="PackedScene" uid="uid://ob2r2ewjlvgy" path="res://Entities/ZoneObjects/HPZ_pulsating_orb.tscn" id="15_841ao"]
 [ext_resource type="PackedScene" uid="uid://bacwcm8ro80d5" path="res://Entities/Obstacles/BreakableEmerald.tscn" id="16_2kmjw"]
 [ext_resource type="PackedScene" uid="uid://c5vnnbgmagq6" path="res://Entities/ZoneObjects/HPZ_Platform_Spawner.tscn" id="16_48b6o"]
 [ext_resource type="PackedScene" uid="uid://ctg1aeiewvyvj" path="res://Entities/Gimmicks/ForceRoll.tscn" id="19_j1ln8"]

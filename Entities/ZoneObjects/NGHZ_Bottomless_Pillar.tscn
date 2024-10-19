@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpquddgh4ve1f"]
+
+[ext_resource type="Texture2D" uid="uid://cy20p264lkmth" path="res://Graphics/Objects_Zone/NGHZ_Pillar.png" id="1_yc83s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1x3o6"]
+size = Vector2(32, 64)
+
+[node name="StaticPillar" type="StaticBody2D"]
+collision_layer = 8192
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 32)
+shape = SubResource("RectangleShape2D_1x3o6")
+
+[node name="SpriteTop" type="Sprite2D" parent="."]
+position = Vector2(0, 32)
+texture = ExtResource("1_yc83s")

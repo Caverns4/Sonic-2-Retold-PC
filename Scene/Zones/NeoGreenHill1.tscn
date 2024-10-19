@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://b8nujtm2r4age"]
+[gd_scene load_steps=25 format=4 uid="uid://b8nujtm2r4age"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_20uxj"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_bg171"]
@@ -20,9 +20,10 @@
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="15_go4be"]
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="16_ionx8"]
 [ext_resource type="PackedScene" uid="uid://kvy8b2y8v76e" path="res://Entities/Gimmicks/LeverSpring.tscn" id="16_r5o7l"]
-[ext_resource type="PackedScene" uid="uid://bpquddgh4ve1f" path="res://Entities/Gimmicks/Bottom_Dropping_Pillar.tscn" id="17_o74sl"]
+[ext_resource type="PackedScene" uid="uid://bpquddgh4ve1f" path="res://Entities/ZoneObjects/NGHZ_Bottomless_Pillar.tscn" id="17_o74sl"]
+[ext_resource type="PackedScene" uid="uid://dx1yhmglo7ril" path="res://Entities/ZoneObjects/NGHZ_FallingPillarPiece.tscn" id="18_7r8si"]
 [ext_resource type="PackedScene" uid="uid://bct374kjctkxr" path="res://Entities/Items/Checkpoint.tscn" id="20_l8ica"]
-[ext_resource type="PackedScene" uid="uid://bu13a3ewwy81c" path="res://Entities/Gimmicks/FloatingPillar.tscn" id="22_dbs3j"]
+[ext_resource type="PackedScene" uid="uid://bu13a3ewwy81c" path="res://Entities/ZoneObjects/NGHZ_FloatingPillar.tscn" id="22_dbs3j"]
 
 [node name="NeoGreenHill1" type="Node2D"]
 script = ExtResource("1_20uxj")
@@ -325,6 +326,21 @@ position = Vector2(6784, 1248)
 
 [node name="StaticPillar5" parent="Entitites" instance=ExtResource("17_o74sl")]
 position = Vector2(9192, 1216)
+
+[node name="FallingPiece" parent="Entitites" instance=ExtResource("18_7r8si")]
+position = Vector2(5088, 1520)
+
+[node name="FallingPiece2" parent="Entitites" instance=ExtResource("18_7r8si")]
+position = Vector2(5472, 1520)
+
+[node name="FallingPiece3" parent="Entitites" instance=ExtResource("18_7r8si")]
+position = Vector2(6656, 1312)
+
+[node name="FallingPiece4" parent="Entitites" instance=ExtResource("18_7r8si")]
+position = Vector2(6784, 1312)
+
+[node name="FallingPiece5" parent="Entitites" instance=ExtResource("18_7r8si")]
+position = Vector2(9192, 1280)
 
 [node name="Platform" type="Node" parent="."]
 
