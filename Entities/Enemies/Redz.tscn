@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://jgm0h2yu3hvb"]
 
-[ext_resource type="Script" path="res://Entities/Enemies/Redz.gd" id="1_acnt1"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Redz.gd" id="1_acnt1"]
 [ext_resource type="Texture2D" uid="uid://c80rud4lvtufe" path="res://Graphics/Enemies/Badnik_Redz.png" id="2_ufqqm"]
 
 [sub_resource type="RectangleShape2D" id="1"]

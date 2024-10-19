@@ -48,7 +48,7 @@
 [ext_resource type="PackedScene" uid="uid://c155bdyqqmmpl" path="res://Entities/Enemies/Orbinaut.tscn" id="39_3lp52"]
 [ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="40_l2qxi"]
 [ext_resource type="PackedScene" uid="uid://c8ohi5adbflnt" path="res://Entities/Enemies/Rexon.tscn" id="43_3jeuf"]
-[ext_resource type="Script" path="res://Scene/Zones/Earthquakes.gd" id="43_lpn1e"]
+[ext_resource type="Script" path="res://Scripts/Gimmicks/Earthquakes.gd" id="43_lpn1e"]
 [ext_resource type="PackedScene" uid="uid://bct374kjctkxr" path="res://Entities/Items/Checkpoint.tscn" id="46_3s8wa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1ntj"]

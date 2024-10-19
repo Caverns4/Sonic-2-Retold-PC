@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bacwcm8ro80d5"]
 
-[ext_resource type="Script" path="res://Entities/Obstacles/breakable_emerald.gd" id="1_heanh"]
+[ext_resource type="Script" path="res://Scripts/Gimmicks/breakable_emerald.gd" id="1_heanh"]
 [ext_resource type="Texture2D" uid="uid://m5g2wbori5f1" path="res://Graphics/Objects_Zone/HPZ_Emerald.png" id="2_gu2fl"]
 
 [sub_resource type="RectangleShape2D" id="1"]

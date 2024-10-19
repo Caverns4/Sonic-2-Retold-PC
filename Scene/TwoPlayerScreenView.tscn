@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b8crjq12ork7"]
 
-[ext_resource type="Script" path="res://Scene/TwoPlayerScreenView.gd" id="1_07734"]
+[ext_resource type="Script" path="res://Scripts/Level/TwoPlayerScreenView.gd" id="1_07734"]
 
 [node name="TwoPlayerScreenView" type="Control"]
 layout_mode = 3

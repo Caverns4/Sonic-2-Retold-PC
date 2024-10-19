@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bxk253s6p41vr"]
 
-[ext_resource type="Script" path="res://Entities/Boss/Boss Components/DrillEggman_Car.gd" id="1_harxd"]
+[ext_resource type="Script" path="res://Scripts/Boss/DrillEggman_Car.gd" id="1_harxd"]
 [ext_resource type="Texture2D" uid="uid://svwmdhvvxrws" path="res://Graphics/Boss/Boss_DrillEggman.png" id="2_ugcdw"]
 [ext_resource type="PackedScene" uid="uid://d3oh77l2rriqf" path="res://Entities/Boss/Boss Components/DrillEggmanWheel.tscn" id="3_fandu"]
 [ext_resource type="AudioStream" uid="uid://b0tfpt3vui0yd" path="res://Audio/SFX/Boss/Motor.wav" id="4_v5v2r"]

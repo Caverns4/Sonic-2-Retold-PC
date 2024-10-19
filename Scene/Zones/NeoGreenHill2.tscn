@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://s4hdjd5g3p2i"]
+[gd_scene load_steps=20 format=4 uid="uid://s4hdjd5g3p2i"]
 
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_u8gl0"]
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_uxs8x"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://kvy8b2y8v76e" path="res://Entities/Gimmicks/LeverSpring.tscn" id="16_fum15"]
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="17_kyq38"]
 [ext_resource type="PackedScene" uid="uid://bu13a3ewwy81c" path="res://Entities/Gimmicks/FloatingPillar.tscn" id="18_2tlyd"]
+[ext_resource type="PackedScene" uid="uid://bpquddgh4ve1f" path="res://Entities/Gimmicks/Bottom_Dropping_Pillar.tscn" id="18_wgkxu"]
 
 [node name="NeoGreenHill2" type="Node2D"]
 script = ExtResource("1_uxs8x")
@@ -241,7 +242,6 @@ springDirection = 2
 
 [node name="Spring15" parent="Entities" instance=ExtResource("13_vp61d")]
 position = Vector2(7472, 872)
-type = 1
 
 [node name="Spring2" parent="Entities" instance=ExtResource("13_vp61d")]
 position = Vector2(2120, 1728)
@@ -355,5 +355,38 @@ behavior = 1
 position = Vector2(6784, 1912)
 behavior = 1
 
+[node name="StaticPillar" parent="Entities" instance=ExtResource("18_wgkxu")]
+position = Vector2(2016, 1536)
+
+[node name="StaticPillar2" parent="Entities" instance=ExtResource("18_wgkxu")]
+position = Vector2(2560, 1536)
+
+[node name="StaticPillar3" parent="Entities" instance=ExtResource("18_wgkxu")]
+position = Vector2(2712, 1536)
+
+[node name="StaticPillar4" parent="Entities" instance=ExtResource("18_wgkxu")]
+position = Vector2(3744, 832)
+
+[node name="StaticPillar5" parent="Entities" instance=ExtResource("18_wgkxu")]
+position = Vector2(3808, 832)
+
+[node name="StaticPillar6" parent="Entities" instance=ExtResource("18_wgkxu")]
+position = Vector2(5208, 1792)
+
+[node name="StaticPillar7" parent="Entities" instance=ExtResource("18_wgkxu")]
+position = Vector2(6496, 848)
+
 [node name="SignpostNew" parent="." instance=ExtResource("17_kyq38")]
-position = Vector2(10240, 1104)
+position = Vector2(10496, 1168)
+
+[node name="FloatingPillar" parent="." instance=ExtResource("18_2tlyd")]
+position = Vector2(6256, 1296)
+behavior = 2
+
+[node name="FloatingPillar2" parent="." instance=ExtResource("18_2tlyd")]
+position = Vector2(6384, 1296)
+behavior = 2
+
+[node name="FloatingPillar3" parent="." instance=ExtResource("18_2tlyd")]
+position = Vector2(7168, 1232)
+behavior = 1

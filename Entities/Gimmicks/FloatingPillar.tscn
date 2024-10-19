@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bu13a3ewwy81c"]
 
 [ext_resource type="Texture2D" uid="uid://3akypobmcjwg" path="res://Graphics/Objects_Zone/ARZ_PillarTop.png" id="1_b8tno"]
-[ext_resource type="Script" path="res://Entities/Gimmicks/floating_pillar.gd" id="1_o4whw"]
+[ext_resource type="Script" path="res://Scripts/Gimmicks/floating_pillar.gd" id="1_o4whw"]
 [ext_resource type="Texture2D" uid="uid://cou82puj0f0t2" path="res://Graphics/Objects_Zone/ARZ_PillarLength.png" id="2_dap4j"]
 [ext_resource type="Texture2D" uid="uid://eladoe2q53lp" path="res://Graphics/Objects_Zone/ARZ_PillarBases.png" id="3_4cb16"]
 [ext_resource type="Texture2D" uid="uid://dt336wpqvxowp" path="res://Graphics/Objects_Zone/ARZ_PillarCap.png" id="4_13xxq"]
@@ -12,7 +12,7 @@ size = Vector2(56, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7ncp"]
 size = Vector2(32, 88)
 
-[node name="AnimatableBody2D" type="AnimatableBody2D"]
+[node name="FloatingPillar" type="AnimatableBody2D"]
 collision_layer = 24576
 collision_mask = 0
 script = ExtResource("1_o4whw")

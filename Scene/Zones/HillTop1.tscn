@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://c1afjirkghgby" path="res://Graphics/Backgrounds/HTZ/HTZ_BGK.png" id="13_v4sbg"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="15_l0d7g"]
 [ext_resource type="TileSet" uid="uid://uplqwsi0o4gi" path="res://Tileset/Levels/EHZ_HTZ_Tiles.tres" id="16_qpoa7"]
-[ext_resource type="Script" path="res://Scene/Zones/Earthquakes.gd" id="22_p4hee"]
+[ext_resource type="Script" path="res://Scripts/Gimmicks/Earthquakes.gd" id="22_p4hee"]
 [ext_resource type="PackedScene" uid="uid://c155bdyqqmmpl" path="res://Entities/Enemies/Orbinaut.tscn" id="22_ydut8"]
 [ext_resource type="PackedScene" uid="uid://4q0hpddgto2k" path="res://Entities/Gimmicks/Spring.tscn" id="24_tu1me"]
 [ext_resource type="PackedScene" uid="uid://dkn7hhll7o4or" path="res://Entities/MainObjects/LayerSwitcher.tscn" id="25_0yxob"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bm4e2oyt0wjbm"]
 
-[ext_resource type="Script" path="res://Entities/Enemies/Projectiles/redz_fire.gd" id="1_xpycd"]
+[ext_resource type="Script" path="res://Scripts/Enemies/redz_fire.gd" id="1_xpycd"]
 [ext_resource type="Texture2D" uid="uid://b6xuwowbbovjp" path="res://Graphics/Enemies/RedzFire.png" id="2_bmsdi"]
 
 [sub_resource type="RectangleShape2D" id="1"]

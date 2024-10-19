@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://d3oh77l2rriqf"]
 
 [ext_resource type="Texture2D" uid="uid://wsytdhn6ttft" path="res://Graphics/Boss/Boss_DrillEggman_Parts.png" id="1_4d1uu"]
-[ext_resource type="Script" path="res://Entities/Boss/Boss Components/DrillEggmanWheel.gd" id="1_btldt"]
+[ext_resource type="Script" path="res://Scripts/Boss/DrillEggmanWheel.gd" id="1_btldt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kkuw2"]
 size = Vector2(32, 32)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://c8djwr7o6d6f7"]
 
-[ext_resource type="Script" path="res://Entities/Enemies/Octus.gd" id="1_28rdy"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Octus.gd" id="1_28rdy"]
 [ext_resource type="Texture2D" uid="uid://dpflrbq6o6eto" path="res://Graphics/Enemies/Octus.png" id="2_dvyci"]
 
 [sub_resource type="RectangleShape2D" id="1"]

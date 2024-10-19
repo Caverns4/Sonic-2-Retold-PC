@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://0mfj8m5mj8a6"]
 
-[ext_resource type="Script" path="res://Entities/Boss/Boss Components/DrillEggmanDrill.gd" id="1_pdn8n"]
+[ext_resource type="Script" path="res://Scripts/Boss/DrillEggmanDrill.gd" id="1_pdn8n"]
 [ext_resource type="Texture2D" uid="uid://wsytdhn6ttft" path="res://Graphics/Boss/Boss_DrillEggman_Parts.png" id="1_pn6x0"]
 
 [sub_resource type="RectangleShape2D" id="1"]
