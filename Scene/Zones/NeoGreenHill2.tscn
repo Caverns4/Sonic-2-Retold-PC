@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://s4hdjd5g3p2i"]
+[gd_scene load_steps=27 format=4 uid="uid://s4hdjd5g3p2i"]
 
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_u8gl0"]
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_uxs8x"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://jkb87hqbtl0l" path="res://Scene/Backgrounds/05-NeoGreenHill.tscn" id="4_dt52b"]
 [ext_resource type="PackedScene" uid="uid://g5jpioc281sm" path="res://Scene/Backgrounds/05-NeoGreenHill(High).tscn" id="5_w4ofp"]
 [ext_resource type="TileSet" uid="uid://b0b5lpm7k65k5" path="res://Tileset/Levels/NGHZ.tres" id="7_qj4w6"]
+[ext_resource type="Texture2D" uid="uid://t83ys4beivkw" path="res://Graphics/Palettes/NGHZ_Pal_Dry.png" id="7_ylfia"]
+[ext_resource type="Texture2D" uid="uid://bwnjh5ghvt0xs" path="res://Graphics/Palettes/NGHZ_Pal_Wet.png" id="8_ofcp2"]
 [ext_resource type="PackedScene" uid="uid://bnn5io8fk2i4h" path="res://Entities/Gimmicks/WaterLevel.tscn" id="9_62fxv"]
 [ext_resource type="PackedScene" uid="uid://7k14xkpjguop" path="res://Entities/Obstacles/SwingingPlatform.tscn" id="10_xbeny"]
 [ext_resource type="Texture2D" uid="uid://syexnlol1vbv" path="res://Graphics/Obstacles/NGHZSwing.png" id="11_xygnf"]
@@ -35,7 +37,6 @@ animal1 = 4
 animal2 = 0
 defaultTopBoundry = 384
 defaultRightBoundry = 11648
-defaultBottomBoundry = 2048
 
 [node name="05-NeoGreenHill" parent="." instance=ExtResource("4_dt52b")]
 
@@ -45,6 +46,8 @@ layer = 30
 [node name="HUD" parent="." instance=ExtResource("1_u8gl0")]
 zoneName = "NEO GREEN HILL"
 act = 2
+waterSourceColor = ExtResource("7_ylfia")
+waterReplaceColor = ExtResource("8_ofcp2")
 
 [node name="Player" parent="." instance=ExtResource("2_msrgr")]
 position = Vector2(96, 894)

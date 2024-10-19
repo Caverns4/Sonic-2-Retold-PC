@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://b8nujtm2r4age"]
+[gd_scene load_steps=30 format=4 uid="uid://b8nujtm2r4age"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_20uxj"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_bg171"]
@@ -7,8 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://s4hdjd5g3p2i" path="res://Scene/Zones/NeoGreenHill2.tscn" id="3_swgxp"]
 [ext_resource type="PackedScene" uid="uid://g5jpioc281sm" path="res://Scene/Backgrounds/05-NeoGreenHill(High).tscn" id="5_0vwlw"]
 [ext_resource type="PackedScene" uid="uid://jkb87hqbtl0l" path="res://Scene/Backgrounds/05-NeoGreenHill.tscn" id="6_lewi2"]
+[ext_resource type="Texture2D" uid="uid://t83ys4beivkw" path="res://Graphics/Palettes/NGHZ_Pal_Dry.png" id="7_gdple"]
 [ext_resource type="TileSet" uid="uid://b0b5lpm7k65k5" path="res://Tileset/Levels/NGHZ.tres" id="7_lab03"]
 [ext_resource type="PackedScene" uid="uid://bnn5io8fk2i4h" path="res://Entities/Gimmicks/WaterLevel.tscn" id="8_jm1vn"]
+[ext_resource type="Texture2D" uid="uid://bwnjh5ghvt0xs" path="res://Graphics/Palettes/NGHZ_Pal_Wet.png" id="8_jy43g"]
 [ext_resource type="Texture2D" uid="uid://dhiwsi7ld5oc3" path="res://Graphics/Gimmicks/NGHZWater01.png" id="9_72v45"]
 [ext_resource type="Texture2D" uid="uid://c2t3av5cda5om" path="res://Graphics/Gimmicks/NGHZWater02.png" id="10_arj82"]
 [ext_resource type="PackedScene" uid="uid://dkn7hhll7o4or" path="res://Entities/MainObjects/LayerSwitcher.tscn" id="11_nkv76"]
@@ -45,6 +47,8 @@ defaultBottomBoundry = 1640
 
 [node name="HUD" parent="." instance=ExtResource("1_bg171")]
 zoneName = "NEO GREEN HILL"
+waterSourceColor = ExtResource("7_gdple")
+waterReplaceColor = ExtResource("8_jy43g")
 
 [node name="Player" parent="." instance=ExtResource("2_8wvcy")]
 position = Vector2(96, 894)
