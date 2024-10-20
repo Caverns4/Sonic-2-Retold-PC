@@ -1,0 +1,96 @@
+[gd_scene load_steps=12 format=3 uid="uid://bifnhrivwqdgo"]
+
+[ext_resource type="Texture2D" uid="uid://bpvmb7wv2yik6" path="res://Graphics/Objects_Zone/ArrowShooter.png" id="1_o3e2n"]
+[ext_resource type="Script" path="res://Scripts/Gimmicks/arrow_shooter.gd" id="1_vtnd0"]
+[ext_resource type="AudioStream" uid="uid://851v28ms3ydb" path="res://Audio/SFX/Gimmicks/ArrowFire.wav" id="2_pbooo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipw11"]
+atlas = ExtResource("1_o3e2n")
+region = Rect2(0, 32, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8c56"]
+atlas = ExtResource("1_o3e2n")
+region = Rect2(0, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llcco"]
+atlas = ExtResource("1_o3e2n")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uceq3"]
+atlas = ExtResource("1_o3e2n")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8x3i4"]
+atlas = ExtResource("1_o3e2n")
+region = Rect2(0, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouksh"]
+atlas = ExtResource("1_o3e2n")
+region = Rect2(0, 16, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tsjys"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipw11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8c56")
+}],
+"loop": false,
+"name": &"close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llcco")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uceq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8x3i4")
+}],
+"loop": true,
+"name": &"flash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouksh")
+}],
+"loop": false,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c7sf5"]
+size = Vector2(64, 240)
+
+[node name="ArrowShooter" type="Node2D"]
+script = ExtResource("1_vtnd0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tsjys")
+autoplay = "default"
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_c7sf5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_pbooo")
+bus = &"SFX"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

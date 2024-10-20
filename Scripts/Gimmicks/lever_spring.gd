@@ -45,14 +45,15 @@ func SpringCharacters():
 		var temp = (global_position.x - 20 - node.global_position.x)/8
 		#print(temp)
 		var speedSet = lauchSpeeds[max(abs(temp),0)] * 60
-
 		node.set_state(node.STATES.AIR)
 		node.ground = false
 		node.airControl = true
-		#node.animator.play("spring")
-		node.animator.play("springScrew")
-		node.animator.queue("walk")
+		
 		node.movement.y = -240 - (speedSet)
 		if abs(node.movement.x) > 400:
 			speedSet *= direction
 			node.movement.x -= speedSet
+		
+		#node.animator.play("spring")
+		node.animator.play("springScrew")
+		node.animator.queue("walk")
