@@ -217,7 +217,6 @@ defaultBottomBoundry = 3072
 
 [node name="HUD" parent="." instance=ExtResource("5_avawk")]
 zoneName = "HIDDEN PALACE"
-act = 0
 waterSourceColor = ExtResource("8_5gioe")
 waterReplaceColor = ExtResource("9_5b47l")
 ringsForPerfect = 300

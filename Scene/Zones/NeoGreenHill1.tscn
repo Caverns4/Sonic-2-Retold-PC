@@ -39,7 +39,7 @@ nextZone = ExtResource("3_swgxp")
 animal1 = 4
 animal2 = 0
 defaultTopBoundry = 512
-defaultBottomBoundry = 1640
+defaultBottomBoundry = 1664
 
 [node name="05-NeoGreenHill" parent="." instance=ExtResource("6_lewi2")]
 

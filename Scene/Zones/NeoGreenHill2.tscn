@@ -39,6 +39,7 @@ animal1 = 4
 animal2 = 0
 defaultTopBoundry = 384
 defaultRightBoundry = 11648
+defaultBottomBoundry = 2016
 
 [node name="05-NeoGreenHill" parent="." instance=ExtResource("4_dt52b")]
 

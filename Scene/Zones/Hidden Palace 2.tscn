@@ -45,7 +45,6 @@ music2P = ExtResource("3_l7lxm")
 nextZone = ExtResource("3_70ldm")
 animal1 = 8
 animal2 = 5
-defaultBottomBoundry = 2048
 
 [node name="HUD" parent="." instance=ExtResource("4_wuxis")]
 zoneName = "HIDDEN PALACE"
