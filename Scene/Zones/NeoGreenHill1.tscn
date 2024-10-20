@@ -415,6 +415,7 @@ plat_img = ExtResource("23_gc18d")
 
 [node name="MultiRotatingPlatforms4" parent="Platform" instance=ExtResource("22_spfjc")]
 position = Vector2(256, 840)
+chains = 3
 plat_img = ExtResource("23_gc18d")
 
 [node name="ItemsHolder" type="Node" parent="."]
