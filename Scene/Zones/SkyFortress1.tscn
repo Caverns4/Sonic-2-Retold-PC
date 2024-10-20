@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bsgfc2hjo6knr"]
+[gd_scene load_steps=7 format=3 uid="uid://bsgfc2hjo6knr"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_f2s8f"]
+[ext_resource type="AudioStream" uid="uid://chigxw75acdkr" path="res://Audio/Soundtrack/s2br_SkyFortress.ogg" id="2_5abqf"]
+[ext_resource type="PackedScene" uid="uid://cm6qjxupawbta" path="res://Scene/Backgrounds/15-SkyFortress.tscn" id="3_vvbgg"]
 [ext_resource type="PackedScene" uid="uid://wc6hh8dbtg1w" path="res://Scene/Zones/SkyFortress2.tscn" id="4_ihwrn"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_vrigx"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_vktrr"]
@@ -8,19 +10,20 @@
 [node name="SkyFortress1" type="Node2D"]
 script = ExtResource("1_f2s8f")
 zoneID = 14
-music = null
-music2P = null
+music = ExtResource("2_5abqf")
+music2P = ExtResource("2_5abqf")
 nextZone = ExtResource("4_ihwrn")
 animal1 = 8
 animal2 = 3
-defaultBottomBoundry = 2048
+
+[node name="15-skyFortress" parent="." instance=ExtResource("3_vvbgg")]
 
 [node name="HUD" parent="." instance=ExtResource("5_vrigx")]
-playLevelCard = false
-zoneName = "SKY FORTRESS"
+zoneName = "       SKY"
+act = 0
 
 [node name="Player" parent="." instance=ExtResource("6_vktrr")]
-position = Vector2(96, 656)
+position = Vector2(100, 192)
 disablePartner = true
 
 [node name="Level_Layout" type="Node" parent="."]
