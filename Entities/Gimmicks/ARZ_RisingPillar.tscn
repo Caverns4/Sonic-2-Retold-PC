@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cp4s5qc2tt2ne"]
+[gd_scene load_steps=5 format=3 uid="uid://cp4s5qc2tt2ne"]
 
 [ext_resource type="Texture2D" uid="uid://bcaotly0i273h" path="res://Graphics/Objects_Zone/NGHZ_PillarLength.png" id="1_g4uct"]
+[ext_resource type="Script" path="res://Scripts/Gimmicks/arz_rising_pillar.gd" id="1_t51va"]
 [ext_resource type="Texture2D" uid="uid://iyttgag21vi2" path="res://Graphics/Objects_Zone/NGHZ_PillarCaps.png" id="2_ei4nu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kc0pn"]
@@ -10,6 +11,7 @@ size = Vector2(32, 48)
 z_index = -2
 collision_layer = 8192
 collision_mask = 4096
+script = ExtResource("1_t51va")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -28)
