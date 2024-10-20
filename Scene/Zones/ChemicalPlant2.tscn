@@ -29,7 +29,6 @@
 [ext_resource type="Texture2D" uid="uid://b6alf64ktaf3h" path="res://Graphics/Objects_Zone/CPZPlatformMv.png" id="19_bygnn"]
 [ext_resource type="Script" path="res://Scripts/Gimmicks/ZoomTubePath.gd" id="25_7q6q8"]
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="26_peo5d"]
-[ext_resource type="PackedScene" uid="uid://7k14xkpjguop" path="res://Entities/Obstacles/SwingingPlatform.tscn" id="26_xv2b0"]
 [ext_resource type="PackedScene" uid="uid://ijfhnqwrjcfj" path="res://Entities/ZoneObjects/MackWormSpawner.tscn" id="27_ijc7b"]
 [ext_resource type="PackedScene" uid="uid://c1rdgr14n8rxh" path="res://Entities/Obstacles/AscendingStairBlocks.tscn" id="28_ckttt"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="30_5k5ut"]
@@ -41,6 +40,7 @@
 [ext_resource type="PackedScene" uid="uid://dw4ysdt7fckye" path="res://Entities/Boss/Poison Eggman/PoisonEggman.tscn" id="38_vediw"]
 [ext_resource type="PackedScene" uid="uid://dq7iu2jaofqew" path="res://Entities/Misc/character_cameo.tscn" id="39_x42vh"]
 [ext_resource type="Texture2D" uid="uid://cudvcxoyjq5dn" path="res://Graphics/Misc/MetalCameo.png" id="40_m50kc"]
+[ext_resource type="PackedScene" uid="uid://c3yq46ay5g4ov" path="res://Entities/Obstacles/MultiRotatingPlatforms.tscn" id="41_r5m2v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_da7so"]
 shader = ExtResource("8_fvcep")
@@ -75,7 +75,6 @@ nextZone = ExtResource("3_aej5j")
 animal1 = 2
 animal2 = 7
 defaultRightBoundry = 12256
-defaultBottomBoundry = 2048
 
 [node name="03-ChemicalPlant" parent="." instance=ExtResource("5_5j7ri")]
 
@@ -791,9 +790,6 @@ speed = 0.5
 position = Vector2(3968, 1728)
 speed = 0.5
 
-[node name="Platform2" parent="Floating Platforms" instance=ExtResource("26_xv2b0")]
-position = Vector2(2240, 896)
-
 [node name="AscendingStairBlocks" parent="Floating Platforms" instance=ExtResource("28_ckttt")]
 position = Vector2(5312, 1296)
 
@@ -1386,16 +1382,16 @@ position = Vector2(2472, 912)
 position = Vector2(2496, 912)
 
 [node name="Ring155" parent="Rings" instance=ExtResource("10_bnv7v")]
-position = Vector2(2368, 872)
+position = Vector2(2224, 1000)
 
 [node name="Ring156" parent="Rings" instance=ExtResource("10_bnv7v")]
-position = Vector2(2392, 872)
+position = Vector2(2256, 1000)
 
 [node name="Ring157" parent="Rings" instance=ExtResource("10_bnv7v")]
-position = Vector2(2088, 872)
+position = Vector2(2224, 800)
 
 [node name="Ring158" parent="Rings" instance=ExtResource("10_bnv7v")]
-position = Vector2(2112, 872)
+position = Vector2(2256, 800)
 
 [node name="Ring154" parent="Rings" instance=ExtResource("10_bnv7v")]
 position = Vector2(2520, 912)
@@ -1748,3 +1744,8 @@ position = Vector2(11712, 1192)
 position = Vector2(8424, 168)
 present = 6
 characterTexture = ExtResource("40_m50kc")
+
+[node name="MultiRotatingPlatforms" parent="." instance=ExtResource("41_r5m2v")]
+position = Vector2(2240, 928)
+platformCount = 4
+chains = 6

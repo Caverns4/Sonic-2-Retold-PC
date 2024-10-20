@@ -44,18 +44,24 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if(!Engine.is_editor_hint()): # In-Game
 		# Calcutlate direction
-		var distance = chains * 16 + (float(16) / 2.0)
+		var yOffset = chains * 16 + (float(16) / 2.0)
 		var direction = Vector2.DOWN
-		var diff = 0.0
+		var xOffset = 0.0
 		for i in platforms.size():
-			direction = Vector2.DOWN.rotated((deg_to_rad(fmod(diff + Global.globalTimer * 60 * speed,360))))
-			diff += (360.0/platformCount)
-			platforms[i].position = (direction * distance).round()
+			direction = Vector2.DOWN.rotated((deg_to_rad(fmod(xOffset + Global.globalTimer * 60 * speed,360))))
+			xOffset += (360.0/platformCount)
+			platforms[i].position = (direction * yOffset).round()
 
 func _draw():
 	if(!Engine.is_editor_hint()):  # Non-editor stuff
-		#for i # of chainlinks, in j # of platforms
-		
+		#for i # of platforms, in j # of chains
+		for i in platformCount:
+			var direction = platforms[i].position.normalized()
+			for j in chains:
+				var chainPos = direction * ((j + 1) * 16)
+				chainPos -= Vector2(float(chain_img.get_width()) / 2,float(chain_img.get_height()) / 2)
+				draw_texture(chain_img,chainPos,Color(1,1,1,1))
+		#End non-editor code loop
 		return
 	
 	# Draw moving platforms
