@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://s4hdjd5g3p2i"]
+[gd_scene load_steps=31 format=4 uid="uid://s4hdjd5g3p2i"]
 
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_u8gl0"]
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_uxs8x"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="20_n7h8v"]
 [ext_resource type="Texture2D" uid="uid://dnly44mdqo8im" path="res://Graphics/Objects_Zone/NGHZ_Platform.png" id="21_7rt3i"]
 [ext_resource type="PackedScene" uid="uid://bifnhrivwqdgo" path="res://Entities/Gimmicks/ArrowShooter.tscn" id="22_dpw6l"]
+[ext_resource type="PackedScene" uid="uid://cp4s5qc2tt2ne" path="res://Entities/Gimmicks/ARZ_RisingPillar.tscn" id="23_306qm"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="26_2mfu1"]
 [ext_resource type="PackedScene" uid="uid://bct374kjctkxr" path="res://Entities/Items/Checkpoint.tscn" id="27_htdtg"]
 
@@ -362,7 +363,7 @@ position = Vector2(3808, 832)
 position = Vector2(5208, 1792)
 
 [node name="StaticPillar8" parent="Entities" instance=ExtResource("18_wgkxu")]
-position = Vector2(7448, 1664)
+position = Vector2(7576, 1632)
 
 [node name="StaticPillar9" parent="Entities" instance=ExtResource("18_wgkxu")]
 position = Vector2(7936, 1536)
@@ -392,7 +393,7 @@ position = Vector2(6496, 912)
 position = Vector2(5208, 1856)
 
 [node name="FallingPiece5" parent="Entities" instance=ExtResource("19_jec3u")]
-position = Vector2(7448, 1728)
+position = Vector2(7576, 1696)
 
 [node name="FallingPiece6" parent="Entities" instance=ExtResource("19_jec3u")]
 position = Vector2(7936, 1600)
@@ -434,7 +435,7 @@ position = Vector2(5208, 1956)
 scale = Vector2(4, 1)
 
 [node name="InvisibleBarrier6" parent="Entities" instance=ExtResource("18_be0sq")]
-position = Vector2(7448, 1892)
+position = Vector2(7552, 1892)
 scale = Vector2(4, 1)
 
 [node name="InvisibleBarrier8" parent="Entities" instance=ExtResource("18_be0sq")]
@@ -489,6 +490,24 @@ position = Vector2(8736, 1168)
 
 [node name="ArrowShooter15" parent="Entities" instance=ExtResource("22_dpw6l")]
 position = Vector2(9504, 1240)
+
+[node name="ARZRisingPillar" parent="Entities" instance=ExtResource("23_306qm")]
+position = Vector2(4080, 760)
+
+[node name="ARZRisingPillar2" parent="Entities" instance=ExtResource("23_306qm")]
+position = Vector2(6144, 792)
+
+[node name="ARZRisingPillar3" parent="Entities" instance=ExtResource("23_306qm")]
+position = Vector2(5984, 1016)
+
+[node name="ARZRisingPillar4" parent="Entities" instance=ExtResource("23_306qm")]
+position = Vector2(7904, 888)
+
+[node name="ARZRisingPillar5" parent="Entities" instance=ExtResource("23_306qm")]
+position = Vector2(7976, 888)
+
+[node name="ARZRisingPillar6" parent="Entities" instance=ExtResource("23_306qm")]
+position = Vector2(9632, 1112)
 
 [node name="Platforms" type="Node" parent="."]
 

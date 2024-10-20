@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://b8nujtm2r4age"]
+[gd_scene load_steps=32 format=4 uid="uid://b8nujtm2r4age"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_20uxj"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_bg171"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://bifnhrivwqdgo" path="res://Entities/Gimmicks/ArrowShooter.tscn" id="22_k6a2r"]
 [ext_resource type="PackedScene" uid="uid://c3yq46ay5g4ov" path="res://Entities/Obstacles/MultiRotatingPlatforms.tscn" id="22_spfjc"]
 [ext_resource type="Texture2D" uid="uid://syexnlol1vbv" path="res://Graphics/Obstacles/NGHZSwing.png" id="23_gc18d"]
+[ext_resource type="PackedScene" uid="uid://cp4s5qc2tt2ne" path="res://Entities/Gimmicks/ARZ_RisingPillar.tscn" id="23_nddoc"]
 
 [node name="NeoGreenHill1" type="Node2D"]
 script = ExtResource("1_20uxj")
@@ -391,6 +392,18 @@ position = Vector2(8144, 616)
 
 [node name="ArrowShooter7" parent="Entitites" instance=ExtResource("22_k6a2r")]
 position = Vector2(8720, 752)
+
+[node name="ARZRisingPillar" parent="Entitites" instance=ExtResource("23_nddoc")]
+position = Vector2(808, 984)
+
+[node name="ARZRisingPillar2" parent="Entitites" instance=ExtResource("23_nddoc")]
+position = Vector2(3360, 792)
+
+[node name="ARZRisingPillar3" parent="Entitites" instance=ExtResource("23_nddoc")]
+position = Vector2(3872, 1240)
+
+[node name="ARZRisingPillar4" parent="Entitites" instance=ExtResource("23_nddoc")]
+position = Vector2(6560, 1432)
 
 [node name="Platform" type="Node" parent="."]
 

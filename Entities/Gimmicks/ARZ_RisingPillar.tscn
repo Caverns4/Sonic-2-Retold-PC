@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://cp4s5qc2tt2ne"]
+
+[ext_resource type="Texture2D" uid="uid://bcaotly0i273h" path="res://Graphics/Objects_Zone/NGHZ_PillarLength.png" id="1_g4uct"]
+[ext_resource type="Texture2D" uid="uid://iyttgag21vi2" path="res://Graphics/Objects_Zone/NGHZ_PillarCaps.png" id="2_ei4nu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kc0pn"]
+size = Vector2(32, 48)
+
+[node name="ARZRisingPillar" type="StaticBody2D"]
+z_index = -2
+collision_layer = 8192
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -28)
+shape = SubResource("RectangleShape2D_kc0pn")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-16, -36)
+texture = ExtResource("1_g4uct")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 16)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-32, -52)
+texture = ExtResource("2_ei4nu")
+centered = false
+vframes = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-32, -20)
+texture = ExtResource("2_ei4nu")
+centered = false
+vframes = 2
+frame = 1
