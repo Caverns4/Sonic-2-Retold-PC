@@ -249,6 +249,12 @@ text = "DUST HILL       1
 CASINO NIGHT    1
                 2
 
+WOOD            1
+                2
+
+SKY FORTRESS    1
+                2
+
 SPECIAL STAGE
 
 
@@ -260,7 +266,7 @@ hint_underlined = false
 text_direction = 1
 
 [node name="CharacterOrigin" type="Node2D" parent="UI/LabelsRight"]
-position = Vector2(456, 88)
+position = Vector2(456, 128)
 
 [node name="Sonic" type="Sprite2D" parent="UI/LabelsRight/CharacterOrigin"]
 z_index = 3

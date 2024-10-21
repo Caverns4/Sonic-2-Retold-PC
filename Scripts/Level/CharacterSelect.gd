@@ -42,6 +42,9 @@ var levelLabels = [ #Every one of these is a line, and some are skipped.
 	"Casino Night    1",
 	"                2",
 	"",
+	"Sky Fortress    1",
+	"                2",
+	"",
 	"Special Stage",
 	"",
 	"",
@@ -68,6 +71,8 @@ var levelIcons = [ #Use this list to get the number of selectable entries
 	Global.ZONES.WOOD_GADGET,
 	Global.ZONES.CASINO_NIGHT,
 	Global.ZONES.CASINO_NIGHT,
+	Global.ZONES.SKY_FORTRESS,
+	Global.ZONES.SKY_FORTRESS,
 	17,
 	18
 ]
@@ -209,7 +214,13 @@ func _input(event):
 				20: #Casino Night 2
 					Global.savedZoneID = Global.ZONES.CASINO_NIGHT
 					Global.savedActID = 1
-				22:
+				21: #Sky Fortress 1
+					Global.savedZoneID = Global.ZONES.SKY_FORTRESS
+					Global.savedActID = 0
+				22: #Sky Fortress 2
+					Global.savedZoneID = Global.ZONES.SKY_FORTRESS
+					Global.savedActID = 1
+				24:
 					Global.airSpeedCap = !Global.airSpeedCap
 					selected = false
 					return
