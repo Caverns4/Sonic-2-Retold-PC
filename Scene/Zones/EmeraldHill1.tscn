@@ -28,6 +28,7 @@
 script = ExtResource("1_8ynvh")
 nextZone = ExtResource("2_w0xgd")
 defaultRightBoundry = 11064
+defaultBottomBoundry = 1024
 
 [node name="00-EmeraldHill" parent="." instance=ExtResource("3_jdx3s")]
 

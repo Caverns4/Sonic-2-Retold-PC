@@ -394,7 +394,7 @@ position = Vector2(8144, 616)
 position = Vector2(8720, 752)
 
 [node name="ARZRisingPillar" parent="Entitites" instance=ExtResource("23_nddoc")]
-position = Vector2(808, 984)
+position = Vector2(800, 984)
 
 [node name="ARZRisingPillar2" parent="Entitites" instance=ExtResource("23_nddoc")]
 position = Vector2(3360, 792)
@@ -446,7 +446,8 @@ position = Vector2(4544, 1448)
 plat_img = ExtResource("23_gc18d")
 
 [node name="MultiRotatingPlatforms3" parent="Platform" instance=ExtResource("22_spfjc")]
-position = Vector2(7912, 1000)
+position = Vector2(7904, 1000)
+chains = 3
 plat_img = ExtResource("23_gc18d")
 
 [node name="ItemsHolder" type="Node" parent="."]

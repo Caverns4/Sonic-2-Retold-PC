@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cp4s5qc2tt2ne"]
+[gd_scene load_steps=6 format=3 uid="uid://cp4s5qc2tt2ne"]
 
 [ext_resource type="Texture2D" uid="uid://bcaotly0i273h" path="res://Graphics/Objects_Zone/NGHZ_PillarLength.png" id="1_g4uct"]
 [ext_resource type="Script" path="res://Scripts/Gimmicks/arz_rising_pillar.gd" id="1_t51va"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kc0pn"]
 size = Vector2(32, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfwws"]
+size = Vector2(192, 128)
 
 [node name="ARZRisingPillar" type="StaticBody2D"]
 z_index = -2
@@ -36,3 +39,15 @@ texture = ExtResource("2_ei4nu")
 centered = false
 vframes = 2
 frame = 1
+
+[node name="PlayerCheck" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCheck"]
+position = Vector2(0, -64)
+shape = SubResource("RectangleShape2D_qfwws")
+
+[connection signal="body_entered" from="PlayerCheck" to="." method="_on_player_check_body_entered"]
+[connection signal="body_exited" from="PlayerCheck" to="." method="_on_player_check_body_exited"]
