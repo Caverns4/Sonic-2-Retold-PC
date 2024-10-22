@@ -266,7 +266,7 @@ hint_underlined = false
 text_direction = 1
 
 [node name="CharacterOrigin" type="Node2D" parent="UI/LabelsRight"]
-position = Vector2(456, 128)
+position = Vector2(456, 132)
 
 [node name="Sonic" type="Sprite2D" parent="UI/LabelsRight/CharacterOrigin"]
 z_index = 3
