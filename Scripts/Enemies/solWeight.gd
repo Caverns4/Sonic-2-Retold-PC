@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var counterWeightSprite = preload("res://Graphics/Enemies/Badnik_Sol.png")
+@export var counterWeightSprite = preload("res://Graphics/Enemies/Sol.png")
 
 var animationTimer = 0.1
 var animationFrame = 0
