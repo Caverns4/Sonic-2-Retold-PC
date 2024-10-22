@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://b5q3f7iwvmlki" path="res://Graphics/Boss/TractorBeam.png" id="13_24b81"]
 [ext_resource type="Texture2D" uid="uid://dcahvgsl5g25p" path="res://Graphics/Boss/Sack.png" id="14_pkudb"]
 [ext_resource type="Texture2D" uid="uid://b2qm01hytxx4d" path="res://Graphics/Enemies/Motobug.png" id="15_c0igb"]
-[ext_resource type="Texture2D" uid="uid://djb53bxylig4n" path="res://Graphics/Enemies/Badnik_BuzzerS2BR.png" id="16_04vo5"]
+[ext_resource type="Texture2D" uid="uid://djb53bxylig4n" path="res://Graphics/Enemies/BuzzerS2BR.png" id="16_04vo5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_amav3"]
 atlas = ExtResource("15_c0igb")

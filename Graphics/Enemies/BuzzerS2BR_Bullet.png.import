@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djb53bxylig4n"
-path="res://.godot/imported/Badnik_BuzzerS2BR.png-8d36eb4be94f1cf3105ee4978a6c62e4.ctex"
+uid="uid://2xwabbrkhjjy"
+path="res://.godot/imported/BuzzerS2BR_Bullet.png-e1eb4222b4e1bde1ede0e0b54c57a8b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Enemies/Badnik_BuzzerS2BR.png"
-dest_files=["res://.godot/imported/Badnik_BuzzerS2BR.png-8d36eb4be94f1cf3105ee4978a6c62e4.ctex"]
+source_file="res://Graphics/Enemies/BuzzerS2BR_Bullet.png"
+dest_files=["res://.godot/imported/BuzzerS2BR_Bullet.png-e1eb4222b4e1bde1ede0e0b54c57a8b4.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

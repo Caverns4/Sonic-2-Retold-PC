@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Enemies/sol_area.gd" id="1_palhu"]
 [ext_resource type="Script" path="res://Scripts/Enemies/solWeight.gd" id="1_vfq8e"]
 [ext_resource type="Script" path="res://Scripts/PropertiesLookup.gd" id="2_w8gf6"]
-[ext_resource type="Texture2D" uid="uid://beqh6fywjj4lt" path="res://Graphics/Enemies/Badnik_Sol.png" id="4_tuqpl"]
+[ext_resource type="Texture2D" uid="uid://beqh6fywjj4lt" path="res://Graphics/Enemies/Sol.png" id="4_tuqpl"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(16, 16)

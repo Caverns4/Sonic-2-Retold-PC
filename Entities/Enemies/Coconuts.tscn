@@ -1,8 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://4rs745vaqki1"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Coconuts.gd" id="1_gao0t"]
-[ext_resource type="Texture2D" uid="uid://hxgmxp3teiaf" path="res://Graphics/Enemies/Badnik_Coconuts.png" id="2_uq5tp"]
-
+[ext_resource type="Texture2D" uid="uid://hxgmxp3teiaf" path="res://Graphics/Enemies/Coconuts.png" id="2_uq5tp"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(17.5, 27)

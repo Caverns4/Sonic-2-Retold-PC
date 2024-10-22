@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://ds7bmlo2s41ji"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/BuzzBomber.gd" id="2"]
-[ext_resource type="Texture2D" uid="uid://djb53bxylig4n" path="res://Graphics/Enemies/Badnik_BuzzerS2BR.png" id="3_334mt"]
+[ext_resource type="Texture2D" uid="uid://djb53bxylig4n" path="res://Graphics/Enemies/BuzzerS2BR.png" id="3_334mt"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(48, 24)

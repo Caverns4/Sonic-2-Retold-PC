@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv5q8ba5j6djs"
-path="res://.godot/imported/Badnik_BBat.png-b123856d0588a1aafc8d57fdb6e43047.ctex"
+uid="uid://c80rud4lvtufe"
+path="res://.godot/imported/Redz.png-cf7eec46cdf3988fae5104864959a7ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Enemies/Badnik_BBat.png"
-dest_files=["res://.godot/imported/Badnik_BBat.png-b123856d0588a1aafc8d57fdb6e43047.ctex"]
+source_file="res://Graphics/Enemies/Redz.png"
+dest_files=["res://.godot/imported/Redz.png-cf7eec46cdf3988fae5104864959a7ea.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hxgmxp3teiaf"
-path="res://.godot/imported/Badnik_Coconuts.png-677ec32ff8b6f97028ed2c7aac4f0be2.ctex"
+uid="uid://djb53bxylig4n"
+path="res://.godot/imported/BuzzerS2BR.png-9dde257408f8e12ad17c643ae028877e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Enemies/Badnik_Coconuts.png"
-dest_files=["res://.godot/imported/Badnik_Coconuts.png-677ec32ff8b6f97028ed2c7aac4f0be2.ctex"]
+source_file="res://Graphics/Enemies/BuzzerS2BR.png"
+dest_files=["res://.godot/imported/BuzzerS2BR.png-9dde257408f8e12ad17c643ae028877e.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

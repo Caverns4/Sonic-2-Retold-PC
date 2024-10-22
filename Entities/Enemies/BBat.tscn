@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://bxkm8u0ltthxd"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/BBat.gd" id="1_fm812"]
-[ext_resource type="Texture2D" uid="uid://cv5q8ba5j6djs" path="res://Graphics/Enemies/Badnik_BBat.png" id="2_gcfrw"]
+[ext_resource type="Texture2D" uid="uid://cv5q8ba5j6djs" path="res://Graphics/Enemies/BBat.png" id="2_gcfrw"]
 [ext_resource type="Script" path="res://Scripts/Objects/Hazard.gd" id="3_fcpdh"]
 
 [sub_resource type="RectangleShape2D" id="1"]

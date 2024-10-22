@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b4oxfl2msl6e6"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Chomper.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://c6128d5u50r86" path="res://Graphics/Enemies/Badnik_Masher.png" id="2_mvux8"]
+[ext_resource type="Texture2D" uid="uid://c6128d5u50r86" path="res://Graphics/Enemies/Masher.png" id="2_mvux8"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(21, 32)

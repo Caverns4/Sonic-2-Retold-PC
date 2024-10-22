@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Enemies/Orbinaut.gd" id="1"]
 [ext_resource type="Script" path="res://Scripts/Objects/Hazard.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://23gv11m80733" path="res://Graphics/Enemies/SolFire.png" id="3_d185y"]
-[ext_resource type="Texture2D" uid="uid://beqh6fywjj4lt" path="res://Graphics/Enemies/Badnik_Sol.png" id="4_fw8n4"]
+[ext_resource type="Texture2D" uid="uid://beqh6fywjj4lt" path="res://Graphics/Enemies/Sol.png" id="4_fw8n4"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(16, 16)
