@@ -35,18 +35,15 @@ func reposition_elements(size: int):
 func physics_collision(body, hitVector):
 	#if get_parent().get("activated") != null:
 	if body.get("character") != null:
-		if body.character == Global.CHARACTERS.KNUCKLES or (
-			body.character == Global.CHARACTERS.SONIC and body.isSuper):
-			destroyed = true
-			body.movement.x *= (60 * body.direction)
-			body.velocity = body.movement
-			BreakPillar(body)
 		if hitVector.y > 0.0 and body.ground:
 			destroyed = true
-			body.movement.y += 60
-			#body.velocity.y = 200
 			body.ground = false
 			body.animator.current_animation = "roll"
+			BreakPillar(body)
+		elif body.character == Global.CHARACTERS.KNUCKLES or (
+			body.character == Global.CHARACTERS.SONIC and body.isSuper):
+			destroyed = true
+			#body.movement.x += (120 * body.direction)
 			BreakPillar(body)
 
 func BreakPillar(body):

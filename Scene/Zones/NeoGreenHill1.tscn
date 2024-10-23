@@ -447,19 +447,16 @@ fallTimer = 1.0
 position = Vector2(5040, 624)
 platformSprite = ExtResource("14_1yu1u")
 endPosition = Vector2(128, 0)
-fallTimer = 1.0
 
 [node name="Platform9" parent="Platform" instance=ExtResource("13_mfjkp")]
 position = Vector2(6144, 640)
 platformSprite = ExtResource("14_1yu1u")
 endPosition = Vector2(128, 0)
-fallTimer = 1.0
 
 [node name="Platform7" parent="Platform" instance=ExtResource("13_mfjkp")]
 position = Vector2(5344, 600)
 platformSprite = ExtResource("14_1yu1u")
 endPosition = Vector2(0, 128)
-fallTimer = 1.0
 
 [node name="Platform10" parent="Platform" instance=ExtResource("13_mfjkp")]
 position = Vector2(6032, 1520)
@@ -893,13 +890,13 @@ position = Vector2(1648, 776)
 position = Vector2(1672, 776)
 
 [node name="Ring22" parent="Rings" instance=ExtResource("32_heo3a")]
-position = Vector2(1616, 752)
+position = Vector2(1612, 752)
 
 [node name="Ring23" parent="Rings" instance=ExtResource("32_heo3a")]
-position = Vector2(1640, 752)
+position = Vector2(1636, 752)
 
 [node name="Ring24" parent="Rings" instance=ExtResource("32_heo3a")]
-position = Vector2(1664, 752)
+position = Vector2(1660, 752)
 
 [node name="Ring26" parent="Rings" instance=ExtResource("32_heo3a")]
 position = Vector2(2608, 768)

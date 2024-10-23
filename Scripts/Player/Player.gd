@@ -408,7 +408,9 @@ func _ready():
 			superAnimator = mighty.get_node_or_null("SuperPalette")
 			spriteController = mighty
 			get_node("OldSprite").queue_free()
-			
+		Global.CHARACTERS.RAY:
+			currentHitbox = HITBOXESSONIC
+			pass
 	
 	# run switch physics to ensure character specific physics
 	switch_physics()
@@ -723,7 +725,8 @@ func _physics_process(delta):
 	# collide with solids if not rolling layer
 	set_collision_mask_value(16,!attacking)
 	# collide with solids if not knuckles layer
-	set_collision_mask_value(19,!character == Global.CHARACTERS.KNUCKLES)
+	set_collision_mask_value(19,!character == Global.CHARACTERS.KNUCKLES or
+	!(character == Global.CHARACTERS.SONIC and isSuper))
 	# collide with solids if not rolling or not knuckles layer
 	set_collision_mask_value(21,(character != Global.CHARACTERS.KNUCKLES and !attacking))
 	# damage mask bit
