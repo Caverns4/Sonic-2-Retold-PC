@@ -1,22 +1,30 @@
-[gd_scene load_steps=11 format=4 uid="uid://cmqfbxox5j2ce"]
+[gd_scene load_steps=19 format=4 uid="uid://cmqfbxox5j2ce"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_d0vec"]
 [ext_resource type="AudioStream" uid="uid://c354qh8pof6fe" path="res://Audio/Soundtrack/s2br_CasinoNight.ogg" id="2_lgh7f"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="3_ei1j6"]
-[ext_resource type="PackedScene" uid="uid://caxc44uymh48a" path="res://Scene/Zones/EmeraldHill1.tscn" id="3_ubxk3"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="4_0g615"]
+[ext_resource type="PackedScene" uid="uid://brtxcccqfvmca" path="res://Scene/Zones/CasinoNight2.tscn" id="4_rw2ph"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="5_oviuh"]
 [ext_resource type="PackedScene" uid="uid://bbvj2re4dx40p" path="res://Scene/Backgrounds/09-CasinoNight.tscn" id="5_vhfwb"]
 [ext_resource type="TileSet" uid="uid://cfd5uopegfocd" path="res://Tileset/Levels/CNZ.tres" id="7_8s1gc"]
 [ext_resource type="Material" uid="uid://b2v0ktdlj41ql" path="res://Shaders/Materials/CNZ_Palcycle.tres" id="7_u4qi2"]
 [ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="10_thkbi"]
+[ext_resource type="Texture2D" uid="uid://bd7qotjdqnsst" path="res://Graphics/Objects_Zone/CNZ_MovingBlock.png" id="11_8ctuc"]
+[ext_resource type="PackedScene" uid="uid://4q0hpddgto2k" path="res://Entities/Gimmicks/Spring.tscn" id="12_8gpk4"]
+[ext_resource type="PackedScene" uid="uid://dkn7hhll7o4or" path="res://Entities/MainObjects/LayerSwitcher.tscn" id="12_6028l"]
+[ext_resource type="PackedScene" uid="uid://dwybbnboecmkw" path="res://Entities/Obstacles/Bumper.tscn" id="13_1an8l"]
+[ext_resource type="PackedScene" uid="uid://c2t7hwn0iln3x" path="res://Entities/Obstacles/Elevator.tscn" id="13_b21uh"]
+[ext_resource type="Texture2D" uid="uid://bsbg06aqri8m1" path="res://Graphics/Objects_Zone/CNZ_Elevator.png" id="14_iicyt"]
+[ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="16_55g4f"]
+[ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="18_15k1m"]
 
 [node name="CasinoNight1" type="Node2D"]
 script = ExtResource("1_d0vec")
 zoneID = 9
 music = ExtResource("2_lgh7f")
 music2P = ExtResource("3_ei1j6")
-nextZone = ExtResource("3_ubxk3")
+nextZone = ExtResource("4_rw2ph")
 animal1 = 13
 animal2 = 0
 
@@ -45,8 +53,281 @@ collision_enabled = false
 
 [node name="Entities" type="Node" parent="."]
 
-[node name="Platform" parent="Entities" instance=ExtResource("10_thkbi")]
-position = Vector2(2248, 1704)
+[node name="Spring" parent="Entities" instance=ExtResource("12_8gpk4")]
+position = Vector2(2608, 1784)
+
+[node name="Spring6" parent="Entities" instance=ExtResource("12_8gpk4")]
+position = Vector2(2672, 1400)
+
+[node name="Spring2" parent="Entities" instance=ExtResource("12_8gpk4")]
+position = Vector2(3056, 1464)
+
+[node name="Spring7" parent="Entities" instance=ExtResource("12_8gpk4")]
+position = Vector2(3056, 696)
+
+[node name="Spring3" parent="Entities" instance=ExtResource("12_8gpk4")]
+position = Vector2(3616, 1856)
+type = 1
+springDirection = 4
+
+[node name="Spring12" parent="Entities" instance=ExtResource("12_8gpk4")]
+position = Vector2(4096, 1408)
+type = 1
+springDirection = 4
+
+[node name="Spring8" parent="Entities" instance=ExtResource("12_8gpk4")]
+position = Vector2(6048, 1984)
+type = 1
+springDirection = 4
+
+[node name="Spring11" parent="Entities" instance=ExtResource("12_8gpk4")]
+position = Vector2(8224, 1856)
+type = 1
+springDirection = 4
+
+[node name="Spring9" parent="Entities" instance=ExtResource("12_8gpk4")]
+position = Vector2(6688, 1344)
+type = 1
+springDirection = 4
+
+[node name="Spring5" parent="Entities" instance=ExtResource("12_8gpk4")]
+position = Vector2(3592, 992)
+springDirection = 4
+
+[node name="Spring4" parent="Entities" instance=ExtResource("12_8gpk4")]
+position = Vector2(4208, 1784)
+type = 1
+
+[node name="Spring10" parent="Entities" instance=ExtResource("12_8gpk4")]
+position = Vector2(7280, 1528)
+type = 1
+
+[node name="Bumper" parent="Entities" instance=ExtResource("13_1an8l")]
+position = Vector2(4096, 1040)
+
+[node name="Bumper3" parent="Entities" instance=ExtResource("13_1an8l")]
+position = Vector2(4568, 768)
+
+[node name="Bumper4" parent="Entities" instance=ExtResource("13_1an8l")]
+position = Vector2(4608, 768)
+
+[node name="Bumper5" parent="Entities" instance=ExtResource("13_1an8l")]
+position = Vector2(4648, 768)
+
+[node name="Bumper6" parent="Entities" instance=ExtResource("13_1an8l")]
+position = Vector2(4608, 1408)
+
+[node name="Bumper9" parent="Entities" instance=ExtResource("13_1an8l")]
+position = Vector2(5120, 1280)
+
+[node name="Bumper2" parent="Entities" instance=ExtResource("13_1an8l")]
+position = Vector2(3712, 1040)
+
+[node name="Bumper10" parent="Entities" instance=ExtResource("13_1an8l")]
+position = Vector2(1152, 1536)
+
+[node name="Bumper7" parent="Entities" instance=ExtResource("13_1an8l")]
+position = Vector2(1896, 736)
+
+[node name="Bumper8" parent="Entities" instance=ExtResource("13_1an8l")]
+position = Vector2(640, 768)
+
+[node name="LayerSwitcher" parent="Entities" instance=ExtResource("12_6028l")]
+position = Vector2(3840, 1464)
+onlyOnFloor = true
+
+[node name="LayerSwitcher2" parent="Entities" instance=ExtResource("12_6028l")]
+position = Vector2(3976, 1608)
+
+[node name="LayerSwitcher3" parent="Entities" instance=ExtResource("12_6028l")]
+position = Vector2(6272, 1592)
+onlyOnFloor = true
+
+[node name="LayerSwitcher4" parent="Entities" instance=ExtResource("12_6028l")]
+position = Vector2(6408, 1736)
+
+[node name="LayerSwitcher5" parent="Entities" instance=ExtResource("12_6028l")]
+position = Vector2(6912, 952)
+onlyOnFloor = true
+
+[node name="LayerSwitcher6" parent="Entities" instance=ExtResource("12_6028l")]
+position = Vector2(7048, 1096)
+
+[node name="MovingPlatforms" type="Node2D" parent="."]
+material = ExtResource("7_u4qi2")
+
+[node name="Platform" parent="MovingPlatforms" instance=ExtResource("10_thkbi")]
+use_parent_material = true
+position = Vector2(2400, 1696)
+platformSprite = ExtResource("11_8ctuc")
+endPosition = Vector2(192, 0)
 speed = 0.5
 dropSlightly = false
 fullySolid = true
+
+[node name="Platform6" parent="MovingPlatforms" instance=ExtResource("10_thkbi")]
+use_parent_material = true
+position = Vector2(3744, 864)
+platformSprite = ExtResource("11_8ctuc")
+endPosition = Vector2(192, 0)
+speed = 0.5
+dropSlightly = false
+fullySolid = true
+
+[node name="Platform2" parent="MovingPlatforms" instance=ExtResource("10_thkbi")]
+use_parent_material = true
+position = Vector2(2208, 1760)
+platformSprite = ExtResource("11_8ctuc")
+endPosition = Vector2(192, 0)
+speed = 0.5
+offset = 192.0
+dropSlightly = false
+fullySolid = true
+
+[node name="Platform3" parent="MovingPlatforms" instance=ExtResource("10_thkbi")]
+use_parent_material = true
+position = Vector2(2016, 1568)
+platformSprite = ExtResource("11_8ctuc")
+endPosition = Vector2(0, 192)
+speed = 0.5
+dropSlightly = false
+fullySolid = true
+
+[node name="Platform5" parent="MovingPlatforms" instance=ExtResource("10_thkbi")]
+use_parent_material = true
+position = Vector2(2848, 1504)
+platformSprite = ExtResource("11_8ctuc")
+endPosition = Vector2(0, 192)
+speed = 0.5
+dropSlightly = false
+fullySolid = true
+
+[node name="Platform4" parent="MovingPlatforms" instance=ExtResource("10_thkbi")]
+use_parent_material = true
+position = Vector2(1888, 1568)
+platformSprite = ExtResource("11_8ctuc")
+endPosition = Vector2(0, 192)
+speed = 0.5
+offset = 192.0
+dropSlightly = false
+fullySolid = true
+
+[node name="Elevator" parent="MovingPlatforms" instance=ExtResource("13_b21uh")]
+position = Vector2(3376, 1672)
+platformSprite = ExtResource("14_iicyt")
+endPosition = Vector2(0, -320)
+waitTime = 6.0
+
+[node name="Elevator4" parent="MovingPlatforms" instance=ExtResource("13_b21uh")]
+position = Vector2(7728, 968)
+platformSprite = ExtResource("14_iicyt")
+endPosition = Vector2(0, 448)
+waitTime = 6.0
+
+[node name="Elevator3" parent="MovingPlatforms" instance=ExtResource("13_b21uh")]
+position = Vector2(5424, 712)
+platformSprite = ExtResource("14_iicyt")
+endPosition = Vector2(0, -320)
+waitTime = 6.0
+
+[node name="Elevator2" parent="MovingPlatforms" instance=ExtResource("13_b21uh")]
+position = Vector2(3248, 1160)
+platformSprite = ExtResource("14_iicyt")
+endPosition = Vector2(0, -576)
+speed = 0.5
+waitTime = 6.0
+
+[node name="Hazards" type="Node" parent="."]
+
+[node name="InvisibleBarrier" parent="Hazards" instance=ExtResource("18_15k1m")]
+position = Vector2(1888, 1456)
+scale = Vector2(4, 1)
+
+[node name="InvisibleBarrier2" parent="Hazards" instance=ExtResource("18_15k1m")]
+position = Vector2(2016, 1456)
+scale = Vector2(4, 1)
+
+[node name="InvisibleBarrier3" parent="Hazards" instance=ExtResource("18_15k1m")]
+position = Vector2(1888, 1808)
+scale = Vector2(4, 1)
+
+[node name="InvisibleBarrier4" parent="Hazards" instance=ExtResource("18_15k1m")]
+position = Vector2(2016, 1808)
+scale = Vector2(4, 1)
+
+[node name="InvisibleBarrier5" parent="Hazards" instance=ExtResource("18_15k1m")]
+position = Vector2(2880, 1744)
+scale = Vector2(4, 1)
+
+[node name="InvisibleBarrier6" parent="Hazards" instance=ExtResource("18_15k1m")]
+position = Vector2(2800, 1736)
+scale = Vector2(1, 4)
+
+[node name="InvisibleBarrier7" parent="Hazards" instance=ExtResource("18_15k1m")]
+position = Vector2(2800, 1528)
+scale = Vector2(1, 4)
+
+[node name="InvisibleBarrier8" parent="Hazards" instance=ExtResource("18_15k1m")]
+position = Vector2(2072, 1528)
+scale = Vector2(1, 4)
+
+[node name="InvisibleBarrier9" parent="Hazards" instance=ExtResource("18_15k1m")]
+position = Vector2(2068, 1732)
+scale = Vector2(1, 4)
+
+[node name="InvisibleBarrier15" parent="Hazards" instance=ExtResource("18_15k1m")]
+position = Vector2(2644, 1732)
+scale = Vector2(1, 4)
+
+[node name="InvisibleBarrier12" parent="Hazards" instance=ExtResource("18_15k1m")]
+position = Vector2(1836, 1568)
+scale = Vector2(1, 6)
+
+[node name="InvisibleBarrier13" parent="Hazards" instance=ExtResource("18_15k1m")]
+position = Vector2(1952, 1568)
+scale = Vector2(1.5, 6)
+
+[node name="InvisibleBarrier16" parent="Hazards" instance=ExtResource("18_15k1m")]
+position = Vector2(3424, 1312)
+scale = Vector2(2, 2)
+
+[node name="InvisibleBarrier18" parent="Hazards" instance=ExtResource("18_15k1m")]
+position = Vector2(7776, 1376)
+scale = Vector2(2, 2)
+
+[node name="InvisibleBarrier19" parent="Hazards" instance=ExtResource("18_15k1m")]
+position = Vector2(7648, 1824)
+scale = Vector2(2, 2)
+
+[node name="InvisibleBarrier17" parent="Hazards" instance=ExtResource("18_15k1m")]
+position = Vector2(3296, 1120)
+scale = Vector2(2, 2)
+
+[node name="InvisibleBarrier14" parent="Hazards" instance=ExtResource("18_15k1m")]
+position = Vector2(2068, 1504)
+scale = Vector2(1, 6)
+
+[node name="InvisibleBarrier10" parent="Hazards" instance=ExtResource("18_15k1m")]
+position = Vector2(1824, 1792)
+scale = Vector2(2, 4)
+
+[node name="InvisibleBarrier11" parent="Hazards" instance=ExtResource("18_15k1m")]
+position = Vector2(1952, 1792)
+scale = Vector2(2, 4)
+
+[node name="ItemsHolder" type="Node" parent="."]
+
+[node name="Monitor" parent="ItemsHolder" instance=ExtResource("16_55g4f")]
+position = Vector2(832, 752)
+item = 1
+
+[node name="Monitor2" parent="ItemsHolder" instance=ExtResource("16_55g4f")]
+position = Vector2(2832, 560)
+item = 12
+
+[node name="Monitor3" parent="ItemsHolder" instance=ExtResource("16_55g4f")]
+position = Vector2(4960, 1256)
+item = 12
+
+[node name="Monitor4" parent="ItemsHolder" instance=ExtResource("16_55g4f")]
+position = Vector2(3344, 1648)

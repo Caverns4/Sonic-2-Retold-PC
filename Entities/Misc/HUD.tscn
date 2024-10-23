@@ -785,6 +785,7 @@ _data = {
 
 [node name="HUD" type="CanvasLayer"]
 process_mode = 3
+layer = 2
 script = ExtResource("6")
 zoneName = "EMERALD HILL"
 zone = "ZONE"
@@ -1053,8 +1054,9 @@ anchor_left = 1.0
 anchor_top = 0.003
 anchor_right = 1.0
 anchor_bottom = 0.003
+offset_left = -32.0
 offset_top = -86.944
-offset_right = 18822.4
+offset_right = 18854.4
 offset_bottom = 169.056
 grow_horizontal = 0
 grow_vertical = 2

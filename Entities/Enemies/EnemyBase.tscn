@@ -28,7 +28,7 @@ hframes = 6
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(1.90735e-06, -1.90735e-06)
-scale = Vector2(6.4, 6.4)
+rect = Rect2(-160, -120, 320, 240)
 
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]

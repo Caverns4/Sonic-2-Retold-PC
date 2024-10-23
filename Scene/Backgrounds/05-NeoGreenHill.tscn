@@ -17,7 +17,6 @@ tile_set = ExtResource("1_ctdcg")
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
 z_index = 60
 z_as_relative = false
-motion_scale = Vector2(1.1, 1)
 motion_mirroring = Vector2(640, 0)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="ParallaxLayer2"]
