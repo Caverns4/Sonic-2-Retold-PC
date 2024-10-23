@@ -54,6 +54,7 @@ defaultBottomBoundry = 1664
 zoneName = "NEO GREEN HILL"
 waterSourceColor = ExtResource("7_gdple")
 waterReplaceColor = ExtResource("8_jy43g")
+ringsForPerfect = 200
 
 [node name="Player" parent="." instance=ExtResource("2_8wvcy")]
 position = Vector2(96, 894)
