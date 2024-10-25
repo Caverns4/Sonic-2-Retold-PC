@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://mrkujxuspvgk"]
+
+[ext_resource type="Texture2D" uid="uid://cpxfvraydnlyp" path="res://Graphics/Gimmicks/Slots.png" id="1_4p5e2"]
+[ext_resource type="Script" path="res://Scripts/Gimmicks/cnz_character_reels.gd" id="1_ci2uq"]
+
+[node name="CnzCharacterReels" type="Node2D"]
+script = ExtResource("1_ci2uq")
+
+[node name="SlotA" type="Sprite2D" parent="."]
+position = Vector2(-32, 0)
+texture = ExtResource("1_4p5e2")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="SlotB" type="Sprite2D" parent="."]
+texture = ExtResource("1_4p5e2")
+region_enabled = true
+region_rect = Rect2(0, 32, 32, 32)
+
+[node name="SlotC" type="Sprite2D" parent="."]
+position = Vector2(32, 0)
+texture = ExtResource("1_4p5e2")
+region_enabled = true
+region_rect = Rect2(0, 64, 32, 32)
