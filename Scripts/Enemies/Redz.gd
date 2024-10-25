@@ -65,14 +65,7 @@ func _physics_process(delta):
 				animator.play("RESET")
 			else:
 				shootBullet(delta)
-			
-			# Redz fire spit (Todo)
-			#if fmod(animTime+delta*2,1) < animTime:
-			#	var part = Particle.instantiate()
-			#	get_parent().add_child(part)
-			#	part.global_position = global_position-(Vector2(24,-2)*direction)
-			#	part.play("MotoBugSmoke")
-			pass
+
 	MoveWithGravity(delta)
 
 func MoveWithGravity(delta):

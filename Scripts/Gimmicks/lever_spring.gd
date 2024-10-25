@@ -44,7 +44,7 @@ func SpringCharacters():
 		var node = players[i]
 		var temp = (global_position.x - 24 - node.global_position.x)/8
 		#print(temp)
-		temp = max(abs(round(temp)),0)
+		temp = min(max(abs(round(temp)),0),lauchSpeeds.size())
 		var speedSet = lauchSpeeds[temp] * 60
 		
 		node.set_state(node.STATES.AIR)

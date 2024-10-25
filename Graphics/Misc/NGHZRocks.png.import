@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d27shsho8o0mj"
-path="res://.godot/imported/HPZRocks.png-320ba2191d1a9dc391d269e7f0a4b68f.ctex"
+uid="uid://c5cooxne7gmco"
+path="res://.godot/imported/NGHZRocks.png-e233b3d831f23ea687afcde6565c2439.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Gimmicks/HPZRocks.png"
-dest_files=["res://.godot/imported/HPZRocks.png-320ba2191d1a9dc391d269e7f0a4b68f.ctex"]
+source_file="res://Graphics/Misc/NGHZRocks.png"
+dest_files=["res://.godot/imported/NGHZRocks.png-e233b3d831f23ea687afcde6565c2439.ctex"]
 
 [params]
 

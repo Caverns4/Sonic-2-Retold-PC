@@ -1,6 +1,7 @@
-[gd_scene load_steps=89 format=3 uid="uid://dmrtm7r6hfbfr"]
+[gd_scene load_steps=96 format=3 uid="uid://dmrtm7r6hfbfr"]
 
 [ext_resource type="Texture2D" uid="uid://bihgasvpr4jyb" path="res://Graphics/Items/invincible_stars.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://c5cooxne7gmco" path="res://Graphics/Misc/NGHZRocks.png" id="1_14h1g"]
 [ext_resource type="Texture2D" uid="uid://nmefqhyltnjt" path="res://Graphics/Misc/explosion2.png" id="1_odgmf"]
 [ext_resource type="Script" path="res://Scripts/Misc/FreeOnAnimationCompletion.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://bu6a2evw5s7ne" path="res://Graphics/Misc/water_splash.png" id="3"]
@@ -9,6 +10,30 @@
 [ext_resource type="Texture2D" uid="uid://7hwanyy5pso6" path="res://Graphics/Misc/SuperSparkles.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://c3em2xm0y2fip" path="res://Graphics/Items/Rings/RingSparkle.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://cciqyn4fgs3st" path="res://Graphics/Enemies/MotobugSmoke.png" id="8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qua2"]
+atlas = ExtResource("1_14h1g")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ammwr"]
+atlas = ExtResource("1_14h1g")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqls2"]
+atlas = ExtResource("1_14h1g")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_546yj"]
+atlas = ExtResource("1_14h1g")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u18s3"]
+atlas = ExtResource("1_14h1g")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1u3bf"]
+atlas = ExtResource("1_14h1g")
+region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e0lbq"]
 atlas = ExtResource("1_odgmf")
@@ -326,6 +351,29 @@ region = Rect2(217, 0, 31, 31)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_3qua2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ammwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqls2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_546yj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u18s3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1u3bf")
+}],
+"loop": false,
+"name": &"ARZRocks",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_e0lbq")
 }, {
 "duration": 1.0,
@@ -631,8 +679,8 @@ animations = [{
 
 [node name="GenericParticle" type="AnimatedSprite2D"]
 sprite_frames = SubResource("157")
-animation = &"BossExplosion"
-frame = 6
+animation = &"ARZRocks"
+frame = 5
 frame_progress = 1.0
 script = ExtResource("2")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://s4hdjd5g3p2i"]
+[gd_scene load_steps=33 format=4 uid="uid://s4hdjd5g3p2i"]
 
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_u8gl0"]
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_uxs8x"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://cp4s5qc2tt2ne" path="res://Entities/Gimmicks/ARZ_RisingPillar.tscn" id="23_306qm"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="26_2mfu1"]
 [ext_resource type="PackedScene" uid="uid://bct374kjctkxr" path="res://Entities/Items/Checkpoint.tscn" id="27_htdtg"]
+[ext_resource type="PackedScene" uid="uid://coe83pap1gotn" path="res://Entities/Enemies/Grounder.tscn" id="31_gyd1w"]
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="31_o8xb1"]
 
 [node name="NeoGreenHill2" type="Node2D"]
@@ -671,6 +672,25 @@ position = Vector2(10496, 1168)
 position = Vector2(11520, 1200)
 
 [node name="Badniks" type="Node" parent="."]
+
+[node name="Grounder" parent="Badniks" instance=ExtResource("31_gyd1w")]
+position = Vector2(2368, 1056)
+behavior = 0
+
+[node name="Grounder2" parent="Badniks" instance=ExtResource("31_gyd1w")]
+position = Vector2(4576, 1216)
+behavior = 0
+
+[node name="Grounder3" parent="Badniks" instance=ExtResource("31_gyd1w")]
+position = Vector2(5088, 1088)
+behavior = 0
+
+[node name="Grounder4" parent="Badniks" instance=ExtResource("31_gyd1w")]
+position = Vector2(5152, 1344)
+behavior = 0
+
+[node name="Grounder5" parent="Badniks" instance=ExtResource("31_gyd1w")]
+position = Vector2(7656, 824)
 
 [node name="Rings" type="Node" parent="."]
 

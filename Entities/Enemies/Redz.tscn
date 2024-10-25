@@ -114,6 +114,7 @@ rect = Rect2(-160, -112, 320, 224)
 [node name="FloorCheck" type="RayCast2D" parent="."]
 position = Vector2(-11, 16)
 target_position = Vector2(0, 14)
+collision_mask = 273
 hit_from_inside = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
