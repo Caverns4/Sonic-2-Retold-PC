@@ -8,6 +8,7 @@ extends Node2D
 @export var speed = 1.0 # How fast to move
 @export var offset = 0.0 # Initial offset, this can be used to offset the movements between other platforms # (float, 0.0, 3.1415)
 @export var waitTime = 4.0 #Wait time in Seconds
+@export var soundFile: AudioStream
 
 var activated = false # If the player has stood on the platform
 var activeTimer = 0.0 # Timespan the ojbect has been active for. Use this instead of level timer.
@@ -29,6 +30,8 @@ func _ready():
 	if !Engine.is_editor_hint():
 		# Change platform sprite texture
 		$Platform/Sprite2D.texture = platformSprite
+		if soundFile:
+			$AudioStreamPlayer.stream = soundFile
 	else:
 		offsetTimer = 0
 	
@@ -57,6 +60,8 @@ func _physics_process(delta):
 				if activated: 
 					state = STATES.PATHTO
 					activeTimer = 0.0
+					if soundFile:
+						$AudioStreamPlayer.play()
 			STATES.PATHTO:
 				#Zoom to target point endPos, inc state when target reached
 				activeTimer+=(delta)

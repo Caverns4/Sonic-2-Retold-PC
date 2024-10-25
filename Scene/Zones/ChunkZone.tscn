@@ -73,7 +73,6 @@ nextZone = ExtResource("3_m54nf")
 animal1 = 2
 animal2 = 7
 defaultRightBoundry = 10496
-defaultBottomBoundry = 2048
 
 [node name="03-ChemicalPlant" parent="." instance=ExtResource("5_n8awx")]
 
@@ -499,13 +498,11 @@ metadata/_edit_lock_ = true
 position = Vector2(5728, 1296)
 platformSprite = ExtResource("15_wn01l")
 endPosition = Vector2(0, 64)
-speed = 0.5
 
 [node name="Elevator3" parent="Floating Platforms" instance=ExtResource("14_s2njc")]
 position = Vector2(8096, 1168)
 platformSprite = ExtResource("15_wn01l")
-endPosition = Vector2(0, -192)
-speed = 0.5
+endPosition = Vector2(0, -256)
 
 [node name="Elevator4" parent="Floating Platforms" instance=ExtResource("14_s2njc")]
 position = Vector2(8160, 1168)

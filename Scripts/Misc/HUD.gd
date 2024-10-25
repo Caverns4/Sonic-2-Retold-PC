@@ -31,6 +31,7 @@ var isStageEnding = false
 var timeBonus = 0
 var ringBonus = 0
 var perfectBonus = 0
+var perfectEnabled = true
 
 # gameOver is used to initialize the game over animation sequence, note: this is for animation, if you want to use the game over status it's in global
 var gameOver = false
@@ -242,7 +243,7 @@ func _process(delta):
 		# initialize stage clear sequence
 		if !isStageEnding:
 			isStageEnding = true
-			if Global.players[0].rings >= ringsForPerfect:
+			if Global.players[0].rings >= ringsForPerfect and perfectEnabled:
 				$LevelClear/PerfectBonusText.visible = true
 				perfectBonus = 50000
 			

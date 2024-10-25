@@ -1118,6 +1118,7 @@ func hit_player(damagePoint = global_position, damageType = 0, soundID = 6):
 		if (shield == SHIELDS.NONE and rings > 0 and (playerControl == 1 or Global.TwoPlayer)):
 			sfx[9].play()
 			#ringDisTime = 30.0/60.0 # ignore rings for 64 frames
+			Global.hud.perfectEnabled = false
 			ringDisTime = 1.0/60.0 # ignore rings for 1/60th second after landing
 			var ringCount = 0
 			var ringAngle = 101.25
@@ -1313,6 +1314,7 @@ func switch_physics(isWater = water):
 	releaseJmp = getList[8]
 	# For Jump height:
 	jmp = determine_jump_property()
+
 
 
 

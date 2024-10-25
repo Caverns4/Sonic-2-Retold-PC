@@ -9,20 +9,21 @@ extends Node2D
 @export var dropSlightly = true # Drop slightly when a player stands on top
 @export var fallTimer = 0.0 # does the platform fall? 0 sets it to not fall
 @export var fullySolid = false # if true, all collision layers are active fore this object.
+@export var platformDepth = 4
 
 var offsetTimer = 0
 var dropDistance = 0
 var fallSpeed = 0
 var fallActive = false
 var doDrop = false
-var platformDepth = 4
+
 
 func _ready():
 	# Change platform shape
 	if fullySolid:
 		$Platform/Shape3D.shape.size.x = platformSprite.get_size().x
 		$Platform/Shape3D.shape.size.y = platformSprite.get_size().y
-		$Platform/Shape3D.position.y = (platformDepth*2.0)
+		$Platform/Shape3D.position.y = platformDepth
 		$Platform/Shape3D.one_way_collision = false
 		$Platform.set_collision_layer_value(2,true)
 		$Platform.set_collision_layer_value(3,true)
@@ -44,7 +45,7 @@ func _process(delta):
 		if fullySolid:
 			$Platform/Shape3D.shape.size.x = platformSprite.get_size().x
 			$Platform/Shape3D.shape.size.y = platformSprite.get_size().y
-			$Platform/Shape3D.position.y = (platformDepth*2.0)
+			$Platform/Shape3D.position.y = platformDepth
 		else:
 			$Platform/Shape3D.shape.size.x = platformSprite.get_size().x
 			$Platform/Shape3D.shape.size.y = platformDepth/2.0

@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=150 format=3 uid="uid://cfd5uopegfocd"]
+[gd_resource type="TileSet" load_steps=151 format=3 uid="uid://cfd5uopegfocd"]
 
 [ext_resource type="Texture2D" uid="uid://b8iex2edttah3" path="res://Graphics/Tiles/CNZ/CNZ_Blocks.png" id="1_lle38"]
 
@@ -163,6 +163,9 @@ tile_data = PackedInt32Array(0, 65536, 268435457, 65536, 65536, 268435457, 13107
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_gpsml"]
 tile_data = PackedInt32Array(196608, 327680, 268435464, 262144, 131072, 7, 327680, 131072, 7, 393216, 131072, 7, 458752, 131072, 7, 1, 589824, 268435456, 65537, 589824, 805306368, 131073, 589824, 268435456, 196609, 589824, 805306368, 262145, 131072, 7, 327681, 131072, 7, 393217, 131072, 7, 458753, 131072, 7, 2, 131072, 7, 65538, 131072, 7, 131074, 131072, 7, 196610, 131072, 7, 262146, 131072, 7, 327682, 131072, 7, 393218, 131072, 7, 458754, 131072, 7, 3, 131072, 7, 65539, 131072, 7, 131075, 131072, 7, 196611, 131072, 7, 262147, 131072, 7, 327683, 131072, 7, 393219, 131072, 7, 458755, 131072, 7, 4, 131072, 7, 65540, 131072, 7, 131076, 131072, 7, 196612, 131072, 7, 262148, 131072, 7, 327684, 131072, 7, 393220, 131072, 7, 458756, 131072, 7, 5, 131072, 7, 65541, 131072, 7, 131077, 131072, 7, 196613, 131072, 7, 262149, 131072, 7, 327685, 131072, 7, 393221, 131072, 7, 458757, 131072, 7, 6, 131072, 7, 65542, 786432, 3, 131078, 131072, 7, 196614, 131072, 7, 262150, 131072, 7, 327686, 131072, 7, 393222, 131072, 7, 458758, 131072, 7, 7, 131072, 7, 65543, 131072, 7, 131079, 131072, 7, 196615, 131072, 7, 262151, 131072, 7, 327687, 131072, 7, 393223, 131072, 7, 458759, 131072, 7)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_ltrld"]
+tile_data = PackedInt32Array(0, 655360, 536870914, 65536, 655360, 2, 131072, 655360, 536870914, 196608, 655360, 2, 262144, 0, 18, 327680, 0, 19, 393216, 0, 536870924, 1, 655360, 805306370, 65537, 655360, 268435458, 131073, 655360, 805306370, 196609, 655360, 268435458, 262145, 0, 22, 327681, 0, 23, 393217, 65536, 536870924, 2, 655360, 536870914, 65538, 655360, 2, 131074, 655360, 536870914, 196610, 655360, 2, 262146, 655360, 536870914, 327682, 655360, 2, 393218, 655360, 536870914, 458754, 0, 536870924, 3, 655360, 805306370, 65539, 655360, 268435458, 131075, 655360, 805306370, 196611, 655360, 268435458, 262147, 655360, 805306370, 327683, 655360, 268435458, 393219, 655360, 805306370, 458755, 65536, 536870924, 4, 655360, 536870914, 65540, 655360, 2, 131076, 655360, 536870914, 196612, 655360, 2, 262148, 655360, 536870914, 327684, 655360, 2, 393220, 655360, 536870914, 458756, 655360, 2, 5, 65536, 1, 65541, 65536, 1, 131077, 65536, 1, 196613, 65536, 1, 262149, 65536, 1, 327685, 65536, 1, 393221, 65536, 1, 458757, 65536, 1)
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_wvffw"]
 tile_data = PackedInt32Array(393216, 262144, 12, 458752, 262144, 13, 262145, 262144, 12, 327681, 262144, 13, 393217, 327680, 12, 458753, 327680, 13, 131074, 262144, 12, 196610, 262144, 13, 262146, 327680, 12, 327682, 327680, 13, 393218, 458752, 9, 458754, 524288, 9, 3, 262144, 12, 65539, 262144, 13, 131075, 327680, 12, 196611, 327680, 13, 262147, 524288, 9, 327683, 458752, 9, 393219, 917504, 805306383, 458755, 917504, 268435471)
@@ -661,16 +664,22 @@ texture = ExtResource("1_lle38")
 0:19/0/z_index = 10
 0:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 15:15/0 = 0
+15:15/0/z_index = 10
 15:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 15:14/0 = 0
+15:14/0/z_index = 10
 15:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 14:14/0 = 0
+14:14/0/z_index = 10
 14:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 14:15/0 = 0
+14:15/0/z_index = 10
 14:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:15/0 = 0
+9:15/0/z_index = 10
 9:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:14/0 = 0
+9:14/0/z_index = 10
 9:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:9/0 = 0
 7:9/0/z_index = 10
@@ -708,8 +717,10 @@ texture = ExtResource("1_lle38")
 6:12/0 = 0
 7:14/0 = 0
 8:14/0 = 0
+8:14/0/z_index = 10
 8:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:13/0 = 0
+8:13/0/z_index = 10
 8:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:10/0 = 0
 2:12/0 = 0
@@ -788,9 +799,13 @@ texture = ExtResource("1_lle38")
 14:6/0 = 0
 14:6/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 15:6/0 = 0
+15:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(5, 8, 8, 8, 8, -8)
 15:7/0 = 0
+15:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1, 8, 5, -8, 8, -8, 8, 8)
 14:7/0 = 0
+14:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2, -1, -8, 8, -8, 8, 8, -8, 8)
 13:7/0 = 0
+13:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(2, 8, 8, 8, 8, 2)
 12:7/0 = 0
 12:7/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:7/0 = 0
@@ -830,9 +845,13 @@ texture = ExtResource("1_lle38")
 11:8/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:8/0/physics_layer_2/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 12:8/0 = 0
+12:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 5, 8, 8)
 13:8/0 = 0
+13:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 5, 8, -1, 8, 8, -8, 8)
 14:8/0 = 0
+14:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -1, 2, -8, 8, -8, 8, 8, -8, 8)
 15:8/0 = 0
+15:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:9/0 = 0
 5:9/0/z_index = 1
 5:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, -8, 8, 8, -8, 8)
@@ -850,6 +869,7 @@ texture = ExtResource("1_lle38")
 6:9/0 = 0
 6:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 15:11/0 = 0
+15:11/0/z_index = 10
 15:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 14:11/0 = 0
 14:11/0/z_index = 10
@@ -1172,3 +1192,4 @@ pattern_143 = SubResource("TileMapPattern_2ji02")
 pattern_144 = SubResource("TileMapPattern_odqgr")
 pattern_145 = SubResource("TileMapPattern_nqrh1")
 pattern_146 = SubResource("TileMapPattern_gpsml")
+pattern_147 = SubResource("TileMapPattern_ltrld")

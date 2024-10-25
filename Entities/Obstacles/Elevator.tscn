@@ -24,3 +24,6 @@ shape = SubResource("1")
 one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Platform"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
