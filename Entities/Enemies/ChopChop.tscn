@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=3 uid="uid://ch1qrcq0vtwe0"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/chop_chop.gd" id="1_povk6"]
+[ext_resource type="Texture2D" uid="uid://dluaa70276puw" path="res://Graphics/Enemies/ChopChop.png" id="2_lr8at"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3171"]
+atlas = ExtResource("2_lr8at")
+region = Rect2(0, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr0jb"]
+atlas = ExtResource("2_lr8at")
+region = Rect2(32, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqwqr"]
+atlas = ExtResource("2_lr8at")
+region = Rect2(0, 0, 32, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1uld4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3171")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pr0jb")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqwqr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdaay"]
+size = Vector2(112, 64)
+
+[node name="ChopChop" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 16384
+collision_mask = 0
+script = ExtResource("1_povk6")
+
+[node name="CollissionMask" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 528384
+
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+modulate = Color(1, 0, 0, 1)
+shape = SubResource("1")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+visible = false
+position = Vector2(1.90735e-06, -1.90735e-06)
+rect = Rect2(-160, -120, 320, 240)
+
+[node name="Sample" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_lr8at")
+hframes = 2
+
+[node name="ChopchopSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1uld4")
+autoplay = "default"
+frame_progress = 0.718448
+
+[node name="PlayerCheck" type="Area2D" parent="ChopchopSprite"]
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChopchopSprite/PlayerCheck"]
+position = Vector2(-56, -8)
+shape = SubResource("RectangleShape2D_fdaay")
+
+[connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
+[connection signal="body_entered" from="ChopchopSprite/PlayerCheck" to="." method="_on_player_check_body_entered"]
+[connection signal="body_exited" from="ChopchopSprite/PlayerCheck" to="." method="_on_player_check_body_exited"]

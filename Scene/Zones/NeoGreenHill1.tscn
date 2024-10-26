@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://b8nujtm2r4age"]
+[gd_scene load_steps=37 format=4 uid="uid://b8nujtm2r4age"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_20uxj"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_bg171"]
@@ -35,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="32_heo3a"]
 [ext_resource type="PackedScene" uid="uid://coe83pap1gotn" path="res://Entities/Enemies/Grounder.tscn" id="33_3cg56"]
 [ext_resource type="PackedScene" uid="uid://cxflei1nuvbmq" path="res://Entities/Enemies/Wisp.tscn" id="34_kwdo0"]
+[ext_resource type="PackedScene" uid="uid://ch1qrcq0vtwe0" path="res://Entities/Enemies/ChopChop.tscn" id="36_1x8wi"]
 
 [node name="NeoGreenHill1" type="Node2D"]
 script = ExtResource("1_20uxj")
@@ -590,7 +591,37 @@ position = Vector2(2384, 824)
 floor_constant_speed = true
 
 [node name="Wisp" parent="Badniks" instance=ExtResource("34_kwdo0")]
-position = Vector2(176, 840)
+position = Vector2(552, 872)
+
+[node name="ChopChop" parent="Badniks" instance=ExtResource("36_1x8wi")]
+position = Vector2(3952, 1160)
+
+[node name="ChopChop2" parent="Badniks" instance=ExtResource("36_1x8wi")]
+position = Vector2(7920, 1064)
+
+[node name="ChopChop3" parent="Badniks" instance=ExtResource("36_1x8wi")]
+position = Vector2(7680, 1320)
+
+[node name="ChopChop4" parent="Badniks" instance=ExtResource("36_1x8wi")]
+position = Vector2(8064, 1408)
+
+[node name="ChopChop5" parent="Badniks" instance=ExtResource("36_1x8wi")]
+position = Vector2(8832, 1368)
+
+[node name="ChopChop6" parent="Badniks" instance=ExtResource("36_1x8wi")]
+position = Vector2(6272, 1448)
+
+[node name="ChopChop7" parent="Badniks" instance=ExtResource("36_1x8wi")]
+position = Vector2(5392, 1520)
+
+[node name="ChopChop8" parent="Badniks" instance=ExtResource("36_1x8wi")]
+position = Vector2(5160, 1568)
+
+[node name="ChopChop9" parent="Badniks" instance=ExtResource("36_1x8wi")]
+position = Vector2(3296, 1120)
+
+[node name="ChopChop10" parent="Badniks" instance=ExtResource("36_1x8wi")]
+position = Vector2(384, 840)
 
 [node name="Rings" type="Node" parent="."]
 

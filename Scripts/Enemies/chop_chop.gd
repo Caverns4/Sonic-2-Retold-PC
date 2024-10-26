@@ -9,26 +9,27 @@ extends EnemyBase
 #If sight of either player is lost for 3 seconds, lose agro, swim home
 #Return to idel state once home, unless player seen again.
 
+@export_enum("BFish","ChopChop") var behavior = 0
 @export var travelDistance = 160
 @export var swimDirection = 0.0 # (float,-180.0,180.0)
 @onready var origin = global_position
 
-@onready var sprite = $Sprite2D/BFishSprite2
+@onready var sprite = $ChopchopSprite
 
 var side = -1
 var editorOffset = 1
 enum STATES{IDLE,ATTACK,HOME}
 var state = STATES.IDLE
-var startPosition: Vector2
 var stateTimer = 0.0
 
 var bubbleTimer = 0.0
 var Bubble = preload("res://Entities/Misc/Bubbles.tscn")
-var players = []
+var TargetPosition = Vector2.ZERO
 
 func _ready():
 	if !Engine.is_editor_hint():
 		$VisibleOnScreenEnabler2D.visible = true
+		origin = global_position
 
 func _process(delta):
 	if Engine.is_editor_hint():
@@ -48,12 +49,11 @@ func _physics_process(delta):
 			STATES.IDLE:
 				BFish_IdleState()
 			STATES.ATTACK:
-				if players:
-					BFish_Attack(delta,players[0].global_position)
-				else:
-					stateTimer -= delta
-					if stateTimer <= 0.0:
-						state = STATES.HOME
+				stateTimer -= delta
+				BFish_Attack(delta,TargetPosition)
+				if stateTimer <= 0:
+					state = STATES.HOME
+					sprite.play("default")
 			STATES.HOME:
 				BFish_ReturnHome(delta)
 		
@@ -70,8 +70,6 @@ func _physics_process(delta):
 func BFish_IdleState():
 	if Global.waterLevel == null:
 		queue_free()
-	elif Global.waterLevel != null and (global_position.y < Global.waterLevel):
-		global_position.y += 8
 	if position.distance_to(origin+Vector2(travelDistance*side,0).rotated(deg_to_rad(swimDirection))) <= 1:
 		sprite.scale.x = -sprite.scale.x
 		side = -side
@@ -81,11 +79,21 @@ func BFish_IdleState():
 		calc_dir()
 
 func BFish_Attack(delta, playerCords):
-	position = position.move_toward(playerCords.rotated(deg_to_rad(swimDirection)),100*delta)
+	global_position = global_position.move_toward(playerCords.rotated(deg_to_rad(swimDirection)),120*delta)
 
 func BFish_ReturnHome(delta):
-	position = position.move_toward(origin.rotated(deg_to_rad(swimDirection)),25*delta)
-	calc_dir()
+	position.x = move_toward(position.x,origin.x,60*delta)
+	position.y = move_toward(position.y,origin.y,60*delta)
+	
+	var getDir: int = -1
+	if origin.x > global_position.x:
+		getDir = 1
+	sprite.scale.x = -getDir
+	swimDirection = getDir
+	
+	if global_position == origin:
+		state = STATES.IDLE
+		TargetPosition = Vector2.ZERO
 
 func calc_dir():
 	# calculate direction based on side movement and rotation
@@ -97,7 +105,7 @@ func calc_dir():
 
 func _draw():
 	if Engine.is_editor_hint():
-		var test = $Sprite2D/Sample
+		var test = $Sample
 		
 		var size = Vector2(test.texture.get_width()/test.hframes,test.texture.get_height()/test.vframes)
 		# first bomber pose
@@ -114,10 +122,14 @@ func _draw():
 
 
 func _on_player_check_body_entered(body: Node2D) -> void:
-	state = STATES.ATTACK
-	sprite.play("attack")
-	players.append(body)
-	stateTimer = 2.0
+	if TargetPosition == Vector2.ZERO and  state == STATES.IDLE:
+		state = STATES.ATTACK
+		sprite.play("attack")
+		stateTimer = 2.0
+		TargetPosition = global_position + (Vector2(body.global_position - global_position).normalized()*160)
+		
+		#Vector2(120,0).rotated(get_angle_to(body.global_position))
+
 
 func _on_player_check_body_exited(body: Node2D) -> void:
-	players.erase(body)
+	pass
