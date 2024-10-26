@@ -591,7 +591,7 @@ position = Vector2(2384, 824)
 floor_constant_speed = true
 
 [node name="Wisp" parent="Badniks" instance=ExtResource("34_kwdo0")]
-position = Vector2(552, 872)
+position = Vector2(640, 872)
 
 [node name="ChopChop" parent="Badniks" instance=ExtResource("36_1x8wi")]
 position = Vector2(3952, 1160)
@@ -619,9 +619,6 @@ position = Vector2(5160, 1568)
 
 [node name="ChopChop9" parent="Badniks" instance=ExtResource("36_1x8wi")]
 position = Vector2(3296, 1120)
-
-[node name="ChopChop10" parent="Badniks" instance=ExtResource("36_1x8wi")]
-position = Vector2(384, 840)
 
 [node name="Rings" type="Node" parent="."]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://s4hdjd5g3p2i"]
+[gd_scene load_steps=34 format=4 uid="uid://s4hdjd5g3p2i"]
 
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_u8gl0"]
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_uxs8x"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://bct374kjctkxr" path="res://Entities/Items/Checkpoint.tscn" id="27_htdtg"]
 [ext_resource type="PackedScene" uid="uid://coe83pap1gotn" path="res://Entities/Enemies/Grounder.tscn" id="31_gyd1w"]
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="31_o8xb1"]
+[ext_resource type="PackedScene" uid="uid://ch1qrcq0vtwe0" path="res://Entities/Enemies/ChopChop.tscn" id="33_gnnd6"]
 
 [node name="NeoGreenHill2" type="Node2D"]
 script = ExtResource("1_uxs8x")
@@ -691,6 +692,42 @@ behavior = 0
 
 [node name="Grounder5" parent="Badniks" instance=ExtResource("31_gyd1w")]
 position = Vector2(7656, 824)
+
+[node name="ChopChop" parent="Badniks" instance=ExtResource("33_gnnd6")]
+position = Vector2(1888, 1600)
+
+[node name="ChopChop2" parent="Badniks" instance=ExtResource("33_gnnd6")]
+position = Vector2(2688, 1664)
+
+[node name="ChopChop3" parent="Badniks" instance=ExtResource("33_gnnd6")]
+position = Vector2(3648, 1664)
+
+[node name="ChopChop4" parent="Badniks" instance=ExtResource("33_gnnd6")]
+position = Vector2(4408, 1776)
+
+[node name="ChopChop5" parent="Badniks" instance=ExtResource("33_gnnd6")]
+position = Vector2(5504, 1760)
+
+[node name="ChopChop6" parent="Badniks" instance=ExtResource("33_gnnd6")]
+position = Vector2(6576, 1880)
+
+[node name="ChopChop7" parent="Badniks" instance=ExtResource("33_gnnd6")]
+position = Vector2(7584, 1752)
+
+[node name="ChopChop8" parent="Badniks" instance=ExtResource("33_gnnd6")]
+position = Vector2(8208, 1608)
+
+[node name="ChopChop9" parent="Badniks" instance=ExtResource("33_gnnd6")]
+position = Vector2(6424, 1432)
+
+[node name="ChopChop10" parent="Badniks" instance=ExtResource("33_gnnd6")]
+position = Vector2(7008, 1304)
+
+[node name="ChopChop11" parent="Badniks" instance=ExtResource("33_gnnd6")]
+position = Vector2(7120, 1480)
+
+[node name="ChopChop12" parent="Badniks" instance=ExtResource("33_gnnd6")]
+position = Vector2(3080, 1832)
 
 [node name="Rings" type="Node" parent="."]
 

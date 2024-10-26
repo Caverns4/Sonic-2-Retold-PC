@@ -70,6 +70,8 @@ func _physics_process(delta):
 func BFish_IdleState():
 	if Global.waterLevel == null:
 		queue_free()
+	elif global_position.y < Global.waterLevel:
+		global_position.y += 1
 	if position.distance_to(origin+Vector2(travelDistance*side,0).rotated(deg_to_rad(swimDirection))) <= 1:
 		sprite.scale.x = -sprite.scale.x
 		side = -side
