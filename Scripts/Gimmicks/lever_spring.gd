@@ -45,7 +45,7 @@ func SpringCharacters():
 		var temp = (global_position.x - 24 - node.global_position.x)/8
 		#print(temp)
 		temp = min(max(abs(round(temp)),0),lauchSpeeds.size())
-		var speedSet = lauchSpeeds[temp] * 60
+		var speedSet = (lauchSpeeds[temp]) * 60
 		
 		node.set_state(node.STATES.AIR)
 		node.airControl = true

@@ -465,7 +465,6 @@ position = Vector2(6032, 1520)
 platformSprite = ExtResource("27_4ortn")
 endPosition = Vector2(0, 64)
 dropSlightly = false
-fallTimer = 1.0
 fullySolid = true
 
 [node name="Platform11" parent="Platform" instance=ExtResource("13_mfjkp")]
@@ -474,7 +473,6 @@ platformSprite = ExtResource("27_4ortn")
 endPosition = Vector2(0, 64)
 offset = 64.0
 dropSlightly = false
-fallTimer = 1.0
 fullySolid = true
 
 [node name="Platform3" parent="Platform" instance=ExtResource("13_mfjkp")]

@@ -261,7 +261,7 @@ position = Vector2(2912, 1904)
 position = Vector2(3264, 1896)
 
 [node name="BubbleGenerator4" parent="Entities" instance=ExtResource("14_8s6h0")]
-position = Vector2(3912, 1960)
+position = Vector2(3984, 1800)
 
 [node name="BubbleGenerator5" parent="Entities" instance=ExtResource("14_8s6h0")]
 position = Vector2(5152, 1932)
@@ -329,7 +329,7 @@ position = Vector2(1344, 1312)
 behavior = 2
 
 [node name="FloatingPillar6" parent="Entities" instance=ExtResource("18_2tlyd")]
-position = Vector2(3368, 1592)
+position = Vector2(3368, 1616)
 
 [node name="FloatingPillar7" parent="Entities" instance=ExtResource("18_2tlyd")]
 position = Vector2(5728, 1616)
@@ -344,7 +344,7 @@ position = Vector2(8064, 608)
 behavior = 1
 
 [node name="FloatingPillar10" parent="Entities" instance=ExtResource("18_2tlyd")]
-position = Vector2(6784, 1912)
+position = Vector2(6800, 1912)
 behavior = 1
 
 [node name="StaticPillar" parent="Entities" instance=ExtResource("18_wgkxu")]
@@ -578,7 +578,7 @@ platformSprite = ExtResource("21_7rt3i")
 endPosition = Vector2(128, 0)
 
 [node name="Platform7" parent="Platforms" instance=ExtResource("20_n7h8v")]
-position = Vector2(3808, 1480)
+position = Vector2(3808, 1496)
 platformSprite = ExtResource("21_7rt3i")
 endPosition = Vector2(0, 128)
 
@@ -602,7 +602,7 @@ position = Vector2(2984, 624)
 item = 2
 
 [node name="Monitor3" parent="ItemsHolder" instance=ExtResource("26_2mfu1")]
-position = Vector2(3368, 1520)
+position = Vector2(3368, 1544)
 item = 2
 
 [node name="Monitor4" parent="ItemsHolder" instance=ExtResource("26_2mfu1")]
@@ -698,6 +698,9 @@ position = Vector2(1888, 1600)
 
 [node name="ChopChop2" parent="Badniks" instance=ExtResource("33_gnnd6")]
 position = Vector2(2688, 1664)
+
+[node name="ChopChop13" parent="Badniks" instance=ExtResource("33_gnnd6")]
+position = Vector2(1944, 1336)
 
 [node name="ChopChop3" parent="Badniks" instance=ExtResource("33_gnnd6")]
 position = Vector2(3648, 1664)

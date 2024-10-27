@@ -108,6 +108,7 @@ shape = SubResource("1")
 [node name="GrounderSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_wjupy")
+animation = &"hide"
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 visible = false
