@@ -84,7 +84,7 @@ size = Vector2(128, 144)
 
 [node name="Grounder" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 16384
-collision_mask = 15
+collision_mask = 4095
 slide_on_ceiling = false
 floor_stop_on_slope = false
 floor_snap_length = 4.0
@@ -108,7 +108,6 @@ shape = SubResource("1")
 [node name="GrounderSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_wjupy")
-animation = &"hide"
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 visible = false
