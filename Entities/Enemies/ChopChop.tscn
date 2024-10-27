@@ -75,6 +75,7 @@ autoplay = "default"
 frame_progress = 0.718448
 
 [node name="PlayerCheck" type="Area2D" parent="ChopchopSprite"]
+visible = false
 collision_layer = 0
 collision_mask = 4096
 

@@ -1,23 +1,13 @@
 @tool
 extends EnemyBase
 
-#Behavior:
-#Swim idle left/right at var distance
-#When Player enters eyesight body,agro
-#When Agro, swim towards player at 3*60*delta
-#if player if above water, jump at them.
-#If sight of either player is lost for 3 seconds, lose agro, swim home
-#Return to idel state once home, unless player seen again.
-
-@export_enum("BFish","ChopChop") var behavior = 0
-@export var travelDistance = 160
+@export var travelDistance = 128
 @export var swimDirection = 0.0 # (float,-180.0,180.0)
 @onready var origin = global_position
 
 @onready var sprite = $ChopchopSprite
 
 var side = -1
-var editorOffset = 1
 enum STATES{IDLE,ATTACK,HOME}
 var state = STATES.IDLE
 var stateTimer = 0.0
@@ -34,17 +24,12 @@ func _ready():
 func _process(delta):
 	if Engine.is_editor_hint():
 		queue_redraw()
-		# move editor offset based on movement speed
-		if editorOffset > -1:
-			editorOffset -= (25*delta/travelDistance)*2
-		else:
-			editorOffset = 1
 	else:
 		super(delta)
 
 func _physics_process(delta):
 	if !Engine.is_editor_hint():
-		position = position.move_toward(origin+Vector2(travelDistance*side,0).rotated(deg_to_rad(swimDirection)),25*delta)
+		position = position.move_toward(origin+Vector2(travelDistance*side,0).rotated(deg_to_rad(swimDirection)),15*delta)
 		match state:
 			STATES.IDLE:
 				BFish_IdleState()
@@ -72,7 +57,7 @@ func BFish_IdleState():
 		queue_free()
 	elif global_position.y < Global.waterLevel:
 		global_position.y += 1
-	if position.distance_to(origin+Vector2(travelDistance*side,0).rotated(deg_to_rad(swimDirection))) <= 1:
+	if position.distance_to(origin+Vector2(travelDistance*min(side,0),0).rotated(deg_to_rad(swimDirection))) <= 1:
 		sprite.scale.x = -sprite.scale.x
 		side = -side
 		# resume movement
@@ -110,13 +95,8 @@ func _draw():
 		var test = $Sample
 		
 		var size = Vector2(test.texture.get_width()/test.hframes,test.texture.get_height()/test.vframes)
-		# first bomber pose
-		draw_texture_rect_region(test.texture,
-		Rect2(Vector2(travelDistance,0).rotated(deg_to_rad(swimDirection))-size/2,
-		size),Rect2(Vector2(0,0),
-		size),Color(1,1,1,0.5))
 		
-		# second bomber pose
+		# first Chopchop pose
 		draw_texture_rect_region(test.texture,
 		Rect2(Vector2(-travelDistance,0).rotated(deg_to_rad(swimDirection))-size/2,
 		size),Rect2(Vector2(0,0),

@@ -44,15 +44,12 @@ collision_mask = 528384
 modulate = Color(1, 0, 0, 1)
 shape = SubResource("1")
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-visible = false
-position = Vector2(1.90735e-06, -1.90735e-06)
-rect = Rect2(-160, -120, 320, 240)
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_p307g")
 autoplay = "default"
 frame_progress = 0.462076
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]

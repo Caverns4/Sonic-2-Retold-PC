@@ -588,35 +588,97 @@ position = Vector2(8800, 960)
 position = Vector2(2384, 824)
 floor_constant_speed = true
 
+[node name="Grounder8" parent="Badniks" instance=ExtResource("33_3cg56")]
+position = Vector2(3952, 896)
+floor_constant_speed = true
+
+[node name="Grounder9" parent="Badniks" instance=ExtResource("33_3cg56")]
+position = Vector2(5288, 768)
+floor_constant_speed = true
+
+[node name="Grounder10" parent="Badniks" instance=ExtResource("33_3cg56")]
+position = Vector2(6896, 640)
+floor_constant_speed = true
+
+[node name="Grounder11" parent="Badniks" instance=ExtResource("33_3cg56")]
+position = Vector2(7384, 688)
+floor_constant_speed = true
+
+[node name="Grounder7" parent="Badniks" instance=ExtResource("33_3cg56")]
+position = Vector2(1696, 840)
+floor_constant_speed = true
+
 [node name="Wisp" parent="Badniks" instance=ExtResource("34_kwdo0")]
-position = Vector2(640, 872)
+position = Vector2(5352, 656)
+
+[node name="Wisp2" parent="Badniks" instance=ExtResource("34_kwdo0")]
+position = Vector2(5368, 704)
+
+[node name="Wisp3" parent="Badniks" instance=ExtResource("34_kwdo0")]
+position = Vector2(5376, 768)
+
+[node name="Wisp4" parent="Badniks" instance=ExtResource("34_kwdo0")]
+position = Vector2(8432, 880)
+
+[node name="Wisp5" parent="Badniks" instance=ExtResource("34_kwdo0")]
+position = Vector2(8480, 896)
+
+[node name="Wisp6" parent="Badniks" instance=ExtResource("34_kwdo0")]
+position = Vector2(8528, 880)
 
 [node name="ChopChop" parent="Badniks" instance=ExtResource("36_1x8wi")]
-position = Vector2(3952, 1160)
+position = Vector2(3752, 1168)
+
+[node name="ChopChop10" parent="Badniks" instance=ExtResource("36_1x8wi")]
+position = Vector2(3976, 1152)
+
+[node name="ChopChop15" parent="Badniks" instance=ExtResource("36_1x8wi")]
+position = Vector2(4200, 1368)
+
+[node name="ChopChop16" parent="Badniks" instance=ExtResource("36_1x8wi")]
+position = Vector2(4136, 1416)
 
 [node name="ChopChop2" parent="Badniks" instance=ExtResource("36_1x8wi")]
-position = Vector2(7920, 1064)
+position = Vector2(7952, 1088)
+
+[node name="ChopChop11" parent="Badniks" instance=ExtResource("36_1x8wi")]
+position = Vector2(7976, 1056)
 
 [node name="ChopChop3" parent="Badniks" instance=ExtResource("36_1x8wi")]
-position = Vector2(7680, 1320)
+position = Vector2(7936, 1344)
 
 [node name="ChopChop4" parent="Badniks" instance=ExtResource("36_1x8wi")]
-position = Vector2(8064, 1408)
+position = Vector2(7984, 1392)
+
+[node name="ChopChop12" parent="Badniks" instance=ExtResource("36_1x8wi")]
+position = Vector2(8096, 1456)
+
+[node name="ChopChop13" parent="Badniks" instance=ExtResource("36_1x8wi")]
+position = Vector2(7472, 1568)
+
+[node name="ChopChop14" parent="Badniks" instance=ExtResource("36_1x8wi")]
+position = Vector2(7496, 1544)
 
 [node name="ChopChop5" parent="Badniks" instance=ExtResource("36_1x8wi")]
 position = Vector2(8832, 1368)
 
 [node name="ChopChop6" parent="Badniks" instance=ExtResource("36_1x8wi")]
-position = Vector2(6272, 1448)
+position = Vector2(6680, 1320)
+
+[node name="ChopChop17" parent="Badniks" instance=ExtResource("36_1x8wi")]
+position = Vector2(7200, 1064)
+
+[node name="ChopChop18" parent="Badniks" instance=ExtResource("36_1x8wi")]
+position = Vector2(7328, 1064)
 
 [node name="ChopChop7" parent="Badniks" instance=ExtResource("36_1x8wi")]
-position = Vector2(5392, 1520)
+position = Vector2(5760, 1408)
 
 [node name="ChopChop8" parent="Badniks" instance=ExtResource("36_1x8wi")]
-position = Vector2(5160, 1568)
+position = Vector2(5592, 1360)
 
 [node name="ChopChop9" parent="Badniks" instance=ExtResource("36_1x8wi")]
-position = Vector2(3296, 1120)
+position = Vector2(3208, 1136)
 
 [node name="Rings" type="Node" parent="."]
 
