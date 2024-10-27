@@ -3,8 +3,7 @@
 [ext_resource type="TileSet" uid="uid://dgt3m8tj24hwu" path="res://Tileset/Levels/MTZ.tres" id="1_n6v2f"]
 
 [node name="06-Metropolis" type="ParallaxBackground"]
-scroll_base_scale = Vector2(0.25, 0.25)
-scroll_ignore_camera_zoom = true
+scroll_base_scale = Vector2(0.1, 0.1)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
 motion_mirroring = Vector2(768, 768)
@@ -14,6 +13,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAKABkAAAAHAAAAAAAKABkAAAABAAAAAAAHABU
 tile_set = ExtResource("1_n6v2f")
 
 [node name="ColorRect" type="ColorRect" parent="ParallaxLayer"]
-modulate = Color(0, 0, 0, 0.12549)
+modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
 offset_right = 768.0
 offset_bottom = 768.0
