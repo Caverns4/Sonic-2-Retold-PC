@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1xhc4uh26inb"]
+[gd_scene load_steps=7 format=3 uid="uid://c1xhc4uh26inb"]
 
 [ext_resource type="AudioStream" uid="uid://dh4rsaka62ph4" path="res://Audio/SFX/Gimmicks/Switch.wav" id="1"]
 [ext_resource type="Script" path="res://Scripts/Misc/PauseManager.gd" id="2"]
+[ext_resource type="Shader" path="res://Shaders/Greyscale.gdshader" id="2_nt3e0"]
 [ext_resource type="Texture2D" uid="uid://dv6m30yo07el2" path="res://Graphics/HUD/hud_pause.png" id="2_s4sog"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fvugk"]
+shader = ExtResource("2_nt3e0")
+shader_parameter/use_grayscale = true
+shader_parameter/shift_color = Color(0.4, 0.4, 0.666667, 1)
+
+[sub_resource type="ImageTexture" id="ImageTexture_r71q7"]
 
 [node name="Pause" type="Control"]
 process_mode = 2
@@ -15,11 +23,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2")
 
-[node name="PauseCover" type="ColorRect" parent="."]
+[node name="PauseCover" type="TextureRect" parent="."]
+process_mode = 4
+material = SubResource("ShaderMaterial_fvugk")
 layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color(0, 0, 0, 0.780392)
+offset_right = 640.0
+offset_bottom = 448.0
+texture = SubResource("ImageTexture_r71q7")
+expand_mode = 1
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
@@ -61,3 +72,5 @@ bus = &"SFX"
 stream = ExtResource("1")
 volume_db = -10.0
 bus = &"Music"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

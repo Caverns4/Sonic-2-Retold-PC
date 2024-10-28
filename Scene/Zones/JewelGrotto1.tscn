@@ -14,10 +14,8 @@ music2P = ExtResource("3_y5ytd")
 nextZone = ExtResource("4_fepwg")
 animal1 = 8
 animal2 = 3
-defaultBottomBoundry = 2048
 
 [node name="HUD" parent="." instance=ExtResource("5_onpmc")]
-playLevelCard = false
 zoneName = "JEWEL GROTTO"
 
 [node name="Player" parent="." instance=ExtResource("6_u04jb")]

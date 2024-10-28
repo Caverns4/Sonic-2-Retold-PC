@@ -13,10 +13,8 @@ music2P = null
 nextZone = ExtResource("4_4us5g")
 animal1 = 6
 animal2 = 3
-defaultBottomBoundry = 2048
 
 [node name="HUD" parent="." instance=ExtResource("5_1knt1")]
-playLevelCard = false
 zoneName = "DEATH EGG"
 
 [node name="Player" parent="." instance=ExtResource("6_1scnv")]

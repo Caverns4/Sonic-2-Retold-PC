@@ -219,3 +219,11 @@ func update_text(textRow = 0):
 			return "full screen "+onOff[int(((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN)))]
 		_: # Default
 			return menusText[menu][textRow]
+
+
+func _on_visibility_changed() -> void:
+	if visible:
+		var img = get_viewport().get_texture().get_image()
+		var tex = ImageTexture.create_from_image(img)
+		$PauseCover.texture = tex
+		$PauseCover.size = tex.get_size()

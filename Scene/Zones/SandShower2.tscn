@@ -14,15 +14,12 @@ music2P = ExtResource("2_r5p2q")
 nextZone = ExtResource("4_wl05o")
 animal1 = 11
 animal2 = 12
-defaultBottomBoundry = 2048
 
 [node name="HUD" parent="." instance=ExtResource("5_xsa2c")]
-playLevelCard = false
-zoneName = "WOOD GADGET"
+zoneName = "SAND SHOWER"
 act = 2
 
 [node name="Player" parent="." instance=ExtResource("6_kv2l8")]
 position = Vector2(96, 656)
-disablePartner = true
 
 [node name="Level_Layout" type="Node" parent="."]

@@ -14,11 +14,9 @@ nextZone = ExtResource("4_5i345")
 animal2 = 10
 
 [node name="HUD" parent="." instance=ExtResource("5_svd1m")]
-playLevelCard = false
 zoneName = "TROPICAL"
 
 [node name="Player" parent="." instance=ExtResource("6_doi40")]
 position = Vector2(96, 656)
-disablePartner = true
 
 [node name="Level_Layout" type="Node" parent="."]

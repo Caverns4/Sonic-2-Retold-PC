@@ -19,7 +19,7 @@ animal2 = 3
 [node name="15-skyFortress" parent="." instance=ExtResource("3_vvbgg")]
 
 [node name="HUD" parent="." instance=ExtResource("5_vrigx")]
-zoneName = "       SKY"
+zoneName = "   SKY CHASE"
 act = 0
 
 [node name="Player" parent="." instance=ExtResource("6_vktrr")]

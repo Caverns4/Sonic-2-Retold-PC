@@ -13,11 +13,10 @@ music2P = null
 nextZone = ExtResource("2_jtd0u")
 animal1 = 6
 animal2 = 3
-defaultBottomBoundry = 2048
 
 [node name="HUD" parent="." instance=ExtResource("3_l1prs")]
-playLevelCard = false
 zoneName = "DEATH EGG"
+act = 2
 
 [node name="Player" parent="." instance=ExtResource("4_lrbjf")]
 position = Vector2(96, 656)
