@@ -481,8 +481,22 @@ func _process(delta):
 					) and abs(global_position.x-partner.global_position.x) >= 32:
 					partner.inputs[INPUTS.XINPUT] = sign(global_position.x - partner.global_position.x)
 				
+				#If more than 64 pixels away on X, override AI control to come back.
+				if abs(global_position.x-partner.global_position.x) > 64:
+					partner.inputs[INPUTS.XINPUT] == sign(global_position.x-partner.global_position.x)
+				#Moreover, if ahead of Sonic, go back behind.
+				else: # if abs(global_position.x-partner.global_position.x) <= 64:
+					# get 20 pixels behind Player 1
+					var diff = 20
+					if partner.currentState == STATES.FLY or partner.currentState == STATES.JUMP:
+						diff = 0
+					var testPos = round(global_position.x + (diff*(0-direction)))
+					#print(sign((partner.global_position.x - testPos)*direction))
+					if sign((partner.global_position.x - testPos)*direction) > 0:
+						partner.inputs[INPUTS.XINPUT] = sign(0-direction)
+				
 				# Jump if pushing a wall, slower then half speed, on a flat surface and is either normal or jumping
-				if (partner.currentState == STATES.NORMAL or partner.currentState == STATES.JUMP) and abs(partner.movement.x) < top/2.0 and snap_angle(partner.angle) == 0 or (partner.pushingWall != 0 and pushingWall == 0):
+				if (partner.currentState == STATES.NORMAL or partner.currentState == STATES.JUMP) and snap_angle(partner.angle) == 0 or (partner.pushingWall != 0 and pushingWall == 0):
 					# check partners position, only jump ever 0.25 seconds (prevent jump spam)
 					if global_position.y+32 < partner.global_position.y and partner.inputs[INPUTS.ACTION] == 0 and partner.ground and ground and (fmod(Global.globalTimer+delta,0.25) < fmod(Global.globalTimer,0.25)):
 						partner.inputs[INPUTS.ACTION] = 1
