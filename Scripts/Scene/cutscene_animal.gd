@@ -55,13 +55,12 @@ func _physics_process(delta: float):
 	if Engine.is_editor_hint():
 		SetupAnimalArt()
 	else:
-		if !blockMovement:
-			if !is_on_floor():
-				velocity += get_gravity()*delta
-			else:
-				bouncePower = animalPhysics[animal].y*60
-				velocity.y = 0-bouncePower
-			move_and_slide()
+		if !is_on_floor():
+			velocity += get_gravity()*delta
+		else:
+			bouncePower = animalPhysics[animal].y*60
+			velocity.y = 0-bouncePower
+		move_and_slide()
 
 
 func SetupAnimalArt():

@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 var animType = 0 # 0 flap, 1 change on fall
 @export_enum("Bird", "Squirrel",
 "Rabbit", "Chicken",
@@ -41,17 +41,23 @@ Vector2(2.0,4.0),
 
 var animTime = 0
 var bouncePower = 300
-var velocity = Vector2(0,-4*60)
 var speed = 180
 var gravity = 0.21875
+var direction = 1
 var forceDirection = true # set this to false for capsule logic
 var active = true
 
 func _ready():
-	if forceDirection:
-		scale.x = -scale.x
+	velocity.y = -4*60
+	
+	if !forceDirection:
+		direction = 1-(round(randf())*2)
 	else:
-		scale.x = sign(scale.x)*(1-(round(randf())*2))
+		direction = -1
+	
+	if direction == 0: direction = -1
+	$animals.scale.x = direction
+	
 	# set animal properties (animType is 0 by default)
 	match(animal):
 		1: # Squirrel
@@ -92,18 +98,17 @@ func _ready():
 			$animals.region_rect.position = Vector2(72,192)
 			animType = 1
 
+
 func _physics_process(delta):
 	# check if active, if not then stop processing physics
 	if !active:
 		return false
-	# gravity
-	velocity.y += gravity*60
-	
-	# move, ignore collission since we're only checking floors
-	translate(velocity*delta)
 	
 	# if on floor and falling then bounce
-	if ($FloorCheck.is_colliding() and velocity.y > 0):
+	velocity.y += gravity*60.0
+	move_and_slide()
+	
+	if is_on_floor():
 		speed = animalPhysics[animal].x*60
 		bouncePower = animalPhysics[animal].y*60
 		
@@ -111,8 +116,8 @@ func _physics_process(delta):
 			0, 3, 7: # gravity bird types
 				gravity = 0.09375
 		
-		velocity.y = -bouncePower
-		velocity.x = speed*scale.x
+		velocity.y = 0-bouncePower
+		velocity.x = speed*direction
 
 
 
@@ -132,9 +137,9 @@ func _process(delta):
 					$animals.frame = 1
 
 
-func _on_VisibilityNotifier2D_screen_exited():
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
 
 # set active on time out (some spawning scenerios like a capsule sets a delay)
-func _on_ActivationTimer_timeout():
+func _on_activation_timer_timeout() -> void:
 	active = true

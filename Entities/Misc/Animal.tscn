@@ -1,17 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://4tpimm5phefe"]
+[gd_scene load_steps=4 format=3 uid="uid://4tpimm5phefe"]
 
 [ext_resource type="Script" path="res://Scripts/Misc/Animal.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://b5cdl1i7foiua" path="res://Graphics/Misc/animals.png" id="2"]
 
-[node name="Animal" type="Node2D"]
-z_index = 1
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v00rn"]
+size = Vector2(16, 16)
+
+[node name="Animal" type="CharacterBody2D"]
+process_mode = 1
+collision_layer = 0
+collision_mask = 8465
+floor_stop_on_slope = false
+floor_block_on_wall = false
 script = ExtResource("1")
-
-[node name="FloorCheck" type="RayCast2D" parent="."]
-target_position = Vector2(0, 8)
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-scale = Vector2(2.4, 2.4)
 
 [node name="animals" type="Sprite2D" parent="."]
 texture = ExtResource("2")
@@ -20,8 +21,15 @@ hframes = 3
 region_enabled = true
 region_rect = Rect2(0, 32, 72, 32)
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-32, -32, 64, 64)
+
 [node name="ActivationTimer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
-[connection signal="timeout" from="ActivationTimer" to="." method="_on_ActivationTimer_timeout"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v00rn")
+one_way_collision = true
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="ActivationTimer" to="." method="_on_activation_timer_timeout"]
