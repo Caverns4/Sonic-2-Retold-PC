@@ -106,6 +106,7 @@ sprite_frames = SubResource("SpriteFrames_3aeah")
 autoplay = "default"
 
 [node name="PlayerCheck" type="Area2D" parent="Sprite2D/BFishSprite2"]
+visible = false
 collision_layer = 0
 collision_mask = 4096
 
