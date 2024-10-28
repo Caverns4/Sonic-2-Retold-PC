@@ -85,6 +85,7 @@ collision_enabled = false
 [node name="WindCurrent" parent="Current" instance=ExtResource("11_af5gy")]
 position = Vector2(5824, 304)
 scale = Vector2(84, 16)
+speed = 200.0
 
 [node name="WindCurrent2" parent="Current" instance=ExtResource("11_af5gy")]
 position = Vector2(5440, 1632)
@@ -1666,13 +1667,58 @@ position = Vector2(5752, 400)
 position = Vector2(5776, 400)
 
 [node name="Ring123" parent="Rings" instance=ExtResource("30_qxqb8")]
-position = Vector2(5992, 320)
+position = Vector2(5992, 288)
 
 [node name="Ring124" parent="Rings" instance=ExtResource("30_qxqb8")]
-position = Vector2(6016, 320)
+position = Vector2(6016, 288)
 
 [node name="Ring125" parent="Rings" instance=ExtResource("30_qxqb8")]
-position = Vector2(6040, 320)
+position = Vector2(6040, 288)
+
+[node name="Ring258" parent="Rings" instance=ExtResource("30_qxqb8")]
+position = Vector2(6248, 328)
+
+[node name="Ring259" parent="Rings" instance=ExtResource("30_qxqb8")]
+position = Vector2(6272, 328)
+
+[node name="Ring260" parent="Rings" instance=ExtResource("30_qxqb8")]
+position = Vector2(6296, 328)
+
+[node name="Ring261" parent="Rings" instance=ExtResource("30_qxqb8")]
+position = Vector2(6504, 288)
+
+[node name="Ring262" parent="Rings" instance=ExtResource("30_qxqb8")]
+position = Vector2(6528, 288)
+
+[node name="Ring263" parent="Rings" instance=ExtResource("30_qxqb8")]
+position = Vector2(6552, 288)
+
+[node name="Ring264" parent="Rings" instance=ExtResource("30_qxqb8")]
+position = Vector2(6760, 328)
+
+[node name="Ring265" parent="Rings" instance=ExtResource("30_qxqb8")]
+position = Vector2(6784, 328)
+
+[node name="Ring266" parent="Rings" instance=ExtResource("30_qxqb8")]
+position = Vector2(6808, 328)
+
+[node name="Ring267" parent="Rings" instance=ExtResource("30_qxqb8")]
+position = Vector2(7016, 288)
+
+[node name="Ring268" parent="Rings" instance=ExtResource("30_qxqb8")]
+position = Vector2(7040, 288)
+
+[node name="Ring269" parent="Rings" instance=ExtResource("30_qxqb8")]
+position = Vector2(7064, 288)
+
+[node name="Ring270" parent="Rings" instance=ExtResource("30_qxqb8")]
+position = Vector2(7272, 328)
+
+[node name="Ring271" parent="Rings" instance=ExtResource("30_qxqb8")]
+position = Vector2(7296, 328)
+
+[node name="Ring272" parent="Rings" instance=ExtResource("30_qxqb8")]
+position = Vector2(7320, 328)
 
 [node name="Ring83" parent="Rings" instance=ExtResource("30_qxqb8")]
 position = Vector2(3952, 1392)
