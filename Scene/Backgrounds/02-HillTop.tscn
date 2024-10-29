@@ -156,6 +156,6 @@ motion_mirroring = Vector2(32, 0)
 [node name="Coulds10" type="TextureRect" parent="ParallaxLayerK3"]
 offset_top = 1.0
 offset_right = 432.0
-offset_bottom = 9.0
+offset_bottom = 49.0
 texture = ExtResource("12_62fai")
 stretch_mode = 1

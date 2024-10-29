@@ -1373,13 +1373,16 @@ func cam_update(forceMove = false):
 	if camLockTime <= 0 and (forceMove or camera.global_position.distance_to(getPos) <= 16):
 		# limit_length speed camera
 		camera.global_position.x = move_toward(camera.global_position.x,getPos.x,16*60*get_physics_process_delta_time())
-		camera.global_position.y = move_toward(camera.global_position.y,getPos.y,16*60*get_physics_process_delta_time())
+		#camera.global_position.y = move_toward(camera.global_position.y,getPos.y,16*60*get_physics_process_delta_time())
 		# clamp to region
 		camera.global_position.x = clamp(camera.global_position.x,limitLeft,limitRight)
-		camera.global_position.y = clamp(camera.global_position.y,limitTop,limitBottom)
-		#camera.global_position = camera.global_position.move_toward(getPos,16*60*get_physics_process_delta_time())
+		#camera.global_position.y = clamp(camera.global_position.y,limitTop,limitBottom)
 		# uncomment below for immediate camera
 		#camera.global_position = getPos
+	
+	if (forceMove or camera.global_position.distance_to(getPos) <= 16):
+		camera.global_position.y = move_toward(camera.global_position.y,getPos.y,16*60*get_physics_process_delta_time())
+		camera.global_position.y = clamp(camera.global_position.y,limitTop,limitBottom)
 	
 	# Ratchet camera scrolling (locks the camera behind the player)
 	if rachetScrollLeft:

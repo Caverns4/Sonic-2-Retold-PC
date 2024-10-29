@@ -73,6 +73,7 @@ func physics_collision(body, hitVector):
 			# disable ground
 			body.ground = false
 			body.set_state(body.STATES.AIR)
+			body.airControl = true
 			# figure out the animation based on the players current animation
 			var curAnim = "walk"
 			match(body.animator.current_animation):

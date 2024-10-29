@@ -11,7 +11,7 @@ func _physics_process(delta):
 	# if any players are found in the array, if they're on the ground make them roll
 	if players.size() > 0:
 		for i in players:
-			if i.ground:
+			if i.ground and !i.translate:
 				# determine the direction of the arrow based on scale and rotation
 				var getDir = sign(scale.rotated(rotation).x)
 				
