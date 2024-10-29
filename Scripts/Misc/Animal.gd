@@ -43,7 +43,7 @@ var animTime = 0
 var bouncePower = 300
 var speed = 180
 var gravity = 0.21875
-var direction = 1
+var direction = -1
 var forceDirection = true # set this to false for capsule logic
 var active = true
 
@@ -51,11 +51,9 @@ func _ready():
 	velocity.y = -4*60
 	
 	if !forceDirection:
-		direction = 1-(round(randf())*2)
-	else:
+		direction = randi() and 1
+	if direction == 0:
 		direction = -1
-	
-	if direction == 0: direction = -1
 	$animals.scale.x = direction
 	
 	# set animal properties (animType is 0 by default)
@@ -118,8 +116,6 @@ func _physics_process(delta):
 		
 		velocity.y = 0-bouncePower
 		velocity.x = speed*direction
-
-
 
 func _process(delta):
 	# animation code

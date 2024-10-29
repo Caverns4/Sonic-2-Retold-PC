@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://c80rud4lvtufe" path="res://Graphics/Enemies/Redz.png" id="2_ufqqm"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(22, 32)
+size = Vector2(22, 30)
 
 [sub_resource type="RectangleShape2D" id="2"]
-size = Vector2(22, 32)
+size = Vector2(22, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2anh"]
 size = Vector2(128, 256)
@@ -76,6 +76,7 @@ floor_snap_length = 4.0
 script = ExtResource("1_acnt1")
 
 [node name="CollissionMask" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
 shape = SubResource("1")
 
 [node name="DamageArea" type="Area2D" parent="."]
@@ -84,6 +85,7 @@ collision_mask = 528384
 
 [node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
 modulate = Color(1, 0, 0, 1)
+position = Vector2(0, 1)
 shape = SubResource("2")
 
 [node name="Redz" type="Sprite2D" parent="."]

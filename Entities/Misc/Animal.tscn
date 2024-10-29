@@ -7,9 +7,7 @@
 size = Vector2(16, 16)
 
 [node name="Animal" type="CharacterBody2D"]
-process_mode = 1
 collision_layer = 0
-collision_mask = 273
 floor_stop_on_slope = false
 floor_block_on_wall = false
 script = ExtResource("1")
