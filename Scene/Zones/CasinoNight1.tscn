@@ -354,7 +354,7 @@ scale = Vector2(2, 4)
 [node name="Badniks" type="Node" parent="."]
 
 [node name="SandCrawl" parent="Badniks" instance=ExtResource("21_4ylfy")]
-position = Vector2(416, 736)
+position = Vector2(416, 720)
 
 [node name="Crawl" parent="Badniks" instance=ExtResource("21_h4fyg")]
 position = Vector2(488, 720)
