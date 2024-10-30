@@ -1223,10 +1223,11 @@ func respawn():
 		airTimer = 1
 		collision_layer = 0
 		collision_mask = 0
-		z_index = defaultZIndex
+		z_index = 16 #When respawning, appear in front of virtually everything
 		respawnTime = RESPAWN_DEFAULT_TIME
 		movement = Vector2.ZERO
 		water = false
+		
 		# update physics (prevents player having water physics on respawn)
 		switch_physics()
 		global_position = partner.global_position+Vector2(0,-get_viewport_rect().size.y)
@@ -1407,7 +1408,7 @@ func snap_camera_to_limits():
 
 # Water bubble timer
 func _on_BubbleTimer_timeout():
-	if water:
+	if water and shield != SHIELDS.BUBBLE:
 		# Generate Bubble
 		var bub = Bubble.instantiate()
 		bub.z_index = z_index+3

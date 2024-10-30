@@ -19,6 +19,7 @@ func _process(_delta):
 		parent.animator.play("fly")
 
 func _physics_process(delta):
+	
 	parent.translate = true
 	# slowly move the target point towards the player based on distance
 	targetPoint = targetPoint.lerp(parent.partner.global_position,(targetPoint.distance_to(parent.partner.global_position)/32)*delta)
@@ -44,6 +45,9 @@ func _physics_process(delta):
 		parent.movement.y = 0
 		# move to player y position
 		parent.global_position.y = move_toward(parent.global_position.y,targetPoint.y,delta*60)
+		if (Global.waterLevel != null 
+		and parent.global_position.y >= (Global.waterLevel-16)):
+			parent.global_position.y = Global.waterLevel-16
 		
 		var distance = targetPoint.x-parent.global_position.x
 		# if far then fly by distance
@@ -73,6 +77,7 @@ func _physics_process(delta):
 				parent.set_state(parent.STATES.AIR)
 				parent.movement = Vector2.ZERO
 				parent.collissionLayer = parent.partner.collissionLayer
+				parent.z_index = parent.defaultZIndex
 				# copy limits to avoid out of bounds errors
 				parent.limitLeft = parent.partner.limitLeft
 				parent.limitRight = parent.partner.limitRight

@@ -11,7 +11,6 @@ extends EnemyBase
 
 @export var travelDistance = 160
 @export var swimDirection = 0.0 # (float,-180.0,180.0)
-@onready var origin = global_position
 
 @onready var sprite = $Sprite2D/BFishSprite2
 
@@ -29,6 +28,7 @@ var players = []
 func _ready():
 	if !Engine.is_editor_hint():
 		$VisibleOnScreenEnabler2D.visible = true
+		startPosition = global_position
 
 func _process(delta):
 	if Engine.is_editor_hint():
@@ -43,7 +43,7 @@ func _process(delta):
 
 func _physics_process(delta):
 	if !Engine.is_editor_hint():
-		position = position.move_toward(origin+Vector2(travelDistance*side,0).rotated(deg_to_rad(swimDirection)),25*delta)
+		position = position.move_toward(startPosition+Vector2(travelDistance*side,0).rotated(deg_to_rad(swimDirection)),25*delta)
 		match state:
 			STATES.IDLE:
 				BFish_IdleState()
@@ -53,6 +53,10 @@ func _physics_process(delta):
 				else:
 					stateTimer -= delta
 					if stateTimer <= 0.0:
+						if startPosition.x < global_position.x:
+							sprite.scale.x = 1
+						else:
+							sprite.scale.x = -1
 						state = STATES.HOME
 			STATES.HOME:
 				BFish_ReturnHome(delta)
@@ -68,24 +72,31 @@ func _physics_process(delta):
 				bubbleTimer = 0.0
 
 func BFish_IdleState():
-	if Global.waterLevel == null:
-		queue_free()
-	elif Global.waterLevel != null and (global_position.y < Global.waterLevel):
-		global_position.y += 8
-	if position.distance_to(origin+Vector2(travelDistance*side,0).rotated(deg_to_rad(swimDirection))) <= 1:
-		sprite.scale.x = -sprite.scale.x
+	if position.distance_to(startPosition+Vector2(travelDistance*side,0).rotated(deg_to_rad(swimDirection))) <= 1:
 		side = -side
+		sprite.scale.x = side
 		# resume movement
 		sprite.play("default")
 	else:
 		calc_dir()
+	BFish_ForceUnderwater()
 
 func BFish_Attack(delta, playerCords):
 	position = position.move_toward(playerCords.rotated(deg_to_rad(swimDirection)),100*delta)
+	BFish_ForceUnderwater()
 
 func BFish_ReturnHome(delta):
-	position = position.move_toward(origin.rotated(deg_to_rad(swimDirection)),25*delta)
+	position.x = move_toward(position.x,startPosition.x,60*delta)
+	position.y = move_toward(position.y,startPosition.y,60*delta)
+	
+	if global_position == startPosition:
+		state = STATES.IDLE
 	calc_dir()
+
+func BFish_ForceUnderwater():
+	if Global.waterLevel != null and (global_position.y < Global.waterLevel):
+		global_position.y = Global.waterLevel
+
 
 func calc_dir():
 	# calculate direction based on side movement and rotation
