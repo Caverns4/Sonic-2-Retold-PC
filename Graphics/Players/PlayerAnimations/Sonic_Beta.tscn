@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://sbta787c4fwk"]
+[gd_scene load_steps=67 format=3 uid="uid://sbta787c4fwk"]
 
 [ext_resource type="Material" uid="uid://bveqi5m5ihsgj" path="res://Shaders/PlayerPalette.tres" id="1_h4o3a"]
 [ext_resource type="Texture2D" uid="uid://cgq1nmr34au7o" path="res://Graphics/Players/Mighty.png" id="2_n3qsv"]
@@ -1083,9 +1083,26 @@ tracks/0/keys = {
 "values": [256, 267, 266, 265, 264, 263, 262, 261, 260, 259, 258, 257]
 }
 
+[sub_resource type="Animation" id="Animation_o0gos"]
+resource_name = "Wall"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sonic/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_36uej"]
 _data = {
 "RESET": SubResource("86"),
+"Wall": SubResource("Animation_o0gos"),
 "air": SubResource("108"),
 "clingVerticalBar": SubResource("Animation_3l35s"),
 "clingVerticalBarOffset": SubResource("Animation_l0c1k"),
