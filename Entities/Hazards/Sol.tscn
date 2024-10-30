@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://beqh6fywjj4lt" path="res://Graphics/Enemies/Sol.png" id="4_tuqpl"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(16, 16)
+size = Vector2(16, 12)
 
 [node name="SolWeight" type="CharacterBody2D"]
 collision_layer = 20480

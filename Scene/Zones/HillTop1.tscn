@@ -63,7 +63,6 @@ nextZone = ExtResource("3_2rym2")
 animal1 = 9
 animal2 = 7
 defaultRightBoundry = 10752
-defaultBottomBoundry = 2048
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_offset = Vector2(1, 0)
@@ -463,16 +462,16 @@ position = Vector2(3560, 1992)
 counterWeightSprite = ExtResource("31_8xakr")
 
 [node name="HtzSeeSaw3" parent="Entities" instance=ExtResource("37_geevq")]
-position = Vector2(4288, 836)
+position = Vector2(4296, 836)
 startDirection = 0
 counterWeightSprite = ExtResource("31_8xakr")
 
 [node name="HtzSeeSaw9" parent="Entities" instance=ExtResource("37_geevq")]
-position = Vector2(9040, 1920)
+position = Vector2(9040, 1924)
 counterWeightSprite = ExtResource("31_8xakr")
 
 [node name="HtzSeeSaw4" parent="Entities" instance=ExtResource("37_geevq")]
-position = Vector2(4416, 608)
+position = Vector2(4420, 608)
 counterWeightSprite = ExtResource("31_8xakr")
 
 [node name="HtzSeeSaw7" parent="Entities" instance=ExtResource("37_geevq")]

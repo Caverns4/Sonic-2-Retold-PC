@@ -15,8 +15,8 @@ script = ExtResource("1_ad4qi")
 [node name="Platform" type="AnimatableBody2D" parent="."]
 process_priority = 10
 position = Vector2(-48, 0)
-collision_layer = 8192
-collision_mask = 2097152
+collision_layer = 2105344
+collision_mask = 4096
 script = ExtResource("2_0i0ie")
 
 [node name="Shape3D" type="CollisionShape2D" parent="Platform"]
@@ -31,8 +31,8 @@ region_rect = Rect2(0, 0, 32, 32)
 [node name="Platform2" type="AnimatableBody2D" parent="."]
 process_priority = 10
 position = Vector2(-16, 0)
-collision_layer = 8192
-collision_mask = 2097152
+collision_layer = 2105344
+collision_mask = 4096
 script = ExtResource("2_0i0ie")
 
 [node name="Shape3D" type="CollisionShape2D" parent="Platform2"]
@@ -47,8 +47,8 @@ region_rect = Rect2(0, 0, 32, 32)
 [node name="Platform3" type="AnimatableBody2D" parent="."]
 process_priority = 10
 position = Vector2(16, 0)
-collision_layer = 8192
-collision_mask = 2097152
+collision_layer = 2105344
+collision_mask = 4096
 script = ExtResource("2_0i0ie")
 
 [node name="Shape3D" type="CollisionShape2D" parent="Platform3"]
@@ -63,8 +63,8 @@ region_rect = Rect2(0, 0, 32, 32)
 [node name="Platform4" type="AnimatableBody2D" parent="."]
 process_priority = 10
 position = Vector2(48, 0)
-collision_layer = 8192
-collision_mask = 2097152
+collision_layer = 2105344
+collision_mask = 4096
 script = ExtResource("2_0i0ie")
 
 [node name="Shape3D" type="CollisionShape2D" parent="Platform4"]

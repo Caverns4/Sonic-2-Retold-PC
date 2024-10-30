@@ -13,7 +13,7 @@ size = Vector2(88, 28)
 [node name="HtzSeeSaw" type="StaticBody2D"]
 process_physics_priority = 1
 disable_mode = 2
-collision_layer = 8207
+collision_layer = 8193
 collision_mask = 8192
 script = ExtResource("1_tvndd")
 
