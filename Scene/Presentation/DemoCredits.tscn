@@ -33,15 +33,14 @@ grow_horizontal = 2
 
 [node name="ThankText" type="Label" parent="UI/Labels"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -148.0
-offset_top = 24.0
-offset_right = 148.0
-offset_bottom = 19.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -168.0
+offset_top = 16.0
+offset_right = 128.0
+offset_bottom = 51.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_kd5bv")
 text = "SONIC 2:RETOLD
 THANKS FOR PLAYING"
@@ -51,21 +50,22 @@ uppercase = true
 
 [node name="Credits Text" type="RichTextLabel" parent="UI/Labels"]
 layout_mode = 0
-offset_left = -124.0
+offset_left = -128.0
 offset_top = 72.0
-offset_right = 132.0
+offset_right = 128.0
 offset_bottom = 160.0
 theme_override_fonts/normal_font = ExtResource("2_4wis2")
 bbcode_enabled = true
-text = "        Special thanks:
+text = "[center]Special thanks:
 
-              SEGA
-             Sharb
-           Techokami
-        Dimensionwarped
-  The Sonic modding community
-           Retro KOH
-            Tonlim
-"
+SEGA
+Sharb
+Techokami
+Dimensionwarped
+The Sonic modding community
+Testers:
+Retro KOH
+Tonlim
+XModGodX"
 scroll_active = false
 autowrap_mode = 0

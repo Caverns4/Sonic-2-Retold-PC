@@ -30,8 +30,8 @@ var clampSounds = [-40.0,6.0]
 # how much to iterate through (take the total sum then divide it by how many steps we want)
 @onready var soundStep = (abs(clampSounds[0])+abs(clampSounds[1]))/100.0
 # button delay
-var soundStepDelay = 0
-var subSoundStep = 0.2
+const BUTTON_TIME = 0.3
+var stepTimer = 0.2
 # screen size limit
 var zoomClamp = [1,6]
 # Aspect Ratio texts
@@ -47,23 +47,27 @@ func _ready():
 
 func _process(delta: float):
 	OptionsMenu_RedrawText()
+	if stepTimer > 0.0 and lastInput != Vector2.ZERO:
+		stepTimer -= delta
+		if stepTimer <= 0.0:
+			print("Expired")
+	_unhandledInput(Input)
+	
 
-func _input(event):
+func _unhandledInput(event):
 	if !selected:
 		var inputCue = Input.get_vector("gm_left","gm_right","gm_up","gm_down")
 		inputCue.x = round(inputCue.x)
 		inputCue.y = round(inputCue.y)
 		
 		if menuOption == 1 or menuOption == 2:
-			if (inputCue.x == 0):
-				subSoundStep = 0
-				soundStepDelay = 0
-			# If input Cue X doesn't = 0 in the options menu
-			elif (inputCue.x != 0):
-				#Prepare delay timer for volume update
-				if inputCue.x != lastInput.x and subSoundStep == 0:
-					subSoundStep = 2.0
-					soundStepDelay = 0
+			if inputCue.x == lastInput.x and stepTimer <= 0:
+			# Prepare delay timer for volume update
+				stepTimer = 0.05
+				lastInput = Vector2.ZERO
+			elif inputCue.x != lastInput.x:
+				stepTimer = BUTTON_TIME
+		
 		# set audio busses
 		var getBus = "SFX"
 		if menuOption > 1:
@@ -72,9 +76,11 @@ func _input(event):
 		
 		if inputCue != lastInput:
 			if inputCue.y > 0:
+				stepTimer = BUTTON_TIME
 				menuOption = wrapi(menuOption+1,0,optionsText.size())
 				$Switch.play()
 			if inputCue.y < 0:
+				stepTimer = BUTTON_TIME
 				menuOption = wrapi(menuOption-1,0,optionsText.size())
 				$Switch.play()
 			
@@ -88,18 +94,14 @@ func _input(event):
 						$Switch.play()
 					UpdateCharacterSelect()
 				1,2: #SFX and Music Volume
-					if soundStepDelay <= 0:
-						if inputCue.x != 0:
-							soundExample[menuOption-1].play()
-							AudioServer.set_bus_volume_db(AudioServer.get_bus_index(getBus
-							),clamp(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(getBus)
-							)+inputCue.x*soundStep,clampSounds[0],clampSounds[1]))
-							AudioServer.set_bus_mute(AudioServer.get_bus_index(getBus
-							),AudioServer.get_bus_volume_db(AudioServer.get_bus_index(getBus)
-							) <= clampSounds[0])
-						soundStepDelay = subSoundStep
-					else:
-						soundStepDelay -= 0.1
+					if inputCue.x != 0 and stepTimer > 0:
+						soundExample[menuOption-1].play()
+						AudioServer.set_bus_volume_db(AudioServer.get_bus_index(getBus
+						),clamp(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(getBus)
+						)+inputCue.x*soundStep,clampSounds[0],clampSounds[1]))
+						AudioServer.set_bus_mute(AudioServer.get_bus_index(getBus
+						),AudioServer.get_bus_volume_db(AudioServer.get_bus_index(getBus)
+						) <= clampSounds[0])
 				3: #Scale
 					if (inputCue.x != 0) and !Global.IsFullScreen() and(inputCue != lastInput):
 						Global.zoomSize = clamp(Global.zoomSize+inputCue.x,zoomClamp[0],zoomClamp[1])
