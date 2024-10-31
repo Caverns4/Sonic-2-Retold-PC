@@ -49,8 +49,6 @@ func _process(delta: float):
 	OptionsMenu_RedrawText()
 	if stepTimer > 0.0 and lastInput != Vector2.ZERO:
 		stepTimer -= delta
-		if stepTimer <= 0.0:
-			print("Expired")
 	_unhandledInput(Input)
 	
 

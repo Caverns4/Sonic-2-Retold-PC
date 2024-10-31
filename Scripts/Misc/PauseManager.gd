@@ -39,8 +39,8 @@ var clampSounds = [-40.0,6.0]
 # how much to iterate through (take the total sum then divide it by how many steps we want)
 @onready var soundStep = (abs(clampSounds[0])+abs(clampSounds[1]))/100.0
 # button delay
-var soundStepDelay = 0
-var subSoundStep = 0.2
+const BUTTON_TIME = 0.3
+var stepTimer = BUTTON_TIME
 # screen size limit
 var zoomClamp = [1,6]
 
@@ -52,10 +52,12 @@ var lastInput = Vector2.ZERO #Last saved direction input.
 func _ready():
 	set_menu(menu)
 
-func _process(_delta):
+func _process(delta):
 	# check if paused and visible, otherwise cancel it out
 	if !get_tree().paused or !visible:
 		return null
+	if stepTimer > 0.0 and lastInput != Vector2.ZERO:
+		stepTimer -= delta
 	_unhandledInput(Input)
 
 func _input(event):
@@ -127,19 +129,27 @@ func _unhandledInput(_event):
 	# change up/down menu options
 	if inputCue.y > 0 and inputCue.y != lastInput.y:
 		choose_option(option+1)
+		stepTimer = BUTTON_TIME
 	elif inputCue.y < 0 and inputCue.y != lastInput.y:
 		choose_option(option-1)
+		stepTimer = BUTTON_TIME
 	
-	if (inputCue.x == 0) and menu == MENUS.OPTIONS:
-		subSoundStep = 0
-		soundStepDelay = 0
+	if (inputCue.x == 0) or inputCue.x != lastInput.x:
+		stepTimer = BUTTON_TIME
+	
 	# If input Cue X doesn't = 0 in the options menu
-	elif (inputCue.x != 0) and menu == MENUS.OPTIONS:
+	if (inputCue.x != 0) and menu == MENUS.OPTIONS:
 		
 		#Prepare delay timer for volume update
-		if inputCue.x != lastInput.x and subSoundStep == 0:
-			subSoundStep = 2.0
-			soundStepDelay = 0
+		if inputCue.x == lastInput.x and stepTimer <= 0 and option < 2:
+		# Prepare delay timer for volume update
+			stepTimer = 0.05
+			lastInput = Vector2.ZERO
+		elif inputCue.x != lastInput.x:
+			stepTimer = BUTTON_TIME
+		
+		if inputCue == lastInput:
+			return
 		
 		# set audio busses
 		var getBus = "SFX"
@@ -149,7 +159,6 @@ func _unhandledInput(_event):
 		
 		match(option):
 			0, 1: # Volume
-				if soundStepDelay <= 0:
 					soundExample[option].play()
 					AudioServer.set_bus_volume_db(AudioServer.get_bus_index(getBus
 					),clamp(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(getBus)
@@ -157,9 +166,7 @@ func _unhandledInput(_event):
 					AudioServer.set_bus_mute(AudioServer.get_bus_index(getBus
 					),AudioServer.get_bus_volume_db(AudioServer.get_bus_index(getBus)
 					) <= clampSounds[0])
-					soundStepDelay = subSoundStep
-				else:
-					soundStepDelay -= 0.1
+					
 			2: # Scale
 				if (inputCue.x != 0) and (
 				(get_window().mode != Window.MODE_EXCLUSIVE_FULLSCREEN) and 
