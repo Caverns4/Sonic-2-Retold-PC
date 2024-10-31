@@ -304,7 +304,7 @@ func _ready():
 		match (character):
 			Global.CHARACTERS.SONIC:
 				# shader texture sizes need to be to the power of 2
-				playerPal.set_shader_parameter("amount",4)
+				playerPal.set_shader_parameter("amount",5)
 				playerPal.set_shader_parameter("palRows",16)
 				playerPal.set_shader_parameter("row",0)
 				playerPal.set_shader_parameter("paletteTexture",load("res://Graphics/Palettes/SuperSonicPal.png"))

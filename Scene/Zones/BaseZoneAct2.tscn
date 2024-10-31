@@ -29,7 +29,6 @@ music2P = ExtResource("2_533ik")
 nextZone = ExtResource("3_dbas3")
 animal1 = 4
 animal2 = 5
-defaultBottomBoundry = 2048
 metadata/_edit_vertical_guides_ = [3600.0]
 
 [node name="04-OilOcean" parent="." instance=ExtResource("4_wms2a")]
@@ -102,8 +101,8 @@ position = Vector2(672, 1584)
 item = 3
 
 [node name="Monitor7" parent="ItemsHolder" instance=ExtResource("16_mordc")]
-position = Vector2(704, 1584)
-item = 3
+position = Vector2(656, 1488)
+item = 7
 
 [node name="Monitor8" parent="ItemsHolder" instance=ExtResource("16_mordc")]
 position = Vector2(832, 1488)
