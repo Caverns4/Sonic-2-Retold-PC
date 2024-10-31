@@ -13,14 +13,16 @@ var actionPressed = false
 var playerIdles = [
 # SONIC
 ["idle1","idle1","idle1","idle2","idle3"],
-# Tails
-["idle1"], # Note: Tails idle loops on idle one, to add more idles make sure to disable his idle1 loop
-# Knuckles
+# TAILS
 ["idle1"],
-# Amy
+# KNUCKLES
+["idle1"],
+# AMY
 ["idle1","idle1","idle1","idle1","idle1","idle1","idle1","idle1","idle2","idle3"], # Note: like Tails, Amy loops on idle3
-# Mighty
-["idle1","idle2","idle3","idle4","idle5"]
+# MIGHTY
+["idle1","idle2","idle3","idle4","idle5"],
+# RAY
+["idle1","idle1","idle1","idle2","idle3"]
 ]
 
 func state_exit():

@@ -236,6 +236,7 @@ var tailsAnimations = preload("res://Graphics/Players/PlayerAnimations/Tails.tsc
 var knucklesAnimations = preload("res://Graphics/Players/PlayerAnimations/Knuckles.tscn")
 var amyAnimations = preload("res://Graphics/Players/PlayerAnimations/Amy.tscn")
 var mightyAnimations = preload("res://Graphics/Players/PlayerAnimations/Sonic_Beta.tscn")
+var rayAnimations = preload("res://Graphics/Players/PlayerAnimations/Sonic_Old.tscn")
 
 # Get sfx list
 @onready var sfx = $SFX.get_children()
@@ -327,7 +328,12 @@ func _ready():
 				playerPal.set_shader_parameter("row",0)
 				playerPal.set_shader_parameter("paletteTexture",load("res://Graphics/Palettes/SuperAmy.png"))
 				
-			#Global.CHARACTERS.MIGHTY:
+			Global.CHARACTERS.MIGHTY:
+				playerPal.set_shader_parameter("amount",4)
+				playerPal.set_shader_parameter("palRows",16)
+				playerPal.set_shader_parameter("row",0)
+				playerPal.set_shader_parameter("paletteTexture",load("res://Graphics/Palettes/SuperKnuckles.png"))
+		
 			#Global.CHARACTERS.RAY:
 			#Global.CHARACTERS.ESPIO:
 	
@@ -409,8 +415,17 @@ func _ready():
 			spriteController = mighty
 			get_node("OldSprite").queue_free()
 		Global.CHARACTERS.RAY:
+			#Set sprites
 			currentHitbox = HITBOXESSONIC
-			pass
+			get_node("Sonic").name = "OldSprite"
+			await get_tree().process_frame
+			var ray = rayAnimations.instantiate()
+			add_child(ray)
+			sprite = ray.get_node("Sprite2D")
+			animator = ray.get_node("PlayerAnimation")
+			superAnimator = ray.get_node_or_null("SuperPalette")
+			spriteController = ray
+			get_node("OldSprite").queue_free()
 	
 	# run switch physics to ensure character specific physics
 	switch_physics()
