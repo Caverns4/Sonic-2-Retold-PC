@@ -427,7 +427,7 @@ position = Vector2(10080, 1024)
 leftBoundry = 9856
 setTop = false
 setRight = false
-rightBoundry = 10448
+rightBoundry = 10496
 bottomBoundry = 1112
 
 [node name="CPZTippingPipe" parent="Entiities" instance=ExtResource("20_acygu")]

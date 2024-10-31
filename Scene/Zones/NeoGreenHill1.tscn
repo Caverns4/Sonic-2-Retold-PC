@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://b8nujtm2r4age"]
+[gd_scene load_steps=40 format=4 uid="uid://b8nujtm2r4age"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_20uxj"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_bg171"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://syexnlol1vbv" path="res://Graphics/Obstacles/NGHZSwing.png" id="23_gc18d"]
 [ext_resource type="PackedScene" uid="uid://cp4s5qc2tt2ne" path="res://Entities/Gimmicks/ARZ_RisingPillar.tscn" id="23_nddoc"]
 [ext_resource type="PackedScene" uid="uid://c1ldunfxhq0he" path="res://Entities/Obstacles/ForceAngleSides.tscn" id="25_5aufr"]
+[ext_resource type="PackedScene" uid="uid://bgodeg4oddje6" path="res://Entities/MainObjects/BoundrySetter.tscn" id="26_irqt4"]
 [ext_resource type="Texture2D" uid="uid://br5p3advmm2wn" path="res://Graphics/Objects_Zone/NGHZ_TallBlock.png" id="27_4ortn"]
 [ext_resource type="PackedScene" uid="uid://yetbwueu05h1" path="res://Entities/ZoneObjects/NGHZCollapsingPlatform.tscn" id="30_qge7m"]
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="32_heo3a"]
@@ -422,10 +423,10 @@ position = Vector2(3872, 1240)
 position = Vector2(6560, 1432)
 
 [node name="FloatingPillar" parent="Entitites" instance=ExtResource("22_dbs3j")]
-position = Vector2(6048, 1336)
+position = Vector2(6040, 1376)
 
 [node name="FloatingPillar2" parent="Entitites" instance=ExtResource("22_dbs3j")]
-position = Vector2(6160, 1368)
+position = Vector2(6160, 1336)
 
 [node name="ForceAngleSides" parent="Entitites" instance=ExtResource("25_5aufr")]
 position = Vector2(2944, 784)
@@ -434,6 +435,14 @@ leftAngle = 90.0
 [node name="ForceAngleSides2" parent="Entitites" instance=ExtResource("25_5aufr")]
 position = Vector2(6272, 784)
 leftAngle = 90.0
+
+[node name="BoundrySetter" parent="Entitites" instance=ExtResource("26_irqt4")]
+position = Vector2(10704, 880)
+leftBoundry = 10495
+setTop = false
+setRight = false
+rightBoundry = 16000
+bottomBoundry = 992
 
 [node name="Platform" type="Node" parent="."]
 
@@ -561,7 +570,7 @@ position = Vector2(6112, 1600)
 item = 12
 
 [node name="Monitor12" parent="ItemsHolder" instance=ExtResource("15_go4be")]
-position = Vector2(6160, 1296)
+position = Vector2(6160, 1264)
 
 [node name="Monitor13" parent="ItemsHolder" instance=ExtResource("15_go4be")]
 position = Vector2(8480, 1392)

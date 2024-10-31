@@ -600,7 +600,7 @@ position = Vector2(14880, 1936)
 leftBoundry = 14592
 topBoundry = 1792
 setRight = false
-rightBoundry = 64000
+rightBoundry = 15360
 bottomBoundry = 2080
 
 [node name="BoundrySetter2" parent="Entities" instance=ExtResource("32_mtqr5")]
