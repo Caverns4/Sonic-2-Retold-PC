@@ -6,6 +6,8 @@ extends Area2D
 var dirMemory = boostDirection
 @export var speed = 16
 
+var players =[]
+
 func _ready():
 	# set direction
 	$Booster.flip_h = bool(boostDirection)
@@ -15,15 +17,32 @@ func _process(_delta):
 		if (boostDirection != dirMemory):
 			$Booster.flip_h = bool(boostDirection)
 			dirMemory = boostDirection
+	else:
+		if players:
+			for i in players:
+				if i.ground == true:
+					i.movement.x = speed*(-1+(boostDirection*2))*60
+					i.horizontalLockTimer = (15.0/60.0) # lock for 15 frames
+					$sfxSpring.play()
+					
 
 func _on_SpeedBooster_body_entered(body):
 	# DO THE BOOST, WHOOOOOSH!!!!!!!
-	body.movement.x = speed*(-1+(boostDirection*2))*60
-	body.horizontalLockTimer = (15.0/60.0) # lock for 15 frames
-	$sfxSpring.play()
-	# exit out of state on certain states
-	match(body.currentState):
-		body.STATES.GLIDE:
-			if !body.ground:
-				body.animator.play("run")
-				body.set_state(body.STATES.AIR)
+	if body.ground:
+		body.movement.x = speed*(-1+(boostDirection*2))*60
+		body.horizontalLockTimer = (15.0/60.0) # lock for 15 frames
+		$sfxSpring.play()
+		# exit out of state on certain states
+	else:
+		match(body.currentState):
+			body.STATES.GLIDE:
+				if !body.ground:
+					body.animator.play("run")
+					body.set_state(body.STATES.AIR)
+			_:
+				players.append(body)
+
+
+func _on_body_exited(body: Node2D) -> void:
+	if players.has(body):
+		players.erase(body)

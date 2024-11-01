@@ -331,7 +331,7 @@ position = Vector2(1344, 1312)
 behavior = 2
 
 [node name="FloatingPillar6" parent="Entities" instance=ExtResource("18_2tlyd")]
-position = Vector2(3368, 1616)
+position = Vector2(3368, 1632)
 
 [node name="FloatingPillar7" parent="Entities" instance=ExtResource("18_2tlyd")]
 position = Vector2(5728, 1616)
@@ -644,7 +644,7 @@ position = Vector2(2984, 624)
 item = 2
 
 [node name="Monitor3" parent="ItemsHolder" instance=ExtResource("26_2mfu1")]
-position = Vector2(3368, 1544)
+position = Vector2(3368, 1560)
 item = 2
 
 [node name="Monitor4" parent="ItemsHolder" instance=ExtResource("26_2mfu1")]

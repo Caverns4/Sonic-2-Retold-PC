@@ -1,22 +1,11 @@
-[gd_scene load_steps=52 format=4 uid="uid://cyh8p6ji14r0t"]
+[gd_scene load_steps=41 format=4 uid="uid://cyh8p6ji14r0t"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_ijtho"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="2_vefax"]
 [ext_resource type="AudioStream" uid="uid://dhw5trv54kut7" path="res://Audio/Soundtrack/s2br_HillTop.ogg" id="2_y1o2m"]
 [ext_resource type="PackedScene" uid="uid://b25bf70l62rjr" path="res://Scene/Zones/HillTop2.tscn" id="3_2rym2"]
-[ext_resource type="Script" path="res://Scripts/Backgrounds/HTZ_ParallaxBackground.gd" id="3_b8b4l"]
-[ext_resource type="Texture2D" uid="uid://dm2gyyx3l216e" path="res://Graphics/Backgrounds/HTZ/HTZ_BGA.png" id="3_j47iv"]
-[ext_resource type="Texture2D" uid="uid://n5mhrkf0mwdb" path="res://Graphics/Backgrounds/HTZ/HTZ_BGC.png" id="4_8c26a"]
-[ext_resource type="Texture2D" uid="uid://dqw1wd5w1cvqs" path="res://Graphics/Backgrounds/HTZ/HTZ_BGB.png" id="5_7i5dn"]
-[ext_resource type="Texture2D" uid="uid://bv37541nhyqyt" path="res://Graphics/Backgrounds/HTZ/HTZ_BGD.png" id="5_puk4w"]
-[ext_resource type="Texture2D" uid="uid://btepbnsjufn62" path="res://Graphics/Backgrounds/HTZ/HTZ_BGE.png" id="6_gtsx3"]
-[ext_resource type="Texture2D" uid="uid://3k7tdvil8lcn" path="res://Graphics/Backgrounds/HTZ/HTZ_BGF.png" id="7_fw0xf"]
-[ext_resource type="Texture2D" uid="uid://mo8y3qo2moo6" path="res://Graphics/Backgrounds/HTZ/HTZ_BGG.png" id="8_183jf"]
+[ext_resource type="PackedScene" uid="uid://dcw6jbk0f0o84" path="res://Scene/Backgrounds/02-HillTop.tscn" id="4_e5550"]
 [ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="9_0ltuq"]
-[ext_resource type="Texture2D" uid="uid://by0you4g4yee8" path="res://Graphics/Backgrounds/HTZ/HTZ_BGH.png" id="10_2pwkk"]
-[ext_resource type="Texture2D" uid="uid://duadsx6bp151c" path="res://Graphics/Backgrounds/HTZ/HTZ_BGI.png" id="11_5iir5"]
-[ext_resource type="Texture2D" uid="uid://6gnyuge1vw8m" path="res://Graphics/Backgrounds/HTZ/HTZ_BGJ.png" id="12_2gqjl"]
-[ext_resource type="Texture2D" uid="uid://c1afjirkghgby" path="res://Graphics/Backgrounds/HTZ/HTZ_BGK.png" id="13_v4sbg"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="15_l0d7g"]
 [ext_resource type="TileSet" uid="uid://uplqwsi0o4gi" path="res://Tileset/Levels/EHZ_HTZ_Tiles.tres" id="16_qpoa7"]
 [ext_resource type="Script" path="res://Scripts/Gimmicks/Earthquakes.gd" id="22_p4hee"]
@@ -64,156 +53,7 @@ animal1 = 9
 animal2 = 7
 defaultRightBoundry = 10752
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-scroll_offset = Vector2(1, 0)
-scroll_base_offset = Vector2(1, 0)
-scroll_limit_end = Vector2(0, 512)
-script = ExtResource("3_b8b4l")
-cloudLayers = [NodePath("ParallaxLayerD"), NodePath("ParallaxLayerE"), NodePath("ParallaxLayerF"), NodePath("ParallaxLayerG"), NodePath("ParallaxLayerH"), NodePath("ParallaxLayerI"), NodePath("ParallaxLayerJ"), NodePath("ParallaxLayerK"), NodePath("ParallaxLayerK2"), NodePath("ParallaxLayerK3")]
-
-[node name="Sky" type="TextureRect" parent="ParallaxBackground"]
-offset_right = 1024.0
-offset_bottom = 112.0
-texture = ExtResource("3_j47iv")
-expand_mode = 1
-
-[node name="DistantCliffs" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 80)
-motion_scale = Vector2(0.125, 0.012)
-motion_mirroring = Vector2(432, 0)
-
-[node name="BGCliffs" type="TextureRect" parent="ParallaxBackground/DistantCliffs"]
-offset_right = 432.0
-offset_bottom = 32.0
-texture = ExtResource("4_8c26a")
-stretch_mode = 1
-
-[node name="ParallaxLayerD" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 112)
-motion_scale = Vector2(0, 0.012)
-motion_offset = Vector2(32, 0)
-motion_mirroring = Vector2(32, 0)
-
-[node name="Coulds1" type="TextureRect" parent="ParallaxBackground/ParallaxLayerD"]
-offset_right = 432.0
-offset_bottom = 16.0
-texture = ExtResource("5_puk4w")
-stretch_mode = 1
-
-[node name="ParallaxLayerB" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.35, 0.012)
-motion_mirroring = Vector2(512, 0)
-
-[node name="FGCliffs" type="TextureRect" parent="ParallaxBackground/ParallaxLayerB"]
-offset_right = 512.0
-offset_bottom = 128.0
-texture = ExtResource("5_7i5dn")
-stretch_mode = 1
-
-[node name="ParallaxLayerE" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 128)
-motion_scale = Vector2(0, 0.012)
-motion_mirroring = Vector2(32, 0)
-
-[node name="Coulds2" type="TextureRect" parent="ParallaxBackground/ParallaxLayerE"]
-offset_right = 432.0
-offset_bottom = 4.0
-texture = ExtResource("6_gtsx3")
-stretch_mode = 1
-
-[node name="ParallaxLayerF" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 132)
-motion_scale = Vector2(0, 0.013)
-motion_mirroring = Vector2(32, 0)
-
-[node name="Coulds3" type="TextureRect" parent="ParallaxBackground/ParallaxLayerF"]
-offset_right = 432.0
-offset_bottom = 4.0
-texture = ExtResource("7_fw0xf")
-stretch_mode = 1
-
-[node name="ParallaxLayerG" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 136)
-motion_scale = Vector2(0, 0.013)
-motion_mirroring = Vector2(32, 0)
-
-[node name="Coulds4" type="TextureRect" parent="ParallaxBackground/ParallaxLayerG"]
-offset_right = 432.0
-offset_bottom = 8.0
-texture = ExtResource("8_183jf")
-stretch_mode = 1
-
-[node name="ParallaxLayerH" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 143)
-motion_scale = Vector2(0, 0.013)
-motion_mirroring = Vector2(32, 0)
-
-[node name="Coulds5" type="TextureRect" parent="ParallaxBackground/ParallaxLayerH"]
-offset_top = 1.0
-offset_right = 432.0
-offset_bottom = 9.0
-texture = ExtResource("10_2pwkk")
-stretch_mode = 1
-
-[node name="ParallaxLayerI" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 151)
-motion_scale = Vector2(0, 0.013)
-motion_mirroring = Vector2(32, 0)
-
-[node name="Coulds6" type="TextureRect" parent="ParallaxBackground/ParallaxLayerI"]
-offset_top = 1.0
-offset_right = 432.0
-offset_bottom = 9.0
-texture = ExtResource("11_5iir5")
-stretch_mode = 1
-
-[node name="ParallaxLayerJ" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 159)
-motion_scale = Vector2(0, 0.013)
-motion_mirroring = Vector2(32, 0)
-
-[node name="Coulds7" type="TextureRect" parent="ParallaxBackground/ParallaxLayerJ"]
-offset_top = 1.0
-offset_right = 432.0
-offset_bottom = 9.0
-texture = ExtResource("12_2gqjl")
-stretch_mode = 1
-
-[node name="ParallaxLayerK" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 175)
-motion_scale = Vector2(0, 0.013)
-motion_mirroring = Vector2(32, 0)
-
-[node name="Coulds8" type="TextureRect" parent="ParallaxBackground/ParallaxLayerK"]
-offset_top = 1.0
-offset_right = 432.0
-offset_bottom = 9.0
-texture = ExtResource("13_v4sbg")
-stretch_mode = 1
-
-[node name="ParallaxLayerK2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 191)
-motion_scale = Vector2(0, 0.013)
-motion_mirroring = Vector2(32, 0)
-
-[node name="Coulds9" type="TextureRect" parent="ParallaxBackground/ParallaxLayerK2"]
-offset_top = 1.0
-offset_right = 432.0
-offset_bottom = 9.0
-texture = ExtResource("13_v4sbg")
-stretch_mode = 1
-
-[node name="ParallaxLayerK3" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 207)
-motion_scale = Vector2(0, 0.013)
-motion_mirroring = Vector2(32, 0)
-
-[node name="Coulds10" type="TextureRect" parent="ParallaxBackground/ParallaxLayerK3"]
-offset_top = 1.0
-offset_right = 432.0
-offset_bottom = 9.0
-texture = ExtResource("13_v4sbg")
-stretch_mode = 1
+[node name="02-HillTop" parent="." instance=ExtResource("4_e5550")]
 
 [node name="HUD" parent="." instance=ExtResource("2_vefax")]
 zoneName = "HILL TOP"
