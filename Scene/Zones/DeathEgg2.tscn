@@ -1,16 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://vs0jloj5swvg"]
+[gd_scene load_steps=6 format=3 uid="uid://vs0jloj5swvg"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_588bb"]
-[ext_resource type="PackedScene" uid="uid://wc6hh8dbtg1w" path="res://Scene/Zones/SkyFortress2.tscn" id="2_jtd0u"]
+[ext_resource type="AudioStream" uid="uid://g0a01sst32bm" path="res://Audio/Soundtrack/s2br_DeathEgg.ogg" id="2_j7ucr"]
+[ext_resource type="PackedScene" uid="uid://caxc44uymh48a" path="res://Scene/Zones/EmeraldHill1.tscn" id="3_iwt7i"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="3_l1prs"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="4_lrbjf"]
 
 [node name="DeathEgg2" type="Node2D"]
 script = ExtResource("1_588bb")
 zoneID = 15
-music = null
-music2P = null
-nextZone = ExtResource("2_jtd0u")
+music = ExtResource("2_j7ucr")
+music2P = ExtResource("2_j7ucr")
+nextZone = ExtResource("3_iwt7i")
 animal1 = 6
 animal2 = 3
 
@@ -19,7 +20,7 @@ zoneName = "DEATH EGG"
 act = 2
 
 [node name="Player" parent="." instance=ExtResource("4_lrbjf")]
-position = Vector2(96, 656)
+position = Vector2(96, 236)
 disablePartner = true
 
 [node name="Level_Layout" type="Node" parent="."]

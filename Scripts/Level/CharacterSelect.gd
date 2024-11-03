@@ -5,11 +5,11 @@ extends Node2D
 @export var nextZone = load("res://Scene/Presentation/ZoneLoader.tscn")
 var selected = false
 
-const LEFT_ROWS = 20 #Including blank rows
+const LEFT_ROWS = 23 #Including blank rows
 
 # character labels, the amount of labels in here determines the total amount of options, see the set character option at the end for settings
-var characterLabels = ["Sonic&Tails", "Sonic", "Tails", "Knuckles", "Amy","Mighty"]
-var characterLabelsMiles = ["Sonic&Miles", "Sonic", "Miles", "Knuckles", "Amy","Mighty"]
+var characterLabels = ["Sonic&Tails", "Sonic", "Tails", "Knuckles", "Amy","Mighty","Ray"]
+var characterLabelsMiles = ["Sonic&Miles", "Sonic", "Miles", "Knuckles", "Amy","Mighty","Ray"]
 # level labels, the amount of labels in here determines the total amount of options, see set level option at the end for settings
 var levelLabels = [ #Every one of these is a line, and some are skipped.
 	"Emerald Hill    1",
@@ -45,6 +45,9 @@ var levelLabels = [ #Every one of these is a line, and some are skipped.
 	"Sky Fortress    1",
 	"                2",
 	"",
+	"Death Egg       1",
+	"                2",
+	"",
 	"Special Stage",
 	"",
 	"",
@@ -73,6 +76,8 @@ var levelIcons = [ #Use this list to get the number of selectable entries
 	Global.ZONES.CASINO_NIGHT,
 	Global.ZONES.SKY_FORTRESS,
 	Global.ZONES.SKY_FORTRESS,
+	Global.ZONES.DEATH_EGG,
+	Global.ZONES.DEATH_EGG,
 	17,
 	18
 ]
@@ -139,16 +144,20 @@ func _input(event):
 				0: # Sonic and Tails
 					Global.PlayerChar1 = Global.CHARACTERS.SONIC
 					Global.PlayerChar2 = Global.CHARACTERS.TAILS
-				1: # Sonic
-					Global.PlayerChar1 = Global.CHARACTERS.SONIC
-				2: # Tails
-					Global.PlayerChar1 = Global.CHARACTERS.TAILS
-				3: # Knuckles
-					Global.PlayerChar1 = Global.CHARACTERS.KNUCKLES
-				4: # Amy
-					Global.PlayerChar1 = Global.CHARACTERS.AMY
-				5: # Amy
-					Global.PlayerChar1 = Global.CHARACTERS.MIGHTY
+				_:
+					Global.PlayerChar1 = characterID
+				#1: # Sonic
+				#	Global.PlayerChar1 = Global.CHARACTERS.SONIC
+				#2: # Tails
+				#	Global.PlayerChar1 = Global.CHARACTERS.TAILS
+				#3: # Knuckles
+				#	Global.PlayerChar1 = Global.CHARACTERS.KNUCKLES
+				#4: # Amy
+				#	Global.PlayerChar1 = Global.CHARACTERS.AMY
+				#5: # Mighty
+				#	Global.PlayerChar1 = Global.CHARACTERS.MIGHTY
+				#6: # RAY
+				#	Global.PlayerChar1 = Global.CHARACTERS.RAY
 			# set the level
 			match(levelID):
 				0: # Emerald Hill Act 1
@@ -220,7 +229,13 @@ func _input(event):
 				22: #Sky Fortress 2
 					Global.savedZoneID = Global.ZONES.SKY_FORTRESS
 					Global.savedActID = 1
-				24:
+				23: #Death Egg 1
+					Global.savedZoneID = Global.ZONES.DEATH_EGG
+					Global.savedActID = 0
+				24: #Death Egg 2
+					Global.savedZoneID = Global.ZONES.DEATH_EGG
+					Global.savedActID = 1
+				26:
 					Global.airSpeedCap = !Global.airSpeedCap
 					selected = false
 					return
@@ -242,6 +257,7 @@ func UpdateCharacterSelect():
 			$UI/LabelsRight/CharacterOrigin/Knuckles.visible = false
 			$UI/LabelsRight/CharacterOrigin/Amy.visible = false
 			$UI/LabelsRight/CharacterOrigin/Mighty.visible = false
+			$UI/LabelsRight/CharacterOrigin/Ray.visible = false
 		1: # Sonic
 			$UI/LabelsRight/CharacterOrigin/Sonic.visible = true
 			$UI/LabelsRight/CharacterOrigin/Sonic.position.x = 0
@@ -249,6 +265,7 @@ func UpdateCharacterSelect():
 			$UI/LabelsRight/CharacterOrigin/Knuckles.visible = false
 			$UI/LabelsRight/CharacterOrigin/Amy.visible = false
 			$UI/LabelsRight/CharacterOrigin/Mighty.visible = false
+			$UI/LabelsRight/CharacterOrigin/Ray.visible = false
 		2: # Tails
 			$UI/LabelsRight/CharacterOrigin/Sonic.visible = false
 			$UI/LabelsRight/CharacterOrigin/Tails.visible = true
@@ -256,24 +273,35 @@ func UpdateCharacterSelect():
 			$UI/LabelsRight/CharacterOrigin/Knuckles.visible = false
 			$UI/LabelsRight/CharacterOrigin/Amy.visible = false
 			$UI/LabelsRight/CharacterOrigin/Mighty.visible = false
+			$UI/LabelsRight/CharacterOrigin/Ray.visible = false
 		3: # Knuckles
 			$UI/LabelsRight/CharacterOrigin/Sonic.visible = false
 			$UI/LabelsRight/CharacterOrigin/Tails.visible = false
 			$UI/LabelsRight/CharacterOrigin/Knuckles.visible = true
 			$UI/LabelsRight/CharacterOrigin/Amy.visible = false
 			$UI/LabelsRight/CharacterOrigin/Mighty.visible = false
+			$UI/LabelsRight/CharacterOrigin/Ray.visible = false
 		4: # Amy
 			$UI/LabelsRight/CharacterOrigin/Sonic.visible = false
 			$UI/LabelsRight/CharacterOrigin/Tails.visible = false
 			$UI/LabelsRight/CharacterOrigin/Knuckles.visible = false
 			$UI/LabelsRight/CharacterOrigin/Amy.visible = true
 			$UI/LabelsRight/CharacterOrigin/Mighty.visible = false
+			$UI/LabelsRight/CharacterOrigin/Ray.visible = false
 		5: # Mighty
 			$UI/LabelsRight/CharacterOrigin/Sonic.visible = false
 			$UI/LabelsRight/CharacterOrigin/Tails.visible = false
 			$UI/LabelsRight/CharacterOrigin/Knuckles.visible = false
 			$UI/LabelsRight/CharacterOrigin/Amy.visible = false
 			$UI/LabelsRight/CharacterOrigin/Mighty.visible = true
+			$UI/LabelsRight/CharacterOrigin/Ray.visible = false
+		6: # Ray
+			$UI/LabelsRight/CharacterOrigin/Sonic.visible = false
+			$UI/LabelsRight/CharacterOrigin/Tails.visible = false
+			$UI/LabelsRight/CharacterOrigin/Knuckles.visible = false
+			$UI/LabelsRight/CharacterOrigin/Amy.visible = false
+			$UI/LabelsRight/CharacterOrigin/Mighty.visible = false
+			$UI/LabelsRight/CharacterOrigin/Ray.visible = true
 
 func levelSelect_UpdateText(): # levelID
 	var j = 0 #Which line to highlight

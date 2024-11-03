@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_f2s8f"]
 [ext_resource type="AudioStream" uid="uid://chigxw75acdkr" path="res://Audio/Soundtrack/s2br_SkyFortress.ogg" id="2_5abqf"]
-[ext_resource type="PackedScene" uid="uid://cm6qjxupawbta" path="res://Scene/Backgrounds/15-SkyFortress.tscn" id="3_vvbgg"]
+[ext_resource type="PackedScene" uid="uid://cm6qjxupawbta" path="res://Scene/Backgrounds/14-SkyFortress.tscn" id="3_vvbgg"]
 [ext_resource type="PackedScene" uid="uid://wc6hh8dbtg1w" path="res://Scene/Zones/SkyFortress2.tscn" id="4_ihwrn"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_vrigx"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_vktrr"]

@@ -1,7 +1,8 @@
 extends Node2D
 
 @export var music = preload("res://Audio/Soundtrack/s2br_TitleScreen.ogg")
-var nextZone = load("res://Scene/Presentation/ZoneLoader.tscn")
+var nextZone = preload("res://Scene/Presentation/ZoneLoader.tscn")
+var twoPlayerScene = load("res://Scene/Presentation/TwoPlayerMenu.tscn")
 var testScene = load("res://Scene/Presentation/CharacterSelect.tscn")
 var returnScene = load("res://Scene/Cutscenes/Opening.tscn")
 var optionsScene = load("res://Scene/Presentation/OptionsMenu.tscn")
@@ -31,7 +32,12 @@ var parallaxBackgrounds = [
 	"res://Scene/Backgrounds/07-DustHill.tscn",
 	"res://Scene/Backgrounds/08-WoodGadget.tscn",
 	"res://Scene/Backgrounds/09-CasinoNight.tscn",
-	"res://Scene/Backgrounds/15-SkyFortress.tscn",
+	"res://Scene/Backgrounds/10-JewelGrotto.tscn",
+	"res://Scene/Backgrounds/11-WinterHill.tscn",
+	"res://Scene/Backgrounds/12-SandShower.tscn",
+	"res://Scene/Backgrounds/13-TropicalJungle.tscn",
+	"res://Scene/Backgrounds/14-SkyFortress.tscn",
+	"res://Scene/Backgrounds/15-DeathEgg.tscn"
 ]
 var sceneInstance = null
 
@@ -105,8 +111,7 @@ func _input(event):
 	
 	# end title on start press
 	if event.is_action_pressed("gm_pause") and !titleEnd and menuActive:
-		if menuEntry !=1:
-			MenuOptionChosen()
+		MenuOptionChosen()
 	elif event.is_action_pressed("gm_pause") and !menuActive and skipIntro:
 		$TitleAnimate.play("RESET")
 		menuActive = true
@@ -133,7 +138,7 @@ func MenuOptionChosen():
 			Global.TwoPlayer = true
 			Global.PlayerChar1 = Global.CHARACTERS.SONIC
 			Global.PlayerChar2 = Global.CHARACTERS.TAILS
-			Global.main.change_scene_to_file(testScene,"FadeOut","FadeOut",1)
+			Global.main.change_scene_to_file(twoPlayerScene,"FadeOut","FadeOut",1)
 		2:
 			titleEnd = true
 			Global.main.change_scene_to_file(optionsScene,"FadeOut","FadeOut",1)

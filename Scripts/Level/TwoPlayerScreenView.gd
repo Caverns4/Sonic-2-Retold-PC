@@ -10,16 +10,21 @@ var alive = 0.0
 
 # Parallax Layers
 var parallaxBackgrounds = [
-	"res://Scene/Backgrounds/00-EmeraldHill.tscn",
+	"res://Scene/Backgrounds/00-EmeraldHill.tscn",	# Two-Player zone
 	"res://Scene/Backgrounds/01-HiddenPalace.tscn",
 	"res://Scene/Backgrounds/02-HillTop.tscn",
 	"res://Scene/Backgrounds/03-ChemicalPlant.tscn",
-	"res://Scene/Backgrounds/04-OilOcean.tscn",
+	"res://Scene/Backgrounds/04-OilOcean.tscn",	# Two-Player zone
 	"res://Scene/Backgrounds/05-NeoGreenHill.tscn",
-	"res://Scene/Backgrounds/09-CasinoNight.tscn",
-	"res://Scene/Backgrounds/09-CasinoNight.tscn",
-	"res://Scene/Backgrounds/09-CasinoNight.tscn",
-	"res://Scene/Backgrounds/09-CasinoNight.tscn",
+	"res://Scene/Backgrounds/06-Metropolis.tscn",	# Two-Player zone?
+	"res://Scene/Backgrounds/07-DustHill.tscn",	# Two-Player zone
+	"res://Scene/Backgrounds/08-WoodGadget.tscn",	# Two-Player zone
+	"res://Scene/Backgrounds/09-CasinoNight.tscn",	# Two-Player zone
+	"res://Scene/Backgrounds/10-JewelGrotto.tscn",
+	"res://Scene/Backgrounds/11-WinterHill.tscn",	# Two-Player zone?
+	"res://Scene/Backgrounds/12-SandShower.tscn",
+	"res://Scene/Backgrounds/13-TropicalJungle.tscn"
+	# Sky Fortress and Death Egg are excluded from Two-Player Mode
 ]
 
 # Player memory
@@ -52,18 +57,21 @@ func _physics_process(delta):
 	#print(alive)
 	if playersReady == false:
 		QueueUpPlayers()
-	elif playersReady == true and !Global.players:
-		queue_free()
 	else:
-		cameraPlayer1.global_position = Global.players[0].camera.global_position
-		cameraPlayer1.limit_left = Global.players[0].camera.limit_left
-		cameraPlayer1.limit_bottom = Global.players[0].camera.limit_bottom
-		cameraPlayer1.limit_right = Global.players[0].camera.limit_right
-		cameraPlayer2.global_position = Global.players[1].camera.global_position
-		cameraPlayer2.limit_left = Global.players[1].camera.limit_left
-		cameraPlayer2.limit_bottom = Global.players[1].camera.limit_bottom
-		cameraPlayer2.limit_right = Global.players[1].camera.limit_right
+		if Global.players[0].camera:
+			cameraPlayer1.global_position = Global.players[0].camera.global_position
+			cameraPlayer1.limit_left = Global.players[0].camera.limit_left
+			cameraPlayer1.limit_bottom = Global.players[0].camera.limit_bottom
+			cameraPlayer1.limit_right = Global.players[0].camera.limit_right
+		if Global.players[1].camera:
+			cameraPlayer2.global_position = Global.players[1].camera.global_position
+			cameraPlayer2.limit_left = Global.players[1].camera.limit_left
+			cameraPlayer2.limit_bottom = Global.players[1].camera.limit_bottom
+			cameraPlayer2.limit_right = Global.players[1].camera.limit_right
 
 func QueueUpPlayers():
 	if Global.players.size() and Global.players.size() > 1:
 		playersReady = true
+	if Global.players.size() < 1:
+		Global.TwoPlayer = false
+		queue_free()

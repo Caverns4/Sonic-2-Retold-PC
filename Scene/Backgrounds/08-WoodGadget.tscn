@@ -1,5 +1,36 @@
-[gd_scene format=3 uid="uid://da47pd80u7kac"]
+[gd_scene load_steps=5 format=3 uid="uid://da47pd80u7kac"]
+
+[sub_resource type="Gradient" id="Gradient_vjwa3"]
+colors = PackedColorArray(0.4, 0.4, 0.8, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x0tsl"]
+gradient = SubResource("Gradient_vjwa3")
+height = 32
+fill_from = Vector2(0, 0.76)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_t485e"]
+colors = PackedColorArray(0.133333, 0, 0.4, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c4vrh"]
+gradient = SubResource("Gradient_t485e")
+height = 32
+fill_from = Vector2(0, 0.25)
+fill_to = Vector2(0, 0)
 
 [node name="08-WoodGadget" type="ParallaxBackground"]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(512, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer"]
+offset_right = 512.0
+offset_bottom = 128.0
+texture = SubResource("GradientTexture2D_x0tsl")
+
+[node name="TextureRect2" type="TextureRect" parent="ParallaxLayer"]
+offset_top = 128.0
+offset_right = 512.0
+offset_bottom = 384.0
+texture = SubResource("GradientTexture2D_c4vrh")

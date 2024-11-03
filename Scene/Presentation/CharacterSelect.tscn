@@ -198,7 +198,7 @@ layout_mode = 0
 offset_left = 8.0
 offset_top = 16.0
 offset_right = 144.0
-offset_bottom = 200.0
+offset_bottom = 208.0
 theme_override_fonts/normal_font = ExtResource("3")
 bbcode_enabled = true
 text = "EMERALD HILL    1
@@ -221,7 +221,10 @@ NEO GREEN HILL  1
 
 METROPOLIS ZONE 1
                 2
-                3"
+                3
+
+DUST HILL       1
+                2"
 scroll_active = false
 autowrap_mode = 0
 
@@ -240,19 +243,19 @@ layout_mode = 0
 offset_left = 328.0
 offset_top = 16.0
 offset_right = 464.0
-offset_bottom = 144.0
+offset_bottom = 184.0
 theme_override_fonts/normal_font = ExtResource("3")
 bbcode_enabled = true
-text = "DUST HILL       1
-                2
-
-CASINO NIGHT    1
+text = "CASINO NIGHT    1
                 2
 
 WOOD            1
                 2
 
 SKY FORTRESS    1
+                2
+
+DEATH EGG       1
                 2
 
 SPECIAL STAGE
