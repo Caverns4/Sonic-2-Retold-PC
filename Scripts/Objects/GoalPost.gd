@@ -1,4 +1,6 @@
 extends Node2D
+
+var resultsScreen = load("res://Scene/Presentation/TwoPlayerResults.tscn")
 var getCam = null
 var player = null
 var winner = Global.CHARACTERS.NONE
@@ -47,6 +49,8 @@ func TriggerSignpostMultiPlayer():
 		
 		SetSignpostAnimation(winner)
 		
+		if triggers.size() > 1:
+			$Timer.start()
 
 func TriggerSignpostSinglePlayer():
 	if Global.players[0].global_position.x > global_position.x and Global.stageClearPhase == 0:
@@ -102,3 +106,12 @@ func InitEndOfAct():
 				player.partner.inputs[player.INPUTS.XINPUT] = 1
 				player.partner.inputs[player.INPUTS.YINPUT] = 0
 				player.partner.inputs[player.INPUTS.ACTION] = 0
+
+
+func _on_timer_timeout() -> void:
+	var results = [Global.score,Global.levelTime,Global.players[0].rings,
+	Global.scoreP2,Global.levelTimeP2,Global.players[1].rings]
+	Global.twoPlayActResults.append(results)
+	
+	Global.main.change_scene_to_file(resultsScreen,"FadeOut","FadeOut",1)
+	

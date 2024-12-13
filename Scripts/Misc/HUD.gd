@@ -35,6 +35,7 @@ var perfectEnabled = true
 
 # gameOver is used to initialize the game over animation sequence, note: this is for animation, if you want to use the game over status it's in global
 var gameOver = false
+var twoPlayerTimeout = 61
 
 # signal that gets emited once the stage tally is over
 signal tally_clear
