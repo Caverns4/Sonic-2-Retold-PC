@@ -135,7 +135,7 @@ func _physics_process(delta):
 			if (abs(parent.movement.x) < parent.top):
 				parent.movement.x = clamp(parent.movement.x+parent.air/GlobalFunctions.div_by_delta(delta)*parent.inputs[parent.INPUTS.XINPUT],-parent.top,parent.top)
 		#If the input * speed is positive, meaning the signs match up.
-		elif (parent.movement.x*parent.inputs[parent.INPUTS.XINPUT]) > 0 and Global.airSpeedCap:
+		elif (parent.movement.x*parent.inputs[parent.INPUTS.XINPUT]) > 0 and Global.airSpeedCap and !parent.ground:
 			#Air Speed Cap
 			var capSpeed = abs(parent.top)
 			parent.movement.x = clamp(parent.movement.x,0-capSpeed,capSpeed)

@@ -196,9 +196,9 @@ grow_horizontal = 2
 [node name="LevelsLeft" type="RichTextLabel" parent="UI/Labels"]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 16.0
+offset_top = 8.0
 offset_right = 144.0
-offset_bottom = 208.0
+offset_bottom = 232.0
 theme_override_fonts/normal_font = ExtResource("3")
 bbcode_enabled = true
 text = "EMERALD HILL    1
@@ -222,8 +222,10 @@ NEO GREEN HILL  1
 METROPOLIS ZONE 1
                 2
                 3
-
 DUST HILL       1
+                2
+
+WOOD GADGET     1
                 2"
 scroll_active = false
 autowrap_mode = 0
@@ -241,18 +243,21 @@ grow_horizontal = 2
 layout_direction = 2
 layout_mode = 0
 offset_left = 328.0
-offset_top = 16.0
+offset_top = 8.0
 offset_right = 464.0
-offset_bottom = 184.0
+offset_bottom = 176.0
 theme_override_fonts/normal_font = ExtResource("3")
 bbcode_enabled = true
 text = "CASINO NIGHT    1
                 2
 
-WOOD            1
+JEWEL GROTTO    1
                 2
 
 SKY FORTRESS    1
+                2
+
+SAND SHOWER     1
                 2
 
 DEATH EGG       1
@@ -333,11 +338,11 @@ autoplay = "Animate"
 [node name="Front" type="TileMapLayer" parent="UI/LabelsRight"]
 use_parent_material = true
 position = Vector2(320, 0)
-tile_map_data = PackedByteArray("AAAFAAkAAAABAAMAAAAFAAoAAAABAAQAAAAFAAsAAAABAAUAAAAGAAkAAAACAAMAAAAGAAoAAAACAAQAAAAGAAsAAAACAAUAAAAGAAwAAAACAAYAAAAHAAkAAAADAAMAAAAHAAoAAAADAAQAAAAHAAsAAAADAAUAAAAHAAwAAAADAAYAAAAIAAkAAAAEAAMAAAAIAAoAAAAEAAQAAAAIAAsAAAAEAAUAAAAIAAwAAAAEAAYAAAAJAAkAAAAFAAMAAAAJAAoAAAAFAAQAAAAJAAsAAAAFAAUAAAAEAAkAAAAAAAMAAAAEAAoAAAAAAAQAAAAEAAsAAAAAAAUAAAAFAAwAAAABAAYAAAA=")
+tile_map_data = PackedByteArray("AAAEAAoAAAAAAAMAAAAEAAsAAAAAAAQAAAAFAAoAAAABAAMAAAAFAAsAAAABAAQAAAAFAAwAAAABAAUAAAAGAAoAAAACAAMAAAAGAAsAAAACAAQAAAAGAAwAAAACAAUAAAAHAAoAAAADAAMAAAAHAAsAAAADAAQAAAAHAAwAAAADAAUAAAAIAAoAAAAEAAMAAAAIAAsAAAAEAAQAAAAIAAwAAAAEAAUAAAAJAAoAAAAFAAMAAAAJAAsAAAAFAAQAAAAEAAwAAAAAAAUAAAAFAA0AAAABAAYAAAAGAA0AAAACAAYAAAAHAA0AAAADAAYAAAAIAA0AAAAEAAYAAAAJAAwAAAAFAAUAAAA=")
 tile_set = ExtResource("2_il2c5")
 
 [node name="LevelIcon" type="Sprite2D" parent="UI/LabelsRight"]
-position = Vector2(416, 160)
+position = Vector2(416, 176)
 texture = ExtResource("9_3vc3f")
 centered = false
 hframes = 4

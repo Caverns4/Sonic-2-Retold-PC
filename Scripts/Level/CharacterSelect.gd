@@ -5,7 +5,7 @@ extends Node2D
 @export var nextZone = load("res://Scene/Presentation/ZoneLoader.tscn")
 var selected = false
 
-const LEFT_ROWS = 23 #Including blank rows
+const LEFT_ROWS = 26 #Including blank rows
 
 # character labels, the amount of labels in here determines the total amount of options, see the set character option at the end for settings
 var characterLabels = ["Sonic&Tails", "Sonic", "Tails", "Knuckles", "Amy","Mighty","Ray"]
@@ -42,6 +42,12 @@ var levelLabels = [ #Every one of these is a line, and some are skipped.
 	"Casino Night    1",
 	"                2",
 	"",
+	"Jewel Grotto    1",
+	"                2",
+	"",
+	"Sand Shower     1",
+	"                2",
+	"",
 	"Sky Fortress    1",
 	"                2",
 	"",
@@ -74,6 +80,10 @@ var levelIcons = [ #Use this list to get the number of selectable entries
 	Global.ZONES.WOOD_GADGET,
 	Global.ZONES.CASINO_NIGHT,
 	Global.ZONES.CASINO_NIGHT,
+	Global.ZONES.JEWEL_GROTTO,
+	Global.ZONES.JEWEL_GROTTO,
+	Global.ZONES.SAND_SHOWER,
+	Global.ZONES.SAND_SHOWER,
 	Global.ZONES.SKY_FORTRESS,
 	Global.ZONES.SKY_FORTRESS,
 	Global.ZONES.DEATH_EGG,

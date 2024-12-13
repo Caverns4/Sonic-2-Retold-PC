@@ -503,8 +503,7 @@ func _process(delta):
 				else: # if abs(global_position.x-partner.global_position.x) <= 64:
 					# get 20 pixels behind Player 1
 					var diff = 20
-					if partner.currentState == STATES.FLY or partner.currentState == STATES.JUMP:
-						diff = 0
+					diff = 0
 					var testPos = round(global_position.x + (diff*(0-direction)))
 					#print(sign((partner.global_position.x - testPos)*direction))
 					if sign((partner.global_position.x - testPos)*direction) > 0:
@@ -1208,6 +1207,10 @@ func kill(always = true):
 		if playerControl == 1 and Global.effectTheme.is_playing():
 			Global.music.play()
 			Global.effectTheme.stop()
+		if !Global.TwoPlayer and playerControl == 1 and partner:
+			var saved = partner.global_position
+			partner.respawn()
+			partner.global_position = saved
 		collision_layer = 0
 		collision_mask = 0
 		z_index = 100

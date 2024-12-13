@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3dq6cs7sku84"]
+
+[ext_resource type="Texture2D" uid="uid://d1lesuu8bmb3e" path="res://Graphics/Gimmicks/CNZFlippers.png" id="1_fxy2p"]
+[ext_resource type="Script" path="res://Scripts/Gimmicks/cnz_flipper.gd" id="1_yq1xs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4xse"]
+size = Vector2(16, 48)
+
+[node name="CnzFlipper" type="StaticBody2D"]
+collision_layer = 15
+collision_mask = 15
+script = ExtResource("1_yq1xs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fxy2p")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="AngledCollision" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-24, -8, -12, -8, 24, 12, 24, 20, -24, 8)
+
+[node name="VeritcalCollison" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_h4xse")
