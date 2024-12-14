@@ -204,6 +204,7 @@ ui_reset={
 [layer_names]
 
 2d_physics/layer_1="Top Solid"
+3d_physics/layer_1="Floor"
 2d_physics/layer_2="Left Solid"
 2d_physics/layer_3="Right Solid"
 2d_physics/layer_4="Bottom Solid"
@@ -216,8 +217,11 @@ ui_reset={
 2d_physics/layer_11="Right Solid (High)"
 2d_physics/layer_12="Bottom Solid (High)"
 2d_physics/layer_13="Player"
+3d_physics/layer_13="Player"
 2d_physics/layer_14="Object"
+3d_physics/layer_14="Objects"
 2d_physics/layer_15="Enemy"
+3d_physics/layer_15="Enemy"
 2d_physics/layer_16="Solid if not Rolling"
 2d_physics/layer_17="Block Player (no physics change)"
 2d_physics/layer_18="Solid if not on Floor"

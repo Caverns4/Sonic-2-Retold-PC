@@ -10,7 +10,7 @@ script = ExtResource("1_x3k1r")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.25, 0.25)
-motion_mirroring = Vector2(256, 256)
+motion_mirroring = Vector2(320, 256)
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
 offset_right = 40.0

@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dro7amoafg5r1"]
+
+[ext_resource type="Texture2D" uid="uid://dcgufiatjxooq" path="res://Graphics/Special Stage/SS_Sonic.png" id="1_etl23"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xfsvn"]
+height = 1.5
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_mbdvg"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+shading_mode = 0
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+albedo_texture = ExtResource("1_etl23")
+uv1_scale = Vector3(0.031, 1, 1)
+uv1_offset = Vector3(0.002, 0, 0)
+texture_filter = 0
+texture_repeat = false
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_doiis"]
+material = SubResource("ORMMaterial3D_mbdvg")
+size = Vector2(1, 1.5)
+
+[node name="SpecialStageCharacter" type="CharacterBody3D"]
+collision_layer = 4096
+collision_mask = 8192
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_xfsvn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_doiis")

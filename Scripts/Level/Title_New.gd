@@ -140,7 +140,7 @@ func MenuOptionChosen():
 	match menuEntry:
 		0:
 			titleEnd = true
-			Global.savedZoneID = Global.ZONES.EMERALD_HILL
+			Global.savedZoneID = Global.ZONES.DUST_HILL
 			Global.savedActID = 0
 			Global.main.change_scene_to_file(nextZone,"FadeOut","FadeOut",1)
 		1:

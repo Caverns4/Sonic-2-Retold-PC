@@ -245,7 +245,7 @@ func loadNextLevel():
 		match savedZoneID:
 			ZONES.EMERALD_HILL:
 				savedActID = 0
-				savedZoneID = ZONES.DUST_HILL
+				savedZoneID = ZONES.CHEMICAL_PLANT
 			ZONES.HIDDEN_PALACE:
 				savedActID = 0
 				savedZoneID = ZONES.OIL_OCEAN
@@ -257,7 +257,7 @@ func loadNextLevel():
 				savedZoneID = ZONES.NEO_GREEN_HILL
 			ZONES.OIL_OCEAN:
 				savedActID = 0
-				savedZoneID = ZONES.DEATH_EGG+1
+				savedZoneID = ZONES.DEATH_EGG+1 #Demo credits
 			ZONES.NEO_GREEN_HILL:
 				savedActID = 0
 				savedZoneID = ZONES.HILL_TOP
