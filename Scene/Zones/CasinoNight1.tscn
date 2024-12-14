@@ -1,10 +1,9 @@
-[gd_scene load_steps=24 format=4 uid="uid://cmqfbxox5j2ce"]
+[gd_scene load_steps=23 format=4 uid="uid://cmqfbxox5j2ce"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_d0vec"]
 [ext_resource type="AudioStream" uid="uid://c354qh8pof6fe" path="res://Audio/Soundtrack/s2br_CasinoNight.ogg" id="2_lgh7f"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="3_ei1j6"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="4_0g615"]
-[ext_resource type="PackedScene" uid="uid://brtxcccqfvmca" path="res://Scene/Zones/CasinoNight2.tscn" id="4_rw2ph"]
 [ext_resource type="PackedScene" uid="uid://c4jrjspjbeybr" path="res://Scene/Backgrounds/09-CasinoNightF.tscn" id="5_kmc7d"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="5_oviuh"]
 [ext_resource type="PackedScene" uid="uid://bbvj2re4dx40p" path="res://Scene/Backgrounds/09-CasinoNight.tscn" id="5_vhfwb"]
@@ -29,7 +28,6 @@ script = ExtResource("1_d0vec")
 zoneID = 9
 music = ExtResource("2_lgh7f")
 music2P = ExtResource("3_ei1j6")
-nextZone = ExtResource("4_rw2ph")
 animal1 = 13
 animal2 = 0
 

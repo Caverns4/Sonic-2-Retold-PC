@@ -205,7 +205,7 @@ func reset_values():
 	currentCheckPointP2 = -1
 	animals = [0,1]
 	nodeMemory = []
-	nextZone = load("res://Scene/Zones/BaseZone.tscn")
+	nextZone = load("res://Scene/Presentation/ZoneLoader.tscn")
 
 # use this to play a sound globally, use load("res:..") or a preloaded sound
 func play_sound(sound = null):
@@ -238,6 +238,60 @@ func stage_clear():
 		music.play()
 		effectTheme.stop()
 		bossMusic.stop()
+
+func loadNextLevel():
+	savedActID +=1
+	if savedActID >= 2:
+		match savedZoneID:
+			ZONES.EMERALD_HILL:
+				savedActID = 0
+				savedZoneID = ZONES.DUST_HILL
+			ZONES.HIDDEN_PALACE:
+				savedActID = 0
+				savedZoneID = ZONES.OIL_OCEAN
+			ZONES.HILL_TOP:
+				savedActID = 0
+				savedZoneID = ZONES.DUST_HILL
+			ZONES.CHEMICAL_PLANT:
+				savedActID = 0
+				savedZoneID = ZONES.NEO_GREEN_HILL
+			ZONES.OIL_OCEAN:
+				savedActID = 0
+				savedZoneID = ZONES.DEATH_EGG+1
+			ZONES.NEO_GREEN_HILL:
+				savedActID = 0
+				savedZoneID = ZONES.HILL_TOP
+			ZONES.METROPOLIS:
+				if savedActID > 2:
+					savedActID = 0
+					savedZoneID = ZONES.WOOD_GADGET
+			ZONES.DUST_HILL:
+				savedActID = 0
+				savedZoneID = ZONES.OIL_OCEAN
+			ZONES.WOOD_GADGET:
+				savedActID = 0
+				savedZoneID = ZONES.HILL_TOP
+			ZONES.CASINO_NIGHT:
+				savedActID = 0
+				savedZoneID = ZONES.WOOD_GADGET
+			ZONES.JEWEL_GROTTO:
+				savedActID = 0
+				savedZoneID = ZONES.SAND_SHOWER
+			ZONES.WINTER:
+				savedActID = 0
+				savedZoneID = 0
+			ZONES.SAND_SHOWER:
+				savedActID = 0
+				savedZoneID = 0
+			ZONES.TROPICAL:
+				savedActID = 0
+				savedZoneID = 0
+			ZONES.SKY_FORTRESS:
+				savedActID = 0
+				savedZoneID = 0
+			ZONES.DEATH_EGG:
+				savedActID = 0
+				savedZoneID = 0
 
 # Godot doesn't like not having emit signal only done in other nodes so we're using a function to call it
 func emit_stage_start():

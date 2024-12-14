@@ -1,7 +1,6 @@
-[gd_scene load_steps=28 format=4 uid="uid://cou8y8ungkjfx"]
+[gd_scene load_steps=27 format=4 uid="uid://cou8y8ungkjfx"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_p81yk"]
-[ext_resource type="PackedScene" uid="uid://cymf2w6itqsjk" path="res://Scene/Presentation/DemoCredits.tscn" id="2_c23bo"]
 [ext_resource type="PackedScene" uid="uid://deaxge481u7mk" path="res://Scene/Backgrounds/00-EmeraldHill.tscn" id="3_x8p3v"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="15_0dckv"]
 [ext_resource type="TileSet" uid="uid://uplqwsi0o4gi" path="res://Tileset/Levels/EHZ_HTZ_Tiles.tres" id="16_w3q5b"]
@@ -35,7 +34,6 @@ sources/0 = SubResource("TileSetScenesCollectionSource_oeepv")
 
 [node name="EmeraldHillZoneAct2" type="Node2D"]
 script = ExtResource("1_p81yk")
-nextZone = ExtResource("2_c23bo")
 defaultRightBoundry = 11392
 defaultBottomBoundry = 1280
 

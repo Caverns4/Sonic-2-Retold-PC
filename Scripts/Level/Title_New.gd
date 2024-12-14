@@ -148,7 +148,7 @@ func MenuOptionChosen():
 			Global.TwoPlayer = true
 			Global.PlayerChar1 = Global.CHARACTERS.SONIC
 			Global.PlayerChar2 = Global.CHARACTERS.TAILS
-			Global.main.change_scene_to_file(twoPlayerScene,"FadeOut","FadeOut",1)
+			Global.main.change_scene_to_file(nextZone,"FadeOut","FadeOut",1)
 		2:
 			titleEnd = true
 			Global.main.change_scene_to_file(optionsScene,"FadeOut","FadeOut",1)

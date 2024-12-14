@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://esqx6201854"]
+[gd_scene load_steps=7 format=4 uid="uid://esqx6201854"]
 
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_67gif"]
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_swaun"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="2_0nln4"]
 [ext_resource type="AudioStream" uid="uid://dlgpinnh0yca3" path="res://Audio/Soundtrack/s2br_Metropolis.ogg" id="2_hx3eb"]
-[ext_resource type="PackedScene" uid="uid://ct2wo24donqxt" path="res://Scene/Zones/Metropolis2.tscn" id="3_yayac"]
 [ext_resource type="PackedScene" uid="uid://br54h8eixiokf" path="res://Scene/Backgrounds/06-Metropolis.tscn" id="4_1dnfb"]
 [ext_resource type="TileSet" uid="uid://dgt3m8tj24hwu" path="res://Tileset/Levels/MTZ.tres" id="7_13h12"]
 
@@ -13,7 +12,6 @@ script = ExtResource("1_swaun")
 zoneID = 6
 music = ExtResource("2_hx3eb")
 music2P = ExtResource("2_hx3eb")
-nextZone = ExtResource("3_yayac")
 animal1 = 9
 animal2 = 7
 

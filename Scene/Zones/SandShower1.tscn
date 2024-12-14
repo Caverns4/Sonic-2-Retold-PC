@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_frx6l"]
 [ext_resource type="AudioStream" uid="uid://ccsd05nnbj8ix" path="res://Audio/Soundtrack/s2br_SandShower.ogg" id="2_wi255"]
-[ext_resource type="PackedScene" uid="uid://bsn2mq5y0ftjy" path="res://Scene/Zones/Wood2.tscn" id="4_p2b2y"]
+[ext_resource type="PackedScene" uid="uid://cua4c8kacbuhf" path="res://Scene/Backgrounds/12-SandShower.tscn" id="3_nwuo4"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_72mfe"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_i8rou"]
 
@@ -11,9 +11,10 @@ script = ExtResource("1_frx6l")
 zoneID = 12
 music = ExtResource("2_wi255")
 music2P = ExtResource("2_wi255")
-nextZone = ExtResource("4_p2b2y")
 animal1 = 11
 animal2 = 12
+
+[node name="12-SandShower" parent="." instance=ExtResource("3_nwuo4")]
 
 [node name="HUD" parent="." instance=ExtResource("5_72mfe")]
 zoneName = "SAND SHOWER"

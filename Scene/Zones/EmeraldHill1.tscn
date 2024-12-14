@@ -1,7 +1,6 @@
-[gd_scene load_steps=24 format=4 uid="uid://caxc44uymh48a"]
+[gd_scene load_steps=23 format=4 uid="uid://caxc44uymh48a"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_8ynvh"]
-[ext_resource type="PackedScene" uid="uid://cou8y8ungkjfx" path="res://Scene/Zones/EmeraldHill2.tscn" id="2_w0xgd"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="2_yrcwh"]
 [ext_resource type="PackedScene" uid="uid://deaxge481u7mk" path="res://Scene/Backgrounds/00-EmeraldHill.tscn" id="3_jdx3s"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="15_005t2"]
@@ -26,7 +25,6 @@
 
 [node name="EmeraldHill1" type="Node2D"]
 script = ExtResource("1_8ynvh")
-nextZone = ExtResource("2_w0xgd")
 defaultRightBoundry = 11064
 defaultBottomBoundry = 1024
 

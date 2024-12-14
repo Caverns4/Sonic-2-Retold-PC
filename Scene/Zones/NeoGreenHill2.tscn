@@ -1,10 +1,9 @@
-[gd_scene load_steps=36 format=4 uid="uid://s4hdjd5g3p2i"]
+[gd_scene load_steps=35 format=4 uid="uid://s4hdjd5g3p2i"]
 
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_u8gl0"]
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_uxs8x"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="2_msrgr"]
 [ext_resource type="AudioStream" uid="uid://ctdnv7vgg1v6k" path="res://Audio/Soundtrack/s2br_NeoGreenHill.ogg" id="2_vjshq"]
-[ext_resource type="PackedScene" uid="uid://do1li36ao5kvn" path="res://Scene/Zones/ChunkZone.tscn" id="3_tis8u"]
 [ext_resource type="PackedScene" uid="uid://jkb87hqbtl0l" path="res://Scene/Backgrounds/05-NeoGreenHill.tscn" id="4_dt52b"]
 [ext_resource type="PackedScene" uid="uid://g5jpioc281sm" path="res://Scene/Backgrounds/05-NeoGreenHill(High).tscn" id="5_w4ofp"]
 [ext_resource type="TileSet" uid="uid://b0b5lpm7k65k5" path="res://Tileset/Levels/NGHZ.tres" id="7_qj4w6"]
@@ -41,7 +40,6 @@ script = ExtResource("1_uxs8x")
 zoneID = 5
 music = ExtResource("2_vjshq")
 music2P = ExtResource("2_vjshq")
-nextZone = ExtResource("3_tis8u")
 animal1 = 4
 animal2 = 0
 defaultTopBoundry = 384

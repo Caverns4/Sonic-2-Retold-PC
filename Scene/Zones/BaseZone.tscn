@@ -1,7 +1,6 @@
-[gd_scene load_steps=22 format=4 uid="uid://hj3tt0gklwba"]
+[gd_scene load_steps=21 format=4 uid="uid://hj3tt0gklwba"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
-[ext_resource type="PackedScene" uid="uid://bjavywoj00j1j" path="res://Scene/Zones/BaseZoneAct2.tscn" id="2_8ek7k"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="2_tkxs0"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="3_hkybi"]
 [ext_resource type="PackedScene" uid="uid://cm1lcnrr22juy" path="res://Scene/Backgrounds/04-OilOcean.tscn" id="4_g00mk"]
@@ -22,7 +21,7 @@
 
 [sub_resource type="RectangleShape2D" id="3"]
 resource_local_to_scene = true
-size = Vector2(80, 2)
+size = Vector2(80, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jc8ku"]
 size = Vector2(64, 8)
@@ -31,7 +30,6 @@ size = Vector2(64, 8)
 script = ExtResource("2")
 zoneID = 4
 music = ExtResource("2_tkxs0")
-nextZone = ExtResource("2_8ek7k")
 animal1 = 4
 animal2 = 5
 defaultBottomBoundry = 1920
@@ -64,7 +62,7 @@ platformSprite = ExtResource("10_fvyfl")
 endPosition = Vector2(256, -96)
 
 [node name="Shape3D" parent="Platforms/MovingPlatform2/Platform" index="0"]
-position = Vector2(0, -10)
+position = Vector2(0, -8)
 shape = SubResource("3")
 
 [node name="Hanger2" parent="Platforms/MovingPlatform2/Platform" index="2" instance=ExtResource("9_twpre")]

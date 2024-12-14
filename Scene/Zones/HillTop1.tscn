@@ -1,9 +1,8 @@
-[gd_scene load_steps=41 format=4 uid="uid://cyh8p6ji14r0t"]
+[gd_scene load_steps=40 format=4 uid="uid://cyh8p6ji14r0t"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_ijtho"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="2_vefax"]
 [ext_resource type="AudioStream" uid="uid://dhw5trv54kut7" path="res://Audio/Soundtrack/s2br_HillTop.ogg" id="2_y1o2m"]
-[ext_resource type="PackedScene" uid="uid://b25bf70l62rjr" path="res://Scene/Zones/HillTop2.tscn" id="3_2rym2"]
 [ext_resource type="PackedScene" uid="uid://dcw6jbk0f0o84" path="res://Scene/Backgrounds/02-HillTop.tscn" id="4_e5550"]
 [ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="9_0ltuq"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="15_l0d7g"]
@@ -48,7 +47,6 @@ script = ExtResource("1_ijtho")
 zoneID = 2
 music = ExtResource("2_y1o2m")
 music2P = ExtResource("2_y1o2m")
-nextZone = ExtResource("3_2rym2")
 animal1 = 9
 animal2 = 7
 defaultRightBoundry = 10752

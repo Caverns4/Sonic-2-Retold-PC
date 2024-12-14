@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_588bb"]
 [ext_resource type="AudioStream" uid="uid://g0a01sst32bm" path="res://Audio/Soundtrack/s2br_DeathEgg.ogg" id="2_j7ucr"]
-[ext_resource type="PackedScene" uid="uid://caxc44uymh48a" path="res://Scene/Zones/EmeraldHill1.tscn" id="3_iwt7i"]
+[ext_resource type="PackedScene" uid="uid://d2ectm23ulm50" path="res://Scene/Backgrounds/15-DeathEgg.tscn" id="3_dgxjp"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="3_l1prs"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="4_lrbjf"]
 
@@ -11,9 +11,10 @@ script = ExtResource("1_588bb")
 zoneID = 15
 music = ExtResource("2_j7ucr")
 music2P = ExtResource("2_j7ucr")
-nextZone = ExtResource("3_iwt7i")
 animal1 = 6
 animal2 = 3
+
+[node name="15-deathEgg" parent="." instance=ExtResource("3_dgxjp")]
 
 [node name="HUD" parent="." instance=ExtResource("3_l1prs")]
 zoneName = "DEATH EGG"

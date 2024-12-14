@@ -7,7 +7,7 @@ extends Node2D
 "Sand Shower","Tropical Sun","Sky Fortress","Death Egg") var zoneID = 0
 @export var music = preload("res://Audio/Soundtrack/s2br_EmeraldHilll.ogg")
 @export var music2P = preload("res://Audio/Soundtrack/s2br_Tropical.ogg")
-@export var nextZone = load("res://Scene/Zones/BaseZone.tscn")
+var nextZone = load("res://Scene/Presentation/ZoneLoader.tscn")
 
 @export_enum("Bird","Squirrel",
 "Rabbit", "Chicken",

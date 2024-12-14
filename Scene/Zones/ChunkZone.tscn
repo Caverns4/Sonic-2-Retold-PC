@@ -1,8 +1,7 @@
-[gd_scene load_steps=42 format=4 uid="uid://do1li36ao5kvn"]
+[gd_scene load_steps=41 format=4 uid="uid://do1li36ao5kvn"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://hikbyuhih7uc" path="res://Audio/Soundtrack/s2br_ChemicalPlant.ogg" id="2_8olfy"]
-[ext_resource type="PackedScene" uid="uid://b73oxpdf64ys2" path="res://Scene/Zones/ChemicalPlant2.tscn" id="3_m54nf"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://skb3vyib11ye" path="res://Scene/Backgrounds/03-ChemicalPlant.tscn" id="5_n8awx"]
 [ext_resource type="TileSet" uid="uid://degtrdfi1sc00" path="res://Tileset/Levels/CPZ.tres" id="6_vi2dq"]
@@ -69,7 +68,6 @@ script = ExtResource("2")
 zoneID = 3
 music = ExtResource("2_8olfy")
 music2P = ExtResource("2_8olfy")
-nextZone = ExtResource("3_m54nf")
 animal1 = 2
 animal2 = 7
 defaultRightBoundry = 10496

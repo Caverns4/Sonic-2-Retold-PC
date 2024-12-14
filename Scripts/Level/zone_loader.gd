@@ -110,7 +110,8 @@ func _physics_process(delta: float) -> void:
 					1:
 						Global.nextZone = load("res://Scene/Zones/DeathEgg2.tscn")
 			_:
-				Global.nextZone = load("res://Scene/Zones/EmeraldHill1.tscn")
+				Global.nextZone = load("res://Scene/Presentation/DemoCredits.tscn")
+				#Global.nextZone = load("res://Scene/Zones/EmeraldHill1.tscn")
 		#Load the Zone
 		loaded = true
 		Global.main.change_scene_to_file(Global.nextZone,"FadeOut","FadeOut",1)

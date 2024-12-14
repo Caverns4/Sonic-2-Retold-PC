@@ -1,8 +1,7 @@
-[gd_scene load_steps=21 format=4 uid="uid://bjavywoj00j1j"]
+[gd_scene load_steps=20 format=4 uid="uid://bjavywoj00j1j"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="2_533ik"]
-[ext_resource type="PackedScene" uid="uid://caxc44uymh48a" path="res://Scene/Zones/EmeraldHill1.tscn" id="3_dbas3"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://cm1lcnrr22juy" path="res://Scene/Backgrounds/04-OilOcean.tscn" id="4_wms2a"]
 [ext_resource type="Script" path="res://Scripts/Objects/StateMovers/StateMoverMaster.gd" id="5"]
@@ -26,7 +25,6 @@ script = ExtResource("2")
 zoneID = 4
 music = ExtResource("2_533ik")
 music2P = ExtResource("2_533ik")
-nextZone = ExtResource("3_dbas3")
 animal1 = 4
 animal2 = 5
 metadata/_edit_vertical_guides_ = [3600.0]

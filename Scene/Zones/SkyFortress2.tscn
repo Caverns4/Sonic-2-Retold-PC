@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://wc6hh8dbtg1w"]
+[gd_scene load_steps=6 format=3 uid="uid://wc6hh8dbtg1w"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_bgm8p"]
 [ext_resource type="AudioStream" uid="uid://chigxw75acdkr" path="res://Audio/Soundtrack/s2br_SkyFortress.ogg" id="2_1cysq"]
 [ext_resource type="PackedScene" uid="uid://cm6qjxupawbta" path="res://Scene/Backgrounds/14-SkyFortress.tscn" id="3_sfen5"]
-[ext_resource type="PackedScene" uid="uid://caxc44uymh48a" path="res://Scene/Zones/EmeraldHill1.tscn" id="4_0k2lp"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_20kpp"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_1g2m4"]
 
@@ -12,7 +11,6 @@ script = ExtResource("1_bgm8p")
 zoneID = 14
 music = ExtResource("2_1cysq")
 music2P = ExtResource("2_1cysq")
-nextZone = ExtResource("4_0k2lp")
 animal1 = 8
 animal2 = 3
 

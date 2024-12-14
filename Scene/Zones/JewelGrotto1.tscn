@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_7bqi0"]
 [ext_resource type="AudioStream" uid="uid://bg1fcuqr8mk1d" path="res://Audio/Soundtrack/s2br_Jewel.ogg" id="3_y5ytd"]
-[ext_resource type="PackedScene" uid="uid://bsn2mq5y0ftjy" path="res://Scene/Zones/Wood2.tscn" id="4_fepwg"]
+[ext_resource type="PackedScene" uid="uid://dnch22ynqwt5e" path="res://Scene/Backgrounds/10-JewelGrotto.tscn" id="3_ywmy4"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_onpmc"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_u04jb"]
 
@@ -11,9 +11,10 @@ script = ExtResource("1_7bqi0")
 zoneID = 10
 music = ExtResource("3_y5ytd")
 music2P = ExtResource("3_y5ytd")
-nextZone = ExtResource("4_fepwg")
 animal1 = 8
 animal2 = 3
+
+[node name="10-jewelGrotto" parent="." instance=ExtResource("3_ywmy4")]
 
 [node name="HUD" parent="." instance=ExtResource("5_onpmc")]
 zoneName = "JEWEL GROTTO"

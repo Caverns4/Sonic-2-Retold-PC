@@ -1,14 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://bsn2mq5y0ftjy"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_vg3f0"]
-[ext_resource type="PackedScene" uid="uid://caxc44uymh48a" path="res://Scene/Zones/EmeraldHill1.tscn" id="4_bx7rd"]
+[ext_resource type="PackedScene" uid="uid://da47pd80u7kac" path="res://Scene/Backgrounds/08-WoodGadget.tscn" id="4_un5s1"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_vkwgj"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_mtco7"]
 
 [node name="Wood2" type="Node2D"]
 script = ExtResource("1_vg3f0")
 zoneID = 8
-nextZone = ExtResource("4_bx7rd")
 animal1 = 11
 animal2 = 12
 
@@ -20,3 +19,5 @@ act = 2
 position = Vector2(96, 656)
 
 [node name="Level_Layout" type="Node" parent="."]
+
+[node name="08-WoodGadget" parent="." instance=ExtResource("4_un5s1")]

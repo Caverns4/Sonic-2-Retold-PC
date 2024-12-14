@@ -1,9 +1,8 @@
-[gd_scene load_steps=48 format=4 uid="uid://b73oxpdf64ys2"]
+[gd_scene load_steps=47 format=4 uid="uid://b73oxpdf64ys2"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_r8kv3"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_sbiln"]
 [ext_resource type="AudioStream" uid="uid://hikbyuhih7uc" path="res://Audio/Soundtrack/s2br_ChemicalPlant.ogg" id="2_mig6y"]
-[ext_resource type="PackedScene" uid="uid://cyh8p6ji14r0t" path="res://Scene/Zones/HillTop1.tscn" id="3_aej5j"]
 [ext_resource type="TileSet" uid="uid://degtrdfi1sc00" path="res://Tileset/Levels/CPZ.tres" id="3_wgb1x"]
 [ext_resource type="PackedScene" uid="uid://skb3vyib11ye" path="res://Scene/Backgrounds/03-ChemicalPlant.tscn" id="5_5j7ri"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="5_eai8g"]
@@ -71,7 +70,6 @@ script = ExtResource("1_r8kv3")
 zoneID = 3
 music = ExtResource("2_mig6y")
 music2P = ExtResource("2_mig6y")
-nextZone = ExtResource("3_aej5j")
 animal1 = 2
 animal2 = 7
 defaultRightBoundry = 12256
