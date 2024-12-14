@@ -1,5 +1,10 @@
 extends Node
 
+enum ZONES{EMERALD_HILL,HIDDEN_PALACE,HILL_TOP,CHEMICAL_PLANT,
+OIL_OCEAN,NEO_GREEN_HILL,METROPOLIS,DUST_HILL,
+WOOD_GADGET,CASINO_NIGHT,JEWEL_GROTTO,WINTER,
+SAND_SHOWER,TROPICAL,SKY_FORTRESS,DEATH_EGG}
+
 #Two Player Mode flag. Either false or true.
 var TwoPlayer = false
 # player pointers (0 is usually player 1)
@@ -24,7 +29,7 @@ var checkPointTimeP2 = 0
 # the starting room, this is loaded on game resets, you may want to change this
 var startScene = preload("res://Scene/Presentation/Title.tscn")
 var nextZone = load("res://Scene/Zones/EmeraldHill1.tscn") # change this to the first level in the game (also set in "reset_values")
-# use this to store the current state of the room, changing scene will clear everythin
+# use this to store the current state of the room, changing scene will clear everything
 var stageInstanceMemory = null
 var stageLoadMemory = null
 
@@ -80,10 +85,28 @@ var globalTimer = 0 # global timer, used as reference for animations
 var maxTime = 60*10
 var airSpeedCap = true
 
-enum ZONES{EMERALD_HILL,HIDDEN_PALACE,HILL_TOP,CHEMICAL_PLANT,
-OIL_OCEAN,NEO_GREEN_HILL,METROPOLIS,DUST_HILL,
-WOOD_GADGET,CASINO_NIGHT,JEWEL_GROTTO,WINTER,
-SAND_SHOWER,TROPICAL,SKY_FORTRESS,DEATH_EGG}
+# Arrays per act
+# Score,Time,Rings,ScoreP2,TimeP2,RingsP2
+var twoPlayActResults = []
+
+# Array of 0 = no game, 1=player1, 2=player2, 3=draw
+# Init to no game
+var twoPlayerZoneResults = [0,0,0,0,0,0,0,0]
+
+var twoPlayerZones = [
+	ZONES.EMERALD_HILL,
+	ZONES.CASINO_NIGHT,
+	ZONES.DUST_HILL,
+	ZONES.OIL_OCEAN
+]
+
+var zoneNames = [
+	"Emerald Hill", "Hidden Palace","Hill Top", "Chemical Plant",
+	"Oil Ocean", "Neo Green Hill","Metropolis","Dust Hill",
+	"Wood Gadget","Casino Night","Jewel Grotto","Winter",
+	"Sand Shower","Tropical Sun","Sky Fortress","Death Egg"
+]
+
 var savedZoneID = 0 # Last played zone. Will mainly be used for the Title Screen.
 var savedActID = 0 # selected act ID
 

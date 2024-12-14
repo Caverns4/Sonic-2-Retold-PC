@@ -46,6 +46,8 @@ func TriggerSignpostMultiPlayer():
 			winner = player.character
 		
 		SetSignpostAnimation(winner)
+		if triggers.size() > 1:
+			$Timer.start()
 		
 
 func TriggerSignpostSinglePlayer():
@@ -102,3 +104,10 @@ func InitEndOfAct():
 				player.partner.inputs[player.INPUTS.XINPUT] = 1
 				player.partner.inputs[player.INPUTS.YINPUT] = 0
 				player.partner.inputs[player.INPUTS.ACTION] = 0
+
+
+func _on_timer_timeout() -> void:
+	var results = [Global.score,Global.levelTime,Global.players[0].rings,
+	Global.scoreP2,Global.levelTimeP2,Global.players[1].rings]
+	Global.twoPlayActResults.append(results)
+	#Set flag to load the results screen.
