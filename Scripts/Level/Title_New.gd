@@ -2,7 +2,7 @@ extends Node2D
 
 @export var music = preload("res://Audio/Soundtrack/s2br_TitleScreen.ogg")
 var nextZone = preload("res://Scene/Presentation/ZoneLoader.tscn")
-var twoPlayerScene = load("res://Scene/Presentation/ZoneLoader.tscn")
+var twoPlayerScene = load("res://Scene/Presentation/TwoPlayerMenu.tscn")
 var testScene = load("res://Scene/Presentation/CharacterSelect.tscn")
 var returnScene = load("res://Scene/Cutscenes/Opening.tscn")
 var optionsScene = load("res://Scene/Presentation/OptionsMenu.tscn")
@@ -71,18 +71,8 @@ var cheatInputCount = 0 #Correct inputs
 var lastCheatInput = Vector2.ZERO
 
 func _ready():
-	Global.music.stream = music
-	
-	#Clear variables
 	Global.TwoPlayer = false
-	Global.score = 0
-	Global.scoreP2 = 0
-	Global.levelTime = 0
-	Global.levelTimeP2 = 0
-	Global.lives = 3
-	Global.livesP2 = 3
-	Global.checkPoints = []
-	Global.twoPlayerZoneResults = [0,0,0,0,0,0,0,0]
+	Global.music.stream = music
 
 	var parallax = parallaxBackgrounds[min(Global.savedZoneID,parallaxBackgrounds.size()-1)]
 	scene = load(parallax)
@@ -140,7 +130,7 @@ func MenuOptionChosen():
 	match menuEntry:
 		0:
 			titleEnd = true
-			Global.savedZoneID = Global.ZONES.EMERALD_HILL
+			Global.savedZoneID = Global.ZONES.NEO_GREEN_HILL
 			Global.savedActID = 0
 			Global.main.change_scene_to_file(nextZone,"FadeOut","FadeOut",1)
 		1:

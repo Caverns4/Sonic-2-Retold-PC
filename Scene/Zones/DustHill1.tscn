@@ -21,6 +21,7 @@ animal2 = 3
 [node name="07-DustHill" parent="." instance=ExtResource("5_5jgr2")]
 
 [node name="HUD" parent="." instance=ExtResource("4_uwgof")]
+playLevelCard = false
 zoneName = "DUST HILL"
 
 [node name="Player" parent="." instance=ExtResource("5_dhfai")]

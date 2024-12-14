@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_am56i"]
 [ext_resource type="AudioStream" uid="uid://bjoynvot2wdjm" path="res://Audio/Soundtrack/s2br_HiddenPalace.ogg" id="2_cgwj4"]
+[ext_resource type="PackedScene" uid="uid://caxc44uymh48a" path="res://Scene/Zones/EmeraldHill1.tscn" id="3_70ldm"]
 [ext_resource type="AudioStream" uid="uid://bg1fcuqr8mk1d" path="res://Audio/Soundtrack/s2br_Jewel.ogg" id="3_l7lxm"]
-[ext_resource type="PackedScene" uid="uid://hj3tt0gklwba" path="res://Scene/Zones/BaseZone.tscn" id="4_awpb3"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="4_wuxis"]
 [ext_resource type="PackedScene" uid="uid://b0xmqvvpy42o3" path="res://Scene/Backgrounds/01-HiddenPalace.tscn" id="5_nkvjk"]
 [ext_resource type="Texture2D" uid="uid://tdr31l1fyfos" path="res://Graphics/Palettes/HPZ_Pal_Dry.png" id="5_wwaju"]
@@ -88,7 +88,7 @@ script = ExtResource("1_am56i")
 zoneID = 1
 music = ExtResource("2_cgwj4")
 music2P = ExtResource("3_l7lxm")
-nextZone = ExtResource("4_awpb3")
+nextZone = ExtResource("3_70ldm")
 animal1 = 8
 animal2 = 5
 

@@ -163,8 +163,3 @@ libraries = {
 [node name="GoalPost" type="AudioStreamPlayer" parent="Signpost"]
 stream = ExtResource("4_fia1e")
 bus = &"SFX"
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
