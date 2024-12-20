@@ -2,6 +2,9 @@ extends Node2D
 
 var activated = false
 
+var characterLabels = ["SONIC", "TAILS", "KNUCKLES", "AMY","MIGHTY","RAY"]
+var characterLabelsMiles = ["SONIC", "MILES", "KNUCKLES", "AMY","MIGHTY","RAY"]
+
 func _ready():
 	# set stage text label to the current stage
 	$HUD/Stage.text = "Stage "+str(Global.specialStageID+1)
@@ -16,10 +19,12 @@ func _input(event):
 		# set to win
 		if event.is_action_pressed("gm_action"):
 			# set binary bit of current emerald (using the special stage ID)
+			Global.lastSpecialStageResult = true
 			Global.emeralds = Global.emeralds | (1 << Global.specialStageID)
 			activated = true
 			# play emerald jingle
 			$Emerald.play()
+			SpecialResults_SetupText()
 			# show current stages emerald
 			$HUD/ColorRect/HBoxContainer.get_child(Global.specialStageID).get_child(0).visible = true
 			await $Emerald.finished
@@ -29,7 +34,7 @@ func _input(event):
 			
 		if event.is_action_pressed("gm_action2"):
 			activated = true
-			next_stage()
+			#next_stage()
 			Global.main.change_scene_to_file(null,"WhiteOut","",1,true,false)
 
 
@@ -41,3 +46,18 @@ func next_stage():
 	while Global.emeralds < 127 and (Global.emeralds & (1 << Global.specialStageID) or !doneALoop):
 		Global.specialStageID = wrapi(Global.specialStageID+1,0,7)
 		doneALoop = true
+
+func SpecialResults_SetupText():
+	if !Global.lastSpecialStageResult:
+		$HUD/ResultLabel/SonicGot.text = "CHAOS EMERALDS"
+		$HUD/ResultLabel/Through.text = ""
+	else:
+		if !Global.tailsNameCheat:
+			$HUD/ResultLabel/SonicGot.text = characterLabels[Global.PlayerChar1-1]
+		else:
+			$HUD/ResultLabel/SonicGot.text = characterLabelsMiles[Global.PlayerChar1-1]
+		$HUD/ResultLabel/SonicGot.text += " GOT"
+		
+		if Global.emeralds >= 127:
+			$HUD/ResultLabel/Through.text = "THEM ALL"
+	$HUD/ResultLabel.visible = true

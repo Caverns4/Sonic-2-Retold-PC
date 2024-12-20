@@ -345,6 +345,7 @@ func _ready():
 			camera.global_position = i.global_position+Vector2(0,8)
 			Global.levelTime = Global.checkPointTime
 			Global.levelTimeP2 = Global.checkPointTime
+			Global.lastSpecialStageResult = false
 		else:
 			Global.levelTime = 0
 			Global.levelTimeP2 = 0

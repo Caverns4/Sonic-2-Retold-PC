@@ -74,11 +74,15 @@ var continues = 0
 
 var scoreP2 = 0
 var livesP2 = 3
-# emeralds use bitwise flag operations, the equivelent for 7 emeralds would be 128
+# emeralds use bitwise flag operations, the equivelent for 7 emeralds would be 127
 var emeralds = 0
 # emerald bit flags
-enum EMERALD {RED = 1, BLUE = 2, GREEN = 4, YELLOW = 8, CYAN = 16, SILVER = 32, PURPLE = 64}
+enum EMERALD {
+	BLUE = 1, PURPLE = 2, RED = 4, CYAN = 8, YELLOW = 16, GREEN = 32, SILVER = 64
+	}
+	#RED = 1, BLUE = 2, GREEN = 4, YELLOW = 8, CYAN = 16, SILVER = 32, PURPLE = 64}
 var specialStageID = 0
+var lastSpecialStageResult = false
 var levelTime = 0 # the timer that counts down while the level isn't completed or in a special ring
 var levelTimeP2 = 0
 var globalTimer = 0 # global timer, used as reference for animations
@@ -196,8 +200,8 @@ func reset_values():
 	continues = 0
 	levelTime = 0
 	levelTimeP2 = 0
-	emeralds = 0
-	specialStageID = 0
+	#emeralds = 0
+	#specialStageID = 0
 	checkPoints = []
 	checkPointTime = 0
 	checkPointTimeP2 = 0
@@ -251,7 +255,7 @@ func loadNextLevel():
 				savedZoneID = ZONES.OIL_OCEAN
 			ZONES.HILL_TOP:
 				savedActID = 0
-				savedZoneID = ZONES.DUST_HILL
+				savedZoneID = ZONES.HIDDEN_PALACE
 			ZONES.CHEMICAL_PLANT:
 				savedActID = 0
 				savedZoneID = ZONES.NEO_GREEN_HILL

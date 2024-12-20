@@ -4,10 +4,13 @@ extends PlayerState
 var flightTime = 8*60
 var flyGrav = 0.03125
 var actionPressed = true
+var PartnerPriority: int = 0
 
 var flyHitBox
 var carryHitBox
 var carryBox
+
+var SavedPartner = null
 
 func _ready():
 	flyHitBox = parent.get_node("TailsFlightHitArea/HitBox")
@@ -73,6 +76,7 @@ func _physics_process(delta):
 	
 	if carryBox.get_player_contacting_count() > 0:
 		carriedPlayer = carryBox.get_player(0)
+		SavedPartner = carriedPlayer
 
 	# Set carried player attributes when there *is* a carried player
 	if carriedPlayer != null:
@@ -82,6 +86,9 @@ func _physics_process(delta):
 			# set carried player direction
 			carriedPlayer.direction = parent.direction
 			carriedPlayer.sprite.flip_h = (parent.direction < 0)
+			if PartnerPriority == 0:
+				PartnerPriority = carriedPlayer.z_index
+				carriedPlayer.z_index = parent.z_index-1
 		
 		# set immediate inputs if ai
 		if parent.playerControl == 0:
@@ -94,6 +101,11 @@ func _physics_process(delta):
 			carryBox.playerCarryAI = 1
 		else:
 			carryBox.playerCarryAI = 0
+	
+	elif !carriedPlayer and SavedPartner:
+		SavedPartner.z_index = PartnerPriority
+		PartnerPriority = 0
+		SavedPartner = null
 	
 	# air movement
 	if (parent.get_x_input() != 0):

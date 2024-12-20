@@ -1,241 +1,242 @@
-[gd_scene load_steps=33 format=3 uid="uid://dl60ab8cdu0iq"]
+[gd_scene load_steps=34 format=3 uid="uid://dl60ab8cdu0iq"]
 
 [ext_resource type="Texture2D" uid="uid://cf4j1ed0nh7oq" path="res://Graphics/Items/ChaosEmeralds.png" id="1"]
 [ext_resource type="AudioStream" uid="uid://cy0i0dbqpb5eu" path="res://Audio/SFX/Misc/Emerald.wav" id="2"]
 [ext_resource type="Script" path="res://Scripts/Misc/SpecialStageResult.gd" id="3"]
+[ext_resource type="FontFile" uid="uid://corcgkvvv7msb" path="res://Graphics/HUD/LevelCards/font/TitleCard_Normal.png" id="3_fyibw"]
 
-[sub_resource type="AtlasTexture" id="1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_27mv6"]
 atlas = ExtResource("1")
-region = Rect2(0, 13, 16, 13)
+region = Rect2(0, 64, 16, 16)
 
-[sub_resource type="AtlasTexture" id="2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxdl7"]
 atlas = ExtResource("1")
-region = Rect2(16, 13, 16, 13)
+region = Rect2(16, 64, 16, 16)
 
-[sub_resource type="AtlasTexture" id="3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uaxhn"]
 atlas = ExtResource("1")
-region = Rect2(32, 13, 16, 13)
+region = Rect2(32, 64, 16, 16)
 
-[sub_resource type="AtlasTexture" id="4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgbwq"]
 atlas = ExtResource("1")
-region = Rect2(48, 13, 16, 13)
+region = Rect2(48, 64, 16, 16)
 
-[sub_resource type="AtlasTexture" id="5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_580jt"]
 atlas = ExtResource("1")
-region = Rect2(0, 52, 16, 13)
+region = Rect2(0, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1upp"]
 atlas = ExtResource("1")
-region = Rect2(16, 52, 16, 13)
+region = Rect2(16, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfwii"]
 atlas = ExtResource("1")
-region = Rect2(32, 52, 16, 13)
+region = Rect2(32, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_conr2"]
 atlas = ExtResource("1")
-region = Rect2(48, 52, 16, 13)
+region = Rect2(48, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="9"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gv11t"]
 atlas = ExtResource("1")
-region = Rect2(0, 26, 16, 13)
+region = Rect2(0, 32, 16, 16)
 
-[sub_resource type="AtlasTexture" id="10"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uscsa"]
 atlas = ExtResource("1")
-region = Rect2(16, 26, 16, 13)
+region = Rect2(16, 32, 16, 16)
 
-[sub_resource type="AtlasTexture" id="11"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ba0o"]
 atlas = ExtResource("1")
-region = Rect2(32, 26, 16, 13)
+region = Rect2(32, 32, 16, 16)
 
-[sub_resource type="AtlasTexture" id="12"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2y06"]
 atlas = ExtResource("1")
-region = Rect2(48, 26, 16, 13)
+region = Rect2(48, 32, 16, 16)
 
-[sub_resource type="AtlasTexture" id="13"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_absuu"]
 atlas = ExtResource("1")
-region = Rect2(0, 78, 16, 13)
+region = Rect2(0, 96, 16, 16)
 
-[sub_resource type="AtlasTexture" id="14"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjo25"]
 atlas = ExtResource("1")
-region = Rect2(16, 78, 16, 13)
+region = Rect2(16, 96, 16, 16)
 
-[sub_resource type="AtlasTexture" id="15"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_prg1u"]
 atlas = ExtResource("1")
-region = Rect2(32, 78, 16, 13)
+region = Rect2(32, 96, 16, 16)
 
-[sub_resource type="AtlasTexture" id="16"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ll3w"]
 atlas = ExtResource("1")
-region = Rect2(48, 78, 16, 13)
+region = Rect2(48, 96, 16, 16)
 
-[sub_resource type="AtlasTexture" id="17"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3ggo"]
 atlas = ExtResource("1")
-region = Rect2(0, 0, 16, 13)
+region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="18"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ha6ci"]
 atlas = ExtResource("1")
-region = Rect2(16, 0, 16, 13)
+region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="19"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_i22t6"]
 atlas = ExtResource("1")
-region = Rect2(32, 0, 16, 13)
+region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="20"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_icx3v"]
 atlas = ExtResource("1")
-region = Rect2(48, 0, 16, 13)
+region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="21"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mmdm"]
 atlas = ExtResource("1")
-region = Rect2(0, 65, 16, 13)
+region = Rect2(0, 80, 16, 16)
 
-[sub_resource type="AtlasTexture" id="22"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwq46"]
 atlas = ExtResource("1")
-region = Rect2(16, 65, 16, 13)
+region = Rect2(16, 80, 16, 16)
 
-[sub_resource type="AtlasTexture" id="23"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5vdr"]
 atlas = ExtResource("1")
-region = Rect2(32, 65, 16, 13)
+region = Rect2(32, 80, 16, 16)
 
-[sub_resource type="AtlasTexture" id="24"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_56ikg"]
 atlas = ExtResource("1")
-region = Rect2(48, 65, 16, 13)
+region = Rect2(48, 80, 16, 16)
 
-[sub_resource type="AtlasTexture" id="25"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3dny"]
 atlas = ExtResource("1")
-region = Rect2(0, 39, 16, 13)
+region = Rect2(0, 48, 16, 16)
 
-[sub_resource type="AtlasTexture" id="26"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_aoens"]
 atlas = ExtResource("1")
-region = Rect2(16, 39, 16, 13)
+region = Rect2(16, 48, 16, 16)
 
-[sub_resource type="AtlasTexture" id="27"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_euedd"]
 atlas = ExtResource("1")
-region = Rect2(32, 39, 16, 13)
+region = Rect2(32, 48, 16, 16)
 
-[sub_resource type="AtlasTexture" id="28"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_icobm"]
 atlas = ExtResource("1")
-region = Rect2(48, 39, 16, 13)
+region = Rect2(48, 48, 16, 16)
 
 [sub_resource type="SpriteFrames" id="29"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("1")
+"texture": SubResource("AtlasTexture_27mv6")
 }, {
 "duration": 1.0,
-"texture": SubResource("2")
+"texture": SubResource("AtlasTexture_uxdl7")
 }, {
 "duration": 1.0,
-"texture": SubResource("3")
+"texture": SubResource("AtlasTexture_uaxhn")
 }, {
 "duration": 1.0,
-"texture": SubResource("4")
+"texture": SubResource("AtlasTexture_wgbwq")
 }],
 "loop": true,
 "name": &"blue",
-"speed": 10.0
+"speed": 60.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("5")
+"texture": SubResource("AtlasTexture_580jt")
 }, {
 "duration": 1.0,
-"texture": SubResource("6")
+"texture": SubResource("AtlasTexture_a1upp")
 }, {
 "duration": 1.0,
-"texture": SubResource("7")
+"texture": SubResource("AtlasTexture_bfwii")
 }, {
 "duration": 1.0,
-"texture": SubResource("8")
+"texture": SubResource("AtlasTexture_conr2")
 }],
 "loop": true,
 "name": &"cyan",
-"speed": 10.0
+"speed": 60.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("9")
+"texture": SubResource("AtlasTexture_gv11t")
 }, {
 "duration": 1.0,
-"texture": SubResource("10")
+"texture": SubResource("AtlasTexture_uscsa")
 }, {
 "duration": 1.0,
-"texture": SubResource("11")
+"texture": SubResource("AtlasTexture_0ba0o")
 }, {
 "duration": 1.0,
-"texture": SubResource("12")
+"texture": SubResource("AtlasTexture_k2y06")
 }],
 "loop": true,
 "name": &"green",
-"speed": 10.0
+"speed": 60.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("13")
+"texture": SubResource("AtlasTexture_absuu")
 }, {
 "duration": 1.0,
-"texture": SubResource("14")
+"texture": SubResource("AtlasTexture_wjo25")
 }, {
 "duration": 1.0,
-"texture": SubResource("15")
+"texture": SubResource("AtlasTexture_prg1u")
 }, {
 "duration": 1.0,
-"texture": SubResource("16")
+"texture": SubResource("AtlasTexture_3ll3w")
 }],
 "loop": true,
 "name": &"purple",
-"speed": 10.0
+"speed": 60.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("17")
+"texture": SubResource("AtlasTexture_g3ggo")
 }, {
 "duration": 1.0,
-"texture": SubResource("18")
+"texture": SubResource("AtlasTexture_ha6ci")
 }, {
 "duration": 1.0,
-"texture": SubResource("19")
+"texture": SubResource("AtlasTexture_i22t6")
 }, {
 "duration": 1.0,
-"texture": SubResource("20")
+"texture": SubResource("AtlasTexture_icx3v")
 }],
 "loop": true,
 "name": &"red",
-"speed": 10.0
+"speed": 60.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("21")
+"texture": SubResource("AtlasTexture_5mmdm")
 }, {
 "duration": 1.0,
-"texture": SubResource("22")
+"texture": SubResource("AtlasTexture_fwq46")
 }, {
 "duration": 1.0,
-"texture": SubResource("23")
+"texture": SubResource("AtlasTexture_o5vdr")
 }, {
 "duration": 1.0,
-"texture": SubResource("24")
+"texture": SubResource("AtlasTexture_56ikg")
 }],
 "loop": true,
 "name": &"silver",
-"speed": 10.0
+"speed": 60.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("25")
+"texture": SubResource("AtlasTexture_f3dny")
 }, {
 "duration": 1.0,
-"texture": SubResource("26")
+"texture": SubResource("AtlasTexture_aoens")
 }, {
 "duration": 1.0,
-"texture": SubResource("27")
+"texture": SubResource("AtlasTexture_euedd")
 }, {
 "duration": 1.0,
-"texture": SubResource("28")
+"texture": SubResource("AtlasTexture_icobm")
 }],
 "loop": true,
 "name": &"yellow",
-"speed": 10.0
+"speed": 60.0
 }]
 
 [node name="SpecialStageResults" type="Node2D"]
@@ -251,21 +252,21 @@ anchor_bottom = 1.0
 
 [node name="Label" type="Label" parent="HUD"]
 modulate = Color(1, 1, 0, 1)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -66.0
-offset_right = 100.0
-offset_bottom = -22.0
+anchors_preset = -1
+anchor_left = 0.487
+anchor_top = 0.929
+anchor_right = 0.487
+anchor_bottom = 0.929
+offset_left = -99.68
+offset_top = -56.192
+offset_right = 100.32
+offset_bottom = -12.192
 grow_horizontal = 2
 grow_vertical = 2
 text = "Special Stage
 
-Press Action 1(Z) to Win
-Press Action 2(X) to Lose"
+Press Action 1(A) to Win
+Press Action 2(S) to Lose"
 horizontal_alignment = 1
 uppercase = true
 
@@ -295,7 +296,6 @@ offset_right = 56.0
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.768627, 0.768627, 0.768627, 1)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD/ColorRect"]
 layout_mode = 0
@@ -307,13 +307,6 @@ offset_bottom = -0.5
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Red" type="Control" parent="HUD/ColorRect/HBoxContainer"]
-layout_mode = 2
-
-[node name="RedEmerald" type="AnimatedSprite2D" parent="HUD/ColorRect/HBoxContainer/Red"]
-sprite_frames = SubResource("29")
-animation = &"red"
-
 [node name="Blue" type="Control" parent="HUD/ColorRect/HBoxContainer"]
 layout_mode = 2
 
@@ -321,19 +314,19 @@ layout_mode = 2
 sprite_frames = SubResource("29")
 animation = &"blue"
 
-[node name="Green" type="Control" parent="HUD/ColorRect/HBoxContainer"]
+[node name="Purple" type="Control" parent="HUD/ColorRect/HBoxContainer"]
 layout_mode = 2
 
-[node name="GreenEmerald" type="AnimatedSprite2D" parent="HUD/ColorRect/HBoxContainer/Green"]
+[node name="PurpleEmerald" type="AnimatedSprite2D" parent="HUD/ColorRect/HBoxContainer/Purple"]
 sprite_frames = SubResource("29")
-animation = &"green"
+animation = &"purple"
 
-[node name="Yellow" type="Control" parent="HUD/ColorRect/HBoxContainer"]
+[node name="Red" type="Control" parent="HUD/ColorRect/HBoxContainer"]
 layout_mode = 2
 
-[node name="YellowEmerald" type="AnimatedSprite2D" parent="HUD/ColorRect/HBoxContainer/Yellow"]
+[node name="RedEmerald" type="AnimatedSprite2D" parent="HUD/ColorRect/HBoxContainer/Red"]
 sprite_frames = SubResource("29")
-animation = &"yellow"
+animation = &"red"
 
 [node name="Cyan" type="Control" parent="HUD/ColorRect/HBoxContainer"]
 layout_mode = 2
@@ -342,6 +335,20 @@ layout_mode = 2
 sprite_frames = SubResource("29")
 animation = &"cyan"
 
+[node name="Yellow" type="Control" parent="HUD/ColorRect/HBoxContainer"]
+layout_mode = 2
+
+[node name="YellowEmerald" type="AnimatedSprite2D" parent="HUD/ColorRect/HBoxContainer/Yellow"]
+sprite_frames = SubResource("29")
+animation = &"yellow"
+
+[node name="Green" type="Control" parent="HUD/ColorRect/HBoxContainer"]
+layout_mode = 2
+
+[node name="GreenEmerald" type="AnimatedSprite2D" parent="HUD/ColorRect/HBoxContainer/Green"]
+sprite_frames = SubResource("29")
+animation = &"green"
+
 [node name="Silver" type="Control" parent="HUD/ColorRect/HBoxContainer"]
 layout_mode = 2
 
@@ -349,12 +356,36 @@ layout_mode = 2
 sprite_frames = SubResource("29")
 animation = &"silver"
 
-[node name="Purple" type="Control" parent="HUD/ColorRect/HBoxContainer"]
-layout_mode = 2
+[node name="ResultLabel" type="Control" parent="HUD"]
+visible = false
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
 
-[node name="PurpleEmerald" type="AnimatedSprite2D" parent="HUD/ColorRect/HBoxContainer/Purple"]
-sprite_frames = SubResource("29")
-animation = &"purple"
+[node name="SonicGot" type="Label" parent="HUD/ResultLabel"]
+self_modulate = Color(0, 1, 1, 1)
+offset_left = -128.0
+offset_top = 24.0
+offset_right = 128.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("3_fyibw")
+text = "SONIC GOT"
+horizontal_alignment = 1
+
+[node name="Through" type="Label" parent="HUD/ResultLabel"]
+self_modulate = Color(0, 1, 1, 1)
+offset_left = -128.0
+offset_top = 48.0
+offset_right = 128.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("3_fyibw")
+text = "A CHAOS EMERALD"
+horizontal_alignment = 1
 
 [node name="Emerald" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2")

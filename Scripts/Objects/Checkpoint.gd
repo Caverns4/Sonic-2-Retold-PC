@@ -2,6 +2,8 @@ extends Area2D
 var active = false
 @export var checkPointID = 0
 
+var specialStageEntry = preload("res://Entities/Items/SpecialStageRing.tscn")
+
 var PlayerMemory = [] #List of Players that have triggered this Checkpoint
 
 func _ready():
@@ -28,6 +30,12 @@ func activate():
 			if i.checkPointID < checkPointID:
 				i.active = true
 				i.get_node("Spinner").play("flash")
+	
+	if (!Global.TwoPlayer and Global.players[0].rings > 50
+	and Global.emeralds < 127): #If 1P, >=50 rings, > 7 emeralds...
+		var spawn = specialStageEntry.instantiate()
+		spawn.global_position = global_position + Vector2(0,-96)
+		get_parent().add_child(spawn)
 
 func _on_Checkpoint_body_entered(body):
 	# do the spin and activate

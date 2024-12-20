@@ -10,8 +10,12 @@ var maskMemory = []
 func _ready():
 	# check that the current ring hasn't already been collected and all 7 emeralds aren't collected
 	# the emerald check is so that it'll spawn if you have all emeralds anyway
-	if Global.nodeMemory.has(get_path()) and Global.emeralds < 127:
-		queue_free()
+	#if Global.nodeMemory.has(get_path()) and Global.emeralds < 127:
+	#	print("An attempt to spawn a special ring failed")
+	#	queue_free()
+	#else:
+	#	print("Spawn Special Ring")
+	pass
 
 func _process(delta):
 	if active:
@@ -74,6 +78,7 @@ func _process(delta):
 				# reset super sonic texture
 				if player.character == Global.CHARACTERS.SONIC:
 					player.sprite.texture = player.normalSprite
+				Global.lastSpecialStageResult = false
 				# reset physics
 				player.switch_physics()
 				player.visible = true
@@ -81,6 +86,7 @@ func _process(delta):
 				player.set_state(player.STATES.NORMAL)
 				# play idle
 				player.animator.play("idle")
+				player.global_position = global_position + Vector2(0,96)
 				
 				if maskMemory.size() > 0:
 					player.collision_layer = maskMemory[0]
@@ -113,6 +119,7 @@ func _on_Hitbox_body_entered(body):
 			body.collision_mask = 0
 			player = body
 			body.invTime = 0
+			#body.global_position = global_position + Vector2(0,96)
 		else:
 			body.rings += 50
 		

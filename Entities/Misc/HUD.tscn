@@ -818,7 +818,6 @@ text = "100"
 horizontal_alignment = 2
 
 [node name="Counters" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 8.0
