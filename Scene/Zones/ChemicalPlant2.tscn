@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://b73oxpdf64ys2"]
+[gd_scene load_steps=46 format=4 uid="uid://b73oxpdf64ys2"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_r8kv3"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_sbiln"]
@@ -27,7 +27,6 @@
 [ext_resource type="PackedScene" uid="uid://bjuh5cvbt06af" path="res://Entities/MainObjects/Capsule.tscn" id="19_2fboq"]
 [ext_resource type="Texture2D" uid="uid://b6alf64ktaf3h" path="res://Graphics/Objects_Zone/CPZPlatformMv.png" id="19_bygnn"]
 [ext_resource type="Script" path="res://Scripts/Gimmicks/ZoomTubePath.gd" id="25_7q6q8"]
-[ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="26_peo5d"]
 [ext_resource type="PackedScene" uid="uid://ijfhnqwrjcfj" path="res://Entities/ZoneObjects/MackWormSpawner.tscn" id="27_ijc7b"]
 [ext_resource type="PackedScene" uid="uid://c1rdgr14n8rxh" path="res://Entities/Obstacles/AscendingStairBlocks.tscn" id="28_ckttt"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="30_5k5ut"]
@@ -1034,9 +1033,6 @@ position = Vector2(5392, 1160)
 behavior = 3
 
 [node name="ItemsHolder" type="Node2D" parent="."]
-
-[node name="SignpostNew" parent="ItemsHolder" instance=ExtResource("26_peo5d")]
-position = Vector2(11264, 1280)
 
 [node name="Monitor2" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(9344, 368)

@@ -66,8 +66,13 @@ func _process(delta):
 					parent.animator.play("crouch")
 			elif (parent.inputs[parent.INPUTS.YINPUT] < 0):
 				lookTimer = min(0,lookTimer-delta*0.5)
-				if parent.lastActiveAnimation != "lookUp":
-					parent.animator.play("lookUp")
+				
+				if(parent.isSuper and parent.character == Global.CHARACTERS.SONIC):
+					if parent.lastActiveAnimation != "lookUp_Super":
+						parent.animator.play("lookUp_Super")
+				else:
+					if parent.lastActiveAnimation != "lookUp":
+						parent.animator.play("lookUp")
 			else:
 				# Idle pose animation
 				
