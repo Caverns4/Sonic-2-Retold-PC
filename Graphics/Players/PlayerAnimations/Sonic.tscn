@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://d1e4muavtnun6"]
+[gd_scene load_steps=61 format=3 uid="uid://d1e4muavtnun6"]
 
 [ext_resource type="Material" uid="uid://bveqi5m5ihsgj" path="res://Shaders/PlayerPalette.tres" id="1_bjmss"]
 [ext_resource type="Texture2D" uid="uid://bjf2dsnw7ea5g" path="res://Graphics/Players/Sonic.png" id="2_uqmtl"]
@@ -377,8 +377,9 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="110"]
 resource_name = "edge_super"
-length = 0.4
+length = 0.6
 loop_mode = 1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -386,10 +387,10 @@ tracks/0/path = NodePath("Sonic/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [66, 67]
+"values": [3, 4, 5, 6, 7, 8]
 }
 
 [sub_resource type="Animation" id="112"]
@@ -540,8 +541,9 @@ step = 0.0166667
 
 [sub_resource type="Animation" id="109"]
 resource_name = "idle_super"
-length = 0.9
+length = 0.4
 loop_mode = 1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -549,10 +551,10 @@ tracks/0/path = NodePath("Sonic/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.866667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1]
+"values": [0, 1, 2, 1]
 }
 
 [sub_resource type="Animation" id="80"]
@@ -828,6 +830,24 @@ tracks/0/keys = {
 "values": [74, 75, 76, 77, 78, 79]
 }
 
+[sub_resource type="Animation" id="Animation_3ty7l"]
+resource_name = "lookUp_Super"
+length = 0.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sonic/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [12, 13]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_36uej"]
 _data = {
 "DieBW": SubResource("Animation_3teag"),
@@ -858,6 +878,7 @@ _data = {
 "idle5": SubResource("118"),
 "idle_super": SubResource("109"),
 "lookUp": SubResource("80"),
+"lookUp_Super": SubResource("Animation_3ty7l"),
 "peelOut": SubResource("87"),
 "push": SubResource("103"),
 "roll": SubResource("81"),

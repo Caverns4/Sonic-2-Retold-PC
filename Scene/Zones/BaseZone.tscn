@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://hj3tt0gklwba"]
+[gd_scene load_steps=22 format=4 uid="uid://hj3tt0gklwba"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="2_tkxs0"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cg1q7jjh7dt8d" path="res://Graphics/Objects_Zone/OOZ_Plat.png" id="10_fvyfl"]
 [ext_resource type="Script" path="res://Scripts/Objects/CollapsePlatform.gd" id="12_ri3yl"]
 [ext_resource type="TileSet" uid="uid://dn42tsjf760q0" path="res://Graphics/Tiles/MCZPlatform.tres" id="13_biut5"]
+[ext_resource type="PackedScene" uid="uid://c2esop5orct10" path="res://Entities/MainObjects/GoalPost.tscn" id="16_rdj6e"]
 [ext_resource type="PackedScene" uid="uid://cyun8u3qemt5i" path="res://Entities/Gimmicks/ScrewPlatform.tscn" id="21_5kimb"]
 [ext_resource type="PackedScene" uid="uid://bvtk4rs7h7sup" path="res://Entities/Gimmicks/Oil.tscn" id="21_yc6vl"]
 [ext_resource type="PackedScene" uid="uid://c8djwr7o6d6f7" path="res://Entities/Enemies/Octus.tscn" id="28_fcslk"]
@@ -118,6 +119,9 @@ length = 7
 [node name="Oil" parent="Entities" instance=ExtResource("21_yc6vl")]
 position = Vector2(8192, 1856)
 scale = Vector2(512, 1)
+
+[node name="GoalPost" parent="Entities" instance=ExtResource("16_rdj6e")]
+position = Vector2(5952, 1832)
 
 [node name="Rings" type="Node2D" parent="."]
 
