@@ -5,7 +5,7 @@ extends Node2D
 @export var nextZone = load("res://Scene/Presentation/ZoneLoader.tscn")
 var selected = false
 
-const LEFT_ROWS = 26 #Including blank rows
+const LEFT_ROWS = 26 # number of columns to draw, including blank ones
 
 # character labels, the amount of labels in here determines the total amount of options, see the set character option at the end for settings
 var characterLabels = ["Sonic&Tails", "Sonic", "Tails", "Knuckles", "Amy","Mighty","Ray"]

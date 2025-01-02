@@ -3,15 +3,15 @@ extends StaticBody2D
 const DOWN_TIME = 1.0/30.0
 
 var players = []
-var direction = 1
+var direction = 0
 var WeightVal = 0.0
 var downTimer = 0.0
 
-var lauchSpeeds = [0, 1,  1,  2,  2,  3,  3,  3,  4, 4, 4, 4]
+var lauchSpeeds = [0, 1,  1,  2,  2,  3,  3,  3,  4]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	direction = clampf(global_scale.x,-1,1)
+	direction = sign(scale.rotated(rotation).x)#clampf(global_scale.x,-1,1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -33,7 +33,7 @@ func physics_collision(body, hitVector):
 	if hitVector.y > 0.0:
 		players.append(body)
 		if downTimer <= 0.0:
-			var temp = max(abs(body.global_position.x - global_position.x),0)
+			var temp = max(abs(direction * (body.global_position.x - global_position.x)),0)
 			temp -= (16*direction)
 			if temp > 0:
 				downTimer = DOWN_TIME
@@ -42,9 +42,9 @@ func physics_collision(body, hitVector):
 func SpringCharacters():
 	for i in players.size():
 		var node = players[i]
-		var temp = (global_position.x - 24 - node.global_position.x)/8
-		#print(temp)
-		temp = min(max(abs(round(temp)),0),lauchSpeeds.size())
+		var temp = round(abs((direction * (global_position.x - node.global_position.x))-24)/8)
+		print(temp)
+		temp = min(max(temp,0),lauchSpeeds.size()-1)
 		var speedSet = (lauchSpeeds[temp]) * 60
 		
 		node.set_state(node.STATES.AIR)
@@ -53,6 +53,6 @@ func SpringCharacters():
 		node.animator.play("corkScrew")
 		
 		node.movement.y = -240 - (speedSet)
-		if abs(node.movement.x) > 240:
+		if abs(node.movement.x) > 360:
 			speedSet *= direction
 			node.movement.x -= speedSet
