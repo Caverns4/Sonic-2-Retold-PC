@@ -1195,7 +1195,7 @@ func get_ring():
 		
 		if Global.hud: #If the HUD Exists
 			if Global.hud.iconAnim.current_animation != "Super" and (
-			Global.emeralds > 126 and rings > 49 and !isSuper): #and Ring and Emerald count > 0
+			Global.emeralds == 127 and rings > 49 and !isSuper): #and Ring and Emerald count > 0
 				Global.hud.iconAnim.play("Super")
 		
 	elif partner != null:
