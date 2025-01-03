@@ -250,6 +250,7 @@ var cameraMargin = 16
 
 # Gimmick related
 var poleGrabID = null
+var controlObject = null #A node, if any, that is overrided normal object control.
 
 # Enemy related
 @warning_ignore("unused_signal")

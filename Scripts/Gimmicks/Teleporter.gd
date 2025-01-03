@@ -54,6 +54,8 @@ func _physics_process(delta):
 				Global.players[0].translate = false
 				# give player a bit of velocity in that direction
 				Global.players[0].movement.y = -30
+				if Global.players[0].controlObject == self:
+					Global.players[0].controlObject = null
 				
 		else: #shift player by default
 			Global.players[0].global_position.y -= 30*delta
@@ -68,3 +70,4 @@ func activateBeam():
 		Global.players[0].animator.play("idle")
 		Global.players[0].groundSpeed = 60*4
 		Global.players[0].movement.x = 0
+		Global.players[0].controlObject = self

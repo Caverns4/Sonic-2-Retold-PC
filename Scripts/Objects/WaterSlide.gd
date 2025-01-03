@@ -34,7 +34,7 @@ func _physics_process(delta):
 					i.animator.play("slide")
 
 func _on_ForceRoll_body_entered(body):
-	if !players.has(body):
+	if !players.has(body) and !body.controlObject:
 		players.append(body)
 
 

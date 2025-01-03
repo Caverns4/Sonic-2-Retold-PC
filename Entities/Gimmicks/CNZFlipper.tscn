@@ -7,8 +7,8 @@
 size = Vector2(16, 48)
 
 [node name="CnzFlipper" type="StaticBody2D"]
-collision_layer = 15
-collision_mask = 15
+collision_layer = 8193
+collision_mask = 8192
 script = ExtResource("1_yq1xs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -18,6 +18,7 @@ vframes = 2
 frame = 4
 
 [node name="AngledCollision" type="CollisionPolygon2D" parent="."]
+visible = false
 polygon = PackedVector2Array(-24, -8, -12, -8, 24, 12, 24, 20, -24, 8)
 
 [node name="VeritcalCollison" type="CollisionShape2D" parent="."]

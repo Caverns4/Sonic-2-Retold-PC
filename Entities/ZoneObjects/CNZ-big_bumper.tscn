@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dkt4dlhmutrkc"]
+
+[node name="CNZ-BigBumper" type="Area2D"]
+collision_layer = 8192
+collision_mask = 4096
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -8, -8, 8, 8, 8)

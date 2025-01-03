@@ -58,7 +58,7 @@ func _physics_process(_delta):
 					i.animator.play("current")
 
 func _on_WindCurrent_body_entered(body):
-	if !players.has(body):
+	if !players.has(body) and !body.controlObject:
 		# emit signal for player touches (can be used for giant fans)
 		if players.size() == 0:
 			emit_signal("player_entered")
@@ -74,5 +74,3 @@ func _on_WindCurrent_body_exited(body):
 		# emit signal for players exiting (can be used for giant fans)
 		if players.size() == 0:
 			emit_signal("all_players_exited")
-
-

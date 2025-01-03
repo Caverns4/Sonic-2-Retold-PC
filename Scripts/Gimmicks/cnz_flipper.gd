@@ -3,8 +3,8 @@ extends StaticBody2D
 #Todo
 @export_enum("Angled","Vertical") var type = 0
 
+var players =[]
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if type == 0:
 		$VeritcalCollison.disabled = true
@@ -15,7 +15,14 @@ func _ready() -> void:
 		$AngledCollision.visible = false
 		$Sprite2D.frame = 4
 
+func _physics_process(delta: float) -> void:
+	for player in players:
+		if !player.ground:
+			player.controlObject = null
+			players.erase(player)
+			print("Fall")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
+func physics_collision(player, hitVector):
+	player.controlObject = self
+	players.append(player)

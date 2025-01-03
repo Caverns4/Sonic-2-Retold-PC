@@ -23,13 +23,12 @@ func _physics_process(_delta):
 					i.sfx[1].play()
 
 func _on_ForceRoll_body_entered(body):
-	#body.forceRoll += 1
-	body.forceDirection = forceDirection
-	if !players.has(body):
-		players.append(body)
+	if !body.controlObject:
+		body.forceDirection = forceDirection
+		if !players.has(body):
+			players.append(body)
 
 
 func _on_ForceRoll_body_exited(body):
-	#body.forceRoll -= 1
 	if players.has(body):
 		players.erase(body)
