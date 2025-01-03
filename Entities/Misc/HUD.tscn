@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://c30uceea18q1w"]
+[gd_scene load_steps=36 format=3 uid="uid://c30uceea18q1w"]
 
 [ext_resource type="Texture2D" uid="uid://dloxtqer7p78l" path="res://Graphics/HUD/hud_lives.png" id="2_cfvjc"]
 [ext_resource type="Material" uid="uid://bveqi5m5ihsgj" path="res://Shaders/PlayerPalette.tres" id="2_xy7bp"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/Misc/HUD.gd" id="6"]
 [ext_resource type="FontFile" uid="uid://cticydrc4dda2" path="res://Graphics/HUD/hud_numerals.png" id="6_synv7"]
 [ext_resource type="Texture2D" uid="uid://gswo6rq3uyy8" path="res://Graphics/HUD/LevelCards/Banner.png" id="7_ccygi"]
+[ext_resource type="Texture2D" uid="uid://cf4j1ed0nh7oq" path="res://Graphics/Items/ChaosEmeralds.png" id="7_xjvyl"]
 [ext_resource type="Texture2D" uid="uid://c7a17v25ap4ow" path="res://Graphics/HUD/LevelCards/ActCards.png" id="9_3i4aq"]
 [ext_resource type="Texture2D" uid="uid://bn4id4yr1lron" path="res://Graphics/HUD/hud_results_text.png" id="10_ddlv5"]
 [ext_resource type="FontFile" uid="uid://28kaiptskglh" path="res://Graphics/HUD/LevelCards/font/s2br_TitleCardFont.png" id="10_hdf42"]
@@ -18,6 +19,46 @@
 [ext_resource type="AudioStream" uid="uid://c3tsd0xi30f6s" path="res://Audio/Soundtrack/s2br_GameOver.ogg" id="15_y325l"]
 [ext_resource type="AudioStream" uid="uid://dh4rsaka62ph4" path="res://Audio/SFX/Gimmicks/Switch.wav" id="16"]
 [ext_resource type="AudioStream" uid="uid://clgobastngtvy" path="res://Audio/SFX/Misc/Score.wav" id="17"]
+
+[sub_resource type="Animation" id="Animation_vengb"]
+resource_name = "Super"
+length = 0.5
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_uxdxe"]
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3qsc1"]
+_data = {
+"RESET": SubResource("Animation_uxdxe"),
+"Super": SubResource("Animation_vengb")
+}
 
 [sub_resource type="Animation" id="5"]
 length = 0.001
@@ -876,6 +917,19 @@ texture = ExtResource("5_kre34")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 80, 40, 16)
+
+[node name="Icon" type="Sprite2D" parent="Counters/Text"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(8, 56)
+texture = ExtResource("7_xjvyl")
+hframes = 4
+vframes = 7
+frame = 16
+
+[node name="IconAnim" type="AnimationPlayer" parent="Counters/Text"]
+libraries = {
+"": SubResource("AnimationLibrary_3qsc1")
+}
 
 [node name="P1Counters" type="Control" parent="."]
 visible = false

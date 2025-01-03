@@ -24,6 +24,9 @@ func _process(_delta):
 			# Global emeralds use a bit flag, 127 would mean all 7 are 1, see bitwise operations for more info
 			if parent.rings >= 50 and Global.emeralds >= 127:
 				parent.set_state(parent.STATES.SUPER)
+				if Global.hud and Global.hud.iconAnim.current_animation == "Super":
+					Global.hud.iconAnim.play("RESET")
+				
 		# Shield actions
 		elif ((parent.inputs[parent.INPUTS.ACTION] == 1 or parent.inputs[parent.INPUTS.ACTION2] == 1 or parent.inputs[parent.INPUTS.ACTION3] == 1) and !parent.abilityUsed and isJump):
 			# Super actions

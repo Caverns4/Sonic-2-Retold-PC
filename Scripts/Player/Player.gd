@@ -1148,7 +1148,11 @@ func hit_player(damagePoint = global_position, damageType = 0, soundID = 6):
 		if (shield == SHIELDS.NONE and rings > 0 and (playerControl == 1 or Global.TwoPlayer)):
 			sfx[9].play()
 			#ringDisTime = 30.0/60.0 # ignore rings for 64 frames
-			Global.hud.perfectEnabled = false
+			if Global.hud:
+				Global.hud.perfectEnabled = false
+				if Global.hud.iconAnim.current_animation == "Super":
+					Global.hud.iconAnim.play("RESET")
+			
 			ringDisTime = 1.0/60.0 # ignore rings for 1/60th second after landing
 			var ringCount = 0
 			var ringAngle = 101.25
@@ -1188,6 +1192,11 @@ func get_ring():
 		sfx[7+ringChannel].play()
 		sfx[7].play()
 		ringChannel = int(!ringChannel)
+		
+		if Global.hud: #If the HUD Exists
+			if Global.hud.iconAnim.current_animation != "Super" and (
+			Global.emeralds > 126 and rings > 49 and !isSuper): #and Ring and Emerald count > 0
+				Global.hud.iconAnim.play("Super")
 		
 	elif partner != null:
 		partner.get_ring()

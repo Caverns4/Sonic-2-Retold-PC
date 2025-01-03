@@ -8,6 +8,7 @@ extends CanvasLayer
 @onready var timeText = $Counters/Text/TimeNumbers
 @onready var ringText = $Counters/Text/RingCount
 @onready var lifeText = $LifeCounter/Icon/LifeText
+@onready var iconAnim = $Counters/Text/IconAnim
 
 # play level card, if true will play the level card animator and use the zone name and zone text with the act
 @export var playLevelCard = true
