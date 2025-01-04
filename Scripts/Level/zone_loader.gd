@@ -70,9 +70,9 @@ func _physics_process(delta: float) -> void:
 			Global.ZONES.CASINO_NIGHT:
 				match Global.savedActID:
 					0:
-						Global.nextZone = load("res://Scene/Zones/CasinoNight1.tscn")
+						Global.nextZone = load("res://Scene/Zones/CasinoNight1New.tscn")
 					1:
-						Global.nextZone = load("res://Scene/Zones/CasinoNight2.tscn")
+						Global.nextZone = load("res://Scene/Zones/CasinoNight2New.tscn")
 			Global.ZONES.JEWEL_GROTTO:
 				match Global.savedActID:
 					0:

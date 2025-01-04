@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2i6c85g2b5bh"]
+
+[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_ssdve"]
+[ext_resource type="AudioStream" uid="uid://c354qh8pof6fe" path="res://Audio/Soundtrack/s2br_CasinoNight.ogg" id="2_last2"]
+[ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="3_ge8lu"]
+[ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="4_h5i0i"]
+[ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="5_cngji"]
+[ext_resource type="PackedScene" uid="uid://c4jrjspjbeybr" path="res://Scene/Backgrounds/09-CasinoNightF.tscn" id="5_gne2c"]
+
+[node name="CasinoNight2" type="Node2D"]
+script = ExtResource("1_ssdve")
+zoneID = 9
+music = ExtResource("2_last2")
+music2P = ExtResource("3_ge8lu")
+animal1 = 13
+animal2 = 0
+
+[node name="09-CasinoNightF" parent="." instance=ExtResource("5_gne2c")]
+
+[node name="HUD" parent="." instance=ExtResource("4_h5i0i")]
+zoneName = "CASINO NIGHT"
+act = 2
+
+[node name="Player" parent="." instance=ExtResource("5_cngji")]
+position = Vector2(96, 236)
+disablePartner = true
+
+[node name="Level_Layout" type="Node" parent="."]

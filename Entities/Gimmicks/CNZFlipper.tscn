@@ -15,11 +15,12 @@ script = ExtResource("1_yq1xs")
 texture = ExtResource("1_fxy2p")
 hframes = 3
 vframes = 2
-frame = 4
 
 [node name="AngledCollision" type="CollisionPolygon2D" parent="."]
 visible = false
 polygon = PackedVector2Array(-24, -8, -12, -8, 24, 12, 24, 20, -24, 8)
 
 [node name="VeritcalCollison" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_h4xse")
+disabled = true
