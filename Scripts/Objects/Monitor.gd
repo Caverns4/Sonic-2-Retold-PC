@@ -93,7 +93,15 @@ func destroy():
 	# enable effect
 	match (item):
 		ITEMTYPES.RING: # Rings
+			var prev_rings = playerTouch.rings
 			playerTouch.rings += 10
+			if Global.hud: #If the HUD Exists
+				if (Global.emeralds == 127 and 
+				(prev_rings < 50 and playerTouch.rings > 49) and 
+				!playerTouch.isSuper):
+					Global.hud.iconAnim.play("Super")
+			
+			
 			$SFX/Ring.play()
 		ITEMTYPES.SPEED_SHOES: # Speed Shoes
 			if !playerTouch.get("isSuper"):

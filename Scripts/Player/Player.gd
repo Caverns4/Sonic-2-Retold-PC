@@ -1188,14 +1188,16 @@ func hit_player(damagePoint = global_position, damageType = 0, soundID = 6):
 
 func get_ring():
 	if playerControl == 1 or Global.TwoPlayer:
+		var prev_rings = rings
 		rings += 1
 		sfx[7+ringChannel].play()
 		sfx[7].play()
 		ringChannel = int(!ringChannel)
 		
 		if Global.hud: #If the HUD Exists
-			if Global.hud.iconAnim.current_animation != "Super" and (
-			Global.emeralds == 127 and rings > 49 and !isSuper): #and Ring and Emerald count > 0
+			if (Global.emeralds == 127 and 
+			(prev_rings < 50 and rings > 49) and 
+			!isSuper):
 				Global.hud.iconAnim.play("Super")
 		
 	elif partner != null:
