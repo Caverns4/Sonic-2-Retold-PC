@@ -13,19 +13,7 @@ func _ready():
 		if (get_tree().current_scene is MainGameScene): # and !Global.levelSelectFlag:
 			visible = false
 		var size = Vector2(32*scale.x,32*scale.y)
-		restPos = global_position.y #- (size.y/2)
-		
-		var ID = 1
-		#On init, setup an array for every player.
-		for i in Global.players.size()+1:
-			var node = Platform.instantiate()
-			add_child(node)
-			playerPlatforms.append(node)
-			weightVals.insert(weightVals.size(),0.0)
-			node.top_level = true
-			node.whichChar = ID
-			ID += 1
-		
+		restPos = global_position.y - 8
 
 func _physics_process(delta: float) -> void:
 	var size = Vector2(32*scale.x,32*scale.y) 
@@ -39,14 +27,32 @@ func _physics_process(delta: float) -> void:
 	$BottomRight.global_position.y = global_position.y + ((size.y/2)-16)
 	
 	if !Engine.is_editor_hint():
+		if Global.players.size() > playerPlatforms.size():
+			dynamically_append_platforms()
+		
 		for i in playerPlatforms.size():
 			var plat = playerPlatforms[i]
+			var player = Global.players[i]
 			plat.global_position.y = restPos + weightVals[i]
-			plat.global_position.x = Global.players[i].global_position.x
-			if plat.get_collision_layer_value(1):
+			plat.global_position.x = player.global_position.x
+
+			if plat.active:
 				weightVals[i] += (delta*sinkingSpeed)
+				if weightVals[i] > 32:
+					weightVals[i] = 256
 			else:
-				weightVals[i] = 0.0
+				weightVals[i] = max(0,weightVals[i]-(delta*sinkingSpeed*8))
+
+func dynamically_append_platforms():
+		for i in Global.players.size():
+			if i >= playerPlatforms.size():
+				var node = Platform.instantiate()
+				add_child(node)
+				playerPlatforms.append(node)
+				weightVals.insert(weightVals.size(),0.0)
+				node.top_level = true
+				node.whichChar = Global.players[i]
+
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if Global.players.has(body):

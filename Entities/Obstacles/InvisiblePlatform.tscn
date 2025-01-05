@@ -3,13 +3,15 @@
 [ext_resource type="Script" path="res://Scripts/Objects/invisible_platform.gd" id="1_qygak"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_80pg5"]
-size = Vector2(32, 2)
+size = Vector2(32, 8)
 
 [node name="InvisiblePlatform" type="StaticBody2D"]
-collision_layer = 0
+collision_layer = 8192
 collision_mask = 0
 script = ExtResource("1_qygak")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 128
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_80pg5")
 one_way_collision = true

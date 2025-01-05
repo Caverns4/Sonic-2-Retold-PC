@@ -117,11 +117,9 @@ func _on_Hitbox_body_entered(body):
 			maskMemory.append(body.collision_mask)
 			body.collision_layer = 0
 			body.collision_mask = 0
-			player = body
 			body.invTime = 0
-			#body.global_position = global_position + Vector2(0,96)
-		else:
-			body.rings += 50
+		#else:
+		#	body.rings += 50
 		
 		# play sound
 		$RingEnter.play()
