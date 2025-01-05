@@ -31,7 +31,7 @@ func activate():
 				i.active = true
 				i.get_node("Spinner").play("flash")
 	
-	if (!Global.TwoPlayer #and Global.players[0].rings > 50
+	if (!Global.TwoPlayer and Global.players[0].rings > 50
 	and Global.emeralds < 127): #If 1P, >=50 rings, > 7 emeralds...
 		var spawn = specialStageEntry.instantiate()
 		spawn.global_position = global_position + Vector2(0,-96)

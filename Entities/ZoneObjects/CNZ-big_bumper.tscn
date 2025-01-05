@@ -1,9 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkt4dlhmutrkc"]
+[gd_scene load_steps=2 format=3 uid="uid://dkt4dlhmutrkc"]
 
 [ext_resource type="Script" path="res://Scripts/Gimmicks/cnz_big_bumper.gd" id="1_2j0s7"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_losp8"]
-size = Vector2(112, 20)
 
 [node name="CNZ-BigBumper" type="StaticBody2D"]
 collision_layer = 0
@@ -11,9 +8,4 @@ collision_mask = 8192
 script = ExtResource("1_2j0s7")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-visible = false
 polygon = PackedVector2Array(0, -16, -64, 0, -64, 16, 64, 16, 64, 0)
-disabled = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_losp8")
