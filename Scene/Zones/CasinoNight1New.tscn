@@ -40,7 +40,6 @@ zoneName = "CASINO NIGHT"
 
 [node name="Player" parent="." instance=ExtResource("7_4uvfi")]
 position = Vector2(96, 684)
-disablePartner = true
 
 [node name="Level_Layout" type="Node" parent="."]
 
@@ -95,10 +94,6 @@ springDirection = 4
 [node name="Spring9" parent="Entities" instance=ExtResource("10_68as7")]
 position = Vector2(6688, 1344)
 type = 1
-springDirection = 4
-
-[node name="Spring5" parent="Entities" instance=ExtResource("10_68as7")]
-position = Vector2(3592, 992)
 springDirection = 4
 
 [node name="Spring13" parent="Entities" instance=ExtResource("10_68as7")]
@@ -196,6 +191,9 @@ scale = Vector2(-1, 1)
 
 [node name="CnzFlipper3" parent="Entities" instance=ExtResource("13_wyhjd")]
 position = Vector2(684, 768)
+
+[node name="CnzFlipper4" parent="Entities" instance=ExtResource("13_wyhjd")]
+position = Vector2(2456, 1480)
 
 [node name="MovingPlatforms" type="Node2D" parent="."]
 material = ExtResource("8_cpekc")
