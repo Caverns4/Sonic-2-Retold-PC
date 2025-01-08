@@ -121,8 +121,9 @@ length = 7
 position = Vector2(8192, 1856)
 scale = Vector2(512, 1)
 
-[node name="Node2D" parent="Entities" instance=ExtResource("16_5e18u")]
-position = Vector2(2240, 1664)
+[node name="OOZ_Lid" parent="Entities" instance=ExtResource("16_5e18u")]
+material = ExtResource("6_fh7ua")
+position = Vector2(2240, 1536)
 
 [node name="Rings" type="Node2D" parent="."]
 

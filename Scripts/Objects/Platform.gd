@@ -28,6 +28,7 @@ func _ready():
 		$Platform.set_collision_layer_value(2,true)
 		$Platform.set_collision_layer_value(3,true)
 		$Platform.set_collision_layer_value(4,true)
+		$Platform.set_collision_layer_value(22,true)
 	else:
 		$Platform/Shape3D.shape.size.x = platformSprite.get_size().x
 		$Platform/Shape3D.shape.size.y = platformDepth/2.0
