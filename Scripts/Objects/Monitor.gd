@@ -36,11 +36,12 @@ func _ready():
 		$Item.frame = item+2
 		# Life Icon (life icons are a special case)
 		if item == ITEMTYPES.LIFEP1 and !Engine.is_editor_hint():
-			$Item.frame = item + 1 + Global.PlayerChar1
+			if Global.livesMode:
+				$Item.frame = item + Global.PlayerChar1
 		if item == ITEMTYPES.LIFEP2 and !Engine.is_editor_hint():
 			var nextFrame = item + Global.PlayerChar2
 			if Global.PlayerChar2 < Global.CHARACTERS.SONIC:
-				nextFrame = item + 2
+				nextFrame = item + 1
 			$Item.frame = nextFrame
 			
 	
@@ -142,6 +143,7 @@ func destroy():
 			Global.life.stop()
 			Global.life.play()
 			Global.lives += 1
+			Global.coins += 1
 			Global.effectTheme.volume_db = -100
 			Global.music.volume_db = -100
 		ITEMTYPES.LIFEP2: #2-Player 1up

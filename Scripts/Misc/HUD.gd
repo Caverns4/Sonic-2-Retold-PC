@@ -65,16 +65,18 @@ func _ready():
 		$P1Counters.visible = true
 		$P2Counters.visible = true
 		# Set character Icon
-		lifeCounterFrame = Global.PlayerChar2-1
+		lifeCounterFrame = Global.PlayerChar2
 	else:
 		$Counters.visible = true
 		$P1Counters.visible = false
 		$P2Counters.visible = false
 		# Set character Icon
-		lifeCounterFrame = Global.PlayerChar1-1
-		
-	if lifeCounterFrame == 1 and Global.tailsNameCheat:
-		lifeCounterFrame = 6
+		if Global.livesMode:
+			lifeCounterFrame = Global.PlayerChar1
+		else:
+			lifeCounterFrame = 0
+	if lifeCounterFrame == 2 and Global.tailsNameCheat:
+		lifeCounterFrame = 7
 		
 	$LifeCounter/Icon.frame = lifeCounterFrame
 	
@@ -163,7 +165,10 @@ func _process(delta):
 	
 	# track lives with leading 0s
 	if !Global.TwoPlayer:
-		lifeText.text = "%3d" % Global.lives
+		if Global.livesMode:
+			lifeText.text = "%3d" % Global.lives
+		else:
+			lifeText.text = "%3d" % Global.coins
 	else:
 		lifeText.text = "%3d" % Global.livesP2
 		$P2Counters/Icon2/LifeText.text = "%3d" % Global.lives
@@ -307,7 +312,7 @@ func _process(delta):
 		# wait for animation to finish
 		await $GameOver/GameOver.animation_finished
 		# reset game
-		if Global.levelTime < Global.maxTime or Global.lives <= 0:
+		if Global.levelTime < Global.maxTime or (Global.lives <= 0 and Global.livesMode):
 			Global.main.change_scene_to_file(Global.startScene,"FadeOut")
 			await Global.main.scene_faded
 			Global.reset_values()

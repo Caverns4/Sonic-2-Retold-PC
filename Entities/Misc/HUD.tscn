@@ -846,7 +846,7 @@ grow_vertical = 0
 material = ExtResource("2_xy7bp")
 texture = ExtResource("2_cfvjc")
 centered = false
-vframes = 7
+vframes = 8
 
 [node name="LifeText" type="Label" parent="LifeCounter/Icon"]
 offset_left = 24.0
@@ -977,7 +977,6 @@ region_enabled = true
 region_rect = Rect2(0, 64, 40, 16)
 
 [node name="P2Counters" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 4
 anchor_top = 0.5
@@ -1028,7 +1027,7 @@ material = ExtResource("2_xy7bp")
 position = Vector2(8, -16)
 texture = ExtResource("2_cfvjc")
 centered = false
-vframes = 7
+vframes = 8
 
 [node name="LifeText" type="Label" parent="P2Counters/Icon2"]
 offset_left = 24.0

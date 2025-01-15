@@ -83,11 +83,13 @@ enum EMERALD {
 	#RED = 1, BLUE = 2, GREEN = 4, YELLOW = 8, CYAN = 16, SILVER = 32, PURPLE = 64}
 var specialStageID = 0
 var lastSpecialStageResult = false
+var coins = 0
 var levelTime = 0 # the timer that counts down while the level isn't completed or in a special ring
 var levelTimeP2 = 0
 var globalTimer = 0 # global timer, used as reference for animations
 var maxTime = 60*10
 var airSpeedCap = true
+var livesMode = false
 
 # Arrays per act
 # Score,Time,Rings,ScoreP2,TimeP2,RingsP2

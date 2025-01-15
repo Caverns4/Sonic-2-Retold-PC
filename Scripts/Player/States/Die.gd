@@ -18,9 +18,10 @@ func runDeathinSinglePlayer():
 	# check if main player
 	if parent.playerControl == 1:
 		# check if speed above certain threshold
-		if parent.movement.y > 1000 and Global.lives > 0 and !Global.gameOver:
+		if parent.movement.y > 1000 and (Global.lives > 0 or !Global.livesMode) and !Global.gameOver:
 			parent.movement = Vector2.ZERO
-			Global.lives -= 1
+			if Global.livesMode:
+				Global.lives -= 1
 			CheckGameOver(Global.lives,Global.levelTime)
 	else:
 	# if not run respawn code
@@ -42,7 +43,7 @@ func runDeathInTwoPlayer():
 
 func CheckGameOver(lifeCount,timerVal):
 	# check if lives are remaining or death was a time over
-	if lifeCount > 0 and timerVal < Global.maxTime:
+	if (lifeCount > 0 or !Global.livesMode) and timerVal < Global.maxTime:
 		if !Global.TwoPlayer:
 			Global.main.change_scene_to_file(null,"FadeOut")
 			parent.process_mode = PROCESS_MODE_PAUSABLE

@@ -647,6 +647,7 @@ func _process(delta):
 		Global.life.stop()
 		Global.life.play()
 		Global.lives += 1
+		Global.coins += 1
 		Global.effectTheme.volume_db = -100
 		Global.bossMusic.volume_db = -100
 		Global.music.volume_db = -100
