@@ -14,15 +14,29 @@ func _ready():
 	if Global.currentCheckPoint == checkPointID:
 		# give a frame to to check activation
 		await get_tree().process_frame
-		activate()
+		$Spinner.queue("flash")
+		active = true
+		for i in Global.checkPoints:
+			if i.get("checkPointID") != null:
+				if i.checkPointID < checkPointID:
+					i.active = true
+					i.get_node("Spinner").play("flash")
 
 
-func activate():
+func activate(playerNode):
 	# queue flash, incase an animation is already playing
 	$Spinner.queue("flash")
 	active = true
 	Global.currentCheckPoint = checkPointID
-	Global.checkPointTime = Global.levelTime
+	
+	#Save player 1 data if main character passeds.
+	if Global.players[0] == playerNode:
+		Global.checkPointTime = Global.levelTime
+		Global.checkPointRings = playerNode.rings
+	#save player 2 data if sidekick passed.
+	elif Global.TwoPlayer == true and !Global.players[0] == playerNode:
+		Global.checkPointTimeP2 = Global.levelTimeP2
+		Global.checkPointRingsP2 = playerNode.rings
 	
 	# set checkpoint to self (and set any checkpoitns with a lower ID to active)
 	for i in Global.checkPoints:
@@ -31,7 +45,7 @@ func activate():
 				i.active = true
 				i.get_node("Spinner").play("flash")
 	
-	if (!Global.TwoPlayer and Global.players[0].rings > 50
+	if (!Global.TwoPlayer and Global.players[0].rings > 49
 	and Global.emeralds < 127): #If 1P, >=50 rings, > 7 emeralds...
 		var spawn = specialStageEntry.instantiate()
 		spawn.global_position = global_position + Vector2(0,-96)
@@ -43,11 +57,11 @@ func _on_Checkpoint_body_entered(body):
 		if body.playerControl == 1:
 			$Spinner.play("spin")
 			$Checkpoint.play()
-			activate()
+			activate(body)
 	if Global.TwoPlayer and !PlayerMemory.has(body):
 			$Spinner.play("spin")
 			$Checkpoint.play()
-			activate()
+			activate(body)
 			PlayerMemory.append(body)
 			body.respawnPosition = global_position
 	

@@ -143,7 +143,8 @@ func destroy():
 			Global.life.stop()
 			Global.life.play()
 			Global.lives += 1
-			Global.coins += 1
+			if Global.hud and !Global.TwoPlayer:
+				Global.hud.coins += 1
 			Global.effectTheme.volume_db = -100
 			Global.music.volume_db = -100
 		ITEMTYPES.LIFEP2: #2-Player 1up

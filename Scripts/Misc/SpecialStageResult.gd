@@ -34,7 +34,7 @@ func _input(event):
 			
 		if event.is_action_pressed("gm_action2"):
 			activated = true
-			#next_stage()
+			next_stage()
 			Global.main.change_scene_to_file(null,"WhiteOut","",1,true,false)
 
 

@@ -21,6 +21,7 @@ func _process(_delta):
 	if parent.playerControl != 0 or (parent.inputs[parent.INPUTS.YINPUT] < 0 and parent.character == Global.CHARACTERS.TAILS):
 		# Super
 		if (parent.inputs[parent.INPUTS.SUPER] == 1
+		and Global.timerActive
 		and !parent.isSuper
 		and isJump
 		and parent.movement.y < 0-abs(parent.releaseJmp)):

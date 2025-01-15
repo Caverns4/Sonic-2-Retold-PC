@@ -369,6 +369,7 @@ grow_horizontal = 2
 
 [node name="SonicGot" type="Label" parent="HUD/ResultLabel"]
 self_modulate = Color(0, 1, 1, 1)
+layout_mode = 0
 offset_left = -128.0
 offset_top = 24.0
 offset_right = 128.0
@@ -379,6 +380,7 @@ horizontal_alignment = 1
 
 [node name="Through" type="Label" parent="HUD/ResultLabel"]
 self_modulate = Color(0, 1, 1, 1)
+layout_mode = 0
 offset_left = -128.0
 offset_top = 48.0
 offset_right = 128.0

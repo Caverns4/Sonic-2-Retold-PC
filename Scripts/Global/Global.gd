@@ -17,6 +17,7 @@ var hud = null
 var levelSelectFlag = false
 var tailsNameCheat = false #if TRUE, Tails will be called "Miles"
 var characterSelectMemory = 0
+var levelSelctMemory = 0
 # checkpoint memory
 var checkPoints = []
 # reference for the current checkpoint
@@ -25,7 +26,8 @@ var currentCheckPointP2 = -1
 # the current level time from when the checkpoint got hit
 var checkPointTime = 0
 var checkPointTimeP2 = 0
-
+var checkPointRings = 0
+var checkPointRingsP2 = 0
 # the starting room, this is loaded on game resets, you may want to change this
 var startScene = preload("res://Scene/Presentation/Title.tscn")
 var nextZone = load("res://Scene/Zones/EmeraldHill1.tscn") # change this to the first level in the game (also set in "reset_values")
@@ -70,8 +72,7 @@ var soundChannel = AudioStreamPlayer.new()
 # Gameplay values
 var score = 0
 var lives = 3
-var continues = 0
-
+var continues = 0 #Never used
 var scoreP2 = 0
 var livesP2 = 3
 # emeralds use bitwise flag operations, the equivelent for 7 emeralds would be 127
@@ -83,13 +84,29 @@ enum EMERALD {
 	#RED = 1, BLUE = 2, GREEN = 4, YELLOW = 8, CYAN = 16, SILVER = 32, PURPLE = 64}
 var specialStageID = 0
 var lastSpecialStageResult = false
-var coins = 0
 var levelTime = 0 # the timer that counts down while the level isn't completed or in a special ring
 var levelTimeP2 = 0
 var globalTimer = 0 # global timer, used as reference for animations
 var maxTime = 60*10
-var airSpeedCap = true
+
+#Save Data Atributes
+var totalCoins = 0
+var unlockFlags = 0
+enum UNLOCKS{
+	KNUCKLES = 1, # Play as Knuckles: 5 coins
+	AMY = 2, # Play as Amy: 10 coins
+	MIGHTY = 4, # Play as Mighty: 15 coins
+	RAY = 8, # Play as Ray: 20 coins
+	BETASONIC = 16, # Beta Sonic Sprites: 20
+	BETACASINONIGHT = 32, # Beta Casino Night: 25 coins
+	SPEEDCAP = 64, # Disable Air Speed Cap: 25 coins
+	ANYCOMBO = 128, # Super Form for all Characters: 30 coins
+	SUPEROTHERS = 256, # Allow any player combination: 30 coins
+	STARTEMERALDS = 512, # Start with any number of Chaose Emralds: 50 coins
+	RINGDRAIN = 1024, # Disable Super Sonic Ringdrain: 50 coins
+}
 var livesMode = false
+var airSpeedCap = true
 
 # Arrays per act
 # Score,Time,Rings,ScoreP2,TimeP2,RingsP2
@@ -168,6 +185,26 @@ func _ready():
 	soundChannel.bus = "SFX"
 	# load game data
 	load_settings()
+	# load Global Save data flags
+	var SaveName = "user://Sonic.dat"
+	if FileAccess.file_exists(SaveName):
+		var save_file = FileAccess.open(SaveName, FileAccess.READ)
+		while save_file.get_position() < save_file.get_length():
+			var json_string = save_file.get_line()
+			# Creates the helper class to interact with JSON.
+			var json = JSON.new()
+			# Check if there is any error while parsing the JSON string, skip in case of failure.
+			var parse_result = json.parse(json_string)
+			if !parse_result == OK:
+				print("Global Save Data Parse Error!")
+				continue
+			
+			var a = json.data
+			if a is Array and a.size() > 0:
+				totalCoins = a[0]
+				unlockFlags = a[1] 
+	else:
+		print("Global Save Data does not exist. Skipping.")
 	
 	# check if main scene is root (prevents crashing if you started from another scene)
 	if !(get_tree().current_scene is MainGameScene):
@@ -232,6 +269,8 @@ func check_score_life(scoreAdd = 0):
 		Global.life.stop()
 		life.play()
 		lives += 1
+		if hud:
+			hud.coins += 1
 		effectTheme.volume_db = -100
 		music.volume_db = -100
 		bossMusic.volume_db = -100
@@ -356,11 +395,17 @@ func SetupWindowSize():
 		window.set_position(window.get_position()+(window.size-newSize)/2)
 		window.set_size(resolution * Global.zoomSize)
 
+func SaveGlobalData():
+	var save_file = FileAccess.open("user://Sonic.dat",FileAccess.WRITE)
+	var a = [totalCoins,Global.unlockFlags]
+	var json_string = JSON.stringify(a)
+	save_file.store_line(json_string)
+	
 
 func SaveGameData():
 	if saveFileSelected == 0:
 		return
-	var filename = "sonic" + str(saveFileSelected) + ".dat"
+	var filename = "Sonic" + str(saveFileSelected) + ".dat"
 	var a = Global.Score*(savedZoneID*4)/30+PlayerChar2*PlayerChar1
 	print(a)
 	

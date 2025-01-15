@@ -331,9 +331,11 @@ position = Vector2(3942, 172)
 
 [node name="Checkpoint2" parent="ItemsHolder" instance=ExtResource("27_horvy")]
 position = Vector2(6416, 552)
+checkPointID = 1
 
 [node name="Checkpoint3" parent="ItemsHolder" instance=ExtResource("27_horvy")]
 position = Vector2(8834, 364)
+checkPointID = 2
 
 [node name="Monitor" parent="ItemsHolder" instance=ExtResource("28_etcp3")]
 position = Vector2(959, 565)

@@ -33,6 +33,7 @@ var timeBonus = 0
 var ringBonus = 0
 var perfectBonus = 0
 var perfectEnabled = true
+var coins = 0 #Number of coins collected.
 
 # gameOver is used to initialize the game over animation sequence, note: this is for animation, if you want to use the game over status it's in global
 var gameOver = false
@@ -116,6 +117,7 @@ func _ready():
 		$LevelCard/CardPlayer.play("End")
 		# unpause the game and set previous pause mode nodes to stop on pause
 		get_tree().paused = false
+		respawnPlayer()
 		Global.musicParent.process_mode = PROCESS_MODE_PAUSABLE
 		$LevelCard/CardPlayer.process_mode = PROCESS_MODE_PAUSABLE
 		# emit stage start signal
@@ -139,6 +141,54 @@ func _ready():
 	
 	# set the act clear frame
 	$LevelClear/Act.frame = act-1
+
+func respawnPlayer():
+	if Global.players:
+		var player = Global.players[0]
+		# set player's position to rings (and player 2)
+		# helps sell the illusion that we reset the room
+		if Global.checkPoints.size() > 0:
+			for i in Global.checkPoints:
+				if Global.currentCheckPoint == i.checkPointID:
+					print(i.checkPointID)
+					player.camera.global_position = i.global_position+Vector2(0,8)
+					player.global_position = i.global_position+Vector2(0,8)
+					Global.levelTime = Global.checkPointTime
+					Global.levelTimeP2 = Global.checkPointTime
+					Global.lastSpecialStageResult = false
+		player.direction = 1
+		# Remember to give the player's air back, they might have been under water
+		# imagine if you were underwater and got sucked into another dimension only for when
+		# you get back you immediately drown.
+				# That's happened in real life plenty of times they just never tell you about it
+				# mostly because the people this has happened to have drowned.
+				# But this is Sonic the Hedgehog and not real life so this unrealistic change is fine
+		player.airTimer = player.defaultAirTime
+		# check for partner
+		if player.partner:
+			player.partner.global_position = player.global_position+Vector2(-32,0)
+			player.partner.direction = 1
+			player.partner.movement = Vector2.ZERO
+			player.partner.velocity = Vector2.ZERO
+			# reset state
+			player.partner.set_state(player.partner.STATES.NORMAL)
+			# play idle
+			player.partner.animator.play("idle")
+			# reset the partners air, imagine if you came home and from another dimension and-
+			player.partner.airTimer = player.partner.defaultAirTime
+				
+		# reset invincibility and shoes (or super low so they player can exit these states normally)
+		player.supTime = min(player.supTime,0.01)
+		player.shoeTime = min(player.supTime,0.01)
+		player.switch_physics()
+		player.visible = true
+		# reset state
+		player.set_state(player.STATES.NORMAL)
+		# play idle
+		player.animator.play("idle")
+		player.collision_layer = player.defaultLayer
+		player.collision_mask = player.defaultMask
+
 
 func _process(delta):
 	# set score string to match global score with leading 0s
@@ -168,7 +218,7 @@ func _process(delta):
 		if Global.livesMode:
 			lifeText.text = "%3d" % Global.lives
 		else:
-			lifeText.text = "%3d" % Global.coins
+			lifeText.text = "%3d" % min(Global.totalCoins + coins,999)
 	else:
 		lifeText.text = "%3d" % Global.livesP2
 		$P2Counters/Icon2/LifeText.text = "%3d" % Global.lives
@@ -290,6 +340,7 @@ func _process(delta):
 			# wait 2 seconds (reuse timer)
 			$LevelClear/CounterWait.start(2)
 			await $LevelClear/CounterWait.timeout
+			Global.totalCoins += coins
 			# after clear, change to next level in Global.nextZone (you can set the next zone in the level script node)
 			Global.loadNextLevel()
 			Global.main.change_scene_to_file(Global.nextZone,"FadeOut","FadeOut",1)
@@ -322,6 +373,8 @@ func _process(delta):
 			await Global.main.scene_faded
 			Global.levelTime = 0
 			Global.levelTimeP2 = 0
+			
+			
 
 # counter count down
 func _on_CounterCount_timeout():
