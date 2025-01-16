@@ -24,7 +24,7 @@ texture = ExtResource("3_q3ln3")
 centered = false
 hframes = 11
 vframes = 2
-frame = 15
+frame = 16
 
 [node name="TopRight" type="Sprite2D" parent="."]
 top_level = true
@@ -34,7 +34,7 @@ texture = ExtResource("3_q3ln3")
 centered = false
 hframes = 11
 vframes = 2
-frame = 15
+frame = 16
 
 [node name="BottomLeft" type="Sprite2D" parent="."]
 top_level = true
@@ -44,7 +44,7 @@ texture = ExtResource("3_q3ln3")
 centered = false
 hframes = 11
 vframes = 2
-frame = 15
+frame = 16
 
 [node name="BottomRight" type="Sprite2D" parent="."]
 top_level = true
@@ -53,4 +53,4 @@ texture = ExtResource("3_q3ln3")
 centered = false
 hframes = 11
 vframes = 2
-frame = 15
+frame = 16

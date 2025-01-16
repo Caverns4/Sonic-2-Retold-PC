@@ -18,11 +18,13 @@ func _ready() -> void:
 		$AngledCollision.disabled = false
 		$VeritcalCollison.visible = false
 		$Sprite2D.frame = 0
+		$Area2D.monitoring = true
 	else:
 		$VeritcalCollison.disabled = false
 		$AngledCollision.disabled = true
 		$AngledCollision.visible = false
 		$Sprite2D.frame = 4
+		$Area2D.monitoring = false
 
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint():
@@ -47,19 +49,15 @@ func _physics_process(delta: float) -> void:
 					active = false
 			else:
 				for player in players:
-					#TODO: Make this an Area2D instead
-					if (player.global_position.x > global_position.x + 40 
-					or player.global_position.x < global_position.x - 40
-					or player.global_position.y > global_position.y + 16
-					or player.global_position.y < global_position.y - 24):
-						players.erase(player)
-					else:
-						if player.ground:
+					if player.ground:
+						player.set_state(player.STATES.ANIMATION)
+						player.animator.play("roll")
+						player.movement.x = 60 * direction
+						if player.jumpBuffer > 0.0:
 							var offsetDiff = direction*8 #Number of pixels from the "center"
 							var height = round(
 								((direction*player.global_position.x) - ((direction*global_position.x) - (offsetDiff*direction)))
 								/4)
-							print(height)
 							if height > 0:
 								active = true
 								frameTimer = 0.1
@@ -68,20 +66,16 @@ func _physics_process(delta: float) -> void:
 								player.currentState = player.STATES.AIR
 								player.animator.play("roll")
 								Global.play_sound(flipsound)
+								player.controlObject = null
+								player.translate = false
 								players.erase(player)
 								$Sprite2D.frame = 1
-						else:
-							players.erase(player)
-							player.controlObject = null
-							player.translate = false
-				
-
 
 func physics_collision(player, hitVector):
 	if type == 0:
 		if hitVector.y > 0:
 			player.controlObject = self
-			players.append(player)
+			#players.append(player)
 			#player.translate = true
 	else:
 		if player.ground and round(hitVector.y) == 0:
@@ -95,3 +89,12 @@ func physics_collision(player, hitVector):
 				$Sprite2D.frame = 3
 			else:
 				$Sprite2D.frame = 5
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	players.append(body)
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	players.erase(body)
+	body.set_state(body.STATES.AIR)

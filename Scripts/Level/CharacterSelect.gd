@@ -123,7 +123,7 @@ func _input(event):
 					characterID = wrapi(characterID-1,0,characterLabels.size())
 					$Switch.play()
 				else:
-					levelID = wrapi(levelID-(columnSize),0,levelIcons.size())
+					levelID = wrapi(levelID-(columnSize)+1,0,levelIcons.size())
 			if  inputCue.x > 0 :
 				if levelID == CharacterSelectMenuID-1:
 					characterID = wrapi(characterID+1,0,characterLabels.size())
@@ -132,7 +132,7 @@ func _input(event):
 					if levelID > CharacterSelectMenuID-1 - columnSize and levelID < columnSize:
 						levelID = CharacterSelectMenuID-1
 					else:
-						levelID = wrapi(levelID+(columnSize),0,levelIcons.size())
+						levelID = wrapi(levelID+(columnSize)-1,0,levelIcons.size())
 					
 
 			if inputCue.y > 0:
@@ -234,19 +234,30 @@ func _input(event):
 					Global.savedZoneID = Global.ZONES.CASINO_NIGHT
 					Global.savedActID = 1
 				21: #Sky Fortress 1
-					Global.savedZoneID = Global.ZONES.SKY_FORTRESS
+					Global.savedZoneID = Global.ZONES.JEWEL_GROTTO
 					Global.savedActID = 0
 				22: #Sky Fortress 2
+					Global.savedZoneID = Global.ZONES.JEWEL_GROTTO
+					Global.savedActID = 1
+				23: #Sand Shower 1
+					Global.savedZoneID = Global.ZONES.SAND_SHOWER
+					Global.savedActID = 0
+				24: #Sand Shower 2
+					Global.savedZoneID = Global.ZONES.SAND_SHOWER
+					Global.savedActID = 1
+				25: #Sky Fortress 1
+					Global.savedZoneID = Global.ZONES.SKY_FORTRESS
+					Global.savedActID = 0
+				26: #Sky Fortress 2
 					Global.savedZoneID = Global.ZONES.SKY_FORTRESS
 					Global.savedActID = 1
-				23: #Death Egg 1
+				27: #Death Egg 1
 					Global.savedZoneID = Global.ZONES.DEATH_EGG
 					Global.savedActID = 0
-				24: #Death Egg 2
+				28: #Death Egg 2
 					Global.savedZoneID = Global.ZONES.DEATH_EGG
 					Global.savedActID = 1
-				26:
-					Global.airSpeedCap = !Global.airSpeedCap
+				29:
 					selected = false
 					return
 				_: # Invalid Entry
