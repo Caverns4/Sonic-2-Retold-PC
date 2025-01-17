@@ -223,7 +223,7 @@ ringsForPerfect = 300
 [node name="01-HiddenPalace" parent="." instance=ExtResource("7_vtcww")]
 
 [node name="Player" parent="." instance=ExtResource("5_gd4l3")]
-position = Vector2(560, 1453)
+position = Vector2(560, 1452)
 
 [node name="Level_Layout" type="Node" parent="."]
 

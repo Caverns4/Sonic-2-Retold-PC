@@ -1,8 +1,23 @@
 extends PhysicsObject
 # Sonic, Knuckle, and Mighty
-const HITBOXESSONIC = {NORMAL = Vector2(9,19)*2, ROLL = Vector2(7,14)*2, CROUCH = Vector2(9,11)*2, GLIDE = Vector2(10,10)*2, HORIZONTAL = Vector2(22,9)*2}
-const HITBOXESTAILS = {NORMAL = Vector2(9,15)*2, ROLL = Vector2(7,14)*2, CROUCH = Vector2(9,9.5)*2, GLIDE = Vector2(10,10)*2, HORIZONTAL = Vector2(22,9)*2}
-const HITBOXESAMY = {NORMAL = Vector2(9,15)*2, ROLL = Vector2(7,11)*2, CROUCH = Vector2(9,9.5)*2, GLIDE = Vector2(10,10)*2, HORIZONTAL = Vector2(22,9)*2}
+const HITBOXESSONIC = {
+	NORMAL = Vector2(9,19)*2, 
+	ROLL = Vector2(7,14)*2, 
+	CROUCH = Vector2(9,11)*2, 
+	GLIDE = Vector2(10,10)*2, 
+	HORIZONTAL = Vector2(22,9)*2}
+const HITBOXESTAILS = {
+	NORMAL = Vector2(9,15)*2, 
+	ROLL = Vector2(7,14)*2, 
+	CROUCH = Vector2(9,9.5)*2, 
+	GLIDE = Vector2(10,10)*2, 
+	HORIZONTAL = Vector2(22,9)*2}
+const HITBOXESAMY = {
+	NORMAL = Vector2(9,15)*2, 
+	ROLL = Vector2(7,11)*2, 
+	CROUCH = Vector2(9,9.5)*2, 
+	GLIDE = Vector2(10,10)*2, 
+	HORIZONTAL = Vector2(22,9)*2}
 var currentHitbox = HITBOXESSONIC
 
 const JUMP_BUFFER_TIME = 3.0/60.0 #Time after pressing jump button to buffer the input, in case it's pressed early.

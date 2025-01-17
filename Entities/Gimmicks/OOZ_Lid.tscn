@@ -1,29 +1,84 @@
-[gd_scene load_steps=4 format=3 uid="uid://chgov1cta70sn"]
+[gd_scene load_steps=9 format=3 uid="uid://chgov1cta70sn"]
 
 [ext_resource type="Texture2D" uid="uid://bdkig5lewgpcq" path="res://Graphics/Gimmicks/OOZ_LidTop.png" id="1_5rgec"]
+[ext_resource type="Script" path="res://Scripts/Gimmicks/ooz_lid.gd" id="1_n4dys"]
 [ext_resource type="Texture2D" uid="uid://bdwp0lti70ccs" path="res://Graphics/Gimmicks/OOZ_Pillar.png" id="2_8n1xm"]
+[ext_resource type="Script" path="res://Scripts/Objects/OOZ_Lid_Motion.gd" id="3_nn0l2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mmkh8"]
 size = Vector2(48, 8)
 
+[sub_resource type="Animation" id="Animation_6muev"]
+resource_name = "Twirl"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_7rit0"]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lxxv3"]
+_data = {
+"RESET": SubResource("Animation_7rit0"),
+"Twirl": SubResource("Animation_6muev")
+}
+
 [node name="OOZ_Lid" type="Node2D"]
+script = ExtResource("1_n4dys")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 use_parent_material = true
 offset_left = -32.0
 offset_right = 32.0
-offset_bottom = 128.0
+offset_bottom = 32.0
 texture = ExtResource("2_8n1xm")
 expand_mode = 1
 stretch_mode = 1
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-collision_layer = 8207
-collision_mask = 0
+collision_layer = 8192
+collision_mask = 15
+script = ExtResource("3_nn0l2")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(0, -2)
 texture = ExtResource("1_5rgec")
+hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+process_priority = 10
 position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_mmkh8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
+libraries = {
+"": SubResource("AnimationLibrary_lxxv3")
+}
+autoplay = "RESET"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-64, -224, 128, 256)
