@@ -13,6 +13,10 @@ var players = []
 var main = null
 # hud object reference
 var hud = null
+#slot machine (Casino Night Zone Only)
+var slotMachines = []
+#Character Reels (Casino Night Zone Only)
+var characterReels = []
 # Cheats implimented
 var levelSelectFlag = false
 var tailsNameCheat = false #if TRUE, Tails will be called "Miles"

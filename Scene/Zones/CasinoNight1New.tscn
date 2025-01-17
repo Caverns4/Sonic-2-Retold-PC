@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://p0yejpqi4q88"]
+[gd_scene load_steps=25 format=4 uid="uid://p0yejpqi4q88"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_0yy3m"]
 [ext_resource type="AudioStream" uid="uid://c354qh8pof6fe" path="res://Audio/Soundtrack/s2br_CasinoNight.ogg" id="2_20443"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="21_yc45f"]
 [ext_resource type="PackedScene" uid="uid://dkt4dlhmutrkc" path="res://Entities/ZoneObjects/CNZ-big_bumper.tscn" id="22_2kigl"]
 [ext_resource type="PackedScene" uid="uid://c4jrjspjbeybr" path="res://Scene/Backgrounds/09-CasinoNightF.tscn" id="22_5pai5"]
+[ext_resource type="PackedScene" uid="uid://maxhev4qup18" path="res://Entities/Gimmicks/cnz_slot.tscn" id="24_vdjfc"]
 
 [node name="CasinoNight1" type="Node2D"]
 script = ExtResource("1_0yy3m")
@@ -327,7 +328,7 @@ position = Vector2(2584, 512)
 position = Vector2(3096, 328)
 
 [node name="CnzFlipper13" parent="Entities" instance=ExtResource("13_wyhjd")]
-position = Vector2(3608, 1016)
+position = Vector2(3608, 968)
 
 [node name="CnzFlipper15" parent="Entities" instance=ExtResource("13_wyhjd")]
 position = Vector2(5032, 944)
@@ -349,7 +350,8 @@ position = Vector2(7960, 1032)
 position = Vector2(8088, 1256)
 
 [node name="CnzFlipper24" parent="Entities" instance=ExtResource("13_wyhjd")]
-position = Vector2(8296, 1272)
+position = Vector2(8296, 1288)
+scale = Vector2(-1, 1)
 
 [node name="CnzFlipper25" parent="Entities" instance=ExtResource("13_wyhjd")]
 position = Vector2(8088, 1608)
@@ -431,6 +433,45 @@ position = Vector2(2456, 1480)
 
 [node name="CnzFlipper38" parent="Entities" instance=ExtResource("13_wyhjd")]
 position = Vector2(4120, 1284)
+
+[node name="CNZSlot" parent="Entities" instance=ExtResource("24_vdjfc")]
+position = Vector2(1120, 1184)
+
+[node name="CNZSlot2" parent="Entities" instance=ExtResource("24_vdjfc")]
+position = Vector2(1312, 1184)
+
+[node name="CNZSlot4" parent="Entities" instance=ExtResource("24_vdjfc")]
+position = Vector2(2176, 1176)
+
+[node name="CNZSlot5" parent="Entities" instance=ExtResource("24_vdjfc")]
+position = Vector2(4608, 1120)
+
+[node name="CNZSlot6" parent="Entities" instance=ExtResource("24_vdjfc")]
+position = Vector2(5632, 1376)
+
+[node name="CNZSlot7" parent="Entities" instance=ExtResource("24_vdjfc")]
+position = Vector2(5632, 1616)
+
+[node name="CNZSlot8" parent="Entities" instance=ExtResource("24_vdjfc")]
+position = Vector2(7104, 608)
+
+[node name="CNZSlot9" parent="Entities" instance=ExtResource("24_vdjfc")]
+position = Vector2(7616, 352)
+
+[node name="CNZSlot10" parent="Entities" instance=ExtResource("24_vdjfc")]
+position = Vector2(8704, 280)
+
+[node name="CNZSlot11" parent="Entities" instance=ExtResource("24_vdjfc")]
+position = Vector2(9000, 792)
+
+[node name="CNZSlot12" parent="Entities" instance=ExtResource("24_vdjfc")]
+position = Vector2(8896, 992)
+
+[node name="CNZSlot13" parent="Entities" instance=ExtResource("24_vdjfc")]
+position = Vector2(8192, 1024)
+
+[node name="CNZSlot3" parent="Entities" instance=ExtResource("24_vdjfc")]
+position = Vector2(1216, 1120)
 
 [node name="MovingPlatforms" type="Node2D" parent="."]
 material = ExtResource("8_cpekc")
@@ -621,7 +662,7 @@ scale = Vector2(2, 4)
 [node name="Badniks" type="Node" parent="."]
 
 [node name="Crawl" parent="Badniks" instance=ExtResource("20_2gusr")]
-position = Vector2(224, 688)
+position = Vector2(872, 752)
 
 [node name="Crawl2" parent="Badniks" instance=ExtResource("20_2gusr")]
 position = Vector2(3776, 624)
@@ -630,12 +671,15 @@ position = Vector2(3776, 624)
 position = Vector2(4088, 816)
 
 [node name="Crawl4" parent="Badniks" instance=ExtResource("20_2gusr")]
-position = Vector2(7608, 624)
+position = Vector2(7616, 624)
+
+[node name="Crawl5" parent="Badniks" instance=ExtResource("20_2gusr")]
+position = Vector2(8552, 560)
 
 [node name="ItemsHolder" type="Node" parent="."]
 
 [node name="Monitor" parent="ItemsHolder" instance=ExtResource("21_yc45f")]
-position = Vector2(832, 752)
+position = Vector2(640, 736)
 item = 1
 
 [node name="Monitor2" parent="ItemsHolder" instance=ExtResource("21_yc45f")]
@@ -868,3 +912,15 @@ position = Vector2(7360, 1888)
 [node name="CNZ-BigBumper19" parent="Bumpers" instance=ExtResource("22_2kigl")]
 position = Vector2(5312, 800)
 rotation = 3.14159
+
+[node name="SlotMachines" type="Node" parent="."]
+
+[node name="CNZSlot" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+position = Vector2(384, 696)
+type = 1
+
+[node name="CnzCharacterReels" parent="SlotMachines" instance=ExtResource("13_kcv3i")]
+position = Vector2(384, 624)
+
+[node name="CnzCharacterReels2" parent="SlotMachines" instance=ExtResource("13_kcv3i")]
+position = Vector2(384, 664)
