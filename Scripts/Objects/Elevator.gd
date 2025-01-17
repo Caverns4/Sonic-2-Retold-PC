@@ -74,6 +74,8 @@ func _physics_process(delta):
 				delayTimer -= delta
 				if delayTimer <= 0: #round(getPos) == Vector2.ZERO:
 					state = STATES.PATHFROM
+					if soundFile:
+						$AudioStreamPlayer.play()
 			STATES.PATHFROM:
 				# Return home, set active to false, state = SATES.IDLE
 				activeTimer+=(delta)
