@@ -1,10 +1,208 @@
-[gd_scene load_steps=4 format=3 uid="uid://8sljpf878e00"]
+[gd_scene load_steps=13 format=3 uid="uid://8sljpf878e00"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/crawl.gd" id="1_0pgyn"]
 [ext_resource type="Texture2D" uid="uid://c8j6h0dpua10y" path="res://Graphics/Enemies/Crawl_Mobile.png" id="2_evms8"]
+[ext_resource type="AudioStream" uid="uid://bkqi8dr4nxfkp" path="res://Audio/SFX/Objects/Bumper.wav" id="3_0hbeo"]
+[ext_resource type="Script" path="res://Scripts/Enemies/crawl_bumper.gd" id="3_xswa5"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(8, 8)
+size = Vector2(28, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xkmua"]
+size = Vector2(6, 32)
+
+[sub_resource type="Animation" id="Animation_y1bro"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("crawlsprite/CrawlBumper:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("crawlsprite/crawlClaw:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-8, 8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("crawlsprite/CrawlBumper:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qkoms"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("crawlsprite/CrawlBumper:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("crawlsprite/crawlClaw:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-8, 8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("crawlsprite/CrawlBumper:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ss73b"]
+resource_name = "Block_Up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("crawlsprite/CrawlBumper:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, -14)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("crawlsprite/CrawlBumper:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_y0ns6"]
+resource_name = "Block_Forward"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("crawlsprite/CrawlBumper:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-13, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("crawlsprite/CrawlBumper:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("crawlsprite/crawlClaw:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 8)]
+}
+
+[sub_resource type="Animation" id="Animation_6jmbx"]
+resource_name = "Walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("crawlsprite/crawlClaw:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-8, 8), Vector2(-2, 8), Vector2(-8, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("crawlsprite/CrawlBumper:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(6, 0), Vector2(0, 0), Vector2(6, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("crawlsprite/CrawlBumper:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j32f5"]
+_data = {
+"Block_Forward": SubResource("Animation_y0ns6"),
+"Block_Up": SubResource("Animation_ss73b"),
+"Idle": SubResource("Animation_y1bro"),
+"RESET": SubResource("Animation_qkoms"),
+"Walk": SubResource("Animation_6jmbx")
+}
 
 [node name="Crawl" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 16384
@@ -12,6 +210,7 @@ collision_mask = 0
 script = ExtResource("1_0pgyn")
 
 [node name="CollissionMask" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
 shape = SubResource("1")
 
 [node name="DamageArea" type="Area2D" parent="."]
@@ -20,6 +219,7 @@ collision_mask = 528384
 
 [node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
 modulate = Color(1, 0, 0, 1)
+position = Vector2(2, 2)
 shape = SubResource("1")
 
 [node name="crawlsprite" type="Sprite2D" parent="."]
@@ -33,11 +233,30 @@ texture = ExtResource("2_evms8")
 hframes = 4
 frame = 3
 
-[node name="crawlBumper" type="Sprite2D" parent="crawlsprite"]
-position = Vector2(11, 0)
+[node name="CrawlBumper" type="StaticBody2D" parent="crawlsprite"]
+position = Vector2(6, 0)
+collision_layer = 65536
+collision_mask = 8192
+script = ExtResource("3_xswa5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="crawlsprite/CrawlBumper"]
+shape = SubResource("RectangleShape2D_xkmua")
+
+[node name="crawlBumper" type="Sprite2D" parent="crawlsprite/CrawlBumper"]
+position = Vector2(8, 0)
 texture = ExtResource("2_evms8")
 hframes = 4
 frame = 1
+
+[node name="BumperSFX" type="AudioStreamPlayer" parent="crawlsprite/CrawlBumper"]
+stream = ExtResource("3_0hbeo")
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j32f5")
+}
+autoplay = "Walk"
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 visible = false

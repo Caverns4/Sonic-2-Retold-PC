@@ -623,6 +623,15 @@ scale = Vector2(2, 4)
 [node name="Crawl" parent="Badniks" instance=ExtResource("20_2gusr")]
 position = Vector2(224, 688)
 
+[node name="Crawl2" parent="Badniks" instance=ExtResource("20_2gusr")]
+position = Vector2(3776, 624)
+
+[node name="Crawl3" parent="Badniks" instance=ExtResource("20_2gusr")]
+position = Vector2(4088, 816)
+
+[node name="Crawl4" parent="Badniks" instance=ExtResource("20_2gusr")]
+position = Vector2(7608, 624)
+
 [node name="ItemsHolder" type="Node" parent="."]
 
 [node name="Monitor" parent="ItemsHolder" instance=ExtResource("21_yc45f")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://cmqfbxox5j2ce"]
+[gd_scene load_steps=21 format=4 uid="uid://cmqfbxox5j2ce"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_d0vec"]
 [ext_resource type="AudioStream" uid="uid://c354qh8pof6fe" path="res://Audio/Soundtrack/s2br_CasinoNight.ogg" id="2_lgh7f"]
@@ -20,7 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="16_55g4f"]
 [ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="18_15k1m"]
 [ext_resource type="AudioStream" uid="uid://cei1ganfjxio8" path="res://Audio/SFX/Objects/CNZ_Elevator.wav" id="18_vpdhg"]
-[ext_resource type="PackedScene" uid="uid://8sljpf878e00" path="res://Entities/Enemies/Crawl.tscn" id="21_h4fyg"]
 
 [node name="CasinoNight1" type="Node2D"]
 script = ExtResource("1_d0vec")
@@ -131,9 +130,6 @@ position = Vector2(1152, 1536)
 
 [node name="Bumper7" parent="Entities" instance=ExtResource("13_1an8l")]
 position = Vector2(1896, 736)
-
-[node name="Bumper8" parent="Entities" instance=ExtResource("13_1an8l")]
-position = Vector2(640, 768)
 
 [node name="LayerSwitcher" parent="Entities" instance=ExtResource("12_6028l")]
 position = Vector2(3840, 1464)
@@ -399,9 +395,6 @@ scale = Vector2(2, 4)
 [node name="Rings" type="Node" parent="."]
 
 [node name="Badniks" type="Node" parent="."]
-
-[node name="Crawl" parent="Badniks" instance=ExtResource("21_h4fyg")]
-position = Vector2(488, 720)
 
 [node name="ItemsHolder" type="Node" parent="."]
 

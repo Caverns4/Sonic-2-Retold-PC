@@ -43,11 +43,11 @@ func SpringCharacters():
 	for i in players.size():
 		var node = players[i]
 		var temp = round(abs((direction * (global_position.x - node.global_position.x))-24)/8)
-		print(temp)
 		temp = min(max(temp,0),lauchSpeeds.size()-1)
 		var speedSet = (lauchSpeeds[temp]) * 60
 		
 		node.set_state(node.STATES.AIR)
+		node.ground = false
 		node.airControl = true
 		node.animator.queue("walk")
 		node.animator.play("corkScrew")
