@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://by3kgbgiinm60"]
+[gd_scene load_steps=78 format=3 uid="uid://by3kgbgiinm60"]
 
 [ext_resource type="Material" uid="uid://bveqi5m5ihsgj" path="res://Shaders/PlayerPalette.tres" id="1"]
 [ext_resource type="Texture2D" uid="uid://c05fsbnx0p7xf" path="res://Graphics/Players/Tails.png" id="2"]
@@ -44,6 +44,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [31]
 }
 
 [sub_resource type="Animation" id="121"]
@@ -1119,9 +1131,25 @@ tracks/1/keys = {
 "values": [Vector2(2, -4), Vector2(-2, -4), Vector2(-2, -4), Vector2(0, -4), Vector2(2, -4), Vector2(2, -4), Vector2(-2, -4), Vector2(-2, -4), Vector2(-2, -4), Vector2(0, -4), Vector2(2, -4), Vector2(2, -4)]
 }
 
+[sub_resource type="Animation" id="Animation_giq2e"]
+resource_name = "Victory"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [30, 31]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ur811"]
 _data = {
 "RESET": SubResource("86"),
+"Victory": SubResource("Animation_giq2e"),
 "air": SubResource("121"),
 "clingVerticalBar": SubResource("Animation_hleq2"),
 "clingVerticalBarOffset": SubResource("Animation_w4arn"),
@@ -1503,9 +1531,39 @@ tracks/1/keys = {
 "values": [Vector2(-5, -8)]
 }
 
+[sub_resource type="Animation" id="Animation_3h5gx"]
+resource_name = "Victory"
+length = 0.5
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Tails:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [12, 13]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Tails:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-5, -7), Vector2(0, -7)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_14wfa"]
 _data = {
 "RESET": SubResource("108"),
+"Victory": SubResource("Animation_3h5gx"),
 "default": SubResource("109"),
 "fly": SubResource("120"),
 "hang": SubResource("124"),
@@ -1589,6 +1647,7 @@ texture = ExtResource("2")
 offset = Vector2(0, -5)
 hframes = 16
 vframes = 8
+frame = 31
 script = ExtResource("5")
 
 [node name="DashDust" type="AnimatedSprite2D" parent="Sprite2D"]

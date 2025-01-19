@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bdaih80dlev3f"]
+[gd_scene load_steps=56 format=3 uid="uid://bdaih80dlev3f"]
 
 [ext_resource type="Material" uid="uid://bveqi5m5ihsgj" path="res://Shaders/PlayerPalette.tres" id="1"]
 [ext_resource type="Texture2D" uid="uid://cndrds5482vh5" path="res://Graphics/Players/Knuckles.png" id="2"]
@@ -645,9 +645,26 @@ tracks/0/keys = {
 "values": [90, 91, 92, 93, 94, 95]
 }
 
+[sub_resource type="Animation" id="Animation_x2x4a"]
+resource_name = "Victory"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [108, 109, 110, 111]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t3bqq"]
 _data = {
 "RESET": SubResource("86"),
+"Victory": SubResource("Animation_x2x4a"),
 "air": SubResource("Animation_ksldi"),
 "climb": SubResource("Animation_l61d4"),
 "climbUp": SubResource("Animation_m06nr"),

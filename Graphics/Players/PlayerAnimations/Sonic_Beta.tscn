@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://sbta787c4fwk"]
+[gd_scene load_steps=68 format=3 uid="uid://sbta787c4fwk"]
 
 [ext_resource type="Material" uid="uid://bveqi5m5ihsgj" path="res://Shaders/PlayerPalette.tres" id="1_h4o3a"]
 [ext_resource type="Texture2D" uid="uid://cgq1nmr34au7o" path="res://Graphics/Players/Mighty.png" id="2_n3qsv"]
@@ -42,6 +42,34 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sonic/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14]
+}
+
+[sub_resource type="Animation" id="Animation_o0gos"]
+resource_name = "Wall"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sonic/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
 }
 
 [sub_resource type="Animation" id="108"]
@@ -1083,9 +1111,8 @@ tracks/0/keys = {
 "values": [256, 267, 266, 265, 264, 263, 262, 261, 260, 259, 258, 257]
 }
 
-[sub_resource type="Animation" id="Animation_o0gos"]
-resource_name = "Wall"
-length = 0.25
+[sub_resource type="Animation" id="Animation_6r1uk"]
+resource_name = "Victory"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1093,15 +1120,16 @@ tracks/0/path = NodePath("Sonic/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [15]
+"values": [13, 14]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_36uej"]
 _data = {
 "RESET": SubResource("86"),
+"Victory": SubResource("Animation_6r1uk"),
 "Wall": SubResource("Animation_o0gos"),
 "air": SubResource("108"),
 "clingVerticalBar": SubResource("Animation_3l35s"),
@@ -1282,6 +1310,7 @@ texture = ExtResource("2_n3qsv")
 offset = Vector2(0, -5)
 hframes = 16
 vframes = 7
+frame = 14
 
 [node name="DashDust" type="AnimatedSprite2D" parent="Sprite2D"]
 visible = false
