@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=4 uid="uid://drwc8cayf58ce"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/CollapsePlatform.gd" id="1_k2sjj"]
+[ext_resource type="TileSet" uid="uid://dscnpghqp0trm" path="res://Graphics/Tiles/OOZPlatform.tres" id="2_pgf6v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfd08"]
+size = Vector2(128, 8)
+
+[node name="OOZ_CollapsingPlatformLeft" type="Area2D"]
+collision_layer = 0
+collision_mask = 4096
+script = ExtResource("1_k2sjj")
+tile = NodePath("Tiles")
+speed = 6.0
+
+[node name="Tiles" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD6/wAAAAACAAAAAAD6/wEAAAACAAEAAAD6/wIAAAACAAIAAAD7/wAAAAADAAAAAAD7/wEAAAADAAEAAAD7/wIAAAADAAIAAAD8/wAAAAACAAAAAAD8/wEAAAACAAEAAAD8/wIAAAACAAIAAAD9/wAAAAADAAAAAAD9/wEAAAADAAEAAAD9/wIAAAADAAIAAAD+/wAAAAACAAAAAAD+/wEAAAACAAEAAAD+/wIAAAACAAIAAAD//wAAAAADAAAAAAD//wEAAAADAAEAAAD//wIAAAADAAIAAAD4/wAAAAAAAAAAAAD4/wEAAAAAAAEAAAD5/wAAAAABAAAAAAD5/wEAAAABAAEAAAA=")
+tile_set = ExtResource("2_pgf6v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-64, 0)
+shape = SubResource("RectangleShape2D_xfd08")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

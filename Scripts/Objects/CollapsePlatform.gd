@@ -31,9 +31,18 @@ func _ready():
 	# set the tile reference to the tilemap
 	tile = get_node(tile)
 	# grab from first layer
-	for i in tile.get_used_cells():
+	
+	# Figure out the maximum distance away
+	var maxDist = Vector2.ZERO
+	for distance in tile.get_used_cells():
+		if distance.length() > maxDist.length():
+			maxDist = distance
+	
+	for distance in tile.get_used_cells():
 		# calculate by distance and give co-ordinant
-		getTiles.append([i.length()/speed,i])
+		getTiles.append([(maxDist.length() - distance.length())
+		/speed,distance])
+		
 
 func _physics_process(delta):
 	# check if to activate
@@ -44,7 +53,7 @@ func _physics_process(delta):
 			if i.ground and !active:
 				active = true
 				# wait for sound delay
-				await get_tree().create_timer(soundDelay,false).timeout
+				#await get_tree().create_timer(soundDelay,false).timeout
 				# play sound globally (prevents sound overlap, aka loud sounds)
 				Global.play_sound(collapseSFX)
 	else:

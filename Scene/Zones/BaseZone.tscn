@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://hj3tt0gklwba"]
+[gd_scene load_steps=20 format=4 uid="uid://hj3tt0gklwba"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="2_tkxs0"]
@@ -10,9 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="7_rjmim"]
 [ext_resource type="PackedScene" uid="uid://cma2mtbqjiqdc" path="res://Entities/Gimmicks/HangingBar.tscn" id="9_twpre"]
 [ext_resource type="Texture2D" uid="uid://cg1q7jjh7dt8d" path="res://Graphics/Objects_Zone/OOZ_Plat.png" id="10_fvyfl"]
+[ext_resource type="PackedScene" uid="uid://bbf1sa8l70ygh" path="res://Entities/Gimmicks/fan.tscn" id="11_def0w"]
+[ext_resource type="PackedScene" uid="uid://drwc8cayf58ce" path="res://Entities/ZoneObjects/OOZ_CollapsingPlatformLeft.tscn" id="14_rnh2b"]
 [ext_resource type="PackedScene" uid="uid://de6ceeaontr6v" path="res://Entities/ZoneObjects/OOZ_CollapsingplatformRight.tscn" id="15_6atmp"]
 [ext_resource type="PackedScene" uid="uid://chgov1cta70sn" path="res://Entities/Gimmicks/OOZ_Lid.tscn" id="16_5e18u"]
-[ext_resource type="PackedScene" uid="uid://dttcggk8bgn5g" path="res://Entities/ZoneObjects/MCZ_CollapsePlatformLeft.tscn" id="16_gqaqe"]
+[ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="17_pi7lu"]
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="19_3h71u"]
 [ext_resource type="PackedScene" uid="uid://bvtk4rs7h7sup" path="res://Entities/Gimmicks/Oil.tscn" id="21_yc6vl"]
 [ext_resource type="PackedScene" uid="uid://c8djwr7o6d6f7" path="res://Entities/Enemies/Octus.tscn" id="28_fcslk"]
@@ -49,7 +51,7 @@ collision_enabled = false
 [node name="Player" parent="." instance=ExtResource("5_tgx6m")]
 position = Vector2(96, 1708)
 
-[node name="Entities" type="Node2D" parent="."]
+[node name="Entities" type="Node" parent="."]
 
 [node name="Oil" parent="Entities" instance=ExtResource("21_yc6vl")]
 position = Vector2(8192, 1856)
@@ -58,6 +60,13 @@ scale = Vector2(512, 1)
 [node name="OOZ_Lid" parent="Entities" instance=ExtResource("16_5e18u")]
 material = ExtResource("6_fh7ua")
 position = Vector2(2240, 1664)
+
+[node name="InvisibleBarrier" parent="Entities" instance=ExtResource("17_pi7lu")]
+position = Vector2(2240, 1688)
+scale = Vector2(2, 1)
+
+[node name="Fan" parent="Entities" instance=ExtResource("11_def0w")]
+position = Vector2(384, 1696)
 
 [node name="Platforms" type="Node" parent="."]
 
@@ -73,6 +82,15 @@ shape = SubResource("3")
 [node name="Hanger2" parent="Platforms/MovingPlatform2/Platform" index="2" instance=ExtResource("9_twpre")]
 position = Vector2(0, 37)
 
+[node name="OOZ_CollapsingPlatformRight" parent="Platforms" instance=ExtResource("15_6atmp")]
+position = Vector2(384, 1760)
+
+[node name="OOZ_CollapsingPlatformLeft" parent="Platforms" instance=ExtResource("14_rnh2b")]
+position = Vector2(896, 1728)
+
+[node name="OOZ_CollapsingPlatformLeft2" parent="Platforms" instance=ExtResource("14_rnh2b")]
+position = Vector2(2432, 1696)
+
 [node name="Rings" type="Node2D" parent="."]
 
 [node name="Monitors" type="Node2D" parent="."]
@@ -87,11 +105,5 @@ position = Vector2(745, 1728)
 
 [node name="SignpostNew" parent="." instance=ExtResource("19_3h71u")]
 position = Vector2(2624, 1664)
-
-[node name="OOZ_CollapsingPlatformRight" parent="." instance=ExtResource("15_6atmp")]
-position = Vector2(384, 1760)
-
-[node name="MCZ_CollapsingPlatformLeft" parent="." instance=ExtResource("16_gqaqe")]
-position = Vector2(384, 1672)
 
 [editable path="Platforms/MovingPlatform2"]

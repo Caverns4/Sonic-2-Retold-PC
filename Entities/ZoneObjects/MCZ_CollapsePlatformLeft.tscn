@@ -14,7 +14,7 @@ tile = NodePath("Tiles")
 
 [node name="Tiles" type="TileMapLayer" parent="."]
 use_parent_material = true
-tile_map_data = PackedByteArray("AAD8/wAAAAACAAIAABD9/wAAAAACAAAAABD9/wEAAAACAAEAABD+/wAAAAABAAAAABD+/wEAAAABAAEAABD+/wIAAAABAAIAABD//wAAAAAAAAAAABD//wEAAAAAAAEAABD//wIAAAAAAAIAABA=")
+tile_map_data = PackedByteArray("AAD8/wAAAAAAAAUAAAD9/wAAAAAAAAMAAAD9/wEAAAACAAEAABD+/wAAAAABAAMAAAD+/wEAAAABAAEAABD+/wIAAAABAAIAABD//wAAAAACAAMAAAD//wEAAAAAAAEAABD//wIAAAAAAAIAABA=")
 tile_set = ExtResource("2_xuefj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
