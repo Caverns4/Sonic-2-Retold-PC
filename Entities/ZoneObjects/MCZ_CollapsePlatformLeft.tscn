@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=4 uid="uid://dttcggk8bgn5g"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/CollapsePlatform.gd" id="1_imli6"]
+[ext_resource type="TileSet" uid="uid://dn42tsjf760q0" path="res://Graphics/Tiles/MCZPlatform.tres" id="2_xuefj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bcvrq"]
+size = Vector2(64, 8)
+
+[node name="MCZ_CollapsingPlatformLeft" type="Area2D"]
+collision_layer = 0
+collision_mask = 4096
+script = ExtResource("1_imli6")
+tile = NodePath("Tiles")
+
+[node name="Tiles" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD8/wAAAAACAAIAABD9/wAAAAACAAAAABD9/wEAAAACAAEAABD+/wAAAAABAAAAABD+/wEAAAABAAEAABD+/wIAAAABAAIAABD//wAAAAAAAAAAABD//wEAAAAAAAEAABD//wIAAAAAAAIAABA=")
+tile_set = ExtResource("2_xuefj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-32, 0)
+shape = SubResource("RectangleShape2D_bcvrq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

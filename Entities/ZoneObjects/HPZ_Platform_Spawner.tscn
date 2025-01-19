@@ -7,4 +7,7 @@
 script = ExtResource("1_bu82k")
 resource = ExtResource("1_e3ad3")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-64, -112, 128, 224)
+
 [node name="AdvancedPlatform" parent="." instance=ExtResource("1_e3ad3")]

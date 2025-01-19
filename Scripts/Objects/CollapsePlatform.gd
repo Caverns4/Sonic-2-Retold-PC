@@ -6,7 +6,7 @@ extends Area2D
 var PlatPart = preload("res://Entities/Misc/falling_block_plat.tscn")
 
 # tilemap source to pull from
-@export_node_path("TileMap")var tile
+@export_node_path("TileMapLayer") var tile
 # how fast the platform collapses
 @export var speed = 3.0
 # how long to wait before playing the sound
@@ -31,7 +31,7 @@ func _ready():
 	# set the tile reference to the tilemap
 	tile = get_node(tile)
 	# grab from first layer
-	for i in tile.get_used_cells(0):
+	for i in tile.get_used_cells():
 		# calculate by distance and give co-ordinant
 		getTiles.append([i.length()/speed,i])
 
@@ -63,8 +63,8 @@ func _physics_process(delta):
 					# set position
 					platPart.position += Vector2(getTiles[i][1]*tile.tile_set.tile_size)+tile.position
 					# references for thet ile
-					var tileData = tile.get_cell_tile_data(0,getTiles[i][1])
-					var tileSource = tile.get_cell_source_id(0,getTiles[i][1])
+					var tileData = tile.get_cell_tile_data(getTiles[i][1])
+					var tileSource = tile.get_cell_source_id(getTiles[i][1])
 					# grab any materials
 					platPart.material = tileData.material
 					# check if the tile's been flipped
@@ -77,11 +77,11 @@ func _physics_process(delta):
 					var tileSetSource = tile.tile_set.get_source(tileSource)
 					if tileSetSource is TileSetAtlasSource:
 						platPart.texture = tileSetSource.texture
-						platPart.region_rect.position = Vector2(tile.get_cell_atlas_coords(0,getTiles[i][1]))*Vector2(tileSetSource.texture_region_size)
+						platPart.region_rect.position = Vector2(tile.get_cell_atlas_coords(getTiles[i][1]))*Vector2(tileSetSource.texture_region_size)
 						platPart.region_rect.size = Vector2(tileSetSource.texture_region_size)
 					
 					# erase from tilemap
-					tile.set_cell(0,getTiles[i][1])
+					tile.set_cell(getTiles[i][1])
 					getTiles.remove_at(i)
 					# decrease i so we don't skip any tiles
 					i -= 1

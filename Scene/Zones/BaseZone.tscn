@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://hj3tt0gklwba"]
+[gd_scene load_steps=18 format=4 uid="uid://hj3tt0gklwba"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="2_tkxs0"]
@@ -10,23 +10,16 @@
 [ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="7_rjmim"]
 [ext_resource type="PackedScene" uid="uid://cma2mtbqjiqdc" path="res://Entities/Gimmicks/HangingBar.tscn" id="9_twpre"]
 [ext_resource type="Texture2D" uid="uid://cg1q7jjh7dt8d" path="res://Graphics/Objects_Zone/OOZ_Plat.png" id="10_fvyfl"]
-[ext_resource type="Script" path="res://Scripts/Objects/CollapsePlatform.gd" id="12_ri3yl"]
-[ext_resource type="TileSet" uid="uid://dn42tsjf760q0" path="res://Graphics/Tiles/MCZPlatform.tres" id="13_biut5"]
+[ext_resource type="PackedScene" uid="uid://de6ceeaontr6v" path="res://Entities/ZoneObjects/OOZ_CollapsingplatformRight.tscn" id="15_6atmp"]
 [ext_resource type="PackedScene" uid="uid://chgov1cta70sn" path="res://Entities/Gimmicks/OOZ_Lid.tscn" id="16_5e18u"]
+[ext_resource type="PackedScene" uid="uid://dttcggk8bgn5g" path="res://Entities/ZoneObjects/MCZ_CollapsePlatformLeft.tscn" id="16_gqaqe"]
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="19_3h71u"]
-[ext_resource type="PackedScene" uid="uid://cyun8u3qemt5i" path="res://Entities/Gimmicks/ScrewPlatform.tscn" id="21_5kimb"]
 [ext_resource type="PackedScene" uid="uid://bvtk4rs7h7sup" path="res://Entities/Gimmicks/Oil.tscn" id="21_yc6vl"]
 [ext_resource type="PackedScene" uid="uid://c8djwr7o6d6f7" path="res://Entities/Enemies/Octus.tscn" id="28_fcslk"]
-[ext_resource type="PackedScene" uid="uid://dnbjgwbrkknnu" path="res://Entities/Gimmicks/ConveyorBelt.tscn" id="39_8a2xw"]
-[ext_resource type="PackedScene" uid="uid://bnv0qhju3sj1a" path="res://Entities/Hazards/Crusher.tscn" id="53_7lge8"]
-[ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="54_2efay"]
 
 [sub_resource type="RectangleShape2D" id="3"]
 resource_local_to_scene = true
 size = Vector2(80, 4)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jc8ku"]
-size = Vector2(64, 8)
 
 [node name="BaseZone" type="Node2D"]
 script = ExtResource("2")
@@ -56,7 +49,17 @@ collision_enabled = false
 [node name="Player" parent="." instance=ExtResource("5_tgx6m")]
 position = Vector2(96, 1708)
 
-[node name="Platforms" type="Node2D" parent="."]
+[node name="Entities" type="Node2D" parent="."]
+
+[node name="Oil" parent="Entities" instance=ExtResource("21_yc6vl")]
+position = Vector2(8192, 1856)
+scale = Vector2(512, 1)
+
+[node name="OOZ_Lid" parent="Entities" instance=ExtResource("16_5e18u")]
+material = ExtResource("6_fh7ua")
+position = Vector2(2240, 1664)
+
+[node name="Platforms" type="Node" parent="."]
 
 [node name="MovingPlatform2" parent="Platforms" instance=ExtResource("7_rjmim")]
 position = Vector2(4848, -136)
@@ -70,73 +73,11 @@ shape = SubResource("3")
 [node name="Hanger2" parent="Platforms/MovingPlatform2/Platform" index="2" instance=ExtResource("9_twpre")]
 position = Vector2(0, 37)
 
-[node name="MCZCollapsePlatform" type="Area2D" parent="Platforms"]
-position = Vector2(1536, -80)
-collision_layer = 0
-collision_mask = 4096
-script = ExtResource("12_ri3yl")
-tile = NodePath("Tiles")
-
-[node name="Tiles" type="TileMap" parent="Platforms/MCZCollapsePlatform"]
-tile_set = ExtResource("13_biut5")
-format = 2
-layer_0/name = "default"
-layer_0/tile_data = PackedInt32Array(-196608, 0, 0, -131072, 0, 1, -65536, 0, 2, -196607, 65536, 0, -131071, 65536, 1, -65535, 65536, 2, -196606, 131072, 0, -131070, 131072, 1, -196605, 196608, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/MCZCollapsePlatform"]
-position = Vector2(32, -48)
-shape = SubResource("RectangleShape2D_jc8ku")
-
-[node name="MCZCollapsePlatform2" type="Area2D" parent="Platforms"]
-position = Vector2(1664, -80)
-collision_layer = 0
-collision_mask = 4096
-script = ExtResource("12_ri3yl")
-tile = NodePath("Tiles")
-
-[node name="Tiles" type="TileMap" parent="Platforms/MCZCollapsePlatform2"]
-tile_set = ExtResource("13_biut5")
-format = 2
-layer_0/name = "default"
-layer_0/tile_data = PackedInt32Array(-131076, 262144, 0, -131075, 327680, 0, -65539, 327680, 1, -131074, 393216, 0, -65538, 393216, 1, -2, 393216, 2, -131073, 458752, 0, -65537, 458752, 1, -1, 458752, 2)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/MCZCollapsePlatform2"]
-position = Vector2(-32, -48)
-shape = SubResource("RectangleShape2D_jc8ku")
-
-[node name="Entities" type="Node2D" parent="."]
-
-[node name="CorkScrew3" parent="Entities" instance=ExtResource("21_5kimb")]
-position = Vector2(5544, -79)
-top = 26
-bottom = 9
-
-[node name="ConveyorBelt" parent="Entities" instance=ExtResource("39_8a2xw")]
-position = Vector2(5752, -173)
-constant_linear_velocity = Vector2(-60, 0)
-speed = -60
-length = 7
-
-[node name="Oil" parent="Entities" instance=ExtResource("21_yc6vl")]
-position = Vector2(8192, 1856)
-scale = Vector2(512, 1)
-
-[node name="OOZ_Lid" parent="Entities" instance=ExtResource("16_5e18u")]
-material = ExtResource("6_fh7ua")
-position = Vector2(2240, 1664)
-
 [node name="Rings" type="Node2D" parent="."]
 
 [node name="Monitors" type="Node2D" parent="."]
 
 [node name="Hazards" type="Node2D" parent="."]
-
-[node name="Crusher" parent="Hazards" instance=ExtResource("53_7lge8")]
-position = Vector2(5328, -135)
-
-[node name="InvisibleBarrier" parent="Hazards" instance=ExtResource("54_2efay")]
-position = Vector2(5193, -80)
-scale = Vector2(4, 1)
 
 [node name="Enemies" type="Node2D" parent="."]
 position = Vector2(-1, 0)
@@ -147,9 +88,10 @@ position = Vector2(745, 1728)
 [node name="SignpostNew" parent="." instance=ExtResource("19_3h71u")]
 position = Vector2(2624, 1664)
 
-[connection signal="body_entered" from="Platforms/MCZCollapsePlatform" to="Platforms/MCZCollapsePlatform" method="_on_body_entered"]
-[connection signal="body_exited" from="Platforms/MCZCollapsePlatform" to="Platforms/MCZCollapsePlatform" method="_on_body_exited"]
-[connection signal="body_entered" from="Platforms/MCZCollapsePlatform2" to="Platforms/MCZCollapsePlatform2" method="_on_body_entered"]
-[connection signal="body_exited" from="Platforms/MCZCollapsePlatform2" to="Platforms/MCZCollapsePlatform2" method="_on_body_exited"]
+[node name="OOZ_CollapsingPlatformRight" parent="." instance=ExtResource("15_6atmp")]
+position = Vector2(384, 1760)
+
+[node name="MCZ_CollapsingPlatformLeft" parent="." instance=ExtResource("16_gqaqe")]
+position = Vector2(384, 1672)
 
 [editable path="Platforms/MovingPlatform2"]

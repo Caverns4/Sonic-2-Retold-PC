@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://yetbwueu05h1"]
+[gd_scene load_steps=4 format=4 uid="uid://yetbwueu05h1"]
 
 [ext_resource type="Script" path="res://Scripts/Objects/CollapsePlatform.gd" id="1_0i8l5"]
 [ext_resource type="TileSet" uid="uid://b0b5lpm7k65k5" path="res://Tileset/Levels/NGHZ.tres" id="2_tx4d8"]
@@ -6,19 +6,18 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ia0sb"]
 size = Vector2(64, 16)
 
-[node name="AdvancedPlatform" type="Area2D"]
+[node name="NGHZPlatform" type="Area2D"]
 collision_layer = 0
 collision_mask = 4096
 script = ExtResource("1_0i8l5")
-tile = NodePath("Tiles")
+tile = NodePath("")
 speed = 6.0
 soundDelay = 0.0
 
-[node name="Tiles" type="TileMap" parent="."]
+[node name="Tiles" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD+/wEAAAALABwAAAD//wEAAAAMABwAAAAAAAEAAAAMABwAABABAAEAAAALABwAABD+/wAAAAAFAB0AAAD//wAAAAAGAB0AAAAAAAAAAAAFAB0AAAABAAAAAAAGAB0AAAA=")
 tile_set = ExtResource("2_tx4d8")
-format = 2
-layer_0/name = "default"
-layer_0/tile_data = PackedInt32Array(131070, 720896, 28, 131071, 786432, 28, 65536, 786432, 268435484, 65537, 720896, 268435484, 65534, 327680, 29, 65535, 393216, 29, 0, 327680, 29, 1, 393216, 29)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)
