@@ -2,13 +2,15 @@
 extends Area2D
 
 var players = []
-@export var speed = 90.0 # default power
-@export var isActive = true
-@export var touchActive = false
-@export var playSound = true
+@export var speed: float = 90.0 # default power
+@export var isActive: bool = true
+@export var touchActive: bool = false
+@export var playSound: bool = true
+@export var activeTime: float = 0.0 #if 0, never expire
 
-var getFrame = 0.0
-var animSpeed = 0.0
+var timer: float = 255.0
+var getFrame: float = 0.0
+var animSpeed: float = 0.0
 
 var Bubble = preload("res://Entities/Misc/Bubbles.tscn")
 
@@ -104,7 +106,8 @@ func deactivate_touch_active():
 
 # generate bubbles
 func _on_bubble_timer_timeout():
-	if isActive and (!touchActive or players.size() > 0):
+	if (isActive and (!touchActive or players.size() > 0) and
+	(Global.waterLevel and Global.waterLevel < global_position.y)):
 		var bub = Bubble.instantiate()
 		bub.global_position = global_position+Vector2((16.0*abs(scale.x)-4.0)*randf_range(-1.0,1.0),-8.0*sign(scale.y))
 		# choose between 2 bubble types, both cosmetic

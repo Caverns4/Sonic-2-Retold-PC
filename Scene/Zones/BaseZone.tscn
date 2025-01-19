@@ -66,7 +66,15 @@ position = Vector2(2240, 1688)
 scale = Vector2(2, 1)
 
 [node name="Fan" parent="Entities" instance=ExtResource("11_def0w")]
-position = Vector2(384, 1696)
+position = Vector2(832, 1808)
+playSound = false
+activeTime = 0.0
+
+[node name="Fan2" parent="Entities" instance=ExtResource("11_def0w")]
+position = Vector2(616, 1704)
+rotation = -1.5708
+playSound = false
+activeTime = 0.0
 
 [node name="Platforms" type="Node" parent="."]
 

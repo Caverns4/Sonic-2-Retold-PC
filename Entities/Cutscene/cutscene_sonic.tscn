@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://c83qw6syirt85"]
+[gd_scene load_steps=23 format=3 uid="uid://c83qw6syirt85"]
 
 [ext_resource type="Script" path="res://Scripts/Scene/cutscene_character.gd" id="1_sn2a8"]
 [ext_resource type="Texture2D" uid="uid://cqk04hqgn2v8b" path="res://Graphics/Players/Sonic_Beta.png" id="2_gbsoq"]
+[ext_resource type="Texture2D" uid="uid://bjf2dsnw7ea5g" path="res://Graphics/Players/Sonic.png" id="3_br7c5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6vukj"]
 size = Vector2(20, 34)
@@ -13,7 +14,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CutsceneSonic/Sprite2D:frame")
+tracks/0/path = NodePath("CutsceneSonic/BetaSkin:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -22,14 +23,45 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CutsceneSonic/NormalSkin:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="107"]
+resource_name = "dropDash"
+length = 0.8
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CutsceneSonic/BetaSkin:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [103, 104, 103, 105, 103, 106, 103, 105, 103, 104, 103, 105, 103, 106, 103, 105]
+}
 
 [sub_resource type="Animation" id="77"]
 resource_name = "crouch"
 length = 0.2
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CutsceneSonic/Sprite2D:frame")
+tracks/0/path = NodePath("CutsceneSonic/BetaSkin:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -37,6 +69,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [10, 11]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CutsceneSonic/NormalSkin:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [14, 15]
 }
 
 [sub_resource type="Animation" id="104"]
@@ -46,7 +90,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CutsceneSonic/Sprite2D:frame")
+tracks/0/path = NodePath("CutsceneSonic/BetaSkin:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -62,7 +106,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CutsceneSonic/Sprite2D:frame")
+tracks/0/path = NodePath("CutsceneSonic/BetaSkin:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -76,10 +120,11 @@ tracks/0/keys = {
 resource_name = "idle1"
 length = 10.0
 loop_mode = 1
+step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CutsceneSonic/Sprite2D:frame")
+tracks/0/path = NodePath("CutsceneSonic/BetaSkin:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -87,6 +132,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CutsceneSonic/NormalSkin:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 7.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 2, 5]
 }
 
 [sub_resource type="Animation" id="114"]
@@ -97,7 +154,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CutsceneSonic/Sprite2D:frame")
+tracks/0/path = NodePath("CutsceneSonic/BetaSkin:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -106,14 +163,27 @@ tracks/0/keys = {
 "update": 1,
 "values": [109, 110]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CutsceneSonic/NormalSkin:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [7, 8]
+}
 
 [sub_resource type="Animation" id="80"]
 resource_name = "lookUp"
 length = 0.2
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CutsceneSonic/Sprite2D:frame")
+tracks/0/path = NodePath("CutsceneSonic/BetaSkin:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -122,19 +192,43 @@ tracks/0/keys = {
 "update": 1,
 "values": [6, 7]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CutsceneSonic/NormalSkin:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [12, 13]
+}
 
 [sub_resource type="Animation" id="87"]
 resource_name = "peelOut"
 length = 0.4
 loop_mode = 1
-step = 0.0166667
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CutsceneSonic/Sprite2D:frame")
+tracks/0/path = NodePath("CutsceneSonic/BetaSkin:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [28, 29, 30, 31]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CutsceneSonic/NormalSkin:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
@@ -145,10 +239,11 @@ tracks/0/keys = {
 resource_name = "roll"
 length = 0.8
 loop_mode = 1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CutsceneSonic/Sprite2D:frame")
+tracks/0/path = NodePath("CutsceneSonic/BetaSkin:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -157,18 +252,43 @@ tracks/0/keys = {
 "update": 1,
 "values": [32, 36, 33, 36, 32, 36, 35, 36]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CutsceneSonic/NormalSkin:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [32, 36, 33, 36, 34, 36, 35, 36]
+}
 
 [sub_resource type="Animation" id="82"]
 resource_name = "run"
 length = 0.4
 loop_mode = 1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CutsceneSonic/Sprite2D:frame")
+tracks/0/path = NodePath("CutsceneSonic/BetaSkin:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [24, 25, 26, 27]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CutsceneSonic/NormalSkin:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
@@ -181,7 +301,7 @@ length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CutsceneSonic/Sprite2D:frame")
+tracks/0/path = NodePath("CutsceneSonic/BetaSkin:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -195,10 +315,11 @@ tracks/0/keys = {
 resource_name = "slide"
 length = 0.2
 loop_mode = 1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CutsceneSonic/Sprite2D:frame")
+tracks/0/path = NodePath("CutsceneSonic/BetaSkin:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -207,17 +328,42 @@ tracks/0/keys = {
 "update": 1,
 "values": [76, 77]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CutsceneSonic/NormalSkin:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [94, 95]
+}
 
 [sub_resource type="Animation" id="83"]
 resource_name = "spinDash"
 loop_mode = 1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CutsceneSonic/Sprite2D:frame")
+tracks/0/path = NodePath("CutsceneSonic/BetaSkin:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [37, 38, 37, 39, 37, 40, 37, 41, 37, 42]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CutsceneSonic/NormalSkin:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
@@ -231,7 +377,7 @@ step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CutsceneSonic/Sprite2D:frame")
+tracks/0/path = NodePath("CutsceneSonic/BetaSkin:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -248,7 +394,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CutsceneSonic/Sprite2D:frame")
+tracks/0/path = NodePath("CutsceneSonic/BetaSkin:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -260,7 +406,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CutsceneSonic/Sprite2D:material:shader_parameter/row")
+tracks/1/path = NodePath("CutsceneSonic/BetaSkin:material:shader_parameter/row")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -274,11 +420,11 @@ tracks/1/keys = {
 resource_name = "walk"
 length = 0.8
 loop_mode = 1
-step = 0.0675
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CutsceneSonic/Sprite2D:frame")
+tracks/0/path = NodePath("CutsceneSonic/BetaSkin:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -287,23 +433,17 @@ tracks/0/keys = {
 "update": 1,
 "values": [17, 18, 19, 20, 21, 22, 23, 12, 13, 14, 15, 16]
 }
-
-[sub_resource type="Animation" id="107"]
-resource_name = "dropDash"
-length = 0.8
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CutsceneSonic/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CutsceneSonic/NormalSkin:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [103, 104, 103, 105, 103, 106, 103, 105, 103, 104, 103, 105, 103, 106, 103, 105]
+"values": [21, 22, 23, 16, 17, 18, 19, 20]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_36uej"]
@@ -334,9 +474,17 @@ script = ExtResource("1_sn2a8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6vukj")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="BetaSkin" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-20, 3)
 texture = ExtResource("2_gbsoq")
+offset = Vector2(20, -10)
+hframes = 16
+vframes = 8
+
+[node name="NormalSkin" type="Sprite2D" parent="."]
+position = Vector2(-20, 3)
+texture = ExtResource("3_br7c5")
 offset = Vector2(20, -10)
 hframes = 16
 vframes = 8

@@ -1,8 +1,8 @@
 [gd_scene load_steps=26 format=3 uid="uid://oce7phvjxdbv"]
 
 [ext_resource type="Script" path="res://Scripts/Misc/tornado.gd" id="1_gohbb"]
-[ext_resource type="Texture2D" uid="uid://cqk04hqgn2v8b" path="res://Graphics/Players/Sonic_Beta.png" id="1_wlsqm"]
 [ext_resource type="Texture2D" uid="uid://efvmmjbj4otb" path="res://Graphics/Misc/Tornado_Main.png" id="2_8cebi"]
+[ext_resource type="Texture2D" uid="uid://bjf2dsnw7ea5g" path="res://Graphics/Players/Sonic.png" id="2_bfbtt"]
 [ext_resource type="Texture2D" uid="uid://c05fsbnx0p7xf" path="res://Graphics/Players/Tails.png" id="2_jit23"]
 [ext_resource type="Texture2D" uid="uid://jea1meugvs4b" path="res://Graphics/Misc/Tornado_Blade.png" id="3_va0b2"]
 [ext_resource type="Texture2D" uid="uid://lguk2n18twhg" path="res://Graphics/Misc/Tornado_Jet.png" id="5_pk086"]
@@ -127,7 +127,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.7, 0.8, 1, 1.1, 2, 2.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 6, 7, 6, 0, 1, 0]
+"values": [0, 12, 13, 12, 0, 1, 0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -157,7 +157,7 @@ script = ExtResource("1_gohbb")
 [node name="PilotSonic" type="Sprite2D" parent="TornadoMain/Pilot"]
 visible = false
 position = Vector2(-2, -48)
-texture = ExtResource("1_wlsqm")
+texture = ExtResource("2_bfbtt")
 hframes = 16
 vframes = 8
 
@@ -196,7 +196,6 @@ position = Vector2(0, -40)
 texture = ExtResource("7_pkbdi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -28)
 shape = SubResource("RectangleShape2D_b6v0j")
 
