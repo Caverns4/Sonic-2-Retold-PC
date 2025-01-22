@@ -1,29 +1,13 @@
 extends ParallaxBackground
 
-var xScrollMinAmount = 0.25
-var xScrollMaxAmount = 2
-
-@export var cloudLayers = [Node2D] #Number of nodes
-var cloudSpeeds = [0] #the speed each cloud layer should move at, auto-generated
-
-func _ready():
-	pass
-
-func _process(_delta):
-	$ParallaxLayerD.motion_offset.x -= 0.125
-	$ParallaxLayerE.motion_offset.x -= 0.25
-	$ParallaxLayerF.motion_offset.x -= 0.375
-	$ParallaxLayerG.motion_offset.x -= 0.5
-	$ParallaxLayerH.motion_offset.x -= 0.625
-	$ParallaxLayerI.motion_offset.x -= 0.875
-	$ParallaxLayerJ.motion_offset.x -= 1
-	$ParallaxLayerK.motion_offset.x -= 1.125
-	$ParallaxLayerK2.motion_offset.x -= 1.25
-	$ParallaxLayerK3.motion_offset.x -= 1.375
-	#if enabled:
-	#	for i in cloudLayers.size:
-	#		var this = get_node(cloudLayers[i])
-	#		this.motion_offset.x(
-	#		this.motion_offset.x + cloudSpeeds[i],
-	#		0)
-	pass
+func _process(delta):
+	$ParallaxLayerD.motion_offset.x -= 4*delta
+	$ParallaxLayerE.motion_offset.x -= 6*delta
+	$ParallaxLayerF.motion_offset.x -= 8*delta
+	$ParallaxLayerG.motion_offset.x -= 10*delta
+	$ParallaxLayerH.motion_offset.x -= 14*delta
+	$ParallaxLayerI.motion_offset.x -= 18*delta
+	$ParallaxLayerJ.motion_offset.x -= 22*delta
+	$ParallaxLayerK.motion_offset.x -= 32*delta
+	$ParallaxLayerK2.motion_offset.x -= 48*delta
+	$ParallaxLayerK3.motion_offset.x -= 64*delta

@@ -39,10 +39,10 @@ texture = SubResource("GradientTexture2D_lqerh")
 [node name="DistantCliffs" type="ParallaxLayer" parent="."]
 position = Vector2(0, 80)
 motion_scale = Vector2(0.125, 0.012)
-motion_mirroring = Vector2(432, 0)
+motion_mirroring = Vector2(512, 0)
 
 [node name="BGCliffs" type="TextureRect" parent="DistantCliffs"]
-offset_right = 432.0
+offset_right = 512.0
 offset_bottom = 32.0
 texture = ExtResource("3_njrbt")
 stretch_mode = 1
@@ -51,10 +51,10 @@ stretch_mode = 1
 position = Vector2(0, 112)
 motion_scale = Vector2(0, 0.012)
 motion_offset = Vector2(32, 0)
-motion_mirroring = Vector2(432, 0)
+motion_mirroring = Vector2(512, 0)
 
 [node name="Coulds1" type="TextureRect" parent="ParallaxLayerD"]
-offset_right = 432.0
+offset_right = 512.0
 offset_bottom = 16.0
 texture = ExtResource("4_jjur1")
 stretch_mode = 1
@@ -72,10 +72,10 @@ stretch_mode = 1
 [node name="ParallaxLayerE" type="ParallaxLayer" parent="."]
 position = Vector2(0, 128)
 motion_scale = Vector2(0, 0.012)
-motion_mirroring = Vector2(432, 0)
+motion_mirroring = Vector2(512, 0)
 
 [node name="Coulds2" type="TextureRect" parent="ParallaxLayerE"]
-offset_right = 432.0
+offset_right = 512.0
 offset_bottom = 4.0
 texture = ExtResource("6_8v2wd")
 stretch_mode = 1
@@ -83,10 +83,10 @@ stretch_mode = 1
 [node name="ParallaxLayerF" type="ParallaxLayer" parent="."]
 position = Vector2(0, 132)
 motion_scale = Vector2(0, 0.013)
-motion_mirroring = Vector2(432, 0)
+motion_mirroring = Vector2(512, 0)
 
 [node name="Coulds3" type="TextureRect" parent="ParallaxLayerF"]
-offset_right = 432.0
+offset_right = 512.0
 offset_bottom = 4.0
 texture = ExtResource("7_ninwi")
 stretch_mode = 1
@@ -94,10 +94,10 @@ stretch_mode = 1
 [node name="ParallaxLayerG" type="ParallaxLayer" parent="."]
 position = Vector2(0, 136)
 motion_scale = Vector2(0, 0.013)
-motion_mirroring = Vector2(432, 0)
+motion_mirroring = Vector2(512, 0)
 
 [node name="Coulds4" type="TextureRect" parent="ParallaxLayerG"]
-offset_right = 432.0
+offset_right = 512.0
 offset_bottom = 8.0
 texture = ExtResource("8_4nwt2")
 stretch_mode = 1
@@ -105,11 +105,11 @@ stretch_mode = 1
 [node name="ParallaxLayerH" type="ParallaxLayer" parent="."]
 position = Vector2(0, 143)
 motion_scale = Vector2(0, 0.013)
-motion_mirroring = Vector2(432, 0)
+motion_mirroring = Vector2(512, 0)
 
 [node name="Coulds5" type="TextureRect" parent="ParallaxLayerH"]
 offset_top = 1.0
-offset_right = 432.0
+offset_right = 512.0
 offset_bottom = 9.0
 texture = ExtResource("9_fk5ur")
 stretch_mode = 1
@@ -117,11 +117,11 @@ stretch_mode = 1
 [node name="ParallaxLayerI" type="ParallaxLayer" parent="."]
 position = Vector2(0, 151)
 motion_scale = Vector2(0, 0.013)
-motion_mirroring = Vector2(432, 0)
+motion_mirroring = Vector2(512, 0)
 
 [node name="Coulds6" type="TextureRect" parent="ParallaxLayerI"]
 offset_top = 1.0
-offset_right = 432.0
+offset_right = 512.0
 offset_bottom = 9.0
 texture = ExtResource("10_eme8f")
 stretch_mode = 1
@@ -129,52 +129,52 @@ stretch_mode = 1
 [node name="ParallaxLayerJ" type="ParallaxLayer" parent="."]
 position = Vector2(0, 159)
 motion_scale = Vector2(0, 0.013)
-motion_mirroring = Vector2(432, 0)
+motion_mirroring = Vector2(512, 0)
 
 [node name="Coulds7" type="TextureRect" parent="ParallaxLayerJ"]
 offset_top = 1.0
-offset_right = 432.0
-offset_bottom = 9.0
+offset_right = 512.0
+offset_bottom = 17.0
 texture = ExtResource("11_ifsu6")
 stretch_mode = 1
 
 [node name="ParallaxLayerK" type="ParallaxLayer" parent="."]
 position = Vector2(0, 175)
 motion_scale = Vector2(0, 0.013)
-motion_mirroring = Vector2(432, 0)
+motion_mirroring = Vector2(512, 0)
 
 [node name="Coulds8" type="TextureRect" parent="ParallaxLayerK"]
 offset_top = 1.0
-offset_right = 432.0
-offset_bottom = 9.0
+offset_right = 512.0
+offset_bottom = 17.0
 texture = ExtResource("12_62fai")
 stretch_mode = 1
 
 [node name="ParallaxLayerK2" type="ParallaxLayer" parent="."]
 position = Vector2(0, 191)
 motion_scale = Vector2(0, 0.013)
-motion_mirroring = Vector2(432, 0)
+motion_mirroring = Vector2(512, 0)
 
 [node name="Coulds9" type="TextureRect" parent="ParallaxLayerK2"]
 offset_top = 1.0
-offset_right = 432.0
-offset_bottom = 9.0
+offset_right = 512.0
+offset_bottom = 17.0
 texture = ExtResource("12_62fai")
 stretch_mode = 1
 
 [node name="ParallaxLayerK3" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0, 0.013)
-motion_mirroring = Vector2(432, 0)
+motion_mirroring = Vector2(512, 0)
 
 [node name="Coulds10" type="TextureRect" parent="ParallaxLayerK3"]
 offset_top = 208.0
-offset_right = 432.0
+offset_right = 512.0
 offset_bottom = 224.0
 texture = ExtResource("12_62fai")
 stretch_mode = 1
 
 [node name="ColorRect" type="ColorRect" parent="ParallaxLayerK3"]
 offset_top = 224.0
-offset_right = 464.0
+offset_right = 512.0
 offset_bottom = 264.0
 color = Color(0.8, 0.933333, 0.933333, 1)
