@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://deaxge481u7mk"]
+[gd_scene load_steps=21 format=3 uid="uid://deaxge481u7mk"]
 
 [ext_resource type="Texture2D" uid="uid://doln6jqb428tw" path="res://Graphics/Backgrounds/EHZ/EHZ_BG.png" id="1_h12tx"]
 [ext_resource type="Shader" path="res://Shaders/PaletteSwapRow_Timerbased.gdshader" id="2_uv63v"]
@@ -13,6 +13,15 @@
 [ext_resource type="Texture2D" uid="uid://chn1gkg56tjh2" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_H.png" id="11_gmb7a"]
 [ext_resource type="Texture2D" uid="uid://doqoa4fu15431" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_I.png" id="12_xgogs"]
 
+[sub_resource type="Gradient" id="Gradient_ap2hi"]
+colors = PackedColorArray(0.133333, 0, 0.4, 1, 0.933333, 0.933333, 0.933333, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_svsvb"]
+gradient = SubResource("Gradient_ap2hi")
+width = 512
+height = 12
+fill_to = Vector2(0, 1)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_023dl"]
 shader = ExtResource("2_uv63v")
 shader_parameter/amount = 4.0
@@ -21,36 +30,36 @@ shader_parameter/approximation = 0.0
 shader_parameter/time_scale = 0.1
 shader_parameter/paletteTexture = ExtResource("3_i4tmo")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gefi2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuv02"]
 atlas = ExtResource("4_mbm2e")
-region = Rect2(0, 0, 512, 32)
+region = Rect2(0, 0, 512, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_beyfr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wvhy"]
 atlas = ExtResource("4_mbm2e")
-region = Rect2(0, 32, 512, 32)
+region = Rect2(0, 48, 512, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kbaqy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1djx5"]
 atlas = ExtResource("4_mbm2e")
-region = Rect2(0, 64, 512, 32)
+region = Rect2(0, 96, 512, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d5v3c"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0ob7"]
 atlas = ExtResource("4_mbm2e")
-region = Rect2(0, 96, 512, 32)
+region = Rect2(0, 144, 512, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b2d52"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gefi2")
+"texture": SubResource("AtlasTexture_tuv02")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_beyfr")
+"texture": SubResource("AtlasTexture_1wvhy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kbaqy")
+"texture": SubResource("AtlasTexture_1djx5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d5v3c")
+"texture": SubResource("AtlasTexture_j0ob7")
 }],
 "loop": true,
 "name": &"default",
@@ -65,17 +74,19 @@ scroll_ignore_camera_zoom = true
 motion_scale = Vector2(0.01, 0.05)
 motion_mirroring = Vector2(512, 0)
 
+[node name="TextureRect2" type="TextureRect" parent="ParallaxLayer"]
+offset_top = 32.0
+offset_right = 512.0
+offset_bottom = 80.0
+texture = SubResource("GradientTexture2D_svsvb")
+
 [node name="TextureRect" type="TextureRect" parent="ParallaxLayer"]
 offset_right = 512.0
 offset_bottom = 80.0
 texture = ExtResource("1_h12tx")
 stretch_mode = 1
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.01, 0.05)
-motion_mirroring = Vector2(512, 0)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxLayer2"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxLayer"]
 self_modulate = Color(1, 1, 1, 0.8)
 material = SubResource("ShaderMaterial_023dl")
 position = Vector2(0, 80)

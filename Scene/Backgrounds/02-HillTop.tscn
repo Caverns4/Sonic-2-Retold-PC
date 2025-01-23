@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dcw6jbk0f0o84"]
+[gd_scene load_steps=17 format=3 uid="uid://dcw6jbk0f0o84"]
 
 [ext_resource type="Script" path="res://Scripts/Backgrounds/HTZ_ParallaxBackground.gd" id="1_qg26d"]
 [ext_resource type="Texture2D" uid="uid://dm2gyyx3l216e" path="res://Graphics/Backgrounds/HTZ/HTZ_BGA.png" id="2_grm36"]
@@ -18,7 +18,16 @@ colors = PackedColorArray(0.133333, 0.266667, 0.933333, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_lqerh"]
 gradient = SubResource("Gradient_x4c26")
-height = 12
+height = 16
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_6vpsa"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wts4j"]
+gradient = SubResource("Gradient_6vpsa")
+width = 512
+height = 16
 fill_to = Vector2(0, 1)
 
 [node name="02-HillTop" type="ParallaxBackground"]
@@ -49,7 +58,7 @@ stretch_mode = 1
 
 [node name="ParallaxLayerD" type="ParallaxLayer" parent="."]
 position = Vector2(0, 112)
-motion_scale = Vector2(0, 0.012)
+motion_scale = Vector2(0.125, 0.012)
 motion_offset = Vector2(32, 0)
 motion_mirroring = Vector2(512, 0)
 
@@ -58,6 +67,14 @@ offset_right = 512.0
 offset_bottom = 16.0
 texture = ExtResource("4_jjur1")
 stretch_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayerD"]
+modulate = Color(0.266667, 0.4, 0.8, 1)
+clip_children = 2
+offset_top = -12.0
+offset_right = 512.0
+offset_bottom = 4.0
+texture = SubResource("GradientTexture2D_wts4j")
 
 [node name="ParallaxLayerB" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.35, 0.012)
@@ -71,7 +88,7 @@ stretch_mode = 1
 
 [node name="ParallaxLayerE" type="ParallaxLayer" parent="."]
 position = Vector2(0, 128)
-motion_scale = Vector2(0, 0.012)
+motion_scale = Vector2(0.05, 0.012)
 motion_mirroring = Vector2(512, 0)
 
 [node name="Coulds2" type="TextureRect" parent="ParallaxLayerE"]
@@ -173,8 +190,13 @@ offset_bottom = 224.0
 texture = ExtResource("12_62fai")
 stretch_mode = 1
 
-[node name="ColorRect" type="ColorRect" parent="ParallaxLayerK3"]
+[node name="ParallaxLayerK4" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0, 0.013)
+motion_mirroring = Vector2(512, 0)
+
+[node name="Coulds10" type="TextureRect" parent="ParallaxLayerK4"]
 offset_top = 224.0
 offset_right = 512.0
-offset_bottom = 264.0
-color = Color(0.8, 0.933333, 0.933333, 1)
+offset_bottom = 256.0
+texture = ExtResource("12_62fai")
+stretch_mode = 1
