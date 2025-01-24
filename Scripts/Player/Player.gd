@@ -614,7 +614,8 @@ func _process(delta):
 			# check if ring count is greater then 0
 			# deactivate if stage cleared
 			if rings > 0 and Global.stageClearPhase == 0:
-				rings -= delta
+				if Global.superRingDrain:
+					rings -= delta
 			else:
 				# Deactivate super
 				supTime = 0

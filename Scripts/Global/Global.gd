@@ -111,6 +111,10 @@ enum UNLOCKS{
 }
 var livesMode = false
 var airSpeedCap = true
+var superRingDrain = true
+var superAnyone = false
+var anyCharacters = false
+var BetaCasinoNight = false
 
 # Arrays per act
 # Score,Time,Rings,ScoreP2,TimeP2,RingsP2
