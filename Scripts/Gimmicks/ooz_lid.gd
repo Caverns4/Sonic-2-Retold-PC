@@ -3,7 +3,7 @@ extends Node2D
 const POP_TIME = 1.0
 const HOVER_TIME = 2.0
 
-@onready var Lid = $CharacterBody2D
+@onready var Lid = $AnimatableBody2D
 @onready var Funnel = $TextureRect
 @onready var OnScreen = $VisibleOnScreenNotifier2D
 
@@ -29,21 +29,20 @@ func _physics_process(delta: float) -> void:
 				timer = HOVER_TIME
 				state = STATES.HOVERING
 				Global.play_sound(SFX)
-				Lid.velocity.y = -320
-				Lid.spinning = true
+				Lid.movement.y = 0-(delta*480)
 		STATES.HOVERING:
-			if Lid.velocity.y < 0.0:
-				Lid.velocity.y += (0.09375/GlobalFunctions.div_by_delta(delta))
+			if Lid.movement.y < 0.0:
+				Lid.movement.y += (9.8*delta)
+
 			if timer <= 0.0:
 				Lid.gravity = true
 				state = STATES.LANDING
 				timer = 1.0
 		STATES.LANDING:
-			if Lid.is_on_floor() or timer <= 0.0:
-				Lid.global_position = global_position
+			if (Lid.global_position.y >= global_position.y) or (timer <= 0.0):
+				Lid.worldPos = global_position
 				Lid.gravity = false
-				Lid.spinning = false
-				Lid.velocity.y = 0.0
+				Lid.movement.y = 0.0
 				state = STATES.IDLE
 				timer = POP_TIME
 
