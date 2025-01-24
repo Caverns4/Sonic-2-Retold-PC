@@ -6,13 +6,12 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_se3l2"]
 resource_local_to_scene = true
-size = Vector2(32, 64)
+size = Vector2(128, 64)
 
 [node name="Fan" type="Area2D"]
 collision_layer = 0
 collision_mask = 4096
 script = ExtResource("1_5mjmq")
-activeTime = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -32)

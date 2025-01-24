@@ -58,29 +58,26 @@ func _physics_process(delta):
 				var getDir = Vector2.UP.rotated(global_rotation)
 				
 				# disconect floor
-				if i.ground:
+				if i.ground and i.currentState != i.STATES.ROLL:
 					i.disconect_from_floor()
 				
-				# set movement
-				# get distance for the y axis
-				var yDistance = (global_position.y-(16*scale.y)+cos(Global.levelTime*4)*4)
+				var force = Vector2(0,-30).rotated(global_rotation)
+				i.movement += force
+				#Only do this if the fan is pointing upward
+				if force.y < 0:
+					i.movement.y = min(i.movement.y,90)
+				#Play floating animation if player is in midair
+				if !i.ground:
+					# force air state
+					var setPlayerAnimation = "corkScrew"
+					# water animation
+					if i.water:
+						setPlayerAnimation = "current"
 				
-				
-				# make sure player is in range
-				if abs(yDistance-i.global_position.y) <= abs(yDistance-global_position.y):
-					# move toward the top of the mask
-					i.movement.y = lerp(i.movement.y, sign(yDistance-i.global_position.y)*speed-i.grv, delta*30)
-				
-				# force air state
-				var setPlayerAnimation = "corkScrew"
-				# water animation
-				if i.water:
-					setPlayerAnimation = "current"
-				
-				if i.currentState != i.STATES.ANIMATION or i.animator.current_animation != setPlayerAnimation:
-					i.set_state(i.STATES.AIR)
-					i.animator.play(setPlayerAnimation)
-
+					if i.currentState != i.STATES.ANIMATION or i.animator.current_animation != setPlayerAnimation:
+						i.set_state(i.STATES.AIR)
+						i.animator.play(setPlayerAnimation)
+	
 
 
 func _on_body_entered(body):
