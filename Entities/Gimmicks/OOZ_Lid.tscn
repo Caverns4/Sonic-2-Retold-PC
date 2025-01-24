@@ -60,8 +60,8 @@ expand_mode = 1
 stretch_mode = 1
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+visible = false
 collision_layer = 8192
-collision_mask = 15
 script = ExtResource("3_nn0l2")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
@@ -73,12 +73,26 @@ hframes = 4
 process_priority = 10
 position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_mmkh8")
+disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
 libraries = {
 "": SubResource("AnimationLibrary_lxxv3")
 }
 autoplay = "RESET"
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+collision_layer = 8192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+process_priority = 10
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_mmkh8")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+position = Vector2(0, -2)
+texture = ExtResource("1_5rgec")
+hframes = 4
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(-64, -224, 128, 256)
