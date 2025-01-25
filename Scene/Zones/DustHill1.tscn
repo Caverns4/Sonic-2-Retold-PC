@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://cuf10h0hh7iep"]
+[gd_scene load_steps=12 format=4 uid="uid://cuf10h0hh7iep"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_3gh4r"]
 [ext_resource type="AudioStream" uid="uid://c8y5q77kxn4ap" path="res://Audio/Soundtrack/s2br_DustHill.ogg" id="2_pw2ks"]
@@ -6,7 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="4_uwgof"]
 [ext_resource type="PackedScene" uid="uid://bwbfc3g6eth1a" path="res://Scene/Backgrounds/07-DustHill.tscn" id="5_5jgr2"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="5_dhfai"]
+[ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="8_0ekd8"]
 [ext_resource type="TileSet" uid="uid://1x5agi75qcl8" path="res://Tileset/Levels/DHZ.tres" id="8_7qx3g"]
+[ext_resource type="Texture2D" uid="uid://cg1q7jjh7dt8d" path="res://Graphics/Objects_Zone/OOZ_Plat.png" id="9_85jvg"]
+[ext_resource type="PackedScene" uid="uid://cma2mtbqjiqdc" path="res://Entities/Gimmicks/HangingBar.tscn" id="10_hh3j0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r73e4"]
+resource_local_to_scene = true
+size = Vector2(80, 4)
 
 [node name="DustHill1" type="Node2D"]
 script = ExtResource("1_3gh4r")
@@ -31,3 +38,17 @@ tile_map_data = PackedByteArray("AAAAAGkAAAAPAAMAABAAAGoAAAAEAAMAABAAAGsAAAAEAAM
 tile_set = ExtResource("8_7qx3g")
 
 [node name="Entitites" type="Node" parent="."]
+
+[node name="MovingPlatform2" parent="Entitites" instance=ExtResource("8_0ekd8")]
+position = Vector2(4848, -136)
+platformSprite = ExtResource("9_85jvg")
+endPosition = Vector2(256, -96)
+
+[node name="Shape3D" parent="Entitites/MovingPlatform2/Platform" index="0"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_r73e4")
+
+[node name="Hanger2" parent="Entitites/MovingPlatform2/Platform" index="2" instance=ExtResource("10_hh3j0")]
+position = Vector2(0, 37)
+
+[editable path="Entitites/MovingPlatform2"]
