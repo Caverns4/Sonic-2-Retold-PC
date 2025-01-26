@@ -8,7 +8,7 @@ var players = []
 @export var playSound: bool = true
 @export var activeTime: float = 0.0 #if 0, never expire
 
-var timer: float = 255.0
+var timer: float = 0.0
 var getFrame: float = 0.0
 var animSpeed: float = 0.0
 
@@ -30,7 +30,10 @@ func _process(delta):
 	var goSpeed = 0.0
 	if isActive:
 		if !touchActive or players.size() > 0:
-			goSpeed = 30.0
+			if activeTime == 0:
+				goSpeed = 30.0
+			else:
+				goSpeed = clampf(timer*30.0,0,30.0)
 			# play fan sound
 			if playSound and !Engine.is_editor_hint():
 				if !$FanSound.playing:
@@ -51,7 +54,9 @@ func _process(delta):
 func _physics_process(delta):
 	if !Engine.is_editor_hint():
 		# if any players are found in the array, if they're on the ground make them roll
-		if players.size() > 0:
+		timer += delta
+		timer = wrapf(timer,(0-activeTime),activeTime)
+		if players.size() > 0 and (activeTime == 0 or timer > 0.0):
 			for i in players:
 				if !i.controlObject and !i.translate:
 					
