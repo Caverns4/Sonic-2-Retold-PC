@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://f2u7qhtothnl"]
+
+[ext_resource type="Script" path="res://Scripts/Node_Spawner.gd" id="1_2xqwo"]
+[ext_resource type="PackedScene" uid="uid://de6ceeaontr6v" path="res://Entities/ZoneObjects/OOZ_CollapsingplatformRight.tscn" id="3_3abkx"]
+
+[node name="OozPlatformSpawnerRight" type="Node2D"]
+script = ExtResource("1_2xqwo")
+resource = ExtResource("3_3abkx")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-3.8147e-06, 0)
+scale = Vector2(2, 1)
+rect = Rect2(-64, -112, 128, 224)
+
+[node name="OOZ_CollapsingPlatformRight" parent="." instance=ExtResource("3_3abkx")]

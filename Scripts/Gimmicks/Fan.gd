@@ -53,30 +53,26 @@ func _physics_process(delta):
 		# if any players are found in the array, if they're on the ground make them roll
 		if players.size() > 0:
 			for i in players:
-				# determine the direction of the arrow based on scale and rotation
-				# better method needs to be done
-				var getDir = Vector2.UP.rotated(global_rotation)
-				
-				# disconect floor
-				if i.ground and i.currentState != i.STATES.ROLL:
-					i.disconect_from_floor()
-				
-				var force = Vector2(0,-30).rotated(global_rotation)
-				i.movement += force
-				#Only do this if the fan is pointing upward
-				if force.y < 0:
-					i.movement.y = min(i.movement.y,90)
-				#Play floating animation if player is in midair
-				if !i.ground:
-					# force air state
-					var setPlayerAnimation = "corkScrew"
-					# water animation
-					if i.water:
-						setPlayerAnimation = "current"
-				
-					if i.currentState != i.STATES.ANIMATION or i.animator.current_animation != setPlayerAnimation:
-						i.set_state(i.STATES.AIR)
-						i.animator.play(setPlayerAnimation)
+				if !i.controlObject and !i.translate:
+					
+					var force = Vector2(0,-30).rotated(global_rotation)
+					i.movement += force
+					#Only do this if the fan is pointing upward
+					if force.y < 0:
+						i.movement.y = min(i.movement.y,90)
+						if i.ground and i.currentState != i.STATES.ROLL:
+							i.disconect_from_floor()
+						
+					#Play floating animation if player is in midair
+					if !i.ground:
+						# force air state
+						var setPlayerAnimation = "corkScrew"
+						# water animation
+						if i.water:
+							setPlayerAnimation = "current"
+						if i.currentState != i.STATES.ANIMATION or i.animator.current_animation != setPlayerAnimation:
+							i.set_state(i.STATES.AIR)
+							i.animator.play(setPlayerAnimation)
 	
 
 
