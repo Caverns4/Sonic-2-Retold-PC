@@ -6,8 +6,8 @@
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(22, 30)
 
-[sub_resource type="RectangleShape2D" id="2"]
-size = Vector2(22, 28)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yaocm"]
+size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2anh"]
 size = Vector2(128, 256)
@@ -86,7 +86,7 @@ collision_mask = 528384
 [node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(0, 1)
-shape = SubResource("2")
+shape = SubResource("RectangleShape2D_yaocm")
 
 [node name="Redz" type="Sprite2D" parent="."]
 texture = ExtResource("2_ufqqm")

@@ -710,7 +710,7 @@ rotation = 1.22173
 minimumVelocity = 8
 
 [node name="Geyser2" parent="Entities" instance=ExtResource("34_4a7yt")]
-position = Vector2(7632, 1648)
+position = Vector2(7560, 1648)
 rotation = -1.5708
 minimumVelocity = 12
 

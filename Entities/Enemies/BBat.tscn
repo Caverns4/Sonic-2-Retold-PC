@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://041yhyjp1n1c" path="res://Graphics/Enemies/BBatRazor.png" id="4_bqbwm"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(10, 26)
+size = Vector2(16, 26)
 
 [sub_resource type="Animation" id="Animation_2qbc6"]
 resource_name = "AIM"
@@ -309,7 +309,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mf3u2"]
-size = Vector2(60, 8)
+size = Vector2(48, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k0tlg"]
 size = Vector2(192, 128)

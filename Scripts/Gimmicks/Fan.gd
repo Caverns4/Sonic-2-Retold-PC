@@ -59,7 +59,8 @@ func _physics_process(delta):
 					i.movement += force
 					#Only do this if the fan is pointing upward
 					if force.y < 0:
-						i.movement.y = min(i.movement.y,90)
+						#i.movement.y = min(i.movement.y,90)
+						i.movement.y = clamp(i.movement.y,-600,120)
 						if i.ground and i.currentState != i.STATES.ROLL:
 							i.disconect_from_floor()
 						

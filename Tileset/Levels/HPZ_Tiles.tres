@@ -2745,7 +2745,6 @@ texture = ExtResource("3_evpyr")
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_whinq"]
 texture = ExtResource("4_q35wa")
 0:0/0 = 0
-1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
 4:0/0 = 0
@@ -2826,7 +2825,6 @@ texture = ExtResource("4_q35wa")
 15:4/0 = 0
 0:5/0 = 0
 1:5/0 = 0
-2:5/0 = 0
 3:5/0 = 0
 4:5/0 = 0
 5:5/0 = 0
@@ -2878,6 +2876,18 @@ texture = ExtResource("4_q35wa")
 3:8/0 = 0
 4:8/0 = 0
 5:8/0 = 0
+6:8/0 = 0
+8:8/animation_frame_0/duration = 1.0
+8:8/animation_frame_1/duration = 0.1
+8:8/animation_frame_2/duration = 0.1
+8:8/animation_frame_3/duration = 0.1
+8:8/0 = 0
+12:8/animation_frame_0/duration = 1.0
+12:8/animation_frame_1/duration = 0.1
+12:8/animation_frame_2/duration = 0.1
+12:8/animation_frame_3/duration = 0.1
+12:8/0 = 0
+7:8/0 = 0
 
 [resource]
 physics_layer_0/collision_layer = 1

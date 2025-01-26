@@ -270,7 +270,7 @@ moveSpeed = 150.0
 [node name="WindCurrent7" parent="Currents" instance=ExtResource("37_t74c0")]
 position = Vector2(7104, 272)
 scale = Vector2(84, 18)
-speed = 600.0
+speed = 300.0
 moveSpeed = 150.0
 
 [node name="WindCurrent4" parent="Currents" instance=ExtResource("37_t74c0")]
@@ -928,6 +928,10 @@ minimumVelocity = 8
 position = Vector2(8904, 992)
 minimumVelocity = 8
 
+[node name="Geyser5" parent="Entities" instance=ExtResource("36_al0td")]
+position = Vector2(9024, 992)
+minimumVelocity = 8
+
 [node name="Geyser4" parent="Entities" instance=ExtResource("36_al0td")]
 position = Vector2(6960, 376)
 rotation = 1.22173
@@ -1313,7 +1317,7 @@ position = Vector2(10816, 936)
 position = Vector2(11888, 232)
 
 [node name="Stegway4" parent="Badniks" instance=ExtResource("42_ftvul")]
-position = Vector2(3560, 1264)
+position = Vector2(3632, 1248)
 
 [node name="Rings" type="Node" parent="."]
 

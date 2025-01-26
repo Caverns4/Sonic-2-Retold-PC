@@ -39,6 +39,9 @@ func _physics_process(delta: float) -> void:
 	for i in players.size():
 		if players[i].animator:
 			players[i].movement = Vector2(velocityPreVec).rotated(rotation)
+			players[i].disconect_from_floor()
+			players[i].set_state(players[i].STATES.AIR)
+			players[i].airControl = true
 			players[i].animator.play("hurt")
 
 func UpdatePosition(delta):

@@ -1,11 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://cvaf3mpyum5at"]
+[gd_scene load_steps=12 format=3 uid="uid://cvaf3mpyum5at"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Stegway.gd" id="1_3811d"]
 [ext_resource type="Texture2D" uid="uid://bwbirkbtmiumq" path="res://Graphics/Enemies/stegway.png" id="2_jmtwq"]
 [ext_resource type="Texture2D" uid="uid://clihuhs0po6p0" path="res://Graphics/Enemies/BuzzerFlame.png" id="3_13kku"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(32, 32)
+size = Vector2(32, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pcbp3"]
+size = Vector2(16, 16)
 
 [sub_resource type="Animation" id="Animation_8ygeb"]
 resource_name = "CHARGE"
@@ -119,6 +122,7 @@ collision_mask = 15
 script = ExtResource("1_3811d")
 
 [node name="CollissionMask" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
 shape = SubResource("1")
 
 [node name="DamageArea" type="Area2D" parent="."]
@@ -127,7 +131,7 @@ collision_mask = 528384
 
 [node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
 modulate = Color(1, 0, 0, 1)
-shape = SubResource("1")
+shape = SubResource("RectangleShape2D_pcbp3")
 
 [node name="SpriteNode" type="Node2D" parent="."]
 
@@ -164,8 +168,9 @@ position = Vector2(1.90735e-06, -1.90735e-06)
 rect = Rect2(-160, -112, 320, 224)
 
 [node name="FloorCheck" type="RayCast2D" parent="."]
-position = Vector2(-18, 16)
+position = Vector2(-16, 16)
 target_position = Vector2(0, 14)
+collision_mask = 15
 
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
