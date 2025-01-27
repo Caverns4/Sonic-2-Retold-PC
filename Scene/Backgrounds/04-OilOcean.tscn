@@ -28,7 +28,7 @@ scroll_ignore_camera_zoom = true
 script = ExtResource("1_eh4wu")
 
 [node name="CloudLayer" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.25, 0.1)
+motion_scale = Vector2(0.025, 0.1)
 motion_mirroring = Vector2(512, 0)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="CloudLayer"]

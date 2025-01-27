@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://f2yjfoe6b1n7"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/aquis.gd" id="1_3kaqv"]
+[ext_resource type="Texture2D" uid="uid://d0l30f6ga0acx" path="res://Graphics/Enemies/Aquis.png" id="2_nbtgr"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(32, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dg58h"]
+size = Vector2(24, 32)
+
+[node name="Aquis" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 16384
+collision_mask = 0
+script = ExtResource("1_3kaqv")
+
+[node name="CollissionMask" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 528384
+
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+modulate = Color(1, 0, 0, 1)
+shape = SubResource("RectangleShape2D_dg58h")
+
+[node name="Aquis_Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_nbtgr")
+hframes = 3
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 48)
+
+[node name="BulletPoint" type="Node2D" parent="Aquis_Sprite"]
+unique_name_in_owner = true
+position = Vector2(-16, -11)
+
+[node name="AquisWing" type="Sprite2D" parent="Aquis_Sprite"]
+position = Vector2(9, -6)
+texture = ExtResource("2_nbtgr")
+hframes = 6
+region_enabled = true
+region_rect = Rect2(0, 48, 96, 16)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+visible = false
+position = Vector2(1.90735e-06, -1.90735e-06)
+rect = Rect2(-160, -120, 320, 240)
+
+[connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
