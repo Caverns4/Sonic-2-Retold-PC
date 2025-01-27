@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://chgov1cta70sn"]
+[gd_scene load_steps=7 format=3 uid="uid://chgov1cta70sn"]
 
 [ext_resource type="Texture2D" uid="uid://bdkig5lewgpcq" path="res://Graphics/Gimmicks/OOZ_LidTop.png" id="1_5rgec"]
 [ext_resource type="Script" path="res://Scripts/Gimmicks/ooz_lid.gd" id="1_n4dys"]
 [ext_resource type="Texture2D" uid="uid://bdwp0lti70ccs" path="res://Graphics/Gimmicks/OOZ_Pillar.png" id="2_8n1xm"]
+[ext_resource type="PackedScene" uid="uid://b7giv32j13rep" path="res://Entities/Hazards/BurnerFlames.tscn" id="2_a5jou"]
 [ext_resource type="Script" path="res://Scripts/Objects/OOZ_Lid_Motion.gd" id="3_nn0l2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mmkh8"]
@@ -11,7 +12,10 @@ size = Vector2(48, 8)
 [node name="OOZ_Lid" type="Node2D"]
 script = ExtResource("1_n4dys")
 
+[node name="BurnerFlames" parent="." instance=ExtResource("2_a5jou")]
+
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 use_parent_material = true
 offset_left = -32.0
 offset_right = 32.0

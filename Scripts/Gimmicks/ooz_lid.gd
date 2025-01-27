@@ -1,11 +1,12 @@
 extends Node2D
 
 const POP_TIME = 1.0
-const HOVER_TIME = 2.0
+const HOVER_TIME = 0.5
 
 @onready var Lid = $AnimatableBody2D
 @onready var Funnel = $TextureRect
 @onready var OnScreen = $VisibleOnScreenNotifier2D
+@onready var Flames = $BurnerFlames
 
 var SFX = preload("res://Audio/SFX/Gimmicks/OOZ_Lid_Pop.wav")
 var timer = POP_TIME
@@ -30,16 +31,18 @@ func _physics_process(delta: float) -> void:
 				state = STATES.HOVERING
 				Global.play_sound(SFX)
 				Lid.movement.y = 0-(delta*480)
+				Flames.activate()
 		STATES.HOVERING:
 			if Lid.movement.y < 0.0:
 				Lid.movement.y += (9.8*delta)
 
 			if timer <= 0.0:
 				Lid.gravity = true
+				Flames.deactivate()
 				state = STATES.LANDING
 				timer = 1.0
 		STATES.LANDING:
-			if (Lid.global_position.y >= global_position.y) or (timer <= 0.0):
+			if (Lid.global_position.y >= global_position.y):
 				Lid.worldPos = global_position
 				Lid.gravity = false
 				Lid.movement.y = 0.0

@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=3 uid="uid://b7giv32j13rep"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/burner_flames.gd" id="1_se516"]
+[ext_resource type="Texture2D" uid="uid://d3nkubq3wp1v0" path="res://Graphics/Gimmicks/BurnerFlame.png" id="2_scag2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ey33q"]
+size = Vector2(30, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aoxhk"]
+atlas = ExtResource("2_scag2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_am2ef"]
+atlas = ExtResource("2_scag2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ul7g5"]
+atlas = ExtResource("2_scag2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7x226"]
+atlas = ExtResource("2_scag2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a70vc"]
+atlas = ExtResource("2_scag2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aoxhk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_am2ef")
+}],
+"loop": true,
+"name": &"Burn",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ul7g5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7x226")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a70vc")
+}],
+"loop": false,
+"name": &"Pop",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+
+[node name="BurnerFlames" type="Area2D"]
+collision_layer = 0
+collision_mask = 4096
+script = ExtResource("1_se516")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_ey33q")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("4")
+animation = &"Pop"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
