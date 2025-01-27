@@ -1,6 +1,8 @@
 @tool
 extends Area2D
 
+#TODO: Horizonal Fans have different behavior than vertical fans, pretty much entirely
+
 var players = []
 @export var speed: float = 90.0 # default power
 @export var isActive: bool = true
@@ -52,10 +54,10 @@ func _process(delta):
 
 
 func _physics_process(delta):
+	timer += delta
+	timer = wrapf(timer,(0-activeTime),activeTime)
 	if !Engine.is_editor_hint():
 		# if any players are found in the array, if they're on the ground make them roll
-		timer += delta
-		timer = wrapf(timer,(0-activeTime),activeTime)
 		if players.size() > 0 and (activeTime == 0 or timer > 0.0):
 			for i in players:
 				if !i.controlObject and !i.translate:
@@ -65,7 +67,7 @@ func _physics_process(delta):
 					#Only do this if the fan is pointing upward
 					if force.y < 0:
 						#i.movement.y = min(i.movement.y,90)
-						i.movement.y = clamp(i.movement.y,-600,120)
+						i.movement.y = clamp(i.movement.y,-360,120)
 						if i.ground and i.currentState != i.STATES.ROLL:
 							i.disconect_from_floor()
 						

@@ -5,6 +5,7 @@ extends StaticBody2D
 var Piece = preload("res://Entities/Misc/BlockPiece.tscn")
 @export var sound = preload("res://Audio/SFX/Gimmicks/Collapse.wav")
 @export var score = true
+@export var knockBack = true
 
 
 func _ready() -> void:
@@ -34,7 +35,10 @@ func physics_collision(body, hitVector):
 		
 		# set player variables
 		body.ground = false
-		body.movement.y = -3*60
+		if knockBack:
+			body.movement.y = -3*60
+		else:
+			body.movement.y = 3*60
 		if score:
 			Global.add_score(global_position,Global.SCORE_COMBO[min(Global.SCORE_COMBO.size()-1,body.enemyCounter)])
 		body.enemyCounter += 1
