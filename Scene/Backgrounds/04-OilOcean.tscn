@@ -11,7 +11,7 @@ colors = PackedColorArray(0.933333, 0.4, 0, 1, 1, 1, 1, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_slwfg"]
 gradient = SubResource("Gradient_vkl0k")
 width = 1
-height = 24
+height = 8
 fill_to = Vector2(0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nr8xe"]
