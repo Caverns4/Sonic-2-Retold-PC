@@ -448,30 +448,14 @@ delay = 48.0
 [node name="MackWormSpawner" parent="Hazards" instance=ExtResource("27_3y0tj")]
 position = Vector2(4368, 649)
 
-[node name="MackWormSpawner2" parent="Hazards" instance=ExtResource("27_3y0tj")]
-position = Vector2(4464, 649)
-behavior = 1
-
 [node name="MackWormSpawner3" parent="Hazards" instance=ExtResource("27_3y0tj")]
 position = Vector2(3216, 1416)
-
-[node name="MackWormSpawner4" parent="Hazards" instance=ExtResource("27_3y0tj")]
-position = Vector2(3312, 1416)
-behavior = 1
 
 [node name="MackWormSpawner5" parent="Hazards" instance=ExtResource("27_3y0tj")]
 position = Vector2(3472, 1416)
 
-[node name="MackWormSpawner6" parent="Hazards" instance=ExtResource("27_3y0tj")]
-position = Vector2(3568, 1416)
-behavior = 1
-
 [node name="MackWormSpawner7" parent="Hazards" instance=ExtResource("27_3y0tj")]
 position = Vector2(3728, 1416)
-
-[node name="MackWormSpawner8" parent="Hazards" instance=ExtResource("27_3y0tj")]
-position = Vector2(3824, 1416)
-behavior = 1
 
 [node name="MackWormSpawner9" parent="Hazards" instance=ExtResource("27_3y0tj")]
 position = Vector2(6416, 1608)

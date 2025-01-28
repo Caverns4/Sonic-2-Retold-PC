@@ -357,8 +357,6 @@ func _process(delta):
 		$GameOver/GameOverMusic.play()
 		# stop normal music tracks
 		Global.music.stop()
-		Global.effectTheme.stop()
-		Global.bossMusic.stop()
 		Global.life.stop()
 		# wait for animation to finish
 		await $GameOver/GameOver.animation_finished

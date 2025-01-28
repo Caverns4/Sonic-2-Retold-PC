@@ -4,8 +4,6 @@ var loaded = false
 
 func _ready() -> void:
 	Global.music.stop()
-	Global.effectTheme.stop()
-	Global.bossMusic.stop()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:

@@ -25,8 +25,6 @@ func _ready():
 	Global.main = self
 	Global.musicParent = get_node_or_null("Music")
 	Global.music = get_node_or_null("Music/Music")
-	Global.bossMusic = get_node_or_null("Music/BossTheme")
-	Global.effectTheme = get_node_or_null("Music/EffectTheme")
 	Global.drowning = get_node_or_null("Music/Drowning")
 	Global.life = get_node_or_null("Music/Life")
 	# initialize game data using global reset (it's better then assigning variables twice)
@@ -35,12 +33,8 @@ func _ready():
 func _process(delta):
 	# verify scene isn't paused
 	if !get_tree().paused and Global.music != null:
-		# pause main music if effect theme, boss music or drowning songs are playing
-		Global.music.stream_paused = Global.effectTheme.playing or Global.drowning.playing or Global.bossMusic.playing
-		# pause boss music if drowning
-		Global.bossMusic.stream_paused = Global.drowning.playing
-		# pause effect music if drowning
-		Global.effectTheme.stream_paused = Global.drowning.playing or Global.bossMusic.playing
+		# pause main music if effect theme or drowning song is playing
+		Global.music.stream_paused = Global.drowning.playing
 		
 		# check that volume lerp isn't transitioned yet
 		if volumeLerp < 1:
@@ -49,9 +43,7 @@ func _process(delta):
 			# use volume lerp to set the effect volume
 			Global.music.volume_db = lerp(float(startVolumeLevel),float(setVolumeLevel),float(volumeLerp))
 			# copy the volume to other songs (you'll want to add yours here if you add more)
-			Global.effectTheme.volume_db = Global.music.volume_db
 			Global.drowning.volume_db = Global.music.volume_db
-			Global.bossMusic.volume_db = Global.music.volume_db
 			if volumeLerp >= 1:
 				emit_signal("volume_set")
 
@@ -183,8 +175,6 @@ func change_scene_to_file(scene = null, fadeOut = "", fadeIn = "", length = 1, s
 		# set volume level to default
 		Global.music.volume_db = 0
 		# copy the volume to other songs (you'll want to add yours here if you add more)
-		Global.bossMusic.volume_db = Global.bossMusic.volume_db
-		Global.effectTheme.volume_db = Global.music.volume_db
 		Global.drowning.volume_db = Global.music.volume_db
 
 # executed when life sound has finished

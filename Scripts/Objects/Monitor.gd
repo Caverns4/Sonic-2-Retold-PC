@@ -101,24 +101,20 @@ func destroy():
 				(prev_rings < 50 and playerTouch.rings > 49) and 
 				!playerTouch.isSuper):
 					Global.hud.iconAnim.play("Super")
-			
-			
 			$SFX/Ring.play()
 		ITEMTYPES.SPEED_SHOES: # Speed Shoes
 			if !playerTouch.get("isSuper"):
 				playerTouch.shoeTime = 20
 				playerTouch.switch_physics()
-				Global.currentTheme = 1
-				Global.effectTheme.stream = Global.themes[Global.currentTheme]
-				Global.effectTheme.play()
+				Global.currentTheme = Global.THEME.SPEED
+				Global.playMusic(Global.themes[Global.currentTheme])
 		ITEMTYPES.INVINCIBILITY: # Invincibility
 			if !playerTouch.get("isSuper"):
 				playerTouch.supTime = 20
 				playerTouch.shieldSprite.visible = false # turn off barrier for stars
 				playerTouch.get_node("InvincibilityBarrier").visible = true
-				Global.currentTheme = 0
-				Global.effectTheme.stream = Global.themes[Global.currentTheme]
-				Global.effectTheme.play()
+				Global.currentTheme = Global.THEME.INVINCIBLE
+				Global.playMusic(Global.themes[Global.currentTheme])
 		ITEMTYPES.SHIELD: # Shield
 			playerTouch.set_shield(playerTouch.SHIELDS.NORMAL)
 		ITEMTYPES.ELECSHIELD: # Elec
@@ -145,13 +141,11 @@ func destroy():
 			Global.lives += 1
 			if Global.hud and !Global.TwoPlayer:
 				Global.hud.coins += 1
-			Global.effectTheme.volume_db = -100
 			Global.music.volume_db = -100
 		ITEMTYPES.LIFEP2: #2-Player 1up
 			Global.life.stop()
 			Global.life.play()
 			Global.livesP2 +=1
-			Global.effectTheme.volume_db = -100
 			Global.music.volume_db = -100
 
 

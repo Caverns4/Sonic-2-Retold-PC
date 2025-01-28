@@ -78,15 +78,17 @@ func DoTubeMotion(i,delta):
 	childSpeeds[i].y = clampf(childSpeeds[i].y,-4.5,4.5)
 	currentChild.global_position += childSpeeds[i]
 	
-	if currentChild.global_position.y >= origin.y:
+	if currentChild.global_position.y > origin.y:
 		currentChild.global_position.y = origin.y
+		currentChild.global_position.x -= 96
 		if childStates[i] == STATES.DOWN_TUBE:
 			childTimes[i] = 1.0
 			childStates[i] = STATES.BOTTOM
 			get_child(i).monitoring = false
 	
-	if currentChild.global_position.y <= origin.y - 80:
+	if currentChild.global_position.y < origin.y - 80:
 		currentChild.global_position.y = origin.y - 80
+		currentChild.global_position.x += 96
 		if childStates[i] == STATES.UP_TUBE:
 			childTimes[i] = 1.0
 			childStates[i] = STATES.TOP
@@ -141,7 +143,7 @@ func WaitTimer(i):
 func QueuePipeSoundEffect():
 	if soundCheck:
 		soundCheck = false
-		Global.play_sound(gloopSound)
+		Global.play_sound2(gloopSound)
 	else:
 		soundCheck = true
 	

@@ -41,9 +41,6 @@ var twoPlayerWindow = preload("res://Scene/TwoPlayerScreenView.tscn")
 var wasLoaded = false
 
 func _ready():
-	if Global.effectTheme:
-		Global.effectTheme.stop()
-		Global.bossMusic.stop()
 	Global.savedZoneID = zoneID
 	# debuging
 	if !Global.is_main_loaded:
@@ -71,20 +68,24 @@ func _ready():
 
 # used for stage starts, also used for returning from special stages
 func level_reset_data(playCard = true):
+	Global.stageClearPhase = 0
+	Global.fightingBoss = false
+	Global.music.stop()
 	# music handling
-	Global.bossMusic.stop()
+	var levelMusic = null
 	if Global.music != null:
 		if music != null:
 			if !Global.TwoPlayer:
-				Global.music.stream = music
+				levelMusic = music
+				
 			else:
-				Global.music.stream = music2P
+				levelMusic = music2P
 			
-			Global.music.play()
 			Global.music.stream_paused = false
-		else:
-			Global.music.stop()
-			Global.music.stream = null
+			Global.themes[Global.THEME.NORMAL] = levelMusic
+	Global.playMusic(levelMusic,true)
+	Global.playNormalMusic()
+
 	# set next zone
 	if nextZone != null:
 		Global.nextZone = nextZone

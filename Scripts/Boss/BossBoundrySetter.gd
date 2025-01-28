@@ -23,6 +23,8 @@ extends Area2D
 @export var ratchetScrollRight = false
 @export var ratchetScrollBottom = false
 
+@export var bossMusic = preload("res://Audio/Soundtrack/s2br_Boss.ogg")
+
 var bossActive = false
 
 signal boss_start()
@@ -54,15 +56,18 @@ func _on_BoundrySetter_body_entered(body):
 					
 					emit_signal("boss_start")
 					
-					Global.bossMusic.play()
+					Global.fightingBoss = true
+					Global.themes[Global.THEME.BOSS] = bossMusic
+					#Global.playMusic(bossMusic,true)
+					Global.playNormalMusic()
 					boss.active = true
 					
 					if boss.has_signal("boss_over"):
 						boss.connect("boss_over",Callable(self,"boss_completed"))
 
 func boss_completed():
-	Global.bossMusic.stop()
-	Global.music.play()
+	Global.fightingBoss = false
+	Global.playNormalMusic()
 	# set boundries for players
 	for i in Global.players:
 		if is_instance_valid(i):

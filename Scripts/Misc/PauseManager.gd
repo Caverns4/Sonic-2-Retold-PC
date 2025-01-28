@@ -105,8 +105,6 @@ func _input(event):
 						Global.currentCheckPoint = -1
 						Global.main.change_scene_to_file(null,"FadeOut")
 						#await Global.main.scene_faded
-						Global.effectTheme.stop()
-						Global.bossMusic.stop()
 						Global.main.set_volume(0)
 			MENUS.QUIT: # quit option
 				match(option): # Options

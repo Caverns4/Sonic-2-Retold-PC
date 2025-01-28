@@ -1,9 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://byje3iiukvt4p"]
+[gd_scene load_steps=14 format=3 uid="uid://byje3iiukvt4p"]
 
 [ext_resource type="Script" path="res://Scripts/Global/Main.gd" id="2"]
-[ext_resource type="AudioStream" uid="uid://bomm2jjdsrep3" path="res://Audio/Soundtrack/s2br_Boss.ogg" id="3_mg12s"]
 [ext_resource type="PackedScene" uid="uid://c58ontqoxjuti" path="res://Scene/Presentation/PoweredByWorlds.tscn" id="4"]
-[ext_resource type="AudioStream" uid="uid://dh5q1xla8jmxy" path="res://Audio/Soundtrack/s2br_SuperSonic.ogg" id="4_ojo3l"]
 [ext_resource type="AudioStream" uid="uid://dc8abddihwsly" path="res://Audio/Soundtrack/s2br_drowning.ogg" id="5_sci02"]
 [ext_resource type="PackedScene" uid="uid://b2xskcomtpo2x" path="res://Entities/Misc/ControllerMenu.tscn" id="6"]
 [ext_resource type="AudioStream" uid="uid://dk4rjhevrqj00" path="res://Audio/Soundtrack/s2br_ExtraLife.ogg" id="6_5mxpv"]
@@ -146,14 +144,6 @@ process_mode = 1
 
 [node name="Music" type="AudioStreamPlayer" parent="Music"]
 autoplay = true
-bus = &"Music"
-
-[node name="BossTheme" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource("3_mg12s")
-bus = &"Music"
-
-[node name="EffectTheme" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource("4_ojo3l")
 bus = &"Music"
 
 [node name="Drowning" type="AudioStreamPlayer" parent="Music"]

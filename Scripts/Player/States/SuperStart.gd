@@ -26,10 +26,6 @@ func _process(_delta):
 		parent.set_state(parent.STATES.AIR)
 		activated = true
 		
-		# start super theme
-		Global.currentTheme = 1
-		Global.effectTheme.stream = Global.themes[Global.currentTheme]
-		Global.effectTheme.play()
 		# swap sprite if sonic
 		if parent.character == Global.CHARACTERS.SONIC:
 			parent.sprite.texture = parent.superSprite
@@ -38,6 +34,9 @@ func _process(_delta):
 		parent.isSuper = true
 		parent.switch_physics()
 		parent.supTime = 1
+		# start super theme
+		Global.playNormalMusic()
+		
 	# if already super just go to air state
 	elif parent.isSuper:
 		parent.set_state(parent.STATES.AIR)

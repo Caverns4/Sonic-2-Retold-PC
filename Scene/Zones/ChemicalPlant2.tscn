@@ -1006,10 +1006,6 @@ behavior = 2
 [node name="MackWormSpawner3" parent="Hazards" instance=ExtResource("27_ijc7b")]
 position = Vector2(7440, 392)
 
-[node name="MackWormSpawner4" parent="Hazards" instance=ExtResource("27_ijc7b")]
-position = Vector2(7536, 392)
-behavior = 1
-
 [node name="MackWormSpawner5" parent="Hazards" instance=ExtResource("27_ijc7b")]
 position = Vector2(7312, 392)
 
@@ -1019,14 +1015,6 @@ position = Vector2(400, 776)
 [node name="MackWormSpawner10" parent="Hazards" instance=ExtResource("27_ijc7b")]
 position = Vector2(528, 1032)
 behavior = 2
-
-[node name="MackWormSpawner9" parent="Hazards" instance=ExtResource("27_ijc7b")]
-position = Vector2(496, 776)
-behavior = 1
-
-[node name="MackWormSpawner6" parent="Hazards" instance=ExtResource("27_ijc7b")]
-position = Vector2(7408, 392)
-behavior = 1
 
 [node name="MackWormSpawner7" parent="Hazards" instance=ExtResource("27_ijc7b")]
 position = Vector2(5392, 1160)
@@ -1727,7 +1715,7 @@ splitChance = 50
 [node name="Boss" type="Node2D" parent="."]
 
 [node name="BossBoundrySetter" parent="Boss" instance=ExtResource("37_6lr32")]
-position = Vector2(11712, 912)
+position = Vector2(11712, 1168)
 bossPath = NodePath("../PoisonEggman")
 keepRightLocked = false
 

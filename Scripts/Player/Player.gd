@@ -632,18 +632,15 @@ func _process(delta):
 				isSuper = false
 				superAnimator.play("PowerDown")
 				switch_physics()
-			if Global.currentTheme == 0 and Global.effectTheme.is_playing():
-				Global.music.play()
-				Global.effectTheme.stop()
-				invTime = 60
+			Global.playNormalMusic()
+			invTime = 60
 	
 	if (shoeTime > 0):
 		shoeTime -= delta
 		if (shoeTime <= 0):
 			switch_physics()
-			if Global.currentTheme == 1:
-				Global.music.play()
-				Global.effectTheme.stop()
+			if Global.currentTheme == 2:
+				Global.playNormalMusic()
 	
 	# Invulnerability timer
 	if (invTime > 0 and currentState != STATES.HIT and currentState != STATES.DIE):
@@ -665,8 +662,6 @@ func _process(delta):
 		Global.lives += 1
 		if Global.hud and !Global.TwoPlayer:
 			Global.hud.coins += 1
-		Global.effectTheme.volume_db = -100
-		Global.bossMusic.volume_db = -100
 		Global.music.volume_db = -100
 
 	#Rotating stars
@@ -1235,9 +1230,9 @@ func kill(always = true):
 			superAnimator.play("PowerDown")
 			isSuper = false
 		# stop special music
-		if playerControl == 1 and Global.effectTheme.is_playing():
-			Global.music.play()
-			Global.effectTheme.stop()
+		#if playerControl == 1:
+		#	Global.music.play()
+		#	Global.effectTheme.stop()
 		if !Global.TwoPlayer and playerControl == 1 and partner:
 			var saved = partner.global_position
 			partner.respawn()
@@ -1254,7 +1249,6 @@ func kill(always = true):
 		else:
 			if playerControl == 1:
 				Global.music.stop()
-				Global.effectTheme.stop()
 			movement = Vector2(0,0)
 			animator.play("drown")
 			sfx[25].play()
