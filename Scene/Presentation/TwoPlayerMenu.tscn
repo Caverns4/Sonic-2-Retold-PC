@@ -65,6 +65,7 @@ region_filter_clip_enabled = true
 
 [node name="PlayerName1" type="RichTextLabel" parent="Control"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_top = 120.0
 offset_right = 104.0
 offset_bottom = 128.0
@@ -76,6 +77,7 @@ autowrap_mode = 0
 
 [node name="PlayerName2" type="RichTextLabel" parent="Control"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_top = 184.0
 offset_right = 104.0
 offset_bottom = 192.0
@@ -87,6 +89,7 @@ autowrap_mode = 0
 
 [node name="Level Menu" type="RichTextLabel" parent="Control"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 128.0
 offset_top = 96.0
 offset_right = 240.0

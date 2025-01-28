@@ -1,6 +1,8 @@
 extends Node2D
 
-@export var music = preload("res://Audio/Soundtrack/s2br_TitleScreen.ogg")
+@export var music = preload("res://Audio/Soundtrack/s2br_Options.ogg")
+
+var nextScene = preload("res://Scene/Presentation/Title.tscn")
 var nextZone = preload("res://Scene/Presentation/ZoneLoader.tscn")
 
 var sfx_Select = preload("res://Audio/SFX/Gimmicks/Switch.wav")
@@ -42,11 +44,13 @@ var itemSettingStrings = [
 	"EGGMAN MONITORS"
 ]
 
-var characterLabels = ["Sonic", "Tails", "Knuckles"]
-var characterLabelsMiles = ["Sonic", "Miles", "Knuckles"]
+var characterLabels = ["Sonic", "Tails", "Knuckles", "Amy"]
+var characterLabelsMiles = ["Sonic", "Miles", "Knuckles", "Amy"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Global.music.stream = music
+	Global.music.play()
 	if Global.twoPlayerZoneResults: #If Game is started
 		p1CharacterSelection = Global.PlayerChar1-1
 		p2CharacterSelection = Global.PlayerChar2-1
@@ -114,6 +118,19 @@ func updateCharacterSelection():
 	if playersReady[0] and playersReady[1]:
 		%YButtonIcon.visible = false
 		state = MENU_STATE.ZONE_SELECT
+	
+	if (
+	(Input.is_action_just_pressed("gm_action2") and !playersReady[0]) or
+	(Input.is_action_just_pressed("gm_action2_P2") and !playersReady[1])
+	):
+		Global.main.change_scene_to_file(nextScene,"FadeOut","FadeOut",1)
+	elif (Input.is_action_just_pressed("gm_action2") and playersReady[0]):
+		playersReady[0] = false
+		$Control/Player1READY.visible = false
+	elif (Input.is_action_just_pressed("gm_action2_P2") and playersReady[1]):
+		playersReady[1] = false
+		$Control/Player2READY.visible = false
+
 
 func updateZoneSelection():
 	if inputCue.y !=0 and inputCue.y != lastInput.y:
@@ -124,6 +141,12 @@ func updateZoneSelection():
 		Global.play_sound2(sfx_Select)
 	zoneSelection = wrapi(zoneSelection,0,Global.twoPlayerZones.size())
 	
+	if (Input.is_action_just_pressed("gm_action2") or
+	Input.is_action_just_pressed("gm_action2_P2")):
+		state = MENU_STATE.CHARACTER_SELECT
+		playersReady = [false,false]
+		$Control/Player1READY.visible = false
+		$Control/Player2READY.visible = false
 	
 	if (Input.is_action_just_pressed("gm_action") or
 	Input.is_action_just_pressed("gm_pause") or
@@ -154,7 +177,7 @@ func UpdateZoneSelection(_delta: float = 0.0):
 	%"Level Menu".text = ""
 	for i in Global.twoPlayerZones.size():
 		var zoneName = Global.zoneNames[Global.twoPlayerZones[i]]
-		if i == zoneSelection:
+		if i == zoneSelection and state >= MENU_STATE.ZONE_SELECT:
 			%"Level Menu".text += "[color=EEEE00]" + zoneName + "[/color]\n\n"
 		else:
 			%"Level Menu".text += zoneName + "\n\n"

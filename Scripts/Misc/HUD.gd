@@ -67,6 +67,7 @@ func _ready():
 		$P2Counters.visible = true
 		# Set character Icon
 		lifeCounterFrame = Global.PlayerChar2
+		$P2Counters/Icon2.frame = Global.PlayerChar1
 	else:
 		$Counters.visible = true
 		$P1Counters.visible = false
