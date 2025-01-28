@@ -31,7 +31,6 @@ func _ready():
 	if !Engine.is_editor_hint():
 		if Global.TwoPlayer:
 			item = ITEMTYPES.QMARK
-	
 		# set frame
 		$Item.frame = item+2
 		# Life Icon (life icons are a special case)
@@ -57,12 +56,27 @@ func FrameUpdate():
 func destroy():
 	# skip if not activated
 	if Global.TwoPlayer:
-		item = twoPlayerItems.pick_random()
-		$Item.frame = item+2
-		if item == ITEMTYPES.LIFEP1:
-			$Item.frame = item + 1 + Global.PlayerChar1
-		if item == ITEMTYPES.LIFEP2:
-			$Item.frame = item + Global.PlayerChar2
+		match Global.twoPlayerItems:
+			Global.ITEM_MODE.ALL_KINDS_ITEMS:
+				item = twoPlayerItems.pick_random()
+				$Item.frame = item+2
+				if item == ITEMTYPES.LIFEP1:
+					$Item.frame = item + 1 + Global.PlayerChar1
+				if item == ITEMTYPES.LIFEP2:
+					$Item.frame = item + Global.PlayerChar2
+			Global.ITEM_MODE.TELEPORT_ONLY:
+				item = ITEMTYPES.TELEPORT
+				$Item.frame = item+2
+			Global.ITEM_MODE.RING_ONLY:
+				item = ITEMTYPES.RING
+				$Item.frame = item+2
+			Global.ITEM_MODE.EGGMAN_ONLY:
+				item = ITEMTYPES.EGGMAN
+				$Item.frame = item+2
+			_:
+				pass
+
+
 	
 	if item == ITEMTYPES.SHIELD and !Global.TwoPlayer and playerTouch.shield > 0:
 		var rand = randi_range(0,2)

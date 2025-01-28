@@ -83,6 +83,11 @@ var soundChannel = AudioStreamPlayer.new()
 #Alternate global Sound player
 var soundChannel2 = AudioStreamPlayer.new()
 
+# characters (if you want more you should add one here, see the player script too for more settings)
+enum CHARACTERS {NONE,SONIC,TAILS,KNUCKLES,AMY,MIGHTY,RAY}
+var PlayerChar1 = CHARACTERS.SONIC
+var PlayerChar2 = CHARACTERS.TAILS
+
 # Gameplay values
 var score = 0
 var lives = 3
@@ -127,13 +132,22 @@ var superAnyone = false
 var anyCharacters = false
 var BetaCasinoNight = false
 
+# Two Player settings
+#Single Race: Pick a character and a zone for each race
+#Elimination: Single Race, but no repeat characters per player are allowed.
+#Grand Prix: Go through each Zone in Order
+enum TWO_PLAYER{SINGLE_RACE,ELIMINATION,GRAND_PRIX}
+enum ITEM_MODE{ALL_KINDS_ITEMS,TELEPORT_ONLY,RING_ONLY,EGGMAN_ONLY}
+var twoPlayerGameMode = TWO_PLAYER.SINGLE_RACE
+var twoPlayerItems = ITEM_MODE.ALL_KINDS_ITEMS
+
 # Arrays per act
 # Score,Time,Rings,ScoreP2,TimeP2,RingsP2
 var twoPlayActResults = []
 
 # Array of 0 = no game, 1=player1, 2=player2, 3=draw
 # Init to no game
-var twoPlayerZoneResults = [0,0,0,0,0,0,0,0]
+var twoPlayerZoneResults = []
 
 var twoPlayerZones = [
 	ZONES.EMERALD_HILL,
@@ -141,6 +155,8 @@ var twoPlayerZones = [
 	ZONES.DUST_HILL,
 	ZONES.OIL_OCEAN
 ]
+#Which round the Two Player Mode is in.
+var twoPlayerRound = 0
 
 var zoneNames = [
 	"Emerald Hill", "Hidden Palace","Hill Top", "Chemical Plant",
@@ -156,11 +172,6 @@ var savedActID = 0 # selected act ID
 var waterLevel = null
 var setWaterLevel = 0 # used by other nodes to change the water level
 var waterScrollSpeed = 64 # used by other nodes for how fast to move the water to different levels
-
-# characters (if you want more you should add one here, see the player script too for more settings)
-enum CHARACTERS {NONE,SONIC,TAILS,KNUCKLES,AMY,MIGHTY,RAY}
-var PlayerChar1 = CHARACTERS.SONIC
-var PlayerChar2 = CHARACTERS.TAILS
 
 # Level settings
 var hardBorderLeft   = -100000000
@@ -422,7 +433,8 @@ func load_settings():
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"),file.get_value("Volume","SFX"))
 	
 	if file.has_section_key("Volume","Music"):
-		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"),file.get_value("Volume","Music"))
+		var musicVol: float = (file.get_value("Volume","Music"))
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"),musicVol)
 	
 	if file.has_section_key("Resolution","Zoom"):
 		zoomSize = file.get_value("Resolution","Zoom")

@@ -49,7 +49,8 @@ func _process(delta):
 
 func _input(event):
 	# Pausing
-	if event.is_action_pressed("gm_pause") and sceneCanPause:
+	if (event.is_action_pressed("gm_pause") and sceneCanPause) or (
+		event.is_action_pressed("gm_pause_P2") and sceneCanPause and Global.TwoPlayer):
 		# check if the game wasn't paused and the tree isn't paused either
 		if !wasPaused and !get_tree().paused:
 			# Do the pause

@@ -52,6 +52,7 @@ var lastInput = Vector2.ZERO #Last saved direction input.
 func _ready():
 	set_menu(menu)
 
+
 func _process(delta):
 	# check if paused and visible, otherwise cancel it out
 	if !get_tree().paused or !visible:
@@ -65,7 +66,20 @@ func _input(event):
 	if !get_tree().paused or !visible:
 		return null
 	# menu button activate
-	if event.is_action_pressed("gm_pause") or event.is_action_pressed("gm_action"):
+	if Global.TwoPlayer and (
+		event.is_action_pressed("gm_pause") or 
+		event.is_action_pressed("gm_pause_P2")):
+			if Global.main.wasPaused:
+				# give frame so game doesn't immedaitely unpause
+				await get_tree().process_frame
+				Global.main.wasPaused = false
+				get_tree().paused = false
+				visible = false
+				
+	# menu button activate
+	if (event.is_action_pressed("gm_pause")
+	or event.is_action_pressed("gm_action")
+	) and !Global.TwoPlayer:
 		match(menu): # menu handles
 			MENUS.MAIN: # main menu
 				match(option): # Options
@@ -113,9 +127,13 @@ func _input(event):
 					1: # ok
 						await get_tree().process_frame
 						Global.main.reset_game()
-	pass
+
 
 func _unhandledInput(_event):
+	#Ignore menu in 2-Player mode so player's can't grief eachother.
+	if Global.TwoPlayer:
+		return
+	
 	# check if paused and visible, otherwise cancel it out
 	#if !get_tree().paused or !visible:
 	#	return null
@@ -123,6 +141,7 @@ func _unhandledInput(_event):
 	var inputCue = Input.get_vector("gm_left","gm_right","gm_up","gm_down")
 	inputCue.x = round(inputCue.x)
 	inputCue.y = round(inputCue.y)
+	var inputCueP2: Vector2 = Vector2.ZERO
 	
 	# change up/down menu options
 	if inputCue.y > 0 and inputCue.y != lastInput.y:
@@ -158,12 +177,14 @@ func _unhandledInput(_event):
 		match(option):
 			0, 1: # Volume
 					soundExample[option].play()
-					AudioServer.set_bus_volume_db(AudioServer.get_bus_index(getBus
+					AudioServer.set_bus_volume_db(
+						AudioServer.get_bus_index(getBus
 					),clamp(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(getBus)
 					)+inputCue.x*soundStep,clampSounds[0],clampSounds[1]))
 					AudioServer.set_bus_mute(AudioServer.get_bus_index(getBus
 					),AudioServer.get_bus_volume_db(AudioServer.get_bus_index(getBus)
-					) <= clampSounds[0])
+					) <= clampSounds[0]
+					)
 					
 			2: # Scale
 				if (inputCue.x != 0) and (
@@ -232,3 +253,8 @@ func _on_visibility_changed() -> void:
 		var tex = ImageTexture.create_from_image(img)
 		$PauseCover.texture = tex
 		$PauseCover.size = tex.get_size()
+	
+	if Global.TwoPlayer:
+		$PauseMenu.visible = false
+	else:
+		$PauseMenu.visible = true

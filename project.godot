@@ -38,6 +38,12 @@ window/stretch/scale=2.0
 
 project/assembly_name="Sonic Worlds Next"
 
+[file_customization]
+
+folder_colors={
+"res://Graphics/Fonts/": "yellow"
+}
+
 [gui]
 
 theme/custom_font="res://Graphics/Fonts/small_font.png"
@@ -186,7 +192,7 @@ gm_super_P2={
 }
 gm_pause_P2={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194310,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194437,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":1,"button_index":6,"pressure":0.0,"pressed":true,"script":null)
 ]
 }
