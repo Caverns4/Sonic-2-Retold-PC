@@ -859,7 +859,6 @@ text = "100"
 horizontal_alignment = 2
 
 [node name="Counters" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 8.0
@@ -933,6 +932,7 @@ libraries = {
 }
 
 [node name="P1Counters" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 8.0
@@ -977,6 +977,7 @@ region_enabled = true
 region_rect = Rect2(0, 64, 40, 16)
 
 [node name="P2Counters" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 4
 anchor_top = 0.5
@@ -1138,9 +1139,8 @@ anchor_left = 1.0
 anchor_top = 0.003
 anchor_right = 1.0
 anchor_bottom = 0.003
-offset_left = -32.0
 offset_top = -86.944
-offset_right = 20966.4
+offset_right = 20998.4
 offset_bottom = 169.056
 grow_horizontal = 0
 grow_vertical = 2

@@ -13,6 +13,8 @@ music = ExtResource("2_j7ucr")
 music2P = ExtResource("2_j7ucr")
 animal1 = 6
 animal2 = 3
+defaultTopBoundry = 128
+defaultBottomBoundry = 416
 
 [node name="15-deathEgg" parent="." instance=ExtResource("3_dgxjp")]
 
@@ -21,7 +23,7 @@ zoneName = "DEATH EGG"
 act = 2
 
 [node name="Player" parent="." instance=ExtResource("4_lrbjf")]
-position = Vector2(96, 236)
+position = Vector2(96, 300)
 disablePartner = true
 
 [node name="Level_Layout" type="Node" parent="."]
