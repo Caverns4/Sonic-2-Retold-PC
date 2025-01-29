@@ -176,15 +176,20 @@ func _unhandledInput(_event):
 		
 		match(option):
 			0, 1: # Volume
+					#Play sample audio
 					soundExample[option].play()
+					#Set stream volume
 					AudioServer.set_bus_volume_db(
-						AudioServer.get_bus_index(getBus
-					),clamp(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(getBus)
-					)+inputCue.x*soundStep,clampSounds[0],clampSounds[1]))
-					AudioServer.set_bus_mute(AudioServer.get_bus_index(getBus
-					),AudioServer.get_bus_volume_db(AudioServer.get_bus_index(getBus)
-					) <= clampSounds[0]
-					)
+					AudioServer.get_bus_index(getBus), #arg 1
+					clamp(AudioServer.get_bus_volume_db(
+					AudioServer.get_bus_index(getBus))+inputCue.x*soundStep,
+					clampSounds[0], #Clamp Low Value
+					clampSounds[1])) #Clamp High Value
+					#Mute if needed
+					AudioServer.set_bus_mute( #Set bus mute
+					AudioServer.get_bus_index(getBus), #channel to mute
+					AudioServer.get_bus_volume_db(AudioServer.get_bus_index(getBus)
+					) <= clampSounds[0]) #True if < -40.0 
 					
 			2: # Scale
 				if (inputCue.x != 0) and (

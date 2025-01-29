@@ -386,7 +386,7 @@ func loadNextLevel():
 				savedZoneID = ZONES.HILL_TOP
 			ZONES.CASINO_NIGHT:
 				savedActID = 0
-				savedZoneID = ZONES.WOOD_GADGET
+				savedZoneID = ZONES.DUST_HILL
 			ZONES.JEWEL_GROTTO:
 				savedActID = 0
 				savedZoneID = ZONES.SAND_SHOWER
@@ -433,10 +433,20 @@ func load_settings():
 	
 	if file.has_section_key("Volume","SFX"):
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"),file.get_value("Volume","SFX"))
+		#Set bus mute
+		AudioServer.set_bus_mute(
+		AudioServer.get_bus_index("SFX"), #channel to mute
+		AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")
+		) <= -40.0) #True if < -40.0 
 	
 	if file.has_section_key("Volume","Music"):
 		var musicVol: float = (file.get_value("Volume","Music"))
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"),musicVol)
+		# Mute if needed
+		AudioServer.set_bus_mute(
+		AudioServer.get_bus_index("Music"), #channel to mute
+		AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")
+		) <= -40.0) #True if < -40.0 
 	
 	if file.has_section_key("Resolution","Zoom"):
 		zoomSize = file.get_value("Resolution","Zoom")
