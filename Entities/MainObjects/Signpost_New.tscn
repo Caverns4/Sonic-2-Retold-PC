@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://l26y1wupkm3f"]
+[gd_scene load_steps=15 format=3 uid="uid://l26y1wupkm3f"]
 
 [ext_resource type="Material" uid="uid://bveqi5m5ihsgj" path="res://Shaders/PlayerPalette.tres" id="1_kh2rr"]
 [ext_resource type="Texture2D" uid="uid://t0a50iu2sqj1" path="res://Graphics/Items/goal_signs.png" id="2_0uxmf"]
 [ext_resource type="Script" path="res://Scripts/Objects/GoalPost.gd" id="3_fwd0o"]
 [ext_resource type="AudioStream" uid="uid://b188no3hh5d8y" path="res://Audio/SFX/Objects/SignPost.wav" id="4_fia1e"]
+[ext_resource type="AudioStream" uid="uid://ck5sryrbaxynk" path="res://Audio/SFX/Objects/Signpost2P.wav" id="5_cne4s"]
 
 [sub_resource type="Animation" id="Animation_52uwv"]
 resource_name = "Amy"
@@ -159,9 +160,14 @@ region_rect = Rect2(0, 0, 48, 48)
 libraries = {
 "": SubResource("AnimationLibrary_3s12x")
 }
+autoplay = "RESET"
 
 [node name="GoalPost" type="AudioStreamPlayer" parent="Signpost"]
 stream = ExtResource("4_fia1e")
+bus = &"SFX"
+
+[node name="GoalPost2P" type="AudioStreamPlayer" parent="Signpost"]
+stream = ExtResource("5_cne4s")
 bus = &"SFX"
 
 [node name="Timer" type="Timer" parent="."]

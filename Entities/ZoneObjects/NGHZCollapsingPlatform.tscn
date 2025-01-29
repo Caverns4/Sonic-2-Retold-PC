@@ -10,7 +10,7 @@ size = Vector2(64, 16)
 collision_layer = 0
 collision_mask = 4096
 script = ExtResource("1_0i8l5")
-tile = NodePath("")
+tile = NodePath("Tiles")
 speed = 6.0
 soundDelay = 0.0
 

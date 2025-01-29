@@ -1,4 +1,6 @@
 extends Node2D
+
+var twoPlayerResults = load("res://Scene/Presentation/TwoPlayerResults.tscn")
 var getCam = null
 var player = null
 var winner = Global.CHARACTERS.NONE
@@ -6,6 +8,7 @@ var winner = Global.CHARACTERS.NONE
 var triggers = []
 
 @onready var screenXSize = GlobalFunctions.get_screen_size().x
+
 
 func _physics_process(_delta):
 	# check if player.x position is greater then the post
@@ -32,22 +35,31 @@ func _physics_process(_delta):
 					Global.stageClearPhase = 3
 
 func TriggerSignpostMultiPlayer():
-	for i in Global.players.size():
-		if Global.players[i].global_position.x > global_position.x and Global.stageClearPhase == 0:
-			player = Global.players[i]
-	if player and !triggers.has(player):
-		triggers.append(player)
-		# Camera limit set
-		player.limitLeft = global_position.x -screenXSize/2
-		player.limitRight = global_position.x +(screenXSize/2)+64
-		getCam = player.camera
+	for playerObj in Global.players:
+		if (playerObj.global_position.x > global_position.x and
+		!triggers.has(playerObj)):
+			triggers.append(playerObj)
+			var index = Global.players.find(playerObj)
+			# Camera limit set
+			playerObj.limitLeft = global_position.x - screenXSize/2
+			playerObj.limitRight = global_position.x + (screenXSize/2)
+			getCam = playerObj.camera
 		
-		if !winner:
-			winner = player.character
+			if !winner:
+				winner = playerObj.character
+				$Signpost/GoalPost2P.play()
 		
-		SetSignpostAnimation(winner)
-		if triggers.size() > 1:
-			$Timer.start()
+			SetSignpostAnimation(winner)
+			if index == 0:
+				Global.timerActive = false
+			else:
+				Global.timerActiveP2 = false
+			for i in Global.players.size():
+				if i != index and Global.hud:
+					Global.hud.InitTimerForPlayer(i)
+		
+			if triggers.size() >= Global.players.size():
+				$Timer.start()
 		
 
 func TriggerSignpostSinglePlayer():
@@ -111,3 +123,5 @@ func _on_timer_timeout() -> void:
 	Global.scoreP2,Global.levelTimeP2,Global.players[1].rings]
 	Global.twoPlayActResults.append(results)
 	#Set flag to load the results screen.
+	#print(results)
+	Global.main.change_scene_to_file(twoPlayerResults,"FadeOut","FadeOut",1)

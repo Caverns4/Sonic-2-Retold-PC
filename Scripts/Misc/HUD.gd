@@ -45,6 +45,8 @@ signal tally_clear
 # see Global.PlayerChar1
 var characterNames = ["SONIC","TAILS","KNUCKLES","AMY","MIGHTY","RAY"]
 
+var twoPlayerResults = load("res://Scene/Presentation/TwoPlayerResults.tscn")
+
 func _ready():
 	if !Global.airSpeedCap:
 		$Counters/Text.self_modulate = Color.RED
@@ -224,6 +226,10 @@ func _process(delta):
 		lifeText.text = "%3d" % Global.livesP2
 		$P2Counters/Icon2/LifeText.text = "%3d" % Global.lives
 	
+	if $Timer.time_left > 0:
+		$DeathTimers/CountdownP1.text = str(ceil($Timer.time_left))
+		$DeathTimers/CountdownP2.text = str(ceil($Timer.time_left))
+	
 	# Water Overlay
 	
 	# cehck that this level has water
@@ -263,7 +269,7 @@ func _process(delta):
 							for j in get_tree().get_nodes_in_group("Enemy"):
 								if j.global_position.y >= Global.waterLevel and i.global_position.distance_to(j.global_position) <= 256:
 									if j.has_method("destroy"):
-										Global.add_score(j.global_position,Global.SCORE_COMBO[0])
+										Global.add_score(j.global_position,Global.SCORE_COMBO[0],Global.players.find(i))
 										j.destroy()
 							# disable flash after a frame
 							await get_tree().process_frame
@@ -363,7 +369,15 @@ func _process(delta):
 		await $GameOver/GameOver.animation_finished
 		# reset game
 		if Global.levelTime < Global.maxTime or (Global.lives <= 0 and Global.livesMode):
-			Global.main.change_scene_to_file(Global.startScene,"FadeOut")
+			if Global.TwoPlayer:
+				var results = [Global.score,Global.levelTime,Global.players[0].rings,
+				Global.scoreP2,Global.levelTimeP2,Global.players[1].rings]
+				Global.twoPlayActResults.append(results)
+				#Set flag to load the results screen.
+				#print(results)
+				Global.main.change_scene_to_file(twoPlayerResults,"FadeOut")
+			else:
+				Global.main.change_scene_to_file(Global.startScene,"FadeOut")
 			await Global.main.scene_faded
 			Global.reset_values()
 		# reset level (if time over and lives aren't out)
@@ -409,4 +423,22 @@ func _on_CounterCount_timeout():
 	$LevelClear/TimeBonusText/TimeBonus.text = "%6d" % timeBonus
 	$LevelClear/PerfectBonusText/PerfectBonus.text = "%6d" % perfectBonus
 	$LevelClear/RingBonusText/RingBonus.text = "%6d" % ringBonus
-	
+
+func InitTimerForPlayer(index):
+	if index == 0:
+		$DeathTimers/CountdownP1.visible = true
+	if index == 1:
+		$DeathTimers/CountdownP2.visible = true
+	$Timer.start()
+
+
+func _on_timer_timeout() -> void:
+	if Global.timerActive:
+		Global.players[0].kill(true)
+		Global.timerActive = false
+		Global.gameOver = true
+	if Global.timerActiveP2:
+		Global.players[1].kill(true)
+		Global.timerActiveP2 = false
+		Global.gameOver = true
+	#If neither are true, then both players made it past the goal.

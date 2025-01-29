@@ -144,6 +144,7 @@ var twoPlayerItems = ITEM_MODE.ALL_KINDS_ITEMS
 # Arrays per act
 # Score,Time,Rings,ScoreP2,TimeP2,RingsP2
 var twoPlayActResults = []
+var twoPlayActResultsFinal = []
 
 # Array of 0 = no game, 1=player1, 2=player2, 3=draw
 # Init to no game
@@ -327,9 +328,10 @@ func playMusic(musID = null,agnostic = false):
 		currentMusic = musID
 
 # add a score object, see res://Scripts/Misc/Score.gd for reference
-func add_score(position = Vector2.ZERO,value = 0):
+func add_score(position: Vector2,value: int,playerID: int):
 	var scoreObj = Score.instantiate()
 	scoreObj.scoreID = value
+	scoreObj.playerID = playerID
 	scoreObj.global_position = position
 	add_child(scoreObj)
 

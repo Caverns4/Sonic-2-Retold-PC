@@ -859,6 +859,7 @@ text = "100"
 horizontal_alignment = 2
 
 [node name="Counters" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 8.0
@@ -932,7 +933,6 @@ libraries = {
 }
 
 [node name="P1Counters" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 8.0
@@ -1039,6 +1039,38 @@ theme_override_fonts/font = ExtResource("3_eauoj")
 text = "100"
 horizontal_alignment = 2
 
+[node name="DeathTimers" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="CountdownP1" type="Label" parent="DeathTimers"]
+visible = false
+layout_mode = 0
+offset_left = -12.0
+offset_top = 96.0
+offset_right = 4.0
+offset_bottom = 112.0
+theme_override_fonts/font = ExtResource("6_synv7")
+text = "00
+"
+
+[node name="CountdownP2" type="Label" parent="DeathTimers"]
+visible = false
+layout_mode = 0
+offset_left = -12.0
+offset_top = 208.0
+offset_right = 4.0
+offset_bottom = 224.0
+theme_override_fonts/font = ExtResource("6_synv7")
+text = "00
+"
+
 [node name="LevelCard" type="Control" parent="."]
 process_mode = 3
 visible = false
@@ -1107,7 +1139,7 @@ anchor_top = 0.003
 anchor_right = 1.0
 anchor_bottom = 0.003
 offset_top = -86.944
-offset_right = 18886.4
+offset_right = 20966.4
 offset_bottom = 169.056
 grow_horizontal = 0
 grow_vertical = 2
@@ -1337,4 +1369,10 @@ layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
+[node name="Timer" type="Timer" parent="."]
+process_mode = 1
+wait_time = 60.0
+one_shot = true
+
 [connection signal="timeout" from="LevelClear/CounterCount" to="." method="_on_CounterCount_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

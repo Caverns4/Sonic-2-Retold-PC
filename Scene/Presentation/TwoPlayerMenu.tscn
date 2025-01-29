@@ -1,15 +1,12 @@
-[gd_scene load_steps=10 format=4 uid="uid://hrv0o8iuylw1"]
+[gd_scene load_steps=9 format=4 uid="uid://hrv0o8iuylw1"]
 
 [ext_resource type="TileSet" uid="uid://bk1ere21h4285" path="res://Tileset/Menus.tres" id="1_8m080"]
 [ext_resource type="Script" path="res://Scripts/Menu/two_player_menu.gd" id="1_evhrv"]
 [ext_resource type="Texture2D" uid="uid://d3g0w6uwq7bvj" path="res://Graphics/Menus/Icons_All.png" id="2_vx2ax"]
 [ext_resource type="FontFile" uid="uid://ml62eqfe7avn" path="res://Graphics/Fonts/small_font.png" id="3_83c5k"]
 [ext_resource type="Texture2D" uid="uid://dm4ejufaxy62s" path="res://Graphics/Menus/MiniCharacters.png" id="4_kvyjd"]
-[ext_resource type="FontFile" uid="uid://73hfey5yc714" path="res://Graphics/Fonts/2PlayerText.png" id="6_euw84"]
+[ext_resource type="Theme" uid="uid://qblf2beyokrn" path="res://Resources/TwoPlayerMenuTheme.tres" id="5_bbvro"]
 [ext_resource type="Texture2D" uid="uid://cjyag5wmcqw5j" path="res://Graphics/HUD/YIcon.png" id="7_8ak7c"]
-
-[sub_resource type="Theme" id="Theme_p82wn"]
-default_font = ExtResource("6_euw84")
 
 [sub_resource type="Theme" id="Theme_ohhki"]
 default_font = ExtResource("3_83c5k")
@@ -119,7 +116,7 @@ offset_top = 72.0
 offset_right = 68.0
 offset_bottom = 96.0
 grow_horizontal = 2
-theme = SubResource("Theme_p82wn")
+theme = ExtResource("5_bbvro")
 bbcode_enabled = true
 text = "READY"
 scroll_active = false
@@ -136,7 +133,7 @@ offset_top = 136.0
 offset_right = 68.0
 offset_bottom = 160.0
 grow_horizontal = 2
-theme = SubResource("Theme_p82wn")
+theme = ExtResource("5_bbvro")
 bbcode_enabled = true
 text = "READY"
 scroll_active = false
@@ -218,7 +215,7 @@ offset_top = 16.0
 offset_right = 160.0
 offset_bottom = 32.0
 grow_horizontal = 2
-theme = SubResource("Theme_p82wn")
+theme = ExtResource("5_bbvro")
 bbcode_enabled = true
 text = "[center]RACE SELECTION"
 scroll_active = false

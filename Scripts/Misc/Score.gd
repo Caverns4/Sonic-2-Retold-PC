@@ -5,6 +5,7 @@ const RECTS = [Rect2(Vector2(0,0),Vector2(10,8)),Rect2(Vector2(0,0),Vector2(15,8
 Rect2(Vector2(0,18),Vector2(15,8)),Rect2(Vector2(0,0),Vector2(20,8)),Rect2(Vector2(0,0),Vector2(25,8))]
 
 var scoreID = 0
+var playerID = 0
 
 var yspeed = -3
 
@@ -13,7 +14,10 @@ func _ready():
 	Global.check_score_life(SCORE[scoreID])
 	
 	# add score
-	Global.score += SCORE[scoreID]
+	if playerID == 0 or !Global.TwoPlayer:
+		Global.score += SCORE[scoreID]
+	else:
+		Global.scoreP2 += SCORE[scoreID]
 	# set sprite region to match (see RECTS for texture regions
 	$Sprite2D.region_rect = RECTS[scoreID]
 	
