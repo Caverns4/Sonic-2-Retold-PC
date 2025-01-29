@@ -28,6 +28,7 @@ func _ready():
 	drillCar = get_tree().get_root().find_child("DrillEggmanCar",true,false)
 	if drillCar:
 		drillCar.connect("carTouched",Callable(self,"_on_drill_eggman_car_car_position"))
+	super()
 
 func _process(delta):
 	updateDirection()

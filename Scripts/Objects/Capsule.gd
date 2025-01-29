@@ -9,6 +9,10 @@ var checkAnimals = false
 var timerActive = false
 var timer = 180.0/60.0
 
+func _ready() -> void:
+	if Global.TwoPlayer:
+		queue_free()
+
 func _physics_process(delta):
 	
 	

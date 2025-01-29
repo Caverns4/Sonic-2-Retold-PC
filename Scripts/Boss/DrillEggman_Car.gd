@@ -74,7 +74,7 @@ func _physics_process(delta):
 	UpdateDrillIfAttached()
 	
 	#End of step: Always tell the Boss Eggman where I am
-	if parent.phase == 0:
+	if parent and is_instance_valid(parent) and parent.phase == 0:
 		parent.targetPosition = global_position + Vector2(0,-11)
 	elif pilot:
 		parent.global_position = global_position + Vector2(0,-11)

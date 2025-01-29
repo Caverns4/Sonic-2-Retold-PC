@@ -32,6 +32,7 @@ func _ready():
 	if drillCar:
 		drillCar.connect("carTouched",Callable(self,"_on_drill_eggman_car_car_position"))
 	hp = 255 #Can't kill Eggman til he lands, but can damage him for fun
+	super()
 
 func _process(delta):
 	updateDirection()

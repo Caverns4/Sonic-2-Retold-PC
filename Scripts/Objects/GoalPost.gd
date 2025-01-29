@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var multiplayerOnly: bool = false
 var twoPlayerResults = load("res://Scene/Presentation/TwoPlayerResults.tscn")
 var getCam = null
 var player = null
@@ -9,6 +10,9 @@ var triggers = []
 
 @onready var screenXSize = GlobalFunctions.get_screen_size().x
 
+func _ready() -> void:
+	if multiplayerOnly and !Global.TwoPlayer:
+		queue_free()
 
 func _physics_process(_delta):
 	# check if player.x position is greater then the post

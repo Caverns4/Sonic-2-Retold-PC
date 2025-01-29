@@ -16,6 +16,9 @@ signal boss_over
 
 var active = false
 
+func _ready() -> void:
+	if Global.TwoPlayer:
+		queue_free()
 
 func _physics_process(delta):
 	# flashing timer

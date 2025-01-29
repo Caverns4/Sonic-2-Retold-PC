@@ -112,7 +112,7 @@ position = Vector2(7552, 176)
 size = Vector2(1, 4)
 
 [node name="BoundrySetter" parent="Entities" instance=ExtResource("20_nb3p5")]
-position = Vector2(11592, 1288)
+position = Vector2(11584, 1232)
 leftBoundry = 11264
 topBoundry = 1088
 setRight = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://cou8y8ungkjfx"]
+[gd_scene load_steps=28 format=4 uid="uid://cou8y8ungkjfx"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_p81yk"]
 [ext_resource type="PackedScene" uid="uid://deaxge481u7mk" path="res://Scene/Backgrounds/00-EmeraldHill.tscn" id="3_x8p3v"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c1ldunfxhq0he" path="res://Entities/Obstacles/ForceAngleSides.tscn" id="22_brwg2"]
 [ext_resource type="PackedScene" uid="uid://bgodeg4oddje6" path="res://Entities/MainObjects/BoundrySetter.tscn" id="23_bmabq"]
 [ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="24_d0wpa"]
+[ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="25_je0kn"]
 [ext_resource type="Texture2D" uid="uid://bsl2k38yish1o" path="res://Graphics/Tiles/WorldsTiles/EHZ_Platform_Small.png" id="25_qhqix"]
 [ext_resource type="PackedScene" uid="uid://cfteqnft5ynr7" path="res://Entities/Hazards/Spikes.tscn" id="26_3yxfe"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="27_hs17r"]
@@ -589,6 +590,10 @@ position = Vector2(11016, 1056)
 
 [node name="Capsule" parent="." instance=ExtResource("36_lon64")]
 position = Vector2(11264, 1060)
+
+[node name="SignpostNew" parent="." instance=ExtResource("25_je0kn")]
+position = Vector2(10688, 1091)
+multiplayerOnly = true
 
 [connection signal="boss_start" from="Boss/BossBoundrySetter" to="Boss/DrillEggmanCar" method="_on_boss_boundry_setter_boss_start"]
 [connection signal="carTouched" from="Boss/DrillEggmanCar" to="Boss/HelicopterEggman" method="_on_drill_eggman_car_car_touched"]

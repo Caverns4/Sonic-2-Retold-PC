@@ -20,6 +20,7 @@ func _ready():
 	global_position = getPose[currentPoint]+Vector2(0,-1)*128
 	# run laugh function for every time the player gets hit
 	connect("hit_player",Callable(self,"do_laugh"))
+	super()
 
 func _process(delta):
 	# flame jet (only visible when moving)

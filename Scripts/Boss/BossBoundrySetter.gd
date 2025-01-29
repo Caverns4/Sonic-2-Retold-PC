@@ -29,6 +29,10 @@ var bossActive = false
 
 signal boss_start()
 
+func _ready() -> void:
+	if Global.TwoPlayer:
+		queue_free()
+
 func _on_BoundrySetter_body_entered(body):
 	if !Engine.is_editor_hint():
 		$CollisionShape2D.set.call_deferred("disabled",true)

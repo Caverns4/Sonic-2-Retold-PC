@@ -432,7 +432,8 @@ func load_settings():
 		return false # Return false as an error
 	
 	if file.has_section_key("Volume","SFX"):
-		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"),file.get_value("Volume","SFX"))
+		var sfxVol: float = (file.get_value("Volume","SFX"))
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"),sfxVol)
 		#Set bus mute
 		AudioServer.set_bus_mute(
 		AudioServer.get_bus_index("SFX"), #channel to mute
