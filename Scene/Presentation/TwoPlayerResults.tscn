@@ -51,9 +51,9 @@ uppercase = true
 
 [node name="Act Results Text" type="RichTextLabel" parent="UI/Labels"]
 layout_mode = 0
-offset_left = -128.0
+offset_left = -92.0
 offset_top = 64.0
-offset_right = 128.0
+offset_right = 100.0
 offset_bottom = 136.0
 theme = ExtResource("4_l5r1f")
 bbcode_enabled = true

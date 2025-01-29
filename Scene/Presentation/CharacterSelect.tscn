@@ -346,7 +346,7 @@ position = Vector2(416, 176)
 texture = ExtResource("9_3vc3f")
 centered = false
 hframes = 4
-vframes = 5
+vframes = 7
 
 [node name="Cover" type="CanvasLayer" parent="."]
 layer = 0

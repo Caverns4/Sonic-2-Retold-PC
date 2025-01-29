@@ -10,20 +10,30 @@ var endScene = false
 func _ready():
 	Global.music.stream = music
 	Global.music.play()
-	var result = Global.twoPlayActResults[Global.twoPlayActResults.size()-1]
-	var winner = GetWinner()
-	$"UI/Labels/Act Results Text".text = ("Act results " + str(Global.savedActID+1) + "\n\n"
-	+ "SCORE  " + str(result[0]).lpad(6) + " : " + str(result[3]).lpad(6) + "\n"
-	+ "RINGS     " + str(result[2]).lpad(3) + " :    " + str(result[5]).lpad(3) + "\n")
+	var result = [0,0,0,0,0,0]
+	if Global.twoPlayActResults:
+		result = Global.twoPlayActResults[Global.twoPlayActResults.size()-1]
+	var winner = GetWinner(result)
+	
+	#Calculate Time Text
+	var time = result[1]
+	var timeTextP1: String = "%2d" % floor(time/60) + ":" + str(fmod(floor(time),60)).pad_zeros(2) + ":" + str(fmod(floor(time*100),100)).pad_zeros(2)
+	time = result[4]
+	var timeTextP2: String = "%2d" % floor(time/60) + ":" + str(fmod(floor(time),60)).pad_zeros(2) + ":" + str(fmod(floor(time*100),100)).pad_zeros(2)
+	
+	$"UI/Labels/Act Results Text".text = ("Act " + str(Global.savedActID+1) + " results\n\n"
+	+ "SCORE  " + str(result[0]).lpad(6) + " :   " + str(result[3]).lpad(6) + "\n\n"
+	+ "TIME " + timeTextP1 + " : " + timeTextP2 + "\n\n"
+	+ "RINGS     " + str(result[2]).lpad(3) + " :      " + str(result[5]).lpad(3) + "\n\n")
 	
 	Global.twoPlayActResultsFinal.insert(winner,Global.twoPlayActResultsFinal.size())
 	
 	if winner > 0:
-		$UI/Labels/WinnerText.text = "1P WINS"
+		$UI/Labels/WinnerText.text = "[center]1P WINS"
 	elif winner == 0:
-		$UI/Labels/WinnerText.text = "TIED"
+		$UI/Labels/WinnerText.text = "[center]TIED"
 	else:
-		$UI/Labels/WinnerText.text = "2P WINS"
+		$UI/Labels/WinnerText.text = "[center]2P WINS"
 
 func _input(event):
 	if !endScene:
@@ -36,30 +46,24 @@ func _input(event):
 			Global.score = 0
 			Global.scoreP2 = 0
 			if Global.savedActID == 0 and Global.lives > 0 and Global.livesP2 > 0:
-				Global.savedActID +=1
-				Global.loadNextLevel
+				Global.loadNextLevel()
 				Global.main.change_scene_to_file(nextAct,"FadeOut","FadeOut",1)
 			else:
 				Global.twoPlayerZoneResults
 				Global.main.change_scene_to_file(returnScene,"FadeOut","FadeOut",1)
 
-func GetWinner():
+func GetWinner(result: Array):
 	if Global.lives <=0:
 		return -1 #If a Game Over was obtained, the other Player wins.
 	if Global.livesP2 <=0:
 		return 1
 	
-	#Prepare the results:
-	var result = Global.twoPlayActResults[Global.twoPlayActResults.size()-1]
-	var a = 0 # No Contest
-	var b = 0 # No Contest
-	var c = 0 # No Contest
 	# For each pair of numbers, subtract Player 1's result from Player 2's, and
 	# get the signature. If it's negative, we know Player 2's value was higher.
 	#For the time, however, the winner needs to be LESS
-	a = sign(result[0]-result[3])
-	b = sign(result[4]-result[1])
-	c = sign(result[2]-result[5])
+	var a = sign(result[0]-result[3])
+	var b = sign(result[4]-result[1])
+	var c = sign(result[2]-result[5])
 	#print(str(a) + str(b) + str(c) )
 	var winner = (a+b+c)
 	return winner

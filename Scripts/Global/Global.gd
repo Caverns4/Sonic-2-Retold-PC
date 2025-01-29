@@ -153,7 +153,7 @@ var twoPlayerZoneResults = []
 var twoPlayerZones = [
 	ZONES.EMERALD_HILL,
 	ZONES.CASINO_NIGHT,
-	ZONES.DUST_HILL,
+	ZONES.CHEMICAL_PLANT,
 	ZONES.OIL_OCEAN
 ]
 #Which round the Two Player Mode is in.
@@ -353,6 +353,11 @@ func stage_clear():
 		music.play()
 
 func loadNextLevel():
+	#Reset all Checkpoints so the player doesn't respawn in a bad spot
+	currentCheckPoint = -1
+	currentCheckPointP2 = -1
+	maxTime = 60*10
+	
 	savedActID +=1
 	if savedActID >= 2:
 		match savedZoneID:

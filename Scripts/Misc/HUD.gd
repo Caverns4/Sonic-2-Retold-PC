@@ -153,7 +153,7 @@ func respawnPlayer():
 		if Global.checkPoints.size() > 0:
 			for i in Global.checkPoints:
 				if Global.currentCheckPoint == i.checkPointID:
-					print(i.checkPointID)
+					#print(i.checkPointID)
 					player.camera.global_position = i.global_position+Vector2(0,8)
 					player.global_position = i.global_position+Vector2(0,8)
 					Global.levelTime = Global.checkPointTime

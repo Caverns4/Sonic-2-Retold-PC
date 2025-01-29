@@ -164,7 +164,7 @@ position = Vector2(-32, 160)
 texture = ExtResource("2_vx2ax")
 centered = false
 hframes = 4
-vframes = 5
+vframes = 7
 
 [node name="CanvasTop" type="CanvasLayer" parent="."]
 
