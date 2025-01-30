@@ -37,7 +37,8 @@ var parallaxBackgrounds = [
 	"res://Scene/Backgrounds/12-SandShower.tscn",
 	"res://Scene/Backgrounds/13-TropicalJungle.tscn",
 	"res://Scene/Backgrounds/14-SkyFortress.tscn",
-	"res://Scene/Backgrounds/15-DeathEgg.tscn"
+	"res://Scene/Backgrounds/15-DeathEgg.tscn",
+	"res://Scene/Backgrounds/16-Ending.tscn"
 ]
 var sceneInstance = null
 
@@ -48,6 +49,7 @@ var paraOffsets = [
 	0,
 	-256,
 	-256,
+	0,
 	0,
 	0,
 	0,

@@ -89,7 +89,7 @@ var levelIcons = [ #Use this list to get the number of selectable entries
 	Global.ZONES.DEATH_EGG,
 	Global.ZONES.DEATH_EGG,
 	17,
-	18
+	20
 ]
 # character id lines up with characterLabels
 var characterID = 0
