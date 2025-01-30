@@ -56,6 +56,7 @@ func CheckGameOver(lifeCount,timerVal):
 
 func RespawnInTwoPlayer():
 	invulnerability = false
+	parent.hitbox.disabled = false
 	parent.translate = false
 	parent.global_position = parent.respawnPosition
 	parent.set_state(parent.STATES.NORMAL,parent.currentHitbox.NORMAL)

@@ -70,6 +70,7 @@ func _physics_process(delta):
 		
 		match(parent.partner.currentState):
 			parent.STATES.NORMAL, parent.STATES.AIR, parent.STATES.JUMP:
+				parent.hitbox.disabled = false
 				parent.groundSpeed = 0
 				parent.animator.play("walk")
 				parent.translate = false

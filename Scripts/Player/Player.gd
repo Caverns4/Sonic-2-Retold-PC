@@ -139,6 +139,7 @@ var airControl = true
 enum STATES {NORMAL, AIR, JUMP, ROLL, SPINDASH, PEELOUT, ANIMATION, HIT, DIE, CORKSCREW, JUMPCANCEL,
 SUPER, FLY, RESPAWN, HANG, GLIDE, WALLCLIMB, AMYHAMMER}
 var currentState = STATES.AIR
+@onready var hitbox = $HitBox
 @onready var hitBoxOffset = {normal = $HitBox.position, crouch = $HitBox.position}
 @onready var defaultHitBoxPos = $HitBox.position
 var crouchBox = null
@@ -448,7 +449,7 @@ func _ready():
 	switch_physics()
 	
 	# Set hitbox
-	$HitBox.shape.size = currentHitbox.NORMAL
+	hitbox.shape.size = currentHitbox.NORMAL
 	
 	# connect animator
 	animator.connect("animation_started",Callable(self,"_on_PlayerAnimation_animation_started"))
@@ -904,7 +905,7 @@ func _physics_process(delta):
 	if centerReference != null:
 		if centerReference.position != Vector2.ZERO:
 			# change to center offset if the center position is different
-			$HitBox.position = centerReference.position
+			hitbox.position = centerReference.position
 	
 	# Water
 	if Global.waterLevel != null and currentState != STATES.DIE:
@@ -946,11 +947,11 @@ func _physics_process(delta):
 		var crushSensorUp = $CrushSensorUp
 		var crushSensorDown = $CrushSensorDown
 		
-		crushSensorLeft.position.x = -($HitBox.shape.size.x/2 - 1)
-		crushSensorRight.position.x = ($HitBox.shape.size.x/2 - 1)
-		crushSensorUp.position.y = -($HitBox.shape.size.y/2 -1)
+		crushSensorLeft.position.x = -(hitbox.shape.size.x/2 - 1)
+		crushSensorRight.position.x = (hitbox.shape.size.x/2 - 1)
+		crushSensorUp.position.y = -(hitbox.shape.size.y/2 -1)
 		# note that the bottom crush sensor actually goes *below* the feet so that it can contact the floor
-		crushSensorDown.position.y = ($HitBox.shape.size.y/2 +1)
+		crushSensorDown.position.y = (hitbox.shape.size.y/2 +1)
 		
 		# crusher deaths NOTE: the translate and visibility is used for stuff like the sky sanctuary teleporters, visibility check is for stuff like the carnival night barrels
 		if (crushSensorLeft.get_overlapping_areas() + crushSensorLeft.get_overlapping_bodies()).size() > 0 and \
@@ -1052,7 +1053,7 @@ func get_state():
 func set_state(newState, forceMask = Vector2.ZERO):
 	
 	defaultHitBoxPos = hitBoxOffset.normal
-	$HitBox.position = defaultHitBoxPos
+	hitbox.position = defaultHitBoxPos
 	# reset the center offset
 	if centerReference != null:
 		centerReference.position = Vector2.ZERO
@@ -1074,25 +1075,25 @@ func set_state(newState, forceMask = Vector2.ZERO):
 		match(newState):
 			STATES.JUMP, STATES.ROLL:
 				# adjust y position
-				forcePoseChange = ((currentHitbox.ROLL-$HitBox.shape.size)*Vector2.UP).rotated(rotation)*0.5
+				forcePoseChange = ((currentHitbox.ROLL-hitbox.shape.size)*Vector2.UP).rotated(rotation)*0.5
 				
 				# change hitbox size
-				$HitBox.shape.size = currentHitbox.ROLL
+				hitbox.shape.size = currentHitbox.ROLL
 			STATES.SPINDASH:
 				# change hitbox size
-				$HitBox.shape.size = currentHitbox.CROUCH
+				hitbox.shape.size = currentHitbox.CROUCH
 				
 			_:
 				# adjust y position
-				forcePoseChange = ((currentHitbox.NORMAL-$HitBox.shape.size)*Vector2.UP).rotated(rotation)*0.5
+				forcePoseChange = ((currentHitbox.NORMAL-hitbox.shape.size)*Vector2.UP).rotated(rotation)*0.5
 				
 				# change hitbox size
-				$HitBox.shape.size = currentHitbox.NORMAL
+				hitbox.shape.size = currentHitbox.NORMAL
 	else:
 		# adjust y position
-		forcePoseChange = ((forceMask-$HitBox.shape.size)*Vector2.UP).rotated(rotation)*0.5
+		forcePoseChange = ((forceMask-hitbox.shape.size)*Vector2.UP).rotated(rotation)*0.5
 		# change hitbox size
-		$HitBox.shape.size = forceMask
+		hitbox.shape.size = forceMask
 	
 	position += forcePoseChange
 	
@@ -1102,9 +1103,9 @@ func set_state(newState, forceMask = Vector2.ZERO):
 func set_hitbox(mask = Vector2.ZERO, forcePoseChange = false):
 	# adjust position if on floor or force pose change
 	if ground or forcePoseChange:
-		position += ((mask-$HitBox.shape.size)*Vector2.UP).rotated(rotation)*0.5
+		position += ((mask-hitbox.shape.size)*Vector2.UP).rotated(rotation)*0.5
 	
-	$HitBox.shape.size = mask
+	hitbox.shape.size = mask
 
 # set shields
 func set_shield(setShieldID):
@@ -1221,6 +1222,7 @@ func kill(always = true):
 		sfx[6].play()
 		return false
 	if currentState != STATES.DIE:
+		hitbox.disabled = true
 		disconect_from_floor()
 		supTime = 0
 		shoeTime = 0
@@ -1399,13 +1401,13 @@ func cam_update(forceMove = false):
 	# Extra drag margin for rolling
 	match(character):
 		Global.CHARACTERS.TAILS:
-			match($HitBox.shape.size):
+			match(hitbox.shape.size):
 				currentHitbox.ROLL:
 					camAdjust = Vector2(0,-1)
 				_:
 					camAdjust = Vector2.ZERO
 		_: # default
-			match($HitBox.shape.size):
+			match(hitbox.shape.size):
 				currentHitbox.ROLL:
 					camAdjust = Vector2(0,-5)
 				_:
@@ -1524,7 +1526,7 @@ func action_water_run_handle():
 	# enable dash dust if touching water
 	dash.visible = (get_collision_mask_value(23) and touchWater and ground)
 	dash.scale.x = sign(movement.x)
-	dash.position.y = $HitBox.shape.size.y/2.0
+	dash.position.y = hitbox.shape.size.y/2.0
 
 	# play water run sound
 	if get_collision_mask_value(23) and touchWater and ground:
