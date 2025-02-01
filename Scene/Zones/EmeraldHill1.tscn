@@ -277,7 +277,7 @@ springDirection = 3
 
 [node name="BoundrySetter" parent="Entities" instance=ExtResource("34_s73fn")]
 position = Vector2(10840, 656)
-leftBoundry = 10600
+leftBoundry = 10400
 topBoundry = 512
 setRight = false
 rightBoundry = 11000

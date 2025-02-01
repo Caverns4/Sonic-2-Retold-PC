@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dw4ysdt7fckye"]
+[gd_scene load_steps=22 format=3 uid="uid://dw4ysdt7fckye"]
 
 [ext_resource type="Script" path="res://Scripts/Boss/poison_eggman.gd" id="1_30xqr"]
 [ext_resource type="Texture2D" uid="uid://6ds1jcc8jmyf" path="res://Graphics/Boss/Eggmobile.png" id="2_18wch"]
@@ -7,7 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://c31pi0okhicpx" path="res://Graphics/Boss/Eggmobile_Top.png" id="4_hwtff"]
 [ext_resource type="AudioStream" uid="uid://bvhfglhmpystw" path="res://Audio/SFX/Boss/Hit.wav" id="5_27acd"]
 [ext_resource type="Texture2D" uid="uid://bf0ytf63vlq5c" path="res://Graphics/Boss/EggmobileFlash.png" id="5_k67mh"]
+[ext_resource type="Texture2D" uid="uid://cmei7ujrbdqib" path="res://Graphics/Boss/CPZ/Boss_PoisonEggman_Attach.png" id="7_c0jak"]
+[ext_resource type="Texture2D" uid="uid://dqggwc5wimt47" path="res://Graphics/Boss/CPZ/Boss_PoisonEggmanHTube.png" id="8_1d55l"]
 [ext_resource type="AudioStream" uid="uid://beo0rjyvqkyfe" path="res://Audio/SFX/Boss/Explode.wav" id="8_dnsyq"]
+[ext_resource type="Texture2D" uid="uid://r6heondpx2vd" path="res://Graphics/Boss/CPZ/Boss_PoisonEggman_Jar.png" id="9_bk0em"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8gg6r"]
 atlas = ExtResource("3_8p31e")
@@ -126,6 +129,39 @@ visible = false
 texture = ExtResource("5_k67mh")
 offset = Vector2(0, -8)
 
+[node name="WaterPump" type="Sprite2D" parent="EggMobile"]
+position = Vector2(16, -59)
+texture = ExtResource("7_c0jak")
+
+[node name="PumpPosition" type="Node2D" parent="EggMobile"]
+position = Vector2(8, -59)
+
+[node name="GlassPipe" type="TextureRect" parent="EggMobile/PumpPosition"]
+offset_left = -16.0
+offset_top = -8.0
+texture = ExtResource("8_1d55l")
+stretch_mode = 1
+
+[node name="JarPosition" type="Node2D" parent="EggMobile/PumpPosition"]
+position = Vector2(-16, 0)
+
+[node name="JarBottom" type="Sprite2D" parent="EggMobile/PumpPosition/JarPosition"]
+position = Vector2(-16, 0)
+texture = ExtResource("9_bk0em")
+hframes = 6
+
+[node name="ColorRect" type="ColorRect" parent="EggMobile/PumpPosition/JarPosition"]
+offset_left = -28.0
+offset_top = -8.0
+offset_right = -4.0
+offset_bottom = 6.0
+color = Color(0, 0, 0.8, 1)
+
+[node name="JarTop" type="Sprite2D" parent="EggMobile/PumpPosition/JarPosition"]
+position = Vector2(-16, 0)
+texture = ExtResource("9_bk0em")
+hframes = 6
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("5")
 
@@ -152,10 +188,10 @@ wait_time = 0.1
 one_shot = true
 
 [node name="LeftPoint" type="Node2D" parent="."]
-position = Vector2(-632, 0)
+position = Vector2(-160, 0)
 
 [node name="RightPoint" type="Node2D" parent="."]
-position = Vector2(72, 0)
+position = Vector2(160, 0)
 
 [connection signal="defeated" from="." to="." method="_on_defeated"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_DamageArea_area_entered"]

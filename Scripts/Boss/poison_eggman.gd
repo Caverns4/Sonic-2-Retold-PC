@@ -16,8 +16,6 @@ var direction = -1 #left is -1, right is 1
 
 var animationPriority = ["default","move","laugh","hit","exploded"]
 
-var drillCar = null #Node
-var readyEnterCar = false
 var targetPosition = Vector2.ZERO
 
 func _ready():
@@ -25,9 +23,6 @@ func _ready():
 	global_position = getPose[currentPoint]
 	# run laugh function for every time the player gets hit
 	connect("hit_player",Callable(self,"do_laugh"))
-	drillCar = get_tree().get_root().find_child("DrillEggmanCar",true,false)
-	if drillCar:
-		drillCar.connect("carTouched",Callable(self,"_on_drill_eggman_car_car_position"))
 	super()
 
 func _process(delta):
@@ -72,29 +67,17 @@ func _physics_process(delta):
 	# move boss
 	global_position += velocity*delta
 	# check if alive
-	if active and !dead and drillCar:
+	if active and !dead:
 		# boss phase
 		match(phase):
 			0: # intro
-				# move to center between positions
-				if global_position.x > (getPose[0].lerp(getPose[1],0.5)).x and !readyEnterCar:
-					velocity = ((getPose[0].lerp(getPose[1],0.5)-global_position)*60).limit_length(64)
-					velocity.y = 18.0
-				elif readyEnterCar and global_position.y < targetPosition.y:
-					velocity.x = 0.0
-					velocity.y = 20.0
-				elif readyEnterCar and global_position.y > targetPosition.y:
-					global_position = targetPosition
-					#if flashTimer <= 0:
-					set_animation("laugh") #laugh
-					velocity = Vector2.ZERO
-					hp = 8
-					phase = 1
-					drillCar.pilot = true
-					drillCar.playMotor()
+				#if flashTimer <= 0:
+				set_animation("laugh") #laugh
+				velocity = Vector2.ZERO
+				hp = 8
+				phase = 1
 			_: # Controlled by external object.
-				if hp <= 1:
-					drillCar.readyToLaunch = true
+				pass
 					
 	super(delta)
 	# default reactions (use animation time to avoid running this every frame)
@@ -144,12 +127,6 @@ func updateDirection():
 func do_laugh():
 	set_animation("laugh",1)
 
-
-func _on_drill_eggman_car_car_touched():
-	if !dead:
-		readyEnterCar = true
-
-
 func _on_smoke_timer_timeout() -> void:
 	# check that deathtimer's still going and that we are actually dead
 	if dead and deathTimer > 1.5:
@@ -169,9 +146,6 @@ func _on_smoke_timer_timeout() -> void:
 func _on_defeated() -> void:
 	# set dead to true
 	dead = true
-	if drillCar:
-		drillCar.Die()
-		#drillCar.z_index = 0
 	# hit animation for 1.5 seconds (see the dead section in _process)
 	set_animation("hit",1.5)
 	# set velocity to 0 to prevent moving
