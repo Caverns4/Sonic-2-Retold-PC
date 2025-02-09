@@ -24,6 +24,8 @@ func _process(_delta):
 			parent.animator.play("walk")
 		# enable control again
 		parent.set_state(parent.STATES.AIR)
+		# Reset Ring depletion time in case character goes super twice in a level.
+		parent.superRingTimer = 1.0
 		activated = true
 		
 		# swap sprite if sonic
