@@ -1,10 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsgfc2hjo6knr"]
+[gd_scene load_steps=11 format=3 uid="uid://bsgfc2hjo6knr"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_f2s8f"]
 [ext_resource type="AudioStream" uid="uid://chigxw75acdkr" path="res://Audio/Soundtrack/s2br_SkyFortress.ogg" id="2_5abqf"]
 [ext_resource type="PackedScene" uid="uid://cm6qjxupawbta" path="res://Scene/Backgrounds/14-SkyFortress.tscn" id="3_vvbgg"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_vrigx"]
+[ext_resource type="PackedScene" uid="uid://oce7phvjxdbv" path="res://Entities/Misc/Tornado.tscn" id="6_blbh4"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_vktrr"]
+[ext_resource type="Script" path="res://Scripts/Misc/path_follow_2d.gd" id="6_yuh6d"]
+[ext_resource type="Script" path="res://Scene/Zones/Hook_Camera.gd" id="7_ghu8o"]
+[ext_resource type="Script" path="res://Scripts/Objects/tornado_mover.gd" id="7_m63qb"]
+
+[sub_resource type="Curve2D" id="Curve2D_dwl8e"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 128, 128, 0, 0, 0, 0, 384, 256, 0, 0, 0, 0, 640, 128, 0, 0, 0, 0, 1024, 256)
+}
+point_count = 4
 
 [node name="SkyFortress1" type="Node2D"]
 script = ExtResource("1_f2s8f")
@@ -23,5 +33,27 @@ act = 0
 [node name="Player" parent="." instance=ExtResource("6_vktrr")]
 position = Vector2(100, 192)
 disablePartner = true
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_dwl8e")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(128, 128)
+rotates = false
+cubic_interp = false
+script = ExtResource("6_yuh6d")
+
+[node name="ScreenPoint" type="Node2D" parent="Path2D/PathFollow2D"]
+position = Vector2(-1.52588e-05, 0)
+script = ExtResource("7_ghu8o")
+
+[node name="TornadoMover" type="Node2D" parent="."]
+position = Vector2(72, 208)
+script = ExtResource("7_m63qb")
+
+[node name="Tornado" parent="TornadoMover" instance=ExtResource("6_blbh4")]
+position = Vector2(0, 64)
+pilotType = 3
+pilot = 2
 
 [node name="Level_Layout" type="Node" parent="."]

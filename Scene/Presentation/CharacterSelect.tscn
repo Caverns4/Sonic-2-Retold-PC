@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=4 uid="uid://c4e1wv2sxs1gm"]
 
 [ext_resource type="TileSet" uid="uid://bk1ere21h4285" path="res://Tileset/Menus.tres" id="2_il2c5"]
-[ext_resource type="FontFile" uid="uid://ml62eqfe7avn" path="res://Graphics/Fonts/small_font.png" id="3"]
+[ext_resource type="Theme" uid="uid://b5b5ux4822p0m" path="res://Resources/Standard_Font.tres" id="3_o5ll0"]
 [ext_resource type="Texture2D" uid="uid://dm4ejufaxy62s" path="res://Graphics/Menus/MiniCharacters.png" id="4_416un"]
 [ext_resource type="Script" path="res://Scripts/Level/CharacterSelect.gd" id="5"]
 [ext_resource type="AudioStream" uid="uid://dh4rsaka62ph4" path="res://Audio/SFX/Gimmicks/Switch.wav" id="6_5y3mi"]
@@ -199,7 +199,7 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 144.0
 offset_bottom = 232.0
-theme_override_fonts/normal_font = ExtResource("3")
+theme = ExtResource("3_o5ll0")
 bbcode_enabled = true
 text = "EMERALD HILL    1
                 2
@@ -246,7 +246,7 @@ offset_left = 328.0
 offset_top = 8.0
 offset_right = 464.0
 offset_bottom = 176.0
-theme_override_fonts/normal_font = ExtResource("3")
+theme = ExtResource("3_o5ll0")
 bbcode_enabled = true
 text = "CASINO NIGHT    1
                 2
@@ -274,7 +274,7 @@ hint_underlined = false
 text_direction = 1
 
 [node name="CharacterOrigin" type="Node2D" parent="UI/LabelsRight"]
-position = Vector2(456, 132)
+position = Vector2(456, 148)
 
 [node name="Sonic" type="Sprite2D" parent="UI/LabelsRight/CharacterOrigin"]
 z_index = 3

@@ -7,20 +7,18 @@ var testScene = load("res://Scene/Presentation/CharacterSelect.tscn")
 var returnScene = load("res://Scene/Cutscenes/Opening.tscn")
 var optionsScene = load("res://Scene/Presentation/OptionsMenu.tscn")
 
-var titleScroll = false #If the Title Screen should move
-var skipIntro = false #If true, the intro can be skipped.
-var titleEnd = false
-var menuActive = false
-var menuEntry = 0
-var menuIconYOff = [4,12,20]#[4,20,12]
-var particlesDone = false
+enum STATES{INTRO,WAITING,FADEOUT}
+var titleState: int = STATES.INTRO
+var titleScroll: bool = false #If the Title Screen should move
+var menuActive: bool = false #It the menu is usable
+
+var menuEntry: int = 0
 var menuText = [
 	"[color=#FFFF00]1 PLAYER[/color]\n2 PLAYER VS\nOPTIONS",
 	"1 PLAYER\n[color=#FFFF00]2 PLAYER VS[/color]\nOPTIONS",
 	"1 PLAYER\n2 PLAYER VS\n[color=#FFFF00]OPTIONS[/color]"
 ]
-
-var scene
+var BackgroundScene
 var parallaxBackgrounds = [
 	"res://Scene/Backgrounds/00-EmeraldHill.tscn",
 	"res://Scene/Backgrounds/01-HiddenPalace.tscn",
@@ -62,6 +60,7 @@ var paraOffsets = [
 	0,
 ]
 
+#Cheat Code Inputs
 var levelSelectCheat = [
 	Vector2.UP,
 	Vector2.DOWN,
@@ -73,9 +72,7 @@ var cheatInputCount = 0 #Correct inputs
 var lastCheatInput = Vector2.ZERO
 
 func _ready():
-	Global.music.stream = music
-	
-	#Clear variables
+	#Clear game variables
 	Global.TwoPlayer = false
 	Global.score = 0
 	Global.scoreP2 = 0
@@ -87,96 +84,78 @@ func _ready():
 	Global.twoPlayerZoneResults = []
 	Global.twoPlayActResults = []
 	Global.twoPlayerRound = 0
-
+	#Prepare the Title Streen Music
+	Global.music.stream = music
+	#Prepare the background
 	var parallax = parallaxBackgrounds[min(Global.savedZoneID,parallaxBackgrounds.size()-1)]
-	scene = load(parallax)
+	BackgroundScene = load(parallax)
 
 func _process(delta):
-	if $CanvasLayer/Labels.visible == true and !titleEnd:
-		menuActive = true
-		skipIntro = false
-	
 	if titleScroll:
 		$TitleBanner.global_position.x += (4*60*delta)
 		$Celebrations.global_position.x += (4*60*delta)
 	
-	if !titleEnd:
+	if titleState < STATES.FADEOUT:
 		CheckCheatInputs()
 	
-	if $TitleBanner.global_position.x >= 3760 and particlesDone == false:
-		$Celebrations.emitting = true
-		particlesDone = true
-	
-	if $TitleBanner.global_position.x >= 4600 and !titleEnd:
-		menuActive = false
-		titleEnd = true
-		Global.main.change_scene_to_file(returnScene,"FadeOut","FadeOut",1)
 
 func _input(event):
-	if menuActive and !titleEnd:
-		if Input.is_action_just_pressed("gm_down"):
-			menuEntry +=1
-			$Switch.play()
-		if Input.is_action_just_pressed("gm_up"):
-			menuEntry -=1
-			$Switch.play()
-	menuEntry = wrapi(menuEntry,0,3)
-	UpdateMenuDisplay()
+	#Update menu if menu is enabled
+	if menuActive:
+		UpdateMenuDisplay()
 	
-	# end title on start press
-	if event.is_action_pressed("gm_pause") and !titleEnd and menuActive:
+	# On start button press, skip intro or make selection
+	if event.is_action_pressed("gm_pause") and $TitleAnimate.is_playing():
+		if !$TitleWaitTimer.is_stopped():
+			$TitleAnimate.play("RESET")
+			menuActive = true
+	elif event.is_action_pressed("gm_pause") and menuActive:
 		MenuOptionChosen()
-	elif event.is_action_pressed("gm_pause") and !menuActive and skipIntro:
-		$TitleAnimate.play("RESET")
-		menuActive = true
-		skipIntro = false
-		
+
+func UpdateMenuDisplay():
+	if Input.is_action_just_pressed("gm_down"):
+		menuEntry +=1
+		$Switch.play()
+	if Input.is_action_just_pressed("gm_up"):
+		menuEntry -=1
+		$Switch.play()
+	menuEntry = wrapi(menuEntry,0,3)
+	$CanvasLayer/Labels/TitleMenu/MenuIcon.position.y = (menuEntry*8)+4
+	$CanvasLayer/Labels/TitleMenu/Text.text = menuText[menuEntry]
+
 func MenuOptionChosen():
 	#if Global.music.get_playback_position() < 14.0:
 	#	Global.music.seek(14.0)
 	if Global.tailsNameCheat:
+		#TODO: Make a proper level select code, distinct from the Tails Name Cheat
 		if Input.is_action_pressed("gm_action"):
 			menuEntry = 128
 			Global.levelSelectFlag = true
-		if Input.is_action_pressed("gm_action3"):
-			Global.TwoPlayer = true
 	
 	match menuEntry:
 		0:
-			titleEnd = true
 			Global.savedZoneID = Global.ZONES.EMERALD_HILL
 			Global.savedActID = 0
-			Global.main.change_scene_to_file(nextZone,"FadeOut","FadeOut",1)
+			SetFadeOut(nextZone)
 		1:
-			titleEnd = true
 			Global.TwoPlayer = true
 			Global.PlayerChar1 = Global.CHARACTERS.SONIC
 			Global.PlayerChar2 = Global.CHARACTERS.TAILS
-			Global.main.change_scene_to_file(twoPlayerScene,"FadeOut","FadeOut",1)
+			SetFadeOut(twoPlayerScene)
 		2:
-			titleEnd = true
-			Global.main.change_scene_to_file(optionsScene,"FadeOut","FadeOut",1)
+			SetFadeOut(optionsScene)
 		128:
-			titleEnd = true
-			Global.main.change_scene_to_file(testScene,"FadeOut","FadeOut",1)
-	
-func UpdateMenuDisplay():
-	if menuActive and !titleEnd:
-		$CanvasLayer/Labels/TitleMenu/MenuIcon.position.y = menuIconYOff[menuEntry]
-		$CanvasLayer/Labels/TitleMenu/Text.text = menuText[menuEntry]
+			SetFadeOut(testScene)
 
 func CheckCheatInputs():
 	var inputs = Input.get_vector("gm_left","gm_right","gm_up","ui_down")
 	inputs.x = round(inputs.x)
 	inputs.y = round(inputs.y)
-	#If this input is the same as previous, do nothing.
-	if inputs == lastCheatInput:
-		pass
 	#If this input is null, rmember it, but don't count it against Cheats
-	elif inputs == Vector2.ZERO:
+	if inputs == Vector2.ZERO:
 		lastCheatInput = inputs
 	#in any othe case, consider this a valid cheat attempt
-	else:
+	elif inputs != lastCheatInput:
 		if !Global.tailsNameCheat:
 			if inputs == levelSelectCheat[cheatInputCount]:
 				cheatInputCount += 1
@@ -187,18 +166,35 @@ func CheckCheatInputs():
 			if cheatInputCount == levelSelectCheat.size():
 				cheatInputCount = 0
 				$TitleBanner/RingChime.play(0.0)
-				#Global.levelSelectFlag = true
 				Global.tailsNameCheat = true
 	lastCheatInput = inputs
 
 func InstantiateBG():
 	if sceneInstance == null:
-		sceneInstance = scene.instantiate()
+		sceneInstance = BackgroundScene.instantiate()
 		sceneInstance.scroll_base_offset.y = paraOffsets[min(Global.savedZoneID,parallaxBackgrounds.size()-1)]
 		add_child(sceneInstance)
+	#Activate the Menu
+	menuActive = true
 
 func PlayMusic():
 	Global.music.play()
 	titleScroll = true #Begin scrolling
-	skipIntro = true
-	
+	$TitleWaitTimer.start()
+
+func SetFadeOut(newScene):
+	if titleState < STATES.FADEOUT:
+		titleState = STATES.FADEOUT
+		menuActive = false
+		Global.main.change_scene_to_file(newScene,"FadeOut","FadeOut",1)
+
+#The sparkling rings have finished, fade out to demo
+func _on_celebrations_finished() -> void:
+	SetFadeOut(returnScene)
+	menuActive = false
+
+#The wait timer has run out, activate the spakls in time with the shooting star sound
+func _on_title_wait_timer_timeout() -> void:
+	#If and only if a selection has not yet been made
+	if menuActive:
+		$Celebrations.emitting = true

@@ -14,7 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://dh4rsaka62ph4" path="res://Audio/SFX/Gimmicks/Switch.wav" id="10_b2hcy"]
 
 [sub_resource type="Animation" id="2"]
-length = 0.5
+length = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -717,6 +717,8 @@ autoplay = "TitleAssemble"
 position = Vector2(256, 112)
 emitting = false
 amount = 32
+lifetime = 2.0
+one_shot = true
 preprocess = 0.5
 texture = ExtResource("4_vmy7g")
 emission_shape = 2
@@ -733,3 +735,10 @@ hue_variation_max = 0.68
 [node name="Switch" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_b2hcy")
 bus = &"SFX"
+
+[node name="TitleWaitTimer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+
+[connection signal="finished" from="Celebrations" to="." method="_on_celebrations_finished"]
+[connection signal="timeout" from="TitleWaitTimer" to="." method="_on_title_wait_timer_timeout"]

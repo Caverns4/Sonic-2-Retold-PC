@@ -111,40 +111,16 @@ func _process(delta):
 
 func _input(event):
 	if !selected:
-		
-		var inputCue = Input.get_vector("gm_left","gm_right","gm_up","gm_down")
-		inputCue.x = round(inputCue.x)
-		inputCue.y = round(inputCue.y)
-		if inputCue != lastInput:
-			# select character rotation
-			var columnSize = round(LEFT_ROWS/2*1.5)
-			if inputCue.x < 0:
-				if levelID == CharacterSelectMenuID-1:
-					characterID = wrapi(characterID-1,0,characterLabels.size())
-					$Switch.play()
-				else:
-					levelID = wrapi(levelID-(columnSize)+1,0,levelIcons.size())
-			if  inputCue.x > 0 :
-				if levelID == CharacterSelectMenuID-1:
-					characterID = wrapi(characterID+1,0,characterLabels.size())
-					$Switch.play()
-				else:
-					if levelID > CharacterSelectMenuID-1 - columnSize and levelID < columnSize:
-						levelID = CharacterSelectMenuID-1
-					else:
-						levelID = wrapi(levelID+(columnSize)-1,0,levelIcons.size())
-					
-
-			if inputCue.y > 0:
-				levelID = wrapi(levelID+1,0,levelIcons.size())
-			if inputCue.y < 0:
-				levelID = wrapi(levelID-1,0,levelIcons.size())
-		lastInput = inputCue
-		
+		levelSelectSetupDirectionalInput()
 		UpdateCharacterSelect()
 		
 		# finish character select if start is pressed
 		if event.is_action_pressed("gm_pause"):
+			
+			if Input.is_action_pressed("gm_action3"):
+				Global.TwoPlayer = true
+			
+			
 			selected = true
 			# set player 2 to none to prevent redundant code
 			Global.PlayerChar2 = Global.CHARACTERS.NONE
@@ -259,69 +235,71 @@ func _input(event):
 					Global.savedActID = 1
 				29:
 					selected = false
+					Global.TwoPlayer = false
 					return
 				_: # Invalid Entry
 					selected = false
+					Global.TwoPlayer = false
 					return
 			
 			Global.main.change_scene_to_file(Global.nextZone,"FadeOut","FadeOut",1)
 			Global.characterSelectMemory = characterID
-			
+
+func levelSelectSetupDirectionalInput():
+	var inputCue = Input.get_vector("gm_left","gm_right","gm_up","gm_down")
+	inputCue.x = round(inputCue.x)
+	inputCue.y = round(inputCue.y)
+	if inputCue != lastInput:
+		# select character rotation
+		var columnSize = round(LEFT_ROWS/2*1.5)
+		if inputCue.x < 0:
+			if levelID == CharacterSelectMenuID-1:
+				characterID = wrapi(characterID-1,0,characterLabels.size())
+				$Switch.play()
+			else:
+				levelID = wrapi(levelID-(columnSize)+1,0,levelIcons.size())
+		if  inputCue.x > 0 :
+			if levelID == CharacterSelectMenuID-1:
+				characterID = wrapi(characterID+1,0,characterLabels.size())
+				$Switch.play()
+			else:
+				if levelID > CharacterSelectMenuID-1 - columnSize and levelID < columnSize:
+					levelID = CharacterSelectMenuID-1
+				else:
+					levelID = wrapi(levelID+(columnSize)-1,0,levelIcons.size())
+				
+		if inputCue.y > 0:
+			levelID = wrapi(levelID+1,0,levelIcons.size())
+		if inputCue.y < 0:
+			levelID = wrapi(levelID-1,0,levelIcons.size())
+	lastInput = inputCue
+
 func UpdateCharacterSelect():
 	# turn on and off visibility of the characters based on the current selection
+	for i in $UI/LabelsRight/CharacterOrigin.get_children():
+		#hide all applicable children
+		if i is Sprite2D:
+			i.visible = false
+
 	match(characterID):
 		0: # Sonic and Tails
 			$UI/LabelsRight/CharacterOrigin/Sonic.visible = true
 			$UI/LabelsRight/CharacterOrigin/Tails.visible = true
 			$UI/LabelsRight/CharacterOrigin/Sonic.position.x = 8
 			$UI/LabelsRight/CharacterOrigin/Tails.position.x = -8
-			$UI/LabelsRight/CharacterOrigin/Knuckles.visible = false
-			$UI/LabelsRight/CharacterOrigin/Amy.visible = false
-			$UI/LabelsRight/CharacterOrigin/Mighty.visible = false
-			$UI/LabelsRight/CharacterOrigin/Ray.visible = false
 		1: # Sonic
 			$UI/LabelsRight/CharacterOrigin/Sonic.visible = true
 			$UI/LabelsRight/CharacterOrigin/Sonic.position.x = 0
-			$UI/LabelsRight/CharacterOrigin/Tails.visible = false
-			$UI/LabelsRight/CharacterOrigin/Knuckles.visible = false
-			$UI/LabelsRight/CharacterOrigin/Amy.visible = false
-			$UI/LabelsRight/CharacterOrigin/Mighty.visible = false
-			$UI/LabelsRight/CharacterOrigin/Ray.visible = false
 		2: # Tails
-			$UI/LabelsRight/CharacterOrigin/Sonic.visible = false
 			$UI/LabelsRight/CharacterOrigin/Tails.visible = true
 			$UI/LabelsRight/CharacterOrigin/Tails.position.x = 0
-			$UI/LabelsRight/CharacterOrigin/Knuckles.visible = false
-			$UI/LabelsRight/CharacterOrigin/Amy.visible = false
-			$UI/LabelsRight/CharacterOrigin/Mighty.visible = false
-			$UI/LabelsRight/CharacterOrigin/Ray.visible = false
 		3: # Knuckles
-			$UI/LabelsRight/CharacterOrigin/Sonic.visible = false
-			$UI/LabelsRight/CharacterOrigin/Tails.visible = false
 			$UI/LabelsRight/CharacterOrigin/Knuckles.visible = true
-			$UI/LabelsRight/CharacterOrigin/Amy.visible = false
-			$UI/LabelsRight/CharacterOrigin/Mighty.visible = false
-			$UI/LabelsRight/CharacterOrigin/Ray.visible = false
 		4: # Amy
-			$UI/LabelsRight/CharacterOrigin/Sonic.visible = false
-			$UI/LabelsRight/CharacterOrigin/Tails.visible = false
-			$UI/LabelsRight/CharacterOrigin/Knuckles.visible = false
 			$UI/LabelsRight/CharacterOrigin/Amy.visible = true
-			$UI/LabelsRight/CharacterOrigin/Mighty.visible = false
-			$UI/LabelsRight/CharacterOrigin/Ray.visible = false
 		5: # Mighty
-			$UI/LabelsRight/CharacterOrigin/Sonic.visible = false
-			$UI/LabelsRight/CharacterOrigin/Tails.visible = false
-			$UI/LabelsRight/CharacterOrigin/Knuckles.visible = false
-			$UI/LabelsRight/CharacterOrigin/Amy.visible = false
 			$UI/LabelsRight/CharacterOrigin/Mighty.visible = true
-			$UI/LabelsRight/CharacterOrigin/Ray.visible = false
-		6: # Ray
-			$UI/LabelsRight/CharacterOrigin/Sonic.visible = false
-			$UI/LabelsRight/CharacterOrigin/Tails.visible = false
-			$UI/LabelsRight/CharacterOrigin/Knuckles.visible = false
-			$UI/LabelsRight/CharacterOrigin/Amy.visible = false
-			$UI/LabelsRight/CharacterOrigin/Mighty.visible = false
+		_: # Ray or invalid
 			$UI/LabelsRight/CharacterOrigin/Ray.visible = true
 
 func levelSelect_UpdateText(): # levelID
