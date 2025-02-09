@@ -257,9 +257,11 @@ var rayAnimations = preload("res://Graphics/Players/PlayerAnimations/Sonic_Old.t
 # Get sfx list
 @onready var sfx = $SFX.get_children()
 
-# Player values
-var rings = 0
-var ring1upCounter = 100
+# Ring-related values
+var rings: int = 0
+var ring1upCounter: int = 100
+var totalRings: int = 0 #The perminant counter, never decreased in the level, only increased.
+var superRingTimer: float = 1.0 #Time before a ring is taken.
 
 # How far in can the player can be towards the screen edge before they're limit_length
 var cameraMargin = 16
@@ -615,12 +617,13 @@ func _process(delta):
 			# check if ring count is greater then 0
 			# deactivate if stage cleared
 			if rings > 0 and Global.stageClearPhase == 0:
-				if Global.superRingDrain:
-					rings -= delta
+				superRingTimer -= delta
+				if Global.superRingDrain and superRingTimer <= 0.0:
+					rings -=1
+					superRingTimer = 1.0
 			else:
 				# Deactivate super
 				supTime = 0
-				rings = round(rings)
 				if character == Global.CHARACTERS.SONIC:
 					sprite.texture = normalSprite
 				
@@ -1204,6 +1207,7 @@ func get_ring():
 	if playerControl == 1 or Global.TwoPlayer:
 		var prev_rings = rings
 		rings += 1
+		totalRings+=1
 		sfx[7+ringChannel].play()
 		sfx[7].play()
 		ringChannel = int(!ringChannel)

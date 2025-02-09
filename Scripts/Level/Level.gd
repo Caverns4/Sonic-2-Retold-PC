@@ -4,7 +4,7 @@ extends Node2D
 "Emerald Hill", "Hidden Palace","Hill Top", "Chemical Plant",
 "Oil Ocean", "Neo Green Hill","Metropolis","Dust Hill",
 "Wood Gadget","Casino Night","Jewel Grotto","Winter",
-"Sand Shower","Tropical Sun","Sky Fortress","Death Egg") var zoneID = 0
+"Sand Shower","Tropical Sun","Sky Fortress","Death Egg") var zoneID: int = 0
 @export var music = preload("res://Audio/Soundtrack/s2br_EmeraldHilll.ogg")
 @export var music2P = preload("res://Audio/Soundtrack/s2br_Tropical.ogg")
 
@@ -16,25 +16,25 @@ var nextZone = load("res://Scene/Presentation/ZoneLoader.tscn")
 "Pig", "Eagle",
 "Mouse", "Monkey",
 "Turtle","Bear",
-"Beaver","Fox")var animal1 = 0
+"Beaver","Fox")var animal1: int = 0
 @export_enum("Bird", "Squirrel",
 "Rabbit", "Chicken",
 "Penguin", "Seal",
 "Pig", "Eagle",
 "Mouse", "Monkey",
 "Turtle", "Bear",
-"Beaver","Fox")var animal2 = 1
+"Beaver","Fox")var animal2: int = 1
 
 # Boundries
-@export var setDefaultLeft = true
-@export var defaultLeftBoundry  = 0
-@export var setDefaultTop = true
-@export var defaultTopBoundry  = 0
+@export var setDefaultLeft: bool = true
+@export var defaultLeftBoundry: int  = 0
+@export var setDefaultTop: bool = true
+@export var defaultTopBoundry: int  = 0
 
-@export var setDefaultRight = true
-@export var defaultRightBoundry = 16384
-@export var setDefaultBottom = true
-@export var defaultBottomBoundry = 2048
+@export var setDefaultRight: bool = true
+@export var defaultRightBoundry: int = 16384
+@export var setDefaultBottom: bool = true
+@export var defaultBottomBoundry: int = 2048
 
 var twoPlayerWindow = preload("res://Scene/TwoPlayerScreenView.tscn")
 

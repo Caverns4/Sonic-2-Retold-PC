@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-# player ID look up
-@export var focusPlayer = 0
+## player ID look up
+@export var focusPlayer: int = 0
 
 # counter elements pointers
 @onready var scoreText = $Counters/Text/ScoreNumber
@@ -11,32 +11,32 @@ extends CanvasLayer
 @onready var iconAnim = $Counters/Text/IconAnim
 
 # play level card, if true will play the level card animator and use the zone name and zone text with the act
-@export var playLevelCard = true
-@export var zoneName = "Base"
-@export var zone = "Zone"
-@export var act = 1
+@export var playLevelCard: bool = true
+@export var zoneName: String = "Base"
+@export var zone: String = "Zone"
+@export var act: int = 1
 
 @export var waterSourceColor = preload("res://Graphics/Palettes/BasePal.png")
 @export var waterReplaceColor = preload("res://Graphics/Palettes/WetPal.png")
 
-@export var ringsForPerfect = 999 # Rings required for a perfect bonus. If the player takes damage, set to impossible value.
+@export var ringsForPerfect: int = 999 # Rings required for a perfect bonus. If the player takes damage, set to impossible value.
 
 
 # used for flashing ui elements (rings, time)
 var flashTimer = 0
 
 # isStageEnding is used for level completion, stop loop recursions
-var isStageEnding = false
+var isStageEnding: bool = false
 
 # level clear bonuses (check _on_CounterCount_timeout)
-var timeBonus = 0
-var ringBonus = 0
-var perfectBonus = 0
-var perfectEnabled = true
-var coins = 0 #Number of coins collected.
+var timeBonus: int = 0
+var ringBonus: int = 0
+var perfectBonus: int = 0
+var perfectEnabled: bool = true
+var coins: int = 0 #Number of coins collected.
 
 # gameOver is used to initialize the game over animation sequence, note: this is for animation, if you want to use the game over status it's in global
-var gameOver = false
+var gameOver: bool = false
 
 # signal that gets emited once the stage tally is over
 signal tally_clear
@@ -306,7 +306,7 @@ func _process(delta):
 		# initialize stage clear sequence
 		if !isStageEnding:
 			isStageEnding = true
-			if Global.players[0].rings >= ringsForPerfect and perfectEnabled:
+			if Global.players[0].totalRings >= ringsForPerfect and perfectEnabled:
 				$LevelClear/PerfectBonusText.visible = true
 				perfectBonus = 50000
 			

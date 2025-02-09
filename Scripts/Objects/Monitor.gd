@@ -122,6 +122,7 @@ func destroy():
 		ITEMTYPES.RING: # Rings
 			var prev_rings = playerTouch.rings
 			playerTouch.rings += 10
+			playerTouch.totalRings += 10
 			if Global.hud: #If the HUD Exists
 				if (Global.emeralds == 127 and 
 				(prev_rings < 50 and playerTouch.rings > 49) and 
