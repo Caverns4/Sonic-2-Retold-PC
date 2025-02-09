@@ -36,13 +36,13 @@ func _physics_process(delta: float) -> void:
 	$PlayerOverlap/GeyserLongSprite.frame = wrap(round(frameTimer/3.0),0,3)
 	UpdatePosition(delta)
 
-	for i in players.size():
-		if players[i].animator:
-			players[i].movement = Vector2(velocityPreVec).rotated(rotation)
-			players[i].disconect_from_floor()
-			players[i].set_state(players[i].STATES.AIR)
-			players[i].airControl = true
-			players[i].animator.play("hurt")
+	for i in players:
+		if i.animator:
+			i.movement = Vector2(velocityPreVec).rotated(rotation)
+			i.disconect_from_floor()
+			i.set_state(i.STATES.AIR)
+			i.airControl = true
+			i.animator.play("hurt")
 
 func UpdatePosition(delta):
 	if !trigger and waitTime > 0.0:
@@ -55,8 +55,10 @@ func UpdatePosition(delta):
 		
 	if geyser.position.y == 0:
 		$PlayerOverlap.visible = false
+		$PlayerOverlap.monitoring = false
 	else:
 		$PlayerOverlap.visible = true
+		$PlayerOverlap.monitoring = true
 
 
 func _on_player_entry_body_entered(body: Node2D) -> void:
@@ -65,10 +67,8 @@ func _on_player_entry_body_entered(body: Node2D) -> void:
 func _on_player_entry_body_exited(body: Node2D) -> void:
 	triggers.erase(body)
 
-
 func _on_player_overlap_body_entered(body: Node2D) -> void:
 	players.append(body)
-
 
 func _on_player_overlap_body_exited(body: Node2D) -> void:
 	players.erase(body)

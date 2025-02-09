@@ -6,8 +6,13 @@ var grv = 0.21875
 var yspeed = 0
 var playerTouch = null
 var isActive = true
+
+## The Item Type contained by default.
 @export_enum("Ring", "Speed Shoes", "Invincibility", "Shield", "Elec Shield", "Fire Shield",
 "Bubble Shield", "Super", "Teleport", "Boost","Eggman","?", "Extra Life", "Tails Life") var item = 0
+
+## The shield this monitor will give the player if they have a shield already.
+@export_enum("None", "Elec Shield", "Fire Shield", "Bubble Shield") var shieldAffinity = 0
 
 enum ITEMTYPES{RING,SPEED_SHOES,INVINCIBILITY, SHIELD, ELECSHIELD, FIRESHIELD,
 BUBBLESHIELD,SUPER,TELEPORT,BOOST,EGGMAN,QMARK,LIFEP1,LIFEP2}
@@ -79,13 +84,20 @@ func destroy():
 
 	
 	if item == ITEMTYPES.SHIELD and !Global.TwoPlayer and playerTouch.shield > 0:
-		var rand = randi_range(0,2)
-		if rand == 0:
-			item = ITEMTYPES.FIRESHIELD
-		elif rand == 1:
+		if shieldAffinity == 1:
 			item = ITEMTYPES.ELECSHIELD
-		elif rand == 2:
+		if shieldAffinity == 2:
+			item = ITEMTYPES.FIRESHIELD
+		if shieldAffinity == 3:
 			item = ITEMTYPES.BUBBLESHIELD
+		else:
+			var rand = randi_range(0,2)
+			if rand == 0:
+				item = ITEMTYPES.ELECSHIELD
+			elif rand == 1:
+				item = ITEMTYPES.FIRESHIELD
+			elif rand == 2:
+				item = ITEMTYPES.BUBBLESHIELD
 		$Item.frame = item + 2
 	
 	if !isActive:

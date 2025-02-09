@@ -1031,106 +1031,137 @@ behavior = 3
 [node name="Monitor2" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(9344, 368)
 item = 12
+shieldAffinity = null
 
 [node name="Monitor30" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(8976, 1968)
 item = 2
+shieldAffinity = null
 
 [node name="Monitor28" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(10480, 1456)
+shieldAffinity = null
 
 [node name="Monitor29" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(10448, 1456)
+shieldAffinity = null
 
 [node name="Monitor3" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(7104, 472)
 item = 3
+shieldAffinity = null
 
 [node name="Monitor4" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(5744, 240)
+shieldAffinity = null
 
 [node name="Monitor5" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(4656, 336)
+shieldAffinity = null
 
 [node name="Monitor6" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(4688, 336)
+shieldAffinity = null
 
 [node name="Monitor7" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(3416, 688)
 item = 2
+shieldAffinity = null
 
 [node name="Monitor9" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(3448, 688)
+shieldAffinity = null
 
 [node name="Monitor8" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(2704, 496)
 item = 1
+shieldAffinity = null
 
 [node name="Monitor10" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(1840, 112)
+shieldAffinity = null
 
 [node name="Monitor13" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(2992, 752)
+shieldAffinity = null
 
 [node name="Monitor16" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(1936, 1008)
 item = 12
+shieldAffinity = null
 
 [node name="Monitor17" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(2640, 1264)
 item = 2
+shieldAffinity = null
 
 [node name="Monitor18" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(304, 624)
+shieldAffinity = null
 
 [node name="Monitor14" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(3024, 752)
+shieldAffinity = null
 
 [node name="Monitor15" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(3056, 752)
 item = 3
+shieldAffinity = null
 
 [node name="Monitor12" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(1768, 496)
+shieldAffinity = null
 
 [node name="Monitor19" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(3952, 1200)
+shieldAffinity = null
 
 [node name="Monitor20" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(3920, 1200)
+shieldAffinity = null
 
 [node name="Monitor21" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(4688, 2000)
+shieldAffinity = null
 
 [node name="Monitor22" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(4720, 2000)
 item = 2
+shieldAffinity = null
 
 [node name="Monitor23" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(5712, 2000)
 item = 12
+shieldAffinity = null
 
 [node name="Monitor24" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(5520, 1392)
+shieldAffinity = null
 
 [node name="Monitor25" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(5552, 1392)
+shieldAffinity = null
 
 [node name="Monitor26" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(4528, 1376)
+shieldAffinity = null
 
 [node name="Monitor27" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(4560, 1376)
+shieldAffinity = null
 
 [node name="Monitor31" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(2576, 240)
+shieldAffinity = null
 
 [node name="Monitor32" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(2608, 240)
+shieldAffinity = null
 
 [node name="Monitor11" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
 position = Vector2(1808, 112)
 item = 3
+shieldAffinity = null
 
 [node name="LampPost" parent="ItemsHolder" instance=ExtResource("30_8ycur")]
 position = Vector2(3640, 1256)
