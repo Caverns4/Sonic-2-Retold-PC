@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tj6ib8co8pds"
-path="res://.godot/imported/CPZ_Blocks.png-8365852b1ea30de2749dbd724d5a36bd.ctex"
+uid="uid://ddkj4dk5n0tkx"
+path="res://.godot/imported/CPZ_Blocks_Redux.png-f1535d36de3b2db454f8aef90c8b8fda.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Tiles/CPZ/CPZ_Blocks.png"
-dest_files=["res://.godot/imported/CPZ_Blocks.png-8365852b1ea30de2749dbd724d5a36bd.ctex"]
+source_file="res://Graphics/Tiles/CPZ/CPZ_Blocks_Redux.png"
+dest_files=["res://.godot/imported/CPZ_Blocks_Redux.png-f1535d36de3b2db454f8aef90c8b8fda.ctex"]
 
 [params]
 
