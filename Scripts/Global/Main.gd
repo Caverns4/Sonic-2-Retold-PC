@@ -34,7 +34,7 @@ func _process(delta):
 	# verify scene isn't paused
 	if !get_tree().paused and Global.music != null:
 		# pause main music if effect theme or drowning song is playing
-		Global.music.stream_paused = Global.drowning.playing
+		Global.music.stream_paused = (Global.drowning.playing or Global.life.playing)
 		
 		# check that volume lerp isn't transitioned yet
 		if volumeLerp < 1:

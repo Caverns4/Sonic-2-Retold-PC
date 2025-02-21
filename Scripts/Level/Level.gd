@@ -72,6 +72,7 @@ func level_reset_data(playCard = true):
 	Global.stageClearPhase = 0
 	Global.fightingBoss = false
 	Global.music.stop()
+	Global.drowning.stop()
 	# music handling
 	var levelMusic = null
 	if Global.music != null:
@@ -81,7 +82,6 @@ func level_reset_data(playCard = true):
 				
 			else:
 				levelMusic = music2P
-			
 			Global.music.stream_paused = false
 			Global.themes[Global.THEME.NORMAL] = levelMusic
 	Global.playMusic(levelMusic,true)

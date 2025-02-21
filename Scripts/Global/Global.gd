@@ -75,7 +75,7 @@ var themes = [
 	null, # Level Music
 	preload("res://Audio/Soundtrack/s2br_Invincible.ogg"), # INVINCIBLE
 	preload("res://Audio/Soundtrack/s2br_SuperSonic.ogg"), # SPEED
-	preload("res://Audio/Soundtrack/s2br_SuperSonic.ogg"), # SUPER
+	preload("res://Audio/Soundtrack/s2br_SuperSonic2.ogg"), # SUPER
 	preload("res://Audio/Soundtrack/s2br_Boss.ogg"), # BOSS
 	preload("res://Audio/Soundtrack/s2br_Result.ogg")] # RESULTS
 
@@ -311,6 +311,8 @@ func playNormalMusic():
 			if !i.isSuper:
 				if currentTheme != THEME.SUPER:
 					currentTheme = THEME.INVINCIBLE
+			else:
+				currentTheme = THEME.SUPER #Boss theme unless Super
 
 	if fightingBoss:
 		if !Global.players[0].isSuper:
