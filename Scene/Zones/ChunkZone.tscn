@@ -459,11 +459,11 @@ position = Vector2(3728, 1416)
 
 [node name="MackWormSpawner9" parent="Hazards" instance=ExtResource("27_3y0tj")]
 position = Vector2(6416, 1608)
-behavior = 3
+behavior = 2
 
 [node name="MackWormSpawner10" parent="Hazards" instance=ExtResource("27_3y0tj")]
 position = Vector2(6672, 1736)
-behavior = 2
+behavior = 3
 
 [node name="MackWormSpawner11" parent="Hazards" instance=ExtResource("27_3y0tj")]
 position = Vector2(8976, 1096)

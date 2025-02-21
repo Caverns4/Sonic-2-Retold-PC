@@ -188,10 +188,10 @@ wait_time = 0.1
 one_shot = true
 
 [node name="LeftPoint" type="Node2D" parent="."]
-position = Vector2(-160, 0)
+position = Vector2(-128, 0)
 
 [node name="RightPoint" type="Node2D" parent="."]
-position = Vector2(160, 0)
+position = Vector2(128, 0)
 
 [connection signal="defeated" from="." to="." method="_on_defeated"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_DamageArea_area_entered"]

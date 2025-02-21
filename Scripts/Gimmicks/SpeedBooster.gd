@@ -29,7 +29,11 @@ func _process(_delta):
 func _on_SpeedBooster_body_entered(body):
 	# DO THE BOOST, WHOOOOOSH!!!!!!!
 	if body.ground:
-		body.movement.x = speed*(-1+(boostDirection*2))*60
+		#If the sign is the same and player is moving slower.
+		var sameDir = sign(body.movement.x) == sign(-1+(boostDirection*2))
+		#Don't change speed if player is already moving to fast.
+		if (sameDir and abs(body.movement.x) < abs(speed*60)) or !sameDir:
+			body.movement.x = speed*(-1+(boostDirection*2))*60
 		body.horizontalLockTimer = (15.0/60.0) # lock for 15 frames
 		$sfxSpring.play()
 		# exit out of state on certain states
