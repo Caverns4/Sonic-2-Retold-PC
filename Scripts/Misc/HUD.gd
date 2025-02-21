@@ -65,24 +65,33 @@ func _ready():
 
 	if Global.TwoPlayer:
 		$Counters.visible = false
+		$LifeCounter.visible = false
 		$P1Counters.visible = true
 		$P2Counters.visible = true
 		# Set character Icon
-		lifeCounterFrame = Global.PlayerChar2
-		$P2Counters/Icon2.frame = Global.PlayerChar1
+		
+		$P1Counters/LifeIcon.frame = Global.PlayerChar1
+		$P2Counters/LifeIcon.frame = Global.PlayerChar2
+		
+		if Global.tailsNameCheat:
+			if $P1Counters/LifeIcon.frame == 2:
+				$P1Counters/LifeIcon.frame = 7
+			if $P2Counters/LifeIcon.frame == 2:
+				$P2Counters/LifeIcon.frame = 7
+		
 	else:
 		$Counters.visible = true
+		$LifeCounter.visible = true
 		$P1Counters.visible = false
 		$P2Counters.visible = false
 		# Set character Icon
 		if Global.livesMode:
 			lifeCounterFrame = Global.PlayerChar1
+			if lifeCounterFrame == 2 and Global.tailsNameCheat:
+				lifeCounterFrame = 7
 		else:
 			lifeCounterFrame = 0
-	if lifeCounterFrame == 2 and Global.tailsNameCheat:
-		lifeCounterFrame = 7
-		
-	$LifeCounter/Icon.frame = lifeCounterFrame
+		$LifeCounter/Icon.frame = lifeCounterFrame
 	
 	# play level card routine if level card is true
 	if !playLevelCard:
@@ -217,14 +226,13 @@ func _process(delta):
 		
 	
 	# track lives with leading 0s
-	if !Global.TwoPlayer:
-		if Global.livesMode:
-			lifeText.text = "%3d" % Global.lives
-		else:
-			lifeText.text = "%3d" % min(Global.totalCoins + coins,999)
+	if Global.livesMode:
+		lifeText.text = "%3d" % Global.lives
 	else:
-		lifeText.text = "%3d" % Global.livesP2
-		$P2Counters/Icon2/LifeText.text = "%3d" % Global.lives
+		lifeText.text = "%3d" % min(Global.totalCoins + coins,999)
+	if Global.TwoPlayer:
+		$P1Counters/LifeIcon/LifeText.text = "%3d" % Global.lives
+		$P2Counters/LifeIcon/LifeText.text = "%3d" % Global.livesP2
 	
 	if $Timer.time_left > 0:
 		$DeathTimers/CountdownP1.text = str(ceil($Timer.time_left))

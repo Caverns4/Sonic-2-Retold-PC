@@ -832,6 +832,7 @@ zoneName = "EMERALD HILL"
 zone = "ZONE"
 
 [node name="LifeCounter" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
@@ -859,6 +860,7 @@ text = "100"
 horizontal_alignment = 2
 
 [node name="Counters" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 8.0
@@ -932,7 +934,6 @@ libraries = {
 }
 
 [node name="P1Counters" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 8.0
@@ -941,6 +942,7 @@ offset_right = 48.0
 offset_bottom = 48.0
 
 [node name="Text" type="Sprite2D" parent="P1Counters"]
+position = Vector2(0, -8)
 texture = ExtResource("5_kre34")
 centered = false
 region_enabled = true
@@ -976,8 +978,24 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 64, 40, 16)
 
+[node name="LifeIcon" type="Sprite2D" parent="P1Counters"]
+material = ExtResource("2_xy7bp")
+position = Vector2(0, 88)
+texture = ExtResource("2_cfvjc")
+centered = false
+vframes = 8
+
+[node name="LifeText" type="Label" parent="P1Counters/LifeIcon"]
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 24.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("3_eauoj")
+text = "100"
+horizontal_alignment = 2
+
 [node name="P2Counters" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 4
 anchor_top = 0.5
@@ -1023,14 +1041,14 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 64, 40, 16)
 
-[node name="Icon2" type="Sprite2D" parent="P2Counters"]
+[node name="LifeIcon" type="Sprite2D" parent="P2Counters"]
 material = ExtResource("2_xy7bp")
-position = Vector2(8, -16)
+position = Vector2(8, 96)
 texture = ExtResource("2_cfvjc")
 centered = false
 vframes = 8
 
-[node name="LifeText" type="Label" parent="P2Counters/Icon2"]
+[node name="LifeText" type="Label" parent="P2Counters/LifeIcon"]
 offset_left = 24.0
 offset_top = 8.0
 offset_right = 72.0
@@ -1139,9 +1157,8 @@ anchor_left = 1.0
 anchor_top = 0.003
 anchor_right = 1.0
 anchor_bottom = 0.003
-offset_left = -32.0
 offset_top = -86.944
-offset_right = 21254.4
+offset_right = 21286.4
 offset_bottom = 169.056
 grow_horizontal = 0
 grow_vertical = 2
