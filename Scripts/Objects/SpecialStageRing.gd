@@ -28,8 +28,7 @@ func _process(delta):
 			active = false
 			
 			Global.music.stop()
-			Global.effectTheme.stop()
-			Global.bossMusic.stop()
+			Global.drowning.stop()
 			$Warp.play()
 			# set next zone to current zone (this will reset when the stage is loaded back in)
 			Global.nextZone = Global.main.lastScene
