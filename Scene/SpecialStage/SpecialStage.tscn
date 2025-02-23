@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bma2174bd2vai"]
+[gd_scene load_steps=14 format=3 uid="uid://bma2174bd2vai"]
 
 [ext_resource type="Texture2D" uid="uid://chcgf78a1t8ik" path="res://Graphics/Special Stage/SS_BG.png" id="1_mx8be"]
 [ext_resource type="Script" path="res://Scripts/Level/SpecialStage.gd" id="1_x3k1r"]
 [ext_resource type="PackedScene" uid="uid://c8ubncxkma30o" path="res://Entitites3D/special_stage_character.tscn" id="3_rcx61"]
+[ext_resource type="PackedScene" uid="uid://cyx38ouxk43dn" path="res://Entitites3D/SpecialHUD.tscn" id="3_ydt6i"]
 [ext_resource type="Texture2D" uid="uid://b2m6ntibathle" path="res://Graphics/Special Stage/TestMat.png" id="4_yfr13"]
+[ext_resource type="PackedScene" uid="uid://dblrkngio3lkk" path="res://Entitites3D/ChaosEmerald.tscn" id="6_ikpik"]
 [ext_resource type="PackedScene" uid="uid://dpl1a2gtxk5t2" path="res://Entitites3D/ring_ss.tscn" id="36_qkbuj"]
 
 [sub_resource type="Sky" id="Sky_7ob4j"]
@@ -29,10 +31,10 @@ uv1_scale = Vector3(32, 32, 32)
 texture_filter = 0
 
 [sub_resource type="BoxMesh" id="BoxMesh_i6jk0"]
-size = Vector3(64, 1, 64)
+size = Vector3(64, 1, 128)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gyckv"]
-size = Vector3(64, 1, 64)
+size = Vector3(64, 1, 512)
 
 [node name="SpecialStage" type="Node3D"]
 script = ExtResource("1_x3k1r")
@@ -40,22 +42,25 @@ script = ExtResource("1_x3k1r")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_o6ewc")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Background" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="TextureRect" type="TextureRect" parent="Background"]
 offset_right = 320.0
 offset_bottom = 256.0
 texture = ExtResource("1_mx8be")
 
+[node name="SpecialHud" parent="." instance=ExtResource("3_ydt6i")]
+
 [node name="SpecialStageCharacter" parent="." instance=ExtResource("3_rcx61")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 27)
 
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(0.822154, -0.569265, 0, 0.569265, 0.822154, 0, 0, 0, 1, 0, 0, 0)
 curve = SubResource("Curve3D_7lh5j")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.60198, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.60198, -36)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 material_override = SubResource("StandardMaterial3D_gbcia")
@@ -64,6 +69,9 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_gyckv")
+
+[node name="ChaosEmerald" parent="StaticBody3D" instance=ExtResource("6_ikpik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.60198, -94)
 
 [node name="Ring_SS" parent="." instance=ExtResource("36_qkbuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -9)

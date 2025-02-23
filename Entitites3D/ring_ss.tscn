@@ -1,7 +1,71 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpl1a2gtxk5t2"]
+[gd_scene load_steps=13 format=3 uid="uid://dpl1a2gtxk5t2"]
 
 [ext_resource type="Script" path="res://Scripts/Special3D/ring_ss.gd" id="1_g4yp7"]
-[ext_resource type="SpriteFrames" uid="uid://bhtsckwsr2bjs" path="res://Graphics/Items/Rings/RingSprite.tres" id="1_kjtwc"]
+[ext_resource type="Texture2D" uid="uid://g5aeup5eta7h" path="res://Graphics/Special Stage/Rings_SS.png" id="2_1fl8m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cb3av"]
+atlas = ExtResource("2_1fl8m")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6rc6"]
+atlas = ExtResource("2_1fl8m")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpseh"]
+atlas = ExtResource("2_1fl8m")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uejvs"]
+atlas = ExtResource("2_1fl8m")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vq6t"]
+atlas = ExtResource("2_1fl8m")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b532u"]
+atlas = ExtResource("2_1fl8m")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktvmv"]
+atlas = ExtResource("2_1fl8m")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4ovg"]
+atlas = ExtResource("2_1fl8m")
+region = Rect2(168, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qpk80"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cb3av")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6rc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpseh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uejvs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vq6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b532u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktvmv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4ovg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vieij"]
 
@@ -9,12 +73,11 @@
 script = ExtResource("1_g4yp7")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.0742631, 0)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.0742631, 0)
 billboard = 1
 texture_filter = 0
-sprite_frames = ExtResource("1_kjtwc")
+sprite_frames = SubResource("SpriteFrames_qpk80")
 autoplay = "default"
-frame_progress = 0.648676
 
 [node name="Hitbox" type="Area3D" parent="."]
 collision_layer = 0

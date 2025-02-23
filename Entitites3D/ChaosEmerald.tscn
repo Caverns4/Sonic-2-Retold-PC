@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dblrkngio3lkk"]
+
+[ext_resource type="Texture2D" uid="uid://cf4j1ed0nh7oq" path="res://Graphics/Items/ChaosEmeralds.png" id="1_kac6w"]
+
+[node name="ChaosEmerald" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("1_kac6w")
+hframes = 4
+vframes = 7
