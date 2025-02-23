@@ -1,21 +1,78 @@
-[gd_scene load_steps=3 format=3 uid="uid://bma2174bd2vai"]
+[gd_scene load_steps=12 format=3 uid="uid://bma2174bd2vai"]
 
 [ext_resource type="Texture2D" uid="uid://chcgf78a1t8ik" path="res://Graphics/Special Stage/SS_BG.png" id="1_mx8be"]
 [ext_resource type="Script" path="res://Scripts/Level/SpecialStage.gd" id="1_x3k1r"]
+[ext_resource type="PackedScene" uid="uid://c8ubncxkma30o" path="res://Entitites3D/special_stage_character.tscn" id="3_rcx61"]
+[ext_resource type="Texture2D" uid="uid://b2m6ntibathle" path="res://Graphics/Special Stage/TestMat.png" id="4_yfr13"]
+[ext_resource type="PackedScene" uid="uid://dpl1a2gtxk5t2" path="res://Entitites3D/ring_ss.tscn" id="36_qkbuj"]
 
-[node name="SpecialStage" type="Node2D"]
+[sub_resource type="Sky" id="Sky_7ob4j"]
+
+[sub_resource type="Environment" id="Environment_o6ewc"]
+background_mode = 3
+sky = SubResource("Sky_7ob4j")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_7lh5j"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -10),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gbcia"]
+shading_mode = 0
+specular_mode = 2
+albedo_texture = ExtResource("4_yfr13")
+uv1_scale = Vector3(32, 32, 32)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_i6jk0"]
+size = Vector3(64, 1, 64)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gyckv"]
+size = Vector3(64, 1, 64)
+
+[node name="SpecialStage" type="Node3D"]
 script = ExtResource("1_x3k1r")
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_o6ewc")
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.25, 0.25)
-motion_mirroring = Vector2(320, 256)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
 
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_right = 320.0
+offset_bottom = 256.0
 texture = ExtResource("1_mx8be")
 
-[node name="SubViewport" type="SubViewport" parent="."]
-own_world_3d = true
+[node name="SpecialStageCharacter" parent="." instance=ExtResource("3_rcx61")]
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(0.822154, -0.569265, 0, 0.569265, 0.822154, 0, 0, 0, 1, 0, 0, 0)
+curve = SubResource("Curve3D_7lh5j")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.60198, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+material_override = SubResource("StandardMaterial3D_gbcia")
+mesh = SubResource("BoxMesh_i6jk0")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_gyckv")
+
+[node name="Ring_SS" parent="." instance=ExtResource("36_qkbuj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -9)
+
+[node name="Ring_SS2" parent="." instance=ExtResource("36_qkbuj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -11)
+
+[node name="Ring_SS3" parent="." instance=ExtResource("36_qkbuj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -13)
+
+[node name="Ring_SS4" parent="." instance=ExtResource("36_qkbuj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -15)

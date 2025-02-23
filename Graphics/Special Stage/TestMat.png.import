@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cl80t4id3eten"
-path.s3tc="res://.godot/imported/Ring5.png-b46423b3c9e56105baf143e65c04c11c.s3tc.ctex"
+uid="uid://b2m6ntibathle"
+path="res://.godot/imported/TestMat.png-13696ee6261babf0dfd689c4d186f96c.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Items/Rings/Ring5.png"
-dest_files=["res://.godot/imported/Ring5.png-b46423b3c9e56105baf143e65c04c11c.s3tc.ctex"]
+source_file="res://Graphics/Special Stage/TestMat.png"
+dest_files=["res://.godot/imported/TestMat.png-13696ee6261babf0dfd689c4d186f96c.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

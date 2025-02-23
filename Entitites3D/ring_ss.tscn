@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpl1a2gtxk5t2"]
+
+[ext_resource type="Script" path="res://Scripts/Special3D/ring_ss.gd" id="1_g4yp7"]
+[ext_resource type="SpriteFrames" uid="uid://bhtsckwsr2bjs" path="res://Graphics/Items/Rings/RingSprite.tres" id="1_kjtwc"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vieij"]
+
+[node name="Ring_SS" type="Node3D"]
+script = ExtResource("1_g4yp7")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.0742631, 0)
+billboard = 1
+texture_filter = 0
+sprite_frames = ExtResource("1_kjtwc")
+autoplay = "default"
+frame_progress = 0.648676
+
+[node name="Hitbox" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+shape = SubResource("SphereShape3D_vieij")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]

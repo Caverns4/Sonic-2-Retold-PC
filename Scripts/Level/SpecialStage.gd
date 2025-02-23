@@ -1,4 +1,4 @@
-extends Node2D
+extends Node3D
 
 @export var music = preload("res://Audio/Soundtrack/s2br_SpecialStage.ogg")
 
