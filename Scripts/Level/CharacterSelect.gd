@@ -234,9 +234,9 @@ func _input(event):
 					Global.savedZoneID = Global.ZONES.DEATH_EGG
 					Global.savedActID = 1
 				29:
-					selected = false
 					Global.TwoPlayer = false
-					return
+					Global.savedZoneID = Global.ZONES.SPECIAL_STAGE
+					Global.savedActID = 0
 				_: # Invalid Entry
 					selected = false
 					Global.TwoPlayer = false

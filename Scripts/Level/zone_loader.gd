@@ -107,6 +107,10 @@ func _physics_process(delta: float) -> void:
 						Global.nextZone = load("res://Scene/Zones/DeathEgg1.tscn")
 					1:
 						Global.nextZone = load("res://Scene/Zones/DeathEgg2.tscn")
+			Global.ZONES.SPECIAL_STAGE:
+					Global.savedZoneID = Global.ZONES.EMERALD_HILL
+					Global.savedActID = 0
+					Global.nextZone = load("res://Scene/SpecialStage/SpecialStage.tscn")
 			_:
 				Global.nextZone = load("res://Scene/Presentation/DemoCredits.tscn")
 				#Global.nextZone = load("res://Scene/Zones/EmeraldHill1.tscn")

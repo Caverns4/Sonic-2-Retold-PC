@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c8ubncxkma30o"]
+[gd_scene load_steps=35 format=3 uid="uid://c8ubncxkma30o"]
 
 [ext_resource type="Script" path="res://Scripts/Special3D/special_stage_character.gd" id="1_c71qe"]
 [ext_resource type="AudioStream" uid="uid://bx5cur6r54lbo" path="res://Audio/SFX/Player/Jump.wav" id="2_xcfh5"]
@@ -32,12 +32,7 @@
 [ext_resource type="AudioStream" uid="uid://uaa5twt8odin" path="res://Audio/SFX/Player/Slide.wav" id="30_bj3af"]
 [ext_resource type="AudioStream" uid="uid://c2agly02ferrw" path="res://Audio/SFX/Player/WaterRun.wav" id="31_qh86g"]
 [ext_resource type="AudioStream" uid="uid://buu4anko53vx2" path="res://Audio/SFX/Objects/ChemJump.wav" id="32_v4l5o"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ftfxr"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lmn4p"]
-shading_mode = 0
-albedo_color = Color(0, 0, 0.980392, 1)
+[ext_resource type="PackedScene" uid="uid://c62dv25je5kes" path="res://Graphics/Special Stage/SS_Sonic_Test.tscn" id="33_o7v3h"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b2vku"]
 
@@ -47,16 +42,13 @@ collision_mask = 8193
 floor_max_angle = 3.14159
 script = ExtResource("1_c71qe")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_ftfxr")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_lmn4p")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+visible = false
 shape = SubResource("CapsuleShape3D_b2vku")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5.16466)
+far = 200.0
 
 [node name="SFX" type="Node" parent="."]
 
@@ -187,3 +179,5 @@ bus = &"SFX"
 stream = ExtResource("32_v4l5o")
 volume_db = 15.0
 bus = &"SFX"
+
+[node name="SsSonicTest" parent="." instance=ExtResource("33_o7v3h")]
