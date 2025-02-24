@@ -44,6 +44,7 @@ albedo_color = Color(0, 0, 0.980392, 1)
 [node name="SpecialStageCharacter" type="CharacterBody3D"]
 collision_layer = 4097
 collision_mask = 8193
+floor_max_angle = 3.14159
 script = ExtResource("1_c71qe")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

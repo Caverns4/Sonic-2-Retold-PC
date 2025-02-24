@@ -70,8 +70,49 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_gyckv")
 
-[node name="ChaosEmerald" parent="StaticBody3D" instance=ExtResource("6_ikpik")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.60198, -94)
+[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 72.398, -36)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3"]
+material_override = SubResource("StandardMaterial3D_gbcia")
+mesh = SubResource("BoxMesh_i6jk0")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+shape = SubResource("BoxShape3D_gyckv")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, -23, -1.60198, -36)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+material_override = SubResource("StandardMaterial3D_gbcia")
+mesh = SubResource("BoxMesh_i6jk0")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+shape = SubResource("BoxShape3D_gyckv")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="."]
+transform = Transform3D(-1.49012e-07, 1, 0, -1, -1.49012e-07, 0, 0, 0, 1, -43, 18.398, -36)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D4"]
+material_override = SubResource("StandardMaterial3D_gbcia")
+mesh = SubResource("BoxMesh_i6jk0")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4"]
+shape = SubResource("BoxShape3D_gyckv")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.752518, 0.658571, 0, -0.658571, -0.752518, 0, 0, 0, 1, -31, 56.398, -36)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D5"]
+material_override = SubResource("StandardMaterial3D_gbcia")
+mesh = SubResource("BoxMesh_i6jk0")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D5"]
+shape = SubResource("BoxShape3D_gyckv")
 
 [node name="Ring_SS" parent="." instance=ExtResource("36_qkbuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -9)
@@ -84,3 +125,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -13)
 
 [node name="Ring_SS4" parent="." instance=ExtResource("36_qkbuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -15)
+
+[node name="ChaosEmerald" parent="." instance=ExtResource("6_ikpik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -130)
