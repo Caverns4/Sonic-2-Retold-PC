@@ -48,7 +48,7 @@ platformSprite = ExtResource("9_85jvg")
 endPosition = Vector2(256, -96)
 
 [node name="Shape3D" parent="Entitites/MovingPlatform2/Platform" index="0"]
-position = Vector2(0, -8)
+position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_r73e4")
 
 [node name="Hanger2" parent="Entitites/MovingPlatform2/Platform" index="2" instance=ExtResource("10_hh3j0")]

@@ -2,12 +2,13 @@
 extends Node2D
 
 @export var platformSprite = preload("res://Graphics/Tiles/WorldsTiles/Platform.png")
-
+## This is actually where the platform *starts*
 @export var endPosition = Vector2(0,256) # End travel point for platform
+## How fast this platform should move.
+@export var speed: float = 1.0
 
-@export var speed = 1.0 # How fast to move
-@export var offset = 0.0 # Initial offset, this can be used to offset the movements between other platforms # (float, 0.0, 3.1415)
-@export var waitTime = 4.0 #Wait time in Seconds
+## Time to wait(seconds) before this platform should return.
+@export var waitTime: float = 4.0
 @export var soundFile: AudioStream
 
 var activated = false # If the player has stood on the platform
@@ -50,7 +51,7 @@ func _physics_process(delta):
 		# Sync the position up to tween between the start and end point based on level time
 		var getPos = (
 			endPosition*(
-				cos((activeTimer*speed)+offset)*0.5+0.5
+				cos((activeTimer*speed))*0.5+0.5
 				)
 			)
 		
@@ -92,5 +93,5 @@ func _draw():
 		if speed > 0 or endPosition != Vector2.ZERO:
 			draw_texture(platformSprite,-platformSprite.get_size()/2,Color(1,1,1,0.5))
 			draw_texture(platformSprite,endPosition-platformSprite.get_size()/2,Color(1,0.5,0.5,0.5))
-			draw_texture(platformSprite,(endPosition*(cos(offsetTimer+offset)*0.5+0.5))-platformSprite.get_size()/2,Color.WHITE)
+			draw_texture(platformSprite,(endPosition*(cos(offsetTimer)*0.5+0.5))-platformSprite.get_size()/2,Color.WHITE)
 			draw_line(Vector2.ZERO,endPosition,Color.GREEN)

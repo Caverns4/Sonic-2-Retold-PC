@@ -497,24 +497,28 @@ position = Vector2(192, 464)
 platformSprite = ExtResource("15_wn01l")
 endPosition = Vector2(96, 0)
 dropSlightly = false
+floorOffset = null
 
 [node name="Platform4" parent="Floating Platforms" instance=ExtResource("15_4hohj")]
 position = Vector2(680, 464)
 platformSprite = ExtResource("15_wn01l")
 endPosition = Vector2(96, 0)
 dropSlightly = false
+floorOffset = null
 
 [node name="Platform2" parent="Floating Platforms" instance=ExtResource("15_4hohj")]
 position = Vector2(600, 304)
 platformSprite = ExtResource("15_wn01l")
 endPosition = Vector2(0, 96)
 dropSlightly = false
+floorOffset = null
 
 [node name="Platform3" parent="Floating Platforms" instance=ExtResource("15_4hohj")]
 position = Vector2(856, 528)
 platformSprite = ExtResource("15_wn01l")
 endPosition = Vector2(0, -96)
 dropSlightly = false
+floorOffset = null
 
 [node name="MovingStairBlocks" parent="Floating Platforms" instance=ExtResource("19_exxvg")]
 position = Vector2(6720, 128)

@@ -29,7 +29,7 @@ var parallaxBackgrounds = [
 	"res://Scene/Backgrounds/06-Metropolis.tscn",
 	"res://Scene/Backgrounds/07-DustHill.tscn",
 	"res://Scene/Backgrounds/08-WoodGadget.tscn",
-	"res://Scene/Backgrounds/09-CasinoNight.tscn",
+	"res://Scene/Backgrounds/09-CasinoNightF.tscn",
 	"res://Scene/Backgrounds/10-JewelGrotto.tscn",
 	"res://Scene/Backgrounds/11-WinterHill.tscn",
 	"res://Scene/Backgrounds/12-SandShower.tscn",

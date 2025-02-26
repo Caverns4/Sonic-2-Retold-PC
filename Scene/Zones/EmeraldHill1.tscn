@@ -171,6 +171,7 @@ position = Vector2(9480, 839)
 position = Vector2(1988, 620)
 platformSprite = ExtResource("23_2h6tp")
 endPosition = Vector2(0, 192)
+floorOffset = 4
 
 [node name="Platform4" parent="Entities" instance=ExtResource("22_vde0v")]
 position = Vector2(736, 588)
@@ -181,29 +182,34 @@ endPosition = Vector2(128, 0)
 position = Vector2(7836, 448)
 platformSprite = ExtResource("23_2h6tp")
 endPosition = Vector2(192, 0)
+floorOffset = 4
 
 [node name="Platform7" parent="Entities" instance=ExtResource("22_vde0v")]
 position = Vector2(8176, 432)
 platformSprite = ExtResource("23_2h6tp")
 endPosition = Vector2(192, 0)
 offset = 96.0
+floorOffset = 4
 
 [node name="Platform8" parent="Entities" instance=ExtResource("22_vde0v")]
 position = Vector2(8512, 400)
 platformSprite = ExtResource("23_2h6tp")
 endPosition = Vector2(0, 0)
 fallTimer = 1.0
+floorOffset = 4
 
 [node name="Platform2" parent="Entities" instance=ExtResource("22_vde0v")]
 position = Vector2(2306, 617)
 platformSprite = ExtResource("23_2h6tp")
 endPosition = Vector2(0, 128)
 offset = 1.0
+floorOffset = 4
 
 [node name="Platform5" parent="Entities" instance=ExtResource("22_vde0v")]
 position = Vector2(4048, 368)
 platformSprite = ExtResource("23_2h6tp")
 endPosition = Vector2(0, 128)
+floorOffset = 4
 
 [node name="Platform3" parent="Entities" instance=ExtResource("22_vde0v")]
 position = Vector2(2368, 976)
