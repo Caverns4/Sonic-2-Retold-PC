@@ -247,12 +247,16 @@ var memoryPosition = 0
 const INPUT_MEMORY_LENGTH = 20
 
 var Player = load("res://Entities/MainObjects/Player.tscn")
-var sonicanimations =  preload("res://Graphics/Players/PlayerAnimations/Sonic.tscn")
-var tailsAnimations = preload("res://Graphics/Players/PlayerAnimations/Tails.tscn")
-var knucklesAnimations = preload("res://Graphics/Players/PlayerAnimations/Knuckles.tscn")
-var amyAnimations = preload("res://Graphics/Players/PlayerAnimations/Amy.tscn")
-var mightyAnimations = preload("res://Graphics/Players/PlayerAnimations/Sonic_Beta.tscn")
-var rayAnimations = preload("res://Graphics/Players/PlayerAnimations/Sonic_Old.tscn")
+
+#An array of, well, Arrays, in order of Global.CHARACTERS, skipping 0.
+var playerskins = [
+	[preload("res://Graphics/Players/PlayerAnimations/Sonic.tscn"),HITBOXESSONIC],
+	[preload("res://Graphics/Players/PlayerAnimations/Tails.tscn"),HITBOXESTAILS],
+	[preload("res://Graphics/Players/PlayerAnimations/Knuckles.tscn"),HITBOXESSONIC],
+	[preload("res://Graphics/Players/PlayerAnimations/Amy.tscn"),HITBOXESAMY],
+	[preload("res://Graphics/Players/PlayerAnimations/Sonic_Beta.tscn"),HITBOXESSONIC],
+	[preload("res://Graphics/Players/PlayerAnimations/Sonic_Old.tscn"),HITBOXESSONIC],
+]
 
 # Get sfx list
 @onready var sfx = $SFX.get_children()
@@ -372,80 +376,20 @@ func _ready():
 	
 	
 	# Character settings
-	match (character):
-		Global.CHARACTERS.SONIC:
-			#Set sprites
-			currentHitbox = HITBOXESSONIC
-			#get_node("Sonic").name = "OldSprite"
-			#await get_tree().process_frame
-			#var sonic = sonicAnimations.instantiate()
-			#add_child(sonic)
-			#sprite = sonic.get_node("Sprite2D")
-			#animator = sonic.get_node("PlayerAnimation")
-			#superAnimator = sonic.get_node_or_null("SuperPalette")
-			#spriteController = sonic
-			#get_node("OldSprite").queue_free()
-			
-		Global.CHARACTERS.TAILS:
-			# Set sprites
-			currentHitbox = HITBOXESTAILS
-			get_node("Sonic").name = "OldSprite"
-			await get_tree().process_frame
-			var tails = tailsAnimations.instantiate()
-			add_child(tails)
-			sprite = tails.get_node("Sprite2D")
-			animator = tails.get_node("PlayerAnimation")
-			superAnimator = tails.get_node_or_null("SuperPalette")
-			spriteController = tails
-			get_node("OldSprite").queue_free()
-		Global.CHARACTERS.KNUCKLES:
-			# Set sprites
-			currentHitbox = HITBOXESSONIC
-			get_node("Sonic").name = "OldSprite"
-			var knuckles = knucklesAnimations.instantiate()
-			add_child(knuckles)
-			sprite = knuckles.get_node("Sprite2D")
-			animator = knuckles.get_node("PlayerAnimation")
-			superAnimator = knuckles.get_node_or_null("SuperPalette")
-			spriteController = knuckles
-			get_node("OldSprite").queue_free()
-		Global.CHARACTERS.AMY:
-			# Set sprites
-			currentHitbox = HITBOXESAMY
-			get_node("Sonic").name = "OldSprite"
-			await get_tree().process_frame
-			var amy = amyAnimations.instantiate()
-			add_child(amy)
-			sprite = amy.get_node("Sprite2D")
-			animator = amy.get_node("PlayerAnimation")
-			superAnimator = amy.get_node_or_null("SuperPalette")
-			spriteController = amy
-			get_node("OldSprite").queue_free()
-			maxCharGroundHeight = 12 # adjust height distance to prevent clipping off floors (amy's smaller)
-		Global.CHARACTERS.MIGHTY:
-			#Set sprites
-			currentHitbox = HITBOXESSONIC
-			get_node("Sonic").name = "OldSprite"
-			await get_tree().process_frame
-			var mighty = mightyAnimations.instantiate()
-			add_child(mighty)
-			sprite = mighty.get_node("Sprite2D")
-			animator = mighty.get_node("PlayerAnimation")
-			superAnimator = mighty.get_node_or_null("SuperPalette")
-			spriteController = mighty
-			get_node("OldSprite").queue_free()
-		Global.CHARACTERS.RAY:
-			#Set sprites
-			currentHitbox = HITBOXESSONIC
-			get_node("Sonic").name = "OldSprite"
-			await get_tree().process_frame
-			var ray = rayAnimations.instantiate()
-			add_child(ray)
-			sprite = ray.get_node("Sprite2D")
-			animator = ray.get_node("PlayerAnimation")
-			superAnimator = ray.get_node_or_null("SuperPalette")
-			spriteController = ray
-			get_node("OldSprite").queue_free()
+	var skin = playerskins[max(min(character-1,playerskins.size()),0)]
+	currentHitbox = skin[1]
+	spriteController.name = "OldSprite"
+	var newSprite = skin[0].instantiate()
+	add_child(newSprite)
+	sprite = newSprite.get_node("Sprite2D")
+	animator = newSprite.get_node("PlayerAnimation")
+	superAnimator = newSprite.get_node_or_null("SuperPalette")
+	spriteController.queue_free()
+	spriteController = newSprite
+	
+	if character == Global.CHARACTERS.AMY:
+		maxCharGroundHeight = 12 #Amy uses a different setting here because of hitbox jank
+	
 	
 	# run switch physics to ensure character specific physics
 	switch_physics()
