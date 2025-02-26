@@ -2,6 +2,8 @@ extends Node3D
 
 @export var music = preload("res://Audio/Soundtrack/s2br_SpecialStage.ogg")
 
+var resultsScreen = preload("res://Scene/SpecialStage/SpecialStageResult.tscn")
+
 # was loaded is used for room loading, this can prevent overwriting global information, see Global.gd for more information on scene loading
 var wasLoaded = false
 
