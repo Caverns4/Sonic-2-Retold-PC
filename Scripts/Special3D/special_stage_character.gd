@@ -8,6 +8,7 @@ const JUMP_VELOCITY = 7.0
 const JUMP_KNUCKLES = 6.0
 
 const INPUT_MEMORY_LENGTH = 20
+const JUMP_BUFFER_TIME = 3.0/60.0 #Time after pressing jump button to buffer the input, in case it's pressed early.
 
 #Collision management
 var floor_ray = RayCast3D.new()
@@ -45,6 +46,7 @@ var inputMemory = []
 var inertia : float  = 0.0 # Movement Speed forward
 var movement : Vector3 = Vector3.ZERO #linear motion
 var xform : Transform3D
+var jumpBuffer: float = 0
 
 func _ready() -> void:
 	Global.players.append(self)
@@ -94,14 +96,23 @@ func _physics_process(delta: float) -> void:
 	velocity = (global_basis * movement)
 	move_and_slide()
 	rotate_to_floor_angle()
+	# jump buffer time
+	if jumpBuffer > 0.0:
+		jumpBuffer -= delta
 
 func handle_input(delta):
 	# Handle jump.
-	if isActionPressed() and is_on_floor():
+	if isActionPressed():
+		jumpBuffer = JUMP_BUFFER_TIME
+	
+	if jumpBuffer > 0 and is_on_floor():
 		if character != Global.CHARACTERS.KNUCKLES:
 			movement.y = JUMP_VELOCITY
+			jumpBuffer = 0.0
 		else:
 			movement.y = JUMP_KNUCKLES
+			jumpBuffer = 0.0
+		
 		sfx[0].play()
 		if sprite:
 			sprite.play("jump")

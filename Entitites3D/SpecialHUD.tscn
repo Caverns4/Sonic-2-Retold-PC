@@ -1,11 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyx38ouxk43dn"]
+[gd_scene load_steps=4 format=3 uid="uid://cyx38ouxk43dn"]
 
 [ext_resource type="Script" path="res://Scripts/Special3D/special_hud.gd" id="1_4ib6a"]
 [ext_resource type="Texture2D" uid="uid://d0yay16k5lfhw" path="res://Graphics/Special Stage/SS_HUD_Sprites.png" id="1_tgu3l"]
-[ext_resource type="FontFile" uid="uid://db35jkdl2gan2" path="res://Graphics/Special Stage/SS_HUD_Font.png" id="2_ghi86"]
-
-[sub_resource type="Theme" id="Theme_84xpe"]
-default_font = ExtResource("2_ghi86")
+[ext_resource type="Theme" uid="uid://bev8bkdmigtvx" path="res://Resources/SpecialHUD.tres" id="3_utlc0"]
 
 [node name="SpecialHud" type="CanvasLayer"]
 layer = 5
@@ -36,8 +33,10 @@ offset_left = 80.0
 offset_top = 24.0
 offset_right = 104.0
 offset_bottom = 40.0
-theme = SubResource("Theme_84xpe")
-text = "0"
+theme = ExtResource("3_utlc0")
+bbcode_enabled = true
+text = "999
+"
 
 [node name="TopRight" type="Control" parent="."]
 layout_mode = 3
@@ -68,8 +67,9 @@ offset_left = 8.0
 offset_top = 24.0
 offset_right = 32.0
 offset_bottom = 40.0
-theme = SubResource("Theme_84xpe")
-text = "0"
+theme = ExtResource("3_utlc0")
+bbcode_enabled = true
+text = "999"
 
 [node name="TopCenter" type="Control" parent="."]
 layout_mode = 3
@@ -87,3 +87,17 @@ texture = ExtResource("1_tgu3l")
 centered = false
 vframes = 3
 frame = 2
+
+[node name="RingCount" type="RichTextLabel" parent="TopCenter"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 24.0
+offset_right = 36.0
+offset_bottom = 40.0
+theme = ExtResource("3_utlc0")
+bbcode_enabled = true
+text = " 999"
+scroll_active = false
+autowrap_mode = 0
+tab_size = 0
+shortcut_keys_enabled = false

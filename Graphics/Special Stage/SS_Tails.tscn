@@ -162,7 +162,6 @@ animations = [{
 
 [node name="SsTails" type="AnimatedSprite3D"]
 pixel_size = 0.04
-billboard = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_q020g")
 animation = &"jump"

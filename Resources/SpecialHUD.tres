@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bev8bkdmigtvx"]
+
+[ext_resource type="FontFile" uid="uid://db35jkdl2gan2" path="res://Graphics/Special Stage/SS_HUD_Font.png" id="1_s8yis"]
+
+[resource]
+default_font = ExtResource("1_s8yis")

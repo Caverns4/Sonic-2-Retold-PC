@@ -46,6 +46,7 @@ shading_mode = 0
 specular_mode = 2
 albedo_texture = ExtResource("4_yfr13")
 uv1_scale = Vector3(8, 64, 8)
+texture_filter = 0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_a807l"]
 material = SubResource("StandardMaterial3D_5cddy")
@@ -76,128 +77,130 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 27)
 transform = Transform3D(0.822154, -0.569265, 0, 0.569265, 0.822154, 0, 0, 0, 1, 0, 0, 0)
 curve = SubResource("Curve3D_7lh5j")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="Entitites" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Entitites"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.60198, -36)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Entitites/StaticBody3D"]
 material_override = SubResource("StandardMaterial3D_gbcia")
 mesh = SubResource("BoxMesh_i6jk0")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Entitites/StaticBody3D"]
 shape = SubResource("BoxShape3D_gyckv")
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+[node name="StaticBody3D2" type="StaticBody3D" parent="Entitites"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -8.60198, -637)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Entitites/StaticBody3D2"]
 material_override = SubResource("StandardMaterial3D_gbcia")
 mesh = SubResource("BoxMesh_i6jk0")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Entitites/StaticBody3D2"]
 shape = SubResource("BoxShape3D_gyckv")
 
-[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+[node name="StaticBody3D3" type="StaticBody3D" parent="Entitites"]
 transform = Transform3D(-4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, 0, 23.398, -670)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Entitites/StaticBody3D3"]
 material_override = SubResource("StandardMaterial3D_gbcia")
 mesh = SubResource("BoxMesh_i6jk0")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Entitites/StaticBody3D3"]
 shape = SubResource("BoxShape3D_gyckv")
 
-[node name="Ring_SS" parent="." instance=ExtResource("36_qkbuj")]
+[node name="Ring_SS" parent="Entitites" instance=ExtResource("36_qkbuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -9)
 
-[node name="Ring_SS2" parent="." instance=ExtResource("36_qkbuj")]
+[node name="Ring_SS2" parent="Entitites" instance=ExtResource("36_qkbuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -11)
 
-[node name="Ring_SS3" parent="." instance=ExtResource("36_qkbuj")]
+[node name="Ring_SS3" parent="Entitites" instance=ExtResource("36_qkbuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -13)
 
-[node name="Ring_SS5" parent="." instance=ExtResource("36_qkbuj")]
+[node name="Ring_SS5" parent="Entitites" instance=ExtResource("36_qkbuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -156)
 
-[node name="Ring_SS6" parent="." instance=ExtResource("36_qkbuj")]
+[node name="Ring_SS6" parent="Entitites" instance=ExtResource("36_qkbuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -158)
 
-[node name="Ring_SS7" parent="." instance=ExtResource("36_qkbuj")]
+[node name="Ring_SS7" parent="Entitites" instance=ExtResource("36_qkbuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -160)
 
-[node name="Ring_SS8" parent="." instance=ExtResource("36_qkbuj")]
+[node name="Ring_SS8" parent="Entitites" instance=ExtResource("36_qkbuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -4, -204)
 
-[node name="Ring_SS9" parent="." instance=ExtResource("36_qkbuj")]
+[node name="Ring_SS9" parent="Entitites" instance=ExtResource("36_qkbuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -4, -206)
 
-[node name="Ring_SS10" parent="." instance=ExtResource("36_qkbuj")]
+[node name="Ring_SS10" parent="Entitites" instance=ExtResource("36_qkbuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -4, -208)
 
-[node name="Ring_SS11" parent="." instance=ExtResource("36_qkbuj")]
+[node name="Ring_SS11" parent="Entitites" instance=ExtResource("36_qkbuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -11, -285)
 
-[node name="Ring_SS12" parent="." instance=ExtResource("36_qkbuj")]
+[node name="Ring_SS12" parent="Entitites" instance=ExtResource("36_qkbuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -11, -287)
 
-[node name="Ring_SS13" parent="." instance=ExtResource("36_qkbuj")]
+[node name="Ring_SS13" parent="Entitites" instance=ExtResource("36_qkbuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -11, -289)
 
-[node name="Ring_SS14" parent="." instance=ExtResource("36_qkbuj")]
+[node name="Ring_SS14" parent="Entitites" instance=ExtResource("36_qkbuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -357)
 
-[node name="Ring_SS15" parent="." instance=ExtResource("36_qkbuj")]
+[node name="Ring_SS15" parent="Entitites" instance=ExtResource("36_qkbuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -359)
 
-[node name="Ring_SS16" parent="." instance=ExtResource("36_qkbuj")]
+[node name="Ring_SS16" parent="Entitites" instance=ExtResource("36_qkbuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -361)
 
-[node name="Ring_SS17" parent="." instance=ExtResource("36_qkbuj")]
+[node name="Ring_SS17" parent="Entitites" instance=ExtResource("36_qkbuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -575)
 
-[node name="Ring_SS18" parent="." instance=ExtResource("36_qkbuj")]
+[node name="Ring_SS18" parent="Entitites" instance=ExtResource("36_qkbuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -577)
 
-[node name="Ring_SS19" parent="." instance=ExtResource("36_qkbuj")]
+[node name="Ring_SS19" parent="Entitites" instance=ExtResource("36_qkbuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -579)
 
-[node name="Ring_SS4" parent="." instance=ExtResource("36_qkbuj")]
+[node name="Ring_SS4" parent="Entitites" instance=ExtResource("36_qkbuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -15)
 
-[node name="ChaosEmerald" parent="." instance=ExtResource("6_ikpik")]
+[node name="ChaosEmerald" parent="Entitites" instance=ExtResource("6_ikpik")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -169)
 
-[node name="StaticBody3D6" type="StaticBody3D" parent="."]
+[node name="StaticBody3D6" type="StaticBody3D" parent="Entitites"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -11, -349)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D6"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Entitites/StaticBody3D6"]
 shape = SubResource("CylinderShape3D_h1h6v")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D6"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Entitites/StaticBody3D6"]
 mesh = SubResource("CylinderMesh_a807l")
 
-[node name="SsBumper" parent="." instance=ExtResource("8_tetl8")]
+[node name="SsBumper" parent="Entitites" instance=ExtResource("8_tetl8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -12, -604)
 
-[node name="SsBumper2" parent="." instance=ExtResource("8_tetl8")]
+[node name="SsBumper2" parent="Entitites" instance=ExtResource("8_tetl8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -18, -604)
 
-[node name="SsBumper3" parent="." instance=ExtResource("8_tetl8")]
+[node name="SsBumper3" parent="Entitites" instance=ExtResource("8_tetl8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -22, -604)
 
-[node name="SsBumper4" parent="." instance=ExtResource("8_tetl8")]
+[node name="SsBumper4" parent="Entitites" instance=ExtResource("8_tetl8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24, -604)
 
-[node name="SsBumper5" parent="." instance=ExtResource("8_tetl8")]
+[node name="SsBumper5" parent="Entitites" instance=ExtResource("8_tetl8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -22, -604)
 
-[node name="SsBumper6" parent="." instance=ExtResource("8_tetl8")]
+[node name="SsBumper6" parent="Entitites" instance=ExtResource("8_tetl8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, -12, -604)
 
-[node name="SsBumper9" parent="." instance=ExtResource("8_tetl8")]
+[node name="SsBumper9" parent="Entitites" instance=ExtResource("8_tetl8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -577)
 
-[node name="SsBumper7" parent="." instance=ExtResource("8_tetl8")]
+[node name="SsBumper7" parent="Entitites" instance=ExtResource("8_tetl8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -17, -604)

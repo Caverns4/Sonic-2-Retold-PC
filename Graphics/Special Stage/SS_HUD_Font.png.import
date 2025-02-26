@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/SS_HUD_Font.png-bb1206017a7c43054bb965d614948
 
 [params]
 
-character_ranges=PackedStringArray("48-57", "65-90", "46", "95", "33")
+character_ranges=PackedStringArray("48-57", "65-90", "46", "95", "33", "32")
 kerning_pairs=PackedStringArray()
 columns=10
 rows=4

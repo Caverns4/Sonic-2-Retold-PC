@@ -167,9 +167,8 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="SsKnucklesTest" type="AnimatedSprite3D"]
+[node name="SsKnuckles" type="AnimatedSprite3D"]
 pixel_size = 0.04
-billboard = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_uefjt")
 animation = &"jump"
