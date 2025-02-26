@@ -1,0 +1,178 @@
+[gd_scene load_steps=24 format=3 uid="uid://dmul72m462uy8"]
+
+[ext_resource type="Texture2D" uid="uid://dbis050hjpmfj" path="res://Graphics/Special Stage/SS_Knuckles.png" id="1_7n81f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_weftu"]
+atlas = ExtResource("1_7n81f")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ap6v8"]
+atlas = ExtResource("1_7n81f")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhp6x"]
+atlas = ExtResource("1_7n81f")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ll18"]
+atlas = ExtResource("1_7n81f")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n56yj"]
+atlas = ExtResource("1_7n81f")
+region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugjjg"]
+atlas = ExtResource("1_7n81f")
+region = Rect2(160, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ll6pe"]
+atlas = ExtResource("1_7n81f")
+region = Rect2(192, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0y3a"]
+atlas = ExtResource("1_7n81f")
+region = Rect2(224, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8irp"]
+atlas = ExtResource("1_7n81f")
+region = Rect2(512, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1uvy0"]
+atlas = ExtResource("1_7n81f")
+region = Rect2(544, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gm735"]
+atlas = ExtResource("1_7n81f")
+region = Rect2(576, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xs1o"]
+atlas = ExtResource("1_7n81f")
+region = Rect2(608, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mydcj"]
+atlas = ExtResource("1_7n81f")
+region = Rect2(640, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i66jt"]
+atlas = ExtResource("1_7n81f")
+region = Rect2(256, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_483gk"]
+atlas = ExtResource("1_7n81f")
+region = Rect2(288, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwe1o"]
+atlas = ExtResource("1_7n81f")
+region = Rect2(320, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymk6e"]
+atlas = ExtResource("1_7n81f")
+region = Rect2(352, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpxsh"]
+atlas = ExtResource("1_7n81f")
+region = Rect2(384, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gw3m5"]
+atlas = ExtResource("1_7n81f")
+region = Rect2(416, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wd4ja"]
+atlas = ExtResource("1_7n81f")
+region = Rect2(448, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1i8s8"]
+atlas = ExtResource("1_7n81f")
+region = Rect2(480, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uefjt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_weftu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ap6v8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhp6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ll18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n56yj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugjjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ll6pe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0y3a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8irp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1uvy0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gm735")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xs1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mydcj")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i66jt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_483gk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwe1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymk6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpxsh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gw3m5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wd4ja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1i8s8")
+}],
+"loop": true,
+"name": &"run",
+"speed": 20.0
+}]
+
+[node name="SsKnucklesTest" type="AnimatedSprite3D"]
+pixel_size = 0.04
+billboard = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_uefjt")
+animation = &"jump"
+autoplay = "default"
+frame = 4
+frame_progress = 0.19091

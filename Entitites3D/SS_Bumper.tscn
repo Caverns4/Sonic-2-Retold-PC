@@ -1,0 +1,76 @@
+[gd_scene load_steps=10 format=3 uid="uid://bpmdeyvoxjr88"]
+
+[ext_resource type="Script" path="res://Scripts/Special3D/ss_bumper.gd" id="1_76q2l"]
+[ext_resource type="Texture2D" uid="uid://twldqgya2vgk" path="res://Graphics/Obstacles/bumpers.png" id="1_q2q5t"]
+[ext_resource type="AudioStream" uid="uid://bkqi8dr4nxfkp" path="res://Audio/SFX/Objects/Bumper.wav" id="3_yglw0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_av47x"]
+atlas = ExtResource("1_q2q5t")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_it8gn"]
+atlas = ExtResource("1_q2q5t")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ic4jp"]
+atlas = ExtResource("1_q2q5t")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrttn"]
+atlas = ExtResource("1_q2q5t")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pei2k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_av47x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_it8gn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ic4jp")
+}],
+"loop": false,
+"name": &"bounce",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrttn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4c5r6"]
+radius = 1.0
+
+[node name="SsBumper" type="Node3D"]
+script = ExtResource("1_76q2l")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+pixel_size = 0.1
+billboard = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_pei2k")
+animation = &"bounce"
+autoplay = "default"
+frame = 2
+frame_progress = 1.0
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_4c5r6")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_yglw0")
+volume_db = 5.0
+bus = &"SFX"
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

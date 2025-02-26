@@ -5,7 +5,7 @@
 [node name="ChaosEmerald" type="Node3D"]
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+pixel_size = 0.05
 billboard = 1
 texture_filter = 0
 texture = ExtResource("1_kac6w")

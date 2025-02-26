@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bma2174bd2vai"]
+[gd_scene load_steps=18 format=3 uid="uid://bma2174bd2vai"]
 
 [ext_resource type="Texture2D" uid="uid://chcgf78a1t8ik" path="res://Graphics/Special Stage/SS_BG.png" id="1_mx8be"]
 [ext_resource type="Script" path="res://Scripts/Level/SpecialStage.gd" id="1_x3k1r"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cyx38ouxk43dn" path="res://Entitites3D/SpecialHUD.tscn" id="3_ydt6i"]
 [ext_resource type="Texture2D" uid="uid://b2m6ntibathle" path="res://Graphics/Special Stage/TestMat.png" id="4_yfr13"]
 [ext_resource type="PackedScene" uid="uid://dblrkngio3lkk" path="res://Entitites3D/ChaosEmerald.tscn" id="6_ikpik"]
+[ext_resource type="PackedScene" uid="uid://bpmdeyvoxjr88" path="res://Entitites3D/SS_Bumper.tscn" id="8_tetl8"]
 [ext_resource type="PackedScene" uid="uid://dpl1a2gtxk5t2" path="res://Entitites3D/ring_ss.tscn" id="36_qkbuj"]
 
 [sub_resource type="Sky" id="Sky_7ob4j"]
@@ -40,10 +41,14 @@ size = Vector3(64, 1, 128)
 height = 512.0
 radius = 10.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3syu0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5cddy"]
+shading_mode = 0
+specular_mode = 2
 albedo_texture = ExtResource("4_yfr13")
+uv1_scale = Vector3(8, 64, 8)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_a807l"]
+material = SubResource("StandardMaterial3D_5cddy")
 top_radius = 10.0
 bottom_radius = 10.0
 height = 512.0
@@ -149,11 +154,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -359)
 [node name="Ring_SS16" parent="." instance=ExtResource("36_qkbuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -361)
 
+[node name="Ring_SS17" parent="." instance=ExtResource("36_qkbuj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -575)
+
+[node name="Ring_SS18" parent="." instance=ExtResource("36_qkbuj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -577)
+
+[node name="Ring_SS19" parent="." instance=ExtResource("36_qkbuj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -579)
+
 [node name="Ring_SS4" parent="." instance=ExtResource("36_qkbuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -15)
 
 [node name="ChaosEmerald" parent="." instance=ExtResource("6_ikpik")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -130)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -169)
 
 [node name="StaticBody3D6" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -11, -349)
@@ -162,5 +176,28 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -11
 shape = SubResource("CylinderShape3D_h1h6v")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D6"]
-material_override = SubResource("StandardMaterial3D_3syu0")
 mesh = SubResource("CylinderMesh_a807l")
+
+[node name="SsBumper" parent="." instance=ExtResource("8_tetl8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -12, -604)
+
+[node name="SsBumper2" parent="." instance=ExtResource("8_tetl8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -18, -604)
+
+[node name="SsBumper3" parent="." instance=ExtResource("8_tetl8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -22, -604)
+
+[node name="SsBumper4" parent="." instance=ExtResource("8_tetl8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24, -604)
+
+[node name="SsBumper5" parent="." instance=ExtResource("8_tetl8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -22, -604)
+
+[node name="SsBumper6" parent="." instance=ExtResource("8_tetl8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, -12, -604)
+
+[node name="SsBumper9" parent="." instance=ExtResource("8_tetl8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -577)
+
+[node name="SsBumper7" parent="." instance=ExtResource("8_tetl8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -17, -604)

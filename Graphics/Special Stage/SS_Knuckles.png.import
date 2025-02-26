@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cihnt83lsr2ce"
-path="res://.godot/imported/SS_Tails.png-167b9f8b03b544f0aaf23bca8c9f9364.ctex"
+uid="uid://dbis050hjpmfj"
+path="res://.godot/imported/SS_Knuckles.png-dc61069afb60e15d40f4b9e8a4cf5cda.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Special Stage/SS_Tails.png"
-dest_files=["res://.godot/imported/SS_Tails.png-167b9f8b03b544f0aaf23bca8c9f9364.ctex"]
+source_file="res://Graphics/Special Stage/SS_Knuckles.png"
+dest_files=["res://.godot/imported/SS_Knuckles.png-dc61069afb60e15d40f4b9e8a4cf5cda.ctex"]
 
 [params]
 

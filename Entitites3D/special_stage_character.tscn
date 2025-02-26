@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Special3D/special_stage_character.gd" id="1_c71qe"]
 [ext_resource type="AudioStream" uid="uid://bx5cur6r54lbo" path="res://Audio/SFX/Player/Jump.wav" id="2_xcfh5"]
 [ext_resource type="AudioStream" uid="uid://tldp1etm5kwa" path="res://Audio/SFX/Player/Roll.wav" id="3_7o48b"]
-[ext_resource type="AudioStream" uid="uid://iomtgrpokl66" path="res://Audio/SFX/Player/SpindashRev.wav" id="4_rvfjx"]
+[ext_resource type="AudioStream" uid="uid://1q4psgyqteps" path="res://Audio/SFX/Objects/CNZ_Flipper.wav" id="4_22kl4"]
 [ext_resource type="AudioStream" uid="uid://r5rwjr88mqvn" path="res://Audio/SFX/Player/SpindashRelease.wav" id="5_7ufrv"]
 [ext_resource type="AudioStream" uid="uid://56lyekv8guny" path="res://Audio/SFX/Player/Spike.wav" id="6_p6yoc"]
 [ext_resource type="AudioStream" uid="uid://dg4gnjja2ce0s" path="res://Audio/SFX/Player/Shield.wav" id="7_2j70q"]
@@ -39,7 +39,7 @@
 [node name="SpecialStageCharacter" type="CharacterBody3D"]
 collision_layer = 4097
 collision_mask = 8193
-floor_max_angle = 3.14159
+floor_max_angle = 1.13446
 script = ExtResource("1_c71qe")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -47,7 +47,7 @@ visible = false
 shape = SubResource("CapsuleShape3D_b2vku")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5.16466)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 6)
 far = 200.0
 
 [node name="SFX" type="Node" parent="."]
@@ -61,8 +61,8 @@ stream = ExtResource("3_7o48b")
 volume_db = -5.0
 bus = &"SFX"
 
-[node name="SpinDashRev" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("4_rvfjx")
+[node name="Bounce" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_22kl4")
 volume_db = -5.0
 bus = &"SFX"
 
