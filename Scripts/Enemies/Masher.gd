@@ -1,5 +1,7 @@
 extends EnemyBase
 
+var jumpHeight = 5
+
 # Original Code RefCounted translated by VAdaPEGA
 var animFrame = 0.0
 
@@ -8,7 +10,7 @@ func _ready():
 	velocity.y = -4
 	set_physics_process(false)
 	set_process(false)
-	$"../VisibleOnScreenEnabler2D".visible = true
+	
 
 func _physics_process(delta):
 	# gravity
@@ -17,8 +19,8 @@ func _physics_process(delta):
 	
 	# reset velocity
 	if position.y >= 0:
-		velocity.y = -5*60
-		
+		velocity.y = 0-abs(jumpHeight)*60
+	
 
 func _process(delta):
 	super(delta)

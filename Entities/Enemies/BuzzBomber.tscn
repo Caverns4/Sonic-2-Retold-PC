@@ -66,7 +66,7 @@ _data = {
 "RESET": SubResource("Animation_ue8i5")
 }
 
-[node name="BuzzBomber" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Buzzer" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 16384
 collision_mask = 0
 script = ExtResource("2")
