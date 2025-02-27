@@ -6,16 +6,20 @@ extends EnemyBase
 var Projectile = preload("res://Entities/Enemies/Projectiles/BuzzBomberProjectile.tscn")
 
 @export var bulletSound = preload("res://Audio/SFX/Objects/Projectile.wav")
-@export var flyDirection = 0.0 # (float,-180.0,180.0)
-@export var travelDistance = 256
-@export var speed = 100
+## Not a thing in Sonic 2. Do not use.
+@export var flyDirection: float = 0.0 # (float,-180.0,180.0)
+## Total distance travelled in pixels
+@export var travelDistance: int = 256
+## Movement Speed. 60 = 100 in Sonic 2.
+@export var speed: float = 60
 @onready var origin = global_position
 @onready var animator = $Sprite2D/AnimationPlayer
 
 var side = -1
 
-var editorOffset = 1
+var editorOffset: float = 1.0
 
+var targetPosition: Vector2 = Vector2.ZERO
 var isFiring = false
 var fireTime = 0
 var coolDown = 0
@@ -28,16 +32,17 @@ func _ready():
 	if !Engine.is_editor_hint():
 		$VisibleOnScreenEnabler2D.visible = true
 		$Sprite2D/PlayerCheck.visible = true
+		var direction = Vector2(travelDistance*clamp(side,-1,0),0).rotated(deg_to_rad(flyDirection))
+		targetPosition = origin + direction
 
 func _process(delta):
 	if Engine.is_editor_hint():
 		queue_redraw()
 		
 		# move editor offset based on movement speed
-		if editorOffset > -1:
-			editorOffset -= (speed*delta/travelDistance)*2
-		else:
-			editorOffset = 1
+		editorOffset -= (speed*delta/travelDistance)*2
+		if editorOffset <= 0.0:
+			editorOffset = 1.0
 	else:
 		super(delta)
 
@@ -46,11 +51,22 @@ func _physics_process(delta):
 		# move if not firing
 		if !isFiring:
 			# move position toward origin point with the travel distance
-			position = position.move_toward(origin+Vector2(travelDistance*side,0).rotated(deg_to_rad(flyDirection)),speed*delta)
+			if side <= 0:
+				position = position.move_toward(
+					origin-Vector2(travelDistance,0).rotated(deg_to_rad(flyDirection)),
+					speed*delta)
+			else:
+				position = position.move_toward(origin,speed*delta)
 			# if at the destination point then turn around
-			if position.distance_to(origin+Vector2(travelDistance*side,0).rotated(deg_to_rad(flyDirection))) <= 1:
+			
+			if position.distance_to(targetPosition) <= 1:
 				$Sprite2D.scale.x = -$Sprite2D.scale.x
+				#Calculate a new Target position
 				side = -side
+				if side <= 0:
+					targetPosition = origin + Vector2(travelDistance*clamp(side,-1,0),0).rotated(deg_to_rad(flyDirection))
+				else:
+					targetPosition = origin
 				# pause during turn
 				animator.play("RESET")
 				isFiring = true
@@ -77,13 +93,13 @@ func _draw():
 	if Engine.is_editor_hint():
 		var sprite = $Sprite2D/Buzzer
 		var size = Vector2(sprite.texture.get_width()/sprite.hframes,sprite.texture.get_height()/sprite.vframes)
-		# first bomber pose
+		# first buzzer pose
 		draw_texture_rect_region(sprite.texture,
-		Rect2(Vector2(travelDistance,0).rotated(deg_to_rad(flyDirection))-size/2,
+		Rect2(Vector2(0,0).rotated(deg_to_rad(flyDirection))-size/2,
 		size),Rect2(Vector2(0,0),
 		size),Color(1,1,1,0.5))
 		
-		# second bomber pose
+		# second buzzer pose
 		draw_texture_rect_region(sprite.texture,
 		Rect2(Vector2(-travelDistance,0).rotated(deg_to_rad(flyDirection))-size/2,
 		size),Rect2(Vector2(0,0),
@@ -91,7 +107,7 @@ func _draw():
 		
 		# estimated movement
 		draw_texture_rect_region(sprite.texture,
-		Rect2(Vector2(travelDistance*clamp(editorOffset,-1,1),0).rotated(deg_to_rad(flyDirection))-size/2,
+		Rect2(Vector2((travelDistance)*(editorOffset-1.0),0).rotated(deg_to_rad(flyDirection))-size/2,
 		size),Rect2(Vector2(0,0),
 		size),Color(1,1,1,0.5))
 

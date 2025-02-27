@@ -101,7 +101,7 @@ position = Vector2(4344, 538)
 size = Vector2(1, 16)
 
 [node name="LayerSwitcher4" parent="Entities" instance=ExtResource("19_fxa4t")]
-position = Vector2(6649, 548)
+position = Vector2(6648, 544)
 size = Vector2(1, 20)
 leftLayer = 0
 
@@ -422,7 +422,7 @@ position = Vector2(9520, 904)
 position = Vector2(9617, 904)
 
 [node name="BuzzBomber" parent="Badniks" instance=ExtResource("30_dys6r")]
-position = Vector2(792, 516)
+position = Vector2(816, 516)
 
 [node name="BuzzBomber2" parent="Badniks" instance=ExtResource("30_dys6r")]
 position = Vector2(2344, 488)
