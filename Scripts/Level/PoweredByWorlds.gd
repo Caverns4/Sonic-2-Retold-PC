@@ -11,7 +11,7 @@ func _ready():
 	# play title if the scene isn't already skipping
 	if !alreadyChanged:
 		$AnimationPlayer.play("Animation")
-		$Emerald.play()
+		#$Emerald.play()
 		# wait for the animation to finish
 		await $AnimationPlayer.animation_finished
 		# do another check, if the scene's not already fading then fade to the next
@@ -26,3 +26,9 @@ func _input(event):
 		alreadyChanged = true # used so that room skipping isn't doubled
 		$Warp.play()
 		Global.main.change_scene_to_file(nextScene,"FadeOut","FadeOut",1)
+
+func playDashSound():
+	$DashSFX.play()
+
+func playJingle():
+	$Emerald.play()
