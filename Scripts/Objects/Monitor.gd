@@ -188,8 +188,6 @@ func _physics_process(delta):
 # physics collision check, see physics object
 func physics_collision(body, hitVector):
 	# Monitor head bouncing
-	
-	
 	if hitVector.y < 0:
 		yspeed = -1.5*60
 		physics = true
