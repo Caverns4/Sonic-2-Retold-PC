@@ -18,7 +18,8 @@ func _process(delta):
 			# check if damage entity is on or supertime is bigger then 0
 			if (i.get_collision_layer_value(20) or i.supTime > 0 or forceDamage):
 				# check player is not on floor
-				if !i.ground:
+				if !i.ground and !(i.character == Global.CHARACTERS.MIGHTY and 
+				i.animator.current_animation == "dropDash"):
 					if i.movement.y > 0:
 						# Bounce high upward
 						i.movement.y = -i.movement.y

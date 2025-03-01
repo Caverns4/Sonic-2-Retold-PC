@@ -2525,4 +2525,3 @@ position = Vector2(5408, 1952)
 libraries = {
 "": SubResource("AnimationLibrary_4wbty")
 }
-autoplay = "RESET"

@@ -1,20 +1,15 @@
 extends PhysicsObject
-# Sonic, Knuckle, and Mighty
+# Sonic, Knuckles, Mighty, Ray
 const HITBOXESSONIC = {
 	NORMAL = Vector2(9,19)*2, 
 	ROLL = Vector2(7,14)*2, 
 	CROUCH = Vector2(9,11)*2, 
 	GLIDE = Vector2(10,10)*2, 
 	HORIZONTAL = Vector2(22,9)*2}
+# Tails, Amy
 const HITBOXESTAILS = {
 	NORMAL = Vector2(9,15)*2, 
 	ROLL = Vector2(7,14)*2, 
-	CROUCH = Vector2(9,9.5)*2, 
-	GLIDE = Vector2(10,10)*2, 
-	HORIZONTAL = Vector2(22,9)*2}
-const HITBOXESAMY = {
-	NORMAL = Vector2(9,15)*2, 
-	ROLL = Vector2(7,11)*2, 
 	CROUCH = Vector2(9,9.5)*2, 
 	GLIDE = Vector2(10,10)*2, 
 	HORIZONTAL = Vector2(22,9)*2}
@@ -253,7 +248,7 @@ var playerskins = [
 	[preload("res://Graphics/Players/PlayerAnimations/Sonic.tscn"),HITBOXESSONIC],
 	[preload("res://Graphics/Players/PlayerAnimations/Tails.tscn"),HITBOXESTAILS],
 	[preload("res://Graphics/Players/PlayerAnimations/Knuckles.tscn"),HITBOXESSONIC],
-	[preload("res://Graphics/Players/PlayerAnimations/Amy.tscn"),HITBOXESAMY],
+	[preload("res://Graphics/Players/PlayerAnimations/Amy.tscn"),HITBOXESTAILS],
 	[preload("res://Graphics/Players/PlayerAnimations/Sonic_Beta.tscn"),HITBOXESSONIC],
 	[preload("res://Graphics/Players/PlayerAnimations/Sonic_Old.tscn"),HITBOXESSONIC],
 ]
@@ -386,10 +381,6 @@ func _ready():
 	superAnimator = newSprite.get_node_or_null("SuperPalette")
 	spriteController.queue_free()
 	spriteController = newSprite
-	
-	if character == Global.CHARACTERS.AMY:
-		maxCharGroundHeight = 12 #Amy uses a different setting here because of hitbox jank
-	
 	
 	# run switch physics to ensure character specific physics
 	switch_physics()
@@ -1348,7 +1339,7 @@ func cam_update(forceMove = false):
 	
 	# Extra drag margin for rolling
 	match(character):
-		Global.CHARACTERS.TAILS:
+		Global.CHARACTERS.TAILS or Global.CHARACTERS.AMY:
 			match(hitbox.shape.size):
 				currentHitbox.ROLL:
 					camAdjust = Vector2(0,-1)

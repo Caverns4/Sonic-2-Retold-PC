@@ -188,6 +188,8 @@ func _physics_process(delta):
 # physics collision check, see physics object
 func physics_collision(body, hitVector):
 	# Monitor head bouncing
+	
+	
 	if hitVector.y < 0:
 		yspeed = -1.5*60
 		physics = true
@@ -207,7 +209,9 @@ func physics_collision(body, hitVector):
 		# check if player is not an ai or spindashing
 		# if they are then destroy
 		if (body.playerControl == 1 or Global.TwoPlayer) and body.currentState != body.STATES.SPINDASH:
-			body.movement.y = -abs(body.movement.y)
+			if  !(body.character == Global.CHARACTERS.MIGHTY and 
+				body.animator.current_animation == "dropDash"):
+				body.movement.y = -abs(body.movement.y)
 			
 			if body.currentState == body.STATES.ROLL:
 				body.movement.y = 0

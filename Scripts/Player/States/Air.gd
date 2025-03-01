@@ -6,7 +6,7 @@ var elecPart = preload("res://Entities/Misc/ElecParticles.tscn")
 
 # drop dash variables
 var dropSpeedAmy = [6,10]
-var dropSpeedSonic = [9,12] #the base speed for a drop dash, second is super
+var dropSpeedSonic = [10,12] #the base speed for a drop dash, second is super
 var dropMax = [16,16]   #the top speed for a drop dash, second is super
 var dropTimer = 0
 
@@ -129,9 +129,26 @@ func _process(_delta):
 						parent.shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled = (parent.animator.current_animation == "dropDash")
 						# play hammer sound
 						parent.sfx[30].play()
-						# play dropDash sound
+						# play dropDash animation
+						parent.animator.play("dropDash")
+					Global.CHARACTERS.MIGHTY:
+						# set ability used to true to prevent multiple uses
+						parent.abilityUsed = true
+						parent.airControl = true
+						
+						parent.movement.x = clampf(parent.movement.x,-60.0,60.0)
+						if parent.water:
+							parent.movement.y = 8*60
+						else:
+							parent.movement.y = 12*60
+						# play stomp sound
+						parent.sfx[30].play()
+						parent.shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled = (parent.animator.current_animation == "dropDash")
+						# play dropDash animation
 						parent.animator.play("dropDash")
 						
+					Global.CHARACTERS.RAY:
+						pass
 
 
 func _physics_process(delta):
