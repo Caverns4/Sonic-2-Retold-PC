@@ -14,8 +14,6 @@ func _ready() -> void:
 		queue_free()
 
 func _physics_process(delta):
-	
-	
 	if timerActive and timer > 0:
 			# every 8/60 steps spawn an animal in the animal ground with an alarm of 12/60
 			if wrapf(timer,0,8.0/60.0) < wrapf(timer-delta,0,8.0/60.0):
@@ -56,6 +54,7 @@ func activate():
 	if Global.stageClearPhase == 0:
 		$Animator.play("Open")
 		$Explode.play()
+		Global.main.sceneCanPause = false
 		# set global stage clear phase to 1, 1 is used to stop the timer (see HUD script)
 		Global.stageClearPhase = 1
 		

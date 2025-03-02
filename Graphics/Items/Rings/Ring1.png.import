@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://csoc5oj6qsv2n"
-path.s3tc="res://.godot/imported/Ring1.png-fb5ab0cce1bd26a39f572b6418b429cd.s3tc.ctex"
+path="res://.godot/imported/Ring1.png-fb5ab0cce1bd26a39f572b6418b429cd.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Graphics/Items/Rings/Ring1.png"
-dest_files=["res://.godot/imported/Ring1.png-fb5ab0cce1bd26a39f572b6418b429cd.s3tc.ctex"]
+dest_files=["res://.godot/imported/Ring1.png-fb5ab0cce1bd26a39f572b6418b429cd.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -10,17 +10,20 @@ extends CanvasLayer
 @onready var lifeText = $LifeCounter/Icon/LifeText
 @onready var iconAnim = $Counters/Text/IconAnim
 
-# play level card, if true will play the level card animator and use the zone name and zone text with the act
+## If true, play the level card animator and use the Zone Name Text
 @export var playLevelCard: bool = true
+## Text to use in the Zone Name label.
 @export var zoneName: String = "Base"
+## Text to use in the Zone label.
 @export var zone: String = "Zone"
+## Act ID
 @export var act: int = 1
 
 @export var waterSourceColor = preload("res://Graphics/Palettes/BasePal.png")
 @export var waterReplaceColor = preload("res://Graphics/Palettes/WetPal.png")
 
+## The total number of rings required for a Perfect Bonus in this level.
 @export var ringsForPerfect: int = 999 # Rings required for a perfect bonus. If the player takes damage, set to impossible value.
-
 
 # used for flashing ui elements (rings, time)
 var flashTimer = 0
@@ -33,7 +36,8 @@ var timeBonus: int = 0
 var ringBonus: int = 0
 var perfectBonus: int = 0
 var perfectEnabled: bool = true
-var coins: int = 0 #Number of coins collected.
+
+var coins: int = 0 #Number of coins collected in this level.
 
 # gameOver is used to initialize the game over animation sequence, note: this is for animation, if you want to use the game over status it's in global
 var gameOver: bool = false
@@ -203,96 +207,27 @@ func respawnPlayer():
 
 
 func _process(delta):
-	# set score string to match global score with leading 0s
-	scoreText.text = "%6d" % Global.score
-	
-	# clamp time so that it won't go to 10 minutes
-	var timeClamp = min(Global.levelTime,Global.maxTime-1)
-	# set time text, format it to have a leadin 0 so that it's always 2 digits
-	#timeText.text = "%2d" % floor(timeClamp/60) + ":" + str(fmod(floor(timeClamp),60)).pad_zeros(2)
-	# uncomment below (and remove above line) for mili seconds
-	timeText.text = "%2d" % floor(timeClamp/60) + ":" + str(fmod(floor(timeClamp),60)).pad_zeros(2) + ":" + str(fmod(floor(timeClamp*100),100)).pad_zeros(2)
-	$P1Counters/Text/TimeNumbers.text = timeText.text
-	timeClamp = min(Global.levelTimeP2,Global.maxTime-1)
-	$P2Counters/Text/TimeNumbers.text = "%2d" % floor(timeClamp/60) + ":" + str(fmod(floor(timeClamp),60)).pad_zeros(2) + ":" + str(fmod(floor(timeClamp*100),100)).pad_zeros(2)
-	
-	# check that there's player, if there is then track the focus players ring count
-	var playerCount = Global.players.size()
-	if (playerCount > 0):
-		ringText.text = "%3d" % Global.players[focusPlayer].rings
-		$P1Counters/Text/RingCount.text = "%3d" % Global.players[0].rings
-	if (playerCount > 1):
-		$P2Counters/Text/RingCount.text = "%3d" % Global.players[1].rings
-		
-	
-	# track lives with leading 0s
-	if Global.livesMode:
-		lifeText.text = "%3d" % Global.lives
-	else:
-		lifeText.text = "%3d" % min(Global.totalCoins + coins,999)
-	if Global.TwoPlayer:
-		$P1Counters/LifeIcon/LifeText.text = "%3d" % Global.lives
-		$P2Counters/LifeIcon/LifeText.text = "%3d" % Global.livesP2
-	
-	if $Timer.time_left > 0:
-		$DeathTimers/CountdownP1.text = str(ceil($Timer.time_left))
-		$DeathTimers/CountdownP2.text = str(ceil($Timer.time_left))
-	
+	# HUD flashing text
+	HandleHUDBlinking(delta)
+	UpdateHUD(delta)
 	# Water Overlay
-	
-	# cehck that this level has water
 	if Global.waterLevel != null:
-		# get current camera
-		var cam = GlobalFunctions.getCurrentCamera2D()
-		if !Global.TwoPlayer:
-			if cam != null:
-				# if camera exists place the water's y position based on the screen position as the water is a UI overlay
-				$Water/WaterOverlay.position.y = clamp(
-					Global.waterLevel-GlobalFunctions.getCurrentCamera2D().get_screen_center_position().y+(get_viewport().get_visible_rect().size.y/2
-					),0,get_viewport().get_visible_rect().size.y)
-			# scale water level to match the visible screen
-			$Water/WaterOverlay.scale.y = clamp(Global.waterLevel-$Water/WaterOverlay.position.y,0,get_viewport().size.y)
-			$Water/WaterOverlay.visible = true
-		else:
-			# if camera exists place the water's y position based on the screen position as the water is a UI overlay
-			$Water/WaterOverlay.position.y = clamp(
-				Global.waterLevel-GlobalFunctions.getCurrentCamera2D().get_screen_center_position().y+(get_viewport().get_visible_rect().size.y/4
-				),0,get_viewport().get_visible_rect().size.y/2)
-			# scale water level to match the visible screen
-			$Water/WaterOverlay.scale.y = clamp(Global.waterLevel-$Water/WaterOverlay.position.y,0,get_viewport().size.y)
-			$Water/WaterOverlay.visible = true
-		
-		# Water Overlay Elec flash
-		if (Global.players.size() > 0):
-			# loop through players
-			for i in Global.players:
-				# check if in water and has elec or fire shield
-				if i.water:
-					match (i.shield):
-						i.SHIELDS.ELEC:
-							# reset shield do flash
-							i.set_shield(i.SHIELDS.NONE)
-							$Water/WaterOverlay/ElecFlash.visible = true
-							# destroy all enemies in near player and below water
-							for j in get_tree().get_nodes_in_group("Enemy"):
-								if j.global_position.y >= Global.waterLevel and i.global_position.distance_to(j.global_position) <= 256:
-									if j.has_method("destroy"):
-										Global.add_score(j.global_position,Global.SCORE_COMBO[0],Global.players.find(i))
-										j.destroy()
-							# disable flash after a frame
-							await get_tree().process_frame
-							$Water/WaterOverlay/ElecFlash.visible = false
-						i.SHIELDS.FIRE:
-							# clear shield
-							i.set_shield(i.SHIELDS.NONE)
-	else:
-		# disable water overlay
+		WaterOverlay(delta)
+	else: # disable water overlay
 		$Water/WaterOverlay.visible = false
 	
+	# Stage Clear handling
+	ProcessStageClear(delta)
+	# Same Over Sequence
+	if Global.gameOver and !gameOver and Global.stageClearPhase <= 0:
+		SetupGameOver(delta)
 	
-	# HUD flashing text
-	if flashTimer < 0 and Global.airSpeedCap:
-		flashTimer = 0.1
+
+## HUD flashing text
+func HandleHUDBlinking(delta):
+	flashTimer -= delta
+	if flashTimer <= 0:
+		flashTimer = 0.133333
 		if Global.players.size() > 0:
 			# if ring count at zero, flash rings
 			if Global.players[focusPlayer].rings <= 0:
@@ -304,12 +239,132 @@ func _process(delta):
 			$Counters/Text/Time.visible = !$Counters/Text/Time.visible
 		else:
 			$Counters/Text/Time.visible = false
-	elif !get_tree().paused:
-		flashTimer -= delta
+
+## Update HUD Text
+func UpdateHUD(delta):
+	# clamp time so that it won't go to 10 minutes
+	var timeClamp = min(Global.levelTime,Global.maxTime-1)
+	if Global.TwoPlayer:
+		# Time Text Player 1
+		$P1Counters/Text/TimeNumbers.text = ("%2d" % floor(timeClamp/60) + ":" # Minute
+		+ str(fmod(floor(timeClamp),60)).pad_zeros(2) + ":" # Second
+		+ str(fmod(floor(timeClamp*100),100)).pad_zeros(2)) # Miliseconds
+		# Time Text Player 2
+		timeClamp = min(Global.levelTimeP2,Global.maxTime-1)
+		$P2Counters/Text/TimeNumbers.text = ("%2d" % floor(timeClamp/60) + ":" # Minute
+		+ str(fmod(floor(timeClamp),60)).pad_zeros(2) + ":" # Second
+		+ str(fmod(floor(timeClamp*100),100)).pad_zeros(2)) # Miliseconds
+		# check that there's player, if there is then track the focus players ring count
+		var playerCount = Global.players.size()
+		$P1Counters/Text/RingCount.text = "%3d" % Global.players[0].rings
+		if (playerCount > 1):
+			$P2Counters/Text/RingCount.text = "%3d" % Global.players[1].rings
+		
+		# Life Counter
+		if Global.livesMode:
+			lifeText.text = "%3d" % Global.lives
+		else:
+			lifeText.text = "%3d" % min(Global.totalCoins + coins,999)
+	else:
+		# set score string to match global score with leading 0s
+		scoreText.text = "%6d" % Global.score
+		#Set Time for Player 1
+		timeText.text = ("%2d" % floor(timeClamp/60) + ":" # Minute
+		+ str(fmod(floor(timeClamp),60)).pad_zeros(2) + ":" # Second
+		+ str(fmod(floor(timeClamp*100),100)).pad_zeros(2)) # Miliseconds
+		#Ring Text Player 1
+		ringText.text = "%3d" % Global.players[focusPlayer].rings
+		
+		# Life Counter
+		$P1Counters/LifeIcon/LifeText.text = "%3d" % Global.lives
+		$P2Counters/LifeIcon/LifeText.text = "%3d" % Global.livesP2
+		if $Timer.time_left > 0:
+			$DeathTimers/CountdownP1.text = str(ceil($Timer.time_left))
+			$DeathTimers/CountdownP2.text = str(ceil($Timer.time_left))
+
+## Check that this level has water
+func WaterOverlay(delta):
+	# get current camera
+	var cam = GlobalFunctions.getCurrentCamera2D()
+	if !Global.TwoPlayer:
+		if cam != null:
+			# if camera exists place the water's y position based on the screen position as the water is a UI overlay
+			$Water/WaterOverlay.position.y = clamp(
+				Global.waterLevel-GlobalFunctions.getCurrentCamera2D().get_screen_center_position().y+(get_viewport().get_visible_rect().size.y/2
+				),0,get_viewport().get_visible_rect().size.y)
+		# scale water level to match the visible screen
+		$Water/WaterOverlay.scale.y = clamp(Global.waterLevel-$Water/WaterOverlay.position.y,0,get_viewport().size.y)
+		$Water/WaterOverlay.visible = true
+	else:
+		# if camera exists place the water's y position based on the screen position as the water is a UI overlay
+		$Water/WaterOverlay.position.y = clamp(
+			Global.waterLevel-GlobalFunctions.getCurrentCamera2D().get_screen_center_position().y+(get_viewport().get_visible_rect().size.y/4
+			),0,get_viewport().get_visible_rect().size.y/2)
+		# scale water level to match the visible screen
+		$Water/WaterOverlay.scale.y = clamp(Global.waterLevel-$Water/WaterOverlay.position.y,0,get_viewport().size.y)
+		$Water/WaterOverlay.visible = true
 	
-	# stage clear handling
-	if Global.stageClearPhase > 0 and Global.main.sceneCanPause:
-		Global.main.sceneCanPause = false
+	# Water Overlay Elec flash
+	if (Global.players.size() > 0):
+		# loop through players
+		for i in Global.players:
+			# check if in water and has elec or fire shield
+			if i.water:
+				match (i.shield):
+					i.SHIELDS.ELEC:
+						# reset shield do flash
+						i.set_shield(i.SHIELDS.NONE)
+						$Water/WaterOverlay/ElecFlash.visible = true
+						# destroy all enemies in near player and below water
+						for j in get_tree().get_nodes_in_group("Enemy"):
+							if j.global_position.y >= Global.waterLevel and i.global_position.distance_to(j.global_position) <= 256:
+								if j.has_method("destroy"):
+									Global.add_score(j.global_position,Global.SCORE_COMBO[0],Global.players.find(i))
+									j.destroy()
+						# disable flash after a frame
+						await get_tree().process_frame
+						$Water/WaterOverlay/ElecFlash.visible = false
+					i.SHIELDS.FIRE:
+						# clear shield
+						i.set_shield(i.SHIELDS.NONE)
+
+## Run Game Over routine
+func SetupGameOver(delta):
+		# set game over to true so this doesn't loop
+		gameOver = true
+		# determine if the game over is a time over (game over and time over sequences are the same but game says time)
+		if Global.levelTime >= Global.maxTime:
+			$GameOver/Game.frame = 1
+		# play game over animation and play music
+		$GameOver/GameOver.play("GameOver")
+		$GameOver/GameOverMusic.play()
+		# stop normal music tracks
+		Global.music.stop()
+		Global.life.stop()
+		# wait for animation to finish
+		await $GameOver/GameOver.animation_finished
+		# reset game
+		if Global.levelTime < Global.maxTime or (Global.lives <= 0 and Global.livesMode):
+			if Global.TwoPlayer:
+				var results = [Global.score,Global.levelTime,Global.players[0].rings,
+				Global.scoreP2,Global.levelTimeP2,Global.players[1].rings]
+				Global.twoPlayActResults.append(results)
+				#Set flag to load the results screen.
+				#print(results)
+				Global.main.change_scene_to_file(twoPlayerResults,"FadeOut")
+			else:
+				Global.main.change_scene_to_file(Global.startScene,"FadeOut")
+			await Global.main.scene_faded
+			Global.reset_values()
+		# reset level (if time over and lives aren't out)
+		else:
+			Global.main.change_scene_to_file(null,"FadeOut")
+			await Global.main.scene_faded
+			Global.levelTime = 0
+			Global.levelTimeP2 = 0
+
+## Run Stage Clear Functionality
+func ProcessStageClear(delta):
 	if Global.stageClearPhase > 2:
 		# initialize stage clear sequence
 		if !isStageEnding:
@@ -359,48 +414,11 @@ func _process(delta):
 			# after clear, change to next level in Global.nextZone (you can set the next zone in the level script node)
 			Global.loadNextLevel()
 			Global.main.change_scene_to_file(Global.nextZone,"FadeOut","FadeOut",1)
-	
-	# game over sequence
-	elif Global.gameOver and !gameOver:
-		# set game over to true so this doesn't loop
-		gameOver = true
-		# determine if the game over is a time over (game over and time over sequences are the same but game says time)
-		if Global.levelTime >= Global.maxTime:
-			$GameOver/Game.frame = 1
-		# play game over animation and play music
-		$GameOver/GameOver.play("GameOver")
-		$GameOver/GameOverMusic.play()
-		# stop normal music tracks
-		Global.music.stop()
-		Global.life.stop()
-		# wait for animation to finish
-		await $GameOver/GameOver.animation_finished
-		# reset game
-		if Global.levelTime < Global.maxTime or (Global.lives <= 0 and Global.livesMode):
-			if Global.TwoPlayer:
-				var results = [Global.score,Global.levelTime,Global.players[0].rings,
-				Global.scoreP2,Global.levelTimeP2,Global.players[1].rings]
-				Global.twoPlayActResults.append(results)
-				#Set flag to load the results screen.
-				#print(results)
-				Global.main.change_scene_to_file(twoPlayerResults,"FadeOut")
-			else:
-				Global.main.change_scene_to_file(Global.startScene,"FadeOut")
-			await Global.main.scene_faded
-			Global.reset_values()
-		# reset level (if time over and lives aren't out)
-		else:
-			Global.main.change_scene_to_file(null,"FadeOut")
-			await Global.main.scene_faded
-			Global.levelTime = 0
-			Global.levelTimeP2 = 0
-			
-			
 
 # counter count down
 func _on_CounterCount_timeout():
 	# play counter sound
-	$LevelClear/Counter.play()
+	$LevelClear/CounterSFX.play()
 	
 	# decrease bonuses in order, if time bonus not 0 then count time down, then do the same for rings
 	# if you add other bonuses (like perfect bonus) you'll want to add it to the end of the sequence before the end
@@ -421,7 +439,7 @@ func _on_CounterCount_timeout():
 		Global.score += 100
 	else:
 		# stop counter timer and play score sound
-		$LevelClear/Counter.play()
+		$LevelClear/CounterSFX.stop()
 		$LevelClear/CounterCount.stop()
 		$LevelClear/Score.play()
 		# emit tally clear signal

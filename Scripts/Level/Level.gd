@@ -1,5 +1,6 @@
 extends Node2D
 
+## The current Zone ID, for Global.ZONES
 @export_enum(
 "Emerald Hill", "Hidden Palace","Hill Top", "Chemical Plant",
 "Oil Ocean", "Neo Green Hill","Metropolis","Dust Hill",
@@ -10,6 +11,7 @@ extends Node2D
 
 var nextZone = load("res://Scene/Presentation/ZoneLoader.tscn")
 
+## Animals dropped from Badniks in this act.
 @export_enum("Bird","Squirrel",
 "Rabbit", "Chicken",
 "Penguin", "Seal",
@@ -17,6 +19,7 @@ var nextZone = load("res://Scene/Presentation/ZoneLoader.tscn")
 "Mouse", "Monkey",
 "Turtle","Bear",
 "Beaver","Fox")var animal1: int = 0
+## Animals dropped from Badniks in this act.
 @export_enum("Bird", "Squirrel",
 "Rabbit", "Chicken",
 "Penguin", "Seal",
