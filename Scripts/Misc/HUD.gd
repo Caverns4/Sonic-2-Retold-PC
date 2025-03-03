@@ -28,18 +28,18 @@ extends CanvasLayer
 # used for flashing ui elements (rings, time)
 var flashTimer = 0
 
-# isStageEnding is used for level completion, stop loop recursions
+# Used for level completion, stop loop recursions
 var isStageEnding: bool = false
 
-# level clear bonuses (check _on_CounterCount_timeout)
+## level clear bonuses (check _on_CounterCount_timeout)
 var timeBonus: int = 0
 var ringBonus: int = 0
 var perfectBonus: int = 0
 var perfectEnabled: bool = true
+## Number of coins collected in this level.
+var coins: int = 0 
 
-var coins: int = 0 #Number of coins collected in this level.
-
-# gameOver is used to initialize the game over animation sequence, note: this is for animation, if you want to use the game over status it's in global
+## Used to trigger the Game Over Animation
 var gameOver: bool = false
 
 # signal that gets emited once the stage tally is over
@@ -213,12 +213,12 @@ func _process(delta):
 	# Water Overlay
 	if Global.waterLevel != null:
 		WaterOverlay(delta)
-	else: # disable water overlay
+	else: # Disable water overlay
 		$Water/WaterOverlay.visible = false
 	
 	# Stage Clear handling
 	ProcessStageClear(delta)
-	# Same Over Sequence
+	# Game Over Sequence
 	if Global.gameOver and !gameOver and Global.stageClearPhase <= 0:
 		SetupGameOver(delta)
 	
@@ -261,10 +261,11 @@ func UpdateHUD(delta):
 			$P2Counters/Text/RingCount.text = "%3d" % Global.players[1].rings
 		
 		# Life Counter
-		if Global.livesMode:
-			lifeText.text = "%3d" % Global.lives
-		else:
-			lifeText.text = "%3d" % min(Global.totalCoins + coins,999)
+		$P1Counters/LifeIcon/LifeText.text = "%3d" % Global.lives
+		$P2Counters/LifeIcon/LifeText.text = "%3d" % Global.livesP2
+		if $Timer.time_left > 0:
+			$DeathTimers/CountdownP1.text = str(ceil($Timer.time_left))
+			$DeathTimers/CountdownP2.text = str(ceil($Timer.time_left))
 	else:
 		# set score string to match global score with leading 0s
 		scoreText.text = "%6d" % Global.score
@@ -276,11 +277,11 @@ func UpdateHUD(delta):
 		ringText.text = "%3d" % Global.players[focusPlayer].rings
 		
 		# Life Counter
-		$P1Counters/LifeIcon/LifeText.text = "%3d" % Global.lives
-		$P2Counters/LifeIcon/LifeText.text = "%3d" % Global.livesP2
-		if $Timer.time_left > 0:
-			$DeathTimers/CountdownP1.text = str(ceil($Timer.time_left))
-			$DeathTimers/CountdownP2.text = str(ceil($Timer.time_left))
+		if Global.livesMode:
+			lifeText.text = "%3d" % Global.lives
+		else:
+			lifeText.text = "%3d" % min(Global.totalCoins + coins,999)
+	
 
 ## Check that this level has water
 func WaterOverlay(delta):
@@ -365,57 +366,56 @@ func SetupGameOver(delta):
 
 ## Run Stage Clear Functionality
 func ProcessStageClear(delta):
-	if Global.stageClearPhase > 2:
-		# initialize stage clear sequence
-		if !isStageEnding:
-			isStageEnding = true
-			if Global.players[0].totalRings >= ringsForPerfect and perfectEnabled:
-				$LevelClear/PerfectBonusText.visible = true
-				perfectBonus = 50000
-			
-			# show level clear elements
-			$LevelClear.visible = true
-			$LevelClear/TotalText/TallyTotal.text = scoreText.text
-			$LevelClear/Animator.play("LevelClear")
-			
-			# set bonuses
-			ringBonus = floor(Global.players[focusPlayer].rings)*100
-			$LevelClear/RingBonusText/RingBonus.text = "%6d" % ringBonus
-			$LevelClear/PerfectBonusText/PerfectBonus.text = "%6d" % perfectBonus
-			timeBonus = 0
-			# bonus time table
-			var bonusTable = [
-			[60*5,500],
-			[60*4,1000],
-			[60*3,2000],
-			[60*2,3000],
-			[60*1.5,4000],
-			[60,5000],
-			[45,10000],
-			[30,50000],
-			]
-			# loop through the bonus table, if current time is less then the first value then set it to that bonus
-			# you'll want to make sure the order of the table goes down in time and up in score otherwise it could cause some weirdness
-			for i in bonusTable:
-				if Global.levelTime < i[0]:
-					timeBonus = i[1]
-			# set bonus text for time
-			$LevelClear/TimeBonusText/TimeBonus.text = "%6d" % timeBonus
-			# wait for counter wait time to count down
-			$LevelClear/CounterWait.start()
-			await $LevelClear/CounterWait.timeout
-			# start the level counter tally (see _on_CounterCount_timeout)
-			$LevelClear/CounterCount.start()
-			await self.tally_clear
-			# wait 2 seconds (reuse timer)
-			$LevelClear/CounterWait.start(2)
-			await $LevelClear/CounterWait.timeout
-			Global.totalCoins += coins
-			# after clear, change to next level in Global.nextZone (you can set the next zone in the level script node)
-			Global.loadNextLevel()
-			Global.main.change_scene_to_file(Global.nextZone,"FadeOut","FadeOut",1)
+	# initialize stage clear sequence
+	if Global.stageClearPhase > 2 and !isStageEnding:
+		isStageEnding = true
+		if Global.players[0].totalRings >= ringsForPerfect and perfectEnabled:
+			$LevelClear/PerfectBonusText.visible = true
+			perfectBonus = 50000
+		
+		# show level clear elements
+		$LevelClear.visible = true
+		$LevelClear/TotalText/TallyTotal.text = scoreText.text
+		$LevelClear/Animator.play("LevelClear")
+		
+		# set bonuses
+		ringBonus = floor(Global.players[focusPlayer].rings)*100
+		$LevelClear/RingBonusText/RingBonus.text = "%6d" % ringBonus
+		$LevelClear/PerfectBonusText/PerfectBonus.text = "%6d" % perfectBonus
+		timeBonus = 0
+		# bonus time table
+		var bonusTable = [
+		[60*5,500],
+		[60*4,1000],
+		[60*3,2000],
+		[60*2,3000],
+		[60*1.5,4000],
+		[60,5000],
+		[45,10000],
+		[30,50000],
+		]
+		# loop through the bonus table, if current time is less then the first value then set it to that bonus
+		# you'll want to make sure the order of the table goes down in time and up in score otherwise it could cause some weirdness
+		for i in bonusTable:
+			if Global.levelTime < i[0]:
+				timeBonus = i[1]
+		# set bonus text for time
+		$LevelClear/TimeBonusText/TimeBonus.text = "%6d" % timeBonus
+		# wait for counter wait time to count down
+		$LevelClear/CounterWait.start()
+		await $LevelClear/CounterWait.timeout
+		# start the level counter tally (see _on_CounterCount_timeout)
+		$LevelClear/CounterCount.start()
+		await self.tally_clear
+		# wait 2 seconds (reuse timer)
+		$LevelClear/CounterWait.start(2)
+		await $LevelClear/CounterWait.timeout
+		Global.totalCoins += coins
+		# after clear, change to next level in Global.nextZone (you can set the next zone in the level script node)
+		Global.loadNextLevel()
+		Global.main.change_scene_to_file(Global.nextZone,"FadeOut","FadeOut",1)
 
-# counter count down
+## Vounter count down
 func _on_CounterCount_timeout():
 	# play counter sound
 	$LevelClear/CounterSFX.play()
@@ -456,7 +456,6 @@ func InitTimerForPlayer(index):
 	if index == 1:
 		$DeathTimers/CountdownP2.visible = true
 	$Timer.start()
-
 
 func _on_timer_timeout() -> void:
 	if Global.timerActive:

@@ -67,7 +67,6 @@ func _ready():
 	if Global.TwoPlayer == true:
 		var twoPlayerScene = twoPlayerWindow.instantiate()
 		add_child(twoPlayerScene)
-	
 	wasLoaded = true
 
 # used for stage starts, also used for returning from special stages
