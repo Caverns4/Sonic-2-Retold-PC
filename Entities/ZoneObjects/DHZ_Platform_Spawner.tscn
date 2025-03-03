@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://yi4yrppebgng"]
+
+[ext_resource type="Script" path="res://Scripts/Node_Spawner.gd" id="1_bg413"]
+[ext_resource type="PackedScene" uid="uid://bmce2barbv10t" path="res://Entities/ZoneObjects/MCZ_CollapsePlatformRight.tscn" id="2_wc6ro"]
+
+[node name="DhzPlatformSpawner" type="Node2D"]
+script = ExtResource("1_bg413")
+resource = ExtResource("2_wc6ro")
+
+[node name="MCZ_CollapsingPlatformRight" parent="." instance=ExtResource("2_wc6ro")]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-5.72205e-06, 0)
+scale = Vector2(1, 1)
+rect = Rect2(-64, -112, 128, 224)
