@@ -1,0 +1,138 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuo1bc1i07tst"]
+
+[ext_resource type="Texture2D" uid="uid://cb4ly6l80f16n" path="res://Graphics/Obstacles/DHZ_Bridge.png" id="1_2mdyu"]
+[ext_resource type="Script" path="res://Scripts/Gimmicks/draw_bridge.gd" id="1_vftjv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ht1ub"]
+size = Vector2(16, 16)
+
+[node name="DrawBridge" type="Node2D"]
+script = ExtResource("1_vftjv")
+
+[node name="Segment" type="StaticBody2D" parent="."]
+position = Vector2(0, -16)
+collision_layer = 8192
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Segment"]
+top_level = true
+z_index = 9
+position = Vector2(0, -16)
+texture = ExtResource("1_2mdyu")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment"]
+shape = SubResource("RectangleShape2D_ht1ub")
+metadata/_edit_lock_ = true
+
+[node name="Segment2" type="StaticBody2D" parent="."]
+position = Vector2(0, -32)
+collision_layer = 8192
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Segment2"]
+top_level = true
+z_index = 9
+position = Vector2(0, -32)
+texture = ExtResource("1_2mdyu")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment2"]
+shape = SubResource("RectangleShape2D_ht1ub")
+metadata/_edit_lock_ = true
+
+[node name="Segment3" type="StaticBody2D" parent="."]
+position = Vector2(0, -48)
+collision_layer = 8192
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Segment3"]
+top_level = true
+z_index = 9
+position = Vector2(0, -48)
+texture = ExtResource("1_2mdyu")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment3"]
+shape = SubResource("RectangleShape2D_ht1ub")
+metadata/_edit_lock_ = true
+
+[node name="Segment4" type="StaticBody2D" parent="."]
+position = Vector2(0, -64)
+collision_layer = 8192
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Segment4"]
+top_level = true
+z_index = 9
+position = Vector2(0, -64)
+texture = ExtResource("1_2mdyu")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment4"]
+shape = SubResource("RectangleShape2D_ht1ub")
+metadata/_edit_lock_ = true
+
+[node name="Segment5" type="StaticBody2D" parent="."]
+position = Vector2(0, -80)
+collision_layer = 8192
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Segment5"]
+top_level = true
+z_index = 9
+position = Vector2(0, -80)
+texture = ExtResource("1_2mdyu")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment5"]
+shape = SubResource("RectangleShape2D_ht1ub")
+metadata/_edit_lock_ = true
+
+[node name="Segment6" type="StaticBody2D" parent="."]
+position = Vector2(0, -96)
+collision_layer = 8192
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Segment6"]
+top_level = true
+z_index = 9
+position = Vector2(0, -96)
+texture = ExtResource("1_2mdyu")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment6"]
+shape = SubResource("RectangleShape2D_ht1ub")
+metadata/_edit_lock_ = true
+
+[node name="Segment7" type="StaticBody2D" parent="."]
+position = Vector2(0, -112)
+collision_layer = 8192
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Segment7"]
+top_level = true
+z_index = 9
+position = Vector2(0, -112)
+texture = ExtResource("1_2mdyu")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment7"]
+shape = SubResource("RectangleShape2D_ht1ub")
+metadata/_edit_lock_ = true
+
+[node name="Segment8" type="StaticBody2D" parent="."]
+position = Vector2(0, -128)
+collision_layer = 8192
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Segment8"]
+top_level = true
+z_index = 9
+position = Vector2(0, -128)
+texture = ExtResource("1_2mdyu")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment8"]
+shape = SubResource("RectangleShape2D_ht1ub")
+metadata/_edit_lock_ = true
