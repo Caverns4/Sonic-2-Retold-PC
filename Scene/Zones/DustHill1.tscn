@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cuf10h0hh7iep"]
+[gd_scene load_steps=17 format=4 uid="uid://cuf10h0hh7iep"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_3gh4r"]
 [ext_resource type="AudioStream" uid="uid://c8y5q77kxn4ap" path="res://Audio/Soundtrack/s2br_DustHill.ogg" id="2_pw2ks"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="5_dhfai"]
 [ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="8_0ekd8"]
 [ext_resource type="TileSet" uid="uid://1x5agi75qcl8" path="res://Tileset/Levels/DHZ.tres" id="8_7qx3g"]
+[ext_resource type="PackedScene" uid="uid://cfhj1mg80i6pr" path="res://Entities/Gimmicks/hanging_Bar.tscn" id="10_xf5vg"]
+[ext_resource type="PackedScene" uid="uid://4q0hpddgto2k" path="res://Entities/Gimmicks/Spring.tscn" id="11_d8o3w"]
 [ext_resource type="PackedScene" uid="uid://cfteqnft5ynr7" path="res://Entities/Hazards/Spikes.tscn" id="13_jhvw3"]
 [ext_resource type="PackedScene" uid="uid://cuo1bc1i07tst" path="res://Entities/Obstacles/DrawBridge.tscn" id="14_o4ruf"]
 [ext_resource type="Texture2D" uid="uid://sdw87tpbgidn" path="res://Graphics/Objects_Zone/DHZ_Platform.png" id="14_uhhit"]
@@ -41,19 +43,86 @@ tile_set = ExtResource("8_7qx3g")
 
 [node name="Entitites" type="Node" parent="."]
 
-[node name="HangingVine" parent="Entitites" node_paths=PackedStringArray("targetNode") instance=ExtResource("15_yjoft")]
-position = Vector2(984, 1776)
-length = 64
-targetNode = NodePath("../DrawBridge")
-
 [node name="HangingVine2" parent="Entitites" node_paths=PackedStringArray("targetNode") instance=ExtResource("15_yjoft")]
 position = Vector2(2240, 1656)
 length = 64
 distance = 160
+targetNode = NodePath("../DrawBridge2")
+
+[node name="HangingVine4" parent="Entitites" instance=ExtResource("15_yjoft")]
+position = Vector2(1880, 1584)
+length = 200
+distance = -128
+
+[node name="HangingVine5" parent="Entitites" node_paths=PackedStringArray("targetNode") instance=ExtResource("15_yjoft")]
+position = Vector2(3136, 1264)
+length = 64
+distance = 160
+targetNode = NodePath("../DrawBridge3")
+
+[node name="HangingVine6" parent="Entitites" node_paths=PackedStringArray("targetNode") instance=ExtResource("15_yjoft")]
+position = Vector2(4416, 1472)
+length = 64
+distance = 160
+targetNode = NodePath("../DrawBridge4")
+
+[node name="HangingBar" parent="Entitites" node_paths=PackedStringArray("targetNode") instance=ExtResource("10_xf5vg")]
+position = Vector2(976, 1784)
 targetNode = NodePath("../DrawBridge")
 
 [node name="DrawBridge" parent="Entitites" instance=ExtResource("14_o4ruf")]
 position = Vector2(1160, 1928)
+rotation = -1.5708
+behavior = 0
+
+[node name="HangingBar2" parent="Entitites" node_paths=PackedStringArray("targetNode") instance=ExtResource("10_xf5vg")]
+position = Vector2(4176, 1112)
+targetNode = NodePath("../DrawBridge5")
+
+[node name="DrawBridge2" parent="Entitites" instance=ExtResource("14_o4ruf")]
+position = Vector2(2168, 1864)
+behavior = 2
+
+[node name="DrawBridge3" parent="Entitites" instance=ExtResource("14_o4ruf")]
+position = Vector2(3064, 1416)
+behavior = 2
+
+[node name="DrawBridge4" parent="Entitites" instance=ExtResource("14_o4ruf")]
+position = Vector2(4344, 1632)
+behavior = 2
+
+[node name="DrawBridge5" parent="Entitites" instance=ExtResource("14_o4ruf")]
+position = Vector2(4360, 1288)
+rotation = -1.5708
+behavior = 0
+
+[node name="Spring" parent="Entitites" instance=ExtResource("11_d8o3w")]
+position = Vector2(1904, 1400)
+
+[node name="Spring2" parent="Entitites" instance=ExtResource("11_d8o3w")]
+position = Vector2(1936, 1720)
+type = 1
+
+[node name="Spring3" parent="Entitites" instance=ExtResource("11_d8o3w")]
+position = Vector2(2048, 1968)
+type = 1
+springDirection = 2
+
+[node name="Spring4" parent="Entitites" instance=ExtResource("11_d8o3w")]
+position = Vector2(4352, 1968)
+type = 1
+springDirection = 2
+
+[node name="Spring5" parent="Entitites" instance=ExtResource("11_d8o3w")]
+position = Vector2(5512, 1936)
+type = 1
+springDirection = 2
+
+[node name="Spring6" parent="Entitites" instance=ExtResource("11_d8o3w")]
+position = Vector2(5944, 1936)
+scale = Vector2(-1, 1)
+type = 1
+springDirection = 3
 
 [node name="Hazards" type="Node" parent="."]
 
@@ -114,11 +183,61 @@ position = Vector2(960, 1936)
 
 [node name="DhzPlatformSpawner5" parent="Floating Platforms" instance=ExtResource("15_mvyo3")]
 position = Vector2(1152, 1968)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="DhzPlatformSpawner6" parent="Floating Platforms" instance=ExtResource("15_mvyo3")]
+position = Vector2(1792, 1792)
+
+[node name="DhzPlatformSpawner7" parent="Floating Platforms" instance=ExtResource("15_mvyo3")]
+position = Vector2(1472, 1184)
+
+[node name="DhzPlatformSpawner8" parent="Floating Platforms" instance=ExtResource("15_mvyo3")]
+position = Vector2(1472, 1312)
+
+[node name="DhzPlatformSpawner9" parent="Floating Platforms" instance=ExtResource("15_mvyo3")]
+position = Vector2(1672, 1248)
 scale = Vector2(-1, 1)
+
+[node name="DhzPlatformSpawner10" parent="Floating Platforms" instance=ExtResource("15_mvyo3")]
+position = Vector2(3328, 1664)
+
+[node name="DhzPlatformSpawner11" parent="Floating Platforms" instance=ExtResource("15_mvyo3")]
+position = Vector2(4728, 1344)
+
+[node name="DhzPlatformSpawner12" parent="Floating Platforms" instance=ExtResource("15_mvyo3")]
+position = Vector2(5560, 1584)
+
+[node name="DhzPlatformSpawner13" parent="Floating Platforms" instance=ExtResource("15_mvyo3")]
+position = Vector2(5688, 1616)
+scale = Vector2(-1, 1)
+
+[node name="DhzPlatformSpawner14" parent="Floating Platforms" instance=ExtResource("15_mvyo3")]
+position = Vector2(5688, 1616)
+
+[node name="DhzPlatformSpawner15" parent="Floating Platforms" instance=ExtResource("15_mvyo3")]
+position = Vector2(5936, 1744)
 
 [node name="Items" type="Node" parent="."]
 
 [node name="Monitor" parent="Items" instance=ExtResource("15_atho2")]
 position = Vector2(528, 1840)
 item = 3
+shieldAffinity = 1
+
+[node name="Monitor2" parent="Items" instance=ExtResource("15_atho2")]
+position = Vector2(1904, 1904)
+item = 3
+shieldAffinity = 1
+
+[node name="Monitor3" parent="Items" instance=ExtResource("15_atho2")]
+position = Vector2(2088, 1968)
+shieldAffinity = 1
+
+[node name="Monitor4" parent="Items" instance=ExtResource("15_atho2")]
+position = Vector2(2144, 1264)
+shieldAffinity = 1
+
+[node name="Monitor5" parent="Items" instance=ExtResource("15_atho2")]
+position = Vector2(1360, 1136)
 shieldAffinity = 1

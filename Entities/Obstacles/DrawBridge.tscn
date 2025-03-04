@@ -8,131 +8,137 @@ size = Vector2(16, 16)
 
 [node name="DrawBridge" type="Node2D"]
 script = ExtResource("1_vftjv")
+behavior = null
 
-[node name="Segment" type="StaticBody2D" parent="."]
-position = Vector2(0, -16)
+[node name="LeftSegments" type="Node2D" parent="."]
+
+[node name="Segment" type="StaticBody2D" parent="LeftSegments"]
+position = Vector2(16, 0)
 collision_layer = 8192
 collision_mask = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="Segment"]
+[node name="Sprite2D" type="Sprite2D" parent="LeftSegments/Segment"]
 top_level = true
 z_index = 9
-position = Vector2(0, -16)
+position = Vector2(16, 0)
 texture = ExtResource("1_2mdyu")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftSegments/Segment"]
 shape = SubResource("RectangleShape2D_ht1ub")
 metadata/_edit_lock_ = true
 
-[node name="Segment2" type="StaticBody2D" parent="."]
-position = Vector2(0, -32)
+[node name="Segment2" type="StaticBody2D" parent="LeftSegments"]
+position = Vector2(32, 0)
 collision_layer = 8192
 collision_mask = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="Segment2"]
+[node name="Sprite2D" type="Sprite2D" parent="LeftSegments/Segment2"]
 top_level = true
 z_index = 9
-position = Vector2(0, -32)
+position = Vector2(32, 0)
 texture = ExtResource("1_2mdyu")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftSegments/Segment2"]
 shape = SubResource("RectangleShape2D_ht1ub")
 metadata/_edit_lock_ = true
 
-[node name="Segment3" type="StaticBody2D" parent="."]
-position = Vector2(0, -48)
+[node name="Segment3" type="StaticBody2D" parent="LeftSegments"]
+position = Vector2(48, 0)
 collision_layer = 8192
 collision_mask = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="Segment3"]
+[node name="Sprite2D" type="Sprite2D" parent="LeftSegments/Segment3"]
 top_level = true
 z_index = 9
-position = Vector2(0, -48)
+position = Vector2(48, 0)
 texture = ExtResource("1_2mdyu")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftSegments/Segment3"]
 shape = SubResource("RectangleShape2D_ht1ub")
 metadata/_edit_lock_ = true
 
-[node name="Segment4" type="StaticBody2D" parent="."]
-position = Vector2(0, -64)
+[node name="Segment4" type="StaticBody2D" parent="LeftSegments"]
+position = Vector2(64, 0)
 collision_layer = 8192
 collision_mask = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="Segment4"]
+[node name="Sprite2D" type="Sprite2D" parent="LeftSegments/Segment4"]
 top_level = true
 z_index = 9
-position = Vector2(0, -64)
+position = Vector2(64, 0)
 texture = ExtResource("1_2mdyu")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftSegments/Segment4"]
 shape = SubResource("RectangleShape2D_ht1ub")
 metadata/_edit_lock_ = true
 
-[node name="Segment5" type="StaticBody2D" parent="."]
-position = Vector2(0, -80)
+[node name="RightSegments" type="Node2D" parent="."]
+position = Vector2(144, 0)
+
+[node name="Segment5" type="StaticBody2D" parent="RightSegments"]
+position = Vector2(-64, 0)
 collision_layer = 8192
 collision_mask = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="Segment5"]
+[node name="Sprite2D" type="Sprite2D" parent="RightSegments/Segment5"]
 top_level = true
 z_index = 9
-position = Vector2(0, -80)
+position = Vector2(80, 0)
 texture = ExtResource("1_2mdyu")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightSegments/Segment5"]
 shape = SubResource("RectangleShape2D_ht1ub")
 metadata/_edit_lock_ = true
 
-[node name="Segment6" type="StaticBody2D" parent="."]
-position = Vector2(0, -96)
+[node name="Segment6" type="StaticBody2D" parent="RightSegments"]
+position = Vector2(-48, 0)
 collision_layer = 8192
 collision_mask = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="Segment6"]
+[node name="Sprite2D" type="Sprite2D" parent="RightSegments/Segment6"]
 top_level = true
 z_index = 9
-position = Vector2(0, -96)
+position = Vector2(96, 0)
 texture = ExtResource("1_2mdyu")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightSegments/Segment6"]
 shape = SubResource("RectangleShape2D_ht1ub")
 metadata/_edit_lock_ = true
 
-[node name="Segment7" type="StaticBody2D" parent="."]
-position = Vector2(0, -112)
+[node name="Segment7" type="StaticBody2D" parent="RightSegments"]
+position = Vector2(-32, 0)
 collision_layer = 8192
 collision_mask = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="Segment7"]
+[node name="Sprite2D" type="Sprite2D" parent="RightSegments/Segment7"]
 top_level = true
 z_index = 9
-position = Vector2(0, -112)
+position = Vector2(112, 0)
 texture = ExtResource("1_2mdyu")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightSegments/Segment7"]
 shape = SubResource("RectangleShape2D_ht1ub")
 metadata/_edit_lock_ = true
 
-[node name="Segment8" type="StaticBody2D" parent="."]
-position = Vector2(0, -128)
+[node name="Segment8" type="StaticBody2D" parent="RightSegments"]
+position = Vector2(-16, 0)
 collision_layer = 8192
 collision_mask = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="Segment8"]
+[node name="Sprite2D" type="Sprite2D" parent="RightSegments/Segment8"]
 top_level = true
 z_index = 9
-position = Vector2(0, -128)
+position = Vector2(128, 0)
 texture = ExtResource("1_2mdyu")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment8"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightSegments/Segment8"]
 shape = SubResource("RectangleShape2D_ht1ub")
 metadata/_edit_lock_ = true

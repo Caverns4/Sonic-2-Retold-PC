@@ -21,7 +21,6 @@ func _process(delta: float) -> void:
 			var node = i[0]
 			if i[1]:
 				touching += 1
-				timer = 0.1
 		if touching > 0:
 			currentLength = move_toward(currentLength,distance+abs(length),delta*128)
 			if targetNode and targetNode.has_method("Trigger") and !targetNode.trigger:
