@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://cuf10h0hh7iep"]
+[gd_scene load_steps=15 format=4 uid="uid://cuf10h0hh7iep"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_3gh4r"]
 [ext_resource type="AudioStream" uid="uid://c8y5q77kxn4ap" path="res://Audio/Soundtrack/s2br_DustHill.ogg" id="2_pw2ks"]
@@ -8,18 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="5_dhfai"]
 [ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="8_0ekd8"]
 [ext_resource type="TileSet" uid="uid://1x5agi75qcl8" path="res://Tileset/Levels/DHZ.tres" id="8_7qx3g"]
-[ext_resource type="Texture2D" uid="uid://cg1q7jjh7dt8d" path="res://Graphics/Objects_Zone/OOZ_Plat.png" id="9_85jvg"]
-[ext_resource type="PackedScene" uid="uid://chyrwm1qwvlyt" path="res://Entities/Gimmicks/Switch.tscn" id="9_vwavs"]
-[ext_resource type="PackedScene" uid="uid://cma2mtbqjiqdc" path="res://Entities/Gimmicks/HangingBar.tscn" id="10_hh3j0"]
 [ext_resource type="PackedScene" uid="uid://cfteqnft5ynr7" path="res://Entities/Hazards/Spikes.tscn" id="13_jhvw3"]
 [ext_resource type="PackedScene" uid="uid://cuo1bc1i07tst" path="res://Entities/Obstacles/DrawBridge.tscn" id="14_o4ruf"]
 [ext_resource type="Texture2D" uid="uid://sdw87tpbgidn" path="res://Graphics/Objects_Zone/DHZ_Platform.png" id="14_uhhit"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="15_atho2"]
 [ext_resource type="PackedScene" uid="uid://yi4yrppebgng" path="res://Entities/ZoneObjects/DHZ_Platform_Spawner.tscn" id="15_mvyo3"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r73e4"]
-resource_local_to_scene = true
-size = Vector2(80, 4)
+[ext_resource type="PackedScene" uid="uid://bvv78uhl8idjs" path="res://Entities/Gimmicks/hanging_vine.tscn" id="15_yjoft"]
 
 [node name="DustHill1" type="Node2D"]
 script = ExtResource("1_3gh4r")
@@ -47,12 +41,19 @@ tile_set = ExtResource("8_7qx3g")
 
 [node name="Entitites" type="Node" parent="."]
 
-[node name="DrawBridge" parent="Entitites" instance=ExtResource("14_o4ruf")]
-position = Vector2(504, 1736)
-RotateDirection = 1
+[node name="HangingVine" parent="Entitites" node_paths=PackedStringArray("targetNode") instance=ExtResource("15_yjoft")]
+position = Vector2(984, 1776)
+length = 64
+targetNode = NodePath("../DrawBridge")
 
-[node name="Switch" parent="Entitites" instance=ExtResource("9_vwavs")]
-position = Vector2(432, 1720)
+[node name="HangingVine2" parent="Entitites" node_paths=PackedStringArray("targetNode") instance=ExtResource("15_yjoft")]
+position = Vector2(2240, 1656)
+length = 64
+distance = 160
+targetNode = NodePath("../DrawBridge")
+
+[node name="DrawBridge" parent="Entitites" instance=ExtResource("14_o4ruf")]
+position = Vector2(1160, 1928)
 
 [node name="Hazards" type="Node" parent="."]
 
@@ -95,23 +96,11 @@ endPosition = Vector2(192, 0)
 offset = 9.5
 dropSlightly = false
 
-[node name="MovingPlatform2" parent="Floating Platforms" instance=ExtResource("8_0ekd8")]
-position = Vector2(4848, -136)
-platformSprite = ExtResource("9_85jvg")
-endPosition = Vector2(256, -96)
-
-[node name="Shape3D" parent="Floating Platforms/MovingPlatform2/Platform" index="0"]
-position = Vector2(0, -10)
-shape = SubResource("RectangleShape2D_r73e4")
-
-[node name="Hanger2" parent="Floating Platforms/MovingPlatform2/Platform" index="2" instance=ExtResource("10_hh3j0")]
-position = Vector2(0, 37)
-
 [node name="DhzPlatformSpawner" parent="Floating Platforms" instance=ExtResource("15_mvyo3")]
-position = Vector2(0, 1584)
+position = Vector2(512, 1728)
 
 [node name="DhzPlatformSpawner2" parent="Floating Platforms" instance=ExtResource("15_mvyo3")]
-position = Vector2(768, 1432)
+position = Vector2(648, 1648)
 rotation = -3.14159
 scale = Vector2(1, -1)
 
@@ -133,5 +122,3 @@ scale = Vector2(-1, 1)
 position = Vector2(528, 1840)
 item = 3
 shieldAffinity = 1
-
-[editable path="Floating Platforms/MovingPlatform2"]

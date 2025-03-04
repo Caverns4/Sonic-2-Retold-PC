@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvv78uhl8idjs"]
+
+[ext_resource type="Script" path="res://Scripts/Gimmicks/hanging_vine.gd" id="1_drbiq"]
+[ext_resource type="Texture2D" uid="uid://safasvc4e7j8" path="res://Graphics/Gimmicks/DHZ_VineLength.png" id="1_y7bl4"]
+[ext_resource type="Texture2D" uid="uid://31b52ioyj4vd" path="res://Graphics/Gimmicks/DHZ_VineHook.png" id="2_kaq1y"]
+[ext_resource type="PackedScene" uid="uid://b2qs2ji487f1t" path="res://Entities/Gimmicks/Hanger.tscn" id="3_5sfhf"]
+[ext_resource type="AudioStream" uid="uid://dh4rsaka62ph4" path="res://Audio/SFX/Gimmicks/Switch.wav" id="5_74yjb"]
+
+[node name="HangingVine" type="Node2D"]
+script = ExtResource("1_drbiq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = 9
+offset_left = -12.0
+offset_right = 12.0
+offset_bottom = 32.0
+texture = ExtResource("1_y7bl4")
+stretch_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 9
+position = Vector2(-12, 32)
+texture = ExtResource("2_kaq1y")
+centered = false
+
+[node name="Hanger" parent="." instance=ExtResource("3_5sfhf")]
+position = Vector2(0, 56)
+holdDownToDrop = true
+setCenter = true
+grabSound = ExtResource("5_74yjb")
