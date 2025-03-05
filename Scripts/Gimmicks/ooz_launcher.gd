@@ -4,7 +4,7 @@ extends Node2D
 @export_enum("clockwise","counter-clockwise") var turnDirection = 0
 
 var players = []
-var sfx = preload("res://Audio/SFX/Player/Roll.wav")
+var sfx = preload("res://Audio/SFX/Player/s2br_Roll.wav")
 var directionNames =["Up","Right","Down","Left"]
 var launchDir = startDirection
 

@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://c1xhc4uh26inb"]
 
-[ext_resource type="AudioStream" uid="uid://dh4rsaka62ph4" path="res://Audio/SFX/Gimmicks/Switch.wav" id="1"]
 [ext_resource type="Script" path="res://Scripts/Misc/PauseManager.gd" id="2"]
 [ext_resource type="Shader" path="res://Shaders/Greyscale.gdshader" id="2_nt3e0"]
 [ext_resource type="Texture2D" uid="uid://dv6m30yo07el2" path="res://Graphics/HUD/hud_pause.png" id="2_s4sog"]
+[ext_resource type="AudioStream" uid="uid://uay8t1b3i1hi" path="res://Audio/SFX/Gimmicks/s2br_Switch.wav" id="4_rtnwk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fvugk"]
 shader = ExtResource("2_nt3e0")
@@ -64,12 +64,12 @@ anchor_bottom = 1.0
 theme_override_constants/separation = 8
 
 [node name="MenuVert" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1")
+stream = ExtResource("4_rtnwk")
 volume_db = -10.0
 bus = &"SFX"
 
 [node name="MenuMusicVolume" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1")
+stream = ExtResource("4_rtnwk")
 volume_db = -10.0
 bus = &"Music"
 

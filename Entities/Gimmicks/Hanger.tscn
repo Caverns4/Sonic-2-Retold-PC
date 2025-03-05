@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b2qs2ji487f1t"]
 
 [ext_resource type="Script" path="res://Scripts/Gimmicks/Hanger.gd" id="1"]
-[ext_resource type="AudioStream" uid="uid://bfba871gfmv0s" path="res://Audio/SFX/Player/Grab.wav" id="2"]
+[ext_resource type="AudioStream" uid="uid://q41osdy626gj" path="res://Audio/SFX/Player/s2br_Grab.wav" id="2_kjrtt"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(16, 10)
@@ -17,7 +17,7 @@ position = Vector2(0, 5)
 shape = SubResource("1")
 
 [node name="Grab" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2")
+stream = ExtResource("2_kjrtt")
 bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_Hanger_body_entered"]

@@ -5,8 +5,8 @@ extends Node2D
 var nextScene = preload("res://Scene/Presentation/Title.tscn")
 var nextZone = preload("res://Scene/Presentation/ZoneLoader.tscn")
 
-var sfx_Select = preload("res://Audio/SFX/Gimmicks/Switch.wav")
-var sfx_Confirm = preload("res://Audio/SFX/Objects/Checkpoint.wav")
+var sfx_Select = preload("res://Audio/SFX/Gimmicks/s2br_Switch.wav")
+var sfx_Confirm = preload("res://Audio/SFX/Objects/s2br_Checkpoint.wav")
 
 enum MENU_STATE{CHARACTER_SELECT,OPTIONS,ZONE_SELECT,DECIDED}
 var state = 0

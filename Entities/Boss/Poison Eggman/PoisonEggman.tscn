@@ -5,12 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://d0i06mnbra5yc" path="res://Graphics/Boss/Robotnik.png" id="3_8p31e"]
 [ext_resource type="Texture2D" uid="uid://dam0q6u1k8paq" path="res://Graphics/Boss/Jet.png" id="4_fn1hm"]
 [ext_resource type="Texture2D" uid="uid://c31pi0okhicpx" path="res://Graphics/Boss/Eggmobile_Top.png" id="4_hwtff"]
-[ext_resource type="AudioStream" uid="uid://bvhfglhmpystw" path="res://Audio/SFX/Boss/Hit.wav" id="5_27acd"]
 [ext_resource type="Texture2D" uid="uid://bf0ytf63vlq5c" path="res://Graphics/Boss/EggmobileFlash.png" id="5_k67mh"]
 [ext_resource type="Texture2D" uid="uid://cmei7ujrbdqib" path="res://Graphics/Boss/CPZ/Boss_PoisonEggman_Attach.png" id="7_c0jak"]
 [ext_resource type="Texture2D" uid="uid://dqggwc5wimt47" path="res://Graphics/Boss/CPZ/Boss_PoisonEggmanHTube.png" id="8_1d55l"]
-[ext_resource type="AudioStream" uid="uid://beo0rjyvqkyfe" path="res://Audio/SFX/Boss/Explode.wav" id="8_dnsyq"]
 [ext_resource type="Texture2D" uid="uid://r6heondpx2vd" path="res://Graphics/Boss/CPZ/Boss_PoisonEggman_Jar.png" id="9_bk0em"]
+[ext_resource type="AudioStream" uid="uid://bq25mlko4saoj" path="res://Audio/SFX/Boss/s2br_BossHit.wav" id="10_fn1sk"]
+[ext_resource type="AudioStream" uid="uid://u14e5d6axr7x" path="res://Audio/SFX/Boss/s2br_BossExplosion.wav" id="11_w25wj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8gg6r"]
 atlas = ExtResource("3_8p31e")
@@ -166,11 +166,11 @@ hframes = 6
 shape = SubResource("5")
 
 [node name="Hit" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_27acd")
+stream = ExtResource("10_fn1sk")
 bus = &"SFX"
 
 [node name="Explode" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_dnsyq")
+stream = ExtResource("11_w25wj")
 bus = &"SFX"
 
 [node name="HitBox" type="Area2D" parent="."]

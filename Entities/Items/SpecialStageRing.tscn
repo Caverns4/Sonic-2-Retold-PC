@@ -1,9 +1,9 @@
 [gd_scene load_steps=26 format=3 uid="uid://c1n8wnllp8pk2"]
 
-[ext_resource type="AudioStream" uid="uid://botxtfwf3ns1j" path="res://Audio/SFX/Misc/SpecialWarp.wav" id="1"]
 [ext_resource type="Texture2D" uid="uid://ud30wfcj20xf" path="res://Graphics/Items/GiantRing.png" id="2"]
 [ext_resource type="Script" path="res://Scripts/Objects/SpecialStageRing.gd" id="3"]
 [ext_resource type="AudioStream" uid="uid://cb2g1rrn7b6cc" path="res://Audio/SFX/Objects/SpecialRing.wav" id="4"]
+[ext_resource type="AudioStream" uid="uid://be1vhgdoscd0c" path="res://Audio/SFX/Misc/s2br_SpecialWarp.wav" id="4_tpig5"]
 
 [sub_resource type="AtlasTexture" id="2"]
 atlas = ExtResource("2")
@@ -181,7 +181,7 @@ stream = ExtResource("4")
 bus = &"SFX"
 
 [node name="Warp" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1")
+stream = ExtResource("4_tpig5")
 bus = &"SFX"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

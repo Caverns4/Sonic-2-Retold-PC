@@ -1,10 +1,10 @@
 [gd_scene load_steps=16 format=3 uid="uid://ckrsmw0ki80m7"]
 
 [ext_resource type="Script" path="res://Scripts/Boss/BossBase.gd" id="1"]
-[ext_resource type="AudioStream" uid="uid://bvhfglhmpystw" path="res://Audio/SFX/Boss/Hit.wav" id="2"]
 [ext_resource type="Texture2D" uid="uid://6ds1jcc8jmyf" path="res://Graphics/Boss/Eggmobile.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://d0i06mnbra5yc" path="res://Graphics/Boss/Robotnik.png" id="3_4ehki"]
 [ext_resource type="Texture2D" uid="uid://c31pi0okhicpx" path="res://Graphics/Boss/Eggmobile_Top.png" id="4_o6854"]
+[ext_resource type="AudioStream" uid="uid://bq25mlko4saoj" path="res://Audio/SFX/Boss/s2br_BossHit.wav" id="5_lqswj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8gg6r"]
 atlas = ExtResource("3_4ehki")
@@ -117,7 +117,7 @@ animation = &"laugh"
 shape = SubResource("5")
 
 [node name="Hit" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2")
+stream = ExtResource("5_lqswj")
 bus = &"SFX"
 
 [node name="HitBox" type="Area2D" parent="."]

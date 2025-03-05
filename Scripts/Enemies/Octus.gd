@@ -2,7 +2,7 @@ extends EnemyBase
 
 var Projectile = preload("res://Entities/Enemies/Projectiles/GenericProjectile.tscn")
 var bullet = null
-@export var bulletSound = preload("res://Audio/SFX/Objects/Projectile.wav")
+@export var bulletSound = preload("res://Audio/SFX/Objects/s2br_Projectile.wav")
 
 @export_enum("Stay","Flee") var behavior = 0
 

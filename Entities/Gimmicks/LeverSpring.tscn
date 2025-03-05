@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dcjgggeg30x8o" path="res://Graphics/Gimmicks/LeverSpring.png" id="1_bwqm6"]
 [ext_resource type="Script" path="res://Scripts/Gimmicks/lever_spring.gd" id="1_fdf1k"]
-[ext_resource type="AudioStream" uid="uid://b3ieb8ay5vc2" path="res://Audio/SFX/Gimmicks/Springs.wav" id="3_htfbs"]
+[ext_resource type="AudioStream" uid="uid://d3jrmv0604402" path="res://Audio/SFX/Gimmicks/s2br_Spring.wav" id="3_d21ru"]
 
 [node name="LeverSpring" type="StaticBody2D"]
 collision_layer = 8192
@@ -19,5 +19,5 @@ vframes = 2
 polygon = PackedVector2Array(32, -16, -8, 0, 40, 0, 48, -16)
 
 [node name="SpringSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_htfbs")
+stream = ExtResource("3_d21ru")
 bus = &"SFX"

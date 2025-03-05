@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Objects/Checkpoint.gd" id="1_7vuvq"]
 [ext_resource type="Texture2D" uid="uid://c5ylby5h8vm5x" path="res://Graphics/Items/lamppost.png" id="2_1cu21"]
-[ext_resource type="AudioStream" uid="uid://dydspge4asiqv" path="res://Audio/SFX/Objects/Checkpoint.wav" id="3_sl7nf"]
+[ext_resource type="AudioStream" uid="uid://bg4cj43hpx570" path="res://Audio/SFX/Objects/s2br_Checkpoint.wav" id="3_dgaey"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(16, 48)
@@ -93,7 +93,7 @@ libraries = {
 next/spin = &"Flash"
 
 [node name="Checkpoint" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_sl7nf")
+stream = ExtResource("3_dgaey")
 bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_Checkpoint_body_entered"]

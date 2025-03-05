@@ -10,7 +10,7 @@ extends StaticBody2D
 # It will cycle through frames at a consistent speed.
 
 @onready var sprite = $Sprite2D
-var springSound = preload("res://Audio/SFX/Gimmicks/Springs.wav")
+var springSound = preload("res://Audio/SFX/Gimmicks/s2br_Spring.wav")
 
 const LOCK_TIME = 0.1 #Lock time after the See-Saw changes frame.
 

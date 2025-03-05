@@ -3,7 +3,7 @@ extends EnemyBase
 @export_enum("HIDE","WANDER") var behavior = 0
 
 var diggingParticle = preload("res://Entities/Misc/GenericParticle.tscn")
-var breakingSound = preload("res://Audio/SFX/Gimmicks/Collapse.wav")
+var breakingSound = preload("res://Audio/SFX/Gimmicks/s2br_Collapse.wav")
 
 const WALK_SPEED = 60
 const IDLE_TIME = 1.0

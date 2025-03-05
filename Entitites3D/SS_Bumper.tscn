@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Special3D/ss_bumper.gd" id="1_76q2l"]
 [ext_resource type="Texture2D" uid="uid://twldqgya2vgk" path="res://Graphics/Obstacles/bumpers.png" id="1_q2q5t"]
-[ext_resource type="AudioStream" uid="uid://bkqi8dr4nxfkp" path="res://Audio/SFX/Objects/Bumper.wav" id="3_yglw0"]
+[ext_resource type="AudioStream" uid="uid://twp8cryjv0r6" path="res://Audio/SFX/Objects/s2br_Bumper.wav" id="3_0icid"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_av47x"]
 atlas = ExtResource("1_q2q5t")
@@ -69,7 +69,7 @@ collision_mask = 4096
 shape = SubResource("SphereShape3D_4c5r6")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_yglw0")
+stream = ExtResource("3_0icid")
 volume_db = 5.0
 bus = &"SFX"
 

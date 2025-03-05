@@ -54,7 +54,7 @@ const _CONTACT_TIME_LIMIT = ceil(12.0 * (1000.0 / 60.0))
 var playerCarryAI = false
 
 # Optionally set sound to play when making contact
-@export var grabSound = preload("res://Audio/SFX/Player/Grab.wav")
+@export var grabSound = preload("res://Audio/SFX/Player/s2br_Grab.wav")
 
 func _ready():
 	$Grab.stream = grabSound

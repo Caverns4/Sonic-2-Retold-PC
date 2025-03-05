@@ -19,7 +19,7 @@ var players = []
 var active = false
 
 # the collapsing sound
-@export var collapseSFX = preload("res://Audio/SFX/Gimmicks/Collapse.wav")
+@export var collapseSFX = preload("res://Audio/SFX/Gimmicks/s2br_Collapse.wav")
 @export var respawn = true #If the object should respawn on a timer.
 var respawnCoords = position
 

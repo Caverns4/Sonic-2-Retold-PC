@@ -7,7 +7,7 @@ extends Node2D
 
 var Projectile = preload("res://Entities/Enemies/Projectiles/GenericProjectile.tscn")
 var bullet = null
-@export var bulletSound = preload("res://Audio/SFX/Objects/Projectile.wav")
+@export var bulletSound = preload("res://Audio/SFX/Objects/s2br_Projectile.wav")
 
 var oscilationValue = 0 #Make the segments sway aback and forth
 

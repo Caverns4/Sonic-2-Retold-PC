@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cfteqnft5ynr7"]
 
-[ext_resource type="AudioStream" uid="uid://cnbx8aqif7hdw" path="res://Audio/SFX/Objects/Spikes.wav" id="1"]
 [ext_resource type="Texture2D" uid="uid://dnxa6qa422huo" path="res://Graphics/Hazards/spikes.png" id="2"]
 [ext_resource type="Script" path="res://Scripts/Objects/Spikes.gd" id="3"]
+[ext_resource type="AudioStream" uid="uid://beyervc2tmktg" path="res://Audio/SFX/Objects/s2br_Spikes.wav" id="3_3urn5"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(32, 32)
@@ -20,7 +20,7 @@ texture = ExtResource("2")
 region_rect = Rect2(0, 32, 32, 16)
 
 [node name="sfxSpikeShift" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("1")
+stream = ExtResource("3_3urn5")
 bus = &"SFX"
 
 [node name="ShiftTimer" type="Timer" parent="."]

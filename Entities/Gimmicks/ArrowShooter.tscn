@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bpvmb7wv2yik6" path="res://Graphics/Objects_Zone/ArrowShooter.png" id="1_o3e2n"]
 [ext_resource type="Script" path="res://Scripts/Gimmicks/arrow_shooter.gd" id="1_vtnd0"]
-[ext_resource type="AudioStream" uid="uid://851v28ms3ydb" path="res://Audio/SFX/Gimmicks/ArrowFire.wav" id="2_pbooo"]
+[ext_resource type="AudioStream" uid="uid://e7pju68sq88t" path="res://Audio/SFX/Gimmicks/s2br_ArrowFire.wav" id="3_bdyav"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ipw11"]
 atlas = ExtResource("1_o3e2n")
@@ -88,7 +88,7 @@ collision_mask = 4096
 shape = SubResource("RectangleShape2D_c7sf5")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_pbooo")
+stream = ExtResource("3_bdyav")
 bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

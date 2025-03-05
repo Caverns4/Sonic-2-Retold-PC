@@ -2,7 +2,7 @@ extends StaticBody2D
 
 @export_enum("Points Only", "Slot Machine") var type = 0
 
-var SFX = preload("res://Audio/SFX/Gimmicks/CNZ_Slots.wav")
+var SFX = preload("res://Audio/SFX/Objects/s2br_CNZSlot.wav")
 
 const POINTS_TIME = 2.0
 

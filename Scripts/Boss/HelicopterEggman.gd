@@ -2,7 +2,7 @@ extends BossBase
 
 @export var entrySound = preload("res://Audio/SFX/Boss/helicopter.wav")
 
-var deathTimer = 3
+var deathTimer = 4
 var dead = false
 
 # you can use these to control behaviour
@@ -158,7 +158,7 @@ func _on_boss_defeated():
 	# set velocity to 0 to prevent moving
 	velocity = Vector2.ZERO
 	# star the smoke timer
-	$SmokeTimer.start(0.1)
+	$SmokeTimer.start(0.01667*7)
 
 # do a laugh for 1 second
 func do_laugh():

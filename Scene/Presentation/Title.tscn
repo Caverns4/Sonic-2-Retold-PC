@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://jt28gfxybprb" path="res://Audio/SFX/Objects/RingStereo.wav" id="6_fm38o"]
 [ext_resource type="Texture2D" uid="uid://botkv2viswa0h" path="res://Graphics/title/TitleBanner.png" id="6_g2y20"]
 [ext_resource type="PackedScene" uid="uid://0msnmityfdws" path="res://Entities/Misc/twinkle_star.tscn" id="8_yu50n"]
-[ext_resource type="AudioStream" uid="uid://dh4rsaka62ph4" path="res://Audio/SFX/Gimmicks/Switch.wav" id="10_b2hcy"]
+[ext_resource type="AudioStream" uid="uid://uay8t1b3i1hi" path="res://Audio/SFX/Gimmicks/s2br_Switch.wav" id="12_71qhx"]
 
 [sub_resource type="Animation" id="2"]
 length = 0.01
@@ -733,7 +733,7 @@ hue_variation_min = -0.39
 hue_variation_max = 0.68
 
 [node name="Switch" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_b2hcy")
+stream = ExtResource("12_71qhx")
 bus = &"SFX"
 
 [node name="TitleWaitTimer" type="Timer" parent="."]

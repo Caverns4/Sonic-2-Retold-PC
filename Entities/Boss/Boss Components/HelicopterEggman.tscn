@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://btepj3b18ug5d" path="res://Graphics/Boss/EHZ_Chopper.png" id="3_koewv"]
 [ext_resource type="Texture2D" uid="uid://d0i06mnbra5yc" path="res://Graphics/Boss/Robotnik.png" id="5_jym61"]
 [ext_resource type="Texture2D" uid="uid://bf0ytf63vlq5c" path="res://Graphics/Boss/EggmobileFlash.png" id="6_xqm3u"]
-[ext_resource type="AudioStream" uid="uid://bvhfglhmpystw" path="res://Audio/SFX/Boss/Hit.wav" id="7_2eda8"]
-[ext_resource type="AudioStream" uid="uid://beo0rjyvqkyfe" path="res://Audio/SFX/Boss/Explode.wav" id="8_i8hwd"]
+[ext_resource type="AudioStream" uid="uid://bq25mlko4saoj" path="res://Audio/SFX/Boss/s2br_BossHit.wav" id="7_lv4is"]
+[ext_resource type="AudioStream" uid="uid://u14e5d6axr7x" path="res://Audio/SFX/Boss/s2br_BossExplosion.wav" id="8_mlq37"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8gg6r"]
 atlas = ExtResource("5_jym61")
@@ -224,11 +224,11 @@ offset = Vector2(0, -8)
 shape = SubResource("5")
 
 [node name="Hit" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_2eda8")
+stream = ExtResource("7_lv4is")
 bus = &"SFX"
 
 [node name="Explode" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_i8hwd")
+stream = ExtResource("8_mlq37")
 bus = &"SFX"
 
 [node name="HitBox" type="Area2D" parent="."]
@@ -246,7 +246,7 @@ position = Vector2(-632, 0)
 position = Vector2(72, 0)
 
 [node name="SmokeTimer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.25
 
 [node name="AnimationTime" type="Timer" parent="."]
 one_shot = true

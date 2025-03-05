@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Scripts/Gimmicks/HorizontalBar.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://d1hcoy1ga1m5o" path="res://Graphics/Gimmicks/HorizontalBar.png" id="1_5txwq"]
-[ext_resource type="AudioStream" uid="uid://bfba871gfmv0s" path="res://Audio/SFX/Player/Grab.wav" id="3_u5fuj"]
+[ext_resource type="AudioStream" uid="uid://q41osdy626gj" path="res://Audio/SFX/Player/s2br_Grab.wav" id="3_hg24c"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ovkw"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gyt4r"]
 size = Vector2(36, 8)
 
 [node name="HorizontalBar" type="Node2D"]
@@ -37,10 +37,10 @@ collision_mask = 4096
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bar_Area"]
 position = Vector2(32, 3)
-shape = SubResource("RectangleShape2D_7ovkw")
+shape = SubResource("RectangleShape2D_gyt4r")
 
 [node name="Grab_Sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_u5fuj")
+stream = ExtResource("3_hg24c")
 bus = &"SFX"
 
 [connection signal="body_entered" from="Bar_Area" to="." method="_on_bar_area_body_entered"]

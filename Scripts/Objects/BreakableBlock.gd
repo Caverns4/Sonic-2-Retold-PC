@@ -3,7 +3,7 @@ extends StaticBody2D
 @export var pieces = Vector2(2,2)
 @export var SpriteTexture = preload("res://Graphics/Obstacles/Blocks/breakable_block.png")
 var Piece = preload("res://Entities/Misc/BlockPiece.tscn")
-@export var sound = preload("res://Audio/SFX/Gimmicks/Collapse.wav")
+@export var sound = preload("res://Audio/SFX/Gimmicks/s2br_Collapse.wav")
 @export var score = true
 @export var knockBack = true
 

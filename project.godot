@@ -41,6 +41,7 @@ project/assembly_name="Sonic Worlds Next"
 [file_customization]
 
 folder_colors={
+"res://Entitites3D/": "red",
 "res://Graphics/Fonts/": "yellow"
 }
 

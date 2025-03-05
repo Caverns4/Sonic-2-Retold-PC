@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://btd1piynn8ofj" path="res://Graphics/Gimmicks/button.png" id="1"]
 [ext_resource type="Script" path="res://Scripts/Objects/Switch.gd" id="2"]
-[ext_resource type="AudioStream" uid="uid://dh4rsaka62ph4" path="res://Audio/SFX/Gimmicks/Switch.wav" id="3"]
+[ext_resource type="AudioStream" uid="uid://uay8t1b3i1hi" path="res://Audio/SFX/Gimmicks/s2br_Switch.wav" id="3_82tya"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(31, 9)
@@ -22,5 +22,5 @@ position = Vector2(0, 4)
 shape = SubResource("1")
 
 [node name="Switch" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3")
+stream = ExtResource("3_82tya")
 bus = &"SFX"

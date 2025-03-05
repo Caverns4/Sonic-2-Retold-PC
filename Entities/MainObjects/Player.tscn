@@ -1,18 +1,13 @@
-[gd_scene load_steps=201 format=3 uid="uid://cioq5saowvqxj"]
+[gd_scene load_steps=203 format=4 uid="uid://cioq5saowvqxj"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://d1e4muavtnun6" path="res://Graphics/Players/PlayerAnimations/Sonic.tscn" id="2"]
-[ext_resource type="AudioStream" uid="uid://bx5cur6r54lbo" path="res://Audio/SFX/Player/Jump.wav" id="3"]
 [ext_resource type="Script" path="res://Scripts/PropertiesLookup.gd" id="4"]
-[ext_resource type="AudioStream" uid="uid://iomtgrpokl66" path="res://Audio/SFX/Player/SpindashRev.wav" id="5"]
 [ext_resource type="Script" path="res://Scripts/Player/States/Normal.gd" id="6"]
 [ext_resource type="Script" path="res://Scripts/Player/States/Air.gd" id="7"]
 [ext_resource type="Script" path="res://Scripts/Player/States/Roll.gd" id="8"]
-[ext_resource type="AudioStream" uid="uid://tldp1etm5kwa" path="res://Audio/SFX/Player/Roll.wav" id="9"]
 [ext_resource type="Script" path="res://Scripts/Player/States/SpinDash.gd" id="10"]
-[ext_resource type="AudioStream" uid="uid://r5rwjr88mqvn" path="res://Audio/SFX/Player/SpindashRelease.wav" id="11"]
 [ext_resource type="Script" path="res://Scripts/Player/States/Animation.gd" id="12"]
-[ext_resource type="AudioStream" uid="uid://56lyekv8guny" path="res://Audio/SFX/Player/Spike.wav" id="13"]
 [ext_resource type="Script" path="res://Scripts/Player/States/Hit.gd" id="14"]
 [ext_resource type="Texture2D" uid="uid://d20jsqgat6iup" path="res://Graphics/Items/shield_fire.png" id="16"]
 [ext_resource type="Texture2D" uid="uid://dlgef7vglnii5" path="res://Graphics/Items/shield_bubble.png" id="17"]
@@ -20,12 +15,8 @@
 [ext_resource type="Script" path="res://Scripts/Player/States/AmyHammerSwing.gd" id="18_l6lpm"]
 [ext_resource type="Script" path="res://Scripts/Player/ShieldAnimations.gd" id="19"]
 [ext_resource type="Texture2D" uid="uid://frqq7h80cju8" path="res://Graphics/Items/shield_insta.png" id="20"]
-[ext_resource type="AudioStream" uid="uid://dg4gnjja2ce0s" path="res://Audio/SFX/Player/Shield.wav" id="21"]
 [ext_resource type="AudioStream" uid="uid://dsjw4fa8delw4" path="res://Audio/SFX/Player/Death.wav" id="22"]
 [ext_resource type="Texture2D" uid="uid://bjj8rpibbtgsk" path="res://Graphics/Items/S2Shield.png" id="22_gkej0"]
-[ext_resource type="AudioStream" uid="uid://mbnafvbxgyv5" path="res://Audio/SFX/Objects/RingL.wav" id="23"]
-[ext_resource type="AudioStream" uid="uid://bp70n4gwap68w" path="res://Audio/SFX/Objects/RingR.wav" id="24"]
-[ext_resource type="AudioStream" uid="uid://b657n73e1mhne" path="res://Audio/SFX/Player/RingLoss.wav" id="25"]
 [ext_resource type="AudioStream" uid="uid://dmg04lor7ecrw" path="res://Audio/SFX/Player/ElecShield.wav" id="26"]
 [ext_resource type="AudioStream" uid="uid://3dn1nkna0wr8" path="res://Audio/SFX/Player/BubbleUse.wav" id="27"]
 [ext_resource type="AudioStream" uid="uid://102ccd6hxw40" path="res://Audio/SFX/Player/FireShield.wav" id="28"]
@@ -34,38 +25,48 @@
 [ext_resource type="AudioStream" uid="uid://7u7x1vfk4let" path="res://Audio/SFX/Player/ElecUse.wav" id="31"]
 [ext_resource type="AudioStream" uid="uid://j82xa85ycfx6" path="res://Audio/SFX/Player/InstShield.wav" id="32"]
 [ext_resource type="Texture2D" uid="uid://bihgasvpr4jyb" path="res://Graphics/Items/invincible_stars.png" id="33"]
-[ext_resource type="AudioStream" uid="uid://dmwqv4rtqnk0n" path="res://Audio/SFX/Gimmicks/Splash.wav" id="34"]
 [ext_resource type="Script" path="res://Scripts/Player/States/CorkScrew.gd" id="35"]
 [ext_resource type="Script" path="res://Scripts/Player/States/JumpCancel.gd" id="36"]
+[ext_resource type="AudioStream" uid="uid://vcyy3mwx3dt1" path="res://Audio/SFX/Player/s2br_Jump.wav" id="36_1hysu"]
 [ext_resource type="Script" path="res://Scripts/Player/States/Fly.gd" id="37"]
-[ext_resource type="AudioStream" uid="uid://di3y4wlj7bxee" path="res://Audio/SFX/Player/FlyTired.wav" id="38"]
+[ext_resource type="AudioStream" uid="uid://clghc0siqwgp3" path="res://Audio/SFX/Player/s2br_Roll.wav" id="37_rapd8"]
+[ext_resource type="AudioStream" uid="uid://cls2jnm3fvhnr" path="res://Audio/SFX/Player/s2br_SpindashRev.wav" id="38_j2vls"]
 [ext_resource type="Script" path="res://Scripts/Player/States/SuperStart.gd" id="39"]
-[ext_resource type="AudioStream" uid="uid://dxbt1g68wr15q" path="res://Audio/SFX/Global/Flash.wav" id="40"]
+[ext_resource type="AudioStream" uid="uid://bbyrdthe4fqcj" path="res://Audio/SFX/Player/s2br_DashRelease.wav" id="39_3kv3o"]
+[ext_resource type="AudioStream" uid="uid://comgpug432nob" path="res://Audio/SFX/Player/s2br_Stab.wav" id="40_pxo6d"]
 [ext_resource type="Script" path="res://Scripts/Player/States/Die.gd" id="41"]
-[ext_resource type="AudioStream" uid="uid://jrhkpluws6u1" path="res://Audio/SFX/Player/Skid.wav" id="42"]
+[ext_resource type="AudioStream" uid="uid://bamm5ol1hqkaq" path="res://Audio/SFX/Player/s2br_Shield.wav" id="41_i6was"]
 [ext_resource type="Script" path="res://Scripts/Player/InstaShieldHitbox.gd" id="43"]
+[ext_resource type="AudioStream" uid="uid://jntxngpoom7w" path="res://Audio/SFX/Objects/s2br_RingLeft.wav" id="43_flif8"]
 [ext_resource type="Script" path="res://Scripts/Player/States/PeelOut.gd" id="44"]
+[ext_resource type="AudioStream" uid="uid://c05soci1eqlxy" path="res://Audio/SFX/Objects/s2br_RingRight.wav" id="44_72aee"]
 [ext_resource type="AudioStream" uid="uid://wpufbfspev00" path="res://Audio/SFX/Player/DropDash.wav" id="45"]
+[ext_resource type="AudioStream" uid="uid://c4d6il21s83ad" path="res://Audio/SFX/Objects/s2br_LoseRings.wav" id="45_bl5gg"]
 [ext_resource type="Texture2D" uid="uid://7hwanyy5pso6" path="res://Graphics/Misc/SuperSparkles.png" id="46"]
 [ext_resource type="Texture2D" uid="uid://bu6a2evw5s7ne" path="res://Graphics/Misc/water_splash.png" id="47"]
 [ext_resource type="Texture2D" uid="uid://bcighbbtky5cp" path="res://Graphics/Misc/DropDashDust.png" id="48"]
 [ext_resource type="Texture2D" uid="uid://bu207ncbrfjm3" path="res://Graphics/Misc/skid_dust.png" id="49"]
-[ext_resource type="AudioStream" uid="uid://dt5pix0kfiob4" path="res://Audio/SFX/Player/Fly.wav" id="50"]
-[ext_resource type="AudioStream" uid="uid://brcn5ex214ofu" path="res://Audio/SFX/Player/AirNotice.wav" id="51"]
-[ext_resource type="AudioStream" uid="uid://yaj2i3r0n34h" path="res://Audio/SFX/Player/GetAir.wav" id="52"]
-[ext_resource type="AudioStream" uid="uid://tgvfl6qbs7ec" path="res://Audio/SFX/Player/Drown.wav" id="53"]
+[ext_resource type="AudioStream" uid="uid://yjlpau0r0ysq" path="res://Audio/SFX/Player/s2br_Splash.wav" id="53_18626"]
+[ext_resource type="AudioStream" uid="uid://4t0tmhdmspa4" path="res://Audio/SFX/Player/s2br_TurnSuper.wav" id="53_tl1be"]
 [ext_resource type="Script" path="res://Scripts/Player/States/Respawn.gd" id="54"]
 [ext_resource type="Script" path="res://Scripts/Player/TailsFlightHitArea.gd" id="55"]
+[ext_resource type="AudioStream" uid="uid://c6lhq5ur8p8f8" path="res://Audio/SFX/Player/s2br_Brake.wav" id="55_rye1s"]
 [ext_resource type="Script" path="res://Scripts/Player/States/Hang.gd" id="56"]
+[ext_resource type="AudioStream" uid="uid://b3m4vp1snp7i0" path="res://Audio/SFX/Player/s2br_TailsFly.wav" id="56_pgcrt"]
 [ext_resource type="Script" path="res://Scripts/Gimmicks/Hanger.gd" id="57"]
-[ext_resource type="AudioStream" uid="uid://bfba871gfmv0s" path="res://Audio/SFX/Player/Grab.wav" id="58"]
+[ext_resource type="AudioStream" uid="uid://b13bxfx1mjlhb" path="res://Audio/SFX/Player/s2br_TailsTired.wav" id="57_5d4tt"]
 [ext_resource type="Script" path="res://Scripts/Player/States/Glide.gd" id="59"]
-[ext_resource type="AudioStream" uid="uid://78gy6s87pbbo" path="res://Audio/SFX/Player/Land.wav" id="60"]
+[ext_resource type="AudioStream" uid="uid://cmh44m3x3us3a" path="res://Audio/SFX/Player/s2br_AirGulp.wav" id="59_ic2ra"]
 [ext_resource type="AudioStream" uid="uid://uaa5twt8odin" path="res://Audio/SFX/Player/Slide.wav" id="61"]
+[ext_resource type="AudioStream" uid="uid://cp3xsy4yoj33g" path="res://Audio/SFX/Player/s2br_Drown.wav" id="61_pxatj"]
+[ext_resource type="AudioStream" uid="uid://byth7e2rsi4oe" path="res://Audio/SFX/Player/s2br_AirWarning.wav" id="61_qeaab"]
 [ext_resource type="Script" path="res://Scripts/Player/States/WallClimb.gd" id="62"]
+[ext_resource type="AudioStream" uid="uid://q41osdy626gj" path="res://Audio/SFX/Player/s2br_Grab.wav" id="62_vuurb"]
 [ext_resource type="AudioStream" uid="uid://c2agly02ferrw" path="res://Audio/SFX/Player/WaterRun.wav" id="63_k1lus"]
+[ext_resource type="AudioStream" uid="uid://bc8gkntucfhd8" path="res://Audio/SFX/Player/s2br_Land.wav" id="63_pykm1"]
 [ext_resource type="Texture2D" uid="uid://b1k615l251fu5" path="res://Graphics/Misc/WaterSurfaceSplash.png" id="64_ovmgw"]
 [ext_resource type="AudioStream" uid="uid://buu4anko53vx2" path="res://Audio/SFX/Objects/ChemJump.wav" id="65_7v2sx"]
+[ext_resource type="AudioStream" uid="uid://cdtor5hfjq5w1" path="res://Audio/SFX/Player/s2br_Stomp.wav" id="66_ues7n"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 resource_local_to_scene = true
@@ -725,6 +726,10 @@ size = Vector2(18, 8)
 [sub_resource type="RectangleShape2D" id="167"]
 size = Vector2(16, 23)
 
+[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_4t3b4"]
+data = PackedByteArray("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")
+format = 1
+
 [sub_resource type="CircleShape2D" id="58"]
 radius = 64.0
 
@@ -1378,7 +1383,7 @@ position = Vector2(0, -3.5)
 shape = SubResource("167")
 
 [node name="Grab" type="AudioStreamPlayer" parent="TailsCarryBox"]
-stream = ExtResource("58")
+stream = SubResource("AudioStreamWAV_4t3b4")
 bus = &"SFX"
 
 [node name="RingMagnet" type="Area2D" parent="."]
@@ -1414,29 +1419,29 @@ frame_progress = 0.735639
 [node name="SFX" type="Node" parent="."]
 
 [node name="Jump" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("3")
+stream = ExtResource("36_1hysu")
 bus = &"SFX"
 
 [node name="Roll" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("9")
+stream = ExtResource("37_rapd8")
 volume_db = -5.0
 bus = &"SFX"
 
 [node name="SpinDashRev" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("5")
+stream = ExtResource("38_j2vls")
 volume_db = -5.0
 bus = &"SFX"
 
 [node name="SpinDash" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("11")
+stream = ExtResource("39_3kv3o")
 bus = &"SFX"
 
 [node name="Spike" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("13")
+stream = ExtResource("40_pxo6d")
 bus = &"SFX"
 
 [node name="Shield" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("21")
+stream = ExtResource("41_i6was")
 bus = &"SFX"
 
 [node name="Death" type="AudioStreamPlayer" parent="SFX"]
@@ -1444,15 +1449,15 @@ stream = ExtResource("22")
 bus = &"SFX"
 
 [node name="RingLeft" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("23")
+stream = ExtResource("43_flif8")
 bus = &"SFX"
 
 [node name="RingRight" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("24")
+stream = ExtResource("44_72aee")
 bus = &"SFX"
 
 [node name="RingLoss" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("25")
+stream = ExtResource("45_bl5gg")
 bus = &"SFX"
 
 [node name="ElecShield" type="AudioStreamPlayer" parent="SFX"]
@@ -1484,15 +1489,15 @@ stream = ExtResource("32")
 bus = &"SFX"
 
 [node name="Splash" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("34")
+stream = ExtResource("53_18626")
 bus = &"SFX"
 
 [node name="Super" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("40")
+stream = ExtResource("53_tl1be")
 bus = &"SFX"
 
-[node name="Skid" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("42")
+[node name="Brake" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("55_rye1s")
 bus = &"SFX"
 
 [node name="DropDash" type="AudioStreamPlayer" parent="SFX"]
@@ -1500,31 +1505,31 @@ stream = ExtResource("45")
 bus = &"SFX"
 
 [node name="Fly" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("50")
+stream = ExtResource("56_pgcrt")
 bus = &"SFX"
 
 [node name="Tired" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("38")
+stream = ExtResource("57_5d4tt")
 bus = &"SFX"
 
 [node name="Air" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("52")
+stream = ExtResource("59_ic2ra")
 bus = &"SFX"
 
 [node name="AirNotice" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("51")
+stream = ExtResource("61_qeaab")
 bus = &"SFX"
 
 [node name="Drown" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("53")
+stream = ExtResource("61_pxatj")
 bus = &"SFX"
 
 [node name="Grab" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("58")
+stream = ExtResource("62_vuurb")
 bus = &"SFX"
 
 [node name="Land" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("60")
+stream = ExtResource("63_pykm1")
 bus = &"SFX"
 
 [node name="Slide" type="AudioStreamPlayer" parent="SFX"]
@@ -1538,6 +1543,11 @@ bus = &"SFX"
 
 [node name="AmyHammer" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("65_7v2sx")
+volume_db = 15.0
+bus = &"SFX"
+
+[node name="Stomp" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("66_ues7n")
 volume_db = 15.0
 bus = &"SFX"
 

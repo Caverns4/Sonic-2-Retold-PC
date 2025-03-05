@@ -68,7 +68,7 @@ tile_set = ExtResource("16_w3q5b")
 collision_enabled = false
 
 [node name="Player" parent="." instance=ExtResource("17_0brht")]
-position = Vector2(96, 687)
+position = Vector2(96, 688)
 
 [node name="Entities" type="Node" parent="."]
 

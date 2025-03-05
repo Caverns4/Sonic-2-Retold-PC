@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/Enemies/crawl.gd" id="1_0pgyn"]
 [ext_resource type="Texture2D" uid="uid://c8j6h0dpua10y" path="res://Graphics/Enemies/Crawl_Mobile.png" id="2_evms8"]
-[ext_resource type="AudioStream" uid="uid://bkqi8dr4nxfkp" path="res://Audio/SFX/Objects/Bumper.wav" id="3_0hbeo"]
 [ext_resource type="Script" path="res://Scripts/Enemies/crawl_bumper.gd" id="3_xswa5"]
+[ext_resource type="AudioStream" uid="uid://twp8cryjv0r6" path="res://Audio/SFX/Objects/s2br_Bumper.wav" id="4_ryaxe"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(28, 28)
@@ -249,7 +249,7 @@ hframes = 4
 frame = 1
 
 [node name="BumperSFX" type="AudioStreamPlayer" parent="crawlsprite/CrawlBumper"]
-stream = ExtResource("3_0hbeo")
+stream = ExtResource("4_ryaxe")
 bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

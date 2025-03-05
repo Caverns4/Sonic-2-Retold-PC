@@ -1,13 +1,13 @@
 [gd_scene load_steps=19 format=3 uid="uid://bcoqgftnr4isn"]
 
 [ext_resource type="Script" path="res://Scripts/Boss/RobotnikTemplate.gd" id="1"]
-[ext_resource type="AudioStream" uid="uid://bvhfglhmpystw" path="res://Audio/SFX/Boss/Hit.wav" id="2"]
 [ext_resource type="Texture2D" uid="uid://6ds1jcc8jmyf" path="res://Graphics/Boss/Eggmobile.png" id="3"]
-[ext_resource type="AudioStream" uid="uid://beo0rjyvqkyfe" path="res://Audio/SFX/Boss/Explode.wav" id="4"]
 [ext_resource type="Texture2D" uid="uid://c31pi0okhicpx" path="res://Graphics/Boss/Eggmobile_Top.png" id="4_qaw8p"]
 [ext_resource type="Texture2D" uid="uid://d0i06mnbra5yc" path="res://Graphics/Boss/Robotnik.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://dam0q6u1k8paq" path="res://Graphics/Boss/Jet.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://bf0ytf63vlq5c" path="res://Graphics/Boss/EggmobileFlash.png" id="7"]
+[ext_resource type="AudioStream" uid="uid://bq25mlko4saoj" path="res://Audio/SFX/Boss/s2br_BossHit.wav" id="7_23kef"]
+[ext_resource type="AudioStream" uid="uid://u14e5d6axr7x" path="res://Audio/SFX/Boss/s2br_BossExplosion.wav" id="8_xm5st"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8gg6r"]
 atlas = ExtResource("5")
@@ -131,11 +131,11 @@ offset = Vector2(0, -8)
 shape = SubResource("5")
 
 [node name="Hit" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2")
+stream = ExtResource("7_23kef")
 bus = &"SFX"
 
 [node name="Explode" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4")
+stream = ExtResource("8_xm5st")
 bus = &"SFX"
 
 [node name="HitBox" type="Area2D" parent="."]

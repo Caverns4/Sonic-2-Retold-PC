@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Misc/twinkle_star.gd" id="1_goc7e"]
 [ext_resource type="Texture2D" uid="uid://d0wdb3k17olg" path="res://Graphics/title/TitleStar.png" id="2_c6ryn"]
-[ext_resource type="AudioStream" uid="uid://bfji1k2ys3sgu" path="res://Audio/SFX/Misc/Twinkle.wav" id="3_nksdn"]
+[ext_resource type="AudioStream" uid="uid://1m5ytm03gc5h" path="res://Audio/SFX/Misc/s2br_Twinkle.wav" id="3_5awlu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kbtnk"]
 atlas = ExtResource("2_c6ryn")
@@ -78,5 +78,5 @@ sprite_frames = SubResource("SpriteFrames_ydv4g")
 animation = &"Twinkle"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_nksdn")
+stream = ExtResource("3_5awlu")
 bus = &"SFX"

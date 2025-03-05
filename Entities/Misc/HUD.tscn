@@ -16,9 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://bulw3223o3c01" path="res://Graphics/HUD/LevelCards/TitleCardRetold.png" id="11_7g7rf"]
 [ext_resource type="Material" uid="uid://uh2c8jbp8qwd" path="res://Shaders/WaterPalette.tres" id="13_1ly2g"]
 [ext_resource type="Texture2D" uid="uid://60ak1q0xrn1s" path="res://Graphics/HUD/hud_gametimeover.png" id="15_7eshx"]
+[ext_resource type="AudioStream" uid="uid://cxg3gcqe1mwv4" path="res://Audio/SFX/Misc/s2br_Tally.wav" id="15_p0n0b"]
+[ext_resource type="AudioStream" uid="uid://uay8t1b3i1hi" path="res://Audio/SFX/Gimmicks/s2br_Switch.wav" id="15_wdjn8"]
 [ext_resource type="AudioStream" uid="uid://c3tsd0xi30f6s" path="res://Audio/Soundtrack/s2br_GameOver.ogg" id="15_y325l"]
-[ext_resource type="AudioStream" uid="uid://dh4rsaka62ph4" path="res://Audio/SFX/Gimmicks/Switch.wav" id="16"]
-[ext_resource type="AudioStream" uid="uid://clgobastngtvy" path="res://Audio/SFX/Misc/Score.wav" id="17"]
 
 [sub_resource type="Animation" id="Animation_uxdxe"]
 length = 0.1
@@ -1157,9 +1157,8 @@ anchor_left = 1.0
 anchor_top = 0.003
 anchor_right = 1.0
 anchor_bottom = 0.003
-offset_left = -32.0
 offset_top = -86.944
-offset_right = 22278.4
+offset_right = 22310.4
 offset_bottom = 169.056
 grow_horizontal = 0
 grow_vertical = 2
@@ -1331,11 +1330,11 @@ one_shot = true
 wait_time = 0.016
 
 [node name="CounterSFX" type="AudioStreamPlayer" parent="LevelClear"]
-stream = ExtResource("16")
+stream = ExtResource("15_wdjn8")
 bus = &"SFX"
 
 [node name="Score" type="AudioStreamPlayer" parent="LevelClear"]
-stream = ExtResource("17")
+stream = ExtResource("15_p0n0b")
 bus = &"SFX"
 
 [node name="GameOver" type="Control" parent="."]

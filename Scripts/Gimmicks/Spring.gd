@@ -13,7 +13,7 @@ var speed = [10,16]
 
 var springTextures = [preload("res://Graphics/Gimmicks/springs_yellow.png"),preload("res://Graphics/Gimmicks/springs_red.png")]
 
-@export var springSound = preload("res://Audio/SFX/Gimmicks/Springs.wav")
+@export var springSound = preload("res://Audio/SFX/Gimmicks/s2br_Spring.wav")
 
 func _ready():
 	set_spring()

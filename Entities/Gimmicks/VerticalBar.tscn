@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bkecqx482ivpr" path="res://Graphics/Gimmicks/VerticalBar.png" id="1"]
 [ext_resource type="Script" path="res://Scripts/Gimmicks/VerticalBar.gd" id="2"]
-[ext_resource type="AudioStream" uid="uid://bfba871gfmv0s" path="res://Audio/SFX/Player/Grab.wav" id="3"]
+[ext_resource type="AudioStream" uid="uid://q41osdy626gj" path="res://Audio/SFX/Player/s2br_Grab.wav" id="2_kw3g4"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(8, 5)
@@ -14,7 +14,7 @@ size = Vector2(4, 61)
 script = ExtResource("2")
 
 [node name="Grab" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3")
+stream = ExtResource("2_kw3g4")
 bus = &"SFX"
 
 [node name="VerticalBarSprite" type="Sprite2D" parent="."]

@@ -4,9 +4,9 @@ extends Area2D
 # Author: Sharb (this is a modified version of the Vertical Bar by DimensionWarped)
 
 # Sound to play when the bar is grabbed
-@export var grabSound = preload("res://Audio/SFX/Player/Grab.wav")
+@export var grabSound = preload("res://Audio/SFX/Player/s2br_Grab.wav")
 # Sound to play when bar broken
-@export var collapseSFX = preload("res://Audio/SFX/Gimmicks/Collapse.wav")
+@export var collapseSFX = preload("res://Audio/SFX/Gimmicks/s2br_Collapse.wav")
 
 # falling sprite particle (repurposed from the falling block platform pieces)
 var breakPart = preload("res://Entities/Misc/falling_block_plat.tscn")

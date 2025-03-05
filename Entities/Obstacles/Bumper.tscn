@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Objects/Bumper.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://twldqgya2vgk" path="res://Graphics/Obstacles/bumpers.png" id="2"]
-[ext_resource type="AudioStream" uid="uid://bkqi8dr4nxfkp" path="res://Audio/SFX/Objects/Bumper.wav" id="3"]
+[ext_resource type="AudioStream" uid="uid://twp8cryjv0r6" path="res://Audio/SFX/Objects/s2br_Bumper.wav" id="3_7wf1r"]
 
 [sub_resource type="RectangleShape2D" id="5"]
 size = Vector2(17, 17)
@@ -51,5 +51,5 @@ frame = 2
 frame_progress = 1.0
 
 [node name="BumperSFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3")
+stream = ExtResource("3_7wf1r")
 bus = &"SFX"
