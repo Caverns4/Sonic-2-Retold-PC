@@ -452,14 +452,9 @@ func _process(delta):
 					partner.inputs[INPUTS.XINPUT] = sign(global_position.x - partner.global_position.x)
 				
 				#If more than 64 pixels away on X, override AI control to come back.
-				if abs(global_position.x-partner.global_position.x) > 64:
-					partner.inputs[INPUTS.XINPUT] == sign(global_position.x-partner.global_position.x)
-				#Moreover, if ahead of Sonic, go back behind.
-				else: # if abs(global_position.x-partner.global_position.x) <= 64:
-					# get 20 pixels behind Player 1
-					var diff = 20
-					diff = 0
-					var testPos = round(global_position.x + (diff*(0-direction)))
+				if abs(global_position.x-partner.global_position.x) <= 64:
+					# get behind Player 1
+					var testPos = round(global_position.x + ((0-direction)))
 					#print(sign((partner.global_position.x - testPos)*direction))
 					if sign((partner.global_position.x - testPos)*direction) > 0:
 						partner.inputs[INPUTS.XINPUT] = sign(0-direction)
@@ -891,13 +886,13 @@ func _physics_process(delta):
 		# note that the bottom crush sensor actually goes *below* the feet so that it can contact the floor
 		crushSensorDown.position.y = (hitbox.shape.size.y/2 +1)
 		
-		# crusher deaths NOTE: the translate and visibility is used for stuff like the sky sanctuary teleporters, visibility check is for stuff like the carnival night barrels
+		# crusher deaths NOTE: the allowTranslate and visibility is used for stuff like the sky sanctuary teleporters, visibility check is for stuff like the carnival night barrels
 		if (crushSensorLeft.get_overlapping_areas() + crushSensorLeft.get_overlapping_bodies()).size() > 0 and \
-			(crushSensorRight.get_overlapping_areas() + crushSensorRight.get_overlapping_bodies()).size() > 0 and (!translate or visible):
+			(crushSensorRight.get_overlapping_areas() + crushSensorRight.get_overlapping_bodies()).size() > 0 and (!allowTranslate or visible):
 			kill()
 
 		if (crushSensorUp.get_overlapping_areas() + crushSensorUp.get_overlapping_bodies()).size() > 0 and \
-			(crushSensorDown.get_overlapping_areas() + crushSensorDown.get_overlapping_bodies()).size() > 0 and (!translate or visible):
+			(crushSensorDown.get_overlapping_areas() + crushSensorDown.get_overlapping_bodies()).size() > 0 and (!allowTranslate or visible):
 			kill()
 
 func RandomOffset() -> Vector2:
@@ -1165,7 +1160,7 @@ func kill(always = true):
 		disconect_from_floor()
 		supTime = 0
 		shoeTime = 0
-		translate = true
+		allowTranslate = true
 		# turn off super palette and physics (if super)
 		if is_instance_valid(superAnimator) and isSuper:
 			superAnimator.play("PowerDown")

@@ -17,7 +17,7 @@ func _physics_process(_delta):
 			elif forceDirection > 1:
 				#Don't interact with players in a translation state (dying or object controlled)
 				if (i.animator.get_current_animation() != "roll"
-					and i.translate == false):
+					and i.allowTranslate == false):
 					i.set_state(i.STATES.ROLL)
 					i.animator.play("roll")
 					i.sfx[1].play()

@@ -40,6 +40,7 @@ func _ready() -> void:
 			bricks[i].show()
 		state = STATES.HIDDEN
 		grounder.play("hide")
+	super()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

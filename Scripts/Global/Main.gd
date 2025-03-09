@@ -29,6 +29,8 @@ func _ready():
 	Global.life = get_node_or_null("Music/Life")
 	# initialize game data using global reset (it's better then assigning variables twice)
 	Global.reset_values()
+	scene_faded.connect(On_scene_faded)
+	volume_set.connect(On_volume_set)
 
 func _process(delta):
 	# verify scene isn't paused
@@ -194,3 +196,9 @@ func set_volume(volume = 0, fadeSpeed = 1):
 	# set the speed for the transition
 	volumeFadeSpeed = fadeSpeed
 	# this is continued in _process() as it needs to run during gameplay
+
+func On_scene_faded():
+	pass
+
+func On_volume_set():
+	pass

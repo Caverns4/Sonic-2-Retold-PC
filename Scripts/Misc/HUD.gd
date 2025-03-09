@@ -241,7 +241,7 @@ func HandleHUDBlinking(delta):
 			$Counters/Text/Time.visible = false
 
 ## Update HUD Text
-func UpdateHUD(delta):
+func UpdateHUD(_delta):
 	# clamp time so that it won't go to 10 minutes
 	var timeClamp = min(Global.levelTime,Global.maxTime-1)
 	if Global.TwoPlayer:
@@ -284,7 +284,7 @@ func UpdateHUD(delta):
 	
 
 ## Check that this level has water
-func WaterOverlay(delta):
+func WaterOverlay(_delta):
 	# get current camera
 	var cam = GlobalFunctions.getCurrentCamera2D()
 	if !Global.TwoPlayer:
@@ -330,7 +330,7 @@ func WaterOverlay(delta):
 						i.set_shield(i.SHIELDS.NONE)
 
 ## Run Game Over routine
-func SetupGameOver(delta):
+func SetupGameOver(_delta):
 		# set game over to true so this doesn't loop
 		gameOver = true
 		# determine if the game over is a time over (game over and time over sequences are the same but game says time)
@@ -365,7 +365,7 @@ func SetupGameOver(delta):
 			Global.levelTimeP2 = 0
 
 ## Run Stage Clear Functionality
-func ProcessStageClear(delta):
+func ProcessStageClear(_delta):
 	# initialize stage clear sequence
 	if Global.stageClearPhase > 2 and !isStageEnding:
 		isStageEnding = true

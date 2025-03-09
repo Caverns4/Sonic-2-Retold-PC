@@ -9,16 +9,22 @@ size = Vector2(8, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8dxh6"]
 size = Vector2(32, 32)
 
-[node name="CNZSlot" type="StaticBody2D"]
-collision_layer = 14
-collision_mask = 0
+[node name="CNZSlot" type="Node2D"]
 script = ExtResource("1_mem5k")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 8192
+collision_mask = 8192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-20, 0)
 shape = SubResource("RectangleShape2D_870o4")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 131072
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(20, 0)
 shape = SubResource("RectangleShape2D_870o4")
 

@@ -141,7 +141,7 @@ func _unhandledInput(_event):
 	var inputCue = Input.get_vector("gm_left","gm_right","gm_up","gm_down")
 	inputCue.x = round(inputCue.x)
 	inputCue.y = round(inputCue.y)
-	var inputCueP2: Vector2 = Vector2.ZERO
+	#var inputCueP2: Vector2 = Vector2.ZERO
 	
 	# change up/down menu options
 	if inputCue.y > 0 and inputCue.y != lastInput.y:

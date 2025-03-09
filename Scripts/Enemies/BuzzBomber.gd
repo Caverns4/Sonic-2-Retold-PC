@@ -34,6 +34,7 @@ func _ready():
 		$Sprite2D/PlayerCheck.visible = true
 		var direction = Vector2(travelDistance*clamp(side,-1,0),0).rotated(deg_to_rad(flyDirection))
 		targetPosition = origin + direction
+	super()
 
 func _process(delta):
 	if Engine.is_editor_hint():

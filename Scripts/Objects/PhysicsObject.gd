@@ -35,7 +35,7 @@ var gravityAngle = 0
 var collissionLayer = 0
 
 # translate, (ignores physics)
-var translate = false
+var allowTranslate = false
 
 # Vertical sensor reference
 var getVert = null
@@ -78,6 +78,12 @@ func _ready():
 	verticalSensorMiddleEdge.set_collision_mask_value(14,true)
 	verticalSensorMiddle.set_collision_mask_value(17,true)
 	verticalSensorMiddleEdge.set_collision_mask_value(17,true)
+
+	disconectFloor.connect(On_disconectFloor)
+	connectFloor.connect(On_connectFloor)
+	disconectCeiling.connect(On_disconectCeiling)
+	connectCeiling.connect(On_connectCeiling)
+	positionChanged.connect(On_positionChanged)
 
 func update_sensors():
 	var rotationSnap = snapped(rotation,deg_to_rad(90))
@@ -196,7 +202,7 @@ func _physics_process(delta):
 	#movement += Vector2(-int(Input.is_action_pressed("gm_left"))+int(Input.is_action_pressed("gm_right")),-int(Input.is_action_pressed("gm_up"))+int(Input.is_action_pressed("gm_down")))*_delta*100
 	var moveRemaining = movement # copy of the movement variable to cut down on until it hits 0
 	var checkOverride = true
-	while (!moveRemaining.is_equal_approx(Vector2.ZERO) or checkOverride) and !translate:
+	while (!moveRemaining.is_equal_approx(Vector2.ZERO) or checkOverride) and !allowTranslate:
 		checkOverride = false
 		var moveCalc = moveRemaining.normalized()*min(moveStepLength,moveRemaining.length())
 		
@@ -316,12 +322,10 @@ func _physics_process(delta):
 		moveRemaining -= moveRemaining.normalized()*min(moveStepLength,moveRemaining.length())
 		force_update_transform()
 		
-	if translate:
+	if allowTranslate:
 		position += (movement*delta)
-	
 	#Object checks
-	
-	if !translate:
+	else:
 		# temporarily reset mask and layer
 		var layerMemory = collision_layer
 		var maskMemory = collision_mask
@@ -450,3 +454,15 @@ func check_for_ceiling():
 	ceilChecker.queue_free()
 	# Return the detection value
 	return detection
+
+#Skeleton functions for signals so Godot doesn't throw a warning
+func On_disconectFloor():
+	pass
+func On_connectFloor():
+	pass
+func On_disconectCeiling():
+	pass
+func On_connectCeiling():
+	pass
+func On_positionChanged():
+	pass

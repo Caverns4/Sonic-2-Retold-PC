@@ -11,3 +11,4 @@ var shootFlag = false # If true, shoot bullet.
 
 func _ready() -> void:
 	$VisibleOnScreenEnabler2D.visible = true
+	super()

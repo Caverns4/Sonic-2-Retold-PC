@@ -6,6 +6,7 @@ const SPEED = 30.0
 
 func _ready() -> void:
 	$VisibleOnScreenEnabler2D.visible = true
+	super()
 
 func _physics_process(delta: float) -> void:
 

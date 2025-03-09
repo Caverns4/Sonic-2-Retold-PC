@@ -6,8 +6,8 @@ func _ready():
 func _physics_process(delta):
 	# gravity
 	parent.movement.y += parent.grv/GlobalFunctions.div_by_delta(delta)
-	# do translate to avoid collision
-	parent.translate = true
+	# do allowTranslate to avoid collision
+	parent.allowTranslate = true
 	
 	if !Global.TwoPlayer:
 		runDeathinSinglePlayer()
@@ -57,7 +57,7 @@ func CheckGameOver(lifeCount,timerVal):
 func RespawnInTwoPlayer():
 	invulnerability = false
 	parent.hitbox.disabled = false
-	parent.translate = false
+	parent.allowTranslate = false
 	parent.global_position = parent.respawnPosition
 	parent.set_state(parent.STATES.NORMAL,parent.currentHitbox.NORMAL)
 	parent.movement = Vector2.ZERO

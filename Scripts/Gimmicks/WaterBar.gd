@@ -110,11 +110,12 @@ func _on_VerticalBarArea_body_entered(body):
 			players.append(body)
 			$Grab.play()
 			# use offset vertical bar cling if the sprite is flipped
+			body.set_state(body.STATES.ANIMATION, body.currentHitbox.HORIZONTAL)
 			if body.sprite.flip_h:
 				body.animator.play("clingVerticalBarOffset")
 			else:
 				body.animator.play("clingVerticalBar")
-			body.set_state(body.STATES.ANIMATION, body.currentHitbox.HORIZONTAL)
+			
 
 func _on_VerticalBarArea_body_exited(body):
 	remove_player(body)
@@ -124,5 +125,4 @@ func remove_player(player):
 		# reset player animation
 		player.animator.play("current")
 		# Clean out the player from all player-linked arrays.
-		var _getIndex = players.find(player)
 		players.erase(player)

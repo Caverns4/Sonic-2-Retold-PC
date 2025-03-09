@@ -24,6 +24,7 @@ func _ready() -> void:
 	animator.play("WALK")
 	$VisibleOnScreenEnabler2D.visible = true
 	$PlayerCheck.visible = true
+	super()
 
 func _physics_process(delta: float) -> void:
 	if !shootTime > 0.0:

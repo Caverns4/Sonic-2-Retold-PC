@@ -8,4 +8,4 @@ func _on_body_entered(body: Node2D) -> void:
 		node.set_state(body.STATES.AIR)
 		node.controlObject = null
 		node.global_position = global_position
-		node.translate = false
+		node.allowTranslate = false

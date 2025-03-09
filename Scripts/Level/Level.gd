@@ -5,7 +5,7 @@ extends Node2D
 "Emerald Hill", "Hidden Palace","Hill Top", "Chemical Plant",
 "Oil Ocean", "Neo Green Hill","Metropolis","Dust Hill",
 "Wood Gadget","Casino Night","Jewel Grotto","Winter",
-"Sand Shower","Tropical Sun","Sky Fortress","Death Egg") var zoneID: int = 0
+"Sand Shower","Tropical Sun","Sky Fortress","Death Egg") var zoneID: int = Global.ZONES.EMERALD_HILL
 @export var music = preload("res://Audio/Soundtrack/s2br_EmeraldHilll.ogg")
 @export var music2P = preload("res://Audio/Soundtrack/s2br_Tropical.ogg")
 
@@ -45,7 +45,7 @@ var twoPlayerWindow = preload("res://Scene/TwoPlayerScreenView.tscn")
 var wasLoaded = false
 
 func _ready():
-	Global.savedZoneID = zoneID
+	Global.savedZoneID = zoneID as Global.ZONES
 	# debuging
 	if !Global.is_main_loaded:
 		return false

@@ -34,6 +34,7 @@ func _ready():
 		
 		$VisibleOnScreenEnabler2D.visible = true
 		$PlayerCheck.visible = true
+		super()
 
 func _process(delta):
 	if Engine.is_editor_hint():

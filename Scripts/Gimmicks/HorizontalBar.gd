@@ -16,7 +16,7 @@ extends Node2D
 @export var spriteTexture = load("res://Graphics/Gimmicks/HorizontalBar.png")
 
 # Which sound to play when grabbing the bar
-@export var grabSound = preload("res://Audio/SFX/Player/Grab.wav")
+@export var grabSound = preload("res://Audio/SFX/Player/s2br_Grab.wav")
 
 # How wide the left anchor is in the sprite in pixels -- specify this if you don't want the drawing
 # to have gaps in it.

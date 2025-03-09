@@ -20,7 +20,7 @@ func _process(_delta):
 
 func _physics_process(delta):
 	
-	parent.translate = true
+	parent.allowTranslate = true
 	# slowly move the target point towards the player based on distance
 	targetPoint = targetPoint.lerp(parent.partner.global_position,(targetPoint.distance_to(parent.partner.global_position)/32)*delta)
 	
@@ -73,7 +73,7 @@ func _physics_process(delta):
 				parent.hitbox.disabled = false
 				parent.groundSpeed = 0
 				parent.animator.play("walk")
-				parent.translate = false
+				parent.allowTranslate = false
 				parent.collision_layer = parent.defaultLayer
 				parent.collision_mask = parent.defaultMask
 				parent.set_state(parent.STATES.AIR)

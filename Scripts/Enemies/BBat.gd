@@ -22,6 +22,7 @@ func _ready():
 	origin = global_position
 	$VisibleOnScreenEnabler2D.visible = true
 	$PlayerSensor.visible = true
+	super()
 
 func _process(delta):
 	super(delta)

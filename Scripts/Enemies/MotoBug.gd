@@ -23,6 +23,7 @@ func _ready():
 	$VisibleOnScreenEnabler2D.visible = true
 	$SpriteNode/PlayerCheck.visible = true
 	$SpriteNode/Flame.visible = false
+	super()
 
 func _physics_process(delta):
 	stateTimer -= delta

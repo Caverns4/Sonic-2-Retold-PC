@@ -42,7 +42,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		node.animator.play("Roll")
 		node.movement = Vector2.ZERO
 		node.global_position = global_position
-		node.translate = true
+		node.allowTranslate = true
 		Global.play_sound(sfx)
 		var animName = (str(directionNames[startDirection]) + str(directionNames[launchDir]))
 		#print(animName)

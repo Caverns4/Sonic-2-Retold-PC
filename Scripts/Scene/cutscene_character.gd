@@ -11,7 +11,7 @@ var prevAnim = "idle"
 func _ready():
 	pass
 
-func _process(delta):
+func _process(_delta):
 	if animation != prevAnim:
 		animator.play(animation)
 		prevAnim = animation

@@ -10,7 +10,7 @@ func _ready():
 	velocity.y = -4
 	set_physics_process(false)
 	set_process(false)
-	
+	super()
 
 func _physics_process(delta):
 	# gravity

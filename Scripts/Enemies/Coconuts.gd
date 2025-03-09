@@ -27,6 +27,7 @@ var targets = [] #Players in the PlayerCheckBody
 func _ready() -> void:
 	$VisibleOnScreenEnabler2D.visible = true
 	$PlayerCheck.visible = true
+	super()
 
 func _process(delta):
 	match state:

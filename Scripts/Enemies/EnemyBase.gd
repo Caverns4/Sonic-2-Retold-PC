@@ -10,6 +10,9 @@ var defaultMovement = true
 
 signal destroyed
 
+func  _ready() -> void:
+	destroyed.connect(On_destroyed)
+
 func _process(delta):
 	# checks if player hit has players inside
 	if (playerHit.size() > 0):
@@ -86,3 +89,6 @@ func destroy():
 	animal.global_position = global_position
 	# free node
 	queue_free()
+
+func On_destroyed():
+	pass

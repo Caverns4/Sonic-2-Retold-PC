@@ -6,7 +6,7 @@ func _ready() -> void:
 	Global.music.stop()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if !loaded:
 		match clampi(Global.savedZoneID,0,Global.ZONES.size()+1):
 			Global.ZONES.EMERALD_HILL:

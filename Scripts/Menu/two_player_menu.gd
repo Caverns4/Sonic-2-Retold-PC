@@ -79,7 +79,7 @@ func _physics_process(delta: float) -> void:
 	UpdateCharacterFrameInMenu(delta)
 	
 
-func _unhandledInput(event):
+func _unhandledInput(_event):
 	#Player 1
 	inputCue = Input.get_vector("gm_left","gm_right","gm_up","gm_down")
 	inputCue.x = round(inputCue.x)
@@ -134,10 +134,10 @@ func updateCharacterSelection():
 
 func updateZoneSelection():
 	if inputCue.y !=0 and inputCue.y != lastInput.y:
-		zoneSelection += inputCue.y
+		zoneSelection += int(inputCue.y)
 		Global.play_sound2(sfx_Select)
 	if inputCueP2.y !=0 and inputCueP2.y != lastInputP2.y:
-		zoneSelection += inputCueP2.y
+		zoneSelection += int(inputCueP2.y)
 		Global.play_sound2(sfx_Select)
 	zoneSelection = wrapi(zoneSelection,0,Global.twoPlayerZones.size())
 	
@@ -153,11 +153,11 @@ func updateZoneSelection():
 	Input.is_action_just_pressed("gm_action_P2") or
 	Input.is_action_just_pressed("gm_pause_P2")):
 		state = MENU_STATE.DECIDED
-		Global.PlayerChar1 = p1CharacterSelection+1
-		Global.PlayerChar2 = p2CharacterSelection+1
+		Global.PlayerChar1 = p1CharacterSelection+1 as Global.CHARACTERS
+		Global.PlayerChar2 = p2CharacterSelection+1 as Global.CHARACTERS
 		Global.savedZoneID = Global.twoPlayerZones[zoneSelection]
 		Global.savedActID = 0
-		Global.twoPlayerItems = itemSelection
+		Global.twoPlayerItems = itemSelection as Global.ITEM_MODE
 		Global.main.change_scene_to_file(nextZone,"FadeOut","FadeOut",1)
 
 

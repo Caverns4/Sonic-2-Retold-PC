@@ -31,6 +31,7 @@ func _ready() -> void:
 	$PlayerCheck.visible = true
 	$VisibleOnScreenEnabler2D.visible = true
 	lookingForTargets = true
+	super()
 
 func _process(delta: float) -> void:
 	super(delta)

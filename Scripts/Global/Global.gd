@@ -253,6 +253,7 @@ func _ready():
 		await get_tree().process_frame
 		get_tree().paused = false
 	is_main_loaded = true
+	stage_started.connect(On_stage_started)
 
 func _process(delta):
 	# do a check for certain variables, if it's all clear then count the level timer up
@@ -378,7 +379,7 @@ func loadNextLevel():
 				savedZoneID = ZONES.NEO_GREEN_HILL
 			ZONES.OIL_OCEAN:
 				savedActID = 0
-				savedZoneID = ZONES.DEATH_EGG+1 #Demo credits
+				savedZoneID = ZONES.ENDING #Demo credits
 			ZONES.NEO_GREEN_HILL:
 				savedActID = 0
 				savedZoneID = ZONES.HILL_TOP
@@ -400,23 +401,26 @@ func loadNextLevel():
 				savedZoneID = ZONES.SAND_SHOWER
 			ZONES.WINTER:
 				savedActID = 0
-				savedZoneID = 0
+				savedZoneID = ZONES.EMERALD_HILL
 			ZONES.SAND_SHOWER:
 				savedActID = 0
-				savedZoneID = 0
+				savedZoneID = ZONES.EMERALD_HILL
 			ZONES.TROPICAL:
 				savedActID = 0
-				savedZoneID = 0
+				savedZoneID = ZONES.EMERALD_HILL
 			ZONES.SKY_FORTRESS:
 				savedActID = 0
-				savedZoneID = 0
+				savedZoneID = ZONES.EMERALD_HILL
 			ZONES.DEATH_EGG:
 				savedActID = 0
-				savedZoneID = 0
+				savedZoneID = ZONES.EMERALD_HILL
 
 # Godot doesn't like not having emit signal only done in other nodes so we're using a function to call it
 func emit_stage_start():
 	emit_signal("stage_started")
+
+func On_stage_started():
+	pass
 
 # save data settings
 func save_settings():
@@ -493,7 +497,7 @@ func SaveGlobalData():
 func SaveGameData():
 	if saveFileSelected == 0:
 		return
-	var filename = "Sonic" + str(saveFileSelected) + ".dat"
+	var _filename = "Sonic" + str(saveFileSelected) + ".dat"
 	var a = Global.Score*(savedZoneID*4)/30+PlayerChar2*PlayerChar1
 	print(a)
 	

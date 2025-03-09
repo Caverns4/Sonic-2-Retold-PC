@@ -14,6 +14,7 @@ func _ready() -> void:
 	$VisibleOnScreenEnabler2D.visible = true
 	direction = -sign(scale.x)
 	bumperCol.disabled = true
+	super()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

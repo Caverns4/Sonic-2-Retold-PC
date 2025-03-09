@@ -66,7 +66,7 @@ func _process(delta):
 	elif dead:
 		velocity.y += (0.09375/GlobalFunctions.div_by_delta(delta))
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if !dead:
 		SetTirePositions()
 	
@@ -142,12 +142,12 @@ func playMotor():
 	Global.play_sound(drillSound)
 	if drill: drill.monitoring = true
 
-func _on_area_2d_area_entered(area): #Await Eggman to enter
+func _on_area_2d_area_entered(_area): #Await Eggman to enter
 	if phase == 0 and active and !dead:
 		emit_signal("carTouched")
 		velocity = Vector2.ZERO
 		currentPoint = 0
-		await get_tree().create_timer(3.0)
+		await get_tree().create_timer(3.0).timeout
 		phase = 1
 
 
@@ -155,7 +155,7 @@ func _on_boss_boundry_setter_boss_start():
 	if !active:
 		active = true
 
-func _on_drill_launch_box_body_entered(body):
+func _on_drill_launch_box_body_entered(_body):
 	if readyToLaunch and drill:
 		drill.free = true
 		drill.position = drill.global_position

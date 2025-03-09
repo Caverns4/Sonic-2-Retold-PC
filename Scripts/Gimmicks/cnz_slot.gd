@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Node2D
 
 @export_enum("Points Only", "Slot Machine") var type = 0
 

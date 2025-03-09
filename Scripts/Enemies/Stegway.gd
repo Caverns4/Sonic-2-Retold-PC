@@ -7,7 +7,7 @@ const GRAVITY = 600
 const DASH_CHARGE_TIME = 0.5 #Time to rev before charaging a player
 
 @onready var animator = $SpriteNode/AnimationPlayer
-var revSound = preload("res://Audio/SFX/Player/SpindashRev.wav")
+var revSound = preload("res://Audio/SFX/Player/s2br_SpindashRev.wav")
 
 enum STATES{WALK,IDLE,CHARGE}
 var state = 0
@@ -28,6 +28,7 @@ func _ready() -> void:
 	if direction == 0:
 		direction = 1
 	movement.x = direction*WALK_SPEED
+	super()
 
 func _physics_process(delta: float) -> void:
 	stateTimer -= delta

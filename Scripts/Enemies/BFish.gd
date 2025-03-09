@@ -29,6 +29,7 @@ func _ready():
 	if !Engine.is_editor_hint():
 		$VisibleOnScreenEnabler2D.visible = true
 		startPosition = global_position
+	super()
 
 func _process(delta):
 	if Engine.is_editor_hint():

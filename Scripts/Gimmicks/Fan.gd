@@ -28,6 +28,8 @@ func _process(delta):
 		$fan.global_scale = Vector2(1,1)
 		if $fan.texture != null:
 			$fan.region_rect.size.x = $fan.texture.get_width()*round(scale.x)
+		# No need to cotinue running the rest if we are in hint mode
+		return
 	# animate
 	var goSpeed = 0.0
 	if isActive:
@@ -37,12 +39,11 @@ func _process(delta):
 			else:
 				goSpeed = clampf(timer*30.0,0,30.0)
 			# play fan sound
-			if playSound and !Engine.is_editor_hint():
-				if !$FanSound.playing:
-					$FanSound.play()
+			if playSound and !$FanSound.playing:
+				$FanSound.play()
 		# end sound if playing
 		elif $FanSound.playing:
-				$FanSound.stop()
+			$FanSound.stop()
 	# back up end sound
 	elif $FanSound.playing:
 			$FanSound.stop()
@@ -52,35 +53,35 @@ func _process(delta):
 	getFrame = wrapf(getFrame+delta*animSpeed,0,$fan.hframes*$fan.vframes)
 
 
-
 func _physics_process(delta):
 	timer += delta
 	timer = wrapf(timer,(0-activeTime),activeTime)
-	if !Engine.is_editor_hint():
-		# if any players are found in the array, if they're on the ground make them roll
-		if players.size() > 0 and (activeTime == 0 or timer > 0.0):
-			for i in players:
-				if !i.controlObject and !i.translate:
+	if Engine.is_editor_hint():
+		return
+	# if any players are found in the array, if they're on the ground make them roll
+	if players.size() > 0 and (activeTime == 0 or timer > 0.0):
+		for i in players:
+			if !i.controlObject and !i.allowTranslate:
+				
+				var force = Vector2(0,-30).rotated(global_rotation)
+				i.movement += force
+				#Only do this if the fan is pointing upward
+				if force.y < 0:
+					#i.movement.y = min(i.movement.y,90)
+					i.movement.y = clamp(i.movement.y,-360,120)
+					if i.ground and i.currentState != i.STATES.ROLL:
+						i.disconect_from_floor()
 					
-					var force = Vector2(0,-30).rotated(global_rotation)
-					i.movement += force
-					#Only do this if the fan is pointing upward
-					if force.y < 0:
-						#i.movement.y = min(i.movement.y,90)
-						i.movement.y = clamp(i.movement.y,-360,120)
-						if i.ground and i.currentState != i.STATES.ROLL:
-							i.disconect_from_floor()
-						
-					#Play floating animation if player is in midair
-					if !i.ground:
-						# force air state
-						var setPlayerAnimation = "corkScrew"
-						# water animation
-						if i.water:
-							setPlayerAnimation = "current"
-						if i.currentState != i.STATES.ANIMATION or i.animator.current_animation != setPlayerAnimation:
-							i.set_state(i.STATES.AIR)
-							i.animator.play(setPlayerAnimation)
+				#Play floating animation if player is in midair
+				if !i.ground:
+					# force air state
+					var setPlayerAnimation = "corkScrew"
+					# water animation
+					if i.water:
+						setPlayerAnimation = "current"
+					if i.currentState != i.STATES.ANIMATION or i.animator.current_animation != setPlayerAnimation:
+						i.set_state(i.STATES.AIR)
+						i.animator.play(setPlayerAnimation)
 	
 
 

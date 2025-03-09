@@ -106,7 +106,7 @@ func _ready():
 	if nextZone != null:
 		Global.nextZone = nextZone
 
-func _process(delta):
+func _process(_delta):
 		levelSelect_UpdateText()
 
 func _input(event):
@@ -131,7 +131,7 @@ func _input(event):
 					Global.PlayerChar1 = Global.CHARACTERS.SONIC
 					Global.PlayerChar2 = Global.CHARACTERS.TAILS
 				_:
-					Global.PlayerChar1 = characterID
+					Global.PlayerChar1 = characterID as Global.CHARACTERS
 				#1: # Sonic
 				#	Global.PlayerChar1 = Global.CHARACTERS.SONIC
 				#2: # Tails
@@ -251,7 +251,7 @@ func levelSelectSetupDirectionalInput():
 	inputCue.y = round(inputCue.y)
 	if inputCue != lastInput:
 		# select character rotation
-		var columnSize = round(LEFT_ROWS/2*1.5)
+		var columnSize: int = round(LEFT_ROWS*0.75)
 		if inputCue.x < 0:
 			if levelID == CharacterSelectMenuID-1:
 				characterID = wrapi(characterID-1,0,characterLabels.size())

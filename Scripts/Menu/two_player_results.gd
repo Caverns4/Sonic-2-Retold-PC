@@ -49,7 +49,7 @@ func _input(event):
 				Global.loadNextLevel()
 				Global.main.change_scene_to_file(nextAct,"FadeOut","FadeOut",1)
 			else:
-				Global.twoPlayerZoneResults
+				Global.twoPlayerZoneResults.append(results)
 				Global.main.change_scene_to_file(returnScene,"FadeOut","FadeOut",1)
 
 func GetWinner(result: Array):

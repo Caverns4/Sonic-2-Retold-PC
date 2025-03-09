@@ -31,6 +31,7 @@ func _ready():
 	$Redz/PlayerCheck.visible = true
 	animator.play("WALK")
 	global_scale = Vector2(1,1)
+	super()
 	
 
 func _physics_process(delta):
