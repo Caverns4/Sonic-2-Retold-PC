@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://bbyrdthe4fqcj" path="res://Audio/SFX/Player/s2br_DashRelease.wav" id="5_jf4bv"]
 [ext_resource type="AudioStream" uid="uid://comgpug432nob" path="res://Audio/SFX/Player/s2br_Stab.wav" id="6_gtr3c"]
 [ext_resource type="AudioStream" uid="uid://bamm5ol1hqkaq" path="res://Audio/SFX/Player/s2br_Shield.wav" id="7_d3pkk"]
-[ext_resource type="AudioStream" uid="uid://dsjw4fa8delw4" path="res://Audio/SFX/Player/Death.wav" id="8_pw8ph"]
+[ext_resource type="AudioStream" uid="uid://cb8i5nuvr51f7" path="res://Audio/SFX/Player/s2br_Death.wav" id="8_ifav3"]
 [ext_resource type="AudioStream" uid="uid://jntxngpoom7w" path="res://Audio/SFX/Objects/s2br_RingLeft.wav" id="9_3yur5"]
 [ext_resource type="AudioStream" uid="uid://c05soci1eqlxy" path="res://Audio/SFX/Objects/s2br_RingRight.wav" id="10_ma2ha"]
 [ext_resource type="AudioStream" uid="uid://c4d6il21s83ad" path="res://Audio/SFX/Objects/s2br_LoseRings.wav" id="11_ay3dt"]
@@ -59,7 +59,7 @@ stream = ExtResource("7_d3pkk")
 bus = &"SFX"
 
 [node name="Death" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("8_pw8ph")
+stream = ExtResource("8_ifav3")
 bus = &"SFX"
 
 [node name="RingLeft" type="AudioStreamPlayer" parent="SFX"]

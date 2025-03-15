@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://7u7x1vfk4let"
-path="res://.godot/imported/ElecUse.wav-cbd956e21e48bfffb53813f1d9e4b49e.sample"
+uid="uid://bvor4gjgtkkwv"
+path="res://.godot/imported/s2br_UFO.wav-36e444e3ad9d3d44881db60f9c728499.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/Player/ElecUse.wav"
-dest_files=["res://.godot/imported/ElecUse.wav-cbd956e21e48bfffb53813f1d9e4b49e.sample"]
+source_file="res://Audio/SFX/Misc/s2br_UFO.wav"
+dest_files=["res://.godot/imported/s2br_UFO.wav-36e444e3ad9d3d44881db60f9c728499.sample"]
 
 [params]
 

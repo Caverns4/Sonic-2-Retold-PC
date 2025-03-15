@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://cou8y8ungkjfx"]
+[gd_scene load_steps=29 format=4 uid="uid://cou8y8ungkjfx"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_p81yk"]
 [ext_resource type="PackedScene" uid="uid://deaxge481u7mk" path="res://Scene/Backgrounds/00-EmeraldHill.tscn" id="3_x8p3v"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="24_d0wpa"]
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="25_je0kn"]
 [ext_resource type="Texture2D" uid="uid://bsl2k38yish1o" path="res://Graphics/Tiles/WorldsTiles/EHZ_Platform_Small.png" id="25_qhqix"]
+[ext_resource type="AudioStream" uid="uid://uu55iumak4r5" path="res://Audio/SFX/Ambiance/waterfall.wav" id="26_1n4cr"]
 [ext_resource type="PackedScene" uid="uid://cfteqnft5ynr7" path="res://Entities/Hazards/Spikes.tscn" id="26_3yxfe"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="27_hs17r"]
 [ext_resource type="PackedScene" uid="uid://bct374kjctkxr" path="res://Entities/Items/Checkpoint.tscn" id="28_6xh85"]
@@ -611,6 +612,71 @@ position = Vector2(11264, 1060)
 [node name="SignpostNew" parent="." instance=ExtResource("25_je0kn")]
 position = Vector2(10688, 1091)
 multiplayerOnly = true
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="WaterFallSFX2D" type="AudioStreamPlayer2D" parent="Environment"]
+position = Vector2(928, 834)
+stream = ExtResource("26_1n4cr")
+volume_db = -3.0
+pitch_scale = 1.5
+autoplay = true
+max_distance = 512.0
+attenuation = 1.5
+panning_strength = 0.5
+bus = &"SFX"
+
+[node name="WaterFallSFX2D6" type="AudioStreamPlayer2D" parent="Environment"]
+position = Vector2(8872, 1216)
+stream = ExtResource("26_1n4cr")
+volume_db = -3.0
+pitch_scale = 1.5
+autoplay = true
+max_distance = 512.0
+attenuation = 1.5
+panning_strength = 0.5
+bus = &"SFX"
+
+[node name="WaterFallSFX2D2" type="AudioStreamPlayer2D" parent="Environment"]
+position = Vector2(3624, 834)
+stream = ExtResource("26_1n4cr")
+volume_db = -3.0
+autoplay = true
+max_distance = 768.0
+attenuation = 0.5
+panning_strength = 0.5
+bus = &"SFX"
+
+[node name="WaterFallSFX2D5" type="AudioStreamPlayer2D" parent="Environment"]
+position = Vector2(7712, 1064)
+stream = ExtResource("26_1n4cr")
+volume_db = -3.0
+autoplay = true
+max_distance = 768.0
+attenuation = 0.5
+panning_strength = 0.5
+bus = &"SFX"
+
+[node name="WaterFallSFX2D3" type="AudioStreamPlayer2D" parent="Environment"]
+position = Vector2(6056, 736)
+stream = ExtResource("26_1n4cr")
+volume_db = -3.0
+autoplay = true
+max_distance = 1024.0
+attenuation = 0.5
+panning_strength = 0.5
+bus = &"SFX"
+
+[node name="WaterFallSFX2D4" type="AudioStreamPlayer2D" parent="Environment"]
+position = Vector2(5472, 896)
+stream = ExtResource("26_1n4cr")
+volume_db = -3.0
+pitch_scale = 1.5
+autoplay = true
+max_distance = 512.0
+attenuation = 1.5
+panning_strength = 0.5
+bus = &"SFX"
 
 [connection signal="boss_start" from="Boss/BossBoundrySetter" to="Boss/DrillEggmanCar" method="_on_boss_boundry_setter_boss_start"]
 [connection signal="carTouched" from="Boss/DrillEggmanCar" to="Boss/HelicopterEggman" method="_on_drill_eggman_car_car_touched"]

@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dsjw4fa8delw4"
-path="res://.godot/imported/Death.wav-d4140c8eb1deeb70c9223f159e908494.sample"
+uid="uid://kqq77sj3uqur"
+path="res://.godot/imported/s2br_Beep.wav-b6b9f201e2d6faef93a5e76c7a86c3f7.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/Player/Death.wav"
-dest_files=["res://.godot/imported/Death.wav-d4140c8eb1deeb70c9223f159e908494.sample"]
+source_file="res://Audio/SFX/Misc/s2br_Beep.wav"
+dest_files=["res://.godot/imported/s2br_Beep.wav-b6b9f201e2d6faef93a5e76c7a86c3f7.sample"]
 
 [params]
 

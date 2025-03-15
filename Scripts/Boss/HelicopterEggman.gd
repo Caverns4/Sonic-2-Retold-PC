@@ -1,6 +1,6 @@
 extends BossBase
 
-@export var entrySound = preload("res://Audio/SFX/Boss/helicopter.wav")
+@export var entrySound = preload("res://Audio/SFX/Boss/s2br_helicopter.wav")
 
 var deathTimer = 4
 var dead = false

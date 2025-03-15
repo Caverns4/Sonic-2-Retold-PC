@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Boss/DrillEggman_Car.gd" id="1_harxd"]
 [ext_resource type="Texture2D" uid="uid://svwmdhvvxrws" path="res://Graphics/Boss/Boss_DrillEggman.png" id="2_ugcdw"]
 [ext_resource type="PackedScene" uid="uid://d3oh77l2rriqf" path="res://Entities/Boss/Boss Components/DrillEggmanWheel.tscn" id="3_fandu"]
-[ext_resource type="AudioStream" uid="uid://b0tfpt3vui0yd" path="res://Audio/SFX/Boss/Motor.wav" id="4_v5v2r"]
+[ext_resource type="AudioStream" uid="uid://b0tfpt3vui0yd" path="res://Audio/SFX/Boss/s2br_Motor.wav" id="4_v5v2r"]
 [ext_resource type="PackedScene" uid="uid://0mfj8m5mj8a6" path="res://Entities/Boss/Boss Components/DrillEggmanDrill.tscn" id="5_gje8e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b3h3o"]

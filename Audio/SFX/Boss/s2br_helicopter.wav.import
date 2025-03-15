@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://caa1ottwvqvqa"
-path="res://.godot/imported/helicopter.wav-b892b7a1787e6d331af54473e1c1c65e.sample"
+path="res://.godot/imported/s2br_helicopter.wav-bdabac9bd173136c2094c68b3b18d6cd.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/Boss/helicopter.wav"
-dest_files=["res://.godot/imported/helicopter.wav-b892b7a1787e6d331af54473e1c1c65e.sample"]
+source_file="res://Audio/SFX/Boss/s2br_helicopter.wav"
+dest_files=["res://.godot/imported/s2br_helicopter.wav-bdabac9bd173136c2094c68b3b18d6cd.sample"]
 
 [params]
 

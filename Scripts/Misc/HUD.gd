@@ -37,7 +37,11 @@ var ringBonus: int = 0
 var perfectBonus: int = 0
 var perfectEnabled: bool = true
 ## Number of coins collected in this level.
-var coins: int = 0 
+var coins: int = 0
+## Score Tally Timer
+const TALLY_TIME: float = 0.0167
+var tallyTimer: float = TALLY_TIME
+var tallyStart: bool = false
 
 ## Used to trigger the Game Over Animation
 var gameOver: bool = false
@@ -365,7 +369,7 @@ func SetupGameOver(_delta):
 			Global.levelTimeP2 = 0
 
 ## Run Stage Clear Functionality
-func ProcessStageClear(_delta):
+func ProcessStageClear(delta):
 	# initialize stage clear sequence
 	if Global.stageClearPhase > 2 and !isStageEnding:
 		isStageEnding = true
@@ -405,17 +409,22 @@ func ProcessStageClear(_delta):
 		$LevelClear/CounterWait.start()
 		await $LevelClear/CounterWait.timeout
 		# start the level counter tally (see _on_CounterCount_timeout)
-		$LevelClear/CounterCount.start()
+		tallyStart = true #$LevelClear/CounterCount.start()
 		await self.tally_clear
 		# wait 2 seconds (reuse timer)
-		$LevelClear/CounterWait.start(2)
+		$LevelClear/CounterWait.start(3)
 		await $LevelClear/CounterWait.timeout
 		Global.totalCoins += coins
 		# after clear, change to next level in Global.nextZone (you can set the next zone in the level script node)
 		Global.loadNextLevel()
 		Global.main.change_scene_to_file(Global.nextZone,"FadeOut","FadeOut",1)
+	#Every frame
+	if tallyStart:
+		tallyTimer -= delta
+		if tallyTimer <= 0.0:
+			_on_CounterCount_timeout()
 
-## Vounter count down
+## Counter count down
 func _on_CounterCount_timeout():
 	# play counter sound
 	$LevelClear/CounterSFX.play()
@@ -440,7 +449,7 @@ func _on_CounterCount_timeout():
 	else:
 		# stop counter timer and play score sound
 		$LevelClear/CounterSFX.stop()
-		$LevelClear/CounterCount.stop()
+		tallyStart = false #$LevelClear/CounterCount.stop()
 		$LevelClear/Score.play()
 		# emit tally clear signal
 		emit_signal("tally_clear")

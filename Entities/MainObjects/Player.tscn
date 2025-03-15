@@ -15,14 +15,7 @@
 [ext_resource type="Script" path="res://Scripts/Player/States/AmyHammerSwing.gd" id="18_l6lpm"]
 [ext_resource type="Script" path="res://Scripts/Player/ShieldAnimations.gd" id="19"]
 [ext_resource type="Texture2D" uid="uid://frqq7h80cju8" path="res://Graphics/Items/shield_insta.png" id="20"]
-[ext_resource type="AudioStream" uid="uid://dsjw4fa8delw4" path="res://Audio/SFX/Player/Death.wav" id="22"]
 [ext_resource type="Texture2D" uid="uid://bjj8rpibbtgsk" path="res://Graphics/Items/S2Shield.png" id="22_gkej0"]
-[ext_resource type="AudioStream" uid="uid://dmg04lor7ecrw" path="res://Audio/SFX/Player/ElecShield.wav" id="26"]
-[ext_resource type="AudioStream" uid="uid://3dn1nkna0wr8" path="res://Audio/SFX/Player/BubbleUse.wav" id="27"]
-[ext_resource type="AudioStream" uid="uid://102ccd6hxw40" path="res://Audio/SFX/Player/FireShield.wav" id="28"]
-[ext_resource type="AudioStream" uid="uid://brx7f8tiaovws" path="res://Audio/SFX/Player/BubbleShield.wav" id="29"]
-[ext_resource type="AudioStream" uid="uid://jceiiu00puui" path="res://Audio/SFX/Player/FireUse.wav" id="30"]
-[ext_resource type="AudioStream" uid="uid://7u7x1vfk4let" path="res://Audio/SFX/Player/ElecUse.wav" id="31"]
 [ext_resource type="AudioStream" uid="uid://j82xa85ycfx6" path="res://Audio/SFX/Player/InstShield.wav" id="32"]
 [ext_resource type="Texture2D" uid="uid://bihgasvpr4jyb" path="res://Graphics/Items/invincible_stars.png" id="33"]
 [ext_resource type="Script" path="res://Scripts/Player/States/CorkScrew.gd" id="35"]
@@ -35,6 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://bbyrdthe4fqcj" path="res://Audio/SFX/Player/s2br_DashRelease.wav" id="39_3kv3o"]
 [ext_resource type="AudioStream" uid="uid://comgpug432nob" path="res://Audio/SFX/Player/s2br_Stab.wav" id="40_pxo6d"]
 [ext_resource type="Script" path="res://Scripts/Player/States/Die.gd" id="41"]
+[ext_resource type="AudioStream" uid="uid://cb8i5nuvr51f7" path="res://Audio/SFX/Player/s2br_Death.wav" id="41_3quo4"]
 [ext_resource type="AudioStream" uid="uid://bamm5ol1hqkaq" path="res://Audio/SFX/Player/s2br_Shield.wav" id="41_i6was"]
 [ext_resource type="Script" path="res://Scripts/Player/InstaShieldHitbox.gd" id="43"]
 [ext_resource type="AudioStream" uid="uid://jntxngpoom7w" path="res://Audio/SFX/Objects/s2br_RingLeft.wav" id="43_flif8"]
@@ -42,10 +36,16 @@
 [ext_resource type="AudioStream" uid="uid://c05soci1eqlxy" path="res://Audio/SFX/Objects/s2br_RingRight.wav" id="44_72aee"]
 [ext_resource type="AudioStream" uid="uid://wpufbfspev00" path="res://Audio/SFX/Player/DropDash.wav" id="45"]
 [ext_resource type="AudioStream" uid="uid://c4d6il21s83ad" path="res://Audio/SFX/Objects/s2br_LoseRings.wav" id="45_bl5gg"]
+[ext_resource type="AudioStream" uid="uid://be6usv6pc4qix" path="res://Audio/SFX/Player/s2br_GetLightSh.wav" id="45_ibif4"]
 [ext_resource type="Texture2D" uid="uid://7hwanyy5pso6" path="res://Graphics/Misc/SuperSparkles.png" id="46"]
+[ext_resource type="AudioStream" uid="uid://bf4drg6ui1bt2" path="res://Audio/SFX/Player/s2br_GetFlameSh.wav" id="46_mgjep"]
 [ext_resource type="Texture2D" uid="uid://bu6a2evw5s7ne" path="res://Graphics/Misc/water_splash.png" id="47"]
+[ext_resource type="AudioStream" uid="uid://bwy1fkt75f2i7" path="res://Audio/SFX/Player/s2br_GetBubbleSh.wav" id="47_gg5md"]
 [ext_resource type="Texture2D" uid="uid://bcighbbtky5cp" path="res://Graphics/Misc/DropDashDust.png" id="48"]
+[ext_resource type="AudioStream" uid="uid://bb52ya8gd24qe" path="res://Audio/SFX/Player/s2br_LightAb.wav" id="48_ofat8"]
 [ext_resource type="Texture2D" uid="uid://bu207ncbrfjm3" path="res://Graphics/Misc/skid_dust.png" id="49"]
+[ext_resource type="AudioStream" uid="uid://bfjs00danaq2i" path="res://Audio/SFX/Player/s2br_FlameAb.wav" id="49_qihwx"]
+[ext_resource type="AudioStream" uid="uid://d3xypbr064411" path="res://Audio/SFX/Player/s2br_BubbleAb.wav" id="50_hq3wd"]
 [ext_resource type="AudioStream" uid="uid://yjlpau0r0ysq" path="res://Audio/SFX/Player/s2br_Splash.wav" id="53_18626"]
 [ext_resource type="AudioStream" uid="uid://4t0tmhdmspa4" path="res://Audio/SFX/Player/s2br_TurnSuper.wav" id="53_tl1be"]
 [ext_resource type="Script" path="res://Scripts/Player/States/Respawn.gd" id="54"]
@@ -1445,7 +1445,7 @@ stream = ExtResource("41_i6was")
 bus = &"SFX"
 
 [node name="Death" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("22")
+stream = ExtResource("41_3quo4")
 bus = &"SFX"
 
 [node name="RingLeft" type="AudioStreamPlayer" parent="SFX"]
@@ -1461,27 +1461,27 @@ stream = ExtResource("45_bl5gg")
 bus = &"SFX"
 
 [node name="ElecShield" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("26")
+stream = ExtResource("45_ibif4")
 bus = &"SFX"
 
 [node name="FireShield" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("28")
+stream = ExtResource("46_mgjep")
 bus = &"SFX"
 
 [node name="BubbleShield" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("29")
+stream = ExtResource("47_gg5md")
 bus = &"SFX"
 
 [node name="ElecUse" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("31")
+stream = ExtResource("48_ofat8")
 bus = &"SFX"
 
 [node name="FireUse" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("30")
+stream = ExtResource("49_qihwx")
 bus = &"SFX"
 
 [node name="BubbleUse" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("27")
+stream = ExtResource("50_hq3wd")
 bus = &"SFX"
 
 [node name="InstaShield" type="AudioStreamPlayer" parent="SFX"]

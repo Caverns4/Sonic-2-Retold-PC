@@ -5,7 +5,7 @@ extends Node2D
 @export var nextZone = load("res://Scene/Presentation/ZoneLoader.tscn")
 var selected = false
 
-const LEFT_ROWS = 26 # number of columns to draw, including blank ones
+const LEFT_ROWS: float = 26 # number of columns to draw, including blank ones
 
 # character labels, the amount of labels in here determines the total amount of options, see the set character option at the end for settings
 var characterLabels = ["Sonic&Tails", "Sonic", "Tails", "Knuckles", "Amy","Mighty","Ray"]
@@ -251,7 +251,7 @@ func levelSelectSetupDirectionalInput():
 	inputCue.y = round(inputCue.y)
 	if inputCue != lastInput:
 		# select character rotation
-		var columnSize: int = round(LEFT_ROWS*0.75)
+		var columnSize: int = int(LEFT_ROWS*0.75)
 		if inputCue.x < 0:
 			if levelID == CharacterSelectMenuID-1:
 				characterID = wrapi(characterID-1,0,characterLabels.size())
