@@ -176,6 +176,18 @@ tracks/8/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CanvasLayer/Labels/PoweredBy:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="2"]
 length = 0.001
@@ -239,6 +251,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Labels/PoweredBy:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s27jj"]
 _data = {
@@ -268,6 +292,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PoweredBy" type="Label" parent="CanvasLayer/Labels"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -311,16 +336,16 @@ expand_mode = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Center/SonicWorldsNext"]
 use_parent_material = true
+position = Vector2(160, 0)
 texture = ExtResource("4")
 centered = false
 region_enabled = true
-region_rect = Rect2(0, 0, 160, 112)
+region_rect = Rect2(160, 0, 0, 112)
 
 [node name="Aliased" type="TextureRect" parent="CanvasLayer/Center/SonicWorldsNext"]
 clip_children = 2
 use_parent_material = true
 layout_mode = 0
-offset_right = 160.0
 offset_bottom = 112.0
 texture = ExtResource("7_h1bpg")
 expand_mode = 1

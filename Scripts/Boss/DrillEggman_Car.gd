@@ -147,7 +147,7 @@ func _on_area_2d_area_entered(_area): #Await Eggman to enter
 		emit_signal("carTouched")
 		velocity = Vector2.ZERO
 		currentPoint = 0
-		await get_tree().create_timer(3.0).timeout
+		await get_tree().create_timer(1.0).timeout
 		phase = 1
 
 

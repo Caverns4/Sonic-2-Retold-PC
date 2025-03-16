@@ -4,6 +4,7 @@ extends Node2D
 @export var nextScene = preload("res://Scene/Presentation/Title.tscn")
 # already changed is used to check that the powered by isn't already being skipped
 var alreadyChanged = false
+var globalTime = 0.0
 
 func _ready():
 	# delay so game can start
@@ -20,9 +21,12 @@ func _ready():
 			$Warp.play()
 			Global.main.change_scene_to_file(nextScene,"FadeOut","FadeOut",1)
 
+func _process(delta: float) -> void:
+	globalTime += delta
+
 func _input(event):
 	# check if start gets pressed
-	if event.is_action_pressed("gm_pause") and !alreadyChanged:
+	if event.is_action_pressed("gm_pause") and !alreadyChanged and globalTime > 1.5:
 		alreadyChanged = true # used so that room skipping isn't doubled
 		$Warp.play()
 		Global.main.change_scene_to_file(nextScene,"FadeOut","FadeOut",1)

@@ -94,6 +94,8 @@ func _physics_process(delta):
 					#if flashTimer <= 0:
 					set_animation("laugh") #laugh
 					velocity = Vector2.ZERO
+					
+					await get_tree().create_timer(0.25).timeout
 					hp = 8
 					phase = 1
 					drillCar.pilot = true
