@@ -77,12 +77,6 @@ position = Vector2(512, 1600)
 [node name="OozPlatformSpawnerLeft" parent="Platforms" instance=ExtResource("14_4174n")]
 position = Vector2(1152, 1568)
 
-[node name="EnemyBase" parent="Platforms" instance=ExtResource("13_u5cyi")]
-position = Vector2(1360, 1488)
-
-[node name="EnemyBase2" parent="Platforms" instance=ExtResource("13_u5cyi")]
-position = Vector2(256, 1456)
-
 [node name="ItemsHolder" type="Node2D" parent="."]
 
 [node name="Monitor" parent="ItemsHolder" instance=ExtResource("16_mordc")]
@@ -107,3 +101,9 @@ position = Vector2(320, 1536)
 
 [node name="Ring6" parent="Rings" instance=ExtResource("10")]
 position = Vector2(352, 1544)
+
+[node name="Aquis" parent="." instance=ExtResource("13_u5cyi")]
+position = Vector2(1360, 1488)
+
+[node name="Aquis2" parent="." instance=ExtResource("13_u5cyi")]
+position = Vector2(256, 1456)

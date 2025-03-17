@@ -79,3 +79,4 @@ stream = ExtResource("21_a3huc")
 bus = &"SFX"
 
 [node name="SsSonicTest" parent="." instance=ExtResource("33_o7v3h")]
+billboard = 1

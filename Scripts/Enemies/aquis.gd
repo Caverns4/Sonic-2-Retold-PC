@@ -1,7 +1,10 @@
 extends EnemyBase
 
+## Number of projectiles this Aquis can fire before being empty.
+@export var bulletCount = 3
 
-const SPEED = 30.0
+## Movement seed cap
+const SPEED = 60.0
 
 
 func _ready() -> void:

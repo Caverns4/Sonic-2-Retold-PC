@@ -22,16 +22,16 @@ func _process(delta: float) -> void:
 			rotation_degrees = move_toward(
 				rotation_degrees,
 				intialRotation+(90*rotateDirection),
-				delta*64)
+				delta*96)
 		else:
 			$LeftSegments.rotation_degrees = move_toward(
 				$LeftSegments.rotation_degrees,
 				90,
-				delta*64)
+				delta*96)
 			$RightSegments.rotation_degrees = move_toward(
 				$RightSegments.rotation_degrees,
 				-90,
-				delta*64)
+				delta*96)
 	
 	for child in $LeftSegments.get_children():
 		var next = child.find_child("Sprite2D",false)
