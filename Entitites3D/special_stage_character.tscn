@@ -17,13 +17,12 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b2vku"]
 
 [node name="SpecialStageCharacter" type="CharacterBody3D"]
-collision_layer = 4097
+collision_layer = 4096
 collision_mask = 8193
 floor_max_angle = 1.13446
 script = ExtResource("1_c71qe")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-visible = false
 shape = SubResource("CapsuleShape3D_b2vku")
 
 [node name="Camera3D" type="Camera3D" parent="."]

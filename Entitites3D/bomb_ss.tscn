@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://brhngubcqwg7i"]
+
+[ext_resource type="Script" path="res://Scripts/Special3D/bomb_ss.gd" id="1_eorbs"]
+[ext_resource type="Texture2D" uid="uid://t8grr0cwn5ki" path="res://Graphics/Special Stage/SS_Bombs.png" id="2_87gsc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_et0js"]
+atlas = ExtResource("2_87gsc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pd86d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_et0js")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vieij"]
+
+[node name="Bomb_SS" type="Node3D"]
+script = ExtResource("1_eorbs")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0742631, 0)
+pixel_size = 0.05
+billboard = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_pd86d")
+autoplay = "default"
+
+[node name="Hitbox" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+shape = SubResource("SphereShape3D_vieij")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]

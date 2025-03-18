@@ -8,6 +8,7 @@ var resultsScreen = preload("res://Scene/SpecialStage/SpecialStageResult.tscn")
 var wasLoaded = false
 
 func _ready():
+	get_tree().paused = false
 	# debuging
 	if !Global.is_main_loaded:
 		return false

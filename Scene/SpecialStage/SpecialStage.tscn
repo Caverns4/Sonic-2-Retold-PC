@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bma2174bd2vai"]
+[gd_scene load_steps=19 format=3 uid="uid://bma2174bd2vai"]
 
 [ext_resource type="Texture2D" uid="uid://chcgf78a1t8ik" path="res://Graphics/Special Stage/SS_BG.png" id="1_mx8be"]
 [ext_resource type="Script" path="res://Scripts/Level/SpecialStage.gd" id="1_x3k1r"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b2m6ntibathle" path="res://Graphics/Special Stage/TestMat.png" id="4_yfr13"]
 [ext_resource type="PackedScene" uid="uid://dblrkngio3lkk" path="res://Entitites3D/ChaosEmerald.tscn" id="6_ikpik"]
 [ext_resource type="PackedScene" uid="uid://bpmdeyvoxjr88" path="res://Entitites3D/SS_Bumper.tscn" id="8_tetl8"]
+[ext_resource type="PackedScene" uid="uid://brhngubcqwg7i" path="res://Entitites3D/bomb_ss.tscn" id="9_5i2nm"]
 [ext_resource type="PackedScene" uid="uid://dpl1a2gtxk5t2" path="res://Entitites3D/ring_ss.tscn" id="36_qkbuj"]
 
 [sub_resource type="Sky" id="Sky_7ob4j"]
@@ -204,3 +205,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -577)
 
 [node name="SsBumper7" parent="Entitites" instance=ExtResource("8_tetl8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -17, -604)
+
+[node name="Bomb_SS" parent="Entitites" instance=ExtResource("9_5i2nm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.030447, 0.864417, -24.5523)

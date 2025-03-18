@@ -128,6 +128,12 @@ func handle_input(delta):
 	
 	movement = (Vector3(input_axis*6.0,movement.y,0-inertia))
 
+func hit_player(damagePosition: Vector3,ammount: int):
+	if rings > 0:
+		sfx[9].play
+	rings = max(rings-abs(ammount),0)
+	if inertia > 0.0:
+		inertia = 0.0
 
 func rotate_to_floor_angle():
 	var surface_normal = get_floor()
