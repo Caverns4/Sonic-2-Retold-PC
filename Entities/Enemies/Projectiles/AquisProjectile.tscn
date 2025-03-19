@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://ckfiyvw2rdifj"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/aquis_projectile.gd" id="1_v64el"]
+[ext_resource type="Texture2D" uid="uid://d3wr0pwhbov5e" path="res://Graphics/Enemies/Aquis_Spit.png" id="2_5briv"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(4, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxw6t"]
+atlas = ExtResource("2_5briv")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3q3b"]
+atlas = ExtResource("2_5briv")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fq30i"]
+atlas = ExtResource("2_5briv")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_akp1m"]
+atlas = ExtResource("2_5briv")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cmkb8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxw6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3q3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fq30i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_akp1m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="AquisProjectile" type="CharacterBody2D"]
+collision_layer = 16384
+collision_mask = 0
+script = ExtResource("1_v64el")
+damageType = 3
+
+[node name="CollissionMask" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 528384
+
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+modulate = Color(1, 0, 0, 1)
+shape = SubResource("1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cmkb8")
+autoplay = "default"
+frame_progress = 0.701847
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(2.1, 2.1)
+
+[connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
