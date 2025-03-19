@@ -61,25 +61,22 @@ func _process(delta):
 	super(delta)
 	
 func LookAtPlayer():
-	var nearestplayerpos = GetClosestPlayerDistance()
-	#print(nearestplayerpos)
-	if nearestplayerpos:
-		if nearestplayerpos > global_position.x:
-			scale.x = -1
-		else:
-			scale.x = 1
+	var nearestPlayer = GetClosestPlayerByX()
+	if nearestPlayer and nearestPlayer.global_position.x > global_position.x:
+		scale.x = -1
+	else: #If a player was not found, or is left.
+		scale.x = 1
 
-func GetClosestPlayerDistance():
-	#Return the x coordinate of the nearest player
-	var j = 0 #last result
-	var closest = 128 #closest distance
-	var finaldist = 0 #Output number
-	for i in targets.size(): #number of applicable players
-		j = absf(global_position.x - targets[i].global_position.x)
-		if closest > j:
-			closest = j
-			finaldist = round(targets[i].global_position.x)
-	return finaldist
+func GetClosestPlayerByX():
+	#Return the nearest player by x_pos
+	var closest = null #closest x distance
+	var finalObj = null #Output object
+	for i in Global.players: #number of applicable players
+		var result = absf(global_position.x - (i.global_position.x))
+		if !closest or closest > result:
+			closest = result
+			finalObj = i
+	return finalObj
 
 func startClimbing(_delta):
 	if climb_state >= climbTimes.size():

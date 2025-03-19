@@ -111,26 +111,22 @@ func shootBullet():
 	bullet.velocity.x = 0-(direction * 200)
 
 func LookAtPlayer():
-	var nearestplayer = GetClosestPlayer()
-	if nearestplayer:
-		if nearestplayer.global_position.x > global_position.x:
-			direction = -1
-		else:
-			direction = 1
-		$Sprite2D.scale.x = direction
+	var nearestPlayer = GetClosestPlayerByX()
+	if nearestPlayer and nearestPlayer.global_position.x > global_position.x:
+		direction = -1
+	else: #If a player was not found, or is left.
+		direction = 1
+	$Sprite2D.scale.x = direction
 
-func GetClosestPlayer():
+func GetClosestPlayerByX():
 	#Return the nearest player by x_pos
-	var j = 0 #last x_position result
-	var closest = 160 #closest x distance
-	var finaldist = 0 #Output x number
+	var closest = null #closest x distance
 	var finalObj = null #Output object
-	for i in targets.size(): #number of applicable players
-		j = absf(global_position.x - targets[i].global_position.x)
-		if closest > j:
-			closest = j
-			finaldist = round(targets[i].global_position.x)
-			finalObj = targets[i]
+	for i in Global.players: #number of applicable players
+		var result = absf(global_position.x - (i.global_position.x))
+		if !closest or closest > result:
+			closest = result
+			finalObj = i
 	return finalObj
 
 

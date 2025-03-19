@@ -518,9 +518,9 @@ platformSprite = ExtResource("22_mb3so")
 endPosition = Vector2(0, -192)
 
 [node name="Elevator11" parent="Platforms" instance=ExtResource("21_dmurq")]
-position = Vector2(11200, 1100)
+position = Vector2(11200, 1292)
 platformSprite = ExtResource("22_mb3so")
-endPosition = Vector2(0, 192)
+endPosition = Vector2(0, -192)
 
 [node name="Elevator12" parent="Platforms" instance=ExtResource("21_dmurq")]
 position = Vector2(10048, 844)

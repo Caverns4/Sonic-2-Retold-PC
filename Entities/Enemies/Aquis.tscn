@@ -45,6 +45,8 @@ region_rect = Rect2(0, 48, 96, 16)
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(-16, -24, 32, 48)
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
