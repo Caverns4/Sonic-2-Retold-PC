@@ -1,5 +1,7 @@
 extends EnemyBase
 
+@export var bulletSound = preload("res://Audio/SFX/Objects/s2br_Projectile.wav")
+
 const SPEED = 25.0 #Walk speed
 const MAX_MOVE_TIME = 4.0 #time to move in each direction
 const SHOOT_WAIT_TIME = 2.0
@@ -51,12 +53,13 @@ func _physics_process(delta: float) -> void:
 			animator.play("WALK")
 
 func shootBullet():
-	# throw coconut
+	# Shoot stabdard bullet
 	bullet = Projectile.instantiate()
 	get_parent().add_child(bullet)
 	# set position with offset
 	bullet.gravity = true
 	bullet.global_position = bulletPoint.global_position
+	Global.play_sound(bulletSound)
 	
 	var temp = Vector2(0,-150).rotated(rotation)
 	if rotation == 0:

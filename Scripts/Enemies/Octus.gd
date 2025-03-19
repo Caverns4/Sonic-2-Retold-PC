@@ -101,7 +101,7 @@ func SpeedToPos(delta):
 	move_and_slide()
 
 func shootBullet():
-	# throw coconut
+	# Shoot stabdard bullet
 	Global.play_sound(bulletSound)
 	bullet = Projectile.instantiate()
 	get_parent().add_child(bullet)

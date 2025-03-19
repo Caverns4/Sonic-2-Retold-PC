@@ -40,7 +40,8 @@ bus = &"SFX"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(4.76837e-07, 0)
-scale = Vector2(2.4, 4)
+scale = Vector2(0.6, 1)
+rect = Rect2(-128, -32, 256, 64)
 
 [connection signal="body_entered" from="Saw" to="Saw" method="_on_body_entered"]
 [connection signal="body_exited" from="Saw" to="Saw" method="_on_body_exited"]
