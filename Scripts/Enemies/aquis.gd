@@ -29,6 +29,7 @@ func _physics_process(delta: float) -> void:
 		STATE.CHECKSCREEN:
 			if $VisibleOnScreenNotifier2D.is_on_screen():
 				state = STATE.CHASE
+				animator.play("float")
 		STATE.CHASE:
 			stateTime -= delta
 			var player = GetClosestPlayer()
@@ -43,6 +44,7 @@ func _physics_process(delta: float) -> void:
 				state = STATE.SHOOTING
 				velocity = Vector2.ZERO
 				stateTime = 0.5 #Shoot a bullet soon.
+				animator.play("spit")
 			else:
 				FleeIfSuper()
 		STATE.SHOOTING:
@@ -50,11 +52,13 @@ func _physics_process(delta: float) -> void:
 			if stateTime < 0.0:
 				shootBullet()
 				if bulletCount > 0:
+					animator.play("float")
 					state = STATE.CHASE
 					stateTime = 2.13
 					velocity.y = -120.0
 					shootFlag = false
 				else:
+					animator.play("float")
 					velocity.x = (SPEED*2)*direction
 					LookInMoveDirection()
 					state = STATE.FLEE
@@ -107,6 +111,7 @@ func FleeIfSuper():
 	if Global.players.size() > 0 and Global.players[0].isSuper:
 		var player = GetClosestPlayer()
 		if player:
+			animator.play("float")
 			direction = sign(global_position.x - player.global_position.x)
 			if direction == 0:
 				direction = 1

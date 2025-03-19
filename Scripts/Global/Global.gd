@@ -126,7 +126,7 @@ enum UNLOCKS{
 	STARTEMERALDS = 512, # Start with any number of Chaose Emralds: 50 coins
 	RINGDRAIN = 1024, # Disable Super Sonic Ringdrain: 50 coins
 }
-var livesMode = false
+var livesMode = true
 var airSpeedCap = true
 var superRingDrain = true
 var superAnyone = false
