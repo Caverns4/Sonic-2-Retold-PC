@@ -776,5 +776,7 @@ position = Vector2(10857, 1536)
 [node name="Octus13" parent="Enemies" instance=ExtResource("28_fcslk")]
 position = Vector2(11161, 576)
 
+[node name="Rings" type="Node" parent="."]
+
 [node name="SignpostNew" parent="." instance=ExtResource("19_3h71u")]
 position = Vector2(12352, 1536)
