@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://hj3tt0gklwba"]
+[gd_scene load_steps=29 format=4 uid="uid://hj3tt0gklwba"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="2_tkxs0"]
@@ -25,6 +25,8 @@
 [ext_resource type="PackedScene" uid="uid://c2t7hwn0iln3x" path="res://Entities/Obstacles/Elevator.tscn" id="21_dmurq"]
 [ext_resource type="PackedScene" uid="uid://bvtk4rs7h7sup" path="res://Entities/Gimmicks/Oil.tscn" id="21_yc6vl"]
 [ext_resource type="Texture2D" uid="uid://cyco1uten7qfm" path="res://Graphics/Objects_Zone/OOZ_Elevator.png" id="22_mb3so"]
+[ext_resource type="PackedScene" uid="uid://f2yjfoe6b1n7" path="res://Entities/Enemies/Aquis.tscn" id="26_u833e"]
+[ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="27_frkcf"]
 [ext_resource type="PackedScene" uid="uid://c8djwr7o6d6f7" path="res://Entities/Enemies/Octus.tscn" id="28_fcslk"]
 
 [node name="BaseZone" type="Node2D"]
@@ -727,12 +729,38 @@ position = Vector2(1936, 1392)
 position = Vector2(3440, 1456)
 item = 3
 
+[node name="Monitor5" parent="ItemsHolder" instance=ExtResource("17_tkmdx")]
+position = Vector2(4544, 1712)
+
+[node name="Monitor6" parent="ItemsHolder" instance=ExtResource("17_tkmdx")]
+position = Vector2(5960, 272)
+item = 2
+
+[node name="Monitor7" parent="ItemsHolder" instance=ExtResource("17_tkmdx")]
+position = Vector2(6480, 1008)
+
+[node name="Monitor8" parent="ItemsHolder" instance=ExtResource("17_tkmdx")]
+position = Vector2(6512, 1008)
+item = 2
+
+[node name="Monitor9" parent="ItemsHolder" instance=ExtResource("17_tkmdx")]
+position = Vector2(7792, 1648)
+
+[node name="Monitor10" parent="ItemsHolder" instance=ExtResource("17_tkmdx")]
+position = Vector2(11240, 560)
+
+[node name="Monitor11" parent="ItemsHolder" instance=ExtResource("17_tkmdx")]
+position = Vector2(11504, 880)
+item = 12
+
 [node name="Monitor3" parent="ItemsHolder" instance=ExtResource("17_tkmdx")]
 position = Vector2(10480, 912)
 item = 2
 
 [node name="Monitor4" parent="ItemsHolder" instance=ExtResource("17_tkmdx")]
 position = Vector2(9616, 240)
+item = 3
+shieldAffinity = 3
 
 [node name="Enemies" type="Node2D" parent="."]
 position = Vector2(-1, 0)
@@ -774,9 +802,51 @@ position = Vector2(10225, 1312)
 position = Vector2(10857, 1536)
 
 [node name="Octus13" parent="Enemies" instance=ExtResource("28_fcslk")]
-position = Vector2(11161, 576)
+position = Vector2(11193, 576)
+
+[node name="Aquis" parent="Enemies" instance=ExtResource("26_u833e")]
+position = Vector2(5153, 1016)
+
+[node name="Aquis2" parent="Enemies" instance=ExtResource("26_u833e")]
+position = Vector2(5457, 1008)
+
+[node name="Aquis3" parent="Enemies" instance=ExtResource("26_u833e")]
+position = Vector2(4865, 608)
+
+[node name="Aquis4" parent="Enemies" instance=ExtResource("26_u833e")]
+position = Vector2(8553, 72)
+
+[node name="Aquis5" parent="Enemies" instance=ExtResource("26_u833e")]
+position = Vector2(8785, 136)
+
+[node name="Aquis6" parent="Enemies" instance=ExtResource("26_u833e")]
+position = Vector2(9377, 832)
+
+[node name="Aquis7" parent="Enemies" instance=ExtResource("26_u833e")]
+position = Vector2(9585, 864)
+
+[node name="Aquis8" parent="Enemies" instance=ExtResource("26_u833e")]
+position = Vector2(10297, 752)
 
 [node name="Rings" type="Node" parent="."]
+
+[node name="Ring" parent="Rings" instance=ExtResource("27_frkcf")]
+position = Vector2(416, 1720)
+
+[node name="Ring2" parent="Rings" instance=ExtResource("27_frkcf")]
+position = Vector2(448, 1720)
+
+[node name="Ring3" parent="Rings" instance=ExtResource("27_frkcf")]
+position = Vector2(480, 1720)
+
+[node name="Ring4" parent="Rings" instance=ExtResource("27_frkcf")]
+position = Vector2(800, 1696)
+
+[node name="Ring5" parent="Rings" instance=ExtResource("27_frkcf")]
+position = Vector2(832, 1696)
+
+[node name="Ring6" parent="Rings" instance=ExtResource("27_frkcf")]
+position = Vector2(864, 1696)
 
 [node name="SignpostNew" parent="." instance=ExtResource("19_3h71u")]
 position = Vector2(12352, 1536)

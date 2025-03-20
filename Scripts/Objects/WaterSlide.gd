@@ -5,13 +5,13 @@ var players = []
 @export var force = 5.0 # how fast to push the players velocity to speed
 
 func _ready():
-	visible = false
+	$WaterPath.visible = false
 
 func _physics_process(delta):
 	# if any players are found in the array, if they're on the ground make them roll
 	if players.size() > 0:
 		for i in players:
-			if i.ground and !i.translate:
+			if i.ground and !i.allowTranslate and !i.controlObject:
 				# determine the direction of the arrow based on scale and rotation
 				var getDir = sign(scale.rotated(rotation).x)
 				
@@ -34,7 +34,7 @@ func _physics_process(delta):
 					i.animator.play("slide")
 
 func _on_ForceRoll_body_entered(body):
-	if !players.has(body) and !body.controlObject:
+	if !players.has(body):
 		players.append(body)
 
 
