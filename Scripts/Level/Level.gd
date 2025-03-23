@@ -1,11 +1,7 @@
 extends Node2D
 
 ## The current Zone ID, for Global.ZONES
-@export_enum(
-"Emerald Hill", "Hidden Palace","Hill Top", "Chemical Plant",
-"Oil Ocean", "Neo Green Hill","Metropolis","Dust Hill",
-"Wood Gadget","Casino Night","Jewel Grotto","Winter",
-"Sand Shower","Tropical Sun","Sky Fortress","Death Egg") var zoneID: int = Global.ZONES.EMERALD_HILL
+@export var zoneID = 0 as Global.ZONES
 @export var music = preload("res://Audio/Soundtrack/s2br_EmeraldHilll.ogg")
 @export var music2P = preload("res://Audio/Soundtrack/s2br_Tropical.ogg")
 
@@ -38,6 +34,8 @@ var nextZone = load("res://Scene/Presentation/ZoneLoader.tscn")
 @export var defaultRightBoundry: int = 16384
 @export var setDefaultBottom: bool = true
 @export var defaultBottomBoundry: int = 2048
+
+@export var test = 0 as Global.ZONES
 
 var twoPlayerWindow = preload("res://Scene/TwoPlayerScreenView.tscn")
 
