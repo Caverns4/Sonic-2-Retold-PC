@@ -16,7 +16,7 @@ const ACCEL = 2*60
 
 enum STATE{CHECKSCREEN,CHASE,SHOOTING,FLEE}
 var state: int = STATE.CHECKSCREEN
-var stateTime: float = 0.25
+var stateTime: float = 0.0
 var shootFlag: bool = false
 var direction: int = -1
 
@@ -59,7 +59,7 @@ func _physics_process(delta: float) -> void:
 					shootFlag = false
 				else:
 					animator.play("float")
-					velocity.x = (SPEED*2)*direction
+					velocity.x = (SPEED*3)*direction
 					LookInMoveDirection()
 					state = STATE.FLEE
 			else:

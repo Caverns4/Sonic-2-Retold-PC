@@ -20,8 +20,8 @@ var currentTarget = null # The target picked from targets. used to remember the 
 var stateTimer = 0.0
 var direction = 1
 
-const SCAN_TIME = 		(32.0/60.0) # Time to wait before jumping
-const JUMP_TIME = 		1.0 # Time to wait after jumping before firing
+const SCAN_TIME = 		(30.0/60.0) # Time to wait before jumping
+const JUMP_TIME = 		0.5 # Time to wait after jumping before firing
 const COOLDOWN_TIME =	0.26 # Time to idle before trying to land.
 const GRAVITY = 300
 const JUMP_VEL = -100
@@ -117,6 +117,8 @@ func LookAtPlayer():
 	else: #If a player was not found, or is left.
 		direction = 1
 	$Sprite2D.scale.x = direction
+	if nearestPlayer.isSuper:
+		behavior = 1 #Flee
 
 func GetClosestPlayerByX():
 	#Return the nearest player by x_pos
