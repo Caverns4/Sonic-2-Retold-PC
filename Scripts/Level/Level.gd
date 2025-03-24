@@ -35,8 +35,6 @@ var nextZone = load("res://Scene/Presentation/ZoneLoader.tscn")
 @export var setDefaultBottom: bool = true
 @export var defaultBottomBoundry: int = 2048
 
-@export var test = 0 as Global.ZONES
-
 var twoPlayerWindow = preload("res://Scene/TwoPlayerScreenView.tscn")
 
 # was loaded is used for room loading, this can prevent overwriting global information, see Global.gd for more information on scene loading

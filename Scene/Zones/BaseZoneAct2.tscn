@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://bjavywoj00j1j"]
+[gd_scene load_steps=24 format=4 uid="uid://bjavywoj00j1j"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="2_533ik"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="18"]
 [ext_resource type="PackedScene" uid="uid://dh3178ok4om00" path="res://Entities/Misc/player_reset_field.tscn" id="21_k3j71"]
 [ext_resource type="PackedScene" uid="uid://bjuh5cvbt06af" path="res://Entities/MainObjects/Capsule.tscn" id="22_gayax"]
+[ext_resource type="PackedScene" uid="uid://bbf1sa8l70ygh" path="res://Entities/Gimmicks/fan.tscn" id="23_uuon4"]
 
 [node name="BaseZoneAct2" type="Node2D"]
 script = ExtResource("2")
@@ -110,6 +111,23 @@ turnDirection = 1
 [node name="PlayerResetField" parent="Entities" instance=ExtResource("21_k3j71")]
 position = Vector2(2112, 800)
 scale = Vector2(4, 4)
+
+[node name="Fan" parent="Entities" instance=ExtResource("23_uuon4")]
+position = Vector2(544, 1680)
+activeTime = 4.0
+
+[node name="Fan2" parent="Entities" instance=ExtResource("23_uuon4")]
+position = Vector2(608, 1784)
+activeTime = 4.0
+
+[node name="Fan3" parent="Entities" instance=ExtResource("23_uuon4")]
+position = Vector2(544, 1888)
+activeTime = 4.0
+
+[node name="Fan4" parent="Entities" instance=ExtResource("23_uuon4")]
+position = Vector2(992, 1520)
+rotation = -1.5708
+activeTime = 4.0
 
 [node name="Platforms" type="Node" parent="."]
 

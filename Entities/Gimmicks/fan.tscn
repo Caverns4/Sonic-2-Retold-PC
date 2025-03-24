@@ -12,9 +12,10 @@ size = Vector2(128, 96)
 collision_layer = 0
 collision_mask = 4096
 script = ExtResource("1_5mjmq")
+playSound = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -16)
+position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_se3l2")
 debug_color = Color(0.666667, 0, 1, 0.501961)
 

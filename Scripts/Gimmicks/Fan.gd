@@ -1,52 +1,54 @@
-@tool
+#@tool
 extends Area2D
 
-#TODO: Horizonal Fans have different behavior than vertical fans, pretty much entirely
-
 var players = []
-@export var speed: float = 90.0 # default power
 @export var isActive: bool = true
 @export var touchActive: bool = false
 @export var playSound: bool = true
 @export var activeTime: float = 0.0 #if 0, never expire
 
+const FORCE_AMOUNT  = 96
+
 var timer: float = 0.0
 var getFrame: float = 0.0
 var animSpeed: float = 0.0
+var pushPlayers: bool = true
 
 var Bubble = preload("res://Entities/Misc/Bubbles.tscn")
+enum DIRECTIONS{LEFT,VERTICAL,RIGHT}
+var direction = 0
+var names = ["Left","Vertical","Right"]
 
 func _ready():
-	scale.x = max(1,scale.x)
+	if !Engine.is_editor_hint():
+		var test = Vector2.UP.rotated(global_rotation)
+		test.x = roundi(test.x)
+		direction = sign(test.x)+1 as DIRECTIONS
+		#print(names[direction])
+
 	$fan.global_scale = Vector2(1,1)
 	if $fan.texture != null:
 		$fan.region_rect.size.x = $fan.texture.get_width()*round(scale.x)
 
 func _process(delta):
-	if Engine.is_editor_hint():
-		scale.x = max(1,scale.x)
-		$fan.global_scale = Vector2(1,1)
-		if $fan.texture != null:
-			$fan.region_rect.size.x = $fan.texture.get_width()*round(scale.x)
-		# No need to cotinue running the rest if we are in hint mode
-		return
+	#if Engine.is_editor_hint():
+	#	if $fan.texture != null:
+	#		$fan.region_rect.size.x = $fan.texture.get_width()*round(scale.x)
+	#	# No need to cotinue running the rest if we are in hint mode
+	#	return
 	# animate
 	var goSpeed = 0.0
-	if isActive:
-		if !touchActive or players.size() > 0:
-			if activeTime == 0:
-				goSpeed = 30.0
-			else:
-				goSpeed = clampf(timer*30.0,0,30.0)
-			# play fan sound
-			if playSound and !$FanSound.playing:
-				$FanSound.play()
-		# end sound if playing
-		elif $FanSound.playing:
-			$FanSound.stop()
-	# back up end sound
+	if !touchActive or players.size() > 0:
+		if activeTime == 0:
+			goSpeed = 30.0
+		else:
+			goSpeed = clampf(timer*30.0,0,30.0)
+		# play fan sound
+		if playSound and !$FanSound.playing:
+			$FanSound.play()
+	# end sound if playing
 	elif $FanSound.playing:
-			$FanSound.stop()
+		$FanSound.stop()
 	
 	animSpeed = lerp(animSpeed,goSpeed,delta*1.5)
 	$fan.frame = getFrame
@@ -54,27 +56,28 @@ func _process(delta):
 
 
 func _physics_process(delta):
-	timer += delta
-	timer = wrapf(timer,(0-activeTime),activeTime)
-	if Engine.is_editor_hint():
-		return
-	# if any players are found in the array, if they're on the ground make them roll
-	if players.size() > 0 and (activeTime == 0 or timer > 0.0):
-		for i in players:
-			if !i.controlObject and !i.allowTranslate:
-				
-				var force = Vector2(0,-30).rotated(global_rotation)
-				i.movement += force
-				#Only do this if the fan is pointing upward
-				if force.y < 0:
-					#i.movement.y = min(i.movement.y,90)
-					i.movement.y = clamp(i.movement.y,-360,120)
-					if i.ground and i.currentState != i.STATES.ROLL:
+	#if Engine.is_editor_hint():
+	#	return
+	if !touchActive:
+		timer += delta
+		timer = wrapf(timer,-activeTime,activeTime)
+	
+	if animSpeed > 10 and !pushPlayers:
+		pushPlayers = true
+	elif animSpeed < 10 and pushPlayers:
+		pushPlayers = false
+	
+	match direction:
+		#Veritcal Fans
+		DIRECTIONS.VERTICAL:
+			for i in players:
+				#print(names[direction])
+				if pushPlayers and (!i.controlObject and !i.allowTranslate):
+					i.movement.y += -30
+					i.movement.y = clamp(i.movement.y,-240,120)
+					if i.ground:
 						i.disconect_from_floor()
-					
-				#Play floating animation if player is in midair
-				if !i.ground:
-					# force air state
+						# force air state
 					var setPlayerAnimation = "corkScrew"
 					# water animation
 					if i.water:
@@ -82,7 +85,28 @@ func _physics_process(delta):
 					if i.currentState != i.STATES.ANIMATION or i.animator.current_animation != setPlayerAnimation:
 						i.set_state(i.STATES.AIR)
 						i.animator.play(setPlayerAnimation)
-	
+		#Horizonal Fans
+		_:
+			for i in players:
+				#If the fan is active, the player is not externally controlled,
+				#and the player is not rolling on the ground.
+				if pushPlayers and (
+				!i.controlObject and !i.allowTranslate) and !(
+				i.ground and i.currentState == i.STATES.ROLL
+				):
+					var x_diff = (0-sign(direction-1))*(
+					i.global_position.x - global_position.x)
+					# calculate force
+					var fan_force = floor(x_diff)
+					if x_diff < 0:
+						#Behind the fan
+						fan_force = -(fan_force -1)*2
+					#Final Position Calc
+					fan_force = fan_force+FORCE_AMOUNT
+					fan_force = (256 - fan_force)/16
+					if (direction-1) < 0:
+						fan_force = 0-fan_force
+					i.global_position.x += fan_force
 
 
 func _on_body_entered(body):
@@ -115,6 +139,6 @@ func _on_bubble_timer_timeout():
 		# choose between 2 bubble types, both cosmetic
 		bub.bubbleType = int(round(randf()))
 		# add to the speed of the bubbles
-		bub.velocity.y -= speed*0.5
+		bub.velocity.y -= 60*0.5
 		bub.maxDistance = (global_position.y-(16*scale.y)+cos(Global.levelTime*4)*4)
 		get_parent().add_child(bub)

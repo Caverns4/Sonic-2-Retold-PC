@@ -41,11 +41,11 @@ func _ready():
 		# Life Icon (life icons are a special case)
 		if item == ITEMTYPES.LIFEP1 and !Engine.is_editor_hint():
 			if Global.livesMode:
-				$Item.frame = item + Global.PlayerChar1
+				$Item.frame = item+2 + Global.PlayerChar1
 		if item == ITEMTYPES.LIFEP2 and !Engine.is_editor_hint():
-			var nextFrame = item + Global.PlayerChar2
-			if Global.PlayerChar2 < Global.CHARACTERS.SONIC:
-				nextFrame = item + 1
+			var nextFrame = item+1 + Global.PlayerChar2
+			#if Global.PlayerChar2 < Global.CHARACTERS.SONIC:
+			#	nextFrame = item + 1
 			$Item.frame = nextFrame
 			
 	
@@ -54,6 +54,10 @@ func _process(_delta):
 	# update for editor
 	if Engine.is_editor_hint():
 		$Item.frame = item+2
+		if item == ITEMTYPES.LIFEP1:
+			$Item.frame = item+3
+		if item == ITEMTYPES.LIFEP2:
+			$Item.frame = item+3
 
 func FrameUpdate():
 	$Item.frame = item+2
