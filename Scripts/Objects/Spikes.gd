@@ -22,8 +22,17 @@ func _physics_process(delta):
 # Collision check (this is where the player gets hurt, OW!)
 func physics_collision(body, hitVector):
 	if hitVector.is_equal_approx((Vector2.DOWN*scale.sign()).rotated(deg_to_rad(snapped(rotation_degrees,90)))):
-		body.hit_player(global_position)
-		return true
+		if body.character == Global.CHARACTERS.MIGHTY and body.curled:
+			body.disconect_from_floor()
+			body.global_position -= Vector2(ceil(hitVector.x),ceil(hitVector.y))*8
+			body.curled = false
+			body.movement.y = -3.5*60
+			body.bounceReaction = 0
+			body.animator.play("walk")
+			body.set_state(body.STATES.AIR)
+		else:
+			body.hit_player(global_position)
+		#return true
 
 
 func _on_ShiftTimer_timeout():

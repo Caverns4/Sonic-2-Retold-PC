@@ -49,4 +49,4 @@ func physics_collision(body, hitVector):
 			# play animation if a node is hooked up
 			if (animatorNode != null):
 				animatorNode.play(animationName)
-		return true
+		#return true

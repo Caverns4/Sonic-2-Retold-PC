@@ -21,8 +21,10 @@ func _process(delta):
 			# check if damage entity is on or supertime is bigger then 0
 			if (i.get_collision_layer_value(20) or i.supTime > 0 or forceDamage):
 				# check player is not on floor
-				var bounce = (i.character == Global.CHARACTERS.MIGHTY and i.animator.current_animation == "dropDash")
-				if !i.ground and !(bounce):
+				var skipBounce = (
+				i.character == Global.CHARACTERS.MIGHTY and 
+				i.animator.current_animation == "dropDash")
+				if !i.ground and !(skipBounce):
 					if i.movement.y > 0:
 						# Bounce high upward
 						i.movement.y = -i.movement.y
@@ -40,6 +42,7 @@ func _process(delta):
 					#	# Bounce slightly up
 					#	i.movement.y = min (i.movement.y,0)
 					#	i.movement.y -= 100
+					
 					if i.shield == i.SHIELDS.BUBBLE:
 							i.emit_enemy_bounce()
 				# destroy

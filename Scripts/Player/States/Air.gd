@@ -132,20 +132,23 @@ func _process(_delta):
 						# play dropDash animation
 						parent.animator.play("dropDash")
 					Global.CHARACTERS.MIGHTY:
-						# set ability used to true to prevent multiple uses
-						parent.abilityUsed = true
-						parent.airControl = true
+						if !parent.curled:
+							# set ability used to true to prevent multiple uses
+							parent.abilityUsed = true
+							parent.airControl = true
+							parent.curled = true
+							parent.bounceReaction = 3.5
 						
-						parent.movement.x = clampf(parent.movement.x,-60.0,60.0)
-						if parent.water:
-							parent.movement.y = 8*60
-						else:
-							parent.movement.y = 12*60
-						# play stomp sound
-						parent.sfx[30].play()
-						parent.shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled = (parent.animator.current_animation == "dropDash")
-						# play dropDash animation
-						parent.animator.play("dropDash")
+							parent.movement.x = clampf(parent.movement.x,-60.0,60.0)
+							if parent.water:
+								parent.movement.y = 8*60
+							else:
+								parent.movement.y = 12*60
+							# play stomp sound
+							parent.sfx[30].play()
+							parent.shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled = (parent.animator.current_animation == "dropDash")
+							# play dropDash animation
+							parent.animator.play("dropDash")
 						
 					Global.CHARACTERS.RAY:
 						pass
@@ -295,15 +298,20 @@ func bounce():
 		parent.movement.y = -parent.bounceReaction*60
 		
 		parent.bounceReaction = 0
-		# bubble shield actions
-		if parent.shieldSprite.animation == "BubbleAction" or parent.shieldSprite.animation == "Bubble":
-			parent.shieldSprite.play("BubbleBounce")
-			parent.sfx[15].play()
-			var getTimer = parent.shieldSprite.get_node_or_null("ShieldTimer")
-			# Start bubble timer
-			if getTimer != null:
-				getTimer.start(0.15)
-		parent.abilityUsed = false
+		if parent.character != Global.CHARACTERS.MIGHTY:
+			# bubble shield actions
+			if parent.shieldSprite.animation == "BubbleAction" or parent.shieldSprite.animation == "Bubble":
+				parent.shieldSprite.play("BubbleBounce")
+				parent.sfx[15].play()
+				var getTimer = parent.shieldSprite.get_node_or_null("ShieldTimer")
+				# Start bubble timer
+				if getTimer != null:
+					getTimer.start(0.15)
+			parent.abilityUsed = false
+		else:
+			parent.abilityUsed = true
+			parent.animator.play("walk")
+			parent.curled = false
 		return true
 	# if no bounce then return false to continue with landing routine
 	return false

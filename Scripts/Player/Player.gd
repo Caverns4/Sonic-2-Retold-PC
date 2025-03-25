@@ -41,6 +41,7 @@ var releaseJmp = 4			#jump release velocity
 var spindashPower = 0.0
 var peelOutCharge = 0.0
 var abilityUsed = false
+var curled = false
 var bounceReaction = 0 # for bubble shield
 var invTime = 0
 var supTime = 0
@@ -1231,7 +1232,11 @@ func touch_ceiling():
 	movement.y = 0
 
 func land_floor():
+	curled = false
 	
+	if character == Global.CHARACTERS.MIGHTY and (abilityUsed):
+		curled = true
+
 	abilityUsed = false
 	# landing movement calculation
 	
@@ -1434,6 +1439,7 @@ func action_move(delta):
 
 func action_jump(animation = "roll", airJumpControl = true, playSound=true):
 	if forceRoll <= 0: # check to prevent jumping in roll tubes
+		curled = false
 		animator.play(animation)
 		animator.advance(0)
 		movement.y = -jmp
