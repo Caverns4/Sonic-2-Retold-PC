@@ -1446,6 +1446,9 @@ func action_jump(animation = "roll", airJumpControl = true, playSound=true):
 		jumpBuffer = 0
 		if playSound:
 			sfx[0].play()
+		if Global.CHARACTERS.MIGHTY:
+			curled = true
+			
 		airControl = airJumpControl
 		cameraDragLerp = 1
 		disconect_from_floor()

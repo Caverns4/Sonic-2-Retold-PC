@@ -132,7 +132,7 @@ func _process(_delta):
 						# play dropDash animation
 						parent.animator.play("dropDash")
 					Global.CHARACTERS.MIGHTY:
-						if !parent.curled:
+						if !parent.abilityUsed:
 							# set ability used to true to prevent multiple uses
 							parent.abilityUsed = true
 							parent.airControl = true
@@ -310,7 +310,7 @@ func bounce():
 			parent.abilityUsed = false
 		else:
 			parent.abilityUsed = true
-			parent.animator.play("walk")
+			parent.animator.play("rebound")
 			parent.curled = false
 		return true
 	# if no bounce then return false to continue with landing routine

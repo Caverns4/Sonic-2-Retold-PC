@@ -875,7 +875,7 @@ position = Vector2(8768, 440)
 position = Vector2(8752, 488)
 
 [node name="Ring130" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(8296, 872)
+position = Vector2(8288, 872)
 
 [node name="Ring131" parent="Rings" instance=ExtResource("32_xmgm7")]
 position = Vector2(8264, 872)

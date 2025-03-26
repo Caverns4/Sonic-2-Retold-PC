@@ -83,7 +83,7 @@ position = Vector2(10752, 704)
 scale = Vector2(40, 1)
 
 [node name="OOZ_Spiker" parent="Entities" instance=ExtResource("11_5go7m")]
-position = Vector2(3520, 1320)
+position = Vector2(3520, 1328)
 
 [node name="Spring" parent="Entities" instance=ExtResource("12_rrmya")]
 position = Vector2(1696, 1720)
@@ -145,7 +145,7 @@ endPosition = Vector2(0, 192)
 [node name="Elevator2" parent="Platforms" instance=ExtResource("15_opk6m")]
 position = Vector2(3136, 1103)
 platformSprite = ExtResource("16_74o7v")
-endPosition = Vector2(0, 192)
+endPosition = Vector2(0, 191)
 
 [node name="ItemsHolder" type="Node" parent="."]
 

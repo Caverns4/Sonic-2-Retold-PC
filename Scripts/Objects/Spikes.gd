@@ -26,9 +26,11 @@ func physics_collision(body, hitVector):
 			body.disconect_from_floor()
 			body.global_position -= Vector2(ceil(hitVector.x),ceil(hitVector.y))*8
 			body.curled = false
+			body.abilityUsed = true
+			body.sfx[4].play()
 			body.movement.y = -3.5*60
 			body.bounceReaction = 0
-			body.animator.play("walk")
+			body.animator.play("rebound")
 			body.set_state(body.STATES.AIR)
 		else:
 			body.hit_player(global_position)

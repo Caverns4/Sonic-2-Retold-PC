@@ -10,7 +10,7 @@ radius = 16.0
 height = 64.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vfm1x"]
-size = Vector2(48, 24)
+size = Vector2(48, 16)
 
 [node name="OOZ_Spiker" type="CharacterBody2D"]
 collision_layer = 0
@@ -31,7 +31,7 @@ modulate = Color(1, 0, 0, 1)
 shape = SubResource("CapsuleShape2D_enfnq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -20)
+position = Vector2(0, -24)
 shape = SubResource("RectangleShape2D_vfm1x")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
