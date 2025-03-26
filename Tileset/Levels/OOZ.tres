@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=163 format=3 uid="uid://qd7e8tmf376"]
+[gd_resource type="TileSet" load_steps=165 format=3 uid="uid://qd7e8tmf376"]
 
 [ext_resource type="Texture2D" uid="uid://d3fmwymushbdl" path="res://Graphics/Tiles/OOZ/OOZ_Blocks.png" id="1_xdo1m"]
 [ext_resource type="Texture2D" uid="uid://dwlgts7fmtnws" path="res://Graphics/Backgrounds/OOZ/OOZ_BGTiles.png" id="2_0fi1o"]
@@ -200,6 +200,12 @@ tile_data = PackedInt32Array(0, 393216, 5, 65536, 65536, 268500995, 1, 458752, 5
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_2bnmg"]
 tile_data = PackedInt32Array(0, 65536, 268435459, 1, 196608, 23, 65537, 393216, 5, 131073, 196608, 34, 196609, 131072, 34, 262145, 196608, 34, 327681, 131072, 34, 393217, 196608, 34, 458753, 131072, 34, 2, 589824, 23, 65538, 655360, 5, 131074, 196608, 34, 196610, 131072, 34, 262146, 196608, 34, 327682, 131072, 34, 393218, 196608, 34, 458754, 131072, 34, 3, 65536, 3)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_6dlpv"]
+tile_data = PackedInt32Array(327680, 655360, 23, 393216, 0, 268435459, 458752, 983040, 805306370, 131073, 983040, 18, 196609, 262144, 19, 262145, 196608, 23, 327681, 65536, 18, 393217, 589824, 34, 458753, 917504, 23, 524289, 262144, 536870931, 589825, 983040, 536870930, 131074, 0, 19, 196610, 327680, 19, 262146, 262144, 23, 327682, 65536, 18, 393218, 655360, 34, 458754, 983040, 23, 524290, 327680, 536870931, 589826, 393216, 24, 655362, 720896, 34, 3, 524288, 19, 65539, 851968, 18, 131075, 65536, 19, 196611, 393216, 19, 262147, 327680, 23, 327683, 720896, 23, 393219, 655360, 19, 458755, 0, 24, 524291, 327680, 24, 589827, 458752, 24, 655363, 655360, 24, 4, 786432, 18, 65540, 917504, 18, 131076, 131072, 19, 196612, 458752, 19, 262148, 393216, 23, 327684, 786432, 23, 393220, 720896, 19, 458756, 65536, 24, 524292, 327680, 268435480, 589828, 524288, 24, 655364, 655360, 24, 5, 262144, 27, 65541, 0, 268435459, 131077, 196608, 19, 196613, 327680, 268435475, 262149, 524288, 23, 327685, 196608, 5, 393221, 262144, 18, 458757, 131072, 24, 524293, 327680, 805306387, 589829, 589824, 24, 655365, 327680, 18, 131078, 983040, 268435474, 196614, 262144, 268435475, 262150, 589824, 23, 327686, 262144, 5, 393222, 327680, 18, 458758, 196608, 24, 524294, 262144, 805306387, 589830, 983040, 805306386, 655366, 720896, 24, 393223, 851968, 23, 458759, 262144, 24, 524295, 262144, 24, 589831, 262144, 24, 655367, 786432, 24)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_tqniu"]
+tile_data = PackedInt32Array(131072, 983040, 18, 196608, 262144, 19, 262144, 196608, 23, 327680, 65536, 18, 393216, 589824, 34, 458752, 917504, 23, 524288, 262144, 536870931, 589824, 983040, 536870930, 131073, 0, 19, 196609, 327680, 19, 262145, 262144, 23, 327681, 65536, 18, 393217, 655360, 34, 458753, 983040, 23, 524289, 327680, 536870931, 589825, 393216, 24, 655361, 720896, 34, 2, 524288, 19, 65538, 851968, 18, 131074, 65536, 19, 3, 786432, 18, 65539, 917504, 18, 131075, 131072, 19, 4, 262144, 27, 65540, 0, 268435459, 131076, 196608, 19, 196612, 327680, 268435475, 262148, 524288, 23, 327684, 196608, 5, 393220, 720896, 34, 458756, 131072, 24, 524292, 327680, 805306387, 589828, 589824, 24, 655364, 786432, 34, 131077, 983040, 268435474, 196613, 262144, 268435475, 262149, 589824, 23, 327685, 262144, 5, 393221, 786432, 34, 458757, 196608, 24, 524293, 262144, 805306387, 589829, 983040, 805306386)
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_24m3i"]
 tile_data = PackedInt32Array(0, 131072, 1, 65536, 131072, 536870912, 1, 196608, 1, 65537, 196608, 536870912, 2, 131072, 34, 65538, 196608, 34, 131074, 589824, 11, 196610, 589824, 11, 262146, 589824, 11, 327682, 589824, 11, 393218, 589824, 11, 458754, 589824, 11)
@@ -1180,10 +1186,13 @@ texture = ExtResource("1_xdo1m")
 14:17/0 = 0
 15:17/0 = 0
 15:18/0 = 0
+15:18/0/z_index = 10
 14:18/0 = 0
 14:18/0/z_index = 10
+14:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 13:18/0 = 0
 13:18/0/z_index = 10
+13:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 12:18/0 = 0
 12:18/0/z_index = 10
 11:18/0 = 0
@@ -1213,13 +1222,33 @@ texture = ExtResource("1_xdo1m")
 0:18/0 = 0
 0:18/0/z_index = 10
 0:19/0 = 0
+0:19/0/z_index = 10
+0:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:19/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:19/0 = 0
+1:19/0/z_index = 10
+1:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:19/0 = 0
+2:19/0/z_index = 10
+2:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:19/0 = 0
+3:19/0/z_index = 10
+3:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:19/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:19/0 = 0
+4:19/0/z_index = 10
+4:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:19/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:19/0/physics_layer_2/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:19/0 = 0
+5:19/0/z_index = 10
+5:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:19/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:19/0/physics_layer_2/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:19/0 = 0
+6:19/0/z_index = 10
 7:19/0 = 0
+7:19/0/z_index = 10
 8:19/0 = 0
 8:19/0/z_index = 10
 9:19/0 = 0
@@ -1361,9 +1390,11 @@ texture = ExtResource("1_xdo1m")
 2:23/0/z_index = 10
 3:23/0 = 0
 3:23/0/z_index = 10
+3:23/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:23/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:23/0 = 0
 4:23/0/z_index = 10
+4:23/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:23/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:23/0 = 0
 5:23/0/z_index = 10
@@ -1373,9 +1404,11 @@ texture = ExtResource("1_xdo1m")
 7:23/0/z_index = 10
 8:23/0 = 0
 8:23/0/z_index = 10
+8:23/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:23/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:23/0 = 0
 9:23/0/z_index = 10
+9:23/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:23/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 10:23/0 = 0
 10:23/0/z_index = 10
@@ -1388,8 +1421,10 @@ texture = ExtResource("1_xdo1m")
 13:23/0/z_index = 10
 14:23/0 = 0
 14:23/0/z_index = 10
+14:23/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 15:23/0 = 0
 15:23/0/z_index = 10
+15:23/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:0/0 = 0
 0:0/0/z_index = 10
 0:24/0 = 0
@@ -1398,20 +1433,26 @@ texture = ExtResource("1_xdo1m")
 1:24/0/z_index = 10
 2:24/0 = 0
 2:24/0/z_index = 10
+2:24/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:24/0 = 0
 3:24/0/z_index = 10
+3:24/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:24/0 = 0
 4:24/0/z_index = 10
 5:24/0 = 0
 5:24/0/z_index = 10
 6:24/0 = 0
 6:24/0/z_index = 10
+6:24/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:24/0/physics_layer_2/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:24/0 = 0
 7:24/0/z_index = 10
 8:24/0 = 0
 8:24/0/z_index = 10
 9:24/0 = 0
 9:24/0/z_index = 10
+9:24/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:24/0/physics_layer_2/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 10:24/0 = 0
 10:24/0/z_index = 10
 11:24/0 = 0
@@ -1554,6 +1595,7 @@ texture = ExtResource("1_xdo1m")
 12:28/0 = 0
 12:28/0/z_index = 10
 11:28/0 = 0
+11:28/0/z_index = 10
 11:28/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 10:28/0 = 0
 10:28/0/z_index = 10
@@ -2214,3 +2256,5 @@ pattern_154 = SubResource("TileMapPattern_bdjl7")
 pattern_155 = SubResource("TileMapPattern_v5gq2")
 pattern_156 = SubResource("TileMapPattern_avox7")
 pattern_157 = SubResource("TileMapPattern_2bnmg")
+pattern_158 = SubResource("TileMapPattern_6dlpv")
+pattern_159 = SubResource("TileMapPattern_tqniu")

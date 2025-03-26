@@ -35,6 +35,11 @@ func _physics_process(delta: float) -> void:
 			var player = Global.players[i]
 			plat.global_position.y = restPos + weightVals[i]
 			plat.global_position.x = player.global_position.x
+			
+			plat.global_position.x = clamp(
+			plat.global_position.x,
+			global_position.x - (size.x/2),
+			global_position.x + ((size.x/2)-16))
 
 			if plat.active:
 				weightVals[i] += (delta*sinkingSpeed)
