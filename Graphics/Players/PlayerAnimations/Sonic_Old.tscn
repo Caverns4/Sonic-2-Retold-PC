@@ -1,7 +1,8 @@
-[gd_scene load_steps=64 format=3 uid="uid://bihqiv8o4yn0"]
+[gd_scene load_steps=66 format=3 uid="uid://bihqiv8o4yn0"]
 
-[ext_resource type="Material" uid="uid://bveqi5m5ihsgj" path="res://Shaders/PlayerPalette.tres" id="1_13u00"]
+[ext_resource type="Shader" path="res://Shaders/PaletteSwapRow.gdshader" id="1_mki7d"]
 [ext_resource type="Texture2D" uid="uid://cqk04hqgn2v8b" path="res://Graphics/Players/Sonic_Beta.png" id="2_f1p4t"]
+[ext_resource type="Texture2D" uid="uid://cb15hqvojyfdf" path="res://Graphics/Palettes/SuperSonicPal_old.png" id="2_i8rn3"]
 [ext_resource type="Texture2D" uid="uid://dlomjk6vm15ep" path="res://Graphics/Misc/DashDust.png" id="3_ucwrt"]
 [ext_resource type="Texture2D" uid="uid://dvqglf8dididc" path="res://Graphics/Items/shield_plain.png" id="4_kiud2"]
 
@@ -1048,6 +1049,14 @@ _data = {
 "yRotation": SubResource("126")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b1kv7"]
+shader = ExtResource("1_mki7d")
+shader_parameter/amount = 5.0
+shader_parameter/palRows = 16.0
+shader_parameter/row = 1.0
+shader_parameter/approximation = 0.0
+shader_parameter/paletteTexture = ExtResource("2_i8rn3")
+
 [sub_resource type="AtlasTexture" id="89"]
 atlas = ExtResource("3_ucwrt")
 region = Rect2(0, 0, 48, 48)
@@ -1174,12 +1183,11 @@ autoplay = "idle"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 5
-material = ExtResource("1_13u00")
+material = SubResource("ShaderMaterial_b1kv7")
 texture = ExtResource("2_f1p4t")
 offset = Vector2(0, -5)
 hframes = 16
 vframes = 8
-frame = 3
 
 [node name="DashDust" type="AnimatedSprite2D" parent="Sprite2D"]
 visible = false

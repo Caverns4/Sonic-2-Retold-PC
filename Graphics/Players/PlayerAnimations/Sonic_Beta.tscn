@@ -1,7 +1,8 @@
-[gd_scene load_steps=69 format=3 uid="uid://sbta787c4fwk"]
+[gd_scene load_steps=71 format=3 uid="uid://sbta787c4fwk"]
 
-[ext_resource type="Material" uid="uid://bveqi5m5ihsgj" path="res://Shaders/PlayerPalette.tres" id="1_h4o3a"]
+[ext_resource type="Shader" path="res://Shaders/PaletteSwapRow.gdshader" id="1_0xgvv"]
 [ext_resource type="Texture2D" uid="uid://cgq1nmr34au7o" path="res://Graphics/Players/Mighty.png" id="2_n3qsv"]
+[ext_resource type="Texture2D" uid="uid://bbpeu7ggf4kd4" path="res://Graphics/Palettes/SuperKnuckles.png" id="2_r5gnm"]
 [ext_resource type="Texture2D" uid="uid://dlomjk6vm15ep" path="res://Graphics/Misc/DashDust.png" id="3_qj7mf"]
 [ext_resource type="Texture2D" uid="uid://dvqglf8dididc" path="res://Graphics/Items/shield_plain.png" id="4_eakdf"]
 
@@ -314,17 +315,17 @@ tracks/0/path = NodePath("Mighty/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.4, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [43, 44, 45, 44]
+"values": [64, 65, 66, 67, 68, 67, 66, 65]
 }
 
 [sub_resource type="Animation" id="105"]
 resource_name = "edge2"
-length = 0.2
+length = 0.6
 loop_mode = 1
-step = 0.05
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -332,16 +333,17 @@ tracks/0/path = NodePath("Mighty/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [102, 103, 104, 105]
+"values": [91, 92, 93, 94, 95, 96]
 }
 
 [sub_resource type="Animation" id="106"]
 resource_name = "edge3"
-length = 0.4
+length = 0.6
 loop_mode = 1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -349,10 +351,10 @@ tracks/0/path = NodePath("Mighty/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [100, 101]
+"values": [91, 92, 93, 94, 95, 96]
 }
 
 [sub_resource type="Animation" id="110"]
@@ -888,10 +890,10 @@ tracks/0/path = NodePath("Mighty/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.25, 0.35, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [240, 241, 242, 243, 244, 243, 244, 243, 244, 243, 244, 243, 244, 243, 244, 243, 244]
+"values": [103, 104, 105, 106, 107, 106, 107]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -900,7 +902,7 @@ tracks/1/path = NodePath("Mighty/Sprite2D:material:shader_parameter/row")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.5),
+"times": PackedFloat32Array(0, 0.15, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [1.0, 1.0, 9.0]
@@ -1197,6 +1199,14 @@ _data = {
 "yRotationLookUp": SubResource("128")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ppxn1"]
+shader = ExtResource("1_0xgvv")
+shader_parameter/amount = 5.0
+shader_parameter/palRows = 16.0
+shader_parameter/row = 1.0
+shader_parameter/approximation = 0.0
+shader_parameter/paletteTexture = ExtResource("2_r5gnm")
+
 [sub_resource type="AtlasTexture" id="89"]
 atlas = ExtResource("3_qj7mf")
 region = Rect2(0, 0, 48, 48)
@@ -1323,12 +1333,11 @@ autoplay = "idle"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 5
-material = ExtResource("1_h4o3a")
+material = SubResource("ShaderMaterial_ppxn1")
 texture = ExtResource("2_n3qsv")
 offset = Vector2(0, -5)
 hframes = 16
 vframes = 7
-frame = 108
 
 [node name="DashDust" type="AnimatedSprite2D" parent="Sprite2D"]
 visible = false
