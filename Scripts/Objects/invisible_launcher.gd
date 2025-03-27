@@ -24,13 +24,13 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		players.append(body)
 		var node = Global.players[Global.players.find(body)]
 		node.controlObject = self
-		node.set_state(body.STATES.ANIMATION)
-		node.animator.play("Roll")
 		node.movement = Vector2.ZERO
 		node.global_position = global_position
 		node.allowTranslate = true
 		node.movement = LaunchPlayerDirection * 800
 		Global.play_sound(sfx)
+		node.set_state(body.STATES.ANIMATION)
+		node.animator.play("roll")
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	pass # Replace with function body.

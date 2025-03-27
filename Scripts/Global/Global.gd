@@ -86,7 +86,7 @@ var soundChannel2 = AudioStreamPlayer.new()
 
 # characters (if you want more you should add one here, see the player script too for more settings)
 enum CHARACTERS {NONE,SONIC,TAILS,KNUCKLES,AMY,MIGHTY,RAY}
-var PlayerChar1 = CHARACTERS.MIGHTY
+var PlayerChar1 = CHARACTERS.SONIC
 var PlayerChar2 = CHARACTERS.NONE
 
 # Gameplay values
@@ -167,7 +167,7 @@ var zoneNames = [
 	"Sand Shower","Tropical Sun","Sky Fortress","Death Egg"
 ]
 
-var savedZoneID = ZONES.ENDING # Last played zone. Will mainly be used for the Title Screen.
+var savedZoneID = ZONES.DUST_HILL # Last played zone. Will mainly be used for the Title Screen.
 var savedActID = 0 # selected act ID
 
 # water level of the current level, setting this to null will disable the water

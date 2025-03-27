@@ -57,5 +57,8 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	var LaunchPlayerDirection = Vector2.UP.rotated(deg_to_rad(launchDir*90))
 	for i in players:
+		i.animator.play("roll")
+		i.animator.queue("roll")
 		i.movement = LaunchPlayerDirection * 800
-		print(LaunchPlayerDirection)
+		i.set_state(i.STATES.ANIMATION)
+		#print(LaunchPlayerDirection)
