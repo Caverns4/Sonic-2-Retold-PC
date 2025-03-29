@@ -70,7 +70,7 @@ func _physics_process(delta: float) -> void:
 								player.animator.play("roll")
 								Global.play_sound(flipsound)
 								player.controlObject = null
-								player.translate = false
+								player.allowTranslate = false
 								players.erase(player)
 								$Sprite2D.frame = 1
 

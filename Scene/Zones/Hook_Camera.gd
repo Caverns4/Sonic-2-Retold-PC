@@ -16,3 +16,7 @@ func _physics_process(delta: float) -> void:
 		i.camera.limit_right = (global_position.x + xSize)
 		i.camera.limit_bottom = (global_position.y + ySize)
 		i.camera.limit_top = (global_position.y - ySize)
+		i.global_position.x = clampi(
+			i.global_position.x,
+			global_position.x - xSize + 24,
+			global_position.x + xSize - 24)

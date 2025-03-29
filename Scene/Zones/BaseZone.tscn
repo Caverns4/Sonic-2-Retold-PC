@@ -733,7 +733,7 @@ position = Vector2(6512, 1008)
 item = 2
 
 [node name="Monitor9" parent="ItemsHolder" instance=ExtResource("17_tkmdx")]
-position = Vector2(7792, 1648)
+position = Vector2(7696, 1648)
 
 [node name="Monitor10" parent="ItemsHolder" instance=ExtResource("17_tkmdx")]
 position = Vector2(11240, 560)
@@ -770,7 +770,7 @@ position = Vector2(3097, 1472)
 position = Vector2(3185, 1440)
 
 [node name="Octus5" parent="Enemies" instance=ExtResource("28_fcslk")]
-position = Vector2(7649, 1664)
+position = Vector2(7617, 1664)
 
 [node name="Octus6" parent="Enemies" instance=ExtResource("28_fcslk")]
 position = Vector2(8001, 1408)
