@@ -87,7 +87,7 @@ var soundChannel2 = AudioStreamPlayer.new()
 # characters (if you want more you should add one here, see the player script too for more settings)
 enum CHARACTERS {NONE,SONIC,TAILS,KNUCKLES,AMY,MIGHTY,RAY}
 var PlayerChar1 = CHARACTERS.SONIC
-var PlayerChar2 = CHARACTERS.NONE
+var PlayerChar2 = CHARACTERS.TAILS
 
 # Gameplay values
 var score = 0

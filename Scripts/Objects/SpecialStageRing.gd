@@ -94,9 +94,12 @@ func respawnPlayer():
 		player.set_state(player.STATES.NORMAL)
 		# play idle
 		player.animator.play("idle")
-		if maskMemory.size() > 0:
+		if maskMemory: #maskMemory.size() > 0
 			player.collision_layer = maskMemory[0]
 			player.collision_mask = maskMemory[1]
+			if player.partner:
+				player.partner.collision_layer = maskMemory[0]
+				player.partner.collision_mask = maskMemory[1]
 		Global.timerActive = true
 		Global.lastSpecialStageResult = false
 		queue_free()
