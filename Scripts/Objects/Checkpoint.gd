@@ -2,7 +2,7 @@ extends Area2D
 var active = false
 @export var checkPointID = 0
 
-var specialStageEntry = preload("res://Entities/Items/SpecialStageRing.tscn")
+var specialStageEntry = preload("res://Entities/Items/CheckpointStars.tscn")
 
 var PlayerMemory = [] #List of Players that have triggered this Checkpoint
 
