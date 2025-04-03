@@ -33,7 +33,7 @@ func physics_collision(body, hitVector):
 			body.animator.play("rebound")
 			body.set_state(body.STATES.AIR)
 		else:
-			body.hit_player(global_position)
+			body.hit_player(global_position,0,4)
 		#return true
 
 

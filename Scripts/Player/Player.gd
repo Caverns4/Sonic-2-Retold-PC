@@ -1126,11 +1126,11 @@ func hit_player(damagePoint = global_position, damageType = 0, soundID = 6):
 				get_parent().add_child(ring)
 			rings = 0
 		elif shield == SHIELDS.NONE and (playerControl == 1 or Global.TwoPlayer):
-			if (get_tree().current_scene is MainGameScene):
-				sfx[6].play()
+			if !(get_tree().current_scene is MainGameScene):
+				sfx[soundID].play()
 				return false
 			else:
-				kill()
+				kill(soundID)
 		else:
 			sfx[soundID].play()
 		# Disable Shield
@@ -1156,7 +1156,7 @@ func get_ring():
 	elif partner != null:
 		partner.get_ring()
 	
-func kill():
+func kill(soundID: int = 6):
 	if currentState != STATES.DIE:
 		hitbox.disabled = true
 		disconect_from_floor()
@@ -1183,7 +1183,7 @@ func kill():
 			switch_physics(false)
 			movement = Vector2(0,-7*60)
 			animator.play("die")
-			sfx[6].play()
+			sfx[soundID].play()
 		else:
 			if playerControl == 1:
 				Global.music.stop()
