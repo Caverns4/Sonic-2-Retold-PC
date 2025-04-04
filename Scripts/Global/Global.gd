@@ -167,7 +167,7 @@ var zoneNames = [
 	"Sand Shower","Tropical Sun","Sky Fortress","Death Egg"
 ]
 
-var savedZoneID = ZONES.DUST_HILL # Last played zone. Will mainly be used for the Title Screen.
+var savedZoneID = ZONES.EMERALD_HILL # Last played zone. Will mainly be used for the Title Screen.
 var savedActID = 0 # selected act ID
 
 # water level of the current level, setting this to null will disable the water

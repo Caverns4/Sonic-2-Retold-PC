@@ -1,13 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3oh77l2rriqf"]
+[gd_scene load_steps=10 format=3 uid="uid://d3oh77l2rriqf"]
 
 [ext_resource type="Texture2D" uid="uid://wsytdhn6ttft" path="res://Graphics/Boss/Boss_DrillEggman_Parts.png" id="1_4d1uu"]
 [ext_resource type="Script" path="res://Scripts/Boss/DrillEggmanWheel.gd" id="1_btldt"]
+[ext_resource type="Texture2D" uid="uid://2lnekaja621m" path="res://Graphics/Boss/Boss_DrillEggman_Flash.png" id="3_csi02"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kkuw2"]
 size = Vector2(32, 32)
 
-[sub_resource type="Animation" id="Animation_o81a5"]
-resource_name = "Front_RESET"
+[sub_resource type="Animation" id="Animation_h1hn3"]
+resource_name = "Back_Drive"
+length = 0.2
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -15,10 +18,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0]
+"values": [2, 3]
 }
 
 [sub_resource type="Animation" id="Animation_0tsuo"]
@@ -53,10 +56,8 @@ tracks/0/keys = {
 "values": [0, 1]
 }
 
-[sub_resource type="Animation" id="Animation_h1hn3"]
-resource_name = "Back_Drive"
-length = 0.2
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_o81a5"]
+resource_name = "Front_RESET"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -64,10 +65,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [2, 3]
+"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xorom"]
@@ -89,6 +90,11 @@ shape = SubResource("RectangleShape2D_kkuw2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_4d1uu")
+hframes = 7
+frame = 2
+
+[node name="Flash" type="Sprite2D" parent="."]
+texture = ExtResource("3_csi02")
 hframes = 7
 frame = 2
 
