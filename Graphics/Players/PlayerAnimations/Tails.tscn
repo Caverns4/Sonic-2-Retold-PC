@@ -1573,7 +1573,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="122"]
-size = Vector2(18, 19)
+size = Vector2(18, 20)
 
 [sub_resource type="Animation" id="Animation_gl4ec"]
 resource_name = "Flash"
@@ -1676,7 +1676,7 @@ libraries = {
 autoplay = "default"
 
 [node name="CrouchBox" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5.5)
+position = Vector2(0, 6)
 shape = SubResource("122")
 disabled = true
 

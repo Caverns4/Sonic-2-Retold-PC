@@ -83,7 +83,8 @@ func level_reset_data(playCard = true):
 			Global.music.stream_paused = false
 			Global.themes[Global.THEME.NORMAL] = levelMusic
 	Global.playMusic(levelMusic,true)
-	Global.playNormalMusic()
+	Global.currentTheme = 0
+	#Global.playNormalMusic()
 
 	# set next zone
 	if nextZone != null:

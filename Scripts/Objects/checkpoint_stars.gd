@@ -16,7 +16,6 @@ var active = false
 # timer used for time to a room change
 var timer = 0
 var player = null
-var maskMemory = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -99,8 +98,6 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 		# set players state to animation so nothing takes them out of it
 		body.set_state(body.STATES.ANIMATION)
 		# set player collision layer and mask to nothing to avoid collissions
-		maskMemory.append(body.collision_layer)
-		maskMemory.append(body.collision_mask)
 		body.collision_layer = 0
 		body.collision_mask = 0
 		body.invTime = 0

@@ -974,7 +974,7 @@ shieldAffinity = null
 [node name="Monitor8" parent="ItemsHolder" instance=ExtResource("28_kyu0i")]
 position = Vector2(4400, 1008)
 item = 3
-shieldAffinity = null
+shieldAffinity = 3
 
 [node name="Monitor9" parent="ItemsHolder" instance=ExtResource("28_kyu0i")]
 position = Vector2(5600, 1168)
@@ -983,7 +983,7 @@ shieldAffinity = null
 [node name="Monitor21" parent="ItemsHolder" instance=ExtResource("28_kyu0i")]
 position = Vector2(4368, 1904)
 item = 3
-shieldAffinity = null
+shieldAffinity = 3
 
 [node name="Monitor10" parent="ItemsHolder" instance=ExtResource("28_kyu0i")]
 position = Vector2(9664, 112)

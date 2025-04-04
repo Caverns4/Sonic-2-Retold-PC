@@ -48,7 +48,7 @@ func activate(playerNode):
 	if (!Global.TwoPlayer and Global.players[0].rings > 49
 	and Global.emeralds < 127): #If 1P, >=50 rings, > 7 emeralds...
 		var spawn = specialStageEntry.instantiate()
-		spawn.global_position = global_position + Vector2(0,-96)
+		spawn.global_position = global_position + Vector2(0,-64)
 		get_parent().add_child(spawn)
 
 func _on_Checkpoint_body_entered(body):

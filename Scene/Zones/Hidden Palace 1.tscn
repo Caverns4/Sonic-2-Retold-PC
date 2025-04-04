@@ -616,6 +616,11 @@ position = Vector2(9872, 1992)
 scale = Vector2(2, 256)
 setSpeed = 256
 
+[node name="SetWaterLevel9" parent="Entities" instance=ExtResource("37_i58hy")]
+position = Vector2(12568, 2176)
+scale = Vector2(2, 32)
+setSpeed = 64
+
 [node name="SetWaterLevel7" parent="Entities" instance=ExtResource("37_i58hy")]
 position = Vector2(8200, 2256)
 scale = Vector2(1, 64)
@@ -925,11 +930,15 @@ rotation = 1.22173
 minimumVelocity = 8
 
 [node name="Geyser3" parent="Entities" instance=ExtResource("36_al0td")]
-position = Vector2(8904, 992)
+position = Vector2(8964, 992)
+minimumVelocity = 8
+
+[node name="Geyser7" parent="Entities" instance=ExtResource("36_al0td")]
+position = Vector2(8884, 992)
 minimumVelocity = 8
 
 [node name="Geyser5" parent="Entities" instance=ExtResource("36_al0td")]
-position = Vector2(9024, 992)
+position = Vector2(9044, 992)
 minimumVelocity = 8
 
 [node name="Geyser4" parent="Entities" instance=ExtResource("36_al0td")]
@@ -1069,6 +1078,7 @@ scale = Vector2(1, 56)
 [node name="Monitor" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
 position = Vector2(2928, 2224)
 item = 3
+shieldAffinity = 1
 
 [node name="Monitor2" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
 position = Vector2(1776, 1392)
@@ -1079,6 +1089,8 @@ item = 12
 
 [node name="Monitor4" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
 position = Vector2(2096, 1520)
+item = 3
+shieldAffinity = 1
 
 [node name="Monitor5" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
 position = Vector2(2127, 1520)
@@ -1089,6 +1101,7 @@ position = Vector2(4880, 2288)
 [node name="Monitor7" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
 position = Vector2(10680, 1424)
 item = 3
+shieldAffinity = 1
 
 [node name="Monitor9" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
 position = Vector2(13584, 1520)
@@ -1129,6 +1142,8 @@ item = 2
 
 [node name="Monitor23" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
 position = Vector2(6928, 1968)
+item = 3
+shieldAffinity = 3
 
 [node name="Monitor14" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
 position = Vector2(8944, 2224)
@@ -1136,6 +1151,7 @@ position = Vector2(8944, 2224)
 [node name="Monitor22" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
 position = Vector2(9152, 1584)
 item = 3
+shieldAffinity = 3
 
 [node name="Monitor15" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
 position = Vector2(11024, 2480)
@@ -1143,6 +1159,7 @@ position = Vector2(11024, 2480)
 [node name="Monitor17" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
 position = Vector2(13040, 2192)
 item = 3
+shieldAffinity = 3
 
 [node name="Monitor18" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
 position = Vector2(13008, 2192)
@@ -1255,7 +1272,7 @@ position = Vector2(10824, 2120)
 travelDistance = 128
 
 [node name="BFish14" parent="Badniks" instance=ExtResource("21_85vku")]
-position = Vector2(11520, 1688)
+position = Vector2(11648, 1700)
 travelDistance = 128
 
 [node name="BFish9" parent="Badniks" instance=ExtResource("21_85vku")]

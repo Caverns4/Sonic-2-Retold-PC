@@ -49,6 +49,7 @@ func _process(delta):
 			if !$Ring.is_playing():
 				$Ring.play("default")
 
+## Unused
 func respawnPlayer():
 	if !player == null:
 		# set player's position to rings (and player 2)

@@ -78,7 +78,7 @@ position = Vector2(5336, 640)
 leftAngle = 86.0
 
 [node name="ForceAngleSides4" parent="Entities" instance=ExtResource("18_u1d8p")]
-position = Vector2(7510, 899)
+position = Vector2(7512, 900)
 leftAngle = 86.0
 
 [node name="ForceAngleSides5" parent="Entities" instance=ExtResource("18_u1d8p")]
@@ -444,7 +444,7 @@ position = Vector2(6274, 152)
 position = Vector2(6656, 208)
 
 [node name="BuzzBomber8" parent="Badniks" instance=ExtResource("30_dys6r")]
-position = Vector2(6464, 464)
+position = Vector2(6248, 560)
 
 [node name="BuzzBomber9" parent="Badniks" instance=ExtResource("30_dys6r")]
 position = Vector2(8320, 480)
@@ -620,10 +620,10 @@ position = Vector2(4032, 168)
 position = Vector2(4056, 168)
 
 [node name="Ring48" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(4016, 144)
+position = Vector2(4020, 144)
 
 [node name="Ring49" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(4048, 144)
+position = Vector2(4044, 144)
 
 [node name="Ring50" parent="Rings" instance=ExtResource("32_xmgm7")]
 position = Vector2(4032, 120)
@@ -674,22 +674,22 @@ position = Vector2(2656, 616)
 position = Vector2(2688, 624)
 
 [node name="Ring63" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(2960, 552)
+position = Vector2(2964, 552)
 
 [node name="Ring64" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(2984, 552)
+position = Vector2(2988, 552)
 
 [node name="Ring65" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(3096, 520)
+position = Vector2(3092, 520)
 
 [node name="Ring66" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(3120, 520)
+position = Vector2(3116, 520)
 
 [node name="Ring67" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(3224, 488)
+position = Vector2(3220, 488)
 
 [node name="Ring68" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(3248, 488)
+position = Vector2(3244, 488)
 
 [node name="Ring69" parent="Rings" instance=ExtResource("32_xmgm7")]
 position = Vector2(3480, 368)
@@ -914,49 +914,49 @@ position = Vector2(8752, 368)
 position = Vector2(8728, 368)
 
 [node name="Ring143" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(8736, 344)
+position = Vector2(8740, 344)
 
 [node name="Ring144" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(8760, 344)
+position = Vector2(8764, 344)
 
 [node name="Ring145" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(8784, 344)
+position = Vector2(8788, 344)
 
 [node name="Ring146" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(8748, 320)
+position = Vector2(8752, 320)
 
 [node name="Ring147" parent="Rings" instance=ExtResource("32_xmgm7")]
 position = Vector2(8776, 320)
 
 [node name="Ring148" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(8880, 368)
+position = Vector2(8864, 368)
 
 [node name="Ring149" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(8904, 368)
+position = Vector2(8888, 368)
 
 [node name="Ring150" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(8928, 368)
+position = Vector2(8912, 368)
 
 [node name="Ring151" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(8952, 368)
+position = Vector2(8936, 368)
 
 [node name="Ring152" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(8892, 344)
+position = Vector2(8876, 344)
 
 [node name="Ring153" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(8916, 344)
+position = Vector2(8900, 344)
 
 [node name="Ring154" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(8940, 344)
+position = Vector2(8924, 344)
 
 [node name="Ring155" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(8904, 320)
+position = Vector2(8888, 320)
 
 [node name="Ring156" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(8928, 320)
+position = Vector2(8912, 320)
 
 [node name="Ring157" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(8916, 296)
+position = Vector2(8900, 296)
 
 [node name="Ring158" parent="Rings" instance=ExtResource("32_xmgm7")]
 position = Vector2(9192, 880)
@@ -1097,7 +1097,7 @@ position = Vector2(9888, 648)
 position = Vector2(9952, 672)
 
 [node name="Ring207" parent="Rings" instance=ExtResource("32_xmgm7")]
-position = Vector2(8760, 296)
+position = Vector2(8764, 296)
 
 [node name="Environment" type="Node" parent="."]
 

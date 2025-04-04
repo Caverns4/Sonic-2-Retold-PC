@@ -320,7 +320,7 @@ func playNormalMusic():
 			currentTheme = THEME.BOSS #Boss theme unless Super
 		else:
 			currentTheme = THEME.SUPER #Boss theme unless Super
-	playMusic(themes[currentTheme])
+	playMusic(themes[currentTheme],false)
 
 
 

@@ -10,7 +10,7 @@ const HITBOXESSONIC = {
 const HITBOXESTAILS = {
 	NORMAL = Vector2(9,15)*2, 
 	ROLL = Vector2(7,14)*2, 
-	CROUCH = Vector2(9,9.5)*2, 
+	CROUCH = Vector2(9,9)*2, 
 	GLIDE = Vector2(10,10)*2, 
 	HORIZONTAL = Vector2(22,9)*2}
 var currentHitbox = HITBOXESSONIC
@@ -300,20 +300,20 @@ func _ready():
 	# Tails carry stuff
 	$TailsCarryBox/HitBox.disabled = true
 	
-	# verify that we're not an ai
-	if (playerControl == 1):
+	# verify that we're player 1
+	if Global.players[0] == self:
 		# input memory
 		for _i in range(INPUT_MEMORY_LENGTH):
 			inputMemory.append(inputs.duplicate(true))
 		# Partner (if player character 2 isn't none)
 		if Global.PlayerChar2 != Global.CHARACTERS.NONE and (!disablePartner):
 			partner = Player.instantiate()
-			partner.playerControl = 0
-			partner.z_index = z_index-1
 			partner.name = "Partner"
 			get_parent().call_deferred("add_child", (partner))
-			partner.global_position = global_position+Vector2(-24,0)
+			partner.playerControl = 2 if Global.TwoPlayer else 0
 			partner.partner = self
+			partner.z_index = z_index-1
+			partner.global_position = round(global_position+Vector2(-24,0))
 			partner.character = Global.PlayerChar2
 			partner.inputActions = INPUTACTIONS_P2
 		
@@ -354,7 +354,6 @@ func _ready():
 				playerPal.set_shader_parameter("paletteTexture",load("res://Graphics/Palettes/SuperKnuckles.png"))
 		
 			#Global.CHARACTERS.RAY:
-			#Global.CHARACTERS.ESPIO:
 	
 	# Checkpoints
 	await get_tree().process_frame
@@ -369,7 +368,15 @@ func _ready():
 			Global.levelTime = 0
 			Global.levelTimeP2 = 0
 	
+	# run switch physics to ensure character specific physics
+	switch_physics()
 	
+	# Set hitbox
+	#hitbox.shape.size = currentHitbox.NORMAL
+	
+	# connect animator
+	animator.connect("animation_started",Callable(self,"_on_PlayerAnimation_animation_started"))
+	defaultSpriteOffset = sprite.offset
 	
 	# Character settings
 	var skin = playerskins[max(min(character-1,playerskins.size()),0)]
@@ -383,16 +390,6 @@ func _ready():
 	spriteController.queue_free()
 	spriteController = newSprite
 	
-	# run switch physics to ensure character specific physics
-	switch_physics()
-	
-	# Set hitbox
-	hitbox.shape.size = currentHitbox.NORMAL
-	
-	# connect animator
-	animator.connect("animation_started",Callable(self,"_on_PlayerAnimation_animation_started"))
-	defaultSpriteOffset = sprite.offset
-	
 	# set secondary hitboxes
 	crouchBox = spriteController.get_node_or_null("CrouchBox")
 	if crouchBox != null:
@@ -404,8 +401,8 @@ func _ready():
 	# add center reference node
 	centerReference = spriteController.get_node_or_null("CenterReference")
 	# hide reference
-	if centerReference:
-		centerReference.visible = false
+	#if centerReference:
+	#	centerReference.visible = false
 	
 	# reset camera limits
 	limitLeft = Global.hardBorderLeft
@@ -415,9 +412,9 @@ func _ready():
 	snap_camera_to_limits()
 	
 	# set partner sounds to share players (prevents sound overlap)
-	if playerControl == 0:
+	if playerControl == 1 and partner:
 		partner.sfx = sfx
-
+	
 
 
 # 0 not pressed, 1 pressed, 2 held (best to do > 0 when checking input), -1 released
@@ -567,7 +564,8 @@ func _process(delta):
 				isSuper = false
 				superAnimator.play("PowerDown")
 				switch_physics()
-			Global.playNormalMusic()
+			if Global.currentTheme == 1:
+				Global.playNormalMusic()
 			invTime = 60
 	
 	if (shoeTime > 0):
@@ -903,7 +901,7 @@ func RandomOffset() -> Vector2:
 func set_inputs():
 	# player control inputs
 	# check if ai or player 2
-	if playerControl == 0 or playerControl == 2:
+	if playerControl != 1:
 		# player 2 active time check, if below 0 return to ai state
 		if partnerControlTime <= 0 and playerControl == 2:
 			playerControl = 0
