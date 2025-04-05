@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://8sljpf878e00"]
+[gd_scene load_steps=16 format=3 uid="uid://8sljpf878e00"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/crawl.gd" id="1_0pgyn"]
 [ext_resource type="Texture2D" uid="uid://c8j6h0dpua10y" path="res://Graphics/Enemies/Crawl_Mobile.png" id="2_evms8"]
@@ -8,8 +8,17 @@
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(28, 28)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rdypn"]
+size = Vector2(28, 28)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xkmua"]
-size = Vector2(6, 32)
+size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rk7qb"]
+size = Vector2(16, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3yvi"]
+size = Vector2(32, 16)
 
 [sub_resource type="Animation" id="Animation_y0ns6"]
 resource_name = "Block_Forward"
@@ -219,8 +228,8 @@ collision_mask = 528384
 
 [node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
 modulate = Color(1, 0, 0, 1)
-position = Vector2(2, 2)
-shape = SubResource("1")
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_rdypn")
 
 [node name="crawlsprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_evms8")
@@ -235,11 +244,12 @@ frame = 3
 
 [node name="CrawlBumper" type="StaticBody2D" parent="crawlsprite"]
 position = Vector2(6, 0)
-collision_layer = 65536
+collision_layer = 73728
 collision_mask = 8192
 script = ExtResource("3_xswa5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="crawlsprite/CrawlBumper"]
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_xkmua")
 
 [node name="crawlBumper" type="Sprite2D" parent="crawlsprite/CrawlBumper"]
@@ -251,6 +261,24 @@ frame = 1
 [node name="BumperSFX" type="AudioStreamPlayer" parent="crawlsprite/CrawlBumper"]
 stream = ExtResource("4_ryaxe")
 bus = &"SFX"
+
+[node name="Front_Censor" type="Area2D" parent="crawlsprite"]
+position = Vector2(-20, 0)
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="crawlsprite/Front_Censor"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_rk7qb")
+debug_color = Color(0.231373, 0.458824, 1, 0.501961)
+
+[node name="Upper_Censor" type="Area2D" parent="crawlsprite"]
+position = Vector2(0, -22)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="crawlsprite/Upper_Censor"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_r3yvi")
+debug_color = Color(0.317647, 0.560784, 1, 0.501961)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -266,3 +294,8 @@ rect = Rect2(-160, -120, 320, 240)
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
+[connection signal="body_entered" from="crawlsprite/Front_Censor" to="." method="_on_front_censor_body_entered"]
+[connection signal="body_exited" from="crawlsprite/Front_Censor" to="." method="_on_front_censor_body_exited"]
+[connection signal="body_entered" from="crawlsprite/Upper_Censor" to="." method="_on_upper_censor_body_entered"]
+[connection signal="body_exited" from="crawlsprite/Upper_Censor" to="." method="_on_upper_censor_body_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

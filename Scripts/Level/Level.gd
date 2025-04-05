@@ -85,7 +85,26 @@ func level_reset_data(playCard = true):
 	Global.playMusic(levelMusic,true)
 	Global.currentTheme = 0
 	#Global.playNormalMusic()
+	
+	if Global.currentCheckPoint < 0:
+		Global.levelTime = 0
+		Global.levelTimeP2 = 0
 
+	#Clear Object Arrays used within levels
+	var index :int = 0
+	while index < len(Global.characterReels):
+		if !is_instance_valid(Global.characterReels[index]):
+			Global.characterReels.remove_at(index)
+		else:
+			index +=1
+
+	index = 0
+	while index < len(Global.slotMachines):
+		if !is_instance_valid(Global.slotMachines[index]):
+			Global.slotMachines.remove_at(index)
+		else:
+			index +=1
+	
 	# set next zone
 	if nextZone != null:
 		Global.nextZone = nextZone

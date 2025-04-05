@@ -1,11 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://c750k3u1o0wfg"]
 
-[ext_resource type="Script" path="res://Scripts/Gimmicks/cnz_big_bumper.gd" id="1_inlif"]
+[ext_resource type="Script" path="res://Scripts/Gimmicks/cnz_triangle_bumper.gd" id="1_n1e0e"]
 
 [node name="TriangleBumper" type="StaticBody2D"]
 collision_layer = 8192
 collision_mask = 8192
-script = ExtResource("1_inlif")
+script = ExtResource("1_n1e0e")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-32, -32, 32, 32, -32, 32)

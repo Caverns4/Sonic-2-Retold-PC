@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://p0yejpqi4q88"]
+[gd_scene load_steps=26 format=4 uid="uid://p0yejpqi4q88"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_0yy3m"]
 [ext_resource type="AudioStream" uid="uid://c354qh8pof6fe" path="res://Audio/Soundtrack/s2br_CasinoNight.ogg" id="2_20443"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://dkt4dlhmutrkc" path="res://Entities/ZoneObjects/CNZ-big_bumper.tscn" id="22_2kigl"]
 [ext_resource type="PackedScene" uid="uid://c4jrjspjbeybr" path="res://Scene/Backgrounds/09-CasinoNightF.tscn" id="22_5pai5"]
 [ext_resource type="PackedScene" uid="uid://maxhev4qup18" path="res://Entities/Gimmicks/cnz_slot.tscn" id="24_vdjfc"]
+[ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="25_qxfkg"]
 
 [node name="CasinoNight1" type="Node2D"]
 script = ExtResource("1_0yy3m")
@@ -466,12 +467,17 @@ position = Vector2(9000, 792)
 
 [node name="CNZSlot12" parent="Entities" instance=ExtResource("24_vdjfc")]
 position = Vector2(8896, 992)
+type = 1
 
 [node name="CNZSlot13" parent="Entities" instance=ExtResource("24_vdjfc")]
 position = Vector2(8192, 1024)
 
 [node name="CNZSlot3" parent="Entities" instance=ExtResource("24_vdjfc")]
 position = Vector2(1216, 1120)
+type = 1
+
+[node name="SignpostNew" parent="Entities" instance=ExtResource("25_qxfkg")]
+position = Vector2(10432, 1696)
 
 [node name="MovingPlatforms" type="Node2D" parent="."]
 material = ExtResource("8_cpekc")
@@ -662,7 +668,7 @@ scale = Vector2(2, 4)
 [node name="Badniks" type="Node" parent="."]
 
 [node name="Crawl" parent="Badniks" instance=ExtResource("20_2gusr")]
-position = Vector2(872, 752)
+position = Vector2(836, 752)
 
 [node name="Crawl2" parent="Badniks" instance=ExtResource("20_2gusr")]
 position = Vector2(3776, 624)
@@ -916,11 +922,8 @@ rotation = 3.14159
 [node name="SlotMachines" type="Node" parent="."]
 
 [node name="CNZSlot" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
-position = Vector2(384, 696)
+position = Vector2(384, 664)
 type = 1
 
 [node name="CnzCharacterReels" parent="SlotMachines" instance=ExtResource("13_kcv3i")]
-position = Vector2(384, 624)
-
-[node name="CnzCharacterReels2" parent="SlotMachines" instance=ExtResource("13_kcv3i")]
-position = Vector2(384, 664)
+position = Vector2(384, 620)

@@ -49,13 +49,14 @@ func _process(delta: float) -> void:
 		if forceSpinTime > 0.0:
 			slotOffsets[i] = wrap((slotOffsets[i] - (delta*180)), 0.0, SLOT.size()*32)
 		else:
-			#Never let a real finised spinning until the prioer real has finished
+			#Never let a real finised spinning until the prior real has finished
 			if (
 				round(slotOffsets[i]) != (slotTargets[i]*32)
-				or (round(slotOffsets[i]) == (slotTargets[i]*32)
+				or (round(slotOffsets[i]) == wrap((slotTargets[i]*32),0,SLOT.size()*32)
 				and round(slotOffsets[max(i-1,0)]) != (slotTargets[max(i-1,0)]*32))
 				):
-				slotOffsets[i] = wrap((slotOffsets[i] - (delta*120)), 0.0, SLOT.size()*32)
+				slotOffsets[i] = (slotOffsets[i] - (delta*120))
+				slotOffsets[i] = wrap(slotOffsets[i], 0.0, SLOT.size()*32)
 			else:
 				slotOffsets[i] = slotTargets[i]*32
 		var node = slots[i]

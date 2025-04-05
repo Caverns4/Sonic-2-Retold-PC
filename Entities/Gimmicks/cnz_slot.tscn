@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://maxhev4qup18"]
+[gd_scene load_steps=6 format=3 uid="uid://maxhev4qup18"]
 
 [ext_resource type="Texture2D" uid="uid://4knghu3g2j37" path="res://Graphics/Gimmicks/CNZ_Slots.png" id="1_1sglj"]
 [ext_resource type="Script" path="res://Scripts/Gimmicks/cnz_slot.gd" id="1_mem5k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_870o4"]
+size = Vector2(8, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b12g2"]
 size = Vector2(8, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8dxh6"]
@@ -13,20 +16,20 @@ size = Vector2(32, 32)
 script = ExtResource("1_mem5k")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 8192
-collision_mask = 8192
+collision_layer = 14
+collision_mask = 14
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-20, 0)
 shape = SubResource("RectangleShape2D_870o4")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
-collision_layer = 131072
-collision_mask = 0
+collision_layer = 14
+collision_mask = 14
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(20, 0)
-shape = SubResource("RectangleShape2D_870o4")
+shape = SubResource("RectangleShape2D_b12g2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 10
