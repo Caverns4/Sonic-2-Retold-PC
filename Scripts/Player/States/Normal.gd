@@ -22,6 +22,8 @@ var playerIdles = [
 # MIGHTY
 ["idle1","idle2","idle3","idle4","idle5"],
 # RAY
+["idle1","idle1","idle1","idle2","idle3"],
+# SONIC_BETA
 ["idle1","idle1","idle1","idle2","idle3"]
 ]
 
@@ -60,11 +62,77 @@ func _process(delta):
 	
 	if parent.ground and !skid:
 		if parent.movement.x == 0:
-			if (parent.inputs[parent.INPUTS.YINPUT] > 0):
+			
+			var balancing = false
+			# edge checking
+			# set vertical sensors to check for objects
+			var maskMemory = [parent.verticalSensorLeft.collision_mask,parent.verticalSensorRight.collision_mask]
+			parent.verticalSensorLeft.set_collision_mask_value(13,true)
+			parent.verticalSensorRight.set_collision_mask_value(13,true)
+			
+			var getL = parent.verticalSensorLeft.is_colliding()
+			var getR = parent.verticalSensorRight.is_colliding()
+			var getM = parent.verticalSensorMiddle.is_colliding()
+			var getMEdge = parent.verticalSensorMiddleEdge.is_colliding()
+			
+			parent.verticalSensorLeft.collision_mask = maskMemory[0]
+			parent.verticalSensorRight.collision_mask = maskMemory[1]
+			
+			# flip sensors
+			if parent.direction < 0:
+				getL = getR
+				getR = parent.verticalSensorLeft.is_colliding()
+			
+			#If a balance animation should play:
+			match (parent.character):
+				Global.CHARACTERS.SONIC: #default
+					# super edge
+					if parent.isSuper and parent.animator.has_animation("edge_super"):
+						parent.animator.play("edge_super")
+						balancing = true
+					# far edge
+					elif !getMEdge:
+						parent.animator.play("edge2")
+						balancing = true
+						if parent.verticalSensorLeft.is_colliding():
+							parent.direction = 1
+						elif parent.verticalSensorRight.is_colliding():
+							parent.direction = -1
+					# normal edge
+					elif !getR and getL:
+						parent.animator.play("edge1")
+						balancing = true
+					# reverse edge
+					elif !getL and getR:
+						parent.animator.play("edge3")
+						balancing = true
+				Global.CHARACTERS.KNUCKLES:
+					if ((!getL or !getR) and !getMEdge and 
+					parent.animator.current_animation != "edge1" and 
+					parent.animator.current_animation != "edge2"):
+						parent.animator.play("edge1")
+						parent.animator.queue("edge2")
+						balancing = true
+				_:
+					#normal edge
+					if (!getR and getL) and getM:
+						parent.animator.play("edge1")
+						balancing = true
+					#far edge
+					elif !getM:
+						parent.animator.play("edge2")
+						if parent.verticalSensorLeft.is_colliding():
+							parent.direction = 1
+						elif parent.verticalSensorRight.is_colliding():
+							parent.direction = -1
+						balancing = true
+			
+			if (parent.inputs[parent.INPUTS.YINPUT] > 0) and !balancing:
 				lookTimer = max(0,lookTimer+delta*0.5)
 				if parent.lastActiveAnimation != "crouch":
 					parent.animator.play("crouch")
-			elif (parent.inputs[parent.INPUTS.YINPUT] < 0):
+				balancing = true
+			elif (parent.inputs[parent.INPUTS.YINPUT] < 0) and !balancing:
 				lookTimer = min(0,lookTimer-delta*0.5)
 				
 				if(parent.isSuper and parent.character == Global.CHARACTERS.SONIC):
@@ -73,31 +141,13 @@ func _process(delta):
 				else:
 					if parent.lastActiveAnimation != "lookUp":
 						parent.animator.play("lookUp")
+				balancing = true
 			else:
-				# Idle pose animation
-				
 				# reset look timer
 				lookTimer = 0
 				
-				# edge checking
-				# set vertical sensors to check for objects
-				
-				var maskMemory = [parent.verticalSensorLeft.collision_mask,parent.verticalSensorRight.collision_mask]
-				parent.verticalSensorLeft.set_collision_mask_value(13,true)
-				parent.verticalSensorRight.set_collision_mask_value(13,true)
-				
-				var getL = parent.verticalSensorLeft.is_colliding()
-				var getR = parent.verticalSensorRight.is_colliding()
-				var getM = parent.verticalSensorMiddle.is_colliding()
-				var getMEdge = parent.verticalSensorMiddleEdge.is_colliding()
-				
-				parent.verticalSensorLeft.collision_mask = maskMemory[0]
-				parent.verticalSensorRight.collision_mask = maskMemory[1]
-				
-				# flip sensors
-				if parent.direction < 0:
-					getL = getR
-					getR = parent.verticalSensorLeft.is_colliding()
+			# Idle pose animation
+			if !balancing:
 				# No edge detected
 				if getM or !parent.ground or parent.angle != parent.gravityAngle:
 					# Play default idle animation
@@ -116,46 +166,7 @@ func _process(delta):
 							# queue player specific idle animations
 							for i in playerIdles[parent.character-1]:
 								parent.animator.queue(i)
-				
-				else:
-					match (parent.character):
-						
-						Global.CHARACTERS.TAILS:
-							if getR: # keep flipping until right sensor (relevent) isn't colliding
-								parent.direction = -parent.direction
-							parent.animator.play("edge1")
-						
-						Global.CHARACTERS.KNUCKLES:
-							if getR: # keep flipping until right sensor (relevent) isn't colliding
-								parent.direction = -parent.direction
-							if parent.animator.current_animation != "edge1" and parent.animator.current_animation != "edge2":
-								parent.animator.play("edge1")
-								parent.animator.queue("edge2")
-								
-						Global.CHARACTERS.AMY:
-							if getR: # keep flipping until right sensor (relevent) isn't colliding
-								parent.direction = -parent.direction
-							#far edge
-							if !getMEdge:
-								parent.animator.play("edge2")
-							#normal edge
-							else:
-								parent.animator.play("edge3")
-						
-						_: #default
-							# super edge
-							if parent.isSuper and parent.animator.has_animation("edge_super"):
-								parent.animator.play("edge_super")
-							# reverse edge
-							elif !getL and getR:
-								parent.animator.play("edge3")
-							# far edge
-							elif !getMEdge:
-								parent.animator.play("edge2")
-							# normal edge
-							else:
-								parent.animator.play("edge1")
-					
+		#Non-idle cases
 		elif sign(parent.pushingWall) == sign(parent.movement.x) and parent.pushingWall != 0:
 			parent.animator.play("push")
 		elif(abs(parent.movement.x) < 6*60):

@@ -251,6 +251,7 @@ var playerskins = [
 	[preload("res://Graphics/Players/PlayerAnimations/Knuckles.tscn"),HITBOXESSONIC],
 	[preload("res://Graphics/Players/PlayerAnimations/Amy.tscn"),HITBOXESTAILS],
 	[preload("res://Graphics/Players/PlayerAnimations/Sonic_Beta.tscn"),HITBOXESSONIC],
+	[preload("res://Graphics/Players/PlayerAnimations/Ray.tscn"),HITBOXESSONIC],
 	[preload("res://Graphics/Players/PlayerAnimations/Sonic_Old.tscn"),HITBOXESSONIC],
 ]
 
@@ -380,6 +381,8 @@ func _ready():
 	
 	# Character settings
 	var skin = playerskins[max(min(character-1,playerskins.size()),0)]
+	if Global.betaSonic and character == Global.CHARACTERS.SONIC:
+		skin = playerskins[6]
 	currentHitbox = skin[1]
 	spriteController.name = "OldSprite"
 	var newSprite = skin[0].instantiate()

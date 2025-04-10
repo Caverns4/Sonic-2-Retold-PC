@@ -51,7 +51,7 @@ signal tally_clear
 
 # character name strings, used for "[player] has cleared", this matches the players character ID so you'll want to add the characters name in here matching the ID if you want more characters
 # see Global.PlayerChar1
-var characterNames = ["SONIC","TAILS","KNUCKLES","AMY","MIGHTY","RAY"]
+var characterNames = ["SONIC","TAILS","KNUCKLES","AMY","MIGHTY","RAY","SONIC"]
 
 var twoPlayerResults = load("res://Scene/Presentation/TwoPlayerResults.tscn")
 
@@ -250,14 +250,16 @@ func UpdateHUD(_delta):
 	var timeClamp = min(Global.levelTime,Global.maxTime-1)
 	if Global.TwoPlayer:
 		# Time Text Player 1
-		$P1Counters/Text/TimeNumbers.text = ("%2d" % floor(timeClamp/60) + ":" # Minute
-		+ str(fmod(floor(timeClamp),60)).pad_zeros(2) + ":" # Second
-		+ str(fmod(floor(timeClamp*100),100)).pad_zeros(2)) # Miliseconds
+		$P1Counters/Text/TimeNumbers.text = (
+		"%2d" % int(floor(timeClamp/60)) + ":" # Minute
+		+ str(int(fmod(floor(timeClamp),60))).pad_zeros(2) + ":" # Second
+		+ str(int(fmod(floor(timeClamp*100),100))).pad_zeros(2)) # Miliseconds
 		# Time Text Player 2
 		timeClamp = min(Global.levelTimeP2,Global.maxTime-1)
-		$P2Counters/Text/TimeNumbers.text = ("%2d" % floor(timeClamp/60) + ":" # Minute
-		+ str(fmod(floor(timeClamp),60)).pad_zeros(2) + ":" # Second
-		+ str(fmod(floor(timeClamp*100),100)).pad_zeros(2)) # Miliseconds
+		$P2Counters/Text/TimeNumbers.text = (
+		"%2d" % int(floor(timeClamp/60)) + ":" # Minute
+		+ str(int(fmod(floor(timeClamp),60))).pad_zeros(2) + ":" # Second
+		+ str(int(fmod(floor(timeClamp*100),100))).pad_zeros(2)) # Miliseconds
 		# check that there's player, if there is then track the focus players ring count
 		var playerCount = Global.players.size()
 		$P1Counters/Text/RingCount.text = "%3d" % Global.players[0].rings
@@ -274,9 +276,10 @@ func UpdateHUD(_delta):
 		# set score string to match global score with leading 0s
 		scoreText.text = "%6d" % Global.score
 		#Set Time for Player 1
-		timeText.text = ("%2d" % floor(timeClamp/60) + ":" # Minute
-		+ str(fmod(floor(timeClamp),60)).pad_zeros(2) + ":" # Second
-		+ str(fmod(floor(timeClamp*100),100)).pad_zeros(2)) # Miliseconds
+		timeText.text = (
+		"%2d" % int(floor(timeClamp/60)) + ":" # Minute
+		+ str(int(fmod(floor(timeClamp),60))).pad_zeros(2) + ":" # Second
+		+ str(int(fmod(floor(timeClamp*100),100))).pad_zeros(2)) # Miliseconds
 		#Ring Text Player 1
 		ringText.text = "%3d" % Global.players[focusPlayer].rings
 		

@@ -195,7 +195,7 @@ position = Vector2(5976, 448)
 [node name="Fan17" parent="Entities" instance=ExtResource("11_def0w")]
 position = Vector2(7680, 1248)
 rotation = -1.5708
-activeTime = 2.0
+activeTime = 4.0
 
 [node name="Fan25" parent="Entities" instance=ExtResource("11_def0w")]
 position = Vector2(8128, 1688)

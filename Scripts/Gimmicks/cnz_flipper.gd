@@ -50,11 +50,11 @@ func _physics_process(delta: float) -> void:
 			else:
 				for player in players:
 					if player.ground:
-						player.set_state(player.STATES.ANIMATION)
 						player.animator.play("roll")
+						player.set_state(player.STATES.ANIMATION)
 						player.movement.x = 60 * direction
 						if player.jumpBuffer > 0.0:
-							var offsetDiff = direction*8 #Number of pixels from the "center"
+							var offsetDiff = direction*10 #Number of pixels from the "center"
 							var height = min(
 								round(
 								((direction*player.global_position.x) - 
@@ -78,11 +78,12 @@ func physics_collision(player, hitVector):
 	if type == 0:
 		if hitVector.y > 0:
 			player.controlObject = self
+			player.set_state(player.STATES.ROLL)
 			#players.append(player)
 			#player.translate = true
 	else:
 		if player.ground and round(hitVector.y) == 0:
-			player.currentState = player.STATES.ROLL
+			player.set_state(player.STATES.ROLL)
 			player.animator.play("roll")
 			player.movement.x = 0-(hitVector.x * 960)
 			Global.play_sound(flipsound)

@@ -39,7 +39,7 @@ func _process(_delta):
 			# Normal actions
 			else:
 				match (parent.character):
-					Global.CHARACTERS.SONIC:
+					Global.CHARACTERS.SONIC,Global.CHARACTERS.SONIC_BETA:
 						# set ability used to true to prevent multiple uses
 						parent.abilityUsed = true
 						parent.airControl = true
