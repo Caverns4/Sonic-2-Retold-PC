@@ -118,13 +118,13 @@ enum UNLOCKS{
 	AMY = 2, # Play as Amy: 10 coins
 	MIGHTY = 4, # Play as Mighty: 15 coins
 	RAY = 8, # Play as Ray: 20 coins
-	BETASONIC = 16, # Beta Sonic Sprites: 20
+	BETASONIC = 16, # Beta Sonic Sprites: 20 coins
 	BETACASINONIGHT = 32, # Beta Casino Night: 25 coins
 	SPEEDCAP = 64, # Disable Air Speed Cap: 25 coins
 	ANYCOMBO = 128, # Super Form for all Characters: 30 coins
 	SUPEROTHERS = 256, # Allow any player combination: 30 coins
 	STARTEMERALDS = 512, # Start with any number of Chaose Emralds: 50 coins
-	RINGDRAIN = 1024, # Disable Super Sonic Ringdrain: 50 coins
+	RINGDRAIN = 1024, # Disable Super Sonic limits: 100 coins
 }
 var livesMode = true
 var airSpeedCap = true

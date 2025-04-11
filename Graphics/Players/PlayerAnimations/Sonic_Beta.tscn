@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://sbta787c4fwk"]
+[gd_scene load_steps=68 format=3 uid="uid://sbta787c4fwk"]
 
 [ext_resource type="Shader" path="res://Shaders/PaletteSwapRow.gdshader" id="1_0xgvv"]
 [ext_resource type="Texture2D" uid="uid://cgq1nmr34au7o" path="res://Graphics/Players/Mighty.png" id="2_n3qsv"]
@@ -336,42 +336,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [91, 92, 93, 94, 95, 96]
-}
-
-[sub_resource type="Animation" id="106"]
-resource_name = "edge3"
-length = 0.6
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Mighty/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [91, 92, 93, 94, 95, 96]
-}
-
-[sub_resource type="Animation" id="110"]
-resource_name = "edge_super"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Mighty/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [43, 44, 45, 46]
+"values": [102, 103, 104, 105, 106, 107]
 }
 
 [sub_resource type="Animation" id="123"]
@@ -497,7 +462,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [86, 87]
+"values": [13, 14]
 }
 
 [sub_resource type="Animation" id="Animation_pv58b"]
@@ -659,23 +624,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [5]
-}
-
-[sub_resource type="Animation" id="109"]
-resource_name = "idle_super"
-length = 0.9
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Mighty/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
 [sub_resource type="Animation" id="80"]
@@ -1162,8 +1110,6 @@ _data = {
 "drown": SubResource("99"),
 "edge1": SubResource("104"),
 "edge2": SubResource("105"),
-"edge3": SubResource("106"),
-"edge_super": SubResource("110"),
 "grabVerticalBar": SubResource("123"),
 "grabVerticalBarOffset": SubResource("124"),
 "hang": SubResource("112"),
@@ -1175,7 +1121,6 @@ _data = {
 "idle3": SubResource("116"),
 "idle4": SubResource("117"),
 "idle5": SubResource("118"),
-"idle_super": SubResource("109"),
 "lookUp": SubResource("80"),
 "peelOut": SubResource("87"),
 "push": SubResource("103"),
@@ -1337,7 +1282,7 @@ material = SubResource("ShaderMaterial_ppxn1")
 texture = ExtResource("2_n3qsv")
 offset = Vector2(0, -5)
 hframes = 16
-vframes = 7
+vframes = 8
 
 [node name="DashDust" type="AnimatedSprite2D" parent="Sprite2D"]
 visible = false

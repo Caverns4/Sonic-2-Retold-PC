@@ -320,6 +320,8 @@ func _ready():
 		
 		# set my character
 		character = Global.PlayerChar1
+		if Global.betaSonic and character == Global.CHARACTERS.SONIC:
+			character = Global.CHARACTERS.SONIC_BETA
 		
 		# set super palettes
 		match (character):
@@ -381,8 +383,6 @@ func _ready():
 	
 	# Character settings
 	var skin = playerskins[max(min(character-1,playerskins.size()),0)]
-	if Global.betaSonic and character == Global.CHARACTERS.SONIC:
-		skin = playerskins[6]
 	currentHitbox = skin[1]
 	spriteController.name = "OldSprite"
 	var newSprite = skin[0].instantiate()

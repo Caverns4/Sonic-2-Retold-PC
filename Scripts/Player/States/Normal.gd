@@ -90,22 +90,23 @@ func _process(delta):
 					if parent.isSuper and parent.animator.has_animation("edge_super"):
 						parent.animator.play("edge_super")
 						balancing = true
+					# normal edge
+					elif !getR and getL and getM:
+						parent.animator.play("edge1")
+						balancing = true
+					# reverse edge
+					elif !getL and getR and getM:
+						parent.animator.play("edge3")
+						balancing = true
 					# far edge
-					elif !getMEdge:
+					elif !getM:
 						parent.animator.play("edge2")
 						balancing = true
 						if parent.verticalSensorLeft.is_colliding():
 							parent.direction = 1
 						elif parent.verticalSensorRight.is_colliding():
 							parent.direction = -1
-					# normal edge
-					elif !getR and getL:
-						parent.animator.play("edge1")
-						balancing = true
-					# reverse edge
-					elif !getL and getR:
-						parent.animator.play("edge3")
-						balancing = true
+					
 				Global.CHARACTERS.KNUCKLES:
 					if ((!getL or !getR) and !getMEdge and 
 					parent.animator.current_animation != "edge1" and 
