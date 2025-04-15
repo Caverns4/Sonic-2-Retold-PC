@@ -224,6 +224,15 @@ func set_inputs():
 		inputs[INPUTS.YINPUT] = -int(Input.is_action_pressed(inputActions[INPUTS.YINPUT][0]))+int(Input.is_action_pressed(inputActions[INPUTS.YINPUT][1]))
 
 func isActionPressed():
+	if inputs[INPUTS.ACTION] == 1:
+		return true
+	if inputs[INPUTS.ACTION2] == 1:
+		return true
+	if inputs[INPUTS.ACTION3] == 1:
+		return true
+	return false
+
+func isActionHeld():
 	if inputs[INPUTS.ACTION]:
 		return true
 	if inputs[INPUTS.ACTION2]:
@@ -231,8 +240,6 @@ func isActionPressed():
 	if inputs[INPUTS.ACTION3]:
 		return true
 	return false
-
-
 
 func get_ring():
 	rings += 1

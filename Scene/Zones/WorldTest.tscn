@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqeqlsrjg62qs"]
+[gd_scene load_steps=11 format=3 uid="uid://dqeqlsrjg62qs"]
 
 [ext_resource type="Script" path="res://Scripts/World3D/world3D.gd" id="1_0mra5"]
 [ext_resource type="Texture2D" uid="uid://jowkedgx35g5" path="res://Graphics/World3D/_f.png" id="1_a6jsl"]
+[ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="2_jet5r"]
 [ext_resource type="PackedScene" uid="uid://6tr5dhodgxto" path="res://Models/world_test.tscn" id="3_05bgd"]
 [ext_resource type="PackedScene" uid="uid://ble6so7nw6f7g" path="res://Entitites3D/WorldTest/Player_Base.tscn" id="3_lx1d5"]
 [ext_resource type="PackedScene" uid="uid://dpl1a2gtxk5t2" path="res://Entitites3D/ring_ss.tscn" id="5_ipokc"]
@@ -30,6 +31,8 @@ volumetric_fog_ambient_inject = 0.61
 [node name="WorldTest" type="Node3D"]
 process_mode = 1
 script = ExtResource("1_0mra5")
+
+[node name="HUD" parent="." instance=ExtResource("2_jet5r")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_d2d7o")

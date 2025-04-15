@@ -163,7 +163,7 @@ func _ready():
 	$LevelClear/Act.frame = act-1
 
 func respawnPlayer():
-	if Global.players:
+	if Global.players and Global.players[0] is CharacterBody2D:
 		var player = Global.players[0]
 		# set player's position to rings (and player 2)
 		# helps sell the illusion that we reset the room
