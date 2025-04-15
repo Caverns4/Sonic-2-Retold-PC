@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://63e2h7q7su5r"]
+
+[ext_resource type="PackedScene" uid="uid://uofvn2ttloib" path="res://Models/Objects/monitor.tscn" id="1_jck2u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_axhfu"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Monitor" type="StaticBody3D"]
+collision_layer = 8192
+collision_mask = 0
+
+[node name="Monitor" parent="." instance=ExtResource("1_jck2u")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_axhfu")

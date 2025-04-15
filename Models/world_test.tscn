@@ -9,25 +9,16 @@
 [node name="Cube" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_ldxpw")
 
-[node name="Cylinder" parent="." index="1"]
-surface_material_override/0 = ExtResource("2_ldxpw")
-
-[node name="Cube_003" parent="." index="2"]
+[node name="Cube_003" parent="." index="1"]
 surface_material_override/0 = ExtResource("3_yscl8")
 surface_material_override/1 = ExtResource("2_ldxpw")
 
-[node name="Cylinder_004" parent="." index="3"]
-surface_material_override/0 = ExtResource("2_ldxpw")
-
-[node name="Cube_005" parent="." index="4"]
+[node name="Cube_005" parent="." index="2"]
 surface_material_override/0 = ExtResource("2_ldxpw")
 surface_material_override/1 = ExtResource("3_yscl8")
 
-[node name="Cylinder_001" parent="." index="5"]
+[node name="Cylinder_001" parent="." index="3"]
 surface_material_override/0 = ExtResource("2_ldxpw")
 
-[node name="Cylinder_002" parent="." index="6"]
-surface_material_override/0 = ExtResource("2_ldxpw")
-
-[node name="Cylinder_003" parent="." index="7"]
+[node name="Cylinder" parent="." index="4"]
 surface_material_override/0 = ExtResource("2_ldxpw")

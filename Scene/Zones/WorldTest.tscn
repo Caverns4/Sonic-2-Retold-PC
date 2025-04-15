@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dqeqlsrjg62qs"]
+[gd_scene load_steps=12 format=3 uid="uid://dqeqlsrjg62qs"]
 
 [ext_resource type="Script" path="res://Scripts/World3D/world3D.gd" id="1_0mra5"]
 [ext_resource type="Texture2D" uid="uid://jowkedgx35g5" path="res://Graphics/World3D/_f.png" id="1_a6jsl"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ble6so7nw6f7g" path="res://Entitites3D/WorldTest/Player_Base.tscn" id="3_lx1d5"]
 [ext_resource type="PackedScene" uid="uid://dpl1a2gtxk5t2" path="res://Entitites3D/ring_ss.tscn" id="5_ipokc"]
 [ext_resource type="PackedScene" uid="uid://brhngubcqwg7i" path="res://Entitites3D/bomb_ss.tscn" id="6_ayof6"]
+[ext_resource type="PackedScene" uid="uid://63e2h7q7su5r" path="res://Entitites3D/monitor_Object.tscn" id="8_v85xk"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wfcgl"]
 panorama = ExtResource("1_a6jsl")
@@ -50,5 +51,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 0)
 [node name="Ring_SS3" parent="." instance=ExtResource("5_ipokc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 0)
 
+[node name="Ring_SS4" parent="." instance=ExtResource("5_ipokc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 12, 0)
+
+[node name="Ring_SS5" parent="." instance=ExtResource("5_ipokc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 14, 0)
+
+[node name="Ring_SS6" parent="." instance=ExtResource("5_ipokc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 16, 0)
+
+[node name="Ring_SS7" parent="." instance=ExtResource("5_ipokc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 18, 0)
+
+[node name="Ring_SS8" parent="." instance=ExtResource("5_ipokc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 20, 0)
+
+[node name="Ring_SS9" parent="." instance=ExtResource("5_ipokc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 22, 0)
+
+[node name="Ring_SS10" parent="." instance=ExtResource("5_ipokc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 24, 0)
+
 [node name="Bomb_SS" parent="." instance=ExtResource("6_ayof6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 4)
+
+[node name="Monitor" parent="." instance=ExtResource("8_v85xk")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 0, -2)

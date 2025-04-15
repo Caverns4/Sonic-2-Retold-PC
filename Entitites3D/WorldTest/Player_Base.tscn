@@ -21,8 +21,8 @@ height = 1.0
 [node name="PlayerBase" type="CharacterBody3D"]
 collision_layer = 4096
 collision_mask = 8193
+wall_min_slide_angle = 0.523599
 floor_stop_on_slope = false
-floor_max_angle = 1.13446
 script = ExtResource("1_ghcg4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
