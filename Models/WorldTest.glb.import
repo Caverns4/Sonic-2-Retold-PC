@@ -1,0 +1,73 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://do7v4ykqfrnrq"
+path="res://.godot/imported/WorldTest.glb-089949f08b0b7dea11e1d8ed2381b3ef.scn"
+
+[deps]
+
+source_file="res://Models/WorldTest.glb"
+dest_files=["res://.godot/imported/WorldTest.glb-089949f08b0b7dea11e1d8ed2381b3ef.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"materials": {
+"Material": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/Material.tres"
+},
+"Material.001": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/Material.001.tres"
+}
+},
+"nodes": {
+"PATH:Cube": {
+"generate/physics": true
+},
+"PATH:Cube_003": {
+"generate/physics": true
+},
+"PATH:Cube_005": {
+"generate/physics": true
+},
+"PATH:Cylinder": {
+"generate/physics": true
+},
+"PATH:Cylinder_001": {
+"generate/physics": true
+},
+"PATH:Cylinder_002": {
+"generate/physics": true
+},
+"PATH:Cylinder_003": {
+"generate/physics": true
+},
+"PATH:Cylinder_004": {
+"generate/physics": true
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=1

@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://sxo2mi07a3sr"]
+
+[ext_resource type="Texture2D" uid="uid://ctap0tfxc2dma" path="res://Models/Player/Miles_Tails.png" id="1_vxgbl"]
+
+[resource]
+cull_mode = 2
+shading_mode = 0
+specular_mode = 2
+albedo_texture = ExtResource("1_vxgbl")
+texture_filter = 0

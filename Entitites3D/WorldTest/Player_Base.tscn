@@ -1,0 +1,85 @@
+[gd_scene load_steps=15 format=3 uid="uid://ble6so7nw6f7g"]
+
+[ext_resource type="Script" path="res://Scripts/World3D/player_base.gd" id="1_ghcg4"]
+[ext_resource type="AudioStream" uid="uid://vcyy3mwx3dt1" path="res://Audio/SFX/Player/s2br_Jump.wav" id="1_qnkwp"]
+[ext_resource type="AudioStream" uid="uid://clghc0siqwgp3" path="res://Audio/SFX/Player/s2br_Roll.wav" id="2_a5yyh"]
+[ext_resource type="AudioStream" uid="uid://1q4psgyqteps" path="res://Audio/SFX/Objects/CNZ_Flipper.wav" id="3_ufqct"]
+[ext_resource type="AudioStream" uid="uid://bbyrdthe4fqcj" path="res://Audio/SFX/Player/s2br_DashRelease.wav" id="4_xfg5n"]
+[ext_resource type="AudioStream" uid="uid://comgpug432nob" path="res://Audio/SFX/Player/s2br_Stab.wav" id="5_6o3la"]
+[ext_resource type="AudioStream" uid="uid://bamm5ol1hqkaq" path="res://Audio/SFX/Player/s2br_Shield.wav" id="6_a83dh"]
+[ext_resource type="AudioStream" uid="uid://cb8i5nuvr51f7" path="res://Audio/SFX/Player/s2br_Death.wav" id="7_6jp4j"]
+[ext_resource type="AudioStream" uid="uid://jntxngpoom7w" path="res://Audio/SFX/Objects/s2br_RingLeft.wav" id="8_kraq2"]
+[ext_resource type="AudioStream" uid="uid://c05soci1eqlxy" path="res://Audio/SFX/Objects/s2br_RingRight.wav" id="9_i35jl"]
+[ext_resource type="AudioStream" uid="uid://c4d6il21s83ad" path="res://Audio/SFX/Objects/s2br_LoseRings.wav" id="10_hh7l0"]
+[ext_resource type="AudioStream" uid="uid://jhgu358io281" path="res://Audio/SFX/Player/s2br_MetalBrake.wav" id="11_xkseq"]
+[ext_resource type="PackedScene" uid="uid://chmt55ny235xo" path="res://Entitites3D/WorldTest/sonic_Player.tscn" id="13_p0v18"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_34yma"]
+radius = 0.25
+height = 1.0
+
+[node name="PlayerBase" type="CharacterBody3D"]
+collision_layer = 4096
+collision_mask = 8193
+floor_stop_on_slope = false
+floor_max_angle = 1.13446
+script = ExtResource("1_ghcg4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_34yma")
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Jump" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("1_qnkwp")
+bus = &"SFX"
+
+[node name="Roll" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("2_a5yyh")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="Bounce" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("3_ufqct")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="SpinDash" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_xfg5n")
+bus = &"SFX"
+
+[node name="Spike" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("5_6o3la")
+bus = &"SFX"
+
+[node name="Shield" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("6_a83dh")
+bus = &"SFX"
+
+[node name="Death" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("7_6jp4j")
+bus = &"SFX"
+
+[node name="RingLeft" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("8_kraq2")
+bus = &"SFX"
+
+[node name="RingRight" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("9_i35jl")
+bus = &"SFX"
+
+[node name="RingLoss" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("10_hh7l0")
+bus = &"SFX"
+
+[node name="Brake" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("11_xkseq")
+bus = &"SFX"
+
+[node name="Player Skin" type="Node3D" parent="."]
+
+[node name="Sonic2" parent="Player Skin" instance=ExtResource("13_p0v18")]
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3.08447)

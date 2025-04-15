@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bfm8kfuf1hbbq"]
+
+[ext_resource type="Texture2D" uid="uid://dokro10cjmotw" path="res://Models/WorldTest_34.png" id="1_8ii0s"]
+
+[resource]
+resource_name = "Material.001"
+cull_mode = 2
+specular_mode = 2
+albedo_texture = ExtResource("1_8ii0s")
+roughness = 0.5
+texture_filter = 0

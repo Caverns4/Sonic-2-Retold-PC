@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cqyygby3hahml"]
+
+[ext_resource type="Texture2D" uid="uid://fqg1xjd14tmv" path="res://Models/WorldTest_53.png" id="1_xaeji"]
+
+[resource]
+resource_name = "Material"
+specular_mode = 2
+albedo_texture = ExtResource("1_xaeji")
+roughness = 0.5
+texture_filter = 0

@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dll24caxu3ltu"]
+
+[ext_resource type="Texture2D" uid="uid://bmx7eiwed2ofs" path="res://Models/Player/Sonic2_Sonic.png" id="1_cad74"]
+
+[resource]
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_cad74")
+texture_filter = 0
