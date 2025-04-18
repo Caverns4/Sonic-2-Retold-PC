@@ -10,7 +10,28 @@ const JUMP_KNUCKLES = 6.0
 
 const INPUT_MEMORY_LENGTH = 20
 const JUMP_BUFFER_TIME = 3.0/60.0 #Time after pressing jump button to buffer the input, in case it's pressed early.
-
+# ================
+# physics list order
+# 0 Acceleration
+# 1 Deceleration
+# 2 Friction
+# 3 Top Speed
+# 4 Air Acceleration (No longer used, air accel is always Ground accel * 2)
+# 5 Rolling Friction 
+# 6 Rolling Deceleration
+# 7 Gravity
+# 8 Jump release velocity
+var physicsList = [
+# 0 Sonic (Primary Character physics)
+[12/256.0, 0.50, 12/256.0,  6*60, 24/256.0, 12/256.0, 32/256.0, 56/256.0, 4],
+# 1 Speed Shoes
+[24/256.0, 0.50, 24/256.0, 12*60, 48/256.0, 12/256.0, 32/256.0, 56/256.0, 4],
+# 2 Super Sonic
+[32/256.0, 1.00, 12/256.0, 10*60, 64/256.0,  6/256.0, 32/256.0, 56/256.0, 4],
+# 3 Super Forms besides Sonic
+[24/256.0, 0.75, 12/256.0,  8*60, 48/256.0,  6/256.0, 32/256.0, 56/256.0, 4],
+]
+# ================
 #Collision management
 var floor_ray = RayCast3D.new()
 var ray_length = 1.0  # Length for surface detection
@@ -93,9 +114,6 @@ func _physics_process(delta: float) -> void:
 		movement.y += (-9.8 * delta)
 	else:
 		movement.y = 0.0
-	#if is_on_wall():
-	#	inertia = -30.0 #Bounce back
-	#	sfx[2].play()
 	
 	if player_animator and is_on_floor():
 		if (
@@ -114,9 +132,8 @@ func _physics_process(delta: float) -> void:
 	# jump buffer time
 	if jumpBuffer > 0.0:
 		jumpBuffer -= delta
-		
-	if (
-	Vector3(movement.x,0,movement.z).length() > 0.2):
+	
+	if (Vector3(movement.x,0,movement.z).length() > 0.2):
 		last_movement_direction = Vector3(movement.x,0,movement.z)
 		var target_angle := Vector3.BACK.signed_angle_to(last_movement_direction,Vector3.UP)
 		sprite.rotation.y = lerp_angle(sprite.rotation.y,target_angle,24*delta)
@@ -133,11 +150,9 @@ func _physics_process(delta: float) -> void:
 	
 
 func handle_input(delta):
-	var current_cam = get_viewport().get_camera_3d()
 	# Handle jump.
 	if isActionPressed():
 		jumpBuffer = JUMP_BUFFER_TIME
-	
 
 	# Todo: THis will need a total rewrite
 	var input_axis = Vector2(
@@ -150,8 +165,7 @@ func handle_input(delta):
 			inertia += (24*delta)
 		else:
 			inertia += (48*delta)
-	inertia = clampf(inertia,0-TOP_SPEED,TOP_SPEED)
-	#print(inertia)
+		#inertia = clampf(inertia,0-TOP_SPEED,TOP_SPEED)
 
 	var move_direction = (forward * input_axis.y) + (right * input_axis.x)
 	move_direction = move_direction.normalized()
@@ -160,7 +174,7 @@ func handle_input(delta):
 	movement = Vector3(movementParse.x,movement.y,movementParse.z)
 
 	if jumpBuffer > 0 and is_on_floor():
-		var jumpAngle = get_floor()
+		var jumpAngle = get_floor().normalized()
 		if character != Global.CHARACTERS.KNUCKLES:
 			movement += jumpAngle * JUMP_VELOCITY
 			jumpBuffer = 0.0
@@ -181,7 +195,7 @@ func hit_player(damagePosition: Vector3,ammount: int):
 
 func rotate_to_floor_angle():
 	var surface_normal = get_floor()
-	if surface_normal and movement.length() > 3.0:
+	if surface_normal:
 		#Align to nearest floor
 		xform = global_transform
 		xform.basis.y = surface_normal
@@ -226,8 +240,9 @@ func set_inputs():
 func isActionPressed():
 	if inputs[INPUTS.ACTION] == 1:
 		return true
-	if inputs[INPUTS.ACTION2] == 1:
-		return true
+	# For Spindash
+	#if inputs[INPUTS.ACTION2] == 1:
+	#	return true
 	if inputs[INPUTS.ACTION3] == 1:
 		return true
 	return false
@@ -235,8 +250,9 @@ func isActionPressed():
 func isActionHeld():
 	if inputs[INPUTS.ACTION]:
 		return true
-	if inputs[INPUTS.ACTION2]:
-		return true
+	# For Spindash
+	#if inputs[INPUTS.ACTION2]:
+	#	return true
 	if inputs[INPUTS.ACTION3]:
 		return true
 	return false

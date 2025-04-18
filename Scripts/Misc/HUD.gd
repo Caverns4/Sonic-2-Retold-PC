@@ -247,19 +247,19 @@ func HandleHUDBlinking(delta):
 ## Update HUD Text
 func UpdateHUD(_delta):
 	# clamp time so that it won't go to 10 minutes
-	var timeClamp = min(Global.levelTime,Global.maxTime-1)
+	var hud_time = min(Global.levelTime,Global.maxTime-0.001)
+	var hud_time_minutes: int = int(hud_time)/60
+	var hud_time_seconds: int = int(hud_time)%60
+	var hud_time_hundredths:int = int(hud_time * 100) % 100
+	var timer_text: String = "%2d:%02d:%02d" % [hud_time_minutes,hud_time_seconds,hud_time_hundredths]
+	
 	if Global.TwoPlayer:
 		# Time Text Player 1
-		$P1Counters/Text/TimeNumbers.text = (
-		"%2d" % int(floor(timeClamp/60)) + ":" # Minute
-		+ str(int(fmod(floor(timeClamp),60))).pad_zeros(2) + ":" # Second
-		+ str(int(fmod(floor(timeClamp*100),100))).pad_zeros(2)) # Miliseconds
+		if Global.timerActive:
+			$P1Counters/Text/TimeNumbers.text = timer_text
 		# Time Text Player 2
-		timeClamp = min(Global.levelTimeP2,Global.maxTime-1)
-		$P2Counters/Text/TimeNumbers.text = (
-		"%2d" % int(floor(timeClamp/60)) + ":" # Minute
-		+ str(int(fmod(floor(timeClamp),60))).pad_zeros(2) + ":" # Second
-		+ str(int(fmod(floor(timeClamp*100),100))).pad_zeros(2)) # Miliseconds
+		if Global.timerActiveP2:
+			$P2Counters/Text/TimeNumbers.text = timer_text
 		# check that there's player, if there is then track the focus players ring count
 		var playerCount = Global.players.size()
 		$P1Counters/Text/RingCount.text = "%3d" % Global.players[0].rings
@@ -275,11 +275,8 @@ func UpdateHUD(_delta):
 	else:
 		# set score string to match global score with leading 0s
 		scoreText.text = "%6d" % Global.score
-		#Set Time for Player 1
-		timeText.text = (
-		"%2d" % int(floor(timeClamp/60)) + ":" # Minute
-		+ str(int(fmod(floor(timeClamp),60))).pad_zeros(2) + ":" # Second
-		+ str(int(fmod(floor(timeClamp*100),100))).pad_zeros(2)) # Miliseconds
+		#Set Time Text
+		timeText.text = timer_text
 		#Ring Text Player 1
 		ringText.text = "%3d" % Global.players[focusPlayer].rings
 		
