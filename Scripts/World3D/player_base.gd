@@ -4,12 +4,12 @@ extends CharacterBody3D
 @onready var sprite = $"Player Skin/Sonic2"
 @onready var player_animator = AnimationPlayer
 
-const TOP_SPEED = 10.0
-const JUMP_VELOCITY = 7.0
-const JUMP_KNUCKLES = 6.0
+const RUN_VAL = 6.0
 
 const INPUT_MEMORY_LENGTH = 20
 const JUMP_BUFFER_TIME = 3.0/60.0 #Time after pressing jump button to buffer the input, in case it's pressed early.
+
+var _start_position := Vector3.ZERO 
 # ================
 # physics list order
 # 0 Acceleration
@@ -23,15 +23,35 @@ const JUMP_BUFFER_TIME = 3.0/60.0 #Time after pressing jump button to buffer the
 # 8 Jump release velocity
 var physicsList = [
 # 0 Sonic (Primary Character physics)
-[12/256.0, 0.50, 12/256.0,  6*60, 24/256.0, 12/256.0, 32/256.0, 56/256.0, 4],
+[12, 0.50, 12,  6, 24, 12, 32, 56, 4],
 # 1 Speed Shoes
-[24/256.0, 0.50, 24/256.0, 12*60, 48/256.0, 12/256.0, 32/256.0, 56/256.0, 4],
+[24, 0.50, 24, 12, 48, 12, 32, 56, 4],
 # 2 Super Sonic
-[32/256.0, 1.00, 12/256.0, 10*60, 64/256.0,  6/256.0, 32/256.0, 56/256.0, 4],
+[32, 1.00, 12, 10, 64,  6, 32, 56, 4],
 # 3 Super Forms besides Sonic
-[24/256.0, 0.75, 12/256.0,  8*60, 48/256.0,  6/256.0, 32/256.0, 56/256.0, 4],
+[24, 0.75, 12,  8, 48,  6, 32, 56, 4],
 ]
 # ================
+#Sonic's Speed constants
+var acc = 12			#acceleration
+var dec = 0.5				#deceleration
+var frc = 12			#friction (same as acc)
+var rollfrc = frc*0.5		#roll friction
+var rolldec = 32			#roll deceleration
+var top = 6*60				#top horizontal speed
+var toproll = 20*60			#top horizontal speed rolling
+var slp = 0.125				#slope factor when walking/running #0.125
+var slprollup = 0.078125		#slope factor when rolling uphill
+var slprolldown = 0.3125		#slope factor when rolling downhill
+var fall = 2.5*60			#tolerance ground speed for sticking to walls and ceilings
+
+#Sonic's Airbo11rne Speed Constants
+var air = 24			#air acceleration (2x acc)
+var jmp = 6.5*2			#jump force (6 for knuckles)
+var grv = 0.21875			#gravity
+var releaseJmp = 4			#jump release velocity
+# ================
+
 #Collision management
 var floor_ray = RayCast3D.new()
 var ray_length = 1.0  # Length for surface detection
@@ -65,14 +85,21 @@ var inputActions = INPUTACTIONS_P1
 var playerControl = 1
 var inputMemory = []
 
+# State handling
+var is_jumping: bool = false
+var is_rolling: bool = false
+var spindashPower = 0.0
+var peelOutCharge = 0.0
+
 # Movement
-var inertia : float  = 0.0 # Movement Speed forward
+var lock_time : float = 0.0
 var movement : Vector3 = Vector3.ZERO #linear motion
 var last_movement_direction := Vector3.BACK
 var xform : Transform3D
 var jumpBuffer: float = 0
 
 func _ready() -> void:
+	_start_position = global_position
 	Global.players.append(self)
 	if Global.players[0] == self:
 		character = Global.PlayerChar1
@@ -92,6 +119,7 @@ func _ready() -> void:
 		character = Global.PlayerChar2
 		playerControl = 2
 		inputActions = INPUTACTIONS_P2
+		sfx = Global.players[0].sfx
 	
 	#instantiate the player's skin
 	var character = min(character,playerSkins.size())
@@ -107,28 +135,35 @@ func _ready() -> void:
 	self.add_child(floor_ray)
 	floor_ray.enabled = true
 	floor_ray.target_position = Vector3.DOWN * ray_length
+	switch_physics()
+	
 
 func _physics_process(delta: float) -> void:
-	set_inputs()
-	if !is_on_floor():
-		movement.y += (-9.8 * delta)
-	else:
-		movement.y = 0.0
+	if global_position.y < -1000:
+		global_position = _start_position
+		velocity = Vector3.ZERO
 	
 	if player_animator and is_on_floor():
 		if (
-			movement.length() >= (TOP_SPEED-1)):
+			velocity.length() >= (RUN_VAL-1)):
 			player_animator.play("Run")
-		elif (movement.length() and movement.length() < (TOP_SPEED-1)):
+		elif (velocity.length() > 0.1):
 			player_animator.play("Jog")
 		else:
 			player_animator.play("Idle")
-			
+	
+	set_inputs()
 	handle_input(delta)
-	velocity = (global_basis * movement)
+	
+	if velocity.length() > 2.0 or up_direction.y > 0.25:
+		rotate_to_floor_angle()
+	elif is_on_floor(): # Repel off slope
+		reset_Player_angle()
+		lock_time = 1.0
+	
+	movement = velocity
+	#velocity = (global_basis * movement)
 	move_and_slide()
-	#look_at(movement,up_direction)
-	rotate_to_floor_angle()
 	# jump buffer time
 	if jumpBuffer > 0.0:
 		jumpBuffer -= delta
@@ -136,7 +171,7 @@ func _physics_process(delta: float) -> void:
 	if (Vector3(movement.x,0,movement.z).length() > 0.2):
 		last_movement_direction = Vector3(movement.x,0,movement.z)
 		var target_angle := Vector3.BACK.signed_angle_to(last_movement_direction,Vector3.UP)
-		sprite.rotation.y = lerp_angle(sprite.rotation.y,target_angle,24*delta)
+		sprite.rotation.y = lerp_angle(sprite.rotation.y,target_angle,acc*delta)
 	
 	
 	if Global.players[0] == self:
@@ -150,38 +185,39 @@ func _physics_process(delta: float) -> void:
 	
 
 func handle_input(delta):
-	# Handle jump.
+	# Check for Jump pressed
 	if isActionPressed():
 		jumpBuffer = JUMP_BUFFER_TIME
-
-	# Todo: THis will need a total rewrite
-	var input_axis = Vector2(
-		inputs[INPUTS.XINPUT],inputs[INPUTS.YINPUT]).normalized()
+	
+	# Process movement
+	var raw_input = Vector2(inputs[INPUTS.XINPUT],inputs[INPUTS.YINPUT])
 	var forward = camera.global_basis.z
 	var right = camera.global_basis.x
-
-	if inertia < TOP_SPEED:
-		if is_on_floor():
-			inertia += (24*delta)
-		else:
-			inertia += (48*delta)
-		#inertia = clampf(inertia,0-TOP_SPEED,TOP_SPEED)
-
-	var move_direction = (forward * input_axis.y) + (right * input_axis.x)
+	
+	if lock_time > 0:
+		lock_time -= delta
+		raw_input = Vector2.ZERO
+	
+	var move_direction: Vector3 = (forward * raw_input.y) + (right * raw_input.x)
+	move_direction.y = 0.0
 	move_direction = move_direction.normalized()
-
-	var movementParse = movement.move_toward(move_direction * inertia, 24.0*delta)
-	movement = Vector3(movementParse.x,movement.y,movementParse.z)
-
+	
+	var floorAngle = get_floor().normalized()
+	
+	var y_velocity := velocity.y
+	#velocity.y = 0.0
+	velocity = velocity.move_toward(
+		(move_direction * top),
+		acc*delta+(velocity.length()/top))
+	if !is_on_floor():
+		velocity.y = y_velocity + 0-grv * delta
+	#else:
+	#	velocity.y = velocity.y
+	
 	if jumpBuffer > 0 and is_on_floor():
-		var jumpAngle = get_floor().normalized()
-		if character != Global.CHARACTERS.KNUCKLES:
-			movement += jumpAngle * JUMP_VELOCITY
-			jumpBuffer = 0.0
-		else:
-			movement += jumpAngle * JUMP_KNUCKLES
-			jumpBuffer = 0.0
-
+		velocity += floorAngle * jmp
+		jumpBuffer = 0.0
+		is_jumping = true
 		sfx[0].play()
 		if player_animator:
 			player_animator.play("Jump")
@@ -190,8 +226,7 @@ func hit_player(damagePosition: Vector3,ammount: int):
 	if rings > 0:
 		sfx[9].play
 	rings = max(rings-abs(ammount),0)
-	if inertia > 0.0:
-		inertia = 0.0
+
 
 func rotate_to_floor_angle():
 	var surface_normal = get_floor()
@@ -212,6 +247,14 @@ func rotate_to_floor_angle():
 		global_transform = xform
 		up_direction = Vector3.UP.normalized()
 
+func reset_Player_angle():
+	#Move back toward Zero
+	xform = global_transform
+	xform.basis.y = Vector3.UP
+	xform.basis.x = -xform.basis.z.cross(Vector3.UP)
+	xform.basis = xform.basis.orthonormalized()
+	global_transform = xform
+	up_direction = Vector3.UP.normalized()
 
 func get_floor():
 	# Check collision with the rays for floor, wall, and ceiling
@@ -219,6 +262,53 @@ func get_floor():
 		#print(floor_ray.get_collision_normal())
 		return floor_ray.get_collision_normal()
 	return Vector3.ZERO
+
+func switch_physics():
+	var physicsID = determine_physics()
+	var getList = physicsList[max(0,physicsID)]
+	#if isWater:
+	#	getList = waterPhysicsListNew[max(0,physicsID)]
+	acc = getList[0]
+	dec = getList[1]*2
+	frc = getList[2]*2
+	top = getList[3]*2
+	air = getList[0]*2
+	rollfrc = getList[5]*2
+	rolldec = getList[6]*2
+	grv = getList[7]/2
+	releaseJmp = getList[8]
+	# For Jump height:
+	jmp = determine_jump_property()
+
+# return the physics id variable, see physicsList array for reference
+func determine_physics():
+	# get physics from character
+	#match (character):
+	#	Global.CHARACTERS.SONIC:
+	#		if isSuper:
+	#			return 2 # Super Sonic
+	#Anyone who isn't a special case:
+	#if isSuper:
+	#	return 3 # Super
+	#elif shoeTime > 0:
+	#	return 1 # Shoes
+	return 0 #Default to Sonic 
+
+func determine_jump_property():
+	#if !water:
+		match (character):
+	#		Global.CHARACTERS.SONIC:
+	#			if isSuper:
+	#				return 8*60
+			Global.CHARACTERS.KNUCKLES:
+				return 6*2
+		return 6.5*2
+	#else:
+	#	match (character):
+	#		Global.CHARACTERS.KNUCKLES:
+	#			return 3*60
+	#	return 3.5*60
+
 
 # Input buttons
 func set_inputs():

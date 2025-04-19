@@ -22,3 +22,8 @@ surface_material_override/0 = ExtResource("2_ldxpw")
 
 [node name="Cylinder" parent="." index="4"]
 surface_material_override/0 = ExtResource("2_ldxpw")
+
+[node name="Cube_001" parent="." index="5"]
+visibility_range_end = 50.0
+visibility_range_end_margin = 20.0
+visibility_range_fade_mode = 1
