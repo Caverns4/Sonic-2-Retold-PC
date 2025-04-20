@@ -13,7 +13,7 @@ func state_activated():
 
 func _process(_delta):
 	# Animation
-	if parent.water:
+	if parent.is_in_water:
 		parent.animator.play("swim")
 	else:
 		parent.animator.play("fly")

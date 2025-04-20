@@ -27,6 +27,10 @@ extends CanvasLayer
 
 # used for flashing ui elements (rings, time)
 var flashTimer = 0
+var cheating = (
+	Global.airSpeedCap or 
+	(Global.superAnyone and Global.PlayerChar1 != Global.CHARACTERS.SONIC) or 
+	!Global.superRingDrain)
 
 # Used for level completion, stop loop recursions
 var isStageEnding: bool = false
@@ -38,24 +42,24 @@ var perfectBonus: int = 0
 var perfectEnabled: bool = true
 ## Number of coins collected in this level.
 var coins: int = 0
-## Score Tally Timer
-const TALLY_TIME: float = 0.0167
-var tallyTimer: float = TALLY_TIME
-var tallyStart: bool = false
-
 ## Used to trigger the Game Over Animation
 var gameOver: bool = false
+
+# used for the score countdown
+var accumulatedDelta: float = 0.0
 
 # signal that gets emited once the stage tally is over
 signal tally_clear
 
-# character name strings, used for "[player] has cleared", this matches the players character ID so you'll want to add the characters name in here matching the ID if you want more characters
-# see Global.PlayerChar1
-var characterNames = ["SONIC","TAILS","KNUCKLES","AMY","MIGHTY","RAY","SONIC"]
-
 var twoPlayerResults = load("res://Scene/Presentation/TwoPlayerResults.tscn")
 
 func _ready():
+	# create a new stream for the tick sound (so the original stream
+	# will remain unchanged, as it's also used by the switch gimmick),
+	# and set loop parameters, but don't enable looping yet
+	$LevelClear/CounterSFX.stream = $LevelClear/CounterSFX.stream.duplicate()
+	$LevelClear/CounterSFX.stream.loop_end = roundi($LevelClear/CounterSFX.stream.mix_rate / (60.0 / 4))
+	
 	if !Global.airSpeedCap:
 		$Counters/Text.self_modulate = Color.RED
 	# error prevention
@@ -155,7 +159,7 @@ func _ready():
 	Global.timerActive = true
 	Global.timerActiveP2 = true
 	# replace "sonic" in stage clear to match the player clear string
-	$LevelClear/SonicGot.text = characterNames[Global.PlayerChar1-1] + " GOT"
+	$LevelClear/SonicGot.text = Global.characterNames[Global.PlayerChar1-1] + " GOT"
 	if Global.tailsNameCheat and Global.PlayerChar1 == Global.CHARACTERS.TAILS:
 		$LevelClear/SonicGot.text = "MILES GOT"
 	
@@ -221,9 +225,10 @@ func _process(delta):
 		$Water/WaterOverlay.visible = false
 	
 	# Stage Clear handling
-	ProcessStageClear(delta)
-	# Game Over Sequence
-	if Global.gameOver and !gameOver and Global.stageClearPhase <= 0:
+	if Global.stageClearPhase > 2:
+		ProcessStageClear(delta)
+	# Game Over Sequence if NOT stage complete
+	elif Global.gameOver and !gameOver:
 		SetupGameOver(delta)
 	
 
@@ -314,7 +319,7 @@ func WaterOverlay(_delta):
 		# loop through players
 		for i in Global.players:
 			# check if in water and has elec or fire shield
-			if i.water:
+			if i.is_in_water:
 				match (i.shield):
 					i.SHIELDS.ELEC:
 						# reset shield do flash
@@ -371,17 +376,20 @@ func SetupGameOver(_delta):
 ## Run Stage Clear Functionality
 func ProcessStageClear(delta):
 	# initialize stage clear sequence
-	if Global.stageClearPhase > 2 and !isStageEnding:
+	if !isStageEnding:
+		
+		# reset air in case we are under water
+		_reset_air()
 		isStageEnding = true
 		if Global.players[0].totalRings >= ringsForPerfect and perfectEnabled:
 			$LevelClear/PerfectBonusText.visible = true
 			perfectBonus = 50000
-		
+	
 		# show level clear elements
 		$LevelClear.visible = true
 		$LevelClear/TotalText/TallyTotal.text = scoreText.text
 		$LevelClear/Animator.play("LevelClear")
-		
+	
 		# set bonuses
 		ringBonus = floor(Global.players[focusPlayer].rings)*100
 		$LevelClear/RingBonusText/RingBonus.text = "%6d" % ringBonus
@@ -409,7 +417,10 @@ func ProcessStageClear(delta):
 		$LevelClear/CounterWait.start()
 		await $LevelClear/CounterWait.timeout
 		# start the level counter tally (see _on_CounterCount_timeout)
-		tallyStart = true #$LevelClear/CounterCount.start()
+		$LevelClear/CounterCount.start()
+		# initially the tick sound isn't looped, so let's make it loop
+		$LevelClear/CounterSFX.stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
+		$LevelClear/CounterSFX.play()
 		await self.tally_clear
 		# wait 2 seconds (reuse timer)
 		$LevelClear/CounterWait.start(3)
@@ -418,46 +429,6 @@ func ProcessStageClear(delta):
 		# after clear, change to next level in Global.nextZone (you can set the next zone in the level script node)
 		Global.loadNextLevel()
 		Global.main.change_scene_to_file(Global.nextZone,"FadeOut","FadeOut",1)
-	#Every frame
-	if tallyStart:
-		tallyTimer -= delta
-		if tallyTimer <= 0.0:
-			_on_CounterCount_timeout()
-
-## Counter count down
-func _on_CounterCount_timeout():
-	# play counter sound
-	$LevelClear/CounterSFX.play()
-	
-	# decrease bonuses in order, if time bonus not 0 then count time down, then do the same for rings
-	# if you add other bonuses (like perfect bonus) you'll want to add it to the end of the sequence before the end
-	if timeBonus > 0:
-		# check if adding score would hit the life bonus
-		Global.check_score_life(100)
-		timeBonus -= 100
-		Global.score += 100
-	elif ringBonus > 0:
-		# check if adding score would hit the life bonus
-		Global.check_score_life(100)
-		ringBonus -= 100
-		Global.score += 100
-	elif perfectBonus > 0:
-		# check if adding score would hit the life bonus
-		Global.check_score_life(100)
-		perfectBonus -= 100
-		Global.score += 100
-	else:
-		# stop counter timer and play score sound
-		$LevelClear/CounterSFX.stop()
-		tallyStart = false #$LevelClear/CounterCount.stop()
-		$LevelClear/Score.play()
-		# emit tally clear signal
-		emit_signal("tally_clear")
-	# set the level clear strings to the bonuses
-	$LevelClear/TotalText/TallyTotal.text = scoreText.text
-	$LevelClear/TimeBonusText/TimeBonus.text = "%6d" % timeBonus
-	$LevelClear/PerfectBonusText/PerfectBonus.text = "%6d" % perfectBonus
-	$LevelClear/RingBonusText/RingBonus.text = "%6d" % ringBonus
 
 func InitTimerForPlayer(index):
 	if index == 0:
@@ -476,3 +447,48 @@ func _on_timer_timeout() -> void:
 		Global.timerActiveP2 = false
 		Global.gameOver = true
 	#If neither are true, then both players made it past the goal.
+
+
+func _on_counter_count_timeout(delta: float) -> void:
+	# decrease bonuses in order, if time bonus not 0 then count time down, then do the same for rings
+	# if you add other bonuses (like perfect bonus) you'll want to add it to the end of the sequence before the end
+	if timeBonus > 0:
+		timeBonus = _add_score(timeBonus,delta)
+	elif ringBonus > 0:
+		ringBonus = _add_score(ringBonus,delta)
+	elif perfectBonus > 0:
+		perfectBonus = _add_score(perfectBonus,delta)
+	else:
+		# Don't stop the tick sound abruptly, just disable looping,
+		# so it stops by itself after it plays until the end once
+		$LevelClear/CounterSFX.stream.loop_mode = AudioStreamWAV.LOOP_DISABLED
+		# stop counter timer and play score sound
+		$LevelClear/CounterCount.stop()
+		$LevelClear/Score.play()
+		# emit tally clear signal
+		emit_signal("tally_clear")
+	# set the level clear strings to the bonuses
+	$LevelClear/TotalText/TallyTotal.text = scoreText.text
+	$LevelClear/TimeBonusText/TimeBonus.text = "%6d" % timeBonus
+	$LevelClear/PerfectBonusText/PerfectBonus.text = "%6d" % perfectBonus
+	$LevelClear/RingBonusText/RingBonus.text = "%6d" % ringBonus
+
+func _reset_air():
+	for player in Global.players:
+		player.airTimer = player.defaultAirTime
+
+func _add_score(subtractFrom,delta):
+	# Normally we add 100 points per frame at 60 FPS, but player's framerate may
+	# be different. To accommodate for that, we count the number of points based
+	# on time passed since the previous frame.
+	accumulatedDelta += delta
+	var standardDelta = 1.0 / 60.0
+	var points = floor(accumulatedDelta / standardDelta) * 100
+	if (points > subtractFrom):
+		points = subtractFrom
+	accumulatedDelta -= points / 100 * standardDelta
+	# check if adding score would hit the life bonus
+	Global.check_score_life(points)
+	subtractFrom -= points
+	Global.score += points
+	return subtractFrom

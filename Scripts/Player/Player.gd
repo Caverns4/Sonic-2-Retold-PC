@@ -50,7 +50,7 @@ var shoeTime = 0
 var ringDisTime = 0 # ring collecting disable timer
 
 # water settings
-var water = false
+var is_in_water = false
 var defaultAirTime = 30 # 30 seconds
 var panicTime = 12 # start count down at 12 seconds
 var airWarning = 5 # time between air meter sound
@@ -635,7 +635,7 @@ func _process(delta):
 		
 	
 	# Water timer
-	if water and shield != SHIELDS.BUBBLE:
+	if is_in_water and shield != SHIELDS.BUBBLE:
 		if airTimer > 0:
 			if playerControl == 1:
 				if snapped(airTimer,airWarning) != snapped(airTimer-delta,airWarning) and airTimer > panicTime:
@@ -711,7 +711,7 @@ func _physics_process(delta):
 	# damage mask bit
 	set_collision_layer_value(20,attacking)
 	# water surface running
-	set_collision_mask_value(23,ground and abs(groundSpeed) >= 7*60 and !water)
+	set_collision_mask_value(23,ground and abs(groundSpeed) >= 7*60 and !is_in_water)
 	
 	if (ground):
 		groundSpeed = movement.x
@@ -845,9 +845,9 @@ func _physics_process(delta):
 	# Water
 	if Global.waterLevel != null and currentState != STATES.DIE:
 		# Enter water
-		if global_position.y > Global.waterLevel and !water:
-			water = true
-			switch_physics(true)
+		if global_position.y > Global.waterLevel and !is_in_water:
+			is_in_water = true
+			switch_physics()
 			movement.x *= 0.5
 			movement.y *= 0.25
 			if currentState != STATES.RESPAWN and movement.y !=0:
@@ -861,9 +861,9 @@ func _physics_process(delta):
 			
 			# Elec shield/Fire shield logic is in HUD script (related to screen flashing)
 		# Exit water
-		if global_position.y < Global.waterLevel and water:
-			water = false
-			switch_physics(false)
+		if global_position.y < Global.waterLevel and is_in_water:
+			is_in_water = false
+			switch_physics()
 			if abs(movement.y) <= jmp:
 				movement.y *= 2
 			movement.y = clampf(movement.y,0-(16*60),(16*60))
@@ -1046,7 +1046,7 @@ func set_hitbox(mask = Vector2.ZERO, forcePoseChange = false):
 func set_shield(setShieldID):
 	magnetShape.disabled = true
 	# verify not in water and shield compatible
-	if water and (setShieldID == SHIELDS.FIRE or setShieldID == SHIELDS.ELEC):
+	if is_in_water and (setShieldID == SHIELDS.FIRE or setShieldID == SHIELDS.ELEC):
 		return false
 	
 	shield = setShieldID
@@ -1086,7 +1086,7 @@ func hit_player(damagePoint = global_position, damageType = 0, soundID = 6):
 		if (movement.x == 0):
 			movement.x = 2*60
 		# check for water
-		if water:
+		if is_in_water:
 			movement = movement*0.5
 
 		#Todo: Parnet ringcount
@@ -1180,8 +1180,8 @@ func kill(soundID: int = 6):
 		collision_mask = 0
 		z_index = 100
 		if airTimer > 0:
-			water = false
-			switch_physics(false)
+			is_in_water = false
+			switch_physics()
 			movement = Vector2(0,-7*60)
 			animator.play("die")
 			sfx[soundID].play()
@@ -1208,7 +1208,7 @@ func respawn():
 		z_index = 16 #When respawning, appear in front of virtually everything
 		respawnTime = RESPAWN_DEFAULT_TIME
 		movement = Vector2.ZERO
-		water = false
+		is_in_water = false
 		
 		# update physics (prevents player having water physics on respawn)
 		switch_physics()
@@ -1285,7 +1285,7 @@ func determine_physics():
 	return 0 #Default to Sonic 
 
 func determine_jump_property():
-	if !water:
+	if !is_in_water:
 		match (character):
 			Global.CHARACTERS.SONIC:
 				if isSuper:
@@ -1299,10 +1299,10 @@ func determine_jump_property():
 				return 3*60
 		return 3.5*60
 
-func switch_physics(isWater = water):
+func switch_physics():
 	var physicsID = determine_physics()
 	var getList = physicsList[max(0,physicsID)]
-	if isWater:
+	if is_in_water:
 		getList = waterPhysicsListNew[max(0,physicsID)]
 	acc = getList[0]
 	dec = getList[1]
@@ -1394,7 +1394,7 @@ func snap_camera_to_limits():
 
 # Water bubble timer
 func _on_BubbleTimer_timeout():
-	if water and shield != SHIELDS.BUBBLE:
+	if is_in_water and shield != SHIELDS.BUBBLE:
 		# Generate Bubble
 		var bub = Bubble.instantiate()
 		bub.z_index = z_index+3

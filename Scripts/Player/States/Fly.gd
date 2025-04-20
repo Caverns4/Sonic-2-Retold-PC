@@ -36,7 +36,7 @@ func state_exit():
 
 func _process(_delta):
 	# Animation
-	if parent.water:
+	if parent.is_in_water:
 		if carryBox.get_player_contacting_count() != 0:
 			parent.animator.play("swimCarry")
 		elif flightTime > 0:
@@ -56,7 +56,7 @@ func _process(_delta):
 			parent.animator.play("tired")
 	
 	# flight sound (verify we are not underwater)
-	if !parent.water:
+	if !parent.is_in_water:
 		if flightTime > 0:
 			if !parent.sfx[21].playing:
 				parent.sfx[21].play()
@@ -133,7 +133,7 @@ func _physics_process(delta):
 	flightTime -= delta
 	# Button press
 	if parent.movement.y >= -1*60 and flightTime > 0 and !parent.roof and parent.position.y >= parent.limitTop+16:
-		if parent.any_action_held_or_pressed() and (!actionPressed or parent.get_y_input() < 0) and (carryBox.get_player_contacting_count() == 0 or !parent.water):
+		if parent.any_action_held_or_pressed() and (!actionPressed or parent.get_y_input() < 0) and (carryBox.get_player_contacting_count() == 0 or !parent.is_in_water):
 			flyGrav = -0.125
 	# return gravity to normal after velocity is less then -1
 	else:

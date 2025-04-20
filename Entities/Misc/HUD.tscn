@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c30uceea18q1w"]
+[gd_scene load_steps=37 format=3 uid="uid://c30uceea18q1w"]
 
 [ext_resource type="Texture2D" uid="uid://dloxtqer7p78l" path="res://Graphics/HUD/hud_lives.png" id="2_cfvjc"]
 [ext_resource type="Material" uid="uid://bveqi5m5ihsgj" path="res://Shaders/PlayerPalette.tres" id="2_xy7bp"]
@@ -16,9 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://bulw3223o3c01" path="res://Graphics/HUD/LevelCards/TitleCardRetold.png" id="11_7g7rf"]
 [ext_resource type="Material" uid="uid://uh2c8jbp8qwd" path="res://Shaders/WaterPalette.tres" id="13_1ly2g"]
 [ext_resource type="Texture2D" uid="uid://60ak1q0xrn1s" path="res://Graphics/HUD/hud_gametimeover.png" id="15_7eshx"]
-[ext_resource type="AudioStream" uid="uid://kqq77sj3uqur" path="res://Audio/SFX/Misc/s2br_Beep.wav" id="15_fh0ng"]
+[ext_resource type="PackedScene" uid="uid://bass3w6af55vw" path="res://Tools/Timing/ProcessTimer.tscn" id="15_hk65o"]
 [ext_resource type="AudioStream" uid="uid://cxg3gcqe1mwv4" path="res://Audio/SFX/Misc/s2br_Tally.wav" id="15_p0n0b"]
 [ext_resource type="AudioStream" uid="uid://c3tsd0xi30f6s" path="res://Audio/Soundtrack/s2br_GameOver.ogg" id="15_y325l"]
+[ext_resource type="AudioStream" uid="uid://uay8t1b3i1hi" path="res://Audio/SFX/Gimmicks/s2br_Switch.wav" id="16_l21kn"]
 
 [sub_resource type="Animation" id="Animation_uxdxe"]
 length = 0.1
@@ -1157,9 +1158,8 @@ anchor_left = 1.0
 anchor_top = 0.003
 anchor_right = 1.0
 anchor_bottom = 0.003
-offset_left = -32.0
 offset_top = -86.944
-offset_right = 22630.4
+offset_right = 22662.4
 offset_bottom = 169.056
 grow_horizontal = 0
 grow_vertical = 2
@@ -1327,8 +1327,11 @@ horizontal_alignment = 2
 wait_time = 6.0
 one_shot = true
 
+[node name="CounterCount" parent="LevelClear" instance=ExtResource("15_hk65o")]
+
 [node name="CounterSFX" type="AudioStreamPlayer" parent="LevelClear"]
-stream = ExtResource("15_fh0ng")
+stream = ExtResource("16_l21kn")
+mix_target = 2
 bus = &"SFX"
 
 [node name="Score" type="AudioStreamPlayer" parent="LevelClear"]
@@ -1391,4 +1394,5 @@ process_mode = 1
 wait_time = 60.0
 one_shot = true
 
+[connection signal="timeout" from="LevelClear/CounterCount" to="." method="_on_counter_count_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

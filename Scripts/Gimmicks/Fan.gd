@@ -80,7 +80,7 @@ func _physics_process(delta):
 						# force air state
 					var setPlayerAnimation = "corkScrew"
 					# water animation
-					if i.water:
+					if i.is_in_water:
 						setPlayerAnimation = "current"
 					if i.currentState != i.STATES.ANIMATION or i.animator.current_animation != setPlayerAnimation:
 						i.set_state(i.STATES.AIR)
