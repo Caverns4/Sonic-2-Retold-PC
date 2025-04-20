@@ -7,9 +7,6 @@ var selected = false
 
 const LEFT_ROWS: float = 26 # number of columns to draw, including blank ones
 
-# character labels, the amount of labels in here determines the total amount of options, see the set character option at the end for settings
-var characterLabels = ["Sonic&Tails", "Sonic", "Tails", "Knuckles", "Amy","Mighty","Ray"]
-var characterLabelsMiles = ["Sonic&Miles", "Sonic", "Miles", "Knuckles", "Amy","Mighty","Ray"]
 # level labels, the amount of labels in here determines the total amount of options, see set level option at the end for settings
 var levelLabels = [ #Every one of these is a line, and some are skipped.
 	"Emerald Hill    1",
@@ -91,11 +88,14 @@ var levelIcons = [ #Use this list to get the number of selectable entries
 	17,
 	20
 ]
-# character id lines up with characterLabels
+# character id lines up with Global.playerModes
 var characterID = 0
 # level id lines up with levelLabels
 var levelID = 0
 var CharacterSelectMenuID = levelIcons.size()
+#animation timer for the Character Sprites
+var animationTimer = 0.5
+var animationframe = 0
 
 var lastInput = Vector2.ZERO
 
@@ -106,8 +106,13 @@ func _ready():
 	if nextZone != null:
 		Global.nextZone = nextZone
 
-func _process(_delta):
-		levelSelect_UpdateText()
+func _process(delta):
+	levelSelect_UpdateText()
+	animationTimer -= delta
+	if animationTimer < 0.0:
+		animationTimer = 0.5
+		animationframe = wrapi(animationframe+1,0,2)
+		UpdateCharacterSprites()
 
 func _input(event):
 	if !selected:
@@ -254,13 +259,13 @@ func levelSelectSetupDirectionalInput():
 		var columnSize: int = int(LEFT_ROWS*0.75)
 		if inputCue.x < 0:
 			if levelID == CharacterSelectMenuID-1:
-				characterID = wrapi(characterID-1,0,characterLabels.size())
+				characterID = wrapi(characterID-1,0,Global.playerModes.size())
 				$Switch.play()
 			else:
 				levelID = wrapi(levelID-(columnSize)+1,0,levelIcons.size())
 		if  inputCue.x > 0 :
 			if levelID == CharacterSelectMenuID-1:
-				characterID = wrapi(characterID+1,0,characterLabels.size())
+				characterID = wrapi(characterID+1,0,Global.playerModes.size())
 				$Switch.play()
 			else:
 				if levelID > CharacterSelectMenuID-1 - columnSize and levelID < columnSize:
@@ -287,20 +292,10 @@ func UpdateCharacterSelect():
 			$UI/LabelsRight/CharacterOrigin/Tails.visible = true
 			$UI/LabelsRight/CharacterOrigin/Sonic.position.x = 8
 			$UI/LabelsRight/CharacterOrigin/Tails.position.x = -8
-		1: # Sonic
+		_: # Other
 			$UI/LabelsRight/CharacterOrigin/Sonic.visible = true
 			$UI/LabelsRight/CharacterOrigin/Sonic.position.x = 0
-		2: # Tails
-			$UI/LabelsRight/CharacterOrigin/Tails.visible = true
-			$UI/LabelsRight/CharacterOrigin/Tails.position.x = 0
-		3: # Knuckles
-			$UI/LabelsRight/CharacterOrigin/Knuckles.visible = true
-		4: # Amy
-			$UI/LabelsRight/CharacterOrigin/Amy.visible = true
-		5: # Mighty
-			$UI/LabelsRight/CharacterOrigin/Mighty.visible = true
-		_: # Ray or invalid
-			$UI/LabelsRight/CharacterOrigin/Ray.visible = true
+	UpdateCharacterSprites()
 
 func levelSelect_UpdateText(): # levelID
 	var j = 0 #Which line to highlight
@@ -321,21 +316,21 @@ func levelSelect_UpdateText(): # levelID
 			else:
 				textFieldLeft.text += "[color=#ee0000]"
 			if j == CharacterSelectMenuID:
-				
-				if !Global.tailsNameCheat:
-					textFieldLeft.text += str(characterLabels[characterID]).to_upper() + "[/color]\n"
-				else:
-					textFieldLeft.text += str(characterLabelsMiles[characterID]).to_upper() + "[/color]\n"
+				textFieldLeft.text += str(Global.playerModes[characterID]).to_upper() + "[/color]\n"
 			else:
 				textFieldLeft.text += str(levelLabels[i]).to_upper() + "[/color]\n"
 		else:
 			if j == CharacterSelectMenuID:
-				if !Global.tailsNameCheat:
-					textFieldLeft.text += str(characterLabels[characterID]).to_upper()
-				else:
-					textFieldLeft.text += str(characterLabelsMiles[characterID]).to_upper()
+				textFieldLeft.text += str(Global.playerModes[characterID]).to_upper()
 			else:
 				textFieldLeft.text += str(levelLabels[i]).to_upper() + "\n"
 	$UI/LabelsRight/LevelIcon.frame = levelIcons[k-1]
 	if levelIcons[k-1] <= Global.ZONES.DEATH_EGG:
 		Global.savedZoneID = levelIcons[k-1]
+
+func UpdateCharacterSprites():
+	if characterID == 0:
+		$UI/LabelsRight/CharacterOrigin/Sonic.frame = animationframe
+		$UI/LabelsRight/CharacterOrigin/Tails.frame = 2+animationframe
+	else:
+		$UI/LabelsRight/CharacterOrigin/Sonic.frame = (characterID-1)*2+animationframe

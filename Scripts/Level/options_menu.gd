@@ -7,7 +7,7 @@ var returnScene = load("res://Scene/Presentation/Title.tscn")
 
 var selected = false
 var menuOption = 0
-# character id lines up with characterLabels
+# character id lines up with Global.playerModes
 var characterID = 0
 var lastInput = Vector2.ZERO #Last saved direction input.
 
@@ -23,8 +23,6 @@ var optionsText = [
 
 # on or off strings
 var onOff = ["off","on"]
-var characterLabels = ["Sonic&Tails", "Sonic", "Tails", "Knuckles"]
-var characterLabelsMiles = ["Sonic&Miles", "Sonic", "Miles", "Knuckles"]
 # clamp for minimum and maximum sound volume (muted when audio is at lowest)
 var clampSounds = [-40.0,6.0]
 # how much to iterate through (take the total sum then divide it by how many steps we want)
@@ -36,8 +34,9 @@ var stepTimer = 0.2
 var zoomClamp = [1,6]
 # Aspect Ratio texts
 var aspectClamp = ["4x3","16x9"]
-
-
+#animation timer for the Character Sprites
+var animationTimer = 0.5
+var animationframe = 0
 
 func _ready():
 	characterID = Global.characterSelectMemory
@@ -51,6 +50,12 @@ func _process(delta: float):
 		stepTimer -= delta
 	_unhandledInput(Input)
 	
+	animationTimer -= delta
+	if animationTimer < 0.0:
+		animationTimer = 0.5
+		animationframe = wrapi(animationframe+1,0,2)
+		UpdateCharacterSprites()
+
 
 func _unhandledInput(event):
 	if !selected:
@@ -85,10 +90,10 @@ func _unhandledInput(event):
 			match menuOption:
 				0: #Character(s)
 					if inputCue.x < 0:
-						characterID = wrapi(characterID-1,0,characterLabels.size())
+						characterID = wrapi(characterID-1,0,Global.playerModes.size())
 						$Switch.play()
 					elif inputCue.x > 0:
-						characterID = wrapi(characterID+1,0,characterLabels.size())
+						characterID = wrapi(characterID+1,0,Global.playerModes.size())
 						$Switch.play()
 					UpdateCharacterSelect()
 				1,2: #SFX and Music Volume
@@ -198,30 +203,18 @@ func UpdateCharacterSelect():
 			$UI/Labels/CharacterOrigin/Tails.visible = true
 			$UI/Labels/CharacterOrigin/Sonic.position.x = 8
 			$UI/Labels/CharacterOrigin/Tails.position.x = -8
-			$UI/Labels/CharacterOrigin/Knuckles.visible = false
-			$UI/Labels/CharacterOrigin/Amy.visible = false
-		1: # Sonic
+		_: # Other
 			$UI/Labels/CharacterOrigin/Sonic.visible = true
 			$UI/Labels/CharacterOrigin/Sonic.position.x = 0
 			$UI/Labels/CharacterOrigin/Tails.visible = false
-			$UI/Labels/CharacterOrigin/Knuckles.visible = false
-			$UI/Labels/CharacterOrigin/Amy.visible = false
-		2: # Tails
-			$UI/Labels/CharacterOrigin/Sonic.visible = false
-			$UI/Labels/CharacterOrigin/Tails.visible = true
-			$UI/Labels/CharacterOrigin/Tails.position.x = 0
-			$UI/Labels/CharacterOrigin/Knuckles.visible = false
-			$UI/Labels/CharacterOrigin/Amy.visible = false
-		3: # Knuckles
-			$UI/Labels/CharacterOrigin/Sonic.visible = false
-			$UI/Labels/CharacterOrigin/Tails.visible = false
-			$UI/Labels/CharacterOrigin/Knuckles.visible = true
-			$UI/Labels/CharacterOrigin/Amy.visible = false
-		4: # Amy
-			$UI/Labels/CharacterOrigin/Sonic.visible = false
-			$UI/Labels/CharacterOrigin/Tails.visible = false
-			$UI/Labels/CharacterOrigin/Knuckles.visible = false
-			$UI/Labels/CharacterOrigin/Amy.visible = true
+	UpdateCharacterSprites()
+
+func UpdateCharacterSprites():
+	if characterID == 0:
+		$UI/Labels/CharacterOrigin/Sonic.frame = animationframe
+		$UI/Labels/CharacterOrigin/Tails.frame = 2+animationframe
+	else:
+		$UI/Labels/CharacterOrigin/Sonic.frame = (characterID-1)*2+animationframe
 
 func SetPlayerCharacterIDs():
 	# set player 2 to none to prevent redundant code

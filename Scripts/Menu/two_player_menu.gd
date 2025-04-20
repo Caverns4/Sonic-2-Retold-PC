@@ -44,9 +44,6 @@ var itemSettingStrings = [
 	"EGGMAN MONITORS"
 ]
 
-var characterLabels = ["Sonic", "Tails", "Knuckles", "Amy"]
-var characterLabelsMiles = ["Sonic", "Miles", "Knuckles", "Amy"]
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Global.music.stream = music
@@ -92,10 +89,10 @@ func _unhandledInput(_event):
 func updateCharacterSelection():
 	if inputCue.x !=0 and inputCue.x != lastInput.x and !playersReady[0]:
 		p1CharacterSelection += round(inputCue.x)
-		p1CharacterSelection = wrapi(p1CharacterSelection,0,Global.characterNames.size())
+		p1CharacterSelection = wrapi(p1CharacterSelection,0,Global.characterNames.size()-1)
 	if inputCueP2.x !=0 and inputCueP2.x != lastInputP2.x and !playersReady[1]:
 		p2CharacterSelection += round(inputCueP2.x)
-		p2CharacterSelection = wrapi(p2CharacterSelection,0,Global.characterNames.size())
+		p2CharacterSelection = wrapi(p2CharacterSelection,0,Global.characterNames.size()-1)
 	
 	if Input.is_action_just_pressed("gm_super") or Input.is_action_just_pressed("gm_super_P2"):
 		itemSelection = wrapi(itemSelection+1,0,itemSettingStrings.size())

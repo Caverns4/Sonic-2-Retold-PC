@@ -172,9 +172,13 @@ func CheckCheatInputs():
 				if !Global.tailsNameCheat:
 					Global.tailsNameCheat = true
 					Global.characterNames[1] = "MILES"
+					Global.playerModes[0] = "SONIC & MILES"
+					Global.playerModes[2] = "MILES"
 				else:
 					Global.tailsNameCheat = false
 					Global.characterNames[1] = "TAILS"
+					Global.playerModes[0] = "SONIC & TAILS"
+					Global.playerModes[2] = "TAILS"
 	lastCheatInput = inputs
 
 func InstantiateBG():
