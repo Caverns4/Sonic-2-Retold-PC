@@ -2,9 +2,6 @@ extends Node2D
 
 var activated = false
 
-var characterLabels = ["SONIC", "TAILS", "KNUCKLES", "AMY","MIGHTY","RAY"]
-var characterLabelsMiles = ["SONIC", "MILES", "KNUCKLES", "AMY","MIGHTY","RAY"]
-
 func _ready():
 	# set stage text label to the current stage
 	$HUD/Stage.text = "Stage "+str(Global.specialStageID+1)
@@ -52,10 +49,7 @@ func SpecialResults_SetupText():
 		$HUD/ResultLabel/SonicGot.text = "CHAOS EMERALDS"
 		$HUD/ResultLabel/Through.text = ""
 	else:
-		if !Global.tailsNameCheat:
-			$HUD/ResultLabel/SonicGot.text = characterLabels[Global.PlayerChar1-1]
-		else:
-			$HUD/ResultLabel/SonicGot.text = characterLabelsMiles[Global.PlayerChar1-1]
+		$HUD/ResultLabel/SonicGot.text = Global.characterNames[Global.PlayerChar1-1]
 		$HUD/ResultLabel/SonicGot.text += " GOT"
 		
 		if Global.emeralds >= 127:

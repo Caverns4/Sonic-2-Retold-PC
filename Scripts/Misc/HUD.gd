@@ -52,6 +52,10 @@ var accumulatedDelta: float = 0.0
 signal tally_clear
 
 var twoPlayerResults = load("res://Scene/Presentation/TwoPlayerResults.tscn")
+var lifeTextures = [
+	preload("res://Graphics/HUD/hud_lives.png"),
+	preload("res://Graphics/HUD/hud_lives_Miles.png")
+]
 
 func _ready():
 	# create a new stream for the tick sound (so the original stream
@@ -80,17 +84,18 @@ func _ready():
 		$LifeCounter.visible = false
 		$P1Counters.visible = true
 		$P2Counters.visible = true
+		# Set Life Icon textures
+		var iconTex = lifeTextures[0]
+		#If Tails' name is set to Miles, use an alrenate texture set
+		if Global.tailsNameCheat:
+			iconTex = lifeTextures[1]
+		$LifeCounter/Icon.texture = iconTex
+		$P1Counters/LifeIcon.texture = iconTex
+		$P2Counters/LifeIcon.texture = iconTex
 		# Set character Icon
-		
 		$P1Counters/LifeIcon.frame = Global.PlayerChar1
 		$P2Counters/LifeIcon.frame = Global.PlayerChar2
-		
-		if Global.tailsNameCheat:
-			if $P1Counters/LifeIcon.frame == 2:
-				$P1Counters/LifeIcon.frame = 7
-			if $P2Counters/LifeIcon.frame == 2:
-				$P2Counters/LifeIcon.frame = 7
-		
+
 	else:
 		$Counters.visible = true
 		$LifeCounter.visible = true
@@ -99,8 +104,6 @@ func _ready():
 		# Set character Icon
 		if Global.livesMode:
 			lifeCounterFrame = Global.PlayerChar1
-			if lifeCounterFrame == 2 and Global.tailsNameCheat:
-				lifeCounterFrame = 7
 		else:
 			lifeCounterFrame = 0
 		$LifeCounter/Icon.frame = lifeCounterFrame
@@ -160,8 +163,6 @@ func _ready():
 	Global.timerActiveP2 = true
 	# replace "sonic" in stage clear to match the player clear string
 	$LevelClear/SonicGot.text = Global.characterNames[Global.PlayerChar1-1] + " GOT"
-	if Global.tailsNameCheat and Global.PlayerChar1 == Global.CHARACTERS.TAILS:
-		$LevelClear/SonicGot.text = "MILES GOT"
 	
 	# set the act clear frame
 	$LevelClear/Act.frame = act-1

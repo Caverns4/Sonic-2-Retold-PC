@@ -10,7 +10,9 @@ var optionsScene = load("res://Scene/Presentation/OptionsMenu.tscn")
 enum STATES{INTRO,WAITING,FADEOUT}
 var titleState: int = STATES.INTRO
 var titleScroll: bool = false #If the Title Screen should move
-var menuActive: bool = false #It the menu is usable
+var menuActive: bool = false #If the menu is usable
+
+var cheatActive: bool = false #If a cheat code has been applied on this loop, don't allow it to be again
 
 var menuEntry: int = 0
 var menuText = [
@@ -156,7 +158,7 @@ func CheckCheatInputs():
 		lastCheatInput = inputs
 	#in any othe case, consider this a valid cheat attempt
 	elif inputs != lastCheatInput:
-		if !Global.tailsNameCheat:
+		if !cheatActive:
 			if inputs == levelSelectCheat[cheatInputCount]:
 				cheatInputCount += 1
 				print("Correct input!"+ str(inputs))
@@ -165,8 +167,14 @@ func CheckCheatInputs():
 				print("Wrong input!" + str(inputs))
 			if cheatInputCount == levelSelectCheat.size():
 				cheatInputCount = 0
+				cheatActive = true
 				$TitleBanner/RingChime.play(0.0)
-				Global.tailsNameCheat = true
+				if !Global.tailsNameCheat:
+					Global.tailsNameCheat = true
+					Global.characterNames[1] = "MILES"
+				else:
+					Global.tailsNameCheat = false
+					Global.characterNames[1] = "TAILS"
 	lastCheatInput = inputs
 
 func InstantiateBG():

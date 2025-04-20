@@ -92,10 +92,10 @@ func _unhandledInput(_event):
 func updateCharacterSelection():
 	if inputCue.x !=0 and inputCue.x != lastInput.x and !playersReady[0]:
 		p1CharacterSelection += round(inputCue.x)
-		p1CharacterSelection = wrapi(p1CharacterSelection,0,characterLabels.size())
+		p1CharacterSelection = wrapi(p1CharacterSelection,0,Global.characterNames.size())
 	if inputCueP2.x !=0 and inputCueP2.x != lastInputP2.x and !playersReady[1]:
 		p2CharacterSelection += round(inputCueP2.x)
-		p2CharacterSelection = wrapi(p2CharacterSelection,0,characterLabels.size())
+		p2CharacterSelection = wrapi(p2CharacterSelection,0,Global.characterNames.size())
 	
 	if Input.is_action_just_pressed("gm_super") or Input.is_action_just_pressed("gm_super_P2"):
 		itemSelection = wrapi(itemSelection+1,0,itemSettingStrings.size())
@@ -165,12 +165,8 @@ func UpdateCharacterFrameInMenu(_delta: float = 0.0):
 	var frameX = round(wrapf(timer*2,0.0,1.0))
 	%Player1Icon.frame = (p1CharacterSelection*2) + frameX
 	%Player2Icon.frame = (p2CharacterSelection*2) + frameX
-	if Global.tailsNameCheat:
-		%PlayerName1.text = "[center]" + str(characterLabelsMiles[p1CharacterSelection])
-		%PlayerName2.text = "[center]" + str(characterLabelsMiles[p2CharacterSelection])
-	else:
-		%PlayerName1.text = "[center]" + str(characterLabels[p1CharacterSelection])
-		%PlayerName2.text = "[center]" + str(characterLabels[p2CharacterSelection])
+	%PlayerName1.text = "[center]" + str(Global.characterNames[p1CharacterSelection])
+	%PlayerName2.text = "[center]" + str(Global.characterNames[p2CharacterSelection])
 
 func UpdateZoneSelection(_delta: float = 0.0):
 	%LevelIcon.frame = Global.twoPlayerZones[zoneSelection]

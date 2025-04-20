@@ -34,6 +34,7 @@ func _physics_process(delta):
 				Global.players[0].global_position.y -= delta*30
 				# set physics object shift mode to allowTranslate
 				Global.players[0].allowTranslate = true
+				Global.players[0].airTimer = Global.players[0].defaultAirTime
 		# only continue if the animator isn't playing
 		elif !animator.is_playing():
 			# shift up until player is above the travel distance
