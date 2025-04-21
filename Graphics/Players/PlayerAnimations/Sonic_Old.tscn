@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://bihqiv8o4yn0"]
+[gd_scene load_steps=65 format=3 uid="uid://bihqiv8o4yn0"]
 
 [ext_resource type="Shader" path="res://Shaders/PaletteSwapRow.gdshader" id="1_mki7d"]
 [ext_resource type="Texture2D" uid="uid://cqk04hqgn2v8b" path="res://Graphics/Players/Sonic_Beta.png" id="2_f1p4t"]
@@ -259,58 +259,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [93]
-}
-
-[sub_resource type="Animation" id="104"]
-resource_name = "edge1"
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sonic/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [72, 73]
-}
-
-[sub_resource type="Animation" id="105"]
-resource_name = "edge2"
-length = 0.1
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sonic/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [74, 75]
-}
-
-[sub_resource type="Animation" id="106"]
-resource_name = "edge3"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sonic/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [72, 73]
 }
 
 [sub_resource type="Animation" id="110"]
@@ -1000,6 +948,41 @@ tracks/0/keys = {
 "values": [97, 98, 99, 100, 101, 102]
 }
 
+[sub_resource type="Animation" id="105"]
+resource_name = "edge2"
+length = 0.1
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sonic/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [74, 75]
+}
+
+[sub_resource type="Animation" id="104"]
+resource_name = "edge1"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sonic/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [72, 73]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_36uej"]
 _data = {
 "RESET": SubResource("86"),
@@ -1013,9 +996,8 @@ _data = {
 "die": SubResource("98"),
 "dropDash": SubResource("107"),
 "drown": SubResource("99"),
-"edge1": SubResource("104"),
-"edge2": SubResource("105"),
-"edge3": SubResource("106"),
+"edge1": SubResource("105"),
+"edge2": SubResource("104"),
 "edge_super": SubResource("110"),
 "grabVerticalBar": SubResource("123"),
 "grabVerticalBarOffset": SubResource("124"),
@@ -1188,6 +1170,7 @@ texture = ExtResource("2_f1p4t")
 offset = Vector2(0, -5)
 hframes = 16
 vframes = 8
+frame = 72
 
 [node name="DashDust" type="AnimatedSprite2D" parent="Sprite2D"]
 visible = false

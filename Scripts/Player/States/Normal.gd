@@ -83,50 +83,48 @@ func _process(delta):
 				getL = getR
 				getR = parent.verticalSensorLeft.is_colliding()
 			
-			#If a balance animation should play:
-			match (parent.character):
-				Global.CHARACTERS.SONIC: #default
-					# super edge
-					if parent.isSuper and parent.animator.has_animation("edge_super"):
-						parent.animator.play("edge_super")
-						balancing = true
-					# normal edge
-					elif !getR and getL and getM:
-						parent.animator.play("edge1")
-						balancing = true
-					# reverse edge
-					elif !getL and getR and getM:
-						parent.animator.play("edge3")
-						balancing = true
-					# far edge
-					elif !getM:
-						parent.animator.play("edge2")
-						balancing = true
-						if parent.verticalSensorLeft.is_colliding():
-							parent.direction = 1
-						elif parent.verticalSensorRight.is_colliding():
-							parent.direction = -1
+			if !getM:
+				#If a balance animation should play:
+				match (parent.character):
+					Global.CHARACTERS.SONIC: #default
+						# super edge
+						if parent.isSuper and parent.animator.has_animation("edge_super"):
+							parent.animator.play("edge_super")
+							balancing = true
+						# normal edge
+						elif !getR and getL and getMEdge:
+							parent.animator.play("edge1")
+							balancing = true
+						# reverse edge
+						# Bug: This should always get overridden by Edge2
+						elif (!getL and getR and getMEdge):
+							parent.animator.play("edge3")
+							balancing = true
+						# far edge
+						elif !getMEdge or getR:
+							parent.animator.play("edge2")
+							balancing = true
+							if parent.verticalSensorLeft.is_colliding():
+								parent.direction = 1
+							elif parent.verticalSensorRight.is_colliding():
+								parent.direction = -1
 					
-				Global.CHARACTERS.KNUCKLES:
-					if ((!getL or !getR) and !getMEdge and 
-					parent.animator.current_animation != "edge1" and 
-					parent.animator.current_animation != "edge2"):
-						parent.animator.play("edge1")
-						parent.animator.queue("edge2")
-						balancing = true
-				_:
-					#normal edge
-					if (!getR and getL) and getM:
-						parent.animator.play("edge1")
-						balancing = true
-					#far edge
-					elif !getM:
-						parent.animator.play("edge2")
-						if parent.verticalSensorLeft.is_colliding():
-							parent.direction = 1
-						elif parent.verticalSensorRight.is_colliding():
-							parent.direction = -1
-						balancing = true
+					Global.CHARACTERS.KNUCKLES:
+						if (
+						parent.animator.current_animation != "edge1" and 
+						parent.animator.current_animation != "edge2"):
+							parent.animator.play("edge1")
+							parent.animator.queue("edge2")
+							balancing = true
+					_:
+						#normal edge
+						if (!getR and getL):
+							parent.animator.play("edge1")
+							balancing = true
+						#reverse edge
+						elif (!getL and getR):
+							parent.animator.play("edge2")
+							balancing = true
 			
 			if (parent.inputs[parent.INPUTS.YINPUT] > 0) and !balancing:
 				lookTimer = max(0,lookTimer+delta*0.5)
