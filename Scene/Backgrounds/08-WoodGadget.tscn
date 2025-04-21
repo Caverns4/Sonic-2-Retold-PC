@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://da47pd80u7kac"]
+[gd_scene load_steps=6 format=3 uid="uid://da47pd80u7kac"]
+
+[ext_resource type="Texture2D" uid="uid://dd3h6qs42ia2p" path="res://Graphics/Backgrounds/WGZ/WGZ_BG.png" id="1_4hq0v"]
 
 [sub_resource type="Gradient" id="Gradient_vjwa3"]
 colors = PackedColorArray(0.4, 0.4, 0.8, 1, 1, 1, 1, 1)
@@ -33,3 +35,15 @@ offset_top = 128.0
 offset_right = 512.0
 offset_bottom = 384.0
 texture = SubResource("GradientTexture2D_c4vrh")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+position = Vector2(0, 255)
+motion_scale = Vector2(0.5, 0.65)
+motion_mirroring = Vector2(512, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer2"]
+offset_right = 512.0
+offset_bottom = 512.0
+texture = ExtResource("1_4hq0v")
+expand_mode = 1
+stretch_mode = 1
