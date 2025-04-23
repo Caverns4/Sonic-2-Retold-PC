@@ -97,11 +97,11 @@ func _process(delta):
 							balancing = true
 						# reverse edge
 						# Bug: This should always get overridden by Edge2
-						elif (!getL and getR and getMEdge):
+						elif (!getL and getR):
 							parent.animator.play("edge3")
 							balancing = true
 						# far edge
-						elif !getMEdge or getR:
+						elif !getMEdge:
 							parent.animator.play("edge2")
 							balancing = true
 							if parent.verticalSensorLeft.is_colliding():
