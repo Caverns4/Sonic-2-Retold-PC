@@ -1,6 +1,6 @@
 extends ParallaxBackground
 
-func _process(delta):
+func _physics_process(delta: float) -> void:
 	$ParallaxLayerD.motion_offset.x -= 8*delta
 	$ParallaxLayerE.motion_offset.x -= 8*delta
 	$ParallaxLayerF.motion_offset.x -= 12*delta

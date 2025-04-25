@@ -1,49 +1,91 @@
-[gd_scene load_steps=6 format=3 uid="uid://da47pd80u7kac"]
+[gd_scene load_steps=10 format=3 uid="uid://da47pd80u7kac"]
 
 [ext_resource type="Texture2D" uid="uid://dd3h6qs42ia2p" path="res://Graphics/Backgrounds/WGZ/WGZ_BG.png" id="1_4hq0v"]
+[ext_resource type="Script" path="res://Scripts/Backgrounds/WGZ_Parallax.gd" id="1_cqcnr"]
+[ext_resource type="Texture2D" uid="uid://bh00qip5kupke" path="res://Graphics/Backgrounds/WGZ/Clouds1.png" id="1_g5rty"]
+[ext_resource type="Texture2D" uid="uid://dd3504rrs08jh" path="res://Graphics/Backgrounds/WGZ/WGZ_HillTops.png" id="1_x62de"]
+[ext_resource type="Texture2D" uid="uid://b5n5esua7rnig" path="res://Graphics/Backgrounds/WGZ/Clouds2.png" id="2_7atag"]
+[ext_resource type="Texture2D" uid="uid://dq8re1op17rxw" path="res://Graphics/Backgrounds/WGZ/WGZ_BG_Top.png" id="2_qxypb"]
+[ext_resource type="Texture2D" uid="uid://2es3jkor55q7" path="res://Graphics/Backgrounds/WGZ/Clouds3.png" id="3_2v1bw"]
 
 [sub_resource type="Gradient" id="Gradient_vjwa3"]
-colors = PackedColorArray(0.4, 0.4, 0.8, 1, 1, 1, 1, 1)
+colors = PackedColorArray(0.4, 0.4, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_x0tsl"]
 gradient = SubResource("Gradient_vjwa3")
-height = 32
-fill_from = Vector2(0, 0.76)
+fill_from = Vector2(0, 0.65)
 fill_to = Vector2(0, 1)
 
-[sub_resource type="Gradient" id="Gradient_t485e"]
-colors = PackedColorArray(0.133333, 0, 0.4, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_c4vrh"]
-gradient = SubResource("Gradient_t485e")
-fill_from = Vector2(0, 0.25)
-fill_to = Vector2(0, 0)
-
 [node name="08-WoodGadget" type="ParallaxBackground"]
+script = ExtResource("1_cqcnr")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0, 0)
+motion_scale = Vector2(0.12, 0.25)
 motion_mirroring = Vector2(512, 0)
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxLayer"]
 offset_right = 512.0
-offset_bottom = 128.0
+offset_bottom = 184.0
 texture = SubResource("GradientTexture2D_x0tsl")
 
-[node name="TextureRect2" type="TextureRect" parent="ParallaxLayer"]
-offset_top = 128.0
+[node name="TextureRect3" type="TextureRect" parent="ParallaxLayer"]
+offset_top = 104.0
 offset_right = 512.0
-offset_bottom = 384.0
-texture = SubResource("GradientTexture2D_c4vrh")
+offset_bottom = 200.0
+texture = ExtResource("1_x62de")
+stretch_mode = 1
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
-position = Vector2(0, 255)
-motion_scale = Vector2(0.5, 0.65)
+[node name="Clouds1" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 0.25)
 motion_mirroring = Vector2(512, 0)
 
-[node name="TextureRect" type="TextureRect" parent="ParallaxLayer2"]
+[node name="TextureRect" type="TextureRect" parent="Clouds1"]
+offset_top = 16.0
 offset_right = 512.0
-offset_bottom = 512.0
+offset_bottom = 48.0
+texture = ExtResource("1_g5rty")
+stretch_mode = 1
+
+[node name="Clouds2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.25, 0.25)
+motion_mirroring = Vector2(768, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Clouds2"]
+offset_top = 56.0
+offset_right = 768.0
+offset_bottom = 72.0
+texture = ExtResource("2_7atag")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Clouds3" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.125, 0.25)
+motion_mirroring = Vector2(512, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Clouds3"]
+offset_top = 80.0
+offset_right = 768.0
+offset_bottom = 96.0
+texture = ExtResource("3_2v1bw")
+stretch_mode = 1
+
+[node name="ForestFar" type="ParallaxLayer" parent="."]
+position = Vector2(0, 192)
+motion_scale = Vector2(0.25, 0.5)
+motion_mirroring = Vector2(512, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ForestFar"]
+offset_top = 16.0
+offset_right = 512.0
+offset_bottom = 1040.0
 texture = ExtResource("1_4hq0v")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="ForestFar"]
+offset_top = -64.0
+offset_right = 512.0
+offset_bottom = 16.0
+texture = ExtResource("2_qxypb")
 expand_mode = 1
 stretch_mode = 1
