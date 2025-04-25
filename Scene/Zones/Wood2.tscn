@@ -11,6 +11,8 @@ zoneID = 8
 animal1 = 11
 animal2 = 12
 
+[node name="08-WoodGadget" parent="." instance=ExtResource("4_un5s1")]
+
 [node name="HUD" parent="." instance=ExtResource("5_vkwgj")]
 zoneName = "WOOD GADGET"
 act = 2
@@ -19,5 +21,3 @@ act = 2
 position = Vector2(96, 656)
 
 [node name="Level_Layout" type="Node" parent="."]
-
-[node name="08-WoodGadget" parent="." instance=ExtResource("4_un5s1")]

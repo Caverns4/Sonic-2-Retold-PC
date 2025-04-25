@@ -48,11 +48,11 @@ stretch_mode = 1
 
 [node name="Clouds2" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.25, 0.25)
-motion_mirroring = Vector2(768, 0)
+motion_mirroring = Vector2(512, 0)
 
 [node name="TextureRect" type="TextureRect" parent="Clouds2"]
 offset_top = 56.0
-offset_right = 768.0
+offset_right = 512.0
 offset_bottom = 72.0
 texture = ExtResource("2_7atag")
 expand_mode = 1
@@ -64,28 +64,29 @@ motion_mirroring = Vector2(512, 0)
 
 [node name="TextureRect" type="TextureRect" parent="Clouds3"]
 offset_top = 80.0
-offset_right = 768.0
+offset_right = 512.0
 offset_bottom = 96.0
 texture = ExtResource("3_2v1bw")
+expand_mode = 1
 stretch_mode = 1
 
 [node name="ForestFar" type="ParallaxLayer" parent="."]
 position = Vector2(0, 192)
-motion_scale = Vector2(0.25, 0.5)
+motion_scale = Vector2(0.25, 0.25)
 motion_mirroring = Vector2(512, 0)
 
 [node name="TextureRect" type="TextureRect" parent="ForestFar"]
-offset_top = 16.0
+offset_top = 24.0
 offset_right = 512.0
-offset_bottom = 1040.0
+offset_bottom = 1048.0
 texture = ExtResource("1_4hq0v")
 expand_mode = 1
 stretch_mode = 1
 
 [node name="TextureRect2" type="TextureRect" parent="ForestFar"]
-offset_top = -64.0
+offset_top = -56.0
 offset_right = 512.0
-offset_bottom = 16.0
+offset_bottom = 24.0
 texture = ExtResource("2_qxypb")
 expand_mode = 1
 stretch_mode = 1
