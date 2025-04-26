@@ -210,12 +210,15 @@ func physics_collision(body, hitVector):
 				body.movement.x = 0
 		# check if player is not an ai or spindashing
 		# if they are then destroy
+		
+		
 		if (body.playerControl == 1 or Global.TwoPlayer) and (
 		body.currentState != body.STATES.SPINDASH):
-			if  !(body.character == Global.CHARACTERS.MIGHTY and body.curled):
-				body.movement.y = -abs(body.movement.y)
-			else:
+			print(body.animator.current_animation)
+			if  (body.animator.current_animation == "dropDash"):
 				body.movement.y = 8*60
+			else:
+				body.movement.y = -abs(body.movement.y)
 			
 			if body.currentState == body.STATES.ROLL:
 				body.movement.y = 0

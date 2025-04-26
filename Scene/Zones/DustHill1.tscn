@@ -131,11 +131,11 @@ rotation = -1.5708
 behavior = 1
 
 [node name="HangingBar4" parent="Entitites" node_paths=PackedStringArray("targetNode") instance=ExtResource("10_xf5vg")]
-position = Vector2(7600, 1376)
+position = Vector2(7600, 1368)
 targetNode = NodePath("../DrawBridge8")
 
 [node name="DrawBridge8" parent="Entitites" instance=ExtResource("14_o4ruf")]
-position = Vector2(7768, 1440)
+position = Vector2(7776, 1464)
 rotation = -1.5708
 behavior = 0
 
@@ -201,6 +201,7 @@ position = Vector2(8608, 1528)
 springSound = SubResource("AudioStreamWAV_fmqrv")
 
 [node name="BrickBlock" parent="Entitites" instance=ExtResource("12_aqgtt")]
+z_index = 1
 position = Vector2(5248, 1408)
 
 [node name="BrickBlock4" parent="Entitites" instance=ExtResource("12_aqgtt")]
@@ -325,6 +326,11 @@ rotation = -1.5708
 
 [node name="MultiRotatingPlatforms" parent="Hazards" instance=ExtResource("15_vc7pi")]
 position = Vector2(6048, 1416)
+hazard_count = 1
+chains = 5
+
+[node name="MultiRotatingPlatforms3" parent="Hazards" instance=ExtResource("15_vc7pi")]
+position = Vector2(5248, 1408)
 hazard_count = 1
 chains = 5
 

@@ -1,6 +1,6 @@
 extends Node2D
 
-@export_enum("Sonic","Tails","Knuckles","Amy","Mighty","Ray")var currentCharacter = 0
+@export var currentCharacter:Global.CHARACTERS = 1 as Global.CHARACTERS
 # alternative spawning location
 func _ready():
 	if currentCharacter == Global.PlayerChar1-1 and Global.currentCheckPoint == -1:

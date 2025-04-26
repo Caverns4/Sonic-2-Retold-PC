@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://ecnvkbx6eipx"]
+[gd_scene load_steps=20 format=4 uid="uid://ecnvkbx6eipx"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_ednaa"]
 [ext_resource type="AudioStream" uid="uid://c8y5q77kxn4ap" path="res://Audio/Soundtrack/s2br_DustHill.ogg" id="2_xwbm1"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://sdw87tpbgidn" path="res://Graphics/Objects_Zone/DHZ_Platform.png" id="16_p5x1c"]
 [ext_resource type="PackedScene" uid="uid://7k14xkpjguop" path="res://Entities/Obstacles/SwingingPlatform.tscn" id="17_b3mo7"]
 [ext_resource type="Texture2D" uid="uid://cnv0x4k5u14co" path="res://Graphics/Obstacles/DHZ_SwingChain.png" id="18_l02x7"]
+[ext_resource type="Script" path="res://Scripts/Misc/AltSpawn.gd" id="19_6lkex"]
 
 [node name="DustHill2" type="Node2D"]
 script = ExtResource("1_ednaa")
@@ -155,6 +156,11 @@ position = Vector2(1656, 1224)
 rotation = -1.5708
 behavior = 1
 
+[node name="Node2D" type="Node2D" parent="Entitites"]
+position = Vector2(128, 1456)
+script = ExtResource("19_6lkex")
+currentCharacter = 3
+
 [node name="Hazards" type="Node" parent="."]
 
 [node name="Spikes" parent="Hazards" instance=ExtResource("8_c8sjq")]
@@ -286,28 +292,33 @@ shiftTimer = 60.0
 position = Vector2(8016, 1136)
 shiftTimer = 60.0
 
-[node name="MCZ_CollapsingPlatformLeft" parent="Hazards" instance=ExtResource("14_hktg7")]
+[node name="Platforms" type="Node" parent="."]
+
+[node name="MCZ_CollapsingPlatformLeft" parent="Platforms" instance=ExtResource("14_hktg7")]
 position = Vector2(1088, 1408)
 
-[node name="Platform" parent="Hazards" instance=ExtResource("15_su6ht")]
+[node name="Platform" parent="Platforms" instance=ExtResource("15_su6ht")]
 position = Vector2(792, 1416)
 platformSprite = ExtResource("16_p5x1c")
 endPosition = Vector2(209, 0)
 
-[node name="Platform2" parent="Hazards" instance=ExtResource("15_su6ht")]
-position = Vector2(792, 1416)
+[node name="Platform2" parent="Platforms" instance=ExtResource("15_su6ht")]
+position = Vector2(792, 1480)
 platformSprite = ExtResource("16_p5x1c")
 endPosition = Vector2(209, 0)
 speed = -1.0
 
-[node name="Platform3" parent="Hazards" instance=ExtResource("17_b3mo7")]
-position = Vector2(1568, 1352)
+[node name="Platform3" parent="Platforms" instance=ExtResource("17_b3mo7")]
+position = Vector2(1520, 1352)
+chains = 5
 plat_img = ExtResource("16_p5x1c")
 chain_img = ExtResource("18_l02x7")
 
-[node name="Platform4" parent="Hazards" instance=ExtResource("17_b3mo7")]
-position = Vector2(1616, 1352)
+[node name="Platform4" parent="Platforms" instance=ExtResource("17_b3mo7")]
+position = Vector2(1744, 1352)
+chains = 5
+dir = -1
 plat_img = ExtResource("16_p5x1c")
 chain_img = ExtResource("18_l02x7")
 
-[node name="Platforms" type="Node" parent="."]
+[node name="Items" type="Node" parent="."]
