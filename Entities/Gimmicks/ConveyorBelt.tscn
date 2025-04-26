@@ -19,7 +19,7 @@ shape = SubResource("3")
 [node name="MiddlePiece" type="Sprite2D" parent="."]
 texture = ExtResource("1")
 vframes = 9
-frame = 5
+frame = 8
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 288)
 
@@ -27,7 +27,7 @@ region_rect = Rect2(0, 0, 32, 288)
 position = Vector2(-16, 0)
 texture = ExtResource("1")
 vframes = 9
-frame = 3
+frame = 6
 region_enabled = true
 region_rect = Rect2(0, 0, 48, 288)
 
@@ -35,6 +35,6 @@ region_rect = Rect2(0, 0, 48, 288)
 position = Vector2(16, 0)
 texture = ExtResource("1")
 vframes = 9
-frame = 4
+frame = 7
 region_enabled = true
 region_rect = Rect2(0, 0, 48, 288)

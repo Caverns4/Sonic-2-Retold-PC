@@ -34,7 +34,7 @@ music2P = ExtResource("2_vln36")
 animal1 = 8
 animal2 = 11
 defaultTopBoundry = 768
-defaultRightBoundry = 9472
+defaultRightBoundry = 9728
 
 [node name="07-DustHill" parent="." instance=ExtResource("5_5jgr2")]
 
@@ -141,11 +141,13 @@ behavior = 0
 
 [node name="Spring" parent="Entitites" instance=ExtResource("11_d8o3w")]
 position = Vector2(1904, 1400)
+killTransSpeed = true
 springSound = SubResource("AudioStreamWAV_fmqrv")
 
 [node name="Spring2" parent="Entitites" instance=ExtResource("11_d8o3w")]
 position = Vector2(1936, 1720)
 type = 1
+killTransSpeed = true
 springSound = SubResource("AudioStreamWAV_fmqrv")
 
 [node name="Spring3" parent="Entitites" instance=ExtResource("11_d8o3w")]
@@ -187,17 +189,19 @@ springDirection = 3
 springSound = SubResource("AudioStreamWAV_fmqrv")
 
 [node name="Spring7" parent="Entitites" instance=ExtResource("11_d8o3w")]
-position = Vector2(7560, 1968)
+position = Vector2(7552, 1968)
 type = 1
 springDirection = 2
 springSound = SubResource("AudioStreamWAV_fmqrv")
 
 [node name="Spring8" parent="Entitites" instance=ExtResource("11_d8o3w")]
 position = Vector2(8052, 1816)
+killTransSpeed = true
 springSound = SubResource("AudioStreamWAV_fmqrv")
 
 [node name="Spring9" parent="Entitites" instance=ExtResource("11_d8o3w")]
 position = Vector2(8608, 1528)
+killTransSpeed = true
 springSound = SubResource("AudioStreamWAV_fmqrv")
 
 [node name="BrickBlock" parent="Entitites" instance=ExtResource("12_aqgtt")]
@@ -255,29 +259,9 @@ scale = Vector2(-1, 1)
 
 [node name="Hazards" type="Node" parent="."]
 
-[node name="Spikes" parent="Hazards" instance=ExtResource("13_jhvw3")]
-position = Vector2(912, 2032)
-
-[node name="Spikes2" parent="Hazards" instance=ExtResource("13_jhvw3")]
-position = Vector2(944, 2032)
-
-[node name="Spikes3" parent="Hazards" instance=ExtResource("13_jhvw3")]
-position = Vector2(976, 2032)
-
-[node name="Spikes4" parent="Hazards" instance=ExtResource("13_jhvw3")]
-position = Vector2(1008, 2032)
-
 [node name="Spikes5" parent="Hazards" instance=ExtResource("13_jhvw3")]
-position = Vector2(1040, 2032)
-
-[node name="Spikes6" parent="Hazards" instance=ExtResource("13_jhvw3")]
-position = Vector2(1072, 2032)
-
-[node name="Spikes7" parent="Hazards" instance=ExtResource("13_jhvw3")]
-position = Vector2(1104, 2032)
-
-[node name="Spikes8" parent="Hazards" instance=ExtResource("13_jhvw3")]
-position = Vector2(1136, 2032)
+position = Vector2(1024, 2032)
+count = 16
 
 [node name="Spikes9" parent="Hazards" instance=ExtResource("13_jhvw3")]
 position = Vector2(1648, 1840)
@@ -285,17 +269,10 @@ position = Vector2(1648, 1840)
 [node name="Spikes10" parent="Hazards" instance=ExtResource("13_jhvw3")]
 position = Vector2(3024, 1392)
 
-[node name="Spikes11" parent="Hazards" instance=ExtResource("13_jhvw3")]
-position = Vector2(3096, 1620)
-shiftTimer = 1.0
-
 [node name="Spikes12" parent="Hazards" instance=ExtResource("13_jhvw3")]
-position = Vector2(3128, 1620)
+position = Vector2(3120, 1624)
 shiftTimer = 1.0
-
-[node name="Spikes13" parent="Hazards" instance=ExtResource("13_jhvw3")]
-position = Vector2(3160, 1620)
-shiftTimer = 1.0
+count = 6
 
 [node name="Spikes14" parent="Hazards" instance=ExtResource("13_jhvw3")]
 position = Vector2(3216, 1908)
@@ -318,7 +295,7 @@ rotation = -1.5708
 
 [node name="Spikes20" parent="Hazards" instance=ExtResource("13_jhvw3")]
 position = Vector2(6832, 1712)
-shiftTimer = 60.0
+shiftTimer = 1.0
 
 [node name="Spikes21" parent="Hazards" instance=ExtResource("13_jhvw3")]
 position = Vector2(7024, 1760)
@@ -485,4 +462,4 @@ position = Vector2(1360, 1136)
 shieldAffinity = 1
 
 [node name="SignpostNew" parent="." instance=ExtResource("20_kkuy8")]
-position = Vector2(9536, 1408)
+position = Vector2(9408, 1408)

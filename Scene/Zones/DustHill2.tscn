@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://ecnvkbx6eipx"]
+[gd_scene load_steps=25 format=4 uid="uid://ecnvkbx6eipx"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_ednaa"]
 [ext_resource type="AudioStream" uid="uid://c8y5q77kxn4ap" path="res://Audio/Soundtrack/s2br_DustHill.ogg" id="2_xwbm1"]
@@ -14,11 +14,16 @@
 [ext_resource type="PackedScene" uid="uid://cfhj1mg80i6pr" path="res://Entities/Gimmicks/hanging_Bar.tscn" id="10_dy3wd"]
 [ext_resource type="PackedScene" uid="uid://cuo1bc1i07tst" path="res://Entities/Obstacles/DrawBridge.tscn" id="11_i58a5"]
 [ext_resource type="PackedScene" uid="uid://dttcggk8bgn5g" path="res://Entities/ZoneObjects/MCZ_CollapsePlatformLeft.tscn" id="14_hktg7"]
+[ext_resource type="PackedScene" uid="uid://p4f52fvi6y2s" path="res://Entities/Hazards/MultiRotatingSpikes.tscn" id="14_pb6n8"]
+[ext_resource type="PackedScene" uid="uid://bvv78uhl8idjs" path="res://Entities/Gimmicks/hanging_vine.tscn" id="15_smvhe"]
 [ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="15_su6ht"]
+[ext_resource type="PackedScene" uid="uid://kvy8b2y8v76e" path="res://Entities/Gimmicks/LeverSpring.tscn" id="16_aaf5b"]
 [ext_resource type="Texture2D" uid="uid://sdw87tpbgidn" path="res://Graphics/Objects_Zone/DHZ_Platform.png" id="16_p5x1c"]
 [ext_resource type="PackedScene" uid="uid://7k14xkpjguop" path="res://Entities/Obstacles/SwingingPlatform.tscn" id="17_b3mo7"]
 [ext_resource type="Texture2D" uid="uid://cnv0x4k5u14co" path="res://Graphics/Obstacles/DHZ_SwingChain.png" id="18_l02x7"]
 [ext_resource type="Script" path="res://Scripts/Misc/AltSpawn.gd" id="19_6lkex"]
+[ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="22_ug0kd"]
+[ext_resource type="PackedScene" uid="uid://bct374kjctkxr" path="res://Entities/Items/Checkpoint.tscn" id="23_pvtvm"]
 
 [node name="DustHill2" type="Node2D"]
 script = ExtResource("1_ednaa")
@@ -96,6 +101,12 @@ killTransSpeed = true
 position = Vector2(1292, 1096)
 killTransSpeed = true
 
+[node name="Spring15" parent="Entitites" instance=ExtResource("9_kusfm")]
+position = Vector2(1656, 880)
+scale = Vector2(-1, 1)
+springDirection = 3
+killTransSpeed = true
+
 [node name="Spring7" parent="Entitites" instance=ExtResource("9_kusfm")]
 position = Vector2(2928, 1272)
 killTransSpeed = true
@@ -118,7 +129,7 @@ position = Vector2(4016, 504)
 killTransSpeed = true
 
 [node name="BrickBlock" parent="Entitites" instance=ExtResource("9_ft4p0")]
-position = Vector2(3396, 1008)
+position = Vector2(3392, 1008)
 
 [node name="BrickBlock2" parent="Entitites" instance=ExtResource("9_ft4p0")]
 position = Vector2(4600, 1936)
@@ -127,7 +138,7 @@ position = Vector2(4600, 1936)
 position = Vector2(4600, 1568)
 
 [node name="BrickBlock4" parent="Entitites" instance=ExtResource("9_ft4p0")]
-position = Vector2(5316, 1264)
+position = Vector2(5312, 1264)
 
 [node name="BrickBlock5" parent="Entitites" instance=ExtResource("9_ft4p0")]
 position = Vector2(6024, 1264)
@@ -142,8 +153,17 @@ position = Vector2(5952, 1680)
 position = Vector2(536, 1256)
 targetNode = NodePath("../DrawBridge")
 
+[node name="HangingBar3" parent="Entitites" node_paths=PackedStringArray("targetNode") instance=ExtResource("10_dy3wd")]
+position = Vector2(1232, 1520)
+targetNode = NodePath("../DrawBridge3")
+
 [node name="DrawBridge" parent="Entitites" instance=ExtResource("11_i58a5")]
 position = Vector2(632, 1416)
+rotation = -1.5708
+behavior = 1
+
+[node name="DrawBridge3" parent="Entitites" instance=ExtResource("11_i58a5")]
+position = Vector2(1400, 1672)
 rotation = -1.5708
 behavior = 1
 
@@ -161,27 +181,64 @@ position = Vector2(128, 1456)
 script = ExtResource("19_6lkex")
 currentCharacter = 3
 
+[node name="MultiRotatingHazards" parent="Entitites" instance=ExtResource("14_pb6n8")]
+position = Vector2(3392, 1008)
+chains = 6
+
+[node name="MultiRotatingHazards2" parent="Entitites" instance=ExtResource("14_pb6n8")]
+position = Vector2(5312, 1264)
+chains = 6
+
+[node name="MultiRotatingHazards3" parent="Entitites" instance=ExtResource("14_pb6n8")]
+position = Vector2(5952, 1680)
+chains = 7
+speed = -1.0
+
+[node name="HangingVine" parent="Entitites" instance=ExtResource("15_smvhe")]
+position = Vector2(3920, 1112)
+distance = 192
+
+[node name="HangingVine2" parent="Entitites" instance=ExtResource("15_smvhe")]
+position = Vector2(7216, 1112)
+length = 64
+distance = 192
+
+[node name="HangingVine3" parent="Entitites" instance=ExtResource("15_smvhe")]
+position = Vector2(7992, 760)
+length = 64
+distance = 192
+
+[node name="LeverSpring" parent="Entitites" instance=ExtResource("16_aaf5b")]
+position = Vector2(4480, 352)
+
+[node name="LeverSpring2" parent="Entitites" instance=ExtResource("16_aaf5b")]
+position = Vector2(7304, 840)
+
+[node name="LeverSpring3" parent="Entitites" instance=ExtResource("16_aaf5b")]
+position = Vector2(7416, 840)
+scale = Vector2(-1, 1)
+
+[node name="LeverSpring4" parent="Entitites" instance=ExtResource("16_aaf5b")]
+position = Vector2(7496, 840)
+
+[node name="LeverSpring5" parent="Entitites" instance=ExtResource("16_aaf5b")]
+position = Vector2(7608, 840)
+scale = Vector2(-1, 1)
+
 [node name="Hazards" type="Node" parent="."]
 
 [node name="Spikes" parent="Hazards" instance=ExtResource("8_c8sjq")]
-position = Vector2(1104, 1648)
+position = Vector2(1120, 1648)
+count = 4
 
 [node name="Spikes40" parent="Hazards" instance=ExtResource("8_c8sjq")]
 position = Vector2(1296, 1264)
 rotation = 3.14159
 shiftTimer = 90.0
 
-[node name="Spikes2" parent="Hazards" instance=ExtResource("8_c8sjq")]
-position = Vector2(1136, 1648)
-
-[node name="Spikes3" parent="Hazards" instance=ExtResource("8_c8sjq")]
-position = Vector2(1424, 1776)
-
 [node name="Spikes4" parent="Hazards" instance=ExtResource("8_c8sjq")]
 position = Vector2(1456, 1776)
-
-[node name="Spikes5" parent="Hazards" instance=ExtResource("8_c8sjq")]
-position = Vector2(1488, 1776)
+count = 6
 
 [node name="Spikes6" parent="Hazards" instance=ExtResource("8_c8sjq")]
 position = Vector2(1808, 1650)
@@ -202,29 +259,9 @@ rotation = 3.14159
 position = Vector2(2096, 1632)
 rotation = 3.14159
 
-[node name="Spikes28" parent="Hazards" instance=ExtResource("8_c8sjq")]
-position = Vector2(2832, 1208)
-
-[node name="Spikes29" parent="Hazards" instance=ExtResource("8_c8sjq")]
-position = Vector2(2864, 1208)
-
-[node name="Spikes30" parent="Hazards" instance=ExtResource("8_c8sjq")]
-position = Vector2(2896, 1208)
-
 [node name="Spikes31" parent="Hazards" instance=ExtResource("8_c8sjq")]
-position = Vector2(2928, 1208)
-
-[node name="Spikes32" parent="Hazards" instance=ExtResource("8_c8sjq")]
-position = Vector2(2960, 1208)
-
-[node name="Spikes33" parent="Hazards" instance=ExtResource("8_c8sjq")]
-position = Vector2(2992, 1208)
-
-[node name="Spikes34" parent="Hazards" instance=ExtResource("8_c8sjq")]
-position = Vector2(3024, 1208)
-
-[node name="Spikes35" parent="Hazards" instance=ExtResource("8_c8sjq")]
-position = Vector2(3056, 1208)
+position = Vector2(2944, 1200)
+count = 16
 
 [node name="Spikes7" parent="Hazards" instance=ExtResource("8_c8sjq")]
 position = Vector2(2448, 1776)
@@ -235,50 +272,32 @@ position = Vector2(2480, 1776)
 [node name="Spikes9" parent="Hazards" instance=ExtResource("8_c8sjq")]
 position = Vector2(3952, 1392)
 
+[node name="Spikes11" parent="Hazards" instance=ExtResource("8_c8sjq")]
+position = Vector2(3776, 496)
+count = 8
+
+[node name="Spikes12" parent="Hazards" instance=ExtResource("8_c8sjq")]
+position = Vector2(3952, 496)
+count = 6
+
 [node name="Spikes10" parent="Hazards" instance=ExtResource("8_c8sjq")]
 position = Vector2(3216, 1904)
 
-[node name="Spikes11" parent="Hazards" instance=ExtResource("8_c8sjq")]
-position = Vector2(4496, 2032)
-
-[node name="Spikes12" parent="Hazards" instance=ExtResource("8_c8sjq")]
-position = Vector2(4528, 2032)
-
 [node name="Spikes13" parent="Hazards" instance=ExtResource("8_c8sjq")]
-position = Vector2(4560, 2032)
-
-[node name="Spikes14" parent="Hazards" instance=ExtResource("8_c8sjq")]
-position = Vector2(4592, 2032)
-
-[node name="Spikes15" parent="Hazards" instance=ExtResource("8_c8sjq")]
-position = Vector2(5392, 2032)
+position = Vector2(4544, 2032)
+count = 8
 
 [node name="Spikes16" parent="Hazards" instance=ExtResource("8_c8sjq")]
-position = Vector2(5424, 2032)
-
-[node name="Spikes17" parent="Hazards" instance=ExtResource("8_c8sjq")]
-position = Vector2(5456, 2032)
-
-[node name="Spikes18" parent="Hazards" instance=ExtResource("8_c8sjq")]
-position = Vector2(5488, 2032)
-
-[node name="Spikes19" parent="Hazards" instance=ExtResource("8_c8sjq")]
-position = Vector2(5648, 2032)
+position = Vector2(5440, 2032)
+count = 8
 
 [node name="Spikes20" parent="Hazards" instance=ExtResource("8_c8sjq")]
 position = Vector2(5680, 2032)
-
-[node name="Spikes21" parent="Hazards" instance=ExtResource("8_c8sjq")]
-position = Vector2(5712, 2032)
-
-[node name="Spikes22" parent="Hazards" instance=ExtResource("8_c8sjq")]
-position = Vector2(5904, 2032)
+count = 6
 
 [node name="Spikes23" parent="Hazards" instance=ExtResource("8_c8sjq")]
 position = Vector2(5936, 2032)
-
-[node name="Spikes24" parent="Hazards" instance=ExtResource("8_c8sjq")]
-position = Vector2(5968, 2032)
+count = 6
 
 [node name="Spikes25" parent="Hazards" instance=ExtResource("8_c8sjq")]
 position = Vector2(7952, 1136)
@@ -322,3 +341,73 @@ plat_img = ExtResource("16_p5x1c")
 chain_img = ExtResource("18_l02x7")
 
 [node name="Items" type="Node" parent="."]
+
+[node name="Monitor" parent="Items" instance=ExtResource("22_ug0kd")]
+position = Vector2(2256, 752)
+item = 1
+
+[node name="Monitor2" parent="Items" instance=ExtResource("22_ug0kd")]
+position = Vector2(2624, 1136)
+
+[node name="Monitor3" parent="Items" instance=ExtResource("22_ug0kd")]
+position = Vector2(2512, 1776)
+item = 2
+
+[node name="Monitor4" parent="Items" instance=ExtResource("22_ug0kd")]
+position = Vector2(3600, 1392)
+
+[node name="Monitor5" parent="Items" instance=ExtResource("22_ug0kd")]
+position = Vector2(3600, 1520)
+item = 2
+
+[node name="Monitor6" parent="Items" instance=ExtResource("22_ug0kd")]
+position = Vector2(4496, 1392)
+
+[node name="Monitor7" parent="Items" instance=ExtResource("22_ug0kd")]
+position = Vector2(5488, 1264)
+
+[node name="Monitor8" parent="Items" instance=ExtResource("22_ug0kd")]
+position = Vector2(5936, 752)
+item = 2
+
+[node name="Monitor9" parent="Items" instance=ExtResource("22_ug0kd")]
+position = Vector2(5744, 2016)
+item = 12
+
+[node name="Monitor10" parent="Items" instance=ExtResource("22_ug0kd")]
+position = Vector2(6184, 1328)
+item = 3
+shieldAffinity = 1
+
+[node name="Monitor11" parent="Items" instance=ExtResource("22_ug0kd")]
+position = Vector2(6960, 1232)
+shieldAffinity = 1
+
+[node name="Monitor12" parent="Items" instance=ExtResource("22_ug0kd")]
+position = Vector2(7280, 1456)
+item = 3
+shieldAffinity = 1
+
+[node name="Monitor13" parent="Items" instance=ExtResource("22_ug0kd")]
+position = Vector2(7824, 880)
+shieldAffinity = 1
+
+[node name="Monitor14" parent="Items" instance=ExtResource("22_ug0kd")]
+position = Vector2(8048, 1136)
+shieldAffinity = 1
+
+[node name="Checkpoint" parent="Items" instance=ExtResource("23_pvtvm")]
+position = Vector2(960, 872)
+checkPointID = 1
+
+[node name="Checkpoint2" parent="Items" instance=ExtResource("23_pvtvm")]
+position = Vector2(2608, 936)
+checkPointID = 2
+
+[node name="Checkpoint3" parent="Items" instance=ExtResource("23_pvtvm")]
+position = Vector2(4240, 1320)
+checkPointID = 3
+
+[node name="Checkpoint4" parent="Items" instance=ExtResource("23_pvtvm")]
+position = Vector2(6976, 1576)
+checkPointID = 4

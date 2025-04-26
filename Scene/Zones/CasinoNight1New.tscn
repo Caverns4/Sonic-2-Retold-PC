@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://p0yejpqi4q88"]
+[gd_scene load_steps=27 format=4 uid="uid://p0yejpqi4q88"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_0yy3m"]
 [ext_resource type="AudioStream" uid="uid://c354qh8pof6fe" path="res://Audio/Soundtrack/s2br_CasinoNight.ogg" id="2_20443"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="14_0dgsp"]
 [ext_resource type="Texture2D" uid="uid://bd7qotjdqnsst" path="res://Graphics/Objects_Zone/CNZ_MovingBlock.png" id="15_m8sn6"]
 [ext_resource type="PackedScene" uid="uid://c2t7hwn0iln3x" path="res://Entities/Obstacles/Elevator.tscn" id="16_0dx01"]
+[ext_resource type="PackedScene" uid="uid://dnbjgwbrkknnu" path="res://Entities/Gimmicks/ConveyorBelt.tscn" id="16_kwjyb"]
 [ext_resource type="Texture2D" uid="uid://bsbg06aqri8m1" path="res://Graphics/Objects_Zone/CNZ_Elevator.png" id="17_3dkr3"]
 [ext_resource type="AudioStream" uid="uid://cei1ganfjxio8" path="res://Audio/SFX/Objects/CNZ_Elevator.wav" id="18_042pc"]
 [ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="19_guhxt"]
@@ -478,6 +479,12 @@ type = 1
 
 [node name="SignpostNew" parent="Entities" instance=ExtResource("25_qxfkg")]
 position = Vector2(10432, 1696)
+
+[node name="ConveyorBelt" parent="Entities" instance=ExtResource("16_kwjyb")]
+position = Vector2(1152, 784)
+constant_linear_velocity = Vector2(-60, 0)
+speed = -60
+length = 7
 
 [node name="MovingPlatforms" type="Node2D" parent="."]
 material = ExtResource("8_cpekc")

@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://beyervc2tmktg" path="res://Audio/SFX/Objects/s2br_Spikes.wav" id="3_3urn5"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(32, 32)
+size = Vector2(16, 32)
 
 [node name="Spikes" type="StaticBody2D"]
 collision_layer = 8207
@@ -13,11 +13,13 @@ collision_mask = 8192
 script = ExtResource("3")
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 1)
 shape = SubResource("1")
 
 [node name="Spike" type="Sprite2D" parent="."]
 texture = ExtResource("2")
-region_rect = Rect2(0, 32, 32, 16)
+region_enabled = true
+region_rect = Rect2(0, 32, 32, 32)
 
 [node name="sfxSpikeShift" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_3urn5")
@@ -26,6 +28,7 @@ bus = &"SFX"
 [node name="ShiftTimer" type="Timer" parent="."]
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-scale = Vector2(2.5, 2.6)
+scale = Vector2(2, 1)
+rect = Rect2(-8, -32, 16, 64)
 
 [connection signal="timeout" from="ShiftTimer" to="." method="_on_ShiftTimer_timeout"]

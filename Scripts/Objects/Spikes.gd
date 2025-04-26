@@ -1,24 +1,40 @@
+@tool
 extends StaticBody2D
 
-@export var shiftTimer = 0.00
+## The time in seconds before the spikes extend/retract
+@export var shiftTimer: float = 0.00
+## The number of pairs of Spikes. 
+@export_range (1,16) var count: int = 2
+
 @onready var start = position
 @onready var shiftPoint = position+(Vector2.DOWN*scale.sign()).rotated(rotation)*32
 var sunk = false
 var sunkShift = 0
 
 func _ready():
-	$VisibleOnScreenEnabler2D.visible = true
+	if !Engine.is_editor_hint():
+		$VisibleOnScreenEnabler2D.visible = true
 	
-	if !is_equal_approx(shiftTimer,0):
-		$ShiftTimer.start(abs(shiftTimer))
-	else:
-		set_physics_process(false)
+		if !is_equal_approx(shiftTimer,0):
+			$ShiftTimer.start(abs(shiftTimer))
+		else:
+			set_physics_process(false)
+	
+	$Spike.set_region_rect(Rect2(0,32,count*16,32))
+	$HitBox.scale.x = count
+	$VisibleOnScreenEnabler2D.scale.x = count
 
 func _physics_process(delta):
-	position = lerp(start,shiftPoint,sunkShift)
-	sunkShift += (1.0-int(sunk)*2.0)*delta*16
-	sunkShift = clamp(sunkShift,0,1)
-	$HitBox.disabled = !sunk
+	if Engine.is_editor_hint():
+		$Spike.set_region_rect(Rect2(0,32,count*16,32))
+		$HitBox.scale.x = count
+		$VisibleOnScreenEnabler2D.scale.x = count
+	else:
+		position = lerp(start,shiftPoint,sunkShift)
+		sunkShift += (1.0-int(sunk)*2.0)*delta*16
+		sunkShift = clamp(sunkShift,0,1)
+		$HitBox.disabled = !sunk
+	
 
 # Collision check (this is where the player gets hurt, OW!)
 func physics_collision(body, hitVector):
