@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvedeea47q2th"]
+
+[ext_resource type="Texture2D" uid="uid://pkq0mefaryx1" path="res://Graphics/Objects_Zone/DHZ_Bricks.png" id="1_kkcta"]
+[ext_resource type="Script" path="res://Scripts/Objects/dhz_spike_block.gd" id="1_s2bqd"]
+[ext_resource type="PackedScene" uid="uid://cfteqnft5ynr7" path="res://Entities/Hazards/Spikes.tscn" id="1_seqor"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fx3s0"]
+size = Vector2(112, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p83t0"]
+size = Vector2(128, 16)
+
+[node name="DHZ_SpikeBlock" type="Node2D"]
+process_priority = 10
+script = ExtResource("1_s2bqd")
+
+[node name="DHZ_SpikeBlock" type="AnimatableBody2D" parent="."]
+process_priority = 10
+collision_layer = 8193
+collision_mask = 0
+
+[node name="Spikes" parent="DHZ_SpikeBlock" instance=ExtResource("1_seqor")]
+position = Vector2(16, 0)
+rotation = -1.5708
+
+[node name="Sprite2D" type="Sprite2D" parent="DHZ_SpikeBlock"]
+position = Vector2(24, 0)
+texture = ExtResource("1_kkcta")
+hframes = 2
+vframes = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="DHZ_SpikeBlock"]
+position = Vector2(48, 0)
+texture = ExtResource("1_kkcta")
+vframes = 2
+frame = 1
+
+[node name="Sprite2D3" type="Sprite2D" parent="DHZ_SpikeBlock"]
+position = Vector2(80, 0)
+texture = ExtResource("1_kkcta")
+vframes = 2
+frame = 1
+
+[node name="Sprite2D4" type="Sprite2D" parent="DHZ_SpikeBlock"]
+position = Vector2(112, 0)
+texture = ExtResource("1_kkcta")
+vframes = 2
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DHZ_SpikeBlock"]
+position = Vector2(72, 0)
+shape = SubResource("RectangleShape2D_fx3s0")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-64, 0)
+shape = SubResource("RectangleShape2D_p83t0")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
+position = Vector2(3.8147e-06, 1.52588e-05)
+scale = Vector2(12.8, 25.6)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

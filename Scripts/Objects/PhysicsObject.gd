@@ -156,7 +156,7 @@ func update_sensors():
 	# if the player is on a completely flat surface then move the sensor down 8 pixels
 	backSensor.position.y = 8*int(round(rad_to_deg(angle)) == round(rad_to_deg(gravityAngle)) and ground)
 
-	# slop sensor
+	# slope sensor
 	slopeCheck.position.y = shape.x
 	slopeCheck.target_position = Vector2((shape.y+extendFloorLook)*sign(rotation-angle),0)
 	

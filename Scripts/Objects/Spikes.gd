@@ -7,6 +7,7 @@ var sunk = false
 var sunkShift = 0
 
 func _ready():
+	$VisibleOnScreenEnabler2D.visible = true
 	
 	if !is_equal_approx(shiftTimer,0):
 		$ShiftTimer.start(abs(shiftTimer))
