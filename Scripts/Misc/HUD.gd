@@ -79,7 +79,7 @@ func _ready():
 
 	var lifeCounterFrame = 0
 
-	if Global.TwoPlayer:
+	if Global.two_player_mode:
 		$Counters.visible = false
 		$LifeCounter.visible = false
 		$P1Counters.visible = true
@@ -259,7 +259,7 @@ func UpdateHUD(_delta):
 	var hud_time_hundredths:int = int(hud_time * 100) % 100
 	var timer_text: String = "%2d:%02d:%02d" % [hud_time_minutes,hud_time_seconds,hud_time_hundredths]
 	
-	if Global.TwoPlayer:
+	if Global.two_player_mode:
 		# Time Text Player 1
 		if Global.timerActive:
 			$P1Counters/Text/TimeNumbers.text = timer_text
@@ -297,7 +297,7 @@ func UpdateHUD(_delta):
 func WaterOverlay(_delta):
 	# get current camera
 	var cam = GlobalFunctions.getCurrentCamera2D()
-	if !Global.TwoPlayer:
+	if !Global.two_player_mode:
 		if cam != null:
 			# if camera exists place the water's y position based on the screen position as the water is a UI overlay
 			$Water/WaterOverlay.position.y = clamp(
@@ -356,7 +356,7 @@ func SetupGameOver(_delta):
 		await $GameOver/GameOver.animation_finished
 		# reset game
 		if Global.levelTime < Global.maxTime or (Global.lives <= 0 and Global.livesMode):
-			if Global.TwoPlayer:
+			if Global.two_player_mode:
 				var results = [Global.score,Global.levelTime,Global.players[0].rings,
 				Global.scoreP2,Global.levelTimeP2,Global.players[1].rings]
 				Global.twoPlayActResults.append(results)

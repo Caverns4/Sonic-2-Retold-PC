@@ -9,7 +9,7 @@ func _physics_process(delta):
 	# do allowTranslate to avoid collision
 	parent.allowTranslate = true
 	
-	if !Global.TwoPlayer:
+	if !Global.two_player_mode:
 		runDeathinSinglePlayer()
 	else:
 		runDeathInTwoPlayer()
@@ -43,8 +43,8 @@ func runDeathInTwoPlayer():
 
 func CheckGameOver(lifeCount,timerVal):
 	# check if lives are remaining or death was a time over
-	if (lifeCount > 0 or (!Global.livesMode and !Global.TwoPlayer)) and timerVal < Global.maxTime:
-		if !Global.TwoPlayer:
+	if (lifeCount > 0 or (!Global.livesMode and !Global.two_player_mode)) and timerVal < Global.maxTime:
+		if !Global.two_player_mode:
 			Global.main.change_scene_to_file(null,"FadeOut")
 			parent.process_mode = PROCESS_MODE_PAUSABLE
 		else:

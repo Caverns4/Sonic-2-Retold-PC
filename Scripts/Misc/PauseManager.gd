@@ -66,7 +66,7 @@ func _input(event):
 	if !get_tree().paused or !visible:
 		return null
 	# menu button activate
-	if Global.TwoPlayer and (
+	if Global.two_player_mode and (
 		event.is_action_pressed("gm_pause") or 
 		event.is_action_pressed("gm_pause_P2")):
 			if Global.main.wasPaused:
@@ -79,7 +79,7 @@ func _input(event):
 	# menu button activate
 	if (event.is_action_pressed("gm_pause")
 	or event.is_action_pressed("gm_action")
-	) and !Global.TwoPlayer:
+	) and !Global.two_player_mode:
 		match(menu): # menu handles
 			MENUS.MAIN: # main menu
 				match(option): # Options
@@ -131,7 +131,7 @@ func _input(event):
 
 func _unhandledInput(_event):
 	#Ignore menu in 2-Player mode so player's can't grief eachother.
-	if Global.TwoPlayer:
+	if Global.two_player_mode:
 		return
 	
 	# check if paused and visible, otherwise cancel it out
@@ -259,7 +259,7 @@ func _on_visibility_changed() -> void:
 		$PauseCover.texture = tex
 		$PauseCover.size = tex.get_size()
 	
-	if Global.TwoPlayer:
+	if Global.two_player_mode:
 		$PauseMenu.visible = false
 	else:
 		$PauseMenu.visible = true

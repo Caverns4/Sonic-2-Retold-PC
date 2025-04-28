@@ -52,14 +52,14 @@ func _process(delta):
 # open on body touch (and player 1)
 func _on_OpenShutter_body_entered(body):
 	playerList.append(body)
-	if body.playerControl == 1 or Global.TwoPlayer:
+	if body.playerControl == 1 or Global.two_player_mode:
 		open = true
 
 
 # close on body leave (and player 1)
 func _on_CloseShutter_body_entered(body):
 	playerList.erase(body)
-	if body.playerControl == 1 or (Global.TwoPlayer and playerList.size() == 0):
+	if body.playerControl == 1 or (Global.two_player_mode and playerList.size() == 0):
 		open = false
 
 # force open and force close is used for switches

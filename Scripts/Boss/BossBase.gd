@@ -17,7 +17,7 @@ signal boss_over
 var active = false
 
 func _ready() -> void:
-	if Global.TwoPlayer:
+	if Global.two_player_mode:
 		queue_free()
 
 func _physics_process(delta):

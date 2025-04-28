@@ -28,7 +28,7 @@ var parent = null #The parent node, should be Helicopter Eggman
 signal carTouched()
 
 func _ready():
-	if Global.TwoPlayer:
+	if Global.two_player_mode:
 		queue_free()
 	
 	tires[0].top_level = true

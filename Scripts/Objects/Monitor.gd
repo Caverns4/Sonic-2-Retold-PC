@@ -34,7 +34,7 @@ var Explosion = preload("res://Entities/Misc/BadnickSmoke.tscn")
 
 func _ready():
 	if !Engine.is_editor_hint():
-		if Global.TwoPlayer:
+		if Global.two_player_mode:
 			item = ITEMTYPES.QMARK
 		# set frame
 		$Item.frame = item+2
@@ -64,7 +64,7 @@ func FrameUpdate():
 
 func destroy():
 	# skip if not activated
-	if Global.TwoPlayer:
+	if Global.two_player_mode:
 		match Global.twoPlayerItems:
 			Global.ITEM_MODE.ALL_KINDS_ITEMS:
 				item = twoPlayerItems.pick_random()
@@ -87,7 +87,7 @@ func destroy():
 
 
 	
-	if item == ITEMTYPES.SHIELD and !Global.TwoPlayer and playerTouch.shield > 0:
+	if item == ITEMTYPES.SHIELD and !Global.two_player_mode and playerTouch.shield > 0:
 		if shieldAffinity == 1:
 			item = ITEMTYPES.ELECSHIELD
 		if shieldAffinity == 2:
@@ -170,7 +170,7 @@ func destroy():
 			Global.life.stop()
 			Global.life.play()
 			Global.lives += 1
-			if Global.hud and !Global.TwoPlayer:
+			if Global.hud and !Global.two_player_mode:
 				Global.hud.coins += 1
 			Global.music.volume_db = -100
 		ITEMTYPES.LIFEP2: #2-Player 1up
@@ -202,7 +202,7 @@ func physics_collision(body, hitVector):
 		# Bounce from below
 		if hitVector.x != 0:
 			# check conditions for interaction (and the player is the first player)
-			if body.movement.y >= 0 and body.movement.x != 0 and (body.playerControl == 1 or Global.TwoPlayer):
+			if body.movement.y >= 0 and body.movement.x != 0 and (body.playerControl == 1 or Global.two_player_mode):
 				playerTouch = body
 				destroy()
 			else:
@@ -212,7 +212,7 @@ func physics_collision(body, hitVector):
 		# if they are then destroy
 		
 		
-		if (body.playerControl == 1 or Global.TwoPlayer) and (
+		if (body.playerControl == 1 or Global.two_player_mode) and (
 		body.currentState != body.STATES.SPINDASH):
 			print(body.animator.current_animation)
 			if  (body.animator.current_animation == "dropDash"):

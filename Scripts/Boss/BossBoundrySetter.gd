@@ -30,7 +30,7 @@ var bossActive = false
 signal boss_start()
 
 func _ready() -> void:
-	if Global.TwoPlayer:
+	if Global.two_player_mode:
 		queue_free()
 
 func _on_BoundrySetter_body_entered(body):

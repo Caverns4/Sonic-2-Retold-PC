@@ -34,7 +34,7 @@ func activate(playerNode):
 		Global.checkPointTime = Global.levelTime
 		Global.checkPointRings = playerNode.rings
 	#save player 2 data if sidekick passed.
-	elif Global.TwoPlayer == true and !Global.players[0] == playerNode:
+	elif Global.two_player_mode == true and !Global.players[0] == playerNode:
 		Global.checkPointTimeP2 = Global.levelTimeP2
 		Global.checkPointRingsP2 = playerNode.rings
 	
@@ -45,7 +45,7 @@ func activate(playerNode):
 				i.active = true
 				i.get_node("Spinner").play("flash")
 	
-	if (!Global.TwoPlayer and Global.players[0].rings > 49
+	if (!Global.two_player_mode and Global.players[0].rings > 49
 	and Global.emeralds < 127): #If 1P, >=50 rings, > 7 emeralds...
 		var spawn = specialStageEntry.instantiate()
 		spawn.global_position = global_position + Vector2(0,-64)
@@ -53,12 +53,12 @@ func activate(playerNode):
 
 func _on_Checkpoint_body_entered(body):
 	# do the spin and activate
-	if !active and !Global.TwoPlayer:
+	if !active and !Global.two_player_mode:
 		if body.playerControl == 1:
 			$Spinner.play("spin")
 			$Checkpoint.play()
 			activate(body)
-	if Global.TwoPlayer and !PlayerMemory.has(body):
+	if Global.two_player_mode and !PlayerMemory.has(body):
 			$Spinner.play("spin")
 			$Checkpoint.play()
 			activate(body)

@@ -14,7 +14,7 @@ func _ready():
 	Global.check_score_life(SCORE[scoreID])
 	
 	# add score
-	if playerID == 0 or !Global.TwoPlayer:
+	if playerID == 0 or !Global.two_player_mode:
 		Global.score += SCORE[scoreID]
 	else:
 		Global.scoreP2 += SCORE[scoreID]

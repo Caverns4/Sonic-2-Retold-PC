@@ -11,18 +11,18 @@ var triggers = []
 @onready var screenXSize = GlobalFunctions.get_screen_size().x
 
 func _ready() -> void:
-	if multiplayerOnly and !Global.TwoPlayer:
+	if multiplayerOnly and !Global.two_player_mode:
 		queue_free()
 
 func _physics_process(_delta):
 	# check if player.x position is greater then the post
 	# Global.players[0].global_position.y <= global_position.y and
-	if Global.TwoPlayer:
+	if Global.two_player_mode:
 		TriggerSignpostMultiPlayer()
 	else:
 		TriggerSignpostSinglePlayer()
 	
-	if !Global.TwoPlayer:
+	if !Global.two_player_mode:
 		InitEndOfAct()
 		# stage clear settings
 		if Global.stageClearPhase != 0:
@@ -111,7 +111,7 @@ func InitEndOfAct():
 		for i in stateCancelList:
 			if i == player.currentState:
 				player.set_state(player.STATES.AIR)
-		if !Global.TwoPlayer:
+		if !Global.two_player_mode:
 			# set inputs to right
 			player.inputs[player.INPUTS.XINPUT] = 1
 			player.inputs[player.INPUTS.YINPUT] = 0

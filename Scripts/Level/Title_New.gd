@@ -75,7 +75,7 @@ var lastCheatInput = Vector2.ZERO
 
 func _ready():
 	#Clear game variables
-	Global.TwoPlayer = false
+	Global.two_player_mode = false
 	Global.score = 0
 	Global.scoreP2 = 0
 	Global.levelTime = 0
@@ -140,7 +140,7 @@ func MenuOptionChosen():
 			Global.savedActID = 0
 			SetFadeOut(nextZone)
 		1:
-			Global.TwoPlayer = true
+			Global.two_player_mode = true
 			Global.PlayerChar1 = Global.CHARACTERS.SONIC
 			Global.PlayerChar2 = Global.CHARACTERS.TAILS
 			SetFadeOut(twoPlayerScene)

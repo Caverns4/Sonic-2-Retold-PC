@@ -123,7 +123,7 @@ func _input(event):
 		if event.is_action_pressed("gm_pause"):
 			
 			if Input.is_action_pressed("gm_action3"):
-				Global.TwoPlayer = true
+				Global.two_player_mode = true
 			
 			
 			selected = true
@@ -239,12 +239,12 @@ func _input(event):
 					Global.savedZoneID = Global.ZONES.DEATH_EGG
 					Global.savedActID = 1
 				29:
-					Global.TwoPlayer = false
+					Global.two_player_mode = false
 					Global.savedZoneID = Global.ZONES.SPECIAL_STAGE
 					Global.savedActID = 0
 				_: # Invalid Entry
 					selected = false
-					Global.TwoPlayer = false
+					Global.two_player_mode = false
 					return
 			
 			Global.main.change_scene_to_file(Global.nextZone,"FadeOut","FadeOut",1)

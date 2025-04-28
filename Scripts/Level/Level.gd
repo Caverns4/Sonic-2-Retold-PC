@@ -60,7 +60,7 @@ func _ready():
 	
 	level_reset_data(false)
 	
-	if Global.TwoPlayer == true:
+	if Global.two_player_mode == true:
 		var twoPlayerScene = twoPlayerWindow.instantiate()
 		add_child(twoPlayerScene)
 	wasLoaded = true
@@ -75,7 +75,7 @@ func level_reset_data(playCard = true):
 	var levelMusic = null
 	if Global.music != null:
 		if music != null:
-			if !Global.TwoPlayer:
+			if !Global.two_player_mode:
 				levelMusic = music
 				
 			else:

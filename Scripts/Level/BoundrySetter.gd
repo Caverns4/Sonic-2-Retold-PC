@@ -16,7 +16,7 @@ extends Area2D
 @export var scrollSpeed = 0 # 0 will be instant
 
 func _ready() -> void:
-	if (!Engine.is_editor_hint() and Global.TwoPlayer):
+	if (!Engine.is_editor_hint() and Global.two_player_mode):
 		queue_free()
 
 func _on_BoundrySetter_body_entered(body):

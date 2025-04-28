@@ -7,7 +7,7 @@ SAND_SHOWER,TROPICAL,SKY_FORTRESS,DEATH_EGG,
 ENDING,SPECIAL_STAGE}
 
 #Two Player Mode flag. Either false or true.
-var TwoPlayer = false
+var two_player_mode = false
 # player pointers (0 is usually player 1)
 var players = []
 # main object reference

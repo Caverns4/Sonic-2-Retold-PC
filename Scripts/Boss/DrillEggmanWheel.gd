@@ -6,7 +6,7 @@ var free = false
 var parent = null
 
 func _ready():
-	if Global.TwoPlayer:
+	if Global.two_player_mode:
 		queue_free()
 	
 	if wheelType == "Back":

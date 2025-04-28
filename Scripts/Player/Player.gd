@@ -311,7 +311,7 @@ func _ready():
 			partner = Player.instantiate()
 			partner.name = "Partner"
 			get_parent().call_deferred("add_child", (partner))
-			partner.playerControl = 2 if Global.TwoPlayer else 0
+			partner.playerControl = 2 if Global.two_player_mode else 0
 			partner.partner = self
 			partner.z_index = z_index-1
 			partner.global_position = round(global_position+Vector2(-24,0))
@@ -437,7 +437,7 @@ func _process(delta):
 		memoryPosition = (memoryPosition + 1) % INPUT_MEMORY_LENGTH
 
 		# Partner ai logic
-		if partner != null && !Global.TwoPlayer:
+		if partner != null && !Global.two_player_mode:
 			# Check if partner panic
 			if partnerPanic <= 0:
 				if partner.playerControl == 0:
@@ -489,7 +489,7 @@ func _process(delta):
 
 	# respawn mechanics
 	else:
-		if $ScreenCheck.is_on_screen() or Global.TwoPlayer:
+		if $ScreenCheck.is_on_screen() or Global.two_player_mode:
 			respawnTime = RESPAWN_DEFAULT_TIME
 		else:
 			if respawnTime > 0:
@@ -596,7 +596,7 @@ func _process(delta):
 		Global.life.stop()
 		Global.life.play()
 		Global.lives += 1
-		if Global.hud and !Global.TwoPlayer:
+		if Global.hud and !Global.two_player_mode:
 			Global.hud.coins += 1
 		Global.music.volume_db = -100
 
@@ -1094,7 +1094,7 @@ func hit_player(damagePoint = global_position, damageType = 0, soundID = 6):
 		set_state(STATES.HIT)
 		invTime = 120 # Ivulnerable for 2 seconds. Starts counting *after* landing.
 		# Ring loss
-		if (shield == SHIELDS.NONE and rings > 0 and (playerControl == 1 or Global.TwoPlayer)):
+		if (shield == SHIELDS.NONE and rings > 0 and (playerControl == 1 or Global.two_player_mode)):
 			sfx[9].play()
 			#ringDisTime = 30.0/60.0 # ignore rings for 64 frames
 			if Global.hud:
@@ -1126,7 +1126,7 @@ func hit_player(damagePoint = global_position, damageType = 0, soundID = 6):
 					ringAngle = 101.25 # Reset angle
 				get_parent().add_child(ring)
 			rings = 0
-		elif shield == SHIELDS.NONE and (playerControl == 1 or Global.TwoPlayer):
+		elif shield == SHIELDS.NONE and (playerControl == 1 or Global.two_player_mode):
 			if !(get_tree().current_scene is MainGameScene):
 				sfx[soundID].play()
 				return false
@@ -1140,7 +1140,7 @@ func hit_player(damagePoint = global_position, damageType = 0, soundID = 6):
 	return false
 
 func get_ring():
-	if playerControl == 1 or Global.TwoPlayer:
+	if playerControl == 1 or Global.two_player_mode:
 		var prev_rings = rings
 		rings += 1
 		totalRings+=1
@@ -1172,7 +1172,7 @@ func kill(soundID: int = 6):
 		#if playerControl == 1:
 		#	Global.music.play()
 		#	Global.effectTheme.stop()
-		if !Global.TwoPlayer and playerControl == 1 and partner:
+		if !Global.two_player_mode and playerControl == 1 and partner:
 			var saved = partner.global_position
 			partner.respawn()
 			partner.global_position = saved
@@ -1193,7 +1193,7 @@ func kill(soundID: int = 6):
 			sfx[25].play()
 		set_state(STATES.DIE,currentHitbox.NORMAL)
 		
-		if playerControl == 1 and !Global.TwoPlayer:
+		if playerControl == 1 and !Global.two_player_mode:
 			Global.main.sceneCanPause = false # stop the ability to pause
 
 func respawn():
