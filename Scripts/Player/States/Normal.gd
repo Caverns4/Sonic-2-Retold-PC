@@ -22,7 +22,7 @@ var playerIdles = [
 # MIGHTY
 ["idle1","idle2","idle3","idle4","idle5"],
 # RAY
-["idle1","idle1","idle1","idle2","idle3"],
+["idle","idle","idle","idle1","idle"],
 # SONIC_BETA
 ["idle1","idle1","idle1","idle2","idle3"]
 ]

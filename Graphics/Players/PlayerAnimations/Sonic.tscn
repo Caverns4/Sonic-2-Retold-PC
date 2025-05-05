@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://d1e4muavtnun6"]
+[gd_scene load_steps=62 format=3 uid="uid://d1e4muavtnun6"]
 
 [ext_resource type="Shader" path="res://Shaders/PaletteSwapRow.gdshader" id="1_22urb"]
 [ext_resource type="Texture2D" uid="uid://lv4qey45t23s" path="res://Graphics/Palettes/SuperSonicPal.png" id="2_lu6d0"]
@@ -43,6 +43,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sonic/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_8r1ot"]
@@ -262,6 +274,22 @@ tracks/0/keys = {
 "values": [91]
 }
 
+[sub_resource type="Animation" id="Animation_3teag"]
+resource_name = "DieBW"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sonic/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [92]
+}
+
 [sub_resource type="Animation" id="107"]
 resource_name = "dropDash"
 length = 0.8
@@ -413,7 +441,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="79"]
 resource_name = "idle"
-length = 6.0
+length = 5.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -421,10 +449,10 @@ tracks/0/path = NodePath("Sonic/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2, 2.1, 5.1, 5.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 2, 2.1, 5.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 0, 1, 2]
+"values": [0, 1, 0, 1]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -441,7 +469,8 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="113"]
 resource_name = "idle1"
-length = 10.0
+length = 12.0
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -449,10 +478,10 @@ tracks/0/path = NodePath("Sonic/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.501, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 7.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 2, 2.501, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 9.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 5]
+"values": [2, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 5]
 }
 
 [sub_resource type="Animation" id="114"]
@@ -506,11 +535,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [9]
 }
-
-[sub_resource type="Animation" id="118"]
-resource_name = "idle5"
-length = 0.133333
-step = 0.0166667
 
 [sub_resource type="Animation" id="109"]
 resource_name = "idle_super"
@@ -821,22 +845,6 @@ tracks/0/keys = {
 "values": [74, 75, 76, 77, 78, 79]
 }
 
-[sub_resource type="Animation" id="Animation_3teag"]
-resource_name = "DieBW"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sonic/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [92]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_36uej"]
 _data = {
 "RESET": SubResource("86"),
@@ -864,7 +872,6 @@ _data = {
 "idle2": SubResource("114"),
 "idle3": SubResource("116"),
 "idle4": SubResource("117"),
-"idle5": SubResource("118"),
 "idle_super": SubResource("109"),
 "lookUp": SubResource("80"),
 "lookUp_Super": SubResource("Animation_3ty7l"),

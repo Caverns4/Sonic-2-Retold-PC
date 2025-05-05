@@ -62,6 +62,7 @@ var character = Global.CHARACTERS.SONIC
 var playerSkins = [
 	preload("res://Entitites3D/WorldTest/sonic_Player.tscn"),
 	preload("res://Entitites3D/WorldTest/miles_Player.tscn"),
+	preload("res://Entitites3D/WorldTest/knuckles_Player.tscn"),
 	# Knuckles
 	# Amy
 	# Mighty

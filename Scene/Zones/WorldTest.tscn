@@ -25,7 +25,6 @@ ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_sky_contribution = 0.0
 reflected_light_source = 1
 fog_depth_end = 111.5
-volumetric_fog_enabled = true
 volumetric_fog_density = 1.0
 volumetric_fog_length = 48.41
 volumetric_fog_ambient_inject = 0.61

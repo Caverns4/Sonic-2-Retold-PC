@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhdlmgqfoe5nu"]
+
+[ext_resource type="PackedScene" uid="uid://cgvm0x1o73xx2" path="res://Models/Player/Knuckles.glb" id="1_w3ai1"]
+
+[node name="Knuckles" instance=ExtResource("1_w3ai1")]
+
+[node name="Skeleton3D" parent="Knx_Rig" index="0"]
+bones/1/position = Vector3(-1.51262e-08, 0.410987, -1.05892e-22)
+bones/1/rotation = Quaternion(6.71794e-08, -9.75337e-08, -9.75336e-08, 1)
+bones/2/rotation = Quaternion(0.978273, -0.0751278, 0.0438502, 0.188186)
+bones/2/scale = Vector3(1, 1, 1.00001)
+bones/3/rotation = Quaternion(0.329111, 1.24572e-06, -7.06759e-06, 0.944291)
+bones/4/rotation = Quaternion(0.600926, -0.0206812, -0.0812032, 0.7949)
+bones/5/rotation = Quaternion(-2.16605e-13, 9.43977e-06, 1, -1.20327e-06)
+bones/6/rotation = Quaternion(0.978273, 0.0751279, -0.0438504, 0.188187)
+bones/6/scale = Vector3(1, 1, 1.00001)
+bones/7/rotation = Quaternion(0.329112, -1.24179e-06, 6.84604e-06, 0.944291)
+bones/8/rotation = Quaternion(0.600926, 0.0206813, 0.0812032, 0.7949)
+bones/9/rotation = Quaternion(-2.09277e-14, 9.61944e-06, 1, 1.20699e-06)
+bones/12/rotation = Quaternion(-0.400479, -0.272521, -0.274392, 0.830697)
+bones/13/rotation = Quaternion(4.89505e-06, -1.92255e-07, 0.693951, 0.720022)
+bones/14/rotation = Quaternion(-0.00730712, 0.307334, 0.405861, 0.86068)
+bones/16/rotation = Quaternion(-0.400479, 0.272521, 0.274392, 0.830697)
+bones/17/rotation = Quaternion(4.88407e-06, 1.78212e-07, -0.693951, 0.720022)
+bones/18/rotation = Quaternion(-0.00730691, -0.307334, -0.405861, 0.86068)
+bones/20/rotation = Quaternion(-0.00414919, 2.22996e-07, 1.21643e-07, 0.999991)
+bones/22/rotation = Quaternion(-0.707107, -4.59177e-09, -4.59175e-09, 0.707107)

@@ -30,7 +30,7 @@ var stateTimer = 0.0
 var offsetTimer = 0 #To be used for editor preview if I feel like figuring it out
 
 func _ready():
-	maxFrames = platformSprite.get_height()/32
+	maxFrames = platformSprite.get_height()/platformSprite.get_width()
 	if !Engine.is_editor_hint():
 		if childCount == 0:
 			get_child(1).queue_free()
@@ -95,7 +95,7 @@ func setvframeOfChildren(delta):
 		var temp = get_child(i)
 		for j in temp.get_child_count():
 			if temp.get_child(j) is Sprite2D:
-				temp.get_child(j).set_region_rect(Rect2(0,(spriteFrame*32),32,32))
+				temp.get_child(j).set_region_rect(Rect2(0,(spriteFrame*platformSprite.get_width()),platformSprite.get_width(),platformSprite.get_width()))
 
 func _draw():
 	if Engine.is_editor_hint():
