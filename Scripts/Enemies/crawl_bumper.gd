@@ -1,6 +1,9 @@
 extends StaticBody2D
 
 func physics_collision(body, _hitVector):
+	if body.movement.x == 0:
+		body.movement.x = 3*sign(body.global_position.x-global_position.x)
+	
 	# on collision bump the player away and play animation, pretty simple
 	body.movement = (body.global_position-global_position).normalized()*3*60.0
 	

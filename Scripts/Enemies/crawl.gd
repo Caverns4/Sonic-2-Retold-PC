@@ -36,24 +36,49 @@ func _physics_process(delta: float) -> void:
 
 func _on_front_censor_body_entered(body: Node2D) -> void:
 	blocking = true
+	$DamageArea.monitoring = false
+	$crawlsprite/CrawlBumper.set_collision_layer_value(14,true)
 	animator.play("Block_Forward")
 	players.append(body)
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	animator.play("Walk")
-	blocking = false
+	if players:
+		animator.play(anim_name)
+		$crawlsprite/CrawlBumper.set_collision_layer_value(14,true)
+	else:
+		animator.play("Walk")
+		blocking = false
+		$crawlsprite/CrawlBumper.set_collision_layer_value(14,false)
+		$DamageArea.monitoring = true
 
 
 func _on_upper_censor_body_entered(body: Node2D) -> void:
 	blocking = true
+	$crawlsprite/CrawlBumper.set_collision_layer_value(14,true)
+	$DamageArea.monitoring = false
 	animator.play("Block_Up")
 	players.append(body)
 
 
 func _on_front_censor_body_exited(body: Node2D) -> void:
 	players.erase(body)
+	#print("Front")
 
 
 func _on_upper_censor_body_exited(body: Node2D) -> void:
 	players.erase(body)
+	#print("Above")
+
+
+func _on_bumper_coll_body_entered(body: Node2D) -> void:
+	if body.movement.x == 0:
+		body.movement.x = 3*sign(body.global_position.x-global_position.x)
+	
+	# on collision bump the player away and play animation, pretty simple
+	body.movement = (body.global_position-global_position).normalized()*3*60.0
+	
+	if body.currentState == body.STATES.JUMP: # set the state to air
+		body.set_state(body.STATES.AIR)
+
+	Global.play_sound($BumperSFX.stream)

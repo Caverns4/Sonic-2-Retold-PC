@@ -477,6 +477,10 @@ position = Vector2(8192, 1024)
 position = Vector2(1216, 1120)
 type = 1
 
+[node name="CNZSlot14" parent="Entities" instance=ExtResource("24_vdjfc")]
+position = Vector2(1728, 488)
+type = 1
+
 [node name="SignpostNew" parent="Entities" instance=ExtResource("25_qxfkg")]
 position = Vector2(10432, 1696)
 
@@ -675,7 +679,7 @@ scale = Vector2(2, 4)
 [node name="Badniks" type="Node" parent="."]
 
 [node name="Crawl" parent="Badniks" instance=ExtResource("20_2gusr")]
-position = Vector2(836, 752)
+position = Vector2(256, 688)
 
 [node name="Crawl2" parent="Badniks" instance=ExtResource("20_2gusr")]
 position = Vector2(3776, 624)

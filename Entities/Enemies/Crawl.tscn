@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://Scripts/Enemies/crawl.gd" id="1_0pgyn"]
 [ext_resource type="Texture2D" uid="uid://c8j6h0dpua10y" path="res://Graphics/Enemies/Crawl_Mobile.png" id="2_evms8"]
-[ext_resource type="Script" path="res://Scripts/Enemies/crawl_bumper.gd" id="3_xswa5"]
 [ext_resource type="AudioStream" uid="uid://twp8cryjv0r6" path="res://Audio/SFX/Objects/s2br_Bumper.wav" id="4_ryaxe"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -13,6 +12,9 @@ size = Vector2(28, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xkmua"]
 size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vr60h"]
+size = Vector2(24, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rk7qb"]
 size = Vector2(16, 28)
@@ -244,9 +246,8 @@ frame = 3
 
 [node name="CrawlBumper" type="StaticBody2D" parent="crawlsprite"]
 position = Vector2(6, 0)
-collision_layer = 65536
-collision_mask = 8192
-script = ExtResource("3_xswa5")
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="crawlsprite/CrawlBumper"]
 position = Vector2(1, 0)
@@ -258,9 +259,15 @@ texture = ExtResource("2_evms8")
 hframes = 4
 frame = 1
 
-[node name="BumperSFX" type="AudioStreamPlayer" parent="crawlsprite/CrawlBumper"]
-stream = ExtResource("4_ryaxe")
-bus = &"SFX"
+[node name="BumperColl" type="Area2D" parent="crawlsprite/CrawlBumper"]
+position = Vector2(1, 0)
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="crawlsprite/CrawlBumper/BumperColl"]
+position = Vector2(-3, 0)
+shape = SubResource("RectangleShape2D_vr60h")
+debug_color = Color(0.317647, 0.560784, 1, 0.501961)
 
 [node name="Front_Censor" type="Area2D" parent="crawlsprite"]
 position = Vector2(-20, 0)
@@ -273,10 +280,11 @@ shape = SubResource("RectangleShape2D_rk7qb")
 debug_color = Color(0.231373, 0.458824, 1, 0.501961)
 
 [node name="Upper_Censor" type="Area2D" parent="crawlsprite"]
-position = Vector2(0, -22)
+position = Vector2(0, -24)
+collision_layer = 0
+collision_mask = 4096
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="crawlsprite/Upper_Censor"]
-position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_r3yvi")
 debug_color = Color(0.317647, 0.560784, 1, 0.501961)
 
@@ -291,9 +299,14 @@ visible = false
 position = Vector2(1.90735e-06, -1.90735e-06)
 rect = Rect2(-160, -120, 320, 240)
 
+[node name="BumperSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ryaxe")
+bus = &"SFX"
+
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
+[connection signal="body_entered" from="crawlsprite/CrawlBumper/BumperColl" to="." method="_on_bumper_coll_body_entered"]
 [connection signal="body_entered" from="crawlsprite/Front_Censor" to="." method="_on_front_censor_body_entered"]
 [connection signal="body_exited" from="crawlsprite/Front_Censor" to="." method="_on_front_censor_body_exited"]
 [connection signal="body_entered" from="crawlsprite/Upper_Censor" to="." method="_on_upper_censor_body_entered"]
