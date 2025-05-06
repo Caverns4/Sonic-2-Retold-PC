@@ -142,10 +142,10 @@ position = Vector2(5120, 1280)
 position = Vector2(6840, 480)
 
 [node name="Bumper32" parent="Entities" instance=ExtResource("11_cyorj")]
-position = Vector2(7376, 648)
+position = Vector2(7368, 652)
 
 [node name="Bumper33" parent="Entities" instance=ExtResource("11_cyorj")]
-position = Vector2(7432, 648)
+position = Vector2(7424, 652)
 
 [node name="Bumper34" parent="Entities" instance=ExtResource("11_cyorj")]
 position = Vector2(7616, 512)
@@ -490,6 +490,24 @@ constant_linear_velocity = Vector2(-60, 0)
 speed = -60
 length = 7
 
+[node name="ConveyorBelt2" parent="Entities" instance=ExtResource("16_kwjyb")]
+position = Vector2(3968, 656)
+constant_linear_velocity = Vector2(-60, 0)
+speed = -60
+length = 7
+
+[node name="ConveyorBelt3" parent="Entities" instance=ExtResource("16_kwjyb")]
+position = Vector2(5824, 912)
+constant_linear_velocity = Vector2(-60, 0)
+speed = -60
+length = 3
+
+[node name="ConveyorBelt4" parent="Entities" instance=ExtResource("16_kwjyb")]
+position = Vector2(6272, 1168)
+constant_linear_velocity = Vector2(-60, 0)
+speed = -60
+length = 7
+
 [node name="MovingPlatforms" type="Node2D" parent="."]
 material = ExtResource("8_cpekc")
 
@@ -509,6 +527,16 @@ position = Vector2(3744, 864)
 platformSprite = ExtResource("15_m8sn6")
 endPosition = Vector2(192, 0)
 speed = 0.5
+dropSlightly = false
+fullySolid = true
+platformDepth = 0
+
+[node name="Platform8" parent="MovingPlatforms" instance=ExtResource("14_0dgsp")]
+use_parent_material = true
+position = Vector2(4256, 800)
+platformSprite = ExtResource("15_m8sn6")
+endPosition = Vector2(192, 0)
+speed = -0.5
 dropSlightly = false
 fullySolid = true
 platformDepth = 0
@@ -679,24 +707,18 @@ scale = Vector2(2, 4)
 [node name="Badniks" type="Node" parent="."]
 
 [node name="Crawl" parent="Badniks" instance=ExtResource("20_2gusr")]
-position = Vector2(256, 688)
+position = Vector2(3712, 624)
 
 [node name="Crawl2" parent="Badniks" instance=ExtResource("20_2gusr")]
-position = Vector2(3776, 624)
+position = Vector2(4144, 816)
 
 [node name="Crawl3" parent="Badniks" instance=ExtResource("20_2gusr")]
-position = Vector2(4088, 816)
-
-[node name="Crawl4" parent="Badniks" instance=ExtResource("20_2gusr")]
-position = Vector2(7616, 624)
-
-[node name="Crawl5" parent="Badniks" instance=ExtResource("20_2gusr")]
-position = Vector2(8552, 560)
+position = Vector2(8560, 560)
 
 [node name="ItemsHolder" type="Node" parent="."]
 
 [node name="Monitor" parent="ItemsHolder" instance=ExtResource("21_yc45f")]
-position = Vector2(640, 736)
+position = Vector2(832, 752)
 item = 1
 
 [node name="Monitor2" parent="ItemsHolder" instance=ExtResource("21_yc45f")]

@@ -37,7 +37,7 @@ func _physics_process(delta: float) -> void:
 func _on_front_censor_body_entered(body: Node2D) -> void:
 	blocking = true
 	$DamageArea.monitoring = false
-	$crawlsprite/CrawlBumper.set_collision_layer_value(14,true)
+	$crawlsprite/CrawlBumper/BumperColl.monitoring = true
 	animator.play("Block_Forward")
 	players.append(body)
 
@@ -45,17 +45,17 @@ func _on_front_censor_body_entered(body: Node2D) -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if players:
 		animator.play(anim_name)
-		$crawlsprite/CrawlBumper.set_collision_layer_value(14,true)
+		$crawlsprite/CrawlBumper/BumperColl.monitoring = true
 	else:
 		animator.play("Walk")
 		blocking = false
-		$crawlsprite/CrawlBumper.set_collision_layer_value(14,false)
+		$crawlsprite/CrawlBumper/BumperColl.monitoring = false
 		$DamageArea.monitoring = true
 
 
 func _on_upper_censor_body_entered(body: Node2D) -> void:
 	blocking = true
-	$crawlsprite/CrawlBumper.set_collision_layer_value(14,true)
+	$crawlsprite/CrawlBumper/BumperColl.monitoring = true
 	$DamageArea.monitoring = false
 	animator.play("Block_Up")
 	players.append(body)

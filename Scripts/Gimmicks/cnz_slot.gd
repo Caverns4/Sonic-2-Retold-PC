@@ -35,6 +35,11 @@ func _process(delta: float) -> void:
 			if sfxTimer < 0.0:
 				Global.play_sound(SFX)
 				sfxTimer = 0.25
+				if Global.two_player_mode:
+					Global.add_score(global_position,1,
+					Global.players.find(player))
+				else:
+					Global.add_score(global_position,1,0)
 
 		if timer < 0.0 and (type == 0 or prizeGiven):
 			dropPlayer()

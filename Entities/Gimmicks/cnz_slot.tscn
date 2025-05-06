@@ -23,11 +23,13 @@ collision_mask = 14
 position = Vector2(-20, 0)
 shape = SubResource("RectangleShape2D_870o4")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Node2D"]
 collision_layer = 14
 collision_mask = 14
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D2"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/StaticBody2D2"]
 position = Vector2(20, 0)
 shape = SubResource("RectangleShape2D_b12g2")
 
