@@ -9,6 +9,7 @@ size = Vector2(64, 64)
 
 [node name="RotatingSolidBlocks" type="Node2D"]
 process_priority = 10
+y_sort_enabled = true
 script = ExtResource("1_fylaq")
 block_img = ExtResource("1_q5ur4")
 

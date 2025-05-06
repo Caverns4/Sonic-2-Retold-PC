@@ -3,8 +3,12 @@ extends Node2D
 #Move # of Blocks in 
 
 @export_range (1,4) var block_count:int = 3
-@export var block_img:Texture2D # Texture2D for the block
-@export var radius:int = 32
+## Texture2D for the block
+@export var block_img:Texture2D
+## Direction (and speed) the blocks spin at
+@export var speed:float = 1.0
+
+var radius:int = 32
 
 @onready var platform = $Block # Grab the platform's node.
 var platforms = []
@@ -19,6 +23,7 @@ func _ready() -> void:
 	if(!Engine.is_editor_hint()): # If not in editor, show the platform, and set the platform's image
 		platform.show()
 		platform.get_node("Sprite2D").texture = block_img
+		radius = block_img.get_width()
 		#Change root node tex
 		platform.get_node("CollisionShape2D").shape.size = block_img.get_size()
 		platforms.append(platform)
@@ -42,10 +47,10 @@ func _physics_process(delta: float) -> void:
 		var direction = Vector2.DOWN
 		var xOffset = 0.0
 		for i in platforms:
-			direction = Vector2.DOWN.rotated((deg_to_rad(fmod(xOffset + Global.globalTimer * 60,360))))
+			direction = Vector2.DOWN.rotated((deg_to_rad(fmod(xOffset + Global.globalTimer * speed * 60,360))))
 			xOffset += (360.0/block_count)
-			var pos = Vector2(direction*radius*1.4)
-			pos.x = clampf(pos.x,-radius,radius)
+			var pos = Vector2(direction*radius*2.2)
+			pos.x = clampf(pos.x,-radius*2,radius*2)
 			pos.y = clampf(pos.y,-radius,radius)
 			i.position = pos
 		

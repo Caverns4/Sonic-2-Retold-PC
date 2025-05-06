@@ -229,13 +229,13 @@ position = Vector2(2056, 1776)
 scale = Vector2(-1, 1)
 
 [node name="DHZ_SpikeBlock4" parent="Entitites" instance=ExtResource("8_tv581")]
-position = Vector2(3616, 1648)
+position = Vector2(3600, 1648)
 
 [node name="DHZ_SpikeBlock5" parent="Entitites" instance=ExtResource("8_tv581")]
-position = Vector2(3616, 1616)
+position = Vector2(3600, 1616)
 
 [node name="DHZ_SpikeBlock6" parent="Entitites" instance=ExtResource("8_tv581")]
-position = Vector2(3616, 1584)
+position = Vector2(3600, 1584)
 
 [node name="DHZ_SpikeBlock7" parent="Entitites" instance=ExtResource("8_tv581")]
 position = Vector2(3960, 1392)
@@ -256,6 +256,12 @@ scale = Vector2(-1, 1)
 [node name="DHZ_SpikeBlock11" parent="Entitites" instance=ExtResource("8_tv581")]
 position = Vector2(3960, 1264)
 scale = Vector2(-1, 1)
+
+[node name="RotatingSolidBlocks" parent="Entitites" instance=ExtResource("21_032vf")]
+position = Vector2(2432, 1408)
+
+[node name="RotatingSolidBlocks2" parent="Entitites" instance=ExtResource("21_032vf")]
+position = Vector2(5408, 1856)
 
 [node name="Hazards" type="Node" parent="."]
 
@@ -284,7 +290,7 @@ position = Vector2(3248, 1908)
 position = Vector2(3440, 1908)
 
 [node name="Spikes17" parent="Hazards" instance=ExtResource("13_jhvw3")]
-position = Vector2(4832, 1712)
+position = Vector2(4840, 1712)
 
 [node name="Spikes18" parent="Hazards" instance=ExtResource("13_jhvw3")]
 position = Vector2(5904, 1392)
@@ -463,6 +469,3 @@ shieldAffinity = 1
 
 [node name="SignpostNew" parent="." instance=ExtResource("20_kkuy8")]
 position = Vector2(9408, 1408)
-
-[node name="RotatingSolidBlocks" parent="." instance=ExtResource("21_032vf")]
-position = Vector2(256, 1664)

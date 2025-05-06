@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://ecnvkbx6eipx"]
+[gd_scene load_steps=27 format=4 uid="uid://ecnvkbx6eipx"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_ednaa"]
 [ext_resource type="AudioStream" uid="uid://c8y5q77kxn4ap" path="res://Audio/Soundtrack/s2br_DustHill.ogg" id="2_xwbm1"]
@@ -20,10 +20,12 @@
 [ext_resource type="PackedScene" uid="uid://kvy8b2y8v76e" path="res://Entities/Gimmicks/LeverSpring.tscn" id="16_aaf5b"]
 [ext_resource type="Texture2D" uid="uid://sdw87tpbgidn" path="res://Graphics/Objects_Zone/DHZ_Platform.png" id="16_p5x1c"]
 [ext_resource type="PackedScene" uid="uid://7k14xkpjguop" path="res://Entities/Obstacles/SwingingPlatform.tscn" id="17_b3mo7"]
+[ext_resource type="PackedScene" uid="uid://ojtv17ru256" path="res://Entities/Obstacles/RotatingSolidBlocks.tscn" id="17_gj0p0"]
 [ext_resource type="Texture2D" uid="uid://cnv0x4k5u14co" path="res://Graphics/Obstacles/DHZ_SwingChain.png" id="18_l02x7"]
 [ext_resource type="Script" path="res://Scripts/Misc/AltSpawn.gd" id="19_6lkex"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="22_ug0kd"]
 [ext_resource type="PackedScene" uid="uid://bct374kjctkxr" path="res://Entities/Items/Checkpoint.tscn" id="23_pvtvm"]
+[ext_resource type="PackedScene" uid="uid://bmce2barbv10t" path="res://Entities/ZoneObjects/MCZ_CollapsePlatformRight.tscn" id="24_5llv1"]
 
 [node name="DustHill2" type="Node2D"]
 script = ExtResource("1_ednaa")
@@ -225,6 +227,18 @@ position = Vector2(7496, 840)
 position = Vector2(7608, 840)
 scale = Vector2(-1, 1)
 
+[node name="RotatingSolidBlocks" parent="Entitites" instance=ExtResource("17_gj0p0")]
+position = Vector2(3744, 1472)
+
+[node name="RotatingSolidBlocks2" parent="Entitites" instance=ExtResource("17_gj0p0")]
+position = Vector2(4384, 1344)
+
+[node name="RotatingSolidBlocks3" parent="Entitites" instance=ExtResource("17_gj0p0")]
+position = Vector2(5248, 704)
+
+[node name="RotatingSolidBlocks4" parent="Entitites" instance=ExtResource("17_gj0p0")]
+position = Vector2(5664, 832)
+
 [node name="Hazards" type="Node" parent="."]
 
 [node name="Spikes" parent="Hazards" instance=ExtResource("8_c8sjq")]
@@ -316,6 +330,9 @@ shiftTimer = 60.0
 [node name="MCZ_CollapsingPlatformLeft" parent="Platforms" instance=ExtResource("14_hktg7")]
 position = Vector2(1088, 1408)
 
+[node name="MCZ_CollapsingPlatformLeft4" parent="Platforms" instance=ExtResource("14_hktg7")]
+position = Vector2(1480, 952)
+
 [node name="Platform" parent="Platforms" instance=ExtResource("15_su6ht")]
 position = Vector2(792, 1416)
 platformSprite = ExtResource("16_p5x1c")
@@ -339,6 +356,42 @@ chains = 5
 dir = -1
 plat_img = ExtResource("16_p5x1c")
 chain_img = ExtResource("18_l02x7")
+
+[node name="MCZ_CollapsingPlatformRight" parent="Platforms" instance=ExtResource("24_5llv1")]
+position = Vector2(2424, 1232)
+
+[node name="MCZ_CollapsingPlatformRight2" parent="Platforms" instance=ExtResource("24_5llv1")]
+position = Vector2(2432, 1664)
+
+[node name="MCZ_CollapsingPlatformLeft2" parent="Platforms" instance=ExtResource("14_hktg7")]
+position = Vector2(2560, 1600)
+
+[node name="MCZ_CollapsingPlatformRight3" parent="Platforms" instance=ExtResource("24_5llv1")]
+position = Vector2(3200, 1800)
+
+[node name="MCZ_CollapsingPlatformRight4" parent="Platforms" instance=ExtResource("24_5llv1")]
+position = Vector2(4480, 1920)
+
+[node name="MCZ_CollapsingPlatformRight5" parent="Platforms" instance=ExtResource("24_5llv1")]
+position = Vector2(5248, 1024)
+
+[node name="MCZ_CollapsingPlatformLeft3" parent="Platforms" instance=ExtResource("14_hktg7")]
+position = Vector2(3328, 1736)
+
+[node name="MCZ_CollapsingPlatformLeft5" parent="Platforms" instance=ExtResource("14_hktg7")]
+position = Vector2(5376, 960)
+
+[node name="MCZ_CollapsingPlatformRight6" parent="Platforms" instance=ExtResource("24_5llv1")]
+position = Vector2(5632, 1728)
+
+[node name="MCZ_CollapsingPlatformRight7" parent="Platforms" instance=ExtResource("24_5llv1")]
+position = Vector2(5624, 1936)
+
+[node name="MCZ_CollapsingPlatformLeft6" parent="Platforms" instance=ExtResource("14_hktg7")]
+position = Vector2(5768, 1856)
+
+[node name="MCZ_CollapsingPlatformRight8" parent="Platforms" instance=ExtResource("24_5llv1")]
+position = Vector2(7936, 1088)
 
 [node name="Items" type="Node" parent="."]
 
