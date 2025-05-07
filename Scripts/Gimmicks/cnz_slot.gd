@@ -35,11 +35,9 @@ func _process(delta: float) -> void:
 			if sfxTimer < 0.0:
 				Global.play_sound(SFX)
 				sfxTimer = 0.25
-				if Global.two_player_mode:
+				if !type:
 					Global.add_score(global_position,1,
 					Global.players.find(player))
-				else:
-					Global.add_score(global_position,1,0)
 
 		if timer < 0.0 and (type == 0 or prizeGiven):
 			dropPlayer()
@@ -69,7 +67,7 @@ func dropPlayer():
 		player = null
 
 func DeterminPrize(result):
-	
+	#Todo: Prize management system
 	pass
 
 
@@ -82,6 +80,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		body.global_position = global_position
 		body.movement = Vector2.ZERO
 		body.controlObject = self
+		#BUG: These can softlock if the slot machines get Sonic.
+		#Figure out a workaround for this.
 		if type > 0:
 			timer = 3.0
 			var a = randi_range(0,SLOT.size()-1)

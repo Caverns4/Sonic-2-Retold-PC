@@ -904,6 +904,9 @@ func RandomOffset() -> Vector2:
 func set_inputs():
 	# player control inputs
 	# check if ai or player 2
+	if playerControl < 0:
+		return
+	
 	if playerControl != 1:
 		# player 2 active time check, if below 0 return to ai state
 		if partnerControlTime <= 0 and playerControl == 2:
@@ -923,7 +926,6 @@ func set_inputs():
 				# if none of the button checks fail, give the player control
 				playerControl = 2
 				partnerControlTime = DEFAULT_PLAYER2_CONTROL_TIME
-		
 	
 	if playerControl > 0:
 		inputs[INPUTS.ACTION] = (int(Input.is_action_pressed(inputActions[INPUTS.ACTION]))*2)-int(Input.is_action_just_pressed(inputActions[INPUTS.ACTION]))

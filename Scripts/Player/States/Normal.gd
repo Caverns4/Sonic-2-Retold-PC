@@ -27,6 +27,13 @@ var playerIdles = [
 ["idle1","idle1","idle1","idle2","idle3"]
 ]
 
+func state_activated():
+	if (parent.playerControl < 1 and
+	parent.collision_layer == 0 and
+	parent.collision_mask == 0):
+		parent.collision_layer = parent.defaultLayer
+		parent.collision_mask = parent.defaultMask
+
 func state_exit():
 	skid = false
 	parent.get_node("HitBox").position = parent.hitBoxOffset.normal

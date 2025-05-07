@@ -23,7 +23,7 @@ func _ready() -> void:
 	if(!Engine.is_editor_hint()): # If not in editor, show the platform, and set the platform's image
 		platform.show()
 		platform.get_node("Sprite2D").texture = block_img
-		radius = block_img.get_width()
+		radius = block_img.get_width()/2
 		#Change root node tex
 		platform.get_node("CollisionShape2D").shape.size = block_img.get_size()
 		platforms.append(platform)

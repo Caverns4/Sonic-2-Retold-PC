@@ -72,8 +72,9 @@ func TriggerSignpostSinglePlayer():
 		# set player variable
 		player = Global.players[0]
 		# Camera limit set
-		player.limitLeft = global_position.x -screenXSize/2
-		player.limitRight = global_position.x +(screenXSize/2)+64
+		for i in Global.players:
+			i.limitLeft = global_position.x -screenXSize/2
+			i.limitRight = global_position.x +(screenXSize/2)+64
 		getCam = player.camera
 		SetSignpostAnimation(player.character)
 		# set global stage clear phase to 1, 1 is used to stop the timer (see HUD script)
@@ -105,22 +106,22 @@ func InitEndOfAct():
 		# after finishing spin, set stage clear to 2 and disable the players controls,
 		# stage clear is set to 2 so that the level ending doesn't start prematurely but we can track where the player is
 		Global.stageClearPhase = 2
-		player.playerControl = -1
+		for i in Global.players:
+			i.playerControl = -1
 		# put states under player in here if the state could end up getting the player soft locked
 		var stateCancelList = [player.STATES.WALLCLIMB]
 		for i in stateCancelList:
 			if i == player.currentState:
 				player.set_state(player.STATES.AIR)
-		if !Global.two_player_mode:
-			# set inputs to right
-			player.inputs[player.INPUTS.XINPUT] = 1
-			player.inputs[player.INPUTS.YINPUT] = 0
-			player.inputs[player.INPUTS.ACTION] = 0
-			# make partner move too
-			if player.get("partner") != null:
-				player.partner.inputs[player.INPUTS.XINPUT] = 1
-				player.partner.inputs[player.INPUTS.YINPUT] = 0
-				player.partner.inputs[player.INPUTS.ACTION] = 0
+		# set inputs to right
+		player.inputs[player.INPUTS.XINPUT] = 1
+		player.inputs[player.INPUTS.YINPUT] = 0
+		player.inputs[player.INPUTS.ACTION] = 0
+		# make partner move too
+		if player.get("partner") != null:
+			player.partner.inputs[player.INPUTS.XINPUT] = 1
+			player.partner.inputs[player.INPUTS.YINPUT] = 0
+			player.partner.inputs[player.INPUTS.ACTION] = 0
 
 
 func _on_timer_timeout() -> void:

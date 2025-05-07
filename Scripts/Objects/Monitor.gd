@@ -214,7 +214,7 @@ func physics_collision(body, hitVector):
 		
 		if (body.playerControl == 1 or Global.two_player_mode) and (
 		body.currentState != body.STATES.SPINDASH):
-			print(body.animator.current_animation)
+			#print(body.animator.current_animation)
 			if  (body.animator.current_animation == "dropDash"):
 				body.movement.y = 8*60
 			else:
