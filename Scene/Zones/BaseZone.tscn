@@ -228,6 +228,7 @@ position = Vector2(2368, 1680)
 position = Vector2(4480, 1456)
 rotation = 2.68781
 scale = Vector2(18, 1)
+speed = 600.0
 
 [node name="WaterSlide2" parent="Entities" instance=ExtResource("12_n8jdl")]
 position = Vector2(4608, 1456)
@@ -238,6 +239,7 @@ scale = Vector2(8, 1)
 position = Vector2(6528, 496)
 rotation = 0.462512
 scale = Vector2(18, 1)
+speed = 600.0
 
 [node name="WaterSlide10" parent="Entities" instance=ExtResource("12_n8jdl")]
 position = Vector2(6400, 496)
@@ -247,6 +249,7 @@ scale = Vector2(8, 1)
 position = Vector2(10624, 304)
 rotation = 0.462512
 scale = Vector2(18, 1)
+speed = 600.0
 
 [node name="WaterSlide20" parent="Entities" instance=ExtResource("12_n8jdl")]
 position = Vector2(10496, 304)
@@ -256,6 +259,7 @@ scale = Vector2(8, 1)
 position = Vector2(6656, 688)
 rotation = 0.462512
 scale = Vector2(26, 1)
+speed = 600.0
 
 [node name="WaterSlide14" parent="Entities" instance=ExtResource("12_n8jdl")]
 position = Vector2(6528, 688)
@@ -265,6 +269,7 @@ scale = Vector2(8, 1)
 position = Vector2(6784, 1136)
 rotation = 0.462512
 scale = Vector2(27, 1)
+speed = 600.0
 
 [node name="WaterSlide16" parent="Entities" instance=ExtResource("12_n8jdl")]
 position = Vector2(6656, 1136)
@@ -274,6 +279,7 @@ scale = Vector2(8, 1)
 position = Vector2(6784, 1584)
 rotation = 0.462512
 scale = Vector2(27, 1)
+speed = 600.0
 
 [node name="WaterSlide18" parent="Entities" instance=ExtResource("12_n8jdl")]
 position = Vector2(6656, 1584)
@@ -283,6 +289,7 @@ scale = Vector2(8, 1)
 position = Vector2(7296, 944)
 rotation = 2.68781
 scale = Vector2(18, 1)
+speed = 600.0
 
 [node name="WaterSlide4" parent="Entities" instance=ExtResource("12_n8jdl")]
 position = Vector2(7424, 944)
@@ -293,6 +300,7 @@ scale = Vector2(8, 1)
 position = Vector2(7424, 1328)
 rotation = 2.68781
 scale = Vector2(27, 1)
+speed = 600.0
 
 [node name="WaterSlide6" parent="Entities" instance=ExtResource("12_n8jdl")]
 position = Vector2(7552, 1328)
@@ -308,11 +316,13 @@ scale = Vector2(8, 1)
 position = Vector2(8568, 688)
 rotation = 2.67908
 scale = Vector2(72, 1)
+speed = 600.0
 
 [node name="WaterSlide11" parent="Entities" instance=ExtResource("12_n8jdl")]
 position = Vector2(8704, 1200)
 rotation = 2.68781
 scale = Vector2(10, 0.555)
+speed = 600.0
 
 [node name="WaterSlide12" parent="Entities" instance=ExtResource("12_n8jdl")]
 position = Vector2(8832, 1200)
@@ -323,6 +333,7 @@ scale = Vector2(8, 0.555)
 position = Vector2(11008, 688)
 rotation = 2.68781
 scale = Vector2(10, 0.555)
+speed = 600.0
 
 [node name="WaterSlide22" parent="Entities" instance=ExtResource("12_n8jdl")]
 position = Vector2(11136, 688)
@@ -562,13 +573,13 @@ position = Vector2(7424, 1760)
 [node name="Hazards" type="Node" parent="."]
 
 [node name="Spikes" parent="Hazards" instance=ExtResource("18_0adhf")]
-position = Vector2(2192, 1680)
+position = Vector2(2192, 1688)
 
 [node name="Spikes30" parent="Hazards" instance=ExtResource("18_0adhf")]
 position = Vector2(1728, 1712)
 
 [node name="Spikes2" parent="Hazards" instance=ExtResource("18_0adhf")]
-position = Vector2(2288, 1680)
+position = Vector2(2288, 1688)
 
 [node name="Spikes3" parent="Hazards" instance=ExtResource("18_0adhf")]
 position = Vector2(3216, 1432)
@@ -580,10 +591,10 @@ position = Vector2(3312, 1432)
 position = Vector2(4672, 1232)
 
 [node name="Spikes6" parent="Hazards" instance=ExtResource("18_0adhf")]
-position = Vector2(4752, 1296)
+position = Vector2(4752, 1304)
 
 [node name="Spikes7" parent="Hazards" instance=ExtResource("18_0adhf")]
-position = Vector2(4848, 1296)
+position = Vector2(4848, 1304)
 
 [node name="Spikes8" parent="Hazards" instance=ExtResource("18_0adhf")]
 position = Vector2(4544, 720)

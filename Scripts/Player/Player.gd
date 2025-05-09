@@ -1180,7 +1180,7 @@ func kill(soundID: int = 6):
 			partner.global_position = saved
 		collision_layer = 0
 		collision_mask = 0
-		z_index = 100
+		z_index = 120
 		if airTimer > 0:
 			is_in_water = false
 			switch_physics()

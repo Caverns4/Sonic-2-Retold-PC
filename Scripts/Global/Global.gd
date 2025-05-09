@@ -371,35 +371,35 @@ func loadNextLevel():
 		match savedZoneID:
 			ZONES.EMERALD_HILL:
 				savedActID = 0
-				savedZoneID = ZONES.CHEMICAL_PLANT
+				savedZoneID = ZONES.NEO_GREEN_HILL
 			ZONES.HIDDEN_PALACE:
 				savedActID = 0
 				savedZoneID = ZONES.OIL_OCEAN
 			ZONES.HILL_TOP:
 				savedActID = 0
-				savedZoneID = ZONES.HIDDEN_PALACE
+				savedZoneID = ZONES.DUST_HILL
 			ZONES.CHEMICAL_PLANT:
 				savedActID = 0
-				savedZoneID = ZONES.NEO_GREEN_HILL
+				savedZoneID = ZONES.CASINO_NIGHT
 			ZONES.OIL_OCEAN:
 				savedActID = 0
-				savedZoneID = ZONES.ENDING #Demo credits
+				savedZoneID = ZONES.METROPOLIS #Demo credits
 			ZONES.NEO_GREEN_HILL:
 				savedActID = 0
-				savedZoneID = ZONES.HILL_TOP
+				savedZoneID = ZONES.CHEMICAL_PLANT
 			ZONES.METROPOLIS:
 				if savedActID > 2:
 					savedActID = 0
-					savedZoneID = ZONES.WOOD_GADGET
+					savedZoneID = ZONES.ENDING
 			ZONES.DUST_HILL:
 				savedActID = 0
 				savedZoneID = ZONES.OIL_OCEAN
 			ZONES.WOOD_GADGET:
 				savedActID = 0
-				savedZoneID = ZONES.HILL_TOP
+				savedZoneID = ZONES.DUST_HILL
 			ZONES.CASINO_NIGHT:
 				savedActID = 0
-				savedZoneID = ZONES.DUST_HILL
+				savedZoneID = ZONES.WOOD_GADGET
 			ZONES.JEWEL_GROTTO:
 				savedActID = 0
 				savedZoneID = ZONES.SAND_SHOWER
@@ -414,10 +414,10 @@ func loadNextLevel():
 				savedZoneID = ZONES.EMERALD_HILL
 			ZONES.SKY_FORTRESS:
 				savedActID = 0
-				savedZoneID = ZONES.EMERALD_HILL
+				savedZoneID = ZONES.DEATH_EGG
 			ZONES.DEATH_EGG:
 				savedActID = 0
-				savedZoneID = ZONES.EMERALD_HILL
+				savedZoneID = ZONES.ENDING
 
 # Godot doesn't like not having emit signal only done in other nodes so we're using a function to call it
 func emit_stage_start():

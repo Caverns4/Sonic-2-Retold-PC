@@ -286,21 +286,6 @@ onlyOnFloor = true
 [node name="LayerSwitcher6" parent="Entities" instance=ExtResource("12_pf8po")]
 position = Vector2(7048, 1096)
 
-[node name="CnzCharacterReels" parent="Entities" instance=ExtResource("13_kcv3i")]
-position = Vector2(1216, 1184)
-
-[node name="CnzCharacterReels4" parent="Entities" instance=ExtResource("13_kcv3i")]
-position = Vector2(1728, 544)
-
-[node name="CnzCharacterReels2" parent="Entities" instance=ExtResource("13_kcv3i")]
-position = Vector2(7104, 672)
-
-[node name="CnzCharacterReels3" parent="Entities" instance=ExtResource("13_kcv3i")]
-position = Vector2(7616, 416)
-
-[node name="CnzCharacterReels5" parent="Entities" instance=ExtResource("13_kcv3i")]
-position = Vector2(8896, 928)
-
 [node name="CnzFlipper" parent="Entities" instance=ExtResource("13_wyhjd")]
 position = Vector2(640, 872)
 type = 1
@@ -436,51 +421,6 @@ position = Vector2(2456, 1480)
 [node name="CnzFlipper38" parent="Entities" instance=ExtResource("13_wyhjd")]
 position = Vector2(4120, 1284)
 
-[node name="CNZSlot" parent="Entities" instance=ExtResource("24_vdjfc")]
-position = Vector2(1120, 1184)
-
-[node name="CNZSlot2" parent="Entities" instance=ExtResource("24_vdjfc")]
-position = Vector2(1312, 1184)
-
-[node name="CNZSlot4" parent="Entities" instance=ExtResource("24_vdjfc")]
-position = Vector2(2176, 1176)
-
-[node name="CNZSlot5" parent="Entities" instance=ExtResource("24_vdjfc")]
-position = Vector2(4608, 1120)
-
-[node name="CNZSlot6" parent="Entities" instance=ExtResource("24_vdjfc")]
-position = Vector2(5632, 1376)
-
-[node name="CNZSlot7" parent="Entities" instance=ExtResource("24_vdjfc")]
-position = Vector2(5632, 1616)
-
-[node name="CNZSlot8" parent="Entities" instance=ExtResource("24_vdjfc")]
-position = Vector2(7104, 608)
-
-[node name="CNZSlot9" parent="Entities" instance=ExtResource("24_vdjfc")]
-position = Vector2(7616, 352)
-
-[node name="CNZSlot10" parent="Entities" instance=ExtResource("24_vdjfc")]
-position = Vector2(8704, 280)
-
-[node name="CNZSlot11" parent="Entities" instance=ExtResource("24_vdjfc")]
-position = Vector2(9000, 792)
-
-[node name="CNZSlot12" parent="Entities" instance=ExtResource("24_vdjfc")]
-position = Vector2(8896, 992)
-type = 1
-
-[node name="CNZSlot13" parent="Entities" instance=ExtResource("24_vdjfc")]
-position = Vector2(8192, 1024)
-
-[node name="CNZSlot3" parent="Entities" instance=ExtResource("24_vdjfc")]
-position = Vector2(1216, 1120)
-type = 1
-
-[node name="CNZSlot14" parent="Entities" instance=ExtResource("24_vdjfc")]
-position = Vector2(1728, 488)
-type = 1
-
 [node name="SignpostNew" parent="Entities" instance=ExtResource("25_qxfkg")]
 position = Vector2(10432, 1696)
 
@@ -507,6 +447,9 @@ position = Vector2(6272, 1168)
 constant_linear_velocity = Vector2(-60, 0)
 speed = -60
 length = 7
+
+[node name="CnzFlipper39" parent="Entities" instance=ExtResource("13_wyhjd")]
+position = Vector2(184, 656)
 
 [node name="MovingPlatforms" type="Node2D" parent="."]
 material = ExtResource("8_cpekc")
@@ -958,5 +901,65 @@ rotation = 3.14159
 position = Vector2(384, 664)
 type = 1
 
+[node name="CNZSlot2" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+position = Vector2(1120, 1184)
+
+[node name="CNZSlot3" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+position = Vector2(1312, 1184)
+
+[node name="CNZSlot4" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+position = Vector2(2176, 1176)
+
+[node name="CNZSlot5" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+position = Vector2(4608, 1120)
+
+[node name="CNZSlot6" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+position = Vector2(5632, 1376)
+
+[node name="CNZSlot7" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+position = Vector2(5632, 1616)
+
+[node name="CNZSlot8" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+position = Vector2(7104, 608)
+
+[node name="CNZSlot9" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+position = Vector2(7616, 352)
+
+[node name="CNZSlot10" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+position = Vector2(8704, 280)
+
+[node name="CNZSlot11" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+position = Vector2(9000, 792)
+
+[node name="CNZSlot12" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+position = Vector2(8896, 992)
+type = 1
+
+[node name="CNZSlot13" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+position = Vector2(8192, 1024)
+
+[node name="CNZSlot14" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+position = Vector2(1216, 1120)
+type = 1
+
+[node name="CNZSlot15" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+position = Vector2(1728, 488)
+type = 1
+
 [node name="CnzCharacterReels" parent="SlotMachines" instance=ExtResource("13_kcv3i")]
 position = Vector2(384, 620)
+
+[node name="CnzCharacterReels2" parent="SlotMachines" instance=ExtResource("13_kcv3i")]
+position = Vector2(1216, 1184)
+
+[node name="CnzCharacterReels4" parent="SlotMachines" instance=ExtResource("13_kcv3i")]
+position = Vector2(1728, 544)
+
+[node name="CnzCharacterReels3" parent="SlotMachines" instance=ExtResource("13_kcv3i")]
+position = Vector2(7104, 672)
+
+[node name="CnzCharacterReels5" parent="SlotMachines" instance=ExtResource("13_kcv3i")]
+position = Vector2(7616, 416)
+
+[node name="CnzCharacterReels6" parent="SlotMachines" instance=ExtResource("13_kcv3i")]
+position = Vector2(8896, 928)

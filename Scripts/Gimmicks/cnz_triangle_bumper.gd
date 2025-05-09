@@ -8,6 +8,8 @@ var bounceSound = preload("res://Audio/SFX/Objects/CNZ_BigBumper.wav")
 func physics_collision(body, hitVector):
 	#Placeholder until I write a better method
 	#body.movement = (body.global_position-global_position).normalized()*7*60.0
+	
+	print(hitVector)
 	body.movement = (hitVector.rotated(rad_to_deg(180.0)).normalized()*600.0)
 	
 	if body.currentState == body.STATES.JUMP: # set the state to air
