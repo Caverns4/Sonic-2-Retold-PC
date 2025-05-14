@@ -9,7 +9,10 @@ func physics_collision(body, hitVector):
 	#Placeholder until I write a better method
 	#body.movement = (body.global_position-global_position).normalized()*7*60.0
 	
-	print(hitVector)
+	#print(hitVector)
+	var col = body.objectCheck.get_collision_normal()
+	print(col)
+	
 	body.movement = (hitVector.rotated(rad_to_deg(180.0)).normalized()*600.0)
 	
 	if body.currentState == body.STATES.JUMP: # set the state to air
