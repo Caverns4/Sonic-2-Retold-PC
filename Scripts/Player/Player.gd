@@ -826,7 +826,7 @@ func _physics_process(delta):
 			camera.offset = RandomOffset()
 		
 		# Death at border bottom
-		if global_position.y > limitBottom:
+		if global_position.y > limitBottom and Global.stageClearPhase == 0:
 			kill()
 	
 	# Stop movement at borders
@@ -1081,10 +1081,10 @@ func hit_player(damagePoint = global_position, damageType = 0, soundID = 6):
 	supTime <= 0 and (shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled 
 	or character != Global.CHARACTERS.SONIC)):
 		movement.x = sign(global_position.x-damagePoint.x)*2*60
-		if check_for_ceiling():
-			movement.y = 0
-		else:
+		
+		if !check_for_ceiling():
 			movement.y = -4*60
+		
 		if (movement.x == 0):
 			movement.x = 2*60
 		# check for water

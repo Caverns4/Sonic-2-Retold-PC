@@ -290,7 +290,7 @@ position = Vector2(3248, 1908)
 position = Vector2(3440, 1908)
 
 [node name="Spikes17" parent="Hazards" instance=ExtResource("13_jhvw3")]
-position = Vector2(4840, 1712)
+position = Vector2(4832, 1712)
 
 [node name="Spikes18" parent="Hazards" instance=ExtResource("13_jhvw3")]
 position = Vector2(5904, 1392)

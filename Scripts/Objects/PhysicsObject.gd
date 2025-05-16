@@ -439,13 +439,14 @@ func check_for_ceiling():
 	var ceilChecker = RayCast2D.new()
 	$HitBox.add_child(ceilChecker)
 	ceilChecker.collision_mask = 2184
+	ceilChecker.set_collision_mask_value(4,true)
 	
 	if collissionLayer == 0:
 		ceilChecker.set_collision_mask_value(12,false)
 	else:
 		ceilChecker.set_collision_mask_value(8,false)
 	
-	ceilChecker.target_position.y = 0-verticalSensorLeft.target_position.y
+	ceilChecker.target_position.y = 0-(verticalSensorLeft.target_position.y+1)
 	ceilChecker.force_raycast_update()
 	# Check is there's a collision
 	if ceilChecker.is_colliding() or ceilChecker.is_colliding():

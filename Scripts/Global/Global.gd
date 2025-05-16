@@ -21,6 +21,7 @@ var characterReels = []
 # Cheats implimented
 var levelSelectFlag = false
 var tailsNameCheat = false #if TRUE, Tails will be called "Miles"
+var special_exit = ZONES.EMERALD_HILL
 var characterSelectMemory = 0
 var levelSelctMemory = 0
 # checkpoint memory
@@ -365,6 +366,11 @@ func loadNextLevel():
 	currentCheckPoint = -1
 	currentCheckPointP2 = -1
 	maxTime = 60*10
+	
+	if special_exit > ZONES.EMERALD_HILL:
+		savedActID = 0
+		savedZoneID = special_exit
+		return
 	
 	savedActID +=1
 	if savedActID >= 2:

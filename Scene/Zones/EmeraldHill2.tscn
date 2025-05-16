@@ -1077,30 +1077,6 @@ position = Vector2(10192, 976)
 [node name="Ring167" parent="Rings" instance=ExtResource("32_f5v80")]
 position = Vector2(10216, 976)
 
-[node name="Boss" type="Node" parent="."]
-
-[node name="HelicopterEggman" parent="Boss" instance=ExtResource("33_1057x")]
-position = Vector2(10936, 944)
-
-[node name="BossBoundrySetter" parent="Boss" instance=ExtResource("34_ljq5v")]
-position = Vector2(10744, 1024)
-bossPath = NodePath("../HelicopterEggman")
-keepTopLocked = false
-keepRightLocked = false
-lockLeft = false
-lockTop = false
-
-[node name="DrillEggmanCar" parent="Boss" instance=ExtResource("35_w4jcd")]
-top_level = true
-position = Vector2(11016, 1056)
-
-[node name="Capsule" parent="." instance=ExtResource("36_lon64")]
-position = Vector2(11264, 1060)
-
-[node name="SignpostNew" parent="." instance=ExtResource("25_je0kn")]
-position = Vector2(10688, 1091)
-multiplayerOnly = true
-
 [node name="Environment" type="Node" parent="."]
 
 [node name="WaterFallSFX2D" type="AudioStreamPlayer2D" parent="Environment"]
@@ -1165,6 +1141,30 @@ max_distance = 512.0
 attenuation = 1.5
 panning_strength = 0.5
 bus = &"SFX"
+
+[node name="Boss" type="Node" parent="."]
+
+[node name="HelicopterEggman" parent="Boss" instance=ExtResource("33_1057x")]
+position = Vector2(10936, 944)
+
+[node name="BossBoundrySetter" parent="Boss" instance=ExtResource("34_ljq5v")]
+position = Vector2(10744, 1024)
+bossPath = NodePath("../HelicopterEggman")
+keepTopLocked = false
+keepRightLocked = false
+lockLeft = false
+lockTop = false
+
+[node name="DrillEggmanCar" parent="Boss" instance=ExtResource("35_w4jcd")]
+top_level = true
+position = Vector2(11016, 1056)
+
+[node name="Capsule" parent="." instance=ExtResource("36_lon64")]
+position = Vector2(11264, 1060)
+
+[node name="SignpostNew" parent="." instance=ExtResource("25_je0kn")]
+position = Vector2(10688, 1091)
+multiplayerOnly = true
 
 [connection signal="boss_start" from="Boss/BossBoundrySetter" to="Boss/DrillEggmanCar" method="_on_boss_boundry_setter_boss_start"]
 [connection signal="carTouched" from="Boss/DrillEggmanCar" to="Boss/HelicopterEggman" method="_on_drill_eggman_car_car_touched"]

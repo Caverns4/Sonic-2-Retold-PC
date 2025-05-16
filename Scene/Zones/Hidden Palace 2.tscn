@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://cx126ulu8rjba"]
+[gd_scene load_steps=49 format=4 uid="uid://cx126ulu8rjba"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_am56i"]
 [ext_resource type="AudioStream" uid="uid://bjoynvot2wdjm" path="res://Audio/Soundtrack/s2br_HiddenPalace.ogg" id="2_cgwj4"]
@@ -43,6 +43,8 @@
 [ext_resource type="PackedScene" uid="uid://d3l3pbqwkrb80" path="res://Entities/Gimmicks/Geyser.tscn" id="34_4a7yt"]
 [ext_resource type="PackedScene" uid="uid://bgodeg4oddje6" path="res://Entities/MainObjects/BoundrySetter.tscn" id="43_3dk44"]
 [ext_resource type="PackedScene" uid="uid://bjuh5cvbt06af" path="res://Entities/MainObjects/Capsule.tscn" id="43_8x4dj"]
+[ext_resource type="PackedScene" uid="uid://p7n68euqgca8" path="res://Entities/MainObjects/GoalArea.tscn" id="44_8ncnj"]
+[ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="45_wp8pm"]
 
 [sub_resource type="Animation" id="Animation_tmyph"]
 resource_name = "OPEN"
@@ -779,31 +781,46 @@ killTransSpeed = true
 [node name="Trampoline5" parent="Entities" instance=ExtResource("26_ox31h")]
 position = Vector2(10688, 648)
 
-[node name="Platforms2" type="Node" parent="."]
+[node name="Platforms" type="Node" parent="."]
 
-[node name="HpzPlatformSpawner" parent="Platforms2" instance=ExtResource("16_48b6o")]
+[node name="HpzPlatformSpawner" parent="Platforms" instance=ExtResource("16_48b6o")]
 position = Vector2(2256, 1856)
 
-[node name="HpzPlatformSpawner2" parent="Platforms2" instance=ExtResource("16_48b6o")]
+[node name="HpzPlatformSpawner2" parent="Platforms" instance=ExtResource("16_48b6o")]
 position = Vector2(3456, 1200)
 
-[node name="HpzPlatformSpawner3" parent="Platforms2" instance=ExtResource("16_48b6o")]
+[node name="HpzPlatformSpawner3" parent="Platforms" instance=ExtResource("16_48b6o")]
 position = Vector2(3328, 256)
 
-[node name="HpzPlatformSpawner4" parent="Platforms2" instance=ExtResource("16_48b6o")]
+[node name="HpzPlatformSpawner4" parent="Platforms" instance=ExtResource("16_48b6o")]
 position = Vector2(3664, 192)
 
-[node name="HpzPlatformSpawner5" parent="Platforms2" instance=ExtResource("16_48b6o")]
+[node name="HpzPlatformSpawner5" parent="Platforms" instance=ExtResource("16_48b6o")]
 position = Vector2(4672, 512)
 
-[node name="HpzPlatformSpawner6" parent="Platforms2" instance=ExtResource("16_48b6o")]
+[node name="HpzPlatformSpawner6" parent="Platforms" instance=ExtResource("16_48b6o")]
 position = Vector2(4816, 1048)
 
-[node name="HpzPlatformSpawner7" parent="Platforms2" instance=ExtResource("16_48b6o")]
+[node name="HpzPlatformSpawner7" parent="Platforms" instance=ExtResource("16_48b6o")]
 position = Vector2(5072, 1152)
 
-[node name="HpzPlatformSpawner8" parent="Platforms2" instance=ExtResource("16_48b6o")]
+[node name="HpzPlatformSpawner8" parent="Platforms" instance=ExtResource("16_48b6o")]
 position = Vector2(4608, 1888)
+
+[node name="Platform" parent="Platforms" instance=ExtResource("45_wp8pm")]
+position = Vector2(11560, -16)
+endPosition = Vector2(0, 0)
+dropSlightly = false
+
+[node name="Platform2" parent="Platforms" instance=ExtResource("45_wp8pm")]
+position = Vector2(11648, -16)
+endPosition = Vector2(0, 0)
+dropSlightly = false
+
+[node name="Platform3" parent="Platforms" instance=ExtResource("45_wp8pm")]
+position = Vector2(11736, -16)
+endPosition = Vector2(0, 0)
+dropSlightly = false
 
 [node name="Hazards" type="Node" parent="."]
 
@@ -1994,3 +2011,9 @@ bottomBoundry = 1488
 
 [node name="Capsule" parent="." instance=ExtResource("43_8x4dj")]
 position = Vector2(12288, 1376)
+
+[node name="GoalArea" parent="." instance=ExtResource("44_8ncnj")]
+position = Vector2(11648, -44)
+scale = Vector2(8, 1)
+special_exit = true
+special_exit_zone = 4

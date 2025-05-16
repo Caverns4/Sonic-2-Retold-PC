@@ -14,6 +14,8 @@ var sunkShift = 0
 func _ready():
 	if !Engine.is_editor_hint():
 		$VisibleOnScreenEnabler2D.visible = true
+		if abs(global_rotation_degrees) > 10:
+			set_collision_layer_value(4,true)
 	
 		if !is_equal_approx(shiftTimer,0):
 			$ShiftTimer.start(abs(shiftTimer))
@@ -54,7 +56,6 @@ func physics_collision(body, hitVector):
 			body.set_state(body.STATES.AIR)
 		else:
 			body.hit_player(global_position,0,4)
-		#return true
 
 
 func _on_ShiftTimer_timeout():
