@@ -40,4 +40,5 @@ texture = ExtResource("1_5rgec")
 hframes = 4
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
 rect = Rect2(-64, -224, 128, 256)

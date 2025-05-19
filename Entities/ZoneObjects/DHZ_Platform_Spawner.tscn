@@ -10,6 +10,6 @@ resource = ExtResource("2_wc6ro")
 [node name="MCZ_CollapsingPlatformRight" parent="." instance=ExtResource("2_wc6ro")]
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
 position = Vector2(-5.72205e-06, 0)
-scale = Vector2(1, 1)
 rect = Rect2(-64, -112, 128, 224)

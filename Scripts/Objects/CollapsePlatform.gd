@@ -19,7 +19,7 @@ var players = []
 var active = false
 
 # the collapsing sound
-@export var collapseSFX = preload("res://Audio/SFX/Gimmicks/s2br_Collapse.wav")
+@export var collapse_sound = preload("res://Audio/SFX/Gimmicks/s2br_Collapse.wav")
 @export var respawn = true #If the object should respawn on a timer.
 var respawnCoords = position
 
@@ -55,7 +55,7 @@ func _physics_process(delta):
 				# wait for sound delay
 				#await get_tree().create_timer(soundDelay,false).timeout
 				# play sound globally (prevents sound overlap, aka loud sounds)
-				Global.play_sound(collapseSFX)
+				Global.play_sound(collapse_sound)
 	else:
 		# loop through and generate a tile particle
 		for i in getTiles.size():

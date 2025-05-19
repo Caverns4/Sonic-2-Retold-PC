@@ -8,6 +8,7 @@ script = ExtResource("1_2xqwo")
 resource = ExtResource("3_3abkx")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
 position = Vector2(-3.8147e-06, 0)
 scale = Vector2(2, 1)
 rect = Rect2(-64, -112, 128, 224)

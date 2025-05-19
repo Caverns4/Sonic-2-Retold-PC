@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=4 uid="uid://b5jx2pgq23cn0"]
+
+[ext_resource type="Texture2D" uid="uid://bgt1reg5rew7w" path="res://Graphics/Tiles/DHZ/DHZ_CrushTiles.png" id="1_0qdqv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mqtsr"]
+texture = ExtResource("1_0qdqv")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, 8, -8, 8, 8, 0, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 2, -8, 2, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, 8, -8, 8, 8, 0, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 2, -8, 2, 8, -8, 8)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, 8, -8, 8, 8, 0, 8)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 2, -8, 2, 8, -8, 8)
+0:4/0 = 0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, 8, -8, 8, 8, 0, 8)
+1:4/0 = 0
+1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 2, -8, 2, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_72l44"]
+physics_layer_0/collision_layer = 2097167
+physics_layer_0/collision_mask = 0
+sources/1 = SubResource("TileSetAtlasSource_mqtsr")
+
+[node name="TileMap" type="TileMapLayer"]
+tile_map_data = PackedByteArray("AAD///v/AQAAAAAAAAD///z/AQAAAAEAAAD///3/AQAAAAIAAAD///7/AQAAAAMAAAD/////AQAAAAQAAAAAAPv/AQABAAAAAAAAAPz/AQABAAEAAAAAAP3/AQABAAIAAAAAAP7/AQABAAMAAAAAAP//AQABAAQAAAD//wQAAQAAAAAAACAAAAQAAQABAAAAACD//wMAAQAAAAEAACAAAAMAAQABAAEAACD//wIAAQAAAAIAACAAAAIAAQABAAIAACD//wEAAQAAAAMAACAAAAEAAQABAAMAACD//wAAAQAAAAQAACAAAAAAAQABAAQAACA=")
+tile_set = SubResource("TileSet_72l44")

@@ -799,7 +799,7 @@ position = Vector2(3664, 192)
 position = Vector2(4672, 512)
 
 [node name="HpzPlatformSpawner6" parent="Platforms" instance=ExtResource("16_48b6o")]
-position = Vector2(4816, 1048)
+position = Vector2(4800, 1040)
 
 [node name="HpzPlatformSpawner7" parent="Platforms" instance=ExtResource("16_48b6o")]
 position = Vector2(5072, 1152)
@@ -1967,16 +1967,16 @@ position = Vector2(4656, 488)
 position = Vector2(4680, 488)
 
 [node name="Ring235" parent="Rings" instance=ExtResource("30_qxqb8")]
-position = Vector2(4800, 1024)
+position = Vector2(4788, 1024)
 
 [node name="Ring236" parent="Rings" instance=ExtResource("30_qxqb8")]
-position = Vector2(4824, 1024)
+position = Vector2(4812, 1024)
 
 [node name="Ring237" parent="Rings" instance=ExtResource("30_qxqb8")]
-position = Vector2(5064, 1128)
+position = Vector2(5060, 1128)
 
 [node name="Ring238" parent="Rings" instance=ExtResource("30_qxqb8")]
-position = Vector2(5088, 1128)
+position = Vector2(5084, 1128)
 
 [node name="Ring95" parent="Rings" instance=ExtResource("30_qxqb8")]
 position = Vector2(3656, 176)
