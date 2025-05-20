@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 	if !Engine.is_editor_hint():
 		var touching = 0
 		for i in $Hanger.players:
-			var node = i[0]
+			var _node = i[0]
 			if i[1]:
 				touching += 1
 		if touching > 0:

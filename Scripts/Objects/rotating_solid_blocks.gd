@@ -35,13 +35,6 @@ func _ready() -> void:
 	else: # Hide platform from editor
 		platform.hide() # The platform is drawn in this script instead for the editor.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	#Editor display only
-	if(Engine.is_editor_hint()): # All the editor code is in draw
-		pass
-
 func _physics_process(delta: float) -> void:
 	if(!Engine.is_editor_hint()): # In-Game
 		var direction = Vector2.DOWN

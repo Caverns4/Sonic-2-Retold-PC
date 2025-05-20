@@ -1,3 +1,4 @@
+@tool
 extends Node2D
 
 const WAIT_TIME = 2.0
@@ -33,6 +34,9 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
+	
 	if (active or state > STATES.IDLE) and stateTimer > 0.0:
 		stateTimer -= delta
 	

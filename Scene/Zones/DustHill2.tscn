@@ -311,6 +311,16 @@ position = Vector2(3568, 296)
 present = 4
 characterTexture = ExtResource("19_p8y53")
 
+[node name="HangingVine5" parent="Entitites" instance=ExtResource("15_smvhe")]
+position = Vector2(2768, 632)
+length = 128
+distance = -64
+
+[node name="HangingVine6" parent="Entitites" instance=ExtResource("15_smvhe")]
+position = Vector2(2872, 384)
+length = 192
+distance = -128
+
 [node name="Hazards" type="Node" parent="."]
 
 [node name="Spikes" parent="Hazards" instance=ExtResource("8_c8sjq")]
@@ -446,6 +456,7 @@ position = Vector2(1480, 952)
 position = Vector2(792, 1416)
 platformSprite = ExtResource("16_p5x1c")
 endPosition = Vector2(208, 0)
+dropSlightly = false
 
 [node name="Platform5" parent="Platforms" instance=ExtResource("15_su6ht")]
 position = Vector2(2840, 1160)
@@ -457,6 +468,7 @@ position = Vector2(1000, 1416)
 platformSprite = ExtResource("16_p5x1c")
 endPosition = Vector2(-208, 0)
 speed = -1.0
+dropSlightly = false
 
 [node name="Platform3" parent="Platforms" instance=ExtResource("17_b3mo7")]
 position = Vector2(1520, 1352)

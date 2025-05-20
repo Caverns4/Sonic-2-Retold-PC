@@ -6,7 +6,7 @@ func _ready():
 		if (get_tree().current_scene is MainGameScene): # and !Global.levelSelectFlag:
 			visible = false
 
-func _process(delta):
+func _process(_delta):
 	if Engine.is_editor_hint():
 		pass
 	
