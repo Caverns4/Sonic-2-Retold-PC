@@ -93,3 +93,7 @@ func ShootBullet():
 	bullet.scale.x = 1
 	bullet.velocity.x = -100*direction
 	bullet.gravity = true
+
+
+func _on_visible_on_screen_enabler_2d_screen_entered() -> void:
+	direction = 0-sign(Global.players[0].global_position.x - global_position.x)

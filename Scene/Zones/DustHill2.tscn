@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://ecnvkbx6eipx"]
+[gd_scene load_steps=35 format=4 uid="uid://ecnvkbx6eipx"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_ednaa"]
 [ext_resource type="AudioStream" uid="uid://c8y5q77kxn4ap" path="res://Audio/Soundtrack/s2br_DustHill.ogg" id="2_xwbm1"]
@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://bct374kjctkxr" path="res://Entities/Items/Checkpoint.tscn" id="23_pvtvm"]
 [ext_resource type="PackedScene" uid="uid://bmce2barbv10t" path="res://Entities/ZoneObjects/MCZ_CollapsePlatformRight.tscn" id="24_5llv1"]
 [ext_resource type="PackedScene" uid="uid://p7n68euqgca8" path="res://Entities/MainObjects/GoalArea.tscn" id="28_uh1tu"]
+[ext_resource type="PackedScene" uid="uid://hl1q1loogiyw" path="res://Entities/Enemies/Flasher.tscn" id="34_imov4"]
 
 [node name="DustHill2" type="Node2D"]
 script = ExtResource("1_ednaa")
@@ -179,6 +180,15 @@ targetNode = NodePath("../DrawBridge2")
 
 [node name="DrawBridge2" parent="Entitites" instance=ExtResource("11_i58a5")]
 position = Vector2(1656, 1224)
+rotation = -1.5708
+behavior = 1
+
+[node name="HangingBar8" parent="Entitites" node_paths=PackedStringArray("targetNode") instance=ExtResource("10_dy3wd")]
+position = Vector2(2440, 600)
+targetNode = NodePath("../DrawBridge10")
+
+[node name="DrawBridge10" parent="Entitites" instance=ExtResource("11_i58a5")]
+position = Vector2(2552, 776)
 rotation = -1.5708
 behavior = 1
 
@@ -521,11 +531,59 @@ position = Vector2(7936, 1088)
 
 [node name="Badniks" type="Node" parent="."]
 
+[node name="Flasher" parent="Badniks" instance=ExtResource("34_imov4")]
+position = Vector2(2216, 1616)
+
+[node name="Flasher2" parent="Badniks" instance=ExtResource("34_imov4")]
+position = Vector2(3584, 1104)
+
+[node name="Flasher3" parent="Badniks" instance=ExtResource("34_imov4")]
+position = Vector2(3584, 1168)
+
+[node name="Flasher4" parent="Badniks" instance=ExtResource("34_imov4")]
+position = Vector2(3408, 1872)
+
+[node name="Flasher5" parent="Badniks" instance=ExtResource("34_imov4")]
+position = Vector2(3944, 744)
+
+[node name="Flasher6" parent="Badniks" instance=ExtResource("34_imov4")]
+position = Vector2(4000, 776)
+
+[node name="Flasher7" parent="Badniks" instance=ExtResource("34_imov4")]
+position = Vector2(4064, 752)
+
+[node name="Flasher8" parent="Badniks" instance=ExtResource("34_imov4")]
+position = Vector2(4632, 816)
+
+[node name="Flasher9" parent="Badniks" instance=ExtResource("34_imov4")]
+position = Vector2(4704, 864)
+
+[node name="Flasher10" parent="Badniks" instance=ExtResource("34_imov4")]
+position = Vector2(4832, 1664)
+
+[node name="Flasher11" parent="Badniks" instance=ExtResource("34_imov4")]
+position = Vector2(5176, 1624)
+
+[node name="Flasher12" parent="Badniks" instance=ExtResource("34_imov4")]
+position = Vector2(5296, 1648)
+
+[node name="Flasher13" parent="Badniks" instance=ExtResource("34_imov4")]
+position = Vector2(6272, 1240)
+
+[node name="Flasher14" parent="Badniks" instance=ExtResource("34_imov4")]
+position = Vector2(6928, 1096)
+
+[node name="Flasher15" parent="Badniks" instance=ExtResource("34_imov4")]
+position = Vector2(6736, 1240)
+
 [node name="Items" type="Node" parent="."]
 
 [node name="Monitor" parent="Items" instance=ExtResource("22_ug0kd")]
-position = Vector2(2256, 752)
+position = Vector2(2544, 528)
 item = 1
+
+[node name="Monitor15" parent="Items" instance=ExtResource("22_ug0kd")]
+position = Vector2(2256, 752)
 
 [node name="Monitor2" parent="Items" instance=ExtResource("22_ug0kd")]
 position = Vector2(2624, 1136)

@@ -39,3 +39,5 @@ position = Vector2(-12, 4)
 visible = false
 position = Vector2(3.8147e-06, 3.8147e-06)
 rect = Rect2(-160, -112, 320, 224)
+
+[connection signal="screen_entered" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_entered"]
