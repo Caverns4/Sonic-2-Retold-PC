@@ -1639,6 +1639,7 @@ libraries = {
 autoplay = "idle"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 4096
 z_index = 5
 material = ExtResource("1")
 position = Vector2(0, -4)
@@ -1658,6 +1659,7 @@ offset = Vector2(-9, -4)
 [node name="Tails" type="Sprite2D" parent="Sprite2D"]
 visible = false
 show_behind_parent = true
+light_mask = 4096
 material = ExtResource("1")
 rotation = 6.28318
 texture = ExtResource("2")

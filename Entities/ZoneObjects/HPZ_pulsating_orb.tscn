@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ob2r2ewjlvgy"]
+[gd_scene load_steps=6 format=3 uid="uid://ob2r2ewjlvgy"]
 
 [ext_resource type="Texture2D" uid="uid://dur2t7v5ns1sy" path="res://Graphics/Objects_Zone/HPZ_Orb.png" id="1_3mxff"]
+[ext_resource type="Script" path="res://Scripts/Objects/hpz_pulsating_orb.gd" id="1_a1rqw"]
+[ext_resource type="Texture2D" uid="uid://d2mbnnoh032lo" path="res://Graphics/Light_Glow.png" id="2_guton"]
 
 [sub_resource type="Animation" id="Animation_aew40"]
 resource_name = "RESET"
@@ -18,6 +20,17 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 3, 2, 1, 2, 3, 3, 2, 1, 0]
 }
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.3, 0.6, 0.866667, 1.13333, 1.4)
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5fvld"]
 _data = {
@@ -27,8 +40,10 @@ _data = {
 [node name="PulsatingOrb" type="Node2D"]
 process_mode = 3
 z_index = 16
+script = ExtResource("1_a1rqw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 0
 texture = ExtResource("1_3mxff")
 hframes = 4
 
@@ -37,3 +52,11 @@ libraries = {
 "": SubResource("AnimationLibrary_5fvld")
 }
 autoplay = "RESET"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.0
+range_item_cull_mask = 12289
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("2_guton")
+texture_scale = 2.0

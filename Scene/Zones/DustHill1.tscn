@@ -505,7 +505,7 @@ position = Vector2(5648, 1896)
 position = Vector2(5816, 1856)
 
 [node name="Flasher12" parent="Badniks" instance=ExtResource("23_cnum8")]
-position = Vector2(248, 1584)
+position = Vector2(240, 1680)
 
 [node name="Items" type="Node" parent="."]
 
@@ -561,10 +561,6 @@ shieldAffinity = 1
 [node name="Monitor5" parent="Items" instance=ExtResource("15_atho2")]
 position = Vector2(1360, 1136)
 shieldAffinity = 1
-
-[node name="Monitor13" parent="Items" instance=ExtResource("15_atho2")]
-position = Vector2(168, 1656)
-item = 7
 
 [node name="Checkpoint" parent="Items" instance=ExtResource("23_atss6")]
 position = Vector2(1408, 1128)

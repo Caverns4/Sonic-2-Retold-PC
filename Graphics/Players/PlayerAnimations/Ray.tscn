@@ -1183,6 +1183,7 @@ libraries = {
 autoplay = "idle"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 4096
 z_index = 5
 material = SubResource("ShaderMaterial_b1kv7")
 texture = ExtResource("3_p3kqj")
