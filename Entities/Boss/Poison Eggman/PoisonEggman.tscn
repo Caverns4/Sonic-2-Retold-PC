@@ -1,14 +1,14 @@
 [gd_scene load_steps=22 format=3 uid="uid://dw4ysdt7fckye"]
 
 [ext_resource type="Script" path="res://Scripts/Boss/poison_eggman.gd" id="1_30xqr"]
+[ext_resource type="Texture2D" uid="uid://covcphiyrcwta" path="res://Graphics/Boss/CPZ/Boss_PoisonEggmanVTube.png" id="2_4s3qp"]
 [ext_resource type="Texture2D" uid="uid://6ds1jcc8jmyf" path="res://Graphics/Boss/Eggmobile.png" id="2_18wch"]
+[ext_resource type="Texture2D" uid="uid://i3gn7dujo4lk" path="res://Graphics/Boss/CPZ/Boss_PoisonEggman_Pump.png" id="3_5t0m2"]
 [ext_resource type="Texture2D" uid="uid://d0i06mnbra5yc" path="res://Graphics/Boss/Robotnik.png" id="3_8p31e"]
 [ext_resource type="Texture2D" uid="uid://dam0q6u1k8paq" path="res://Graphics/Boss/Jet.png" id="4_fn1hm"]
 [ext_resource type="Texture2D" uid="uid://c31pi0okhicpx" path="res://Graphics/Boss/Eggmobile_Top.png" id="4_hwtff"]
 [ext_resource type="Texture2D" uid="uid://bf0ytf63vlq5c" path="res://Graphics/Boss/EggmobileFlash.png" id="5_k67mh"]
-[ext_resource type="Texture2D" uid="uid://cmei7ujrbdqib" path="res://Graphics/Boss/CPZ/Boss_PoisonEggman_Attach.png" id="7_c0jak"]
-[ext_resource type="Texture2D" uid="uid://dqggwc5wimt47" path="res://Graphics/Boss/CPZ/Boss_PoisonEggmanHTube.png" id="8_1d55l"]
-[ext_resource type="Texture2D" uid="uid://r6heondpx2vd" path="res://Graphics/Boss/CPZ/Boss_PoisonEggman_Jar.png" id="9_bk0em"]
+[ext_resource type="PackedScene" uid="uid://dqhwv80jkcib" path="res://Entities/Boss/Boss Components/PoisonEggman_water_pump.tscn" id="7_bi04c"]
 [ext_resource type="AudioStream" uid="uid://bq25mlko4saoj" path="res://Audio/SFX/Boss/s2br_BossHit.wav" id="10_fn1sk"]
 [ext_resource type="AudioStream" uid="uid://u14e5d6axr7x" path="res://Audio/SFX/Boss/s2br_BossExplosion.wav" id="11_w25wj"]
 
@@ -104,6 +104,20 @@ collision_layer = 16384
 collision_mask = 0
 script = ExtResource("1_30xqr")
 
+[node name="PipeTexture" type="TextureRect" parent="."]
+offset_left = -2.0
+offset_right = 6.0
+offset_bottom = 24.0
+texture = ExtResource("2_4s3qp")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="PumpPosition" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-8, 128)
+texture = ExtResource("3_5t0m2")
+centered = false
+
 [node name="EggMobile" type="Sprite2D" parent="."]
 position = Vector2(0, 19)
 texture = ExtResource("2_18wch")
@@ -122,45 +136,14 @@ texture = ExtResource("4_fn1hm")
 z_index = -1
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_edd2b")
-animation = &"laugh"
 
 [node name="EggFlash" type="Sprite2D" parent="EggMobile"]
 visible = false
 texture = ExtResource("5_k67mh")
 offset = Vector2(0, -8)
 
-[node name="WaterPump" type="Sprite2D" parent="EggMobile"]
-position = Vector2(16, -59)
-texture = ExtResource("7_c0jak")
-
-[node name="PumpPosition" type="Node2D" parent="EggMobile"]
-position = Vector2(8, -59)
-
-[node name="GlassPipe" type="TextureRect" parent="EggMobile/PumpPosition"]
-offset_left = -16.0
-offset_top = -8.0
-texture = ExtResource("8_1d55l")
-stretch_mode = 1
-
-[node name="JarPosition" type="Node2D" parent="EggMobile/PumpPosition"]
-position = Vector2(-16, 0)
-
-[node name="JarBottom" type="Sprite2D" parent="EggMobile/PumpPosition/JarPosition"]
-position = Vector2(-16, 0)
-texture = ExtResource("9_bk0em")
-hframes = 6
-
-[node name="ColorRect" type="ColorRect" parent="EggMobile/PumpPosition/JarPosition"]
-offset_left = -28.0
-offset_top = -8.0
-offset_right = -4.0
-offset_bottom = 6.0
-color = Color(0, 0, 0.8, 1)
-
-[node name="JarTop" type="Sprite2D" parent="EggMobile/PumpPosition/JarPosition"]
-position = Vector2(-16, 0)
-texture = ExtResource("9_bk0em")
-hframes = 6
+[node name="WaterPump" parent="EggMobile" instance=ExtResource("7_bi04c")]
+position = Vector2(-8, -91)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("5")

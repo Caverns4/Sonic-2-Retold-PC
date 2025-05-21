@@ -22,8 +22,8 @@ extends CanvasLayer
 @export var waterSourceColor = preload("res://Graphics/Palettes/BasePal.png")
 @export var waterReplaceColor = preload("res://Graphics/Palettes/WetPal.png")
 
-## The total number of rings required for a Perfect Bonus in this level.
-@export var ringsForPerfect: int = 999 # Rings required for a perfect bonus. If the player takes damage, set to impossible value.
+## The total number of rings required for a Perfect Bonus in this level. If 0, calculate automatically.
+@export var ringsForPerfect: int = 0
 
 # used for flashing ui elements (rings, time)
 var flashTimer = 0
@@ -63,6 +63,10 @@ func _ready():
 	# and set loop parameters, but don't enable looping yet
 	$LevelClear/CounterSFX.stream = $LevelClear/CounterSFX.stream.duplicate()
 	$LevelClear/CounterSFX.stream.loop_end = roundi($LevelClear/CounterSFX.stream.mix_rate / (60.0 / 4))
+	
+	if ringsForPerfect <= 0:
+		ringsForPerfect = get_tree().get_nodes_in_group("Rings").size()
+		print(str(ringsForPerfect) + "Rings to perfect.")
 	
 	if !Global.airSpeedCap:
 		$Counters/Text.self_modulate = Color.RED

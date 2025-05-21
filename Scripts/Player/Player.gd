@@ -261,7 +261,7 @@ var playerskins = [
 # Ring-related values
 var rings: int = 0
 var ring1upCounter: int = 100
-var totalRings: int = 0 #The perminant counter, never decreased in the level, only increased.
+var totalRings: int = 0 #The perminant counter, never decreased. For perfect check.
 var superRingTimer: float = 1.0 #Time before a ring is taken.
 
 # How far in can the player can be towards the screen edge before they're limit_length

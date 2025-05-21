@@ -2,6 +2,9 @@ extends EnemyBase
 
 #TODO: Decode behavior in ASM, avoid Super character
 @onready var animation = $AnimationPlayer
+@onready var murder_zone = $SubSprite/Area2D
+@onready var damage_zone = $DamageArea
+@onready var sprite = $FlasherSprite
 
 enum STATES{WAITING,ROAMING,FLICKER,SHOCK,FADE,SETUP_ROAM,FLEE}
 var state = STATES.WAITING
@@ -9,8 +12,16 @@ var stateTimer = 1.0
 var currentPath: int = 0
 
 # Copied from Sonic 2
-var word_38810 = [256,416,520,645,768,832,912,1088]
-var obj3a_DirectionsList = [
+var word_38810 = [
+	256/60,
+	416/60,
+	520/60,
+	645/60,
+	768/60,
+	832/60,
+	912/60,
+	1088/60]
+var byte_38820 = [
 	Vector2(-1,1),
 	Vector2(1,-1),
 	Vector2(1,1),
@@ -20,6 +31,11 @@ var obj3a_DirectionsList = [
 	Vector2(-1,1),
 	Vector2(-1,1),
 ]
+# Some labels copied from Sonic 2 Retold to make porting easier.
+var obj3a_subTimer = 0.0 #Count up to 60ths/sec
+var obj3a_LifeTime = 0 
+var obj3a_VelIndex = 0
+
 
 func _ready() -> void:
 	$VisibleOnScreenEnabler2D.visible = true
@@ -29,6 +45,7 @@ func _physics_process(delta: float) -> void:
 	match state:
 		STATES.WAITING:
 			if stateTimer <= 0.0:
+				# ObjA3_MoveStart
 				state = STATES.ROAMING
 				velocity.x = (-256.0/256*60)
 				velocity.y = (40.0/256*60)
@@ -40,38 +57,49 @@ func _physics_process(delta: float) -> void:
 				state = STATES.FLICKER
 				animation.play("Flicker")
 				velocity = Vector2.ZERO
-			# update facing direction
-			velocity.x = move_toward(velocity.x,0,20*delta)
+				return
+			#Setup direction
+			sprite.flip_h = (velocity.x > 0)
+			var obj3a_deceleration = 20*delta
+			obj3a_LifeTime += delta
+			if word_38810[obj3a_VelIndex] < obj3a_LifeTime:
+				var d1 = clampi(obj3a_VelIndex+1,0,word_38810.size()-1)
+				obj3a_VelIndex = d1
+				var a1 = byte_38820[d1]
+				if a1.x > 0:
+					obj3a_deceleration = 0-obj3a_deceleration
+				if sign(a1.y) != sign(velocity.y):
+					velocity.y = 0-velocity.y
+			#velocity.x = move_toward(velocity.x,0,20*delta)
+			velocity.x += obj3a_deceleration
+		#Turn on/off (Await animation)
 		STATES.FLICKER:
 			pass
 		STATES.SHOCK:
-			if stateTimer <= 0:
-				state=STATES.SETUP_ROAM
-				animation.play("RESET")
-		STATES.FADE:
-			pass
+			if stateTimer <= 0.0:
+				state=STATES.FLICKER
+				animation.play("FadeOut")
+				damage_zone.monitoring = true
+				murder_zone.monitorable = false
 		STATES.SETUP_ROAM:
 			# Setup the next roaming path
+			# ObjA3_MoveStart
 			state = STATES.ROAMING
 			stateTimer = 128.0/60
-			var getVec = obj3a_DirectionsList[currentPath]
-			#velocity.x = (word_38810[currentPath])
-			velocity.x = (256.0/256*60) * getVec.x
-			velocity.y = (40.0/256*60) * getVec.y
+			velocity.x = (-256.0/256*60)
+			velocity.y = (-40.0/256*60)
 			
-			if velocity.x > 0:
-				$FlasherSprite.flip_h = true
+			if obj3a_VelIndex < byte_38820.size()-1:
+				var a1 = byte_38820[obj3a_VelIndex]
+				velocity.x *= a1.x
+				velocity.y = (40.0/256*60) * a1.y
 			else:
-				$FlasherSprite.flip_h = false
-			
-			currentPath += 1
-			if currentPath >= obj3a_DirectionsList.size():
-				velocity.x = (-256.0/256*60)
-				velocity.y = (-40.0/256*60)
+				sprite.flip_h = (velocity.x > 0)
+				velocity.y = 0-velocity.y
 				state = STATES.FLEE
 
-	$FlasherSprite.global_position.x = round(global_position.x)
-	$FlasherSprite.global_position.y = round(global_position.y) 
+	sprite.global_position.x = round(global_position.x)
+	sprite.global_position.y = round(global_position.y) 
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
@@ -79,6 +107,8 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		state=STATES.SHOCK
 		animation.play("Shock")
 		stateTimer = 1.0
-	if anim_name == "Fadeout":
+		damage_zone.monitoring = false
+		murder_zone.monitorable = true
+	if anim_name == "FadeOut":
 		state=STATES.SETUP_ROAM
 		animation.play("RESET")

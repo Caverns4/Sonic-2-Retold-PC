@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://bjavywoj00j1j"]
+[gd_scene load_steps=39 format=4 uid="uid://bjavywoj00j1j"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="2_533ik"]
@@ -35,8 +35,9 @@
 [ext_resource type="PackedScene" uid="uid://cfteqnft5ynr7" path="res://Entities/Hazards/Spikes.tscn" id="27_rhtyr"]
 [ext_resource type="PackedScene" uid="uid://vh0ailk0432j" path="res://Entities/Boss/BossBoundrySetter.tscn" id="29_3hmk6"]
 [ext_resource type="PackedScene" uid="uid://cma7d8l5wmqmd" path="res://Entities/Items/LampPost.tscn" id="29_w7iey"]
-[ext_resource type="PackedScene" uid="uid://bcoqgftnr4isn" path="res://Entities/Boss/RobotnikTemplate.tscn" id="30_orsq7"]
 [ext_resource type="PackedScene" uid="uid://c8djwr7o6d6f7" path="res://Entities/Enemies/Octus.tscn" id="34_bvw6j"]
+[ext_resource type="PackedScene" uid="uid://bp678wjhmnwip" path="res://Entities/Boss/Submarine Eggman/GetawaySubmarine.tscn" id="37_ud3r1"]
+[ext_resource type="Script" path="res://Scripts/Misc/AltSpawn.gd" id="38_es7xl"]
 
 [node name="BaseZoneAct2" type="Node2D"]
 script = ExtResource("2")
@@ -741,11 +742,11 @@ checkPointID = 2
 [node name="Hazards" type="Node" parent="."]
 
 [node name="InvisibleBarrier" parent="Hazards" instance=ExtResource("26_h0mhp")]
-position = Vector2(10304, 672)
+position = Vector2(10304, 656)
 scale = Vector2(4, 3)
 
 [node name="InvisibleBarrier2" parent="Hazards" instance=ExtResource("26_h0mhp")]
-position = Vector2(10688, 672)
+position = Vector2(10688, 656)
 scale = Vector2(12, 3)
 
 [node name="Spikes" parent="Hazards" instance=ExtResource("27_rhtyr")]
@@ -1344,8 +1345,13 @@ position = Vector2(10688, 576)
 
 [node name="BossBoundrySetter" parent="Boss" instance=ExtResource("29_3hmk6")]
 position = Vector2(10432, 592)
-bossPath = NodePath("../Robotnik")
+bossPath = NodePath("../GetawaySubmarine")
 keepRightLocked = false
 
-[node name="Robotnik" parent="Boss" instance=ExtResource("30_orsq7")]
-position = Vector2(10432, 536)
+[node name="GetawaySubmarine" parent="Boss" instance=ExtResource("37_ud3r1")]
+position = Vector2(10432, 664)
+
+[node name="BossTestSpawn" type="Node2D" parent="."]
+position = Vector2(9888, 552)
+script = ExtResource("38_es7xl")
+currentCharacter = 7

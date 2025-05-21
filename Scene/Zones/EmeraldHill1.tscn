@@ -32,7 +32,6 @@ defaultBottomBoundry = 1024
 [node name="00-EmeraldHill" parent="." instance=ExtResource("3_jdx3s")]
 
 [node name="HUD" parent="." instance=ExtResource("2_yrcwh")]
-ringsForPerfect = 237
 
 [node name="Level_Layout" type="Node" parent="."]
 

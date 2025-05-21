@@ -1,0 +1,148 @@
+[gd_scene load_steps=17 format=3 uid="uid://bp678wjhmnwip"]
+
+[ext_resource type="Script" path="res://Scripts/Boss/getaway_submarine.gd" id="1_afvjp"]
+[ext_resource type="Texture2D" uid="uid://k1klsldgs5tk" path="res://Graphics/Boss/OOZ/Boss_SubMarineEggman.png" id="2_uuclc"]
+[ext_resource type="Texture2D" uid="uid://ffsx2ahkvp45" path="res://Graphics/Boss/Robotnik_GetawaySubmarine.png" id="3_chpql"]
+[ext_resource type="Texture2D" uid="uid://62brat1iohka" path="res://Graphics/Boss/OOZ/Boss_SubMarineEggman_Flash.png" id="4_uyxo0"]
+[ext_resource type="AudioStream" uid="uid://bq25mlko4saoj" path="res://Audio/SFX/Boss/s2br_BossHit.wav" id="5_3ovpq"]
+[ext_resource type="AudioStream" uid="uid://u14e5d6axr7x" path="res://Audio/SFX/Boss/s2br_BossExplosion.wav" id="6_2uh3b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfi85"]
+atlas = ExtResource("3_chpql")
+region = Rect2(0, 0, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i34ue"]
+atlas = ExtResource("3_chpql")
+region = Rect2(0, 16, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0yl8"]
+atlas = ExtResource("3_chpql")
+region = Rect2(0, 48, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxy3r"]
+atlas = ExtResource("3_chpql")
+region = Rect2(0, 32, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fm0it"]
+atlas = ExtResource("3_chpql")
+region = Rect2(0, 64, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7udjv"]
+atlas = ExtResource("3_chpql")
+region = Rect2(0, 80, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k30b5"]
+atlas = ExtResource("3_chpql")
+region = Rect2(0, 0, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x68x2"]
+atlas = ExtResource("3_chpql")
+region = Rect2(0, 16, 24, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mca0c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfi85")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i34ue")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0yl8")
+}],
+"loop": true,
+"name": &"exploded",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxy3r")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fm0it")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7udjv")
+}],
+"loop": true,
+"name": &"laugh",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k30b5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x68x2")
+}],
+"loop": true,
+"name": &"move",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="5"]
+size = Vector2(96, 48)
+
+[node name="GetawaySubmarine" type="CharacterBody2D"]
+collision_layer = 16384
+collision_mask = 0
+script = ExtResource("1_afvjp")
+
+[node name="EggMobile" type="Sprite2D" parent="."]
+texture = ExtResource("2_uuclc")
+
+[node name="Robotnik" type="AnimatedSprite2D" parent="EggMobile"]
+z_index = 1
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_mca0c")
+
+[node name="EggFlash" type="Sprite2D" parent="EggMobile"]
+texture = ExtResource("4_uyxo0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("5")
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_3ovpq")
+bus = &"SFX"
+
+[node name="Explode" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_2uh3b")
+bus = &"SFX"
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 528384
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+modulate = Color(1, 0, 0, 1)
+shape = SubResource("5")
+
+[node name="SmokeTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="AnimationTime" type="Timer" parent="."]
+one_shot = true
+
+[node name="TopPoint" type="Node2D" parent="."]
+
+[node name="BottomPoint" type="Node2D" parent="."]
+position = Vector2(0, 80)
+
+[connection signal="defeated" from="." to="." method="_on_defeated"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_DamageArea_area_entered"]
+[connection signal="area_exited" from="HitBox" to="." method="_on_HitBox_area_exited"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="HitBox" to="." method="_on_body_exited"]
+[connection signal="timeout" from="SmokeTimer" to="." method="_on_smoke_timer_timeout"]

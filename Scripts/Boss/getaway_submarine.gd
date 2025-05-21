@@ -7,14 +7,9 @@ var dead = false
 var phase = 0
 var soundTimer = 0.0
 
-@onready var getPose = [$LeftPoint.global_position,$RightPoint.global_position]
-@onready var pump = $EggMobile/WaterPump
-@onready var pipe = $PipeTexture
+@onready var getPose = [$TopPoint.global_position,$BottomPoint.global_position]
 var currentPoint = 1
 var Explosion = preload("res://Entities/Misc/GenericParticle.tscn")
-
-var pipe_extension = 0
-var state_timer = 0
 
 var hoverOffset = 0
 var direction = -1 #left is -1, right is 1
@@ -41,8 +36,6 @@ func _process(delta):
 	
 	# dead animation timer (default time is 3 seconds)
 	if dead:
-		# flame jet (only visible when moving)
-		$EggMobile/EggmobileFlame.visible = !(velocity.x == 0 or $EggMobile/EggmobileFlame.visible)
 		# if above 0 then count down
 		if deathTimer > 0:
 			# count down
@@ -54,17 +47,11 @@ func _process(delta):
 					#velocity.y = 200
 			# if above 0.5 seconds left, move the momentum upwards until it's about -200
 			elif deathTimer > 0.5:
-				if velocity.y > -200:
-					velocity.y -= 100*delta
-				
-				# if the next step is going to be below 0.5 seconds then stop moving
-				if deathTimer-delta <= 0.5:
-					velocity.y = 0
+				if velocity.y < 200:
+					velocity.y += 100*delta
 			
 			# start running away once timer hits 0
 			if deathTimer <= 0:
-				velocity = Vector2(200,-25)
-				direction = 1
 				#scale.x = -abs(scale.x)
 				emit_signal("boss_over")
 
@@ -76,30 +63,18 @@ func _physics_process(delta):
 		# boss phase
 		match(phase):
 			0: # intro
-				#if flashTimer <= 0:
-				set_animation("laugh") #laugh
-				velocity = Vector2.ZERO
-				hp = 8
-				phase = 1
-			1: # Pump Poison
-				if pump and pipe:
-					if pipe_extension < 128:
-						pipe_extension += delta*128
-					if pump.fluid_level > 4:
-						phase += 1
-						print("Track Player")
-			2: # Track Player 1, dunk water
-				if pump and pipe:
-					if pipe_extension > 0:
-						pipe_extension -= delta*256
-						
-					pass
-			3: # Wait for Mega Mack to be destroyed
-				pass
-			4: # 
+				if global_position.y > getPose[0].y:
+					velocity.y += -1
+				else:
+					global_position.y = getPose[0].y
+					set_animation("laugh") #laugh
+					velocity = Vector2.ZERO
+					hp = 8
+					phase = 1
+			_: # Controlled by external object.
 				pass
 	
-	set_pipe_extension(delta)
+	updateHoveringPos(delta)
 	super(delta)
 	# default reactions (use animation time to avoid running this every frame)
 	if $AnimationTime.is_stopped():
@@ -112,28 +87,13 @@ func _physics_process(delta):
 	# only run hit if flash timer is above 0
 	if flashTimer > 0:
 		set_animation("hit",flashTimer)
-
+	
 
 func updateHoveringPos(delta):
 	# change the hover offset
 	global_position.y = global_position.y-hoverOffset
 	hoverOffset = move_toward(hoverOffset,cos(Global.levelTime*4)*4,delta*10)
 	global_position.y = global_position.y+hoverOffset
-
-func set_pipe_extension(delta):
-	if pipe:
-		var d0 = 16 + pipe_extension
-		$PipeTexture.size.y = d0
-		if pipe_extension > 128:
-			var d1 = $PumpPosition.global_position.y
-			var d2 = $PipeTexture.global_position.y
-			d1 -= 64*delta
-			if d1 <= d2 and pump:
-				pump.fluid_level += 1
-				print(pump.fluid_level)
-			d1 = wrapf(d1,d2,d2+d0)
-			$PumpPosition.global_position.y = d1
-		$PumpPosition.visible = (pipe_extension > 128)
 
 
 # animation to play, time is how long the animation should play for until it stops
@@ -188,13 +148,3 @@ func _on_defeated() -> void:
 	velocity = Vector2.ZERO
 	# star the smoke timer
 	$SmokeTimer.start(0.01667*7)
-	$PipeTexture.queue_free()
-	$PumpPosition.queue_free()
-	pipe = null
-	if pump:
-		var d0 = pump.global_position
-		pump.top_level = true
-		pump.global_position = d0
-		pump.velocity.x = -3*direction
-		pump.velocity.y = -2
-		pump.parent = null

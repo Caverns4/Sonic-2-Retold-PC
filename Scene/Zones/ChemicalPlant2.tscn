@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://b73oxpdf64ys2"]
+[gd_scene load_steps=49 format=4 uid="uid://b73oxpdf64ys2"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_r8kv3"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_sbiln"]
@@ -41,6 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="40_72dwk"]
 [ext_resource type="Texture2D" uid="uid://cudvcxoyjq5dn" path="res://Graphics/Misc/MetalCameo.png" id="40_m50kc"]
 [ext_resource type="PackedScene" uid="uid://c3yq46ay5g4ov" path="res://Entities/Obstacles/MultiRotatingPlatforms.tscn" id="41_r5m2v"]
+[ext_resource type="Script" path="res://Scripts/Misc/AltSpawn.gd" id="42_srg2o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_da7so"]
 shader = ExtResource("8_fvcep")
@@ -354,6 +355,7 @@ setSpeed = 128
 [node name="SetWaterLevel2" parent="Entities" instance=ExtResource("11_0pnc2")]
 position = Vector2(11200, 1296)
 scale = Vector2(1, 28)
+setSpeed = 128
 
 [node name="Shutter" parent="Entities" instance=ExtResource("12_lofkv")]
 position = Vector2(9208, 1504)
@@ -509,9 +511,6 @@ position = Vector2(3600, 1792)
 [node name="Breakable3" parent="Entities" instance=ExtResource("16_jucox")]
 position = Vector2(5520, 256)
 
-[node name="Capsule" parent="Entities" instance=ExtResource("19_2fboq")]
-position = Vector2(12224, 1248)
-
 [node name="Spring8" parent="Entities" instance=ExtResource("13_fvoj7")]
 position = Vector2(7472, 1912)
 
@@ -649,6 +648,11 @@ delay = 32.0
 [node name="CPZTippingPipe16" parent="Entities/Node2D" instance=ExtResource("36_4srbb")]
 position = Vector2(80, 16)
 delay = 48.0
+
+[node name="CharacterCameo" parent="Entities" instance=ExtResource("39_x42vh")]
+position = Vector2(8424, 168)
+present = 6
+characterTexture = ExtResource("40_m50kc")
 
 [node name="Floating Platforms" type="Node2D" parent="."]
 
@@ -1764,11 +1768,14 @@ keepRightLocked = false
 [node name="PoisonEggman" parent="Boss" instance=ExtResource("38_vediw")]
 position = Vector2(11712, 1184)
 
-[node name="CharacterCameo" parent="." instance=ExtResource("39_x42vh")]
-position = Vector2(8424, 168)
-present = 6
-characterTexture = ExtResource("40_m50kc")
-
 [node name="SignpostNew" parent="." instance=ExtResource("40_72dwk")]
 position = Vector2(11200, 1280)
 multiplayerOnly = true
+
+[node name="BossTestSpawn" type="Node2D" parent="."]
+position = Vector2(10680, 1152)
+script = ExtResource("42_srg2o")
+currentCharacter = 7
+
+[node name="Capsule" parent="." instance=ExtResource("19_2fboq")]
+position = Vector2(12224, 1248)

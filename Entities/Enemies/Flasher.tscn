@@ -1,62 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://hl1q1loogiyw"]
+[gd_scene load_steps=12 format=3 uid="uid://hl1q1loogiyw"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/flasher.gd" id="1_3r5q2"]
 [ext_resource type="Texture2D" uid="uid://ddvy6g30rxrq3" path="res://Graphics/Enemies/Flasher.png" id="2_ldsn8"]
-[ext_resource type="Texture2D" uid="uid://duic76puvtb2d" path="res://Graphics/Enemies/Flasher_Light.png" id="3_xwqp2"]
+[ext_resource type="Script" path="res://Scripts/Objects/Hazard.gd" id="4_6kn75"]
+[ext_resource type="Texture2D" uid="uid://d2mbnnoh032lo" path="res://Graphics/Light_Glow.png" id="4_cbqp0"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(16, 16)
-
-[sub_resource type="Animation" id="Animation_d320a"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FlasherSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PointLight2D:enabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PointLight2D:energy")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Light:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05)]
-}
 
 [sub_resource type="Animation" id="Animation_5d5xy"]
 resource_name = "Flicker"
@@ -65,7 +15,7 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Light:scale")
+tracks/0/path = NodePath("FlasherSprite/Light:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -77,7 +27,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PointLight2D:energy")
+tracks/1/path = NodePath("FlasherSprite/PointLight2D:energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -101,7 +51,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("PointLight2D:enabled")
+tracks/3/path = NodePath("FlasherSprite/PointLight2D:enabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -109,6 +59,57 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_d320a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlasherSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlasherSprite/PointLight2D:enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlasherSprite/PointLight2D:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlasherSprite/Light:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
 }
 
 [sub_resource type="Animation" id="Animation_tandh"]
@@ -131,7 +132,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light:scale")
+tracks/1/path = NodePath("FlasherSprite/Light:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -143,7 +144,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PointLight2D:energy")
+tracks/2/path = NodePath("FlasherSprite/PointLight2D:energy")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -153,12 +154,57 @@ tracks/2/keys = {
 "values": [2.0, 0.5, 2.0]
 }
 
+[sub_resource type="Animation" id="Animation_rxe77"]
+resource_name = "FadeOut"
+length = 0.05
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlasherSprite/Light:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlasherSprite/PointLight2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.02),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlasherSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e33rt"]
 _data = {
+"FadeOut": SubResource("Animation_rxe77"),
 "Flicker": SubResource("Animation_5d5xy"),
 "RESET": SubResource("Animation_d320a"),
 "Shock": SubResource("Animation_tandh")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f8uw7"]
+radius = 16.0
 
 [node name="Flasher" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 16384
@@ -177,36 +223,54 @@ modulate = Color(1, 0, 0, 1)
 shape = SubResource("1")
 
 [node name="FlasherSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
 texture = ExtResource("2_ldsn8")
-hframes = 2
+vframes = 2
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-visible = false
-position = Vector2(1.90735e-06, -1.90735e-06)
-rect = Rect2(-160, -120, 320, 240)
+[node name="Light" type="Sprite2D" parent="FlasherSprite"]
+light_mask = 0
+texture_filter = 1
+texture_repeat = 1
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_cbqp0")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="FlasherSprite"]
 enabled = false
 energy = 0.0
 range_layer_max = 9
 range_item_cull_mask = 4111
-shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.705882)
 shadow_filter = 1
-texture = ExtResource("3_xwqp2")
-texture_scale = 2.0
+texture = ExtResource("4_cbqp0")
 height = 128.0
-
-[node name="Light" type="Sprite2D" parent="."]
-scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("3_xwqp2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_e33rt")
 }
 
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+visible = false
+position = Vector2(1.90735e-06, -1.90735e-06)
+rect = Rect2(-160, -120, 320, 240)
+
+[node name="SubSprite" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="SubSprite"]
+collision_layer = 0
+collision_mask = 4096
+monitoring = false
+script = ExtResource("4_6kn75")
+damageType = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubSprite/Area2D"]
+shape = SubResource("CircleShape2D_f8uw7")
+debug_color = Color(1, 0, 0, 0.501961)
+
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="SubSprite/Area2D" to="SubSprite/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="SubSprite/Area2D" to="SubSprite/Area2D" method="_on_body_exited"]

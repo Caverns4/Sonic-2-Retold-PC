@@ -36,7 +36,6 @@ defaultBottomBoundry = 1280
 
 [node name="HUD" parent="." instance=ExtResource("15_0dckv")]
 act = 2
-ringsForPerfect = 227
 
 [node name="Level_Layout" type="Node" parent="."]
 

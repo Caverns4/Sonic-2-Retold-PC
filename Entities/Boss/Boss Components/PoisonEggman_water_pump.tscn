@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqhwv80jkcib"]
+
+[ext_resource type="Texture2D" uid="uid://cmei7ujrbdqib" path="res://Graphics/Boss/CPZ/Boss_PoisonEggman_Attach.png" id="1_0v6lp"]
+[ext_resource type="Script" path="res://Scripts/Boss/poison_eggman_water_pump.gd" id="2_bnwop"]
+[ext_resource type="Texture2D" uid="uid://dqggwc5wimt47" path="res://Graphics/Boss/CPZ/Boss_PoisonEggmanHTube.png" id="2_w2l01"]
+[ext_resource type="Texture2D" uid="uid://r6heondpx2vd" path="res://Graphics/Boss/CPZ/Boss_PoisonEggman_Jar.png" id="3_bpb76"]
+
+[node name="WaterPump" type="Sprite2D"]
+position = Vector2(-24, -32)
+texture = ExtResource("1_0v6lp")
+centered = false
+script = ExtResource("2_bnwop")
+
+[node name="PumpPosition" type="Node2D" parent="."]
+position = Vector2(16, 32)
+
+[node name="GlassPipe" type="TextureRect" parent="PumpPosition"]
+offset_left = -16.0
+offset_top = -8.0
+texture = ExtResource("2_w2l01")
+stretch_mode = 1
+
+[node name="Jar" type="Node2D" parent="PumpPosition"]
+
+[node name="JarBottom" type="Sprite2D" parent="PumpPosition/Jar"]
+position = Vector2(-16, 0)
+texture = ExtResource("3_bpb76")
+hframes = 6
+
+[node name="ColorRect" type="ColorRect" parent="PumpPosition/Jar"]
+offset_left = -28.0
+offset_top = -8.0
+offset_right = -4.0
+offset_bottom = 6.0
+color = Color(0.933333, 0.933333, 0, 1)
+
+[node name="JarTop" type="Sprite2D" parent="PumpPosition/Jar"]
+position = Vector2(-16, 0)
+texture = ExtResource("3_bpb76")
+hframes = 6
