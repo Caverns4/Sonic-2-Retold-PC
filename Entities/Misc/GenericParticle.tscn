@@ -1,9 +1,10 @@
-[gd_scene load_steps=96 format=3 uid="uid://dmrtm7r6hfbfr"]
+[gd_scene load_steps=102 format=3 uid="uid://dmrtm7r6hfbfr"]
 
 [ext_resource type="Texture2D" uid="uid://bihgasvpr4jyb" path="res://Graphics/Items/invincible_stars.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://c5cooxne7gmco" path="res://Graphics/Misc/NGHZRocks.png" id="1_14h1g"]
 [ext_resource type="Texture2D" uid="uid://nmefqhyltnjt" path="res://Graphics/Misc/explosion2.png" id="1_odgmf"]
 [ext_resource type="Script" path="res://Scripts/Misc/FreeOnAnimationCompletion.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://ccakrp1d6v3ms" path="res://Graphics/Misc/explosion5.png" id="2_vat05"]
 [ext_resource type="Texture2D" uid="uid://bu6a2evw5s7ne" path="res://Graphics/Misc/water_splash.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://bu207ncbrfjm3" path="res://Graphics/Misc/skid_dust.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://bcighbbtky5cp" path="res://Graphics/Misc/DropDashDust.png" id="5"]
@@ -34,6 +35,26 @@ region = Rect2(64, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_1u3bf"]
 atlas = ExtResource("1_14h1g")
 region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0gfs"]
+atlas = ExtResource("2_vat05")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdja3"]
+atlas = ExtResource("2_vat05")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnqbr"]
+atlas = ExtResource("2_vat05")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d061t"]
+atlas = ExtResource("2_vat05")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38jx2"]
+atlas = ExtResource("2_vat05")
+region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e0lbq"]
 atlas = ExtResource("1_odgmf")
@@ -374,6 +395,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_o0gfs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdja3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnqbr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d061t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38jx2")
+}],
+"loop": false,
+"name": &"BombExplode",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_e0lbq")
 }, {
 "duration": 1.0,
@@ -679,7 +720,7 @@ animations = [{
 
 [node name="GenericParticle" type="AnimatedSprite2D"]
 sprite_frames = SubResource("157")
-animation = &"RingSparkle"
+animation = &"BombExplode"
 script = ExtResource("2")
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
