@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2qm01hytxx4d"
-path="res://.godot/imported/Motobug.png-3735ce2c010236913b0cfec0cc322068.ctex"
+uid="uid://663c42mndvor"
+path="res://.godot/imported/Pterabot.png-74b38c787ede25bcf48d41e9fd6b797e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Enemies/Motobug.png"
-dest_files=["res://.godot/imported/Motobug.png-3735ce2c010236913b0cfec0cc322068.ctex"]
+source_file="res://Graphics/Enemies/Pterabot.png"
+dest_files=["res://.godot/imported/Pterabot.png-74b38c787ede25bcf48d41e9fd6b797e.ctex"]
 
 [params]
 

@@ -14,25 +14,25 @@
 [ext_resource type="Texture2D" uid="uid://dlgkk8wxk0bxc" path="res://Graphics/Boss/EggmobileLaser.png" id="12_oy00g"]
 [ext_resource type="Texture2D" uid="uid://b5q3f7iwvmlki" path="res://Graphics/Boss/TractorBeam.png" id="13_24b81"]
 [ext_resource type="Texture2D" uid="uid://dcahvgsl5g25p" path="res://Graphics/Boss/Sack.png" id="14_pkudb"]
-[ext_resource type="Texture2D" uid="uid://b2qm01hytxx4d" path="res://Graphics/Enemies/Motobug.png" id="15_c0igb"]
+[ext_resource type="Texture2D" uid="uid://cxgi4y30ctnyx" path="res://Graphics/Enemies/Motoroller.png" id="15_0ynxf"]
 [ext_resource type="Texture2D" uid="uid://djb53bxylig4n" path="res://Graphics/Enemies/BuzzerS2BR.png" id="16_04vo5"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_amav3"]
-atlas = ExtResource("15_c0igb")
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwlmf"]
+atlas = ExtResource("15_0ynxf")
 region = Rect2(0, 0, 64, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jr3ju"]
-atlas = ExtResource("15_c0igb")
+[sub_resource type="AtlasTexture" id="AtlasTexture_i863e"]
+atlas = ExtResource("15_0ynxf")
 region = Rect2(64, 0, 64, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1cqhj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_amav3")
+"texture": SubResource("AtlasTexture_uwlmf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jr3ju")
+"texture": SubResource("AtlasTexture_i863e")
 }],
 "loop": true,
 "name": &"default",
@@ -574,7 +574,6 @@ centered = false
 [node name="Motobug" type="AnimatedSprite2D" parent="CustsceneObjects"]
 position = Vector2(1608, 272)
 sprite_frames = SubResource("SpriteFrames_1cqhj")
-frame = 1
 frame_progress = 0.380143
 
 [node name="Buzzer" type="AnimatedSprite2D" parent="CustsceneObjects"]

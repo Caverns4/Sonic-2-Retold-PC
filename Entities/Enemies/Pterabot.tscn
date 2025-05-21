@@ -1,0 +1,147 @@
+[gd_scene load_steps=13 format=3 uid="uid://boorjic58wlh7"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/pterabot.gd" id="1_1srhs"]
+[ext_resource type="Texture2D" uid="uid://663c42mndvor" path="res://Graphics/Enemies/Pterabot.png" id="2_v74gc"]
+[ext_resource type="Texture2D" uid="uid://clihuhs0po6p0" path="res://Graphics/Enemies/BuzzerFlame.png" id="3_oelgs"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(48, 24)
+
+[sub_resource type="RectangleShape2D" id="8"]
+size = Vector2(80, 192)
+
+[sub_resource type="Animation" id="Animation_yn16u"]
+resource_name = "AIM"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pterabot:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_252ju"]
+resource_name = "FLY"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pterabot:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ue8i5"]
+resource_name = "RESET"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pterabot:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u4hdj"]
+_data = {
+"AIM": SubResource("Animation_yn16u"),
+"FLY": SubResource("Animation_252ju"),
+"RESET": SubResource("Animation_ue8i5")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpn7a"]
+atlas = ExtResource("3_oelgs")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bc8ms"]
+atlas = ExtResource("3_oelgs")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jx71f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpn7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bc8ms")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Buzzer" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 16384
+collision_mask = 0
+script = ExtResource("1_1srhs")
+
+[node name="CollissionMask" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("1")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 528384
+
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(0, -3)
+shape = SubResource("1")
+
+[node name="Sprite2D" type="Node2D" parent="."]
+
+[node name="Pterabot" type="Sprite2D" parent="Sprite2D"]
+texture = ExtResource("2_v74gc")
+hframes = 2
+
+[node name="PlayerCheck" type="Area2D" parent="Sprite2D"]
+visible = false
+z_index = -1
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/PlayerCheck"]
+modulate = Color(1, 1, 1, 0.352941)
+position = Vector2(-40, 86)
+shape = SubResource("8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_u4hdj")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
+position = Vector2(24, 2)
+sprite_frames = SubResource("SpriteFrames_jx71f")
+autoplay = "default"
+frame_progress = 0.670104
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+visible = false
+rect = Rect2(-320, -112, 640, 224)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
+[connection signal="body_entered" from="Sprite2D/PlayerCheck" to="." method="_on_PlayerCheck_body_entered"]

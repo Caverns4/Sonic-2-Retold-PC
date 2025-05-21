@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://dmf43dlpy5a37"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/generic_projectile.gd" id="1_e7shr"]
+[ext_resource type="Texture2D" uid="uid://ccd6qcavs57xg" path="res://Graphics/Enemies/Octus_Bullets.png" id="2_ewasf"]
+[ext_resource type="Texture2D" uid="uid://c13erh74meqxy" path="res://Graphics/Enemies/NebulaBullet.png" id="3_4idto"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(4, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crkte"]
+atlas = ExtResource("3_4idto")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dypf1"]
+atlas = ExtResource("3_4idto")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2qlwr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crkte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dypf1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="Animation" id="Animation_orbrr"]
+resource_name = "RESET"
+length = 0.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("projectile:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_62pdh"]
+_data = {
+"RESET": SubResource("Animation_orbrr")
+}
+
+[node name="GenericProjectile" type="CharacterBody2D"]
+collision_layer = 16384
+collision_mask = 0
+script = ExtResource("1_e7shr")
+gravity = true
+
+[node name="CollissionMask" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 528384
+
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+modulate = Color(1, 0, 0, 1)
+shape = SubResource("1")
+
+[node name="projectile" type="Sprite2D" parent="."]
+texture = ExtResource("2_ewasf")
+hframes = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2qlwr")
+autoplay = "default"
+frame_progress = 0.41537
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_62pdh")
+}
+autoplay = "RESET"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(2.1, 2.1)
+
+[connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
