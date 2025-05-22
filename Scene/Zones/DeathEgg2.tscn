@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://vs0jloj5swvg"]
+[gd_scene load_steps=15 format=4 uid="uid://vs0jloj5swvg"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_588bb"]
 [ext_resource type="AudioStream" uid="uid://g0a01sst32bm" path="res://Audio/Soundtrack/s2br_DeathEgg.ogg" id="2_j7ucr"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://6dck5afialg7" path="res://Graphics/Palettes/DEZ_Pal.png" id="8_0c3h6"]
 [ext_resource type="PackedScene" uid="uid://p7n68euqgca8" path="res://Entities/MainObjects/GoalArea.tscn" id="8_1i625"]
 [ext_resource type="PackedScene" uid="uid://bgodeg4oddje6" path="res://Entities/MainObjects/BoundrySetter.tscn" id="11_cvek8"]
+[ext_resource type="PackedScene" uid="uid://br14tmcem027e" path="res://Entities/Enemies/Balkerie.tscn" id="12_euwis"]
+[ext_resource type="PackedScene" uid="uid://bisk2itnvknhd" path="res://Entities/Enemies/Bouncer.tscn" id="13_aac6b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lx1wr"]
 shader = ExtResource("6_6vqf8")
@@ -66,3 +68,10 @@ rightBoundry = 2176
 bottomBoundry = 416
 
 [node name="Bosses" type="Node" parent="."]
+
+[node name="Balkerie" parent="." instance=ExtResource("12_euwis")]
+position = Vector2(856, 256)
+behavior = 1
+
+[node name="Bouncer" parent="." instance=ExtResource("13_aac6b")]
+position = Vector2(864, 368)
