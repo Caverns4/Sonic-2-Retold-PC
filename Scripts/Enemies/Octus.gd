@@ -29,7 +29,6 @@ const ESCAPE_VEL = 600
 
 func _ready() -> void:
 	$PlayerCheck.visible = true
-	$VisibleOnScreenEnabler2D.visible = true
 	lookingForTargets = true
 	super()
 

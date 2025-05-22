@@ -11,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://6dck5afialg7" path="res://Graphics/Palettes/DEZ_Pal.png" id="8_0c3h6"]
 [ext_resource type="PackedScene" uid="uid://p7n68euqgca8" path="res://Entities/MainObjects/GoalArea.tscn" id="8_1i625"]
 [ext_resource type="PackedScene" uid="uid://bgodeg4oddje6" path="res://Entities/MainObjects/BoundrySetter.tscn" id="11_cvek8"]
-[ext_resource type="PackedScene" uid="uid://br14tmcem027e" path="res://Entities/Enemies/Balkerie.tscn" id="12_euwis"]
 [ext_resource type="PackedScene" uid="uid://bisk2itnvknhd" path="res://Entities/Enemies/Bouncer.tscn" id="13_aac6b"]
+[ext_resource type="PackedScene" uid="uid://3hiaachtft8m" path="res://Entities/Enemies/BubblersMother.tscn" id="14_a08kn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lx1wr"]
 shader = ExtResource("6_6vqf8")
@@ -69,9 +69,8 @@ bottomBoundry = 416
 
 [node name="Bosses" type="Node" parent="."]
 
-[node name="Balkerie" parent="." instance=ExtResource("12_euwis")]
-position = Vector2(856, 256)
-behavior = 1
-
 [node name="Bouncer" parent="." instance=ExtResource("13_aac6b")]
 position = Vector2(864, 368)
+
+[node name="BubblersMother" parent="." instance=ExtResource("14_a08kn")]
+position = Vector2(856, 304)

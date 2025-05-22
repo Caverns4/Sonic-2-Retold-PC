@@ -11,6 +11,8 @@ var defaultMovement = true
 signal destroyed
 
 func  _ready() -> void:
+	if $VisibleOnScreenEnabler2D:
+		$VisibleOnScreenEnabler2D.visible = true
 	destroyed.connect(On_destroyed)
 
 func _process(delta):
