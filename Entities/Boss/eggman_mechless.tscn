@@ -168,6 +168,7 @@ animations = [{
 
 [node name="Eggman_Mechless" type="CharacterBody2D"]
 light_mask = 4096
+z_index = 1
 collision_layer = 16384
 collision_mask = 4095
 script = ExtResource("1_rc3yn")

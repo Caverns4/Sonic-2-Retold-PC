@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqj0m8irng235"]
+
+[ext_resource type="Texture2D" uid="uid://h6xrx6631sdc" path="res://Graphics/Enemies/Crawlton.png" id="1_iptlc"]
+[ext_resource type="PackedScene" uid="uid://bejo05ritbuln" path="res://Entities/Enemies/Crawlton_Head.tscn" id="2_1qae7"]
+
+[node name="Crawlton" type="Node2D"]
+
+[node name="NeckSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_iptlc")
+hframes = 3
+frame = 2
+
+[node name="CrawltonHead" parent="." instance=ExtResource("2_1qae7")]

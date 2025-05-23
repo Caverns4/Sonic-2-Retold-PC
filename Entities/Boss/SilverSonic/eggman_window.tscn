@@ -1,0 +1,119 @@
+[gd_scene load_steps=15 format=3 uid="uid://cr0ig40i3kkmg"]
+
+[ext_resource type="Texture2D" uid="uid://bl0i4wir2nb2n" path="res://Graphics/Boss/DEZWindow.png" id="1_rcmjm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a11ke"]
+atlas = ExtResource("1_rcmjm")
+region = Rect2(0, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cwhn"]
+atlas = ExtResource("1_rcmjm")
+region = Rect2(0, 24, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efn1t"]
+atlas = ExtResource("1_rcmjm")
+region = Rect2(0, 48, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctuvm"]
+atlas = ExtResource("1_rcmjm")
+region = Rect2(0, 72, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fkii"]
+atlas = ExtResource("1_rcmjm")
+region = Rect2(0, 72, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnnx1"]
+atlas = ExtResource("1_rcmjm")
+region = Rect2(0, 48, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0474t"]
+atlas = ExtResource("1_rcmjm")
+region = Rect2(0, 24, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqmfh"]
+atlas = ExtResource("1_rcmjm")
+region = Rect2(0, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0lcg"]
+atlas = ExtResource("1_rcmjm")
+region = Rect2(0, 144, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrrko"]
+atlas = ExtResource("1_rcmjm")
+region = Rect2(0, 96, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bed03"]
+atlas = ExtResource("1_rcmjm")
+region = Rect2(0, 120, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_liwd7"]
+atlas = ExtResource("1_rcmjm")
+region = Rect2(0, 0, 32, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qk5b0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a11ke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4cwhn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efn1t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctuvm")
+}],
+"loop": false,
+"name": &"Appear",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fkii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnnx1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0474t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqmfh")
+}],
+"loop": false,
+"name": &"Disappear",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0lcg")
+}],
+"loop": false,
+"name": &"Hurt",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrrko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bed03")
+}],
+"loop": true,
+"name": &"Laugh",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_liwd7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="EggmanWindow" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_qk5b0")
+autoplay = "default"

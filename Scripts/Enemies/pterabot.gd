@@ -9,20 +9,19 @@ var Projectile = preload("res://Entities/Enemies/Projectiles/PterabotProjectile.
 ## Not a thing in Sonic 2. Do not use.
 @export var flyDirection: float = 0.0 # (float,-180.0,180.0)
 ## Total distance travelled in pixels
-@export var travelDistance: int = 320
+@export var x_range: int = 320
 ## Movement Speed. 60 = 100 in Sonic 2.
 @export var speed: float = 180
 @onready var origin = global_position
 @onready var animator = $Sprite2D/AnimationPlayer
 
-var side = -1
-
 var editorOffset: float = 1.0
 
+var side = -1
 var targetPosition: Vector2 = Vector2.ZERO
 var isFiring = false
 var fireTime = 0
-var coolDown = 0
+var state_timer = 0
 
 var fire = null
 
@@ -32,7 +31,7 @@ func _ready():
 	if !Engine.is_editor_hint():
 		$VisibleOnScreenEnabler2D.visible = true
 		$Sprite2D/PlayerCheck.visible = true
-		var direction = Vector2(travelDistance*clamp(side,-1,0),0).rotated(deg_to_rad(flyDirection))
+		var direction = Vector2(x_range*clamp(side,-1,0),0).rotated(deg_to_rad(flyDirection))
 		targetPosition = origin + direction
 	super()
 
@@ -41,7 +40,7 @@ func _process(delta):
 		queue_redraw()
 		
 		# move editor offset based on movement speed
-		editorOffset -= (speed*delta/travelDistance)*2
+		editorOffset -= (speed*delta/x_range)*2
 		if editorOffset <= 0.0:
 			editorOffset = 1.0
 	else:
@@ -50,32 +49,31 @@ func _process(delta):
 func _physics_process(delta):
 	if !Engine.is_editor_hint():
 		# move if not firing
-		if 1==1: #!isFiring
-			# move position toward origin point with the travel distance
+		# move position toward origin point with the travel distance
+		if side <= 0:
+			position = position.move_toward(
+				origin-Vector2(x_range,0).rotated(deg_to_rad(flyDirection)),
+				speed*delta)
+		else:
+			position = position.move_toward(origin,speed*delta)
+		# if at the destination point then turn around
+		
+		if position.distance_to(targetPosition) <= 1:
+			$Sprite2D.scale.x = -$Sprite2D.scale.x
+			#Calculate a new Target position
+			side = -side
 			if side <= 0:
-				position = position.move_toward(
-					origin-Vector2(travelDistance,0).rotated(deg_to_rad(flyDirection)),
-					speed*delta)
+				targetPosition = origin + Vector2(x_range*clamp(side,-1,0),0).rotated(deg_to_rad(flyDirection))
 			else:
-				position = position.move_toward(origin,speed*delta)
-			# if at the destination point then turn around
-			
-			if position.distance_to(targetPosition) <= 1:
-				$Sprite2D.scale.x = -$Sprite2D.scale.x
-				#Calculate a new Target position
-				side = -side
-				if side <= 0:
-					targetPosition = origin + Vector2(travelDistance*clamp(side,-1,0),0).rotated(deg_to_rad(flyDirection))
-				else:
-					targetPosition = origin
-				# resume movement
-				animator.play("FLY")
-				isFiring = false
-			else:
-				calc_dir()
-			# count down cool down
-			if coolDown > 0:
-				coolDown -= delta
+				targetPosition = origin
+			# resume movement
+			animator.play("FLY")
+			isFiring = false
+		else:
+			calc_dir()
+		# count down cool down
+		if state_timer > 0:
+			state_timer -= delta
 
 func calc_dir():
 	# calculate direction based on side movement and rotation
@@ -97,19 +95,19 @@ func _draw():
 		
 		# second Pterabot pose
 		draw_texture_rect_region(sprite.texture,
-		Rect2(Vector2(-travelDistance,0).rotated(deg_to_rad(flyDirection))-size/2,
+		Rect2(Vector2(-x_range,0).rotated(deg_to_rad(flyDirection))-size/2,
 		size),Rect2(Vector2(0,0),
 		size),Color(1,1,1,0.5))
 		
 		# estimated movement
 		draw_texture_rect_region(sprite.texture,
-		Rect2(Vector2((travelDistance)*(editorOffset-1.0),0).rotated(deg_to_rad(flyDirection))-size/2,
+		Rect2(Vector2((x_range)*(editorOffset-1.0),0).rotated(deg_to_rad(flyDirection))-size/2,
 		size),Rect2(Vector2(0,0),
 		size),Color(1,1,1,0.5))
 
 
 func _on_PlayerCheck_body_entered(_body):
-	if !isFiring and coolDown <= 0:
+	if !isFiring and state_timer <= 0:
 		isFiring = true
 		
 		# pause
@@ -152,7 +150,7 @@ func _on_PlayerCheck_body_entered(_body):
 		# reset sprites and resume movement
 		animator.play("FLY")
 		isFiring = false
-		coolDown = 1 # add cooldown to prevent rapid fire
+		state_timer = 1 # add state_timer to prevent rapid fire
 
 func clear_fire():
 	if fire != null:
