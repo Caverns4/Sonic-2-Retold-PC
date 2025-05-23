@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://vs0jloj5swvg"]
+[gd_scene load_steps=18 format=4 uid="uid://vs0jloj5swvg"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_588bb"]
 [ext_resource type="AudioStream" uid="uid://g0a01sst32bm" path="res://Audio/Soundtrack/s2br_DeathEgg.ogg" id="2_j7ucr"]
@@ -12,7 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://p7n68euqgca8" path="res://Entities/MainObjects/GoalArea.tscn" id="8_1i625"]
 [ext_resource type="PackedScene" uid="uid://bgodeg4oddje6" path="res://Entities/MainObjects/BoundrySetter.tscn" id="11_cvek8"]
 [ext_resource type="PackedScene" uid="uid://bisk2itnvknhd" path="res://Entities/Enemies/Bouncer.tscn" id="13_aac6b"]
+[ext_resource type="PackedScene" uid="uid://dx8gmrsewm52j" path="res://Entities/Enemies/SandCrawl.tscn" id="14_8pkip"]
 [ext_resource type="PackedScene" uid="uid://3hiaachtft8m" path="res://Entities/Enemies/BubblersMother.tscn" id="14_a08kn"]
+[ext_resource type="PackedScene" uid="uid://bwlhmktikgcot" path="res://Entities/Enemies/EradiGator.tscn" id="15_s0g85"]
+[ext_resource type="PackedScene" uid="uid://bmsutfc5bals8" path="res://Entities/Boss/eggman_mechless.tscn" id="16_i313q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lx1wr"]
 shader = ExtResource("6_6vqf8")
@@ -74,3 +77,12 @@ position = Vector2(864, 368)
 
 [node name="BubblersMother" parent="." instance=ExtResource("14_a08kn")]
 position = Vector2(856, 304)
+
+[node name="SandCrawl" parent="." instance=ExtResource("14_8pkip")]
+position = Vector2(1088, 368)
+
+[node name="EradiGator" parent="." instance=ExtResource("15_s0g85")]
+position = Vector2(1984, 368)
+
+[node name="Eggman_Mechless" parent="." instance=ExtResource("16_i313q")]
+position = Vector2(256, 304)

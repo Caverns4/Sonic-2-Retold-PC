@@ -1,0 +1,182 @@
+[gd_scene load_steps=20 format=3 uid="uid://bmsutfc5bals8"]
+
+[ext_resource type="Texture2D" uid="uid://d12r0uq1qch01" path="res://Graphics/Boss/Eggman.png" id="1_5avtc"]
+[ext_resource type="Script" path="res://Scripts/Boss/eggman_mechless.gd" id="1_rc3yn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gduji"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ae4yw"]
+atlas = ExtResource("1_5avtc")
+region = Rect2(320, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p72mg"]
+atlas = ExtResource("1_5avtc")
+region = Rect2(384, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48ndd"]
+atlas = ExtResource("1_5avtc")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2w7sa"]
+atlas = ExtResource("1_5avtc")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eabcq"]
+atlas = ExtResource("1_5avtc")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqnv2"]
+atlas = ExtResource("1_5avtc")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v23ix"]
+atlas = ExtResource("1_5avtc")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nd2sm"]
+atlas = ExtResource("1_5avtc")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xvyg"]
+atlas = ExtResource("1_5avtc")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8mya"]
+atlas = ExtResource("1_5avtc")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0lcr"]
+atlas = ExtResource("1_5avtc")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y63un"]
+atlas = ExtResource("1_5avtc")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fd5n0"]
+atlas = ExtResource("1_5avtc")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_og0ri"]
+atlas = ExtResource("1_5avtc")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgpft"]
+atlas = ExtResource("1_5avtc")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hms3r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ae4yw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p72mg")
+}],
+"loop": true,
+"name": &"Fall",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48ndd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48ndd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48ndd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48ndd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48ndd")
+}],
+"loop": false,
+"name": &"Fear",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2w7sa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eabcq")
+}],
+"loop": false,
+"name": &"Fly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqnv2")
+}],
+"loop": true,
+"name": &"Hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v23ix")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nd2sm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xvyg")
+}],
+"loop": true,
+"name": &"Laugh",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8mya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0lcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y63un")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fd5n0")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_og0ri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgpft")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Eggman_Mechless" type="CharacterBody2D"]
+light_mask = 4096
+collision_layer = 16384
+collision_mask = 4095
+script = ExtResource("1_rc3yn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gduji")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_hms3r")
+animation = &"Fear"
+autoplay = "default"

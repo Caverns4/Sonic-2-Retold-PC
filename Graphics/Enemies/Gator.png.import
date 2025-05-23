@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cwsnl4vbyk15v"
-path="res://.godot/imported/CrocBot.png-fa4f8be7b8597c3349653aec28421fcd.ctex"
+path="res://.godot/imported/Gator.png-7e8b3e1149f9bbfb84ba320b946f773c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Enemies/CrocBot.png"
-dest_files=["res://.godot/imported/CrocBot.png-fa4f8be7b8597c3349653aec28421fcd.ctex"]
+source_file="res://Graphics/Enemies/Gator.png"
+dest_files=["res://.godot/imported/Gator.png-7e8b3e1149f9bbfb84ba320b946f773c.ctex"]
 
 [params]
 

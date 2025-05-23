@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwlhmktikgcot"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Gator.gd" id="1_maaoo"]
+[ext_resource type="Texture2D" uid="uid://cwsnl4vbyk15v" path="res://Graphics/Enemies/Gator.png" id="2_lybkn"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(40, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_juns8"]
+size = Vector2(56, 32)
+
+[node name="EradiGator" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 16384
+collision_mask = 8479
+floor_snap_length = 2.0
+script = ExtResource("1_maaoo")
+
+[node name="CollissionMask" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 528384
+
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+modulate = Color(1, 0, 0, 1)
+shape = SubResource("1")
+
+[node name="GatorSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("2_lybkn")
+hframes = 6
+vframes = 2
+
+[node name="Area2D" type="Area2D" parent="GatorSprite"]
+position = Vector2(-24, 8)
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GatorSprite/Area2D"]
+position = Vector2(-12, -16)
+shape = SubResource("RectangleShape2D_juns8")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-16, 0)
+target_position = Vector2(0, 16)
+collision_mask = 8479
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+visible = false
+position = Vector2(1.90735e-06, -1.90735e-06)
+rect = Rect2(-160, -120, 320, 240)
+
+[connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
+[connection signal="body_entered" from="GatorSprite/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="GatorSprite/Area2D" to="." method="_on_area_2d_body_exited"]
