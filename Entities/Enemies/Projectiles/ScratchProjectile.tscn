@@ -1,0 +1,101 @@
+[gd_scene load_steps=13 format=3 uid="uid://cp373k8qbd68y"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/aquis_projectile.gd" id="1_hgrig"]
+[ext_resource type="Texture2D" uid="uid://b6e0ffcg1nf06" path="res://Graphics/Enemies/Scratch_Bullet.png" id="2_h3r5w"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(4, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gr528"]
+atlas = ExtResource("2_h3r5w")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3ywi"]
+atlas = ExtResource("2_h3r5w")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpxbr"]
+atlas = ExtResource("2_h3r5w")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ysf6"]
+atlas = ExtResource("2_h3r5w")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2hbw"]
+atlas = ExtResource("2_h3r5w")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyy1n"]
+atlas = ExtResource("2_h3r5w")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eifcr"]
+atlas = ExtResource("2_h3r5w")
+region = Rect2(48, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywo1a"]
+atlas = ExtResource("2_h3r5w")
+region = Rect2(56, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yng7t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gr528")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3ywi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpxbr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ysf6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2hbw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyy1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eifcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywo1a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="ScratchProjectile" type="CharacterBody2D"]
+collision_layer = 16384
+collision_mask = 0
+script = ExtResource("1_hgrig")
+
+[node name="CollissionMask" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 528384
+
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+modulate = Color(1, 0, 0, 1)
+shape = SubResource("1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yng7t")
+autoplay = "default"
+frame = 6
+frame_progress = 0.800557
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(2.1, 2.1)
+
+[connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

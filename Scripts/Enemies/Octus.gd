@@ -1,7 +1,6 @@
 extends EnemyBase
 
 var Projectile = preload("res://Entities/Enemies/Projectiles/GenericProjectile.tscn")
-var bullet = null
 @export var bulletSound = preload("res://Audio/SFX/Objects/s2br_Projectile.wav")
 
 @export_enum("Stay","Flee") var behavior = 0
@@ -102,7 +101,7 @@ func SpeedToPos(delta):
 func shootBullet():
 	# Shoot stabdard bullet
 	Global.play_sound(bulletSound)
-	bullet = Projectile.instantiate()
+	var bullet = Projectile.instantiate()
 	get_parent().add_child(bullet)
 	# set position with offset
 	bullet.global_position = bulletPoint.global_position

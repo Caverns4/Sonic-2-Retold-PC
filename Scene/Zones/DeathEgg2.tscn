@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://vs0jloj5swvg"]
+[gd_scene load_steps=24 format=4 uid="uid://vs0jloj5swvg"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_588bb"]
 [ext_resource type="AudioStream" uid="uid://g0a01sst32bm" path="res://Audio/Soundtrack/s2br_DeathEgg.ogg" id="2_j7ucr"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dn7w8hf4sanu" path="res://Entities/Enemies/Grabber.tscn" id="18_v7l67"]
 [ext_resource type="PackedScene" uid="uid://boorjic58wlh7" path="res://Entities/Enemies/Pterabot.tscn" id="20_rm1fy"]
 [ext_resource type="PackedScene" uid="uid://b10okfgw0fy2x" path="res://Entities/Enemies/Nebula.tscn" id="20_x841u"]
+[ext_resource type="PackedScene" uid="uid://2g7ovnq2n77w" path="res://Entities/Enemies/Scratch.tscn" id="21_576cp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lx1wr"]
 shader = ExtResource("6_6vqf8")
@@ -104,7 +105,10 @@ position = Vector2(896, 320)
 position = Vector2(704, 248)
 
 [node name="Nebula" parent="Badniks" instance=ExtResource("20_x841u")]
-position = Vector2(1984, 488)
+position = Vector2(1880, 352)
+
+[node name="Scratch" parent="Badniks" instance=ExtResource("21_576cp")]
+position = Vector2(2112, 352)
 
 [node name="Pterabot" parent="." instance=ExtResource("20_rm1fy")]
 position = Vector2(856, 288)

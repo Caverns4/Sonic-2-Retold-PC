@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://b4cnm1ick0ilt"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/EnemyBase.gd" id="1_hb6tl"]
+[ext_resource type="Texture2D" uid="uid://tc2fqtaofvrf" path="res://Graphics/Enemies/PropellerShaft.png" id="2_wwhug"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(8, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cu44r"]
+atlas = ExtResource("2_wwhug")
+region = Rect2(0, 0, 8, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jw5a"]
+atlas = ExtResource("2_wwhug")
+region = Rect2(8, 0, 8, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8h2e"]
+atlas = ExtResource("2_wwhug")
+region = Rect2(16, 0, 8, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_detum"]
+atlas = ExtResource("2_wwhug")
+region = Rect2(24, 0, 8, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gte5m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cu44r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jw5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8h2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_detum")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="PropellerShaft" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 16384
+collision_mask = 0
+script = ExtResource("1_hb6tl")
+
+[node name="CollissionMask" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 528384
+
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+modulate = Color(1, 0, 0, 1)
+shape = SubResource("1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DamageArea"]
+sprite_frames = SubResource("SpriteFrames_gte5m")
+autoplay = "default"
+frame = 3
+frame_progress = 0.71306
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+visible = false
+position = Vector2(1.90735e-06, -1.90735e-06)
+rect = Rect2(-160, -120, 320, 240)
+
+[connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]

@@ -1,0 +1,96 @@
+[gd_scene load_steps=11 format=3 uid="uid://2g7ovnq2n77w"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/scratch.gd" id="1_gghhs"]
+[ext_resource type="Texture2D" uid="uid://d0f41px7x6ge" path="res://Graphics/Enemies/Scratch.png" id="2_hyyj2"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_673ql"]
+atlas = ExtResource("2_hyyj2")
+region = Rect2(0, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6k8ob"]
+atlas = ExtResource("2_hyyj2")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4icj"]
+atlas = ExtResource("2_hyyj2")
+region = Rect2(0, 64, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpx41"]
+atlas = ExtResource("2_hyyj2")
+region = Rect2(0, 96, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avkro"]
+atlas = ExtResource("2_hyyj2")
+region = Rect2(0, 128, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5msw"]
+atlas = ExtResource("2_hyyj2")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_alxra"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_673ql")
+}],
+"loop": false,
+"name": &"Shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6k8ob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4icj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpx41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avkro")
+}],
+"loop": false,
+"name": &"Turn",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5msw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Scratch" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 16384
+collision_mask = 0
+script = ExtResource("1_gghhs")
+
+[node name="CollissionMask" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 528384
+
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+modulate = Color(1, 0, 0, 1)
+shape = SubResource("1")
+
+[node name="CluckerSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_alxra")
+autoplay = "default"
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+visible = false
+position = Vector2(1.90735e-06, -1.90735e-06)
+rect = Rect2(-160, -120, 320, 240)
+
+[connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
