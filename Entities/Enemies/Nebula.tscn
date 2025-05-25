@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://b10okfgw0fy2x"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/nebula.gd" id="1_ysmyy"]
+[ext_resource type="Texture2D" uid="uid://da627obqkxqln" path="res://Graphics/Enemies/Nebula.png" id="2_cerh8"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cvtw"]
+atlas = ExtResource("2_cerh8")
+region = Rect2(0, 0, 48, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdl1b"]
+atlas = ExtResource("2_cerh8")
+region = Rect2(0, 40, 48, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n83sp"]
+atlas = ExtResource("2_cerh8")
+region = Rect2(0, 80, 48, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umhi6"]
+atlas = ExtResource("2_cerh8")
+region = Rect2(0, 120, 48, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tvfib"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cvtw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdl1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n83sp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umhi6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Nebula" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 16384
+collision_mask = 0
+script = ExtResource("1_ysmyy")
+
+[node name="CollissionMask" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 528384
+
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+modulate = Color(1, 0, 0, 1)
+shape = SubResource("1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -4)
+sprite_frames = SubResource("SpriteFrames_tvfib")
+autoplay = "default"
+frame = 2
+frame_progress = 0.773324
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(1.90735e-06, -1.90735e-06)
+rect = Rect2(-160, -120, 320, 240)
+
+[connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]

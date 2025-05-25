@@ -36,25 +36,21 @@ func get_nearest_player_x(x_pos: float):
 			finalObj = player
 	return finalObj
 
-## Return the nearest player by distance x and y.
+## Return the nearest player by total distance
 func get_nearest_player(obj_pos: Vector2):
 	var closest = null #closest distance
 	var finalObj = null #Output object
 	for player in Global.players: #number of applicable players
-		var result = obj_pos.distance_to(player.global_postion)
+		var result = obj_pos.distance_to(player.global_position)
 		if !closest or closest > result:
 			closest = result
 			finalObj = player
 	return finalObj
 
-## Return position of nearest player in a Vector 2.
+## Return position of nearest player in a Vector2
 func get_orientation_to_player(obj_pos: Vector2):
 	if Global.players:
-		var closest = null #closest distance
-		for player in Global.players:
-			var result = obj_pos.distance_to(player.global_position)
-			if !closest or closest.length() > result:
-				closest = obj_pos - player.global_position
-		return closest
+		var player = get_nearest_player(obj_pos)
+		return player.global_position - obj_pos
 	else:
 		return Vector2.ZERO

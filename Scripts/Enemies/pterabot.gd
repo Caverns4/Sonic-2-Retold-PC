@@ -17,23 +17,17 @@ var Projectile = preload("res://Entities/Enemies/Projectiles/PterabotProjectile.
 
 var editorOffset: float = 1.0
 
-var side = -1
+var side: int = -1
 var targetPosition: Vector2 = Vector2.ZERO
-var isFiring = false
-var fireTime = 0
-var state_timer = 0
-
-var fire = null
+var cooldown_time: float = 0
 
 func _ready():
-	# clear fire if destroyed before shooting
-	var _con = connect("destroyed",Callable(self,"clear_fire"))
 	if !Engine.is_editor_hint():
 		$VisibleOnScreenEnabler2D.visible = true
 		$Sprite2D/PlayerCheck.visible = true
 		var direction = Vector2(x_range*clamp(side,-1,0),0).rotated(deg_to_rad(flyDirection))
 		targetPosition = origin + direction
-	super()
+		super()
 
 func _process(delta):
 	if Engine.is_editor_hint():
@@ -68,12 +62,12 @@ func _physics_process(delta):
 				targetPosition = origin
 			# resume movement
 			animator.play("FLY")
-			isFiring = false
+			cooldown_time = 0.0
 		else:
 			calc_dir()
 		# count down cool down
-		if state_timer > 0:
-			state_timer -= delta
+		if cooldown_time > 0:
+			cooldown_time -= delta
 
 func calc_dir():
 	# calculate direction based on side movement and rotation
@@ -107,51 +101,38 @@ func _draw():
 
 
 func _on_PlayerCheck_body_entered(_body):
-	if !isFiring and state_timer <= 0:
-		isFiring = true
-		
+	if cooldown_time <= 0:
+		cooldown_time = 2.0
 		# pause
 		$Timer.start(0.25)
 		await $Timer.timeout
 		
 		# set sprites to 
 		animator.play("AIM")
-		fireTime = 1
 		
 		# start firing timer
 		$Timer.start(0.25)
 		await $Timer.timeout
 		
 		# fire projectile
-		fire = Projectile.instantiate()
-		get_parent().add_child(fire)
+		var bullet = Projectile.instantiate()
+		get_parent().add_child(bullet)
 		
 		# set position with offset
-		fire.global_position = global_position+Vector2(0*side,16)
-		fire.scale.x = -side
+		bullet.global_position = global_position+Vector2(0*side,16)
+		bullet.scale.x = -side
+		bullet.velocity = Vector2(0,60)
 		
-		# create a weakref to verify projectile hasn't been deleted later
-		var wrFire = weakref(fire)
 		# wait for fire aniamtion to finish
 		$Timer.start(16.0/60.0)
 		await $Timer.timeout
 		# check that fire hasn't been deleted
 		Global.play_sound(bulletSound)
-		if wrFire.get_ref():
-			# move projectile
-			fire.velocity = Vector2(0,60)
 		
-		# remove fire variable
-		fire = null
 		# last timer before returning to normal
 		# account for how long the firing timer took
 		$Timer.start(0.5-(16.0/60.0))
 		await $Timer.timeout
 		# reset sprites and resume movement
 		animator.play("FLY")
-		isFiring = false
-		state_timer = 1 # add state_timer to prevent rapid fire
-
-func clear_fire():
-	if fire != null:
-		fire.queue_free()
+		cooldown_time = 1.0 # add cooldown_time to prevent rapid fire

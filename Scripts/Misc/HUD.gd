@@ -66,7 +66,7 @@ func _ready():
 	
 	if ringsForPerfect <= 0:
 		ringsForPerfect = get_tree().get_nodes_in_group("Rings").size()
-		print(str(ringsForPerfect) + "Rings to perfect.")
+		print(str(ringsForPerfect) + " rings to perfect.")
 	
 	if !Global.airSpeedCap:
 		$Counters/Text.self_modulate = Color.RED

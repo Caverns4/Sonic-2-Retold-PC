@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://vs0jloj5swvg"]
+[gd_scene load_steps=23 format=4 uid="uid://vs0jloj5swvg"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_588bb"]
 [ext_resource type="AudioStream" uid="uid://g0a01sst32bm" path="res://Audio/Soundtrack/s2br_DeathEgg.ogg" id="2_j7ucr"]
@@ -19,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://bmsutfc5bals8" path="res://Entities/Boss/eggman_mechless.tscn" id="16_i313q"]
 [ext_resource type="PackedScene" uid="uid://bqj0m8irng235" path="res://Entities/Enemies/crawlton.tscn" id="17_fbqdc"]
 [ext_resource type="PackedScene" uid="uid://dn7w8hf4sanu" path="res://Entities/Enemies/Grabber.tscn" id="18_v7l67"]
+[ext_resource type="PackedScene" uid="uid://boorjic58wlh7" path="res://Entities/Enemies/Pterabot.tscn" id="20_rm1fy"]
+[ext_resource type="PackedScene" uid="uid://b10okfgw0fy2x" path="res://Entities/Enemies/Nebula.tscn" id="20_x841u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lx1wr"]
 shader = ExtResource("6_6vqf8")
@@ -93,11 +95,16 @@ position = Vector2(856, 304)
 position = Vector2(1088, 368)
 
 [node name="EradiGator" parent="Badniks" instance=ExtResource("15_s0g85")]
-position = Vector2(1984, 368)
+position = Vector2(1736, 360)
 
 [node name="Crawlton" parent="Badniks" instance=ExtResource("17_fbqdc")]
 position = Vector2(896, 320)
-neckSegments = 8
 
 [node name="GrabberBadnik" parent="Badniks" instance=ExtResource("18_v7l67")]
 position = Vector2(704, 248)
+
+[node name="Nebula" parent="Badniks" instance=ExtResource("20_x841u")]
+position = Vector2(1984, 488)
+
+[node name="Pterabot" parent="." instance=ExtResource("20_rm1fy")]
+position = Vector2(856, 288)

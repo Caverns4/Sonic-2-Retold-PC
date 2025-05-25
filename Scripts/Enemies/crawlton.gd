@@ -43,6 +43,7 @@ func _process(delta: float) -> void:
 				children.erase(node)
 		for node in get_children():
 			if node is not Sprite2D:
+				node.scale.x = 1
 				node.reparent(get_parent())
 		queue_free()
 	else:
@@ -55,6 +56,10 @@ func _process(delta: float) -> void:
 						state = STATES.EXTEND
 						state_timer = 0.0
 						taret_position = look_at
+						if head.scale.x > 0:
+							head.scale.x = 1
+						else:
+							head.scale.x = -1
 						#print(taret_position)
 			STATES.EXTEND:
 				if extend_length < taret_position.length()/8:
@@ -76,7 +81,6 @@ func _process(delta: float) -> void:
 	
 		var yOffset = 0.0
 		var direction = taret_position.normalized()
-		
 		for i in children.size():
-			children[i].position = (-direction * yOffset).round()
+			children[i].position = (direction * yOffset).round()
 			yOffset += min(extend_length,16)
