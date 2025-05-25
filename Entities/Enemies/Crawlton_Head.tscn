@@ -23,6 +23,7 @@ modulate = Color(1, 0, 0, 1)
 shape = SubResource("1")
 
 [node name="Crawlton_Head" type="Sprite2D" parent="."]
+z_index = 1
 position = Vector2(-8, 0)
 texture = ExtResource("2_dql8y")
 region_enabled = true

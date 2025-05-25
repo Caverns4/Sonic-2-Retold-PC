@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 
 		velocity = Vector2(velocityPreVec).rotated(rotation)
 		if targets and shootMemoryFlag == false:
-			currentTarget = GetClosestPlayerByX()
+			currentTarget = GlobalFunctions.get_nearest_player_x(global_position.x)
 			shootTime = SHOOT_WAIT_TIME
 			velocity = Vector2.ZERO
 			animator.play("RESET")
@@ -65,19 +65,8 @@ func shootBullet():
 	if rotation == 0:
 		var balance = sign(currentTarget.global_position.x - global_position.x)
 		temp = Vector2(0,150).rotated(balance * -40)
-	
 	bullet.velocity = temp
 
-func GetClosestPlayerByX():
-	#Return the nearest player by x_pos
-	var closest = null #closest x distance
-	var finalObj = null #Output object
-	for i in Global.players: #number of applicable players
-		var result = absf(global_position.x - (i.global_position.x))
-		if !closest or closest > result:
-			closest = result
-			finalObj = i
-	return finalObj
 
 func _on_player_check_body_entered(body: Node2D) -> void:
 	targets.append(body)

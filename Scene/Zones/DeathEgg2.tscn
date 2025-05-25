@@ -97,6 +97,7 @@ position = Vector2(1984, 368)
 
 [node name="Crawlton" parent="Badniks" instance=ExtResource("17_fbqdc")]
 position = Vector2(896, 320)
+neckSegments = 8
 
 [node name="GrabberBadnik" parent="Badniks" instance=ExtResource("18_v7l67")]
 position = Vector2(704, 248)

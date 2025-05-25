@@ -75,7 +75,7 @@ func shootBullet():
 		return
 	shootFlag = true
 	#Find nearest player.
-	var nearestPlayer = GetClosestPlayer()
+	var nearestPlayer = GlobalFunctions.get_nearest_player(global_position)
 	# Do not shoot of player is above.
 	if nearestPlayer and nearestPlayer.global_position.y < global_position.y:
 		return
@@ -96,20 +96,9 @@ func LookInMoveDirection():
 		direction = 0-sign(velocity.x)
 		$Aquis_Sprite.scale.x = direction
 
-func GetClosestPlayer():
-	#Return the nearest player by distance x and y.
-	var closest = null #closest x distance
-	var finalObj = null #Output object
-	for i in Global.players: #number of applicable players
-		var result = global_position.distance_to(i.global_position)
-		if !closest or closest > result:
-			closest = result
-			finalObj = i
-	return finalObj
-
 func FleeIfSuper():
 	if Global.players.size() > 0 and Global.players[0].isSuper:
-		var player = GetClosestPlayer()
+		var player = GlobalFunctions.get_nearest_player(global_position)
 		if player:
 			animator.play("float")
 			direction = sign(global_position.x - player.global_position.x)

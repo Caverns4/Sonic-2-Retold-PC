@@ -42,7 +42,7 @@ func _physics_process(delta):
 				LookAtPlayer()
 		STATES.WARMUP: #Warmup, and then dive at the player's x position
 			if !currentTarget: #Get player from list targest and put in currentTarget
-				currentTarget = GetClosestPlayer()
+				currentTarget = GlobalFunctions.get_nearest_player_x(global_position.x)
 		STATES.DIVE: #Dive to target position, come back up to origin.y
 			if attackTimer < 1.0:
 				attackTimer = min(1.0,(attackTimer+(1.0*delta)))
@@ -75,7 +75,7 @@ func UpdateDiveAttackCoords(p0,p1,p2,time):
 	return r
 
 func LookAtPlayer():
-	var nearestplayer = GetClosestPlayer()
+	var nearestplayer = GlobalFunctions.get_nearest_player_x(global_position.x)
 	if nearestplayer:
 		if nearestplayer.global_position.x > global_position.x:
 			scale.x = -1
@@ -83,19 +83,6 @@ func LookAtPlayer():
 			scale.x = 1
 		direction = scale.x
 
-func GetClosestPlayer():
-	#Return the nearest player by x_pos
-	var j = 0 #last x_position result
-	var closest = 160 #closest x distance
-	var finaldist = 0 #Output x number
-	var finalObj = null #Output object
-	for i in targets.size(): #number of applicable players
-		j = absf(global_position.x - targets[i].global_position.x)
-		if closest > j:
-			closest = j
-			finaldist = round(targets[i].global_position.x)
-			finalObj = targets[i]
-	return finalObj
 
 func _on_player_sensor_body_entered(body):
 	targets.append(body)

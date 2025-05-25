@@ -24,3 +24,37 @@ func div_by_delta(delta):
 # get window size resolution as a vector2
 func get_screen_size():
 	return get_viewport().get_visible_rect().size
+
+## Return the nearest player by x_pos
+func get_nearest_player_x(x_pos: float):
+	var closest = null #closest x distance
+	var finalObj = null #Output object
+	for player in Global.players: #number of applicable players
+		var result = absf(x_pos - (player.global_position.x))
+		if !closest or closest > result:
+			closest = result
+			finalObj = player
+	return finalObj
+
+## Return the nearest player by distance x and y.
+func get_nearest_player(obj_pos: Vector2):
+	var closest = null #closest distance
+	var finalObj = null #Output object
+	for player in Global.players: #number of applicable players
+		var result = obj_pos.distance_to(player.global_postion)
+		if !closest or closest > result:
+			closest = result
+			finalObj = player
+	return finalObj
+
+## Return position of nearest player in a Vector 2.
+func get_orientation_to_player(obj_pos: Vector2):
+	if Global.players:
+		var closest = null #closest distance
+		for player in Global.players:
+			var result = obj_pos.distance_to(player.global_position)
+			if !closest or closest.length() > result:
+				closest = obj_pos - player.global_position
+		return closest
+	else:
+		return Vector2.ZERO

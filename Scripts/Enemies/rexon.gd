@@ -19,7 +19,6 @@ var swayDist = 0 #Gets manually set in code
 var swayDirection = -1
 
 func _ready() -> void:
-	$VisibleOnScreenEnabler2D.visible = true
 	if direction == 0:
 		direction = -1 #left
 	direction = 0-direction
@@ -96,4 +95,5 @@ func ShootBullet():
 
 
 func _on_visible_on_screen_enabler_2d_screen_entered() -> void:
-	direction = 0-sign(Global.players[0].global_position.x - global_position.x)
+	var player_pos = GlobalFunctions.get_orientation_to_player(global_position)
+	direction = 0-sign(player_pos.x - global_position.x)

@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 				stateTimer = temp/60.0
 				velocity = Vector2.ZERO
 			else:
-				var target = GetClosestPlayer()
+				var target = GlobalFunctions.get_nearest_player(global_position)
 				var temp = global_position-target
 				direction = 0-sign(temp.x)
 				if direction == 0: direction = -1
@@ -46,13 +46,3 @@ func _physics_process(delta: float) -> void:
 			if !onscreen.is_on_screen():
 				queue_free()
 	$AnimatedSprite2D.scale.x = 0-direction
-
-func GetClosestPlayer():
-	var vec = Vector2.ZERO
-	var result = 1024
-	for i in Global.players.size():
-		var j = global_position.distance_to(Global.players[i].global_position)
-		if j < result:
-			result = j
-			vec = Global.players[i].global_position
-	return vec

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://cuf10h0hh7iep"]
+[gd_scene load_steps=30 format=4 uid="uid://cuf10h0hh7iep"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_3gh4r"]
 [ext_resource type="AudioStream" uid="uid://c8y5q77kxn4ap" path="res://Audio/Soundtrack/s2br_DustHill.ogg" id="2_pw2ks"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://ojtv17ru256" path="res://Entities/Obstacles/RotatingSolidBlocks.tscn" id="21_032vf"]
 [ext_resource type="PackedScene" uid="uid://bct374kjctkxr" path="res://Entities/Items/Checkpoint.tscn" id="23_atss6"]
 [ext_resource type="PackedScene" uid="uid://hl1q1loogiyw" path="res://Entities/Enemies/Flasher.tscn" id="23_cnum8"]
+[ext_resource type="PackedScene" uid="uid://bqj0m8irng235" path="res://Entities/Enemies/crawlton.tscn" id="24_5avqm"]
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="26_v7c3v"]
 
 [sub_resource type="AudioStreamWAV" id="AudioStreamWAV_fmqrv"]
@@ -504,6 +505,9 @@ position = Vector2(5648, 1896)
 
 [node name="Flasher11" parent="Badniks" instance=ExtResource("23_cnum8")]
 position = Vector2(5816, 1856)
+
+[node name="Crawlton" parent="Badniks" instance=ExtResource("24_5avqm")]
+position = Vector2(2112, 1336)
 
 [node name="Items" type="Node" parent="."]
 
