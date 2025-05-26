@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 				animator.play("float")
 		STATE.CHASE:
 			stateTime -= delta
-			var player = GetClosestPlayer()
+			var player = GlobalFunctions.get_nearest_player(global_position)
 			if player:
 				#Do it this way instead of move_toward so the vector will not normalize.
 				velocity.x += (ACCEL*delta) * sign(player.global_position.x-global_position.x)

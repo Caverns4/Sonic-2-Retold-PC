@@ -121,15 +121,17 @@ func _on_PlayerCheck_body_entered(_body):
 		# set position with offset
 		bullet.global_position = global_position+Vector2(0*side,16)
 		bullet.scale.x = -side
+		var alive = weakref(bullet)
 		
 		# wait for fire aniamtion to finish
 		$Timer.start(16.0/60.0)
 		await $Timer.timeout
 		# check that fire hasn't been deleted
-		Global.play_sound(bulletSound)
-		# move projectile
-		bullet.velocity = Vector2(120*side,120)
-		bullet.reparent(get_parent())
+		if alive.get_ref():
+			Global.play_sound(bulletSound)
+			# move projectile
+			bullet.velocity = Vector2(120*side,120)
+			bullet.reparent(get_parent())
 		
 		# last timer before returning to normal
 		# account for how long the firing timer took

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://2g7ovnq2n77w"]
+[gd_scene load_steps=12 format=3 uid="uid://2g7ovnq2n77w"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/scratch.gd" id="1_gghhs"]
 [ext_resource type="Texture2D" uid="uid://d0f41px7x6ge" path="res://Graphics/Enemies/Scratch.png" id="2_hyyj2"]
@@ -9,6 +9,10 @@ size = Vector2(32, 24)
 [sub_resource type="AtlasTexture" id="AtlasTexture_673ql"]
 atlas = ExtResource("2_hyyj2")
 region = Rect2(0, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wp2bw"]
+atlas = ExtResource("2_hyyj2")
+region = Rect2(0, 0, 48, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6k8ob"]
 atlas = ExtResource("2_hyyj2")
@@ -35,10 +39,13 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_673ql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wp2bw")
 }],
 "loop": false,
 "name": &"Shoot",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -55,7 +62,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Turn",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -84,6 +91,7 @@ shape = SubResource("1")
 
 [node name="CluckerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_alxra")
+animation = &"Shoot"
 autoplay = "default"
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
@@ -91,6 +99,11 @@ visible = false
 position = Vector2(1.90735e-06, -1.90735e-06)
 rect = Rect2(-160, -120, 320, 240)
 
+[node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
+[connection signal="animation_finished" from="CluckerSprite" to="." method="_on_clucker_sprite_animation_finished"]
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

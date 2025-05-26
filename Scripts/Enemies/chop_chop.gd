@@ -18,9 +18,8 @@ var TargetPosition = Vector2.ZERO
 
 func _ready():
 	if !Engine.is_editor_hint():
-		$VisibleOnScreenEnabler2D.visible = true
 		origin = global_position
-	super()
+		super()
 
 func _process(delta):
 	if Engine.is_editor_hint():
@@ -68,6 +67,7 @@ func BFish_IdleState():
 
 func BFish_Attack(delta, playerCords):
 	global_position = global_position.move_toward(playerCords.rotated(deg_to_rad(swimDirection)),120*delta)
+	BFish_ForceUnderwater()
 
 func BFish_ReturnHome(delta):
 	position.x = move_toward(position.x,origin.x,60*delta)
@@ -82,6 +82,10 @@ func BFish_ReturnHome(delta):
 	if global_position == origin:
 		state = STATES.IDLE
 		TargetPosition = Vector2.ZERO
+
+func BFish_ForceUnderwater():
+	if Global.waterLevel:
+		global_position.y = max(global_position.y,Global.waterLevel)
 
 func calc_dir():
 	# calculate direction based on side movement and rotation
@@ -110,8 +114,6 @@ func _on_player_check_body_entered(body: Node2D) -> void:
 		sprite.play("attack")
 		stateTimer = 2.0
 		TargetPosition = global_position + (Vector2(body.global_position - global_position).normalized()*160)
-		
-		#Vector2(120,0).rotated(get_angle_to(body.global_position))
 
 
 func _on_player_check_body_exited(body: Node2D) -> void:

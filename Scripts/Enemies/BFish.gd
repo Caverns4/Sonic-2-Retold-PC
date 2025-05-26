@@ -27,9 +27,8 @@ var players = []
 
 func _ready():
 	if !Engine.is_editor_hint():
-		$VisibleOnScreenEnabler2D.visible = true
 		startPosition = global_position
-	super()
+		super()
 
 func _process(delta):
 	if Engine.is_editor_hint():
@@ -95,8 +94,8 @@ func BFish_ReturnHome(delta):
 	calc_dir()
 
 func BFish_ForceUnderwater():
-	if Global.waterLevel != null and (global_position.y < Global.waterLevel):
-		global_position.y = Global.waterLevel
+	if Global.waterLevel:
+		global_position.y = max(global_position.y,Global.waterLevel)
 
 
 func calc_dir():

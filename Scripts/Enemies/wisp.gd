@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 				stateTimer = temp/60.0
 				velocity = Vector2.ZERO
 			else:
-				var target = GlobalFunctions.get_nearest_player(global_position)
+				var target = GlobalFunctions.get_orientation_to_player(global_position)
 				var temp = global_position-target
 				direction = 0-sign(temp.x)
 				if direction == 0: direction = -1

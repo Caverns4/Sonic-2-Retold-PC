@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://dpedjdbyu3jqv"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/shell_cracker.gd" id="1_qrqgo"]
+[ext_resource type="Texture2D" uid="uid://b250c0h5v8bms" path="res://Graphics/Enemies/Shellcracker.png" id="2_n4lpt"]
+[ext_resource type="Texture2D" uid="uid://dtrigmhfabcpx" path="res://Graphics/Enemies/Shellcracker_Seg.png" id="2_v8r7j"]
+[ext_resource type="Texture2D" uid="uid://s5m4nqav0k02" path="res://Graphics/Enemies/Shellcracker_Claw.png" id="4_ijhvp"]
+[ext_resource type="Script" path="res://Scripts/Objects/Hazard.gd" id="4_j1vyy"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(32, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o63fa"]
+
+[node name="ShellCracker" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 16384
+collision_mask = 0
+script = ExtResource("1_qrqgo")
+
+[node name="CollissionMask" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("1")
+
+[node name="DamageArea" type="Area2D" parent="."]
+position = Vector2(0, -4)
+collision_layer = 0
+collision_mask = 528384
+
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+modulate = Color(1, 0, 0, 1)
+shape = SubResource("1")
+
+[node name="ShellCracker" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("2_n4lpt")
+vframes = 3
+
+[node name="ChainLink" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-14, -2)
+texture = ExtResource("2_v8r7j")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-14, -2)
+
+[node name="ClawHazard" type="Area2D" parent="Node2D"]
+position = Vector2(-5, -6)
+collision_layer = 0
+collision_mask = 4096
+script = ExtResource("4_j1vyy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/ClawHazard"]
+shape = SubResource("RectangleShape2D_o63fa")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+position = Vector2(-6, -6)
+texture = ExtResource("4_ijhvp")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+visible = false
+position = Vector2(1.90735e-06, -1.90735e-06)
+rect = Rect2(-160, -120, 320, 240)
+
+[connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
+[connection signal="body_entered" from="Node2D/ClawHazard" to="Node2D/ClawHazard" method="_on_body_entered"]
+[connection signal="body_exited" from="Node2D/ClawHazard" to="Node2D/ClawHazard" method="_on_body_exited"]

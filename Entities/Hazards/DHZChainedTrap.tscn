@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5tyopn7hc5c"]
+
+[ext_resource type="Texture2D" uid="uid://cnv0x4k5u14co" path="res://Graphics/Obstacles/DHZ_SwingChain.png" id="1_jpw3q"]
+[ext_resource type="PackedScene" uid="uid://b5tqox7ea5irf" path="res://Entities/Hazards/dhz_spiked_platform.tscn" id="2_ueb11"]
+
+[node name="DhzChainedTrap" type="Node2D"]
+
+[node name="ChainLink" type="Sprite2D" parent="."]
+texture = ExtResource("1_jpw3q")
+
+[node name="DHZSpikedPlatform" parent="." instance=ExtResource("2_ueb11")]
+position = Vector2(0, 128)

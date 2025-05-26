@@ -106,7 +106,7 @@ func shootBullet():
 	# set position with offset
 	bullet.global_position = bulletPoint.global_position
 	bullet.scale.x = 1
-	bullet.velocity.x = 0-(direction * 200)
+	bullet.velocity.x = 0-(direction * 120)
 
 func LookAtPlayer():
 	var nearestPlayer = GlobalFunctions.get_nearest_player_x(global_position.x)
