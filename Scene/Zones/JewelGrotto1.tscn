@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://dldinsc8u4m2q"]
+[gd_scene load_steps=8 format=4 uid="uid://dldinsc8u4m2q"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_7bqi0"]
 [ext_resource type="AudioStream" uid="uid://bg1fcuqr8mk1d" path="res://Audio/Soundtrack/s2br_Jewel.ogg" id="3_y5ytd"]
@@ -7,7 +7,6 @@
 [ext_resource type="TileSet" uid="uid://ctbov0uv4xqwe" path="res://Tileset/Levels/HPZ_Tiles.tres" id="6_dtvom"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_u04jb"]
 [ext_resource type="PackedScene" uid="uid://bnn5io8fk2i4h" path="res://Entities/Gimmicks/WaterLevel.tscn" id="7_b71m7"]
-[ext_resource type="PackedScene" uid="uid://c8ohi5adbflnt" path="res://Entities/Enemies/Rexon.tscn" id="8_mb7b8"]
 
 [node name="JewelGrotto1" type="Node2D"]
 script = ExtResource("1_7bqi0")
@@ -33,6 +32,3 @@ tile_set = ExtResource("6_dtvom")
 
 [node name="WaterLevel" parent="." instance=ExtResource("7_b71m7")]
 position = Vector2(128, 744)
-
-[node name="Rexon" parent="." instance=ExtResource("8_mb7b8")]
-position = Vector2(240, 696)

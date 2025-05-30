@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwlhmktikgcot"]
+[gd_scene load_steps=6 format=3 uid="uid://bwlhmktikgcot"]
 
 [ext_resource type="Script" uid="uid://yomh5hb2nhrj" path="res://Scripts/Enemies/Gator.gd" id="1_maaoo"]
 [ext_resource type="Texture2D" uid="uid://cwsnl4vbyk15v" path="res://Graphics/Enemies/Gator.png" id="2_lybkn"]
@@ -6,8 +6,11 @@
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(40, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2taqs"]
+size = Vector2(36, 16)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_juns8"]
-size = Vector2(56, 32)
+size = Vector2(16, 32)
 
 [node name="EradiGator" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 16384
@@ -24,7 +27,8 @@ collision_mask = 528384
 
 [node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
 modulate = Color(1, 0, 0, 1)
-shape = SubResource("1")
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_2taqs")
 
 [node name="GatorSprite" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
@@ -38,7 +42,7 @@ collision_layer = 0
 collision_mask = 4096
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GatorSprite/Area2D"]
-position = Vector2(-12, -16)
+position = Vector2(8, -8)
 shape = SubResource("RectangleShape2D_juns8")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
