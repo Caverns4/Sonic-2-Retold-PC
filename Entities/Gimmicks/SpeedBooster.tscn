@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bqj1smfkc5m7n"]
 
-[ext_resource type="Script" path="res://Scripts/Gimmicks/SpeedBooster.gd" id="1"]
+[ext_resource type="Script" uid="uid://dcpq0ragawmhg" path="res://Scripts/Gimmicks/SpeedBooster.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://r7ggpq8j3dr1" path="res://Graphics/Gimmicks/speed_booster.png" id="2"]
 [ext_resource type="AudioStream" uid="uid://d3jrmv0604402" path="res://Audio/SFX/Gimmicks/s2br_Spring.wav" id="3_xkrfc"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://6hnjqkn2cl62"]
 
-[ext_resource type="Script" path="res://Scripts/Gimmicks/cpz_tipping_pipe.gd" id="1_81cbd"]
+[ext_resource type="Script" uid="uid://d25dfrbs6v6gj" path="res://Scripts/Gimmicks/cpz_tipping_pipe.gd" id="1_81cbd"]
 [ext_resource type="Texture2D" uid="uid://ceh4xfpynsrgo" path="res://Graphics/Gimmicks/CPZ_FlipPipe.png" id="1_pfa0g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vaed"]
@@ -65,8 +65,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_neu2f"]
 _data = {
-"FLIP": SubResource("Animation_bntvs"),
-"RESET": SubResource("Animation_ouf2r")
+&"FLIP": SubResource("Animation_bntvs"),
+&"RESET": SubResource("Animation_ouf2r")
 }
 
 [node name="CPZTippingPipe" type="AnimatableBody2D"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b8bt0u45oqhe6"]
 
-[ext_resource type="Script" path="res://Scripts/Objects/Lava.gd" id="2"]
+[ext_resource type="Script" uid="uid://dw34d04gdv5bx" path="res://Scripts/Objects/Lava.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://bf6cekji71vif" path="res://Graphics/Items/MonitorIcons.png" id="4_35bna"]
 
 [sub_resource type="RectangleShape2D" id="2"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://d3oh77l2rriqf"]
 
 [ext_resource type="Texture2D" uid="uid://wsytdhn6ttft" path="res://Graphics/Boss/Boss_DrillEggman_Parts.png" id="1_4d1uu"]
-[ext_resource type="Script" path="res://Scripts/Boss/DrillEggmanWheel.gd" id="1_btldt"]
+[ext_resource type="Script" uid="uid://bhk0xfvq7h4em" path="res://Scripts/Boss/DrillEggmanWheel.gd" id="1_btldt"]
 [ext_resource type="Texture2D" uid="uid://2lnekaja621m" path="res://Graphics/Boss/Boss_DrillEggman_Flash.png" id="3_csi02"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kkuw2"]
@@ -73,10 +73,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xorom"]
 _data = {
-"Back_Drive": SubResource("Animation_h1hn3"),
-"Back_RESET": SubResource("Animation_0tsuo"),
-"Front_Drive": SubResource("Animation_g0tyv"),
-"Front_RESET": SubResource("Animation_o81a5")
+&"Back_Drive": SubResource("Animation_h1hn3"),
+&"Back_RESET": SubResource("Animation_0tsuo"),
+&"Front_Drive": SubResource("Animation_g0tyv"),
+&"Front_RESET": SubResource("Animation_o81a5")
 }
 
 [node name="DrillEggmanWheel" type="CharacterBody2D"]

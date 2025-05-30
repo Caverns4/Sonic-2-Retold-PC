@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dwybbnboecmkw"]
 
-[ext_resource type="Script" path="res://Scripts/Objects/Bumper.gd" id="1"]
+[ext_resource type="Script" uid="uid://cm4dj6awr1s37" path="res://Scripts/Objects/Bumper.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://twldqgya2vgk" path="res://Graphics/Obstacles/bumpers.png" id="2"]
 [ext_resource type="AudioStream" uid="uid://twp8cryjv0r6" path="res://Audio/SFX/Objects/s2br_Bumper.wav" id="3_7wf1r"]
 

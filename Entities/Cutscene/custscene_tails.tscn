@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://c7hxeyh0pldsk"]
 
-[ext_resource type="Script" path="res://Scripts/Scene/cutscene_character.gd" id="1_ed2g8"]
+[ext_resource type="Script" uid="uid://dipdx24xvrnqt" path="res://Scripts/Scene/cutscene_character.gd" id="1_ed2g8"]
 [ext_resource type="Texture2D" uid="uid://c05fsbnx0p7xf" path="res://Graphics/Players/Tails.png" id="2_r6ojf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wk1bh"]
@@ -320,12 +320,12 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xx6dh"]
 _data = {
-"RESET": SubResource("Animation_kqvjw"),
-"crouch": SubResource("Animation_w2fhb"),
-"lookUp": SubResource("Animation_aku2q"),
-"roll": SubResource("Animation_kjg81"),
-"spinDash": SubResource("Animation_f6ajp"),
-"walk": SubResource("Animation_m245j")
+&"RESET": SubResource("Animation_kqvjw"),
+&"crouch": SubResource("Animation_w2fhb"),
+&"lookUp": SubResource("Animation_aku2q"),
+&"roll": SubResource("Animation_kjg81"),
+&"spinDash": SubResource("Animation_f6ajp"),
+&"walk": SubResource("Animation_m245j")
 }
 
 [node name="CutsceneTails" type="CharacterBody2D"]

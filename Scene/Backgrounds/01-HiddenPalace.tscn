@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://ctbov0uv4xqwe" path="res://Tileset/Levels/HPZ_Tiles.tres" id="1_pegmi"]
 [ext_resource type="Texture2D" uid="uid://bv7xfawyvcnti" path="res://Graphics/Backgrounds/HPZ/HPZ_BGE.png" id="5_7oqjc"]
-[ext_resource type="Shader" path="res://Shaders/PaletteSwapRow_Timerbased.gdshader" id="5_c00hk"]
+[ext_resource type="Shader" uid="uid://dws4ymg0bel70" path="res://Shaders/PaletteSwapRow_Timerbased.gdshader" id="5_c00hk"]
 [ext_resource type="Texture2D" uid="uid://dfrlw6lcbk380" path="res://Graphics/Backgrounds/HPZ/HPZ_BGF.png" id="6_s1ha2"]
 [ext_resource type="Texture2D" uid="uid://cqiqh84cctukt" path="res://Graphics/Backgrounds/HPZ/HPZ_BGG.png" id="7_tofdb"]
 [ext_resource type="Texture2D" uid="uid://d00d25b0d4hcy" path="res://Graphics/Palettes/hpz_Waterfallpal.png" id="9_kydc4"]
@@ -12,8 +12,8 @@ shader = ExtResource("5_c00hk")
 shader_parameter/amount = 4.0
 shader_parameter/palRows = 4.0
 shader_parameter/approximation = 0.0
-shader_parameter/time_scale = 0.1
 shader_parameter/paletteTexture = ExtResource("9_kydc4")
+shader_parameter/time_scale = 0.1
 
 [sub_resource type="Gradient" id="Gradient_eb4dv"]
 offsets = PackedFloat32Array(0, 0.25, 0.75, 1)

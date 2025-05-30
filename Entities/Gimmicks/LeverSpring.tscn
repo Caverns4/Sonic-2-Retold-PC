@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://kvy8b2y8v76e"]
 
 [ext_resource type="Texture2D" uid="uid://dcjgggeg30x8o" path="res://Graphics/Gimmicks/LeverSpring.png" id="1_bwqm6"]
-[ext_resource type="Script" path="res://Scripts/Gimmicks/lever_spring.gd" id="1_fdf1k"]
+[ext_resource type="Script" uid="uid://be1tach04km1e" path="res://Scripts/Gimmicks/lever_spring.gd" id="1_fdf1k"]
 [ext_resource type="AudioStream" uid="uid://d3jrmv0604402" path="res://Audio/SFX/Gimmicks/s2br_Spring.wav" id="3_d21ru"]
 
 [node name="LeverSpring" type="StaticBody2D"]

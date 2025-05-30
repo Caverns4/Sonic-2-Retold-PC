@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bxc21kbjhx0g3" path="res://Graphics/Gimmicks/Screw.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://5x1kqbrlpbt8" path="res://Graphics/Gimmicks/ScrewPipe.png" id="2"]
-[ext_resource type="Script" path="res://Scripts/Gimmicks/ScrewPlatform.gd" id="3"]
+[ext_resource type="Script" uid="uid://btpyc0ah1fwhe" path="res://Scripts/Gimmicks/ScrewPlatform.gd" id="3"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(64, 24)

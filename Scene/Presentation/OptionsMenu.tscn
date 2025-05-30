@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=4 uid="uid://b0livp60bisfo"]
 
 [ext_resource type="TileSet" uid="uid://bk1ere21h4285" path="res://Tileset/Menus.tres" id="1_2ksgu"]
-[ext_resource type="Script" path="res://Scripts/Level/options_menu.gd" id="1_qjo47"]
+[ext_resource type="Script" uid="uid://b0kjaiaw0tt0l" path="res://Scripts/Level/options_menu.gd" id="1_qjo47"]
 [ext_resource type="Texture2D" uid="uid://dm4ejufaxy62s" path="res://Graphics/Menus/MiniCharacters.png" id="3_6udcv"]
 [ext_resource type="FontFile" uid="uid://ml62eqfe7avn" path="res://Graphics/Fonts/small_font.png" id="3_53s41"]
 [ext_resource type="AudioStream" uid="uid://uay8t1b3i1hi" path="res://Audio/SFX/Gimmicks/s2br_Switch.wav" id="5_pyoer"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bvedeea47q2th"]
 
 [ext_resource type="Texture2D" uid="uid://pkq0mefaryx1" path="res://Graphics/Objects_Zone/DHZ_Bricks.png" id="1_kkcta"]
-[ext_resource type="Script" path="res://Scripts/Objects/dhz_spike_block.gd" id="1_s2bqd"]
+[ext_resource type="Script" uid="uid://b2dajcffwxkub" path="res://Scripts/Objects/dhz_spike_block.gd" id="1_s2bqd"]
 [ext_resource type="PackedScene" uid="uid://cfteqnft5ynr7" path="res://Entities/Hazards/Spikes.tscn" id="1_seqor"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fx3s0"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=4 uid="uid://d2ectm23ulm50"]
 
 [ext_resource type="TileSet" uid="uid://degtrdfi1sc00" path="res://Tileset/Levels/CPZ.tres" id="1_1wc77"]
-[ext_resource type="Script" path="res://Scripts/Backgrounds/15_death_egg.gd" id="1_syxry"]
+[ext_resource type="Script" uid="uid://bh6tt5g5yxwj8" path="res://Scripts/Backgrounds/15_death_egg.gd" id="1_syxry"]
 
 [node name="15-deathEgg" type="ParallaxBackground"]
 scroll_base_scale = Vector2(0, 0.9)

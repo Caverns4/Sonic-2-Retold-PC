@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://cuoyniqg8gua3"]
 
-[ext_resource type="Script" path="res://Scripts/Scene/cutscene_eggman.gd" id="1_44o7g"]
+[ext_resource type="Script" uid="uid://c4ue5qwul4rd8" path="res://Scripts/Scene/cutscene_eggman.gd" id="1_44o7g"]
 [ext_resource type="Texture2D" uid="uid://6ds1jcc8jmyf" path="res://Graphics/Boss/Eggmobile.png" id="1_vvqax"]
 [ext_resource type="Texture2D" uid="uid://d0i06mnbra5yc" path="res://Graphics/Boss/Robotnik.png" id="2_i4grn"]
 [ext_resource type="Texture2D" uid="uid://c31pi0okhicpx" path="res://Graphics/Boss/Eggmobile_Top.png" id="3_hxbva"]

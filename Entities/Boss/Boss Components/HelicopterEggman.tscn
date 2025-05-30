@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://bfcfm2qdipj7y"]
 
-[ext_resource type="Script" path="res://Scripts/Boss/HelicopterEggman.gd" id="1_adpj0"]
+[ext_resource type="Script" uid="uid://bn4d0ve0410ge" path="res://Scripts/Boss/HelicopterEggman.gd" id="1_adpj0"]
 [ext_resource type="Texture2D" uid="uid://6ds1jcc8jmyf" path="res://Graphics/Boss/Eggmobile.png" id="2_aqbo8"]
 [ext_resource type="Texture2D" uid="uid://dam0q6u1k8paq" path="res://Graphics/Boss/Jet.png" id="3_0ilxg"]
 [ext_resource type="Texture2D" uid="uid://btepj3b18ug5d" path="res://Graphics/Boss/EHZ_Chopper.png" id="3_koewv"]
@@ -183,9 +183,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fbdxo"]
 _data = {
-"CLOSE": SubResource("Animation_7tsso"),
-"RESET": SubResource("Animation_8aw2f"),
-"SPIN": SubResource("Animation_mavgo")
+&"CLOSE": SubResource("Animation_7tsso"),
+&"RESET": SubResource("Animation_8aw2f"),
+&"SPIN": SubResource("Animation_mavgo")
 }
 
 [node name="HelicopterEggman" type="CharacterBody2D"]

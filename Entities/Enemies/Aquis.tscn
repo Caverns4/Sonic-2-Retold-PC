@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://f2yjfoe6b1n7"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/aquis.gd" id="1_3kaqv"]
+[ext_resource type="Script" uid="uid://ie88kq1e6ip3" path="res://Scripts/Enemies/aquis.gd" id="1_3kaqv"]
 [ext_resource type="Texture2D" uid="uid://d0l30f6ga0acx" path="res://Graphics/Enemies/Aquis.png" id="2_nbtgr"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -96,9 +96,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pdqye"]
 _data = {
-"RESET": SubResource("Animation_scdgk"),
-"float": SubResource("Animation_gwu16"),
-"spit": SubResource("Animation_cxcvw")
+&"RESET": SubResource("Animation_scdgk"),
+&"float": SubResource("Animation_gwu16"),
+&"spit": SubResource("Animation_cxcvw")
 }
 
 [node name="Aquis" type="CharacterBody2D" groups=["Enemy"]]

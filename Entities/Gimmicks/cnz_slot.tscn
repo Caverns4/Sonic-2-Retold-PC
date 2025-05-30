@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://maxhev4qup18"]
 
 [ext_resource type="Texture2D" uid="uid://4knghu3g2j37" path="res://Graphics/Gimmicks/CNZ_Slots.png" id="1_1sglj"]
-[ext_resource type="Script" path="res://Scripts/Gimmicks/cnz_slot.gd" id="1_mem5k"]
+[ext_resource type="Script" uid="uid://ctyaufaji0jrl" path="res://Scripts/Gimmicks/cnz_slot.gd" id="1_mem5k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_870o4"]
 size = Vector2(8, 48)

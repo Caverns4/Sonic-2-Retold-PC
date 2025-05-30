@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bf6cekji71vif" path="res://Graphics/Items/MonitorIcons.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://c8qtrmw44es3g" path="res://Graphics/Items/monitors.png" id="2"]
-[ext_resource type="Script" path="res://Scripts/Objects/Monitor.gd" id="3"]
+[ext_resource type="Script" uid="uid://bqv4t5o16bw8f" path="res://Scripts/Objects/Monitor.gd" id="3"]
 [ext_resource type="AudioStream" uid="uid://jt28gfxybprb" path="res://Audio/SFX/Objects/RingStereo.wav" id="5"]
 [ext_resource type="AudioStream" uid="uid://cnxhsj32uyrg0" path="res://Audio/SFX/Objects/s2br_Destroy.wav" id="5_m8tvl"]
 [ext_resource type="Material" uid="uid://bveqi5m5ihsgj" path="res://Shaders/PlayerPalette.tres" id="6"]
@@ -222,10 +222,10 @@ resource_name = "new_animation"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b4dus"]
 _data = {
-"DestroyMonitor": SubResource("7"),
-"RESET": SubResource("8"),
-"fadeIcon": SubResource("9"),
-"new_animation": SubResource("Animation_cv3ee")
+&"DestroyMonitor": SubResource("7"),
+&"RESET": SubResource("8"),
+&"fadeIcon": SubResource("9"),
+&"new_animation": SubResource("Animation_cv3ee")
 }
 
 [node name="Monitor" type="CharacterBody2D"]

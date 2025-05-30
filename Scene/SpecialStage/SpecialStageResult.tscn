@@ -1,7 +1,7 @@
 [gd_scene load_steps=34 format=3 uid="uid://dl60ab8cdu0iq"]
 
 [ext_resource type="Texture2D" uid="uid://cf4j1ed0nh7oq" path="res://Graphics/Items/ChaosEmeralds.png" id="1"]
-[ext_resource type="Script" path="res://Scripts/Misc/SpecialStageResult.gd" id="3"]
+[ext_resource type="Script" uid="uid://chob38ab6gf8k" path="res://Scripts/Misc/SpecialStageResult.gd" id="3"]
 [ext_resource type="FontFile" uid="uid://corcgkvvv7msb" path="res://Graphics/HUD/LevelCards/font/TitleCard_Normal.png" id="3_fyibw"]
 [ext_resource type="AudioStream" uid="uid://bowp6iposfy0n" path="res://Audio/Soundtrack/s2br_Emeralds.ogg" id="4_v2hty"]
 

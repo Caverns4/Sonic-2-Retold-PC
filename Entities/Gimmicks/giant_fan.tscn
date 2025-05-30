@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bbnywgk4cq5cq"]
 
-[ext_resource type="Script" path="res://Scripts/Objects/GiantFan.gd" id="1_k2y5a"]
+[ext_resource type="Script" uid="uid://cblw3nrvpht6b" path="res://Scripts/Objects/GiantFan.gd" id="1_k2y5a"]
 [ext_resource type="Texture2D" uid="uid://b8j0jkbmfrt2u" path="res://Graphics/Gimmicks/large_turbine.png" id="2_3e6h0"]
 [ext_resource type="AudioStream" uid="uid://bvb5adxlfhcxl" path="res://Audio/SFX/Gimmicks/BigFan.wav" id="3_s1t6n"]
 

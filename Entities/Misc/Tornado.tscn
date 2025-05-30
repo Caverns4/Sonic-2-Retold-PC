@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://oce7phvjxdbv"]
 
-[ext_resource type="Script" path="res://Scripts/Misc/tornado.gd" id="1_gohbb"]
+[ext_resource type="Script" uid="uid://bbk1lqyklbxgi" path="res://Scripts/Misc/tornado.gd" id="1_gohbb"]
 [ext_resource type="Texture2D" uid="uid://efvmmjbj4otb" path="res://Graphics/Misc/Tornado_Main.png" id="2_8cebi"]
 [ext_resource type="Texture2D" uid="uid://bjf2dsnw7ea5g" path="res://Graphics/Players/Sonic.png" id="2_bfbtt"]
 [ext_resource type="Texture2D" uid="uid://c05fsbnx0p7xf" path="res://Graphics/Players/Tails.png" id="2_jit23"]
@@ -144,7 +144,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ot57m"]
 _data = {
-"RESET": SubResource("Animation_r3x4b")
+&"RESET": SubResource("Animation_r3x4b")
 }
 
 [node name="Tornado" type="CharacterBody2D"]

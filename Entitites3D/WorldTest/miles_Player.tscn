@@ -1504,13 +1504,13 @@ tracks/29/keys = PackedFloat32Array(0, 1, -0.0130177, -0.000289108, 3.69435e-06,
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5qkb3"]
 _data = {
-"Brake": SubResource("Animation_f73lj"),
-"Idle": SubResource("Animation_xj0v1"),
-"Idle2": SubResource("Animation_0tair"),
-"Jog": SubResource("Animation_bqdm2"),
-"Jump": SubResource("Animation_qltx8"),
-"Run": SubResource("Animation_6vi4n"),
-"Spring": SubResource("Animation_8veld")
+&"Brake": SubResource("Animation_f73lj"),
+&"Idle": SubResource("Animation_xj0v1"),
+&"Idle2": SubResource("Animation_0tair"),
+&"Jog": SubResource("Animation_bqdm2"),
+&"Jump": SubResource("Animation_qltx8"),
+&"Run": SubResource("Animation_6vi4n"),
+&"Spring": SubResource("Animation_8veld")
 }
 
 [node name="Miles" instance=ExtResource("1_jhly0")]

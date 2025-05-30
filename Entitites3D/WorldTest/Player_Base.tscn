@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://ble6so7nw6f7g"]
 
-[ext_resource type="Script" path="res://Scripts/World3D/player_base.gd" id="1_ghcg4"]
+[ext_resource type="Script" uid="uid://diry4f7tf701a" path="res://Scripts/World3D/player_base.gd" id="1_ghcg4"]
 [ext_resource type="AudioStream" uid="uid://vcyy3mwx3dt1" path="res://Audio/SFX/Player/s2br_Jump.wav" id="1_qnkwp"]
 [ext_resource type="AudioStream" uid="uid://clghc0siqwgp3" path="res://Audio/SFX/Player/s2br_Roll.wav" id="2_a5yyh"]
 [ext_resource type="AudioStream" uid="uid://1q4psgyqteps" path="res://Audio/SFX/Objects/CNZ_Flipper.wav" id="3_ufqct"]

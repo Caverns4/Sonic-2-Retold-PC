@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cxc6ksat00344"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/generic_projectile.gd" id="1_oo6go"]
+[ext_resource type="Script" uid="uid://bklc6yvifgigq" path="res://Scripts/Enemies/generic_projectile.gd" id="1_oo6go"]
 [ext_resource type="Texture2D" uid="uid://bpvmb7wv2yik6" path="res://Graphics/Objects_Zone/ArrowShooter.png" id="2_nlokp"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -26,7 +26,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_62pdh"]
 _data = {
-"RESET": SubResource("Animation_orbrr")
+&"RESET": SubResource("Animation_orbrr")
 }
 
 [node name="NghzArrow" type="CharacterBody2D"]

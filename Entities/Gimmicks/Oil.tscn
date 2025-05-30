@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bvtk4rs7h7sup"]
 
-[ext_resource type="Script" path="res://Scripts/Gimmicks/oil.gd" id="1_ebvky"]
+[ext_resource type="Script" uid="uid://ck1ulp5b8i57k" path="res://Scripts/Gimmicks/oil.gd" id="1_ebvky"]
 [ext_resource type="Texture2D" uid="uid://bf6cekji71vif" path="res://Graphics/Items/MonitorIcons.png" id="1_ukbot"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_363g5"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cfhj1mg80i6pr"]
 
-[ext_resource type="Script" path="res://Scripts/Gimmicks/hanging_bar.gd" id="1_hyvnr"]
+[ext_resource type="Script" uid="uid://dcsg6nkembge4" path="res://Scripts/Gimmicks/hanging_bar.gd" id="1_hyvnr"]
 [ext_resource type="Texture2D" uid="uid://kra41fcn5qvb" path="res://Graphics/Gimmicks/DHZ_HangSwitch.png" id="2_nxsen"]
 [ext_resource type="PackedScene" uid="uid://b2qs2ji487f1t" path="res://Entities/Gimmicks/Hanger.tscn" id="4_ej7dn"]
 [ext_resource type="AudioStream" uid="uid://uay8t1b3i1hi" path="res://Audio/SFX/Gimmicks/s2br_Switch.wav" id="4_eoj8a"]

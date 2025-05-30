@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bwlhmktikgcot"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/Gator.gd" id="1_maaoo"]
+[ext_resource type="Script" uid="uid://yomh5hb2nhrj" path="res://Scripts/Enemies/Gator.gd" id="1_maaoo"]
 [ext_resource type="Texture2D" uid="uid://cwsnl4vbyk15v" path="res://Graphics/Enemies/Gator.png" id="2_lybkn"]
 
 [sub_resource type="RectangleShape2D" id="1"]

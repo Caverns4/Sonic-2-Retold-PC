@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://p4f52fvi6y2s"]
 
-[ext_resource type="Script" path="res://Scripts/Objects/multi_rotating_Hazards.gd" id="1_5g4xa"]
+[ext_resource type="Script" uid="uid://uog5rla256x6" path="res://Scripts/Objects/multi_rotating_Hazards.gd" id="1_5g4xa"]
 [ext_resource type="Texture2D" uid="uid://kn8npudydsrs" path="res://Graphics/Hazards/DHZ_SpikeBall.png" id="2_mp3w8"]
 [ext_resource type="Texture2D" uid="uid://cnv0x4k5u14co" path="res://Graphics/Obstacles/DHZ_SwingChain.png" id="3_a3gcb"]
-[ext_resource type="Script" path="res://Scripts/Objects/Hazard.gd" id="4_p82b8"]
+[ext_resource type="Script" uid="uid://dy2gqcb551jcu" path="res://Scripts/Objects/Hazard.gd" id="4_p82b8"]
 [ext_resource type="Texture2D" uid="uid://bxo0l5r5ep0j4" path="res://Graphics/Obstacles/SwingPole.png" id="4_tm67j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ynubr"]

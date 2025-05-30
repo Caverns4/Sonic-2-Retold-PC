@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bct374kjctkxr"]
 
 [ext_resource type="Texture2D" uid="uid://b0rrjr0vqj386" path="res://Graphics/Items/starpost.png" id="1"]
-[ext_resource type="Script" path="res://Scripts/Objects/Checkpoint.gd" id="2"]
+[ext_resource type="Script" uid="uid://bxbwfbciuhr7r" path="res://Scripts/Objects/Checkpoint.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://bg4cj43hpx570" path="res://Audio/SFX/Objects/s2br_Checkpoint.wav" id="3_aebg5"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -93,9 +93,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cjryo"]
 _data = {
-"RESET": SubResource("3"),
-"flash": SubResource("2"),
-"spin": SubResource("4")
+&"RESET": SubResource("3"),
+&"flash": SubResource("2"),
+&"spin": SubResource("4")
 }
 
 [node name="Checkpoint" type="Area2D"]

@@ -1,13 +1,13 @@
 [gd_scene load_steps=39 format=4 uid="uid://bjavywoj00j1j"]
 
-[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
+[ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="2_533ik"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://cm1lcnrr22juy" path="res://Scene/Backgrounds/04-OilOcean.tscn" id="4_wms2a"]
-[ext_resource type="Script" path="res://Scripts/Objects/StateMovers/StateMoverMaster.gd" id="5"]
+[ext_resource type="Script" uid="uid://cqt4ecbyppstm" path="res://Scripts/Objects/StateMovers/StateMoverMaster.gd" id="5"]
 [ext_resource type="Material" uid="uid://bmldxi1kyy54f" path="res://Shaders/Materials/OOZ_OilPalette.tres" id="5_15fkl"]
 [ext_resource type="TileSet" uid="uid://qd7e8tmf376" path="res://Tileset/Levels/OOZ.tres" id="6_crde5"]
-[ext_resource type="Script" path="res://Scripts/Objects/StateMovers/StateMoverTranslational.gd" id="8"]
+[ext_resource type="Script" uid="uid://bn2tfwi81xpdy" path="res://Scripts/Objects/StateMovers/StateMoverTranslational.gd" id="8"]
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="10"]
 [ext_resource type="PackedScene" uid="uid://ra3mqewhj6kl" path="res://Entities/Hazards/Saw.tscn" id="11"]
 [ext_resource type="PackedScene" uid="uid://bvtk4rs7h7sup" path="res://Entities/Gimmicks/Oil.tscn" id="11_4ni42"]
@@ -37,7 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://cma7d8l5wmqmd" path="res://Entities/Items/LampPost.tscn" id="29_w7iey"]
 [ext_resource type="PackedScene" uid="uid://c8djwr7o6d6f7" path="res://Entities/Enemies/Octus.tscn" id="34_bvw6j"]
 [ext_resource type="PackedScene" uid="uid://bp678wjhmnwip" path="res://Entities/Boss/Submarine Eggman/GetawaySubmarine.tscn" id="37_ud3r1"]
-[ext_resource type="Script" path="res://Scripts/Misc/AltSpawn.gd" id="38_es7xl"]
+[ext_resource type="Script" uid="uid://ioiij6aukh60" path="res://Scripts/Misc/AltSpawn.gd" id="38_es7xl"]
 
 [node name="BaseZoneAct2" type="Node2D"]
 script = ExtResource("2")

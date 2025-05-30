@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://de3wh2cddw8u3"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/CoconutProjectile.gd" id="1_te7kn"]
+[ext_resource type="Script" uid="uid://bidooi0k05vyp" path="res://Scripts/Enemies/CoconutProjectile.gd" id="1_te7kn"]
 [ext_resource type="Texture2D" uid="uid://cuapaiiik0ush" path="res://Graphics/Enemies/CoconutBullet.png" id="2_u5ykj"]
 
 [sub_resource type="RectangleShape2D" id="1"]

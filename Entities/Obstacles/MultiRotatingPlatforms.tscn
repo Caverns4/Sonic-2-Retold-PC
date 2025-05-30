@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c3yq46ay5g4ov"]
 
 [ext_resource type="Texture2D" uid="uid://bxo0l5r5ep0j4" path="res://Graphics/Obstacles/SwingPole.png" id="1_2e360"]
-[ext_resource type="Script" path="res://Scripts/Objects/multi_rotating_platforms.gd" id="1_4foj7"]
+[ext_resource type="Script" uid="uid://bd6l0hq1eteea" path="res://Scripts/Objects/multi_rotating_platforms.gd" id="1_4foj7"]
 [ext_resource type="Texture2D" uid="uid://cjhwfrg8xifj5" path="res://Graphics/Obstacles/platform_64_2.png" id="2_pnt1a"]
 [ext_resource type="Texture2D" uid="uid://dh42s3d2vapgn" path="res://Graphics/Obstacles/SwingChain.png" id="3_cbeu8"]
 

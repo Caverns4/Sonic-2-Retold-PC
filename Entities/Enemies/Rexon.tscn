@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c8ohi5adbflnt"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/rexon.gd" id="1_dscdr"]
+[ext_resource type="Script" uid="uid://rgew1wl3kg64" path="res://Scripts/Enemies/rexon.gd" id="1_dscdr"]
 [ext_resource type="Texture2D" uid="uid://c1uecljh2hxsq" path="res://Graphics/Enemies/Rexon.png" id="1_jwynl"]
 [ext_resource type="PackedScene" uid="uid://blun7ipxkwbu5" path="res://Entities/Enemies/RexonHead.tscn" id="2_ulpo3"]
 

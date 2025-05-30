@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://lu4m6y6y0hw8"]
 
 [ext_resource type="Texture2D" uid="uid://b5cdl1i7foiua" path="res://Graphics/Misc/animals.png" id="1_d7mtc"]
-[ext_resource type="Script" path="res://Scripts/Scene/cutscene_animal.gd" id="1_e0su0"]
+[ext_resource type="Script" uid="uid://cgqshdv6s0sdp" path="res://Scripts/Scene/cutscene_animal.gd" id="1_e0su0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_htiwp"]
 size = Vector2(20, 32)

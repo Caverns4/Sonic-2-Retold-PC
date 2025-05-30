@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://boorjic58wlh7"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/pterabot.gd" id="1_1srhs"]
+[ext_resource type="Script" uid="uid://cklhd54dh62hv" path="res://Scripts/Enemies/pterabot.gd" id="1_1srhs"]
 [ext_resource type="Texture2D" uid="uid://663c42mndvor" path="res://Graphics/Enemies/Pterabot.png" id="2_v74gc"]
 [ext_resource type="Texture2D" uid="uid://clihuhs0po6p0" path="res://Graphics/Enemies/BuzzerFlame.png" id="3_oelgs"]
 
@@ -62,9 +62,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u4hdj"]
 _data = {
-"AIM": SubResource("Animation_yn16u"),
-"FLY": SubResource("Animation_252ju"),
-"RESET": SubResource("Animation_ue8i5")
+&"AIM": SubResource("Animation_yn16u"),
+&"FLY": SubResource("Animation_252ju"),
+&"RESET": SubResource("Animation_ue8i5")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tpn7a"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=49 format=4 uid="uid://cun7sa0v2mwiq"]
 
-[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_snbg3"]
+[ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_snbg3"]
 [ext_resource type="AudioStream" uid="uid://bjoynvot2wdjm" path="res://Audio/Soundtrack/s2br_HiddenPalace.ogg" id="2_ggkcw"]
 [ext_resource type="AudioStream" uid="uid://bg1fcuqr8mk1d" path="res://Audio/Soundtrack/s2br_Jewel.ogg" id="2_tvhrw"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_avawk"]
@@ -200,8 +200,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4wbty"]
 _data = {
-"OPEN": SubResource("Animation_uaefk"),
-"RESET": SubResource("Animation_6uvsk")
+&"OPEN": SubResource("Animation_uaefk"),
+&"RESET": SubResource("Animation_6uvsk")
 }
 
 [node name="HiddenPalace1" type="Node2D"]

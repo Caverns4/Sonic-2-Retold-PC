@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://b7giv32j13rep"]
 
-[ext_resource type="Script" path="res://Scripts/Objects/burner_flames.gd" id="1_se516"]
+[ext_resource type="Script" uid="uid://b0xwv2qh8p5rv" path="res://Scripts/Objects/burner_flames.gd" id="1_se516"]
 [ext_resource type="Texture2D" uid="uid://d3nkubq3wp1v0" path="res://Graphics/Gimmicks/BurnerFlame.png" id="2_scag2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ey33q"]

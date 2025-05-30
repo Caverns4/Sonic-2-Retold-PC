@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ctg1aeiewvyvj"]
 
-[ext_resource type="Script" path="res://Scripts/Objects/ForceRoll.gd" id="1"]
+[ext_resource type="Script" uid="uid://b67byx5drj82c" path="res://Scripts/Objects/ForceRoll.gd" id="1"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(16, 16)

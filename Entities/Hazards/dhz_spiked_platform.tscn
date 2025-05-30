@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b5tqox7ea5irf"]
 
 [ext_resource type="Texture2D" uid="uid://hduc161clvjj" path="res://Graphics/Hazards/DHZ_SpikePlat.png" id="1_8iajd"]
-[ext_resource type="Script" path="res://Scripts/Objects/dhz_spiked_platform.gd" id="1_hgwo4"]
+[ext_resource type="Script" uid="uid://bqc1vmc45jt1u" path="res://Scripts/Objects/dhz_spiked_platform.gd" id="1_hgwo4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_24a7w"]
 size = Vector2(64, 16)

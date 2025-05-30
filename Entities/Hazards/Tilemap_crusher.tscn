@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bkbwv08se825p"]
 
-[ext_resource type="Script" path="res://Scripts/Objects/tilemap_crusher.gd" id="1_whst4"]
+[ext_resource type="Script" uid="uid://b4w88sox0061b" path="res://Scripts/Objects/tilemap_crusher.gd" id="1_whst4"]
 [ext_resource type="AudioStream" uid="uid://cdtor5hfjq5w1" path="res://Audio/SFX/Player/s2br_Stomp.wav" id="2_botkm"]
 [ext_resource type="AudioStream" uid="uid://dc228nmty7luw" path="res://Audio/SFX/Gimmicks/s2br_Collapse.wav" id="3_r0mvk"]
 

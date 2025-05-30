@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://vh0ailk0432j"]
 
-[ext_resource type="Script" path="res://Scripts/Boss/BossBoundrySetter.gd" id="1"]
+[ext_resource type="Script" uid="uid://t6egretdsv1o" path="res://Scripts/Boss/BossBoundrySetter.gd" id="1"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(32, 224)

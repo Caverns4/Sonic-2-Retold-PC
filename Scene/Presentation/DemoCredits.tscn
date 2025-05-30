@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://bk1ere21h4285" path="res://Tileset/Menus.tres" id="1_2wysr"]
 [ext_resource type="FontFile" uid="uid://btb3lh3cpnc6x" path="res://Graphics/Fonts/mid_font.png" id="1_kd5bv"]
 [ext_resource type="FontFile" uid="uid://ml62eqfe7avn" path="res://Graphics/Fonts/small_font.png" id="2_4wis2"]
-[ext_resource type="Script" path="res://Scripts/Level/DemoCredits.gd" id="4_3jtjl"]
+[ext_resource type="Script" uid="uid://cd1s75dw208xp" path="res://Scripts/Level/DemoCredits.gd" id="4_3jtjl"]
 
 [node name="DemoCredits" type="Node2D"]
 script = ExtResource("4_3jtjl")

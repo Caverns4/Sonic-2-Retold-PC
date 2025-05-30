@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ch1qrcq0vtwe0"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/chop_chop.gd" id="1_povk6"]
+[ext_resource type="Script" uid="uid://dngjlydrewgk6" path="res://Scripts/Enemies/chop_chop.gd" id="1_povk6"]
 [ext_resource type="Texture2D" uid="uid://dluaa70276puw" path="res://Graphics/Enemies/ChopChop.png" id="2_lr8at"]
 
 [sub_resource type="RectangleShape2D" id="1"]

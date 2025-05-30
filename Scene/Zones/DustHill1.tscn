@@ -1,6 +1,6 @@
 [gd_scene load_steps=31 format=4 uid="uid://cuf10h0hh7iep"]
 
-[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_3gh4r"]
+[ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_3gh4r"]
 [ext_resource type="AudioStream" uid="uid://c8y5q77kxn4ap" path="res://Audio/Soundtrack/s2br_DustHill.ogg" id="2_pw2ks"]
 [ext_resource type="AudioStream" uid="uid://bg1fcuqr8mk1d" path="res://Audio/Soundtrack/s2br_Jewel.ogg" id="2_vln36"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="4_uwgof"]

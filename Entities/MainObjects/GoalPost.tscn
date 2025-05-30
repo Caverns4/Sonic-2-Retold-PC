@@ -102,12 +102,12 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jy7ik"]
 _data = {
-"Amy": SubResource("Animation_crdai"),
-"Knuckles": SubResource("5"),
-"RESET": SubResource("2"),
-"Sonic": SubResource("3"),
-"Spinner": SubResource("1"),
-"Tails": SubResource("4")
+&"Amy": SubResource("Animation_crdai"),
+&"Knuckles": SubResource("5"),
+&"RESET": SubResource("2"),
+&"Sonic": SubResource("3"),
+&"Spinner": SubResource("1"),
+&"Tails": SubResource("4")
 }
 
 [node name="GoalPost" type="Sprite2D"]

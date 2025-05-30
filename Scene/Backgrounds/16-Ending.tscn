@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=4 uid="uid://dbcm2jw8chlrk"]
 
-[ext_resource type="Script" path="res://Scripts/Backgrounds/Island_ParallaxBackground.gd" id="1_wc8ys"]
+[ext_resource type="Script" uid="uid://d6f0t1i4fmqb" path="res://Scripts/Backgrounds/Island_ParallaxBackground.gd" id="1_wc8ys"]
 [ext_resource type="TileSet" uid="uid://ghcr0mgylarb" path="res://Tileset/Island.tres" id="2_itot0"]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://bma2174bd2vai"]
 
 [ext_resource type="Texture2D" uid="uid://chcgf78a1t8ik" path="res://Graphics/Special Stage/SS_BG.png" id="1_mx8be"]
-[ext_resource type="Script" path="res://Scripts/Level/SpecialStage.gd" id="1_x3k1r"]
+[ext_resource type="Script" uid="uid://cencvxfcrxw0v" path="res://Scripts/Level/SpecialStage.gd" id="1_x3k1r"]
 [ext_resource type="PackedScene" uid="uid://c8ubncxkma30o" path="res://Entitites3D/special_stage_character.tscn" id="3_rcx61"]
 [ext_resource type="PackedScene" uid="uid://cyx38ouxk43dn" path="res://Entitites3D/SpecialHUD.tscn" id="3_ydt6i"]
 [ext_resource type="Texture2D" uid="uid://b2m6ntibathle" path="res://Graphics/Special Stage/TestMat.png" id="4_yfr13"]

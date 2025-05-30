@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dh3178ok4om00"]
 
-[ext_resource type="Script" path="res://Scripts/Gimmicks/player_reset_field.gd" id="1_kuelq"]
+[ext_resource type="Script" uid="uid://cvh43kji6jbqw" path="res://Scripts/Gimmicks/player_reset_field.gd" id="1_kuelq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s7ymp"]
 size = Vector2(32, 32)

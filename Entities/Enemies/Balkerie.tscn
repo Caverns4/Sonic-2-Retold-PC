@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://br14tmcem027e"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/balkerie.gd" id="1_r46kj"]
+[ext_resource type="Script" uid="uid://cwibh50c6ti0j" path="res://Scripts/Enemies/balkerie.gd" id="1_r46kj"]
 [ext_resource type="Texture2D" uid="uid://cpvuiuu4utypu" path="res://Graphics/Enemies/Balkerie.png" id="2_10bre"]
 [ext_resource type="Texture2D" uid="uid://clihuhs0po6p0" path="res://Graphics/Enemies/BuzzerFlame.png" id="3_kegpg"]
 
@@ -95,10 +95,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m6eml"]
 _data = {
-"Fly": SubResource("Animation_cnx6m"),
-"Launch": SubResource("Animation_i4237"),
-"RESET": SubResource("Animation_2l24n"),
-"Wait": SubResource("Animation_fiai7")
+&"Fly": SubResource("Animation_cnx6m"),
+&"Launch": SubResource("Animation_i4237"),
+&"RESET": SubResource("Animation_2l24n"),
+&"Wait": SubResource("Animation_fiai7")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4c8hw"]

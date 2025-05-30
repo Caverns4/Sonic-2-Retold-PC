@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b4cnm1ick0ilt"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/EnemyBase.gd" id="1_hb6tl"]
+[ext_resource type="Script" uid="uid://btpe51l5imfjy" path="res://Scripts/Enemies/EnemyBase.gd" id="1_hb6tl"]
 [ext_resource type="Texture2D" uid="uid://tc2fqtaofvrf" path="res://Graphics/Enemies/PropellerShaft.png" id="2_wwhug"]
 
 [sub_resource type="RectangleShape2D" id="1"]

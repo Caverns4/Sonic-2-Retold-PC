@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://ra3mqewhj6kl"]
 
 [ext_resource type="Texture2D" uid="uid://cmjgdekpeg5ql" path="res://Graphics/Hazards/sawblade.png" id="1"]
-[ext_resource type="Script" path="res://Scripts/Objects/Hazard.gd" id="2"]
+[ext_resource type="Script" uid="uid://dy2gqcb551jcu" path="res://Scripts/Objects/Hazard.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://bbs3g7tgral72" path="res://Audio/SFX/Objects/BuzzSaw.wav" id="3"]
 
 [sub_resource type="CircleShape2D" id="1"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=4 uid="uid://skb3vyib11ye"]
 
-[ext_resource type="Shader" path="res://Shaders/PaletteSwapRow_Timerbased.gdshader" id="1_cg4sc"]
+[ext_resource type="Shader" uid="uid://dws4ymg0bel70" path="res://Shaders/PaletteSwapRow_Timerbased.gdshader" id="1_cg4sc"]
 [ext_resource type="TileSet" uid="uid://degtrdfi1sc00" path="res://Tileset/Levels/CPZ.tres" id="2_2whns"]
 [ext_resource type="Texture2D" uid="uid://dhtxsayycsc6c" path="res://Graphics/Palettes/CPZFlashPal.png" id="2_ti4hc"]
 
@@ -9,8 +9,8 @@ shader = ExtResource("1_cg4sc")
 shader_parameter/amount = 4.0
 shader_parameter/palRows = 20.0
 shader_parameter/approximation = 0.01
-shader_parameter/time_scale = 0.1
 shader_parameter/paletteTexture = ExtResource("2_ti4hc")
+shader_parameter/time_scale = 0.1
 
 [sub_resource type="Gradient" id="Gradient_d38bd"]
 colors = PackedColorArray(0, 0, 0, 1, 0.266667, 0, 0.133333, 1)

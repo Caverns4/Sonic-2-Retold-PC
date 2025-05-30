@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://lc6u37tnp7td"]
 
-[ext_resource type="Script" path="res://Scripts/Objects/Hazard.gd" id="1_bnmsc"]
-[ext_resource type="Script" path="res://Scripts/Objects/ooz_spiker.gd" id="1_j4q4v"]
+[ext_resource type="Script" uid="uid://dy2gqcb551jcu" path="res://Scripts/Objects/Hazard.gd" id="1_bnmsc"]
+[ext_resource type="Script" uid="uid://cess8udlw6a8j" path="res://Scripts/Objects/ooz_spiker.gd" id="1_j4q4v"]
 [ext_resource type="Texture2D" uid="uid://chsri3gunhyyl" path="res://Graphics/Hazards/OOZ_Spiker.png" id="2_h1xmo"]
 [ext_resource type="AudioStream" uid="uid://dx8m6j4k4mblh" path="res://Audio/SFX/Gimmicks/SpikesClash.wav" id="5_afua8"]
 

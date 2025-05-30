@@ -1,6 +1,6 @@
 [gd_scene load_steps=36 format=4 uid="uid://ecnvkbx6eipx"]
 
-[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_ednaa"]
+[ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_ednaa"]
 [ext_resource type="AudioStream" uid="uid://c8y5q77kxn4ap" path="res://Audio/Soundtrack/s2br_DustHill.ogg" id="2_xwbm1"]
 [ext_resource type="AudioStream" uid="uid://bg1fcuqr8mk1d" path="res://Audio/Soundtrack/s2br_Jewel.ogg" id="3_h5jpw"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_57iih"]
@@ -24,7 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://dq7iu2jaofqew" path="res://Entities/Misc/character_cameo.tscn" id="18_4ii5f"]
 [ext_resource type="PackedScene" uid="uid://bvedeea47q2th" path="res://Entities/ZoneObjects/DHZ_SpikeBlock.tscn" id="18_f6ivo"]
 [ext_resource type="Texture2D" uid="uid://cnv0x4k5u14co" path="res://Graphics/Obstacles/DHZ_SwingChain.png" id="18_l02x7"]
-[ext_resource type="Script" path="res://Scripts/Misc/AltSpawn.gd" id="19_6lkex"]
+[ext_resource type="Script" uid="uid://ioiij6aukh60" path="res://Scripts/Misc/AltSpawn.gd" id="19_6lkex"]
 [ext_resource type="Texture2D" uid="uid://bwtd30ithktn1" path="res://Graphics/Misc/RistarCameo.png" id="19_p8y53"]
 [ext_resource type="PackedScene" uid="uid://bkbwv08se825p" path="res://Entities/Hazards/Tilemap_crusher.tscn" id="19_qn4t5"]
 [ext_resource type="PackedScene" uid="uid://b5jx2pgq23cn0" path="res://Entities/ZoneObjects/DHZ_Stomper.tscn" id="20_v3mss"]

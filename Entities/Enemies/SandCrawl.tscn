@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dx8gmrsewm52j"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/sand_crawl.gd" id="1_7jr54"]
+[ext_resource type="Script" uid="uid://d8hc5c2n8h2d" path="res://Scripts/Enemies/sand_crawl.gd" id="1_7jr54"]
 [ext_resource type="Texture2D" uid="uid://i6vt781cqtmj" path="res://Graphics/Enemies/Crawl_Stationary.png" id="2_vfl2o"]
 [ext_resource type="Texture2D" uid="uid://c5ml0tstxl2n8" path="res://Graphics/Enemies/Crawl_Dirt.png" id="3_6uxal"]
 

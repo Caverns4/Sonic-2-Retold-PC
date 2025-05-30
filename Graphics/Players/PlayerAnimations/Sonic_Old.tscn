@@ -1,6 +1,6 @@
 [gd_scene load_steps=65 format=3 uid="uid://bihqiv8o4yn0"]
 
-[ext_resource type="Shader" path="res://Shaders/PaletteSwapRow.gdshader" id="1_mki7d"]
+[ext_resource type="Shader" uid="uid://drq4hwqwwn03c" path="res://Shaders/PaletteSwapRow.gdshader" id="1_mki7d"]
 [ext_resource type="Texture2D" uid="uid://cqk04hqgn2v8b" path="res://Graphics/Players/Sonic_Beta.png" id="2_f1p4t"]
 [ext_resource type="Texture2D" uid="uid://cb15hqvojyfdf" path="res://Graphics/Palettes/SuperSonicPal_old.png" id="2_i8rn3"]
 [ext_resource type="Texture2D" uid="uid://dlomjk6vm15ep" path="res://Graphics/Misc/DashDust.png" id="3_ucwrt"]
@@ -985,50 +985,50 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_36uej"]
 _data = {
-"RESET": SubResource("86"),
-"air": SubResource("108"),
-"clingVerticalBar": SubResource("Animation_3l35s"),
-"clingVerticalBarOffset": SubResource("Animation_l0c1k"),
-"corkScrew": SubResource("76"),
-"corkScrewOffset": SubResource("88"),
-"crouch": SubResource("77"),
-"current": SubResource("Animation_tn47m"),
-"die": SubResource("98"),
-"dropDash": SubResource("107"),
-"drown": SubResource("99"),
-"edge1": SubResource("105"),
-"edge2": SubResource("104"),
-"edge_super": SubResource("110"),
-"grabVerticalBar": SubResource("123"),
-"grabVerticalBarOffset": SubResource("124"),
-"hang": SubResource("112"),
-"hangShimmy": SubResource("Animation_pv58b"),
-"hurt": SubResource("78"),
-"idle": SubResource("79"),
-"idle1": SubResource("113"),
-"idle2": SubResource("114"),
-"idle3": SubResource("116"),
-"idle4": SubResource("117"),
-"idle5": SubResource("118"),
-"idle_super": SubResource("109"),
-"lookUp": SubResource("80"),
-"peelOut": SubResource("87"),
-"push": SubResource("103"),
-"roll": SubResource("81"),
-"run": SubResource("82"),
-"skid": SubResource("100"),
-"skidTurn": SubResource("101"),
-"slide": SubResource("120"),
-"spinDash": SubResource("83"),
-"spring": SubResource("84"),
-"springScrew": SubResource("119"),
-"super": SubResource("97"),
-"swingHorizontalBarMHZ": SubResource("Animation_d563c"),
-"swingVerticalBar": SubResource("121"),
-"swingVerticalBarManaged": SubResource("125"),
-"swingVerticalBarOffset": SubResource("122"),
-"walk": SubResource("85"),
-"yRotation": SubResource("126")
+&"RESET": SubResource("86"),
+&"air": SubResource("108"),
+&"clingVerticalBar": SubResource("Animation_3l35s"),
+&"clingVerticalBarOffset": SubResource("Animation_l0c1k"),
+&"corkScrew": SubResource("76"),
+&"corkScrewOffset": SubResource("88"),
+&"crouch": SubResource("77"),
+&"current": SubResource("Animation_tn47m"),
+&"die": SubResource("98"),
+&"dropDash": SubResource("107"),
+&"drown": SubResource("99"),
+&"edge1": SubResource("105"),
+&"edge2": SubResource("104"),
+&"edge_super": SubResource("110"),
+&"grabVerticalBar": SubResource("123"),
+&"grabVerticalBarOffset": SubResource("124"),
+&"hang": SubResource("112"),
+&"hangShimmy": SubResource("Animation_pv58b"),
+&"hurt": SubResource("78"),
+&"idle": SubResource("79"),
+&"idle1": SubResource("113"),
+&"idle2": SubResource("114"),
+&"idle3": SubResource("116"),
+&"idle4": SubResource("117"),
+&"idle5": SubResource("118"),
+&"idle_super": SubResource("109"),
+&"lookUp": SubResource("80"),
+&"peelOut": SubResource("87"),
+&"push": SubResource("103"),
+&"roll": SubResource("81"),
+&"run": SubResource("82"),
+&"skid": SubResource("100"),
+&"skidTurn": SubResource("101"),
+&"slide": SubResource("120"),
+&"spinDash": SubResource("83"),
+&"spring": SubResource("84"),
+&"springScrew": SubResource("119"),
+&"super": SubResource("97"),
+&"swingHorizontalBarMHZ": SubResource("Animation_d563c"),
+&"swingVerticalBar": SubResource("121"),
+&"swingVerticalBarManaged": SubResource("125"),
+&"swingVerticalBarOffset": SubResource("122"),
+&"walk": SubResource("85"),
+&"yRotation": SubResource("126")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b1kv7"]
@@ -1149,9 +1149,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yhl61"]
 _data = {
-"Flash": SubResource("Animation_o1vbe"),
-"PowerDown": SubResource("Animation_t7log"),
-"RESET": SubResource("Animation_y01gt")
+&"Flash": SubResource("Animation_o1vbe"),
+&"PowerDown": SubResource("Animation_t7log"),
+&"RESET": SubResource("Animation_y01gt")
 }
 
 [node name="Sonic" type="Node2D"]

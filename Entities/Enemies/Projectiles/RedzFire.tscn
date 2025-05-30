@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bm4e2oyt0wjbm"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/redz_fire.gd" id="1_xpycd"]
+[ext_resource type="Script" uid="uid://b6weoijxeg0se" path="res://Scripts/Enemies/redz_fire.gd" id="1_xpycd"]
 [ext_resource type="Texture2D" uid="uid://b6xuwowbbovjp" path="res://Graphics/Enemies/RedzFire.png" id="2_bmsdi"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -24,7 +24,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dvgr6"]
 _data = {
-"RESET": SubResource("Animation_51ir3")
+&"RESET": SubResource("Animation_51ir3")
 }
 
 [node name="RedzFire" type="CharacterBody2D"]

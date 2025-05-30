@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c43isa3fib6s6"]
 
 [ext_resource type="Texture2D" uid="uid://kbe5exva8pfl" path="res://Graphics/Gimmicks/CurrentPole.png" id="1_s3624"]
-[ext_resource type="Script" path="res://Scripts/Gimmicks/WaterBar.gd" id="2_nky22"]
+[ext_resource type="Script" uid="uid://lub3v4rknmd1" path="res://Scripts/Gimmicks/WaterBar.gd" id="2_nky22"]
 [ext_resource type="AudioStream" uid="uid://q41osdy626gj" path="res://Audio/SFX/Player/s2br_Grab.wav" id="3_p7kjm"]
 
 [sub_resource type="RectangleShape2D" id="2"]

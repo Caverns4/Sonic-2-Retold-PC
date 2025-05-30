@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://cmopfebsar5fp"]
 
-[ext_resource path="res://Scripts/Misc/BreakableBlockPiece.gd" type="Script" id=1]
-[ext_resource path="res://Graphics/Obstacles/Blocks/breakable_block.png" type="Texture2D" id=2]
+[ext_resource type="Script" uid="uid://dr4orb2e81vvb" path="res://Scripts/Misc/BreakableBlockPiece.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dnmy18lc2iyh6" path="res://Graphics/Obstacles/Blocks/breakable_block.png" id="2"]
 
 [node name="BlockPiece" type="Sprite2D"]
-texture = ExtResource( 2 )
+texture = ExtResource("2")
 region_enabled = true
-region_rect = Rect2( 0, 0, 16, 16 )
-script = ExtResource( 1 )
+region_rect = Rect2(0, 0, 16, 16)
+script = ExtResource("1")

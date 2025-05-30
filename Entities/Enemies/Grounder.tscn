@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://coe83pap1gotn"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/grounder.gd" id="1_yhgh2"]
+[ext_resource type="Script" uid="uid://c52f7t2m5rvh1" path="res://Scripts/Enemies/grounder.gd" id="1_yhgh2"]
 [ext_resource type="Texture2D" uid="uid://dgpd0rq4u7li7" path="res://Graphics/Enemies/Grounder.png" id="2_tx5nm"]
 [ext_resource type="Texture2D" uid="uid://c5uvkroc7rufo" path="res://Graphics/Enemies/GrounderBrick.png" id="3_0cg2t"]
 

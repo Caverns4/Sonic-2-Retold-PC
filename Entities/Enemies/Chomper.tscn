@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b4oxfl2msl6e6"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/Masher.gd" id="1"]
-[ext_resource type="Script" path="res://Scripts/Enemies/Masher_Parent.gd" id="1_00ror"]
+[ext_resource type="Script" uid="uid://bbnusf3p7oc5o" path="res://Scripts/Enemies/Masher.gd" id="1"]
+[ext_resource type="Script" uid="uid://dfqm1lmm2exc7" path="res://Scripts/Enemies/Masher_Parent.gd" id="1_00ror"]
 [ext_resource type="Texture2D" uid="uid://c6128d5u50r86" path="res://Graphics/Enemies/Masher.png" id="2_mvux8"]
 
 [sub_resource type="RectangleShape2D" id="1"]

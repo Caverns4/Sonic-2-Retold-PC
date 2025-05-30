@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://d3l3pbqwkrb80"]
 
-[ext_resource type="Script" path="res://Scripts/Gimmicks/geyser.gd" id="1_2lu2q"]
+[ext_resource type="Script" uid="uid://bs6b64xd2ky8w" path="res://Scripts/Gimmicks/geyser.gd" id="1_2lu2q"]
 [ext_resource type="Texture2D" uid="uid://524swyhho744" path="res://Graphics/Gimmicks/HPZGeyser.png" id="1_qr3ej"]
 [ext_resource type="Texture2D" uid="uid://86tferhff7o" path="res://Graphics/Gimmicks/HPZGeyser_Extend.png" id="2_ujua3"]
 

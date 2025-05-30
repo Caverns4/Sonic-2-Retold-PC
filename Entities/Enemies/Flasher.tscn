@@ -1,12 +1,53 @@
 [gd_scene load_steps=12 format=3 uid="uid://hl1q1loogiyw"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/flasher.gd" id="1_3r5q2"]
+[ext_resource type="Script" uid="uid://bprtxc6dsfy3" path="res://Scripts/Enemies/flasher.gd" id="1_3r5q2"]
 [ext_resource type="Texture2D" uid="uid://ddvy6g30rxrq3" path="res://Graphics/Enemies/Flasher.png" id="2_ldsn8"]
-[ext_resource type="Script" path="res://Scripts/Objects/Hazard.gd" id="4_6kn75"]
+[ext_resource type="Script" uid="uid://dy2gqcb551jcu" path="res://Scripts/Objects/Hazard.gd" id="4_6kn75"]
 [ext_resource type="Texture2D" uid="uid://d2mbnnoh032lo" path="res://Graphics/Light_Glow.png" id="4_cbqp0"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_rxe77"]
+resource_name = "FadeOut"
+length = 0.05
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlasherSprite/Light:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlasherSprite/PointLight2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.02),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlasherSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_5d5xy"]
 resource_name = "Flicker"
@@ -154,53 +195,12 @@ tracks/2/keys = {
 "values": [2.0, 0.5, 2.0]
 }
 
-[sub_resource type="Animation" id="Animation_rxe77"]
-resource_name = "FadeOut"
-length = 0.05
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FlasherSprite/Light:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.03),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FlasherSprite/PointLight2D:energy")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.02),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FlasherSprite:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e33rt"]
 _data = {
-"FadeOut": SubResource("Animation_rxe77"),
-"Flicker": SubResource("Animation_5d5xy"),
-"RESET": SubResource("Animation_d320a"),
-"Shock": SubResource("Animation_tandh")
+&"FadeOut": SubResource("Animation_rxe77"),
+&"Flicker": SubResource("Animation_5d5xy"),
+&"RESET": SubResource("Animation_d320a"),
+&"Shock": SubResource("Animation_tandh")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f8uw7"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://depibnkc7jblc"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/EnemyProjectileBase.gd" id="1"]
+[ext_resource type="Script" uid="uid://cwcm0lgvpeo47" path="res://Scripts/Enemies/EnemyProjectileBase.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://2xwabbrkhjjy" path="res://Graphics/Enemies/BuzzerS2BR_Bullet.png" id="3_bdjws"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -40,8 +40,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3bstv"]
 _data = {
-"RESET": SubResource("Animation_exypd"),
-"default": SubResource("Animation_mgu5h")
+&"RESET": SubResource("Animation_exypd"),
+&"default": SubResource("Animation_mgu5h")
 }
 
 [node name="EnemyProjectileBase" type="CharacterBody2D"]

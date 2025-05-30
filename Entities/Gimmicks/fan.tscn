@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bbf1sa8l70ygh"]
 
-[ext_resource type="Script" path="res://Scripts/Gimmicks/Fan.gd" id="1_5mjmq"]
+[ext_resource type="Script" uid="uid://byffk5lj1nvgf" path="res://Scripts/Gimmicks/Fan.gd" id="1_5mjmq"]
 [ext_resource type="Texture2D" uid="uid://oqw0ejlt50r3" path="res://Graphics/Gimmicks/OOZ_Fans.png" id="2_rhuiq"]
 [ext_resource type="AudioStream" uid="uid://bbng42jqn5isl" path="res://Audio/SFX/Gimmicks/SmallFan.wav" id="3_206io"]
 

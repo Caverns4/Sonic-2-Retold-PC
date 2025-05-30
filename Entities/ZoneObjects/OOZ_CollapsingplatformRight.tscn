@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=4 uid="uid://de6ceeaontr6v"]
 
 [ext_resource type="TileSet" uid="uid://dscnpghqp0trm" path="res://Graphics/Tiles/OOZPlatform.tres" id="1_kppkc"]
-[ext_resource type="Script" path="res://Scripts/Objects/CollapsePlatform.gd" id="1_o8ff0"]
+[ext_resource type="Script" uid="uid://blmu8j1jhwnr4" path="res://Scripts/Objects/CollapsePlatform.gd" id="1_o8ff0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfd08"]
 size = Vector2(128, 8)

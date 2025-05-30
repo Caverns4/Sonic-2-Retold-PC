@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://dcw6jbk0f0o84"]
 
-[ext_resource type="Script" path="res://Scripts/Backgrounds/HTZ_ParallaxBackground.gd" id="1_qg26d"]
+[ext_resource type="Script" uid="uid://5hl4x63d5vcv" path="res://Scripts/Backgrounds/HTZ_ParallaxBackground.gd" id="1_qg26d"]
 [ext_resource type="Texture2D" uid="uid://dm2gyyx3l216e" path="res://Graphics/Backgrounds/HTZ/HTZ_BGA.png" id="2_grm36"]
 [ext_resource type="Texture2D" uid="uid://n5mhrkf0mwdb" path="res://Graphics/Backgrounds/HTZ/HTZ_BGC.png" id="3_njrbt"]
 [ext_resource type="Texture2D" uid="uid://bv37541nhyqyt" path="res://Graphics/Backgrounds/HTZ/HTZ_BGD.png" id="4_jjur1"]

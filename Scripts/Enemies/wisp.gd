@@ -29,16 +29,14 @@ func _physics_process(delta: float) -> void:
 			stateTimer -= delta
 			if stateTimer < 0.0:
 				state = STATES.WAIT
-				var temp = randi_range(0,32)
-				stateTimer = temp/60.0
+				stateTimer = (randi_range(0,32))/60.0
 				velocity = Vector2.ZERO
 			else:
 				var target = GlobalFunctions.get_orientation_to_player(global_position)
-				var temp = global_position-target
-				direction = 0-sign(temp.x)
+				direction = sign(target.x)
 				if direction == 0: direction = -1
-				velocity.x += 0-sign(temp.x)*4
-				velocity.y += 0-sign(temp.y)*4
+				velocity.x += sign(target.x)*4
+				velocity.y += sign(target.y)*4
 				
 				velocity.x = clampf(velocity.x,-120,120)
 				velocity.y = clampf(velocity.y,-120,120)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ofg8xes04l1m"]
 
 [ext_resource type="Texture2D" uid="uid://cbwebn52lec80" path="res://Graphics/Misc/score_popup.png" id="1"]
-[ext_resource type="Script" path="res://Scripts/Misc/Score.gd" id="2"]
+[ext_resource type="Script" uid="uid://dcjgec20jd8ju" path="res://Scripts/Misc/Score.gd" id="2"]
 
 [node name="Score" type="Node2D"]
 script = ExtResource("2")

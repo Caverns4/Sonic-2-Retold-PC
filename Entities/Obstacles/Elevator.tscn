@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c2t7hwn0iln3x"]
 
-[ext_resource type="Script" path="res://Scripts/Objects/Elevator.gd" id="1_n1lml"]
-[ext_resource type="Script" path="res://Scripts/Objects/PlatformChild.gd" id="2_h8iaq"]
+[ext_resource type="Script" uid="uid://47rnj17t3ib1" path="res://Scripts/Objects/Elevator.gd" id="1_n1lml"]
+[ext_resource type="Script" uid="uid://52rnrehskii1" path="res://Scripts/Objects/PlatformChild.gd" id="2_h8iaq"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 resource_local_to_scene = true

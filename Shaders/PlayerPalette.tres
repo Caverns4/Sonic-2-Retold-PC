@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bveqi5m5ihsgj"]
 
-[ext_resource type="Shader" path="res://Shaders/PaletteSwapRow.gdshader" id="1"]
+[ext_resource type="Shader" uid="uid://drq4hwqwwn03c" path="res://Shaders/PaletteSwapRow.gdshader" id="1"]
 [ext_resource type="Texture2D" uid="uid://bbpeu7ggf4kd4" path="res://Graphics/Palettes/SuperKnuckles.png" id="2_qr1om"]
 
 [resource]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ojtv17ru256"]
 
-[ext_resource type="Script" path="res://Scripts/Objects/rotating_solid_blocks.gd" id="1_fylaq"]
+[ext_resource type="Script" uid="uid://cbt2hjwjct6nd" path="res://Scripts/Objects/rotating_solid_blocks.gd" id="1_fylaq"]
 [ext_resource type="Texture2D" uid="uid://c67chdaxp27ik" path="res://Graphics/Gimmicks/DHZ_Crate.png" id="1_q5ur4"]
 
 [sub_resource type="RectangleShape2D" id="1"]

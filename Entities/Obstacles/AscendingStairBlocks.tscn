@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c1rdgr14n8rxh"]
 
-[ext_resource type="Script" path="res://Scripts/Gimmicks/ascending_stair_blocks.gd" id="1_ad4qi"]
-[ext_resource type="Script" path="res://Scripts/Objects/PlatformChild.gd" id="2_0i0ie"]
+[ext_resource type="Script" uid="uid://cn87d5dg6nv2c" path="res://Scripts/Gimmicks/ascending_stair_blocks.gd" id="1_ad4qi"]
+[ext_resource type="Script" uid="uid://52rnrehskii1" path="res://Scripts/Objects/PlatformChild.gd" id="2_0i0ie"]
 [ext_resource type="Texture2D" uid="uid://dxrqrsfax58dq" path="res://Graphics/Obstacles/Blocks/CPZ Block.png" id="2_kxulp"]
 
 [sub_resource type="RectangleShape2D" id="1"]

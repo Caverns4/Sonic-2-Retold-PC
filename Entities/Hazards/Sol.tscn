@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://dsr3tet7m2ufv"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/sol_area.gd" id="1_palhu"]
-[ext_resource type="Script" path="res://Scripts/Enemies/solWeight.gd" id="1_vfq8e"]
-[ext_resource type="Script" path="res://Scripts/PropertiesLookup.gd" id="2_w8gf6"]
+[ext_resource type="Script" uid="uid://cpmhe3k5wntwq" path="res://Scripts/Enemies/sol_area.gd" id="1_palhu"]
+[ext_resource type="Script" uid="uid://6xyysdal5uce" path="res://Scripts/Enemies/solWeight.gd" id="1_vfq8e"]
+[ext_resource type="Script" uid="uid://gw2to0chgc2a" path="res://Scripts/PropertiesLookup.gd" id="2_w8gf6"]
 [ext_resource type="Texture2D" uid="uid://beqh6fywjj4lt" path="res://Graphics/Enemies/Sol.png" id="4_tuqpl"]
 
 [sub_resource type="RectangleShape2D" id="1"]

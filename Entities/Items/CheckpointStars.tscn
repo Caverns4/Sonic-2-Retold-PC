@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cv6uksb7wv4ei"]
 
-[ext_resource type="Script" path="res://Scripts/Objects/checkpoint_stars.gd" id="1_47mp2"]
+[ext_resource type="Script" uid="uid://bnodp3ib42x8m" path="res://Scripts/Objects/checkpoint_stars.gd" id="1_47mp2"]
 [ext_resource type="AudioStream" uid="uid://be1vhgdoscd0c" path="res://Audio/SFX/Misc/s2br_SpecialWarp.wav" id="1_q6sdd"]
 [ext_resource type="Texture2D" uid="uid://b6nbr2mujveni" path="res://Graphics/Misc/Checkpoint_Stars.png" id="2_eevss"]
 

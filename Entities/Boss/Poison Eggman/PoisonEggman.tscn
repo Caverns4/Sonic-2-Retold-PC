@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://dw4ysdt7fckye"]
 
-[ext_resource type="Script" path="res://Scripts/Boss/poison_eggman.gd" id="1_30xqr"]
+[ext_resource type="Script" uid="uid://da51tbw3wnq2s" path="res://Scripts/Boss/poison_eggman.gd" id="1_30xqr"]
 [ext_resource type="Texture2D" uid="uid://covcphiyrcwta" path="res://Graphics/Boss/CPZ/Boss_PoisonEggmanVTube.png" id="2_4s3qp"]
 [ext_resource type="Texture2D" uid="uid://6ds1jcc8jmyf" path="res://Graphics/Boss/Eggmobile.png" id="2_18wch"]
 [ext_resource type="Texture2D" uid="uid://i3gn7dujo4lk" path="res://Graphics/Boss/CPZ/Boss_PoisonEggman_Pump.png" id="3_5t0m2"]

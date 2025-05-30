@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://2g7ovnq2n77w"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/scratch.gd" id="1_gghhs"]
+[ext_resource type="Script" uid="uid://cmdm3csje7hh7" path="res://Scripts/Enemies/scratch.gd" id="1_gghhs"]
 [ext_resource type="Texture2D" uid="uid://d0f41px7x6ge" path="res://Graphics/Enemies/Scratch.png" id="2_hyyj2"]
 
 [sub_resource type="RectangleShape2D" id="1"]

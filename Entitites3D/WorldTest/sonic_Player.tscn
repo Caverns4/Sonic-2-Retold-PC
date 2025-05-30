@@ -1044,6 +1044,21 @@ tracks/23/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_8aok4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Snc_Rig/Skeleton3D/Spinball:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_qvdj6"]
 resource_name = "Snc_Run-loop"
 length = 0.8
@@ -1387,32 +1402,17 @@ tracks/22/interp = 0
 tracks/22/loop_wrap = true
 tracks/22/keys = PackedFloat32Array(0, 1, -0.707107, -4.59176e-09, -4.59176e-09, 0.707107)
 
-[sub_resource type="Animation" id="Animation_8aok4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Snc_Rig/Skeleton3D/Spinball:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ici71"]
 _data = {
-"Brake": SubResource("Animation_07860"),
-"Final": SubResource("Animation_3d77m"),
-"Idle": SubResource("Animation_s5nrj"),
-"Idle2": SubResource("Animation_wcccm"),
-"Jog": SubResource("Animation_hvlyn"),
-"Jump": SubResource("Animation_aobcl"),
-"RESET": SubResource("Animation_8aok4"),
-"Run": SubResource("Animation_qvdj6"),
-"Spring": SubResource("Animation_e7s2t")
+&"Brake": SubResource("Animation_07860"),
+&"Final": SubResource("Animation_3d77m"),
+&"Idle": SubResource("Animation_s5nrj"),
+&"Idle2": SubResource("Animation_wcccm"),
+&"Jog": SubResource("Animation_hvlyn"),
+&"Jump": SubResource("Animation_aobcl"),
+&"RESET": SubResource("Animation_8aok4"),
+&"Run": SubResource("Animation_qvdj6"),
+&"Spring": SubResource("Animation_e7s2t")
 }
 
 [node name="Sonic2" instance=ExtResource("1_ph416")]

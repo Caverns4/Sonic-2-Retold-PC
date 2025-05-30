@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://brtxcccqfvmca"]
 
-[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_766pe"]
+[ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_766pe"]
 [ext_resource type="AudioStream" uid="uid://c354qh8pof6fe" path="res://Audio/Soundtrack/s2br_CasinoNight.ogg" id="2_kas0w"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="3_lgk7y"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="4_3n00e"]

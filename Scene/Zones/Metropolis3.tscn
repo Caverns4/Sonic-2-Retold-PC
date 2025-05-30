@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bw86f5evgbvjc"]
 
-[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_fdfw1"]
+[ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_fdfw1"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_rm2lr"]
 [ext_resource type="AudioStream" uid="uid://dlgpinnh0yca3" path="res://Audio/Soundtrack/s2br_Metropolis.ogg" id="2_11d2k"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="2_vtuux"]

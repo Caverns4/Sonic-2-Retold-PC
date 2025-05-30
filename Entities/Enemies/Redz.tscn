@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://jgm0h2yu3hvb"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/Redz.gd" id="1_acnt1"]
+[ext_resource type="Script" uid="uid://bkqguxbsdhv73" path="res://Scripts/Enemies/Redz.gd" id="1_acnt1"]
 [ext_resource type="Texture2D" uid="uid://c80rud4lvtufe" path="res://Graphics/Enemies/Redz.png" id="2_ufqqm"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -63,9 +63,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_34x7i"]
 _data = {
-"RESET": SubResource("Animation_usbbl"),
-"SHOOT": SubResource("Animation_1syo1"),
-"WALK": SubResource("Animation_povsi")
+&"RESET": SubResource("Animation_usbbl"),
+&"SHOOT": SubResource("Animation_1syo1"),
+&"WALK": SubResource("Animation_povsi")
 }
 
 [node name="Redz" type="CharacterBody2D" groups=["Enemy"]]

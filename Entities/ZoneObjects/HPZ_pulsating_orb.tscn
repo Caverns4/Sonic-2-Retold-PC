@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ob2r2ewjlvgy"]
 
 [ext_resource type="Texture2D" uid="uid://dur2t7v5ns1sy" path="res://Graphics/Objects_Zone/HPZ_Orb.png" id="1_3mxff"]
-[ext_resource type="Script" path="res://Scripts/Objects/hpz_pulsating_orb.gd" id="1_a1rqw"]
+[ext_resource type="Script" uid="uid://cekrna67nmwvv" path="res://Scripts/Objects/hpz_pulsating_orb.gd" id="1_a1rqw"]
 [ext_resource type="Texture2D" uid="uid://d2mbnnoh032lo" path="res://Graphics/Light_Glow.png" id="2_guton"]
 
 [sub_resource type="Animation" id="Animation_aew40"]
@@ -34,7 +34,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5fvld"]
 _data = {
-"RESET": SubResource("Animation_aew40")
+&"RESET": SubResource("Animation_aew40")
 }
 
 [node name="PulsatingOrb" type="Node2D"]

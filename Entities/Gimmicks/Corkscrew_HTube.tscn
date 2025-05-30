@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bhxbnpwhxw87p"]
 
-[ext_resource type="Script" path="res://Scripts/Gimmicks/corkscrew_h_tube.gd" id="1_tkwhn"]
+[ext_resource type="Script" uid="uid://k4vl3w3cvsei" path="res://Scripts/Gimmicks/corkscrew_h_tube.gd" id="1_tkwhn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j7ogo"]
 size = Vector2(128, 112)

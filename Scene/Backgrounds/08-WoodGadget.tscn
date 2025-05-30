@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://da47pd80u7kac"]
 
 [ext_resource type="Texture2D" uid="uid://dd3h6qs42ia2p" path="res://Graphics/Backgrounds/WGZ/WGZ_BG.png" id="1_4hq0v"]
-[ext_resource type="Script" path="res://Scripts/Backgrounds/WGZ_Parallax.gd" id="1_cqcnr"]
+[ext_resource type="Script" uid="uid://b7uf2e51efe40" path="res://Scripts/Backgrounds/WGZ_Parallax.gd" id="1_cqcnr"]
 [ext_resource type="Texture2D" uid="uid://bh00qip5kupke" path="res://Graphics/Backgrounds/WGZ/Clouds1.png" id="1_g5rty"]
 [ext_resource type="Texture2D" uid="uid://dd3504rrs08jh" path="res://Graphics/Backgrounds/WGZ/WGZ_HillTops.png" id="1_x62de"]
 [ext_resource type="Texture2D" uid="uid://b5n5esua7rnig" path="res://Graphics/Backgrounds/WGZ/Clouds2.png" id="2_7atag"]

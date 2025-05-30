@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bifnhrivwqdgo"]
 
 [ext_resource type="Texture2D" uid="uid://bpvmb7wv2yik6" path="res://Graphics/Objects_Zone/ArrowShooter.png" id="1_o3e2n"]
-[ext_resource type="Script" path="res://Scripts/Gimmicks/arrow_shooter.gd" id="1_vtnd0"]
+[ext_resource type="Script" uid="uid://idiqjb20f3rx" path="res://Scripts/Gimmicks/arrow_shooter.gd" id="1_vtnd0"]
 [ext_resource type="AudioStream" uid="uid://e7pju68sq88t" path="res://Audio/SFX/Gimmicks/s2br_ArrowFire.wav" id="3_bdyav"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ipw11"]

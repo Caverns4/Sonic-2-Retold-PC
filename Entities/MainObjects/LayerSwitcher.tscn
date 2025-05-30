@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dkn7hhll7o4or"]
 
-[ext_resource type="Script" path="res://Scripts/Objects/LayerSwitcher.gd" id="1"]
+[ext_resource type="Script" uid="uid://c143rt685nlui" path="res://Scripts/Objects/LayerSwitcher.gd" id="1"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(16, 16)

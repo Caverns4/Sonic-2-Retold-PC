@@ -241,9 +241,9 @@ func set_menu(menuID = 0):
 func update_text(textRow = 0):
 	match(textRow):
 		1: # Sound
-			return "sound "+str(round(((AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX"))-clampSounds[0])/(abs(clampSounds[0])+abs(clampSounds[1])))*100))
+			return "sound "+str(int(((AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX"))-clampSounds[0])/(abs(clampSounds[0])+abs(clampSounds[1])))*100))
 		2: # Music
-			return "music "+str(round(((AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))-clampSounds[0])/(abs(clampSounds[0])+abs(clampSounds[1])))*100))
+			return "music "+str(int(((AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))-clampSounds[0])/(abs(clampSounds[0])+abs(clampSounds[1])))*100))
 		3: # Scale
 			return "scale x"+str(Global.zoomSize)
 		4: # Full screen

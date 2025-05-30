@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=4 uid="uid://caxc44uymh48a"]
 
-[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_8ynvh"]
+[ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_8ynvh"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="2_yrcwh"]
 [ext_resource type="PackedScene" uid="uid://deaxge481u7mk" path="res://Scene/Backgrounds/00-EmeraldHill.tscn" id="3_jdx3s"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="15_005t2"]

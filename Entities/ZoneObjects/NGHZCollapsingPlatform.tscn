@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=4 uid="uid://yetbwueu05h1"]
 
-[ext_resource type="Script" path="res://Scripts/Objects/CollapsePlatform.gd" id="1_0i8l5"]
+[ext_resource type="Script" uid="uid://blmu8j1jhwnr4" path="res://Scripts/Objects/CollapsePlatform.gd" id="1_0i8l5"]
 [ext_resource type="TileSet" uid="uid://b0b5lpm7k65k5" path="res://Tileset/Levels/NGHZ.tres" id="2_tx4d8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ia0sb"]

@@ -1,11 +1,11 @@
 [gd_scene load_steps=19 format=4 uid="uid://vs0jloj5swvg"]
 
-[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_588bb"]
+[ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_588bb"]
 [ext_resource type="AudioStream" uid="uid://g0a01sst32bm" path="res://Audio/Soundtrack/s2br_DeathEgg.ogg" id="2_j7ucr"]
 [ext_resource type="PackedScene" uid="uid://d2ectm23ulm50" path="res://Scene/Backgrounds/15-DeathEgg.tscn" id="3_dgxjp"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="3_l1prs"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="4_lrbjf"]
-[ext_resource type="Shader" path="res://Shaders/PaletteSwapRow.gdshader" id="6_6vqf8"]
+[ext_resource type="Shader" uid="uid://drq4hwqwwn03c" path="res://Shaders/PaletteSwapRow.gdshader" id="6_6vqf8"]
 [ext_resource type="TileSet" uid="uid://degtrdfi1sc00" path="res://Tileset/Levels/CPZ.tres" id="6_45kyl"]
 [ext_resource type="PackedScene" uid="uid://blwewyk2fnrew" path="res://Entities/Gimmicks/Shutter.tscn" id="7_7thrb"]
 [ext_resource type="Texture2D" uid="uid://6dck5afialg7" path="res://Graphics/Palettes/DEZ_Pal.png" id="8_0c3h6"]

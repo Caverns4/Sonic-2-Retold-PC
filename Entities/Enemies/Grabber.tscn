@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dn7w8hf4sanu"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/grabber_main.gd" id="1_skpw2"]
-[ext_resource type="Script" path="res://Scripts/Enemies/grabber_enemy.gd" id="2_asaak"]
+[ext_resource type="Script" uid="uid://clf2c6scei8yw" path="res://Scripts/Enemies/grabber_main.gd" id="1_skpw2"]
+[ext_resource type="Script" uid="uid://b6yy4ug5xggoi" path="res://Scripts/Enemies/grabber_enemy.gd" id="2_asaak"]
 [ext_resource type="Texture2D" uid="uid://c25m3clg6jo3k" path="res://Graphics/Enemies/Grabber.png" id="2_p1a5s"]
 
 [sub_resource type="RectangleShape2D" id="1"]

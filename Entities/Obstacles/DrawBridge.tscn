@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cuo1bc1i07tst"]
 
 [ext_resource type="Texture2D" uid="uid://cb4ly6l80f16n" path="res://Graphics/Obstacles/DHZ_Bridge.png" id="1_2mdyu"]
-[ext_resource type="Script" path="res://Scripts/Gimmicks/draw_bridge.gd" id="1_vftjv"]
+[ext_resource type="Script" uid="uid://b7drdjay7d6px" path="res://Scripts/Gimmicks/draw_bridge.gd" id="1_vftjv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ht1ub"]
 size = Vector2(16, 16)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://chyrwm1qwvlyt"]
 
 [ext_resource type="Texture2D" uid="uid://btd1piynn8ofj" path="res://Graphics/Gimmicks/button.png" id="1"]
-[ext_resource type="Script" path="res://Scripts/Objects/Switch.gd" id="2"]
+[ext_resource type="Script" uid="uid://ddvax8t18bxs" path="res://Scripts/Objects/Switch.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://uay8t1b3i1hi" path="res://Audio/SFX/Gimmicks/s2br_Switch.wav" id="3_82tya"]
 
 [sub_resource type="RectangleShape2D" id="1"]

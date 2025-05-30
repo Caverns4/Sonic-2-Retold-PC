@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bu13a3ewwy81c"]
 
-[ext_resource type="Script" path="res://Scripts/Gimmicks/floating_pillar.gd" id="1_o4whw"]
+[ext_resource type="Script" uid="uid://dq8pvjpgrj2gq" path="res://Scripts/Gimmicks/floating_pillar.gd" id="1_o4whw"]
 [ext_resource type="Texture2D" uid="uid://cy20p264lkmth" path="res://Graphics/Objects_Zone/NGHZ_Pillar.png" id="2_8bjgi"]
 [ext_resource type="Texture2D" uid="uid://dt336wpqvxowp" path="res://Graphics/Objects_Zone/NGHZ_PillarCap.png" id="4_13xxq"]
 

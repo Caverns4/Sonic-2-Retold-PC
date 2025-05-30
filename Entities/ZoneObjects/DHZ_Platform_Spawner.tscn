@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://yi4yrppebgng"]
 
-[ext_resource type="Script" path="res://Scripts/Node_Spawner.gd" id="1_bg413"]
+[ext_resource type="Script" uid="uid://bvjy3b2t7scyh" path="res://Scripts/Node_Spawner.gd" id="1_bg413"]
 [ext_resource type="PackedScene" uid="uid://bmce2barbv10t" path="res://Entities/ZoneObjects/MCZ_CollapsePlatformRight.tscn" id="2_wc6ro"]
 
 [node name="DhzPlatformSpawner" type="Node2D"]

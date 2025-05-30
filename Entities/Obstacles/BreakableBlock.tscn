@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bfjam0ov4pku5"]
 
-[ext_resource type="Script" path="res://Scripts/Objects/BreakableBlock.gd" id="1"]
+[ext_resource type="Script" uid="uid://dcy2crgdsa8dw" path="res://Scripts/Objects/BreakableBlock.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dnmy18lc2iyh6" path="res://Graphics/Obstacles/Blocks/breakable_block.png" id="2"]
 
 [sub_resource type="RectangleShape2D" id="1"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=58 format=3 uid="uid://bdaih80dlev3f"]
 
-[ext_resource type="Shader" path="res://Shaders/PaletteSwapRow.gdshader" id="1_v6hgx"]
+[ext_resource type="Shader" uid="uid://drq4hwqwwn03c" path="res://Shaders/PaletteSwapRow.gdshader" id="1_v6hgx"]
 [ext_resource type="Texture2D" uid="uid://cndrds5482vh5" path="res://Graphics/Players/Knuckles.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://bbpeu7ggf4kd4" path="res://Graphics/Palettes/SuperKnuckles.png" id="2_86lr5"]
 [ext_resource type="Texture2D" uid="uid://dlomjk6vm15ep" path="res://Graphics/Misc/DashDust.png" id="3"]
@@ -688,43 +688,43 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t3bqq"]
 _data = {
-"RESET": SubResource("86"),
-"Victory": SubResource("Animation_x2x4a"),
-"air": SubResource("Animation_ksldi"),
-"climb": SubResource("Animation_l61d4"),
-"climbUp": SubResource("Animation_m06nr"),
-"corkScrew": SubResource("76"),
-"corkScrewOffset": SubResource("Animation_mlugx"),
-"crouch": SubResource("77"),
-"current": SubResource("Animation_0w41g"),
-"die": SubResource("Animation_x1000"),
-"dieBW": SubResource("Animation_3xoje"),
-"drown": SubResource("Animation_u2alb"),
-"edge1": SubResource("Animation_vjnxn"),
-"edge2": SubResource("105"),
-"glide": SubResource("Animation_todpf"),
-"glideFall": SubResource("Animation_h1uok"),
-"glideGetUp": SubResource("Animation_65yyr"),
-"glideSlide": SubResource("Animation_8vhdu"),
-"hang": SubResource("112"),
-"hurt": SubResource("Animation_0dxl5"),
-"idle": SubResource("79"),
-"idle1": SubResource("113"),
-"land": SubResource("117"),
-"lookUp": SubResource("80"),
-"peelOut": SubResource("87"),
-"push": SubResource("103"),
-"roll": SubResource("81"),
-"run": SubResource("82"),
-"skid": SubResource("100"),
-"skidTurn": SubResource("Animation_nepy0"),
-"slide": SubResource("123"),
-"spinDash": SubResource("83"),
-"spring": SubResource("84"),
-"springScrew": SubResource("Animation_ofxrd"),
-"super": SubResource("97"),
-"walk": SubResource("85"),
-"yRotation": SubResource("129")
+&"RESET": SubResource("86"),
+&"Victory": SubResource("Animation_x2x4a"),
+&"air": SubResource("Animation_ksldi"),
+&"climb": SubResource("Animation_l61d4"),
+&"climbUp": SubResource("Animation_m06nr"),
+&"corkScrew": SubResource("76"),
+&"corkScrewOffset": SubResource("Animation_mlugx"),
+&"crouch": SubResource("77"),
+&"current": SubResource("Animation_0w41g"),
+&"die": SubResource("Animation_x1000"),
+&"dieBW": SubResource("Animation_3xoje"),
+&"drown": SubResource("Animation_u2alb"),
+&"edge1": SubResource("Animation_vjnxn"),
+&"edge2": SubResource("105"),
+&"glide": SubResource("Animation_todpf"),
+&"glideFall": SubResource("Animation_h1uok"),
+&"glideGetUp": SubResource("Animation_65yyr"),
+&"glideSlide": SubResource("Animation_8vhdu"),
+&"hang": SubResource("112"),
+&"hurt": SubResource("Animation_0dxl5"),
+&"idle": SubResource("79"),
+&"idle1": SubResource("113"),
+&"land": SubResource("117"),
+&"lookUp": SubResource("80"),
+&"peelOut": SubResource("87"),
+&"push": SubResource("103"),
+&"roll": SubResource("81"),
+&"run": SubResource("82"),
+&"skid": SubResource("100"),
+&"skidTurn": SubResource("Animation_nepy0"),
+&"slide": SubResource("123"),
+&"spinDash": SubResource("83"),
+&"spring": SubResource("84"),
+&"springScrew": SubResource("Animation_ofxrd"),
+&"super": SubResource("97"),
+&"walk": SubResource("85"),
+&"yRotation": SubResource("129")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vbg0h"]
@@ -845,9 +845,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u50eh"]
 _data = {
-"Flash": SubResource("Animation_51t3g"),
-"PowerDown": SubResource("Animation_6q33s"),
-"RESET": SubResource("Animation_f3r6g")
+&"Flash": SubResource("Animation_51t3g"),
+&"PowerDown": SubResource("Animation_6q33s"),
+&"RESET": SubResource("Animation_f3r6g")
 }
 
 [node name="Knuckles" type="Node2D"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c750k3u1o0wfg"]
 
-[ext_resource type="Script" path="res://Scripts/Gimmicks/cnz_triangle_bumper.gd" id="1_n1e0e"]
+[ext_resource type="Script" uid="uid://dxbpn6el4rwig" path="res://Scripts/Gimmicks/cnz_triangle_bumper.gd" id="1_n1e0e"]
 
 [node name="TriangleBumper" type="StaticBody2D"]
 collision_layer = 8192

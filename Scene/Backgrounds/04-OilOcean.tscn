@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=4 uid="uid://cm1lcnrr22juy"]
 
-[ext_resource type="Script" path="res://Scripts/Backgrounds/OOZ_Parallax.gd" id="1_eh4wu"]
+[ext_resource type="Script" uid="uid://dx7qehewq4i24" path="res://Scripts/Backgrounds/OOZ_Parallax.gd" id="1_eh4wu"]
 [ext_resource type="TileSet" uid="uid://qd7e8tmf376" path="res://Tileset/Levels/OOZ.tres" id="1_ox8f5"]
-[ext_resource type="Shader" path="res://Shaders/PaletteSwapRow_Timerbased.gdshader" id="2_8giej"]
+[ext_resource type="Shader" uid="uid://dws4ymg0bel70" path="res://Shaders/PaletteSwapRow_Timerbased.gdshader" id="2_8giej"]
 [ext_resource type="Texture2D" uid="uid://6l8njq8bglm" path="res://Graphics/Palettes/OOZ_Waterfallpal.png" id="3_8gc64"]
 
 [sub_resource type="Gradient" id="Gradient_vkl0k"]
@@ -19,8 +19,8 @@ shader = ExtResource("2_8giej")
 shader_parameter/amount = 4.0
 shader_parameter/palRows = 4.0
 shader_parameter/approximation = 0.0
-shader_parameter/time_scale = 0.1
 shader_parameter/paletteTexture = ExtResource("3_8gc64")
+shader_parameter/time_scale = 0.1
 
 [node name="04-OilOcean" type="ParallaxBackground"]
 scroll_limit_end = Vector2(0, 1920)

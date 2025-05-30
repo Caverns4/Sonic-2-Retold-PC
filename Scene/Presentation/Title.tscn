@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://qs5dmtxxf1w1"]
 
-[ext_resource type="Script" path="res://Scripts/Level/Title_New.gd" id="1_jsjd7"]
+[ext_resource type="Script" uid="uid://bh20dqq421i7d" path="res://Scripts/Level/Title_New.gd" id="1_jsjd7"]
 [ext_resource type="Texture2D" uid="uid://eih0pbfohmyc" path="res://Graphics/title/TitleEmblem_Final.png" id="2_oku5l"]
 [ext_resource type="Texture2D" uid="uid://d1g4mtdkr6al" path="res://Graphics/title/Title_RETOLD.png" id="3_vbbsi"]
 [ext_resource type="FontFile" uid="uid://ml62eqfe7avn" path="res://Graphics/Fonts/small_font.png" id="3_yuhp3"]
@@ -510,8 +510,8 @@ tracks/24/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pb3yv"]
 _data = {
-"RESET": SubResource("2"),
-"TitleAssemble": SubResource("1")
+&"RESET": SubResource("2"),
+&"TitleAssemble": SubResource("1")
 }
 
 [sub_resource type="Curve" id="Curve_x626m"]

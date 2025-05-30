@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://4q0hpddgto2k"]
 
 [ext_resource type="Texture2D" uid="uid://c7218f78hwl8o" path="res://Graphics/Gimmicks/springs_yellow.png" id="1"]
-[ext_resource type="Script" path="res://Scripts/Gimmicks/Spring.gd" id="2"]
+[ext_resource type="Script" uid="uid://dtfeg33iujjdr" path="res://Scripts/Gimmicks/Spring.gd" id="2"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(32, 16)
@@ -123,10 +123,10 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3avuf"]
 _data = {
-"SpringRight": SubResource("3"),
-"SpringUp": SubResource("4"),
-"SpringUpLeft": SubResource("5"),
-"SpringUpRight": SubResource("6")
+&"SpringRight": SubResource("3"),
+&"SpringUp": SubResource("4"),
+&"SpringUpLeft": SubResource("5"),
+&"SpringUpRight": SubResource("6")
 }
 
 [node name="Spring" type="StaticBody2D"]

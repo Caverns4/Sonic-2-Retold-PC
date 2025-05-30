@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://chgov1cta70sn"]
 
 [ext_resource type="Texture2D" uid="uid://bdkig5lewgpcq" path="res://Graphics/Gimmicks/OOZ_LidTop.png" id="1_5rgec"]
-[ext_resource type="Script" path="res://Scripts/Gimmicks/ooz_lid.gd" id="1_n4dys"]
+[ext_resource type="Script" uid="uid://br27whgr53gae" path="res://Scripts/Gimmicks/ooz_lid.gd" id="1_n4dys"]
 [ext_resource type="Texture2D" uid="uid://bdwp0lti70ccs" path="res://Graphics/Gimmicks/OOZ_Pillar.png" id="2_8n1xm"]
 [ext_resource type="PackedScene" uid="uid://b7giv32j13rep" path="res://Entities/Hazards/BurnerFlames.tscn" id="2_a5jou"]
-[ext_resource type="Script" path="res://Scripts/Objects/OOZ_Lid_Motion.gd" id="3_nn0l2"]
+[ext_resource type="Script" uid="uid://btcnwjec8tftt" path="res://Scripts/Objects/OOZ_Lid_Motion.gd" id="3_nn0l2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mmkh8"]
 size = Vector2(48, 8)

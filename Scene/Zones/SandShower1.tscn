@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b3545bdisv2ea"]
 
-[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_frx6l"]
+[ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_frx6l"]
 [ext_resource type="AudioStream" uid="uid://ccsd05nnbj8ix" path="res://Audio/Soundtrack/s2br_SandShower.ogg" id="2_wi255"]
 [ext_resource type="PackedScene" uid="uid://cua4c8kacbuhf" path="res://Scene/Backgrounds/12-SandShower.tscn" id="3_nwuo4"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_72mfe"]

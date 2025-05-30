@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://bufpacdd4qqgr"]
 
-[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_bq4rn"]
+[ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_bq4rn"]
 [ext_resource type="AudioStream" uid="uid://cmtn72t7dtgf" path="res://Audio/Soundtrack/s2br_Tropical.ogg" id="2_qonje"]
 [ext_resource type="AudioStream" uid="uid://dlgpinnh0yca3" path="res://Audio/Soundtrack/s2br_Metropolis.ogg" id="3_gc0vh"]
 [ext_resource type="PackedScene" uid="uid://da47pd80u7kac" path="res://Scene/Backgrounds/08-WoodGadget.tscn" id="5_lmmyl"]

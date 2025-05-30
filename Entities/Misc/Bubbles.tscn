@@ -1,7 +1,7 @@
 [gd_scene load_steps=35 format=3 uid="uid://cd27rgk5o5jg2"]
 
 [ext_resource type="Texture2D" uid="uid://ceangqioyo4uf" path="res://Graphics/Items/air_bubbles.png" id="1"]
-[ext_resource type="Script" path="res://Scripts/Misc/Bubbles.gd" id="2"]
+[ext_resource type="Script" uid="uid://cv5sf6208a6dh" path="res://Scripts/Misc/Bubbles.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://1njf2n5mf43y" path="res://Graphics/Misc/CountDown.png" id="3"]
 
 [sub_resource type="RectangleShape2D" id="1"]

@@ -1,10 +1,10 @@
 [gd_scene load_steps=25 format=4 uid="uid://bhpf6ig75utax"]
 
 [ext_resource type="TileSet" uid="uid://ghcr0mgylarb" path="res://Tileset/Island.tres" id="1_c3y53"]
-[ext_resource type="Script" path="res://Scripts/Scene/opening.gd" id="1_d0v3w"]
+[ext_resource type="Script" uid="uid://5v51kbdh3oqy" path="res://Scripts/Scene/opening.gd" id="1_d0v3w"]
 [ext_resource type="FontFile" uid="uid://ml62eqfe7avn" path="res://Graphics/Fonts/small_font.png" id="1_p7avf"]
-[ext_resource type="Script" path="res://Scripts/Scene/CutsceneTextProcessor.gd" id="2_ibq5w"]
-[ext_resource type="Script" path="res://Scripts/Backgrounds/Island_ParallaxBackground.gd" id="2_uwrru"]
+[ext_resource type="Script" uid="uid://cxmwhra5mkscu" path="res://Scripts/Scene/CutsceneTextProcessor.gd" id="2_ibq5w"]
+[ext_resource type="Script" uid="uid://d6f0t1i4fmqb" path="res://Scripts/Backgrounds/Island_ParallaxBackground.gd" id="2_uwrru"]
 [ext_resource type="TileSet" uid="uid://uplqwsi0o4gi" path="res://Tileset/Levels/EHZ_HTZ_Tiles.tres" id="3_f67ec"]
 [ext_resource type="PackedScene" uid="uid://oce7phvjxdbv" path="res://Entities/Misc/Tornado.tscn" id="3_x5ayn"]
 [ext_resource type="PackedScene" uid="uid://lu4m6y6y0hw8" path="res://Entities/Cutscene/cutscene_Animal.tscn" id="7_atpig"]
@@ -404,7 +404,7 @@ tracks/25/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_omwjn"]
 _data = {
-"RESET": SubResource("Animation_scr5x")
+&"RESET": SubResource("Animation_scr5x")
 }
 
 [node name="Opening" type="Node2D"]

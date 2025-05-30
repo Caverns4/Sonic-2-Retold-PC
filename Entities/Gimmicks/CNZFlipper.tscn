@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c3dq6cs7sku84"]
 
 [ext_resource type="Texture2D" uid="uid://d1lesuu8bmb3e" path="res://Graphics/Gimmicks/CNZFlippers.png" id="1_fxy2p"]
-[ext_resource type="Script" path="res://Scripts/Gimmicks/cnz_flipper.gd" id="1_yq1xs"]
+[ext_resource type="Script" uid="uid://c17x1bvpk1kxb" path="res://Scripts/Gimmicks/cnz_flipper.gd" id="1_yq1xs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4xse"]
 size = Vector2(16, 48)

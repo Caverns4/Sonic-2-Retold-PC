@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://xbidybme3tde"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/spiny.gd" id="1_d667u"]
+[ext_resource type="Script" uid="uid://bj506m46s33xo" path="res://Scripts/Enemies/spiny.gd" id="1_d667u"]
 [ext_resource type="Texture2D" uid="uid://blms2khcx3knr" path="res://Graphics/Enemies/Spiny_Floor.png" id="2_thbk4"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -58,9 +58,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ab4dn"]
 _data = {
-"RESET": SubResource("Animation_6hjn8"),
-"SHOOT": SubResource("Animation_6f12e"),
-"WALK": SubResource("Animation_7j47y")
+&"RESET": SubResource("Animation_6hjn8"),
+&"SHOOT": SubResource("Animation_6f12e"),
+&"WALK": SubResource("Animation_7j47y")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rlu3j"]

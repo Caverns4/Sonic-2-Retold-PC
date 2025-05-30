@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://jwp6krrgjfn7"]
 
-[ext_resource type="Script" path="res://Scripts/Objects/FallingBlockPlat.gd" id="1_uva5p"]
+[ext_resource type="Script" uid="uid://cjn0ko2ydxlwg" path="res://Scripts/Objects/FallingBlockPlat.gd" id="1_uva5p"]
 
 [node name="FallingBlockPlat" type="Sprite2D"]
 centered = false

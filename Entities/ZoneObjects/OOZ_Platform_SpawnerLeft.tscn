@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bqknlkx2y1d0q"]
 
-[ext_resource type="Script" path="res://Scripts/Node_Spawner.gd" id="1_50whl"]
+[ext_resource type="Script" uid="uid://bvjy3b2t7scyh" path="res://Scripts/Node_Spawner.gd" id="1_50whl"]
 [ext_resource type="PackedScene" uid="uid://drwc8cayf58ce" path="res://Entities/ZoneObjects/OOZ_CollapsingPlatformLeft.tscn" id="2_ex1rt"]
 
 [node name="OozPlatformSpawnerLeft" type="Node2D"]

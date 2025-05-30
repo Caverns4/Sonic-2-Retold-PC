@@ -1,6 +1,6 @@
 [gd_scene load_steps=49 format=4 uid="uid://b73oxpdf64ys2"]
 
-[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_r8kv3"]
+[ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_r8kv3"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_sbiln"]
 [ext_resource type="AudioStream" uid="uid://hikbyuhih7uc" path="res://Audio/Soundtrack/s2br_ChemicalPlant.ogg" id="2_mig6y"]
 [ext_resource type="TileSet" uid="uid://degtrdfi1sc00" path="res://Tileset/Levels/CPZ.tres" id="3_wgb1x"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="5_eai8g"]
 [ext_resource type="Texture2D" uid="uid://dxcdt4qimdnl7" path="res://Graphics/Palettes/CPZ_Pal_Dry.png" id="6_56ngg"]
 [ext_resource type="Texture2D" uid="uid://7lh056irm1m8" path="res://Graphics/Palettes/CPZ_Pal_Wet.png" id="7_eewh6"]
-[ext_resource type="Shader" path="res://Shaders/PaletteSwapRow_Timerbased.gdshader" id="8_fvcep"]
+[ext_resource type="Shader" uid="uid://dws4ymg0bel70" path="res://Shaders/PaletteSwapRow_Timerbased.gdshader" id="8_fvcep"]
 [ext_resource type="Texture2D" uid="uid://dhtxsayycsc6c" path="res://Graphics/Palettes/CPZFlashPal.png" id="9_7s1h8"]
 [ext_resource type="PackedScene" uid="uid://dkn7hhll7o4or" path="res://Entities/MainObjects/LayerSwitcher.tscn" id="9_bhtgv"]
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="10_bnv7v"]
@@ -26,7 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="17_eqgtb"]
 [ext_resource type="PackedScene" uid="uid://bjuh5cvbt06af" path="res://Entities/MainObjects/Capsule.tscn" id="19_2fboq"]
 [ext_resource type="Texture2D" uid="uid://b6alf64ktaf3h" path="res://Graphics/Objects_Zone/CPZPlatformMv.png" id="19_bygnn"]
-[ext_resource type="Script" path="res://Scripts/Gimmicks/ZoomTubePath.gd" id="25_7q6q8"]
+[ext_resource type="Script" uid="uid://dndi2gkjj5eo6" path="res://Scripts/Gimmicks/ZoomTubePath.gd" id="25_7q6q8"]
 [ext_resource type="PackedScene" uid="uid://ijfhnqwrjcfj" path="res://Entities/ZoneObjects/MackWormSpawner.tscn" id="27_ijc7b"]
 [ext_resource type="PackedScene" uid="uid://c1rdgr14n8rxh" path="res://Entities/Obstacles/AscendingStairBlocks.tscn" id="28_ckttt"]
 [ext_resource type="PackedScene" uid="uid://c2t7hwn0iln3x" path="res://Entities/Obstacles/Elevator.tscn" id="28_qxqdr"]
@@ -41,23 +41,23 @@
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="40_72dwk"]
 [ext_resource type="Texture2D" uid="uid://cudvcxoyjq5dn" path="res://Graphics/Misc/MetalCameo.png" id="40_m50kc"]
 [ext_resource type="PackedScene" uid="uid://c3yq46ay5g4ov" path="res://Entities/Obstacles/MultiRotatingPlatforms.tscn" id="41_r5m2v"]
-[ext_resource type="Script" path="res://Scripts/Misc/AltSpawn.gd" id="42_srg2o"]
+[ext_resource type="Script" uid="uid://ioiij6aukh60" path="res://Scripts/Misc/AltSpawn.gd" id="42_srg2o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_da7so"]
 shader = ExtResource("8_fvcep")
 shader_parameter/amount = 4.0
 shader_parameter/palRows = 20.0
 shader_parameter/approximation = 0.01
-shader_parameter/time_scale = 0.1
 shader_parameter/paletteTexture = ExtResource("9_7s1h8")
+shader_parameter/time_scale = 0.1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t6ggo"]
 shader = ExtResource("8_fvcep")
 shader_parameter/amount = 4.0
 shader_parameter/palRows = 20.0
 shader_parameter/approximation = 0.01
-shader_parameter/time_scale = 0.1
 shader_parameter/paletteTexture = ExtResource("9_7s1h8")
+shader_parameter/time_scale = 0.1
 
 [sub_resource type="ImageTexture" id="ImageTexture_n3r3v"]
 

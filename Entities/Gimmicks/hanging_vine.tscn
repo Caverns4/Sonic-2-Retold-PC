@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bvv78uhl8idjs"]
 
-[ext_resource type="Script" path="res://Scripts/Gimmicks/hanging_vine.gd" id="1_drbiq"]
+[ext_resource type="Script" uid="uid://boxk7eyab2sik" path="res://Scripts/Gimmicks/hanging_vine.gd" id="1_drbiq"]
 [ext_resource type="Texture2D" uid="uid://safasvc4e7j8" path="res://Graphics/Gimmicks/DHZ_VineLength.png" id="1_y7bl4"]
 [ext_resource type="Texture2D" uid="uid://31b52ioyj4vd" path="res://Graphics/Gimmicks/DHZ_VineHook.png" id="2_kaq1y"]
 [ext_resource type="PackedScene" uid="uid://b2qs2ji487f1t" path="res://Entities/Gimmicks/Hanger.tscn" id="3_5sfhf"]

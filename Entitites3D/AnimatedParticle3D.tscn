@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c3em2xm0y2fip" path="res://Graphics/Items/Rings/RingSparkle.png" id="1_ribbw"]
 [ext_resource type="Texture2D" uid="uid://cmwphe55bkg3h" path="res://Graphics/Special Stage/Explosion_SS.png" id="2_7ki74"]
-[ext_resource type="Script" path="res://Scripts/Special3D/animated_particle_3d.gd" id="2_fqjrq"]
+[ext_resource type="Script" uid="uid://8qu2r1fi871b" path="res://Scripts/Special3D/animated_particle_3d.gd" id="2_fqjrq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rtjqu"]
 atlas = ExtResource("1_ribbw")

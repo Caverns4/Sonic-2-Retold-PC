@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://bxkm8u0ltthxd"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/BBat.gd" id="1_fm812"]
+[ext_resource type="Script" uid="uid://b50fbg2fvfjcu" path="res://Scripts/Enemies/BBat.gd" id="1_fm812"]
 [ext_resource type="Texture2D" uid="uid://cv5q8ba5j6djs" path="res://Graphics/Enemies/BBat.png" id="2_gcfrw"]
-[ext_resource type="Script" path="res://Scripts/Objects/Hazard.gd" id="3_fcpdh"]
+[ext_resource type="Script" uid="uid://dy2gqcb551jcu" path="res://Scripts/Objects/Hazard.gd" id="3_fcpdh"]
 [ext_resource type="Texture2D" uid="uid://041yhyjp1n1c" path="res://Graphics/Enemies/BBatRazor.png" id="4_bqbwm"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -301,11 +301,11 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_56wle"]
 _data = {
-"AIM": SubResource("Animation_2qbc6"),
-"ATTACK": SubResource("Animation_j4egx"),
-"COOLDOWN": SubResource("Animation_04l0t"),
-"RESET": SubResource("Animation_nourt"),
-"WARMUP": SubResource("Animation_e5pl2")
+&"AIM": SubResource("Animation_2qbc6"),
+&"ATTACK": SubResource("Animation_j4egx"),
+&"COOLDOWN": SubResource("Animation_04l0t"),
+&"RESET": SubResource("Animation_nourt"),
+&"WARMUP": SubResource("Animation_e5pl2")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mf3u2"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://8sljpf878e00"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/crawl.gd" id="1_0pgyn"]
+[ext_resource type="Script" uid="uid://xa04gwwskvci" path="res://Scripts/Enemies/crawl.gd" id="1_0pgyn"]
 [ext_resource type="Texture2D" uid="uid://c8j6h0dpua10y" path="res://Graphics/Enemies/Crawl_Mobile.png" id="2_evms8"]
 [ext_resource type="AudioStream" uid="uid://twp8cryjv0r6" path="res://Audio/SFX/Objects/s2br_Bumper.wav" id="4_ryaxe"]
 
@@ -208,11 +208,11 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j32f5"]
 _data = {
-"Block_Forward": SubResource("Animation_y0ns6"),
-"Block_Up": SubResource("Animation_ss73b"),
-"Idle": SubResource("Animation_y1bro"),
-"RESET": SubResource("Animation_qkoms"),
-"Walk": SubResource("Animation_6jmbx")
+&"Block_Forward": SubResource("Animation_y0ns6"),
+&"Block_Up": SubResource("Animation_ss73b"),
+&"Idle": SubResource("Animation_y1bro"),
+&"RESET": SubResource("Animation_qkoms"),
+&"Walk": SubResource("Animation_6jmbx")
 }
 
 [node name="Crawl" type="CharacterBody2D" groups=["Enemy"]]

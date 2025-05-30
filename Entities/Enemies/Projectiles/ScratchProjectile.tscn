@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://cp373k8qbd68y"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/aquis_projectile.gd" id="1_hgrig"]
+[ext_resource type="Script" uid="uid://b0br50t5o34f" path="res://Scripts/Enemies/aquis_projectile.gd" id="1_hgrig"]
 [ext_resource type="Texture2D" uid="uid://b6e0ffcg1nf06" path="res://Graphics/Enemies/Scratch_Bullet.png" id="2_h3r5w"]
 
 [sub_resource type="RectangleShape2D" id="1"]

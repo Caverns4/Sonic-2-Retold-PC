@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bihgasvpr4jyb" path="res://Graphics/Items/invincible_stars.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://c5cooxne7gmco" path="res://Graphics/Misc/NGHZRocks.png" id="1_14h1g"]
 [ext_resource type="Texture2D" uid="uid://nmefqhyltnjt" path="res://Graphics/Misc/explosion2.png" id="1_odgmf"]
-[ext_resource type="Script" path="res://Scripts/Misc/FreeOnAnimationCompletion.gd" id="2"]
+[ext_resource type="Script" uid="uid://cudxkjitugo5p" path="res://Scripts/Misc/FreeOnAnimationCompletion.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://ccakrp1d6v3ms" path="res://Graphics/Misc/explosion5.png" id="2_vat05"]
 [ext_resource type="Texture2D" uid="uid://bu6a2evw5s7ne" path="res://Graphics/Misc/water_splash.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://bu207ncbrfjm3" path="res://Graphics/Misc/skid_dust.png" id="4"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://3hiaachtft8m"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/bubblers_mother.gd" id="1_nq5lr"]
+[ext_resource type="Script" uid="uid://b48tfonaw76hh" path="res://Scripts/Enemies/bubblers_mother.gd" id="1_nq5lr"]
 [ext_resource type="Texture2D" uid="uid://dom8bpge3f4vr" path="res://Graphics/Enemies/BubblerMother.png" id="2_eisif"]
 
 [sub_resource type="RectangleShape2D" id="1"]

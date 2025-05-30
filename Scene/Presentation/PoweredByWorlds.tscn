@@ -2,11 +2,11 @@
 
 [ext_resource type="FontFile" uid="uid://btb3lh3cpnc6x" path="res://Graphics/Fonts/mid_font.png" id="2_84rl6"]
 [ext_resource type="Texture2D" uid="uid://djgyh2vkmwqyx" path="res://Graphics/title/SEGA_BG.png" id="2_ys1j6"]
-[ext_resource type="Shader" path="res://Shaders/PaletteSwapRow.gdshader" id="3_uxpp6"]
+[ext_resource type="Shader" uid="uid://drq4hwqwwn03c" path="res://Shaders/PaletteSwapRow.gdshader" id="3_uxpp6"]
 [ext_resource type="Texture2D" uid="uid://cmtdertavy6i4" path="res://Graphics/title/SonicWorldsLogo.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://dl4m82eeocfhp" path="res://Graphics/Palettes/SEGAPal.png" id="4_37myl"]
 [ext_resource type="Texture2D" uid="uid://bjf2dsnw7ea5g" path="res://Graphics/Players/Sonic.png" id="4_pfl63"]
-[ext_resource type="Script" path="res://Scripts/Level/PoweredByWorlds.gd" id="6"]
+[ext_resource type="Script" uid="uid://b71cdw2x0wquh" path="res://Scripts/Level/PoweredByWorlds.gd" id="6"]
 [ext_resource type="Texture2D" uid="uid://bnvifnuxs0ewr" path="res://Graphics/title/SonicWorldsLogoMask.png" id="7_h1bpg"]
 [ext_resource type="AudioStream" uid="uid://be1vhgdoscd0c" path="res://Audio/SFX/Misc/s2br_SpecialWarp.wav" id="9_64ga1"]
 [ext_resource type="AudioStream" uid="uid://bowp6iposfy0n" path="res://Audio/Soundtrack/s2br_Emeralds.ogg" id="9_lp35r"]
@@ -17,7 +17,7 @@ shader = ExtResource("3_uxpp6")
 shader_parameter/amount = 9.0
 shader_parameter/palRows = 19.0
 shader_parameter/row = 1.0
-shader_parameter/approximation = null
+shader_parameter/approximation = 0.0
 shader_parameter/paletteTexture = ExtResource("4_37myl")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7bmv3"]
@@ -266,8 +266,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s27jj"]
 _data = {
-"Animation": SubResource("1"),
-"RESET": SubResource("2")
+&"Animation": SubResource("1"),
+&"RESET": SubResource("2")
 }
 
 [node name="PoweredByWorlds" type="Node2D"]

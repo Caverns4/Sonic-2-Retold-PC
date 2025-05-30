@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=4 uid="uid://cm6qjxupawbta"]
 
 [ext_resource type="TileSet" uid="uid://ghcr0mgylarb" path="res://Tileset/Island.tres" id="1_6xhao"]
-[ext_resource type="Script" path="res://Scripts/Backgrounds/Island_ParallaxBackground.gd" id="1_t4acj"]
+[ext_resource type="Script" uid="uid://d6f0t1i4fmqb" path="res://Scripts/Backgrounds/Island_ParallaxBackground.gd" id="1_t4acj"]
 
 [node name="15-skyFortress" type="ParallaxBackground"]
 scroll_base_scale = Vector2(0.01, 0.125)

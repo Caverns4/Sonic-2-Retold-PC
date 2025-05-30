@@ -1,7 +1,7 @@
 [gd_scene load_steps=81 format=3 uid="uid://tvwn5saboqsa"]
 
 [ext_resource type="Texture2D" uid="uid://dpwhpvgwsshjn" path="res://Graphics/Gimmicks/OOZ_Cannon.png" id="1_iptji"]
-[ext_resource type="Script" path="res://Scripts/Gimmicks/ooz_launcher.gd" id="1_onj0x"]
+[ext_resource type="Script" uid="uid://bgduhkay7egd2" path="res://Scripts/Gimmicks/ooz_launcher.gd" id="1_onj0x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ofvm6"]
 atlas = ExtResource("1_iptji")

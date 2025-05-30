@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://bveqi5m5ihsgj" path="res://Shaders/PlayerPalette.tres" id="1_kh2rr"]
 [ext_resource type="Texture2D" uid="uid://t0a50iu2sqj1" path="res://Graphics/Items/goal_signs.png" id="2_0uxmf"]
-[ext_resource type="Script" path="res://Scripts/Objects/GoalPost.gd" id="3_fwd0o"]
+[ext_resource type="Script" uid="uid://c3ewnsewuxrgq" path="res://Scripts/Objects/GoalPost.gd" id="3_fwd0o"]
 [ext_resource type="AudioStream" uid="uid://b5kihlutipybe" path="res://Audio/SFX/Objects/s2br_Signpost.wav" id="4_er5i5"]
 [ext_resource type="AudioStream" uid="uid://1l4uafttblck" path="res://Audio/SFX/Objects/s2br_Signpost2P.wav" id="5_yjxdb"]
 
@@ -136,14 +136,14 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3s12x"]
 _data = {
-"Amy": SubResource("Animation_52uwv"),
-"Knuckles": SubResource("Animation_x71vt"),
-"Mighty": SubResource("Animation_bq4v2"),
-"RESET": SubResource("Animation_aqfav"),
-"Ray": SubResource("Animation_dsuan"),
-"Sonic": SubResource("Animation_5csr5"),
-"Spinner": SubResource("Animation_a8oop"),
-"Tails": SubResource("Animation_g2rwe")
+&"Amy": SubResource("Animation_52uwv"),
+&"Knuckles": SubResource("Animation_x71vt"),
+&"Mighty": SubResource("Animation_bq4v2"),
+&"RESET": SubResource("Animation_aqfav"),
+&"Ray": SubResource("Animation_dsuan"),
+&"Sonic": SubResource("Animation_5csr5"),
+&"Spinner": SubResource("Animation_a8oop"),
+&"Tails": SubResource("Animation_g2rwe")
 }
 
 [node name="SignpostNew" type="Node2D"]

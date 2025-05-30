@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://6j0cbv72pota"]
 
-[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_a5u21"]
+[ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_a5u21"]
 [ext_resource type="PackedScene" uid="uid://dnch22ynqwt5e" path="res://Scene/Backgrounds/10-JewelGrotto.tscn" id="3_ev15n"]
 [ext_resource type="AudioStream" uid="uid://bg1fcuqr8mk1d" path="res://Audio/Soundtrack/s2br_Jewel.ogg" id="3_k6phh"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_um8eq"]

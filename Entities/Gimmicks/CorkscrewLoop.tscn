@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://fn82q8rojkjl"]
 
 [ext_resource type="Texture2D" uid="uid://curyronsmebvd" path="res://Graphics/Gimmicks/Corkscrew.png" id="1"]
-[ext_resource type="Script" path="res://Scripts/Gimmicks/CorkscrewLoop.gd" id="2"]
+[ext_resource type="Script" uid="uid://dd58lbtfwemto" path="res://Scripts/Gimmicks/CorkscrewLoop.gd" id="2"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(64, 16)

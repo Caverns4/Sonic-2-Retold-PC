@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c5vnnbgmagq6"]
 
-[ext_resource type="Script" path="res://Scripts/Node_Spawner.gd" id="1_bu82k"]
+[ext_resource type="Script" uid="uid://bvjy3b2t7scyh" path="res://Scripts/Node_Spawner.gd" id="1_bu82k"]
 [ext_resource type="PackedScene" uid="uid://cwvcenr2nfs74" path="res://Entities/ZoneObjects/HPZCollapsingPlatform.tscn" id="1_e3ad3"]
 
 [node name="HpzPlatformSpawner" type="Node2D"]

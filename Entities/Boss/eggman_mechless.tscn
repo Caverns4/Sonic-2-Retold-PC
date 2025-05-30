@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://bmsutfc5bals8"]
 
 [ext_resource type="Texture2D" uid="uid://d12r0uq1qch01" path="res://Graphics/Boss/Eggman.png" id="1_5avtc"]
-[ext_resource type="Script" path="res://Scripts/Boss/eggman_mechless.gd" id="1_rc3yn"]
+[ext_resource type="Script" uid="uid://b3qp1fbv3mhos" path="res://Scripts/Boss/eggman_mechless.gd" id="1_rc3yn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gduji"]
 size = Vector2(32, 32)

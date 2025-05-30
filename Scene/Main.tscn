@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://byje3iiukvt4p"]
 
-[ext_resource type="Script" path="res://Scripts/Global/Main.gd" id="2"]
+[ext_resource type="Script" uid="uid://856g6l24nl6o" path="res://Scripts/Global/Main.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://c58ontqoxjuti" path="res://Scene/Presentation/PoweredByWorlds.tscn" id="4"]
 [ext_resource type="AudioStream" uid="uid://dc8abddihwsly" path="res://Audio/Soundtrack/s2br_drowning.ogg" id="5_sci02"]
 [ext_resource type="PackedScene" uid="uid://b2xskcomtpo2x" path="res://Entities/Misc/ControllerMenu.tscn" id="6"]
@@ -124,11 +124,11 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iltn5"]
 _data = {
-"FadeOut": SubResource("2"),
-"RESET": SubResource("3"),
-"SetAdd": SubResource("4"),
-"SetSub": SubResource("5"),
-"WhiteOut": SubResource("Animation_rqlip")
+&"FadeOut": SubResource("2"),
+&"RESET": SubResource("3"),
+&"SetAdd": SubResource("4"),
+&"SetSub": SubResource("5"),
+&"WhiteOut": SubResource("Animation_rqlip")
 }
 
 [node name="Main" type="Node2D"]

@@ -1,14 +1,14 @@
 [gd_scene load_steps=12 format=3 uid="uid://bsgfc2hjo6knr"]
 
-[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_f2s8f"]
+[ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_f2s8f"]
 [ext_resource type="AudioStream" uid="uid://chigxw75acdkr" path="res://Audio/Soundtrack/s2br_SkyFortress.ogg" id="2_5abqf"]
 [ext_resource type="PackedScene" uid="uid://cm6qjxupawbta" path="res://Scene/Backgrounds/14-SkyFortress.tscn" id="3_vvbgg"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_vrigx"]
 [ext_resource type="PackedScene" uid="uid://oce7phvjxdbv" path="res://Entities/Misc/Tornado.tscn" id="6_blbh4"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_vktrr"]
-[ext_resource type="Script" path="res://Scripts/Misc/path_follow_2d.gd" id="6_yuh6d"]
-[ext_resource type="Script" path="res://Scene/Zones/Hook_Camera.gd" id="7_ghu8o"]
-[ext_resource type="Script" path="res://Scripts/Objects/tornado_mover.gd" id="7_m63qb"]
+[ext_resource type="Script" uid="uid://lekpwkfad1pq" path="res://Scripts/Misc/path_follow_2d.gd" id="6_yuh6d"]
+[ext_resource type="Script" uid="uid://6cdk5h5wo1v3" path="res://Scene/Zones/Hook_Camera.gd" id="7_ghu8o"]
+[ext_resource type="Script" uid="uid://cgc0jvkdayt0m" path="res://Scripts/Objects/tornado_mover.gd" id="7_m63qb"]
 [ext_resource type="PackedScene" uid="uid://p7n68euqgca8" path="res://Entities/MainObjects/GoalArea.tscn" id="10_rligo"]
 
 [sub_resource type="Curve2D" id="Curve2D_dwl8e"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://byg2uok0rarxo"]
 
-[ext_resource type="Script" path="res://Scripts/Objects/Hazard.gd" id="1_q88ep"]
+[ext_resource type="Script" uid="uid://dy2gqcb551jcu" path="res://Scripts/Objects/Hazard.gd" id="1_q88ep"]
 [ext_resource type="Texture2D" uid="uid://b45phaaxoygci" path="res://Graphics/Objects_Zone/MackWorm.png" id="2_y7tm4"]
 
 [sub_resource type="CircleShape2D" id="1"]

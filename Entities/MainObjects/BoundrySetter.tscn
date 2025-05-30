@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bgodeg4oddje6"]
 
-[ext_resource type="Script" path="res://Scripts/Level/BoundrySetter.gd" id="1"]
+[ext_resource type="Script" uid="uid://d20agqltfdq2s" path="res://Scripts/Level/BoundrySetter.gd" id="1"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(320, 224)

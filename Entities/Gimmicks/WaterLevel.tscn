@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bnn5io8fk2i4h"]
 
-[ext_resource type="Script" path="res://Scripts/Gimmicks/WaterLevel.gd" id="1"]
+[ext_resource type="Script" uid="uid://tjywl1seqd62" path="res://Scripts/Gimmicks/WaterLevel.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bn7jec7ob5rft" path="res://Graphics/Gimmicks/WaterSurface1.png" id="2"]
 
 [node name="WaterLevel" type="Node2D"]

@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://bveqi5m5ihsgj" path="res://Shaders/PlayerPalette.tres" id="2_xy7bp"]
 [ext_resource type="FontFile" uid="uid://cj70hn8i05uo5" path="res://Graphics/HUD/hud_lives_numerals.png" id="3_eauoj"]
 [ext_resource type="Texture2D" uid="uid://c7d6313minexh" path="res://Graphics/HUD/hud_text.png" id="5_kre34"]
-[ext_resource type="Script" path="res://Scripts/Misc/HUD.gd" id="6"]
+[ext_resource type="Script" uid="uid://cwj54jpt3ua1p" path="res://Scripts/Misc/HUD.gd" id="6"]
 [ext_resource type="FontFile" uid="uid://cticydrc4dda2" path="res://Graphics/HUD/hud_numerals.png" id="6_synv7"]
 [ext_resource type="Texture2D" uid="uid://cjyag5wmcqw5j" path="res://Graphics/HUD/YIcon.png" id="7_6q7he"]
 [ext_resource type="Texture2D" uid="uid://gswo6rq3uyy8" path="res://Graphics/HUD/LevelCards/Banner.png" id="7_ccygi"]
@@ -57,8 +57,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3qsc1"]
 _data = {
-"RESET": SubResource("Animation_uxdxe"),
-"Super": SubResource("Animation_vengb")
+&"RESET": SubResource("Animation_uxdxe"),
+&"Super": SubResource("Animation_vengb")
 }
 
 [sub_resource type="Animation" id="5"]
@@ -118,8 +118,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_15hsr"]
 _data = {
-"RESET": SubResource("5"),
-"Slider": SubResource("6")
+&"RESET": SubResource("5"),
+&"Slider": SubResource("6")
 }
 
 [sub_resource type="Animation" id="1"]
@@ -531,9 +531,9 @@ tracks/13/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fgko3"]
 _data = {
-"End": SubResource("1"),
-"RESET": SubResource("2"),
-"Start": SubResource("3")
+&"End": SubResource("1"),
+&"RESET": SubResource("2"),
+&"Start": SubResource("3")
 }
 
 [sub_resource type="Animation" id="Animation_iqere"]
@@ -712,8 +712,8 @@ tracks/6/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2thdl"]
 _data = {
-"LevelClear": SubResource("Animation_iqere"),
-"RESET": SubResource("Animation_g7dnq")
+&"LevelClear": SubResource("Animation_iqere"),
+&"RESET": SubResource("Animation_g7dnq")
 }
 
 [sub_resource type="Animation" id="9"]
@@ -821,8 +821,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dmnhc"]
 _data = {
-"GameOver": SubResource("9"),
-"RESET": SubResource("10")
+&"GameOver": SubResource("9"),
+&"RESET": SubResource("10")
 }
 
 [node name="HUD" type="CanvasLayer"]

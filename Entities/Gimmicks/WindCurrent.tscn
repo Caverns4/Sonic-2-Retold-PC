@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://beebd7dn4ioe1"]
 
-[ext_resource type="Script" path="res://Scripts/Gimmicks/WindCurrent.gd" id="1_jo0wr"]
+[ext_resource type="Script" uid="uid://clvrg1v61fqcd" path="res://Scripts/Gimmicks/WindCurrent.gd" id="1_jo0wr"]
 [ext_resource type="Texture2D" uid="uid://c31kq7jrr61gd" path="res://Graphics/EditorUI/WaterPath.png" id="2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gjva2"]

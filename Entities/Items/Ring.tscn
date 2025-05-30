@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dggjdwwkl527b"]
 
-[ext_resource type="Script" path="res://Scripts/Objects/Ring.gd" id="1"]
+[ext_resource type="Script" uid="uid://ckwmapye0nveq" path="res://Scripts/Objects/Ring.gd" id="1"]
 [ext_resource type="SpriteFrames" uid="uid://bhtsckwsr2bjs" path="res://Graphics/Items/RingSprite.tres" id="2_lyx02"]
 
 [sub_resource type="RectangleShape2D" id="1"]

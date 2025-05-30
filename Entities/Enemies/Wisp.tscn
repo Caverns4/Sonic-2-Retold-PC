@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cxflei1nuvbmq"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/wisp.gd" id="1_4u37n"]
+[ext_resource type="Script" uid="uid://bgujlcu8w7l1g" path="res://Scripts/Enemies/wisp.gd" id="1_4u37n"]
 [ext_resource type="Texture2D" uid="uid://dbhadxblkwq2" path="res://Graphics/Enemies/Whisp.png" id="2_xv2le"]
 
 [sub_resource type="RectangleShape2D" id="1"]

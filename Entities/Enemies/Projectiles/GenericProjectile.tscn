@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bin13qynebdk0"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/generic_projectile.gd" id="1_uslf8"]
+[ext_resource type="Script" uid="uid://bklc6yvifgigq" path="res://Scripts/Enemies/generic_projectile.gd" id="1_uslf8"]
 [ext_resource type="Texture2D" uid="uid://ccd6qcavs57xg" path="res://Graphics/Enemies/Octus_Bullets.png" id="2_fmhxl"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -26,7 +26,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_62pdh"]
 _data = {
-"RESET": SubResource("Animation_orbrr")
+&"RESET": SubResource("Animation_orbrr")
 }
 
 [node name="GenericProjectile" type="CharacterBody2D"]

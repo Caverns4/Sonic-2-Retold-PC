@@ -1,9 +1,9 @@
 [gd_scene load_steps=26 format=3 uid="uid://bleoc0gltofoh"]
 
-[ext_resource type="Script" path="res://Scripts/Gimmicks/Teleporter.gd" id="1_slfda"]
+[ext_resource type="Script" uid="uid://ddj0lyd1uxk4l" path="res://Scripts/Gimmicks/Teleporter.gd" id="1_slfda"]
 [ext_resource type="Texture2D" uid="uid://77onhgopdvvh" path="res://Graphics/Gimmicks/Teleporter.png" id="2_x0857"]
 [ext_resource type="PackedScene" uid="uid://c1ldunfxhq0he" path="res://Entities/Obstacles/ForceAngleSides.tscn" id="3_8fkwi"]
-[ext_resource type="Script" path="res://Scripts/Gimmicks/TeleporterOrb.gd" id="3_hoy6i"]
+[ext_resource type="Script" uid="uid://ccjgrnqs6yprb" path="res://Scripts/Gimmicks/TeleporterOrb.gd" id="3_hoy6i"]
 [ext_resource type="Texture2D" uid="uid://cxns8hjb477bs" path="res://Graphics/Gimmicks/TeleporterBeam.png" id="5_ckyv7"]
 [ext_resource type="AudioStream" uid="uid://c4m5p4gkb86p5" path="res://Audio/SFX/Gimmicks/PoweringUp.wav" id="6_yj68g"]
 [ext_resource type="AudioStream" uid="uid://be532oskcheum" path="res://Audio/SFX/Gimmicks/Warp.wav" id="7_eleuh"]
@@ -411,9 +411,9 @@ tracks/8/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_07x4t"]
 _data = {
-"Beam": SubResource("Animation_girh0"),
-"Close": SubResource("Animation_64cnk"),
-"RESET": SubResource("Animation_t41o3")
+&"Beam": SubResource("Animation_girh0"),
+&"Close": SubResource("Animation_64cnk"),
+&"RESET": SubResource("Animation_t41o3")
 }
 
 [node name="Teleporter" type="Node2D"]

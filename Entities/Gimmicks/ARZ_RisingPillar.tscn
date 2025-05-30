@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cp4s5qc2tt2ne"]
 
 [ext_resource type="Texture2D" uid="uid://bcaotly0i273h" path="res://Graphics/Objects_Zone/NGHZ_PillarLength.png" id="1_g4uct"]
-[ext_resource type="Script" path="res://Scripts/Gimmicks/arz_rising_pillar.gd" id="1_t51va"]
+[ext_resource type="Script" uid="uid://cfqn8dffdgmue" path="res://Scripts/Gimmicks/arz_rising_pillar.gd" id="1_t51va"]
 [ext_resource type="Texture2D" uid="uid://iyttgag21vi2" path="res://Graphics/Objects_Zone/NGHZ_PillarCaps.png" id="2_ei4nu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kc0pn"]

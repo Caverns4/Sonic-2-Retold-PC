@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dkqhraqyjvy0o"]
 
-[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_03k2s"]
+[ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_03k2s"]
 [ext_resource type="AudioStream" uid="uid://wxtewiyg2uti" path="res://Audio/Soundtrack/s2br_2PResults.ogg" id="2_0tju4"]
 [ext_resource type="PackedScene" uid="uid://dp7idkejifmm1" path="res://Scene/Backgrounds/13-TropicalJungle.tscn" id="3_foqdm"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_aa3nw"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dmf43dlpy5a37"]
 
-[ext_resource type="Script" path="res://Entities/Enemies/Projectiles/pterabot_projectile.gd" id="1_a3xla"]
+[ext_resource type="Script" uid="uid://dmqvtvb031v3x" path="res://Entities/Enemies/Projectiles/pterabot_projectile.gd" id="1_a3xla"]
 [ext_resource type="Texture2D" uid="uid://c13erh74meqxy" path="res://Graphics/Enemies/NebulaBullet.png" id="3_4idto"]
 
 [sub_resource type="RectangleShape2D" id="1"]

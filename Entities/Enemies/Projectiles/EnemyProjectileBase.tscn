@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b6316nplu58ux"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/EnemyProjectileBase.gd" id="2"]
+[ext_resource type="Script" uid="uid://cwcm0lgvpeo47" path="res://Scripts/Enemies/EnemyProjectileBase.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://ccd6qcavs57xg" path="res://Graphics/Enemies/Octus_Bullets.png" id="2_mh2yd"]
 
 [sub_resource type="RectangleShape2D" id="1"]

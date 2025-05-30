@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://c83qw6syirt85"]
 
-[ext_resource type="Script" path="res://Scripts/Scene/cutscene_character.gd" id="1_sn2a8"]
+[ext_resource type="Script" uid="uid://dipdx24xvrnqt" path="res://Scripts/Scene/cutscene_character.gd" id="1_sn2a8"]
 [ext_resource type="Texture2D" uid="uid://cqk04hqgn2v8b" path="res://Graphics/Players/Sonic_Beta.png" id="2_gbsoq"]
 [ext_resource type="Texture2D" uid="uid://bjf2dsnw7ea5g" path="res://Graphics/Players/Sonic.png" id="3_br7c5"]
 
@@ -448,23 +448,23 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_36uej"]
 _data = {
-"RESET": SubResource("86"),
-"airAbility": SubResource("107"),
-"crouch": SubResource("77"),
-"edge": SubResource("104"),
-"hang": SubResource("112"),
-"idle": SubResource("113"),
-"idle2": SubResource("114"),
-"lookUp": SubResource("80"),
-"peelOut": SubResource("87"),
-"roll": SubResource("81"),
-"run": SubResource("82"),
-"skid": SubResource("100"),
-"slide": SubResource("120"),
-"spinDash": SubResource("83"),
-"spring": SubResource("84"),
-"super": SubResource("97"),
-"walk": SubResource("85")
+&"RESET": SubResource("86"),
+&"airAbility": SubResource("107"),
+&"crouch": SubResource("77"),
+&"edge": SubResource("104"),
+&"hang": SubResource("112"),
+&"idle": SubResource("113"),
+&"idle2": SubResource("114"),
+&"lookUp": SubResource("80"),
+&"peelOut": SubResource("87"),
+&"roll": SubResource("81"),
+&"run": SubResource("82"),
+&"skid": SubResource("100"),
+&"slide": SubResource("120"),
+&"spinDash": SubResource("83"),
+&"spring": SubResource("84"),
+&"super": SubResource("97"),
+&"walk": SubResource("85")
 }
 
 [node name="CutsceneSonic" type="CharacterBody2D"]

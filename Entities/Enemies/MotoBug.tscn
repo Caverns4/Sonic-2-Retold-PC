@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cqcgjcw101xxo"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/MotoBug.gd" id="2"]
+[ext_resource type="Script" uid="uid://cba5ejca33cn8" path="res://Scripts/Enemies/MotoBug.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://cxgi4y30ctnyx" path="res://Graphics/Enemies/Motoroller.png" id="2_580bb"]
 [ext_resource type="Texture2D" uid="uid://clihuhs0po6p0" path="res://Graphics/Enemies/BuzzerFlame.png" id="3_ktssx"]
 
@@ -29,7 +29,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1xngc"]
 _data = {
-"RESET": SubResource("Animation_1ykvh")
+&"RESET": SubResource("Animation_1ykvh")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2g5j"]

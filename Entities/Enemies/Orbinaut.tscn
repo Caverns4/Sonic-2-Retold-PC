@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://c155bdyqqmmpl"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/Orbinaut.gd" id="1"]
-[ext_resource type="Script" path="res://Scripts/Objects/Hazard.gd" id="3"]
+[ext_resource type="Script" uid="uid://b20xgl0y0a4ah" path="res://Scripts/Enemies/Orbinaut.gd" id="1"]
+[ext_resource type="Script" uid="uid://dy2gqcb551jcu" path="res://Scripts/Objects/Hazard.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://23gv11m80733" path="res://Graphics/Enemies/SolFire.png" id="3_d185y"]
 [ext_resource type="Texture2D" uid="uid://beqh6fywjj4lt" path="res://Graphics/Enemies/Sol.png" id="4_fw8n4"]
 
@@ -27,7 +27,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0hno6"]
 _data = {
-"RESET": SubResource("Animation_4nuc7")
+&"RESET": SubResource("Animation_4nuc7")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4fpgw"]

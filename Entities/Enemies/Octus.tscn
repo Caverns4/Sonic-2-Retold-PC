@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://c8djwr7o6d6f7"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/Octus.gd" id="1_28rdy"]
+[ext_resource type="Script" uid="uid://8prnwdw3jol3" path="res://Scripts/Enemies/Octus.gd" id="1_28rdy"]
 [ext_resource type="Texture2D" uid="uid://dpflrbq6o6eto" path="res://Graphics/Enemies/Octus.png" id="2_dvyci"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -94,11 +94,11 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xb6ec"]
 _data = {
-"ANGRY": SubResource("Animation_l3lt2"),
-"HOVER": SubResource("Animation_l3be7"),
-"HOVER_ANGRY": SubResource("Animation_r466l"),
-"JUMP": SubResource("Animation_kh5hy"),
-"RESET": SubResource("Animation_5ne57")
+&"ANGRY": SubResource("Animation_l3lt2"),
+&"HOVER": SubResource("Animation_l3be7"),
+&"HOVER_ANGRY": SubResource("Animation_r466l"),
+&"JUMP": SubResource("Animation_kh5hy"),
+&"RESET": SubResource("Animation_5ne57")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2l7gt"]

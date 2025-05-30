@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://fyxpn2yiyquc"]
 
-[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_yyvsh"]
+[ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_yyvsh"]
 [ext_resource type="AudioStream" uid="uid://g0a01sst32bm" path="res://Audio/Soundtrack/s2br_DeathEgg.ogg" id="2_fqqc2"]
 [ext_resource type="PackedScene" uid="uid://d2ectm23ulm50" path="res://Scene/Backgrounds/15-DeathEgg.tscn" id="3_d6uqq"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_1knt1"]

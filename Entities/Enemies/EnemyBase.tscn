@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://da8b7n7dgsr43"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/EnemyBase.gd" id="1"]
+[ext_resource type="Script" uid="uid://btpe51l5imfjy" path="res://Scripts/Enemies/EnemyBase.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://beqh6fywjj4lt" path="res://Graphics/Enemies/Sol.png" id="2_3oo2o"]
 
 [sub_resource type="RectangleShape2D" id="1"]

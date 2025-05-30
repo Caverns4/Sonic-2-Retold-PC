@@ -3,12 +3,12 @@ extends Node2D
 
 @export var music = preload("res://Audio/Soundtrack/s2br_Options.ogg")
 @export var nextZone = load("res://Scene/Presentation/ZoneLoader.tscn")
-var selected = false
+var selected: bool = false
 
 const LEFT_ROWS: float = 26 # number of columns to draw, including blank ones
 
 # level labels, the amount of labels in here determines the total amount of options, see set level option at the end for settings
-var levelLabels = [ #Every one of these is a line, and some are skipped.
+var levelLabels: Array[String] = [ #Every one of these is a line, and some are skipped.
 	"Emerald Hill    1",
 	"                2",
 	"",
@@ -55,7 +55,7 @@ var levelLabels = [ #Every one of these is a line, and some are skipped.
 	"",
 	"",
 	"Player"]
-var levelIcons = [ #Use this list to get the number of selectable entries
+var levelIcons:Array[int] = [ #Use this list to get the number of selectable entries
 	Global.ZONES.EMERALD_HILL,
 	Global.ZONES.EMERALD_HILL,
 	Global.ZONES.HIDDEN_PALACE,
@@ -89,13 +89,13 @@ var levelIcons = [ #Use this list to get the number of selectable entries
 	20
 ]
 # character id lines up with Global.playerModes
-var characterID = 0
+var characterID: int = 0
 # level id lines up with levelLabels
-var levelID = 0
-var CharacterSelectMenuID = levelIcons.size()
+var levelID: int = 0
+var CharacterSelectMenuID: int = levelIcons.size()
 #animation timer for the Character Sprites
-var animationTimer = 0.5
-var animationframe = 0
+var animationTimer: float = 0.5
+var animationframe:int = 0
 
 var lastInput = Vector2.ZERO
 
@@ -262,7 +262,7 @@ func levelSelectSetupDirectionalInput():
 				characterID = wrapi(characterID-1,0,Global.playerModes.size())
 				$Switch.play()
 			else:
-				levelID = wrapi(levelID-(columnSize)+1,0,levelIcons.size())
+				levelID = wrapi(levelID-(columnSize),0,levelIcons.size())
 		if  inputCue.x > 0 :
 			if levelID == CharacterSelectMenuID-1:
 				characterID = wrapi(characterID+1,0,Global.playerModes.size())
@@ -271,7 +271,7 @@ func levelSelectSetupDirectionalInput():
 				if levelID > CharacterSelectMenuID-1 - columnSize and levelID < columnSize:
 					levelID = CharacterSelectMenuID-1
 				else:
-					levelID = wrapi(levelID+(columnSize)-1,0,levelIcons.size())
+					levelID = wrapi(levelID+(columnSize),0,levelIcons.size())
 				
 		if inputCue.y > 0:
 			levelID = wrapi(levelID+1,0,levelIcons.size())

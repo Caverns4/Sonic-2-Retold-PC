@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bisk2itnvknhd"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/bouncer.gd" id="1_0vtrv"]
+[ext_resource type="Script" uid="uid://bs473cwi3208" path="res://Scripts/Enemies/bouncer.gd" id="1_0vtrv"]
 [ext_resource type="Texture2D" uid="uid://bjmgpk072gkwp" path="res://Graphics/Enemies/Ball.png" id="2_qhvqh"]
 
 [sub_resource type="RectangleShape2D" id="1"]

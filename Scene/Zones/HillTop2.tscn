@@ -1,6 +1,6 @@
 [gd_scene load_steps=41 format=4 uid="uid://b25bf70l62rjr"]
 
-[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_o6dl6"]
+[ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_o6dl6"]
 [ext_resource type="AudioStream" uid="uid://dhw5trv54kut7" path="res://Audio/Soundtrack/s2br_HillTop.ogg" id="2_5rsgg"]
 [ext_resource type="PackedScene" uid="uid://dcw6jbk0f0o84" path="res://Scene/Backgrounds/02-HillTop.tscn" id="4_uwk6t"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="16_sexxm"]
@@ -37,7 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://bjuh5cvbt06af" path="res://Entities/MainObjects/Capsule.tscn" id="39_ieb8a"]
 [ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="40_l2qxi"]
 [ext_resource type="PackedScene" uid="uid://c8ohi5adbflnt" path="res://Entities/Enemies/Rexon.tscn" id="43_3jeuf"]
-[ext_resource type="Script" path="res://Scripts/Gimmicks/Earthquakes.gd" id="43_lpn1e"]
+[ext_resource type="Script" uid="uid://cx7jdfcqxurbd" path="res://Scripts/Gimmicks/Earthquakes.gd" id="43_lpn1e"]
 [ext_resource type="PackedScene" uid="uid://bct374kjctkxr" path="res://Entities/Items/Checkpoint.tscn" id="46_3s8wa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1ntj"]

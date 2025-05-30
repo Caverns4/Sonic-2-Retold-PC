@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cvbeth5i467p3"]
 
-[ext_resource type="Script" path="res://Scripts/Gimmicks/ZipLinePlatform.gd" id="1_ya6xb"]
+[ext_resource type="Script" uid="uid://eld7m23j7c6v" path="res://Scripts/Gimmicks/ZipLinePlatform.gd" id="1_ya6xb"]
 [ext_resource type="Texture2D" uid="uid://brg37vs6ggwgk" path="res://Graphics/Objects_Zone/HTZ_ZipPlatform.png" id="2_3iynb"]
-[ext_resource type="Script" path="res://Scripts/Objects/PlatformChild.gd" id="2_veiyp"]
+[ext_resource type="Script" uid="uid://52rnrehskii1" path="res://Scripts/Objects/PlatformChild.gd" id="2_veiyp"]
 [ext_resource type="Texture2D" uid="uid://cx2sv5lt78nyq" path="res://Graphics/Objects_Zone/HTZ_ZipVines.png" id="3_0mxui"]
 
 [sub_resource type="RectangleShape2D" id="1"]

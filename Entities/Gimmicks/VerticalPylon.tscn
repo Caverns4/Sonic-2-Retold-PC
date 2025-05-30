@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://3qpa54q3wjoh"]
 
 [ext_resource type="Texture2D" uid="uid://dbs3csa84c8lh" path="res://Graphics/Gimmicks/FBZPylonCenter.png" id="1"]
-[ext_resource type="Script" path="res://Scripts/Gimmicks/VerticalPylon.gd" id="2"]
+[ext_resource type="Script" uid="uid://d2kmk4qd56qo8" path="res://Scripts/Gimmicks/VerticalPylon.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://c0uoatd1qn8nj" path="res://Graphics/Gimmicks/FBZPylon.png" id="3"]
 
 [sub_resource type="Animation" id="1"]
@@ -48,7 +48,7 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lyh0a"]
 _data = {
-"main": SubResource("1")
+&"main": SubResource("1")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gg316"]

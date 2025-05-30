@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://16gkbxuhm76g"]
 
-[ext_resource type="Script" path="res://Scripts/Gimmicks/MovingStairBlocks.gd" id="1_cxcto"]
+[ext_resource type="Script" uid="uid://c53gsqt6tw33p" path="res://Scripts/Gimmicks/MovingStairBlocks.gd" id="1_cxcto"]
 [ext_resource type="Texture2D" uid="uid://dxrqrsfax58dq" path="res://Graphics/Obstacles/Blocks/CPZ Block.png" id="2_l20qw"]
 
 [sub_resource type="RectangleShape2D" id="1"]

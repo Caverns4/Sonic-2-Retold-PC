@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c1xhc4uh26inb"]
 
-[ext_resource type="Script" path="res://Scripts/Misc/PauseManager.gd" id="2"]
-[ext_resource type="Shader" path="res://Shaders/Greyscale.gdshader" id="2_nt3e0"]
+[ext_resource type="Script" uid="uid://cnmabd2lrnomn" path="res://Scripts/Misc/PauseManager.gd" id="2"]
+[ext_resource type="Shader" uid="uid://4bhsg3ho737k" path="res://Shaders/Greyscale.gdshader" id="2_nt3e0"]
 [ext_resource type="Texture2D" uid="uid://dv6m30yo07el2" path="res://Graphics/HUD/hud_pause.png" id="2_s4sog"]
 [ext_resource type="AudioStream" uid="uid://uay8t1b3i1hi" path="res://Audio/SFX/Gimmicks/s2br_Switch.wav" id="4_rtnwk"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://7k14xkpjguop"]
 
-[ext_resource type="Script" path="res://Scripts/Objects/SwingingPlatform.gd" id="1"]
+[ext_resource type="Script" uid="uid://cecmqdfpgi8lj" path="res://Scripts/Objects/SwingingPlatform.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dh42s3d2vapgn" path="res://Graphics/Obstacles/SwingChain.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://cjhwfrg8xifj5" path="res://Graphics/Obstacles/platform_64_2.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://bxo0l5r5ep0j4" path="res://Graphics/Obstacles/SwingPole.png" id="4"]

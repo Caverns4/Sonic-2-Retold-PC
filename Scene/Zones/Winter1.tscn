@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://d3motgkxh8c4h"]
 
-[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_8yfjs"]
+[ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_8yfjs"]
 [ext_resource type="AudioStream" uid="uid://c8y5q77kxn4ap" path="res://Audio/Soundtrack/s2br_DustHill.ogg" id="2_yjgb4"]
 [ext_resource type="AudioStream" uid="uid://bg1fcuqr8mk1d" path="res://Audio/Soundtrack/s2br_Jewel.ogg" id="3_6je3h"]
 [ext_resource type="PackedScene" uid="uid://bs2t0g6ad105e" path="res://Scene/Backgrounds/11-WinterHill.tscn" id="4_c18y7"]

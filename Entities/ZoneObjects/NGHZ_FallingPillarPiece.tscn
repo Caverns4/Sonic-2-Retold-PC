@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dx1yhmglo7ril"]
 
-[ext_resource type="Script" path="res://Scripts/Gimmicks/nghz_falling_pillar_piece.gd" id="1_ldvxo"]
+[ext_resource type="Script" uid="uid://cqvr1lh3vct1w" path="res://Scripts/Gimmicks/nghz_falling_pillar_piece.gd" id="1_ldvxo"]
 [ext_resource type="Texture2D" uid="uid://dt336wpqvxowp" path="res://Graphics/Objects_Zone/NGHZ_PillarCap.png" id="2_lsn2x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1y15s"]

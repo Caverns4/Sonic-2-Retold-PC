@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://bp678wjhmnwip"]
 
-[ext_resource type="Script" path="res://Scripts/Boss/getaway_submarine.gd" id="1_afvjp"]
+[ext_resource type="Script" uid="uid://cgclb7bmicgdq" path="res://Scripts/Boss/getaway_submarine.gd" id="1_afvjp"]
 [ext_resource type="Texture2D" uid="uid://k1klsldgs5tk" path="res://Graphics/Boss/OOZ/Boss_SubMarineEggman.png" id="2_uuclc"]
 [ext_resource type="Texture2D" uid="uid://ffsx2ahkvp45" path="res://Graphics/Boss/Robotnik_GetawaySubmarine.png" id="3_chpql"]
 [ext_resource type="Texture2D" uid="uid://62brat1iohka" path="res://Graphics/Boss/OOZ/Boss_SubMarineEggman_Flash.png" id="4_uyxo0"]

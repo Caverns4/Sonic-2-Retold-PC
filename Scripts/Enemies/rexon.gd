@@ -9,25 +9,19 @@ var Projectile = preload("res://Entities/Enemies/Projectiles/GenericProjectile.t
 var bullet = null
 @export var bulletSound = preload("res://Audio/SFX/Objects/s2br_Projectile.wav")
 
-var oscilationValue = 0 #Make the segments sway aback and forth
-
-var children = [] #List of nodes for each child and the head
-var childPositions = [Vector2.ZERO] #position of each child and the head
-var childVels = [Vector2.ZERO]
-var dead = false
-var swayDist = 0 #Gets manually set in code
-var swayDirection = -1
+var children:Array[Node2D] = [] #List of nodes for each child and the head
+var childPositions:Array[Vector2] = [Vector2.ZERO] #position of each child and the head
+var childVels:Array[Vector2] = [Vector2.ZERO]
+var dead: bool = false
+var swayDist:float = 0 #Gets manually set in code
+var swayDirection:int = -1
 
 func _ready() -> void:
-	if direction == 0:
-		direction = -1 #left
-	direction = 0-direction
-	
+	$VisibleOnScreenEnabler2D.visible = true
+	direction = direction*2-1
 	var currentPos = Vector2(20*direction,0)
-	children.append($Neck1)
-	childPositions[0] = currentPos
 	
-	for i in max(0,neckSegments-1):
+	for i in max(0,neckSegments):
 		var node = $Neck1.duplicate(8)
 		add_child(node)
 		children.append(node)
@@ -35,6 +29,7 @@ func _ready() -> void:
 		childVels.insert(childVels.size(),Vector2.ZERO)
 		node.global_position = (global_position + currentPos)
 		currentPos -= Vector2(0,12)
+	$Neck1.queue_free()
 	
 	children.append(head)
 	childPositions.insert(childPositions.size(),currentPos)
@@ -77,6 +72,7 @@ func _process(delta: float) -> void:
 	for i in children.size():
 		childPositions[i] += childVels[i]
 		children[i].global_position = global_position+childPositions[i]
+	
 
 func UpdateDirection():
 	for i in get_child_count():

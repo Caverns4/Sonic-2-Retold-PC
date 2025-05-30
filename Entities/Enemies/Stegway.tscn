@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://cvaf3mpyum5at"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/Stegway.gd" id="1_3811d"]
+[ext_resource type="Script" uid="uid://baeiveqf2mn3b" path="res://Scripts/Enemies/Stegway.gd" id="1_3811d"]
 [ext_resource type="Texture2D" uid="uid://bwbirkbtmiumq" path="res://Graphics/Enemies/stegway.png" id="2_jmtwq"]
 [ext_resource type="Texture2D" uid="uid://clihuhs0po6p0" path="res://Graphics/Enemies/BuzzerFlame.png" id="3_13kku"]
 
@@ -107,10 +107,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s2w5h"]
 _data = {
-"CHARGE": SubResource("Animation_8ygeb"),
-"DASH": SubResource("Animation_nowjg"),
-"RESET": SubResource("Animation_mexa1"),
-"WALK": SubResource("Animation_uy8ie")
+&"CHARGE": SubResource("Animation_8ygeb"),
+&"DASH": SubResource("Animation_nowjg"),
+&"RESET": SubResource("Animation_mexa1"),
+&"WALK": SubResource("Animation_uy8ie")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tohy3"]

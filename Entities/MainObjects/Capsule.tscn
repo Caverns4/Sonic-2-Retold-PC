@@ -1,13 +1,13 @@
 [gd_scene load_steps=40 format=3 uid="uid://bjuh5cvbt06af"]
 
 [ext_resource type="Texture2D" uid="uid://cot8xrd84iivq" path="res://Graphics/Items/Capsule.png" id="1"]
-[ext_resource type="Script" path="res://Scripts/Objects/Capsule.gd" id="2"]
+[ext_resource type="Script" uid="uid://cq13kfnsorn6s" path="res://Scripts/Objects/Capsule.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://nmefqhyltnjt" path="res://Graphics/Misc/explosion2.png" id="3"]
 [ext_resource type="AudioStream" uid="uid://cnxhsj32uyrg0" path="res://Audio/SFX/Objects/s2br_Destroy.wav" id="3_abcs2"]
 [ext_resource type="Material" uid="uid://bveqi5m5ihsgj" path="res://Shaders/PlayerPalette.tres" id="4"]
 [ext_resource type="Texture2D" uid="uid://bqfqsky24yfn" path="res://Graphics/Misc/explosion1.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://ccakrp1d6v3ms" path="res://Graphics/Misc/explosion5.png" id="9"]
-[ext_resource type="Script" path="res://Scripts/Objects/CapsuleButton.gd" id="10"]
+[ext_resource type="Script" uid="uid://ci85gsn14la8d" path="res://Scripts/Objects/CapsuleButton.gd" id="10"]
 
 [sub_resource type="Animation" id="28"]
 resource_name = "Open"
@@ -213,8 +213,8 @@ tracks/6/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_by7gt"]
 _data = {
-"Open": SubResource("28"),
-"RESET": SubResource("29")
+&"Open": SubResource("28"),
+&"RESET": SubResource("29")
 }
 
 [sub_resource type="RectangleShape2D" id="30"]

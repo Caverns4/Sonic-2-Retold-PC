@@ -1,15 +1,15 @@
 [gd_scene load_steps=41 format=4 uid="uid://do1li36ao5kvn"]
 
-[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="2"]
+[ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://hikbyuhih7uc" path="res://Audio/Soundtrack/s2br_ChemicalPlant.ogg" id="2_8olfy"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://skb3vyib11ye" path="res://Scene/Backgrounds/03-ChemicalPlant.tscn" id="5_n8awx"]
 [ext_resource type="TileSet" uid="uid://degtrdfi1sc00" path="res://Tileset/Levels/CPZ.tres" id="6_vi2dq"]
 [ext_resource type="PackedScene" uid="uid://dkn7hhll7o4or" path="res://Entities/MainObjects/LayerSwitcher.tscn" id="7"]
-[ext_resource type="Shader" path="res://Shaders/PaletteSwapRow_Timerbased.gdshader" id="8_8adsf"]
+[ext_resource type="Shader" uid="uid://dws4ymg0bel70" path="res://Shaders/PaletteSwapRow_Timerbased.gdshader" id="8_8adsf"]
 [ext_resource type="Texture2D" uid="uid://dhtxsayycsc6c" path="res://Graphics/Palettes/CPZFlashPal.png" id="9_iigs8"]
 [ext_resource type="PackedScene" uid="uid://4q0hpddgto2k" path="res://Entities/Gimmicks/Spring.tscn" id="10_pxcy8"]
-[ext_resource type="Script" path="res://Scripts/Gimmicks/ZoomTubePath.gd" id="11_gpbo7"]
+[ext_resource type="Script" uid="uid://dndi2gkjj5eo6" path="res://Scripts/Gimmicks/ZoomTubePath.gd" id="11_gpbo7"]
 [ext_resource type="PackedScene" uid="uid://bqj1smfkc5m7n" path="res://Entities/Gimmicks/SpeedBooster.tscn" id="11_q0l1c"]
 [ext_resource type="PackedScene" uid="uid://blwewyk2fnrew" path="res://Entities/Gimmicks/Shutter.tscn" id="12_o384r"]
 [ext_resource type="PackedScene" uid="uid://c2t7hwn0iln3x" path="res://Entities/Obstacles/Elevator.tscn" id="14_s2njc"]
@@ -36,16 +36,16 @@ shader = ExtResource("8_8adsf")
 shader_parameter/amount = 4.0
 shader_parameter/palRows = 20.0
 shader_parameter/approximation = 0.01
-shader_parameter/time_scale = 0.1
 shader_parameter/paletteTexture = ExtResource("9_iigs8")
+shader_parameter/time_scale = 0.1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_70tvm"]
 shader = ExtResource("8_8adsf")
 shader_parameter/amount = 4.0
 shader_parameter/palRows = 20.0
 shader_parameter/approximation = 0.01
-shader_parameter/time_scale = 0.1
 shader_parameter/paletteTexture = ExtResource("9_iigs8")
+shader_parameter/time_scale = 0.1
 
 [sub_resource type="ImageTexture" id="ImageTexture_ll0mr"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://dqeqlsrjg62qs"]
 
-[ext_resource type="Script" path="res://Scripts/World3D/world3D.gd" id="1_0mra5"]
+[ext_resource type="Script" uid="uid://djcyvq02nl216" path="res://Scripts/World3D/world3D.gd" id="1_0mra5"]
 [ext_resource type="Texture2D" uid="uid://jowkedgx35g5" path="res://Graphics/World3D/_f.png" id="1_a6jsl"]
 [ext_resource type="AudioStream" uid="uid://v1ed2ymggt61" path="res://Audio/Soundtrack/Sonic World.ogg" id="2_21u7o"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="2_jet5r"]
