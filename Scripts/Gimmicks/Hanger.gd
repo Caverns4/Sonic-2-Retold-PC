@@ -54,7 +54,7 @@ const _CONTACT_TIME_LIMIT = ceil(12.0 * (1000.0 / 60.0))
 var playerCarryAI = false
 
 # Optionally set sound to play when making contact
-@export var grabSound = preload("res://Audio/SFX/Player/s2br_Grab.wav")
+@export var grabSound: AudioStream = preload("res://Audio/SFX/Player/s2br_Grab.wav")
 
 func _ready():
 	$Grab.stream = grabSound
@@ -129,9 +129,12 @@ func physics_process_connected(_delta, player, index):
 	# XXX In the future, we should make the states themselves have properties for whether or not
 	# they allow interaction with gimmicks that use the player's hands so that we don't have to
 	# make up a list of states for stuff like this every time.
-	if player.currentState != player.STATES.AIR and player.currentState != player.STATES.JUMP and player.currentState != player.STATES.GLIDE and player.currentState != player.STATES.FLY:
-		disconnect_grab(player, index, false)
-		return
+	#if (player.currentState != player.STATES.AIR and 
+	#player.currentState != player.STATES.JUMP and 
+	#player.currentState != player.STATES.GLIDE and 
+	#player.currentState != player.STATES.FLY):
+	#	disconnect_grab(player, index, false)
+	#	return
 
 	# For some reason all the movement logic is in here?
 	# jump and air states don't change animation, so no need for a new state. Just
@@ -165,10 +168,10 @@ func physics_process_disconnected(_delta, player, index):
 	
 	# XXX This a Tails centric hack right now. I don't like it. It makes Tails
 	# move upwards to avoid disconnecting immediately.
-	if player.ground:
-		player.set_state(player.STATES.AIR)
-		player.global_position.y -= 6
-		parent.global_position.y -= 6
+	#if player.ground:
+	#	player.set_state(player.STATES.AIR)
+	#	player.global_position.y -= 6
+	#	parent.global_position.y -= 6
 		
 	connect_grab(player, index)
 

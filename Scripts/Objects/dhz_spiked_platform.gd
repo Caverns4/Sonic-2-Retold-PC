@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends AnimatableBody2D
 
 
 # Collision check (this is where the player gets hurt, OW!)

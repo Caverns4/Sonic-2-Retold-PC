@@ -3,6 +3,7 @@ extends Node2D
 
 ## The direction the bridge will rotate when acivated.
 @export_enum("Counter-Clockwise","Clockwise","Open") var behavior = 0
+@export var sfx: AudioStream = preload("res://Audio/SFX/Gimmicks/s2br_Drawbridge_Drop.wav")
 
 var trigger = false
 var intialRotation = 0.0
@@ -22,16 +23,16 @@ func _process(delta: float) -> void:
 			rotation_degrees = move_toward(
 				rotation_degrees,
 				intialRotation+(90*rotateDirection),
-				delta*96)
+				delta*192)
 		else:
 			$LeftSegments.rotation_degrees = move_toward(
 				$LeftSegments.rotation_degrees,
 				90,
-				delta*96)
+				delta*192)
 			$RightSegments.rotation_degrees = move_toward(
 				$RightSegments.rotation_degrees,
 				-90,
-				delta*96)
+				delta*192)
 	
 	for child in $LeftSegments.get_children():
 		var next = child.find_child("Sprite2D",false)
@@ -42,5 +43,7 @@ func _process(delta: float) -> void:
 	
 
 func Trigger():
-	trigger = true
-	pass
+	if !trigger:
+		trigger = true
+		if sfx:
+			Global.play_sound2(sfx)

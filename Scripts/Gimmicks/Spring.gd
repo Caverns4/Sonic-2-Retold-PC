@@ -113,7 +113,8 @@ func physics_collision(body, hitVector):
 					Global.play_sound(springSound)
 		
 		# Disable pole grabs
-		body.poleGrabID = self
+		# body.poleGrabID = self
+		body.poleGrabID = null
 		return true
 	
 

@@ -6,9 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_24a7w"]
 size = Vector2(64, 16)
 
-[node name="DHZSpikedPlatform" type="StaticBody2D"]
-collision_layer = 8192
-collision_mask = 8192
+[node name="DHZSpikedPlatform" type="AnimatableBody2D"]
+process_priority = 10
+collision_layer = 8193
+collision_mask = 0
 script = ExtResource("1_hgwo4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
