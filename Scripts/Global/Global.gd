@@ -88,7 +88,7 @@ var soundChannel2 = AudioStreamPlayer.new()
 # characters (if you want more you should add one here, see the player script too for more settings)
 enum CHARACTERS {NONE,SONIC,TAILS,KNUCKLES,AMY,MIGHTY,RAY,SONIC_BETA}
 var PlayerChar1 = CHARACTERS.SONIC
-var PlayerChar2 = CHARACTERS.NONE
+var PlayerChar2 = CHARACTERS.TAILS
 # character name strings, used for "[player] has cleared", this matches the players character ID so you'll want to add the characters name in here matching the ID if you want more characters
 var characterNames = ["SONIC","TAILS","KNUCKLES","AMY","MIGHTY","RAY","SONIC"]
 #Only used in menus for single player mode.

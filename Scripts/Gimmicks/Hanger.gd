@@ -29,25 +29,17 @@ const _CONTACT_DISTANCE = 17
 # Twelve frames must pass between regrabs
 const _CONTACT_TIME_LIMIT = ceil(12.0 * (1000.0 / 60.0))
 
-# If true, the player can drop through by holding down, bypassing the grab.
+## If true, the player can drop through by holding down, bypassing the grab.
 @export var holdDownToDrop = false
 
-# If true, player will grab the center point of the hanger every time.
-# otherwise the player grabs the bar at the position that the player is located
-# at making contact.
-@export var setCenter = false
+## If true, align the player to the center of the bar.
+@export var setCenter = true
 
-# If false, the player can grab the bar while moving upwards. Otherise the bar
-# is only caught while the player is falling.
+## If true, the player can only grab the bar while moving down.
 @export var onlyActiveMovingDown = true
 
-# If false, the player may turn around freely while on the bar. Otherwise the
-# player's direction is locked to the same direction that they first contacted
-# the hanger in.
-@export var lockPlayerDirection = true
-
-# Can pick up from ground
-@export var groundPickup = false
+## If false, the player may turn around freely while on the bar.
+@export var lockPlayerDirection = false
 
 # Changes some behaviors of how the controls work. Only gets set by parent object
 # if the hanger is owned by a player.
@@ -122,17 +114,7 @@ func get_player_contacting_count():
 	return _playerContacts
 	
 func physics_process_connected(_delta, player, index):
-	if player.ground:
-		disconnect_grab(player, index, false)
-		return
-
-	# XXX In the future, we should make the states themselves have properties for whether or not
-	# they allow interaction with gimmicks that use the player's hands so that we don't have to
-	# make up a list of states for stuff like this every time.
-	#if (player.currentState != player.STATES.AIR and 
-	#player.currentState != player.STATES.JUMP and 
-	#player.currentState != player.STATES.GLIDE and 
-	#player.currentState != player.STATES.FLY):
+	#if player.ground:
 	#	disconnect_grab(player, index, false)
 	#	return
 
@@ -147,18 +129,16 @@ func physics_process_connected(_delta, player, index):
 	var getPose = (global_position+get_player_contact(index).rotated(rotation) + Vector2(0.0, player.currentHitbox.NORMAL.y / 2.0)).round()
 		
 	# verify position change won't clip into objects
-	if !player.test_move(player.global_transform,getPose-player.global_position):
-		player.global_position = getPose
-		player.movement = Vector2.ZERO
-				
+	#if !player.test_move(player.global_transform,getPose-player.global_position):
+	player.global_position = getPose
+	player.movement = Vector2.ZERO
+	
 	player.cam_update()
 	
 func physics_process_disconnected(_delta, player, index):
 	# we use parent only for picking up off ground
 	var parent = get_parent()
-	if (!groundPickup and player.ground):
-		return
-		
+	
 	if !check_grab(player, index):
 		return
 
@@ -218,7 +198,7 @@ func connect_grab(player, index):
 	#if !player.test_move(player.global_transform,getPose-player.global_position):
 	player.global_position = getPose
 	player.movement = Vector2.ZERO
-				
+	
 	player.cam_update()
 
 	# lock player direction if that toggle is set.
@@ -291,6 +271,7 @@ func _process(_delta):
 		# Disconnect grab can either jump up or go down depending on player input and whether they
 		# were being carried by AI when they made that input.
 		disconnect_grab(player, index, true, jumpUp == 1)
+		
 
 func check_grab(player, index):
 	# We always return a grab if the player's contact point is already set.
@@ -331,11 +312,8 @@ func _on_Hanger_body_entered(body):
 		players.append(player_rep)
 
 func _on_Hanger_body_exited(body):
-	remove_player(body)
-
-func remove_player(player):
 	# remove player from contact point
-	var getIndex = find_player(player)
+	var getIndex = find_player(body)
 
 	# no player found
 	if (getIndex == -1):

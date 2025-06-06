@@ -15,6 +15,4 @@ centered = false
 
 [node name="Hanger" parent="." instance=ExtResource("4_ej7dn")]
 position = Vector2(0, 60)
-holdDownToDrop = true
-setCenter = true
 grabSound = ExtResource("4_eoj8a")
