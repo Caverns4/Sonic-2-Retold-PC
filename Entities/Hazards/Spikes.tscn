@@ -17,9 +17,18 @@ scale = Vector2(2, 1)
 shape = SubResource("1")
 
 [node name="Spike" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2")
 region_enabled = true
 region_rect = Rect2(0, 32, 32, 32)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+texture = ExtResource("2")
+stretch_mode = 1
 
 [node name="sfxSpikeShift" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_3urn5")

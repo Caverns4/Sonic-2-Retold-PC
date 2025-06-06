@@ -1,4 +1,4 @@
-extends PhysicsObject
+class_name Player2D extends PhysicsObject
 # Sonic, Knuckles, Mighty, Ray
 const HITBOXESSONIC = {
 	NORMAL = Vector2(9,19)*2, 

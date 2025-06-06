@@ -22,13 +22,17 @@ func _ready():
 		else:
 			set_physics_process(false)
 	
-	$Spike.set_region_rect(Rect2(0,32,count*16,32))
+	#$Spike.set_region_rect(Rect2(0,32,count*16,32))
+	$TextureRect.size.x = count*16
+	$TextureRect.position.x=0-($TextureRect.size.x/2)
 	$HitBox.scale.x = count
 	$VisibleOnScreenEnabler2D.scale.x = count
 
 func _physics_process(delta):
 	if Engine.is_editor_hint():
-		$Spike.set_region_rect(Rect2(0,32,count*16,32))
+		#$Spike.set_region_rect(Rect2(0,32,count*16,32))
+		$TextureRect.size.x = count*16
+		$TextureRect.position.x=0-($TextureRect.size.x/2)
 		$HitBox.scale.x = count
 		$VisibleOnScreenEnabler2D.scale.x = count
 	else:

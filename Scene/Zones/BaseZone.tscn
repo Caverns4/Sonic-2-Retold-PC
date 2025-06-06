@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://hj3tt0gklwba"]
+[gd_scene load_steps=31 format=4 uid="uid://hj3tt0gklwba"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="2_tkxs0"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://f2u7qhtothnl" path="res://Entities/ZoneObjects/OOZ_Platform_Spawner.tscn" id="18_3ugf2"]
 [ext_resource type="Texture2D" uid="uid://bv257m85p2es3" path="res://Graphics/Obstacles/Blocks/OOZ_BreakableBlocks.png" id="18_8qid8"]
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="19_3h71u"]
+[ext_resource type="PackedScene" uid="uid://bqttecb8klixv" path="res://Entities/Gimmicks/OilSlick.tscn" id="19_80env"]
 [ext_resource type="PackedScene" uid="uid://c2t7hwn0iln3x" path="res://Entities/Obstacles/Elevator.tscn" id="21_dmurq"]
 [ext_resource type="PackedScene" uid="uid://bvtk4rs7h7sup" path="res://Entities/Gimmicks/Oil.tscn" id="21_yc6vl"]
 [ext_resource type="Texture2D" uid="uid://cyco1uten7qfm" path="res://Graphics/Objects_Zone/OOZ_Elevator.png" id="22_mb3so"]
@@ -451,6 +452,10 @@ springDirection = 5
 
 [node name="Spring4" parent="Entities" instance=ExtResource("13_i3joy")]
 position = Vector2(10384, 1656)
+
+[node name="OilSlick" parent="Entities" instance=ExtResource("19_80env")]
+position = Vector2(1472, 1776)
+scale = Vector2(3, 1)
 
 [node name="Platforms" type="Node" parent="."]
 

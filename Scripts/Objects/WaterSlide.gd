@@ -40,5 +40,6 @@ func _on_ForceRoll_body_entered(body):
 
 func _on_ForceRoll_body_exited(body):
 	if players.has(body):
-		body.set_state(body.STATES.NORMAL)
+		if body.ground:
+			body.set_state(body.STATES.NORMAL)
 		players.erase(body)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://bjavywoj00j1j"]
+[gd_scene load_steps=40 format=4 uid="uid://bjavywoj00j1j"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="2_533ik"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://bvvxl5bmelnk1" path="res://Entities/Gimmicks/WaterSlide.tscn" id="21_1fygu"]
 [ext_resource type="PackedScene" uid="uid://dh3178ok4om00" path="res://Entities/Misc/player_reset_field.tscn" id="21_k3j71"]
 [ext_resource type="PackedScene" uid="uid://bjuh5cvbt06af" path="res://Entities/MainObjects/Capsule.tscn" id="22_gayax"]
+[ext_resource type="PackedScene" uid="uid://bqttecb8klixv" path="res://Entities/Gimmicks/OilSlick.tscn" id="22_tegdf"]
 [ext_resource type="PackedScene" uid="uid://7k14xkpjguop" path="res://Entities/Obstacles/SwingingPlatform.tscn" id="23_q608s"]
 [ext_resource type="PackedScene" uid="uid://bbf1sa8l70ygh" path="res://Entities/Gimmicks/fan.tscn" id="23_uuon4"]
 [ext_resource type="Texture2D" uid="uid://b5e1b22f63hkx" path="res://Graphics/Obstacles/OOZ_Swing.png" id="24_8ymcl"]
@@ -531,13 +532,11 @@ killTransSpeed = true
 
 [node name="Spring5" parent="Entities" instance=ExtResource("12_rrmya")]
 position = Vector2(4032, 1360)
-type = 1
 springDirection = 2
 
 [node name="Spring6" parent="Entities" instance=ExtResource("12_rrmya")]
 position = Vector2(4176, 1024)
 scale = Vector2(1, -1)
-type = 1
 springDirection = 1
 
 [node name="Spring7" parent="Entities" instance=ExtResource("12_rrmya")]
@@ -557,6 +556,10 @@ position = Vector2(3456, 1008)
 
 [node name="Fan18" parent="Entities" instance=ExtResource("23_uuon4")]
 position = Vector2(3584, 1008)
+
+[node name="OilSlick" parent="Entities" instance=ExtResource("22_tegdf")]
+position = Vector2(3776, 1392)
+scale = Vector2(3, 1)
 
 [node name="Platforms" type="Node" parent="."]
 

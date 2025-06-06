@@ -34,7 +34,7 @@ func _physics_process(delta):
 			for i in playerHit:
 				# check if damage entity is on or supertime is bigger then 0
 				if (i.get_collision_layer_value(20) or i.supTime > 0 or forceDamage):
-					i.movement = i.movement*-0.5
+					i.movement = i.movement*-1 #i.movement*-0.5
 					# hit
 					if hp > 0:
 						$Hit.play()

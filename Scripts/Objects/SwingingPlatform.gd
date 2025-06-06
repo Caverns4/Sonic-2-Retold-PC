@@ -24,6 +24,7 @@ func _ready():
 		platform.get_node("Sprite2D").texture = plat_img
 		# Change platform shape
 		platform.get_node("Shape3D").shape.size.x = plat_img.get_size().x
+		platform.get_node("Shape3D").shape.size.y = plat_img.get_size().y
 	else: # Hide platform from editor
 		platform.hide() # The platform is drawn in this script instead for the editor.
 

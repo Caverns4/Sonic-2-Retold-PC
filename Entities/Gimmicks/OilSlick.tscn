@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqttecb8klixv"]
+
+[ext_resource type="Script" uid="uid://ld46mdnxdl2u" path="res://Scripts/Objects/OilSlick.gd" id="1_hkuhp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pu8u1"]
+size = Vector2(128, 32)
+
+[node name="OilSlick" type="Area2D"]
+collision_layer = 0
+collision_mask = 4096
+script = ExtResource("1_hkuhp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pu8u1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
