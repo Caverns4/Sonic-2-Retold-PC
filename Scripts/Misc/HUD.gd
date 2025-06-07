@@ -111,7 +111,10 @@ func _ready():
 		else:
 			lifeCounterFrame = 0
 		$LifeCounter/Icon.frame = lifeCounterFrame
-	
+	PlayTitleCardAnimaiton()
+
+
+func PlayTitleCardAnimaiton():
 	# play level card routine if level card is true
 	if !playLevelCard:
 		$LevelCard/Banner.visible = false
@@ -121,8 +124,8 @@ func _ready():
 		$LevelCard/LevelName.visible = false
 		$LevelCard/Act.visible = false
 		$"LevelCard/Retold Text".visible = false
-		
-	if 0 == 0:
+	else:
+		$LevelCard/CardPlayer.play("Start")
 		# set level card
 		$LevelCard.visible = true
 		# set level name strings
@@ -156,13 +159,13 @@ func _ready():
 		# wait for title card animator to finish ending before starting the level timer
 		await $LevelCard/CardPlayer.animation_finished
 		Global.main.sceneCanPause = true
-	else:
-		get_tree().paused = true
-		await get_tree().process_frame # delay unpausing for one frame so the player doesn't die immediately
-		await get_tree().process_frame # second one needed for player 2
-		# emit the stage start signal and start the stage
-		Global.emit_stage_start()
-		get_tree().paused = false
+	#else:
+	#	get_tree().paused = true
+	#	await get_tree().process_frame # delay unpausing for one frame so the player doesn't die immediately
+	#	await get_tree().process_frame # second one needed for player 2
+	#	# emit the stage start signal and start the stage
+	#	Global.emit_stage_start()
+	#	get_tree().paused = false
 	Global.timerActive = true
 	Global.timerActiveP2 = true
 	# replace "sonic" in stage clear to match the player clear string
@@ -288,7 +291,8 @@ func UpdateHUD(_delta):
 		#Set Time Text
 		timeText.text = timer_text
 		#Ring Text Player 1
-		ringText.text = "%3d" % Global.players[focusPlayer].rings
+		if Global.players:
+			ringText.text = "%3d" % Global.players[focusPlayer].rings
 		
 		# Life Counter
 		if Global.livesMode:

@@ -63,6 +63,7 @@ environment = SubResource("Environment_o6ewc")
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
+visible = false
 
 [node name="TextureRect" type="TextureRect" parent="Background"]
 anchors_preset = 5

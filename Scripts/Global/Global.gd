@@ -9,7 +9,8 @@ ENDING,SPECIAL_STAGE}
 #Two Player Mode flag. Either false or true.
 var two_player_mode = false
 # player pointers (0 is usually player 1)
-var players = []
+var players: Array[Player2D] = []
+var special_stage_players: Array = []
 # main object reference
 var main = null
 # hud object reference
@@ -59,9 +60,9 @@ var stageClearPhase = 0
 
 # Music
 var musicParent = null
-var music = null
-var drowning = null
-var life = null
+var music: AudioStreamPlayer = null
+var drowning: AudioStreamPlayer = null
+var life: AudioStreamPlayer = null
 
 # index for current theme
 var currentTheme = 0
@@ -103,11 +104,18 @@ var livesP2 = 3
 var emeralds = 0
 # emerald bit flags
 enum EMERALD {
-	BLUE = 1, PURPLE = 2, RED = 4, CYAN = 8, YELLOW = 16, GREEN = 32, SILVER = 64
+	CYAN=1,
+	PURPLE=2,
+	RED=4,
+	MAGENTA=8,
+	YELLOW=16,
+	GREEN=32,
+	SILVER=64,
+	BLUE=128 # Unused
 	}
 	#RED = 1, BLUE = 2, GREEN = 4, YELLOW = 8, CYAN = 16, SILVER = 32, PURPLE = 64}
 var specialStageID = 0
-var lastSpecialStageResult = false
+var lastSpecialStageResult: bool = false
 var levelTime = 0 # the timer that counts down while the level isn't completed or in a special ring
 var levelTimeP2 = 0
 var globalTimer = 0 # global timer, used as reference for animations

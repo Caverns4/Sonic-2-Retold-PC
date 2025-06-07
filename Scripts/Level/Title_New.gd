@@ -74,6 +74,10 @@ var cheatInputCount = 0 #Correct inputs
 var lastCheatInput = Vector2.ZERO
 
 func _ready():
+	#Wipe the player array to avoide contamination.
+	Global.players.clear()
+	Global.special_stage_players.clear()
+	Global.checkPoints.clear()
 	#Clear game variables
 	Global.two_player_mode = false
 	Global.score = 0
@@ -82,9 +86,8 @@ func _ready():
 	Global.levelTimeP2 = 0
 	Global.lives = 3
 	Global.livesP2 = 3
-	Global.checkPoints = []
-	Global.twoPlayerZoneResults = []
-	Global.twoPlayActResults = []
+	Global.twoPlayerZoneResults.clear()
+	Global.twoPlayActResults.clear()
 	Global.twoPlayerRound = 0
 	#Prepare the Title Streen Music
 	Global.music.stream = music

@@ -15,7 +15,8 @@ var spinningStars = []
 var active = false
 # timer used for time to a room change
 var timer = 0
-var player = null
+var player: Player2D = null
+var mask_memory = [0,0]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -42,9 +43,15 @@ func _process(delta):
 			Global.nodeMemory.append(get_path())
 			
 			# fade to new scene
-			Global.main.change_scene_to_file(load("res://Scene/SpecialStage/SpecialStageResult.tscn"),"WhiteOut","WhiteOut",1,true,false)
+			Global.main.change_scene_to_file(
+				load("res://Scene/SpecialStage/SpecialStage.tscn"),"WhiteOut","WhiteOut",1,true,false)
 			# wait for scene to fade
 			await Global.main.scene_faded
+			player.allowTranslate = false
+			player.set_state(player.STATES.NORMAL)
+			player.collision_layer = mask_memory[0]
+			player.collision_mask = mask_memory[1]
+			Global.music.play(0.0)
 			queue_free()
 
 
@@ -93,12 +100,15 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 	# check if not active and that the player is player 1
 	if !active and body.playerControl == 1:
 		active = true
+		player = body
 		#body.visible = false
 		body.movement = Vector2.ZERO
 		# set players state to animation so nothing takes them out of it
 		body.set_state(body.STATES.ANIMATION)
 		# set player collision layer and mask to nothing to avoid collissions
+		mask_memory[0] = body.collision_layer
+		mask_memory[1] = body.collision_mask
 		body.collision_layer = 0
 		body.collision_mask = 0
 		body.invTime = 0
-		$Hitbox/CollisionShape2D.disabled = true
+		#$Hitbox/CollisionShape2D.disabled = true

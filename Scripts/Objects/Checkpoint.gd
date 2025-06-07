@@ -23,14 +23,15 @@ func _ready():
 					i.get_node("Spinner").play("flash")
 
 
-func activate(playerNode):
+func activate(playerNode: Player2D):
+	
 	# queue flash, incase an animation is already playing
 	$Spinner.queue("flash")
 	active = true
 	Global.currentCheckPoint = checkPointID
 	
-	#Save player 1 data if main character passeds.
-	if Global.players[0] == playerNode:
+	#Save player 1 data if main character passes.
+	if playerNode == Global.players[0]:
 		Global.checkPointTime = Global.levelTime
 		Global.checkPointRings = playerNode.rings
 	#save player 2 data if sidekick passed.
@@ -49,7 +50,8 @@ func activate(playerNode):
 	and Global.emeralds < 127): #If 1P, >=50 rings, > 7 emeralds...
 		var spawn = specialStageEntry.instantiate()
 		spawn.global_position = global_position + Vector2(0,-64)
-		get_parent().add_child(spawn)
+		get_parent().call_deferred("add_child",spawn)
+		#add_child(spawn)
 
 func _on_Checkpoint_body_entered(body):
 	# do the spin and activate

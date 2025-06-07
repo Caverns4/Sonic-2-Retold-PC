@@ -126,8 +126,11 @@ func change_scene_to_file(scene = null, fadeOut = "", fadeIn = "", length = 1, s
 	await get_tree().process_frame
 	# reset data level data, if reset data is true
 	if resetData:
-		Global.players = []
-		Global.checkPoints = []
+		print("Clearing Data")
+		Global.players.clear()
+		Global.special_stage_players.clear()
+		Global.checkPoints.clear()
+		Global.hud = null
 		Global.waterLevel = null
 		Global.gameOver = false
 		if Global.stageClearPhase != 0:

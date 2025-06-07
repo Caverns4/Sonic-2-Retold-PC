@@ -67,6 +67,9 @@ func TriggerSignpostMultiPlayer():
 		
 
 func TriggerSignpostSinglePlayer():
+	if !Global.players:
+		return
+	
 	if Global.players[0].global_position.x > global_position.x and Global.stageClearPhase == 0:
 		Global.main.sceneCanPause = false
 		# set player variable

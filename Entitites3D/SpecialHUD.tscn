@@ -118,34 +118,32 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Banner" type="Sprite2D" parent="Center"]
-visible = false
-position = Vector2(20, -4)
+position = Vector2(64, 0)
 texture = ExtResource("4_ylmpt")
 vframes = 2
 
 [node name="BannerThumb" type="Sprite2D" parent="Center"]
-visible = false
-position = Vector2(20, -4)
+position = Vector2(64, -8)
 texture = ExtResource("4_ylmpt")
 vframes = 2
 frame = 1
 
 [node name="TextMessage" type="RichTextLabel" parent="Center"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -16.0
-offset_top = -8.0
+offset_top = 24.0
 offset_right = 16.0
-offset_bottom = -56.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_utlc0")
 bbcode_enabled = true
-text = "10000000 RINGS TO GO"
+text = "69 RINGS TO GO"
 scroll_active = false
 autowrap_mode = 0
 tab_size = 0
 shortcut_keys_enabled = false
+horizontal_alignment = 1

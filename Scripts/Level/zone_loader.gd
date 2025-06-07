@@ -3,6 +3,7 @@ extends CanvasLayer
 var loaded = false
 
 func _ready() -> void:
+	Global.players.clear()
 	Global.music.stop()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

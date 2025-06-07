@@ -169,7 +169,7 @@ color = Color(1, 1, 0, 0)
 
 [node name="Fader" type="AnimationPlayer" parent="GUI"]
 libraries = {
-"": SubResource("AnimationLibrary_iltn5")
+&"": SubResource("AnimationLibrary_iltn5")
 }
 autoplay = "RESET"
 

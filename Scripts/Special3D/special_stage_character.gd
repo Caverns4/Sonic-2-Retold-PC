@@ -47,23 +47,23 @@ var inertia : float  = 0.0 # Movement Speed forward
 var movement : Vector3 = Vector3.ZERO #linear motion
 var xform : Transform3D
 var jumpBuffer: float = 0
+var dead: bool = false
 
 func _ready() -> void:
-	Global.players.append(self)
-	if Global.players[0] == self:
+	Global.special_stage_players.append(self)
+	if Global.special_stage_players[0] == self:
 		character = Global.PlayerChar1
 		inputActions = INPUTACTIONS_P1
+		$Camera3D.current = true
 		if Global.PlayerChar2 > 0:
 			var partner = self.duplicate()
 			get_parent().add_child(partner)
 			partner.name = "Partner"
 			partner.global_position = global_position - Vector3(0,0,-2)
-			get_parent().call_deferred("add_child", (partner))
 	else:
 		character = Global.PlayerChar2
 		playerControl = 2
 		inputActions = INPUTACTIONS_P2
-		$Camera3D.clear_current()
 	
 	#instantiate the player's skin
 	var character = min(character,playerSkins.size())
@@ -99,6 +99,11 @@ func _physics_process(delta: float) -> void:
 	# jump buffer time
 	if jumpBuffer > 0.0:
 		jumpBuffer -= delta
+		
+	if movement.y < -32.0 and !dead:
+		Global.hud.endStage()
+		Global.life.play()
+		dead = true
 
 func handle_input(delta):
 	# Handle jump.
