@@ -4,6 +4,7 @@
 
 [resource]
 resource_name = "Flag"
+cull_mode = 2
 diffuse_mode = 3
 specular_mode = 2
 albedo_texture = ExtResource("1_tt4h6")

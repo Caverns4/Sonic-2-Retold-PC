@@ -12,6 +12,9 @@ var ring_requirment: int = 40
 func _ready() -> void:
 	Global.hud = self
 	message_text = "GET " + str(ring_requirment) + " RINGS"
+	if !Global.PlayerChar2 or !Global.two_player_mode:
+		$TopRight.queue_free()
+		$TopLeft.queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -19,13 +22,13 @@ func _process(delta: float) -> void:
 	if message.visible and messageTime <= 0.0:
 		ClearMessage()
 	
-	$TopLeft/RingCountP1.text = str(min(Global.special_stage_players[0].rings,999))
 	if Global.special_stage_players.size() > 1:
+		$TopLeft/RingCountP1.text = str(min(Global.special_stage_players[0].rings,999))
 		$TopRight/RingCountP2.text = str(min(Global.special_stage_players[1].rings,999))
-		
 		var RingTotal = min((Global.special_stage_players[0].rings + Global.special_stage_players[1].rings),999)
-		
 		$TopCenter/RingCount.text = str(RingTotal).lpad(3," ")
+	else:
+		$TopCenter/RingCount.text = str(min(Global.special_stage_players[0].rings,999)).lpad(4," ")
 
 func _physics_process(delta: float) -> void:
 	message.text = message_text

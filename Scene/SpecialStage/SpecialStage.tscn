@@ -23,6 +23,54 @@ environment = SubResource("Environment_o6ewc")
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
 
+[node name="TextureRect2" type="TextureRect" parent="Background"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -192.0
+offset_right = -160.0
+offset_bottom = 256.0
+grow_horizontal = 2
+texture = ExtResource("1_mx8be")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="Background"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 160.0
+offset_right = 192.0
+offset_bottom = 256.0
+grow_horizontal = 2
+texture = ExtResource("1_mx8be")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="Background"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 192.0
+offset_right = 224.0
+offset_bottom = 256.0
+grow_horizontal = 2
+texture = ExtResource("1_mx8be")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="TextureRect5" type="TextureRect" parent="Background"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -224.0
+offset_right = -192.0
+offset_bottom = 256.0
+grow_horizontal = 2
+texture = ExtResource("1_mx8be")
+expand_mode = 1
+stretch_mode = 1
+
 [node name="TextureRect" type="TextureRect" parent="Background"]
 anchors_preset = 5
 anchor_left = 0.5

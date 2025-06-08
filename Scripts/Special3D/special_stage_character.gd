@@ -55,7 +55,7 @@ func _ready() -> void:
 		character = Global.PlayerChar1
 		inputActions = INPUTACTIONS_P1
 		$Camera3D.current = true
-		if Global.PlayerChar2 > 0:
+		if Global.PlayerChar2 > 0 and Global.two_player_mode:
 			var partner = self.duplicate()
 			get_parent().add_child(partner)
 			partner.name = "Partner"
@@ -131,7 +131,7 @@ func handle_input(delta):
 	inertia = clampf(inertia,0-TOP_SPEED,TOP_SPEED)
 	#print(inertia)
 	
-	movement = (Vector3(input_axis*6.0,movement.y,0-inertia))
+	movement = (Vector3(input_axis*8.0,movement.y,0-inertia))
 
 func hit_player(damagePosition: Vector3,ammount: int):
 	if rings > 0:

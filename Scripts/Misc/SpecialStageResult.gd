@@ -3,6 +3,8 @@ extends Node2D
 var activated = false
 var state_timer = 1.0
 
+var zone_loader = preload("res://Scene/SpecialStage/SpecialStageResult.tscn")
+
 func _ready():
 	#Wipe the player array to avoide contamination.
 	Global.special_stage_players = []
@@ -15,7 +17,7 @@ func _ready():
 	if Global.lastSpecialStageResult:
 		Global.specialStageID += 1
 	Global.stage_clear()
-	print(Global.emeralds)
+	#print(Global.emeralds)
 
 func _process(delta: float) -> void:
 	if !Global.music.playing and !activated:
@@ -24,7 +26,11 @@ func _process(delta: float) -> void:
 
 func returnToLevel():
 	Global.lastSpecialStageResult = false
-	Global.main.change_scene_to_file(null,"WhiteOut","WhiteOut",1,true,false)
+	
+	if Global.stageInstanceMemory:
+		Global.main.change_scene_to_file(null,"WhiteOut","WhiteOut",1,true,false)
+	else:
+		Global.main.change_scene_to_file(zone_loader,"WhiteOut","WhiteOut",1,false,true)
 
 func SpecialResults_SetupText():
 	if !Global.lastSpecialStageResult:

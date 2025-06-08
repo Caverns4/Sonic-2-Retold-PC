@@ -2,7 +2,6 @@
 
 [resource]
 resource_name = "Color2"
-cull_mode = 2
 shading_mode = 2
 diffuse_mode = 3
 specular_mode = 2

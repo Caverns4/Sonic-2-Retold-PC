@@ -87,10 +87,8 @@ func reset_game():
 # scene = the scene instance to load (load("res...")
 # fadeOut = the fade out animation to play from the Fader animation node (set to "" for instant)
 # fadeIn = the fade in animation to play from the Fader animation node after a scene has finished it's fading out (set to "" for instant)
-# setType = play an animation before either fades, this is mostly used for setting up blending modes. this is mostly used for setting to either blend add colours or blend remove but you can put whatever animation you want here
 # length = time in seconds for the fade animations to play
 # storeScene = should the current scene be storred? (not the new one being loaded)
-# NOTE: if there's already a scene saved then the next time storeScene is called then the stored scene will be loaded instead before it gets removed
 # resetData = should the level data be reset between scenes (this is needed for storeScene if you're storing a level so that level times and object references don't get reset)
 func change_scene_to_file(scene = null, fadeOut = "", fadeIn = "", length = 1, storeScene = false, resetData = true):
 	# stop pausing
@@ -126,7 +124,6 @@ func change_scene_to_file(scene = null, fadeOut = "", fadeIn = "", length = 1, s
 	await get_tree().process_frame
 	# reset data level data, if reset data is true
 	if resetData:
-		print("Clearing Data")
 		Global.players.clear()
 		Global.special_stage_players.clear()
 		Global.checkPoints.clear()
