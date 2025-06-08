@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://vnfel652ionu"]
+[gd_scene load_steps=7 format=3 uid="uid://vnfel652ionu"]
 
 [ext_resource type="MeshLibrary" uid="uid://bh7gsa0o3u6j" path="res://Resources/SpecialStages.tres" id="1_6j7lo"]
+[ext_resource type="Script" uid="uid://bkjyltte0u76l" path="res://Scripts/Special3D/special_stage_requirments.gd" id="1_nse26"]
 [ext_resource type="PackedScene" uid="uid://dblrkngio3lkk" path="res://Entitites3D/ChaosEmerald.tscn" id="2_jyupk"]
 [ext_resource type="PackedScene" uid="uid://bpmdeyvoxjr88" path="res://Entitites3D/SS_Bumper.tscn" id="3_hiaxo"]
 [ext_resource type="PackedScene" uid="uid://dpl1a2gtxk5t2" path="res://Entitites3D/ring_ss.tscn" id="4_nqb0r"]
 [ext_resource type="PackedScene" uid="uid://brhngubcqwg7i" path="res://Entitites3D/bomb_ss.tscn" id="5_b7spd"]
 
 [node name="Stage1" type="Node3D"]
+script = ExtResource("1_nse26")
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 0)

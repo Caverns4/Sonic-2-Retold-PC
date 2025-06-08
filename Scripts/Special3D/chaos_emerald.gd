@@ -19,13 +19,12 @@ func _process(delta: float) -> void:
 		$Sprite3D.frame = color*4
 	else:
 		if player:
-			global_position.x = player.global_poistion.x + player.velocity.x
-			global_position.z = player.global_poistion.z + player.velocity.z
+			global_position.z = move_toward(global_position.z,player.global_position.z - 7,delta*60)
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if !collected:
 		collected = true
-		var player = body
+		player = body
 		Global.music.stop()
 		Global.life.stream = jingleTheme
 		Global.life.play()
