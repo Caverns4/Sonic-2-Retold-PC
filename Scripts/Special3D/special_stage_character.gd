@@ -3,7 +3,7 @@ extends CharacterBody3D
 @onready var sfx = $SFX.get_children()
 @onready var sprite = $SsSonicTest
 
-const TOP_SPEED = 16.0
+const TOP_SPEED = 10.0
 const JUMP_VELOCITY = 7.0
 const JUMP_KNUCKLES = 6.0
 
@@ -88,14 +88,14 @@ func _physics_process(delta: float) -> void:
 		sfx[2].play()
 	
 	if sprite and is_on_floor():
-		if inertia >= 16.0 and !sprite.animation == "run":
+		if inertia >= 10.0 and !sprite.animation == "run":
 			sprite.play("run")
-		elif inertia < 16.0 and !sprite.animation == "default":
+		elif inertia < 10.0 and !sprite.animation == "default":
 			sprite.play("default")
 	handle_input(delta)
 	velocity = (global_basis * movement)
 	move_and_slide()
-	rotate_to_floor_angle()
+	rotate_to_floor_angle(delta)
 	# jump buffer time
 	if jumpBuffer > 0.0:
 		jumpBuffer -= delta
@@ -140,23 +140,24 @@ func hit_player(damagePosition: Vector3,ammount: int):
 	if inertia > 0.0:
 		inertia = 0.0
 
-func rotate_to_floor_angle():
-	var surface_normal = get_floor()
+func rotate_to_floor_angle(delta):
+	var surface_normal = get_floor().normalized()
 	if surface_normal:
 		#Align to nearest floor
 		xform = global_transform
 		xform.basis.y = surface_normal
-		xform.basis.x = -xform.basis.z.cross(surface_normal)
+		xform.basis.x = -xform.basis.z.cross(xform.basis.y)
 		xform.basis = xform.basis.orthonormalized()
 		global_transform = xform
 		
-		up_direction = surface_normal.normalized()
+		up_direction = surface_normal
 
 
 func get_floor():
 	# Check collision with the rays for floor, wall, and ceiling
 	if floor_ray.is_colliding():
 		#print(floor_ray.get_collision_normal())
+		$CharacterShadow.global_position = floor_ray.get_collision_point()
 		return floor_ray.get_collision_normal()
 	return Vector3.ZERO
 
@@ -178,11 +179,11 @@ func set_inputs():
 		inputs[INPUTS.YINPUT] = -int(Input.is_action_pressed(inputActions[INPUTS.YINPUT][0]))+int(Input.is_action_pressed(inputActions[INPUTS.YINPUT][1]))
 
 func isActionPressed():
-	if inputs[INPUTS.ACTION]:
+	if inputs[INPUTS.ACTION] == 1:
 		return true
-	if inputs[INPUTS.ACTION2]:
+	if inputs[INPUTS.ACTION2] == 1:
 		return true
-	if inputs[INPUTS.ACTION3]:
+	if inputs[INPUTS.ACTION3] == 1:
 		return true
 	return false
 

@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dfs842p8fj03b"]
+
+[resource]
+resource_name = "Color2"
+cull_mode = 2
+shading_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.906332, 0.461135, 0.051834, 1)
+texture_filter = 0
+texture_repeat = false
+proximity_fade_distance = 0.01

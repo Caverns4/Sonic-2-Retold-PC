@@ -118,11 +118,13 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Banner" type="Sprite2D" parent="Center"]
+visible = false
 position = Vector2(64, 0)
 texture = ExtResource("4_ylmpt")
 vframes = 2
 
 [node name="BannerThumb" type="Sprite2D" parent="Center"]
+visible = false
 position = Vector2(64, -8)
 texture = ExtResource("4_ylmpt")
 vframes = 2

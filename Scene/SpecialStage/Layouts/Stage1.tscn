@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://vnfel652ionu"]
+
+[ext_resource type="MeshLibrary" uid="uid://bh7gsa0o3u6j" path="res://Resources/SpecialStages.tres" id="1_6j7lo"]
+[ext_resource type="PackedScene" uid="uid://dblrkngio3lkk" path="res://Entitites3D/ChaosEmerald.tscn" id="2_jyupk"]
+[ext_resource type="PackedScene" uid="uid://bpmdeyvoxjr88" path="res://Entitites3D/SS_Bumper.tscn" id="3_hiaxo"]
+
+[node name="Stage1" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 0)
+mesh_library = ExtResource("1_6j7lo")
+cell_size = Vector3(5, 5, 5)
+data = {
+"cells": PackedInt32Array(-65536, 14, 0, -65536, 10, 0, -65536, 6, 0, -65536, 2, 0, -65536, 65534, 0, -65536, 18, 0, -65536, 22, 0, -65536, 65530, 0, -65536, 65526, 7, -65536, 65522, 3, -65532, 65521, 9, -65531, 65517, 0, -65531, 65513, 0, -65531, 65509, 0, -65531, 65505, 0, -65531, 65501, 0, -65531, 65497, 0, -65531, 65493, 0, -65531, 65489, 0, -65531, 65485, 0, -65531, 65481, 1, -65531, 65477, 1, -65528, 65474, 1, -65534, 65474, 1, -65534, 65470, 2, -65528, 65470, 2, 8, 65466, 1, 2, 65466, 1, 5, 65463, 1, 5, 65459, 0, 5, 65455, 0, 5, 65451, 0, 5, 65447, 0, 5, 65443, 7, 5, 65439, 7, 5, 65435, 7, 5, 65431, 7, 5, 65427, 0, 5, 65423, 0, 5, 65419, 0, 5, 65415, 0, 5, 65411, 0, 5, 65407, 0, 5, 65403, 0, 5, 65399, 0, 5, 65395, 0, 5, 65391, 0, 5, 65387, 0, 5, 65383, 0, 5, 65379, 0, 5, 65375, 0, 5, 65371, 0, 5, 65367, 0)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Entitites" type="Node3D" parent="."]
+
+[node name="ChaosEmerald" parent="Entitites" instance=ExtResource("2_jyupk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 7, -530)
+
+[node name="SsBumper" parent="Entitites" instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -303)
+
+[node name="SsBumper2" parent="Entitites" instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -303)
+
+[node name="SsBumper3" parent="Entitites" instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0, -303)

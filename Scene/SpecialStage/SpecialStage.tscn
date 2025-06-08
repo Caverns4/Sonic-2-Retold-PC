@@ -1,14 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://bma2174bd2vai"]
+[gd_scene load_steps=8 format=3 uid="uid://bma2174bd2vai"]
 
 [ext_resource type="Texture2D" uid="uid://chcgf78a1t8ik" path="res://Graphics/Special Stage/SS_BG.png" id="1_mx8be"]
 [ext_resource type="Script" uid="uid://cencvxfcrxw0v" path="res://Scripts/Level/SpecialStage.gd" id="1_x3k1r"]
 [ext_resource type="PackedScene" uid="uid://c8ubncxkma30o" path="res://Entitites3D/special_stage_character.tscn" id="3_rcx61"]
 [ext_resource type="PackedScene" uid="uid://cyx38ouxk43dn" path="res://Entitites3D/SpecialHUD.tscn" id="3_ydt6i"]
-[ext_resource type="Texture2D" uid="uid://b2m6ntibathle" path="res://Graphics/Special Stage/TestMat.png" id="4_yfr13"]
-[ext_resource type="PackedScene" uid="uid://dblrkngio3lkk" path="res://Entitites3D/ChaosEmerald.tscn" id="6_ikpik"]
-[ext_resource type="PackedScene" uid="uid://bpmdeyvoxjr88" path="res://Entitites3D/SS_Bumper.tscn" id="8_tetl8"]
-[ext_resource type="PackedScene" uid="uid://brhngubcqwg7i" path="res://Entitites3D/bomb_ss.tscn" id="9_5i2nm"]
-[ext_resource type="PackedScene" uid="uid://dpl1a2gtxk5t2" path="res://Entitites3D/ring_ss.tscn" id="36_qkbuj"]
+[ext_resource type="PackedScene" uid="uid://vnfel652ionu" path="res://Scene/SpecialStage/Layouts/Stage1.tscn" id="5_vd00g"]
 
 [sub_resource type="Sky" id="Sky_7ob4j"]
 
@@ -16,44 +12,7 @@
 background_mode = 3
 sky = SubResource("Sky_7ob4j")
 ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
-
-[sub_resource type="Curve3D" id="Curve3D_7lh5j"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -10),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gbcia"]
-shading_mode = 0
-specular_mode = 2
-albedo_texture = ExtResource("4_yfr13")
-uv1_scale = Vector3(32, 32, 32)
-texture_filter = 0
-
-[sub_resource type="BoxMesh" id="BoxMesh_i6jk0"]
-size = Vector3(64, 1, 128)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_gyckv"]
-size = Vector3(64, 1, 128)
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_h1h6v"]
-height = 512.0
-radius = 10.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5cddy"]
-shading_mode = 0
-specular_mode = 2
-albedo_texture = ExtResource("4_yfr13")
-uv1_scale = Vector3(8, 64, 8)
-texture_filter = 0
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_a807l"]
-material = SubResource("StandardMaterial3D_5cddy")
-top_radius = 10.0
-bottom_radius = 10.0
-height = 512.0
+ambient_light_color = Color(0.266667, 0.266667, 0.266667, 1)
 
 [node name="SpecialStage" type="Node3D"]
 script = ExtResource("1_x3k1r")
@@ -63,7 +22,6 @@ environment = SubResource("Environment_o6ewc")
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
-visible = false
 
 [node name="TextureRect" type="TextureRect" parent="Background"]
 anchors_preset = 5
@@ -82,137 +40,7 @@ stretch_mode = 5
 [node name="SpecialStageCharacter" parent="." instance=ExtResource("3_rcx61")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 27)
 
-[node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(0.822154, -0.569265, 0, 0.569265, 0.822154, 0, 0, 0, 1, 0, 0, 0)
-curve = SubResource("Curve3D_7lh5j")
+[node name="Stage1" parent="." instance=ExtResource("5_vd00g")]
 
-[node name="Entitites" type="Node3D" parent="."]
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Entitites"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.60198, -36)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Entitites/StaticBody3D"]
-material_override = SubResource("StandardMaterial3D_gbcia")
-mesh = SubResource("BoxMesh_i6jk0")
-skeleton = NodePath("../../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Entitites/StaticBody3D"]
-shape = SubResource("BoxShape3D_gyckv")
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="Entitites"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -8.60198, -637)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Entitites/StaticBody3D2"]
-material_override = SubResource("StandardMaterial3D_gbcia")
-mesh = SubResource("BoxMesh_i6jk0")
-skeleton = NodePath("../../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Entitites/StaticBody3D2"]
-shape = SubResource("BoxShape3D_gyckv")
-
-[node name="StaticBody3D3" type="StaticBody3D" parent="Entitites"]
-transform = Transform3D(-4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, 0, 23.398, -670)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Entitites/StaticBody3D3"]
-material_override = SubResource("StandardMaterial3D_gbcia")
-mesh = SubResource("BoxMesh_i6jk0")
-skeleton = NodePath("../../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Entitites/StaticBody3D3"]
-shape = SubResource("BoxShape3D_gyckv")
-
-[node name="Ring_SS" parent="Entitites" instance=ExtResource("36_qkbuj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -9)
-
-[node name="Ring_SS2" parent="Entitites" instance=ExtResource("36_qkbuj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -11)
-
-[node name="Ring_SS3" parent="Entitites" instance=ExtResource("36_qkbuj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -13)
-
-[node name="Ring_SS5" parent="Entitites" instance=ExtResource("36_qkbuj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -156)
-
-[node name="Ring_SS6" parent="Entitites" instance=ExtResource("36_qkbuj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -158)
-
-[node name="Ring_SS7" parent="Entitites" instance=ExtResource("36_qkbuj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -160)
-
-[node name="Ring_SS8" parent="Entitites" instance=ExtResource("36_qkbuj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -4, -204)
-
-[node name="Ring_SS9" parent="Entitites" instance=ExtResource("36_qkbuj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -4, -206)
-
-[node name="Ring_SS10" parent="Entitites" instance=ExtResource("36_qkbuj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -4, -208)
-
-[node name="Ring_SS11" parent="Entitites" instance=ExtResource("36_qkbuj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -11, -285)
-
-[node name="Ring_SS12" parent="Entitites" instance=ExtResource("36_qkbuj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -11, -287)
-
-[node name="Ring_SS13" parent="Entitites" instance=ExtResource("36_qkbuj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -11, -289)
-
-[node name="Ring_SS14" parent="Entitites" instance=ExtResource("36_qkbuj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -357)
-
-[node name="Ring_SS15" parent="Entitites" instance=ExtResource("36_qkbuj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -359)
-
-[node name="Ring_SS16" parent="Entitites" instance=ExtResource("36_qkbuj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -361)
-
-[node name="Ring_SS17" parent="Entitites" instance=ExtResource("36_qkbuj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -575)
-
-[node name="Ring_SS18" parent="Entitites" instance=ExtResource("36_qkbuj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -577)
-
-[node name="Ring_SS19" parent="Entitites" instance=ExtResource("36_qkbuj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -579)
-
-[node name="Ring_SS4" parent="Entitites" instance=ExtResource("36_qkbuj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -15)
-
-[node name="ChaosEmerald" parent="Entitites" instance=ExtResource("6_ikpik")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -169)
-
-[node name="StaticBody3D6" type="StaticBody3D" parent="Entitites"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -11, -349)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Entitites/StaticBody3D6"]
-shape = SubResource("CylinderShape3D_h1h6v")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Entitites/StaticBody3D6"]
-mesh = SubResource("CylinderMesh_a807l")
-
-[node name="SsBumper" parent="Entitites" instance=ExtResource("8_tetl8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -12, -604)
-
-[node name="SsBumper2" parent="Entitites" instance=ExtResource("8_tetl8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -18, -604)
-
-[node name="SsBumper3" parent="Entitites" instance=ExtResource("8_tetl8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -22, -604)
-
-[node name="SsBumper4" parent="Entitites" instance=ExtResource("8_tetl8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24, -604)
-
-[node name="SsBumper5" parent="Entitites" instance=ExtResource("8_tetl8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -22, -604)
-
-[node name="SsBumper6" parent="Entitites" instance=ExtResource("8_tetl8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, -12, -604)
-
-[node name="SsBumper9" parent="Entitites" instance=ExtResource("8_tetl8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -577)
-
-[node name="SsBumper7" parent="Entitites" instance=ExtResource("8_tetl8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -17, -604)
-
-[node name="Bomb_SS" parent="Entitites" instance=ExtResource("9_5i2nm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.030447, 0.864417, -24.5523)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 50, 0)

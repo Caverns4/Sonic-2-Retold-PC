@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c8ubncxkma30o"]
+[gd_scene load_steps=17 format=3 uid="uid://c8ubncxkma30o"]
 
 [ext_resource type="Script" uid="uid://cxpqa1ssrexts" path="res://Scripts/Special3D/special_stage_character.gd" id="1_c71qe"]
 [ext_resource type="AudioStream" uid="uid://vcyy3mwx3dt1" path="res://Audio/SFX/Player/s2br_Jump.wav" id="2_y4lan"]
@@ -15,6 +15,13 @@
 [ext_resource type="PackedScene" uid="uid://c62dv25je5kes" path="res://Graphics/Special Stage/SS_Sonic_Test.tscn" id="33_o7v3h"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b2vku"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8dt0u"]
+height = 0.001
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q1nh7"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
 
 [node name="SpecialStageCharacter" type="CharacterBody3D"]
 collision_layer = 4096
@@ -79,3 +86,8 @@ bus = &"SFX"
 
 [node name="SsSonicTest" parent="." instance=ExtResource("33_o7v3h")]
 billboard = 1
+
+[node name="CharacterShadow" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.887209, 0)
+mesh = SubResource("CylinderMesh_8dt0u")
+surface_material_override/0 = SubResource("StandardMaterial3D_q1nh7")

@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://jcfwnib3s02r"]
+
+[ext_resource type="Texture2D" uid="uid://rf5unb1fbfeo" path="res://Models/SpecialStage/SpecialStage_Checkpoint.png" id="1_tt4h6"]
+
+[resource]
+resource_name = "Flag"
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("1_tt4h6")
+texture_filter = 0
