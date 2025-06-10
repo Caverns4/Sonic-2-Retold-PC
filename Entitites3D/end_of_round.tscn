@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsbgvrhfhrpev"]
+
+[ext_resource type="Script" uid="uid://q85n6f1syt1n" path="res://Scripts/Special3D/end_of_round.gd" id="1_ep300"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p2wdh"]
+size = Vector3(10, 10, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ep300"]
+size = Vector3(10, 10, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ep300"]
+transparency = 1
+albedo_color = Color(1, 0.321569, 1, 0.596078)
+
+[node name="EndOfRound" type="Area3D"]
+collision_layer = 0
+collision_mask = 4096
+script = ExtResource("1_ep300")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_p2wdh")
+debug_color = Color(0.664182, 0.00036358, 0.672148, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ep300")
+surface_material_override/0 = SubResource("StandardMaterial3D_ep300")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

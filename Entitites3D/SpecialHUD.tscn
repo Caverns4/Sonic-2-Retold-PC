@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyx38ouxk43dn"]
+[gd_scene load_steps=6 format=3 uid="uid://cyx38ouxk43dn"]
 
 [ext_resource type="Script" uid="uid://bdm1b3wf0gqwf" path="res://Scripts/Special3D/special_hud.gd" id="1_4ib6a"]
 [ext_resource type="Texture2D" uid="uid://d0yay16k5lfhw" path="res://Graphics/Special Stage/SS_HUD_Sprites.png" id="1_tgu3l"]
 [ext_resource type="Theme" uid="uid://bev8bkdmigtvx" path="res://Resources/SpecialHUD.tres" id="3_utlc0"]
 [ext_resource type="Texture2D" uid="uid://bphan27in8ku2" path="res://Graphics/Special Stage/SS_HUD_Banner.png" id="4_ylmpt"]
+[ext_resource type="Script" uid="uid://7arhsr6od14i" path="res://Scripts/Special3D/banner_thumb.gd" id="5_qbx1f"]
 
 [node name="SpecialHud" type="CanvasLayer"]
 layer = 5
@@ -129,6 +130,7 @@ position = Vector2(64, -8)
 texture = ExtResource("4_ylmpt")
 vframes = 2
 frame = 1
+script = ExtResource("5_qbx1f")
 
 [node name="TextMessage" type="RichTextLabel" parent="Center"]
 layout_mode = 1
@@ -149,3 +151,6 @@ autowrap_mode = 0
 tab_size = 0
 shortcut_keys_enabled = false
 horizontal_alignment = 1
+
+[node name="ResultSound" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"

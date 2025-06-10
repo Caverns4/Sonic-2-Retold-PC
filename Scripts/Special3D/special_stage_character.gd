@@ -4,9 +4,9 @@ extends CharacterBody3D
 @onready var sprite = $SsSonicTest
 @onready var shadow_sprite = $CharacterShadow
 
-const TOP_SPEED = 10.0
-const JUMP_VELOCITY = 7.0
-const JUMP_KNUCKLES = 6.0
+const TOP_SPEED = 12.0
+const JUMP_VELOCITY = 12.0
+const JUMP_KNUCKLES = 10.0
 
 const INPUT_MEMORY_LENGTH = 20
 const JUMP_BUFFER_TIME = 3.0/60.0 #Time after pressing jump button to buffer the input, in case it's pressed early.
@@ -80,7 +80,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	set_inputs()
 	if !is_on_floor():
-		movement.y += (-9.8 * delta)
+		movement.y += (-9.8 * 2 * delta)
 	else:
 		movement.y = 0.0
 	
@@ -102,8 +102,7 @@ func _physics_process(delta: float) -> void:
 		jumpBuffer -= delta
 		
 	if movement.y < -32.0 and !dead:
-		Global.hud.endStage()
-		Global.life.play()
+		Global.hud.SetupNextRound(true)
 		dead = true
 
 func handle_input(delta):
@@ -128,7 +127,7 @@ func handle_input(delta):
 	var input_axis = inputs[INPUTS.XINPUT]
 	
 	if inertia < TOP_SPEED:
-		inertia += (24*delta)
+		inertia += (12*delta)
 	inertia = clampf(inertia,0-TOP_SPEED,TOP_SPEED)
 	#print(inertia)
 	
