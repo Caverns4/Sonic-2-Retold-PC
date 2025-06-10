@@ -9,6 +9,9 @@ extends Node3D
 var player = null
 var collected: bool = false
 
+@onready var floor_ray = $RayCast3D
+@onready var shadow_sprite = $CharacterShadow
+
 func _ready() -> void:
 	if !Engine.is_editor_hint():
 		color = Global.specialStageID
@@ -18,6 +21,15 @@ func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		$Sprite3D.frame = color*4
 	else:
+		if floor_ray.is_colliding():
+			shadow_sprite.global_position = floor_ray.get_collision_point()
+			var scale_factor: float = 1.0 - (
+			global_position.distance_to(floor_ray.get_collision_point())/10)
+			scale_factor = clampf(scale_factor,0.0,1.0)
+			shadow_sprite.scale = Vector3(scale_factor,1.0,scale_factor)
+		else:
+			shadow_sprite.scale = Vector3.ZERO
+			
 		if player:
 			global_position.z = move_toward(global_position.z,player.global_position.z - 7,delta*60)
 

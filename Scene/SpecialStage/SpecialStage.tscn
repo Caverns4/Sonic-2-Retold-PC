@@ -1,12 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bma2174bd2vai"]
+[gd_scene load_steps=8 format=3 uid="uid://bma2174bd2vai"]
 
 [ext_resource type="Texture2D" uid="uid://chcgf78a1t8ik" path="res://Graphics/Special Stage/SS_BG.png" id="1_mx8be"]
 [ext_resource type="Script" uid="uid://cencvxfcrxw0v" path="res://Scripts/Level/SpecialStage.gd" id="1_x3k1r"]
-[ext_resource type="Material" uid="uid://dsj5jspojm7uw" path="res://Models/SpecialStage/Materials/Color1.tres" id="2_audj4"]
-[ext_resource type="Material" uid="uid://dfs842p8fj03b" path="res://Models/SpecialStage/Materials/Color2.tres" id="3_pl04y"]
 [ext_resource type="PackedScene" uid="uid://c8ubncxkma30o" path="res://Entitites3D/special_stage_character.tscn" id="3_rcx61"]
 [ext_resource type="PackedScene" uid="uid://cyx38ouxk43dn" path="res://Entitites3D/SpecialHUD.tscn" id="3_ydt6i"]
-[ext_resource type="Material" uid="uid://dfd2e2rfd0elp" path="res://Models/SpecialStage/Materials/Lights.tres" id="4_c2hka"]
 [ext_resource type="PackedScene" uid="uid://vnfel652ionu" path="res://Scene/SpecialStage/Layouts/Stage1.tscn" id="5_vd00g"]
 
 [sub_resource type="Sky" id="Sky_7ob4j"]
@@ -19,9 +16,7 @@ ambient_light_color = Color(0.266667, 0.266667, 0.266667, 1)
 
 [node name="SpecialStage" type="Node3D"]
 script = ExtResource("1_x3k1r")
-primary_material = ExtResource("2_audj4")
-secondary_material = ExtResource("3_pl04y")
-lights_material = ExtResource("4_c2hka")
+stage_layouts = Array[PackedScene]([ExtResource("5_vd00g"), ExtResource("5_vd00g"), ExtResource("5_vd00g"), ExtResource("5_vd00g"), ExtResource("5_vd00g"), ExtResource("5_vd00g"), ExtResource("5_vd00g"), ExtResource("5_vd00g")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_o6ewc")

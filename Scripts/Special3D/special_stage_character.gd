@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @onready var sfx = $SFX.get_children()
 @onready var sprite = $SsSonicTest
+@onready var shadow_sprite = $CharacterShadow
 
 const TOP_SPEED = 10.0
 const JUMP_VELOCITY = 7.0
@@ -157,7 +158,12 @@ func get_floor():
 	# Check collision with the rays for floor, wall, and ceiling
 	if floor_ray.is_colliding():
 		#print(floor_ray.get_collision_normal())
-		$CharacterShadow.global_position = floor_ray.get_collision_point()
+		shadow_sprite.global_position = floor_ray.get_collision_point()
+		var scale_factor: float = 1.0 - (
+			global_position.distance_to(floor_ray.get_collision_point()) /5.0)
+		scale_factor = clampf(scale_factor,0.0,1.0)
+		shadow_sprite.scale = Vector3(scale_factor,1.0,scale_factor)
+		
 		return floor_ray.get_collision_normal()
 	return Vector3.ZERO
 
