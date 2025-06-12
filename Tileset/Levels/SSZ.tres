@@ -1,0 +1,50 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bs6m1abicetfn"]
+
+[ext_resource type="Texture2D" uid="uid://cswa8ua1d3sr6" path="res://Graphics/Backgrounds/SSZ/SSZ_BG.png" id="1_3rvch"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_be2gn"]
+texture = ExtResource("1_3rvch")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+
+[resource]
+physics_layer_0/collision_layer = 15
+physics_layer_0/collision_mask = 15
+physics_layer_1/collision_layer = 14
+physics_layer_1/collision_mask = 14
+sources/1 = SubResource("TileSetAtlasSource_be2gn")

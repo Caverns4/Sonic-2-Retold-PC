@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cua4c8kacbuhf" path="res://Scene/Backgrounds/12-SandShower.tscn" id="3_nwuo4"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_72mfe"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_i8rou"]
-[ext_resource type="TileSet" uid="uid://dn42tsjf760q0" path="res://Graphics/Tiles/MCZPlatform.tres" id="6_mhmmh"]
+[ext_resource type="TileSet" uid="uid://bs6m1abicetfn" path="res://Tileset/Levels/SSZ.tres" id="6_mhmmh"]
 
 [node name="SandShower1" type="Node2D"]
 script = ExtResource("1_frx6l")
