@@ -5,8 +5,8 @@ var playerHit = []
 
 var Explosion = preload("res://Entities/Misc/BadnickSmoke.tscn")
 var Animal = preload("res://Entities/Misc/Animal.tscn")
-var forceDamage = false
-var defaultMovement = true
+var forceDamage: bool = false
+var defaultMovement: bool = true
 
 signal destroyed
 

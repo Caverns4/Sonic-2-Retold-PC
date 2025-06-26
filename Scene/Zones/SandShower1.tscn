@@ -21,7 +21,7 @@ animal2 = 12
 zoneName = "SAND SHOWER"
 
 [node name="Player" parent="." instance=ExtResource("6_i8rou")]
-position = Vector2(96, 656)
+position = Vector2(96, 652)
 
 [node name="Level_Layout" type="Node" parent="."]
 

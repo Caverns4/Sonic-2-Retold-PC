@@ -1018,7 +1018,7 @@ _data = {
 [node name="PlayerAnimation" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_36uej")
+&"": SubResource("AnimationLibrary_36uej")
 }
 autoplay = "idle"
 
@@ -1046,7 +1046,7 @@ disabled = true
 
 [node name="SuperPalette" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_yhl61")
+&"": SubResource("AnimationLibrary_yhl61")
 }
 
 [node name="CenterReference" type="Sprite2D" parent="."]

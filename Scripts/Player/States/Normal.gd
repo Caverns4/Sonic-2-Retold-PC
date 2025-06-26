@@ -3,7 +3,7 @@ extends PlayerState
 var skid = false
 # timer for looking up and down
 # the original game uses 120 frames before panning over, so multiply delta by 0.5 for the same time
-var lookTimer = 0
+var lookTimer: float = 0
 var actionPressed = false
 
 # player idle animation array
@@ -39,7 +39,7 @@ func state_exit():
 	parent.get_node("HitBox").position = parent.hitBoxOffset.normal
 	parent.get_node("HitBox").shape.size = parent.currentHitbox.NORMAL
 	
-	lookTimer = 0
+	lookTimer = 0.0
 	parent.sfx[29].stop()
 
 func _process(delta):
@@ -134,12 +134,12 @@ func _process(delta):
 							balancing = true
 			
 			if (parent.inputs[parent.INPUTS.YINPUT] > 0) and !balancing:
-				lookTimer = max(0,lookTimer+delta*0.5)
+				lookTimer += (delta)
 				if parent.lastActiveAnimation != "crouch":
 					parent.animator.play("crouch")
 				balancing = true
 			elif (parent.inputs[parent.INPUTS.YINPUT] < 0) and !balancing:
-				lookTimer = min(0,lookTimer-delta*0.5)
+				lookTimer -= (delta*4.0)
 				
 				if(parent.isSuper and parent.character == Global.CHARACTERS.SONIC):
 					if parent.lastActiveAnimation != "lookUp_Super":
@@ -150,7 +150,7 @@ func _process(delta):
 				balancing = true
 			else:
 				# reset look timer
-				lookTimer = 0
+				lookTimer = move_toward(lookTimer,0.0,4.0)
 				
 			# Idle pose animation
 			if !balancing:
@@ -237,7 +237,9 @@ func _physics_process(delta):
 	
 	# Camera look
 	if abs(lookTimer) >= 1:
-		parent.camLookAmount += delta*4*sign(lookTimer)
+		parent.camLookAmount += sign(lookTimer)*delta*240.0
+	else:
+		parent.camLookAmount = move_toward(parent.camLookAmount,0.0,6.0)
 
 	var calcAngle = rad_to_deg(parent.angle-parent.gravityAngle)
 	calcAngle = wrapf(calcAngle,0,360)

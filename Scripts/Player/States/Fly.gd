@@ -1,9 +1,9 @@
 extends PlayerState
 
-# tails flight
+# Tails flight
 var flightTime = 8*60
-var flyGrav = 0.03125
-var actionPressed = true
+var flyGrav: float = 0.03125
+var actionPressed: bool = true
 var PartnerPriority: int = 0
 
 var flyHitBox
@@ -112,7 +112,7 @@ func _physics_process(delta):
 		
 		if (parent.movement.x*parent.get_x_input() < parent.top):
 			if (abs(parent.movement.x) < parent.top):
-				parent.movement.x = clamp(parent.movement.x+parent.air/GlobalFunctions.div_by_delta(delta)*parent.get_x_input(),-parent.top,parent.top)
+				parent.movement.x = clamp(parent.movement.x+(parent.acc*2)/GlobalFunctions.div_by_delta(delta)*parent.get_x_input(),-parent.top,parent.top)
 				
 	# Air drag
 	if (parent.movement.y < 0 and parent.movement.y > -parent.releaseJmp*60):

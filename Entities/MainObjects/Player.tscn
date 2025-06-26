@@ -1374,9 +1374,7 @@ collision_layer = 0
 collision_mask = 4096
 script = ExtResource("57")
 holdDownToDrop = true
-setCenter = true
 onlyActiveMovingDown = false
-groundPickup = true
 
 [node name="HitBox" type="CollisionShape2D" parent="TailsCarryBox"]
 position = Vector2(0, -3.5)

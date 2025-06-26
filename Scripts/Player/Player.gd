@@ -16,166 +16,161 @@ const HITBOXESTAILS = {
 var currentHitbox = HITBOXESSONIC
 
 const JUMP_BUFFER_TIME = 3.0/60.0 #Time after pressing jump button to buffer the input, in case it's pressed early.
+const defaultAirTime: float = 30.0 # 30 seconds
+const panicTime: float = 12.0 # start count down at 12 seconds
+const airWarning: float = 5.0 # time between air meter sound
 
-@export var disablePartner = false
+@export var disablePartner: bool = false
 
 #Sonic's Speed constants
-var acc = 0.046875			#acceleration
-var dec = 0.5				#deceleration
-var frc = 0.046875			#friction (same as acc)
-var rollfrc = frc*0.5		#roll friction
-var rolldec = 0.125			#roll deceleration
-var top = 6*60				#top horizontal speed
-var toproll = 20*60			#top horizontal speed rolling
-var slp = 0.125				#slope factor when walking/running #0.125
-var slprollup = 0.078125		#slope factor when rolling uphill
-var slprolldown = 0.3125		#slope factor when rolling downhill
-var fall = 2.5*60			#tolerance ground speed for sticking to walls and ceilings
+var acc: float = 0.046875			#acceleration
+var dec: float = 0.5				#deceleration
+var frc: float = 0.046875			#friction (same as acc)
+var rollfrc: float = frc*0.5		#roll friction
+var rolldec: float = 0.125			#roll deceleration
+var top: float = 6*60				#top horizontal speed
+var toproll: float = 20*60			#top horizontal speed rolling
+var slp: float = 0.125				#slope factor when walking/running #0.125
+var slprollup: float = 0.078125		#slope factor when rolling uphill
+var slprolldown: float = 0.3125		#slope factor when rolling downhill
+var fall: float = 2.5*60			#tolerance ground speed for sticking to walls and ceilings
 
-#Sonic's Airbo11rne Speed Constants
-var air = 0.09375			#air acceleration (2x acc)
+#Sonic's Airborne Speed Constants
+#var air = 0.09375			#air acceleration (2x acc)
 var jmp = 6.5*60			#jump force (6 for knuckles)
 var grv = 0.21875			#gravity
 var releaseJmp = 4			#jump release velocity
 
-var spindashPower = 0.0
-var peelOutCharge = 0.0
-var abilityUsed = false
-var curled = false
-var bounceReaction = 0 # for bubble shield
-var invTime = 0
-var supTime = 0
-var isSuper = false
-var shoeTime = 0
-var ringDisTime = 0 # ring collecting disable timer
+var spindashPower: float = 0.0
+var peelOutCharge: float = 0.0
+var abilityUsed: bool = false
+var curled: bool = false
+var bounceReaction: float = 0 # for bubble shield
+var invTime: float = 0
+var supTime: float = 0
+var isSuper: bool = false
+var shoeTime: float = 0
+var ringDisTime: float = 0 # ring collecting disable timer
 
 # water settings
-var is_in_water = false
-var defaultAirTime = 30 # 30 seconds
-var panicTime = 12 # start count down at 12 seconds
-var airWarning = 5 # time between air meter sound
-var airTimer = defaultAirTime
+var is_in_water: bool = false
+var airTimer: float = defaultAirTime
 # force roll variables
-var forceRoll = 0 # each force roll object the player is in, this increments.
-var forceDirection = 0
-var jumpBuffer = 0.0
+var forceRoll: int = 0 # each force roll object the player is in, this increments.
+var forceDirection: int = 0
+var jumpBuffer: float = 0.0
 
 # collision related values
-var pushingWall = 0
+var pushingWall: int = 0
 
-var enemyCounter = 0
-var respawnPosition = Vector2.ZERO
+var enemyCounter: int = 0
+var respawnPosition: Vector2i = Vector2.ZERO
 
-var character = Global.CHARACTERS.SONIC
+var character: int = Global.CHARACTERS.SONIC
 
 # physics list order
 # 0 Acceleration
 # 1 Deceleration
 # 2 Friction
 # 3 Top Speed
-# 4 Air Acceleration (No longer used, air accel is always Ground accel * 2)
+# 4 Null
 # 5 Rolling Friction 
 # 6 Rolling Deceleration
-# 7 Gravity
-# 8 Jump release velocity
 
-var physicsList = [
+var physicsList: Array = [
 # 0 Sonic (Primary Character physics)
-[12/256.0, 0.50, 12/256.0,  6*60, 24/256.0, 12/256.0, 32/256.0, 56/256.0, 4],
+[12.0/256.0, 0.50, 12/256.0,  6*60, 0, 12/256.0, 32/256.0],
 # 1 Speed Shoes
-[24/256.0, 0.50, 24/256.0, 12*60, 48/256.0, 12/256.0, 32/256.0, 56/256.0, 4],
+[24.0/256.0, 0.50, 24/256.0, 12*60, 0, 12/256.0, 32/256.0],
 # 2 Super Sonic
-[32/256.0, 1.00, 12/256.0, 10*60, 64/256.0,  6/256.0, 32/256.0, 56/256.0, 4],
+[32.0/256.0, 1.00, 12/256.0, 10*60, 0,  6/256.0, 32/256.0],
 # 3 Super Forms besides Sonic
-[24/256.0, 0.75, 12/256.0,  8*60, 48/256.0,  6/256.0, 32/256.0, 56/256.0, 4],
+[24.0/256.0, 0.75, 12/256.0,  8*60, 0,  6/256.0, 32/256.0],
 ]
 
-var waterPhysicsListNew = [
+var waterPhysicsListNew: Array = [
 # 0 Sonic (Primary Character physics)
-[ 8/256.0, 0.250,  8/256.0, 4*60, 16/256.0, 8/256.0, 32/256.0, 16/256.0, 2],
+[ 8/256.0, 0.250,  8/256.0, 4*60, 0, 8/256.0, 32/256.0],
 # 1 Speed Shoes
-[12/256.0, 0.250, 12/256.0, 8*60, 12/256.0, 8/256.0, 32/256.0, 16/256.0, 2],
+[12/256.0, 0.250, 12/256.0, 8*60, 0, 8/256.0, 32/256.0],
 # 2 Super Sonic
-[12/256.0, 0.500, 12/256.0, 8*60, 48/256.0,12/256.0, 32/256.0, 16/256.0, 2],
+[12/256.0, 0.500, 12/256.0, 8*60, 0,12/256.0, 32/256.0],
 # 3 Super Forms besides Sonic
-[12/256.0, 0.375, 12/256.0,8*60, 24/256.0, 8/256.0, 32/256.0, 16/256.0, 2],
+[12/256.0, 0.375, 12/256.0,8*60, 0, 8/256.0, 32/256.0],
 ]
 #Depricated
-var waterPhysicsList = [
+var waterPhysicsList: Array = [
 # 0 Sonic (Primary Character physics)
-[0.046875/2.0, 0.5/2.0, 0.046875/2.0, 6*60/2.0, 0.09375/2.0, 0.046875*0.5, 0.125, 0.0625, 2],
+[0.046875/2.0, 0.5/2.0, 0.046875/2.0, 6*60/2.0, 0, 0.046875*0.5, 0.125],
 # 1 Speed Shoes
-[0.046875/2.0, 0.5/2.0, 0.046875/2.0, 6*60/2.0, 0.09375/2.0, 0.046875*0.5, 0.125, 0.0625, 2],
+[0.046875/2.0, 0.5/2.0, 0.046875/2.0, 6*60/2.0, 0, 0.046875*0.5, 0.125],
 # 2 Super Sonic
-[0.09375, 0.5, 0.046875, 5*60, 0.1875, 0.046875, 0.125, 0.0625, 2],
+[0.09375, 0.5, 0.046875, 5*60, 0, 0.046875, 0.125],
 # 3 Super Forms besides Sonic
-[0.046875, 0.375, 0.046875, 4*60, 0.09375, 0.0234375, 0.125, 0.0625, 2],
+[0.046875, 0.375, 0.046875, 4*60, 0, 0.0234375, 0.125],
 ]
 # ================
 
 var Ring = preload("res://Entities/Items/Ring.tscn")
-var ringChannel = 0
+var ringChannel: int = 0
 
-var Particle = preload("res://Entities/Misc/GenericParticle.tscn")
-var Bubble = preload("res://Entities/Misc/Bubbles.tscn")
-var CountDown = preload("res://Entities/Misc/CountDownTimer.tscn")
-var RotatingParticle = preload("res://Entities/Misc/RotatingParticle.tscn")
+var Particle: PackedScene = preload("res://Entities/Misc/GenericParticle.tscn")
+var Bubble: PackedScene = preload("res://Entities/Misc/Bubbles.tscn")
+var CountDown: PackedScene = preload("res://Entities/Misc/CountDownTimer.tscn")
+var RotatingParticle: PackedScene = preload("res://Entities/Misc/RotatingParticle.tscn")
 
 var superSprite = load("res://Graphics/Players/SuperSonic.png")
-@onready var normalSprite = $Sonic/Sprite2D.texture
+@onready var normalSprite: Texture2D = $Sonic/Sprite2D.texture
 var playerPal = preload("res://Shaders/PlayerPalette.tres")
 
 # ================
 
-var horizontalLockTimer = 0
-var spriteRotation = 0
-var airControl = true
+var horizontalLockTimer: float = 0
+var spriteRotation: float = 0
+var airControl: bool = true
 
 # States
 enum STATES {NORMAL, AIR, JUMP, ROLL, SPINDASH, PEELOUT, ANIMATION, HIT, DIE, CORKSCREW, JUMPCANCEL,
 SUPER, FLY, RESPAWN, HANG, GLIDE, WALLCLIMB, AMYHAMMER}
-var currentState = STATES.AIR
-@onready var hitbox = $HitBox
+var currentState: int = STATES.AIR
+@onready var hitbox: CollisionShape2D = $HitBox
 @onready var hitBoxOffset = {normal = $HitBox.position, crouch = $HitBox.position}
-@onready var defaultHitBoxPos = $HitBox.position
+@onready var defaultHitBoxPos: Vector2 = $HitBox.position
 var crouchBox = null
 
 # Shield variables
 enum SHIELDS {NONE, NORMAL, FIRE, ELEC, BUBBLE}
-var shield = SHIELDS.NONE
-@onready var magnetShape = $RingMagnet/CollisionShape2D
-@onready var shieldSprite = $Shields
-var reflective = false # used for reflecting projectiles
+var shield: int = SHIELDS.NONE
+@onready var magnetShape: CollisionShape2D = $RingMagnet/CollisionShape2D
+@onready var shieldSprite: AnimatedSprite2D = $Shields
+var reflective: bool = false # used for reflecting projectiles
 
 # State array
 @onready var stateList = $States.get_children()
 
 
 # Animation related
-@onready var animator = $Sonic/PlayerAnimation
+@onready var animator: AnimationPlayer = $Sonic/PlayerAnimation
 @onready var superAnimator = $Sonic/SuperPalette
-@onready var sprite = $Sonic/Sprite2D
-@onready var spriteController = $Sonic
+@onready var sprite: Sprite2D = $Sonic/Sprite2D
+@onready var spriteController: Node2D = $Sonic
 var centerReference = null # center reference is a center reference point used for hitboxes and shields (the sprite node need a node called "CenterReference" for this to work)
-var lastActiveAnimation = ""
-var defaultSpriteOffset = Vector2.ZERO
+var lastActiveAnimation: String = ""
+var defaultSpriteOffset: Vector2 = Vector2.ZERO
 
-var camera = Camera2D.new()
-var camDist = Vector2(32,64)
-var camLookDist = [-104,88] # Up and Down
-var camLookAmount = 0
-var camLookOff = 0
-var camAdjust = Vector2.ZERO
-var cameraDragLerp = 0
-var camLockTime = 0
-var cameraShakeTime = 0
+var camera: Camera2D = Camera2D.new()
+var camDist: Vector2 = Vector2(32,64)
+var camLookDist: Array = [-88,88] # Up and Down
+var camLookAmount: float = 0
+var camAdjust: Vector2 = Vector2.ZERO
+var cameraDragLerp: float = 0
+var camLockTime: float = 0
+var cameraShakeTime: float = 0
 
 #Camera Shake Parameters (To be depricated)
 var randomStrength: float = 2.0
 var shakefade: float = 5.0
-var shakeRnd = 0
 var shakeStrength : float = 0.0
-			
 
 # boundries
 var limitLeft = 0
@@ -746,20 +741,19 @@ func _physics_process(delta):
 		
 		# Looking/Lag
 		# camLookDist is the distance, 0 is up, 1 is down
-		camLookAmount = clamp(camLookAmount,-1,1)
-		camLookOff = lerp(0,camLookDist[0],min(0,-camLookAmount))+lerp(0,camLookDist[1],min(0,camLookAmount))
-		
-		var scrollSpeed = sign(camLookAmount)*delta*2
-		if camLookAmount != 0:
-			if sign(camLookAmount - scrollSpeed) == sign(camLookAmount) && velocity.x == 0:
-				camLookAmount -= sign(camLookAmount)*delta*2
-			elif velocity.x != 0:
-				camLookAmount = 0
-			else:
-				camLookAmount = 0
+		camLookAmount = clamp(camLookAmount,camLookDist[0],camLookDist[1])
+		if currentState != STATES.NORMAL or velocity.x != 0:
+			camLookAmount = move_toward(camLookAmount,0.0,6.0)
+		#var scrollSpeed = delta*2
+		#if camLookAmount != 0:
+		#	if sign(camLookAmount - scrollSpeed) == sign(camLookAmount) && velocity.x == 0:
+		#		camLookAmount -= sign(camLookAmount)*delta*2
+		#	elif velocity.x != 0:
+		#		camLookAmount = 0
+		#	else:
+		#		camLookAmount = 0
 		
 		# Camera Lock
-		
 		if camLockTime > 0:
 			camLockTime -= delta
 		
@@ -768,7 +762,7 @@ func _physics_process(delta):
 		
 		var viewSize = get_viewport_rect().size
 		var viewPos = camera.get_screen_center_position()
-		scrollSpeed = 4.0*60.0*delta
+		var scrollSpeed = 4.0*60.0*delta
 		
 		# Left
 		# snap the limit to the edge of the camera if snap out of range
@@ -781,7 +775,6 @@ func _physics_process(delta):
 		else:
 			camera.limit_left = limitLeft
 		
-
 		# Right
 		# snap the limit to the edge of the camera if snap out of range
 		if limitRight < viewPos.x+viewSize.x*0.5:
@@ -804,7 +797,6 @@ func _physics_process(delta):
 		else:
 			camera.limit_top = limitTop
 		
-
 		# Bottom
 		# snap the limit to the edge of the camera if snap out of range
 		if limitBottom < viewPos.y+viewSize.y*0.5:
@@ -1310,13 +1302,17 @@ func switch_physics():
 	dec = getList[1]
 	frc = getList[2]
 	top = getList[3]
-	air = getList[0]*2.0
+	#air = getList[0]*2.0
 	rollfrc = getList[5]
 	rolldec = getList[6]
-	grv = getList[7]
-	releaseJmp = getList[8]
 	# For Jump height:
 	jmp = determine_jump_property()
+	if !is_in_water:
+		grv = 56/256.0
+		releaseJmp = 4
+	else:
+		grv = 16/256.0
+		releaseJmp = 2
 
 
 
@@ -1358,7 +1354,7 @@ func cam_update(forceMove = false):
 
 	# Camera lock
 	# remove round() if you are not making a pixel perfect game
-	var getPos = (global_position+Vector2(0,camLookOff)+camAdjust).round()
+	var getPos = (global_position+Vector2(0,camLookAmount)+camAdjust).round()
 	if camLockTime <= 0 and (forceMove or camera.global_position.distance_to(getPos) <= 16):
 		# limit_length speed camera
 		camera.global_position.x = move_toward(camera.global_position.x,getPos.x,16*60*get_physics_process_delta_time())

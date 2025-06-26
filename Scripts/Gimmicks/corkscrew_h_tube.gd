@@ -22,7 +22,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	
 	for i in playerList:
-		var player = i[0]
+		var player: Player2D = i[0]
 		if player.ground and !i[1]:
 			i[1] = true
 			player.allowTranslate = true
@@ -38,15 +38,18 @@ func _physics_process(delta: float) -> void:
 				player.animator.play("corkScrew")
 			else:
 				player.animator.play("corkScrewOffset")
+			if player.movement.y < 0:
+				player.movement.y = 0
+				player.allowTranslate = false
+				i[2] = 0.0
+				i[1] = false
 			var animSize = player.animator.current_animation_length
-			player.animator.advance(-player.animator.current_animation_position+animSize-(i[2])*animSize)
+			player.animator.advance(
+				-player.animator.current_animation_position
+				+ animSize-(i[2])
+				* animSize)
 			
 		i = [i[0],i[1],i[2]]
-	
-	#for i in playerList.size():
-	#	if playerList[i].ground and !playerActive[i]:
-	#		playerActive[i] = true
-	pass
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player2D:
