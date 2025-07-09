@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://br54h8eixiokf"]
 
-[ext_resource type="TileSet" uid="uid://dgt3m8tj24hwu" path="res://Tileset/Levels/MTZ.tres" id="1_n6v2f"]
+[ext_resource type="TileSet" uid="uid://b78s7tfu844gd" path="res://Tileset/Levels/MTZ_Tiles.tres" id="1_4o2ak"]
 
 [node name="06-Metropolis" type="ParallaxBackground"]
 scroll_base_scale = Vector2(0.1, 0.1)
@@ -15,5 +15,5 @@ offset_bottom = 768.0
 color = Color(0, 0, 0, 1)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="ParallaxLayer"]
-tile_set = ExtResource("1_n6v2f")
+tile_set = ExtResource("1_4o2ak")
 collision_enabled = false

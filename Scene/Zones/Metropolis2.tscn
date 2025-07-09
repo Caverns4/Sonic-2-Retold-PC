@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ct2wo24donqxt"]
+[gd_scene load_steps=7 format=3 uid="uid://ct2wo24donqxt"]
 
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_f4g8u"]
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_rpqfi"]
 [ext_resource type="AudioStream" uid="uid://dlgpinnh0yca3" path="res://Audio/Soundtrack/s2br_Metropolis.ogg" id="2_5b87d"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="2_ykppd"]
 [ext_resource type="PackedScene" uid="uid://br54h8eixiokf" path="res://Scene/Backgrounds/06-Metropolis.tscn" id="4_bsr7b"]
+[ext_resource type="TileSet" uid="uid://b78s7tfu844gd" path="res://Tileset/Levels/MTZ_Tiles.tres" id="6_04iek"]
 
 [node name="Metropolis2" type="Node2D"]
 script = ExtResource("1_rpqfi")
@@ -24,3 +25,6 @@ act = 2
 position = Vector2(96, 656)
 
 [node name="Level_Layout" type="Node" parent="."]
+
+[node name="Low" type="TileMapLayer" parent="Level_Layout"]
+tile_set = ExtResource("6_04iek")
