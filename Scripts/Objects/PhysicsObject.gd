@@ -50,18 +50,25 @@ signal positionChanged
 @export var pixelObjectStep = 4
 
 func _ready():
-	slopeCheck.modulate = Color.BLUE_VIOLET
+	slopeCheck.modulate = Color.GREEN
+	verticalSensorLeft.modulate = Color.BLUE
+	verticalSensorMiddleEdge.modulate = Color.BLUE_VIOLET
+	verticalSensorRight.modulate = Color.BROWN
 	$HitBox.add_child(verticalSensorLeft)
 	$HitBox.add_child(verticalSensorMiddle)
+	#verticalSensorMiddle.visible = false
 	$HitBox.add_child(verticalSensorMiddleEdge)
 	$HitBox.add_child(verticalSensorRight)
 	$HitBox.add_child(verticalObjectCheck)
+	#verticalObjectCheck.visible = false
 	$HitBox.add_child(horizontalSensor)
+	#horizontalSensor.visible = false
 	$HitBox.add_child(slopeCheck)
+	#slopeCheck.visible = false
 	$HitBox.add_child(objectCheck)
+	#objectCheck.visible = false
 	$HitBox.add_child(backSensor)
-	#for i in sensorList:
-	#	i.enabled = true
+	#backSensor.visible = false
 	update_sensors()
 	# Object check only needs to be set once
 	objectCheck.set_collision_mask_value(1,false)
@@ -169,6 +176,7 @@ func update_sensors():
 	
 	# set collission mask values
 	for i in sensorList:
+		i.z_index = 100
 		i.set_collision_mask_value(1,i.target_position.rotated(rotationSnap).y > 0)
 		i.set_collision_mask_value(2,i.target_position.rotated(rotationSnap).x > 0)
 		i.set_collision_mask_value(3,i.target_position.rotated(rotationSnap).x < 0)

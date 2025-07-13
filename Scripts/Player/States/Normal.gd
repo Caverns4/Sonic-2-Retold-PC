@@ -74,21 +74,24 @@ func _process(delta):
 			# edge checking
 			# set vertical sensors to check for objects
 			var maskMemory = [parent.verticalSensorLeft.collision_mask,parent.verticalSensorRight.collision_mask]
-			parent.verticalSensorLeft.set_collision_mask_value(13,true)
-			parent.verticalSensorRight.set_collision_mask_value(13,true)
+			parent.verticalSensorLeft.set_collision_mask_value(14,true)
+			parent.verticalSensorRight.set_collision_mask_value(14,true)
+			
+			parent.verticalSensorLeft.force_raycast_update()
+			parent.verticalSensorRight.force_raycast_update()
 			
 			var getL = parent.verticalSensorLeft.is_colliding()
 			var getR = parent.verticalSensorRight.is_colliding()
 			var getM = parent.verticalSensorMiddle.is_colliding()
 			var getMEdge = parent.verticalSensorMiddleEdge.is_colliding()
 			
-			parent.verticalSensorLeft.collision_mask = maskMemory[0]
-			parent.verticalSensorRight.collision_mask = maskMemory[1]
-			
 			# flip sensors
 			if parent.direction < 0:
 				getL = getR
 				getR = parent.verticalSensorLeft.is_colliding()
+			
+			parent.verticalSensorLeft.collision_mask = maskMemory[0]
+			parent.verticalSensorRight.collision_mask = maskMemory[1]
 			
 			if !getM:
 				#If a balance animation should play:
@@ -99,11 +102,10 @@ func _process(delta):
 							parent.animator.play("edge_super")
 							balancing = true
 						# normal edge
-						elif !getR and getL and getMEdge:
+						elif ((!getR and getL) and getMEdge) or (getMEdge != getM):
 							parent.animator.play("edge1")
 							balancing = true
 						# reverse edge
-						# Bug: This should always get overridden by Edge2
 						elif (!getL and getR):
 							parent.animator.play("edge3")
 							balancing = true
