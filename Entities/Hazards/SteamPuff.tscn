@@ -1,0 +1,97 @@
+[gd_scene load_steps=12 format=3 uid="uid://cphkn88v7csse"]
+
+[ext_resource type="Script" uid="uid://jf3vfso3lvf7" path="res://Scripts/Gimmicks/steam_puff.gd" id="1_nu8qf"]
+[ext_resource type="Texture2D" uid="uid://dyuermj20f7x1" path="res://Graphics/Hazards/MTZ_Steam.png" id="2_nu8qf"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(32, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03gwq"]
+atlas = ExtResource("2_nu8qf")
+region = Rect2(0, 0, 40, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fa5f"]
+atlas = ExtResource("2_nu8qf")
+region = Rect2(0, 16, 40, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwbg2"]
+atlas = ExtResource("2_nu8qf")
+region = Rect2(0, 32, 40, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bof7"]
+atlas = ExtResource("2_nu8qf")
+region = Rect2(0, 48, 40, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvnsq"]
+atlas = ExtResource("2_nu8qf")
+region = Rect2(0, 64, 40, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4eru0"]
+atlas = ExtResource("2_nu8qf")
+region = Rect2(0, 80, 40, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_posb5"]
+atlas = ExtResource("2_nu8qf")
+region = Rect2(0, 96, 40, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gvpwt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03gwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fa5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwbg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bof7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvnsq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4eru0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_posb5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SteamPuff" type="CharacterBody2D"]
+collision_layer = 16384
+collision_mask = 0
+script = ExtResource("1_nu8qf")
+damageType = 1
+canBeReflect = false
+
+[node name="CollissionMask" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 528384
+
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+modulate = Color(1, 0, 0, 1)
+shape = SubResource("1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gvpwt")
+autoplay = "default"
+frame = 6
+frame_progress = 1.0
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(2.1, 2.1)
+
+[connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

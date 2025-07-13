@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8avehxrawcvu"]
+
+[ext_resource type="Script" uid="uid://b6joatfqb83et" path="res://Scripts/Gimmicks/mtz_steam_pipe.gd" id="1_ag0ag"]
+[ext_resource type="Texture2D" uid="uid://c80yx38g067a2" path="res://Graphics/Gimmicks/MTZ_SteamPipe.png" id="1_u4ag7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ag0ag"]
+size = Vector2(32, 32)
+
+[node name="MTZ_SteamPipe" type="AnimatableBody2D"]
+collision_layer = 8192
+collision_mask = 8192
+script = ExtResource("1_ag0ag")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_ag0ag")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("1_u4ag7")

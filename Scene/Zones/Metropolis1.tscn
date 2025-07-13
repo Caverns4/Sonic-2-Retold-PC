@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://esqx6201854"]
+[gd_scene load_steps=13 format=4 uid="uid://esqx6201854"]
 
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_67gif"]
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_swaun"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://bhxbnpwhxw87p" path="res://Entities/Gimmicks/Corkscrew_HTube.tscn" id="7_ry86e"]
 [ext_resource type="PackedScene" uid="uid://chyrwm1qwvlyt" path="res://Entities/Gimmicks/Switch.tscn" id="8_25fm7"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="9_m0oic"]
+[ext_resource type="PackedScene" uid="uid://c8avehxrawcvu" path="res://Entities/Gimmicks/MTZSteamPipe.tscn" id="9_tjfo8"]
+[ext_resource type="PackedScene" uid="uid://bnv0qhju3sj1a" path="res://Entities/Hazards/Crusher.tscn" id="10_fkgpw"]
+[ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="12_fkgpw"]
 
 [node name="Metropolis1" type="Node2D"]
 script = ExtResource("1_swaun")
@@ -46,6 +49,27 @@ length = 3
 
 [node name="Switch" parent="Entities" instance=ExtResource("8_25fm7")]
 position = Vector2(1744, 472)
+
+[node name="MTZ_SteamPipe" parent="Entities" instance=ExtResource("9_tjfo8")]
+position = Vector2(560, 640)
+
+[node name="MTZ_SteamPipe2" parent="Entities" instance=ExtResource("9_tjfo8")]
+position = Vector2(688, 640)
+
+[node name="MTZ_SteamPipe3" parent="Entities" instance=ExtResource("9_tjfo8")]
+position = Vector2(1216, 352)
+
+[node name="Crusher" parent="Entities" instance=ExtResource("10_fkgpw")]
+position = Vector2(1824, 192)
+
+[node name="Crusher2" parent="Entities" instance=ExtResource("10_fkgpw")]
+position = Vector2(1888, 192)
+
+[node name="Hazards" type="Node" parent="."]
+
+[node name="InvisibleBarrier" parent="Hazards" instance=ExtResource("12_fkgpw")]
+position = Vector2(1856, 112)
+scale = Vector2(4, 1)
 
 [node name="ItemsHolder" type="Node" parent="."]
 
