@@ -59,7 +59,7 @@ func shootBullet():
 	# set position with offset
 	bullet.gravity = true
 	bullet.global_position = bulletPoint.global_position
-	Global.play_sound(bulletSound)
+	SoundDriver.play_sound(bulletSound)
 	
 	var temp = Vector2(0,-150).rotated(rotation)
 	if rotation == 0:

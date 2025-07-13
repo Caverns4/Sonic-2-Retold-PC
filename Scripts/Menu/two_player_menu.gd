@@ -46,8 +46,8 @@ var itemSettingStrings = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Global.music.stream = music
-	Global.music.play()
+	SoundDriver.music.stream = music
+	SoundDriver.music.play()
 	if Global.twoPlayerZoneResults: #If Game is started
 		p1CharacterSelection = Global.PlayerChar1-1
 		p2CharacterSelection = Global.PlayerChar2-1
@@ -103,14 +103,14 @@ func updateCharacterSelection():
 	!playersReady[0]):
 		playersReady[0] = true
 		$Control/Player1READY.visible = true
-		Global.play_sound2(sfx_Confirm)
+		SoundDriver.play_sound2(sfx_Confirm)
 		
 	if (Input.is_action_just_pressed("gm_action_P2") or
 	Input.is_action_just_pressed("gm_pause_P2") and
 	!playersReady[1]):
 		playersReady[1] = true
 		$Control/Player2READY.visible = true
-		Global.play_sound2(sfx_Confirm)
+		SoundDriver.play_sound2(sfx_Confirm)
 		
 	if playersReady[0] and playersReady[1]:
 		%YButtonIcon.visible = false
@@ -132,10 +132,10 @@ func updateCharacterSelection():
 func updateZoneSelection():
 	if inputCue.y !=0 and inputCue.y != lastInput.y:
 		zoneSelection += int(inputCue.y)
-		Global.play_sound2(sfx_Select)
+		SoundDriver.play_sound2(sfx_Select)
 	if inputCueP2.y !=0 and inputCueP2.y != lastInputP2.y:
 		zoneSelection += int(inputCueP2.y)
-		Global.play_sound2(sfx_Select)
+		SoundDriver.play_sound2(sfx_Select)
 	zoneSelection = wrapi(zoneSelection,0,Global.twoPlayerZones.size())
 	
 	if (Input.is_action_just_pressed("gm_action2") or

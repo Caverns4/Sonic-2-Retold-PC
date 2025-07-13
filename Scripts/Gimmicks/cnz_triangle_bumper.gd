@@ -16,9 +16,9 @@ func physics_collision(body, hitVector):
 		if abs(body.global_position.x - global_position.x) < 30:
 			body.movement.y = power*sign(body.global_position.y - global_position.y)
 		else:
-			body.movement.x = -power*sign(global_scale.x)
+			body.movement.x = -power/2*sign(global_scale.x)
 	
 	if body.currentState == body.STATES.JUMP: # set the state to air
 		body.set_state(body.STATES.AIR)
 	
-	Global.play_sound(bounceSound)
+	SoundDriver.play_sound(bounceSound)

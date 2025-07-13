@@ -46,4 +46,4 @@ func Trigger():
 	if !trigger:
 		trigger = true
 		if sfx:
-			Global.play_sound2(sfx)
+			SoundDriver.play_sound2(sfx)

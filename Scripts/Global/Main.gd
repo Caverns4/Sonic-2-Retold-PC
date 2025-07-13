@@ -23,10 +23,10 @@ var sceneCanPause = false
 func _ready():
 	# global object references
 	Global.main = self
-	Global.musicParent = get_node_or_null("Music")
-	Global.music = get_node_or_null("Music/Music")
-	Global.drowning = get_node_or_null("Music/Drowning")
-	Global.life = get_node_or_null("Music/Life")
+	SoundDriver.musicParent = get_node_or_null("Music")
+	SoundDriver.music = get_node_or_null("Music/Music")
+	SoundDriver.drowning = get_node_or_null("Music/Drowning")
+	SoundDriver.life = get_node_or_null("Music/Life")
 	# initialize game data using global reset (it's better then assigning variables twice)
 	Global.reset_values()
 	scene_faded.connect(On_scene_faded)
@@ -34,18 +34,18 @@ func _ready():
 
 func _process(delta):
 	# verify scene isn't paused
-	if !get_tree().paused and Global.music != null:
+	if !get_tree().paused and SoundDriver.music != null:
 		# pause main music if effect theme or drowning song is playing
-		Global.music.stream_paused = (Global.drowning.playing or Global.life.playing)
+		SoundDriver.music.stream_paused = (SoundDriver.drowning.playing or SoundDriver.life.playing)
 		
 		# check that volume lerp isn't transitioned yet
 		if volumeLerp < 1:
 			# move volume lerp to 1
 			volumeLerp = move_toward(volumeLerp,1,delta*volumeFadeSpeed)
 			# use volume lerp to set the effect volume
-			Global.music.volume_db = lerp(float(startVolumeLevel),float(setVolumeLevel),float(volumeLerp))
+			SoundDriver.music.volume_db = lerp(float(startVolumeLevel),float(setVolumeLevel),float(volumeLerp))
 			# copy the volume to other songs (you'll want to add yours here if you add more)
-			Global.drowning.volume_db = Global.music.volume_db
+			SoundDriver.drowning.volume_db = SoundDriver.music.volume_db
 			if volumeLerp >= 1:
 				emit_signal("volume_set")
 
@@ -173,12 +173,12 @@ func change_scene_to_file(scene = null, fadeOut = "", fadeIn = "", length = 1, s
 		$GUI/Fader.play("RESET")
 	
 	# stop life sound (if it's still playing)
-	if Global.life.is_playing():
-		Global.life.stop()
+	if SoundDriver.life.is_playing():
+		SoundDriver.life.stop()
 		# set volume level to default
-		Global.music.volume_db = 0
+		SoundDriver.music.volume_db = 0
 		# copy the volume to other songs (you'll want to add yours here if you add more)
-		Global.drowning.volume_db = Global.music.volume_db
+		SoundDriver.drowning.volume_db = SoundDriver.music.volume_db
 
 # executed when life sound has finished
 func _on_Life_finished():
@@ -188,7 +188,7 @@ func _on_Life_finished():
 # set the volume level
 func set_volume(volume = 0, fadeSpeed = 1):
 	# set the start volume level to the curren volume
-	startVolumeLevel = Global.music.volume_db
+	startVolumeLevel = SoundDriver.music.volume_db
 	# set the volume level to go to
 	setVolumeLevel = volume
 	# set volume transition

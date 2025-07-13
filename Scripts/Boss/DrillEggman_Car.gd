@@ -142,7 +142,7 @@ func Die():
 		readyToLaunch = false
 
 func playMotor():
-	Global.play_sound(drillSound)
+	SoundDriver.play_sound(drillSound)
 	if drill: drill.monitoring = true
 
 func _on_area_2d_area_entered(_area): #Await Eggman to enter

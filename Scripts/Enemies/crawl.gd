@@ -81,4 +81,4 @@ func _on_bumper_coll_body_entered(body: Node2D) -> void:
 	if body.currentState == body.STATES.JUMP: # set the state to air
 		body.set_state(body.STATES.AIR)
 
-	Global.play_sound($BumperSFX.stream)
+	SoundDriver.play_sound($BumperSFX.stream)

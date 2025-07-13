@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 			if timer <= 0.0:
 				timer = HOVER_TIME
 				state = STATES.HOVERING
-				Global.play_sound(SFX)
+				SoundDriver.play_sound(SFX)
 				Lid.movement.y = 0-(delta*480)
 				Flames.activate()
 		STATES.HOVERING:

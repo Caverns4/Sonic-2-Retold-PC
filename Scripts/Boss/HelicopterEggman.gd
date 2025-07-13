@@ -169,7 +169,7 @@ func do_laugh():
 func play_intro(delta):
 	soundTimer -= delta
 	if soundTimer <= 0.0:
-		Global.play_sound(entrySound)
+		SoundDriver.play_sound(entrySound)
 		soundTimer = 0.3
 
 func _on_SmokeTimer_timeout():

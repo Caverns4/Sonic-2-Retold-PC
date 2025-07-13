@@ -562,16 +562,16 @@ func _process(delta):
 				isSuper = false
 				superAnimator.play("PowerDown")
 				switch_physics()
-			if Global.currentTheme == 1:
-				Global.playNormalMusic()
+			if SoundDriver.currentTheme == 1:
+				SoundDriver.playNormalMusic()
 			invTime = 60
 	
 	if (shoeTime > 0):
 		shoeTime -= delta
 		if (shoeTime <= 0):
 			switch_physics()
-			if Global.currentTheme == 2:
-				Global.playNormalMusic()
+			if SoundDriver.currentTheme == 2:
+				SoundDriver.playNormalMusic()
 	
 	# Invulnerability timer
 	if (invTime > 0 and currentState != STATES.HIT and currentState != STATES.DIE):
@@ -588,12 +588,12 @@ func _process(delta):
 	if rings >= ring1upCounter:
 		ring1upCounter += 100
 		# award 1up
-		Global.life.stop()
-		Global.life.play()
+		SoundDriver.life.stop()
+		SoundDriver.life.play()
 		Global.lives += 1
 		if Global.hud and !Global.two_player_mode:
 			Global.hud.coins += 1
-		Global.music.volume_db = -100
+		SoundDriver.music.volume_db = -100
 
 	#Rotating stars
 	if ($InvincibilityBarrier.visible):
@@ -651,10 +651,10 @@ func _process(delta):
 	
 	# drowning theme related
 	if playerControl == 1:
-		if !Global.drowning.playing and airTimer <= panicTime and airTimer > 0:
-			Global.drowning.play()
-		elif Global.drowning.playing and airTimer > panicTime or airTimer <= 0:
-			Global.drowning.stop()
+		if !SoundDriver.drowning.playing and airTimer <= panicTime and airTimer > 0:
+			SoundDriver.drowning.play()
+		elif SoundDriver.drowning.playing and airTimer > panicTime or airTimer <= 0:
+			SoundDriver.drowning.stop()
 	
 	# partner control timer for player 2
 	if partnerControlTime > 0:
@@ -1181,7 +1181,7 @@ func kill(soundID: int = 6):
 			sfx[soundID].play()
 		else:
 			if playerControl == 1:
-				Global.music.stop()
+				SoundDriver.music.stop()
 			movement = Vector2(0,0)
 			animator.play("drown")
 			sfx[25].play()

@@ -63,7 +63,7 @@ func StomperMove(delta: float):
 	if timer <= 0.0 and awaiting:
 		awaiting = false
 		if tiles.position.y == 0.0:
-			Global.play_sound2(soundStomp)
+			SoundDriver.play_sound2(soundStomp)
 	
 	if !awaiting:
 		var speed = abs(drop_speed)

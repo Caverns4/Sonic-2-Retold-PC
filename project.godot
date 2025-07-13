@@ -23,6 +23,7 @@ config/windows_native_icon="res://sonic.ico"
 
 Global="*res://Scripts/Global/Global.gd"
 GlobalFunctions="*res://Scripts/Global/GlobalFunctions.gd"
+SoundDriver="*res://Scripts/Global/SoundDriver.gd"
 
 [debug]
 

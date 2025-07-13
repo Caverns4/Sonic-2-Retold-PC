@@ -53,7 +53,7 @@ func physics_collision(body, hitVector):
 		body.movement.y = setMove.y
 		if !animator.is_playing():
 			animator.play("SPRING")
-		Global.play_sound(springSound)
+		SoundDriver.play_sound(springSound)
 
 
 func _on_lid_area_body_entered(body):

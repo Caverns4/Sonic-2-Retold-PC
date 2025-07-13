@@ -146,7 +146,7 @@ func springObjectsOnBoard(delta):
 				node.angle = 0
 				node.animator.play("spring")
 				node.animator.queue("curAnimwalk")
-		Global.play_sound(springSound)
+		SoundDriver.play_sound(springSound)
 		childRiding = true
 
 	# If the LAST object in weights is a player, bounce the counterweight if applicable.

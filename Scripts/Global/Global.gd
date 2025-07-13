@@ -58,34 +58,6 @@ var gameOver = false
 # res://Scripts/Objects/GoalPost.gd
 var stageClearPhase = 0
 
-# Music
-var musicParent = null
-var music: AudioStreamPlayer = null
-var drowning: AudioStreamPlayer = null
-var life: AudioStreamPlayer = null
-
-# index for current theme
-var currentTheme = 0
-# The Audio Resource that is the currently playing song.
-# Used to avoid the same song being queued twice,
-# unless the queue request is agnostic.
-var currentMusic = null
-# song themes to play for things like invincibility and speed shoes
-
-enum THEME{NORMAL,INVINCIBLE,SPEED,SUPER,BOSS,RESULTS}
-var themes = [
-	null, # Level Music
-	preload("res://Audio/Soundtrack/s2br_Invincible.ogg"), # INVINCIBLE
-	preload("res://Audio/Soundtrack/s2br_SuperSonic.ogg"), # SPEED
-	preload("res://Audio/Soundtrack/s2br_SuperSonic2.ogg"), # SUPER
-	preload("res://Audio/Soundtrack/s2br_Boss.ogg"), # BOSS
-	preload("res://Audio/Soundtrack/s2br_Result.ogg")] # RESULTS
-
-# Sound, used for play_sound (used for a global sound, use this if multiple nodes use the same sound)
-var soundChannel = AudioStreamPlayer.new()
-#Alternate global Sound player
-var soundChannel2 = AudioStreamPlayer.new()
-
 # characters (if you want more you should add one here, see the player script too for more settings)
 enum CHARACTERS {NONE,SONIC,TAILS,KNUCKLES,AMY,MIGHTY,RAY,SONIC_BETA}
 var PlayerChar1 = CHARACTERS.SONIC
@@ -225,11 +197,6 @@ enum HAZARDS {NORMAL, FIRE, ELEC, WATER}
 var is_main_loaded = false
 
 func _ready():
-	# set sound settings
-	add_child(soundChannel)
-	soundChannel.bus = "SFX"
-	add_child(soundChannel2)
-	soundChannel2.bus = "SFX"
 	# load game data
 	load_settings()
 	# load Global Save data flags
@@ -298,52 +265,6 @@ func reset_values():
 	nodeMemory = []
 	nextZone = load("res://Scene/Presentation/ZoneLoader.tscn")
 
-# use this to play a sound globally, use load("res:..") or a preloaded sound
-func play_sound(sound = null):
-	if sound != null:
-		soundChannel.stream = sound
-		soundChannel.play()
-
-func play_sound2(sound = null):
-	if sound != null:
-		soundChannel2.stream = sound
-		soundChannel2.play()
-
-#Logically pick which song should be picked.
-func playNormalMusic():
-	# Heirarchy:
-	# Assume theme is 0 by default
-	
-	if stageClearPhase > 0:
-		return
-	
-	currentTheme = THEME.NORMAL # Assume normal level Theme
-	for i in players:
-		if i.shoeTime > 0 and currentTheme == THEME.NORMAL:
-			currentTheme = THEME.SPEED
-		if i.supTime > 0:
-			if !i.isSuper:
-				if currentTheme != THEME.SUPER:
-					currentTheme = THEME.INVINCIBLE
-			else:
-				currentTheme = THEME.SUPER #Boss theme unless Super
-
-	if fightingBoss:
-		if !Global.players[0].isSuper:
-			currentTheme = THEME.BOSS #Boss theme unless Super
-		else:
-			currentTheme = THEME.SUPER #Boss theme unless Super
-	playMusic(themes[currentTheme],false)
-
-
-
-func playMusic(musID = null,agnostic = false):
-	#If agnostic is set, the song is queued even if the same song is playing.
-	if musID and (musID != currentMusic) or (agnostic ):
-		Global.music.stream = musID
-		Global.music.play()
-		currentMusic = musID
-
 # add a score object, see res://Scripts/Misc/Score.gd for reference
 func add_score(position: Vector2,value: int,playerID: int):
 	var scoreObj = Score.instantiate()
@@ -355,19 +276,12 @@ func add_score(position: Vector2,value: int,playerID: int):
 # use a check function to see if a score increase would go above 50,000
 func check_score_life(scoreAdd = 0):
 	if fmod(score,50000) > fmod(score+scoreAdd,50000):
-		Global.life.stop()
-		life.play()
+		SoundDriver.life.stop()
+		SoundDriver.life.play()
 		lives += 1
 		if hud:
 			hud.coins += 1
-		music.volume_db = -100
-
-# use this to set the stage clear theme, only runs if stageClearPhase isn't 0
-func stage_clear():
-	if stageClearPhase == 0:
-		currentTheme = THEME.RESULTS
-		music.stream = themes[currentTheme]
-		music.play()
+		SoundDriver.music.volume_db = -100
 
 func loadNextLevel():
 	#Reset all Checkpoints so the player doesn't respawn in a bad spot

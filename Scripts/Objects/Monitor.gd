@@ -137,15 +137,15 @@ func destroy():
 			if !playerTouch.get("isSuper"):
 				playerTouch.shoeTime = 20
 				playerTouch.switch_physics()
-				Global.currentTheme = Global.THEME.SPEED
-				Global.playMusic(Global.themes[Global.currentTheme])
+				SoundDriver.currentTheme = SoundDriver.THEME.SPEED
+				SoundDriver.playMusic(SoundDriver.themes[SoundDriver.currentTheme])
 		ITEMTYPES.INVINCIBILITY: # Invincibility
 			if !playerTouch.get("isSuper"):
 				playerTouch.supTime = 20
 				playerTouch.shieldSprite.visible = false # turn off barrier for stars
 				playerTouch.get_node("InvincibilityBarrier").visible = true
-				Global.currentTheme = Global.THEME.INVINCIBLE
-				Global.playMusic(Global.themes[Global.currentTheme])
+				SoundDriver.currentTheme = SoundDriver.THEME.INVINCIBLE
+				SoundDriver.playMusic(SoundDriver.themes[SoundDriver.currentTheme])
 		ITEMTYPES.SHIELD: # Shield
 			playerTouch.set_shield(playerTouch.SHIELDS.NORMAL)
 		ITEMTYPES.ELECSHIELD: # Elec
@@ -167,17 +167,17 @@ func destroy():
 		ITEMTYPES.QMARK:
 			pass
 		ITEMTYPES.LIFEP1: # 1up
-			Global.life.stop()
-			Global.life.play()
+			SoundDriver.life.stop()
+			SoundDriver.life.play()
 			Global.lives += 1
 			if Global.hud and !Global.two_player_mode:
 				Global.hud.coins += 1
-			Global.music.volume_db = -100
+			SoundDriver.music.volume_db = -100
 		ITEMTYPES.LIFEP2: #2-Player 1up
-			Global.life.stop()
-			Global.life.play()
+			SoundDriver.life.stop()
+			SoundDriver.life.play()
 			Global.livesP2 +=1
-			Global.music.volume_db = -100
+			SoundDriver.music.volume_db = -100
 
 
 func _physics_process(delta):

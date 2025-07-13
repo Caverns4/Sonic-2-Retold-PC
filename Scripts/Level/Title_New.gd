@@ -90,7 +90,7 @@ func _ready():
 	Global.twoPlayActResults.clear()
 	Global.twoPlayerRound = 0
 	#Prepare the Title Streen Music
-	Global.music.stream = music
+	SoundDriver.music.stream = music
 	#Prepare the background
 	var parallax = parallaxBackgrounds[min(Global.savedZoneID,parallaxBackgrounds.size()-1)]
 	BackgroundScene = load(parallax)
@@ -193,7 +193,7 @@ func InstantiateBG():
 	menuActive = true
 
 func PlayMusic():
-	Global.music.play()
+	SoundDriver.music.play()
 	titleScroll = true #Begin scrolling
 	$TitleWaitTimer.start()
 

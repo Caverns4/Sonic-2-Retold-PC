@@ -8,8 +8,8 @@ var results = 0 #Winner of the current act, or zone if zone is complete.
 var endScene = false
 
 func _ready():
-	Global.music.stream = music
-	Global.music.play()
+	SoundDriver.music.stream = music
+	SoundDriver.music.play()
 	var result = [0,0,0,0,0,0]
 	if Global.twoPlayActResults:
 		result = Global.twoPlayActResults[Global.twoPlayActResults.size()-1]

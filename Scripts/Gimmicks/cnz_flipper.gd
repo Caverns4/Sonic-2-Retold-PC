@@ -68,7 +68,7 @@ func _physics_process(delta: float) -> void:
 								player.movement.x = (height/2) * direction
 								player.currentState = player.STATES.AIR
 								player.animator.play("roll")
-								Global.play_sound(flipsound)
+								SoundDriver.play_sound(flipsound)
 								player.controlObject = null
 								player.allowTranslate = false
 								players.erase(player)
@@ -86,7 +86,7 @@ func physics_collision(player, hitVector):
 			player.set_state(player.STATES.ROLL)
 			player.animator.play("roll")
 			player.movement.x = 0-(hitVector.x * 960)
-			Global.play_sound(flipsound)
+			SoundDriver.play_sound(flipsound)
 			active = true
 			frameTimer = 0.2
 			if hitVector.x > 0:

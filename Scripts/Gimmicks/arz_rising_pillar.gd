@@ -52,7 +52,7 @@ func BreakPillar(body):
 	$PlayerCheck.queue_free()
 	$TopSprite.visible = false
 	$PillarSprite.visible = false
-	Global.play_sound(sound)
+	SoundDriver.play_sound(sound)
 	
 	if score:
 		Global.add_score(

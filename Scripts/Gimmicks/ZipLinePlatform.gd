@@ -66,7 +66,7 @@ func _physics_process(delta):
 func CountDownSound(delta):
 	offsetTimer += delta
 	if offsetTimer >= 0.25:
-		Global.play_sound(soundEffect)
+		SoundDriver.play_sound(soundEffect)
 		offsetTimer = 0.0
 
 func _draw():

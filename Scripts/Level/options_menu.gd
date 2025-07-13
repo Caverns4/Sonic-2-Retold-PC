@@ -40,8 +40,8 @@ var animationframe = 0
 
 func _ready():
 	characterID = Global.characterSelectMemory
-	Global.music.stream = music
-	Global.music.play()
+	SoundDriver.music.stream = music
+	SoundDriver.music.play()
 
 
 func _process(delta: float):

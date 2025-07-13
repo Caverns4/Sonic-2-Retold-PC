@@ -90,7 +90,7 @@ func _on_player_check_body_entered(body: Node2D) -> void:
 		get_parent().add_child(debris)
 		node.queue_free()
 	bricks = []
-	Global.play_sound(breakingSound)
+	SoundDriver.play_sound(breakingSound)
 	
 
 

@@ -101,8 +101,8 @@ var lastInput = Vector2.ZERO
 
 func _ready():
 	characterID = Global.characterSelectMemory
-	Global.music.stream = music
-	Global.music.play()
+	SoundDriver.music.stream = music
+	SoundDriver.music.play()
 	if nextZone != null:
 		Global.nextZone = nextZone
 

@@ -43,7 +43,7 @@ func physics_collision(body, hitVector):
 			await get_tree().process_frame
 			$CollisionShape2D.disabled = true
 			$Sprite2D.visible = false
-			Global.play_sound(sound)
+			SoundDriver.play_sound(sound)
 			body.velocity.x = body.velocity.x*0.8
 			body.movement.x = body.movement.x*0.8
 			

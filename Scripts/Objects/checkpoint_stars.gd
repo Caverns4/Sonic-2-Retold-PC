@@ -33,8 +33,8 @@ func _process(delta):
 		if timer < 0.1 and timer+delta >= 0.1:
 			active = false
 			
-			Global.music.stop()
-			Global.drowning.stop()
+			SoundDriver.music.stop()
+			SoundDriver.drowning.stop()
 			$Warp.play()
 			# set next zone to current zone (this will reset when the stage is loaded back in)
 			Global.nextZone = Global.main.lastScene
@@ -51,7 +51,7 @@ func _process(delta):
 			player.set_state(player.STATES.NORMAL)
 			player.collision_layer = mask_memory[0]
 			player.collision_mask = mask_memory[1]
-			Global.music.play(0.0)
+			SoundDriver.music.play(0.0)
 			queue_free()
 
 

@@ -51,7 +51,7 @@ func _process(delta):
 func StepSoundEffect(delta):
 	soundTimer -= delta
 	if soundTimer <= 0:
-		Global.play_sound(rumbling)
+		SoundDriver.play_sound(rumbling)
 		soundTimer = 0.5
 		#Also send timer to bodies to rumble camera
 		for i in bodies.size():

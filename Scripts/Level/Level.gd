@@ -69,21 +69,21 @@ func _ready():
 func level_reset_data(playCard = true):
 	Global.stageClearPhase = 0
 	Global.fightingBoss = false
-	Global.music.stop()
-	Global.drowning.stop()
+	SoundDriver.music.stop()
+	SoundDriver.drowning.stop()
 	# music handling
 	var levelMusic = null
-	if Global.music != null:
+	if SoundDriver.music != null:
 		if music != null:
 			if !Global.two_player_mode:
 				levelMusic = music
 				
 			else:
 				levelMusic = music2P
-			Global.music.stream_paused = false
-			Global.themes[Global.THEME.NORMAL] = levelMusic
-	Global.playMusic(levelMusic,true)
-	Global.currentTheme = 0
+			SoundDriver.music.stream_paused = false
+			SoundDriver.themes[SoundDriver.THEME.NORMAL] = levelMusic
+	SoundDriver.playMusic(levelMusic,true)
+	SoundDriver.currentTheme = 0
 	#Global.playNormalMusic()
 	
 	if Global.currentCheckPoint < 0:

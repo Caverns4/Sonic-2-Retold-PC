@@ -94,7 +94,7 @@ func physics_collision(body, hitVector):
 				body.movement.x = 0
 			$SpringAnimator.play(animList[animID])
 			if $VisibleOnScreenNotifier2D.is_on_screen():
-				Global.play_sound(springSound)
+				SoundDriver.play_sound(springSound)
 		# horizontal movement
 		else:
 			# exit out of state on certain states
@@ -110,7 +110,7 @@ func physics_collision(body, hitVector):
 				body.direction = sign(setMove.x)
 				$SpringAnimator.play(animList[animID])
 				if $VisibleOnScreenNotifier2D.is_on_screen():
-					Global.play_sound(springSound)
+					SoundDriver.play_sound(springSound)
 		
 		# Disable pole grabs
 		# body.poleGrabID = self
@@ -143,6 +143,6 @@ func _on_Diagonal_body_entered(body):
 		body.animator.play("springScrew")
 		body.animator.queue(curAnim)
 	if $VisibleOnScreenNotifier2D.is_on_screen():
-		Global.play_sound(springSound)
+		SoundDriver.play_sound(springSound)
 	# Disable pole grabs
 	body.poleGrabID = self

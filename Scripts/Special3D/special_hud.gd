@@ -107,7 +107,7 @@ func CheckForEmerald(jingleTheme: AudioStream = null ):
 	else:
 		message_state = MESSAGES.NULL
 		message.visible = false
-		Global.music.stop()
+		SoundDriver.music.stop()
 		resultSound.stream = jingleTheme
 		resultSound.play()
 		endStage()

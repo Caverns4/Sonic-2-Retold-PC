@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 		if timer > 0.0 and !prizeSelected:
 			sfxTimer -= delta
 			if sfxTimer < 0.0:
-				Global.play_sound(SFX)
+				SoundDriver.play_sound(SFX)
 				sfxTimer = 0.25
 				if !type:
 					Global.add_score(global_position,1,

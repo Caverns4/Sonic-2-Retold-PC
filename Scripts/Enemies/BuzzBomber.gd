@@ -128,7 +128,7 @@ func _on_PlayerCheck_body_entered(_body):
 		await $Timer.timeout
 		# check that fire hasn't been deleted
 		if alive.get_ref():
-			Global.play_sound(bulletSound)
+			SoundDriver.play_sound(bulletSound)
 			# move projectile
 			bullet.velocity = Vector2(120*side,120)
 			bullet.reparent(get_parent())

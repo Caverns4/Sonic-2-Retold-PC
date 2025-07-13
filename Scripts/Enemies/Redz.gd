@@ -85,7 +85,7 @@ func shootBullet(delta):
 	if shootTimer >= 0.05:
 		shootTimer=0.0
 		#Shoot a fireball
-		Global.play_sound(bulletSound)
+		SoundDriver.play_sound(bulletSound)
 		bullet = Projectile.instantiate()
 		get_parent().add_child(bullet)
 		# set position with offset

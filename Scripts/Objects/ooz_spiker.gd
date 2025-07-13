@@ -24,5 +24,5 @@ func _physics_process(delta: float) -> void:
 	if is_on_wall():
 		direction = 0-direction
 		if $VisibleOnScreenNotifier2D.is_on_screen():
-			Global.play_sound2(sfx)
+			SoundDriver.play_sound2(sfx)
 	

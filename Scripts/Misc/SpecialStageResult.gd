@@ -16,11 +16,13 @@ func _ready():
 	SpecialResults_SetupText()
 	if Global.lastSpecialStageResult:
 		Global.specialStageID += 1
-	Global.stage_clear()
+	# func stage_clear()
+	var currentTheme = SoundDriver.themes[SoundDriver.THEME.RESULTS]
+	SoundDriver.playMusic(currentTheme)
 	#print(Global.emeralds)
 
 func _process(delta: float) -> void:
-	if !Global.music.playing and !activated:
+	if !SoundDriver.music.playing and !activated:
 		activated = true
 		returnToLevel()
 

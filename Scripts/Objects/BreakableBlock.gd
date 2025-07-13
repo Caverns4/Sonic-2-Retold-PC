@@ -31,7 +31,7 @@ func physics_collision(body, hitVector):
 		# disable collision
 		$CollisionShape2D.disabled = true
 		$Sprite2D.visible = false
-		Global.play_sound(sound)
+		SoundDriver.play_sound(sound)
 		
 		# set player variables
 		body.ground = false

@@ -19,4 +19,4 @@ func physics_collision(body, hitVector):
 	body.ground = false
 	#if body.currentState == body.STATES.JUMP: # set the state to air
 	#	body.set_state(body.STATES.AIR)
-	Global.play_sound(bounceSound)
+	SoundDriver.play_sound(bounceSound)

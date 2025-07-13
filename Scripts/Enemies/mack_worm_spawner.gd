@@ -143,7 +143,7 @@ func WaitTimer(i):
 func QueuePipeSoundEffect():
 	if soundCheck:
 		soundCheck = false
-		Global.play_sound2(gloopSound)
+		SoundDriver.play_sound2(gloopSound)
 	else:
 		soundCheck = true
 	

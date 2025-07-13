@@ -55,7 +55,7 @@ func _physics_process(delta):
 				# wait for sound delay
 				#await get_tree().create_timer(soundDelay,false).timeout
 				# play sound globally (prevents sound overlap, aka loud sounds)
-				Global.play_sound(collapse_sound)
+				SoundDriver.play_sound(collapse_sound)
 	else:
 		# loop through and generate a tile particle
 		for i in getTiles.size():

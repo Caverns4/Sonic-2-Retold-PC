@@ -82,7 +82,7 @@ func shootBullet():
 	bulletCount -= 1
 	# If we've made it this far, shoot
 	if $VisibleOnScreenNotifier2D.is_on_screen():
-		Global.play_sound(bulletSound)
+		SoundDriver.play_sound(bulletSound)
 	bullet = Projectile.instantiate()
 	get_parent().add_child(bullet)
 	# set position with offset

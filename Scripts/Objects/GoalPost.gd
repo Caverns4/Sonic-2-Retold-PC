@@ -34,7 +34,9 @@ func _physics_process(_delta):
 				if player.global_position.x > global_position.x+(screenXSize/2) and player.movement.x >= 0 and Global.stageClearPhase == 2:
 					# stage clear won't work is stage clear phase isn't 0
 					Global.stageClearPhase = 0
-					Global.stage_clear()
+					# func stage_clear()
+					var currentTheme = SoundDriver.themes[SoundDriver.THEME.RESULTS]
+					SoundDriver.playMusic(currentTheme)
 					# set stage clear to 3, this will activate the HUD sequence
 					Global.stageClearPhase = 3
 

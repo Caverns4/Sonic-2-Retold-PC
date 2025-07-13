@@ -16,7 +16,9 @@ func _on_body_entered(body: Node2D) -> void:
 		monitoring = false
 		if special_exit:
 			Global.special_exit = special_exit_zone
-		Global.stage_clear()
+		# func stage_clear()
+		var currentTheme = SoundDriver.themes[SoundDriver.THEME.RESULTS]
+		SoundDriver.playMusic(currentTheme)
 		Global.stageClearPhase = 3
 		getCam = body.camera
 		#if getCam is Camera2D:

@@ -100,7 +100,7 @@ func SpeedToPos(delta):
 
 func shootBullet():
 	# Shoot stabdard bullet
-	Global.play_sound(bulletSound)
+	SoundDriver.play_sound(bulletSound)
 	var bullet = Projectile.instantiate()
 	get_parent().add_child(bullet)
 	# set position with offset

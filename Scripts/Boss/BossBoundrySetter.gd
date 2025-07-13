@@ -61,9 +61,9 @@ func _on_BoundrySetter_body_entered(body):
 					emit_signal("boss_start")
 					
 					Global.fightingBoss = true
-					Global.themes[Global.THEME.BOSS] = bossMusic
+					SoundDriver.themes[SoundDriver.THEME.BOSS] = bossMusic
 					#Global.playMusic(bossMusic,true)
-					Global.playNormalMusic()
+					SoundDriver.playNormalMusic()
 					boss.active = true
 					
 					if boss.has_signal("boss_over"):
@@ -71,7 +71,7 @@ func _on_BoundrySetter_body_entered(body):
 
 func boss_completed():
 	Global.fightingBoss = false
-	Global.playNormalMusic()
+	SoundDriver.playNormalMusic()
 	# set boundries for players
 	for i in Global.players:
 		if is_instance_valid(i):

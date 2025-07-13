@@ -68,7 +68,7 @@ func _physics_process(delta: float) -> void:
 				stateTimer = waitTime
 				animator.play("CHARGE")
 				state = STATES.CHARGE
-				Global.play_sound(revSound)
+				SoundDriver.play_sound(revSound)
 			# Edge check
 			EdgeCheck()
 	

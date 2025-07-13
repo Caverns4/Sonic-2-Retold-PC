@@ -4,7 +4,7 @@ var loaded = false
 
 func _ready() -> void:
 	Global.players.clear()
-	Global.music.stop()
+	SoundDriver.music.stop()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:

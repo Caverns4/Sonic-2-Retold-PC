@@ -80,7 +80,7 @@ func UpdateDirection():
 
 func ShootBullet():
 	#print("shoot")
-	Global.play_sound(bulletSound)
+	SoundDriver.play_sound(bulletSound)
 	bullet = Projectile.instantiate()
 	get_parent().add_child(bullet)
 	# set position with offset

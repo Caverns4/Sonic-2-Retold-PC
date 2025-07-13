@@ -37,7 +37,7 @@ func _process(_delta):
 		parent.switch_physics()
 		parent.supTime = 1
 		# start super theme
-		Global.playNormalMusic()
+		SoundDriver.playNormalMusic()
 		
 	# if already super just go to air state
 	elif parent.isSuper:

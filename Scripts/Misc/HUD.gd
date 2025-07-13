@@ -139,8 +139,8 @@ func PlayTitleCardAnimaiton():
 		# make sure level card isn't paused so it can keep playing
 		$LevelCard/CardPlayer.process_mode = PROCESS_MODE_ALWAYS
 		# temporarily let music play during pauses
-		if Global.musicParent != null:
-			Global.musicParent.process_mode = PROCESS_MODE_ALWAYS
+		if SoundDriver.musicParent != null:
+			SoundDriver.musicParent.process_mode = PROCESS_MODE_ALWAYS
 		# pause game while card is playing
 		get_tree().paused = true
 		# play card animations
@@ -152,7 +152,7 @@ func PlayTitleCardAnimaiton():
 		# unpause the game and set previous pause mode nodes to stop on pause
 		get_tree().paused = false
 		respawnPlayer()
-		Global.musicParent.process_mode = PROCESS_MODE_PAUSABLE
+		SoundDriver.musicParent.process_mode = PROCESS_MODE_PAUSABLE
 		$LevelCard/CardPlayer.process_mode = PROCESS_MODE_PAUSABLE
 		# emit stage start signal
 		Global.emit_stage_start()
