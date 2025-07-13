@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 			if (diff.x > -16) and (diff.y >= 0.0) and !droppedBomb:
 				droppedBomb = true
 				# fire projectile
-				Global.play_sound(bulletSound)
+				SoundDriver.play_sound(bulletSound)
 				var bullet = Projectile.instantiate()
 				get_parent().add_child(bullet)
 				# set position with offset

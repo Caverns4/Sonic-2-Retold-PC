@@ -64,7 +64,7 @@ func _physics_process(delta):
 			strength -= delta
 		else:
 			# play sound globally (prevents sound overlap, aka loud sounds)
-			Global.play_sound(collapseSFX)
+			SoundDriver.play_sound(collapseSFX)
 			# directiont the players moving in
 			var releaseDirection = 1
 			# release players

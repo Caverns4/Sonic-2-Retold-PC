@@ -44,7 +44,7 @@ rotates = false
 cubic_interp = false
 loop = false
 script = ExtResource("6_yuh6d")
-speed = 16.0
+speed = 64.0
 
 [node name="ScreenPoint" type="Node2D" parent="Path2D/PathFollow2D"]
 position = Vector2(-1.52588e-05, 0)
@@ -63,4 +63,5 @@ pilot = 2
 
 [node name="GoalArea" parent="." instance=ExtResource("10_rligo")]
 position = Vector2(2308, 768)
-scale = Vector2(16, 16)
+scale = Vector2(16, 64)
+special_exit_zone = 14

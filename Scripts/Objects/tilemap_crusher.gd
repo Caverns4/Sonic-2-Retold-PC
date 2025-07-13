@@ -130,4 +130,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.isSuper and intact:
 		intact = false
 		tiles.collision_enabled = false
-		Global.play_sound(collapse_sound)
+		SoundDriver.play_sound(collapse_sound)

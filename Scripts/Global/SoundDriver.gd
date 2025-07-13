@@ -3,7 +3,6 @@ extends Node
 # Music
 var musicParent = null
 var music: AudioStreamPlayer = null
-var drowning: AudioStreamPlayer = null
 var life: AudioStreamPlayer = null
 
 # index for current theme
@@ -14,13 +13,14 @@ var currentTheme = 0
 var currentMusic = null
 # song themes to play for things like invincibility and speed shoes
 
-enum THEME{NORMAL,INVINCIBLE,SPEED,SUPER,BOSS,RESULTS}
+enum THEME{NORMAL,INVINCIBLE,SPEED,SUPER,BOSS,DROWN,RESULTS}
 var themes = [
 	null, # Level Music
 	preload("res://Audio/Soundtrack/s2br_Invincible.ogg"), # INVINCIBLE
 	preload("res://Audio/Soundtrack/s2br_SuperSonic.ogg"), # SPEED
 	preload("res://Audio/Soundtrack/s2br_SuperSonic2.ogg"), # SUPER
 	preload("res://Audio/Soundtrack/s2br_Boss.ogg"), # BOSS
+	preload("res://Audio/Soundtrack/s2br_drowning.ogg"), #DROWN
 	preload("res://Audio/Soundtrack/s2br_Result.ogg")] # RESULTS
 
 # Sound, used for play_sound (used for a global sound, use this if multiple nodes use the same sound)

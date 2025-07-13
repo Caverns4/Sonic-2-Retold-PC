@@ -56,7 +56,7 @@ var gameOver = false
 # this is reference in
 # res://Scripts/Misc/HUD.gd
 # res://Scripts/Objects/GoalPost.gd
-var stageClearPhase = 0
+var stageClearPhase: int = 0
 
 # characters (if you want more you should add one here, see the player script too for more settings)
 enum CHARACTERS {NONE,SONIC,TAILS,KNUCKLES,AMY,MIGHTY,RAY,SONIC_BETA}
@@ -92,6 +92,7 @@ var levelTime = 0 # the timer that counts down while the level isn't completed o
 var levelTimeP2 = 0
 var globalTimer = 0 # global timer, used as reference for animations
 var maxTime = 60*10
+
 var fightingBoss = false
 
 #Save Data Atributes
@@ -233,7 +234,6 @@ func _ready():
 		await get_tree().process_frame
 		get_tree().paused = false
 	is_main_loaded = true
-	stage_started.connect(On_stage_started)
 
 func _process(delta):
 	# do a check for certain variables, if it's all clear then count the level timer up
@@ -350,9 +350,6 @@ func loadNextLevel():
 # Godot doesn't like not having emit signal only done in other nodes so we're using a function to call it
 func emit_stage_start():
 	emit_signal("stage_started")
-
-func On_stage_started():
-	pass
 
 # save data settings
 func save_settings():

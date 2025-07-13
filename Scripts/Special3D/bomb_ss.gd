@@ -9,7 +9,7 @@ var sfx = preload("res://Audio/SFX/Gimmicks/s2br_Collapse.wav")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if (player):
-		Global.play_sound(sfx)
+		SoundDriver.play_sound(sfx)
 		player.hit_player(global_position,10)
 		var part = Particle.instantiate()
 		get_parent().add_child(part)

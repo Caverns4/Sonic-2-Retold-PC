@@ -290,7 +290,7 @@ debug_color = Color(0.317647, 0.560784, 1, 0.501961)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_j32f5")
+&"": SubResource("AnimationLibrary_j32f5")
 }
 autoplay = "Walk"
 

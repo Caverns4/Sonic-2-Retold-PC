@@ -70,7 +70,6 @@ func level_reset_data(playCard = true):
 	Global.stageClearPhase = 0
 	Global.fightingBoss = false
 	SoundDriver.music.stop()
-	SoundDriver.drowning.stop()
 	# music handling
 	var levelMusic = null
 	if SoundDriver.music != null:

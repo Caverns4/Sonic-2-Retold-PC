@@ -41,9 +41,6 @@ func _physics_process(delta):
 				animalTrackers.erase(i)
 		
 		if animalTrackers.size() <= 0:
-			# temporarily set stage clear to 0 so that the music can play
-			Global.stageClearPhase = 0
-			# func stage_clear()
 			var currentTheme = SoundDriver.themes[SoundDriver.THEME.RESULTS]
 			SoundDriver.playMusic(currentTheme)
 			# set stage clear to 3 to continue playing the level clear phase

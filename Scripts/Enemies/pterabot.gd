@@ -127,7 +127,7 @@ func _on_PlayerCheck_body_entered(_body):
 		$Timer.start(16.0/60.0)
 		await $Timer.timeout
 		# check that fire hasn't been deleted
-		Global.play_sound(bulletSound)
+		SoundDriver.play_sound(bulletSound)
 		
 		# last timer before returning to normal
 		# account for how long the firing timer took

@@ -61,7 +61,6 @@ func _on_BoundrySetter_body_entered(body):
 					emit_signal("boss_start")
 					
 					Global.fightingBoss = true
-					SoundDriver.themes[SoundDriver.THEME.BOSS] = bossMusic
 					#Global.playMusic(bossMusic,true)
 					SoundDriver.playNormalMusic()
 					boss.active = true

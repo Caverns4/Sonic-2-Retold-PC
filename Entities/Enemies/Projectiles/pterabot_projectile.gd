@@ -10,7 +10,7 @@ func _process(delta: float) -> void:
 		velocity.y += 400*delta
 	super(delta)
 	if $RayCast2D.is_colliding():
-		Global.play_sound2(explosionSFX)
+		SoundDriver.play_sound2(explosionSFX)
 		var debris = particle.instantiate()
 		debris.global_position = global_position
 		debris.play("BombExplode")

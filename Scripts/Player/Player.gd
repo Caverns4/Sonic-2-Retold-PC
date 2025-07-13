@@ -647,14 +647,16 @@ func _process(delta):
 			$BubbleTimer.start(0.1)
 			kill()
 	else:
+		if airTimer <= panicTime:
+			SoundDriver.playNormalMusic()
 		airTimer = defaultAirTime
+		
 	
 	# drowning theme related
 	if playerControl == 1:
-		if !SoundDriver.drowning.playing and airTimer <= panicTime and airTimer > 0:
-			SoundDriver.drowning.play()
-		elif SoundDriver.drowning.playing and airTimer > panicTime or airTimer <= 0:
-			SoundDriver.drowning.stop()
+		if (airTimer <= panicTime and airTimer > 0
+		and SoundDriver.currentTheme != SoundDriver.THEME.DROWN):
+			SoundDriver.playMusic(SoundDriver.themes[SoundDriver.THEME.DROWN])
 	
 	# partner control timer for player 2
 	if partnerControlTime > 0:

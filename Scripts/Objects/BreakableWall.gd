@@ -24,7 +24,7 @@ func physics_collision(body, hitVector):
 			await get_tree().process_frame
 			$CollisionShape2D.disabled = true
 			$Sprite2D.visible = false
-			Global.play_sound(sound)
+			SoundDriver.play_sound(sound)
 			
 			# generate brekable pieces depending on the pieces vector
 			for i in range(pieces.x):
