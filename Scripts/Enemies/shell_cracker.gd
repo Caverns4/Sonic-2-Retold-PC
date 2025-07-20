@@ -1,6 +1,8 @@
 extends EnemyBase
 
 @export var chain_length = 8
+@export var move_speed = 30
+@export var walk_time = 1.0
 @onready var _claw:Node2D = $ClawAttack
 @onready var _animation:AnimationPlayer = $AnimationPlayer
 
@@ -27,9 +29,9 @@ func _physics_process(delta: float) -> void:
 			state_time -= delta
 			if state_time <= 0.0:
 				state = STATE.WALK
-				state_time = 1.0
+				state_time = walk_time
 				move_dir = 0-move_dir
-				velocity.x = 30*move_dir
+				velocity.x = move_speed*move_dir
 		
 		
 	
@@ -38,7 +40,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	if is_on_wall() and state == 0:
 		move_dir = 0-move_dir
-		velocity.x = 30*move_dir
+		velocity.x = move_speed*move_dir
 	
 	if velocity.x != 0:
 		_animation.play("Walk")

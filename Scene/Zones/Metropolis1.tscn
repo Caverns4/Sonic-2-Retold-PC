@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://esqx6201854"]
+[gd_scene load_steps=16 format=4 uid="uid://esqx6201854"]
 
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_67gif"]
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_swaun"]
@@ -11,7 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="9_m0oic"]
 [ext_resource type="PackedScene" uid="uid://c8avehxrawcvu" path="res://Entities/Gimmicks/MTZSteamPipe.tscn" id="9_tjfo8"]
 [ext_resource type="PackedScene" uid="uid://bnv0qhju3sj1a" path="res://Entities/Hazards/Crusher.tscn" id="10_fkgpw"]
+[ext_resource type="PackedScene" uid="uid://cf61mtfkoftym" path="res://Entities/Gimmicks/VerticalShutter.tscn" id="11_f4xj6"]
 [ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="12_fkgpw"]
+[ext_resource type="PackedScene" uid="uid://cfteqnft5ynr7" path="res://Entities/Hazards/Spikes.tscn" id="13_ixg7q"]
+[ext_resource type="PackedScene" uid="uid://dpedjdbyu3jqv" path="res://Entities/Enemies/ShellCracker.tscn" id="15_xk3py"]
 
 [node name="Metropolis1" type="Node2D"]
 script = ExtResource("1_swaun")
@@ -20,6 +23,7 @@ music = ExtResource("2_hx3eb")
 music2P = ExtResource("2_hx3eb")
 animal1 = 9
 animal2 = 7
+defaultRightBoundry = 6416
 
 [node name="06-Metropolis" parent="." instance=ExtResource("4_1dnfb")]
 
@@ -65,13 +69,43 @@ position = Vector2(1824, 192)
 [node name="Crusher2" parent="Entities" instance=ExtResource("10_fkgpw")]
 position = Vector2(1888, 192)
 
+[node name="VerticalShutter" parent="Entities" instance=ExtResource("11_f4xj6")]
+position = Vector2(1184, 140)
+
+[node name="VerticalShutter2" parent="Entities" instance=ExtResource("11_f4xj6")]
+position = Vector2(1248, 140)
+
 [node name="Hazards" type="Node" parent="."]
 
 [node name="InvisibleBarrier" parent="Hazards" instance=ExtResource("12_fkgpw")]
 position = Vector2(1856, 112)
 scale = Vector2(4, 1)
 
+[node name="InvisibleBarrier2" parent="Hazards" instance=ExtResource("12_fkgpw")]
+position = Vector2(1856, 240)
+scale = Vector2(4, 1)
+
+[node name="Spikes" parent="Hazards" instance=ExtResource("13_ixg7q")]
+position = Vector2(2704, 528)
+rotation = 3.14159
+
+[node name="Spikes2" parent="Hazards" instance=ExtResource("13_ixg7q")]
+position = Vector2(2736, 528)
+rotation = 3.14159
+
 [node name="ItemsHolder" type="Node" parent="."]
 
 [node name="Monitor" parent="ItemsHolder" instance=ExtResource("9_m0oic")]
+position = Vector2(400, 368)
+
+[node name="Monitor2" parent="ItemsHolder" instance=ExtResource("9_m0oic")]
 position = Vector2(1776, 464)
+
+[node name="Monitor3" parent="ItemsHolder" instance=ExtResource("9_m0oic")]
+position = Vector2(2800, 560)
+item = 3
+
+[node name="Badniks" type="Node" parent="."]
+
+[node name="ShellCracker" parent="." instance=ExtResource("15_xk3py")]
+position = Vector2(1360, 120)
