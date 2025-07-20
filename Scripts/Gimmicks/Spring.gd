@@ -13,7 +13,7 @@ var speed = [10,16]
 
 var springTextures = [preload("res://Graphics/Gimmicks/springs_yellow.png"),preload("res://Graphics/Gimmicks/springs_red.png")]
 
-@export var springSound = preload("res://Audio/SFX/Gimmicks/s2br_Spring.wav")
+@export var spring_sfx = preload("res://Audio/SFX/Gimmicks/s2br_Spring.wav")
 
 func _ready():
 	set_spring()
@@ -94,7 +94,7 @@ func physics_collision(body, hitVector):
 				body.movement.x = 0
 			$SpringAnimator.play(animList[animID])
 			if $VisibleOnScreenNotifier2D.is_on_screen():
-				SoundDriver.play_sound(springSound)
+				SoundDriver.play_sound(spring_sfx)
 		# horizontal movement
 		else:
 			# exit out of state on certain states
@@ -110,7 +110,7 @@ func physics_collision(body, hitVector):
 				body.direction = sign(setMove.x)
 				$SpringAnimator.play(animList[animID])
 				if $VisibleOnScreenNotifier2D.is_on_screen():
-					SoundDriver.play_sound(springSound)
+					SoundDriver.play_sound(spring_sfx)
 		
 		# Disable pole grabs
 		# body.poleGrabID = self
@@ -143,6 +143,6 @@ func _on_Diagonal_body_entered(body):
 		body.animator.play("springScrew")
 		body.animator.queue(curAnim)
 	if $VisibleOnScreenNotifier2D.is_on_screen():
-		SoundDriver.play_sound(springSound)
+		SoundDriver.play_sound(spring_sfx)
 	# Disable pole grabs
 	body.poleGrabID = self

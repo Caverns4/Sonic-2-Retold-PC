@@ -202,7 +202,7 @@ func _physics_process(delta):
 			# movement (copied from air state)
 			if (parent.movement.x*parent.inputs[parent.INPUTS.XINPUT] < parent.top):
 				if (abs(parent.movement.x) < parent.top):
-					parent.movement.x = clamp(parent.movement.x+parent.air/GlobalFunctions.div_by_delta(delta)*parent.inputs[parent.INPUTS.XINPUT],-parent.top,parent.top)
+					parent.movement.x = clamp(parent.movement.x+(parent.acc*2)/GlobalFunctions.div_by_delta(delta)*parent.inputs[parent.INPUTS.XINPUT],-parent.top,parent.top)
 			# set direction
 			parent.sprite.flip_h = (parent.direction < 0)
 			

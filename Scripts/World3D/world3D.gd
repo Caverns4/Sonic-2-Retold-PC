@@ -23,15 +23,15 @@ func _ready():
 # used for stage starts, also used for returning from special stages
 func level_reset_data():
 	# music handling
-	if Global.music != null:
+	if SoundDriver.music != null:
 		if music != null:
-			Global.music.stream = music
+			SoundDriver.music.stream = music
 			
-			Global.music.play()
-			Global.music.stream_paused = false
+			SoundDriver.music.play()
+			SoundDriver.music.stream_paused = false
 		else:
-			Global.music.stop()
-			Global.music.stream = null
+			SoundDriver.music.stop()
+			SoundDriver.music.stream = null
 
 	# set pausing to true
 	if Global.main != null:

@@ -101,8 +101,8 @@ var jumpBuffer: float = 0
 
 func _ready() -> void:
 	_start_position = global_position
-	Global.players.append(self)
-	if Global.players[0] == self:
+	Global.special_stage_players.append(self)
+	if Global.special_stage_players[0] == self:
 		character = Global.PlayerChar1
 		inputActions = INPUTACTIONS_P1
 		camera.global_position = $Node3D.global_position
@@ -115,12 +115,14 @@ func _ready() -> void:
 			partner.name = "Partner"
 			partner.global_position = global_position - Vector3(0,0,-2)
 			get_parent().call_deferred("add_child", (partner))
-			partner.camera = Global.players[0].camera
+			partner.camera = Global.special_stage_players[0].camera
 	else:
 		character = Global.PlayerChar2
 		playerControl = 2
 		inputActions = INPUTACTIONS_P2
-		sfx = Global.players[0].sfx
+		sfx = Global.special_stage_players[0].sfx
+	
+	camera.far = 60.0
 	
 	#instantiate the player's skin
 	var character = min(character,playerSkins.size())
@@ -163,7 +165,6 @@ func _physics_process(delta: float) -> void:
 		lock_time = 1.0
 	
 	movement = velocity
-	#velocity = (global_basis * movement)
 	move_and_slide()
 	# jump buffer time
 	if jumpBuffer > 0.0:
@@ -175,7 +176,7 @@ func _physics_process(delta: float) -> void:
 		sprite.rotation.y = lerp_angle(sprite.rotation.y,target_angle,acc*delta)
 	
 	
-	if Global.players[0] == self:
+	if Global.special_stage_players[0] == self:
 		var adjusted_pos = (sprite.global_position + Vector3(0,1,0))
 		camera.look_at(adjusted_pos)
 		var camera_angle = (
@@ -208,8 +209,7 @@ func handle_input(delta):
 	var y_velocity := velocity.y
 	#velocity.y = 0.0
 	velocity = velocity.move_toward(
-		(move_direction * top),
-		acc*delta+(velocity.length()/top))
+		(move_direction * top),acc*delta+(velocity.length()/top))
 	if !is_on_floor():
 		velocity.y = y_velocity + 0-grv * delta
 	#else:
@@ -240,13 +240,7 @@ func rotate_to_floor_angle():
 		global_transform = xform
 		up_direction = surface_normal.normalized()
 	else:
-		#Move back toward Zero
-		xform = global_transform
-		xform.basis.y = Vector3.UP
-		xform.basis.x = -xform.basis.z.cross(Vector3.UP)
-		xform.basis = xform.basis.orthonormalized()
-		global_transform = xform
-		up_direction = Vector3.UP.normalized()
+		reset_Player_angle()
 
 func reset_Player_angle():
 	#Move back toward Zero
@@ -260,7 +254,6 @@ func reset_Player_angle():
 func get_floor():
 	# Check collision with the rays for floor, wall, and ceiling
 	if floor_ray.is_colliding():
-		#print(floor_ray.get_collision_normal())
 		return floor_ray.get_collision_normal()
 	return Vector3.ZERO
 

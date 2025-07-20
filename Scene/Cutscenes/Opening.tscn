@@ -592,6 +592,6 @@ frame_progress = 0.611294
 [node name="CutscenePlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../CustsceneObjects")
 libraries = {
-"": SubResource("AnimationLibrary_omwjn")
+&"": SubResource("AnimationLibrary_omwjn")
 }
 autoplay = "RESET"
