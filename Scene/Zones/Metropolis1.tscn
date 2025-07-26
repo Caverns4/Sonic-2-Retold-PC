@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://esqx6201854"]
+[gd_scene load_steps=21 format=4 uid="uid://esqx6201854"]
 
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_67gif"]
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_swaun"]
@@ -13,8 +13,48 @@
 [ext_resource type="PackedScene" uid="uid://bnv0qhju3sj1a" path="res://Entities/Hazards/Crusher.tscn" id="10_fkgpw"]
 [ext_resource type="PackedScene" uid="uid://cf61mtfkoftym" path="res://Entities/Gimmicks/VerticalShutter.tscn" id="11_f4xj6"]
 [ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="12_fkgpw"]
+[ext_resource type="PackedScene" uid="uid://xgv0jguatv2j" path="res://Entities/ZoneObjects/MTZ_ButtonActivatedPlatform.tscn" id="12_tcyod"]
+[ext_resource type="PackedScene" uid="uid://cuy6501gydmja" path="res://Entities/ZoneObjects/MTZ_WallSpring.tscn" id="13_i3g7m"]
 [ext_resource type="PackedScene" uid="uid://cfteqnft5ynr7" path="res://Entities/Hazards/Spikes.tscn" id="13_ixg7q"]
 [ext_resource type="PackedScene" uid="uid://dpedjdbyu3jqv" path="res://Entities/Enemies/ShellCracker.tscn" id="15_xk3py"]
+
+[sub_resource type="Animation" id="Animation_tcyod"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Entities/ButtonActivatedPlatform:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1408, 436)]
+}
+
+[sub_resource type="Animation" id="Animation_i3g7m"]
+resource_name = "Activate"
+length = 5.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Entities/ButtonActivatedPlatform:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1408, 436), Vector2(1536, 436), Vector2(1536, 436), Vector2(1408, 436)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x24je"]
+_data = {
+&"Elevator1": SubResource("Animation_i3g7m"),
+&"RESET": SubResource("Animation_tcyod")
+}
 
 [node name="Metropolis1" type="Node2D"]
 script = ExtResource("1_swaun")
@@ -23,7 +63,7 @@ music = ExtResource("2_hx3eb")
 music2P = ExtResource("2_hx3eb")
 animal1 = 9
 animal2 = 7
-defaultRightBoundry = 6416
+defaultRightBoundry = 9088
 
 [node name="06-Metropolis" parent="." instance=ExtResource("4_1dnfb")]
 
@@ -31,7 +71,7 @@ defaultRightBoundry = 6416
 zoneName = "METROPOLIS"
 
 [node name="Player" parent="." instance=ExtResource("2_0nln4")]
-position = Vector2(96, 652)
+position = Vector2(2464, 1624)
 
 [node name="Level_Layout" type="Node" parent="."]
 
@@ -53,6 +93,8 @@ length = 3
 
 [node name="Switch" parent="Entities" instance=ExtResource("8_25fm7")]
 position = Vector2(1744, 472)
+animator = NodePath("../../AnimationPlayer")
+animationName = "Elevator1"
 
 [node name="MTZ_SteamPipe" parent="Entities" instance=ExtResource("9_tjfo8")]
 position = Vector2(560, 640)
@@ -74,6 +116,39 @@ position = Vector2(1184, 140)
 
 [node name="VerticalShutter2" parent="Entities" instance=ExtResource("11_f4xj6")]
 position = Vector2(1248, 140)
+open_direction = 1
+
+[node name="VerticalShutter3" parent="Entities" instance=ExtResource("11_f4xj6")]
+position = Vector2(2592, 236)
+
+[node name="VerticalShutter4" parent="Entities" instance=ExtResource("11_f4xj6")]
+position = Vector2(2656, 236)
+open_direction = 1
+
+[node name="ButtonActivatedPlatform" parent="Entities" instance=ExtResource("12_tcyod")]
+position = Vector2(1408, 436)
+
+[node name="SpringWall" parent="Entities" instance=ExtResource("13_i3g7m")]
+position = Vector2(2560, 320)
+scale = Vector2(1, 4)
+
+[node name="SpringWall2" parent="Entities" instance=ExtResource("13_i3g7m")]
+position = Vector2(2688, 320)
+scale = Vector2(1, 4)
+spring_direction = 0
+
+[node name="SpringWall4" parent="Entities" instance=ExtResource("13_i3g7m")]
+position = Vector2(2304, 1344)
+scale = Vector2(1, 12)
+
+[node name="SpringWall5" parent="Entities" instance=ExtResource("13_i3g7m")]
+position = Vector2(2432, 1344)
+scale = Vector2(1, 12)
+spring_direction = 0
+
+[node name="SpringWall3" parent="Entities" instance=ExtResource("13_i3g7m")]
+position = Vector2(160, 600)
+scale = Vector2(1, 7)
 
 [node name="Hazards" type="Node" parent="."]
 
@@ -107,5 +182,10 @@ item = 3
 
 [node name="Badniks" type="Node" parent="."]
 
-[node name="ShellCracker" parent="." instance=ExtResource("15_xk3py")]
+[node name="ShellCracker" parent="Badniks" instance=ExtResource("15_xk3py")]
 position = Vector2(1360, 120)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_x24je")
+}

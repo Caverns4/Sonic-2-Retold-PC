@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://xgv0jguatv2j"]
+
+[ext_resource type="Texture2D" uid="uid://c0bn0y67qskd" path="res://Graphics/Objects_Zone/MTZ_Elevator.png" id="1_hjb5j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hjb5j"]
+size = Vector2(128, 24)
+
+[node name="ButtonActivatedPlatform" type="AnimatableBody2D"]
+collision_layer = 8207
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_hjb5j")
+
+[node name="Mask" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hjb5j")

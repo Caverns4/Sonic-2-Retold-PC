@@ -1,15 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://cf61mtfkoftym"]
+[gd_scene load_steps=4 format=3 uid="uid://cf61mtfkoftym"]
 
+[ext_resource type="Script" uid="uid://d0l7hoiqw00hj" path="res://Scripts/Gimmicks/vertical_shutter.gd" id="1_ajbu6"]
 [ext_resource type="Texture2D" uid="uid://c4k0564yr0efx" path="res://Graphics/Objects_Zone/MTZ_Platform.png" id="1_y14qk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajbu6"]
 size = Vector2(64, 24)
 
 [node name="VerticalShutter" type="AnimatableBody2D"]
+collision_layer = 2105359
 collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ajbu6")
+script = ExtResource("1_ajbu6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_y14qk")
+
+[node name="Mask" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ajbu6")
