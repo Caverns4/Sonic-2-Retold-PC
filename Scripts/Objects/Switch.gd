@@ -1,8 +1,10 @@
 extends StaticBody2D
 
-# animator is optional
+## animator is optional
 @export_node_path("AnimationPlayer")var animator
+## Animation mae if applicable
 @export var animationName = ""
+## If the button can activate again
 @export var reactivate = true
 
 var active = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://esqx6201854"]
+[gd_scene load_steps=28 format=4 uid="uid://esqx6201854"]
 
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_67gif"]
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_swaun"]
@@ -16,45 +16,17 @@
 [ext_resource type="PackedScene" uid="uid://xgv0jguatv2j" path="res://Entities/ZoneObjects/MTZ_ButtonActivatedPlatform.tscn" id="12_tcyod"]
 [ext_resource type="PackedScene" uid="uid://cuy6501gydmja" path="res://Entities/ZoneObjects/MTZ_WallSpring.tscn" id="13_i3g7m"]
 [ext_resource type="PackedScene" uid="uid://cfteqnft5ynr7" path="res://Entities/Hazards/Spikes.tscn" id="13_ixg7q"]
+[ext_resource type="PackedScene" uid="uid://4q0hpddgto2k" path="res://Entities/Gimmicks/Spring.tscn" id="14_x24je"]
+[ext_resource type="PackedScene" uid="uid://blwewyk2fnrew" path="res://Entities/Gimmicks/Shutter.tscn" id="15_1mgnl"]
 [ext_resource type="PackedScene" uid="uid://dpedjdbyu3jqv" path="res://Entities/Enemies/ShellCracker.tscn" id="15_xk3py"]
-
-[sub_resource type="Animation" id="Animation_tcyod"]
-resource_name = "RESET"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Entities/ButtonActivatedPlatform:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1408, 436)]
-}
-
-[sub_resource type="Animation" id="Animation_i3g7m"]
-resource_name = "Activate"
-length = 5.0
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Entities/ButtonActivatedPlatform:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 4, 5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1408, 436), Vector2(1536, 436), Vector2(1536, 436), Vector2(1408, 436)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_x24je"]
-_data = {
-&"Elevator1": SubResource("Animation_i3g7m"),
-&"RESET": SubResource("Animation_tcyod")
-}
+[ext_resource type="Texture2D" uid="uid://dqvp451warbni" path="res://Graphics/Obstacles/Walls/MTZ_Shutter.png" id="16_ueofw"]
+[ext_resource type="PackedScene" uid="uid://bi3pt28si5x6g" path="res://Entities/ZoneObjects/MTZ_SmallCog.tscn" id="17_8skyg"]
+[ext_resource type="PackedScene" uid="uid://c2t7hwn0iln3x" path="res://Entities/Obstacles/Elevator.tscn" id="19_fskp7"]
+[ext_resource type="Texture2D" uid="uid://c0bn0y67qskd" path="res://Graphics/Objects_Zone/MTZ_Elevator.png" id="20_4tdd8"]
+[ext_resource type="PackedScene" uid="uid://cyun8u3qemt5i" path="res://Entities/Gimmicks/ScrewPlatform.tscn" id="21_3jb7w"]
+[ext_resource type="PackedScene" uid="uid://dq7iu2jaofqew" path="res://Entities/Misc/character_cameo.tscn" id="21_4tdd8"]
+[ext_resource type="PackedScene" uid="uid://b8bt0u45oqhe6" path="res://Entities/Hazards/Lava.tscn" id="21_vesrm"]
+[ext_resource type="Texture2D" uid="uid://cqy3av3gamy27" path="res://Graphics/Misc/AmyCameo.png" id="22_r2i34"]
 
 [node name="Metropolis1" type="Node2D"]
 script = ExtResource("1_swaun")
@@ -71,7 +43,7 @@ defaultRightBoundry = 9088
 zoneName = "METROPOLIS"
 
 [node name="Player" parent="." instance=ExtResource("2_0nln4")]
-position = Vector2(2464, 1624)
+position = Vector2(96, 652)
 
 [node name="Level_Layout" type="Node" parent="."]
 
@@ -91,9 +63,35 @@ collision_enabled = false
 position = Vector2(1216, 576)
 length = 3
 
+[node name="CorkscrewHTube2" parent="Entities" instance=ExtResource("7_ry86e")]
+position = Vector2(4224, 1472)
+length = 5
+
+[node name="CorkscrewHTube3" parent="Entities" instance=ExtResource("7_ry86e")]
+position = Vector2(5184, 704)
+length = 2
+
 [node name="Switch" parent="Entities" instance=ExtResource("8_25fm7")]
 position = Vector2(1744, 472)
-animator = NodePath("../../AnimationPlayer")
+
+[node name="Switch2" parent="Entities" instance=ExtResource("8_25fm7")]
+position = Vector2(2128, 184)
+animator = NodePath("")
+animationName = "Elevator1"
+
+[node name="Switch3" parent="Entities" instance=ExtResource("8_25fm7")]
+position = Vector2(2280, 312)
+animator = NodePath("")
+animationName = "Elevator2"
+
+[node name="Switch4" parent="Entities" instance=ExtResource("8_25fm7")]
+position = Vector2(2544, 444)
+animator = NodePath("")
+animationName = "Elevator1"
+
+[node name="Switch5" parent="Entities" instance=ExtResource("8_25fm7")]
+position = Vector2(3056, 888)
+animator = NodePath("")
 animationName = "Elevator1"
 
 [node name="MTZ_SteamPipe" parent="Entities" instance=ExtResource("9_tjfo8")]
@@ -101,6 +99,9 @@ position = Vector2(560, 640)
 
 [node name="MTZ_SteamPipe2" parent="Entities" instance=ExtResource("9_tjfo8")]
 position = Vector2(688, 640)
+
+[node name="MTZ_SteamPipe4" parent="Entities" instance=ExtResource("9_tjfo8")]
+position = Vector2(4656, 1152)
 
 [node name="MTZ_SteamPipe3" parent="Entities" instance=ExtResource("9_tjfo8")]
 position = Vector2(1216, 352)
@@ -110,6 +111,20 @@ position = Vector2(1824, 192)
 
 [node name="Crusher2" parent="Entities" instance=ExtResource("10_fkgpw")]
 position = Vector2(1888, 192)
+
+[node name="Crusher3" parent="Entities" instance=ExtResource("10_fkgpw")]
+position = Vector2(3744, 1088)
+rotation = 3.14159
+
+[node name="Crusher4" parent="Entities" instance=ExtResource("10_fkgpw")]
+position = Vector2(3808, 1088)
+rotation = 3.14159
+
+[node name="Crusher5" parent="Entities" instance=ExtResource("10_fkgpw")]
+position = Vector2(5408, 1216)
+
+[node name="Crusher6" parent="Entities" instance=ExtResource("10_fkgpw")]
+position = Vector2(5472, 1216)
 
 [node name="VerticalShutter" parent="Entities" instance=ExtResource("11_f4xj6")]
 position = Vector2(1184, 140)
@@ -125,8 +140,28 @@ position = Vector2(2592, 236)
 position = Vector2(2656, 236)
 open_direction = 1
 
-[node name="ButtonActivatedPlatform" parent="Entities" instance=ExtResource("12_tcyod")]
+[node name="ButtonActivatedPlatform" parent="Entities" node_paths=PackedStringArray("button") instance=ExtResource("12_tcyod")]
 position = Vector2(1408, 436)
+button = NodePath("../Switch")
+
+[node name="Mtz_SmallCog" parent="Entities/ButtonActivatedPlatform" instance=ExtResource("17_8skyg")]
+position = Vector2(64, 20)
+
+[node name="ButtonActivatedPlatform2" parent="Entities" node_paths=PackedStringArray("button") instance=ExtResource("12_tcyod")]
+position = Vector2(2240, 204)
+button = NodePath("../Switch2")
+
+[node name="ButtonActivatedPlatform3" parent="Entities" node_paths=PackedStringArray("button") instance=ExtResource("12_tcyod")]
+position = Vector2(2624, 460)
+button = NodePath("../Switch4")
+
+[node name="ButtonActivatedPlatform5" parent="Entities" node_paths=PackedStringArray("button") instance=ExtResource("12_tcyod")]
+position = Vector2(3264, 908)
+button = NodePath("../Switch5")
+
+[node name="ButtonActivatedPlatform4" parent="Entities" node_paths=PackedStringArray("button") instance=ExtResource("12_tcyod")]
+position = Vector2(2368, 332)
+button = NodePath("../Switch3")
 
 [node name="SpringWall" parent="Entities" instance=ExtResource("13_i3g7m")]
 position = Vector2(2560, 320)
@@ -135,6 +170,33 @@ scale = Vector2(1, 4)
 [node name="SpringWall2" parent="Entities" instance=ExtResource("13_i3g7m")]
 position = Vector2(2688, 320)
 scale = Vector2(1, 4)
+spring_direction = 0
+
+[node name="SpringWall9" parent="Entities" instance=ExtResource("13_i3g7m")]
+position = Vector2(3456, 576)
+scale = Vector2(1, 4)
+
+[node name="SpringWall10" parent="Entities" instance=ExtResource("13_i3g7m")]
+position = Vector2(3584, 576)
+scale = Vector2(1, 4)
+spring_direction = 0
+
+[node name="SpringWall3" parent="Entities" instance=ExtResource("13_i3g7m")]
+position = Vector2(7040, 1440)
+scale = Vector2(1, 4)
+
+[node name="SpringWall6" parent="Entities" instance=ExtResource("13_i3g7m")]
+position = Vector2(7168, 1472)
+scale = Vector2(1, 4)
+spring_direction = 0
+
+[node name="SpringWall7" parent="Entities" instance=ExtResource("13_i3g7m")]
+position = Vector2(7936, 704)
+scale = Vector2(1, 12)
+
+[node name="SpringWall8" parent="Entities" instance=ExtResource("13_i3g7m")]
+position = Vector2(8064, 704)
+scale = Vector2(1, 12)
 spring_direction = 0
 
 [node name="SpringWall4" parent="Entities" instance=ExtResource("13_i3g7m")]
@@ -146,9 +208,74 @@ position = Vector2(2432, 1344)
 scale = Vector2(1, 12)
 spring_direction = 0
 
-[node name="SpringWall3" parent="Entities" instance=ExtResource("13_i3g7m")]
-position = Vector2(160, 600)
-scale = Vector2(1, 7)
+[node name="Spring" parent="Entities" instance=ExtResource("14_x24je")]
+position = Vector2(2376, 880)
+springDirection = 2
+
+[node name="Shutter" parent="Entities" instance=ExtResource("15_1mgnl")]
+position = Vector2(2956, 864)
+texture = ExtResource("16_ueofw")
+
+[node name="Shutter2" parent="Entities" instance=ExtResource("15_1mgnl")]
+position = Vector2(3316, 1120)
+texture = ExtResource("16_ueofw")
+
+[node name="CorkScrew" parent="Entities" instance=ExtResource("21_3jb7w")]
+position = Vector2(5824, 1776)
+top = 42
+bottom = 10
+
+[node name="CorkScrew2" parent="Entities" instance=ExtResource("21_3jb7w")]
+position = Vector2(5824, 1144)
+top = 31
+bottom = 81
+
+[node name="CorkScrew3" parent="Entities" instance=ExtResource("21_3jb7w")]
+position = Vector2(6080, 784)
+top = 34
+bottom = 30
+
+[node name="CorkScrew4" parent="Entities" instance=ExtResource("21_3jb7w")]
+position = Vector2(6336, 1040)
+top = 18
+bottom = 30
+
+[node name="CorkScrew5" parent="Entities" instance=ExtResource("21_3jb7w")]
+position = Vector2(6720, 1032)
+top = 18
+bottom = 30
+
+[node name="Elevator" parent="Entities" instance=ExtResource("19_fskp7")]
+position = Vector2(6272, 480)
+platformSprite = ExtResource("20_4tdd8")
+endPosition = Vector2(832, 0)
+speed = 0.5
+
+[node name="Mtz_SmallCog" parent="Entities/Elevator" instance=ExtResource("17_8skyg")]
+position = Vector2(0, 24)
+
+[node name="Mtz_SmallCog2" parent="Entities/Elevator" instance=ExtResource("17_8skyg")]
+position = Vector2(128, 24)
+
+[node name="Mtz_SmallCog3" parent="Entities/Elevator" instance=ExtResource("17_8skyg")]
+position = Vector2(256, 24)
+
+[node name="Mtz_SmallCog4" parent="Entities/Elevator" instance=ExtResource("17_8skyg")]
+position = Vector2(384, 24)
+
+[node name="Mtz_SmallCog5" parent="Entities/Elevator" instance=ExtResource("17_8skyg")]
+position = Vector2(512, 24)
+
+[node name="Mtz_SmallCog6" parent="Entities/Elevator" instance=ExtResource("17_8skyg")]
+position = Vector2(640, 24)
+
+[node name="Mtz_SmallCog7" parent="Entities/Elevator" instance=ExtResource("17_8skyg")]
+position = Vector2(768, 24)
+
+[node name="CharacterCameo" parent="Entities" instance=ExtResource("21_4tdd8")]
+position = Vector2(7488, 72)
+present = 4
+characterTexture = ExtResource("22_r2i34")
 
 [node name="Hazards" type="Node" parent="."]
 
@@ -160,6 +287,22 @@ scale = Vector2(4, 1)
 position = Vector2(1856, 240)
 scale = Vector2(4, 1)
 
+[node name="InvisibleBarrier3" parent="Hazards" instance=ExtResource("12_fkgpw")]
+position = Vector2(3776, 1040)
+scale = Vector2(4, 1)
+
+[node name="InvisibleBarrier4" parent="Hazards" instance=ExtResource("12_fkgpw")]
+position = Vector2(3776, 1168)
+scale = Vector2(4, 1)
+
+[node name="InvisibleBarrier5" parent="Hazards" instance=ExtResource("12_fkgpw")]
+position = Vector2(5440, 1136)
+scale = Vector2(4, 1)
+
+[node name="InvisibleBarrier6" parent="Hazards" instance=ExtResource("12_fkgpw")]
+position = Vector2(5440, 1264)
+scale = Vector2(4, 1)
+
 [node name="Spikes" parent="Hazards" instance=ExtResource("13_ixg7q")]
 position = Vector2(2704, 528)
 rotation = 3.14159
@@ -167,6 +310,10 @@ rotation = 3.14159
 [node name="Spikes2" parent="Hazards" instance=ExtResource("13_ixg7q")]
 position = Vector2(2736, 528)
 rotation = 3.14159
+
+[node name="Lava" parent="Hazards" instance=ExtResource("21_vesrm")]
+position = Vector2(6464, 1816)
+size = Vector2(384, 128)
 
 [node name="ItemsHolder" type="Node" parent="."]
 
@@ -180,12 +327,33 @@ position = Vector2(1776, 464)
 position = Vector2(2800, 560)
 item = 3
 
+[node name="Monitor4" parent="ItemsHolder" instance=ExtResource("9_m0oic")]
+position = Vector2(2192, 304)
+
+[node name="Monitor5" parent="ItemsHolder" instance=ExtResource("9_m0oic")]
+position = Vector2(4368, 944)
+
+[node name="Monitor6" parent="ItemsHolder" instance=ExtResource("9_m0oic")]
+position = Vector2(5744, 1200)
+
+[node name="Monitor7" parent="ItemsHolder" instance=ExtResource("9_m0oic")]
+position = Vector2(5744, 1424)
+
+[node name="Monitor9" parent="ItemsHolder" instance=ExtResource("9_m0oic")]
+position = Vector2(7152, 688)
+item = 12
+
+[node name="Monitor10" parent="ItemsHolder" instance=ExtResource("9_m0oic")]
+position = Vector2(6672, 1584)
+
+[node name="Monitor11" parent="ItemsHolder" instance=ExtResource("9_m0oic")]
+position = Vector2(7376, 1328)
+
+[node name="Monitor8" parent="ItemsHolder" instance=ExtResource("9_m0oic")]
+position = Vector2(5872, 1776)
+item = 2
+
 [node name="Badniks" type="Node" parent="."]
 
 [node name="ShellCracker" parent="Badniks" instance=ExtResource("15_xk3py")]
 position = Vector2(1360, 120)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_x24je")
-}

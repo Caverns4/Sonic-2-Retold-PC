@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi3pt28si5x6g"]
+
+[ext_resource type="Texture2D" uid="uid://cljt6yql0ogp2" path="res://Graphics/Objects_Zone/MTZ_SmallCog.png" id="1_w058r"]
+[ext_resource type="Script" uid="uid://cqdfqx3amt0ri" path="res://Scripts/Objects/mtz_small_cog.gd" id="2_vh713"]
+
+[node name="Mtz_SmallCog" type="Sprite2D"]
+texture = ExtResource("1_w058r")
+vframes = 3
+script = ExtResource("2_vh713")

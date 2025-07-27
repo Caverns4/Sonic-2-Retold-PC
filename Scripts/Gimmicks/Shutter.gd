@@ -2,6 +2,7 @@
 extends CharacterBody2D
 
 
+## Texture2D that the object will be rendered with. Also determines collision size.
 @export var texture = preload("res://Graphics/Obstacles/Walls/shutter.png")
 @export_enum("left","right","switch")var side = 0
 var open = false

@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://uay8t1b3i1hi" path="res://Audio/SFX/Gimmicks/s2br_Switch.wav" id="3_82tya"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(31, 9)
+size = Vector2(31, 8)
 
 [node name="Switch" type="StaticBody2D"]
 collision_layer = 8192
