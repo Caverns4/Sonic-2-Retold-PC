@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://esqx6201854"]
+[gd_scene load_steps=29 format=4 uid="uid://esqx6201854"]
 
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_67gif"]
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_swaun"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://dq7iu2jaofqew" path="res://Entities/Misc/character_cameo.tscn" id="21_4tdd8"]
 [ext_resource type="PackedScene" uid="uid://b8bt0u45oqhe6" path="res://Entities/Hazards/Lava.tscn" id="21_vesrm"]
 [ext_resource type="Texture2D" uid="uid://cqy3av3gamy27" path="res://Graphics/Misc/AmyCameo.png" id="22_r2i34"]
+[ext_resource type="PackedScene" uid="uid://dxxc6n1f6go4w" path="res://Entities/Gimmicks/mtz_pipe.tscn" id="26_um77q"]
 
 [node name="Metropolis1" type="Node2D"]
 script = ExtResource("1_swaun")
@@ -158,6 +159,16 @@ button = NodePath("../Switch4")
 [node name="ButtonActivatedPlatform5" parent="Entities" node_paths=PackedStringArray("button") instance=ExtResource("12_tcyod")]
 position = Vector2(3264, 908)
 button = NodePath("../Switch5")
+target_position = Vector2(-128, 0)
+
+[node name="Switch6" parent="Entities" instance=ExtResource("8_25fm7")]
+position = Vector2(6192, 312)
+animator = NodePath("")
+animationName = "Elevator1"
+
+[node name="ButtonActivatedPlatform6" parent="Entities" node_paths=PackedStringArray("button") instance=ExtResource("12_tcyod")]
+position = Vector2(6272, 332)
+button = NodePath("../Switch6")
 
 [node name="ButtonActivatedPlatform4" parent="Entities" node_paths=PackedStringArray("button") instance=ExtResource("12_tcyod")]
 position = Vector2(2368, 332)
@@ -246,31 +257,31 @@ top = 18
 bottom = 30
 
 [node name="Elevator" parent="Entities" instance=ExtResource("19_fskp7")]
-position = Vector2(6272, 480)
-platformSprite = ExtResource("20_4tdd8")
+position = Vector2(6272, 484)
+texture = ExtResource("20_4tdd8")
 endPosition = Vector2(832, 0)
 speed = 0.5
 
 [node name="Mtz_SmallCog" parent="Entities/Elevator" instance=ExtResource("17_8skyg")]
-position = Vector2(0, 24)
+position = Vector2(0, 20)
 
 [node name="Mtz_SmallCog2" parent="Entities/Elevator" instance=ExtResource("17_8skyg")]
-position = Vector2(128, 24)
+position = Vector2(128, 20)
 
 [node name="Mtz_SmallCog3" parent="Entities/Elevator" instance=ExtResource("17_8skyg")]
-position = Vector2(256, 24)
+position = Vector2(256, 20)
 
 [node name="Mtz_SmallCog4" parent="Entities/Elevator" instance=ExtResource("17_8skyg")]
-position = Vector2(384, 24)
+position = Vector2(384, 20)
 
 [node name="Mtz_SmallCog5" parent="Entities/Elevator" instance=ExtResource("17_8skyg")]
-position = Vector2(512, 24)
+position = Vector2(512, 20)
 
 [node name="Mtz_SmallCog6" parent="Entities/Elevator" instance=ExtResource("17_8skyg")]
-position = Vector2(640, 24)
+position = Vector2(640, 20)
 
 [node name="Mtz_SmallCog7" parent="Entities/Elevator" instance=ExtResource("17_8skyg")]
-position = Vector2(768, 24)
+position = Vector2(768, 20)
 
 [node name="CharacterCameo" parent="Entities" instance=ExtResource("21_4tdd8")]
 position = Vector2(7488, 72)
@@ -314,6 +325,24 @@ rotation = 3.14159
 [node name="Lava" parent="Hazards" instance=ExtResource("21_vesrm")]
 position = Vector2(6464, 1816)
 size = Vector2(384, 128)
+
+[node name="Tubes" type="Node" parent="."]
+
+[node name="MTZ_Pipe" parent="Tubes" instance=ExtResource("26_um77q")]
+position = Vector2(1968, 616)
+
+[node name="Line2D" type="Line2D" parent="Tubes/MTZ_Pipe"]
+points = PackedVector2Array(0, 8, -112, 8, -112, 392, 0, 392)
+default_color = Color(1, 0.231373, 0.196078, 1)
+
+[node name="MTZ_Pipe2" parent="Tubes" instance=ExtResource("26_um77q")]
+position = Vector2(3280, 872)
+scale = Vector2(-1, 1)
+
+[node name="Line2D" type="Line2D" parent="Tubes/MTZ_Pipe2"]
+position = Vector2(248, 56)
+points = PackedVector2Array(-248, -48, -688, -48)
+default_color = Color(1, 0.231373, 0.196078, 1)
 
 [node name="ItemsHolder" type="Node" parent="."]
 

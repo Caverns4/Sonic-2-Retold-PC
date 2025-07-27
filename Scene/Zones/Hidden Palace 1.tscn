@@ -699,22 +699,22 @@ position = Vector2(9040, 896)
 position = Vector2(12224, 1152)
 
 [node name="Elevator" parent="Entities" instance=ExtResource("43_x67w5")]
-position = Vector2(7032, 428)
+position = Vector2(6216, 2060)
 platformSprite = ExtResource("35_r5k02")
-endPosition = Vector2(-816, 1632)
+endPosition = Vector2(816, -1632)
 speed = 0.3
 waitTime = 2.0
 
 [node name="Elevator2" parent="Entities" instance=ExtResource("43_x67w5")]
-position = Vector2(6132, 2476)
+position = Vector2(5960, 2828)
 platformSprite = ExtResource("35_r5k02")
-endPosition = Vector2(-176, 346)
+endPosition = Vector2(176, -346)
 waitTime = 2.0
 
 [node name="Elevator3" parent="Entities" instance=ExtResource("43_x67w5")]
-position = Vector2(12528, 432)
+position = Vector2(12232, 1036)
 platformSprite = ExtResource("35_r5k02")
-endPosition = Vector2(-300, 604)
+endPosition = Vector2(300, -604)
 speed = 0.5
 waitTime = 2.0
 
@@ -2057,24 +2057,6 @@ position = Vector2(10240, 2088)
 [node name="Ring230" parent="Rings" instance=ExtResource("42_s707l")]
 position = Vector2(10264, 2088)
 
-[node name="Ring231" parent="Rings" instance=ExtResource("42_s707l")]
-position = Vector2(9528, 2544)
-
-[node name="Ring232" parent="Rings" instance=ExtResource("42_s707l")]
-position = Vector2(9552, 2544)
-
-[node name="Ring233" parent="Rings" instance=ExtResource("42_s707l")]
-position = Vector2(9576, 2544)
-
-[node name="Ring234" parent="Rings" instance=ExtResource("42_s707l")]
-position = Vector2(9992, 2520)
-
-[node name="Ring235" parent="Rings" instance=ExtResource("42_s707l")]
-position = Vector2(10016, 2520)
-
-[node name="Ring236" parent="Rings" instance=ExtResource("42_s707l")]
-position = Vector2(10040, 2520)
-
 [node name="Ring237" parent="Rings" instance=ExtResource("42_s707l")]
 position = Vector2(9544, 2152)
 
@@ -2518,5 +2500,5 @@ position = Vector2(5408, 1952)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_4wbty")
+&"": SubResource("AnimationLibrary_4wbty")
 }

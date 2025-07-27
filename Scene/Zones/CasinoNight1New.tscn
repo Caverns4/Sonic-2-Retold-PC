@@ -537,27 +537,27 @@ fullySolid = true
 platformDepth = 0
 
 [node name="Elevator" parent="MovingPlatforms" instance=ExtResource("16_0dx01")]
-position = Vector2(3376, 1672)
+position = Vector2(3376, 1352)
 platformSprite = ExtResource("17_3dkr3")
-endPosition = Vector2(0, -320)
+endPosition = Vector2(0, 320)
 soundFile = ExtResource("18_042pc")
 
 [node name="Elevator4" parent="MovingPlatforms" instance=ExtResource("16_0dx01")]
-position = Vector2(7728, 968)
+position = Vector2(7728, 1416)
 platformSprite = ExtResource("17_3dkr3")
-endPosition = Vector2(0, 448)
+endPosition = Vector2(0, -448)
 soundFile = ExtResource("18_042pc")
 
 [node name="Elevator5" parent="MovingPlatforms" instance=ExtResource("16_0dx01")]
-position = Vector2(7600, 1416)
+position = Vector2(7600, 1864)
 platformSprite = ExtResource("17_3dkr3")
-endPosition = Vector2(0, 448)
+endPosition = Vector2(0, -448)
 soundFile = ExtResource("18_042pc")
 
 [node name="Elevator3" parent="MovingPlatforms" instance=ExtResource("16_0dx01")]
-position = Vector2(5424, 392)
+position = Vector2(5424, 712)
 platformSprite = ExtResource("17_3dkr3")
-endPosition = Vector2(0, 320)
+endPosition = Vector2(0, -320)
 soundFile = ExtResource("18_042pc")
 
 [node name="Elevator2" parent="MovingPlatforms" instance=ExtResource("16_0dx01")]

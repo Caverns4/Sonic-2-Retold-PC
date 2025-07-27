@@ -247,24 +247,24 @@ position = Vector2(9800, 632)
 position = Vector2(10992, 1944)
 
 [node name="Elevator2" parent="Entities" instance=ExtResource("13_3dqyj")]
-position = Vector2(5744, 432)
+position = Vector2(5448, 1036)
 platformSprite = ExtResource("14_nrkn0")
-endPosition = Vector2(-296, 604)
+endPosition = Vector2(296, -604)
 
 [node name="Elevator5" parent="Entities" instance=ExtResource("13_3dqyj")]
-position = Vector2(5184, 1128)
+position = Vector2(5176, 524)
 platformSprite = ExtResource("14_nrkn0")
-endPosition = Vector2(0, -604)
+endPosition = Vector2(0, 604)
 
 [node name="Elevator4" parent="Entities" instance=ExtResource("13_3dqyj")]
-position = Vector2(3972, 1420)
+position = Vector2(3784, 1804)
 platformSprite = ExtResource("14_nrkn0")
-endPosition = Vector2(-188, 384)
+endPosition = Vector2(188, -384)
 
 [node name="Elevator3" parent="Entities" instance=ExtResource("13_3dqyj")]
-position = Vector2(9716, 1068)
+position = Vector2(9288, 1932)
 platformSprite = ExtResource("14_nrkn0")
-endPosition = Vector2(-428, 864)
+endPosition = Vector2(428, -864)
 
 [node name="PulsatingOrb" parent="Entities" instance=ExtResource("15_841ao")]
 position = Vector2(344, 1344)
@@ -1998,7 +1998,7 @@ position = Vector2(928, 424)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_udq1c")
+&"": SubResource("AnimationLibrary_udq1c")
 }
 
 [node name="BoundrySetter" parent="." instance=ExtResource("43_3dk44")]

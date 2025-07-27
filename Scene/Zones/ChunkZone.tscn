@@ -477,20 +477,17 @@ scale = Vector2(1, 6)
 metadata/_edit_lock_ = true
 
 [node name="Elevator" parent="Floating Platforms" instance=ExtResource("14_s2njc")]
-position = Vector2(5728, 1296)
-platformSprite = ExtResource("15_wn01l")
-endPosition = Vector2(0, 64)
+position = Vector2(5728, 1360)
+endPosition = Vector2(0, -64)
+
+[node name="Elevator2" parent="Floating Platforms" instance=ExtResource("14_s2njc")]
+position = Vector2(8096, 784)
+endPosition = Vector2(0, 384)
 
 [node name="Elevator3" parent="Floating Platforms" instance=ExtResource("14_s2njc")]
-position = Vector2(8096, 1168)
-platformSprite = ExtResource("15_wn01l")
-endPosition = Vector2(0, -256)
-
-[node name="Elevator4" parent="Floating Platforms" instance=ExtResource("14_s2njc")]
 position = Vector2(8160, 1168)
-platformSprite = ExtResource("15_wn01l")
 endPosition = Vector2(0, 0)
-speed = 0.5
+speed = 0.0
 
 [node name="Platform" parent="Floating Platforms" instance=ExtResource("15_4hohj")]
 position = Vector2(192, 464)

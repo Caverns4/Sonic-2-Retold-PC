@@ -19,23 +19,23 @@ func _ready() -> void:
 		button.connect("pressed",activatePlatform)
 
 func _physics_process(delta: float) -> void:
-	if !active:
-		global_position.x = move_toward(
-			global_position.x,
-			origin.x,
-			128*delta)
-		#global_position.y = move_toward(
-		#	global_position.y,
-		#	origin.y,
+	if active:
+		global_position = global_position.move_toward(
+			origin + target_position,
+			128*delta
+		)
+		#global_position.x = move_toward(
+		#	global_position.x,
+		#	origin.x,
 		#	128*delta)
 	else:
-		global_position.x = move_toward(
-			global_position.x,
-			origin.x+target_position.x,
-			128*delta)
-		#global_position.y = move_toward(
-		#	global_position.y,
-		#	origin.y+target_position.y,
+		global_position = global_position.move_toward(
+			origin,
+			128*delta
+		)
+		#global_position.x = move_toward(
+		#	global_position.x,
+		#	origin.x+target_position.x,
 		#	128*delta)
 
 
