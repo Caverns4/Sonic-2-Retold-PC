@@ -9,11 +9,12 @@ func _ready() -> void:
 
 
 func _on_body_entered(body: Player2D) -> void:
-	body.set_state(body.STATES.AIR)
-	body.movement.y = 0-(60*spring_power)
-	body.movement.x = 60*(spring_power*spring_direction)
-	var curAnim = "walk"
-	body.animator.play("corkScrew")
-	body.animator.queue(curAnim)
+	if !body.controlObject:
+		body.set_state(body.STATES.AIR)
+		body.movement.y = 0-(60*spring_power)
+		body.movement.x = 60*(spring_power*spring_direction)
+		var curAnim = "walk"
+		body.animator.play("corkScrew")
+		body.animator.queue(curAnim)
 	if $VisibleOnScreenNotifier2D.is_on_screen():
 		SoundDriver.play_sound(spring_sfx)

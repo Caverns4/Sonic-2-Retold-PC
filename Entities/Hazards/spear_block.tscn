@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://byf484raaq1cu"]
+
+[ext_resource type="Texture2D" uid="uid://b7fiakcwbo2rt" path="res://Graphics/Obstacles/Blocks/moving_block_2.png" id="1_0u6qs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mrgat"]
+size = Vector2(32, 32)
+
+[node name="SpearBlock" type="AnimatableBody2D"]
+collision_layer = 2105359
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mrgat")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0u6qs")

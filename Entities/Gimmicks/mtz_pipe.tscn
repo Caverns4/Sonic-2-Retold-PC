@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ix6871prk8ml" path="res://Scripts/Gimmicks/mtz_pipe.gd" id="1_uotn6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uotn6"]
+size = Vector2(16, 40)
 
 [sub_resource type="Animation" id="Animation_uotn6"]
 resource_name = "Entry"
@@ -47,6 +48,7 @@ collision_mask = 4096
 script = ExtResource("1_uotn6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_uotn6")
 
 [node name="ColorRect" type="ColorRect" parent="."]

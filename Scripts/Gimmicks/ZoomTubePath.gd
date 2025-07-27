@@ -11,11 +11,11 @@ extends Line2D
 var enteranceArea = Area2D.new()
 var exitArea = Area2D.new()
 
-# Active dir, determines the direction of pipe movement
+## Active dir, determines the direction of pipe movement
 var activeDir = 0
-# Player reference
+## Player reference
 var player = null
-# Current point in tube
+## Current point in tube
 var getPoint = 1
 
 
