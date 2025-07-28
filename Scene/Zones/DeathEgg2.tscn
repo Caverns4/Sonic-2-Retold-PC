@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://vs0jloj5swvg"]
+[gd_scene load_steps=16 format=4 uid="uid://vs0jloj5swvg"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_588bb"]
 [ext_resource type="AudioStream" uid="uid://g0a01sst32bm" path="res://Audio/Soundtrack/s2br_DeathEgg.ogg" id="2_j7ucr"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://bgodeg4oddje6" path="res://Entities/MainObjects/BoundrySetter.tscn" id="11_cvek8"]
 [ext_resource type="PackedScene" uid="uid://cr0ig40i3kkmg" path="res://Entities/Boss/SilverSonic/eggman_window.tscn" id="12_iu1cr"]
 [ext_resource type="PackedScene" uid="uid://bmsutfc5bals8" path="res://Entities/Boss/eggman_mechless.tscn" id="16_i313q"]
-[ext_resource type="PackedScene" uid="uid://dpedjdbyu3jqv" path="res://Entities/Enemies/ShellCracker.tscn" id="18_1n4wa"]
 [ext_resource type="PackedScene" uid="uid://dn7w8hf4sanu" path="res://Entities/Enemies/Grabber.tscn" id="18_v7l67"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lx1wr"]
@@ -81,6 +80,3 @@ position = Vector2(1088, 368)
 
 [node name="GrabberBadnik" parent="Badniks" instance=ExtResource("18_v7l67")]
 position = Vector2(1824, 264)
-
-[node name="ShellCracker" parent="." instance=ExtResource("18_1n4wa")]
-position = Vector2(784, 376)

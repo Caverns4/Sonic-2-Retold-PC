@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://cii6vdv1nbk6k"]
+
+[ext_resource type="Script" uid="uid://n81dm8emn3g4" path="res://Scripts/Enemies/slicer.gd" id="1_y81fk"]
+[ext_resource type="Texture2D" uid="uid://dk36bgkg6tusy" path="res://Graphics/Enemies/Slicer.png" id="2_y81fk"]
+[ext_resource type="Texture2D" uid="uid://denlmlcgn4kpt" path="res://Graphics/Enemies/Slicer_color.png" id="3_v7f3y"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(24, 32)
+
+[node name="Slicer" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 16384
+collision_mask = 0
+script = ExtResource("1_y81fk")
+
+[node name="CollissionMask" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 528384
+
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+modulate = Color(1, 0, 0, 1)
+shape = SubResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_y81fk")
+hframes = 3
+
+[node name="ColorMask" type="Sprite2D" parent="Sprite2D"]
+self_modulate = Color(0.4, 0.4, 1, 1)
+texture = ExtResource("3_v7f3y")
+hframes = 3
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+visible = false
+position = Vector2(1.90735e-06, -1.90735e-06)
+rect = Rect2(-160, -120, 320, 240)
+
+[connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]

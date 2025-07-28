@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://e10hbuo7yk8s"]
+
+[ext_resource type="Script" uid="uid://cm8n7l3mge1ev" path="res://Scripts/Enemies/asteron.gd" id="1_wn121"]
+[ext_resource type="Texture2D" uid="uid://b5c1sd0nbv4r3" path="res://Graphics/Enemies/Asteron.png" id="2_wn121"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(24, 24)
+
+[node name="Asteron" type="CharacterBody2D" groups=["Enemy"]]
+z_index = 15
+collision_layer = 16384
+collision_mask = 0
+script = ExtResource("1_wn121")
+
+[node name="CollissionMask" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 528384
+
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+modulate = Color(1, 0, 0, 1)
+shape = SubResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wn121")
+vframes = 2
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+visible = false
+position = Vector2(1.90735e-06, -1.90735e-06)
+rect = Rect2(-160, -120, 320, 240)
+
+[connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]

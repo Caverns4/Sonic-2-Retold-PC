@@ -869,7 +869,7 @@ func _physics_process(delta):
 			get_parent().add_child(splash)
 	
 	# We don't check for crushing if the player is in an invulnerable state (note that invulernable means immune to crushing/death by falling)
-	if !stateList[currentState].get_state_invulnerable():
+	if !stateList[currentState].get_state_invulnerable() and !controlObject:
 		var crushSensorLeft = $CrushSensorLeft
 		var crushSensorRight = $CrushSensorRight
 		var crushSensorUp = $CrushSensorUp
