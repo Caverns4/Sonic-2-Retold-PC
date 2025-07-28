@@ -562,16 +562,14 @@ func _process(delta):
 				isSuper = false
 				superAnimator.play("PowerDown")
 				switch_physics()
-			if SoundDriver.currentTheme == 1:
-				SoundDriver.playNormalMusic()
+			SoundDriver.playNormalMusic()
 			invTime = 60
 	
 	if (shoeTime > 0):
 		shoeTime -= delta
 		if (shoeTime <= 0):
 			switch_physics()
-			if SoundDriver.currentTheme == 2:
-				SoundDriver.playNormalMusic()
+			SoundDriver.playNormalMusic()
 	
 	# Invulnerability timer
 	if (invTime > 0 and currentState != STATES.HIT and currentState != STATES.DIE):
@@ -580,6 +578,7 @@ func _process(delta):
 		if (invTime <= 0):
 			invTime = 0
 			visible = true
+			
 	
 	if (ringDisTime > 0) and currentState != STATES.HIT:
 		ringDisTime -= delta

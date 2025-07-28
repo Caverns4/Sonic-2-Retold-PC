@@ -2,6 +2,7 @@ extends AnimatableBody2D
 
 @export var switch_time: float = 1.0
 @export_enum("Counter-Clockwise","Clockwise") var direction = 1
+@export_enum("up","right","down","left") var starting_dir = 0
 @export var sfx = preload("res://Audio/SFX/Objects/s2br_Spikes.wav")
 
 @onready var spear: Area2D = $Spear
@@ -10,6 +11,7 @@ var timer = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	spear.rotation_degrees += starting_dir*90.0
 	spear.monitoring = false
 	$VisibleOnScreenEnabler2D.visible = true
 

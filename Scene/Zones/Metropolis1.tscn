@@ -47,7 +47,7 @@ defaultRightBoundry = 9088
 zoneName = "METROPOLIS"
 
 [node name="Player" parent="." instance=ExtResource("2_0nln4")]
-position = Vector2(5488, 1736)
+position = Vector2(64, 652)
 
 [node name="Level_Layout" type="Node" parent="."]
 
@@ -104,10 +104,13 @@ position = Vector2(560, 640)
 [node name="MTZ_SteamPipe2" parent="Entities" instance=ExtResource("9_tjfo8")]
 position = Vector2(688, 640)
 
+[node name="MTZ_SteamPipe3" parent="Entities" instance=ExtResource("9_tjfo8")]
+position = Vector2(2864, 1536)
+
 [node name="MTZ_SteamPipe4" parent="Entities" instance=ExtResource("9_tjfo8")]
 position = Vector2(4656, 1152)
 
-[node name="MTZ_SteamPipe3" parent="Entities" instance=ExtResource("9_tjfo8")]
+[node name="MTZ_SteamPipe5" parent="Entities" instance=ExtResource("9_tjfo8")]
 position = Vector2(1216, 352)
 
 [node name="Crusher" parent="Entities" instance=ExtResource("10_fkgpw")]
@@ -234,6 +237,10 @@ texture = ExtResource("16_ueofw")
 position = Vector2(3316, 1120)
 texture = ExtResource("16_ueofw")
 
+[node name="Shutter3" parent="Entities" instance=ExtResource("15_1mgnl")]
+position = Vector2(5132, 1184)
+texture = ExtResource("16_ueofw")
+
 [node name="CorkScrew" parent="Entities" instance=ExtResource("21_3jb7w")]
 position = Vector2(5824, 1776)
 
@@ -298,6 +305,16 @@ position = Vector2(5792, 364)
 position = Vector2(5856, 364)
 open_direction = 1
 
+[node name="Platform3" parent="Entities" instance=ExtResource("21_xpxgv")]
+position = Vector2(6304, 1676)
+platformSprite = ExtResource("22_jg5gn")
+endPosition = Vector2(128, 0)
+
+[node name="Platform4" parent="Entities" instance=ExtResource("21_xpxgv")]
+position = Vector2(6624, 1676)
+platformSprite = ExtResource("22_jg5gn")
+endPosition = Vector2(-128, 0)
+
 [node name="Hazards" type="Node" parent="."]
 
 [node name="InvisibleBarrier" parent="Hazards" instance=ExtResource("12_fkgpw")]
@@ -337,25 +354,56 @@ position = Vector2(6464, 1816)
 size = Vector2(384, 128)
 
 [node name="SpearBlock" parent="Hazards" instance=ExtResource("28_jg5gn")]
-position = Vector2(7536, 1264)
+position = Vector2(7536, 1280)
+starting_dir = 2
+
+[node name="SpearBlock8" parent="Hazards" instance=ExtResource("28_jg5gn")]
+position = Vector2(6416, 1296)
+
+[node name="SpearBlock9" parent="Hazards" instance=ExtResource("28_jg5gn")]
+position = Vector2(6512, 1296)
+starting_dir = 2
 
 [node name="SpearBlock2" parent="Hazards" instance=ExtResource("28_jg5gn")]
-position = Vector2(7440, 1184)
+position = Vector2(7440, 1216)
+starting_dir = 1
 
 [node name="SpearBlock3" parent="Hazards" instance=ExtResource("28_jg5gn")]
-position = Vector2(7536, 1104)
+position = Vector2(7536, 1136)
 
 [node name="SpearBlock4" parent="Hazards" instance=ExtResource("28_jg5gn")]
-position = Vector2(7440, 1024)
+position = Vector2(7440, 1040)
+starting_dir = 3
 
 [node name="SpearBlock5" parent="Hazards" instance=ExtResource("28_jg5gn")]
-position = Vector2(3312, 272)
+position = Vector2(3264, 272)
+starting_dir = 3
 
 [node name="SpearBlock6" parent="Hazards" instance=ExtResource("28_jg5gn")]
-position = Vector2(3440, 256)
+position = Vector2(3376, 272)
 
 [node name="SpearBlock7" parent="Hazards" instance=ExtResource("28_jg5gn")]
-position = Vector2(3568, 240)
+position = Vector2(3504, 272)
+starting_dir = 2
+
+[node name="SpearBlock10" parent="Hazards" instance=ExtResource("28_jg5gn")]
+position = Vector2(3584, 272)
+starting_dir = 2
+
+[node name="SpearBlock11" parent="Hazards" instance=ExtResource("28_jg5gn")]
+position = Vector2(4416, 336)
+
+[node name="SpearBlock12" parent="Hazards" instance=ExtResource("28_jg5gn")]
+position = Vector2(4520, 368)
+starting_dir = 3
+
+[node name="SpearBlock13" parent="Hazards" instance=ExtResource("28_jg5gn")]
+position = Vector2(4624, 400)
+starting_dir = 2
+
+[node name="SpearBlock14" parent="Hazards" instance=ExtResource("28_jg5gn")]
+position = Vector2(4720, 432)
+starting_dir = 1
 
 [node name="InvisibleBarrier7" parent="Hazards" instance=ExtResource("12_fkgpw")]
 position = Vector2(5760, 1808)
@@ -388,6 +436,17 @@ scale = Vector2(2, 1)
 [node name="InvisibleBarrier14" parent="Hazards" instance=ExtResource("12_fkgpw")]
 position = Vector2(6080, 496)
 scale = Vector2(2, 1)
+
+[node name="InvisibleBarrier15" parent="Hazards" instance=ExtResource("12_fkgpw")]
+position = Vector2(3640, 880)
+scale = Vector2(3, 1)
+
+[node name="InvisibleBarrier16" parent="Hazards" instance=ExtResource("12_fkgpw")]
+position = Vector2(5568, 496)
+scale = Vector2(3, 1)
+
+[node name="Spikes3" parent="Hazards" instance=ExtResource("13_ixg7q")]
+position = Vector2(6288, 1264)
 
 [node name="Tubes" type="Node" parent="."]
 
@@ -459,10 +518,6 @@ position = Vector2(7376, 1328)
 [node name="Monitor8" parent="ItemsHolder" instance=ExtResource("9_m0oic")]
 position = Vector2(5872, 1776)
 item = 2
-
-[node name="Monitor12" parent="ItemsHolder" instance=ExtResource("9_m0oic")]
-position = Vector2(5696, 1776)
-item = 1
 
 [node name="Badniks" type="Node" parent="."]
 
