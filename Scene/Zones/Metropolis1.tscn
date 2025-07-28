@@ -47,7 +47,7 @@ defaultRightBoundry = 9088
 zoneName = "METROPOLIS"
 
 [node name="Player" parent="." instance=ExtResource("2_0nln4")]
-position = Vector2(96, 652)
+position = Vector2(5488, 1736)
 
 [node name="Level_Layout" type="Node" parent="."]
 
@@ -236,28 +236,18 @@ texture = ExtResource("16_ueofw")
 
 [node name="CorkScrew" parent="Entities" instance=ExtResource("21_3jb7w")]
 position = Vector2(5824, 1776)
-top = 42
-bottom = 10
 
 [node name="CorkScrew2" parent="Entities" instance=ExtResource("21_3jb7w")]
 position = Vector2(5824, 1144)
-top = 31
-bottom = 81
 
 [node name="CorkScrew3" parent="Entities" instance=ExtResource("21_3jb7w")]
 position = Vector2(6080, 784)
-top = 34
-bottom = 30
 
 [node name="CorkScrew4" parent="Entities" instance=ExtResource("21_3jb7w")]
 position = Vector2(6336, 1040)
-top = 18
-bottom = 30
 
 [node name="CorkScrew5" parent="Entities" instance=ExtResource("21_3jb7w")]
 position = Vector2(6720, 1032)
-top = 18
-bottom = 30
 
 [node name="Elevator" parent="Entities" instance=ExtResource("19_fskp7")]
 position = Vector2(6272, 484)
@@ -300,6 +290,13 @@ endPosition = Vector2(0, 192)
 position = Vector2(7488, 72)
 present = 4
 characterTexture = ExtResource("22_r2i34")
+
+[node name="VerticalShutter5" parent="Entities" instance=ExtResource("11_f4xj6")]
+position = Vector2(5792, 364)
+
+[node name="VerticalShutter6" parent="Entities" instance=ExtResource("11_f4xj6")]
+position = Vector2(5856, 364)
+open_direction = 1
 
 [node name="Hazards" type="Node" parent="."]
 
@@ -360,6 +357,38 @@ position = Vector2(3440, 256)
 [node name="SpearBlock7" parent="Hazards" instance=ExtResource("28_jg5gn")]
 position = Vector2(3568, 240)
 
+[node name="InvisibleBarrier7" parent="Hazards" instance=ExtResource("12_fkgpw")]
+position = Vector2(5760, 1808)
+scale = Vector2(8, 1)
+
+[node name="InvisibleBarrier8" parent="Hazards" instance=ExtResource("12_fkgpw")]
+position = Vector2(5824, 880)
+scale = Vector2(8, 1)
+
+[node name="InvisibleBarrier9" parent="Hazards" instance=ExtResource("12_fkgpw")]
+position = Vector2(6336, 880)
+scale = Vector2(8, 1)
+
+[node name="InvisibleBarrier10" parent="Hazards" instance=ExtResource("12_fkgpw")]
+position = Vector2(6720, 880)
+scale = Vector2(8, 1)
+
+[node name="InvisibleBarrier11" parent="Hazards" instance=ExtResource("12_fkgpw")]
+position = Vector2(6336, 1296)
+scale = Vector2(2, 1)
+
+[node name="InvisibleBarrier12" parent="Hazards" instance=ExtResource("12_fkgpw")]
+position = Vector2(6720, 1296)
+scale = Vector2(2, 1)
+
+[node name="InvisibleBarrier13" parent="Hazards" instance=ExtResource("12_fkgpw")]
+position = Vector2(6080, 1040)
+scale = Vector2(2, 1)
+
+[node name="InvisibleBarrier14" parent="Hazards" instance=ExtResource("12_fkgpw")]
+position = Vector2(6080, 496)
+scale = Vector2(2, 1)
+
 [node name="Tubes" type="Node" parent="."]
 
 [node name="MTZ_Pipe" parent="Tubes" instance=ExtResource("26_um77q")]
@@ -371,33 +400,27 @@ default_color = Color(1, 0.231373, 0.196078, 1)
 
 [node name="MTZ_Pipe2" parent="Tubes" instance=ExtResource("26_um77q")]
 position = Vector2(3280, 872)
-scale = Vector2(-1, 1)
 release_velocity = 8
 
 [node name="Line2D" type="Line2D" parent="Tubes/MTZ_Pipe2"]
 position = Vector2(248, 56)
-points = PackedVector2Array(-248, -48, -688, -48)
+points = PackedVector2Array(-248, -48, 192, -48)
 default_color = Color(1, 0.231373, 0.196078, 1)
 
 [node name="MTZ_Pipe3" parent="Tubes" instance=ExtResource("26_um77q")]
 position = Vector2(3152, 1512)
-rotation = -3.14159
-scale = Vector2(1, -1)
 
 [node name="Line2D" type="Line2D" parent="Tubes/MTZ_Pipe3"]
 position = Vector2(248, 56)
-points = PackedVector2Array(-248, -48, -728, -48)
+points = PackedVector2Array(-248, -48, 232, -48)
 default_color = Color(1, 0.231373, 0.196078, 1)
 
 [node name="MTZ_Pipe4" parent="Tubes" instance=ExtResource("26_um77q")]
 position = Vector2(5200, 488)
-scale = Vector2(-1, 1)
 release_velocity = 8
 
 [node name="Line2D" type="Line2D" parent="Tubes/MTZ_Pipe4"]
-position = Vector2(248, 56)
-points = PackedVector2Array(-248, -48, -688, -48)
-default_color = Color(1, 0.231373, 0.196078, 1)
+points = PackedVector2Array(0, 8, 432, 8)
 
 [node name="ItemsHolder" type="Node" parent="."]
 
@@ -436,6 +459,10 @@ position = Vector2(7376, 1328)
 [node name="Monitor8" parent="ItemsHolder" instance=ExtResource("9_m0oic")]
 position = Vector2(5872, 1776)
 item = 2
+
+[node name="Monitor12" parent="ItemsHolder" instance=ExtResource("9_m0oic")]
+position = Vector2(5696, 1776)
+item = 1
 
 [node name="Badniks" type="Node" parent="."]
 

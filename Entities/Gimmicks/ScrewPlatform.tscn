@@ -50,11 +50,6 @@ size = Vector2(64, 16)
 process_priority = 5
 script = ExtResource("3")
 
-[node name="ScrewPipe" type="Sprite2D" parent="."]
-texture = ExtResource("2")
-region_enabled = true
-region_rect = Rect2(0, 0, 32, 32)
-
 [node name="ScrewBottom" type="Sprite2D" parent="."]
 position = Vector2(0, 20)
 texture = ExtResource("2")
@@ -89,8 +84,5 @@ target_position = Vector2(0, 12)
 target_position = Vector2(0, -12)
 collision_mask = 4
 
-[node name="DeathTimer" type="Timer" parent="Screw"]
-
 [connection signal="body_entered" from="Screw/playerChecker" to="." method="_on_playerChecker_body_entered"]
 [connection signal="body_exited" from="Screw/playerChecker" to="." method="_on_playerChecker_body_exited"]
-[connection signal="timeout" from="Screw/DeathTimer" to="." method="_on_DeathTimer_timeout"]

@@ -251,7 +251,7 @@ frame_progress = 0.275708
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_b4dus")
+&"": SubResource("AnimationLibrary_b4dus")
 }
 next/DestroyMonitor = &"fadeIcon"
 

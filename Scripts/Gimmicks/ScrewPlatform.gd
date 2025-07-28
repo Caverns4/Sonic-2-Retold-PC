@@ -1,39 +1,30 @@
 @tool
 extends Node2D
 
-
-@export var top = 2
-@export var bottom = 2
-@export_enum("up", "down") var rightMovement = 0
+@export var bottom_distance = 2
 
 var players = []
 var playerPosX = []
 var activePlayers = []
-var fall = false
-var fallSpeed = 100
+var is_falling = false
+var fallSpeed = 60
 
 func _ready():
-	scale.x = sign(1-(rightMovement*2))*abs(scale.x)
-	$ScrewPipe.region_rect = Rect2($ScrewPipe.region_rect.position,Vector2($ScrewPipe.region_rect.size.x,(top*8)+(bottom*8)))
-	$ScrewPipe.position = Vector2(0,(bottom*4)-(top*4))
-	$ScrewBottom.position.y = (bottom*8)+4
+	$ScrewBottom.position.y = (bottom_distance*8)+4
 
 
 func _process(_delta):
 	if Engine.is_editor_hint():
-		scale.x = sign(1-(rightMovement*2))*abs(scale.x)
-		$ScrewPipe.region_rect = Rect2($ScrewPipe.region_rect.position,Vector2($ScrewPipe.region_rect.size.x,(top*8)+(bottom*8)))
-		$ScrewPipe.position = Vector2(0,(bottom*4)-(top*4))
-		$ScrewBottom.position.y = (bottom*8)+4
+		$ScrewBottom.position.y = (bottom_distance*8)+4
 
 func _physics_process(delta):
 	if !Engine.is_editor_hint():
-		# falling
-		if fall:
-			fallSpeed += 900*delta
+		if is_falling:
+			fallSpeed += 60*delta
 			$Screw.position.y += fallSpeed*delta
+			_respawnCheck()
 			# stop processing
-			return null
+			return
 		
 		# check if to lock player
 		for i in players:
@@ -50,7 +41,7 @@ func _physics_process(delta):
 			var goDirection = i.movement.x*delta/4
 			
 			if ((!$Screw/FloorCheck.is_colliding() or goDirection > 0) and (!$Screw/CeilingCheck.is_colliding() or goDirection < 0)
-			and $Screw.position.y-goDirection > (-top*8)+12 and !fall and i.ground):
+			and !is_falling and i.ground):
 				i.global_position.x = global_position.x
 				$Screw/Screw.frame = posmod(int(floor(-$Screw.position.y/4)),4)
 			else:
@@ -58,12 +49,19 @@ func _physics_process(delta):
 			
 			# increase move offset by how fast hte player is moving
 			moveOffset += -goDirection
-			
-			if $Screw.position.y > bottom*8:
-				fall = true
-				$Screw/DeathTimer.start(5)
-		
-		$Screw.position.y = max($Screw.position.y+moveOffset,(-top*8)+12)
+			if $Screw.position.y > bottom_distance*8:
+				is_falling = true
+		$Screw.position.y += moveOffset
+		_respawnCheck()
+
+func _respawnCheck():
+	#Respawn check
+	if !players:
+		var rangetest = GlobalFunctions.get_nearest_player_x(global_position.x).global_position.x
+		rangetest -= global_position.x
+		if abs(rangetest) >= 320 and $Screw.position.y != -4:
+			$Screw.position.y = -4
+			is_falling = false
 
 func _on_playerChecker_body_entered(body):
 	if !players.has(body):
@@ -77,6 +75,6 @@ func _on_playerChecker_body_exited(body):
 
 # prevent unnecessary run time processing for object
 func _on_DeathTimer_timeout():
-	fall = false
+	is_falling = false
 	set_physics_process(false)
 	$Screw.queue_free()

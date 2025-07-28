@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfxfns47kui3i"]
+
+[ext_resource type="Script" uid="uid://dy2gqcb551jcu" path="res://Scripts/Objects/Hazard.gd" id="1_df5d3"]
+[ext_resource type="Texture2D" uid="uid://c461uqjkey4y2" path="res://Graphics/Hazards/MTZ_Spear.png" id="2_df5d3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ey33q"]
+size = Vector2(8, 32)
+
+[node name="Spear" type="Area2D"]
+collision_layer = 0
+collision_mask = 4096
+script = ExtResource("1_df5d3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+shape = SubResource("RectangleShape2D_ey33q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_df5d3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

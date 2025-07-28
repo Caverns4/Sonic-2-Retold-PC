@@ -18,7 +18,7 @@ var state = STATES.WAIT
 ## Player Reference
 var player: Player2D = null
 ## Current point in tube
-var getPoint = 1
+var getPoint = 0
 ## Hover position of the player waiting in the tube
 var hoverOffset: float = 0
 
@@ -42,7 +42,8 @@ func _process(delta: float) -> void:
 			if getPoint >= path.get_point_count():
 				_free_player()
 				return
-			var target = path.get_point_position(getPoint) + global_position
+			var target = path.global_position + path.get_point_position(getPoint)
+			
 			player.global_position = player.global_position.move_toward(target,speed*60*delta)
 			if player.global_position == target:
 				getPoint+=1
@@ -56,6 +57,7 @@ func updateHoveringPos(delta):
 func _on_body_entered(body: Player2D) -> void:
 		if !player and state == STATES.WAIT and !body.controlObject:
 			player = body
+			getPoint = 1
 			animator.play("Entry")
 			SoundDriver.play_sound2(charge_sfx)
 			body.global_position = global_position
@@ -80,4 +82,3 @@ func _free_player():
 	player = null
 	state = STATES.WAIT
 	hoverOffset = 0
-	getPoint = 1
