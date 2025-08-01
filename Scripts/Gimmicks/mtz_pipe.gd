@@ -78,7 +78,7 @@ func _free_player():
 	player.allowTranslate = false
 	player.controlObject = null
 	player.set_state(player.STATES.ROLL)
-	player.movement.x = release_velocity
+	player.movement.x = release_velocity*60
 	player = null
 	state = STATES.WAIT
 	hoverOffset = 0

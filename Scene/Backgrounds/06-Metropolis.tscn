@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://4yk7yb6bgamq" path="res://Scripts/Backgrounds/alignChildren.gd" id="1_lujea"]
 
 [node name="06-Metropolis" type="ParallaxBackground"]
-scroll_base_scale = Vector2(0.1, 0.1)
+scroll_base_scale = Vector2(0.25, 0.25)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
 motion_mirroring = Vector2(1024, 512)
