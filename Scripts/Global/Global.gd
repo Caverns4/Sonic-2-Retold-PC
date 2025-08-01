@@ -166,6 +166,7 @@ var hardBorderLeft   = -100000000
 var hardBorderRight  =  100000000
 var hardBorderTop    = -100000000
 var hardBorderBottom =  100000000
+var y_wrap: bool = false
 
 # Animal spawn type reference, see the level script for more information on the types
 var animals = [0,1]

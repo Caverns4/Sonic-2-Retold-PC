@@ -35,6 +35,9 @@ var nextZone = load("res://Scene/Presentation/ZoneLoader.tscn")
 @export var setDefaultBottom: bool = true
 @export var defaultBottomBoundry: int = 2048
 
+## If true, the top and bottom boundary will be ignored.
+@export var y_wrap: bool = false
+
 var twoPlayerWindow = preload("res://Scene/TwoPlayerScreenView.tscn")
 
 # was loaded is used for room loading, this can prevent overwriting global information, see Global.gd for more information on scene loading
@@ -53,10 +56,11 @@ func _ready():
 		Global.hardBorderLeft  = defaultLeftBoundry
 	if setDefaultRight:
 		Global.hardBorderRight = defaultRightBoundry
-	if setDefaultTop:
+	if setDefaultTop and !y_wrap:
 		Global.hardBorderTop    = defaultTopBoundry
-	if setDefaultBottom:
+	if setDefaultBottom and !y_wrap:
 		Global.hardBorderBottom  = defaultBottomBoundry
+	Global.y_wrap = y_wrap
 	
 	level_reset_data(false)
 	

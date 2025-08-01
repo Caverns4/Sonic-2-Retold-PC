@@ -405,8 +405,12 @@ func _ready():
 	# reset camera limits
 	limitLeft = Global.hardBorderLeft
 	limitRight = Global.hardBorderRight
-	limitTop = Global.hardBorderTop
-	limitBottom = Global.hardBorderBottom
+	if Global.y_wrap:
+		limitTop = -4096
+		limitBottom = 4096
+	else:
+		limitTop = Global.hardBorderTop
+		limitBottom = Global.hardBorderBottom
 	snap_camera_to_limits()
 	
 	# set partner sounds to share players (prevents sound overlap)
@@ -787,27 +791,28 @@ func _physics_process(delta):
 		else:
 			camera.limit_right = limitRight
 
-		# Top
-		# snap the limit to the edge of the camera if snap out of range
-		if limitTop > viewPos.y-viewSize.y*0.5:
-			camera.limit_top = max(viewPos.y-viewSize.y*0.5,camera.limit_top)
-		# if limit is inside the camera then pan over
-		if abs(camera.limit_top-(viewPos.y-viewSize.y*0.5)) <= viewSize.y*0.5:
-			camera.limit_top = move_toward(camera.limit_top,limitTop,scrollSpeed)
-		# else just snap the camera limit since it's not going to move the camera
-		else:
-			camera.limit_top = limitTop
-		
-		# Bottom
-		# snap the limit to the edge of the camera if snap out of range
-		if limitBottom < viewPos.y+viewSize.y*0.5:
-			camera.limit_bottom = min(viewPos.y+viewSize.y*0.5,camera.limit_bottom)
-		# if limit is inside the camera then pan over
-		if abs(camera.limit_bottom-(viewPos.y+viewSize.y*0.5)) <= viewSize.y*0.5:
-			camera.limit_bottom = move_toward(camera.limit_bottom,limitBottom,scrollSpeed)
-		# else just snap the camera limit since it's not going to move the camera
-		else:
-			camera.limit_bottom = limitBottom
+		if !Global.y_wrap:
+			# Top
+			# snap the limit to the edge of the camera if snap out of range
+			if limitTop > viewPos.y-viewSize.y*0.5:
+				camera.limit_top = max(viewPos.y-viewSize.y*0.5,camera.limit_top)
+			# if limit is inside the camera then pan over
+			if abs(camera.limit_top-(viewPos.y-viewSize.y*0.5)) <= viewSize.y*0.5:
+				camera.limit_top = move_toward(camera.limit_top,limitTop,scrollSpeed)
+			# else just snap the camera limit since it's not going to move the camera
+			else:
+				camera.limit_top = limitTop
+			
+			# Bottom
+			# snap the limit to the edge of the camera if snap out of range
+			if limitBottom < viewPos.y+viewSize.y*0.5:
+				camera.limit_bottom = min(viewPos.y+viewSize.y*0.5,camera.limit_bottom)
+			# if limit is inside the camera then pan over
+			if abs(camera.limit_bottom-(viewPos.y+viewSize.y*0.5)) <= viewSize.y*0.5:
+				camera.limit_bottom = move_toward(camera.limit_bottom,limitBottom,scrollSpeed)
+			# else just snap the camera limit since it's not going to move the camera
+			else:
+				camera.limit_bottom = limitBottom
 		
 		#rumbling timer
 		if cameraShakeTime > 0.0:
@@ -818,9 +823,14 @@ func _physics_process(delta):
 			shakeStrength = lerpf(shakeStrength,0.0,shakefade * delta)
 			camera.offset = RandomOffset()
 		
-		# Death at border bottom
-		if global_position.y > limitBottom and Global.stageClearPhase == 0:
-			kill()
+	if Global.y_wrap:
+		var test_pos = global_position.y
+		global_position.y = wrapf(global_position.y,0,2048)
+		if camera and global_position.y != test_pos:
+			camera.global_position.y = wrapf(camera.global_position.y,0,2048)
+	# Death at border bottom
+	elif global_position.y > limitBottom and Global.stageClearPhase == 0:
+		kill()
 	
 	# Stop movement at borders
 	if (global_position.x < limitLeft+cameraMargin or global_position.x > limitRight-cameraMargin):
@@ -1210,8 +1220,9 @@ func respawn():
 		global_position = partner.global_position+Vector2(0,-get_viewport_rect().size.y)
 		limitLeft = partner.limitLeft
 		limitRight = partner.limitRight
-		limitTop = partner.limitTop
-		limitBottom = partner.limitBottom
+		if !Global.y_wrap:
+			limitTop = partner.limitTop
+			limitBottom = partner.limitBottom
 		get_node("TailsCarryBox/HitBox").disabled = true
 		set_state(STATES.RESPAWN)
 
@@ -1359,12 +1370,8 @@ func cam_update(forceMove = false):
 	if camLockTime <= 0 and (forceMove or camera.global_position.distance_to(getPos) <= 16):
 		# limit_length speed camera
 		camera.global_position.x = move_toward(camera.global_position.x,getPos.x,16*60*get_physics_process_delta_time())
-		#camera.global_position.y = move_toward(camera.global_position.y,getPos.y,16*60*get_physics_process_delta_time())
 		# clamp to region
 		camera.global_position.x = clamp(camera.global_position.x,limitLeft,limitRight)
-		#camera.global_position.y = clamp(camera.global_position.y,limitTop,limitBottom)
-		# uncomment below for immediate camera
-		#camera.global_position = getPos
 	
 	if (forceMove or camera.global_position.distance_to(getPos) <= 16):
 		camera.global_position.y = move_toward(camera.global_position.y,getPos.y,16*60*get_physics_process_delta_time())
@@ -1388,8 +1395,12 @@ func lock_camera(time = 1):
 func snap_camera_to_limits():
 	camera.limit_left = max(limitLeft,Global.hardBorderLeft)
 	camera.limit_right = min(limitRight,Global.hardBorderRight)
-	camera.limit_top = max(limitTop,Global.hardBorderTop)
-	camera.limit_bottom = min(limitBottom,Global.hardBorderBottom)
+	if Global.y_wrap:
+		camera.limit_top = -4096
+		camera.limit_bottom = 4096
+	else:
+		camera.limit_top = max(limitTop,Global.hardBorderTop)
+		camera.limit_bottom = min(limitBottom,Global.hardBorderBottom)
 
 # Water bubble timer
 func _on_BubbleTimer_timeout():
