@@ -21,9 +21,14 @@ var player: Player2D = null
 var getPoint = 0
 ## Hover position of the player waiting in the tube
 var hoverOffset: float = 0
+## Direction this pipe is facing.
+var direction = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	direction = sign(scale.x)
+	print(direction)
+	
 	for i in get_children(false):
 		if i is Line2D and !path:
 			i.visible = false
@@ -42,7 +47,9 @@ func _process(delta: float) -> void:
 			if getPoint >= path.get_point_count():
 				_free_player()
 				return
-			var target = path.global_position + path.get_point_position(getPoint)
+			var target = path.global_position 
+			target.x += (path.get_point_position(getPoint).x*direction)
+			target.y += path.get_point_position(getPoint).y
 			
 			player.global_position = player.global_position.move_toward(target,speed*60*delta)
 			if player.global_position == target:

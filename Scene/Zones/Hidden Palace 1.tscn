@@ -700,20 +700,20 @@ position = Vector2(12224, 1152)
 
 [node name="Elevator" parent="Entities" instance=ExtResource("43_x67w5")]
 position = Vector2(6216, 2060)
-platformSprite = ExtResource("35_r5k02")
+texture = ExtResource("35_r5k02")
 endPosition = Vector2(816, -1632)
 speed = 0.3
 waitTime = 2.0
 
 [node name="Elevator2" parent="Entities" instance=ExtResource("43_x67w5")]
 position = Vector2(5960, 2828)
-platformSprite = ExtResource("35_r5k02")
+texture = ExtResource("35_r5k02")
 endPosition = Vector2(176, -346)
 waitTime = 2.0
 
 [node name="Elevator3" parent="Entities" instance=ExtResource("43_x67w5")]
 position = Vector2(12232, 1036)
-platformSprite = ExtResource("35_r5k02")
+texture = ExtResource("35_r5k02")
 endPosition = Vector2(300, -604)
 speed = 0.5
 waitTime = 2.0

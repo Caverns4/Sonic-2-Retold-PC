@@ -485,9 +485,10 @@ position = Vector2(6288, 1264)
 
 [node name="MTZ_Pipe" parent="Tubes" instance=ExtResource("26_um77q")]
 position = Vector2(1968, 616)
+scale = Vector2(-1, 1)
 
 [node name="Line2D" type="Line2D" parent="Tubes/MTZ_Pipe"]
-points = PackedVector2Array(0, 8, -112, 8, -112, 392, 0, 392)
+points = PackedVector2Array(0, 8, 112, 8, 112, 392, 0, 392)
 default_color = Color(1, 0.231373, 0.196078, 1)
 
 [node name="MTZ_Pipe2" parent="Tubes" instance=ExtResource("26_um77q")]
@@ -512,7 +513,7 @@ position = Vector2(5200, 488)
 release_velocity = 8
 
 [node name="Line2D" type="Line2D" parent="Tubes/MTZ_Pipe4"]
-points = PackedVector2Array(0, 8, 432, 8)
+points = PackedVector2Array(0, 8, 448, 8)
 
 [node name="ItemsHolder" type="Node" parent="."]
 

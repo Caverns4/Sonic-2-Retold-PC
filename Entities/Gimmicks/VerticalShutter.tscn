@@ -7,7 +7,7 @@
 size = Vector2(64, 24)
 
 [node name="VerticalShutter" type="AnimatableBody2D"]
-collision_layer = 2105359
+collision_layer = 2097153
 collision_mask = 0
 script = ExtResource("1_ajbu6")
 
