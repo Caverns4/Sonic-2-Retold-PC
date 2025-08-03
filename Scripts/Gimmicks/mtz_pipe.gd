@@ -27,8 +27,6 @@ var direction = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	direction = sign(scale.x)
-	print(direction)
-	
 	for i in get_children(false):
 		if i is Line2D and !path:
 			i.visible = false

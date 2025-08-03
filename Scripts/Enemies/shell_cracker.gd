@@ -12,7 +12,7 @@ var childPositions = [Vector2.ZERO] #position of each child and the head
 var extend_length = 0.0
 var taret_position = 0.0
 
-enum  STATE{WALK,WAIT,JAB}
+enum STATE{WALK,WAIT,JAB}
 var state: int = 0
 var state_time: float = 1.0
 var move_dir: int = -1
@@ -43,13 +43,11 @@ func _physics_process(delta: float) -> void:
 	match state:
 		STATE.WALK:
 			state_time -= delta
-			
 			var look_at = GlobalFunctions.get_orientation_to_player(global_position)
 			if abs(look_at.length()) <= 128 and look_at.x < 0:
 				state = STATE.JAB
 				velocity.x = 0
 				taret_position = chain_length * 2
-			
 			if state_time <= 0.0:
 				state = STATE.WAIT
 				state_time = 1.0
@@ -69,20 +67,17 @@ func _physics_process(delta: float) -> void:
 			else:
 				taret_position = 0
 				extend_length = max(extend_length-delta*32,0.0)
-			
 			var xOffset = 0.0
 			for i in children.size():
 				children[i].position.x = round(-14-(xOffset))
 				xOffset += min(extend_length,8)
-			
 			if extend_length == 0:
 				state = STATE.WALK
 				velocity.x = move_speed*move_dir
-
 	if !is_on_floor():
 		velocity.y += 9.8*delta
 	move_and_slide()
-	if is_on_wall() and state == 0:
+	if is_on_wall() and state == STATE.WALK:
 		move_dir = 0-move_dir
 		velocity.x = move_speed*move_dir
 	
