@@ -60,7 +60,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 10.0
+"speed": 20.0
 }]
 
 [node name="SteamPuff" type="CharacterBody2D"]

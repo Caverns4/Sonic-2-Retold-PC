@@ -573,6 +573,8 @@ checkPointID = 4
 position = Vector2(7232, 1352)
 checkPointID = 5
 
+[node name="Rings" type="Node" parent="."]
+
 [node name="Badniks" type="Node" parent="."]
 
 [node name="ShellCracker" parent="Badniks" instance=ExtResource("15_xk3py")]
