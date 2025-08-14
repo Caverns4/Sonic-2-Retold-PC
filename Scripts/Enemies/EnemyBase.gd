@@ -87,6 +87,7 @@ func destroy():
 	var explosion = Explosion.instantiate()
 	get_parent().add_child(explosion)
 	explosion.global_position = global_position
+	explosion.z_index = z_index
 	# create animal
 	var animal = Animal.instantiate()
 	animal.animal = Global.animals[round(randf())]

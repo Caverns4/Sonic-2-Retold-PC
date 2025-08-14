@@ -25,10 +25,12 @@ shape = SubResource("1")
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="projectile" type="Sprite2D" parent="Node2D"]
+texture_repeat = 1
 position = Vector2(-16, 0)
 texture = ExtResource("2_ecrgd")
 
 [node name="projectile2" type="Sprite2D" parent="Node2D"]
+texture_repeat = 1
 position = Vector2(4, 0)
 texture = ExtResource("2_ecrgd")
 
