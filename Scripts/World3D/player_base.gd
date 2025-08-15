@@ -44,16 +44,22 @@ var slp = 0.125				#slope factor when walking/running #0.125
 var slprollup = 0.078125		#slope factor when rolling uphill
 var slprolldown = 0.3125		#slope factor when rolling downhill
 var fall = 2.5*60			#tolerance ground speed for sticking to walls and ceilings
+## The speed ar which the player recenters themselves to face up.
+var turn_up_speed = 120
 
 #Sonic's Airbo11rne Speed Constants
-var air = 24			#air acceleration (2x acc)
-var jmp = 6.5*2			#jump force (6 for knuckles)
-var grv = 0.21875			#gravity
-var releaseJmp = 4			#jump release velocity
+## air acceleration (2x acc)
+var air: float = 24.0
+## Jump force (6 for knuckles)
+var jump_strength: float = 6.5
+## Jump hold velocity
+var jump_hold_strength: float = 6.5
+## Gravity
+var gravity = 0.21875
 # ================
 
 #Collision management
-var floor_ray = RayCast3D.new()
+var _floor_ray = RayCast3D.new()
 var ray_length = 1.0  # Length for surface detection
 var camera = Camera3D.new()
 
@@ -135,9 +141,9 @@ func _ready() -> void:
 		if i is AnimationPlayer:
 			player_animator = i
 	
-	self.add_child(floor_ray)
-	floor_ray.enabled = true
-	floor_ray.target_position = Vector3.DOWN * ray_length
+	self.add_child(_floor_ray)
+	_floor_ray.enabled = true
+	_floor_ray.target_position = Vector3.DOWN * ray_length
 	switch_physics()
 	
 
@@ -155,13 +161,16 @@ func _physics_process(delta: float) -> void:
 		else:
 			player_animator.play("Idle")
 	
+	if is_jumping and is_on_floor():
+		is_jumping = false
+	
 	set_inputs()
-	handle_input(delta)
+	_handle_input(delta)
 	
 	if velocity.length() > 2.0 or up_direction.y > 0.25:
-		rotate_to_floor_angle()
+		_align_to_floor_angle(delta)
 	elif is_on_floor(): # Repel off slope
-		reset_Player_angle()
+		reset_Player_angle(delta)
 		lock_time = 1.0
 	
 	movement = velocity
@@ -186,7 +195,7 @@ func _physics_process(delta: float) -> void:
 			camera.global_position = camera_angle+adjusted_pos
 	
 
-func handle_input(delta):
+func _handle_input(delta):
 	# Check for Jump pressed
 	if isActionPressed():
 		jumpBuffer = JUMP_BUFFER_TIME
@@ -204,24 +213,28 @@ func handle_input(delta):
 	move_direction.y = 0.0
 	move_direction = move_direction.normalized()
 	
-	var floorAngle = get_floor().normalized()
-	
 	var y_velocity := velocity.y
 	#velocity.y = 0.0
 	velocity = velocity.move_toward(
 		(move_direction * top),acc*delta+(velocity.length()/top))
 	if !is_on_floor():
-		velocity.y = y_velocity + 0-grv * delta
+		velocity.y = y_velocity + 0-gravity * delta
 	#else:
 	#	velocity.y = velocity.y
 	
 	if jumpBuffer > 0 and is_on_floor():
-		velocity += floorAngle * jmp
+		velocity += _get_floor().normalized() * jump_strength
 		jumpBuffer = 0.0
 		is_jumping = true
 		sfx[0].play()
 		if player_animator:
 			player_animator.play("Jump")
+	
+	if is_jumping and isActionHeld():
+		var add = Vector3(0,jump_hold_strength,0)*delta
+		velocity += add.rotated(up_direction,turn_up_speed*delta)
+		print(velocity)
+		
 
 func hit_player(damagePosition: Vector3,ammount: int):
 	if rings > 0:
@@ -229,33 +242,36 @@ func hit_player(damagePosition: Vector3,ammount: int):
 	rings = max(rings-abs(ammount),0)
 
 
-func rotate_to_floor_angle():
-	var surface_normal = get_floor()
+func _get_floor():
+	# Check collision with the rays for floor, wall, and ceiling
+	if _floor_ray.is_colliding():
+		return _floor_ray.get_collision_normal()
+	if is_on_floor():
+		return get_floor_normal()
+	return Vector3.ZERO
+
+
+func _align_to_floor_angle(delta):
+	var surface_normal = _get_floor()
 	if surface_normal:
-		#Align to nearest floor
-		xform = global_transform
-		xform.basis.y = surface_normal
-		xform.basis.x = -xform.basis.z.cross(surface_normal)
-		xform.basis = xform.basis.orthonormalized()
-		global_transform = xform
 		up_direction = surface_normal.normalized()
 	else:
-		reset_Player_angle()
-
-func reset_Player_angle():
-	#Move back toward Zero
+		reset_Player_angle(delta)
+		
+	#Align to nearest floor
 	xform = global_transform
-	xform.basis.y = Vector3.UP
-	xform.basis.x = -xform.basis.z.cross(Vector3.UP)
+	xform.basis.y = up_direction
+	xform.basis.x = -xform.basis.z.cross(up_direction)
 	xform.basis = xform.basis.orthonormalized()
 	global_transform = xform
-	up_direction = Vector3.UP.normalized()
 
-func get_floor():
-	# Check collision with the rays for floor, wall, and ceiling
-	if floor_ray.is_colliding():
-		return floor_ray.get_collision_normal()
-	return Vector3.ZERO
+func reset_Player_angle(delta):
+	#Move back toward Zero
+	if is_on_wall() or is_on_ceiling():
+		up_direction = Vector3.UP
+	else:
+		up_direction.lerp(Vector3.UP,turn_up_speed*delta)
+
 
 func switch_physics():
 	var physicsID = determine_physics()
@@ -269,10 +285,9 @@ func switch_physics():
 	air = getList[0]*2
 	rollfrc = getList[5]*2
 	rolldec = getList[6]*2
-	grv = getList[7]/2
-	releaseJmp = getList[8]
-	# For Jump height:
-	jmp = determine_jump_property()
+	gravity = getList[7]/2
+	jump_strength = 8.0
+	jump_hold_strength = determine_jump_property()
 
 # return the physics id variable, see physicsList array for reference
 func determine_physics():
@@ -295,8 +310,8 @@ func determine_jump_property():
 	#			if isSuper:
 	#				return 8*60
 			Global.CHARACTERS.KNUCKLES:
-				return 6*2
-		return 6.5*2
+				return 8.0
+		return 12.0
 	#else:
 	#	match (character):
 	#		Global.CHARACTERS.KNUCKLES:
