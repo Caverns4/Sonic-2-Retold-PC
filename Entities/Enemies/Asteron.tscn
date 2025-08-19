@@ -32,6 +32,9 @@ visible = false
 position = Vector2(1.90735e-06, -1.90735e-06)
 rect = Rect2(-160, -120, 320, 240)
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -135,7 +135,7 @@ position = Vector2(-16, -4)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_xb6ec")
+&"": SubResource("AnimationLibrary_xb6ec")
 }
 autoplay = "RESET"
 

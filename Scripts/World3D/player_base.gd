@@ -33,23 +33,23 @@ var physicsList = [
 ]
 # ================
 #Sonic's Speed constants
-var acc = 12			#acceleration
-var dec = 0.5				#deceleration
-var frc = 12			#friction (same as acc)
-var rollfrc = frc*0.5		#roll friction
-var rolldec = 32			#roll deceleration
-var top = 6*60				#top horizontal speed
-var toproll = 20*60			#top horizontal speed rolling
-var slp = 0.125				#slope factor when walking/running #0.125
-var slprollup = 0.078125		#slope factor when rolling uphill
-var slprolldown = 0.3125		#slope factor when rolling downhill
-var fall = 2.5*60			#tolerance ground speed for sticking to walls and ceilings
-## The speed ar which the player recenters themselves to face up.
+var acceleration = 12 #acceleration
+var deceleration = 0.5 #deceleration
+var friction = 12 #friction (same as acceleration)
+var rollfrc = friction*0.5 #roll friction
+var rolldec = 32 #roll deceleration
+var top_speed = 6*60 #top horizontal speed
+var toproll = 20*60 #top horizontal speed rolling
+var slope_factor = 0.125  #slope factor when walking/running #0.125
+var uphill_roll_deceleration = 0.078125 #slope factor when rolling uphill
+var downhill_roll_acceleration = 0.3125 #slope factor when rolling downhill
+var falloff_speed = 2.5*60 #tolerance ground speed for sticking to walls and ceilings
+## The speed at which the player reorients themselves upright in air.
 var turn_up_speed = 120
 
 #Sonic's Airbo11rne Speed Constants
-## air acceleration (2x acc)
-var air: float = 24.0
+## air acceleration (2x acceleration)
+var air_acceleration: float = 24.0
 ## Jump force (6 for knuckles)
 var jump_strength: float = 6.5
 ## Jump hold velocity
@@ -179,10 +179,11 @@ func _physics_process(delta: float) -> void:
 	if jumpBuffer > 0.0:
 		jumpBuffer -= delta
 	
+	# Turn the player
 	if (Vector3(movement.x,0,movement.z).length() > 0.2):
 		last_movement_direction = Vector3(movement.x,0,movement.z)
 		var target_angle := Vector3.BACK.signed_angle_to(last_movement_direction,Vector3.UP)
-		sprite.rotation.y = lerp_angle(sprite.rotation.y,target_angle,acc*delta)
+		sprite.rotation.y = lerp_angle(sprite.rotation.y,target_angle,acceleration*delta)
 	
 	
 	if Global.special_stage_players[0] == self:
@@ -216,7 +217,7 @@ func _handle_input(delta):
 	var y_velocity := velocity.y
 	#velocity.y = 0.0
 	velocity = velocity.move_toward(
-		(move_direction * top),acc*delta+(velocity.length()/top))
+		(move_direction * top_speed),acceleration*delta+(velocity.length()/top_speed))
 	if !is_on_floor():
 		velocity.y = y_velocity + 0-gravity * delta
 	#else:
@@ -278,11 +279,11 @@ func switch_physics():
 	var getList = physicsList[max(0,physicsID)]
 	#if isWater:
 	#	getList = waterPhysicsListNew[max(0,physicsID)]
-	acc = getList[0]
-	dec = getList[1]*2
-	frc = getList[2]*2
-	top = getList[3]*2
-	air = getList[0]*2
+	acceleration = getList[0]
+	deceleration = getList[1]*2
+	friction = getList[2]*2
+	top_speed = getList[3]*2
+	air_acceleration = getList[0]*2
 	rollfrc = getList[5]*2
 	rolldec = getList[6]*2
 	gravity = getList[7]/2
