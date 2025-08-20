@@ -4,7 +4,7 @@ extends EnemyBase
 @export_enum("Blue","Green","Red") var model: int = 0
 @export var move_speed: float = 15
 @export var walk_time: float = 1.0
-@export var slicer_tracking_time: float = 2.0
+@export var slicer_tracking_time: float = 4.0
 
 const THROW_DELAY = [1.0,0.5,0.1,9.0]
 
@@ -68,8 +68,13 @@ func _physics_process(delta: float) -> void:
 				state = STATE.WALK
 				velocity.x = move_speed*move_dir
 				_animation.play("Walk")
-			else:
+			elif !thrown:
 				throw_time -= delta
+				if throw_time <= 0.0:
+					%ClawL.queue_free()
+					%ClawR.queue_free()
+					thrown = true
+					_throw_bullet()
 	
 	if !is_on_floor():
 		velocity.y += 9.8*delta
@@ -79,13 +84,12 @@ func _physics_process(delta: float) -> void:
 		move_dir = 0-move_dir
 		velocity.x = move_speed*move_dir
 	updateSprite()
-	
 
 func ScanForPlayers():
 	players.clear()
 	var nearest = GlobalFunctions.get_nearest_player_x(global_position.x)
 	var diff = nearest.global_position.x - global_position.x
-	if (abs(diff) <= 64 and 
+	if (abs(diff) <= 128 and 
 	sign(diff) == sign(move_dir)):
 		players.append(nearest)
 
@@ -95,3 +99,13 @@ func updateSprite():
 	var wrColor = weakref(colorMask)
 	if wrColor:
 		colorMask.frame = sprite.frame
+
+func _throw_bullet():
+	var bullet: EnemyProjectileBase = projectile.instantiate()
+	add_child(bullet)
+	bullet.reparent(get_parent())
+	bullet.global_position = global_position
+	bullet.move_dir = move_dir
+	bullet.slicer_tracking_time = slicer_tracking_time
+	bullet.velocity.x = 120*sign(move_dir)
+	bullet.target = players[0]

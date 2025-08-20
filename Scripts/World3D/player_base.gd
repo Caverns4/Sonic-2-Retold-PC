@@ -16,20 +16,18 @@ var _start_position := Vector3.ZERO
 # 1 Deceleration
 # 2 Friction
 # 3 Top Speed
-# 4 Air Acceleration (No longer used, air accel is always Ground accel * 2)
-# 5 Rolling Friction 
-# 6 Rolling Deceleration
-# 7 Gravity
-# 8 Jump release velocity
+# 4 Rolling Friction 
+# 5 Rolling Deceleration
+# 6 Gravity
 var physicsList = [
 # 0 Sonic (Primary Character physics)
-[12, 0.50, 12,  6, 24, 12, 32, 56, 4],
+[12, 0.50, 12, 12, 12, 32],
 # 1 Speed Shoes
-[24, 0.50, 24, 12, 48, 12, 32, 56, 4],
+[24, 0.50, 24, 12, 12, 32],
 # 2 Super Sonic
-[32, 1.00, 12, 10, 64,  6, 32, 56, 4],
+[32, 1.00, 12, 10,  6, 32],
 # 3 Super Forms besides Sonic
-[24, 0.75, 12,  8, 48,  6, 32, 56, 4],
+[24, 0.75, 12,  8,  6, 32],
 ]
 # ================
 #Sonic's Speed constants
@@ -45,17 +43,17 @@ var uphill_roll_deceleration = 0.078125 #slope factor when rolling uphill
 var downhill_roll_acceleration = 0.3125 #slope factor when rolling downhill
 var falloff_speed = 2.5*60 #tolerance ground speed for sticking to walls and ceilings
 ## The speed at which the player reorients themselves upright in air.
-var turn_up_speed = 120
+var turn_up_speed = 30
 
-#Sonic's Airbo11rne Speed Constants
+#Sonic's Airborne Speed Constants
 ## air acceleration (2x acceleration)
 var air_acceleration: float = 24.0
 ## Jump force (6 for knuckles)
-var jump_strength: float = 6.5
+var jump_strength: float = 24
 ## Jump hold velocity
 var jump_hold_strength: float = 6.5
 ## Gravity
-var gravity = 0.21875
+var gravity = 56.0
 # ================
 
 #Collision management
@@ -69,7 +67,6 @@ var playerSkins = [
 	preload("res://Entitites3D/WorldTest/sonic_Player.tscn"),
 	preload("res://Entitites3D/WorldTest/miles_Player.tscn"),
 	preload("res://Entitites3D/WorldTest/knuckles_Player.tscn"),
-	# Knuckles
 	# Amy
 	# Mighty
 	# Ray
@@ -271,7 +268,7 @@ func reset_Player_angle(delta):
 	if is_on_wall() or is_on_ceiling():
 		up_direction = Vector3.UP
 	else:
-		up_direction.lerp(Vector3.UP,turn_up_speed*delta)
+		up_direction = up_direction.lerp(Vector3.UP,turn_up_speed*delta)
 
 
 func switch_physics():
@@ -284,10 +281,10 @@ func switch_physics():
 	friction = getList[2]*2
 	top_speed = getList[3]*2
 	air_acceleration = getList[0]*2
-	rollfrc = getList[5]*2
-	rolldec = getList[6]*2
-	gravity = getList[7]/2
-	jump_strength = 8.0
+	rollfrc = getList[4]*2
+	rolldec = getList[5]*2
+	gravity = 32.0
+	jump_strength = 6.5
 	jump_hold_strength = determine_jump_property()
 
 # return the physics id variable, see physicsList array for reference
@@ -311,13 +308,8 @@ func determine_jump_property():
 	#			if isSuper:
 	#				return 8*60
 			Global.CHARACTERS.KNUCKLES:
-				return 8.0
-		return 12.0
-	#else:
-	#	match (character):
-	#		Global.CHARACTERS.KNUCKLES:
-	#			return 3*60
-	#	return 3.5*60
+				return 12.0
+		return 18.0
 
 
 # Input buttons

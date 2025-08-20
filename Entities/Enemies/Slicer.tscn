@@ -223,10 +223,12 @@ texture = ExtResource("3_v7f3y")
 hframes = 3
 
 [node name="ClawL" type="Sprite2D" parent="Sprite2D"]
+unique_name_in_owner = true
 position = Vector2(-24, 0)
 texture = ExtResource("4_x68up")
 
 [node name="ClawR" type="Sprite2D" parent="Sprite2D"]
+unique_name_in_owner = true
 position = Vector2(-4, 0)
 texture = ExtResource("4_x68up")
 
