@@ -43,7 +43,7 @@ func _process(delta):
 			
 			# fade to new scene
 			Global.main.change_scene_to_file(
-				load("res://Scene/SpecialStage/SpecialStage.tscn"),"WhiteOut","WhiteOut",1,true,false)
+				load("res://Scene/SpecialStage/SpecialStage.tscn"),"WhiteOut","WhiteOut",1.0,true,false)
 			# wait for scene to fade
 			await Global.main.scene_faded
 			player.allowTranslate = false

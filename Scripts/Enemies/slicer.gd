@@ -3,7 +3,7 @@ extends EnemyBase
 ## Blue model takes longer to throw slicers
 @export_enum("Blue","Green","Red") var model: int = 0
 @export var move_speed: float = 15
-@export var walk_time: float = 1.0
+@export var walk_time: float = 10.0
 @export var slicer_tracking_time: float = 4.0
 
 const THROW_DELAY = [1.0,0.5,0.1,9.0]
@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 			elif state_time <= 0.0:
 				_animation.play("RESET")
 				state = STATE.WAIT
-				state_time = 1.0
+				state_time = 0.1
 				velocity.x = 0
 		STATE.WAIT:
 			state_time -= delta

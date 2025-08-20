@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://ct2wo24donqxt"]
+[gd_scene load_steps=15 format=4 uid="uid://ct2wo24donqxt"]
 
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_f4g8u"]
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_rpqfi"]
@@ -10,7 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://ba5pqvpuqbxgn" path="res://Graphics/Palettes/MTZ_Conveyor.png" id="6_2378s"]
 [ext_resource type="PackedScene" uid="uid://cuy6501gydmja" path="res://Entities/ZoneObjects/MTZ_WallSpring.tscn" id="7_c80cu"]
 [ext_resource type="PackedScene" uid="uid://dxxc6n1f6go4w" path="res://Entities/Gimmicks/mtz_pipe.tscn" id="7_px34a"]
-[ext_resource type="PackedScene" uid="uid://cii6vdv1nbk6k" path="res://Entities/Enemies/Slicer.tscn" id="11_2378s"]
+[ext_resource type="PackedScene" uid="uid://xgv0jguatv2j" path="res://Entities/ZoneObjects/MTZ_ButtonActivatedPlatform.tscn" id="10_od7iy"]
+[ext_resource type="PackedScene" uid="uid://chyrwm1qwvlyt" path="res://Entities/Gimmicks/Switch.tscn" id="11_gh01h"]
+[ext_resource type="PackedScene" uid="uid://b0oirs3toj4nn" path="res://Entities/Gimmicks/mtz_giant_cog.tscn" id="12_gh01h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_od7iy"]
 shader = ExtResource("5_p8dwr")
@@ -93,6 +95,22 @@ position = Vector2(7552, 512)
 scale = Vector2(1, 8)
 spring_direction = 0
 
+[node name="ButtonActivatedPlatform" parent="Entities" node_paths=PackedStringArray("button") instance=ExtResource("10_od7iy")]
+position = Vector2(576, 1488)
+button = NodePath("../Switch")
+
+[node name="Switch" parent="Entities" instance=ExtResource("11_gh01h")]
+position = Vector2(624, 1464)
+
+[node name="MTZGiantCog" parent="Entities" instance=ExtResource("12_gh01h")]
+position = Vector2(896, 1024)
+
+[node name="MTZGiantCog2" parent="Entities" instance=ExtResource("12_gh01h")]
+position = Vector2(1024, 896)
+
+[node name="MTZGiantCog3" parent="Entities" instance=ExtResource("12_gh01h")]
+position = Vector2(1152, 1024)
+
 [node name="Tubes" type="Node" parent="."]
 
 [node name="MTZ_Pipe" parent="Tubes" instance=ExtResource("7_px34a")]
@@ -127,7 +145,3 @@ release_velocity = 8
 points = PackedVector2Array(0, 8, 368, 8, 368, -248, 256, -248)
 
 [node name="Badniks" type="Node" parent="."]
-
-[node name="Slicer" parent="." instance=ExtResource("11_2378s")]
-position = Vector2(600, 1448)
-walk_time = 5.0

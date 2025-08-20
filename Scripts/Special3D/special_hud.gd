@@ -66,7 +66,7 @@ func UpdateMessage(_ring_total):
 		MESSAGES.RINGS_TO_GO:
 			var to_go: int = clamp(ring_requirement - total_rings,0,ring_requirement)
 			if to_go > 0:
-				message_text = str(to_go) + " RGINS TO GO"
+				message_text = str(to_go) + " RINGS TO GO"
 				message.visible = !message.visible
 			else:
 				ClearMessage()

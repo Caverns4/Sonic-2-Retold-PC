@@ -88,7 +88,9 @@ func reset_game():
 # length = time in seconds for the fade animations to play
 # storeScene = should the current scene be storred? (not the new one being loaded)
 # resetData = should the level data be reset between scenes (this is needed for storeScene if you're storing a level so that level times and object references don't get reset)
-func change_scene_to_file(scene = null, fadeOut = "", fadeIn = "", length = 1, storeScene = false, resetData = true):
+
+## Scene,FadeOut,FadeIn,AnimLength,StoreScene,ResetData
+func change_scene_to_file(scene = null, fadeOut = "", fadeIn = "", length = 1.0, storeScene = false, resetData = true):
 	# stop pausing
 	sceneCanPause = false
 	# set fader speed

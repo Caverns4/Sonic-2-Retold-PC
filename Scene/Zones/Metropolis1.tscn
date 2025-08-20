@@ -1144,7 +1144,7 @@ position = Vector2(8016, 848)
 position = Vector2(1360, 120)
 
 [node name="ShellCracker2" parent="Badniks" instance=ExtResource("15_xk3py")]
-position = Vector2(2920, 216)
+position = Vector2(2816, 216)
 
 [node name="ShellCracker3" parent="Badniks" instance=ExtResource("15_xk3py")]
 position = Vector2(6888, 1592)

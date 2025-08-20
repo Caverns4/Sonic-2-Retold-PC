@@ -12,9 +12,9 @@ var two_player_mode = false
 var players: Array[Player2D] = []
 var special_stage_players: Array = []
 # main object reference
-var main = null
+var main: MainGameScene = null
 # hud object reference
-var hud = null
+var hud: CanvasLayer = null
 #slot machine (Casino Night Zone Only)
 var slotMachines = []
 #Character Reels (Casino Night Zone Only)

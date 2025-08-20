@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0oirs3toj4nn"]
+
+[ext_resource type="Script" uid="uid://btg2035m7u2qo" path="res://Scripts/Gimmicks/mtz_giant_cog.gd" id="1_buuef"]
+[ext_resource type="PackedScene" uid="uid://d0nrsmhtrb1l1" path="res://Entities/Gimmicks/mtz_giant_cog_tooth.tscn" id="2_buuef"]
+
+[node name="Giant Cog" type="Node2D"]
+script = ExtResource("1_buuef")
+
+[node name="MTZGiantCogTooth" parent="." instance=ExtResource("2_buuef")]

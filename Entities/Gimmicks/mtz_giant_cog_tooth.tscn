@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0nrsmhtrb1l1"]
+
+[ext_resource type="Texture2D" uid="uid://kp2x7itpj1mj" path="res://Graphics/Gimmicks/MTZ_GiantCog.png" id="2_kkcat"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_buuef"]
+size = Vector2(16, 24)
+
+[node name="MTZGiantCogTooth" type="StaticBody2D"]
+collision_layer = 2105344
+collision_mask = 2105344
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -72)
+texture = ExtResource("2_kkcat")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 10
+position = Vector2(0, -76)
+shape = SubResource("RectangleShape2D_buuef")
