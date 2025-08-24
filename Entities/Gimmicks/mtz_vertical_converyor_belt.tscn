@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba875ayxjaew1"]
+
+[ext_resource type="PackedScene" uid="uid://dvvexinc3k3y0" path="res://Entities/Obstacles/mtz_cup_platform.tscn" id="1_dhi0q"]
+[ext_resource type="Script" uid="uid://dhshh1m16sx5x" path="res://Scripts/Gimmicks/mtz_vertical_converyor_belt.gd" id="1_vflv7"]
+
+[node name="MTZ_VerticalConveryorBelt" type="Node2D"]
+script = ExtResource("1_vflv7")
+speed = -1.0
+
+[node name="MTZ_CupPlatform" parent="." instance=ExtResource("1_dhi0q")]
+collision_mask = 0

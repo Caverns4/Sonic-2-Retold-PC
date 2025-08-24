@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 			return
 		
 		var speed = 1024*delta
-		if Global.players[0].global_position.y > global_position.y-8:
+		if Global.players[0].global_position.y > global_position.y-12:
 			global_position.x = move_toward(global_position.x,
 			origin.x + (open_direction*texture.get_width()),
 			speed)

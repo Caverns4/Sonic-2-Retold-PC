@@ -12,7 +12,7 @@ size = Vector2(32, 32)
 
 [node name="Lava" type="Area2D"]
 z_index = 30
-collision_layer = 0
+collision_layer = 2097152
 collision_mask = 4096
 script = ExtResource("2")
 damageType = 1

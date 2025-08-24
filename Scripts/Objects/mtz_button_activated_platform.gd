@@ -1,3 +1,4 @@
+@tool
 extends AnimatableBody2D
 
 ## Texture2D that the object will be rendered with. Also determines collision size.
@@ -14,11 +15,25 @@ var active: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	origin = global_position
-	if button and button.has_signal("pressed"):
-		button.connect("pressed",activatePlatform)
+	# Change platform shape
+	$Mask.shape.size.x = texture.get_size().x
+	$Mask.shape.size.y = texture.get_size().y
+	$Sprite.texture = texture
+	if !Engine.is_editor_hint():
+		origin = global_position
+		if button and button.has_signal("pressed"):
+			button.connect("pressed",activatePlatform)
+
+func _process(delta):
+	if Engine.is_editor_hint():
+		$Mask.shape.size.x = texture.get_size().x
+		$Mask.shape.size.y = texture.get_size().y
+		queue_redraw()
 
 func _physics_process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
+	
 	if active:
 		global_position = global_position.move_toward(
 			origin + target_position,
@@ -45,3 +60,8 @@ func activatePlatform():
 	active = true
 	await get_tree().create_timer(active_time).timeout
 	active = false
+
+func _draw():
+	if Engine.is_editor_hint():
+		# Draw the platform positions for the editor
+		draw_texture(texture,-texture.get_size()/2,Color.WHITE)

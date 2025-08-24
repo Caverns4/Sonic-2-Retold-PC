@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0nrsmhtrb1l1"]
+[gd_scene load_steps=4 format=3 uid="uid://d0nrsmhtrb1l1"]
 
+[ext_resource type="Script" uid="uid://p1grmn0l6xk" path="res://Scripts/Gimmicks/mtz_giant_cog_tooth.gd" id="1_0jtk4"]
 [ext_resource type="Texture2D" uid="uid://kp2x7itpj1mj" path="res://Graphics/Gimmicks/MTZ_GiantCog.png" id="2_kkcat"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_buuef"]
@@ -8,6 +9,7 @@ size = Vector2(16, 24)
 [node name="MTZGiantCogTooth" type="StaticBody2D"]
 collision_layer = 2105344
 collision_mask = 2105344
+script = ExtResource("1_0jtk4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -68)

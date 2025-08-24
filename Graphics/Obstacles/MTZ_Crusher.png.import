@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck4vtw20re4md"
-path="res://.godot/imported/CupPlatform.png-f8139e5b3b4a3ce545c02b4734dfe534.ctex"
+uid="uid://dgw4rt1raikgx"
+path="res://.godot/imported/MTZ_Crusher.png-6361f60bc680e5cc3ca0acf51c8cca55.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Gimmicks/CupPlatform.png"
-dest_files=["res://.godot/imported/CupPlatform.png-f8139e5b3b4a3ce545c02b4734dfe534.ctex"]
+source_file="res://Graphics/Obstacles/MTZ_Crusher.png"
+dest_files=["res://.godot/imported/MTZ_Crusher.png-6361f60bc680e5cc3ca0acf51c8cca55.ctex"]
 
 [params]
 

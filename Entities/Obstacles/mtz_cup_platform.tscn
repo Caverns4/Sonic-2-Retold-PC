@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvvexinc3k3y0"]
+
+[ext_resource type="Texture2D" uid="uid://ck4vtw20re4md" path="res://Graphics/Gimmicks/MTZ_CupPlatform.png" id="1_ahh3w"]
+[ext_resource type="Script" uid="uid://cb0cbdxo1emnk" path="res://Scripts/Gimmicks/mtz_cup_platform.gd" id="1_wl7im"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wl7im"]
+size = Vector2(32, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ahh3w"]
+size = Vector2(32, 2)
+
+[node name="MTZ_CupPlatform" type="AnimatableBody2D"]
+collision_mask = 0
+script = ExtResource("1_wl7im")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ahh3w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wl7im")
+
+[node name="PlayerCensor" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCensor"]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_ahh3w")
+debug_color = Color(0.384314, 1, 1, 0.501961)
+
+[connection signal="body_entered" from="PlayerCensor" to="." method="_on_player_censor_body_entered"]
+[connection signal="body_exited" from="PlayerCensor" to="." method="_on_player_censor_body_exited"]

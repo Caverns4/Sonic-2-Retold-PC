@@ -325,7 +325,7 @@ endPosition = Vector2(128, 0)
 
 [node name="CharacterCameo" parent="Entities" instance=ExtResource("21_4tdd8")]
 position = Vector2(7488, 72)
-present = 4
+present = 12
 characterTexture = ExtResource("22_r2i34")
 
 [node name="VerticalShutter5" parent="Entities" instance=ExtResource("11_f4xj6")]

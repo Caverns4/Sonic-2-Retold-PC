@@ -1,7 +1,7 @@
 extends Area2D
 
 @export_enum("Left","Right") var spring_direction: int = 0
-@export var spring_power = 8
+@export var spring_power = 6
 @export var spring_sfx = preload("res://Audio/SFX/Gimmicks/s2br_Spring.wav")
 
 func _ready() -> void:
