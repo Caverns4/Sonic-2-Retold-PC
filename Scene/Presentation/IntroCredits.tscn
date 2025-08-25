@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwxirtg32fnfx"]
+
+[ext_resource type="Script" uid="uid://cd1s75dw208xp" path="res://Scripts/Menu/DemoCredits.gd" id="1_xi5p5"]
+[ext_resource type="PackedScene" uid="uid://qs5dmtxxf1w1" path="res://Scene/Presentation/Title.tscn" id="2_ylxem"]
+[ext_resource type="Texture2D" uid="uid://djgyh2vkmwqyx" path="res://Graphics/title/SEGA_BG.png" id="3_kpubh"]
+[ext_resource type="FontFile" uid="uid://dvy7b5uq4xilw" path="res://Graphics/Fonts/credits_font.png" id="4_jhscn"]
+
+[sub_resource type="Theme" id="Theme_a3lnv"]
+default_font = ExtResource("4_jhscn")
+
+[node name="PretitleCard" type="Node"]
+script = ExtResource("1_xi5p5")
+time = 5.0
+music = null
+returnScene = ExtResource("2_ylxem")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Backdrop" type="TextureRect" parent="CanvasLayer"]
+offset_right = 640.0
+offset_bottom = 224.0
+texture = ExtResource("3_kpubh")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_right = 160.0
+offset_bottom = 192.0
+grow_horizontal = 2
+theme = SubResource("Theme_a3lnv")
+bbcode_enabled = true
+text = "Sonic
+
+
+and
+
+
+Miles *Tails* Prower
+
+
+in"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1

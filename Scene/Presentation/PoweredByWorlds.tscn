@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://c58ontqoxjuti"]
 
-[ext_resource type="FontFile" uid="uid://btb3lh3cpnc6x" path="res://Graphics/Fonts/mid_font.png" id="2_84rl6"]
+[ext_resource type="FontFile" uid="uid://dbiyiqdov7fag" path="res://Graphics/Fonts/mid_font.png" id="2_84rl6"]
 [ext_resource type="Texture2D" uid="uid://djgyh2vkmwqyx" path="res://Graphics/title/SEGA_BG.png" id="2_ys1j6"]
 [ext_resource type="Shader" uid="uid://drq4hwqwwn03c" path="res://Shaders/PaletteSwapRow.gdshader" id="3_uxpp6"]
 [ext_resource type="Texture2D" uid="uid://cmtdertavy6i4" path="res://Graphics/title/SonicWorldsLogo.png" id="4"]
@@ -384,5 +384,5 @@ bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_s27jj")
+&"": SubResource("AnimationLibrary_s27jj")
 }

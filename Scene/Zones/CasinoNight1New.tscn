@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://p0yejpqi4q88"]
+[gd_scene load_steps=25 format=4 uid="uid://p0yejpqi4q88"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_0yy3m"]
 [ext_resource type="AudioStream" uid="uid://c354qh8pof6fe" path="res://Audio/Soundtrack/s2br_CasinoNight.ogg" id="2_20443"]
@@ -13,10 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://mrkujxuspvgk" path="res://Entities/Gimmicks/CNZ_CharacterReels.tscn" id="13_kcv3i"]
 [ext_resource type="PackedScene" uid="uid://c3dq6cs7sku84" path="res://Entities/Gimmicks/CNZFlipper.tscn" id="13_wyhjd"]
 [ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="14_0dgsp"]
-[ext_resource type="Texture2D" uid="uid://bd7qotjdqnsst" path="res://Graphics/Objects_Zone/CNZ_MovingBlock.png" id="15_m8sn6"]
 [ext_resource type="PackedScene" uid="uid://c2t7hwn0iln3x" path="res://Entities/Obstacles/Elevator.tscn" id="16_0dx01"]
 [ext_resource type="PackedScene" uid="uid://dnbjgwbrkknnu" path="res://Entities/Gimmicks/ConveyorBelt.tscn" id="16_kwjyb"]
-[ext_resource type="Texture2D" uid="uid://bsbg06aqri8m1" path="res://Graphics/Objects_Zone/CNZ_Elevator.png" id="17_3dkr3"]
 [ext_resource type="AudioStream" uid="uid://cei1ganfjxio8" path="res://Audio/SFX/Objects/CNZ_Elevator.wav" id="18_042pc"]
 [ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="19_guhxt"]
 [ext_resource type="PackedScene" uid="uid://8sljpf878e00" path="res://Entities/Enemies/Crawl.tscn" id="20_2gusr"]
@@ -451,43 +449,39 @@ length = 7
 [node name="CnzFlipper39" parent="Entities" instance=ExtResource("13_wyhjd")]
 position = Vector2(184, 656)
 
-[node name="MovingPlatforms" type="Node2D" parent="."]
+[node name="Platforms" type="Node2D" parent="."]
 material = ExtResource("8_cpekc")
 
-[node name="Platform" parent="MovingPlatforms" instance=ExtResource("14_0dgsp")]
+[node name="Platform" parent="Platforms" instance=ExtResource("14_0dgsp")]
 use_parent_material = true
 position = Vector2(2400, 1696)
-platformSprite = ExtResource("15_m8sn6")
 endPosition = Vector2(192, 0)
 speed = 0.5
 dropSlightly = false
 fullySolid = true
 platformDepth = 0
 
-[node name="Platform6" parent="MovingPlatforms" instance=ExtResource("14_0dgsp")]
+[node name="Platform6" parent="Platforms" instance=ExtResource("14_0dgsp")]
 use_parent_material = true
 position = Vector2(3744, 864)
-platformSprite = ExtResource("15_m8sn6")
 endPosition = Vector2(192, 0)
 speed = 0.5
 dropSlightly = false
 fullySolid = true
 platformDepth = 0
 
-[node name="Platform8" parent="MovingPlatforms" instance=ExtResource("14_0dgsp")]
+[node name="Platform8" parent="Platforms" instance=ExtResource("14_0dgsp")]
 use_parent_material = true
 position = Vector2(4256, 800)
-platformSprite = ExtResource("15_m8sn6")
 endPosition = Vector2(192, 0)
 speed = -0.5
 dropSlightly = false
 fullySolid = true
 platformDepth = 0
 
-[node name="Platform2" parent="MovingPlatforms" instance=ExtResource("14_0dgsp")]
+[node name="Platform2" parent="Platforms" instance=ExtResource("14_0dgsp")]
 use_parent_material = true
 position = Vector2(2208, 1760)
-platformSprite = ExtResource("15_m8sn6")
 endPosition = Vector2(192, 0)
 speed = 0.5
 offset = 192.0
@@ -495,40 +489,36 @@ dropSlightly = false
 fullySolid = true
 platformDepth = 0
 
-[node name="Platform3" parent="MovingPlatforms" instance=ExtResource("14_0dgsp")]
+[node name="Platform3" parent="Platforms" instance=ExtResource("14_0dgsp")]
 use_parent_material = true
 position = Vector2(2016, 1568)
-platformSprite = ExtResource("15_m8sn6")
 endPosition = Vector2(0, 192)
 speed = 0.5
 dropSlightly = false
 fullySolid = true
 platformDepth = 0
 
-[node name="Platform5" parent="MovingPlatforms" instance=ExtResource("14_0dgsp")]
+[node name="Platform5" parent="Platforms" instance=ExtResource("14_0dgsp")]
 use_parent_material = true
 position = Vector2(2848, 1504)
-platformSprite = ExtResource("15_m8sn6")
 endPosition = Vector2(0, 192)
 speed = 0.5
 dropSlightly = false
 fullySolid = true
 platformDepth = 0
 
-[node name="Platform7" parent="MovingPlatforms" instance=ExtResource("14_0dgsp")]
+[node name="Platform7" parent="Platforms" instance=ExtResource("14_0dgsp")]
 use_parent_material = true
 position = Vector2(2592, 736)
-platformSprite = ExtResource("15_m8sn6")
 endPosition = Vector2(0, 192)
 speed = 0.5
 dropSlightly = false
 fullySolid = true
 platformDepth = 0
 
-[node name="Platform4" parent="MovingPlatforms" instance=ExtResource("14_0dgsp")]
+[node name="Platform4" parent="Platforms" instance=ExtResource("14_0dgsp")]
 use_parent_material = true
 position = Vector2(1888, 1568)
-platformSprite = ExtResource("15_m8sn6")
 endPosition = Vector2(0, 192)
 speed = 0.5
 offset = 192.0
@@ -536,33 +526,28 @@ dropSlightly = false
 fullySolid = true
 platformDepth = 0
 
-[node name="Elevator" parent="MovingPlatforms" instance=ExtResource("16_0dx01")]
+[node name="Elevator" parent="Platforms" instance=ExtResource("16_0dx01")]
 position = Vector2(3376, 1352)
-platformSprite = ExtResource("17_3dkr3")
 endPosition = Vector2(0, 320)
 soundFile = ExtResource("18_042pc")
 
-[node name="Elevator4" parent="MovingPlatforms" instance=ExtResource("16_0dx01")]
+[node name="Elevator4" parent="Platforms" instance=ExtResource("16_0dx01")]
 position = Vector2(7728, 1416)
-platformSprite = ExtResource("17_3dkr3")
 endPosition = Vector2(0, -448)
 soundFile = ExtResource("18_042pc")
 
-[node name="Elevator5" parent="MovingPlatforms" instance=ExtResource("16_0dx01")]
+[node name="Elevator5" parent="Platforms" instance=ExtResource("16_0dx01")]
 position = Vector2(7600, 1864)
-platformSprite = ExtResource("17_3dkr3")
 endPosition = Vector2(0, -448)
 soundFile = ExtResource("18_042pc")
 
-[node name="Elevator3" parent="MovingPlatforms" instance=ExtResource("16_0dx01")]
+[node name="Elevator3" parent="Platforms" instance=ExtResource("16_0dx01")]
 position = Vector2(5424, 712)
-platformSprite = ExtResource("17_3dkr3")
 endPosition = Vector2(0, -320)
 soundFile = ExtResource("18_042pc")
 
-[node name="Elevator2" parent="MovingPlatforms" instance=ExtResource("16_0dx01")]
+[node name="Elevator2" parent="Platforms" instance=ExtResource("16_0dx01")]
 position = Vector2(3248, 584)
-platformSprite = ExtResource("17_3dkr3")
 endPosition = Vector2(0, 576)
 speed = 0.5
 soundFile = ExtResource("18_042pc")
@@ -644,67 +629,6 @@ scale = Vector2(2, 4)
 [node name="InvisibleBarrier11" parent="Hazards" instance=ExtResource("19_guhxt")]
 position = Vector2(1952, 1792)
 scale = Vector2(2, 4)
-
-[node name="Rings" type="Node" parent="."]
-
-[node name="Badniks" type="Node" parent="."]
-
-[node name="Crawl" parent="Badniks" instance=ExtResource("20_2gusr")]
-position = Vector2(3712, 624)
-
-[node name="Crawl2" parent="Badniks" instance=ExtResource("20_2gusr")]
-position = Vector2(4144, 816)
-
-[node name="Crawl3" parent="Badniks" instance=ExtResource("20_2gusr")]
-position = Vector2(8560, 560)
-
-[node name="ItemsHolder" type="Node" parent="."]
-
-[node name="Monitor" parent="ItemsHolder" instance=ExtResource("21_yc45f")]
-position = Vector2(832, 752)
-item = 1
-
-[node name="Monitor2" parent="ItemsHolder" instance=ExtResource("21_yc45f")]
-position = Vector2(2832, 560)
-item = 12
-
-[node name="Monitor3" parent="ItemsHolder" instance=ExtResource("21_yc45f")]
-position = Vector2(4960, 1248)
-item = 12
-
-[node name="Monitor4" parent="ItemsHolder" instance=ExtResource("21_yc45f")]
-position = Vector2(3344, 1648)
-
-[node name="Monitor5" parent="ItemsHolder" instance=ExtResource("21_yc45f")]
-position = Vector2(3088, 560)
-
-[node name="Monitor6" parent="ItemsHolder" instance=ExtResource("21_yc45f")]
-position = Vector2(2448, 880)
-
-[node name="Monitor7" parent="ItemsHolder" instance=ExtResource("21_yc45f")]
-position = Vector2(2704, 976)
-item = 2
-
-[node name="Monitor8" parent="ItemsHolder" instance=ExtResource("21_yc45f")]
-position = Vector2(3184, 1360)
-item = 1
-
-[node name="Monitor9" parent="ItemsHolder" instance=ExtResource("21_yc45f")]
-position = Vector2(3984, 400)
-item = 3
-
-[node name="Monitor10" parent="ItemsHolder" instance=ExtResource("21_yc45f")]
-position = Vector2(6032, 336)
-
-[node name="Monitor11" parent="ItemsHolder" instance=ExtResource("21_yc45f")]
-position = Vector2(6256, 720)
-
-[node name="Monitor12" parent="ItemsHolder" instance=ExtResource("21_yc45f")]
-position = Vector2(7696, 656)
-item = 2
-
-[node name="Monitor13" parent="ItemsHolder" instance=ExtResource("21_yc45f")]
-position = Vector2(7728, 656)
 
 [node name="Bumpers" type="Node" parent="."]
 
@@ -894,6 +818,67 @@ position = Vector2(7360, 1888)
 [node name="CNZ-BigBumper19" parent="Bumpers" instance=ExtResource("22_2kigl")]
 position = Vector2(5312, 800)
 rotation = 3.14159
+
+[node name="Items" type="Node" parent="."]
+
+[node name="Monitor" parent="Items" instance=ExtResource("21_yc45f")]
+position = Vector2(832, 752)
+item = 1
+
+[node name="Monitor2" parent="Items" instance=ExtResource("21_yc45f")]
+position = Vector2(2832, 560)
+item = 12
+
+[node name="Monitor3" parent="Items" instance=ExtResource("21_yc45f")]
+position = Vector2(4960, 1248)
+item = 12
+
+[node name="Monitor4" parent="Items" instance=ExtResource("21_yc45f")]
+position = Vector2(3344, 1648)
+
+[node name="Monitor5" parent="Items" instance=ExtResource("21_yc45f")]
+position = Vector2(3088, 560)
+
+[node name="Monitor6" parent="Items" instance=ExtResource("21_yc45f")]
+position = Vector2(2448, 880)
+
+[node name="Monitor7" parent="Items" instance=ExtResource("21_yc45f")]
+position = Vector2(2704, 976)
+item = 2
+
+[node name="Monitor8" parent="Items" instance=ExtResource("21_yc45f")]
+position = Vector2(3184, 1360)
+item = 1
+
+[node name="Monitor9" parent="Items" instance=ExtResource("21_yc45f")]
+position = Vector2(3984, 400)
+item = 3
+
+[node name="Monitor10" parent="Items" instance=ExtResource("21_yc45f")]
+position = Vector2(6032, 336)
+
+[node name="Monitor11" parent="Items" instance=ExtResource("21_yc45f")]
+position = Vector2(6256, 720)
+
+[node name="Monitor12" parent="Items" instance=ExtResource("21_yc45f")]
+position = Vector2(7696, 656)
+item = 2
+
+[node name="Monitor13" parent="Items" instance=ExtResource("21_yc45f")]
+position = Vector2(7728, 656)
+
+[node name="Badniks" type="Node" parent="."]
+
+[node name="Crawl" parent="Badniks" instance=ExtResource("20_2gusr")]
+position = Vector2(3712, 624)
+
+[node name="Crawl2" parent="Badniks" instance=ExtResource("20_2gusr")]
+position = Vector2(4144, 816)
+
+[node name="Crawl3" parent="Badniks" instance=ExtResource("20_2gusr")]
+position = Vector2(8560, 560)
+
+[node name="Rings" type="Node" parent="."]
 
 [node name="SlotMachines" type="Node" parent="."]
 

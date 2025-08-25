@@ -460,69 +460,69 @@ scale = Vector2(3, 1)
 [node name="Platforms" type="Node" parent="."]
 
 [node name="Elevator" parent="Platforms" instance=ExtResource("21_dmurq")]
-position = Vector2(5568, 912)
-platformSprite = ExtResource("22_mb3so")
-endPosition = Vector2(0, 192)
+position = Vector2(5568, 1104)
+texture = ExtResource("22_mb3so")
+endPosition = Vector2(0, -192)
 
 [node name="Elevator6" parent="Platforms" instance=ExtResource("21_dmurq")]
-position = Vector2(4416, 748)
-platformSprite = ExtResource("22_mb3so")
-endPosition = Vector2(0, 192)
+position = Vector2(4416, 940)
+texture = ExtResource("22_mb3so")
+endPosition = Vector2(0, -192)
 
 [node name="Elevator3" parent="Platforms" instance=ExtResource("21_dmurq")]
-position = Vector2(6336, 1296)
-platformSprite = ExtResource("22_mb3so")
-endPosition = Vector2(0, 192)
+position = Vector2(6336, 1488)
+texture = ExtResource("22_mb3so")
+endPosition = Vector2(0, -192)
 
 [node name="Elevator4" parent="Platforms" instance=ExtResource("21_dmurq")]
-position = Vector2(6464, 1488)
-platformSprite = ExtResource("22_mb3so")
-endPosition = Vector2(0, 192)
+position = Vector2(6464, 1680)
+texture = ExtResource("22_mb3so")
+endPosition = Vector2(0, -192)
 
 [node name="Elevator5" parent="Platforms" instance=ExtResource("21_dmurq")]
-position = Vector2(5824, 1104)
-platformSprite = ExtResource("22_mb3so")
-endPosition = Vector2(0, 192)
+position = Vector2(5824, 1296)
+texture = ExtResource("22_mb3so")
+endPosition = Vector2(0, -192)
 
 [node name="Elevator7" parent="Platforms" instance=ExtResource("21_dmurq")]
-position = Vector2(6336, 652)
-platformSprite = ExtResource("22_mb3so")
-endPosition = Vector2(0, 192)
+position = Vector2(6336, 844)
+texture = ExtResource("22_mb3so")
+endPosition = Vector2(0, -192)
 
 [node name="Elevator9" parent="Platforms" instance=ExtResource("21_dmurq")]
-position = Vector2(8000, 1552)
-platformSprite = ExtResource("22_mb3so")
-endPosition = Vector2(0, 192)
+position = Vector2(8000, 1744)
+texture = ExtResource("22_mb3so")
+endPosition = Vector2(0, -192)
 
 [node name="Elevator10" parent="Platforms" instance=ExtResource("21_dmurq")]
-position = Vector2(10944, 1740)
-platformSprite = ExtResource("22_mb3so")
-endPosition = Vector2(0, -192)
+position = Vector2(10944, 1548)
+texture = ExtResource("22_mb3so")
+endPosition = Vector2(0, 192)
 
 [node name="Elevator11" parent="Platforms" instance=ExtResource("21_dmurq")]
-position = Vector2(11200, 1292)
-platformSprite = ExtResource("22_mb3so")
-endPosition = Vector2(0, -192)
+position = Vector2(11200, 1100)
+texture = ExtResource("22_mb3so")
+endPosition = Vector2(0, 192)
 
 [node name="Elevator12" parent="Platforms" instance=ExtResource("21_dmurq")]
-position = Vector2(10048, 844)
-platformSprite = ExtResource("22_mb3so")
+position = Vector2(10048, 652)
+texture = ExtResource("22_mb3so")
 endPosition = Vector2(0, 192)
 
 [node name="Elevator13" parent="Platforms" instance=ExtResource("21_dmurq")]
-position = Vector2(10048, 844)
-platformSprite = ExtResource("22_mb3so")
+position = Vector2(10048, 1036)
+texture = ExtResource("22_mb3so")
 endPosition = Vector2(0, -192)
 
 [node name="Elevator8" parent="Platforms" instance=ExtResource("21_dmurq")]
-position = Vector2(8256, 140)
-platformSprite = ExtResource("22_mb3so")
-endPosition = Vector2(0, 192)
+position = Vector2(8256, 332)
+texture = ExtResource("22_mb3so")
+endPosition = Vector2(0, -192)
 
 [node name="Elevator2" parent="Platforms" instance=ExtResource("21_dmurq")]
-position = Vector2(5568, 464)
-platformSprite = ExtResource("22_mb3so")
-endPosition = Vector2(0, 192)
+position = Vector2(5568, 656)
+texture = ExtResource("22_mb3so")
+endPosition = Vector2(0, -192)
 
 [node name="OozPlatformSpawner" parent="Platforms" instance=ExtResource("18_3ugf2")]
 position = Vector2(384, 1760)
@@ -703,116 +703,120 @@ position = Vector2(11664, 1688)
 [node name="Spikes42" parent="Hazards" instance=ExtResource("18_0adhf")]
 position = Vector2(11760, 1688)
 
-[node name="ItemsHolder" type="Node" parent="."]
+[node name="Environment" type="Node" parent="."]
 
-[node name="Monitor" parent="ItemsHolder" instance=ExtResource("17_tkmdx")]
+[node name="Items" type="Node" parent="."]
+
+[node name="Monitor" parent="Items" instance=ExtResource("17_tkmdx")]
 position = Vector2(1936, 1392)
 
-[node name="Monitor2" parent="ItemsHolder" instance=ExtResource("17_tkmdx")]
+[node name="Monitor2" parent="Items" instance=ExtResource("17_tkmdx")]
 position = Vector2(3440, 1456)
 item = 3
 
-[node name="Monitor5" parent="ItemsHolder" instance=ExtResource("17_tkmdx")]
+[node name="Monitor5" parent="Items" instance=ExtResource("17_tkmdx")]
 position = Vector2(4544, 1712)
 
-[node name="Monitor6" parent="ItemsHolder" instance=ExtResource("17_tkmdx")]
+[node name="Monitor6" parent="Items" instance=ExtResource("17_tkmdx")]
 position = Vector2(5960, 272)
 item = 2
 
-[node name="Monitor7" parent="ItemsHolder" instance=ExtResource("17_tkmdx")]
+[node name="Monitor7" parent="Items" instance=ExtResource("17_tkmdx")]
 position = Vector2(6480, 1008)
 
-[node name="Monitor8" parent="ItemsHolder" instance=ExtResource("17_tkmdx")]
+[node name="Monitor8" parent="Items" instance=ExtResource("17_tkmdx")]
 position = Vector2(6512, 1008)
 item = 2
 
-[node name="Monitor9" parent="ItemsHolder" instance=ExtResource("17_tkmdx")]
+[node name="Monitor9" parent="Items" instance=ExtResource("17_tkmdx")]
 position = Vector2(7696, 1648)
 
-[node name="Monitor10" parent="ItemsHolder" instance=ExtResource("17_tkmdx")]
+[node name="Monitor10" parent="Items" instance=ExtResource("17_tkmdx")]
 position = Vector2(11240, 560)
 
-[node name="Monitor11" parent="ItemsHolder" instance=ExtResource("17_tkmdx")]
+[node name="Monitor11" parent="Items" instance=ExtResource("17_tkmdx")]
 position = Vector2(11504, 880)
 item = 12
 
-[node name="Monitor3" parent="ItemsHolder" instance=ExtResource("17_tkmdx")]
+[node name="Monitor3" parent="Items" instance=ExtResource("17_tkmdx")]
 position = Vector2(10480, 912)
 item = 2
 
-[node name="Monitor4" parent="ItemsHolder" instance=ExtResource("17_tkmdx")]
+[node name="Monitor4" parent="Items" instance=ExtResource("17_tkmdx")]
 position = Vector2(9616, 240)
 item = 3
 shieldAffinity = 3
 
-[node name="LampPost" parent="ItemsHolder" instance=ExtResource("25_5yl6l")]
+[node name="LampPost" parent="Items" instance=ExtResource("25_5yl6l")]
 position = Vector2(7200, 808)
 
-[node name="Enemies" type="Node2D" parent="."]
-position = Vector2(-1, 0)
+[node name="SignpostNew" parent="Items" instance=ExtResource("19_3h71u")]
+position = Vector2(12352, 1536)
 
-[node name="Octus" parent="Enemies" instance=ExtResource("28_fcslk")]
-position = Vector2(1129, 1696)
+[node name="Badniks" type="Node" parent="."]
 
-[node name="Octus2" parent="Enemies" instance=ExtResource("28_fcslk")]
-position = Vector2(2089, 1664)
+[node name="Octus" parent="Badniks" instance=ExtResource("28_fcslk")]
+position = Vector2(1128, 1696)
 
-[node name="Octus3" parent="Enemies" instance=ExtResource("28_fcslk")]
-position = Vector2(3097, 1472)
+[node name="Octus2" parent="Badniks" instance=ExtResource("28_fcslk")]
+position = Vector2(2088, 1664)
 
-[node name="Octus4" parent="Enemies" instance=ExtResource("28_fcslk")]
-position = Vector2(3185, 1440)
+[node name="Octus3" parent="Badniks" instance=ExtResource("28_fcslk")]
+position = Vector2(3096, 1472)
 
-[node name="Octus5" parent="Enemies" instance=ExtResource("28_fcslk")]
-position = Vector2(7617, 1664)
+[node name="Octus4" parent="Badniks" instance=ExtResource("28_fcslk")]
+position = Vector2(3184, 1440)
 
-[node name="Octus6" parent="Enemies" instance=ExtResource("28_fcslk")]
-position = Vector2(8001, 1408)
+[node name="Octus5" parent="Badniks" instance=ExtResource("28_fcslk")]
+position = Vector2(7616, 1664)
 
-[node name="Octus7" parent="Enemies" instance=ExtResource("28_fcslk")]
-position = Vector2(9833, 256)
+[node name="Octus6" parent="Badniks" instance=ExtResource("28_fcslk")]
+position = Vector2(8000, 1408)
 
-[node name="Octus8" parent="Enemies" instance=ExtResource("28_fcslk")]
-position = Vector2(10009, 192)
+[node name="Octus7" parent="Badniks" instance=ExtResource("28_fcslk")]
+position = Vector2(9832, 256)
 
-[node name="Octus9" parent="Enemies" instance=ExtResource("28_fcslk")]
-position = Vector2(10049, 1376)
+[node name="Octus8" parent="Badniks" instance=ExtResource("28_fcslk")]
+position = Vector2(10008, 192)
 
-[node name="Octus10" parent="Enemies" instance=ExtResource("28_fcslk")]
-position = Vector2(10129, 1344)
+[node name="Octus9" parent="Badniks" instance=ExtResource("28_fcslk")]
+position = Vector2(10048, 1376)
 
-[node name="Octus11" parent="Enemies" instance=ExtResource("28_fcslk")]
-position = Vector2(10225, 1312)
+[node name="Octus10" parent="Badniks" instance=ExtResource("28_fcslk")]
+position = Vector2(10128, 1344)
 
-[node name="Octus12" parent="Enemies" instance=ExtResource("28_fcslk")]
-position = Vector2(10857, 1536)
+[node name="Octus11" parent="Badniks" instance=ExtResource("28_fcslk")]
+position = Vector2(10224, 1312)
 
-[node name="Octus13" parent="Enemies" instance=ExtResource("28_fcslk")]
-position = Vector2(11193, 576)
+[node name="Octus12" parent="Badniks" instance=ExtResource("28_fcslk")]
+position = Vector2(10856, 1536)
 
-[node name="Aquis" parent="Enemies" instance=ExtResource("26_u833e")]
-position = Vector2(5153, 1016)
+[node name="Octus13" parent="Badniks" instance=ExtResource("28_fcslk")]
+position = Vector2(11192, 576)
 
-[node name="Aquis2" parent="Enemies" instance=ExtResource("26_u833e")]
-position = Vector2(5457, 1008)
+[node name="Aquis" parent="Badniks" instance=ExtResource("26_u833e")]
+position = Vector2(5152, 1016)
 
-[node name="Aquis3" parent="Enemies" instance=ExtResource("26_u833e")]
-position = Vector2(4865, 608)
+[node name="Aquis2" parent="Badniks" instance=ExtResource("26_u833e")]
+position = Vector2(5456, 1008)
 
-[node name="Aquis4" parent="Enemies" instance=ExtResource("26_u833e")]
-position = Vector2(8553, 72)
+[node name="Aquis3" parent="Badniks" instance=ExtResource("26_u833e")]
+position = Vector2(4864, 608)
 
-[node name="Aquis5" parent="Enemies" instance=ExtResource("26_u833e")]
-position = Vector2(8785, 136)
+[node name="Aquis4" parent="Badniks" instance=ExtResource("26_u833e")]
+position = Vector2(8552, 72)
 
-[node name="Aquis6" parent="Enemies" instance=ExtResource("26_u833e")]
-position = Vector2(9377, 832)
+[node name="Aquis5" parent="Badniks" instance=ExtResource("26_u833e")]
+position = Vector2(8784, 136)
 
-[node name="Aquis7" parent="Enemies" instance=ExtResource("26_u833e")]
-position = Vector2(9585, 864)
+[node name="Aquis6" parent="Badniks" instance=ExtResource("26_u833e")]
+position = Vector2(9376, 832)
 
-[node name="Aquis8" parent="Enemies" instance=ExtResource("26_u833e")]
-position = Vector2(10297, 752)
+[node name="Aquis7" parent="Badniks" instance=ExtResource("26_u833e")]
+position = Vector2(9584, 864)
+
+[node name="Aquis8" parent="Badniks" instance=ExtResource("26_u833e")]
+position = Vector2(10296, 752)
 
 [node name="Rings" type="Node" parent="."]
 
@@ -1421,6 +1425,3 @@ position = Vector2(10688, 784)
 
 [node name="Ring199" parent="Rings" instance=ExtResource("27_frkcf")]
 position = Vector2(10688, 808)
-
-[node name="SignpostNew" parent="." instance=ExtResource("19_3h71u")]
-position = Vector2(12352, 1536)

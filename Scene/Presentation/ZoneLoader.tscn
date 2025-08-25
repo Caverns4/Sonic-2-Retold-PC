@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://tr33s3gs3j3n"]
 
-[ext_resource type="Script" uid="uid://cmv1njb8nwqsf" path="res://Scripts/Level/zone_loader.gd" id="1_3r84a"]
+[ext_resource type="Script" uid="uid://cmv1njb8nwqsf" path="res://Scripts/Menu/zone_loader.gd" id="1_3r84a"]
 [ext_resource type="FontFile" uid="uid://ml62eqfe7avn" path="res://Graphics/Fonts/small_font.png" id="2_q51dt"]
 
 [node name="ZoneLoader" type="CanvasLayer"]

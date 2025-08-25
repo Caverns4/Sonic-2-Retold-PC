@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://c2i6c85g2b5bh"]
+[gd_scene load_steps=25 format=4 uid="uid://c2i6c85g2b5bh"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_ssdve"]
 [ext_resource type="AudioStream" uid="uid://c354qh8pof6fe" path="res://Audio/Soundtrack/s2br_CasinoNight.ogg" id="2_last2"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://dkn7hhll7o4or" path="res://Entities/MainObjects/LayerSwitcher.tscn" id="9_5ohby"]
 [ext_resource type="PackedScene" uid="uid://4q0hpddgto2k" path="res://Entities/Gimmicks/Spring.tscn" id="10_366g0"]
 [ext_resource type="PackedScene" uid="uid://c2t7hwn0iln3x" path="res://Entities/Obstacles/Elevator.tscn" id="11_8oyv8"]
-[ext_resource type="Texture2D" uid="uid://bsbg06aqri8m1" path="res://Graphics/Objects_Zone/CNZ_Elevator.png" id="12_hugwj"]
 [ext_resource type="AudioStream" uid="uid://cei1ganfjxio8" path="res://Audio/SFX/Objects/CNZ_Elevator.wav" id="13_0dqgs"]
 [ext_resource type="PackedScene" uid="uid://c750k3u1o0wfg" path="res://Entities/ZoneObjects/CNZ-triangle_bumper.tscn" id="14_mulky"]
 [ext_resource type="PackedScene" uid="uid://mrkujxuspvgk" path="res://Entities/Gimmicks/CNZ_CharacterReels.tscn" id="14_yg4rb"]
@@ -25,7 +24,6 @@
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="21_et5nc"]
 [ext_resource type="PackedScene" uid="uid://maxhev4qup18" path="res://Entities/Gimmicks/cnz_slot.tscn" id="23_q6f0e"]
 [ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="25_ummts"]
-[ext_resource type="Texture2D" uid="uid://bd7qotjdqnsst" path="res://Graphics/Objects_Zone/CNZ_MovingBlock.png" id="26_nh81v"]
 
 [node name="CasinoNight2" type="Node2D"]
 script = ExtResource("1_ssdve")
@@ -148,55 +146,46 @@ position = Vector2(6160, 504)
 
 [node name="Elevator" parent="Entities" instance=ExtResource("11_8oyv8")]
 position = Vector2(4400, 1480)
-platformSprite = ExtResource("12_hugwj")
 endPosition = Vector2(0, 448)
 soundFile = ExtResource("13_0dqgs")
 
 [node name="Elevator2" parent="Entities" instance=ExtResource("11_8oyv8")]
 position = Vector2(4400, 1480)
-platformSprite = ExtResource("12_hugwj")
 endPosition = Vector2(0, -447)
 soundFile = ExtResource("13_0dqgs")
 
 [node name="Elevator4" parent="Entities" instance=ExtResource("11_8oyv8")]
 position = Vector2(2736, 1864)
-platformSprite = ExtResource("12_hugwj")
 endPosition = Vector2(0, -448)
 soundFile = ExtResource("13_0dqgs")
 
 [node name="Elevator5" parent="Entities" instance=ExtResource("11_8oyv8")]
 position = Vector2(5808, 1992)
-platformSprite = ExtResource("12_hugwj")
 endPosition = Vector2(0, -512)
 soundFile = ExtResource("13_0dqgs")
 
 [node name="Elevator6" parent="Entities" instance=ExtResource("11_8oyv8")]
 position = Vector2(6064, 1160)
-platformSprite = ExtResource("12_hugwj")
 endPosition = Vector2(0, 320)
 soundFile = ExtResource("13_0dqgs")
 
 [node name="Elevator7" parent="Entities" instance=ExtResource("11_8oyv8")]
 position = Vector2(7344, 1480)
-platformSprite = ExtResource("12_hugwj")
 endPosition = Vector2(0, 447)
 soundFile = ExtResource("13_0dqgs")
 
 [node name="Elevator8" parent="Entities" instance=ExtResource("11_8oyv8")]
 position = Vector2(8496, 904)
-platformSprite = ExtResource("12_hugwj")
 endPosition = Vector2(0, 639)
 soundFile = ExtResource("13_0dqgs")
 
 [node name="Elevator9" parent="Entities" instance=ExtResource("11_8oyv8")]
 position = Vector2(8496, 392)
-platformSprite = ExtResource("12_hugwj")
 endPosition = Vector2(0, 512)
 soundFile = ExtResource("13_0dqgs")
 
 [node name="Elevator3" parent="Entities" instance=ExtResource("11_8oyv8")]
 position = Vector2(4400, 1032)
-platformSprite = ExtResource("12_hugwj")
 endPosition = Vector2(0, -576)
 soundFile = ExtResource("13_0dqgs")
 
@@ -467,308 +456,305 @@ scale = Vector2(-1, 1)
 position = Vector2(6528, 1640)
 type = 1
 
-[node name="MovingPlatforms" type="Node2D" parent="."]
+[node name="Platforms" type="Node2D" parent="."]
 
-[node name="Platform" parent="MovingPlatforms" instance=ExtResource("25_ummts")]
+[node name="Platform" parent="Platforms" instance=ExtResource("25_ummts")]
 use_parent_material = true
 position = Vector2(3104, 1312)
-platformSprite = ExtResource("26_nh81v")
 endPosition = Vector2(0, -192)
 
-[node name="Platform2" parent="MovingPlatforms" instance=ExtResource("25_ummts")]
+[node name="Platform2" parent="Platforms" instance=ExtResource("25_ummts")]
 use_parent_material = true
 position = Vector2(3168, 1120)
-platformSprite = ExtResource("26_nh81v")
 endPosition = Vector2(0, 192)
 
-[node name="Platform3" parent="MovingPlatforms" instance=ExtResource("25_ummts")]
+[node name="Platform3" parent="Platforms" instance=ExtResource("25_ummts")]
 use_parent_material = true
 position = Vector2(3680, 1952)
-platformSprite = ExtResource("26_nh81v")
 endPosition = Vector2(192, 0)
 
-[node name="Platform5" parent="MovingPlatforms" instance=ExtResource("25_ummts")]
+[node name="Platform5" parent="Platforms" instance=ExtResource("25_ummts")]
 use_parent_material = true
 position = Vector2(4704, 1696)
-platformSprite = ExtResource("26_nh81v")
 endPosition = Vector2(192, 0)
 
-[node name="Platform6" parent="MovingPlatforms" instance=ExtResource("25_ummts")]
+[node name="Platform6" parent="Platforms" instance=ExtResource("25_ummts")]
 use_parent_material = true
 position = Vector2(4960, 1696)
-platformSprite = ExtResource("26_nh81v")
 endPosition = Vector2(192, 0)
 
-[node name="Platform7" parent="MovingPlatforms" instance=ExtResource("25_ummts")]
+[node name="Platform7" parent="Platforms" instance=ExtResource("25_ummts")]
 use_parent_material = true
 position = Vector2(6816, 736)
-platformSprite = ExtResource("26_nh81v")
 endPosition = Vector2(192, 0)
 
-[node name="Platform4" parent="MovingPlatforms" instance=ExtResource("25_ummts")]
+[node name="Platform4" parent="Platforms" instance=ExtResource("25_ummts")]
 use_parent_material = true
 position = Vector2(4192, 1888)
-platformSprite = ExtResource("26_nh81v")
 endPosition = Vector2(-192, 0)
 
 [node name="Hazards" type="Node" parent="."]
 
-[node name="Rings" type="Node" parent="."]
+[node name="Bumpers" type="Node" parent="."]
 
-[node name="ItemsHolder" type="Node" parent="."]
-
-[node name="Monitor" parent="ItemsHolder" instance=ExtResource("18_e72vi")]
-position = Vector2(1232, 880)
-
-[node name="Monitor2" parent="ItemsHolder" instance=ExtResource("18_e72vi")]
-position = Vector2(1296, 1136)
-item = 1
-
-[node name="Monitor3" parent="ItemsHolder" instance=ExtResource("18_e72vi")]
-position = Vector2(2704, 1840)
-
-[node name="Monitor4" parent="ItemsHolder" instance=ExtResource("18_e72vi")]
-position = Vector2(4208, 1520)
-item = 2
-
-[node name="Monitor5" parent="ItemsHolder" instance=ExtResource("18_e72vi")]
-position = Vector2(4528, 1008)
-item = 1
-
-[node name="Monitor6" parent="ItemsHolder" instance=ExtResource("18_e72vi")]
-position = Vector2(4752, 1136)
-
-[node name="Monitor7" parent="ItemsHolder" instance=ExtResource("18_e72vi")]
-position = Vector2(4656, 1776)
-
-[node name="Monitor8" parent="ItemsHolder" instance=ExtResource("18_e72vi")]
-position = Vector2(4848, 1520)
-item = 3
-shieldAffinity = 1
-
-[node name="Monitor9" parent="ItemsHolder" instance=ExtResource("18_e72vi")]
-position = Vector2(5072, 1264)
-shieldAffinity = 1
-
-[node name="Monitor10" parent="ItemsHolder" instance=ExtResource("18_e72vi")]
-position = Vector2(5104, 1264)
-shieldAffinity = 1
-
-[node name="Monitor11" parent="ItemsHolder" instance=ExtResource("18_e72vi")]
-position = Vector2(5136, 1264)
-shieldAffinity = 1
-
-[node name="Monitor12" parent="ItemsHolder" instance=ExtResource("18_e72vi")]
-position = Vector2(5296, 1776)
-item = 12
-shieldAffinity = 1
-
-[node name="Monitor13" parent="ItemsHolder" instance=ExtResource("18_e72vi")]
-position = Vector2(5488, 1456)
-item = 3
-shieldAffinity = 1
-
-[node name="Monitor14" parent="ItemsHolder" instance=ExtResource("18_e72vi")]
-position = Vector2(6128, 1456)
-shieldAffinity = 1
-
-[node name="Monitor16" parent="ItemsHolder" instance=ExtResource("18_e72vi")]
-position = Vector2(6928, 496)
-shieldAffinity = 1
-
-[node name="Monitor15" parent="ItemsHolder" instance=ExtResource("18_e72vi")]
-position = Vector2(8464, 368)
-item = 2
-shieldAffinity = 1
-
-[node name="Bumper2" type="Node" parent="."]
-
-[node name="TriangleBumper" parent="Bumper2" instance=ExtResource("14_mulky")]
+[node name="TriangleBumper" parent="Bumpers" instance=ExtResource("14_mulky")]
 position = Vector2(3616, 1440)
 
-[node name="TriangleBumper3" parent="Bumper2" instance=ExtResource("14_mulky")]
+[node name="TriangleBumper3" parent="Bumpers" instance=ExtResource("14_mulky")]
 position = Vector2(5024, 800)
 
-[node name="TriangleBumper5" parent="Bumper2" instance=ExtResource("14_mulky")]
+[node name="TriangleBumper5" parent="Bumpers" instance=ExtResource("14_mulky")]
 position = Vector2(7456, 864)
 
-[node name="TriangleBumper6" parent="Bumper2" instance=ExtResource("14_mulky")]
+[node name="TriangleBumper6" parent="Bumpers" instance=ExtResource("14_mulky")]
 position = Vector2(7584, 992)
 
-[node name="TriangleBumper7" parent="Bumper2" instance=ExtResource("14_mulky")]
+[node name="TriangleBumper7" parent="Bumpers" instance=ExtResource("14_mulky")]
 position = Vector2(8864, 416)
 
-[node name="TriangleBumper8" parent="Bumper2" instance=ExtResource("14_mulky")]
+[node name="TriangleBumper8" parent="Bumpers" instance=ExtResource("14_mulky")]
 position = Vector2(8928, 480)
 
-[node name="TriangleBumper9" parent="Bumper2" instance=ExtResource("14_mulky")]
+[node name="TriangleBumper9" parent="Bumpers" instance=ExtResource("14_mulky")]
 position = Vector2(8992, 544)
 
-[node name="TriangleBumper10" parent="Bumper2" instance=ExtResource("14_mulky")]
+[node name="TriangleBumper10" parent="Bumpers" instance=ExtResource("14_mulky")]
 position = Vector2(9056, 608)
 
-[node name="TriangleBumper11" parent="Bumper2" instance=ExtResource("14_mulky")]
+[node name="TriangleBumper11" parent="Bumpers" instance=ExtResource("14_mulky")]
 position = Vector2(9248, 1248)
 
-[node name="TriangleBumper12" parent="Bumper2" instance=ExtResource("14_mulky")]
+[node name="TriangleBumper12" parent="Bumpers" instance=ExtResource("14_mulky")]
 position = Vector2(9632, 1312)
 scale = Vector2(-1, 1)
 
-[node name="TriangleBumper2" parent="Bumper2" instance=ExtResource("14_mulky")]
+[node name="TriangleBumper2" parent="Bumpers" instance=ExtResource("14_mulky")]
 position = Vector2(3936, 1440)
 rotation = -3.14159
 scale = Vector2(1, -1)
 
-[node name="TriangleBumper4" parent="Bumper2" instance=ExtResource("14_mulky")]
+[node name="TriangleBumper4" parent="Bumpers" instance=ExtResource("14_mulky")]
 position = Vector2(5088, 672)
 rotation = -3.14159
 scale = Vector2(1, -1)
 
-[node name="CNZ-BigBumper" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(5568, 480)
 
-[node name="CNZ-BigBumper2" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper2" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(5696, 480)
 
-[node name="CNZ-BigBumper3" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper3" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(5824, 480)
 
-[node name="CNZ-BigBumper11" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper11" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(6080, 1824)
 rotation = 3.14159
 
-[node name="CNZ-BigBumper12" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper12" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(6080, 2016)
 
-[node name="CNZ-BigBumper13" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper13" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(6208, 1824)
 rotation = 3.14159
 
-[node name="CNZ-BigBumper14" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper14" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(6208, 2016)
 
-[node name="CNZ-BigBumper15" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper15" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(6336, 1824)
 rotation = 3.14159
 
-[node name="CNZ-BigBumper16" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper16" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(6336, 2016)
 
-[node name="CNZ-BigBumper17" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper17" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(6464, 1824)
 rotation = 3.14159
 
-[node name="CNZ-BigBumper18" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper18" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(6464, 2016)
 
-[node name="CNZ-BigBumper19" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper19" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(6592, 1824)
 rotation = 3.14159
 
-[node name="CNZ-BigBumper20" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper20" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(6592, 2016)
 
-[node name="CNZ-BigBumper21" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper21" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(6720, 1824)
 rotation = 3.14159
 
-[node name="CNZ-BigBumper22" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper22" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(6720, 2016)
 
-[node name="CNZ-BigBumper23" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper23" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(6848, 1824)
 rotation = 3.14159
 
-[node name="CNZ-BigBumper24" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper24" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(6848, 2016)
 
-[node name="CNZ-BigBumper25" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper25" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(6976, 1824)
 rotation = 3.14159
 
-[node name="CNZ-BigBumper26" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper26" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(6976, 2016)
 
-[node name="CNZ-BigBumper27" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper27" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(7744, 480)
 
-[node name="CNZ-BigBumper28" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper28" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(7744, 544)
 rotation = 3.14159
 
-[node name="CNZ-BigBumper29" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper29" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(7872, 480)
 
-[node name="CNZ-BigBumper32" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper32" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(8000, 1504)
 
-[node name="CNZ-BigBumper33" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper33" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(8192, 1424)
 rotation = 3.14159
 
-[node name="CNZ-BigBumper30" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper30" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(7872, 544)
 rotation = 3.14159
 
-[node name="CNZ-BigBumper39" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper39" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(8640, 224)
 rotation = 3.14159
 
-[node name="CNZ-BigBumper40" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper40" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(8768, 224)
 rotation = 3.14159
 
-[node name="CNZ-BigBumper4" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper4" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(5568, 544)
 rotation = 3.14159
 
-[node name="CNZ-BigBumper5" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper5" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(5696, 544)
 rotation = 3.14159
 
-[node name="CNZ-BigBumper6" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper6" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(5824, 544)
 rotation = 3.14159
 
-[node name="CNZ-BigBumper7" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper7" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(6288, 576)
 rotation = 1.5708
 
-[node name="CNZ-BigBumper10" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper10" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(7440, 576)
 rotation = 1.5708
 
-[node name="CNZ-BigBumper31" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper31" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(7920, 896)
 rotation = 4.71239
 
-[node name="CNZ-BigBumper34" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper34" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(9648, 448)
 rotation = 4.71239
 
-[node name="CNZ-BigBumper35" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper35" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(9648, 704)
 rotation = 4.71239
 
-[node name="CNZ-BigBumper36" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper36" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(9648, 832)
 rotation = 4.71239
 
-[node name="CNZ-BigBumper37" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper37" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(9648, 960)
 rotation = 4.71239
 
-[node name="CNZ-BigBumper38" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper38" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(9648, 1216)
 rotation = 4.71239
 
-[node name="CNZ-BigBumper8" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper8" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(6416, 960)
 rotation = 1.5708
 
-[node name="CNZ-BigBumper9" parent="Bumper2" instance=ExtResource("15_jutaj")]
+[node name="CNZ-BigBumper9" parent="Bumpers" instance=ExtResource("15_jutaj")]
 position = Vector2(6576, 576)
 rotation = 4.71239
+
+[node name="Items" type="Node" parent="."]
+
+[node name="Monitor" parent="Items" instance=ExtResource("18_e72vi")]
+position = Vector2(1232, 880)
+
+[node name="Monitor2" parent="Items" instance=ExtResource("18_e72vi")]
+position = Vector2(1296, 1136)
+item = 1
+
+[node name="Monitor3" parent="Items" instance=ExtResource("18_e72vi")]
+position = Vector2(2704, 1840)
+
+[node name="Monitor4" parent="Items" instance=ExtResource("18_e72vi")]
+position = Vector2(4208, 1520)
+item = 2
+
+[node name="Monitor5" parent="Items" instance=ExtResource("18_e72vi")]
+position = Vector2(4528, 1008)
+item = 1
+
+[node name="Monitor6" parent="Items" instance=ExtResource("18_e72vi")]
+position = Vector2(4752, 1136)
+
+[node name="Monitor7" parent="Items" instance=ExtResource("18_e72vi")]
+position = Vector2(4656, 1776)
+
+[node name="Monitor8" parent="Items" instance=ExtResource("18_e72vi")]
+position = Vector2(4848, 1520)
+item = 3
+shieldAffinity = 1
+
+[node name="Monitor9" parent="Items" instance=ExtResource("18_e72vi")]
+position = Vector2(5072, 1264)
+shieldAffinity = 1
+
+[node name="Monitor10" parent="Items" instance=ExtResource("18_e72vi")]
+position = Vector2(5104, 1264)
+shieldAffinity = 1
+
+[node name="Monitor11" parent="Items" instance=ExtResource("18_e72vi")]
+position = Vector2(5136, 1264)
+shieldAffinity = 1
+
+[node name="Monitor12" parent="Items" instance=ExtResource("18_e72vi")]
+position = Vector2(5296, 1776)
+item = 12
+shieldAffinity = 1
+
+[node name="Monitor13" parent="Items" instance=ExtResource("18_e72vi")]
+position = Vector2(5488, 1456)
+item = 3
+shieldAffinity = 1
+
+[node name="Monitor14" parent="Items" instance=ExtResource("18_e72vi")]
+position = Vector2(6128, 1456)
+shieldAffinity = 1
+
+[node name="Monitor16" parent="Items" instance=ExtResource("18_e72vi")]
+position = Vector2(6928, 496)
+shieldAffinity = 1
+
+[node name="Monitor15" parent="Items" instance=ExtResource("18_e72vi")]
+position = Vector2(8464, 368)
+item = 2
+shieldAffinity = 1
+
+[node name="SignpostNew" parent="Items" instance=ExtResource("21_et5nc")]
+position = Vector2(9984, 1664)
+
+[node name="SignpostNew2" parent="Items" instance=ExtResource("21_et5nc")]
+position = Vector2(9984, 576)
 
 [node name="Badniks" type="Node" parent="."]
 
@@ -789,6 +775,8 @@ position = Vector2(5984, 2000)
 
 [node name="Crawl6" parent="Badniks" instance=ExtResource("21_864ul")]
 position = Vector2(8672, 368)
+
+[node name="Rings" type="Node" parent="."]
 
 [node name="SlotMachines" type="Node" parent="."]
 
@@ -818,9 +806,3 @@ position = Vector2(2136, 872)
 
 [node name="CNZSlot5" parent="SlotMachines" instance=ExtResource("23_q6f0e")]
 position = Vector2(2136, 920)
-
-[node name="SignpostNew" parent="." instance=ExtResource("21_et5nc")]
-position = Vector2(9984, 1664)
-
-[node name="SignpostNew2" parent="." instance=ExtResource("21_et5nc")]
-position = Vector2(9984, 576)

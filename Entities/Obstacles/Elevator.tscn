@@ -5,7 +5,7 @@
 
 [sub_resource type="RectangleShape2D" id="1"]
 resource_local_to_scene = true
-size = Vector2(80, 2)
+size = Vector2(64, 2)
 
 [node name="Elevator" type="Node2D"]
 process_priority = 10

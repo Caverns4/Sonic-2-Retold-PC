@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=4 uid="uid://b0livp60bisfo"]
 
 [ext_resource type="TileSet" uid="uid://bk1ere21h4285" path="res://Tileset/Menus.tres" id="1_2ksgu"]
-[ext_resource type="Script" uid="uid://b0kjaiaw0tt0l" path="res://Scripts/Level/options_menu.gd" id="1_qjo47"]
+[ext_resource type="Script" uid="uid://b0kjaiaw0tt0l" path="res://Scripts/Menu/options_menu.gd" id="1_qjo47"]
 [ext_resource type="Texture2D" uid="uid://dm4ejufaxy62s" path="res://Graphics/Menus/MiniCharacters.png" id="3_6udcv"]
-[ext_resource type="FontFile" uid="uid://ml62eqfe7avn" path="res://Graphics/Fonts/small_font.png" id="3_53s41"]
+[ext_resource type="Theme" uid="uid://b5b5ux4822p0m" path="res://Resources/Standard_Font.tres" id="3_pjmsk"]
 [ext_resource type="AudioStream" uid="uid://uay8t1b3i1hi" path="res://Audio/SFX/Gimmicks/s2br_Switch.wav" id="5_pyoer"]
 
 [node name="OptionsMenu" type="Node2D"]
@@ -38,7 +38,7 @@ offset_left = -76.0
 offset_top = 16.0
 offset_right = 116.0
 offset_bottom = 216.0
-theme_override_fonts/normal_font = ExtResource("3_53s41")
+theme = ExtResource("3_pjmsk")
 bbcode_enabled = true
 text = "Player Select
 

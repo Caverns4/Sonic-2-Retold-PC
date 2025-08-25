@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://caxc44uymh48a"]
+[gd_scene load_steps=23 format=4 uid="uid://caxc44uymh48a"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_8ynvh"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="2_yrcwh"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://bg66ofhfkxsx6" path="res://Entities/Gimmicks/Bridge.tscn" id="21_l7bpy"]
 [ext_resource type="AudioStream" uid="uid://uu55iumak4r5" path="res://Audio/SFX/Ambiance/waterfall.wav" id="22_qggv3"]
 [ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="22_vde0v"]
-[ext_resource type="Texture2D" uid="uid://bsl2k38yish1o" path="res://Graphics/Tiles/WorldsTiles/EHZ_Platform_Small.png" id="23_2h6tp"]
 [ext_resource type="Texture2D" uid="uid://ci13nuikdwatn" path="res://Graphics/Tiles/WorldsTiles/EHZ_Platform_Large.png" id="24_qyfb0"]
 [ext_resource type="PackedScene" uid="uid://cfteqnft5ynr7" path="res://Entities/Hazards/Spikes.tscn" id="25_e7tqq"]
 [ext_resource type="PackedScene" uid="uid://4q0hpddgto2k" path="res://Entities/Gimmicks/Spring.tscn" id="25_s0cc0"]
@@ -167,57 +166,6 @@ length = 16
 [node name="Bridge7" parent="Entities" instance=ExtResource("21_l7bpy")]
 position = Vector2(9480, 839)
 
-[node name="Platform" parent="Entities" instance=ExtResource("22_vde0v")]
-position = Vector2(1988, 620)
-platform_sprite = ExtResource("23_2h6tp")
-endPosition = Vector2(0, 192)
-floorOffset = 4
-
-[node name="Platform4" parent="Entities" instance=ExtResource("22_vde0v")]
-position = Vector2(736, 588)
-platform_sprite = ExtResource("23_2h6tp")
-endPosition = Vector2(128, 0)
-
-[node name="Platform6" parent="Entities" instance=ExtResource("22_vde0v")]
-position = Vector2(7836, 448)
-platform_sprite = ExtResource("23_2h6tp")
-endPosition = Vector2(192, 0)
-floorOffset = 4
-
-[node name="Platform7" parent="Entities" instance=ExtResource("22_vde0v")]
-position = Vector2(8176, 432)
-platform_sprite = ExtResource("23_2h6tp")
-endPosition = Vector2(192, 0)
-offset = 96.0
-floorOffset = 4
-
-[node name="Platform8" parent="Entities" instance=ExtResource("22_vde0v")]
-position = Vector2(8512, 400)
-platform_sprite = ExtResource("23_2h6tp")
-endPosition = Vector2(0, 0)
-fallTimer = 1.0
-floorOffset = 4
-
-[node name="Platform2" parent="Entities" instance=ExtResource("22_vde0v")]
-position = Vector2(2306, 617)
-platform_sprite = ExtResource("23_2h6tp")
-endPosition = Vector2(0, 128)
-offset = 1.0
-floorOffset = 4
-
-[node name="Platform5" parent="Entities" instance=ExtResource("22_vde0v")]
-position = Vector2(4048, 368)
-platform_sprite = ExtResource("23_2h6tp")
-endPosition = Vector2(0, 128)
-floorOffset = 4
-
-[node name="Platform3" parent="Entities" instance=ExtResource("22_vde0v")]
-position = Vector2(2368, 976)
-platform_sprite = ExtResource("24_qyfb0")
-endPosition = Vector2(0, 64)
-dropSlightly = false
-fullySolid = true
-
 [node name="Spring" parent="Entities" instance=ExtResource("25_s0cc0")]
 position = Vector2(1928, 883)
 type = 1
@@ -289,6 +237,52 @@ setRight = false
 rightBoundry = 11000
 bottomBoundry = 784
 
+[node name="Platforms" type="Node" parent="."]
+
+[node name="Platform" parent="Platforms" instance=ExtResource("22_vde0v")]
+position = Vector2(1988, 620)
+endPosition = Vector2(0, 192)
+floorOffset = 4
+
+[node name="Platform4" parent="Platforms" instance=ExtResource("22_vde0v")]
+position = Vector2(736, 588)
+endPosition = Vector2(128, 0)
+
+[node name="Platform6" parent="Platforms" instance=ExtResource("22_vde0v")]
+position = Vector2(7836, 448)
+endPosition = Vector2(192, 0)
+floorOffset = 4
+
+[node name="Platform7" parent="Platforms" instance=ExtResource("22_vde0v")]
+position = Vector2(8176, 432)
+endPosition = Vector2(192, 0)
+offset = 96.0
+floorOffset = 4
+
+[node name="Platform8" parent="Platforms" instance=ExtResource("22_vde0v")]
+position = Vector2(8512, 400)
+endPosition = Vector2(0, 0)
+fallTimer = 1.0
+floorOffset = 4
+
+[node name="Platform2" parent="Platforms" instance=ExtResource("22_vde0v")]
+position = Vector2(2306, 617)
+endPosition = Vector2(0, 128)
+offset = 1.0
+floorOffset = 4
+
+[node name="Platform5" parent="Platforms" instance=ExtResource("22_vde0v")]
+position = Vector2(4048, 368)
+endPosition = Vector2(0, 128)
+floorOffset = 4
+
+[node name="Platform3" parent="Platforms" instance=ExtResource("22_vde0v")]
+position = Vector2(2368, 976)
+platform_sprite = ExtResource("24_qyfb0")
+endPosition = Vector2(0, 64)
+dropSlightly = false
+fullySolid = true
+
 [node name="Hazards" type="Node" parent="."]
 
 [node name="Spikes" parent="Hazards" instance=ExtResource("25_e7tqq")]
@@ -330,55 +324,124 @@ rotation = 3.14159
 position = Vector2(5296, 848)
 rotation = 3.14159
 
-[node name="ItemsHolder" type="Node" parent="."]
+[node name="Environment" type="Node" parent="."]
 
-[node name="Checkpoint" parent="ItemsHolder" instance=ExtResource("27_horvy")]
+[node name="WaterFallSFX2D" type="AudioStreamPlayer2D" parent="Environment"]
+position = Vector2(1440, 704)
+stream = ExtResource("22_qggv3")
+volume_db = -3.0
+pitch_scale = 1.5
+autoplay = true
+max_distance = 512.0
+attenuation = 1.5
+panning_strength = 0.5
+bus = &"SFX"
+
+[node name="WaterFallSFX2D3" type="AudioStreamPlayer2D" parent="Environment"]
+position = Vector2(4768, 1024)
+stream = ExtResource("22_qggv3")
+volume_db = -3.0
+pitch_scale = 1.5
+autoplay = true
+max_distance = 512.0
+attenuation = 1.5
+panning_strength = 0.5
+bus = &"SFX"
+
+[node name="WaterFallSFX2D6" type="AudioStreamPlayer2D" parent="Environment"]
+position = Vector2(9568, 960)
+stream = ExtResource("22_qggv3")
+volume_db = -3.0
+pitch_scale = 1.5
+autoplay = true
+max_distance = 512.0
+attenuation = 1.5
+panning_strength = 0.5
+bus = &"SFX"
+
+[node name="WaterFallSFX2D4" type="AudioStreamPlayer2D" parent="Environment"]
+position = Vector2(5472, 832)
+stream = ExtResource("22_qggv3")
+volume_db = -3.0
+pitch_scale = 1.5
+autoplay = true
+max_distance = 512.0
+attenuation = 1.5
+panning_strength = 0.5
+bus = &"SFX"
+
+[node name="WaterFallSFX2D2" type="AudioStreamPlayer2D" parent="Environment"]
+position = Vector2(3104, 702)
+stream = ExtResource("22_qggv3")
+volume_db = -3.0
+autoplay = true
+max_distance = 768.0
+attenuation = 0.5
+panning_strength = 0.5
+bus = &"SFX"
+
+[node name="WaterFallSFX2D5" type="AudioStreamPlayer2D" parent="Environment"]
+position = Vector2(8288, 768)
+stream = ExtResource("22_qggv3")
+volume_db = -3.0
+autoplay = true
+max_distance = 1024.0
+attenuation = 0.5
+panning_strength = 0.5
+bus = &"SFX"
+
+[node name="Items" type="Node" parent="."]
+
+[node name="Checkpoint" parent="Items" instance=ExtResource("27_horvy")]
 position = Vector2(3942, 172)
 
-[node name="Checkpoint2" parent="ItemsHolder" instance=ExtResource("27_horvy")]
+[node name="Checkpoint2" parent="Items" instance=ExtResource("27_horvy")]
 position = Vector2(6416, 552)
 checkPointID = 1
 
-[node name="Checkpoint3" parent="ItemsHolder" instance=ExtResource("27_horvy")]
+[node name="Checkpoint3" parent="Items" instance=ExtResource("27_horvy")]
 position = Vector2(8834, 364)
 checkPointID = 2
 
-[node name="Monitor" parent="ItemsHolder" instance=ExtResource("28_etcp3")]
+[node name="Monitor" parent="Items" instance=ExtResource("28_etcp3")]
 position = Vector2(959, 565)
 item = 3
 
-[node name="Monitor2" parent="ItemsHolder" instance=ExtResource("28_etcp3")]
+[node name="Monitor2" parent="Items" instance=ExtResource("28_etcp3")]
 position = Vector2(3552, 436)
 item = 1
 
-[node name="Monitor3" parent="ItemsHolder" instance=ExtResource("28_etcp3")]
+[node name="Monitor3" parent="Items" instance=ExtResource("28_etcp3")]
 position = Vector2(3716, 884)
 
-[node name="Monitor4" parent="ItemsHolder" instance=ExtResource("28_etcp3")]
+[node name="Monitor4" parent="Items" instance=ExtResource("28_etcp3")]
 position = Vector2(4288, 371)
 item = 2
 
-[node name="Monitor5" parent="ItemsHolder" instance=ExtResource("28_etcp3")]
+[node name="Monitor5" parent="Items" instance=ExtResource("28_etcp3")]
 position = Vector2(4942, 882)
 item = 3
 
-[node name="Monitor6" parent="ItemsHolder" instance=ExtResource("28_etcp3")]
+[node name="Monitor6" parent="Items" instance=ExtResource("28_etcp3")]
 position = Vector2(5396, 632)
 
-[node name="Monitor7" parent="ItemsHolder" instance=ExtResource("28_etcp3")]
+[node name="Monitor7" parent="Items" instance=ExtResource("28_etcp3")]
 position = Vector2(6180, 242)
 item = 2
 
-[node name="Monitor8" parent="ItemsHolder" instance=ExtResource("28_etcp3")]
+[node name="Monitor8" parent="Items" instance=ExtResource("28_etcp3")]
 position = Vector2(6215, 242)
 item = 3
 
-[node name="Monitor9" parent="ItemsHolder" instance=ExtResource("28_etcp3")]
+[node name="Monitor9" parent="Items" instance=ExtResource("28_etcp3")]
 position = Vector2(6249, 242)
 
-[node name="Monitor10" parent="ItemsHolder" instance=ExtResource("28_etcp3")]
+[node name="Monitor10" parent="Items" instance=ExtResource("28_etcp3")]
 position = Vector2(8433, 720)
 item = 12
+
+[node name="SignpostNew" parent="Items" instance=ExtResource("32_x5cj3")]
+position = Vector2(10816, 772)
 
 [node name="Badniks" type="Node" parent="."]
 
@@ -1097,72 +1160,3 @@ position = Vector2(9952, 672)
 
 [node name="Ring207" parent="Rings" instance=ExtResource("32_xmgm7")]
 position = Vector2(8764, 296)
-
-[node name="Environment" type="Node" parent="."]
-
-[node name="WaterFallSFX2D" type="AudioStreamPlayer2D" parent="Environment"]
-position = Vector2(1440, 704)
-stream = ExtResource("22_qggv3")
-volume_db = -3.0
-pitch_scale = 1.5
-autoplay = true
-max_distance = 512.0
-attenuation = 1.5
-panning_strength = 0.5
-bus = &"SFX"
-
-[node name="WaterFallSFX2D3" type="AudioStreamPlayer2D" parent="Environment"]
-position = Vector2(4768, 1024)
-stream = ExtResource("22_qggv3")
-volume_db = -3.0
-pitch_scale = 1.5
-autoplay = true
-max_distance = 512.0
-attenuation = 1.5
-panning_strength = 0.5
-bus = &"SFX"
-
-[node name="WaterFallSFX2D6" type="AudioStreamPlayer2D" parent="Environment"]
-position = Vector2(9568, 960)
-stream = ExtResource("22_qggv3")
-volume_db = -3.0
-pitch_scale = 1.5
-autoplay = true
-max_distance = 512.0
-attenuation = 1.5
-panning_strength = 0.5
-bus = &"SFX"
-
-[node name="WaterFallSFX2D4" type="AudioStreamPlayer2D" parent="Environment"]
-position = Vector2(5472, 832)
-stream = ExtResource("22_qggv3")
-volume_db = -3.0
-pitch_scale = 1.5
-autoplay = true
-max_distance = 512.0
-attenuation = 1.5
-panning_strength = 0.5
-bus = &"SFX"
-
-[node name="WaterFallSFX2D2" type="AudioStreamPlayer2D" parent="Environment"]
-position = Vector2(3104, 702)
-stream = ExtResource("22_qggv3")
-volume_db = -3.0
-autoplay = true
-max_distance = 768.0
-attenuation = 0.5
-panning_strength = 0.5
-bus = &"SFX"
-
-[node name="WaterFallSFX2D5" type="AudioStreamPlayer2D" parent="Environment"]
-position = Vector2(8288, 768)
-stream = ExtResource("22_qggv3")
-volume_db = -3.0
-autoplay = true
-max_distance = 1024.0
-attenuation = 0.5
-panning_strength = 0.5
-bus = &"SFX"
-
-[node name="SignpostNew" parent="." instance=ExtResource("32_x5cj3")]
-position = Vector2(10816, 772)

@@ -1,0 +1,25 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://dvy7b5uq4xilw"
+path="res://.godot/imported/credits_font.png-94213a9b44de9c40cd87d4b0a20cb427.fontdata"
+
+[deps]
+
+source_file="res://Graphics/Fonts/credits_font.png"
+dest_files=["res://.godot/imported/credits_font.png-94213a9b44de9c40cd87d4b0a20cb427.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("65-90", "32", "97-122", "95", "48-57", "40-42", "58")
+kerning_pairs=PackedStringArray()
+columns=9
+rows=8
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+ascent=0
+descent=0
+fallbacks=[]
+compress=true
+scaling_mode=0

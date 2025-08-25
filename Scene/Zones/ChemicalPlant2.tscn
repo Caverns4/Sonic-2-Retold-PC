@@ -85,7 +85,7 @@ waterSourceColor = ExtResource("6_56ngg")
 waterReplaceColor = ExtResource("7_eewh6")
 ringsForPerfect = 150
 
-[node name="Level_Layout" type="Node2D" parent="."]
+[node name="Level_Layout" type="Node" parent="."]
 
 [node name="Low" type="TileMapLayer" parent="Level_Layout"]
 material = SubResource("ShaderMaterial_da7so")
@@ -101,7 +101,7 @@ tile_set = ExtResource("3_wgb1x")
 [node name="Player" parent="." instance=ExtResource("5_eai8g")]
 position = Vector2(120, 236)
 
-[node name="Entities" type="Node2D" parent="."]
+[node name="Entities" type="Node" parent="."]
 
 [node name="Shutter4" parent="Entities" instance=ExtResource("12_lofkv")]
 position = Vector2(1928, 1504)
@@ -453,7 +453,8 @@ springDirection = 2
 
 [node name="Spring3" parent="Entities" instance=ExtResource("13_fvoj7")]
 position = Vector2(7032, 496)
-scale = Vector2(-1, 1)
+rotation = -3.14159
+scale = Vector2(1, -1)
 springDirection = 3
 
 [node name="Spring5" parent="Entities" instance=ExtResource("13_fvoj7")]
@@ -475,12 +476,14 @@ springDirection = 2
 
 [node name="Spring7" parent="Entities" instance=ExtResource("13_fvoj7")]
 position = Vector2(8184, 368)
-scale = Vector2(-1, 1)
+rotation = -3.14159
+scale = Vector2(1, -1)
 springDirection = 3
 
 [node name="Spring12" parent="Entities" instance=ExtResource("13_fvoj7")]
 position = Vector2(1400, 240)
-scale = Vector2(-1, 1)
+rotation = -3.14159
+scale = Vector2(1, -1)
 type = 1
 springDirection = 3
 
@@ -649,127 +652,122 @@ delay = 32.0
 position = Vector2(80, 16)
 delay = 48.0
 
-[node name="CharacterCameo" parent="Entities" instance=ExtResource("39_x42vh")]
-position = Vector2(8424, 168)
-present = 6
-characterTexture = ExtResource("40_m50kc")
+[node name="Platforms" type="Node" parent="."]
 
-[node name="Floating Platforms" type="Node2D" parent="."]
-
-[node name="Platform" parent="Floating Platforms" instance=ExtResource("13_w6liy")]
+[node name="Platform" parent="Platforms" instance=ExtResource("13_w6liy")]
 position = Vector2(2112, 1552)
 platform_sprite = ExtResource("14_3lrrj")
 endPosition = Vector2(0, 0)
 dropSlightly = false
 
-[node name="MovingStairBlocks" parent="Floating Platforms" instance=ExtResource("16_japjs")]
+[node name="MovingStairBlocks" parent="Platforms" instance=ExtResource("16_japjs")]
 position = Vector2(9280, 1760)
 speed = 0.5
 
-[node name="MovingStairBlocks15" parent="Floating Platforms" instance=ExtResource("16_japjs")]
+[node name="MovingStairBlocks15" parent="Platforms" instance=ExtResource("16_japjs")]
 position = Vector2(5088, 384)
 childCount = 0
 speed = 0.5
 direction = 1
 
-[node name="MovingStairBlocks2" parent="Floating Platforms" instance=ExtResource("16_japjs")]
+[node name="MovingStairBlocks2" parent="Platforms" instance=ExtResource("16_japjs")]
 position = Vector2(9280, 1632)
 speed = 0.5
 
-[node name="MovingStairBlocks3" parent="Floating Platforms" instance=ExtResource("16_japjs")]
+[node name="MovingStairBlocks3" parent="Platforms" instance=ExtResource("16_japjs")]
 position = Vector2(9280, 1504)
 speed = 0.5
 
-[node name="MovingStairBlocks10" parent="Floating Platforms" instance=ExtResource("16_japjs")]
+[node name="MovingStairBlocks10" parent="Platforms" instance=ExtResource("16_japjs")]
 position = Vector2(10240, 1408)
 speed = 0.5
 
-[node name="MovingStairBlocks4" parent="Floating Platforms" instance=ExtResource("16_japjs")]
+[node name="MovingStairBlocks4" parent="Platforms" instance=ExtResource("16_japjs")]
 position = Vector2(9280, 1344)
 childCount = 0
 speed = 0.5
 
-[node name="MovingStairBlocks5" parent="Floating Platforms" instance=ExtResource("16_japjs")]
+[node name="MovingStairBlocks5" parent="Platforms" instance=ExtResource("16_japjs")]
 position = Vector2(9280, 1184)
 childCount = 0
 speed = 0.5
 
-[node name="MovingStairBlocks17" parent="Floating Platforms" instance=ExtResource("16_japjs")]
+[node name="MovingStairBlocks17" parent="Platforms" instance=ExtResource("16_japjs")]
 position = Vector2(7168, 128)
 childCount = 0
 speed = 0.5
 direction = 1
 
-[node name="MovingStairBlocks6" parent="Floating Platforms" instance=ExtResource("16_japjs")]
+[node name="MovingStairBlocks6" parent="Platforms" instance=ExtResource("16_japjs")]
 position = Vector2(2880, 1312)
 childCount = 0
 speed = 0.5
 
-[node name="MovingStairBlocks18" parent="Floating Platforms" instance=ExtResource("16_japjs")]
+[node name="MovingStairBlocks18" parent="Platforms" instance=ExtResource("16_japjs")]
 position = Vector2(192, 688)
 childCount = 0
 speed = 0.5
 
-[node name="MovingStairBlocks16" parent="Floating Platforms" instance=ExtResource("16_japjs")]
+[node name="MovingStairBlocks16" parent="Platforms" instance=ExtResource("16_japjs")]
 position = Vector2(2368, 1152)
 childCount = 0
 speed = 0.5
 
-[node name="MovingStairBlocks12" parent="Floating Platforms" instance=ExtResource("16_japjs")]
+[node name="MovingStairBlocks12" parent="Platforms" instance=ExtResource("16_japjs")]
 position = Vector2(2880, 1472)
 speed = 0.5
 
-[node name="MovingStairBlocks7" parent="Floating Platforms" instance=ExtResource("16_japjs")]
+[node name="MovingStairBlocks7" parent="Platforms" instance=ExtResource("16_japjs")]
 position = Vector2(3776, 1216)
 speed = 0.5
 
-[node name="Platform3" parent="Floating Platforms" instance=ExtResource("13_w6liy")]
+[node name="Platform3" parent="Platforms" instance=ExtResource("13_w6liy")]
 position = Vector2(2528, 712)
 platform_sprite = ExtResource("14_3lrrj")
 endPosition = Vector2(0, 96)
 offset = -48.0
 
-[node name="Platform4" parent="Floating Platforms" instance=ExtResource("13_w6liy")]
+[node name="Platform4" parent="Platforms" instance=ExtResource("13_w6liy")]
 position = Vector2(2688, 712)
 platform_sprite = ExtResource("14_3lrrj")
 endPosition = Vector2(0, 96)
 offset = 48.0
 
-[node name="Platform12" parent="Floating Platforms" instance=ExtResource("13_w6liy")]
+[node name="Platform12" parent="Platforms" instance=ExtResource("13_w6liy")]
 position = Vector2(4800, 336)
 platform_sprite = ExtResource("14_3lrrj")
 endPosition = Vector2(128, 0)
 offset = 48.0
 
-[node name="Platform5" parent="Floating Platforms" instance=ExtResource("13_w6liy")]
+[node name="Platform5" parent="Platforms" instance=ExtResource("13_w6liy")]
 position = Vector2(5016, 1800)
 platform_sprite = ExtResource("19_bygnn")
 endPosition = Vector2(208, 0)
 offset = 0.5
 dropSlightly = false
 
-[node name="Platform7" parent="Floating Platforms" instance=ExtResource("13_w6liy")]
+[node name="Platform7" parent="Platforms" instance=ExtResource("13_w6liy")]
 position = Vector2(6168, 1800)
 platform_sprite = ExtResource("19_bygnn")
 endPosition = Vector2(208, 0)
 offset = 0.5
 dropSlightly = false
 
-[node name="Platform8" parent="Floating Platforms" instance=ExtResource("13_w6liy")]
+[node name="Platform8" parent="Platforms" instance=ExtResource("13_w6liy")]
 position = Vector2(8344, 1160)
 platform_sprite = ExtResource("19_bygnn")
 endPosition = Vector2(144, 0)
 offset = 0.5
 dropSlightly = false
 
-[node name="Platform9" parent="Floating Platforms" instance=ExtResource("13_w6liy")]
+[node name="Platform9" parent="Platforms" instance=ExtResource("13_w6liy")]
 position = Vector2(8536, 1160)
 platform_sprite = ExtResource("19_bygnn")
 endPosition = Vector2(144, 0)
 offset = 72.0
 dropSlightly = false
 
-[node name="Platform10" parent="Floating Platforms" instance=ExtResource("13_w6liy")]
+[node name="Platform10" parent="Platforms" instance=ExtResource("13_w6liy")]
 position = Vector2(10136, 1288)
 platform_sprite = ExtResource("19_bygnn")
 endPosition = Vector2(208, 0)
@@ -777,39 +775,39 @@ speed = 0.5
 offset = -104.0
 dropSlightly = false
 
-[node name="Platform6" parent="Floating Platforms" instance=ExtResource("13_w6liy")]
+[node name="Platform6" parent="Platforms" instance=ExtResource("13_w6liy")]
 position = Vector2(5272, 1800)
 platform_sprite = ExtResource("19_bygnn")
 endPosition = Vector2(208, 0)
 offset = 104.0
 dropSlightly = false
 
-[node name="MovingStairBlocks13" parent="Floating Platforms" instance=ExtResource("16_japjs")]
+[node name="MovingStairBlocks13" parent="Platforms" instance=ExtResource("16_japjs")]
 position = Vector2(4288, 1600)
 speed = 0.5
 
-[node name="MovingStairBlocks14" parent="Floating Platforms" instance=ExtResource("16_japjs")]
+[node name="MovingStairBlocks14" parent="Platforms" instance=ExtResource("16_japjs")]
 position = Vector2(3968, 1728)
 speed = 0.5
 
-[node name="AscendingStairBlocks" parent="Floating Platforms" instance=ExtResource("28_ckttt")]
+[node name="AscendingStairBlocks" parent="Platforms" instance=ExtResource("28_ckttt")]
 position = Vector2(5312, 1296)
 
-[node name="AscendingStairBlocks2" parent="Floating Platforms" instance=ExtResource("28_ckttt")]
+[node name="AscendingStairBlocks2" parent="Platforms" instance=ExtResource("28_ckttt")]
 position = Vector2(5952, 2032)
 
-[node name="MultiRotatingPlatforms" parent="Floating Platforms" instance=ExtResource("41_r5m2v")]
+[node name="MultiRotatingPlatforms" parent="Platforms" instance=ExtResource("41_r5m2v")]
 position = Vector2(2240, 928)
 platformCount = 4
 chains = 6
 
-[node name="Elevator" parent="Floating Platforms" instance=ExtResource("28_qxqdr")]
+[node name="Elevator" parent="Platforms" instance=ExtResource("28_qxqdr")]
 position = Vector2(9248, 1888)
 texture = ExtResource("14_3lrrj")
 endPosition = Vector2(0, 111)
 waitTime = 3.0
 
-[node name="Hazards" type="Node2D" parent="."]
+[node name="Hazards" type="Node" parent="."]
 
 [node name="Spikes" parent="Hazards" instance=ExtResource("17_4h4gd")]
 position = Vector2(4000, 880)
@@ -1036,162 +1034,261 @@ behavior = 2
 position = Vector2(5392, 1160)
 behavior = 3
 
-[node name="ItemsHolder" type="Node2D" parent="."]
+[node name="VacumTubes" type="Node2D" parent="."]
+visible = false
 
-[node name="Monitor2" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="ZoomTube1" type="Line2D" parent="VacumTubes"]
+z_index = 20
+points = PackedVector2Array(272, 1232, 272, 1392, 496, 1392, 496, 1328, 400, 1328, 400, 1360, 400, 1392, 400, 1712, 880, 1712, 880, 1744, 784, 1744, 784, 1776, 912, 1776, 912, 1632)
+width = 16.0
+default_color = Color(1, 0, 0, 0.721569)
+script = ExtResource("25_7q6q8")
+
+[node name="ZoomTube1Split2" type="Line2D" parent="VacumTubes/ZoomTube1"]
+points = PackedVector2Array(784, 1776, 784, 1840, 1424, 1840, 1424, 1200, 1808, 1200, 1808, 624, 1904, 624, 1904, 592, 1808, 592, 1808, 560, 2064, 560, 2064, 368)
+width = 16.0
+default_color = Color(1, 0.329412, 0.345098, 0.694118)
+texture = SubResource("ImageTexture_n3r3v")
+script = ExtResource("25_7q6q8")
+speed = 10
+hitBoxSize = Vector2(16, 16)
+split = true
+splitChance = 50
+
+[node name="ZoomTube2" type="Line2D" parent="VacumTubes"]
+z_index = 20
+points = PackedVector2Array(3600, 1816, 3600, 1904, 3472, 1904, 3472, 1872, 3568, 1872, 3568, 1840, 3488, 1840, 3472, 1840, 3472, 1856, 3472, 1968, 4240, 1968, 4240, 1840, 4624, 1840, 4624, 1712, 4720, 1712, 4720, 1744, 4624, 1744, 4624, 1776, 4752, 1776, 4752, 1632)
+width = 16.0
+default_color = Color(0, 0, 1, 0.294118)
+script = ExtResource("25_7q6q8")
+
+[node name="ZoomTube2Split1" type="Line2D" parent="VacumTubes/ZoomTube2"]
+points = PackedVector2Array(3472, 1840, 1808, 1840, 1808, 1328, 2704, 1328, 2704, 1072, 3088, 1072, 3088, 944, 3184, 944, 3184, 976, 3088, 976, 3088, 1008, 3216, 1008, 3216, 872)
+width = 16.0
+default_color = Color(0, 0, 0.560784, 0.694118)
+texture = SubResource("ImageTexture_cvpji")
+script = ExtResource("25_7q6q8")
+speed = 12
+hitBoxSize = Vector2(16, 16)
+split = true
+splitChance = 50
+
+[node name="ZoomTube3" type="Line2D" parent="VacumTubes"]
+z_index = 20
+points = PackedVector2Array(5520, 288, 5520, 368, 5872, 368, 5872, 336, 5776, 336, 5776, 304, 6032, 304, 6032, 160)
+width = 16.0
+default_color = Color(0, 1, 0, 0.592157)
+texture = SubResource("ImageTexture_rx3ny")
+script = ExtResource("25_7q6q8")
+
+[node name="ZoomeTube3Split1" type="Line2D" parent="VacumTubes/ZoomTube3"]
+points = PackedVector2Array(5776, 336, 5776, 688, 4880, 688, 4880, 1456, 5488, 1456, 5488, 1488, 5392, 1488, 5392, 1520, 5648, 1520, 5648, 1376)
+width = 16.0
+default_color = Color(0, 0.572549, 0, 0.756863)
+texture = SubResource("ImageTexture_hxxfn")
+script = ExtResource("25_7q6q8")
+hitBoxSize = Vector2(16, 16)
+split = true
+splitChance = 50
+
+[node name="Items" type="Node" parent="."]
+
+[node name="Monitor2" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(9344, 368)
 item = 12
 shieldAffinity = null
 
-[node name="Monitor30" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor30" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(8976, 1968)
 shieldAffinity = null
 
-[node name="Monitor28" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor28" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(10480, 1456)
 shieldAffinity = null
 
-[node name="Monitor29" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor29" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(10448, 1456)
 shieldAffinity = null
 
-[node name="Monitor3" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor3" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(7104, 472)
 item = 3
 shieldAffinity = null
 
-[node name="Monitor4" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor4" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(5744, 240)
 shieldAffinity = null
 
-[node name="Monitor5" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor5" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(4656, 336)
 shieldAffinity = null
 
-[node name="Monitor6" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor6" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(4688, 336)
 shieldAffinity = null
 
-[node name="Monitor7" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor7" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(3416, 688)
 item = 2
 shieldAffinity = null
 
-[node name="Monitor9" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor9" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(3448, 688)
 shieldAffinity = null
 
-[node name="Monitor8" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor8" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(2704, 496)
 item = 1
 shieldAffinity = null
 
-[node name="Monitor10" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor10" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(1840, 112)
 shieldAffinity = null
 
-[node name="Monitor13" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor13" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(2992, 752)
 shieldAffinity = null
 
-[node name="Monitor16" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor16" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(1936, 1008)
 item = 12
 shieldAffinity = null
 
-[node name="Monitor17" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor17" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(2640, 1264)
 item = 2
 shieldAffinity = null
 
-[node name="Monitor18" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor18" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(304, 624)
 shieldAffinity = null
 
-[node name="Monitor14" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor14" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(3024, 752)
 shieldAffinity = null
 
-[node name="Monitor15" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor15" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(3056, 752)
 item = 3
 shieldAffinity = null
 
-[node name="Monitor12" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor12" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(1768, 496)
 shieldAffinity = null
 
-[node name="Monitor19" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor19" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(3952, 1200)
 shieldAffinity = null
 
-[node name="Monitor20" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor20" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(3920, 1200)
 shieldAffinity = null
 
-[node name="Monitor21" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor21" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(4688, 2000)
 shieldAffinity = null
 
-[node name="Monitor22" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor22" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(4720, 2000)
 item = 2
 shieldAffinity = null
 
-[node name="Monitor23" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor23" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(5712, 2000)
 item = 12
 shieldAffinity = null
 
-[node name="Monitor24" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor24" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(5520, 1392)
 shieldAffinity = null
 
-[node name="Monitor25" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor25" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(5552, 1392)
 shieldAffinity = null
 
-[node name="Monitor26" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor26" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(4528, 1376)
 shieldAffinity = null
 
-[node name="Monitor27" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor27" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(4560, 1376)
 shieldAffinity = null
 
-[node name="Monitor31" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor31" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(2576, 240)
 shieldAffinity = null
 
-[node name="Monitor32" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor32" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(2608, 240)
 shieldAffinity = null
 
-[node name="Monitor11" parent="ItemsHolder" instance=ExtResource("30_5k5ut")]
+[node name="Monitor11" parent="Items" instance=ExtResource("30_5k5ut")]
 position = Vector2(1808, 112)
 item = 3
 shieldAffinity = null
 
-[node name="LampPost" parent="ItemsHolder" instance=ExtResource("30_8ycur")]
+[node name="LampPost" parent="Items" instance=ExtResource("30_8ycur")]
 position = Vector2(3640, 1256)
 
-[node name="LampPost2" parent="ItemsHolder" instance=ExtResource("30_8ycur")]
+[node name="LampPost2" parent="Items" instance=ExtResource("30_8ycur")]
 position = Vector2(4416, 872)
 checkPointID = 1
 
-[node name="LampPost3" parent="ItemsHolder" instance=ExtResource("30_8ycur")]
+[node name="LampPost3" parent="Items" instance=ExtResource("30_8ycur")]
 position = Vector2(7232, 744)
 checkPointID = 2
 
-[node name="LampPost4" parent="ItemsHolder" instance=ExtResource("30_8ycur")]
+[node name="LampPost4" parent="Items" instance=ExtResource("30_8ycur")]
 position = Vector2(8512, 168)
 checkPointID = 3
 
-[node name="LampPost5" parent="ItemsHolder" instance=ExtResource("30_8ycur")]
+[node name="LampPost5" parent="Items" instance=ExtResource("30_8ycur")]
 position = Vector2(10752, 1192)
 checkPointID = 4
 
-[node name="Rings" type="Node2D" parent="."]
+[node name="CharacterCameo" parent="Items" instance=ExtResource("39_x42vh")]
+position = Vector2(8424, 168)
+present = 6
+characterTexture = ExtResource("40_m50kc")
+
+[node name="SignpostNew" parent="Items" instance=ExtResource("40_72dwk")]
+position = Vector2(11200, 1280)
+multiplayerOnly = true
+
+[node name="Badniks" type="Node" parent="."]
+
+[node name="Spiny" parent="Badniks" instance=ExtResource("30_po1yj")]
+position = Vector2(2688, 896)
+
+[node name="Spiny2" parent="Badniks" instance=ExtResource("30_po1yj")]
+position = Vector2(2368, 640)
+
+[node name="Spiny3" parent="Badniks" instance=ExtResource("30_po1yj")]
+position = Vector2(2184, 384)
+
+[node name="Spiny4" parent="Badniks" instance=ExtResource("30_po1yj")]
+position = Vector2(1216, 1600)
+
+[node name="Spiny10" parent="Badniks" instance=ExtResource("30_po1yj")]
+position = Vector2(152, 1216)
+
+[node name="Spiny5" parent="Badniks" instance=ExtResource("30_po1yj")]
+position = Vector2(1344, 1600)
+
+[node name="Spiny6" parent="Badniks" instance=ExtResource("30_po1yj")]
+position = Vector2(4096, 1152)
+
+[node name="Spiny8" parent="Badniks" instance=ExtResource("30_po1yj")]
+position = Vector2(5440, 256)
+
+[node name="Spiny9" parent="Badniks" instance=ExtResource("30_po1yj")]
+position = Vector2(10048, 1472)
+
+[node name="Spiny7" parent="Badniks" instance=ExtResource("30_po1yj")]
+position = Vector2(4352, 1496)
+rotation = -1.5708
+
+[node name="Rings" type="Node" parent="."]
 
 [node name="Ring" parent="Rings" instance=ExtResource("10_bnv7v")]
 position = Vector2(184, 240)
@@ -1667,97 +1764,6 @@ position = Vector2(624, 752)
 [node name="Ring15" parent="Rings" instance=ExtResource("10_bnv7v")]
 position = Vector2(648, 752)
 
-[node name="Badniks" type="Node2D" parent="."]
-metadata/_edit_lock_ = true
-
-[node name="Spiny" parent="Badniks" instance=ExtResource("30_po1yj")]
-position = Vector2(2688, 896)
-
-[node name="Spiny2" parent="Badniks" instance=ExtResource("30_po1yj")]
-position = Vector2(2368, 640)
-
-[node name="Spiny3" parent="Badniks" instance=ExtResource("30_po1yj")]
-position = Vector2(2184, 384)
-
-[node name="Spiny4" parent="Badniks" instance=ExtResource("30_po1yj")]
-position = Vector2(1216, 1600)
-
-[node name="Spiny10" parent="Badniks" instance=ExtResource("30_po1yj")]
-position = Vector2(152, 1216)
-
-[node name="Spiny5" parent="Badniks" instance=ExtResource("30_po1yj")]
-position = Vector2(1344, 1600)
-
-[node name="Spiny6" parent="Badniks" instance=ExtResource("30_po1yj")]
-position = Vector2(4096, 1152)
-
-[node name="Spiny8" parent="Badniks" instance=ExtResource("30_po1yj")]
-position = Vector2(5440, 256)
-
-[node name="Spiny9" parent="Badniks" instance=ExtResource("30_po1yj")]
-position = Vector2(10048, 1472)
-
-[node name="Spiny7" parent="Badniks" instance=ExtResource("30_po1yj")]
-position = Vector2(4352, 1496)
-rotation = -1.5708
-
-[node name="VacumTubes" type="Node2D" parent="."]
-visible = false
-
-[node name="ZoomTube1" type="Line2D" parent="VacumTubes"]
-z_index = 20
-points = PackedVector2Array(272, 1232, 272, 1392, 496, 1392, 496, 1328, 400, 1328, 400, 1360, 400, 1392, 400, 1712, 880, 1712, 880, 1744, 784, 1744, 784, 1776, 912, 1776, 912, 1632)
-width = 16.0
-default_color = Color(1, 0, 0, 0.721569)
-script = ExtResource("25_7q6q8")
-
-[node name="ZoomTube1Split2" type="Line2D" parent="VacumTubes/ZoomTube1"]
-points = PackedVector2Array(784, 1776, 784, 1840, 1424, 1840, 1424, 1200, 1808, 1200, 1808, 624, 1904, 624, 1904, 592, 1808, 592, 1808, 560, 2064, 560, 2064, 368)
-width = 16.0
-default_color = Color(1, 0.329412, 0.345098, 0.694118)
-texture = SubResource("ImageTexture_n3r3v")
-script = ExtResource("25_7q6q8")
-speed = 10
-hitBoxSize = Vector2(16, 16)
-split = true
-splitChance = 50
-
-[node name="ZoomTube2" type="Line2D" parent="VacumTubes"]
-z_index = 20
-points = PackedVector2Array(3600, 1816, 3600, 1904, 3472, 1904, 3472, 1872, 3568, 1872, 3568, 1840, 3488, 1840, 3472, 1840, 3472, 1856, 3472, 1968, 4240, 1968, 4240, 1840, 4624, 1840, 4624, 1712, 4720, 1712, 4720, 1744, 4624, 1744, 4624, 1776, 4752, 1776, 4752, 1632)
-width = 16.0
-default_color = Color(0, 0, 1, 0.294118)
-script = ExtResource("25_7q6q8")
-
-[node name="ZoomTube2Split1" type="Line2D" parent="VacumTubes/ZoomTube2"]
-points = PackedVector2Array(3472, 1840, 1808, 1840, 1808, 1328, 2704, 1328, 2704, 1072, 3088, 1072, 3088, 944, 3184, 944, 3184, 976, 3088, 976, 3088, 1008, 3216, 1008, 3216, 872)
-width = 16.0
-default_color = Color(0, 0, 0.560784, 0.694118)
-texture = SubResource("ImageTexture_cvpji")
-script = ExtResource("25_7q6q8")
-speed = 12
-hitBoxSize = Vector2(16, 16)
-split = true
-splitChance = 50
-
-[node name="ZoomTube3" type="Line2D" parent="VacumTubes"]
-z_index = 20
-points = PackedVector2Array(5520, 288, 5520, 368, 5872, 368, 5872, 336, 5776, 336, 5776, 304, 6032, 304, 6032, 160)
-width = 16.0
-default_color = Color(0, 1, 0, 0.592157)
-texture = SubResource("ImageTexture_rx3ny")
-script = ExtResource("25_7q6q8")
-
-[node name="ZoomeTube3Split1" type="Line2D" parent="VacumTubes/ZoomTube3"]
-points = PackedVector2Array(5776, 336, 5776, 688, 4880, 688, 4880, 1456, 5488, 1456, 5488, 1488, 5392, 1488, 5392, 1520, 5648, 1520, 5648, 1376)
-width = 16.0
-default_color = Color(0, 0.572549, 0, 0.756863)
-texture = SubResource("ImageTexture_hxxfn")
-script = ExtResource("25_7q6q8")
-hitBoxSize = Vector2(16, 16)
-split = true
-splitChance = 50
-
 [node name="Boss" type="Node2D" parent="."]
 
 [node name="BossBoundrySetter" parent="Boss" instance=ExtResource("37_6lr32")]
@@ -1768,14 +1774,10 @@ keepRightLocked = false
 [node name="PoisonEggman" parent="Boss" instance=ExtResource("38_vediw")]
 position = Vector2(11712, 1184)
 
-[node name="SignpostNew" parent="." instance=ExtResource("40_72dwk")]
-position = Vector2(11200, 1280)
-multiplayerOnly = true
+[node name="Capsule" parent="Boss" instance=ExtResource("19_2fboq")]
+position = Vector2(12224, 1248)
 
 [node name="BossTestSpawn" type="Node2D" parent="."]
 position = Vector2(10680, 1152)
 script = ExtResource("42_srg2o")
 currentCharacter = 7
-
-[node name="Capsule" parent="." instance=ExtResource("19_2fboq")]
-position = Vector2(12224, 1248)

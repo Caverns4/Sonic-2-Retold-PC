@@ -3,7 +3,7 @@ extends Node2D
 @export var music = preload("res://Audio/Soundtrack/s2br_TitleScreen.ogg")
 var nextZone = preload("res://Scene/Presentation/ZoneLoader.tscn")
 var twoPlayerScene = load("res://Scene/Presentation/TwoPlayerMenu.tscn")
-var testScene = load("res://Scene/Presentation/CharacterSelect.tscn")
+var testScene = load("res://Scene/Presentation/LevelSelect.tscn")
 var returnScene = load("res://Scene/Cutscenes/Opening.tscn")
 var optionsScene = load("res://Scene/Presentation/OptionsMenu.tscn")
 
