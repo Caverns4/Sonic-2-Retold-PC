@@ -446,47 +446,47 @@ bottomBoundry = 992
 
 [node name="Platform" parent="Platform" instance=ExtResource("13_mfjkp")]
 position = Vector2(5344, 1120)
-platformSprite = ExtResource("14_1yu1u")
+platform_sprite = ExtResource("14_1yu1u")
 endPosition = Vector2(0, 0)
 fallTimer = 1.0
 
 [node name="Platform8" parent="Platform" instance=ExtResource("13_mfjkp")]
 position = Vector2(5536, 600)
-platformSprite = ExtResource("14_1yu1u")
+platform_sprite = ExtResource("14_1yu1u")
 endPosition = Vector2(0, 0)
 fallTimer = 1.0
 
 [node name="Platform2" parent="Platform" instance=ExtResource("13_mfjkp")]
 position = Vector2(5216, 1120)
-platformSprite = ExtResource("14_1yu1u")
+platform_sprite = ExtResource("14_1yu1u")
 endPosition = Vector2(0, 0)
 fallTimer = 1.0
 
 [node name="Platform6" parent="Platform" instance=ExtResource("13_mfjkp")]
 position = Vector2(5040, 624)
-platformSprite = ExtResource("14_1yu1u")
+platform_sprite = ExtResource("14_1yu1u")
 endPosition = Vector2(128, 0)
 
 [node name="Platform9" parent="Platform" instance=ExtResource("13_mfjkp")]
 position = Vector2(6144, 640)
-platformSprite = ExtResource("14_1yu1u")
+platform_sprite = ExtResource("14_1yu1u")
 endPosition = Vector2(128, 0)
 
 [node name="Platform7" parent="Platform" instance=ExtResource("13_mfjkp")]
 position = Vector2(5344, 600)
-platformSprite = ExtResource("14_1yu1u")
+platform_sprite = ExtResource("14_1yu1u")
 endPosition = Vector2(0, 128)
 
 [node name="Platform10" parent="Platform" instance=ExtResource("13_mfjkp")]
 position = Vector2(6032, 1520)
-platformSprite = ExtResource("27_4ortn")
+platform_sprite = ExtResource("27_4ortn")
 endPosition = Vector2(0, 64)
 dropSlightly = false
 fullySolid = true
 
 [node name="Platform11" parent="Platform" instance=ExtResource("13_mfjkp")]
 position = Vector2(6192, 1520)
-platformSprite = ExtResource("27_4ortn")
+platform_sprite = ExtResource("27_4ortn")
 endPosition = Vector2(0, 64)
 offset = 64.0
 dropSlightly = false
@@ -494,19 +494,19 @@ fullySolid = true
 
 [node name="Platform3" parent="Platform" instance=ExtResource("13_mfjkp")]
 position = Vector2(7264, 1120)
-platformSprite = ExtResource("14_1yu1u")
+platform_sprite = ExtResource("14_1yu1u")
 endPosition = Vector2(0, 0)
 fallTimer = 1.0
 
 [node name="Platform4" parent="Platform" instance=ExtResource("13_mfjkp")]
 position = Vector2(7392, 1120)
-platformSprite = ExtResource("14_1yu1u")
+platform_sprite = ExtResource("14_1yu1u")
 endPosition = Vector2(0, 0)
 fallTimer = 1.0
 
 [node name="Platform5" parent="Platform" instance=ExtResource("13_mfjkp")]
 position = Vector2(8320, 1440)
-platformSprite = ExtResource("14_1yu1u")
+platform_sprite = ExtResource("14_1yu1u")
 endPosition = Vector2(0, 96)
 fallTimer = 1.0
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://cyh8p6ji14r0t"]
+[gd_scene load_steps=39 format=4 uid="uid://cyh8p6ji14r0t"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_ijtho"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="2_vefax"]
@@ -25,7 +25,6 @@
 [ext_resource type="PackedScene" uid="uid://c1ldunfxhq0he" path="res://Entities/Obstacles/ForceAngleSides.tscn" id="31_qjmib"]
 [ext_resource type="Texture2D" uid="uid://ci13nuikdwatn" path="res://Graphics/Tiles/WorldsTiles/EHZ_Platform_Large.png" id="31_ygsss"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="33_ommvj"]
-[ext_resource type="Texture2D" uid="uid://bsl2k38yish1o" path="res://Graphics/Tiles/WorldsTiles/EHZ_Platform_Small.png" id="34_jkdjx"]
 [ext_resource type="PackedScene" uid="uid://85umccwskeyx" path="res://Entities/Gimmicks/HTZSeeSaw.tscn" id="37_geevq"]
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="38_biojh"]
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="39_rxisn"]
@@ -377,7 +376,7 @@ SpriteTexture = ExtResource("45_p5a0n")
 [node name="Platform" parent="FloatingPlatform" instance=ExtResource("9_0ltuq")]
 material = ExtResource("30_2glpn")
 position = Vector2(1356, 1112)
-platformSprite = ExtResource("31_ygsss")
+platform_sprite = ExtResource("31_ygsss")
 endPosition = Vector2(0, 64)
 dropSlightly = false
 fullySolid = true
@@ -385,7 +384,7 @@ fullySolid = true
 [node name="Platform4" parent="FloatingPlatform" instance=ExtResource("9_0ltuq")]
 material = ExtResource("30_2glpn")
 position = Vector2(2368, 928)
-platformSprite = ExtResource("31_ygsss")
+platform_sprite = ExtResource("31_ygsss")
 endPosition = Vector2(0, 64)
 dropSlightly = false
 fullySolid = true
@@ -393,7 +392,7 @@ fullySolid = true
 [node name="Platform6" parent="FloatingPlatform" instance=ExtResource("9_0ltuq")]
 material = ExtResource("30_2glpn")
 position = Vector2(3840, 936)
-platformSprite = ExtResource("31_ygsss")
+platform_sprite = ExtResource("31_ygsss")
 endPosition = Vector2(0, 64)
 dropSlightly = false
 fullySolid = true
@@ -401,7 +400,6 @@ fullySolid = true
 [node name="Platform11" parent="FloatingPlatform" instance=ExtResource("9_0ltuq")]
 material = ExtResource("30_2glpn")
 position = Vector2(3776, 360)
-platformSprite = ExtResource("34_jkdjx")
 endPosition = Vector2(0, 0)
 dropSlightly = false
 fallTimer = 0.5
@@ -409,35 +407,31 @@ fallTimer = 0.5
 [node name="Platform12" parent="FloatingPlatform" instance=ExtResource("9_0ltuq")]
 material = ExtResource("30_2glpn")
 position = Vector2(3872, 256)
-platformSprite = ExtResource("34_jkdjx")
 endPosition = Vector2(96, 0)
 offset = 96.0
 
 [node name="Platform13" parent="FloatingPlatform" instance=ExtResource("9_0ltuq")]
 material = ExtResource("30_2glpn")
 position = Vector2(2272, 1504)
-platformSprite = ExtResource("34_jkdjx")
 endPosition = Vector2(-192, 0)
 offset = 96.0
 
 [node name="Platform16" parent="FloatingPlatform" instance=ExtResource("9_0ltuq")]
 material = ExtResource("30_2glpn")
 position = Vector2(3424, 1976)
-platformSprite = ExtResource("34_jkdjx")
 endPosition = Vector2(-64, 0)
 offset = 96.0
 
 [node name="Platform17" parent="FloatingPlatform" instance=ExtResource("9_0ltuq")]
 material = ExtResource("30_2glpn")
 position = Vector2(3744, 1744)
-platformSprite = ExtResource("34_jkdjx")
 endPosition = Vector2(-128, 0)
 offset = 96.0
 
 [node name="Platform10" parent="FloatingPlatform" instance=ExtResource("9_0ltuq")]
 material = ExtResource("30_2glpn")
 position = Vector2(7448, 1440)
-platformSprite = ExtResource("31_ygsss")
+platform_sprite = ExtResource("31_ygsss")
 endPosition = Vector2(0, 64)
 dropSlightly = false
 fullySolid = true
@@ -445,7 +439,7 @@ fullySolid = true
 [node name="Platform7" parent="FloatingPlatform" instance=ExtResource("9_0ltuq")]
 material = ExtResource("30_2glpn")
 position = Vector2(4992, 552)
-platformSprite = ExtResource("31_ygsss")
+platform_sprite = ExtResource("31_ygsss")
 endPosition = Vector2(0, 64)
 dropSlightly = false
 fullySolid = true
@@ -453,7 +447,7 @@ fullySolid = true
 [node name="Platform8" parent="FloatingPlatform" instance=ExtResource("9_0ltuq")]
 material = ExtResource("30_2glpn")
 position = Vector2(3744, 1936)
-platformSprite = ExtResource("31_ygsss")
+platform_sprite = ExtResource("31_ygsss")
 endPosition = Vector2(0, 64)
 dropSlightly = false
 fullySolid = true
@@ -461,7 +455,7 @@ fullySolid = true
 [node name="Platform14" parent="FloatingPlatform" instance=ExtResource("9_0ltuq")]
 material = ExtResource("30_2glpn")
 position = Vector2(3016, 1960)
-platformSprite = ExtResource("31_ygsss")
+platform_sprite = ExtResource("31_ygsss")
 endPosition = Vector2(0, 64)
 dropSlightly = false
 fullySolid = true
@@ -469,7 +463,7 @@ fullySolid = true
 [node name="Platform9" parent="FloatingPlatform" instance=ExtResource("9_0ltuq")]
 material = ExtResource("30_2glpn")
 position = Vector2(3808, 1936)
-platformSprite = ExtResource("31_ygsss")
+platform_sprite = ExtResource("31_ygsss")
 endPosition = Vector2(0, 64)
 offset = 64.0
 dropSlightly = false
@@ -478,7 +472,7 @@ fullySolid = true
 [node name="Platform15" parent="FloatingPlatform" instance=ExtResource("9_0ltuq")]
 material = ExtResource("30_2glpn")
 position = Vector2(3128, 1960)
-platformSprite = ExtResource("31_ygsss")
+platform_sprite = ExtResource("31_ygsss")
 endPosition = Vector2(0, 64)
 offset = 64.0
 dropSlightly = false
@@ -487,7 +481,7 @@ fullySolid = true
 [node name="Platform3" parent="FloatingPlatform" instance=ExtResource("9_0ltuq")]
 material = ExtResource("30_2glpn")
 position = Vector2(1440, 1824)
-platformSprite = ExtResource("31_ygsss")
+platform_sprite = ExtResource("31_ygsss")
 endPosition = Vector2(0, 64)
 dropSlightly = false
 fullySolid = true
@@ -495,7 +489,7 @@ fullySolid = true
 [node name="Platform2" parent="FloatingPlatform" instance=ExtResource("9_0ltuq")]
 material = ExtResource("30_2glpn")
 position = Vector2(1464, 1176)
-platformSprite = ExtResource("31_ygsss")
+platform_sprite = ExtResource("31_ygsss")
 endPosition = Vector2(0, -64)
 dropSlightly = false
 fullySolid = true

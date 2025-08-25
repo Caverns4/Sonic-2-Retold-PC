@@ -2,7 +2,7 @@
 extends AnimatableBody2D
 
 ## Texture2D that the object will be rendered with. Also determines collision size.
-@export var texture: Texture2D = preload("res://Graphics/Objects_Zone/MTZ_Elevator.png")
+@export var platform_sprite: Texture2D = preload("res://Graphics/Objects_Zone/MTZ_Elevator.png")
 ## The button that triggers the motion of this platform.
 @export var button: StaticBody2D = null
 ## The target position relative to the starting position.
@@ -16,42 +16,34 @@ var active: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Change platform shape
-	$Mask.shape.size.x = texture.get_size().x
-	$Mask.shape.size.y = texture.get_size().y
-	$Sprite.texture = texture
+	$Shape2D.shape.size.x = platform_sprite.get_size().x
+	$Shape2D.shape.size.y = platform_sprite.get_size().y
+	
 	if !Engine.is_editor_hint():
+		# Change platform sprite texture
+		$Sprite.texture = platform_sprite
 		origin = global_position
 		if button and button.has_signal("pressed"):
 			button.connect("pressed",activatePlatform)
 
 func _process(delta):
 	if Engine.is_editor_hint():
-		$Mask.shape.size.x = texture.get_size().x
-		$Mask.shape.size.y = texture.get_size().y
+		$Shape2D.shape.size.x = platform_sprite.get_size().x
+		$Shape2D.shape.size.y = platform_sprite.get_size().y
 		queue_redraw()
 
 func _physics_process(delta: float) -> void:
-	if Engine.is_editor_hint():
-		return
-	
-	if active:
-		global_position = global_position.move_toward(
-			origin + target_position,
-			128*delta
-		)
-		#global_position.x = move_toward(
-		#	global_position.x,
-		#	origin.x,
-		#	128*delta)
-	else:
-		global_position = global_position.move_toward(
-			origin,
-			128*delta
-		)
-		#global_position.x = move_toward(
-		#	global_position.x,
-		#	origin.x+target_position.x,
-		#	128*delta)
+	if !Engine.is_editor_hint():
+		if active:
+			global_position = global_position.move_toward(
+				origin + target_position,
+				128*delta
+			)
+		else:
+			global_position = global_position.move_toward(
+				origin,
+				128*delta
+			)
 
 
 func activatePlatform():
@@ -64,4 +56,4 @@ func activatePlatform():
 func _draw():
 	if Engine.is_editor_hint():
 		# Draw the platform positions for the editor
-		draw_texture(texture,-texture.get_size()/2,Color.WHITE)
+		draw_texture(platform_sprite,-platform_sprite.get_size()/2,Color.WHITE)

@@ -3,10 +3,10 @@ extends EnemyBase
 ## Blue model takes longer to throw slicers
 @export_enum("Blue","Green","Red") var model: int = 0
 @export var move_speed: float = 15
-@export var walk_time: float = 10.0
+@export var walk_time: float = 5.0
 @export var slicer_tracking_time: float = 4.0
 
-const THROW_DELAY = [1.0,0.5,0.1,9.0]
+const THROW_DELAY = [1.0,0.5,0.25,1.0]
 
 enum STATE{WALK,WAIT,THROW}
 var state: int = 0
@@ -89,15 +89,14 @@ func ScanForPlayers():
 	players.clear()
 	var nearest = GlobalFunctions.get_nearest_player_x(global_position.x)
 	var diff = nearest.global_position.x - global_position.x
-	if (abs(diff) <= 128 and 
-	sign(diff) == sign(move_dir)):
+	if (abs(diff) <= 128 ): #and sign(diff) == sign(move_dir)
 		players.append(nearest)
 
 func updateSprite():
 	if round(velocity.x) != 0:
 		sprite.scale.x = 0-sign(velocity.x)
-	var wrColor = weakref(colorMask)
-	if wrColor:
+	var wrColor = weakref(colorMask).get_ref()
+	if wrColor: 
 		colorMask.frame = sprite.frame
 
 func _throw_bullet():
@@ -109,3 +108,4 @@ func _throw_bullet():
 	bullet.slicer_tracking_time = slicer_tracking_time
 	bullet.velocity.x = 120*sign(move_dir)
 	bullet.target = players[0]
+	bullet.parent = self

@@ -1,7 +1,7 @@
 @tool
 extends Node2D
 
-@export var platformSprite = preload("res://Graphics/Tiles/WorldsTiles/Platform.png")
+@export var platform_sprite: Texture2D = preload("res://Graphics/Tiles/WorldsTiles/EHZ_Platform_Small.png")
 ## This is actually where the platform *starts*
 @export var endPosition = Vector2(256,0)
 ## How fast this platform should move.
@@ -30,8 +30,8 @@ var doDrop = false
 func _ready():
 	# Change platform shape
 	if fullySolid:
-		$Platform/Shape3D.shape.size.x = platformSprite.get_size().x
-		$Platform/Shape3D.shape.size.y = platformSprite.get_size().y
+		$Platform/Shape3D.shape.size.x = platform_sprite.get_size().x
+		$Platform/Shape3D.shape.size.y = platform_sprite.get_size().y
 		$Platform/Shape3D.position.y = platformDepth
 		$Platform/Shape3D.one_way_collision = false
 		$Platform.set_collision_layer_value(2,true)
@@ -39,13 +39,13 @@ func _ready():
 		$Platform.set_collision_layer_value(4,true)
 		$Platform.set_collision_layer_value(22,true)
 	else:
-		$Platform/Shape3D.shape.size.x = platformSprite.get_size().x
+		$Platform/Shape3D.shape.size.x = platform_sprite.get_size().x
 		$Platform/Shape3D.shape.size.y = platformDepth/2.0
-		$Platform/Shape3D.position.y = 0-(platformSprite.get_size().y/2.0)+(platformDepth/2.0)+(floorOffset-2)
+		$Platform/Shape3D.position.y = 0-(platform_sprite.get_size().y/2.0)+(platformDepth/2.0)+(floorOffset-2)
 
 	if !Engine.is_editor_hint():
 		# Change platform sprite texture
-		$Platform/Sprite2D.texture = platformSprite
+		$Platform/Sprite2D.texture = platform_sprite
 	else:
 		offsetTimer = 0
 	
@@ -53,13 +53,13 @@ func _ready():
 func _process(delta):
 	if Engine.is_editor_hint():
 		if fullySolid:
-			$Platform/Shape3D.shape.size.x = platformSprite.get_size().x
-			$Platform/Shape3D.shape.size.y = platformSprite.get_size().y
+			$Platform/Shape3D.shape.size.x = platform_sprite.get_size().x
+			$Platform/Shape3D.shape.size.y = platform_sprite.get_size().y
 			$Platform/Shape3D.position.y = platformDepth
 		else:
-			$Platform/Shape3D.shape.size.x = platformSprite.get_size().x
+			$Platform/Shape3D.shape.size.x = platform_sprite.get_size().x
 			$Platform/Shape3D.shape.size.y = platformDepth/2.0
-			$Platform/Shape3D.position.y = 0-(platformSprite.get_size().y/2.0)+(platformDepth/2.0)+(floorOffset-2)
+			$Platform/Shape3D.position.y = 0-(platform_sprite.get_size().y/2.0)+(platformDepth/2.0)+(floorOffset-2)
 		queue_redraw()
 		# Offset timer for the editor to display
 		offsetTimer = wrapf(offsetTimer+(delta*speed),0,PI*2)
@@ -108,7 +108,7 @@ func _draw():
 	if Engine.is_editor_hint():
 		# Draw the platform positions for the editor
 		if speed > 0 or endPosition != Vector2.ZERO:
-			draw_texture(platformSprite,-platformSprite.get_size()/2,Color(1,1,1,0.5))
-			draw_texture(platformSprite,endPosition-platformSprite.get_size()/2,Color(1,1,1,0.5))
-			draw_texture(platformSprite,(endPosition*(cos(offsetTimer+offset)*0.5+0.5))-platformSprite.get_size()/2,Color.WHITE)
+			draw_texture(platform_sprite,-platform_sprite.get_size()/2,Color(1,1,1,0.5))
+			draw_texture(platform_sprite,endPosition-platform_sprite.get_size()/2,Color(1,1,1,0.5))
+			draw_texture(platform_sprite,(endPosition*(cos(offsetTimer+offset)*0.5+0.5))-platform_sprite.get_size()/2,Color.WHITE)
 			draw_line(Vector2.ZERO,endPosition,Color.GREEN)

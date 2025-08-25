@@ -549,53 +549,53 @@ plat_img = ExtResource("11_xygnf")
 
 [node name="Platform5" parent="Platforms" instance=ExtResource("20_n7h8v")]
 position = Vector2(2784, 1440)
-platformSprite = ExtResource("21_7rt3i")
+platform_sprite = ExtResource("21_7rt3i")
 endPosition = Vector2(0, 0)
 fallTimer = 1.0
 
 [node name="Platform6" parent="Platforms" instance=ExtResource("20_n7h8v")]
 position = Vector2(3744, 1424)
-platformSprite = ExtResource("21_7rt3i")
+platform_sprite = ExtResource("21_7rt3i")
 endPosition = Vector2(0, 0)
 
 [node name="Platform9" parent="Platforms" instance=ExtResource("20_n7h8v")]
 position = Vector2(5472, 1728)
-platformSprite = ExtResource("21_7rt3i")
+platform_sprite = ExtResource("21_7rt3i")
 endPosition = Vector2(0, 0)
 
 [node name="Platform10" parent="Platforms" instance=ExtResource("20_n7h8v")]
 position = Vector2(5600, 1640)
-platformSprite = ExtResource("21_7rt3i")
+platform_sprite = ExtResource("21_7rt3i")
 endPosition = Vector2(0, 0)
 
 [node name="Platform11" parent="Platforms" instance=ExtResource("20_n7h8v")]
 position = Vector2(6752, 768)
-platformSprite = ExtResource("21_7rt3i")
+platform_sprite = ExtResource("21_7rt3i")
 endPosition = Vector2(128, 0)
 
 [node name="Platform12" parent="Platforms" instance=ExtResource("20_n7h8v")]
 position = Vector2(6704, 1056)
-platformSprite = ExtResource("21_7rt3i")
+platform_sprite = ExtResource("21_7rt3i")
 endPosition = Vector2(128, 0)
 
 [node name="Platform14" parent="Platforms" instance=ExtResource("20_n7h8v")]
 position = Vector2(6896, 928)
-platformSprite = ExtResource("21_7rt3i")
+platform_sprite = ExtResource("21_7rt3i")
 endPosition = Vector2(0, 128)
 
 [node name="Platform13" parent="Platforms" instance=ExtResource("20_n7h8v")]
 position = Vector2(6944, 1192)
-platformSprite = ExtResource("21_7rt3i")
+platform_sprite = ExtResource("21_7rt3i")
 endPosition = Vector2(128, 0)
 
 [node name="Platform7" parent="Platforms" instance=ExtResource("20_n7h8v")]
 position = Vector2(3808, 1496)
-platformSprite = ExtResource("21_7rt3i")
+platform_sprite = ExtResource("21_7rt3i")
 endPosition = Vector2(0, 128)
 
 [node name="Platform8" parent="Platforms" instance=ExtResource("20_n7h8v")]
 position = Vector2(3744, 1688)
-platformSprite = ExtResource("21_7rt3i")
+platform_sprite = ExtResource("21_7rt3i")
 endPosition = Vector2(0, 128)
 offset = 128.0
 

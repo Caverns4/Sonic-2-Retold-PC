@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://b25bf70l62rjr"]
+[gd_scene load_steps=40 format=4 uid="uid://b25bf70l62rjr"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_o6dl6"]
 [ext_resource type="AudioStream" uid="uid://dhw5trv54kut7" path="res://Audio/Soundtrack/s2br_HillTop.ogg" id="2_5rsgg"]
@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://beqh6fywjj4lt" path="res://Graphics/Enemies/Sol.png" id="24_ld6n2"]
 [ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="25_mbeia"]
 [ext_resource type="Texture2D" uid="uid://ci13nuikdwatn" path="res://Graphics/Tiles/WorldsTiles/EHZ_Platform_Large.png" id="25_ot6au"]
-[ext_resource type="Texture2D" uid="uid://bsl2k38yish1o" path="res://Graphics/Tiles/WorldsTiles/EHZ_Platform_Small.png" id="26_e3wso"]
 [ext_resource type="PackedScene" uid="uid://c1ldunfxhq0he" path="res://Entities/Obstacles/ForceAngleSides.tscn" id="27_x58qa"]
 [ext_resource type="PackedScene" uid="uid://bfjam0ov4pku5" path="res://Entities/Obstacles/BreakableBlock.tscn" id="28_ppemo"]
 [ext_resource type="Texture2D" uid="uid://cp6jo03lhimqi" path="res://Graphics/Obstacles/Blocks/HTZ_Boulder.png" id="29_86f2p"]
@@ -542,7 +541,7 @@ characterTexture = ExtResource("37_s7txa")
 [node name="Platform" parent="Platforms" instance=ExtResource("25_mbeia")]
 material = ExtResource("17_kojt6")
 position = Vector2(1088, 1696)
-platformSprite = ExtResource("25_ot6au")
+platform_sprite = ExtResource("25_ot6au")
 endPosition = Vector2(0, 64)
 dropSlightly = false
 fullySolid = true
@@ -550,7 +549,7 @@ fullySolid = true
 [node name="Platform4" parent="Platforms" instance=ExtResource("25_mbeia")]
 material = ExtResource("17_kojt6")
 position = Vector2(2976, 712)
-platformSprite = ExtResource("25_ot6au")
+platform_sprite = ExtResource("25_ot6au")
 endPosition = Vector2(0, 64)
 dropSlightly = false
 fullySolid = true
@@ -558,104 +557,89 @@ fullySolid = true
 [node name="Platform5" parent="Platforms" instance=ExtResource("25_mbeia")]
 material = ExtResource("17_kojt6")
 position = Vector2(2496, 704)
-platformSprite = ExtResource("26_e3wso")
 endPosition = Vector2(0, 192)
 
 [node name="Platform6" parent="Platforms" instance=ExtResource("25_mbeia")]
 material = ExtResource("17_kojt6")
 position = Vector2(2752, 552)
-platformSprite = ExtResource("26_e3wso")
 endPosition = Vector2(0, 192)
 
 [node name="Platform7" parent="Platforms" instance=ExtResource("25_mbeia")]
 material = ExtResource("17_kojt6")
 position = Vector2(6240, 1616)
-platformSprite = ExtResource("26_e3wso")
 endPosition = Vector2(0, 128)
 
 [node name="Platform12" parent="Platforms" instance=ExtResource("25_mbeia")]
 material = ExtResource("17_kojt6")
 position = Vector2(6304, 1360)
-platformSprite = ExtResource("26_e3wso")
 endPosition = Vector2(0, 128)
 
 [node name="Platform10" parent="Platforms" instance=ExtResource("25_mbeia")]
 material = ExtResource("17_kojt6")
 position = Vector2(6400, 1744)
-platformSprite = ExtResource("26_e3wso")
 endPosition = Vector2(128, 0)
 
 [node name="Platform8" parent="Platforms" instance=ExtResource("25_mbeia")]
 material = ExtResource("17_kojt6")
 position = Vector2(6048, 1808)
-platformSprite = ExtResource("26_e3wso")
 endPosition = Vector2(0, 0)
 fallTimer = 1.0
 
 [node name="Platform9" parent="Platforms" instance=ExtResource("25_mbeia")]
 material = ExtResource("17_kojt6")
 position = Vector2(6176, 1808)
-platformSprite = ExtResource("26_e3wso")
 endPosition = Vector2(0, 0)
 
 [node name="Platform13" parent="Platforms" instance=ExtResource("25_mbeia")]
 material = ExtResource("17_kojt6")
 position = Vector2(5952, 1392)
-platformSprite = ExtResource("26_e3wso")
 endPosition = Vector2(0, 0)
 fallTimer = 1.0
 
 [node name="Platform21" parent="Platforms" instance=ExtResource("25_mbeia")]
 material = ExtResource("17_kojt6")
 position = Vector2(8768, 400)
-platformSprite = ExtResource("26_e3wso")
 endPosition = Vector2(0, 0)
 fallTimer = 1.0
 
 [node name="Platform22" parent="Platforms" instance=ExtResource("25_mbeia")]
 material = ExtResource("17_kojt6")
 position = Vector2(9024, 560)
-platformSprite = ExtResource("26_e3wso")
 endPosition = Vector2(0, 0)
 fallTimer = 1.0
 
 [node name="Platform23" parent="Platforms" instance=ExtResource("25_mbeia")]
 material = ExtResource("17_kojt6")
 position = Vector2(9888, 560)
-platformSprite = ExtResource("26_e3wso")
 endPosition = Vector2(0, 0)
 fallTimer = 1.0
 
 [node name="Platform14" parent="Platforms" instance=ExtResource("25_mbeia")]
 material = ExtResource("17_kojt6")
 position = Vector2(6144, 1392)
-platformSprite = ExtResource("26_e3wso")
 endPosition = Vector2(0, 0)
 fallTimer = 1.0
 
 [node name="Platform15" parent="Platforms" instance=ExtResource("25_mbeia")]
 material = ExtResource("17_kojt6")
 position = Vector2(6368, 1264)
-platformSprite = ExtResource("26_e3wso")
 endPosition = Vector2(-192, 0)
 
 [node name="Platform16" parent="Platforms" instance=ExtResource("25_mbeia")]
 material = ExtResource("17_kojt6")
 position = Vector2(6624, 1264)
-platformSprite = ExtResource("26_e3wso")
 endPosition = Vector2(0, 0)
 fallTimer = 1.0
 
 [node name="Platform11" parent="Platforms" instance=ExtResource("25_mbeia")]
 material = ExtResource("17_kojt6")
 position = Vector2(6368, 1552)
-platformSprite = ExtResource("26_e3wso")
 endPosition = Vector2(0, 64)
 
 [node name="Platform2" parent="Platforms" instance=ExtResource("25_mbeia")]
 material = ExtResource("17_kojt6")
 position = Vector2(2624, 1760)
-platformSprite = ExtResource("25_ot6au")
+platform_sprite = ExtResource("25_ot6au")
 endPosition = Vector2(0, 64)
 dropSlightly = false
 fullySolid = true
@@ -663,7 +647,7 @@ fullySolid = true
 [node name="Platform3" parent="Platforms" instance=ExtResource("25_mbeia")]
 material = ExtResource("17_kojt6")
 position = Vector2(4640, 1816)
-platformSprite = ExtResource("25_ot6au")
+platform_sprite = ExtResource("25_ot6au")
 endPosition = Vector2(0, 64)
 dropSlightly = false
 fullySolid = true
@@ -671,7 +655,7 @@ fullySolid = true
 [node name="Platform17" parent="Platforms" instance=ExtResource("25_mbeia")]
 material = ExtResource("17_kojt6")
 position = Vector2(9440, 1960)
-platformSprite = ExtResource("25_ot6au")
+platform_sprite = ExtResource("25_ot6au")
 endPosition = Vector2(0, 64)
 dropSlightly = false
 fullySolid = true
@@ -679,7 +663,7 @@ fullySolid = true
 [node name="Platform18" parent="Platforms" instance=ExtResource("25_mbeia")]
 material = ExtResource("17_kojt6")
 position = Vector2(9792, 1960)
-platformSprite = ExtResource("25_ot6au")
+platform_sprite = ExtResource("25_ot6au")
 endPosition = Vector2(0, 64)
 offset = 64.0
 dropSlightly = false
@@ -688,7 +672,7 @@ fullySolid = true
 [node name="Platform19" parent="Platforms" instance=ExtResource("25_mbeia")]
 material = ExtResource("17_kojt6")
 position = Vector2(10336, 1816)
-platformSprite = ExtResource("25_ot6au")
+platform_sprite = ExtResource("25_ot6au")
 endPosition = Vector2(0, 64)
 dropSlightly = false
 fullySolid = true
@@ -696,7 +680,7 @@ fullySolid = true
 [node name="Platform20" parent="Platforms" instance=ExtResource("25_mbeia")]
 material = ExtResource("17_kojt6")
 position = Vector2(10464, 1808)
-platformSprite = ExtResource("25_ot6au")
+platform_sprite = ExtResource("25_ot6au")
 endPosition = Vector2(0, 64)
 offset = 64.0
 dropSlightly = false

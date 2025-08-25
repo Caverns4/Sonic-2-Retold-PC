@@ -305,23 +305,45 @@ position = Vector2(768, 20)
 
 [node name="Platform" parent="Entities" instance=ExtResource("21_xpxgv")]
 position = Vector2(2400, 588)
-platformSprite = ExtResource("22_jg5gn")
+platform_sprite = ExtResource("22_jg5gn")
 endPosition = Vector2(128, 0)
+dropSlightly = false
 
 [node name="Platform2" parent="Entities" instance=ExtResource("21_xpxgv")]
 position = Vector2(7072, 117)
-platformSprite = ExtResource("22_jg5gn")
+platform_sprite = ExtResource("22_jg5gn")
 endPosition = Vector2(0, 152)
+dropSlightly = false
+
+[node name="Platform3" parent="Entities" instance=ExtResource("21_xpxgv")]
+position = Vector2(6304, 1676)
+platform_sprite = ExtResource("22_jg5gn")
+endPosition = Vector2(128, 0)
+dropSlightly = false
+
+[node name="Platform4" parent="Entities" instance=ExtResource("21_xpxgv")]
+position = Vector2(6624, 1676)
+platform_sprite = ExtResource("22_jg5gn")
+endPosition = Vector2(-128, 0)
+dropSlightly = false
 
 [node name="Platform5" parent="Entities" instance=ExtResource("21_xpxgv")]
 position = Vector2(7072, 328)
-platformSprite = ExtResource("22_jg5gn")
+platform_sprite = ExtResource("22_jg5gn")
 endPosition = Vector2(128, 0)
+dropSlightly = false
 
 [node name="Platform6" parent="Entities" instance=ExtResource("21_xpxgv")]
 position = Vector2(7136, 117)
-platformSprite = ExtResource("22_jg5gn")
+platform_sprite = ExtResource("22_jg5gn")
 endPosition = Vector2(128, 0)
+dropSlightly = false
+
+[node name="Platform7" parent="Entities" instance=ExtResource("21_xpxgv")]
+position = Vector2(4192, 524)
+platform_sprite = ExtResource("22_jg5gn")
+endPosition = Vector2(-128, 0)
+dropSlightly = false
 
 [node name="CharacterCameo" parent="Entities" instance=ExtResource("21_4tdd8")]
 position = Vector2(7488, 72)
@@ -334,24 +356,6 @@ position = Vector2(5792, 364)
 [node name="VerticalShutter6" parent="Entities" instance=ExtResource("11_f4xj6")]
 position = Vector2(5856, 364)
 open_direction = 1
-
-[node name="Platform3" parent="Entities" instance=ExtResource("21_xpxgv")]
-position = Vector2(6304, 1676)
-platformSprite = ExtResource("22_jg5gn")
-endPosition = Vector2(128, 0)
-dropSlightly = false
-
-[node name="Platform4" parent="Entities" instance=ExtResource("21_xpxgv")]
-position = Vector2(6624, 1676)
-platformSprite = ExtResource("22_jg5gn")
-endPosition = Vector2(-128, 0)
-dropSlightly = false
-
-[node name="Platform7" parent="Entities" instance=ExtResource("21_xpxgv")]
-position = Vector2(4192, 524)
-platformSprite = ExtResource("22_jg5gn")
-endPosition = Vector2(-128, 0)
-dropSlightly = false
 
 [node name="Hazards" type="Node" parent="."]
 
@@ -498,7 +502,7 @@ default_color = Color(1, 0.231373, 0.196078, 1)
 
 [node name="MTZ_Pipe2" parent="Tubes" instance=ExtResource("26_um77q")]
 position = Vector2(3280, 872)
-release_velocity = 8
+release_velocity = 12
 
 [node name="Line2D" type="Line2D" parent="Tubes/MTZ_Pipe2"]
 position = Vector2(248, 56)
@@ -1153,7 +1157,10 @@ position = Vector2(6888, 1592)
 position = Vector2(5752, 1776)
 
 [node name="Slicer2" parent="Badniks" instance=ExtResource("32_xx70g")]
-position = Vector2(7232, 400)
+position = Vector2(7280, 400)
+
+[node name="Slicer3" parent="Badniks" instance=ExtResource("32_xx70g")]
+position = Vector2(7792, 976)
 
 [node name="Asteron" parent="Badniks" instance=ExtResource("33_8p2aa")]
 position = Vector2(1824, 400)

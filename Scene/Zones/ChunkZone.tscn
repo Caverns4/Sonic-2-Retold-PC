@@ -478,38 +478,41 @@ metadata/_edit_lock_ = true
 
 [node name="Elevator" parent="Floating Platforms" instance=ExtResource("14_s2njc")]
 position = Vector2(5728, 1360)
+texture = ExtResource("15_wn01l")
 endPosition = Vector2(0, -64)
 
 [node name="Elevator2" parent="Floating Platforms" instance=ExtResource("14_s2njc")]
 position = Vector2(8096, 784)
+texture = ExtResource("15_wn01l")
 endPosition = Vector2(0, 384)
 
 [node name="Elevator3" parent="Floating Platforms" instance=ExtResource("14_s2njc")]
 position = Vector2(8160, 1168)
+texture = ExtResource("15_wn01l")
 endPosition = Vector2(0, 0)
 speed = 0.0
 
 [node name="Platform" parent="Floating Platforms" instance=ExtResource("15_4hohj")]
 position = Vector2(192, 464)
-platformSprite = ExtResource("15_wn01l")
+platform_sprite = ExtResource("15_wn01l")
 endPosition = Vector2(96, 0)
 dropSlightly = false
 
 [node name="Platform4" parent="Floating Platforms" instance=ExtResource("15_4hohj")]
 position = Vector2(680, 464)
-platformSprite = ExtResource("15_wn01l")
+platform_sprite = ExtResource("15_wn01l")
 endPosition = Vector2(96, 0)
 dropSlightly = false
 
 [node name="Platform2" parent="Floating Platforms" instance=ExtResource("15_4hohj")]
 position = Vector2(600, 304)
-platformSprite = ExtResource("15_wn01l")
+platform_sprite = ExtResource("15_wn01l")
 endPosition = Vector2(0, 96)
 dropSlightly = false
 
 [node name="Platform3" parent="Floating Platforms" instance=ExtResource("15_4hohj")]
 position = Vector2(856, 528)
-platformSprite = ExtResource("15_wn01l")
+platform_sprite = ExtResource("15_wn01l")
 endPosition = Vector2(0, -96)
 dropSlightly = false
 

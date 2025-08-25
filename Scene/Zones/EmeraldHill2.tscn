@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://cou8y8ungkjfx"]
+[gd_scene load_steps=26 format=4 uid="uid://cou8y8ungkjfx"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_p81yk"]
 [ext_resource type="PackedScene" uid="uid://deaxge481u7mk" path="res://Scene/Backgrounds/00-EmeraldHill.tscn" id="3_x8p3v"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://bgodeg4oddje6" path="res://Entities/MainObjects/BoundrySetter.tscn" id="23_bmabq"]
 [ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="24_d0wpa"]
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="25_je0kn"]
-[ext_resource type="Texture2D" uid="uid://bsl2k38yish1o" path="res://Graphics/Tiles/WorldsTiles/EHZ_Platform_Small.png" id="25_qhqix"]
 [ext_resource type="AudioStream" uid="uid://uu55iumak4r5" path="res://Audio/SFX/Ambiance/waterfall.wav" id="26_1n4cr"]
 [ext_resource type="PackedScene" uid="uid://cfteqnft5ynr7" path="res://Entities/Hazards/Spikes.tscn" id="26_3yxfe"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="27_hs17r"]
@@ -300,35 +299,30 @@ scrollSpeed = 1
 
 [node name="Platform" parent="Platforms" instance=ExtResource("24_d0wpa")]
 position = Vector2(2220, 700)
-platformSprite = ExtResource("25_qhqix")
 endPosition = Vector2(128, 0)
 offset = 8.0
 floorOffset = 4
 
 [node name="Platform2" parent="Platforms" instance=ExtResource("24_d0wpa")]
 position = Vector2(2784, 784)
-platformSprite = ExtResource("25_qhqix")
 endPosition = Vector2(128, 0)
 offset = 8.0
 floorOffset = 4
 
 [node name="Platform3" parent="Platforms" instance=ExtResource("24_d0wpa")]
 position = Vector2(4400, 496)
-platformSprite = ExtResource("25_qhqix")
 endPosition = Vector2(0, 192)
 offset = 8.0
 floorOffset = 4
 
 [node name="Platform5" parent="Platforms" instance=ExtResource("24_d0wpa")]
 position = Vector2(4896, 494)
-platformSprite = ExtResource("25_qhqix")
 endPosition = Vector2(0, 180)
 offset = 8.0
 floorOffset = 4
 
 [node name="Platform6" parent="Platforms" instance=ExtResource("24_d0wpa")]
 position = Vector2(5472, 656)
-platformSprite = ExtResource("25_qhqix")
 endPosition = Vector2(0, 0)
 offset = 8.0
 fallTimer = 1.0
@@ -336,7 +330,6 @@ floorOffset = 4
 
 [node name="Platform10" parent="Platforms" instance=ExtResource("24_d0wpa")]
 position = Vector2(6560, 1224)
-platformSprite = ExtResource("25_qhqix")
 endPosition = Vector2(0, 0)
 offset = 8.0
 fallTimer = 1.0
@@ -344,7 +337,6 @@ floorOffset = 4
 
 [node name="Platform9" parent="Platforms" instance=ExtResource("24_d0wpa")]
 position = Vector2(8256, 877)
-platformSprite = ExtResource("25_qhqix")
 endPosition = Vector2(0, 0)
 offset = 8.0
 fallTimer = 1.0
@@ -352,21 +344,18 @@ floorOffset = 4
 
 [node name="Platform4" parent="Platforms" instance=ExtResource("24_d0wpa")]
 position = Vector2(4544, 800)
-platformSprite = ExtResource("25_qhqix")
 endPosition = Vector2(0, 128)
 offset = 8.0
 floorOffset = 4
 
 [node name="Platform7" parent="Platforms" instance=ExtResource("24_d0wpa")]
 position = Vector2(6113, 256)
-platformSprite = ExtResource("25_qhqix")
 endPosition = Vector2(0, 128)
 offset = 8.0
 floorOffset = 4
 
 [node name="Platform8" parent="Platforms" instance=ExtResource("24_d0wpa")]
 position = Vector2(8516, 684)
-platformSprite = ExtResource("25_qhqix")
 endPosition = Vector2(0, 96)
 offset = 8.0
 floorOffset = 4

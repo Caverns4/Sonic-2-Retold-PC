@@ -104,10 +104,11 @@ shape = SubResource("8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
 libraries = {
-"": SubResource("AnimationLibrary_u4hdj")
+&"": SubResource("AnimationLibrary_u4hdj")
 }
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+visible = false
 rect = Rect2(-320, -112, 640, 224)
 
 [node name="Timer" type="Timer" parent="."]

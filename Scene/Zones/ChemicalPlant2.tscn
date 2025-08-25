@@ -658,7 +658,7 @@ characterTexture = ExtResource("40_m50kc")
 
 [node name="Platform" parent="Floating Platforms" instance=ExtResource("13_w6liy")]
 position = Vector2(2112, 1552)
-platformSprite = ExtResource("14_3lrrj")
+platform_sprite = ExtResource("14_3lrrj")
 endPosition = Vector2(0, 0)
 dropSlightly = false
 
@@ -725,53 +725,53 @@ speed = 0.5
 
 [node name="Platform3" parent="Floating Platforms" instance=ExtResource("13_w6liy")]
 position = Vector2(2528, 712)
-platformSprite = ExtResource("14_3lrrj")
+platform_sprite = ExtResource("14_3lrrj")
 endPosition = Vector2(0, 96)
 offset = -48.0
 
 [node name="Platform4" parent="Floating Platforms" instance=ExtResource("13_w6liy")]
 position = Vector2(2688, 712)
-platformSprite = ExtResource("14_3lrrj")
+platform_sprite = ExtResource("14_3lrrj")
 endPosition = Vector2(0, 96)
 offset = 48.0
 
 [node name="Platform12" parent="Floating Platforms" instance=ExtResource("13_w6liy")]
 position = Vector2(4800, 336)
-platformSprite = ExtResource("14_3lrrj")
+platform_sprite = ExtResource("14_3lrrj")
 endPosition = Vector2(128, 0)
 offset = 48.0
 
 [node name="Platform5" parent="Floating Platforms" instance=ExtResource("13_w6liy")]
 position = Vector2(5016, 1800)
-platformSprite = ExtResource("19_bygnn")
+platform_sprite = ExtResource("19_bygnn")
 endPosition = Vector2(208, 0)
 offset = 0.5
 dropSlightly = false
 
 [node name="Platform7" parent="Floating Platforms" instance=ExtResource("13_w6liy")]
 position = Vector2(6168, 1800)
-platformSprite = ExtResource("19_bygnn")
+platform_sprite = ExtResource("19_bygnn")
 endPosition = Vector2(208, 0)
 offset = 0.5
 dropSlightly = false
 
 [node name="Platform8" parent="Floating Platforms" instance=ExtResource("13_w6liy")]
 position = Vector2(8344, 1160)
-platformSprite = ExtResource("19_bygnn")
+platform_sprite = ExtResource("19_bygnn")
 endPosition = Vector2(144, 0)
 offset = 0.5
 dropSlightly = false
 
 [node name="Platform9" parent="Floating Platforms" instance=ExtResource("13_w6liy")]
 position = Vector2(8536, 1160)
-platformSprite = ExtResource("19_bygnn")
+platform_sprite = ExtResource("19_bygnn")
 endPosition = Vector2(144, 0)
 offset = 72.0
 dropSlightly = false
 
 [node name="Platform10" parent="Floating Platforms" instance=ExtResource("13_w6liy")]
 position = Vector2(10136, 1288)
-platformSprite = ExtResource("19_bygnn")
+platform_sprite = ExtResource("19_bygnn")
 endPosition = Vector2(208, 0)
 speed = 0.5
 offset = -104.0
@@ -779,7 +779,7 @@ dropSlightly = false
 
 [node name="Platform6" parent="Floating Platforms" instance=ExtResource("13_w6liy")]
 position = Vector2(5272, 1800)
-platformSprite = ExtResource("19_bygnn")
+platform_sprite = ExtResource("19_bygnn")
 endPosition = Vector2(208, 0)
 offset = 104.0
 dropSlightly = false
@@ -805,7 +805,7 @@ chains = 6
 
 [node name="Elevator" parent="Floating Platforms" instance=ExtResource("28_qxqdr")]
 position = Vector2(9248, 1888)
-platformSprite = ExtResource("14_3lrrj")
+texture = ExtResource("14_3lrrj")
 endPosition = Vector2(0, 111)
 waitTime = 3.0
 
