@@ -61,9 +61,6 @@ defaultRightBoundry = 9088
 [node name="HUD" parent="." instance=ExtResource("1_67gif")]
 zoneName = "METROPOLIS"
 
-[node name="Player" parent="." instance=ExtResource("2_0nln4")]
-position = Vector2(64, 652)
-
 [node name="Level_Layout" type="Node" parent="."]
 
 [node name="Low" type="TileMapLayer" parent="Level_Layout"]
@@ -76,6 +73,9 @@ z_index = 10
 tile_map_data = PackedByteArray("AABwAVAAAAALAAcAAABwAVEAAAAKAAcAAABwAVIAAAAKAAcAAABwAVMAAAAKAAcAAABwAVQAAAAKAAcAAABwAVUAAAAKAAcAAABwAVYAAAAKAAcAAABwAVcAAAAJAAgAAABxAVQAAAACAAQAAAByAVQAAAADAAQAAABzAVAAAAANAAoAAABzAVEAAAANAAsAAABzAVIAAAANAAsAAABzAVMAAAANAAsAAABzAVQAAAANAAwAAABzAVUAAAANAAsAAABzAVYAAAAPAAoAAABzAVcAAAANAAwAAAB0AVQAAAADAAQAAAB0AVUAAAAFAAsAAAB0AVcAAAACAAQAAAB1AVAAAAAPAAoAAAB1AVEAAAAFAAwAAAB1AVIAAAAAAA0AAAB1AVMAAAAFAA0AAAB1AVQAAAAPAAoAAAB1AVUAAAAGAAsAAAB1AVcAAAAFAAQAAAB2AVAAAAAPAAoAAAB2AVEAAAAGAAwAAAB2AVIAAAABAA0AAAB2AVMAAAAGAA0AAAB2AVQAAAANAAoAAAB2AVUAAAANAAsAAAB2AVYAAAANAAwAAAB2AVcAAAAGAAsAAAB3AVAAAAAJAAcAAAB3AVEAAAAKAAcAAAB3AVIAAAAKAAcAAAB3AVMAAAAKAAcAAAB3AVQAAAAKAAcAAAB3AVUAAAAKAAcAAAB3AVYAAAAKAAcAAAB3AVcAAAAJAAgAAADIAQAAAAALAAcAAADIAQEAAAAKAAcAAADIAQIAAAAKAAcAAADIAQMAAAAKAAcAAADIAQQAAAAKAAcAAADIAQUAAAAKAAcAAADIAQYAAAAKAAcAAADIAQcAAAAJAAgAAADJAQQAAAACAAQAAADKAQQAAAADAAQAAADLAQAAAAANAAoAAADLAQEAAAANAAsAAADLAQIAAAANAAsAAADLAQMAAAANAAsAAADLAQQAAAANAAwAAADLAQUAAAANAAsAAADLAQYAAAAPAAoAAADLAQcAAAANAAwAAADMAQQAAAADAAQAAADMAQUAAAAFAAsAAADMAQcAAAACAAQAAADNAQAAAAAPAAoAAADNAQEAAAAFAAwAAADNAQIAAAAAAA0AAADNAQMAAAAFAA0AAADNAQQAAAAPAAoAAADNAQUAAAAGAAsAAADNAQcAAAAFAAQAAADOAQAAAAAPAAoAAADOAQEAAAAGAAwAAADOAQIAAAABAA0AAADOAQMAAAAGAA0AAADOAQQAAAANAAoAAADOAQUAAAANAAsAAADOAQYAAAANAAwAAADOAQcAAAAGAAsAAADPAQAAAAAJAAcAAADPAQEAAAAKAAcAAADPAQIAAAAKAAcAAADPAQMAAAAKAAcAAADPAQQAAAAKAAcAAADPAQUAAAAKAAcAAADPAQYAAAAKAAcAAADPAQcAAAAJAAgAAAA=")
 tile_set = ExtResource("6_085do")
 collision_enabled = false
+
+[node name="Player" parent="." instance=ExtResource("2_0nln4")]
+position = Vector2(64, 652)
 
 [node name="Entities" type="Node" parent="."]
 
@@ -163,38 +163,10 @@ position = Vector2(2592, 236)
 position = Vector2(2656, 236)
 open_direction = 1
 
-[node name="ButtonActivatedPlatform" parent="Entities" node_paths=PackedStringArray("button") instance=ExtResource("12_tcyod")]
-position = Vector2(1408, 436)
-button = NodePath("../Switch")
-
-[node name="Mtz_SmallCog" parent="Entities/ButtonActivatedPlatform" instance=ExtResource("17_8skyg")]
-position = Vector2(64, 20)
-
-[node name="ButtonActivatedPlatform2" parent="Entities" node_paths=PackedStringArray("button") instance=ExtResource("12_tcyod")]
-position = Vector2(2240, 204)
-button = NodePath("../Switch2")
-
-[node name="ButtonActivatedPlatform3" parent="Entities" node_paths=PackedStringArray("button") instance=ExtResource("12_tcyod")]
-position = Vector2(2624, 460)
-button = NodePath("../Switch4")
-
-[node name="ButtonActivatedPlatform5" parent="Entities" node_paths=PackedStringArray("button") instance=ExtResource("12_tcyod")]
-position = Vector2(3264, 908)
-button = NodePath("../Switch5")
-target_position = Vector2(-128, 0)
-
 [node name="Switch6" parent="Entities" instance=ExtResource("8_25fm7")]
 position = Vector2(6384, 248)
 animator = NodePath("")
 animationName = "Elevator1"
-
-[node name="ButtonActivatedPlatform6" parent="Entities" node_paths=PackedStringArray("button") instance=ExtResource("12_tcyod")]
-position = Vector2(6272, 332)
-button = NodePath("../Switch6")
-
-[node name="ButtonActivatedPlatform4" parent="Entities" node_paths=PackedStringArray("button") instance=ExtResource("12_tcyod")]
-position = Vector2(2368, 332)
-button = NodePath("../Switch3")
 
 [node name="SpringWall" parent="Entities" instance=ExtResource("13_i3g7m")]
 position = Vector2(2560, 320)
@@ -276,86 +248,111 @@ bottom_distance = 30
 position = Vector2(6720, 1032)
 bottom_distance = 31
 
-[node name="Elevator" parent="Entities" instance=ExtResource("19_fskp7")]
-position = Vector2(6272, 484)
-texture = ExtResource("20_4tdd8")
-endPosition = Vector2(832, 0)
-speed = 0.5
-
-[node name="Mtz_SmallCog" parent="Entities/Elevator" instance=ExtResource("17_8skyg")]
-position = Vector2(0, 20)
-
-[node name="Mtz_SmallCog2" parent="Entities/Elevator" instance=ExtResource("17_8skyg")]
-position = Vector2(128, 20)
-
-[node name="Mtz_SmallCog3" parent="Entities/Elevator" instance=ExtResource("17_8skyg")]
-position = Vector2(256, 20)
-
-[node name="Mtz_SmallCog4" parent="Entities/Elevator" instance=ExtResource("17_8skyg")]
-position = Vector2(384, 20)
-
-[node name="Mtz_SmallCog5" parent="Entities/Elevator" instance=ExtResource("17_8skyg")]
-position = Vector2(512, 20)
-
-[node name="Mtz_SmallCog6" parent="Entities/Elevator" instance=ExtResource("17_8skyg")]
-position = Vector2(640, 20)
-
-[node name="Mtz_SmallCog7" parent="Entities/Elevator" instance=ExtResource("17_8skyg")]
-position = Vector2(768, 20)
-
-[node name="Platform" parent="Entities" instance=ExtResource("21_xpxgv")]
-position = Vector2(2400, 588)
-platform_sprite = ExtResource("22_jg5gn")
-endPosition = Vector2(128, 0)
-dropSlightly = false
-
-[node name="Platform2" parent="Entities" instance=ExtResource("21_xpxgv")]
-position = Vector2(7072, 117)
-platform_sprite = ExtResource("22_jg5gn")
-endPosition = Vector2(0, 152)
-dropSlightly = false
-
-[node name="Platform3" parent="Entities" instance=ExtResource("21_xpxgv")]
-position = Vector2(6304, 1676)
-platform_sprite = ExtResource("22_jg5gn")
-endPosition = Vector2(128, 0)
-dropSlightly = false
-
-[node name="Platform4" parent="Entities" instance=ExtResource("21_xpxgv")]
-position = Vector2(6624, 1676)
-platform_sprite = ExtResource("22_jg5gn")
-endPosition = Vector2(-128, 0)
-dropSlightly = false
-
-[node name="Platform5" parent="Entities" instance=ExtResource("21_xpxgv")]
-position = Vector2(7072, 328)
-platform_sprite = ExtResource("22_jg5gn")
-endPosition = Vector2(128, 0)
-dropSlightly = false
-
-[node name="Platform6" parent="Entities" instance=ExtResource("21_xpxgv")]
-position = Vector2(7136, 117)
-platform_sprite = ExtResource("22_jg5gn")
-endPosition = Vector2(128, 0)
-dropSlightly = false
-
-[node name="Platform7" parent="Entities" instance=ExtResource("21_xpxgv")]
-position = Vector2(4192, 524)
-platform_sprite = ExtResource("22_jg5gn")
-endPosition = Vector2(-128, 0)
-dropSlightly = false
-
-[node name="CharacterCameo" parent="Entities" instance=ExtResource("21_4tdd8")]
-position = Vector2(7488, 72)
-present = 12
-characterTexture = ExtResource("22_r2i34")
-
 [node name="VerticalShutter5" parent="Entities" instance=ExtResource("11_f4xj6")]
 position = Vector2(5792, 364)
 
 [node name="VerticalShutter6" parent="Entities" instance=ExtResource("11_f4xj6")]
 position = Vector2(5856, 364)
 open_direction = 1
+
+[node name="Platforms" type="Node" parent="."]
+
+[node name="ButtonActivatedPlatform" parent="Platforms" node_paths=PackedStringArray("button") instance=ExtResource("12_tcyod")]
+position = Vector2(1408, 436)
+button = NodePath("../../Entities/Switch")
+
+[node name="Mtz_SmallCog" parent="Platforms/ButtonActivatedPlatform" instance=ExtResource("17_8skyg")]
+position = Vector2(64, 20)
+
+[node name="ButtonActivatedPlatform2" parent="Platforms" node_paths=PackedStringArray("button") instance=ExtResource("12_tcyod")]
+position = Vector2(2240, 204)
+button = NodePath("../../Entities/Switch2")
+
+[node name="ButtonActivatedPlatform3" parent="Platforms" node_paths=PackedStringArray("button") instance=ExtResource("12_tcyod")]
+position = Vector2(2624, 460)
+button = NodePath("../../Entities/Switch4")
+
+[node name="ButtonActivatedPlatform5" parent="Platforms" node_paths=PackedStringArray("button") instance=ExtResource("12_tcyod")]
+position = Vector2(3264, 908)
+button = NodePath("../../Entities/Switch5")
+target_position = Vector2(-128, 0)
+
+[node name="ButtonActivatedPlatform6" parent="Platforms" node_paths=PackedStringArray("button") instance=ExtResource("12_tcyod")]
+position = Vector2(6272, 332)
+button = NodePath("../../Entities/Switch6")
+
+[node name="ButtonActivatedPlatform4" parent="Platforms" node_paths=PackedStringArray("button") instance=ExtResource("12_tcyod")]
+position = Vector2(2368, 332)
+button = NodePath("../../Entities/Switch3")
+
+[node name="Platform" parent="Platforms" instance=ExtResource("21_xpxgv")]
+position = Vector2(2400, 588)
+platform_sprite = ExtResource("22_jg5gn")
+endPosition = Vector2(128, 0)
+dropSlightly = false
+
+[node name="Platform2" parent="Platforms" instance=ExtResource("21_xpxgv")]
+position = Vector2(7072, 117)
+platform_sprite = ExtResource("22_jg5gn")
+endPosition = Vector2(0, 152)
+dropSlightly = false
+
+[node name="Platform3" parent="Platforms" instance=ExtResource("21_xpxgv")]
+position = Vector2(6304, 1676)
+platform_sprite = ExtResource("22_jg5gn")
+endPosition = Vector2(128, 0)
+dropSlightly = false
+
+[node name="Platform4" parent="Platforms" instance=ExtResource("21_xpxgv")]
+position = Vector2(6624, 1676)
+platform_sprite = ExtResource("22_jg5gn")
+endPosition = Vector2(-128, 0)
+dropSlightly = false
+
+[node name="Platform5" parent="Platforms" instance=ExtResource("21_xpxgv")]
+position = Vector2(7072, 328)
+platform_sprite = ExtResource("22_jg5gn")
+endPosition = Vector2(128, 0)
+dropSlightly = false
+
+[node name="Platform6" parent="Platforms" instance=ExtResource("21_xpxgv")]
+position = Vector2(7136, 117)
+platform_sprite = ExtResource("22_jg5gn")
+endPosition = Vector2(128, 0)
+dropSlightly = false
+
+[node name="Platform7" parent="Platforms" instance=ExtResource("21_xpxgv")]
+position = Vector2(4192, 524)
+platform_sprite = ExtResource("22_jg5gn")
+endPosition = Vector2(-128, 0)
+dropSlightly = false
+
+[node name="Elevator" parent="Platforms" instance=ExtResource("19_fskp7")]
+position = Vector2(6272, 484)
+texture = ExtResource("20_4tdd8")
+endPosition = Vector2(832, 0)
+speed = 0.5
+
+[node name="Mtz_SmallCog" parent="Platforms/Elevator" instance=ExtResource("17_8skyg")]
+position = Vector2(0, 20)
+
+[node name="Mtz_SmallCog2" parent="Platforms/Elevator" instance=ExtResource("17_8skyg")]
+position = Vector2(128, 20)
+
+[node name="Mtz_SmallCog3" parent="Platforms/Elevator" instance=ExtResource("17_8skyg")]
+position = Vector2(256, 20)
+
+[node name="Mtz_SmallCog4" parent="Platforms/Elevator" instance=ExtResource("17_8skyg")]
+position = Vector2(384, 20)
+
+[node name="Mtz_SmallCog5" parent="Platforms/Elevator" instance=ExtResource("17_8skyg")]
+position = Vector2(512, 20)
+
+[node name="Mtz_SmallCog6" parent="Platforms/Elevator" instance=ExtResource("17_8skyg")]
+position = Vector2(640, 20)
+
+[node name="Mtz_SmallCog7" parent="Platforms/Elevator" instance=ExtResource("17_8skyg")]
+position = Vector2(768, 20)
 
 [node name="Hazards" type="Node" parent="."]
 
@@ -524,63 +521,133 @@ release_velocity = 8
 [node name="Line2D" type="Line2D" parent="Tubes/MTZ_Pipe4"]
 points = PackedVector2Array(0, 8, 448, 8)
 
-[node name="ItemsHolder" type="Node" parent="."]
+[node name="Items" type="Node" parent="."]
 
-[node name="Monitor" parent="ItemsHolder" instance=ExtResource("9_m0oic")]
+[node name="Monitor" parent="Items" instance=ExtResource("9_m0oic")]
 position = Vector2(400, 368)
 
-[node name="Monitor2" parent="ItemsHolder" instance=ExtResource("9_m0oic")]
+[node name="Monitor2" parent="Items" instance=ExtResource("9_m0oic")]
 position = Vector2(1776, 464)
 
-[node name="Monitor3" parent="ItemsHolder" instance=ExtResource("9_m0oic")]
+[node name="Monitor3" parent="Items" instance=ExtResource("9_m0oic")]
 position = Vector2(2800, 560)
 item = 3
 
-[node name="Monitor4" parent="ItemsHolder" instance=ExtResource("9_m0oic")]
+[node name="Monitor4" parent="Items" instance=ExtResource("9_m0oic")]
 position = Vector2(2192, 304)
 
-[node name="Monitor5" parent="ItemsHolder" instance=ExtResource("9_m0oic")]
+[node name="Monitor5" parent="Items" instance=ExtResource("9_m0oic")]
 position = Vector2(4368, 944)
 
-[node name="Monitor6" parent="ItemsHolder" instance=ExtResource("9_m0oic")]
+[node name="Monitor6" parent="Items" instance=ExtResource("9_m0oic")]
 position = Vector2(5744, 1200)
 
-[node name="Monitor7" parent="ItemsHolder" instance=ExtResource("9_m0oic")]
+[node name="Monitor7" parent="Items" instance=ExtResource("9_m0oic")]
 position = Vector2(5744, 1424)
 
-[node name="Monitor9" parent="ItemsHolder" instance=ExtResource("9_m0oic")]
+[node name="Monitor9" parent="Items" instance=ExtResource("9_m0oic")]
 position = Vector2(7152, 688)
 item = 12
 
-[node name="Monitor10" parent="ItemsHolder" instance=ExtResource("9_m0oic")]
+[node name="Monitor10" parent="Items" instance=ExtResource("9_m0oic")]
 position = Vector2(6672, 1584)
 
-[node name="Monitor11" parent="ItemsHolder" instance=ExtResource("9_m0oic")]
+[node name="Monitor11" parent="Items" instance=ExtResource("9_m0oic")]
 position = Vector2(7376, 1328)
 
-[node name="Monitor8" parent="ItemsHolder" instance=ExtResource("9_m0oic")]
+[node name="Monitor8" parent="Items" instance=ExtResource("9_m0oic")]
 position = Vector2(5872, 1776)
 item = 2
 
-[node name="LampPost" parent="ItemsHolder" instance=ExtResource("31_rmaop")]
+[node name="LampPost" parent="Items" instance=ExtResource("31_rmaop")]
 position = Vector2(4800, 1128)
 checkPointID = 1
 
-[node name="LampPost2" parent="ItemsHolder" instance=ExtResource("31_rmaop")]
+[node name="LampPost2" parent="Items" instance=ExtResource("31_rmaop")]
 position = Vector2(6080, 1352)
 checkPointID = 2
 
-[node name="LampPost3" parent="ItemsHolder" instance=ExtResource("31_rmaop")]
+[node name="LampPost3" parent="Items" instance=ExtResource("31_rmaop")]
 position = Vector2(6848, 1000)
 checkPointID = 3
 
-[node name="LampPost4" parent="ItemsHolder" instance=ExtResource("31_rmaop")]
+[node name="LampPost4" parent="Items" instance=ExtResource("31_rmaop")]
 position = Vector2(5952, 328)
 checkPointID = 4
 
-[node name="LampPost5" parent="ItemsHolder" instance=ExtResource("31_rmaop")]
+[node name="LampPost5" parent="Items" instance=ExtResource("31_rmaop")]
 position = Vector2(7232, 1352)
 checkPointID = 5
+
+[node name="CharacterCameo" parent="Items" instance=ExtResource("21_4tdd8")]
+position = Vector2(7488, 72)
+present = 12
+characterTexture = ExtResource("22_r2i34")
+
+[node name="SignpostNew" parent="Items" instance=ExtResource("34_s87vo")]
+position = Vector2(8960, 576)
+
+[node name="Badniks" type="Node" parent="."]
+
+[node name="ShellCracker" parent="Badniks" instance=ExtResource("15_xk3py")]
+position = Vector2(1360, 120)
+
+[node name="ShellCracker2" parent="Badniks" instance=ExtResource("15_xk3py")]
+position = Vector2(2816, 216)
+
+[node name="ShellCracker3" parent="Badniks" instance=ExtResource("15_xk3py")]
+position = Vector2(6888, 1592)
+
+[node name="Slicer" parent="Badniks" instance=ExtResource("32_xx70g")]
+position = Vector2(5752, 1776)
+
+[node name="Slicer2" parent="Badniks" instance=ExtResource("32_xx70g")]
+position = Vector2(7280, 400)
+
+[node name="Slicer3" parent="Badniks" instance=ExtResource("32_xx70g")]
+position = Vector2(7792, 976)
+
+[node name="Asteron" parent="Badniks" instance=ExtResource("33_8p2aa")]
+position = Vector2(1824, 400)
+
+[node name="Asteron2" parent="Badniks" instance=ExtResource("33_8p2aa")]
+position = Vector2(2064, 240)
+
+[node name="Asteron3" parent="Badniks" instance=ExtResource("33_8p2aa")]
+position = Vector2(2336, 112)
+
+[node name="Asteron4" parent="Badniks" instance=ExtResource("33_8p2aa")]
+position = Vector2(2352, 144)
+
+[node name="Asteron5" parent="Badniks" instance=ExtResource("33_8p2aa")]
+position = Vector2(2288, 368)
+
+[node name="Asteron6" parent="Badniks" instance=ExtResource("33_8p2aa")]
+position = Vector2(5920, 1424)
+
+[node name="Asteron7" parent="Badniks" instance=ExtResource("33_8p2aa")]
+position = Vector2(6432, 208)
+
+[node name="Asteron8" parent="Badniks" instance=ExtResource("33_8p2aa")]
+position = Vector2(6432, 360)
+
+[node name="Asteron9" parent="Badniks" instance=ExtResource("33_8p2aa")]
+position = Vector2(6496, 360)
+
+[node name="Asteron10" parent="Badniks" instance=ExtResource("33_8p2aa")]
+position = Vector2(6560, 360)
+
+[node name="Asteron11" parent="Badniks" instance=ExtResource("33_8p2aa")]
+position = Vector2(6624, 360)
+
+[node name="Asteron12" parent="Badniks" instance=ExtResource("33_8p2aa")]
+position = Vector2(6688, 360)
+
+[node name="Asteron13" parent="Badniks" instance=ExtResource("33_8p2aa")]
+position = Vector2(6032, 1056)
+
+[node name="Asteron14" parent="Badniks" instance=ExtResource("33_8p2aa")]
+position = Vector2(6128, 1056)
 
 [node name="Rings" type="Node" parent="."]
 
@@ -1141,68 +1208,3 @@ position = Vector2(8016, 824)
 
 [node name="Ring186" parent="Rings" instance=ExtResource("34_xntwa")]
 position = Vector2(8016, 848)
-
-[node name="Badniks" type="Node" parent="."]
-
-[node name="ShellCracker" parent="Badniks" instance=ExtResource("15_xk3py")]
-position = Vector2(1360, 120)
-
-[node name="ShellCracker2" parent="Badniks" instance=ExtResource("15_xk3py")]
-position = Vector2(2816, 216)
-
-[node name="ShellCracker3" parent="Badniks" instance=ExtResource("15_xk3py")]
-position = Vector2(6888, 1592)
-
-[node name="Slicer" parent="Badniks" instance=ExtResource("32_xx70g")]
-position = Vector2(5752, 1776)
-
-[node name="Slicer2" parent="Badniks" instance=ExtResource("32_xx70g")]
-position = Vector2(7280, 400)
-
-[node name="Slicer3" parent="Badniks" instance=ExtResource("32_xx70g")]
-position = Vector2(7792, 976)
-
-[node name="Asteron" parent="Badniks" instance=ExtResource("33_8p2aa")]
-position = Vector2(1824, 400)
-
-[node name="Asteron2" parent="Badniks" instance=ExtResource("33_8p2aa")]
-position = Vector2(2064, 240)
-
-[node name="Asteron3" parent="Badniks" instance=ExtResource("33_8p2aa")]
-position = Vector2(2336, 112)
-
-[node name="Asteron4" parent="Badniks" instance=ExtResource("33_8p2aa")]
-position = Vector2(2352, 144)
-
-[node name="Asteron5" parent="Badniks" instance=ExtResource("33_8p2aa")]
-position = Vector2(2288, 368)
-
-[node name="Asteron6" parent="Badniks" instance=ExtResource("33_8p2aa")]
-position = Vector2(5920, 1424)
-
-[node name="Asteron7" parent="Badniks" instance=ExtResource("33_8p2aa")]
-position = Vector2(6432, 208)
-
-[node name="Asteron8" parent="Badniks" instance=ExtResource("33_8p2aa")]
-position = Vector2(6432, 360)
-
-[node name="Asteron9" parent="Badniks" instance=ExtResource("33_8p2aa")]
-position = Vector2(6496, 360)
-
-[node name="Asteron10" parent="Badniks" instance=ExtResource("33_8p2aa")]
-position = Vector2(6560, 360)
-
-[node name="Asteron11" parent="Badniks" instance=ExtResource("33_8p2aa")]
-position = Vector2(6624, 360)
-
-[node name="Asteron12" parent="Badniks" instance=ExtResource("33_8p2aa")]
-position = Vector2(6688, 360)
-
-[node name="Asteron13" parent="Badniks" instance=ExtResource("33_8p2aa")]
-position = Vector2(6032, 1056)
-
-[node name="Asteron14" parent="Badniks" instance=ExtResource("33_8p2aa")]
-position = Vector2(6128, 1056)
-
-[node name="SignpostNew" parent="." instance=ExtResource("34_s87vo")]
-position = Vector2(8960, 576)

@@ -105,9 +105,6 @@ ringsForPerfect = 180
 offset = Vector2(0, -256)
 transform = Transform2D(1, 0, 0, 1, 0, -256)
 
-[node name="Player" parent="." instance=ExtResource("8_yrrxu")]
-position = Vector2(160, 1388)
-
 [node name="Level_Layout" type="Node" parent="."]
 
 [node name="Low" type="TileMapLayer" parent="Level_Layout"]
@@ -124,20 +121,8 @@ tile_map_data = PackedByteArray("AADPARwAAAAPAAQAAADPAR0AAAAPAAkAAADPAR4AAAAPAAo
 tile_set = ExtResource("10_08fof")
 collision_enabled = false
 
-[node name="Current" type="Node" parent="."]
-
-[node name="WindCurrent" parent="Current" instance=ExtResource("11_kjvpj")]
-position = Vector2(5824, 304)
-scale = Vector2(84, 16)
-speed = 320.0
-moveSpeed = 120.0
-
-[node name="WindCurrent2" parent="Current" instance=ExtResource("11_kjvpj")]
-position = Vector2(5440, 1632)
-rotation = 3.14159
-scale = Vector2(44, 16)
-speed = 320.0
-moveSpeed = 120.0
+[node name="Player" parent="." instance=ExtResource("8_yrrxu")]
+position = Vector2(160, 1388)
 
 [node name="Entities" type="Node" parent="."]
 
@@ -941,125 +926,146 @@ position = Vector2(9576, 1496)
 rotation = 0.462512
 scale = Vector2(1, 30)
 
-[node name="ItemsHolder" type="Node" parent="."]
+[node name="Currents" type="Node" parent="."]
 
-[node name="CharacterCameo" parent="ItemsHolder" instance=ExtResource("35_o1y58")]
-position = Vector2(10960, 232)
-present = 4
+[node name="WindCurrent" parent="Currents" instance=ExtResource("11_kjvpj")]
+position = Vector2(5824, 304)
+scale = Vector2(84, 16)
+speed = 320.0
+moveSpeed = 120.0
 
-[node name="Monitor" parent="ItemsHolder" instance=ExtResource("36_wdk6q")]
+[node name="WindCurrent2" parent="Currents" instance=ExtResource("11_kjvpj")]
+position = Vector2(5440, 1632)
+rotation = 3.14159
+scale = Vector2(44, 16)
+speed = 320.0
+moveSpeed = 120.0
+
+[node name="Items" type="Node" parent="."]
+
+[node name="Monitor" parent="Items" instance=ExtResource("36_wdk6q")]
 position = Vector2(2832, 176)
 item = 12
 shieldAffinity = null
 
-[node name="Monitor2" parent="ItemsHolder" instance=ExtResource("36_wdk6q")]
+[node name="Monitor2" parent="Items" instance=ExtResource("36_wdk6q")]
 position = Vector2(2864, 176)
 item = 1
 shieldAffinity = null
 
-[node name="Monitor3" parent="ItemsHolder" instance=ExtResource("36_wdk6q")]
+[node name="Monitor3" parent="Items" instance=ExtResource("36_wdk6q")]
 position = Vector2(3104, 752)
 shieldAffinity = null
 
-[node name="Monitor4" parent="ItemsHolder" instance=ExtResource("36_wdk6q")]
+[node name="Monitor4" parent="Items" instance=ExtResource("36_wdk6q")]
 position = Vector2(3664, 1264)
 shieldAffinity = null
 
-[node name="Monitor19" parent="ItemsHolder" instance=ExtResource("36_wdk6q")]
+[node name="Monitor19" parent="Items" instance=ExtResource("36_wdk6q")]
 position = Vector2(1776, 368)
 shieldAffinity = null
 
-[node name="Monitor20" parent="ItemsHolder" instance=ExtResource("36_wdk6q")]
+[node name="Monitor20" parent="Items" instance=ExtResource("36_wdk6q")]
 position = Vector2(1024, 944)
 item = 3
 shieldAffinity = 3
 
-[node name="Monitor5" parent="ItemsHolder" instance=ExtResource("36_wdk6q")]
+[node name="Monitor5" parent="Items" instance=ExtResource("36_wdk6q")]
 position = Vector2(3696, 1264)
 item = 1
 shieldAffinity = null
 
-[node name="Monitor6" parent="ItemsHolder" instance=ExtResource("36_wdk6q")]
+[node name="Monitor6" parent="Items" instance=ExtResource("36_wdk6q")]
 position = Vector2(2832, 1904)
 item = 3
 shieldAffinity = 3
 
-[node name="Monitor7" parent="ItemsHolder" instance=ExtResource("36_wdk6q")]
+[node name="Monitor7" parent="Items" instance=ExtResource("36_wdk6q")]
 position = Vector2(4368, 1008)
 shieldAffinity = null
 
-[node name="Monitor8" parent="ItemsHolder" instance=ExtResource("36_wdk6q")]
+[node name="Monitor8" parent="Items" instance=ExtResource("36_wdk6q")]
 position = Vector2(4400, 1008)
 item = 3
 shieldAffinity = 3
 
-[node name="Monitor9" parent="ItemsHolder" instance=ExtResource("36_wdk6q")]
+[node name="Monitor9" parent="Items" instance=ExtResource("36_wdk6q")]
 position = Vector2(5600, 1168)
 shieldAffinity = null
 
-[node name="Monitor21" parent="ItemsHolder" instance=ExtResource("36_wdk6q")]
+[node name="Monitor21" parent="Items" instance=ExtResource("36_wdk6q")]
 position = Vector2(4368, 1904)
 item = 3
 shieldAffinity = 3
 
-[node name="Monitor10" parent="ItemsHolder" instance=ExtResource("36_wdk6q")]
+[node name="Monitor10" parent="Items" instance=ExtResource("36_wdk6q")]
 position = Vector2(9664, 112)
 item = 12
 shieldAffinity = null
 
-[node name="Monitor11" parent="ItemsHolder" instance=ExtResource("36_wdk6q")]
+[node name="Monitor11" parent="Items" instance=ExtResource("36_wdk6q")]
 position = Vector2(6672, 1392)
 item = 3
 shieldAffinity = 3
 
-[node name="Monitor12" parent="ItemsHolder" instance=ExtResource("36_wdk6q")]
+[node name="Monitor12" parent="Items" instance=ExtResource("36_wdk6q")]
 position = Vector2(7744, 1392)
 item = 2
 shieldAffinity = null
 
-[node name="Monitor13" parent="ItemsHolder" instance=ExtResource("36_wdk6q")]
+[node name="Monitor13" parent="Items" instance=ExtResource("36_wdk6q")]
 position = Vector2(5952, 1584)
 shieldAffinity = null
 
-[node name="Monitor15" parent="ItemsHolder" instance=ExtResource("36_wdk6q")]
+[node name="Monitor15" parent="Items" instance=ExtResource("36_wdk6q")]
 position = Vector2(10384, 624)
 shieldAffinity = null
 
-[node name="Monitor16" parent="ItemsHolder" instance=ExtResource("36_wdk6q")]
+[node name="Monitor16" parent="Items" instance=ExtResource("36_wdk6q")]
 position = Vector2(10416, 624)
 shieldAffinity = null
 
-[node name="Monitor17" parent="ItemsHolder" instance=ExtResource("36_wdk6q")]
+[node name="Monitor17" parent="Items" instance=ExtResource("36_wdk6q")]
 position = Vector2(10256, 1392)
 shieldAffinity = null
 
-[node name="Monitor18" parent="ItemsHolder" instance=ExtResource("36_wdk6q")]
+[node name="Monitor18" parent="Items" instance=ExtResource("36_wdk6q")]
 position = Vector2(9792, 1904)
 shieldAffinity = null
 
-[node name="Checkpoint" parent="ItemsHolder" instance=ExtResource("37_nssuk")]
+[node name="Checkpoint" parent="Items" instance=ExtResource("37_nssuk")]
 position = Vector2(5264, 1448)
 checkPointID = 1
 
-[node name="Checkpoint2" parent="ItemsHolder" instance=ExtResource("37_nssuk")]
+[node name="Checkpoint2" parent="Items" instance=ExtResource("37_nssuk")]
 position = Vector2(5560, 104)
 checkPointID = 2
 
-[node name="Checkpoint3" parent="ItemsHolder" instance=ExtResource("37_nssuk")]
+[node name="Checkpoint3" parent="Items" instance=ExtResource("37_nssuk")]
 position = Vector2(8416, 1320)
 checkPointID = 3
 
-[node name="Checkpoint4" parent="ItemsHolder" instance=ExtResource("37_nssuk")]
+[node name="Checkpoint4" parent="Items" instance=ExtResource("37_nssuk")]
 position = Vector2(8960, 104)
 checkPointID = 4
 
-[node name="Checkpoint5" parent="ItemsHolder" instance=ExtResource("37_nssuk")]
+[node name="Checkpoint5" parent="Items" instance=ExtResource("37_nssuk")]
 position = Vector2(11152, 1448)
 checkPointID = 4
 
-[node name="SignpostNew" parent="ItemsHolder" instance=ExtResource("38_47n6l")]
+[node name="CharacterCameo" parent="Items" instance=ExtResource("35_o1y58")]
+position = Vector2(10960, 232)
+present = 4
+
+[node name="SignpostNew" parent="Items" instance=ExtResource("38_47n6l")]
 position = Vector2(11648, 1472)
 multiplayerOnly = true
+
+[node name="GoalArea" parent="Items" instance=ExtResource("45_b4gpf")]
+position = Vector2(11648, -44)
+scale = Vector2(8, 1)
+special_exit = true
+special_exit_zone = 4
 
 [node name="Badniks" type="Node" parent="."]
 
@@ -2001,7 +2007,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_udq1c")
 }
 
-[node name="BoundrySetter" parent="." instance=ExtResource("43_gq1qp")]
+[node name="Boss" type="Node" parent="."]
+
+[node name="BoundrySetter" parent="Boss" instance=ExtResource("43_gq1qp")]
 position = Vector2(11296, 1360)
 leftBoundry = 11008
 setTop = false
@@ -2009,11 +2017,5 @@ setRight = false
 rightBoundry = 11776
 bottomBoundry = 1488
 
-[node name="Capsule" parent="." instance=ExtResource("44_plaap")]
+[node name="Capsule" parent="Boss" instance=ExtResource("44_plaap")]
 position = Vector2(12288, 1376)
-
-[node name="GoalArea" parent="." instance=ExtResource("45_b4gpf")]
-position = Vector2(11648, -44)
-scale = Vector2(8, 1)
-special_exit = true
-special_exit_zone = 4

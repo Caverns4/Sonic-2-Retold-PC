@@ -21,7 +21,7 @@ animal2 = 12
 zoneName = "WINTER HILL"
 act = 2
 
+[node name="Level_Layout" type="Node" parent="."]
+
 [node name="Player" parent="." instance=ExtResource("6_l55ie")]
 position = Vector2(96, 656)
-
-[node name="Level_Layout" type="Node" parent="."]

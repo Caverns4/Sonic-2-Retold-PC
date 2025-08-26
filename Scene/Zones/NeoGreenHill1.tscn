@@ -84,6 +84,8 @@ tile_map_data = PackedByteArray("AAA4ADAAAAAIACQAAAA5ADAAAAAMACQAAAA6ADAAAAAIACQ
 tile_set = ExtResource("7_lab03")
 collision_enabled = false
 
+[node name="05-NeoGreenHill-High" parent="Level_Layout" instance=ExtResource("5_0vwlw")]
+
 [node name="Player" parent="." instance=ExtResource("2_8wvcy")]
 position = Vector2(96, 894)
 
@@ -1237,5 +1239,3 @@ position = Vector2(9376, 784)
 
 [node name="Ring174" parent="Rings" instance=ExtResource("32_heo3a")]
 position = Vector2(9400, 784)
-
-[node name="05-NeoGreenHill-High" parent="." instance=ExtResource("5_0vwlw")]

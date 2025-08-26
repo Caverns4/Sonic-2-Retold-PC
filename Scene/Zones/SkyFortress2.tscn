@@ -20,8 +20,8 @@ animal2 = 3
 zoneName = "SKY FORTRESS"
 act = 0
 
+[node name="Level_Layout" type="Node" parent="."]
+
 [node name="Player" parent="." instance=ExtResource("6_1g2m4")]
 position = Vector2(96, 656)
 disablePartner = true
-
-[node name="Level_Layout" type="Node" parent="."]

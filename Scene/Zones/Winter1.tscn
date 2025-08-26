@@ -20,7 +20,7 @@ animal2 = 12
 [node name="HUD" parent="." instance=ExtResource("5_e7pco")]
 zoneName = "WINTER HILL"
 
+[node name="Level_Layout" type="Node" parent="."]
+
 [node name="Player" parent="." instance=ExtResource("6_8kp2y")]
 position = Vector2(96, 656)
-
-[node name="Level_Layout" type="Node" parent="."]

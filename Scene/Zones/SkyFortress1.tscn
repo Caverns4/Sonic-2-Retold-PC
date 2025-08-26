@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://oce7phvjxdbv" path="res://Entities/Misc/Tornado.tscn" id="6_blbh4"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_vktrr"]
 [ext_resource type="Script" uid="uid://lekpwkfad1pq" path="res://Scripts/Misc/path_follow_2d.gd" id="6_yuh6d"]
-[ext_resource type="Script" uid="uid://6cdk5h5wo1v3" path="res://Scene/Zones/Hook_Camera.gd" id="7_ghu8o"]
+[ext_resource type="Script" uid="uid://6cdk5h5wo1v3" path="res://Scripts/Level/Hook_Camera.gd" id="7_ghu8o"]
 [ext_resource type="Script" uid="uid://cgc0jvkdayt0m" path="res://Scripts/Objects/tornado_mover.gd" id="7_m63qb"]
 [ext_resource type="PackedScene" uid="uid://p7n68euqgca8" path="res://Entities/MainObjects/GoalArea.tscn" id="10_rligo"]
 
@@ -30,6 +30,8 @@ animal2 = 3
 [node name="HUD" parent="." instance=ExtResource("5_vrigx")]
 zoneName = "   SKY CHASE"
 act = 0
+
+[node name="Level_Layout" type="Node" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("6_vktrr")]
 position = Vector2(100, 192)
@@ -58,8 +60,6 @@ script = ExtResource("7_m63qb")
 position = Vector2(0, 64)
 pilotType = 3
 pilot = 2
-
-[node name="Level_Layout" type="Node" parent="."]
 
 [node name="GoalArea" parent="." instance=ExtResource("10_rligo")]
 position = Vector2(2308, 768)

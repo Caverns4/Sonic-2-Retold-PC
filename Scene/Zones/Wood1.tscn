@@ -41,3 +41,5 @@ collision_enabled = false
 
 [node name="Player" parent="." instance=ExtResource("6_13xdv")]
 position = Vector2(96, 428)
+
+[node name="Entities" type="Node" parent="."]

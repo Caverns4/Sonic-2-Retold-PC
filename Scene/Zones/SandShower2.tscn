@@ -20,7 +20,7 @@ animal2 = 12
 zoneName = "SAND SHOWER"
 act = 2
 
+[node name="Level_Layout" type="Node" parent="."]
+
 [node name="Player" parent="." instance=ExtResource("6_kv2l8")]
 position = Vector2(96, 656)
-
-[node name="Level_Layout" type="Node" parent="."]

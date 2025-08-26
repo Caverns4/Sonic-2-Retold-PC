@@ -20,7 +20,9 @@ animal2 = 3
 zoneName = "JEWEL GROTTO"
 act = 2
 
+[node name="Level_Layout" type="Node" parent="."]
+
 [node name="Player" parent="." instance=ExtResource("6_im413")]
 position = Vector2(96, 656)
 
-[node name="Level_Layout" type="Node" parent="."]
+[node name="Entities" type="Node" parent="."]

@@ -18,7 +18,7 @@ animal2 = 10
 zoneName = "TROPICAL"
 act = 2
 
+[node name="Level_Layout" type="Node" parent="."]
+
 [node name="Player" parent="." instance=ExtResource("6_bflto")]
 position = Vector2(96, 656)
-
-[node name="Level_Layout" type="Node" parent="."]

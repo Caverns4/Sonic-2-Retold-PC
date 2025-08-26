@@ -222,9 +222,6 @@ ringsForPerfect = 300
 
 [node name="01-HiddenPalace" parent="." instance=ExtResource("7_vtcww")]
 
-[node name="Player" parent="." instance=ExtResource("5_gd4l3")]
-position = Vector2(560, 1452)
-
 [node name="Level_Layout" type="Node" parent="."]
 
 [node name="Low" type="TileMapLayer" parent="Level_Layout"]
@@ -240,58 +237,8 @@ tile_map_data = PackedByteArray("AACvAK8AAAAEADYAAADAAK8AAAAAADYAAADfAK8AAAAEADY
 tile_set = ExtResource("9_trtkx")
 collision_enabled = false
 
-[node name="Currents" type="Node" parent="."]
-
-[node name="WindCurrent" parent="Currents" instance=ExtResource("37_t74c0")]
-position = Vector2(9408, 2112)
-scale = Vector2(32, 18)
-speed = 200.0
-moveSpeed = 150.0
-
-[node name="WindCurrent3" parent="Currents" instance=ExtResource("37_t74c0")]
-position = Vector2(11520, 1984)
-scale = Vector2(64, 18)
-speed = 300.0
-moveSpeed = 150.0
-
-[node name="WindCurrent5" parent="Currents" instance=ExtResource("37_t74c0")]
-position = Vector2(12608, 256)
-scale = Vector2(84, 18)
-speed = 300.0
-moveSpeed = 150.0
-
-[node name="WindCurrent7" parent="Currents" instance=ExtResource("37_t74c0")]
-position = Vector2(7104, 272)
-scale = Vector2(84, 18)
-speed = 300.0
-moveSpeed = 150.0
-
-[node name="WindCurrent2" parent="Currents" instance=ExtResource("37_t74c0")]
-position = Vector2(9728, 2112)
-scale = Vector2(42, 18)
-speed = 200.0
-moveSpeed = 100.0
-
-[node name="WaterfallSound" type="AudioStreamPlayer2D" parent="Currents"]
-position = Vector2(7936, 240)
-stream = ExtResource("43_hcgxy")
-volume_db = -10.0
-autoplay = true
-max_distance = 1000.0
-
-[node name="WaterfallSound3" type="AudioStreamPlayer2D" parent="Currents"]
-position = Vector2(13312, 192)
-stream = ExtResource("43_hcgxy")
-volume_db = -10.0
-autoplay = true
-max_distance = 1000.0
-
-[node name="WaterfallSound2" type="AudioStreamPlayer2D" parent="Currents"]
-position = Vector2(9752, 2304)
-stream = ExtResource("43_hcgxy")
-volume_db = -6.0
-autoplay = true
-max_distance = 1000.0
+[node name="Player" parent="." instance=ExtResource("5_gd4l3")]
+position = Vector2(560, 1452)
 
 [node name="Entities" type="Node" parent="."]
 
@@ -674,65 +621,6 @@ position = Vector2(3968, 2800)
 scale = Vector2(-1, 1)
 springDirection = 3
 
-[node name="HpzPlatformSpawner" parent="Entities" instance=ExtResource("41_64hll")]
-position = Vector2(2560, 2176)
-
-[node name="HpzPlatformSpawner2" parent="Entities" instance=ExtResource("41_64hll")]
-position = Vector2(2688, 2210)
-
-[node name="HpzPlatformSpawner3" parent="Entities" instance=ExtResource("41_64hll")]
-position = Vector2(3328, 2320)
-
-[node name="HpzPlatformSpawner11" parent="Entities" instance=ExtResource("41_64hll")]
-position = Vector2(2432, 1472)
-
-[node name="HpzPlatformSpawner13" parent="Entities" instance=ExtResource("41_64hll")]
-position = Vector2(3136, 1576)
-
-[node name="HpzPlatformSpawner14" parent="Entities" instance=ExtResource("41_64hll")]
-position = Vector2(2992, 1488)
-
-[node name="HpzPlatformSpawner6" parent="Entities" instance=ExtResource("41_64hll")]
-position = Vector2(9040, 896)
-
-[node name="HpzPlatformSpawner12" parent="Entities" instance=ExtResource("41_64hll")]
-position = Vector2(12224, 1152)
-
-[node name="Elevator" parent="Entities" instance=ExtResource("43_x67w5")]
-position = Vector2(6216, 2060)
-texture = ExtResource("35_r5k02")
-endPosition = Vector2(816, -1632)
-speed = 0.3
-waitTime = 2.0
-
-[node name="Elevator2" parent="Entities" instance=ExtResource("43_x67w5")]
-position = Vector2(5960, 2828)
-texture = ExtResource("35_r5k02")
-endPosition = Vector2(176, -346)
-waitTime = 2.0
-
-[node name="Elevator3" parent="Entities" instance=ExtResource("43_x67w5")]
-position = Vector2(12232, 1036)
-texture = ExtResource("35_r5k02")
-endPosition = Vector2(300, -604)
-speed = 0.5
-waitTime = 2.0
-
-[node name="HpzPlatformSpawner4" parent="Entities" instance=ExtResource("41_64hll")]
-position = Vector2(7552, 2648)
-
-[node name="HpzPlatformSpawner5" parent="Entities" instance=ExtResource("41_64hll")]
-position = Vector2(7400, 2608)
-
-[node name="HpzPlatformSpawner8" parent="Entities" instance=ExtResource("41_64hll")]
-position = Vector2(10688, 1440)
-
-[node name="HpzPlatformSpawner9" parent="Entities" instance=ExtResource("41_64hll")]
-position = Vector2(10816, 1512)
-
-[node name="HpzPlatformSpawner10" parent="Entities" instance=ExtResource("41_64hll")]
-position = Vector2(10944, 1584)
-
 [node name="GHZWaterfall" parent="Entities" instance=ExtResource("38_cmq4r")]
 position = Vector2(2200, 2298)
 maxHeight = 196
@@ -948,6 +836,67 @@ position = Vector2(8056, 1872)
 rotation = 1.5708
 minimumVelocity = 10
 
+[node name="Platforms" type="Node" parent="."]
+
+[node name="HpzPlatformSpawner" parent="Platforms" instance=ExtResource("41_64hll")]
+position = Vector2(2560, 2176)
+
+[node name="HpzPlatformSpawner2" parent="Platforms" instance=ExtResource("41_64hll")]
+position = Vector2(2688, 2210)
+
+[node name="HpzPlatformSpawner3" parent="Platforms" instance=ExtResource("41_64hll")]
+position = Vector2(3328, 2320)
+
+[node name="HpzPlatformSpawner11" parent="Platforms" instance=ExtResource("41_64hll")]
+position = Vector2(2432, 1472)
+
+[node name="HpzPlatformSpawner13" parent="Platforms" instance=ExtResource("41_64hll")]
+position = Vector2(3136, 1576)
+
+[node name="HpzPlatformSpawner14" parent="Platforms" instance=ExtResource("41_64hll")]
+position = Vector2(2992, 1488)
+
+[node name="HpzPlatformSpawner6" parent="Platforms" instance=ExtResource("41_64hll")]
+position = Vector2(9040, 896)
+
+[node name="HpzPlatformSpawner12" parent="Platforms" instance=ExtResource("41_64hll")]
+position = Vector2(12224, 1152)
+
+[node name="Elevator" parent="Platforms" instance=ExtResource("43_x67w5")]
+position = Vector2(6216, 2060)
+texture = ExtResource("35_r5k02")
+endPosition = Vector2(816, -1632)
+speed = 0.3
+waitTime = 2.0
+
+[node name="Elevator2" parent="Platforms" instance=ExtResource("43_x67w5")]
+position = Vector2(5960, 2828)
+texture = ExtResource("35_r5k02")
+endPosition = Vector2(176, -346)
+waitTime = 2.0
+
+[node name="Elevator3" parent="Platforms" instance=ExtResource("43_x67w5")]
+position = Vector2(12232, 1036)
+texture = ExtResource("35_r5k02")
+endPosition = Vector2(300, -604)
+speed = 0.5
+waitTime = 2.0
+
+[node name="HpzPlatformSpawner4" parent="Platforms" instance=ExtResource("41_64hll")]
+position = Vector2(7552, 2648)
+
+[node name="HpzPlatformSpawner5" parent="Platforms" instance=ExtResource("41_64hll")]
+position = Vector2(7400, 2608)
+
+[node name="HpzPlatformSpawner8" parent="Platforms" instance=ExtResource("41_64hll")]
+position = Vector2(10688, 1440)
+
+[node name="HpzPlatformSpawner9" parent="Platforms" instance=ExtResource("41_64hll")]
+position = Vector2(10816, 1512)
+
+[node name="HpzPlatformSpawner10" parent="Platforms" instance=ExtResource("41_64hll")]
+position = Vector2(10944, 1584)
+
 [node name="Hazards" type="Node" parent="."]
 
 [node name="Spikes" parent="Hazards" instance=ExtResource("35_b42q6")]
@@ -1051,115 +1000,168 @@ position = Vector2(6688, 1256)
 rotation = 0.462512
 scale = Vector2(1, 56)
 
-[node name="ItemsHolder" type="Node" parent="."]
+[node name="Currents" type="Node" parent="."]
 
-[node name="Monitor" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
+[node name="WindCurrent" parent="Currents" instance=ExtResource("37_t74c0")]
+position = Vector2(9408, 2112)
+scale = Vector2(32, 18)
+speed = 200.0
+moveSpeed = 150.0
+
+[node name="WindCurrent3" parent="Currents" instance=ExtResource("37_t74c0")]
+position = Vector2(11520, 1984)
+scale = Vector2(64, 18)
+speed = 300.0
+moveSpeed = 150.0
+
+[node name="WindCurrent5" parent="Currents" instance=ExtResource("37_t74c0")]
+position = Vector2(12608, 256)
+scale = Vector2(84, 18)
+speed = 300.0
+moveSpeed = 150.0
+
+[node name="WindCurrent7" parent="Currents" instance=ExtResource("37_t74c0")]
+position = Vector2(7104, 272)
+scale = Vector2(84, 18)
+speed = 300.0
+moveSpeed = 150.0
+
+[node name="WindCurrent2" parent="Currents" instance=ExtResource("37_t74c0")]
+position = Vector2(9728, 2112)
+scale = Vector2(42, 18)
+speed = 200.0
+moveSpeed = 100.0
+
+[node name="WaterfallSound" type="AudioStreamPlayer2D" parent="Currents"]
+position = Vector2(7936, 240)
+stream = ExtResource("43_hcgxy")
+volume_db = -10.0
+autoplay = true
+max_distance = 1000.0
+
+[node name="WaterfallSound3" type="AudioStreamPlayer2D" parent="Currents"]
+position = Vector2(13312, 192)
+stream = ExtResource("43_hcgxy")
+volume_db = -10.0
+autoplay = true
+max_distance = 1000.0
+
+[node name="WaterfallSound2" type="AudioStreamPlayer2D" parent="Currents"]
+position = Vector2(9752, 2304)
+stream = ExtResource("43_hcgxy")
+volume_db = -6.0
+autoplay = true
+max_distance = 1000.0
+
+[node name="Items" type="Node" parent="."]
+
+[node name="Monitor" parent="Items" instance=ExtResource("15_3aljb")]
 position = Vector2(2928, 2224)
 item = 3
 shieldAffinity = 1
 
-[node name="Monitor2" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
+[node name="Monitor2" parent="Items" instance=ExtResource("15_3aljb")]
 position = Vector2(1776, 1392)
 
-[node name="Monitor3" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
+[node name="Monitor3" parent="Items" instance=ExtResource("15_3aljb")]
 position = Vector2(2065, 1520)
 item = 12
 
-[node name="Monitor4" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
+[node name="Monitor4" parent="Items" instance=ExtResource("15_3aljb")]
 position = Vector2(2096, 1520)
 item = 3
 shieldAffinity = 1
 
-[node name="Monitor5" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
+[node name="Monitor5" parent="Items" instance=ExtResource("15_3aljb")]
 position = Vector2(2127, 1520)
 
-[node name="Monitor6" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
+[node name="Monitor6" parent="Items" instance=ExtResource("15_3aljb")]
 position = Vector2(4880, 2288)
 
-[node name="Monitor7" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
+[node name="Monitor7" parent="Items" instance=ExtResource("15_3aljb")]
 position = Vector2(10688, 1424)
 item = 3
 shieldAffinity = 1
 
-[node name="Monitor9" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
+[node name="Monitor9" parent="Items" instance=ExtResource("15_3aljb")]
 position = Vector2(13584, 1392)
 
-[node name="Monitor10" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
+[node name="Monitor10" parent="Items" instance=ExtResource("15_3aljb")]
 position = Vector2(13616, 1392)
 
-[node name="Monitor11" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
+[node name="Monitor11" parent="Items" instance=ExtResource("15_3aljb")]
 position = Vector2(13648, 1392)
 
-[node name="Monitor8" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
+[node name="Monitor8" parent="Items" instance=ExtResource("15_3aljb")]
 position = Vector2(12224, 1424)
 item = 12
 
-[node name="Monitor24" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
+[node name="Monitor24" parent="Items" instance=ExtResource("15_3aljb")]
 position = Vector2(12224, 1104)
 
-[node name="Monitor16" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
+[node name="Monitor16" parent="Items" instance=ExtResource("15_3aljb")]
 position = Vector2(10480, 240)
 item = 3
 
-[node name="Monitor19" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
+[node name="Monitor19" parent="Items" instance=ExtResource("15_3aljb")]
 position = Vector2(10512, 240)
 
-[node name="Monitor20" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
+[node name="Monitor20" parent="Items" instance=ExtResource("15_3aljb")]
 position = Vector2(10544, 240)
 
-[node name="Monitor21" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
+[node name="Monitor21" parent="Items" instance=ExtResource("15_3aljb")]
 position = Vector2(12144, 240)
 item = 2
 
-[node name="Monitor12" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
+[node name="Monitor12" parent="Items" instance=ExtResource("15_3aljb")]
 position = Vector2(8720, 816)
 
-[node name="Monitor13" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
+[node name="Monitor13" parent="Items" instance=ExtResource("15_3aljb")]
 position = Vector2(6928, 1904)
 item = 2
 
-[node name="Monitor23" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
+[node name="Monitor23" parent="Items" instance=ExtResource("15_3aljb")]
 position = Vector2(6928, 1712)
 item = 3
 shieldAffinity = 3
 
-[node name="Monitor14" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
+[node name="Monitor14" parent="Items" instance=ExtResource("15_3aljb")]
 position = Vector2(9232, 2160)
 
-[node name="Monitor22" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
+[node name="Monitor22" parent="Items" instance=ExtResource("15_3aljb")]
 position = Vector2(9152, 1584)
 item = 3
 shieldAffinity = 3
 
-[node name="Monitor15" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
+[node name="Monitor15" parent="Items" instance=ExtResource("15_3aljb")]
 position = Vector2(11120, 2160)
 
-[node name="Monitor17" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
+[node name="Monitor17" parent="Items" instance=ExtResource("15_3aljb")]
 position = Vector2(13040, 1808)
 item = 3
 shieldAffinity = 3
 
-[node name="Monitor18" parent="ItemsHolder" instance=ExtResource("15_3aljb")]
+[node name="Monitor18" parent="Items" instance=ExtResource("15_3aljb")]
 position = Vector2(13008, 1808)
 
-[node name="SignpostNew" parent="ItemsHolder" instance=ExtResource("33_piux2")]
-position = Vector2(15008, 1792)
-
-[node name="Checkpoint" parent="ItemsHolder" instance=ExtResource("40_hvbof")]
+[node name="Checkpoint" parent="Items" instance=ExtResource("40_hvbof")]
 position = Vector2(4864, 2024)
 checkPointID = 1
 
-[node name="Checkpoint2" parent="ItemsHolder" instance=ExtResource("40_hvbof")]
+[node name="Checkpoint2" parent="Items" instance=ExtResource("40_hvbof")]
 position = Vector2(9984, 1640)
 checkPointID = 2
 
-[node name="Checkpoint3" parent="ItemsHolder" instance=ExtResource("40_hvbof")]
+[node name="Checkpoint3" parent="Items" instance=ExtResource("40_hvbof")]
 position = Vector2(10968, 1704)
 checkPointID = 3
 
-[node name="Checkpoint4" parent="ItemsHolder" instance=ExtResource("40_hvbof")]
+[node name="Checkpoint4" parent="Items" instance=ExtResource("40_hvbof")]
 position = Vector2(13016, 1064)
 checkPointID = 5
+
+[node name="SignpostNew" parent="Items" instance=ExtResource("33_piux2")]
+position = Vector2(15008, 1792)
 
 [node name="Badniks" type="Node" parent="."]
 
