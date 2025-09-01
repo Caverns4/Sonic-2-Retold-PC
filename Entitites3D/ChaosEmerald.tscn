@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dkww65gup81nl" path="res://Scripts/Special3D/chaos_emerald.gd" id="1_6o7xn"]
 [ext_resource type="Texture2D" uid="uid://cf4j1ed0nh7oq" path="res://Graphics/Items/ChaosEmeralds.png" id="1_kac6w"]
+[ext_resource type="Material" uid="uid://v3sr4whl4pv" path="res://Resources/3DMaterials/Shadow.tres" id="3_hlpuh"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_cuuyf"]
 radius = 7.0
@@ -10,10 +11,9 @@ radius = 7.0
 top_radius = 1.0
 bottom_radius = 1.0
 height = 0.001
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hlpuh"]
-shading_mode = 0
-albedo_color = Color(0, 0, 0, 1)
+radial_segments = 8
+rings = 0
+cap_bottom = false
 
 [node name="ChaosEmerald" type="Node3D"]
 script = ExtResource("1_6o7xn")
@@ -39,6 +39,6 @@ target_position = Vector3(0, -10, 0)
 [node name="CharacterShadow" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.887209, 0)
 mesh = SubResource("CylinderMesh_6o7xn")
-surface_material_override/0 = SubResource("StandardMaterial3D_hlpuh")
+surface_material_override/0 = ExtResource("3_hlpuh")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

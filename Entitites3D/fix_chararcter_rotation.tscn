@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://d12iqp4cvtfy0"]
+
+[ext_resource type="Script" uid="uid://c6vsicrkowyy3" path="res://Scripts/Special3D/fix_chararcter_rotation.gd" id="1_ho1yk"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_oq76d"]
+radius = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ho1yk"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.215686, 0.211765, 0.556863)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3i1he"]
+material = SubResource("StandardMaterial3D_ho1yk")
+top_radius = 10.0
+bottom_radius = 10.0
+
+[node name="ForceChararcterRotation" type="Area3D"]
+collision_layer = 0
+collision_mask = 4096
+script = ExtResource("1_ho1yk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_oq76d")
+debug_color = Color(1, 0.470588, 0.333333, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_3i1he")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

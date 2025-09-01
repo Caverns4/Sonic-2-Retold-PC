@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://vnfel652ionu"]
+[gd_scene load_steps=9 format=3 uid="uid://vnfel652ionu"]
 
 [ext_resource type="MeshLibrary" uid="uid://bh7gsa0o3u6j" path="res://Resources/SpecialStages.tres" id="1_6j7lo"]
 [ext_resource type="Script" uid="uid://bkjyltte0u76l" path="res://Scripts/Special3D/special_stage_requirments.gd" id="1_nse26"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dpl1a2gtxk5t2" path="res://Entitites3D/ring_ss.tscn" id="4_nqb0r"]
 [ext_resource type="PackedScene" uid="uid://brhngubcqwg7i" path="res://Entitites3D/bomb_ss.tscn" id="5_b7spd"]
 [ext_resource type="PackedScene" uid="uid://bsbgvrhfhrpev" path="res://Entitites3D/end_of_round.tscn" id="7_oq76d"]
+[ext_resource type="PackedScene" uid="uid://d12iqp4cvtfy0" path="res://Entitites3D/fix_chararcter_rotation.tscn" id="8_q2j35"]
 
 [node name="Stage1" type="Node3D"]
 script = ExtResource("1_nse26")
@@ -16,9 +17,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 0)
 mesh_library = ExtResource("1_6j7lo")
 cell_size = Vector3(5, 5, 5)
 data = {
-"cells": PackedInt32Array(-65536, 14, 0, -65536, 10, 0, -65536, 6, 0, -65536, 2, 0, -65536, 65534, 7, -65536, 18, 0, -65536, 22, 0, -65536, 65530, 0, -65536, 65526, 0, -65536, 65522, 3, -65532, 65521, 9, -65531, 65517, 0, -65531, 65513, 0, -65531, 65509, 0, -65531, 65505, 0, -65531, 65501, 0, -65531, 65497, 0, -65531, 65493, 0, -65531, 65489, 0, -65531, 65485, 0, -65531, 65481, 1, -65531, 65477, 1, -65528, 65474, 1, -65534, 65474, 1, -65534, 65470, 2, -65528, 65470, 2, 8, 65466, 1, 2, 65466, 1, 5, 65463, 1, 5, 65459, 0, 5, 65455, 0, 5, 65451, 7, 5, 65447, 7, 5, 65443, 7, 5, 65439, 0, 5, 65435, 0, 5, 65431, 0, 5, 65427, 0, 5, 65423, 0, 5, 65419, 0, 5, 65415, 0, 5, 65411, 0, 5, 65407, 0, 5, 65403, 0, 5, 65399, 0, 5, 65395, 0, 5, 65391, 0, 5, 65387, 0, 5, 65383, 0, 5, 65379, 0, 5, 65375, 0, 5, 65371, 0, 5, 65367, 0)
+"cells": PackedInt32Array(-65536, 14, 0, -65536, 10, 0, -65536, 6, 0, -65536, 2, 0, -65536, 65534, 7, -65536, 18, 0, -65536, 22, 0, -65536, 65530, 0, -65536, 65526, 0, -65536, 65522, 3, -65532, 65521, 9, -65531, 65517, 0, -65531, 65513, 0, -65531, 65509, 0, -65531, 65505, 0, -65531, 65501, 0, -65531, 65497, 0, -65531, 65493, 0, -65531, 65489, 0, -65531, 65485, 0, -65531, 65481, 1, -65531, 65477, 1, -65528, 65474, 1, -65534, 65474, 1, -65534, 65470, 2, -65528, 65470, 2, 8, 65466, 1, 2, 65466, 1, 5, 65463, 1, 5, 65459, 0, 5, 65455, 0, 5, 65451, 7, 5, 65447, 7, 5, 65443, 7, 5, 65439, 0, 5, 65435, 0, 5, 65431, 1, 5, 65427, 1, 2, 65424, 1, 2, 65420, 1, 8, 65424, 1, 8, 65420, 1, 2, 65416, 2, 8, 65416, 2, 65544, 65412, 1, 65538, 65412, 1, 8, 65408, 655362, 2, 65408, 655362, 8, 65404, 2, 2, 65404, 2, 65538, 65400, 1, 65544, 65400, 1, 65541, 65397, 1, 65541, 65393, 1, 65541, 65389, 7, 65541, 65385, 7, 65541, 65381, 7, 65541, 65377, 0, 65541, 65373, 0, 65541, 65369, 0, 65541, 65365, 0, 65541, 65361, 0, 65541, 65357, 0, 65541, 65353, 0, 65541, 65349, 0, 65541, 65345, 0)
 }
-metadata/_editor_floor_ = Vector3(0, 0, 0)
+metadata/_editor_floor_ = Vector3(0, 5, 0)
 
 [node name="Entitites" type="Node3D" parent="."]
 
@@ -166,6 +167,273 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 3, -386)
 [node name="Ring_SS55" parent="Entitites" instance=ExtResource("4_nqb0r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 3, -388)
 
+[node name="Ring_SS56" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, -8, -455)
+
+[node name="Ring_SS57" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, -8, -459)
+
+[node name="Ring_SS58" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, -8, -457)
+
+[node name="Ring_SS59" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 3, -500)
+
+[node name="Ring_SS60" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 3, -502)
+
+[node name="Ring_SS61" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 3, -504)
+
+[node name="Ring_SS62" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 6, -520)
+
+[node name="Ring_SS128" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 7, -529)
+
+[node name="Ring_SS63" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 7, -523)
+
+[node name="Ring_SS64" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 7, -525)
+
+[node name="Ring_SS65" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 7, -527)
+
+[node name="Ring_SS66" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 3, -543)
+
+[node name="Ring_SS67" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 3, -545)
+
+[node name="Ring_SS68" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 3, -547)
+
+[node name="Ring_SS69" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 3, -549)
+
+[node name="Ring_SS70" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 3, -551)
+
+[node name="Ring_SS71" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5, 3, -543)
+
+[node name="Ring_SS72" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5, 3, -545)
+
+[node name="Ring_SS73" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5, 3, -547)
+
+[node name="Ring_SS74" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5, 3, -549)
+
+[node name="Ring_SS75" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5, 3, -551)
+
+[node name="Ring_SS76" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5, 3, -554)
+
+[node name="Ring_SS77" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5, 3, -556)
+
+[node name="Ring_SS78" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5, 3, -558)
+
+[node name="Ring_SS79" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5, 3, -560)
+
+[node name="Ring_SS80" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5, 3, -562)
+
+[node name="Ring_SS81" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 3, -554)
+
+[node name="Ring_SS82" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 3, -556)
+
+[node name="Ring_SS83" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 3, -558)
+
+[node name="Ring_SS84" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 3, -560)
+
+[node name="Ring_SS85" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 3, -562)
+
+[node name="Ring_SS86" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 3, -572)
+
+[node name="Ring_SS87" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 3, -574)
+
+[node name="Ring_SS88" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 3, -576)
+
+[node name="Ring_SS89" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 3, -578)
+
+[node name="Ring_SS90" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 3, -580)
+
+[node name="Ring_SS91" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 3, -572)
+
+[node name="Ring_SS92" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 3, -574)
+
+[node name="Ring_SS93" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 3, -576)
+
+[node name="Ring_SS94" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 3, -578)
+
+[node name="Ring_SS95" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 3, -580)
+
+[node name="Ring_SS96" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 3, -572)
+
+[node name="Ring_SS97" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 3, -574)
+
+[node name="Ring_SS98" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 3, -576)
+
+[node name="Ring_SS99" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 3, -578)
+
+[node name="Ring_SS100" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 3, -580)
+
+[node name="Ring_SS101" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5, 3, -572)
+
+[node name="Ring_SS102" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5, 3, -574)
+
+[node name="Ring_SS103" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5, 3, -576)
+
+[node name="Ring_SS104" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5, 3, -578)
+
+[node name="Ring_SS106" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 8, -621)
+
+[node name="Ring_SS107" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 8, -623)
+
+[node name="Ring_SS108" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 8, -625)
+
+[node name="Ring_SS109" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 8, -627)
+
+[node name="Ring_SS110" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 8, -621)
+
+[node name="Ring_SS120" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 12, -629)
+
+[node name="Ring_SS121" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 12, -629)
+
+[node name="Ring_SS122" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 12, -631)
+
+[node name="Ring_SS123" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 12, -631)
+
+[node name="Ring_SS124" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 12, -633)
+
+[node name="Ring_SS125" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 12, -633)
+
+[node name="Ring_SS126" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 12, -635)
+
+[node name="Ring_SS127" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 12, -635)
+
+[node name="Ring_SS111" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 8, -623)
+
+[node name="Ring_SS112" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 8, -625)
+
+[node name="Ring_SS113" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 8, -627)
+
+[node name="Ring_SS129" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.5, 8, -604)
+
+[node name="Ring_SS130" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.5, 8, -606)
+
+[node name="Ring_SS131" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.5, 8, -608)
+
+[node name="Ring_SS132" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.5, 8, -610)
+
+[node name="Ring_SS133" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 8, -604)
+
+[node name="Ring_SS134" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 8, -606)
+
+[node name="Ring_SS135" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 8, -608)
+
+[node name="Ring_SS136" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 8, -610)
+
+[node name="Ring_SS137" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5, 8, -604)
+
+[node name="Ring_SS138" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5, 8, -606)
+
+[node name="Ring_SS139" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5, 8, -608)
+
+[node name="Ring_SS140" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5, 8, -610)
+
+[node name="Ring_SS141" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 8, -604)
+
+[node name="Ring_SS142" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 8, -606)
+
+[node name="Ring_SS143" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 8, -608)
+
+[node name="Ring_SS144" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 8, -610)
+
+[node name="Ring_SS114" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 8, -700)
+
+[node name="Ring_SS115" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 8, -702)
+
+[node name="Ring_SS116" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 8, -704)
+
+[node name="Ring_SS117" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 8, -706)
+
+[node name="Ring_SS118" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 8, -708)
+
+[node name="Ring_SS119" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 8, -710)
+
+[node name="Ring_SS105" parent="Entitites" instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5, 3, -580)
+
 [node name="Ring_SS46" parent="Entitites" instance=ExtResource("4_nqb0r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, -1, -308)
 
@@ -211,6 +479,48 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 4, -365)
 [node name="Bomb_SS7" parent="Entitites" instance=ExtResource("5_b7spd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 4, -356)
 
+[node name="Bomb_SS8" parent="Entitites" instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 5, -568)
+
+[node name="Bomb_SS9" parent="Entitites" instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 5, -568)
+
+[node name="Bomb_SS10" parent="Entitites" instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 5, -568)
+
+[node name="Bomb_SS11" parent="Entitites" instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 5, -568)
+
+[node name="Bomb_SS12" parent="Entitites" instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 9, -697)
+
+[node name="Bomb_SS13" parent="Entitites" instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 9, -697)
+
+[node name="Bomb_SS18" parent="Entitites" instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 9, -697)
+
+[node name="Bomb_SS19" parent="Entitites" instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 9, -697)
+
+[node name="Bomb_SS20" parent="Entitites" instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 9, -697)
+
+[node name="Bomb_SS21" parent="Entitites" instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 9, -697)
+
+[node name="Bomb_SS14" parent="Entitites" instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 4, -529)
+
+[node name="Bomb_SS15" parent="Entitites" instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 4, -526)
+
+[node name="Bomb_SS16" parent="Entitites" instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 4, -523)
+
+[node name="Bomb_SS17" parent="Entitites" instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 4, -520)
+
 [node name="Bomb_SS3" parent="Entitites" instance=ExtResource("5_b7spd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, -2, -310)
 
@@ -227,4 +537,61 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 4, -370)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 8, -429)
 
 [node name="ChaosEmerald" parent="Entitites" instance=ExtResource("2_jyupk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 7, -720)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 12, -791)
+
+[node name="ForceChararcterRotation" parent="Entitites" instance=ExtResource("8_q2j35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.9601)
+
+[node name="ForceChararcterRotation2" parent="Entitites" instance=ExtResource("8_q2j35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -87.9601)
+
+[node name="ForceChararcterRotation3" parent="Entitites" instance=ExtResource("8_q2j35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 14, -737.96)
+
+[node name="ForceChararcterRotation4" parent="Entitites" instance=ExtResource("8_q2j35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 7, -489.96)
+
+[node name="SsBumper6" parent="Entitites" instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 5, -554)
+
+[node name="SsBumper7" parent="Entitites" instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 5, -554)
+
+[node name="SsBumper8" parent="Entitites" instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 5, -554)
+
+[node name="SsBumper9" parent="Entitites" instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 9, -632)
+
+[node name="SsBumper10" parent="Entitites" instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 9, -632)
+
+[node name="SsBumper11" parent="Entitites" instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 9, -632)
+
+[node name="SsBumper12" parent="Entitites" instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 9, -632)
+
+[node name="SsBumper13" parent="Entitites" instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 9, -632)
+
+[node name="SsBumper14" parent="Entitites" instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 9, -632)
+
+[node name="SsBumper15" parent="Entitites" instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 10, -688)
+
+[node name="SsBumper16" parent="Entitites" instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 10, -688)
+
+[node name="SsBumper17" parent="Entitites" instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 10, -688)
+
+[node name="SsBumper18" parent="Entitites" instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 10, -688)
+
+[node name="SsBumper19" parent="Entitites" instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 10, -688)
+
+[node name="SsBumper20" parent="Entitites" instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 10, -688)

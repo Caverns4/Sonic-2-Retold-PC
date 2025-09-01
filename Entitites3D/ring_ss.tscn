@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dpl1a2gtxk5t2"]
+[gd_scene load_steps=15 format=3 uid="uid://dpl1a2gtxk5t2"]
 
 [ext_resource type="Script" uid="uid://cjfolnycolh0o" path="res://Scripts/Special3D/ring_ss.gd" id="1_g4yp7"]
 [ext_resource type="Texture2D" uid="uid://g5aeup5eta7h" path="res://Graphics/Special Stage/Rings_SS.png" id="2_1fl8m"]
+[ext_resource type="Material" uid="uid://v3sr4whl4pv" path="res://Resources/3DMaterials/Shadow.tres" id="3_ivt0a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cb3av"]
 atlas = ExtResource("2_1fl8m")
@@ -69,6 +70,14 @@ animations = [{
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vieij"]
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_5i06a"]
+top_radius = 0.6
+bottom_radius = 0.6
+height = 0.001
+radial_segments = 8
+rings = 0
+cap_bottom = false
+
 [node name="Ring_SS" type="Node3D"]
 script = ExtResource("1_g4yp7")
 
@@ -86,6 +95,15 @@ collision_mask = 4096
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 shape = SubResource("SphereShape3D_vieij")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+visible = false
+target_position = Vector3(0, -10, 0)
+
+[node name="CharacterShadow" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.887209, 0)
+mesh = SubResource("CylinderMesh_5i06a")
+surface_material_override/0 = ExtResource("3_ivt0a")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]

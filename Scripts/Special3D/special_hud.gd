@@ -17,6 +17,7 @@ var ring_requirement: int = 999
 var total_rings: int = 0
 var round_time:float = 0.0
 var showed_warning_text:bool = false
+var message_flash_timer:float = 0.25
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,7 +36,7 @@ func _physics_process(delta: float) -> void:
 		message_state = MESSAGES.RINGS_TO_GO
 		message.visible = true
 	
-	UpdateMessage(ring_total)
+	UpdateMessage(ring_total,delta)
 	messageTime -= delta
 	message.text = message_text
 
@@ -50,7 +51,7 @@ func Get_Current_Rings():
 		$TopCenter/RingCount.text = str(total_rings).lpad(4," ")
 	return total_rings
 
-func UpdateMessage(_ring_total):
+func UpdateMessage(_ring_total,delta):
 	if !message_state:
 		return
 	
@@ -64,10 +65,14 @@ func UpdateMessage(_ring_total):
 			else:
 				message_text = "GET " + str(ring_requirement) + " RINGS!" 
 		MESSAGES.RINGS_TO_GO:
+			message_flash_timer -= delta
+			if message_flash_timer <= 0.0:
+				message_flash_timer = 0.25
+				message.visible = !message.visible
+			
 			var to_go: int = clamp(ring_requirement - total_rings,0,ring_requirement)
 			if to_go > 0:
 				message_text = str(to_go) + " RINGS TO GO"
-				message.visible = !message.visible
 			else:
 				ClearMessage()
 		MESSAGES.NOT_ENOUGH_RINGS:
@@ -136,7 +141,6 @@ func SetMessage(message_type: int = 0):
 		messageTime = 3.0
 
 func SetupNextRound(failed:bool = false):
-	var new_ring_req = ring_requirements[current_round]
 	round_time = 0.0
 	showed_warning_text = false
 	if failed:
@@ -144,12 +148,12 @@ func SetupNextRound(failed:bool = false):
 		message_state = MESSAGES.COURSE_OUT
 		return
 	else:
-		if new_ring_req:
-			SetMessage() #Default state prints "Good!" or "Not enough"
-			current_round += 1
-			ring_requirement = new_ring_req
-		else:
-			SetMessage() #Default state prints "Good!" or "Not enough"
+		SetMessage() #Default state prints "Good!" or "Not enough"
+		current_round += 1
+		var new_ring_req = 0
+		if ring_requirements.size() > current_round:
+			new_ring_req = ring_requirements[current_round]
+		ring_requirement = new_ring_req
 
 func ClearMessage():
 	message_state = MESSAGES.NULL

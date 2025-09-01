@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://jntxngpoom7w" path="res://Audio/SFX/Objects/s2br_RingLeft.wav" id="9_3yur5"]
 [ext_resource type="AudioStream" uid="uid://c05soci1eqlxy" path="res://Audio/SFX/Objects/s2br_RingRight.wav" id="10_ma2ha"]
 [ext_resource type="AudioStream" uid="uid://c4d6il21s83ad" path="res://Audio/SFX/Objects/s2br_LoseRings.wav" id="11_ay3dt"]
+[ext_resource type="Material" uid="uid://v3sr4whl4pv" path="res://Resources/3DMaterials/Shadow.tres" id="14_q1nh7"]
 [ext_resource type="AudioStream" uid="uid://jhgu358io281" path="res://Audio/SFX/Player/s2br_MetalBrake.wav" id="21_a3huc"]
 [ext_resource type="PackedScene" uid="uid://c62dv25je5kes" path="res://Graphics/Special Stage/SS_Sonic_Test.tscn" id="33_o7v3h"]
 
@@ -18,10 +19,9 @@
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_8dt0u"]
 height = 0.001
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q1nh7"]
-shading_mode = 0
-albedo_color = Color(0, 0, 0, 1)
+radial_segments = 8
+rings = 0
+cap_bottom = false
 
 [node name="SpecialStageCharacter" type="CharacterBody3D"]
 collision_layer = 4096
@@ -91,4 +91,4 @@ billboard = 1
 [node name="CharacterShadow" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.887209, 0)
 mesh = SubResource("CylinderMesh_8dt0u")
-surface_material_override/0 = SubResource("StandardMaterial3D_q1nh7")
+surface_material_override/0 = ExtResource("14_q1nh7")

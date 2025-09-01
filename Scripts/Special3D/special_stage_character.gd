@@ -11,6 +11,8 @@ const JUMP_KNUCKLES = 10.0
 const INPUT_MEMORY_LENGTH = 20
 const JUMP_BUFFER_TIME = 3.0/60.0 #Time after pressing jump button to buffer the input, in case it's pressed early.
 
+const UPRIGHT_TIME = 4
+
 #Collision management
 var floor_ray = RayCast3D.new()
 var ray_length = 6.0  # Length for surface detection
@@ -46,7 +48,7 @@ var inputMemory = []
 # Movement
 var inertia : float  = 0.0 # Movement Speed forward
 var movement : Vector3 = Vector3.ZERO #linear motion
-var xform : Transform3D
+var target_up_dir: Vector3 = Vector3.UP
 var jumpBuffer: float = 0
 var dead: bool = false
 
@@ -143,14 +145,14 @@ func hit_player(damagePosition: Vector3,ammount: int):
 func rotate_to_floor_angle(delta):
 	var surface_normal = get_floor().normalized()
 	if surface_normal:
-		#Align to nearest floor
-		xform = global_transform
-		xform.basis.y = surface_normal
-		xform.basis.x = -xform.basis.z.cross(xform.basis.y)
-		xform.basis = xform.basis.orthonormalized()
-		global_transform = xform
-		
-		up_direction = surface_normal
+		target_up_dir = surface_normal
+	up_direction = target_up_dir
+	#Align to target angle
+	var xform: Transform3D = global_transform
+	xform.basis.y = xform.basis.y.move_toward(target_up_dir,UPRIGHT_TIME*delta)
+	xform.basis.x = -xform.basis.z.cross(xform.basis.y)
+	xform.basis = xform.basis.orthonormalized()
+	global_transform = xform
 
 
 func get_floor():
