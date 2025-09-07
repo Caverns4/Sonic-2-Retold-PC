@@ -51,6 +51,7 @@ var movement : Vector3 = Vector3.ZERO #linear motion
 var target_up_dir: Vector3 = Vector3.UP
 var jumpBuffer: float = 0
 var dead: bool = false
+var top_speed: float = TOP_SPEED
 
 func _ready() -> void:
 	Global.special_stage_players.append(self)
@@ -128,9 +129,9 @@ func handle_input(delta):
 	# Forward and backward are controlled by the game.
 	var input_axis = inputs[INPUTS.XINPUT]
 	
-	if inertia < TOP_SPEED:
-		inertia += (12*delta)
-	inertia = clampf(inertia,0-TOP_SPEED,TOP_SPEED)
+	if inertia < top_speed:
+		inertia += (8*delta)
+	inertia = clampf(inertia,0-top_speed,top_speed)
 	#print(inertia)
 	
 	movement = (Vector3(input_axis*8.0,movement.y,0-inertia))

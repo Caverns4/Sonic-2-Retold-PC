@@ -52,20 +52,18 @@ func _physics_process(delta: float) -> void:
 					if player.ground:
 						player.animator.play("roll")
 						player.set_state(player.STATES.ANIMATION)
+						player.set_hitbox(player.currentHitbox.ROLL,false)
 						player.movement.x = 60 * direction
 						if player.jumpBuffer > 0.0:
-							var offsetDiff = direction*10 #Number of pixels from the "center"
-							var height = min(
-								round(
-								((direction*player.global_position.x) - 
-								((direction*global_position.x) - (offsetDiff*direction))
-								)/4)
-								,8)
+							var offsetDiff = (player.global_position.x - global_position.x)*direction
+							var height = offsetDiff/2
 							if height > 0:
+								height = clamp(height,8,16)
 								active = true
 								frameTimer = 0.1
-								player.movement.y = 0 - (height * 120)
-								player.movement.x = (height/2) * direction
+								player.angle = 0
+								player.movement.y = 0 - (height * 60)
+								player.movement.x = (height*15) * direction
 								player.currentState = player.STATES.AIR
 								player.animator.play("roll")
 								SoundDriver.play_sound(flipsound)

@@ -37,10 +37,10 @@ func _physics_process(delta: float) -> void:
 	$GatorSprite.frame = 0
 	var _prox = GlobalFunctions.get_orientation_to_player(global_position)
 	if _prox.x < 96 and sign(_prox.x) == sign(direction) and abs(_prox.y) < 64:
-		$GatorSprite.frame = 6
+		$GatorSprite.frame = 3
 	if velocity.x != 0:
-		$GatorSprite.frame += wrapi(Global.globalTimer*8,0,6)
-	$GatorSprite/Area2D.monitoring = ($GatorSprite.frame >= 6)
+		$GatorSprite.frame += wrapi(Global.globalTimer*8,0,3)
+	$GatorSprite/Area2D.monitoring = ($GatorSprite.frame >= 3)
 	move_and_slide()
 
 func setDirection():

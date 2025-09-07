@@ -8,15 +8,18 @@ var bounceSound = preload("res://Audio/SFX/Objects/CNZ_BigBumper.wav")
 
 func physics_collision(body, hitVector):
 	var col = body.objectCheck.get_collision_normal()
-	#print(col)
-	
+	body.set_state(body.STATES.AIR)
+	body.angle = 0
 	if col:
 		body.movement = (col.normalized()*power)
 	else:
-		if abs(body.global_position.x - global_position.x) < 30:
-			body.movement.y = power*sign(body.global_position.y - global_position.y)
-		else:
-			body.movement.x = -power/2*sign(global_scale.x)
+		var posedif = body.global_position - global_position
+		posedif = posedif.normalized()
+		print(posedif)
+		if posedif.y > abs(posedif.x):
+			body.movement.y = 60
+		#else:
+		#	body.movement.x = -power/2*sign(0-posedif.x)
 	
 	if body.currentState == body.STATES.JUMP: # set the state to air
 		body.set_state(body.STATES.AIR)

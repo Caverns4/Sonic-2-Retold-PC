@@ -19,13 +19,14 @@ animations = [{
 }]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vieij"]
+radius = 1.0
 
 [node name="Bomb_SS" type="Node3D"]
 script = ExtResource("1_eorbs")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0742631, 0)
-pixel_size = 0.05
+pixel_size = 0.1
 billboard = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_pd86d")
@@ -37,6 +38,7 @@ collision_mask = 4096
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 shape = SubResource("SphereShape3D_vieij")
+debug_color = Color(0.719454, 1.82897e-06, 5.77569e-07, 1)
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]

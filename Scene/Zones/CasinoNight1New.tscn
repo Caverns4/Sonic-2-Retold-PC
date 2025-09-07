@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://p0yejpqi4q88"]
+[gd_scene load_steps=27 format=4 uid="uid://p0yejpqi4q88"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_0yy3m"]
 [ext_resource type="AudioStream" uid="uid://c354qh8pof6fe" path="res://Audio/Soundtrack/s2br_CasinoNight.ogg" id="2_20443"]
@@ -14,8 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://c3dq6cs7sku84" path="res://Entities/Gimmicks/CNZFlipper.tscn" id="13_wyhjd"]
 [ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="14_0dgsp"]
 [ext_resource type="PackedScene" uid="uid://c2t7hwn0iln3x" path="res://Entities/Obstacles/Elevator.tscn" id="16_0dx01"]
+[ext_resource type="Texture2D" uid="uid://bd7qotjdqnsst" path="res://Graphics/Objects_Zone/CNZ_MovingBlock.png" id="16_24mkh"]
 [ext_resource type="PackedScene" uid="uid://dnbjgwbrkknnu" path="res://Entities/Gimmicks/ConveyorBelt.tscn" id="16_kwjyb"]
 [ext_resource type="AudioStream" uid="uid://cei1ganfjxio8" path="res://Audio/SFX/Objects/CNZ_Elevator.wav" id="18_042pc"]
+[ext_resource type="Texture2D" uid="uid://bsbg06aqri8m1" path="res://Graphics/Objects_Zone/CNZ_Elevator.png" id="18_j7vub"]
 [ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="19_guhxt"]
 [ext_resource type="PackedScene" uid="uid://8sljpf878e00" path="res://Entities/Enemies/Crawl.tscn" id="20_2gusr"]
 [ext_resource type="PackedScene" uid="uid://c750k3u1o0wfg" path="res://Entities/ZoneObjects/CNZ-triangle_bumper.tscn" id="21_c1g0a"]
@@ -316,7 +318,7 @@ position = Vector2(3096, 328)
 position = Vector2(3608, 968)
 
 [node name="CnzFlipper15" parent="Entities" instance=ExtResource("13_wyhjd")]
-position = Vector2(5044, 944)
+position = Vector2(5016, 936)
 
 [node name="CnzFlipper36" parent="Entities" instance=ExtResource("13_wyhjd")]
 position = Vector2(5120, 1384)
@@ -446,15 +448,13 @@ constant_linear_velocity = Vector2(-60, 0)
 speed = -60
 length = 7
 
-[node name="CnzFlipper39" parent="Entities" instance=ExtResource("13_wyhjd")]
-position = Vector2(184, 656)
-
 [node name="Platforms" type="Node2D" parent="."]
 material = ExtResource("8_cpekc")
 
 [node name="Platform" parent="Platforms" instance=ExtResource("14_0dgsp")]
 use_parent_material = true
 position = Vector2(2400, 1696)
+platform_sprite = ExtResource("16_24mkh")
 endPosition = Vector2(192, 0)
 speed = 0.5
 dropSlightly = false
@@ -464,6 +464,7 @@ platformDepth = 0
 [node name="Platform6" parent="Platforms" instance=ExtResource("14_0dgsp")]
 use_parent_material = true
 position = Vector2(3744, 864)
+platform_sprite = ExtResource("16_24mkh")
 endPosition = Vector2(192, 0)
 speed = 0.5
 dropSlightly = false
@@ -473,6 +474,7 @@ platformDepth = 0
 [node name="Platform8" parent="Platforms" instance=ExtResource("14_0dgsp")]
 use_parent_material = true
 position = Vector2(4256, 800)
+platform_sprite = ExtResource("16_24mkh")
 endPosition = Vector2(192, 0)
 speed = -0.5
 dropSlightly = false
@@ -482,6 +484,7 @@ platformDepth = 0
 [node name="Platform2" parent="Platforms" instance=ExtResource("14_0dgsp")]
 use_parent_material = true
 position = Vector2(2208, 1760)
+platform_sprite = ExtResource("16_24mkh")
 endPosition = Vector2(192, 0)
 speed = 0.5
 offset = 192.0
@@ -492,6 +495,7 @@ platformDepth = 0
 [node name="Platform3" parent="Platforms" instance=ExtResource("14_0dgsp")]
 use_parent_material = true
 position = Vector2(2016, 1568)
+platform_sprite = ExtResource("16_24mkh")
 endPosition = Vector2(0, 192)
 speed = 0.5
 dropSlightly = false
@@ -501,6 +505,7 @@ platformDepth = 0
 [node name="Platform5" parent="Platforms" instance=ExtResource("14_0dgsp")]
 use_parent_material = true
 position = Vector2(2848, 1504)
+platform_sprite = ExtResource("16_24mkh")
 endPosition = Vector2(0, 192)
 speed = 0.5
 dropSlightly = false
@@ -510,6 +515,7 @@ platformDepth = 0
 [node name="Platform7" parent="Platforms" instance=ExtResource("14_0dgsp")]
 use_parent_material = true
 position = Vector2(2592, 736)
+platform_sprite = ExtResource("16_24mkh")
 endPosition = Vector2(0, 192)
 speed = 0.5
 dropSlightly = false
@@ -519,6 +525,7 @@ platformDepth = 0
 [node name="Platform4" parent="Platforms" instance=ExtResource("14_0dgsp")]
 use_parent_material = true
 position = Vector2(1888, 1568)
+platform_sprite = ExtResource("16_24mkh")
 endPosition = Vector2(0, 192)
 speed = 0.5
 offset = 192.0
@@ -528,27 +535,32 @@ platformDepth = 0
 
 [node name="Elevator" parent="Platforms" instance=ExtResource("16_0dx01")]
 position = Vector2(3376, 1352)
+texture = ExtResource("18_j7vub")
 endPosition = Vector2(0, 320)
 soundFile = ExtResource("18_042pc")
 
 [node name="Elevator4" parent="Platforms" instance=ExtResource("16_0dx01")]
 position = Vector2(7728, 1416)
+texture = ExtResource("18_j7vub")
 endPosition = Vector2(0, -448)
 soundFile = ExtResource("18_042pc")
 
 [node name="Elevator5" parent="Platforms" instance=ExtResource("16_0dx01")]
 position = Vector2(7600, 1864)
+texture = ExtResource("18_j7vub")
 endPosition = Vector2(0, -448)
 soundFile = ExtResource("18_042pc")
 
 [node name="Elevator3" parent="Platforms" instance=ExtResource("16_0dx01")]
 position = Vector2(5424, 712)
+texture = ExtResource("18_j7vub")
 endPosition = Vector2(0, -320)
 soundFile = ExtResource("18_042pc")
 
 [node name="Elevator2" parent="Platforms" instance=ExtResource("16_0dx01")]
-position = Vector2(3248, 584)
-endPosition = Vector2(0, 576)
+position = Vector2(3248, 1160)
+texture = ExtResource("18_j7vub")
+endPosition = Vector2(0, -576)
 speed = 0.5
 soundFile = ExtResource("18_042pc")
 
@@ -883,7 +895,7 @@ position = Vector2(8560, 560)
 [node name="SlotMachines" type="Node" parent="."]
 
 [node name="CNZSlot" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
-position = Vector2(384, 664)
+position = Vector2(640, 660)
 type = 1
 
 [node name="CNZSlot2" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
@@ -932,7 +944,7 @@ position = Vector2(1728, 488)
 type = 1
 
 [node name="CnzCharacterReels" parent="SlotMachines" instance=ExtResource("13_kcv3i")]
-position = Vector2(384, 620)
+position = Vector2(640, 608)
 
 [node name="CnzCharacterReels2" parent="SlotMachines" instance=ExtResource("13_kcv3i")]
 position = Vector2(1216, 1184)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://c2i6c85g2b5bh"]
+[gd_scene load_steps=27 format=4 uid="uid://c2i6c85g2b5bh"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_ssdve"]
 [ext_resource type="AudioStream" uid="uid://c354qh8pof6fe" path="res://Audio/Soundtrack/s2br_CasinoNight.ogg" id="2_last2"]
@@ -18,8 +18,10 @@
 [ext_resource type="PackedScene" uid="uid://dwybbnboecmkw" path="res://Entities/Obstacles/Bumper.tscn" id="15_yeqo5"]
 [ext_resource type="PackedScene" uid="uid://c3dq6cs7sku84" path="res://Entities/Gimmicks/CNZFlipper.tscn" id="16_3fgr3"]
 [ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="17_1xt3d"]
+[ext_resource type="Texture2D" uid="uid://bsbg06aqri8m1" path="res://Graphics/Objects_Zone/CNZ_Elevator.png" id="18_8ysgv"]
 [ext_resource type="PackedScene" uid="uid://dnbjgwbrkknnu" path="res://Entities/Gimmicks/ConveyorBelt.tscn" id="18_bt65x"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="18_e72vi"]
+[ext_resource type="Texture2D" uid="uid://bd7qotjdqnsst" path="res://Graphics/Objects_Zone/CNZ_MovingBlock.png" id="18_kjkoe"]
 [ext_resource type="PackedScene" uid="uid://8sljpf878e00" path="res://Entities/Enemies/Crawl.tscn" id="21_864ul"]
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="21_et5nc"]
 [ext_resource type="PackedScene" uid="uid://maxhev4qup18" path="res://Entities/Gimmicks/cnz_slot.tscn" id="23_q6f0e"]
@@ -143,51 +145,6 @@ springDirection = 2
 
 [node name="Spring16" parent="Entities" instance=ExtResource("10_366g0")]
 position = Vector2(6160, 504)
-
-[node name="Elevator" parent="Entities" instance=ExtResource("11_8oyv8")]
-position = Vector2(4400, 1480)
-endPosition = Vector2(0, 448)
-soundFile = ExtResource("13_0dqgs")
-
-[node name="Elevator2" parent="Entities" instance=ExtResource("11_8oyv8")]
-position = Vector2(4400, 1480)
-endPosition = Vector2(0, -447)
-soundFile = ExtResource("13_0dqgs")
-
-[node name="Elevator4" parent="Entities" instance=ExtResource("11_8oyv8")]
-position = Vector2(2736, 1864)
-endPosition = Vector2(0, -448)
-soundFile = ExtResource("13_0dqgs")
-
-[node name="Elevator5" parent="Entities" instance=ExtResource("11_8oyv8")]
-position = Vector2(5808, 1992)
-endPosition = Vector2(0, -512)
-soundFile = ExtResource("13_0dqgs")
-
-[node name="Elevator6" parent="Entities" instance=ExtResource("11_8oyv8")]
-position = Vector2(6064, 1160)
-endPosition = Vector2(0, 320)
-soundFile = ExtResource("13_0dqgs")
-
-[node name="Elevator7" parent="Entities" instance=ExtResource("11_8oyv8")]
-position = Vector2(7344, 1480)
-endPosition = Vector2(0, 447)
-soundFile = ExtResource("13_0dqgs")
-
-[node name="Elevator8" parent="Entities" instance=ExtResource("11_8oyv8")]
-position = Vector2(8496, 904)
-endPosition = Vector2(0, 639)
-soundFile = ExtResource("13_0dqgs")
-
-[node name="Elevator9" parent="Entities" instance=ExtResource("11_8oyv8")]
-position = Vector2(8496, 392)
-endPosition = Vector2(0, 512)
-soundFile = ExtResource("13_0dqgs")
-
-[node name="Elevator3" parent="Entities" instance=ExtResource("11_8oyv8")]
-position = Vector2(4400, 1032)
-endPosition = Vector2(0, -576)
-soundFile = ExtResource("13_0dqgs")
 
 [node name="Spring4" parent="Entities" instance=ExtResource("10_366g0")]
 position = Vector2(1176, 1616)
@@ -461,37 +418,98 @@ type = 1
 [node name="Platform" parent="Platforms" instance=ExtResource("25_ummts")]
 use_parent_material = true
 position = Vector2(3104, 1312)
+platform_sprite = ExtResource("18_kjkoe")
 endPosition = Vector2(0, -192)
 
 [node name="Platform2" parent="Platforms" instance=ExtResource("25_ummts")]
 use_parent_material = true
 position = Vector2(3168, 1120)
+platform_sprite = ExtResource("18_kjkoe")
 endPosition = Vector2(0, 192)
 
 [node name="Platform3" parent="Platforms" instance=ExtResource("25_ummts")]
 use_parent_material = true
 position = Vector2(3680, 1952)
-endPosition = Vector2(192, 0)
-
-[node name="Platform5" parent="Platforms" instance=ExtResource("25_ummts")]
-use_parent_material = true
-position = Vector2(4704, 1696)
-endPosition = Vector2(192, 0)
-
-[node name="Platform6" parent="Platforms" instance=ExtResource("25_ummts")]
-use_parent_material = true
-position = Vector2(4960, 1696)
-endPosition = Vector2(192, 0)
-
-[node name="Platform7" parent="Platforms" instance=ExtResource("25_ummts")]
-use_parent_material = true
-position = Vector2(6816, 736)
+platform_sprite = ExtResource("18_kjkoe")
 endPosition = Vector2(192, 0)
 
 [node name="Platform4" parent="Platforms" instance=ExtResource("25_ummts")]
 use_parent_material = true
 position = Vector2(4192, 1888)
+platform_sprite = ExtResource("18_kjkoe")
 endPosition = Vector2(-192, 0)
+
+[node name="Platform5" parent="Platforms" instance=ExtResource("25_ummts")]
+use_parent_material = true
+position = Vector2(4704, 1696)
+platform_sprite = ExtResource("18_kjkoe")
+endPosition = Vector2(192, 0)
+
+[node name="Platform6" parent="Platforms" instance=ExtResource("25_ummts")]
+use_parent_material = true
+position = Vector2(4960, 1696)
+platform_sprite = ExtResource("18_kjkoe")
+endPosition = Vector2(192, 0)
+
+[node name="Platform7" parent="Platforms" instance=ExtResource("25_ummts")]
+use_parent_material = true
+position = Vector2(6816, 736)
+platform_sprite = ExtResource("18_kjkoe")
+endPosition = Vector2(192, 0)
+
+[node name="Elevator" parent="Platforms" instance=ExtResource("11_8oyv8")]
+position = Vector2(4400, 1480)
+texture = ExtResource("18_8ysgv")
+endPosition = Vector2(0, 448)
+soundFile = ExtResource("13_0dqgs")
+
+[node name="Elevator2" parent="Platforms" instance=ExtResource("11_8oyv8")]
+position = Vector2(4400, 1480)
+texture = ExtResource("18_8ysgv")
+endPosition = Vector2(0, -447)
+soundFile = ExtResource("13_0dqgs")
+
+[node name="Elevator3" parent="Platforms" instance=ExtResource("11_8oyv8")]
+position = Vector2(4400, 1032)
+texture = ExtResource("18_8ysgv")
+endPosition = Vector2(0, -576)
+soundFile = ExtResource("13_0dqgs")
+
+[node name="Elevator4" parent="Platforms" instance=ExtResource("11_8oyv8")]
+position = Vector2(2736, 1864)
+texture = ExtResource("18_8ysgv")
+endPosition = Vector2(0, -448)
+soundFile = ExtResource("13_0dqgs")
+
+[node name="Elevator5" parent="Platforms" instance=ExtResource("11_8oyv8")]
+position = Vector2(5808, 1992)
+texture = ExtResource("18_8ysgv")
+endPosition = Vector2(0, -512)
+soundFile = ExtResource("13_0dqgs")
+
+[node name="Elevator6" parent="Platforms" instance=ExtResource("11_8oyv8")]
+position = Vector2(6064, 1160)
+texture = ExtResource("18_8ysgv")
+endPosition = Vector2(0, 320)
+soundFile = ExtResource("13_0dqgs")
+
+[node name="Elevator7" parent="Platforms" instance=ExtResource("11_8oyv8")]
+position = Vector2(7344, 1480)
+texture = ExtResource("18_8ysgv")
+endPosition = Vector2(0, 447)
+soundFile = ExtResource("13_0dqgs")
+
+[node name="Elevator8" parent="Platforms" instance=ExtResource("11_8oyv8")]
+position = Vector2(8496, 904)
+texture = ExtResource("18_8ysgv")
+endPosition = Vector2(0, 639)
+soundFile = ExtResource("13_0dqgs")
+
+[node name="Elevator9" parent="Platforms" instance=ExtResource("11_8oyv8")]
+position = Vector2(8496, 392)
+texture = ExtResource("18_8ysgv")
+endPosition = Vector2(0, 512)
+soundFile = ExtResource("13_0dqgs")
 
 [node name="Hazards" type="Node" parent="."]
 
