@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://c2i6c85g2b5bh"]
+[gd_scene load_steps=28 format=4 uid="uid://c2i6c85g2b5bh"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_ssdve"]
 [ext_resource type="AudioStream" uid="uid://c354qh8pof6fe" path="res://Audio/Soundtrack/s2br_CasinoNight.ogg" id="2_last2"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://8sljpf878e00" path="res://Entities/Enemies/Crawl.tscn" id="21_864ul"]
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="21_et5nc"]
 [ext_resource type="PackedScene" uid="uid://maxhev4qup18" path="res://Entities/Gimmicks/cnz_slot.tscn" id="23_q6f0e"]
+[ext_resource type="Script" uid="uid://dfni74fqlnyko" path="res://Scripts/Misc/slot_machine_manager.gd" id="25_oprp5"]
 [ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="25_ummts"]
 
 [node name="CasinoNight2" type="Node2D"]
@@ -796,31 +797,58 @@ position = Vector2(8672, 368)
 
 [node name="Rings" type="Node" parent="."]
 
-[node name="SlotMachines" type="Node" parent="."]
+[node name="SlotMachineManager" type="Node" parent="."]
+script = ExtResource("25_oprp5")
 
-[node name="CnzCharacterReels" parent="SlotMachines" instance=ExtResource("14_yg4rb")]
+[node name="CnzCharacterReels" parent="SlotMachineManager" instance=ExtResource("14_yg4rb")]
 position = Vector2(2752, 800)
 
-[node name="CnzCharacterReels2" parent="SlotMachines" instance=ExtResource("14_yg4rb")]
+[node name="CnzCharacterReels2" parent="SlotMachineManager" instance=ExtResource("14_yg4rb")]
 position = Vector2(3776, 1600)
 
-[node name="CnzCharacterReels3" parent="SlotMachines" instance=ExtResource("14_yg4rb")]
+[node name="CnzCharacterReels3" parent="SlotMachineManager" instance=ExtResource("14_yg4rb")]
 position = Vector2(5696, 928)
 
-[node name="CnzCharacterReels4" parent="SlotMachines" instance=ExtResource("14_yg4rb")]
+[node name="CnzCharacterReels4" parent="SlotMachineManager" instance=ExtResource("14_yg4rb")]
 position = Vector2(7744, 928)
 
-[node name="CnzCharacterReels5" parent="SlotMachines" instance=ExtResource("14_yg4rb")]
+[node name="CnzCharacterReels5" parent="SlotMachineManager" instance=ExtResource("14_yg4rb")]
 position = Vector2(9408, 800)
 
-[node name="CNZSlot2" parent="SlotMachines" instance=ExtResource("23_q6f0e")]
+[node name="CNZSlot2" parent="SlotMachineManager" instance=ExtResource("23_q6f0e")]
 position = Vector2(2136, 776)
 
-[node name="CNZSlot3" parent="SlotMachines" instance=ExtResource("23_q6f0e")]
+[node name="CNZSlot3" parent="SlotMachineManager" instance=ExtResource("23_q6f0e")]
 position = Vector2(2136, 824)
 
-[node name="CNZSlot4" parent="SlotMachines" instance=ExtResource("23_q6f0e")]
+[node name="CNZSlot4" parent="SlotMachineManager" instance=ExtResource("23_q6f0e")]
 position = Vector2(2136, 872)
 
-[node name="CNZSlot5" parent="SlotMachines" instance=ExtResource("23_q6f0e")]
+[node name="CNZSlot5" parent="SlotMachineManager" instance=ExtResource("23_q6f0e")]
 position = Vector2(2136, 920)
+
+[node name="CNZSlot6" parent="SlotMachineManager" instance=ExtResource("23_q6f0e")]
+position = Vector2(2752, 736)
+type = 1
+
+[node name="CNZSlot11" parent="SlotMachineManager" instance=ExtResource("23_q6f0e")]
+position = Vector2(3392, 688)
+
+[node name="CNZSlot12" parent="SlotMachineManager" instance=ExtResource("23_q6f0e")]
+position = Vector2(9256, 592)
+
+[node name="CNZSlot7" parent="SlotMachineManager" instance=ExtResource("23_q6f0e")]
+position = Vector2(3776, 1544)
+type = 1
+
+[node name="CNZSlot8" parent="SlotMachineManager" instance=ExtResource("23_q6f0e")]
+position = Vector2(5696, 872)
+type = 1
+
+[node name="CNZSlot9" parent="SlotMachineManager" instance=ExtResource("23_q6f0e")]
+position = Vector2(7744, 864)
+type = 1
+
+[node name="CNZSlot10" parent="SlotMachineManager" instance=ExtResource("23_q6f0e")]
+position = Vector2(9408, 744)
+type = 1

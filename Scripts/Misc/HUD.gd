@@ -358,8 +358,8 @@ func SetupGameOver(_delta):
 		$GameOver/GameOver.play("GameOver")
 		$GameOver/GameOverMusic.play()
 		# stop normal music tracks
-		Global.music.stop()
-		Global.life.stop()
+		SoundDriver.music.stop()
+		SoundDriver.life.stop()
 		# wait for animation to finish
 		await $GameOver/GameOver.animation_finished
 		# reset game

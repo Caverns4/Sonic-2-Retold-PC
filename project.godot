@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.4")
 run/max_fps=60
 boot_splash/bg_color=Color(0.933333, 0.933333, 0.933333, 1)
 boot_splash/image="res://icon.png"
-config/icon="res://sonic.png"
+config/icon="uid://vt5jl3128xt"
 config/windows_native_icon="res://sonic.ico"
 
 [autoload]

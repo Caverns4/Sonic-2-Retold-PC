@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://p0yejpqi4q88"]
+[gd_scene load_steps=28 format=4 uid="uid://p0yejpqi4q88"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_0yy3m"]
 [ext_resource type="AudioStream" uid="uid://c354qh8pof6fe" path="res://Audio/Soundtrack/s2br_CasinoNight.ogg" id="2_20443"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://dkt4dlhmutrkc" path="res://Entities/ZoneObjects/CNZ-big_bumper.tscn" id="22_2kigl"]
 [ext_resource type="PackedScene" uid="uid://c4jrjspjbeybr" path="res://Scene/Backgrounds/09-CasinoNightF.tscn" id="22_5pai5"]
 [ext_resource type="PackedScene" uid="uid://maxhev4qup18" path="res://Entities/Gimmicks/cnz_slot.tscn" id="24_vdjfc"]
+[ext_resource type="Script" uid="uid://dfni74fqlnyko" path="res://Scripts/Misc/slot_machine_manager.gd" id="25_j7vub"]
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="25_qxfkg"]
 
 [node name="CasinoNight1" type="Node2D"]
@@ -306,7 +307,7 @@ scale = Vector2(-1, 1)
 position = Vector2(1608, 608)
 
 [node name="CnzFlipper9" parent="Entities" instance=ExtResource("13_wyhjd")]
-position = Vector2(1672, 640)
+position = Vector2(1664, 656)
 
 [node name="CnzFlipper11" parent="Entities" instance=ExtResource("13_wyhjd")]
 position = Vector2(2584, 512)
@@ -892,71 +893,72 @@ position = Vector2(8560, 560)
 
 [node name="Rings" type="Node" parent="."]
 
-[node name="SlotMachines" type="Node" parent="."]
+[node name="SlotMachineManager" type="Node" parent="."]
+script = ExtResource("25_j7vub")
 
-[node name="CNZSlot" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
-position = Vector2(640, 660)
+[node name="CnzCharacterReels" parent="SlotMachineManager" instance=ExtResource("13_kcv3i")]
+position = Vector2(216, 608)
+
+[node name="CnzCharacterReels2" parent="SlotMachineManager" instance=ExtResource("13_kcv3i")]
+position = Vector2(1216, 1184)
+
+[node name="CnzCharacterReels4" parent="SlotMachineManager" instance=ExtResource("13_kcv3i")]
+position = Vector2(1728, 544)
+
+[node name="CnzCharacterReels3" parent="SlotMachineManager" instance=ExtResource("13_kcv3i")]
+position = Vector2(7104, 672)
+
+[node name="CnzCharacterReels5" parent="SlotMachineManager" instance=ExtResource("13_kcv3i")]
+position = Vector2(7616, 416)
+
+[node name="CnzCharacterReels6" parent="SlotMachineManager" instance=ExtResource("13_kcv3i")]
+position = Vector2(8896, 928)
+
+[node name="CNZSlot" parent="SlotMachineManager" instance=ExtResource("24_vdjfc")]
+position = Vector2(216, 664)
 type = 1
 
-[node name="CNZSlot2" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+[node name="CNZSlot2" parent="SlotMachineManager" instance=ExtResource("24_vdjfc")]
 position = Vector2(1120, 1184)
 
-[node name="CNZSlot3" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+[node name="CNZSlot3" parent="SlotMachineManager" instance=ExtResource("24_vdjfc")]
 position = Vector2(1312, 1184)
 
-[node name="CNZSlot4" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+[node name="CNZSlot4" parent="SlotMachineManager" instance=ExtResource("24_vdjfc")]
 position = Vector2(2176, 1176)
 
-[node name="CNZSlot5" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+[node name="CNZSlot5" parent="SlotMachineManager" instance=ExtResource("24_vdjfc")]
 position = Vector2(4608, 1120)
 
-[node name="CNZSlot6" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+[node name="CNZSlot6" parent="SlotMachineManager" instance=ExtResource("24_vdjfc")]
 position = Vector2(5632, 1376)
 
-[node name="CNZSlot7" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+[node name="CNZSlot7" parent="SlotMachineManager" instance=ExtResource("24_vdjfc")]
 position = Vector2(5632, 1616)
 
-[node name="CNZSlot8" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+[node name="CNZSlot8" parent="SlotMachineManager" instance=ExtResource("24_vdjfc")]
 position = Vector2(7104, 608)
 
-[node name="CNZSlot9" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+[node name="CNZSlot9" parent="SlotMachineManager" instance=ExtResource("24_vdjfc")]
 position = Vector2(7616, 352)
 
-[node name="CNZSlot10" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+[node name="CNZSlot10" parent="SlotMachineManager" instance=ExtResource("24_vdjfc")]
 position = Vector2(8704, 280)
 
-[node name="CNZSlot11" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+[node name="CNZSlot11" parent="SlotMachineManager" instance=ExtResource("24_vdjfc")]
 position = Vector2(9000, 792)
 
-[node name="CNZSlot12" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+[node name="CNZSlot12" parent="SlotMachineManager" instance=ExtResource("24_vdjfc")]
 position = Vector2(8896, 992)
 type = 1
 
-[node name="CNZSlot13" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+[node name="CNZSlot13" parent="SlotMachineManager" instance=ExtResource("24_vdjfc")]
 position = Vector2(8192, 1024)
 
-[node name="CNZSlot14" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+[node name="CNZSlot14" parent="SlotMachineManager" instance=ExtResource("24_vdjfc")]
 position = Vector2(1216, 1120)
 type = 1
 
-[node name="CNZSlot15" parent="SlotMachines" instance=ExtResource("24_vdjfc")]
+[node name="CNZSlot15" parent="SlotMachineManager" instance=ExtResource("24_vdjfc")]
 position = Vector2(1728, 488)
 type = 1
-
-[node name="CnzCharacterReels" parent="SlotMachines" instance=ExtResource("13_kcv3i")]
-position = Vector2(640, 608)
-
-[node name="CnzCharacterReels2" parent="SlotMachines" instance=ExtResource("13_kcv3i")]
-position = Vector2(1216, 1184)
-
-[node name="CnzCharacterReels4" parent="SlotMachines" instance=ExtResource("13_kcv3i")]
-position = Vector2(1728, 544)
-
-[node name="CnzCharacterReels3" parent="SlotMachines" instance=ExtResource("13_kcv3i")]
-position = Vector2(7104, 672)
-
-[node name="CnzCharacterReels5" parent="SlotMachines" instance=ExtResource("13_kcv3i")]
-position = Vector2(7616, 416)
-
-[node name="CnzCharacterReels6" parent="SlotMachines" instance=ExtResource("13_kcv3i")]
-position = Vector2(8896, 928)

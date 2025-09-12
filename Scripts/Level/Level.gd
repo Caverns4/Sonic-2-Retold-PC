@@ -95,11 +95,6 @@ func level_reset_data(playCard = true):
 
 	#Clear Object Arrays used within levels
 	var index :int = 0
-	while index < len(Global.characterReels):
-		if !is_instance_valid(Global.characterReels[index]):
-			Global.characterReels.remove_at(index)
-		else:
-			index +=1
 
 	index = 0
 	while index < len(Global.slotMachines):

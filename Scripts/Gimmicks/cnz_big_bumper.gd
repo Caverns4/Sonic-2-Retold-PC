@@ -15,4 +15,5 @@ func physics_collision(body, hitVector):
 		body.movement = Vector2.UP.rotated(global_rotation)*power
 	body.set_state(body.STATES.AIR)
 	body.angle = 0
+	body.ground = false
 	SoundDriver.play_sound(bounceSound)

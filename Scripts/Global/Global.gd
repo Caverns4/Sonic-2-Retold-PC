@@ -15,10 +15,10 @@ var special_stage_players: Array = []
 var main: MainGameScene = null
 # hud object reference
 var hud: CanvasLayer = null
-#slot machine (Casino Night Zone Only)
+# Slot machines (Casino Night Zone Only), probably not needed.
 var slotMachines = []
-#Character Reels (Casino Night Zone Only)
-var characterReels = []
+# Character Reel Master
+var characterReels: SlotMachineManager = null
 # Cheats implimented
 var levelSelectFlag = false
 var tailsNameCheat = false #if TRUE, Tails will be called "Miles"
