@@ -553,9 +553,9 @@ endPosition = Vector2(0, -448)
 soundFile = ExtResource("18_042pc")
 
 [node name="Elevator3" parent="Platforms" instance=ExtResource("16_0dx01")]
-position = Vector2(5424, 712)
+position = Vector2(5424, 711)
 texture = ExtResource("18_j7vub")
-endPosition = Vector2(0, -320)
+endPosition = Vector2(0, -319)
 soundFile = ExtResource("18_042pc")
 
 [node name="Elevator2" parent="Platforms" instance=ExtResource("16_0dx01")]

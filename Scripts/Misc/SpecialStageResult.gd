@@ -3,7 +3,7 @@ extends Node2D
 var activated = false
 var state_timer = 1.0
 
-var zone_loader = preload("res://Scene/SpecialStage/SpecialStageResult.tscn")
+var zone_loader = preload("res://Scene/Presentation/ZoneLoader.tscn")
 
 func _ready():
 	#Wipe the player array to avoide contamination.

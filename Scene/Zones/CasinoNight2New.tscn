@@ -459,9 +459,9 @@ platform_sprite = ExtResource("18_kjkoe")
 endPosition = Vector2(192, 0)
 
 [node name="Elevator" parent="Platforms" instance=ExtResource("11_8oyv8")]
-position = Vector2(4400, 1480)
+position = Vector2(4400, 1927)
 texture = ExtResource("18_8ysgv")
-endPosition = Vector2(0, 448)
+endPosition = Vector2(0, -448)
 soundFile = ExtResource("13_0dqgs")
 
 [node name="Elevator2" parent="Platforms" instance=ExtResource("11_8oyv8")]
