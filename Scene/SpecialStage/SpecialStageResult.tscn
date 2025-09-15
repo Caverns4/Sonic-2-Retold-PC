@@ -1,11 +1,13 @@
-[gd_scene load_steps=40 format=3 uid="uid://dl60ab8cdu0iq"]
+[gd_scene load_steps=42 format=3 uid="uid://dl60ab8cdu0iq"]
 
 [ext_resource type="Texture2D" uid="uid://cf4j1ed0nh7oq" path="res://Graphics/Items/ChaosEmeralds.png" id="1"]
 [ext_resource type="Script" uid="uid://chob38ab6gf8k" path="res://Scripts/Misc/SpecialStageResult.gd" id="3"]
 [ext_resource type="FontFile" uid="uid://corcgkvvv7msb" path="res://Graphics/HUD/LevelCards/font/TitleCard_Normal.png" id="3_fyibw"]
 [ext_resource type="Texture2D" uid="uid://bn4id4yr1lron" path="res://Graphics/HUD/hud_results_text.png" id="4_0ktv8"]
-[ext_resource type="AudioStream" uid="uid://bowp6iposfy0n" path="res://Audio/Soundtrack/s2br_Emeralds.ogg" id="4_v2hty"]
 [ext_resource type="FontFile" uid="uid://cticydrc4dda2" path="res://Graphics/HUD/hud_numerals.png" id="5_26jf7"]
+[ext_resource type="AudioStream" uid="uid://kqq77sj3uqur" path="res://Audio/SFX/Misc/s2br_Beep.wav" id="6_ehcj4"]
+[ext_resource type="AudioStream" uid="uid://cxg3gcqe1mwv4" path="res://Audio/SFX/Misc/s2br_Tally.wav" id="7_qeqoj"]
+[ext_resource type="AudioStream" uid="uid://be1vhgdoscd0c" path="res://Audio/SFX/Misc/s2br_SpecialWarp.wav" id="8_ehcj4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5v66q"]
 atlas = ExtResource("1")
@@ -284,10 +286,9 @@ layer = -1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 16.0
-offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.933333, 0.933333, 0.933333, 1)
 
 [node name="ColorRect" type="ColorRect" parent="HUD"]
 anchors_preset = 8
@@ -348,17 +349,16 @@ layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
+offset_left = -160.0
+offset_right = 160.0
 offset_bottom = 40.0
 grow_horizontal = 2
 
 [node name="SonicGot" type="Label" parent="HUD/ResultLabel"]
 self_modulate = Color(0, 1, 1, 1)
 layout_mode = 0
-offset_left = -128.0
 offset_top = 24.0
-offset_right = 128.0
+offset_right = 320.0
 offset_bottom = 40.0
 theme_override_fonts/font = ExtResource("3_fyibw")
 text = "SONIC GOT"
@@ -367,9 +367,8 @@ horizontal_alignment = 1
 [node name="Through" type="Label" parent="HUD/ResultLabel"]
 self_modulate = Color(0, 1, 1, 1)
 layout_mode = 0
-offset_left = -128.0
 offset_top = 48.0
-offset_right = 128.0
+offset_right = 320.0
 offset_bottom = 64.0
 theme_override_fonts/font = ExtResource("3_fyibw")
 text = "A CHAOS EMERALD"
@@ -390,13 +389,14 @@ grow_vertical = 0
 
 [node name="RingBonus" type="Sprite2D" parent="HUD/Results"]
 self_modulate = Color(0, 1, 1, 1)
-position = Vector2(-60, -88)
+position = Vector2(-60, -40)
 texture = ExtResource("4_0ktv8")
 centered = false
 vframes = 6
 frame = 1
 
-[node name="Text" type="Label" parent="HUD/Results/RingBonus"]
+[node name="RingScore" type="Label" parent="HUD/Results/RingBonus"]
+unique_name_in_owner = true
 self_modulate = Color(1, 0, 1, 1)
 anchors_preset = 1
 anchor_left = 1.0
@@ -411,13 +411,14 @@ horizontal_alignment = 2
 
 [node name="GemsBonus" type="Sprite2D" parent="HUD/Results"]
 self_modulate = Color(0, 1, 1, 1)
-position = Vector2(-60, -72)
+position = Vector2(-60, -24)
 texture = ExtResource("4_0ktv8")
 centered = false
 vframes = 6
 frame = 5
 
-[node name="Text" type="Label" parent="HUD/Results/GemsBonus"]
+[node name="GemScore" type="Label" parent="HUD/Results/GemsBonus"]
+unique_name_in_owner = true
 self_modulate = Color(1, 0, 1, 1)
 anchors_preset = 1
 anchor_left = 1.0
@@ -432,13 +433,14 @@ horizontal_alignment = 2
 
 [node name="Total" type="Sprite2D" parent="HUD/Results"]
 self_modulate = Color(0, 1, 1, 1)
-position = Vector2(-60, -40)
+position = Vector2(-60, 8)
 texture = ExtResource("4_0ktv8")
 centered = false
 vframes = 6
 frame = 3
 
-[node name="Text" type="Label" parent="HUD/Results/Total"]
+[node name="TotalScore" type="Label" parent="HUD/Results/Total"]
+unique_name_in_owner = true
 self_modulate = Color(1, 0, 1, 1)
 anchors_preset = 1
 anchor_left = 1.0
@@ -451,6 +453,21 @@ theme_override_fonts/font = ExtResource("5_26jf7")
 text = "0"
 horizontal_alignment = 2
 
-[node name="Emerald" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_v2hty")
+[node name="CounterWait" type="Timer" parent="HUD"]
+wait_time = 6.0
+one_shot = true
+
+[node name="CounterSFX" type="AudioStreamPlayer" parent="HUD"]
+stream = ExtResource("6_ehcj4")
+mix_target = 2
 bus = &"SFX"
+
+[node name="Score" type="AudioStreamPlayer" parent="HUD"]
+stream = ExtResource("7_qeqoj")
+bus = &"SFX"
+
+[node name="Emerald" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ehcj4")
+bus = &"SFX"
+
+[connection signal="timeout" from="HUD/CounterWait" to="." method="_on_counter_wait_timeout"]

@@ -196,9 +196,11 @@ func isActionPressed():
 	return false
 
 
-
 func get_ring():
 	rings += 1
 	sfx[7+ringChannel].play()
 	sfx[7].play()
 	ringChannel = int(!ringChannel)
+
+func  _exit_tree() -> void:
+	Global.special_stage_rings += rings

@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bass3w6af55vw" path="res://Tools/Timing/ProcessTimer.tscn" id="15_hk65o"]
 [ext_resource type="AudioStream" uid="uid://cxg3gcqe1mwv4" path="res://Audio/SFX/Misc/s2br_Tally.wav" id="15_p0n0b"]
 [ext_resource type="AudioStream" uid="uid://c3tsd0xi30f6s" path="res://Audio/Soundtrack/s2br_GameOver.ogg" id="15_y325l"]
-[ext_resource type="AudioStream" uid="uid://uay8t1b3i1hi" path="res://Audio/SFX/Gimmicks/s2br_Switch.wav" id="16_l21kn"]
+[ext_resource type="AudioStream" uid="uid://kqq77sj3uqur" path="res://Audio/SFX/Misc/s2br_Beep.wav" id="16_0ei7l"]
 
 [sub_resource type="Animation" id="Animation_uxdxe"]
 length = 0.1
@@ -1331,7 +1331,7 @@ one_shot = true
 [node name="CounterCount" parent="LevelClear" instance=ExtResource("15_hk65o")]
 
 [node name="CounterSFX" type="AudioStreamPlayer" parent="LevelClear"]
-stream = ExtResource("16_l21kn")
+stream = ExtResource("16_0ei7l")
 mix_target = 2
 bus = &"SFX"
 
