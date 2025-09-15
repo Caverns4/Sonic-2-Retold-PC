@@ -53,7 +53,9 @@ func _physics_process(delta: float) -> void:
 						player.animator.play("roll")
 						player.set_state(player.STATES.ANIMATION)
 						player.set_hitbox(player.currentHitbox.ROLL,false)
-						player.movement.x = 60 * direction
+						#player.movement.x = 60 * direction
+						player.movement.x = 0
+						player.global_position.x += (60*delta)*direction
 						if player.jumpBuffer > 0.0:
 							var offsetDiff = (player.global_position.x - global_position.x)*direction
 							var height = offsetDiff/2

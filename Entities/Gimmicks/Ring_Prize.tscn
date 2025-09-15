@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2lhh5n5aiq2"]
+
+[ext_resource type="Script" uid="uid://p5ao64fb1kqm" path="res://Scripts/Gimmicks/prize.gd" id="1_clcpx"]
+[ext_resource type="AudioStream" uid="uid://jt28gfxybprb" path="res://Audio/SFX/Objects/RingStereo.wav" id="2_iyf21"]
+[ext_resource type="SpriteFrames" uid="uid://bhtsckwsr2bjs" path="res://Graphics/Items/RingSprite.tres" id="2_vj81x"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(13, 13)
+
+[node name="RingPrize" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_clcpx")
+sfx = ExtResource("2_iyf21")
+
+[node name="RingSprite" type="AnimatedSprite2D" parent="."]
+z_index = 32
+sprite_frames = ExtResource("2_vj81x")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color(1, 0, 0.819608, 1)
+shape = SubResource("1")

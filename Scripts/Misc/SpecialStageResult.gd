@@ -9,7 +9,7 @@ func _ready():
 	#Wipe the player array to avoide contamination.
 	Global.special_stage_players = []
 	# set stage text label to the current stage
-	$HUD/Stage.text = "Stage "+str(Global.specialStageID+1)
+	#$HUD/Stage.text = "Stage "+str(Global.specialStageID+1)
 	# cycle through emeralds on the hud
 	for i in $HUD/ColorRect.get_child_count():
 		$HUD/ColorRect.get_child(i).visible = (Global.emeralds & (1 << i))

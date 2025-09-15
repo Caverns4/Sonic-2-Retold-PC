@@ -86,13 +86,18 @@ enum EMERALD {
 	BLUE=128 # Unused
 	}
 	#RED = 1, BLUE = 2, GREEN = 4, YELLOW = 8, CYAN = 16, SILVER = 32, PURPLE = 64}
+## The next special stage to play.
 var specialStageID = 0
+## Prevoius Special Stage result. true for win.
 var lastSpecialStageResult: bool = false
+## Saved Ring Count from the special stage.
+var special_stage_rings: int = 0
 var levelTime = 0 # the timer that counts down while the level isn't completed or in a special ring
 var levelTimeP2 = 0
 var globalTimer = 0 # global timer, used as reference for animations
 var maxTime = 60*10
 
+## If a Boss Fight is currently active.
 var fightingBoss = false
 
 #Save Data Atributes

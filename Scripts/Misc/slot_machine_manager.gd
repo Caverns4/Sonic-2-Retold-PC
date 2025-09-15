@@ -43,8 +43,8 @@ func  _process(delta: float) -> void:
 	for i in slot_offsets.size():
 		if (force_spin_times[i] > 0) or (round(slot_offsets[i]*8) != slot_targets[i]*8):
 			if (force_spin_times[i] > 0):
-				slot_offsets[i] += delta*2
-			slot_offsets[i] += delta*2
+				slot_offsets[i] += delta*4
+			slot_offsets[i] += delta*4
 			slot_offsets[i] = wrapf(slot_offsets[i],SLOT.SONICX,SLOT.SONIC)
 		elif round(slot_offsets[i]*8) == slot_targets[i]*8:
 			slot_offsets[i] = slot_targets[i]
@@ -59,6 +59,7 @@ func  _process(delta: float) -> void:
 			if slot_cage.has_method("reward_player"):
 				slot_cage.reward_player()
 				slot_cage = null
+				idle_timer = 999
 		else:
 			slot_targets = determine_each_slot()
 			force_spin_times = SPIN_TIME_ARRAY.duplicate(true)
@@ -78,6 +79,7 @@ func _setup_child_graphics(delta):
 func roll_character_slots(result: Array, user: Node2D) -> void:
 	idle_timer = 0.0
 	slot_cage = user
+	is_in_use = true
 	force_spin_times = [1,1,1]
 	slot_targets = result
 

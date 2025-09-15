@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfhy1fchy4rxv"]
+
+[ext_resource type="Texture2D" uid="uid://d13acq6glp2ya" path="res://Graphics/Gimmicks/CNZ_SpikePrize.png" id="1_e111p"]
+[ext_resource type="Script" uid="uid://p5ao64fb1kqm" path="res://Scripts/Gimmicks/prize.gd" id="1_vji3b"]
+[ext_resource type="AudioStream" uid="uid://comgpug432nob" path="res://Audio/SFX/Player/s2br_Stab.wav" id="2_jtd3c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vji3b"]
+
+[node name="SpikePrize" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_vji3b")
+value = -1
+sfx = ExtResource("2_jtd3c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 32
+texture = ExtResource("1_e111p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vji3b")

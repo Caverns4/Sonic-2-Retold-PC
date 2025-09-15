@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://p0yejpqi4q88"]
+[gd_scene load_steps=29 format=4 uid="uid://p0yejpqi4q88"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_0yy3m"]
 [ext_resource type="AudioStream" uid="uid://c354qh8pof6fe" path="res://Audio/Soundtrack/s2br_CasinoNight.ogg" id="2_20443"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://maxhev4qup18" path="res://Entities/Gimmicks/cnz_slot.tscn" id="24_vdjfc"]
 [ext_resource type="Script" uid="uid://dfni74fqlnyko" path="res://Scripts/Misc/slot_machine_manager.gd" id="25_j7vub"]
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="25_qxfkg"]
+[ext_resource type="PackedScene" uid="uid://c76jmgw2ugsu4" path="res://Entities/Gimmicks/cnz_pressure_spring.tscn" id="28_10qq3"]
 
 [node name="CasinoNight1" type="Node2D"]
 script = ExtResource("1_0yy3m")
@@ -80,38 +81,6 @@ killTransSpeed = false
 [node name="Spring7" parent="Entities" instance=ExtResource("10_68as7")]
 position = Vector2(3056, 696)
 
-[node name="Spring8" parent="Entities" instance=ExtResource("10_68as7")]
-position = Vector2(6040, 2000)
-type = 1
-springDirection = 4
-
-[node name="Spring12" parent="Entities" instance=ExtResource("10_68as7")]
-position = Vector2(3608, 1872)
-type = 1
-springDirection = 4
-
-[node name="Spring14" parent="Entities" instance=ExtResource("10_68as7")]
-position = Vector2(4208, 1784)
-type = 1
-
-[node name="Spring11" parent="Entities" instance=ExtResource("10_68as7")]
-position = Vector2(8216, 1872)
-type = 1
-springDirection = 4
-
-[node name="Spring9" parent="Entities" instance=ExtResource("10_68as7")]
-position = Vector2(6680, 1360)
-type = 1
-springDirection = 4
-
-[node name="Spring13" parent="Entities" instance=ExtResource("10_68as7")]
-position = Vector2(8688, 1528)
-type = 1
-
-[node name="Spring10" parent="Entities" instance=ExtResource("10_68as7")]
-position = Vector2(7280, 1528)
-type = 1
-
 [node name="Bumper" parent="Entities" instance=ExtResource("11_cyorj")]
 position = Vector2(3968, 1024)
 
@@ -155,7 +124,7 @@ position = Vector2(7616, 512)
 position = Vector2(8272, 880)
 
 [node name="Bumper36" parent="Entities" instance=ExtResource("11_cyorj")]
-position = Vector2(8672, 656)
+position = Vector2(8672, 664)
 
 [node name="Bumper39" parent="Entities" instance=ExtResource("11_cyorj")]
 position = Vector2(8656, 880)
@@ -419,9 +388,6 @@ position = Vector2(684, 768)
 [node name="CnzFlipper4" parent="Entities" instance=ExtResource("13_wyhjd")]
 position = Vector2(2456, 1480)
 
-[node name="CnzFlipper38" parent="Entities" instance=ExtResource("13_wyhjd")]
-position = Vector2(4120, 1284)
-
 [node name="SignpostNew" parent="Entities" instance=ExtResource("25_qxfkg")]
 position = Vector2(10432, 1696)
 
@@ -448,6 +414,38 @@ position = Vector2(6272, 1168)
 constant_linear_velocity = Vector2(-60, 0)
 speed = -60
 length = 7
+
+[node name="CNZ_PressureSpring" parent="Entities" instance=ExtResource("28_10qq3")]
+position = Vector2(192, 696)
+
+[node name="CNZ_PressureSpring2" parent="Entities" instance=ExtResource("28_10qq3")]
+position = Vector2(256, 696)
+rotation = 0.785398
+
+[node name="CNZ_PressureSpring3" parent="Entities" instance=ExtResource("28_10qq3")]
+position = Vector2(3596, 1884)
+rotation = 0.785398
+
+[node name="CNZ_PressureSpring4" parent="Entities" instance=ExtResource("28_10qq3")]
+position = Vector2(4208, 1800)
+
+[node name="CNZ_PressureSpring5" parent="Entities" instance=ExtResource("28_10qq3")]
+position = Vector2(6028, 2012)
+rotation = 0.785398
+
+[node name="CNZ_PressureSpring6" parent="Entities" instance=ExtResource("28_10qq3")]
+position = Vector2(6668, 1372)
+rotation = 0.785398
+
+[node name="CNZ_PressureSpring7" parent="Entities" instance=ExtResource("28_10qq3")]
+position = Vector2(7280, 1536)
+
+[node name="CNZ_PressureSpring8" parent="Entities" instance=ExtResource("28_10qq3")]
+position = Vector2(8208, 1880)
+rotation = 0.785398
+
+[node name="CNZ_PressureSpring9" parent="Entities" instance=ExtResource("28_10qq3")]
+position = Vector2(8688, 1536)
 
 [node name="Platforms" type="Node2D" parent="."]
 material = ExtResource("8_cpekc")
@@ -617,6 +615,10 @@ scale = Vector2(1.5, 6)
 
 [node name="InvisibleBarrier16" parent="Hazards" instance=ExtResource("19_guhxt")]
 position = Vector2(3424, 1312)
+scale = Vector2(2, 2)
+
+[node name="InvisibleBarrier20" parent="Hazards" instance=ExtResource("19_guhxt")]
+position = Vector2(5472, 672)
 scale = Vector2(2, 2)
 
 [node name="InvisibleBarrier18" parent="Hazards" instance=ExtResource("19_guhxt")]
@@ -896,9 +898,6 @@ position = Vector2(8560, 560)
 [node name="SlotMachineManager" type="Node" parent="."]
 script = ExtResource("25_j7vub")
 
-[node name="CnzCharacterReels" parent="SlotMachineManager" instance=ExtResource("13_kcv3i")]
-position = Vector2(216, 608)
-
 [node name="CnzCharacterReels2" parent="SlotMachineManager" instance=ExtResource("13_kcv3i")]
 position = Vector2(1216, 1184)
 
@@ -913,10 +912,6 @@ position = Vector2(7616, 416)
 
 [node name="CnzCharacterReels6" parent="SlotMachineManager" instance=ExtResource("13_kcv3i")]
 position = Vector2(8896, 928)
-
-[node name="CNZSlot" parent="SlotMachineManager" instance=ExtResource("24_vdjfc")]
-position = Vector2(216, 664)
-type = 1
 
 [node name="CNZSlot2" parent="SlotMachineManager" instance=ExtResource("24_vdjfc")]
 position = Vector2(1120, 1184)
@@ -949,7 +944,7 @@ position = Vector2(8704, 280)
 position = Vector2(9000, 792)
 
 [node name="CNZSlot12" parent="SlotMachineManager" instance=ExtResource("24_vdjfc")]
-position = Vector2(8896, 992)
+position = Vector2(8896, 976)
 type = 1
 
 [node name="CNZSlot13" parent="SlotMachineManager" instance=ExtResource("24_vdjfc")]

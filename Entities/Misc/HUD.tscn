@@ -1115,8 +1115,8 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -256.0
+offset_top = -203.0
 offset_right = -222.0
-offset_bottom = 203.0
 grow_horizontal = 2
 size_flags_stretch_ratio = 0.0
 texture = ExtResource("7_ccygi")
@@ -1160,7 +1160,7 @@ anchor_right = 1.0
 anchor_bottom = 0.003
 offset_left = -32.0
 offset_top = -86.944
-offset_right = 22982.4
+offset_right = 23014.4
 offset_bottom = 169.056
 grow_horizontal = 0
 grow_vertical = 2
@@ -1260,7 +1260,7 @@ hframes = 4
 position = Vector2(304, 128)
 texture = ExtResource("10_ddlv5")
 centered = false
-vframes = 5
+vframes = 6
 region_rect = Rect2(0, 0, 80, 16)
 
 [node name="TimeBonus" type="Label" parent="LevelClear/TimeBonusText"]
@@ -1279,7 +1279,7 @@ horizontal_alignment = 2
 position = Vector2(304, 144)
 texture = ExtResource("10_ddlv5")
 centered = false
-vframes = 5
+vframes = 6
 frame = 1
 region_rect = Rect2(0, 0, 40, 16)
 
@@ -1296,7 +1296,7 @@ visible = false
 position = Vector2(304, 160)
 texture = ExtResource("10_ddlv5")
 centered = false
-vframes = 5
+vframes = 6
 frame = 2
 region_rect = Rect2(0, 0, 40, 16)
 
@@ -1312,7 +1312,7 @@ horizontal_alignment = 2
 position = Vector2(304, 176)
 texture = ExtResource("10_ddlv5")
 centered = false
-vframes = 5
+vframes = 6
 frame = 3
 region_rect = Rect2(0, 0, 40, 16)
 

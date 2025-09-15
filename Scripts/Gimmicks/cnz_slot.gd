@@ -4,7 +4,8 @@ extends Node2D
 
 var SFX = preload("res://Audio/SFX/Objects/s2br_CNZSlot.wav")
 
-var ringprize = preload("res://Entities/Items/Ring.tscn")
+var ringprize = preload("res://Entities/Gimmicks/Ring_Prize.tscn")
+var spikeprize = preload("res://Entities/Gimmicks/spike_prize.tscn")
 
 const POINTS_TIME = 1.0
 
@@ -17,8 +18,10 @@ enum SLOT{SONIC_NULL,TAILS,KNUCKLES,EGGMAN,RING,JACKPOT,SONIC}
 enum STATES{NONE,WAITING_REEL,GIVING_PRIZE,PRIZE_GIVEN}
 var state = STATES.NONE
 
-var prizes: int = 0
 var reels = []
+var prizes: int = 0
+var prize_spawn_angle = 0
+var prize_nodes = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,6 +34,10 @@ func _process(delta: float) -> void:
 	if player:
 		timer -= delta
 		$Sprite2D.frame = wrapi(round(timer*60),0,1)
+		
+		for i in prize_nodes:
+			if !is_instance_valid(i):
+				prize_nodes.erase(i)
 		
 		match type:
 			0:
@@ -55,16 +62,21 @@ func _process(delta: float) -> void:
 							timer -= delta
 							if timer < 0:
 								timer = 0.1
-								player.rings += sign(prizes)
-								if sign(prizes) > 0:
-									player.sfx[7+player.ringChannel].play()
-									player.sfx[7].play()
-									player.ringChannel = int(!player.ringChannel)
-								else:
-									player.sfx[4].play()
-								prizes = move_toward(prizes,0,1)
-						if prizes == 0:
+								for i in 8:
+									if prizes != 0:
+										var prize = ringprize.instantiate()
+										if prizes < 0:
+											prize = spikeprize.instantiate()
+										prize.target = player
+										prize.global_position = global_position + (Vector2.UP*256).rotated(prize_spawn_angle)
+										prize_spawn_angle += 45
+										get_parent().add_child(prize)
+										prize_nodes.append(prize)
+										prizes = move_toward(prizes,0,1)
+						if prizes == 0 and !prize_nodes:
 							state = STATES.PRIZE_GIVEN
+							Global.characterReels.is_in_use = false
+							Global.characterReels.idle_timer = 5.0
 							timer = 1.0
 					STATES.PRIZE_GIVEN:
 						timer -= delta

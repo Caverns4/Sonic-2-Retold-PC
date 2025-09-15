@@ -147,21 +147,6 @@ springDirection = 2
 [node name="Spring16" parent="Entities" instance=ExtResource("10_366g0")]
 position = Vector2(6160, 504)
 
-[node name="Spring4" parent="Entities" instance=ExtResource("10_366g0")]
-position = Vector2(1176, 1616)
-type = 1
-springDirection = 4
-
-[node name="Spring5" parent="Entities" instance=ExtResource("10_366g0")]
-position = Vector2(3864, 720)
-type = 1
-springDirection = 4
-
-[node name="Spring6" parent="Entities" instance=ExtResource("10_366g0")]
-position = Vector2(6936, 1488)
-type = 1
-springDirection = 4
-
 [node name="Spring8" parent="Entities" instance=ExtResource("10_366g0")]
 position = Vector2(7536, 1400)
 type = 1
@@ -187,19 +172,6 @@ position = Vector2(4024, 1584)
 scale = Vector2(-1, 1)
 type = 1
 springDirection = 3
-
-[node name="Spring9" parent="Entities" instance=ExtResource("10_366g0")]
-position = Vector2(8176, 1016)
-type = 1
-
-[node name="Spring10" parent="Entities" instance=ExtResource("10_366g0")]
-position = Vector2(6832, 1080)
-type = 1
-
-[node name="Spring7" parent="Entities" instance=ExtResource("10_366g0")]
-position = Vector2(8728, 1104)
-type = 1
-springDirection = 4
 
 [node name="Bumper" parent="Entities" instance=ExtResource("15_yeqo5")]
 position = Vector2(3736, 1448)
@@ -483,9 +455,9 @@ endPosition = Vector2(0, -448)
 soundFile = ExtResource("13_0dqgs")
 
 [node name="Elevator5" parent="Platforms" instance=ExtResource("11_8oyv8")]
-position = Vector2(5808, 1992)
+position = Vector2(5808, 1480)
 texture = ExtResource("18_8ysgv")
-endPosition = Vector2(0, -512)
+endPosition = Vector2(0, 512)
 soundFile = ExtResource("13_0dqgs")
 
 [node name="Elevator6" parent="Platforms" instance=ExtResource("11_8oyv8")]
@@ -495,21 +467,21 @@ endPosition = Vector2(0, 320)
 soundFile = ExtResource("13_0dqgs")
 
 [node name="Elevator7" parent="Platforms" instance=ExtResource("11_8oyv8")]
-position = Vector2(7344, 1480)
+position = Vector2(7344, 1927)
 texture = ExtResource("18_8ysgv")
-endPosition = Vector2(0, 447)
+endPosition = Vector2(0, -447)
 soundFile = ExtResource("13_0dqgs")
 
 [node name="Elevator8" parent="Platforms" instance=ExtResource("11_8oyv8")]
-position = Vector2(8496, 904)
+position = Vector2(8496, 1543)
 texture = ExtResource("18_8ysgv")
-endPosition = Vector2(0, 639)
+endPosition = Vector2(0, -639)
 soundFile = ExtResource("13_0dqgs")
 
 [node name="Elevator9" parent="Platforms" instance=ExtResource("11_8oyv8")]
-position = Vector2(8496, 392)
+position = Vector2(8496, 904)
 texture = ExtResource("18_8ysgv")
-endPosition = Vector2(0, 512)
+endPosition = Vector2(0, -512)
 soundFile = ExtResource("13_0dqgs")
 
 [node name="Hazards" type="Node" parent="."]
