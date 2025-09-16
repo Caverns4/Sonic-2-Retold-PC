@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://c76jmgw2ugsu4"]
+[gd_scene load_steps=5 format=3 uid="uid://c76jmgw2ugsu4"]
 
 [ext_resource type="Texture2D" uid="uid://bb133balcd8eo" path="res://Graphics/Gimmicks/CNZ_ImpulseSpring_Body.png" id="1_clffo"]
 [ext_resource type="Texture2D" uid="uid://cj4r82extcv50" path="res://Graphics/Gimmicks/CNZImpulseSpring.png" id="1_dec7f"]
+[ext_resource type="Script" uid="uid://cyf8dgenb5scg" path="res://Scripts/Gimmicks/cnz_pressure_spring.gd" id="1_liq00"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_clffo"]
-size = Vector2(32, 24)
+size = Vector2(24, 24)
 
 [node name="CNZ_PressureSpring" type="Node2D"]
+script = ExtResource("1_liq00")
 
 [node name="SpringCoils" type="TextureRect" parent="."]
 anchors_preset = 7
@@ -24,14 +26,18 @@ expand_mode = 1
 stretch_mode = 1
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(0, -40)
+position = Vector2(0, -64)
 collision_layer = 0
 collision_mask = 4096
 
 [node name="SpringCap" type="Sprite2D" parent="Area2D"]
+position = Vector2(0, 8)
 texture = ExtResource("1_dec7f")
+offset = Vector2(0, 16)
 hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -12)
+position = Vector2(0, 20)
 shape = SubResource("RectangleShape2D_clffo")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
