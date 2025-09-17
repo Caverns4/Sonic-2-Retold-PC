@@ -1,6 +1,6 @@
 extends Area2D
 
-var players = []
+var players: Array[Player2D] = []
 @export_enum("left", "right", "up", "down") var forceDirection = 1
 
 func _physics_process(_delta):
@@ -21,6 +21,9 @@ func _physics_process(_delta):
 					i.set_state(i.STATES.ROLL)
 					i.animator.play("roll")
 					i.sfx[1].play()
+				else:
+					if abs(i.movement.x) < 60 and i.ground:
+						i.movement.x = 120*i.direction
 
 func _on_ForceRoll_body_entered(body):
 	if !body.controlObject:

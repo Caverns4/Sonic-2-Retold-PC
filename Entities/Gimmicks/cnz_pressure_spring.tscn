@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cyf8dgenb5scg" path="res://Scripts/Gimmicks/cnz_pressure_spring.gd" id="1_liq00"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_clffo"]
-size = Vector2(24, 24)
+size = Vector2(24, 56)
 
 [node name="CNZ_PressureSpring" type="Node2D"]
 script = ExtResource("1_liq00")
@@ -37,7 +37,7 @@ offset = Vector2(0, 16)
 hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 20)
+position = Vector2(0, 36)
 shape = SubResource("RectangleShape2D_clffo")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

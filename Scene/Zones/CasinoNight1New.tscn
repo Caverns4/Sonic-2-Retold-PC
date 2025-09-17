@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://p0yejpqi4q88"]
+[gd_scene load_steps=33 format=4 uid="uid://p0yejpqi4q88"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_0yy3m"]
 [ext_resource type="AudioStream" uid="uid://c354qh8pof6fe" path="res://Audio/Soundtrack/s2br_CasinoNight.ogg" id="2_20443"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c2t7hwn0iln3x" path="res://Entities/Obstacles/Elevator.tscn" id="16_0dx01"]
 [ext_resource type="Texture2D" uid="uid://bd7qotjdqnsst" path="res://Graphics/Objects_Zone/CNZ_MovingBlock.png" id="16_24mkh"]
 [ext_resource type="PackedScene" uid="uid://dnbjgwbrkknnu" path="res://Entities/Gimmicks/ConveyorBelt.tscn" id="16_kwjyb"]
+[ext_resource type="PackedScene" uid="uid://ctg1aeiewvyvj" path="res://Entities/Gimmicks/ForceRoll.tscn" id="16_w6p64"]
 [ext_resource type="AudioStream" uid="uid://cei1ganfjxio8" path="res://Audio/SFX/Objects/CNZ_Elevator.wav" id="18_042pc"]
 [ext_resource type="Texture2D" uid="uid://bsbg06aqri8m1" path="res://Graphics/Objects_Zone/CNZ_Elevator.png" id="18_j7vub"]
 [ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="19_guhxt"]
@@ -24,10 +25,13 @@
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="21_yc45f"]
 [ext_resource type="PackedScene" uid="uid://dkt4dlhmutrkc" path="res://Entities/ZoneObjects/CNZ-big_bumper.tscn" id="22_2kigl"]
 [ext_resource type="PackedScene" uid="uid://c4jrjspjbeybr" path="res://Scene/Backgrounds/09-CasinoNightF.tscn" id="22_5pai5"]
+[ext_resource type="PackedScene" uid="uid://cfteqnft5ynr7" path="res://Entities/Hazards/Spikes.tscn" id="23_gug6o"]
 [ext_resource type="PackedScene" uid="uid://maxhev4qup18" path="res://Entities/Gimmicks/cnz_slot.tscn" id="24_vdjfc"]
 [ext_resource type="Script" uid="uid://dfni74fqlnyko" path="res://Scripts/Misc/slot_machine_manager.gd" id="25_j7vub"]
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="25_qxfkg"]
+[ext_resource type="PackedScene" uid="uid://bct374kjctkxr" path="res://Entities/Items/Checkpoint.tscn" id="27_iqae0"]
 [ext_resource type="PackedScene" uid="uid://c76jmgw2ugsu4" path="res://Entities/Gimmicks/cnz_pressure_spring.tscn" id="28_10qq3"]
+[ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="29_3q16r"]
 
 [node name="CasinoNight1" type="Node2D"]
 script = ExtResource("1_0yy3m")
@@ -415,13 +419,6 @@ constant_linear_velocity = Vector2(-60, 0)
 speed = -60
 length = 7
 
-[node name="CNZ_PressureSpring" parent="Entities" instance=ExtResource("28_10qq3")]
-position = Vector2(192, 696)
-
-[node name="CNZ_PressureSpring2" parent="Entities" instance=ExtResource("28_10qq3")]
-position = Vector2(256, 696)
-rotation = 0.785398
-
 [node name="CNZ_PressureSpring3" parent="Entities" instance=ExtResource("28_10qq3")]
 position = Vector2(3596, 1884)
 rotation = 0.785398
@@ -446,6 +443,40 @@ rotation = 0.785398
 
 [node name="CNZ_PressureSpring9" parent="Entities" instance=ExtResource("28_10qq3")]
 position = Vector2(8688, 1536)
+
+[node name="ForceRoll" parent="Entities" instance=ExtResource("16_w6p64")]
+position = Vector2(3840, 1664)
+scale = Vector2(32, 32)
+forceDirection = 3
+
+[node name="ForceRoll3" parent="Entities" instance=ExtResource("16_w6p64")]
+position = Vector2(6272, 1792)
+scale = Vector2(32, 32)
+forceDirection = 3
+
+[node name="ForceRoll4" parent="Entities" instance=ExtResource("16_w6p64")]
+position = Vector2(6912, 1168)
+scale = Vector2(32, 32)
+forceDirection = 3
+
+[node name="ForceRoll5" parent="Entities" instance=ExtResource("16_w6p64")]
+position = Vector2(8576, 1792)
+scale = Vector2(64, 16)
+
+[node name="ForceRoll2" parent="Entities" instance=ExtResource("16_w6p64")]
+position = Vector2(2176, 896)
+scale = Vector2(16, 32)
+forceDirection = 3
+
+[node name="ForceRoll6" parent="Entities" instance=ExtResource("16_w6p64")]
+position = Vector2(8192, 1280)
+scale = Vector2(32, 64)
+forceDirection = 3
+
+[node name="ForceRoll7" parent="Entities" instance=ExtResource("16_w6p64")]
+position = Vector2(9024, 1216)
+scale = Vector2(40, 40)
+forceDirection = 3
 
 [node name="Platforms" type="Node2D" parent="."]
 material = ExtResource("8_cpekc")
@@ -644,6 +675,19 @@ scale = Vector2(2, 4)
 [node name="InvisibleBarrier11" parent="Hazards" instance=ExtResource("19_guhxt")]
 position = Vector2(1952, 1792)
 scale = Vector2(2, 4)
+
+[node name="Spikes" parent="Hazards" instance=ExtResource("23_gug6o")]
+position = Vector2(2976, 1584)
+count = 4
+
+[node name="Spikes2" parent="Hazards" instance=ExtResource("23_gug6o")]
+position = Vector2(5472, 1104)
+rotation = -3.14159
+count = 4
+
+[node name="Spikes3" parent="Hazards" instance=ExtResource("23_gug6o")]
+position = Vector2(6688, 752)
+count = 4
 
 [node name="Bumpers" type="Node" parent="."]
 
@@ -882,6 +926,18 @@ item = 2
 [node name="Monitor13" parent="Items" instance=ExtResource("21_yc45f")]
 position = Vector2(7728, 656)
 
+[node name="Checkpoint" parent="Items" instance=ExtResource("27_iqae0")]
+position = Vector2(5960, 296)
+checkPointID = 1
+
+[node name="Checkpoint2" parent="Items" instance=ExtResource("27_iqae0")]
+position = Vector2(5952, 1160)
+checkPointID = 2
+
+[node name="Checkpoint3" parent="Items" instance=ExtResource("27_iqae0")]
+position = Vector2(8512, 104)
+checkPointID = 3
+
 [node name="Badniks" type="Node" parent="."]
 
 [node name="Crawl" parent="Badniks" instance=ExtResource("20_2gusr")]
@@ -894,6 +950,45 @@ position = Vector2(4144, 816)
 position = Vector2(8560, 560)
 
 [node name="Rings" type="Node" parent="."]
+
+[node name="Ring" parent="Rings" instance=ExtResource("29_3q16r")]
+position = Vector2(168, 688)
+
+[node name="Ring2" parent="Rings" instance=ExtResource("29_3q16r")]
+position = Vector2(192, 688)
+
+[node name="Ring3" parent="Rings" instance=ExtResource("29_3q16r")]
+position = Vector2(216, 688)
+
+[node name="Ring4" parent="Rings" instance=ExtResource("29_3q16r")]
+position = Vector2(416, 664)
+
+[node name="Ring5" parent="Rings" instance=ExtResource("29_3q16r")]
+position = Vector2(440, 664)
+
+[node name="Ring6" parent="Rings" instance=ExtResource("29_3q16r")]
+position = Vector2(464, 664)
+
+[node name="Ring7" parent="Rings" instance=ExtResource("29_3q16r")]
+position = Vector2(616, 648)
+
+[node name="Ring8" parent="Rings" instance=ExtResource("29_3q16r")]
+position = Vector2(640, 648)
+
+[node name="Ring9" parent="Rings" instance=ExtResource("29_3q16r")]
+position = Vector2(664, 648)
+
+[node name="Ring10" parent="Rings" instance=ExtResource("29_3q16r")]
+position = Vector2(536, 304)
+
+[node name="Ring11" parent="Rings" instance=ExtResource("29_3q16r")]
+position = Vector2(520, 288)
+
+[node name="Ring12" parent="Rings" instance=ExtResource("29_3q16r")]
+position = Vector2(552, 288)
+
+[node name="Ring13" parent="Rings" instance=ExtResource("29_3q16r")]
+position = Vector2(536, 272)
 
 [node name="SlotMachineManager" type="Node" parent="."]
 script = ExtResource("25_j7vub")
@@ -933,9 +1028,11 @@ position = Vector2(5632, 1616)
 
 [node name="CNZSlot8" parent="SlotMachineManager" instance=ExtResource("24_vdjfc")]
 position = Vector2(7104, 608)
+type = 1
 
 [node name="CNZSlot9" parent="SlotMachineManager" instance=ExtResource("24_vdjfc")]
 position = Vector2(7616, 352)
+type = 1
 
 [node name="CNZSlot10" parent="SlotMachineManager" instance=ExtResource("24_vdjfc")]
 position = Vector2(8704, 280)
