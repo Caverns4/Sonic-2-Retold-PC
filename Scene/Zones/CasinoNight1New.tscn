@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://p0yejpqi4q88"]
+[gd_scene load_steps=34 format=4 uid="uid://p0yejpqi4q88"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_0yy3m"]
 [ext_resource type="AudioStream" uid="uid://c354qh8pof6fe" path="res://Audio/Soundtrack/s2br_CasinoNight.ogg" id="2_20443"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://maxhev4qup18" path="res://Entities/Gimmicks/cnz_slot.tscn" id="24_vdjfc"]
 [ext_resource type="Script" uid="uid://dfni74fqlnyko" path="res://Scripts/Misc/slot_machine_manager.gd" id="25_j7vub"]
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="25_qxfkg"]
+[ext_resource type="PackedScene" uid="uid://b7ebhoiaebh3r" path="res://Entities/Gimmicks/cnz_bonus_bumper.tscn" id="26_6nfl8"]
 [ext_resource type="PackedScene" uid="uid://bct374kjctkxr" path="res://Entities/Items/Checkpoint.tscn" id="27_iqae0"]
 [ext_resource type="PackedScene" uid="uid://c76jmgw2ugsu4" path="res://Entities/Gimmicks/cnz_pressure_spring.tscn" id="28_10qq3"]
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="29_3q16r"]
@@ -591,7 +592,6 @@ soundFile = ExtResource("18_042pc")
 position = Vector2(3248, 1160)
 texture = ExtResource("18_j7vub")
 endPosition = Vector2(0, -576)
-speed = 0.5
 soundFile = ExtResource("18_042pc")
 
 [node name="Hazards" type="Node" parent="."]
@@ -877,6 +877,15 @@ position = Vector2(7360, 1888)
 [node name="CNZ-BigBumper19" parent="Bumpers" instance=ExtResource("22_2kigl")]
 position = Vector2(5312, 800)
 rotation = 3.14159
+
+[node name="BonusBumper" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(256, 640)
+
+[node name="BonusBumper2" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(296, 640)
+
+[node name="BonusBumper3" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(336, 640)
 
 [node name="Items" type="Node" parent="."]
 

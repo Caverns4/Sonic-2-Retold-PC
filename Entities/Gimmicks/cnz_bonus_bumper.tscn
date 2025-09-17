@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7ebhoiaebh3r"]
+
+[ext_resource type="Script" uid="uid://ey8h3c82aw18" path="res://Scripts/Gimmicks/cnz_bonus_bumper.gd" id="1_0m1u4"]
+[ext_resource type="Texture2D" uid="uid://b14mcok6isknm" path="res://Graphics/Gimmicks/CNZ_Bonus.png" id="1_06dlr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0m1u4"]
+size = Vector2(32, 14)
+
+[node name="BonusBumper" type="StaticBody2D"]
+collision_layer = 8192
+collision_mask = 8192
+script = ExtResource("1_0m1u4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_06dlr")
+vframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0m1u4")
+debug_color = Color(0, 1, 0, 0.501961)
