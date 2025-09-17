@@ -104,9 +104,6 @@ position = Vector2(4680, 1104)
 [node name="Bumper16" parent="Entities" instance=ExtResource("11_cyorj")]
 position = Vector2(4720, 784)
 
-[node name="Bumper6" parent="Entities" instance=ExtResource("11_cyorj")]
-position = Vector2(4608, 1408)
-
 [node name="Bumper13" parent="Entities" instance=ExtResource("11_cyorj")]
 position = Vector2(4168, 1488)
 
@@ -135,10 +132,10 @@ position = Vector2(8672, 664)
 position = Vector2(8656, 880)
 
 [node name="Bumper40" parent="Entities" instance=ExtResource("11_cyorj")]
-position = Vector2(8968, 840)
+position = Vector2(8968, 856)
 
 [node name="Bumper41" parent="Entities" instance=ExtResource("11_cyorj")]
-position = Vector2(9040, 840)
+position = Vector2(9032, 856)
 
 [node name="Bumper42" parent="Entities" instance=ExtResource("11_cyorj")]
 position = Vector2(9056, 1336)
@@ -156,10 +153,13 @@ position = Vector2(3712, 1024)
 position = Vector2(3840, 1024)
 
 [node name="Bumper10" parent="Entities" instance=ExtResource("11_cyorj")]
-position = Vector2(1152, 1536)
+position = Vector2(1152, 1560)
 
-[node name="Bumper7" parent="Entities" instance=ExtResource("11_cyorj")]
-position = Vector2(1904, 752)
+[node name="Bumper50" parent="Entities" instance=ExtResource("11_cyorj")]
+position = Vector2(1104, 1544)
+
+[node name="Bumper51" parent="Entities" instance=ExtResource("11_cyorj")]
+position = Vector2(1200, 1544)
 
 [node name="Bumper8" parent="Entities" instance=ExtResource("11_cyorj")]
 position = Vector2(640, 768)
@@ -886,6 +886,144 @@ position = Vector2(296, 640)
 
 [node name="BonusBumper3" parent="Bumpers" instance=ExtResource("26_6nfl8")]
 position = Vector2(336, 640)
+
+[node name="BonusBumper4" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(1864, 664)
+rotation = -0.785398
+
+[node name="BonusBumper5" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(1840, 688)
+rotation = -0.785398
+
+[node name="BonusBumper6" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(1816, 712)
+rotation = -0.785398
+
+[node name="BonusBumper7" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(4528, 1416)
+
+[node name="BonusBumper8" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(4560, 1440)
+
+[node name="BonusBumper9" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(4592, 1472)
+
+[node name="BonusBumper10" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(4624, 1472)
+
+[node name="BonusBumper11" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(4656, 1440)
+
+[node name="BonusBumper12" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(4688, 1416)
+
+[node name="BonusBumper13" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(5272, 1200)
+
+[node name="BonusBumper14" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(5312, 1200)
+
+[node name="BonusBumper15" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(5352, 1200)
+
+[node name="BonusBumper16" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(6176, 360)
+
+[node name="BonusBumper17" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(6224, 360)
+
+[node name="BonusBumper18" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(6272, 360)
+
+[node name="BonusBumper19" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(6320, 360)
+
+[node name="BonusBumper20" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(6368, 360)
+
+[node name="BonusBumper21" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(6416, 376)
+
+[node name="BonusBumper22" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(6464, 384)
+
+[node name="BonusBumper23" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(6512, 392)
+
+[node name="BonusBumper24" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(6456, 968)
+
+[node name="BonusBumper25" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(6496, 968)
+
+[node name="BonusBumper26" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(6536, 968)
+
+[node name="BonusBumper27" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(6984, 688)
+rotation = 0.785398
+
+[node name="BonusBumper28" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(7008, 712)
+rotation = 0.785398
+
+[node name="BonusBumper29" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(7032, 736)
+rotation = 0.785398
+
+[node name="BonusBumper30" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(7176, 736)
+rotation = -0.785398
+
+[node name="BonusBumper31" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(7200, 712)
+rotation = -0.785398
+
+[node name="BonusBumper32" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(7224, 688)
+rotation = -0.785398
+
+[node name="BonusBumper33" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(7688, 480)
+rotation = -0.785398
+
+[node name="BonusBumper34" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(7720, 448)
+rotation = -0.785398
+
+[node name="BonusBumper35" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(7752, 416)
+rotation = -0.785398
+
+[node name="BonusBumper36" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(7960, 1208)
+
+[node name="BonusBumper37" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(8000, 1216)
+
+[node name="BonusBumper38" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(8040, 1224)
+
+[node name="BonusBumper39" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(8856, 1272)
+
+[node name="BonusBumper40" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(8896, 1280)
+
+[node name="BonusBumper41" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(8936, 1288)
+
+[node name="BonusBumper42" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(9160, 784)
+rotation = -0.785398
+
+[node name="BonusBumper43" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(9128, 816)
+rotation = -0.785398
+
+[node name="BonusBumper44" parent="Bumpers" instance=ExtResource("26_6nfl8")]
+position = Vector2(9096, 848)
+rotation = -0.785398
 
 [node name="Items" type="Node" parent="."]
 

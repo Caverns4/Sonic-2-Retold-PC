@@ -1,8 +1,10 @@
 @tool
 extends StaticBody2D
 
+## Red springs have more launch power than yellow springs.
 @export_enum("Yellow", "Red") var type = 0
 @export_enum("Up", "Down", "Right", "Left", "Diagonal Up Right", "Diagonal Up Left", "Diagonal Down Right", "Diagonal Down Left") var springDirection = 0
+## Kill transitional speed. If true, momentum no aligning with the launch direction will be haulted.
 @export var killTransSpeed = true
 var hitDirection = Vector2.UP
 var animList = ["SpringUp","SpringRight","SpringUpLeft","SpringUpRight"]
