@@ -472,6 +472,14 @@ endPosition = Vector2(192, 0)
 dropSlightly = false
 fullySolid = true
 
+[node name="Platform8" parent="Platforms" instance=ExtResource("25_ummts")]
+use_parent_material = true
+position = Vector2(6816, 224)
+platform_sprite = ExtResource("18_kjkoe")
+endPosition = Vector2(192, 0)
+dropSlightly = false
+fullySolid = true
+
 [node name="Elevator" parent="Platforms" instance=ExtResource("11_8oyv8")]
 position = Vector2(4400, 1927)
 texture = ExtResource("18_8ysgv")
@@ -718,16 +726,124 @@ position = Vector2(6576, 576)
 rotation = 4.71239
 
 [node name="BonusBumper" parent="Bumpers" instance=ExtResource("22_b6tud")]
-position = Vector2(2208, 1168)
+position = Vector2(2216, 1168)
 
 [node name="BonusBumper2" parent="Bumpers" instance=ExtResource("22_b6tud")]
 position = Vector2(2272, 1168)
 
 [node name="BonusBumper4" parent="Bumpers" instance=ExtResource("22_b6tud")]
-position = Vector2(2328, 1168)
+position = Vector2(2336, 1168)
 
 [node name="BonusBumper3" parent="Bumpers" instance=ExtResource("22_b6tud")]
-position = Vector2(2400, 1168)
+position = Vector2(2392, 1168)
+
+[node name="BonusBumper8" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(2616, 880)
+
+[node name="BonusBumper9" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(2648, 912)
+
+[node name="BonusBumper10" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(2680, 944)
+
+[node name="BonusBumper11" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(3352, 1224)
+
+[node name="BonusBumper12" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(3392, 1224)
+
+[node name="BonusBumper13" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(3432, 1224)
+
+[node name="BonusBumper14" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(3352, 1288)
+
+[node name="BonusBumper15" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(3392, 1288)
+
+[node name="BonusBumper16" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(3432, 1288)
+
+[node name="BonusBumper17" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(3520, 248)
+
+[node name="BonusBumper18" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(3552, 280)
+
+[node name="BonusBumper19" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(3584, 312)
+
+[node name="BonusBumper20" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(5448, 776)
+
+[node name="BonusBumper21" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(5472, 752)
+
+[node name="BonusBumper22" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(5496, 728)
+
+[node name="BonusBumper23" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(5568, 336)
+
+[node name="BonusBumper24" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(5632, 304)
+
+[node name="BonusBumper25" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(5704, 280)
+
+[node name="BonusBumper26" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(5912, 720)
+
+[node name="BonusBumper27" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(5952, 720)
+
+[node name="BonusBumper28" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(5992, 720)
+
+[node name="BonusBumper29" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(7176, 288)
+
+[node name="BonusBumper30" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(7216, 288)
+
+[node name="BonusBumper31" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(7256, 288)
+
+[node name="BonusBumper32" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(7744, 1176)
+
+[node name="BonusBumper33" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(7776, 1176)
+
+[node name="BonusBumper34" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(7808, 1176)
+
+[node name="BonusBumper35" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(8088, 616)
+
+[node name="BonusBumper36" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(8128, 576)
+
+[node name="BonusBumper37" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(8168, 536)
+
+[node name="BonusBumper38" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(9272, 920)
+
+[node name="BonusBumper39" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(9304, 944)
+
+[node name="BonusBumper40" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(9336, 968)
+
+[node name="BonusBumper41" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(9648, 1048)
+
+[node name="BonusBumper42" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(9648, 1088)
+
+[node name="BonusBumper43" parent="Bumpers" instance=ExtResource("22_b6tud")]
+position = Vector2(9648, 1128)
 
 [node name="BonusBumper5" parent="Bumpers" instance=ExtResource("22_b6tud")]
 position = Vector2(720, 1456)

@@ -892,12 +892,17 @@ func _physics_process(delta):
 		crushSensorDown.position.y = (hitbox.shape.size.y/2 +1)
 		
 		# crusher deaths NOTE: the allowTranslate and visibility is used for stuff like the sky sanctuary teleporters, visibility check is for stuff like the carnival night barrels
-		if (crushSensorLeft.get_overlapping_areas() + crushSensorLeft.get_overlapping_bodies()).size() > 0 and \
-			(crushSensorRight.get_overlapping_areas() + crushSensorRight.get_overlapping_bodies()).size() > 0 and (!allowTranslate or visible):
-			kill()
-
-		if (crushSensorUp.get_overlapping_areas() + crushSensorUp.get_overlapping_bodies()).size() > 0 and \
-			(crushSensorDown.get_overlapping_areas() + crushSensorDown.get_overlapping_bodies()).size() > 0 and (!allowTranslate or visible):
+		if ((
+				#(crushSensorLeft.get_overlapping_areas() + 
+				crushSensorLeft.get_overlapping_bodies().size() and #\
+				#(crushSensorRight.get_overlapping_areas() + 
+				crushSensorRight.get_overlapping_bodies().size() ) or
+			(
+				#((crushSensorUp.get_overlapping_areas() + 
+				crushSensorUp.get_overlapping_bodies().size() and #\
+				#(crushSensorDown.get_overlapping_areas() + 
+				crushSensorDown.get_overlapping_bodies().size()
+				)): #and (!allowTranslate or visible)
 			kill()
 
 func RandomOffset() -> Vector2:

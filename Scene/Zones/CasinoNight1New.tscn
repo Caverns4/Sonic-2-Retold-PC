@@ -69,6 +69,40 @@ position = Vector2(96, 684)
 
 [node name="Entities" type="Node" parent="."]
 
+[node name="ForceRoll" parent="Entities" instance=ExtResource("16_w6p64")]
+position = Vector2(3840, 1664)
+scale = Vector2(32, 32)
+forceDirection = 3
+
+[node name="ForceRoll3" parent="Entities" instance=ExtResource("16_w6p64")]
+position = Vector2(6272, 1792)
+scale = Vector2(32, 32)
+forceDirection = 3
+
+[node name="ForceRoll4" parent="Entities" instance=ExtResource("16_w6p64")]
+position = Vector2(6912, 1168)
+scale = Vector2(32, 32)
+forceDirection = 3
+
+[node name="ForceRoll5" parent="Entities" instance=ExtResource("16_w6p64")]
+position = Vector2(8656, 1792)
+scale = Vector2(70, 16)
+
+[node name="ForceRoll2" parent="Entities" instance=ExtResource("16_w6p64")]
+position = Vector2(2176, 896)
+scale = Vector2(16, 32)
+forceDirection = 3
+
+[node name="ForceRoll6" parent="Entities" instance=ExtResource("16_w6p64")]
+position = Vector2(8192, 1216)
+scale = Vector2(32, 56)
+forceDirection = 3
+
+[node name="ForceRoll7" parent="Entities" instance=ExtResource("16_w6p64")]
+position = Vector2(8992, 1120)
+scale = Vector2(44, 60)
+forceDirection = 3
+
 [node name="Spring" parent="Entities" instance=ExtResource("10_68as7")]
 position = Vector2(2608, 1784)
 
@@ -439,45 +473,11 @@ rotation = 0.785398
 position = Vector2(7280, 1536)
 
 [node name="CNZ_PressureSpring8" parent="Entities" instance=ExtResource("28_10qq3")]
-position = Vector2(8208, 1880)
+position = Vector2(8204, 1884)
 rotation = 0.785398
 
 [node name="CNZ_PressureSpring9" parent="Entities" instance=ExtResource("28_10qq3")]
 position = Vector2(8688, 1536)
-
-[node name="ForceRoll" parent="Entities" instance=ExtResource("16_w6p64")]
-position = Vector2(3840, 1664)
-scale = Vector2(32, 32)
-forceDirection = 3
-
-[node name="ForceRoll3" parent="Entities" instance=ExtResource("16_w6p64")]
-position = Vector2(6272, 1792)
-scale = Vector2(32, 32)
-forceDirection = 3
-
-[node name="ForceRoll4" parent="Entities" instance=ExtResource("16_w6p64")]
-position = Vector2(6912, 1168)
-scale = Vector2(32, 32)
-forceDirection = 3
-
-[node name="ForceRoll5" parent="Entities" instance=ExtResource("16_w6p64")]
-position = Vector2(8576, 1792)
-scale = Vector2(64, 16)
-
-[node name="ForceRoll2" parent="Entities" instance=ExtResource("16_w6p64")]
-position = Vector2(2176, 896)
-scale = Vector2(16, 32)
-forceDirection = 3
-
-[node name="ForceRoll6" parent="Entities" instance=ExtResource("16_w6p64")]
-position = Vector2(8192, 1280)
-scale = Vector2(32, 64)
-forceDirection = 3
-
-[node name="ForceRoll7" parent="Entities" instance=ExtResource("16_w6p64")]
-position = Vector2(9024, 1216)
-scale = Vector2(40, 40)
-forceDirection = 3
 
 [node name="Platforms" type="Node2D" parent="."]
 material = ExtResource("8_cpekc")

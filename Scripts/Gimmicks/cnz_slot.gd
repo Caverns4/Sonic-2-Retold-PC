@@ -102,6 +102,7 @@ func dropPlayer():
 		#Free the player
 		player.set_state(player.STATES.AIR)
 		player.controlObject = null
+		player.allowTranslate = false
 		player = null
 
 
