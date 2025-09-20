@@ -278,7 +278,7 @@ func _on_ShieldTimer_timeout():
 # reset drop dash timer and gripping when this state is set
 func state_activated():
 	dropTimer = 0
-	parent.poleGrabID = null
+	# parent.poleGrabID = null
 	# disable water run splash
 	parent.action_water_run_handle()
 
@@ -289,7 +289,7 @@ func state_exit():
 		parent.shieldSprite.stop()
 	if parent.ground:
 		parent.movement.y = min(parent.movement.y,0)
-	parent.poleGrabID = null
+	# parent.poleGrabID = null
 	parent.shieldSprite.get_node("InstaShieldHitbox/HitBox").set_deferred("disabled",true)
 	parent.enemyCounter = 0
 	lockDir = false

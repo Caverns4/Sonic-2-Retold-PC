@@ -100,7 +100,7 @@ func dropPlayer():
 		state = STATES.NONE
 		sfxTimer = 0.0
 		#Free the player
-		player.set_state(player.STATES.AIR)
+		player.set_state(player.STATES.AIR,player.currentHitbox.ROLL)
 		player.controlObject = null
 		player.allowTranslate = false
 		player = null

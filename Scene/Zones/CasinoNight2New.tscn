@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://c2i6c85g2b5bh"]
+[gd_scene load_steps=33 format=4 uid="uid://c2i6c85g2b5bh"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_ssdve"]
 [ext_resource type="AudioStream" uid="uid://c354qh8pof6fe" path="res://Audio/Soundtrack/s2br_CasinoNight.ogg" id="2_last2"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://c76jmgw2ugsu4" path="res://Entities/Gimmicks/cnz_pressure_spring.tscn" id="15_rlhim"]
 [ext_resource type="PackedScene" uid="uid://dwybbnboecmkw" path="res://Entities/Obstacles/Bumper.tscn" id="15_yeqo5"]
 [ext_resource type="PackedScene" uid="uid://c3dq6cs7sku84" path="res://Entities/Gimmicks/CNZFlipper.tscn" id="16_3fgr3"]
+[ext_resource type="PackedScene" uid="uid://ctg1aeiewvyvj" path="res://Entities/Gimmicks/ForceRoll.tscn" id="16_3i4yh"]
 [ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="17_1xt3d"]
 [ext_resource type="Texture2D" uid="uid://bsbg06aqri8m1" path="res://Graphics/Objects_Zone/CNZ_Elevator.png" id="18_8ysgv"]
 [ext_resource type="PackedScene" uid="uid://dnbjgwbrkknnu" path="res://Entities/Gimmicks/ConveyorBelt.tscn" id="18_bt65x"]
@@ -413,6 +414,31 @@ position = Vector2(8176, 1024)
 [node name="CNZ_PressureSpring7" parent="Entities" instance=ExtResource("15_rlhim")]
 position = Vector2(8716, 1116)
 rotation = 0.785398
+
+[node name="ForceRoll" parent="Entities" instance=ExtResource("16_3i4yh")]
+position = Vector2(7240, 1280)
+scale = Vector2(40, 32)
+forceDirection = 3
+
+[node name="ForceRoll3" parent="Entities" instance=ExtResource("16_3i4yh")]
+position = Vector2(8832, 912)
+scale = Vector2(32, 32)
+forceDirection = 3
+
+[node name="ForceRoll4" parent="Entities" instance=ExtResource("16_3i4yh")]
+position = Vector2(4032, 528)
+scale = Vector2(24, 32)
+forceDirection = 3
+
+[node name="ForceRoll5" parent="Entities" instance=ExtResource("16_3i4yh")]
+position = Vector2(1312, 1416)
+scale = Vector2(28, 32)
+forceDirection = 3
+
+[node name="ForceRoll2" parent="Entities" instance=ExtResource("16_3i4yh")]
+position = Vector2(8128, 896)
+scale = Vector2(16, 32)
+forceDirection = 3
 
 [node name="Platforms" type="Node2D" parent="."]
 

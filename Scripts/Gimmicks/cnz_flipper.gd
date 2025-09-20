@@ -73,8 +73,8 @@ func _physics_process(delta: float) -> void:
 							height = clamp(height,8,16)
 							player.angle = 0
 							player.movement.y = 0 - (height * 60)
-							player.movement.x = (height*15) * direction
-							player.currentState = player.STATES.AIR
+							player.movement.x = (height*20) * direction
+							player.set_state(player.STATES.AIR,player.currentHitbox.ROLL)
 							player.animator.play("roll")
 							player.controlObject = null
 							player.allowTranslate = false

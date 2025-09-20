@@ -115,7 +115,6 @@ func physics_collision(body, hitVector):
 					SoundDriver.play_sound(spring_sfx)
 		
 		# Disable pole grabs
-		# body.poleGrabID = self
 		body.poleGrabID = null
 		return true
 	

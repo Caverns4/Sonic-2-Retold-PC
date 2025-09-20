@@ -24,18 +24,18 @@ var groundLookDistance = 14 # how far down to look
 
 
 # physics variables
-var movement = velocity+Vector2(0.00001,0) # this is a band aid fix, physics objects have something triggered to make them work but it only happens when moving horizontally, so the solution for now is to have it add a unnoticeable amount of x movement
-var ground = true
-var roof = false
-var moveStepLength = 8*60
+var movement: Vector2 = velocity+Vector2(0.00001,0) # this is a band aid fix, physics objects have something triggered to make them work but it only happens when moving horizontally, so the solution for now is to have it add a unnoticeable amount of x movement
+var ground: bool = true
+var roof: bool = false
+var moveStepLength: float = 8*60
 # angle is the rotation based on the floor normal
-var angle = 0
-var gravityAngle = 0
+var angle: float = 0
+var gravityAngle: float = 0
 # the collission layer, 0 for low, 1 for high
 var collissionLayer = 0
 
 # translate, (ignores physics)
-var allowTranslate = false
+var allowTranslate: bool = false
 
 # Vertical sensor reference
 var getVert = null

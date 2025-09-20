@@ -19,13 +19,10 @@ var flicker_time = 0.01
 
 func _ready():
 	$HUD/CounterWait.start()
-	ring_bonus = Global.special_stage_rings*100
+	ring_bonus = Global.special_stage_rings*10
 	if Global.lastSpecialStageResult:
 		Global.specialStageID += 1
 		gems_bonus = 5000
-	#Testing purposes.
-	ring_bonus = 90*10
-	gems_bonus = 5000
 	
 	# $HUD/Stage.text = "Stage "+str(Global.specialStageID+1)
 	# cycle through emeralds on the hud
@@ -44,15 +41,27 @@ func _process(delta: float) -> void:
 				state_timer = 0.025
 				$HUD/CounterSFX.play()
 				if ring_bonus > 0:
-					ring_bonus -= 10
-					Global.check_score_life(10)
-					Global.score += 10
-					total += 10
+					if ring_bonus > 100:
+						ring_bonus -= 100
+						Global.check_score_life(100)
+						Global.score += 100
+						total += 100
+					else:
+						ring_bonus -= 10
+						Global.check_score_life(10)
+						Global.score += 10
+						total += 10
 				elif gems_bonus > 0:
-					gems_bonus -= 10
-					Global.check_score_life(10)
-					Global.score += 10
-					total += 10
+					if gems_bonus > 100:
+						gems_bonus -= 100
+						Global.check_score_life(100)
+						Global.score += 100
+						total += 100
+					else:
+						gems_bonus -= 10
+						Global.check_score_life(10)
+						Global.score += 10
+						total += 10
 				else:
 					$HUD/CounterSFX.stop()
 					$HUD/Score.play()
@@ -60,10 +69,10 @@ func _process(delta: float) -> void:
 					state = STATE.SHOWTEXT
 		STATE.SHOWTEXT:
 			state = STATE.WAITTOEXIT
-			$Emerald.play()
 		STATE.WAITTOEXIT:
 			if !SoundDriver.music.playing and state_timer <= 0.0:
 				state = STATE.EXITING
+				$Emerald.play()
 				returnToLevel()
 
 	ring_counter.text = str(int(ring_bonus))

@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvv78uhl8idjs"]
+[gd_scene load_steps=5 format=3 uid="uid://bvv78uhl8idjs"]
 
 [ext_resource type="Script" uid="uid://boxk7eyab2sik" path="res://Scripts/Gimmicks/hanging_vine.gd" id="1_drbiq"]
 [ext_resource type="Texture2D" uid="uid://safasvc4e7j8" path="res://Graphics/Gimmicks/DHZ_VineLength.png" id="1_y7bl4"]
 [ext_resource type="Texture2D" uid="uid://31b52ioyj4vd" path="res://Graphics/Gimmicks/DHZ_VineHook.png" id="2_kaq1y"]
 [ext_resource type="PackedScene" uid="uid://b2qs2ji487f1t" path="res://Entities/Gimmicks/Hanger.tscn" id="3_5sfhf"]
-[ext_resource type="AudioStream" uid="uid://uay8t1b3i1hi" path="res://Audio/SFX/Gimmicks/s2br_Switch.wav" id="5_pf5ng"]
 
 [node name="HangingVine" type="Node2D"]
 script = ExtResource("1_drbiq")
@@ -25,6 +24,3 @@ centered = false
 
 [node name="Hanger" parent="." instance=ExtResource("3_5sfhf")]
 position = Vector2(0, 56)
-holdDownToDrop = true
-setCenter = true
-grabSound = ExtResource("5_pf5ng")

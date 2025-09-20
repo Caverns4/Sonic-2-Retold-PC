@@ -453,8 +453,7 @@ springDirection = 2
 
 [node name="Spring3" parent="Entities" instance=ExtResource("13_fvoj7")]
 position = Vector2(7032, 496)
-rotation = -3.14159
-scale = Vector2(1, -1)
+scale = Vector2(-1, 1)
 springDirection = 3
 
 [node name="Spring5" parent="Entities" instance=ExtResource("13_fvoj7")]
@@ -476,14 +475,12 @@ springDirection = 2
 
 [node name="Spring7" parent="Entities" instance=ExtResource("13_fvoj7")]
 position = Vector2(8184, 368)
-rotation = -3.14159
-scale = Vector2(1, -1)
+scale = Vector2(-1, 1)
 springDirection = 3
 
 [node name="Spring12" parent="Entities" instance=ExtResource("13_fvoj7")]
 position = Vector2(1400, 240)
-rotation = -3.14159
-scale = Vector2(1, -1)
+scale = Vector2(-1, 1)
 type = 1
 springDirection = 3
 

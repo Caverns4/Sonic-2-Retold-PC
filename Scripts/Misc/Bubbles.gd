@@ -44,12 +44,15 @@ func _physics_process(delta):
 				queue_free()
 
 # player collect bubble
-func _on_BubbleCollect_body_entered(body):
+func _on_BubbleCollect_body_entered(body: Player2D):
 	# player get air, ignore if they're already in a bubble
 	if !body.ground and $Bubble.frame >= 6 and body.shield != body.SHIELDS.BUBBLE:
 		body.airTimer = body.defaultAirTime
 		body.sfx[23].play()
 		
+		if body.poleGrabID:
+			body.poleGrabID = null
+			body.allowTranslate = false
 		body.set_state(body.STATES.AIR)
 		body.animator.play("air")
 		body.animator.queue("walk")

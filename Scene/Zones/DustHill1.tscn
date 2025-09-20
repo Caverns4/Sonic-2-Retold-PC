@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://cuf10h0hh7iep"]
+[gd_scene load_steps=30 format=4 uid="uid://cuf10h0hh7iep"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_3gh4r"]
 [ext_resource type="AudioStream" uid="uid://c8y5q77kxn4ap" path="res://Audio/Soundtrack/s2br_DustHill.ogg" id="2_pw2ks"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://yi4yrppebgng" path="res://Entities/ZoneObjects/DHZ_Platform_Spawner.tscn" id="15_mvyo3"]
 [ext_resource type="PackedScene" uid="uid://p4f52fvi6y2s" path="res://Entities/Hazards/MultiRotatingSpikes.tscn" id="15_vc7pi"]
 [ext_resource type="PackedScene" uid="uid://bvv78uhl8idjs" path="res://Entities/Gimmicks/hanging_vine.tscn" id="15_yjoft"]
+[ext_resource type="Texture2D" uid="uid://sdw87tpbgidn" path="res://Graphics/Objects_Zone/DHZ_Platform.png" id="16_fd7cf"]
 [ext_resource type="PackedScene" uid="uid://bkbwv08se825p" path="res://Entities/Hazards/Tilemap_crusher.tscn" id="17_ghgrp"]
 [ext_resource type="PackedScene" uid="uid://b5jx2pgq23cn0" path="res://Entities/ZoneObjects/DHZ_Stomper.tscn" id="18_l0t5m"]
 [ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="19_lge6b"]
@@ -258,17 +259,20 @@ position = Vector2(5408, 1856)
 
 [node name="Platform" parent="Platforms" instance=ExtResource("8_0ekd8")]
 position = Vector2(3232, 1864)
+platform_sprite = ExtResource("16_fd7cf")
 endPosition = Vector2(192, 0)
 dropSlightly = false
 
 [node name="Platform2" parent="Platforms" instance=ExtResource("8_0ekd8")]
 position = Vector2(3224, 1784)
+platform_sprite = ExtResource("16_fd7cf")
 endPosition = Vector2(192, 0)
 offset = 9.5
 dropSlightly = false
 
 [node name="Platform3" parent="Platforms" instance=ExtResource("8_0ekd8")]
 position = Vector2(7872, 1672)
+platform_sprite = ExtResource("16_fd7cf")
 endPosition = Vector2(128, 0)
 offset = 9.5
 dropSlightly = false

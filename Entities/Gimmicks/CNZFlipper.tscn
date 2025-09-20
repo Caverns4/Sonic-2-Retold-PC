@@ -7,7 +7,7 @@
 size = Vector2(16, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4pm5"]
-size = Vector2(46, 20)
+size = Vector2(47, 20)
 
 [node name="CnzFlipper" type="StaticBody2D"]
 collision_layer = 8193
@@ -33,7 +33,7 @@ collision_layer = 0
 collision_mask = 4096
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -6)
+position = Vector2(0.5, -6)
 shape = SubResource("RectangleShape2D_h4pm5")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -25,6 +25,11 @@ func state_activated():
 	actionPressed = true
 	
 func state_exit():
+	if SavedPartner:
+		SavedPartner.z_index = clamp(parent.z_index+1,1,6)
+		SavedPartner.poleGrabID = null
+		SavedPartner = null
+	
 	flyHitBox.call_deferred("set","disabled",true)
 	carryHitBox.call_deferred("set","disabled",true)
 	# stop flight sound
@@ -105,6 +110,7 @@ func _physics_process(delta):
 	elif !carriedPlayer and SavedPartner:
 		SavedPartner.z_index = PartnerPriority
 		PartnerPriority = 0
+		SavedPartner.poleGrabID = null
 		SavedPartner = null
 	
 	# air movement

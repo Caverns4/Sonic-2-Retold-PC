@@ -340,11 +340,13 @@ characterTexture = ExtResource("19_p8y53")
 
 [node name="Platform" parent="Platforms" instance=ExtResource("15_su6ht")]
 position = Vector2(792, 1416)
+platform_sprite = ExtResource("16_p5x1c")
 endPosition = Vector2(208, 0)
 dropSlightly = false
 
 [node name="Platform2" parent="Platforms" instance=ExtResource("15_su6ht")]
 position = Vector2(1000, 1416)
+platform_sprite = ExtResource("16_p5x1c")
 endPosition = Vector2(-208, 0)
 speed = -1.0
 dropSlightly = false
@@ -364,6 +366,7 @@ chain_img = ExtResource("18_l02x7")
 
 [node name="Platform5" parent="Platforms" instance=ExtResource("15_su6ht")]
 position = Vector2(2840, 1168)
+platform_sprite = ExtResource("16_p5x1c")
 endPosition = Vector2(209, 0)
 
 [node name="DhzPlatformSpawner" parent="Platforms" instance=ExtResource("30_t4k04")]

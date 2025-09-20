@@ -18,8 +18,8 @@ func _process(delta: float) -> void:
 	if !Engine.is_editor_hint():
 		var touching = 0
 		for i in $Hanger.players:
-			var _node = i[0]
-			if i[1]:
+			var node: Player2D = i 
+			if node.poleGrabID == $Hanger:
 				touching += 1
 		if touching > 0:
 			currentLength = move_toward(currentLength,distance+abs(length),delta*128)

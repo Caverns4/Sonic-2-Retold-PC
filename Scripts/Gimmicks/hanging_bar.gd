@@ -12,8 +12,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var touching = 0
 	for i in $Hanger.players:
-		var node = i[0]
-		if i[1]:
+		var node: Player2D = i 
+		if node.poleGrabID == $Hanger:
 			touching += 1
 	if touching > 0:
 		currentLength = move_toward(currentLength,8,delta*128)

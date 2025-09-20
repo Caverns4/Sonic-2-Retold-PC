@@ -296,7 +296,6 @@ size = Vector2(1, 14)
 
 [node name="Spring" parent="Entities" instance=ExtResource("10_pxcy8")]
 position = Vector2(3512, 1136)
-rotation = -3.14159
 scale = Vector2(-1, 1)
 type = 1
 springDirection = 3
@@ -330,7 +329,6 @@ boostDirection = 1
 
 [node name="Spring6" parent="Entities" instance=ExtResource("10_pxcy8")]
 position = Vector2(5752, 240)
-rotation = -3.14159
 scale = Vector2(-1, 1)
 springDirection = 3
 
@@ -340,7 +338,6 @@ springDirection = 2
 
 [node name="Spring8" parent="Entities" instance=ExtResource("10_pxcy8")]
 position = Vector2(5752, 496)
-rotation = -3.14159
 scale = Vector2(-1, 1)
 springDirection = 3
 

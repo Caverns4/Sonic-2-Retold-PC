@@ -262,9 +262,10 @@ var superRingTimer: float = 1.0 #Time before a ring is taken.
 # How far in can the player can be towards the screen edge before they're limit_length
 var cameraMargin = 16
 
-# Gimmick related
+## A pole the player it grabbing onto.
 var poleGrabID = null
-var controlObject = null #A node, if any, that is overrided normal object control.
+## A node, if any, that id overrideing normal object control.
+var controlObject = null
 
 # Enemy related
 @warning_ignore("unused_signal")
@@ -1098,8 +1099,9 @@ func hit_player(damagePoint = global_position, damageType = 0, soundID = 6):
 		# check for water
 		if is_in_water:
 			movement = movement*0.5
-
-		#Todo: Parnet ringcount
+		if poleGrabID:
+			poleGrabID = null
+			allowTranslate = false
 		disconect_from_floor()
 		set_state(STATES.HIT)
 		invTime = 120 # Ivulnerable for 2 seconds. Starts counting *after* landing.

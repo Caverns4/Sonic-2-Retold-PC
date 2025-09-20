@@ -7,39 +7,39 @@
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(30, 36)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sm4io"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyh2r"]
 atlas = ExtResource("2_tx5nm")
-region = Rect2(64, 0, 32, 40)
+region = Rect2(64, 0, 32, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sh5jf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehmfj"]
 atlas = ExtResource("2_tx5nm")
-region = Rect2(0, 0, 32, 40)
+region = Rect2(0, 0, 32, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ihr45"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyhgk"]
 atlas = ExtResource("2_tx5nm")
-region = Rect2(0, 0, 32, 40)
+region = Rect2(0, 0, 32, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r7npx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vix24"]
 atlas = ExtResource("2_tx5nm")
-region = Rect2(32, 0, 32, 40)
+region = Rect2(32, 0, 32, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_atv2g"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_35mc3"]
 atlas = ExtResource("2_tx5nm")
-region = Rect2(64, 0, 32, 40)
+region = Rect2(64, 0, 32, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kn5kn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsau7"]
 atlas = ExtResource("2_tx5nm")
-region = Rect2(96, 0, 32, 40)
+region = Rect2(96, 0, 32, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_obyd6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l44b"]
 atlas = ExtResource("2_tx5nm")
-region = Rect2(128, 0, 32, 40)
+region = Rect2(128, 0, 32, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wjupy"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sm4io")
+"texture": SubResource("AtlasTexture_eyh2r")
 }],
 "loop": true,
 "name": &"default",
@@ -47,7 +47,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sh5jf")
+"texture": SubResource("AtlasTexture_ehmfj")
 }],
 "loop": true,
 "name": &"hide",
@@ -55,10 +55,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ihr45")
+"texture": SubResource("AtlasTexture_uyhgk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_r7npx")
+"texture": SubResource("AtlasTexture_vix24")
 }],
 "loop": false,
 "name": &"hide2",
@@ -66,13 +66,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_atv2g")
+"texture": SubResource("AtlasTexture_35mc3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kn5kn")
+"texture": SubResource("AtlasTexture_bsau7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_obyd6")
+"texture": SubResource("AtlasTexture_0l44b")
 }],
 "loop": true,
 "name": &"walk",
@@ -106,7 +106,7 @@ position = Vector2(0, -2)
 shape = SubResource("1")
 
 [node name="GrounderSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -4)
+position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_wjupy")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
