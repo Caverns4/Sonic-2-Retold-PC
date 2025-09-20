@@ -22,7 +22,7 @@ func _ready():
 	ring_bonus = Global.special_stage_rings*10
 	if Global.lastSpecialStageResult:
 		Global.specialStageID += 1
-		gems_bonus = 5000
+		gems_bonus = 50000
 	
 	# $HUD/Stage.text = "Stage "+str(Global.specialStageID+1)
 	# cycle through emeralds on the hud

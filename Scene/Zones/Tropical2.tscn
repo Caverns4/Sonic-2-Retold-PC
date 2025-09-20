@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dkqhraqyjvy0o"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_03k2s"]
-[ext_resource type="AudioStream" uid="uid://wxtewiyg2uti" path="res://Audio/Soundtrack/s2br_2PResults.ogg" id="2_0tju4"]
+[ext_resource type="AudioStream" uid="uid://cmtn72t7dtgf" path="res://Audio/Soundtrack/s2br_Tropical.ogg" id="2_b6v6e"]
 [ext_resource type="PackedScene" uid="uid://dp7idkejifmm1" path="res://Scene/Backgrounds/13-TropicalJungle.tscn" id="3_foqdm"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_aa3nw"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_bflto"]
@@ -9,7 +9,7 @@
 [node name="Tropical2" type="Node2D"]
 script = ExtResource("1_03k2s")
 zoneID = 13
-music = ExtResource("2_0tju4")
+music = ExtResource("2_b6v6e")
 animal2 = 10
 
 [node name="13-TropicalJungle" parent="." instance=ExtResource("3_foqdm")]

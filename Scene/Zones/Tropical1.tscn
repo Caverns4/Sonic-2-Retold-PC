@@ -1,15 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://doa3l4i0elj6x"]
+[gd_scene load_steps=7 format=3 uid="uid://doa3l4i0elj6x"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_5m80k"]
-[ext_resource type="AudioStream" uid="uid://wxtewiyg2uti" path="res://Audio/Soundtrack/s2br_2PResults.ogg" id="2_rgad0"]
+[ext_resource type="AudioStream" uid="uid://cmtn72t7dtgf" path="res://Audio/Soundtrack/s2br_Tropical.ogg" id="2_yua5c"]
 [ext_resource type="PackedScene" uid="uid://dp7idkejifmm1" path="res://Scene/Backgrounds/13-TropicalJungle.tscn" id="3_gh5a3"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_svd1m"]
+[ext_resource type="TileSet" uid="uid://uplqwsi0o4gi" path="res://Tileset/Levels/EHZ_HTZ_Tiles.tres" id="5_yua5c"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_doi40"]
 
 [node name="Tropical1" type="Node2D"]
 script = ExtResource("1_5m80k")
 zoneID = 13
-music = ExtResource("2_rgad0")
+music = ExtResource("2_yua5c")
 animal2 = 10
 
 [node name="13-TropicalJungle" parent="." instance=ExtResource("3_gh5a3")]
@@ -19,5 +20,10 @@ zoneName = "TROPICAL"
 
 [node name="Level_Layout" type="Node" parent="."]
 
+[node name="TileMapLayer" type="TileMapLayer" parent="Level_Layout"]
+tile_set = ExtResource("5_yua5c")
+
 [node name="Player" parent="." instance=ExtResource("6_doi40")]
 position = Vector2(96, 656)
+
+[node name="Entities" type="Node" parent="."]

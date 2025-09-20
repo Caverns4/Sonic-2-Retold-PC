@@ -22,16 +22,21 @@ func _physics_process(_delta):
 					i.animator.play("roll")
 					i.sfx[1].play()
 				else:
-					if abs(i.movement.x) < 60 and i.ground:
-						i.movement.x = 120*i.direction
+					if i.inputs[i.INPUTS.XINPUT]:
+						i.direction = sign(i.inputs[i.INPUTS.XINPUT])
+					if abs(i.movement.x) < 30 and i.ground:
+						i.movement.x = 240*i.direction
+						i.sprite.flip_h = (i.direction < 0)
 
 func _on_ForceRoll_body_entered(body):
 	if !body.controlObject:
 		body.forceDirection = forceDirection
+		body.forceRoll += 1
 		if !players.has(body):
 			players.append(body)
 
 
 func _on_ForceRoll_body_exited(body):
 	if players.has(body):
+		body.forceRoll -= 1
 		players.erase(body)
