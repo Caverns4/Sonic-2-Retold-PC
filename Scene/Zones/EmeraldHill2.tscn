@@ -901,13 +901,13 @@ position = Vector2(6428, 1088)
 position = Vector2(6452, 1088)
 
 [node name="Ring90" parent="Rings" instance=ExtResource("32_f5v80")]
-position = Vector2(6760, 812)
+position = Vector2(6757, 812)
 
 [node name="Ring91" parent="Rings" instance=ExtResource("32_f5v80")]
-position = Vector2(6760, 836)
+position = Vector2(6757, 836)
 
 [node name="Ring92" parent="Rings" instance=ExtResource("32_f5v80")]
-position = Vector2(6760, 860)
+position = Vector2(6757, 860)
 
 [node name="Ring93" parent="Rings" instance=ExtResource("32_f5v80")]
 position = Vector2(6744, 824)
@@ -916,10 +916,10 @@ position = Vector2(6744, 824)
 position = Vector2(6744, 848)
 
 [node name="Ring95" parent="Rings" instance=ExtResource("32_f5v80")]
-position = Vector2(6776, 824)
+position = Vector2(6769, 824)
 
 [node name="Ring96" parent="Rings" instance=ExtResource("32_f5v80")]
-position = Vector2(6776, 848)
+position = Vector2(6769, 848)
 
 [node name="Ring97" parent="Rings" instance=ExtResource("32_f5v80")]
 position = Vector2(7204, 840)

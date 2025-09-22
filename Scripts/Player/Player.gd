@@ -127,7 +127,6 @@ var playerPal = preload("res://Shaders/PlayerPalette.tres")
 
 var horizontalLockTimer: float = 0
 ## Updating the angle over time helps prevent angle "fighting"
-var apparent_angle: float = 0
 var spriteRotation: float = 0
 var airControl: bool = true
 
@@ -501,10 +500,9 @@ func _process(delta):
 				
 			
 	
-	apparent_angle = move_toward(apparent_angle,angle,60*delta)
 	# Sprite2D rotation handling
 	if (ground):
-		spriteRotation = rad_to_deg(apparent_angle)+rad_to_deg(gravityAngle)+90
+		spriteRotation = rad_to_deg(angle)+rad_to_deg(gravityAngle)+90
 	else:
 		if (spriteRotation+90 >= 180):
 			spriteRotation = max(90,spriteRotation-(168.75*delta))
@@ -514,7 +512,7 @@ func _process(delta):
 	# set the sprite to match the sprite rotation variable if it's in the rotatable Sprites list
 	if (rotatableSprites.has(animator.current_animation)):
 		# check if player rotation is greater then 45 degrees or current angle doesn't match the gravity's angle or not on the floor
-		if abs(spriteRotation-90) >= 33 or rotation != gravityAngle or !ground:
+		if abs(spriteRotation-90) >= 35 or !ground: #or rotation != gravityAngle
 			sprite.rotation = deg_to_rad(snapped(spriteRotation,45)-90)-rotation-gravityAngle
 		else:
 			sprite.rotation = -rotation-gravityAngle
