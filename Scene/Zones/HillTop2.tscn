@@ -146,8 +146,7 @@ killTransSpeed = false
 
 [node name="Spring4" parent="Entities" instance=ExtResource("21_ejlob")]
 position = Vector2(8504, 1488)
-rotation = -3.14159
-scale = Vector2(1, -1)
+scale = Vector2(-1, 1)
 springDirection = 3
 killTransSpeed = true
 

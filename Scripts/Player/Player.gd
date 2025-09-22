@@ -77,7 +77,7 @@ var character: int = Global.CHARACTERS.SONIC
 # 5 Rolling Friction 
 # 6 Rolling Deceleration
 
-var physicsList: Array = [
+const physicsList: Array = [
 # 0 Sonic (Primary Character physics)
 [12.0/256.0, 0.50, 12/256.0,  6*60, 0, 12/256.0, 32/256.0],
 # 1 Speed Shoes
@@ -88,7 +88,7 @@ var physicsList: Array = [
 [24.0/256.0, 0.75, 12/256.0,  8*60, 0,  6/256.0, 32/256.0],
 ]
 
-var waterPhysicsListNew: Array = [
+const waterPhysicsListNew: Array = [
 # 0 Sonic (Primary Character physics)
 [ 8/256.0, 0.250,  8/256.0, 4*60, 0, 8/256.0, 32/256.0],
 # 1 Speed Shoes
@@ -99,7 +99,7 @@ var waterPhysicsListNew: Array = [
 [12/256.0, 0.375, 12/256.0,8*60, 0, 8/256.0, 32/256.0],
 ]
 #Depricated
-var waterPhysicsList: Array = [
+const waterPhysicsList: Array = [
 # 0 Sonic (Primary Character physics)
 [0.046875/2.0, 0.5/2.0, 0.046875/2.0, 6*60/2.0, 0, 0.046875*0.5, 0.125],
 # 1 Speed Shoes
@@ -126,6 +126,8 @@ var playerPal = preload("res://Shaders/PlayerPalette.tres")
 # ================
 
 var horizontalLockTimer: float = 0
+## Updating the angle over time helps prevent angle "fighting"
+var apparent_angle: float = 0
 var spriteRotation: float = 0
 var airControl: bool = true
 
@@ -499,9 +501,10 @@ func _process(delta):
 				
 			
 	
+	apparent_angle = move_toward(apparent_angle,angle,60*delta)
 	# Sprite2D rotation handling
 	if (ground):
-		spriteRotation = rad_to_deg(angle)+rad_to_deg(gravityAngle)+90
+		spriteRotation = rad_to_deg(apparent_angle)+rad_to_deg(gravityAngle)+90
 	else:
 		if (spriteRotation+90 >= 180):
 			spriteRotation = max(90,spriteRotation-(168.75*delta))
