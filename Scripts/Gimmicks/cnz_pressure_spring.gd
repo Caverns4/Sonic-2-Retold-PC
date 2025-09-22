@@ -25,12 +25,12 @@ func _physics_process(delta: float) -> void:
 	if !ready_to_fire:
 		return
 	else:
-		charge_time += delta*(max_launch_power/min_launch_power)
+		charge_time += delta*2*(max_launch_power/min_launch_power)
 		#print(charge_time)
 		for body in players:
 			if body.any_action_held() and body.playerControl > 0:
 				return
-		#Launch
+		# Only occurs when ready to launch
 		ready_to_fire = false
 		SoundDriver.play_sound2(sfx)
 		for body in players:
@@ -45,9 +45,9 @@ func _physics_process(delta: float) -> void:
 
 
 func _update_spring():
-	spring_cap.position.y = -64 + min(charge_time,24)
+	spring_cap.position.y = round(-64 + min(charge_time,24))
 	spring_coils.position.y = spring_cap.position.y/2
-	#spring_coils.size.y = abs(spring_cap.position.y)/2
+	$Area2D/SpringCap.frame = wrapi(charge_time,0,2)
 
 func _on_area_2d_body_entered(body: Player2D) -> void:
 	players.append(body)

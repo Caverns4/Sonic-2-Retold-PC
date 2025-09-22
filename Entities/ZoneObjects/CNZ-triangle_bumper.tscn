@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dxbpn6el4rwig" path="res://Scripts/Gimmicks/cnz_triangle_bumper.gd" id="1_n1e0e"]
 
 [node name="TriangleBumper" type="StaticBody2D"]
-collision_layer = 8192
+collision_layer = 65536
 collision_mask = 8192
 script = ExtResource("1_n1e0e")
 
