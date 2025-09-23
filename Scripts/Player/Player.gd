@@ -688,7 +688,7 @@ func _physics_process(delta):
 	var attacking = false
 	# lists to check through for attack animations
 	var currentAnimChecks = [
-	"roll","dropDash","spinDash","glide"
+	"roll","dropDash","spinDash","glide","drop",
 	]
 	var lastActiveAnimCheck = [
 	"glide","glideSlide"
@@ -704,7 +704,7 @@ func _physics_process(delta):
 	
 	# physics sets
 	# collide with solids if not rolling layer
-	set_collision_mask_value(16,!attacking)
+	set_collision_mask_value(16,(!attacking or !curled))
 	# collide with solids if not knuckles layer
 	set_collision_mask_value(19,!character == Global.CHARACTERS.KNUCKLES or
 	!(character == Global.CHARACTERS.SONIC and isSuper))

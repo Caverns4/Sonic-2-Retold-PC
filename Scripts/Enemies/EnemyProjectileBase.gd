@@ -18,7 +18,7 @@ func _process(delta):
 		for i in playerHit:
 			if (i.has_method("hit_player")) and !reflected:
 				# if player shield is an elemental one then reflect
-				if (i.shield > 1 or forceReflect or i.reflective) and canBeReflect:
+				if (i.shield > 1 or i.curled or forceReflect or i.reflective) and canBeReflect:
 					velocity = i.global_position.direction_to(global_position)*reflectSpeed
 					reflected = true
 				else:

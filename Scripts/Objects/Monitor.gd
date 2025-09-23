@@ -197,23 +197,22 @@ func physics_collision(body, hitVector):
 			body.movement.y *= -1
 	# check that player has the rolling layer bit set
 	elif body.get_collision_layer_value(20):
+		#print(body.animator.current_animation)
 		# Bounce from below
 		if hitVector.x != 0:
 			# check conditions for interaction (and the player is the first player)
-			if body.movement.y >= 0 and body.movement.x != 0 and (body.playerControl == 1 or Global.two_player_mode):
+			if body.movement.y >= 0 and body.movement.x != 0 and (
+				body.playerControl == 1 or Global.two_player_mode):
 				playerTouch = body
 				destroy()
 			else:
 				# Stop horizontal movement
 				body.movement.x = 0
-		# check if player is not an ai or spindashing
-		# if they are then destroy
-		
-		
+		# check if player is actually "playable"
 		if (body.playerControl == 1 or Global.two_player_mode) and (
 		body.currentState != body.STATES.SPINDASH):
 			#print(body.animator.current_animation)
-			if  (body.animator.current_animation == "dropDash"):
+			if  (body.animator.current_animation == "drop"):
 				body.movement.y = 8*60
 			else:
 				body.movement.y = -abs(body.movement.y)
@@ -232,5 +231,5 @@ func physics_collision(body, hitVector):
 func _on_InstaArea_area_entered(area):
 	if area.get("parent") != null and isActive:
 		playerTouch = area.parent
-		area.parent.movement.y *= -1
+		#area.parent.movement.y *= -1
 		destroy()

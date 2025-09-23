@@ -150,9 +150,8 @@ func _process(_delta):
 								parent.movement.y = 12*60
 							# play stomp sound
 							parent.sfx[30].play()
-							parent.shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled = (parent.animator.current_animation == "dropDash")
 							# play dropDash animation
-							parent.animator.play("dropDash")
+							parent.animator.play("drop")
 						
 					Global.CHARACTERS.RAY:
 						pass

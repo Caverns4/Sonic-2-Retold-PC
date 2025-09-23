@@ -46,7 +46,7 @@ func _physics_process(delta):
 func physics_collision(body, hitVector):
 	if hitVector.is_equal_approx((Vector2.DOWN*scale.sign()).rotated(deg_to_rad(snapped(rotation_degrees,90)))):
 		if body.character == Global.CHARACTERS.MIGHTY and (
-			body.animator.current_animation == "dropDash" or 
+			body.animator.current_animation == "drop" or 
 			body.animator.current_animation == "roll"):
 			body.disconect_from_floor()
 			body.global_position -= Vector2(ceil(hitVector.x),ceil(hitVector.y))*8
