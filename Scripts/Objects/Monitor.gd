@@ -231,5 +231,5 @@ func physics_collision(body, hitVector):
 func _on_InstaArea_area_entered(area):
 	if area.get("parent") != null and isActive:
 		playerTouch = area.parent
-		#area.parent.movement.y *= -1
+		area.parent.movement.y *= -1
 		destroy()

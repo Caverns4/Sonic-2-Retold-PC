@@ -13,11 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://chn1gkg56tjh2" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_H.png" id="11_gmb7a"]
 [ext_resource type="Texture2D" uid="uid://doqoa4fu15431" path="res://Graphics/Backgrounds/EHZ/EHZ_BG_I.png" id="12_xgogs"]
 
-[sub_resource type="Gradient" id="Gradient_ap2hi"]
+[sub_resource type="Gradient" id="Gradient_iiwg2"]
 colors = PackedColorArray(0.133333, 0, 0.4, 1, 0.933333, 0.933333, 0.933333, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_svsvb"]
-gradient = SubResource("Gradient_ap2hi")
+gradient = SubResource("Gradient_iiwg2")
 width = 512
 height = 12
 fill_to = Vector2(0, 1)
@@ -79,12 +79,14 @@ offset_top = 32.0
 offset_right = 512.0
 offset_bottom = 80.0
 texture = SubResource("GradientTexture2D_svsvb")
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxLayer"]
 offset_right = 512.0
 offset_bottom = 80.0
 texture = ExtResource("1_h12tx")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxLayer"]
 self_modulate = Color(1, 1, 1, 0.8)
@@ -105,6 +107,7 @@ offset_right = 512.0
 offset_bottom = 144.0
 texture = ExtResource("5_25dt4")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.3, 0.05)
@@ -116,6 +119,7 @@ offset_right = 512.0
 offset_bottom = 152.0
 texture = ExtResource("6_mal70")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.325, 0.05)
@@ -127,6 +131,7 @@ offset_right = 512.0
 offset_bottom = 160.0
 texture = ExtResource("7_xlcxv")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.35, 0.05)
@@ -138,6 +143,7 @@ offset_right = 512.0
 offset_bottom = 168.0
 texture = ExtResource("8_hnl7o")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxLayer7" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.4, 0.05)
@@ -149,6 +155,7 @@ offset_right = 512.0
 offset_bottom = 176.0
 texture = ExtResource("9_2ehrt")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxLayer8" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.45, 0.05)
@@ -160,6 +167,7 @@ offset_right = 512.0
 offset_bottom = 184.0
 texture = ExtResource("10_cfsvv")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxLayer9" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.5, 0.05)
@@ -171,6 +179,7 @@ offset_right = 512.0
 offset_bottom = 192.0
 texture = ExtResource("11_gmb7a")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxLayer10" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.55, 0.05)
@@ -182,6 +191,7 @@ offset_right = 512.0
 offset_bottom = 200.0
 texture = ExtResource("12_xgogs")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxLayer11" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.6, 0.05)
@@ -194,6 +204,7 @@ offset_bottom = 224.0
 texture = ExtResource("12_xgogs")
 stretch_mode = 1
 flip_h = true
+metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxLayer12" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.7, 0.05)
@@ -205,6 +216,7 @@ offset_right = 512.0
 offset_bottom = 240.0
 texture = ExtResource("12_xgogs")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxLayer13" type="ParallaxLayer" parent="."]
 position = Vector2(0, 240)
@@ -217,3 +229,4 @@ offset_bottom = 16.0
 texture = ExtResource("12_xgogs")
 stretch_mode = 1
 flip_h = true
+metadata/_edit_use_anchors_ = true

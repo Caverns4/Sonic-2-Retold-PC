@@ -58,21 +58,6 @@ tracks/3/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_giq2e"]
-resource_name = "Victory"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Miles/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [30, 31]
-}
-
 [sub_resource type="Animation" id="121"]
 resource_name = "air"
 length = 0.5
@@ -1050,6 +1035,22 @@ tracks/0/keys = {
 "values": [67, 68]
 }
 
+[sub_resource type="Animation" id="Animation_giq2e"]
+resource_name = "Victory"
+length = 30.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Miles/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [30, 31]
+}
+
 [sub_resource type="Animation" id="85"]
 resource_name = "walk"
 length = 0.8
@@ -1148,7 +1149,6 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ur811"]
 _data = {
 &"RESET": SubResource("86"),
-&"Victory": SubResource("Animation_giq2e"),
 &"air": SubResource("121"),
 &"clingVerticalBar": SubResource("Animation_hleq2"),
 &"clingVerticalBarOffset": SubResource("Animation_w4arn"),
@@ -1191,6 +1191,7 @@ _data = {
 &"swingVerticalBarManaged": SubResource("132"),
 &"swingVerticalBarOffset": SubResource("129"),
 &"tired": SubResource("119"),
+&"victory": SubResource("Animation_giq2e"),
 &"walk": SubResource("85"),
 &"yRotation": SubResource("133"),
 &"yRotationLookDown": SubResource("134"),
@@ -1291,35 +1292,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [10]
-}
-
-[sub_resource type="Animation" id="Animation_3h5gx"]
-resource_name = "Victory"
-length = 0.5
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D/Tails:frame")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [12, 13]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/Tails:offset")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-5, -7), Vector2(0, -7)]
 }
 
 [sub_resource type="Animation" id="109"]
@@ -1559,16 +1531,57 @@ tracks/1/keys = {
 "values": [Vector2(-5, -8)]
 }
 
+[sub_resource type="Animation" id="Animation_3h5gx"]
+resource_name = "Victory"
+length = 30.0
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Tails:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Tails:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-5, -7), Vector2(0, -7)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/Tails:frame")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [12, 13]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_14wfa"]
 _data = {
 &"RESET": SubResource("108"),
-&"Victory": SubResource("Animation_3h5gx"),
 &"default": SubResource("109"),
 &"fly": SubResource("120"),
 &"hang": SubResource("124"),
 &"roll": SubResource("110"),
 &"spinDash": SubResource("111"),
-&"stop": SubResource("112")
+&"stop": SubResource("112"),
+&"victory": SubResource("Animation_3h5gx")
 }
 
 [sub_resource type="RectangleShape2D" id="122"]
@@ -1634,7 +1647,7 @@ _data = {
 [node name="PlayerAnimation" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_ur811")
+&"": SubResource("AnimationLibrary_ur811")
 }
 autoplay = "idle"
 
@@ -1647,6 +1660,7 @@ texture = ExtResource("2")
 offset = Vector2(0, -5)
 hframes = 16
 vframes = 8
+frame = 30
 script = ExtResource("5")
 
 [node name="DashDust" type="AnimatedSprite2D" parent="Sprite2D"]
@@ -1672,7 +1686,7 @@ script = ExtResource("4")
 [node name="TailsAnimator" type="AnimationPlayer" parent="Sprite2D/Tails"]
 root_node = NodePath("../../..")
 libraries = {
-"": SubResource("AnimationLibrary_14wfa")
+&"": SubResource("AnimationLibrary_14wfa")
 }
 autoplay = "default"
 
@@ -1683,7 +1697,7 @@ disabled = true
 
 [node name="SuperPalette" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_2mpk5")
+&"": SubResource("AnimationLibrary_2mpk5")
 }
 
 [node name="CenterReference" type="Sprite2D" parent="."]

@@ -22,7 +22,7 @@ var characterReels: SlotMachineManager = null
 # Cheats implimented
 var levelSelectFlag = false
 var tailsNameCheat = false #if TRUE, Tails will be called "Miles"
-var special_exit = ZONES.EMERALD_HILL
+var special_exit = ZONES.TROPICAL
 var characterSelectMemory = 0
 var levelSelctMemory = 0
 # checkpoint memory
@@ -188,7 +188,7 @@ var nodeMemory = []
 
 # Game settings
 var zoomSize = 2
-var aspectRatio = 0 #0 for 4:3, 1 for 16x9 (roughly)
+var aspectRatio = 1 #0 for 4:3, 1 for 16x9 (roughly)
 
 var aspectResolutions = [
 	Vector2(320,224),
@@ -405,6 +405,7 @@ func load_settings():
 	
 	if file.has_section_key("Resolution","AspectRatio"):
 		aspectRatio = file.get_value("Resolution","AspectRatio")
+		aspectRatio = 1
 		SetupWindowSize()
 	
 

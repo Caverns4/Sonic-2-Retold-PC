@@ -1,6 +1,6 @@
 class_name PlayerState extends Node
 
-@onready var parent = get_parent().get_parent()
+@onready var parent: Player2D = get_parent().get_parent()
 
 # Does this state make the player complete invulnerable (to things like crushing or falling)
 var invulnerability = false

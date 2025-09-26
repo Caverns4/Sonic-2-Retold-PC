@@ -1,6 +1,8 @@
 extends Node2D
 
 @export var music = preload("res://Audio/Soundtrack/s2br_TitleScreen.ogg")
+## For debug/test builds only.
+@export var disable_menu: bool = false
 var nextZone = preload("res://Scene/Presentation/ZoneLoader.tscn")
 var twoPlayerScene = load("res://Scene/Presentation/TwoPlayerMenu.tscn")
 var testScene = load("res://Scene/Presentation/LevelSelect.tscn")
@@ -94,6 +96,8 @@ func _ready():
 	#Prepare the background
 	var parallax = parallaxBackgrounds[min(Global.savedZoneID,parallaxBackgrounds.size()-1)]
 	BackgroundScene = load(parallax)
+	if disable_menu:
+		$CanvasLayer/Labels/TitleMenu.queue_free()
 
 func _process(delta):
 	if titleScroll:
@@ -118,6 +122,8 @@ func _input(event):
 		MenuOptionChosen()
 
 func UpdateMenuDisplay():
+	if disable_menu:
+		return
 	if Input.is_action_just_pressed("gm_down"):
 		menuEntry +=1
 		$Switch.play()
@@ -139,7 +145,7 @@ func MenuOptionChosen():
 	
 	match menuEntry:
 		0:
-			Global.savedZoneID = Global.ZONES.EMERALD_HILL
+			Global.savedZoneID = Global.ZONES.TROPICAL
 			Global.savedActID = 0
 			SetFadeOut(nextZone)
 		1:

@@ -107,21 +107,25 @@ endDistance = 448
 position = Vector2(4184, 820)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("27_vnla0")
+knuckles_only = null
 
 [node name="Breakable3" parent="Entities" instance=ExtResource("26_w6quw")]
 position = Vector2(5032, 1016)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("27_vnla0")
+knuckles_only = null
 
 [node name="Breakable5" parent="Entities" instance=ExtResource("26_w6quw")]
 position = Vector2(9152, 1684)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("27_vnla0")
+knuckles_only = null
 
 [node name="Breakable4" parent="Entities" instance=ExtResource("26_w6quw")]
 position = Vector2(4656, 1396)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("27_vnla0")
+knuckles_only = null
 
 [node name="Spring" parent="Entities" instance=ExtResource("24_tu1me")]
 position = Vector2(3088, 624)

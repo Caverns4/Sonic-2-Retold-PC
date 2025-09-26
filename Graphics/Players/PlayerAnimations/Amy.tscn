@@ -56,22 +56,6 @@ tracks/3/keys = {
 "values": [1]
 }
 
-[sub_resource type="Animation" id="Animation_ha1t4"]
-resource_name = "Victory"
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Amy/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [4, 5, 6, 7, 8, 9, 10]
-}
-
 [sub_resource type="Animation" id="108"]
 resource_name = "air"
 length = 0.5
@@ -1072,10 +1056,25 @@ tracks/0/keys = {
 "values": [256, 267, 266, 265, 264, 263, 262, 261, 260, 259, 258, 257]
 }
 
+[sub_resource type="Animation" id="Animation_ha1t4"]
+resource_name = "Victory"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Amy/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7, 8, 9, 10]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_36uej"]
 _data = {
 &"RESET": SubResource("86"),
-&"Victory": SubResource("Animation_ha1t4"),
 &"air": SubResource("108"),
 &"clingVerticalBar": SubResource("Animation_kwfke"),
 &"clingVerticalBarOffset": SubResource("Animation_5tyl8"),
@@ -1115,6 +1114,7 @@ _data = {
 &"swingVerticalBar": SubResource("121"),
 &"swingVerticalBarManaged": SubResource("125"),
 &"swingVerticalBarOffset": SubResource("122"),
+&"victory": SubResource("Animation_ha1t4"),
 &"walk": SubResource("85"),
 &"yRotation": SubResource("126"),
 &"yRotationLookDown": SubResource("127"),
@@ -1241,7 +1241,7 @@ _data = {
 [node name="PlayerAnimation" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_36uej")
+&"": SubResource("AnimationLibrary_36uej")
 }
 autoplay = "idle"
 
@@ -1270,7 +1270,7 @@ disabled = true
 
 [node name="SuperPalette" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_yhl61")
+&"": SubResource("AnimationLibrary_yhl61")
 }
 
 [node name="CenterReference" type="Sprite2D" parent="."]

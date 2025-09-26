@@ -90,10 +90,10 @@ func _unhandledInput(event):
 			match menuOption:
 				0: #Character(s)
 					if inputCue.x < 0:
-						characterID = wrapi(characterID-1,0,Global.playerModes.size())
+						characterID = wrapi(characterID-1,0,Global.playerModes.size()-1)
 						$Switch.play()
 					elif inputCue.x > 0:
-						characterID = wrapi(characterID+1,0,Global.playerModes.size())
+						characterID = wrapi(characterID+1,0,Global.playerModes.size()-1)
 						$Switch.play()
 					UpdateCharacterSelect()
 				1,2: #SFX and Music Volume

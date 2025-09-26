@@ -11,8 +11,8 @@ var timer: Timer = Timer.new()
 
 func _ready():
 	if music:
-		Global.music.stream = music
-		Global.music.play()
+		SoundDriver.music.stream = music
+		SoundDriver.music.play()
 	if time > 0:
 		timer = Timer.new()
 		add_child(timer)

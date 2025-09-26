@@ -19,7 +19,9 @@ var Particle = preload("res://Entities/Misc/GenericParticle.tscn")
 
 func _ready():
 	defaultMovement = false
-	#direction = -sign(scale.x)
+	direction = -sign(scale.x)
+	scale.x = 1
+	movement.x = direction*30
 	$VisibleOnScreenEnabler2D.visible = true
 	$SpriteNode/PlayerCheck.visible = true
 	$SpriteNode/Flame.visible = false

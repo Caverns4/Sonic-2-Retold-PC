@@ -57,21 +57,6 @@ tracks/3/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_6r1uk"]
-resource_name = "Victory"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Mighty/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [13, 14]
-}
-
 [sub_resource type="Animation" id="Animation_o0gos"]
 resource_name = "Wall"
 length = 0.25
@@ -269,6 +254,24 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [78]
+}
+
+[sub_resource type="Animation" id="107"]
+resource_name = "dropDash"
+length = 0.8
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mighty/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [71, 72, 73, 74, 71, 72, 73, 74, 71, 72, 73, 74, 71, 72, 73, 74]
 }
 
 [sub_resource type="Animation" id="99"]
@@ -1075,11 +1078,8 @@ tracks/0/keys = {
 "values": [256, 267, 266, 265, 264, 263, 262, 261, 260, 259, 258, 257]
 }
 
-[sub_resource type="Animation" id="107"]
-resource_name = "dropDash"
-length = 0.8
-loop_mode = 1
-step = 0.05
+[sub_resource type="Animation" id="Animation_6r1uk"]
+resource_name = "Victory"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1087,16 +1087,15 @@ tracks/0/path = NodePath("Mighty/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [71, 72, 73, 74, 71, 72, 73, 74, 71, 72, 73, 74, 71, 72, 73, 74]
+"values": [13, 14]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_36uej"]
 _data = {
 &"RESET": SubResource("86"),
-&"Victory": SubResource("Animation_6r1uk"),
 &"Wall": SubResource("Animation_o0gos"),
 &"air": SubResource("108"),
 &"clingVerticalBar": SubResource("Animation_3l35s"),
@@ -1138,6 +1137,7 @@ _data = {
 &"swingVerticalBar": SubResource("121"),
 &"swingVerticalBarManaged": SubResource("125"),
 &"swingVerticalBarOffset": SubResource("122"),
+&"victory": SubResource("Animation_6r1uk"),
 &"walk": SubResource("85"),
 &"yRotation": SubResource("126"),
 &"yRotationLookDown": SubResource("127"),

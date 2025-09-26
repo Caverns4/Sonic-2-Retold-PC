@@ -57,23 +57,6 @@ tracks/3/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_8r1ot"]
-resource_name = "Victory"
-length = 0.7
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sonic/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [2, 1, 10, 109, 110, 111]
-}
-
 [sub_resource type="Animation" id="Animation_q5vxo"]
 resource_name = "Wall"
 length = 0.25
@@ -797,6 +780,23 @@ tracks/1/keys = {
 "values": [1.0, 9.0]
 }
 
+[sub_resource type="Animation" id="Animation_8r1ot"]
+resource_name = "Victory"
+length = 30.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sonic/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 1, 10, 109, 110, 111]
+}
+
 [sub_resource type="Animation" id="85"]
 resource_name = "walk"
 length = 0.8
@@ -848,7 +848,6 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_36uej"]
 _data = {
 &"RESET": SubResource("86"),
-&"Victory": SubResource("Animation_8r1ot"),
 &"Wall": SubResource("Animation_q5vxo"),
 &"air": SubResource("108"),
 &"clingVerticalBar": SubResource("Animation_3l35s"),
@@ -886,6 +885,7 @@ _data = {
 &"spring": SubResource("84"),
 &"springScrew": SubResource("119"),
 &"super": SubResource("97"),
+&"victory": SubResource("Animation_8r1ot"),
 &"walk": SubResource("85"),
 &"yRotation": SubResource("126")
 }
@@ -1030,6 +1030,7 @@ texture = ExtResource("2_uqmtl")
 offset = Vector2(0, -5)
 hframes = 16
 vframes = 8
+frame = 111
 
 [node name="DashDust" type="AnimatedSprite2D" parent="Sprite2D"]
 visible = false

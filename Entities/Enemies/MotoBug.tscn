@@ -65,7 +65,7 @@ hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteNode"]
 libraries = {
-"": SubResource("AnimationLibrary_1xngc")
+&"": SubResource("AnimationLibrary_1xngc")
 }
 autoplay = "RESET"
 

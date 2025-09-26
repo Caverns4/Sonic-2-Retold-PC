@@ -524,6 +524,7 @@ colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1)
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_jsjd7")
+disable_menu = true
 
 [node name="TitleBanner" type="Sprite2D" parent="."]
 z_index = 2
@@ -634,7 +635,7 @@ offset_right = 138.0
 grow_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_yuhp3")
-text = "2025.04.03.01 demo"
+text = "2025.09.26.01 alpha"
 vertical_alignment = 2
 uppercase = true
 

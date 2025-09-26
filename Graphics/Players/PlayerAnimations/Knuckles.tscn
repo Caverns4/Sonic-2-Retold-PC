@@ -45,22 +45,6 @@ tracks/2/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_x2x4a"]
-resource_name = "Victory"
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Knuckles/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [108, 109, 110, 111]
-}
-
 [sub_resource type="Animation" id="Animation_ksldi"]
 resource_name = "air"
 length = 0.5
@@ -651,6 +635,23 @@ tracks/1/keys = {
 "values": [1.0, 7.0]
 }
 
+[sub_resource type="Animation" id="Animation_x2x4a"]
+resource_name = "Victory"
+length = 60.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Knuckles/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [108, 109, 110, 111]
+}
+
 [sub_resource type="Animation" id="85"]
 resource_name = "walk"
 length = 0.8
@@ -689,7 +690,6 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t3bqq"]
 _data = {
 &"RESET": SubResource("86"),
-&"Victory": SubResource("Animation_x2x4a"),
 &"air": SubResource("Animation_ksldi"),
 &"climb": SubResource("Animation_l61d4"),
 &"climbUp": SubResource("Animation_m06nr"),
@@ -723,6 +723,7 @@ _data = {
 &"spring": SubResource("84"),
 &"springScrew": SubResource("Animation_ofxrd"),
 &"super": SubResource("97"),
+&"victory": SubResource("Animation_x2x4a"),
 &"walk": SubResource("85"),
 &"yRotation": SubResource("129")
 }
@@ -855,7 +856,7 @@ _data = {
 [node name="PlayerAnimation" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_t3bqq")
+&"": SubResource("AnimationLibrary_t3bqq")
 }
 autoplay = "idle"
 
@@ -882,7 +883,7 @@ disabled = true
 
 [node name="SuperPalette" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_u50eh")
+&"": SubResource("AnimationLibrary_u50eh")
 }
 autoplay = "RESET"
 

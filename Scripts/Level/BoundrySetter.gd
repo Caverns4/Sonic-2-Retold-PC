@@ -13,7 +13,8 @@ extends Area2D
 @export var setBottom = true
 @export var bottomBoundry = 224
 
-@export var scrollSpeed = 0 # 0 will be instant
+## Not actually implimented, disregard.
+@export var scrollSpeed = 0
 
 func _ready() -> void:
 	if (!Engine.is_editor_hint() and Global.two_player_mode):

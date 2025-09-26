@@ -4,8 +4,12 @@ extends StaticBody2D
 @export var SpriteTexture = preload("res://Graphics/Obstacles/Blocks/breakable_block.png")
 var Piece = preload("res://Entities/Misc/BlockPiece.tscn")
 @export var sound = preload("res://Audio/SFX/Gimmicks/s2br_Collapse.wav")
+## I don't think this is ever not used. Need to check.
 @export var score = true
+## Never NOT used as far as I'm aware. Remove option?
 @export var knockBack = true
+## If true only Knuckles can break this object. Not Implimented yet.
+@export var knuckles_only = false
 
 
 func _ready() -> void:
