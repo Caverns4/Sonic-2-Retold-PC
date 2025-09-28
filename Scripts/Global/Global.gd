@@ -22,7 +22,7 @@ var characterReels: SlotMachineManager = null
 # Cheats implimented
 var levelSelectFlag = false
 var tailsNameCheat = false #if TRUE, Tails will be called "Miles"
-var special_exit = ZONES.TROPICAL
+var special_exit = ZONES.EMERALD_HILL
 var characterSelectMemory = 0
 var levelSelctMemory = 0
 # checkpoint memory

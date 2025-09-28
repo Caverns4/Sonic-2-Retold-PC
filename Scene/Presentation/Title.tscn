@@ -524,7 +524,6 @@ colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1)
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_jsjd7")
-disable_menu = true
 
 [node name="TitleBanner" type="Sprite2D" parent="."]
 z_index = 2
