@@ -13,12 +13,17 @@ extends Area2D
 @export var setBottom = true
 @export var bottomBoundry = 224
 
+@export var screen_ranges: Vector2 = Vector2(1,1)
+
 ## Not actually implimented, disregard.
 @export var scrollSpeed = 0
 
 func _ready() -> void:
-	if (!Engine.is_editor_hint() and Global.two_player_mode):
-		queue_free()
+	if (!Engine.is_editor_hint()):
+		if Global.two_player_mode:
+			queue_free()
+		else:
+			$CollisionShape2D.scale = screen_ranges
 
 func _on_BoundrySetter_body_entered(body):
 	# set boundry settings
@@ -43,6 +48,7 @@ func _process(_delta):
 		screenSize = Vector2(320,224)
 		rightBoundry = max(leftBoundry+screenSize.x,rightBoundry)
 		bottomBoundry = max(topBoundry+screenSize.y,bottomBoundry)
+		$CollisionShape2D.scale = screen_ranges
 
 func _draw():
 	if (Engine.is_editor_hint()):
