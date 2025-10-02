@@ -97,6 +97,9 @@ var levelTimeP2 = 0
 var globalTimer = 0 # global timer, used as reference for animations
 var maxTime = 60*10
 
+## Strength Tiers used for item destruction. 1 = Mighty's stomp, 2 = Knuckles or Super Sonic
+enum STRENGTH_TIER{NORMAL,STRONG,SUPER}
+
 ## If a Boss Fight is currently active.
 var fightingBoss = false
 
@@ -186,9 +189,10 @@ signal stage_started
 # share the same paths there can be some overlap and some nodes may not spawn when they're meant to
 var nodeMemory = []
 
-# Game settings
+## Game settings
 var zoomSize = 2
-var aspectRatio = 1 #0 for 4:3, 1 for 16x9 (roughly)
+## 0 for 4:3, 1 for 16x9 (roughly)
+var aspectRatio = 0
 
 var aspectResolutions = [
 	Vector2(320,224),
@@ -405,7 +409,6 @@ func load_settings():
 	
 	if file.has_section_key("Resolution","AspectRatio"):
 		aspectRatio = file.get_value("Resolution","AspectRatio")
-		aspectRatio = 1
 		SetupWindowSize()
 	
 

@@ -67,6 +67,7 @@ var enemyCounter: int = 0
 var respawnPosition: Vector2i = Vector2.ZERO
 
 var character: int = Global.CHARACTERS.SONIC
+var strength: Global.STRENGTH_TIER = Global.STRENGTH_TIER.NORMAL
 
 # physics list order
 # 0 Acceleration
@@ -340,6 +341,7 @@ func _ready():
 				playerPal.set_shader_parameter("palRows",16)
 				playerPal.set_shader_parameter("row",0)
 				playerPal.set_shader_parameter("paletteTexture",load("res://Graphics/Palettes/SuperKnuckles.png"))
+				strength = Global.STRENGTH_TIER.SUPER
 		
 			Global.CHARACTERS.AMY:
 				playerPal.set_shader_parameter("amount",4)

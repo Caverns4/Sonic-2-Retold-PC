@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_mtco7"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="7_5cfpl"]
 
-[node name="Wood2" type="Node2D"]
+[node name="WoodGadget2" type="Node2D"]
 script = ExtResource("1_vg3f0")
 zoneID = 8
 animal1 = 11

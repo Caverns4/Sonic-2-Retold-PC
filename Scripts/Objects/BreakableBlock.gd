@@ -15,10 +15,12 @@ func _ready() -> void:
 	# Change platform sprite texture
 	$Sprite2D.texture = SpriteTexture
 
-func _process(delta):
+func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		$Sprite2D.texture = SpriteTexture
 		queue_redraw()
+	
+
 
 func physics_collision(body:Player2D, hitVector):
 	if knuckles_only and body.character != Global.CHARACTERS.KNUCKLES:

@@ -52,6 +52,7 @@ func _ready():
 	if wasLoaded:
 		return false
 
+	# Setup Boundries
 	if setDefaultLeft:
 		Global.hardBorderLeft  = defaultLeftBoundry
 	if setDefaultRight:
@@ -62,7 +63,7 @@ func _ready():
 		Global.hardBorderBottom  = defaultBottomBoundry
 	Global.y_wrap = y_wrap
 	
-	level_reset_data(false)
+	level_reset_data()
 	
 	if Global.two_player_mode == true:
 		var twoPlayerScene = twoPlayerWindow.instantiate()
@@ -70,7 +71,7 @@ func _ready():
 	wasLoaded = true
 
 # used for stage starts, also used for returning from special stages
-func level_reset_data(playCard = true):
+func level_reset_data(_playCard = true):
 	Global.stageClearPhase = 0
 	Global.fightingBoss = false
 	SoundDriver.music.stop()
@@ -85,18 +86,15 @@ func level_reset_data(playCard = true):
 				levelMusic = music2P
 			SoundDriver.music.stream_paused = false
 			SoundDriver.themes[SoundDriver.THEME.NORMAL] = levelMusic
+	SoundDriver.currentTheme = SoundDriver.THEME.NORMAL
 	SoundDriver.playMusic(levelMusic,true)
-	SoundDriver.currentTheme = 0
-	#Global.playNormalMusic()
 	
 	if Global.currentCheckPoint < 0:
 		Global.levelTime = 0
 		Global.levelTimeP2 = 0
 
 	#Clear Object Arrays used within levels
-	var index :int = 0
-
-	index = 0
+	var index: int = 0
 	while index < len(Global.slotMachines):
 		if !is_instance_valid(Global.slotMachines[index]):
 			Global.slotMachines.remove_at(index)
@@ -113,5 +111,5 @@ func level_reset_data(playCard = true):
 	# set animals
 	Global.animals = [animal1,animal2]
 	# if global hud and play card, run hud ready script
-	if playCard and is_instance_valid(Global.hud):
+	if is_instance_valid(Global.hud): #_playCard and
 		$HUD._ready()
