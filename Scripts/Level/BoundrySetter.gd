@@ -25,19 +25,19 @@ func _ready() -> void:
 		else:
 			$CollisionShape2D.scale = screen_ranges
 
-func _on_BoundrySetter_body_entered(body):
+func _on_BoundrySetter_body_entered(body: Player2D):
 	# set boundry settings
 	if (!Engine.is_editor_hint()):
 		# Check body has a camera variable
-		if (body.get("camera") != null) and Global.stageClearPhase == 0:
+		if body.camera and Global.stageClearPhase == 0:
 			# Check if set boundry is true, if it is then set the camera's boundries
-			if (setLeft):
+			if setLeft:
 				body.limitLeft = max(leftBoundry,Global.hardBorderLeft)
-			if (setTop):
+			if setTop:
 				body.limitTop = max(topBoundry,Global.hardBorderTop)
-			if (setRight):
+			if setRight:
 				body.limitRight = min(rightBoundry,Global.hardBorderRight)
-			if (setBottom):
+			if setBottom:
 				body.limitBottom = min(bottomBoundry,Global.hardBorderBottom)
 
 

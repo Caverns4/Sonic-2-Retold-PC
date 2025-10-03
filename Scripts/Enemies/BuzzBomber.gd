@@ -1,14 +1,13 @@
 @tool
 extends EnemyBase
 
-const SPEED = 60
-
 var Projectile = preload("res://Entities/Enemies/Projectiles/BuzzBomberProjectile.tscn")
 @export var bulletSound = preload("res://Audio/SFX/Objects/s2br_Projectile.wav")
 ## Not a thing in Sonic 2. Do not use.
 @export var flyDirection: float = 0.0 # (float,-180.0,180.0)
 ## Total distance travelled in pixels
 @export var x_range: int = 256
+@export var speed: float = 60
 @onready var origin: Vector2 = global_position
 @onready var animator = $Sprite2D/AnimationPlayer
 
@@ -31,8 +30,8 @@ func _process(delta):
 	if Engine.is_editor_hint():
 		queue_redraw()
 		
-		# move editor offset based on movement SPEED
-		editor_offset -= (SPEED*delta/x_range)*2
+		# move editor offset based on movement speed
+		editor_offset -= (speed*delta/x_range)*2
 		if editor_offset <= 0.0:
 			editor_offset = 1.0
 	else:
@@ -46,9 +45,9 @@ func _physics_process(delta):
 			if side <= 0:
 				position = position.move_toward(
 					origin-Vector2(x_range,0).rotated(deg_to_rad(flyDirection)),
-					SPEED*delta)
+					speed*delta)
 			else:
-				position = position.move_toward(origin,SPEED*delta)
+				position = position.move_toward(origin,speed*delta)
 			# if at the destination point then turn around
 			
 			if position.distance_to(target_pos) <= 1:

@@ -170,10 +170,10 @@ var setWaterLevel = 0 # used by other nodes to change the water level
 var waterScrollSpeed = 64 # used by other nodes for how fast to move the water to different levels
 
 # Level settings
-var hardBorderLeft   = -100000000
-var hardBorderRight  =  100000000
-var hardBorderTop    = -100000000
-var hardBorderBottom =  100000000
+var hardBorderLeft: int  = 0
+var hardBorderRight: int = 16384
+var hardBorderTop: int   = 0
+var hardBorderBottom:int = 4096
 var y_wrap: bool = false
 
 # Animal spawn type reference, see the level script for more information on the types

@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=4 uid="uid://di23q55vk6wuq"]
+
+[ext_resource type="Script" uid="uid://blmu8j1jhwnr4" path="res://Scripts/Objects/CollapsePlatform.gd" id="1_kotj7"]
+[ext_resource type="TileSet" uid="uid://uplqwsi0o4gi" path="res://Tileset/Levels/EHZ_HTZ_Tiles.tres" id="2_tt4vf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ia0sb"]
+size = Vector2(96, 16)
+
+[node name="EHZ_CollapsingPlatform" type="Area2D"]
+collision_layer = 0
+collision_mask = 4096
+script = ExtResource("1_kotj7")
+tile = NodePath("Tiles")
+speed = 6.0
+soundDelay = 0.0
+
+[node name="Tiles" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD//wAAAAAFAAAAAAD9/wAAAAAAAAgAAAD+/wAAAAABAAgAAAD8/wAAAAACAAcAAAD8/wEAAAACAAgAAAD7/wEAAAAFAAAAAAD6/wEAAAAPAAwAAAD6/wIAAAAVAAUAAAD7/wIAAAAPAAAAAAD6/wMAAAALAAAAAAD9/wIAAAARAAAAAAD+/wIAAAAMAAQAAAD//wIAAAAAAAQAAAD+/wMAAAAWAAIAAAD+/wQAAAAWAAEAAAD6/wQAAAAEAAgAAAD9/wQAAAASAAEAAAD9/wMAAAAWAAMAAAD7/wQAAAAEAAgAAAD8/wQAAAAWAAMAAAD8/wMAAAACAAQAAAD7/wMAAAAIAAMAABD+/wUAAAAEAAgAAAD//wEAAAADAAEAAAD+/wEAAAAOAAIAAAD9/wEAAAAOAAEAAAD8/wIAAAAQAAAAAAD//wMAAAAWAAEAAAD//wQAAAAEAAgAAAA=")
+tile_set = ExtResource("2_tt4vf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-48, 8)
+shape = SubResource("RectangleShape2D_ia0sb")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
