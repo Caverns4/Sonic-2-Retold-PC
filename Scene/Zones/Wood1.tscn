@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://bufpacdd4qqgr"]
+[gd_scene load_steps=17 format=4 uid="uid://bufpacdd4qqgr"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_bq4rn"]
 [ext_resource type="AudioStream" uid="uid://cmtn72t7dtgf" path="res://Audio/Soundtrack/s2br_Tropical.ogg" id="2_qonje"]
@@ -11,6 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://4q0hpddgto2k" path="res://Entities/Gimmicks/Spring.tscn" id="9_fveb4"]
 [ext_resource type="PackedScene" uid="uid://bg66ofhfkxsx6" path="res://Entities/Gimmicks/Bridge.tscn" id="10_12egf"]
 [ext_resource type="Texture2D" uid="uid://dy5tf4x36cf8t" path="res://Graphics/Gimmicks/bridge_log_3.png" id="11_oxd0m"]
+[ext_resource type="PackedScene" uid="uid://7k14xkpjguop" path="res://Entities/Obstacles/SwingingPlatform.tscn" id="12_futd0"]
+[ext_resource type="Texture2D" uid="uid://d3qxfn5v4xwcr" path="res://Graphics/Obstacles/WGZ_Swing.png" id="13_7nrc5"]
+[ext_resource type="Texture2D" uid="uid://cixcldjw2ruxa" path="res://Graphics/Obstacles/WGZ_SwingChain.png" id="14_x8v2y"]
+[ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="15_t3h1o"]
+[ext_resource type="PackedScene" uid="uid://cfteqnft5ynr7" path="res://Entities/Hazards/Spikes.tscn" id="16_7nrc5"]
 
 [node name="WoodGadget1" type="Node2D"]
 script = ExtResource("1_bq4rn")
@@ -113,7 +118,7 @@ position = Vector2(2800, 696)
 position = Vector2(3312, 1336)
 
 [node name="Spring7" parent="Entities" instance=ExtResource("9_fveb4")]
-position = Vector2(3912, 1160)
+position = Vector2(3928, 1160)
 type = 1
 
 [node name="Spring8" parent="Entities" instance=ExtResource("9_fveb4")]
@@ -167,7 +172,42 @@ texture = ExtResource("11_oxd0m")
 
 [node name="Platforms" type="Node" parent="."]
 
+[node name="Platform" parent="Platforms" instance=ExtResource("12_futd0")]
+position = Vector2(2096, 448)
+chains = 4
+plat_img = ExtResource("13_7nrc5")
+chain_img = ExtResource("14_x8v2y")
+
+[node name="Platform2" parent="Platforms" instance=ExtResource("15_t3h1o")]
+position = Vector2(1984, 648)
+platform_sprite = ExtResource("13_7nrc5")
+endPosition = Vector2(192, 0)
+
 [node name="Hazards" type="Node" parent="."]
+
+[node name="Spikes" parent="Hazards" instance=ExtResource("16_7nrc5")]
+position = Vector2(2672, 688)
+count = 14
+
+[node name="Spikes2" parent="Hazards" instance=ExtResource("16_7nrc5")]
+position = Vector2(4384, 944)
+count = 4
+
+[node name="Spikes3" parent="Hazards" instance=ExtResource("16_7nrc5")]
+position = Vector2(7760, 688)
+count = 8
+
+[node name="Spikes4" parent="Hazards" instance=ExtResource("16_7nrc5")]
+position = Vector2(8272, 1264)
+count = 6
+
+[node name="Spikes5" parent="Hazards" instance=ExtResource("16_7nrc5")]
+position = Vector2(8672, 1264)
+count = 4
+
+[node name="Spikes6" parent="Hazards" instance=ExtResource("16_7nrc5")]
+position = Vector2(9152, 432)
+count = 4
 
 [node name="Environment" type="Node" parent="."]
 

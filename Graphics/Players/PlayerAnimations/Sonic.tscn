@@ -105,7 +105,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.0666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [89, 90]
+"values": [88, 89]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1030,7 +1030,6 @@ texture = ExtResource("2_uqmtl")
 offset = Vector2(0, -5)
 hframes = 16
 vframes = 8
-frame = 111
 
 [node name="DashDust" type="AnimatedSprite2D" parent="Sprite2D"]
 visible = false

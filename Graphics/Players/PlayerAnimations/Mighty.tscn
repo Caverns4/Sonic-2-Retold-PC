@@ -1,10 +1,10 @@
 [gd_scene load_steps=68 format=3 uid="uid://sbta787c4fwk"]
 
-[ext_resource type="Shader" uid="uid://drq4hwqwwn03c" path="res://Shaders/PaletteSwapRow.gdshader" id="1_0xgvv"]
-[ext_resource type="Texture2D" uid="uid://cgq1nmr34au7o" path="res://Graphics/Players/Mighty.png" id="2_n3qsv"]
-[ext_resource type="Texture2D" uid="uid://bbpeu7ggf4kd4" path="res://Graphics/Palettes/SuperKnuckles.png" id="2_r5gnm"]
-[ext_resource type="Texture2D" uid="uid://dlomjk6vm15ep" path="res://Graphics/Misc/DashDust.png" id="3_qj7mf"]
-[ext_resource type="Texture2D" uid="uid://dvqglf8dididc" path="res://Graphics/Items/shield_plain.png" id="4_eakdf"]
+[ext_resource type="Shader" uid="uid://drq4hwqwwn03c" path="res://Shaders/PaletteSwapRow.gdshader" id="1_aqoqg"]
+[ext_resource type="Texture2D" uid="uid://bbpeu7ggf4kd4" path="res://Graphics/Palettes/SuperKnuckles.png" id="2_3tvgo"]
+[ext_resource type="Texture2D" uid="uid://cgq1nmr34au7o" path="res://Graphics/Players/Mighty.png" id="3_w8ce4"]
+[ext_resource type="Texture2D" uid="uid://dlomjk6vm15ep" path="res://Graphics/Misc/DashDust.png" id="4_e1h6x"]
+[ext_resource type="Texture2D" uid="uid://dvqglf8dididc" path="res://Graphics/Items/shield_plain.png" id="5_m64wf"]
 
 [sub_resource type="Animation" id="86"]
 length = 0.001
@@ -1007,6 +1007,21 @@ tracks/2/keys = {
 "values": [Vector2(-20, 0), Vector2(-11, 0), Vector2(16, 0), Vector2(23, 0), Vector2(11, 0), Vector2(3, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_6r1uk"]
+resource_name = "Victory"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mighty/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [13, 14]
+}
+
 [sub_resource type="Animation" id="85"]
 resource_name = "walk"
 length = 0.8
@@ -1078,21 +1093,6 @@ tracks/0/keys = {
 "values": [256, 267, 266, 265, 264, 263, 262, 261, 260, 259, 258, 257]
 }
 
-[sub_resource type="Animation" id="Animation_6r1uk"]
-resource_name = "Victory"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Mighty/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [13, 14]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_36uej"]
 _data = {
 &"RESET": SubResource("86"),
@@ -1145,39 +1145,39 @@ _data = {
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ppxn1"]
-shader = ExtResource("1_0xgvv")
+shader = ExtResource("1_aqoqg")
 shader_parameter/amount = 5.0
 shader_parameter/palRows = 16.0
 shader_parameter/row = 1.0
 shader_parameter/approximation = 0.0
-shader_parameter/paletteTexture = ExtResource("2_r5gnm")
+shader_parameter/paletteTexture = ExtResource("2_3tvgo")
 
 [sub_resource type="AtlasTexture" id="89"]
-atlas = ExtResource("3_qj7mf")
+atlas = ExtResource("4_e1h6x")
 region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="90"]
-atlas = ExtResource("3_qj7mf")
+atlas = ExtResource("4_e1h6x")
 region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="91"]
-atlas = ExtResource("3_qj7mf")
+atlas = ExtResource("4_e1h6x")
 region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="92"]
-atlas = ExtResource("3_qj7mf")
+atlas = ExtResource("4_e1h6x")
 region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="93"]
-atlas = ExtResource("3_qj7mf")
+atlas = ExtResource("4_e1h6x")
 region = Rect2(192, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="94"]
-atlas = ExtResource("3_qj7mf")
+atlas = ExtResource("4_e1h6x")
 region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="95"]
-atlas = ExtResource("3_qj7mf")
+atlas = ExtResource("4_e1h6x")
 region = Rect2(288, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="96"]
@@ -1280,7 +1280,7 @@ autoplay = "idle"
 light_mask = 4096
 z_index = 5
 material = SubResource("ShaderMaterial_ppxn1")
-texture = ExtResource("2_n3qsv")
+texture = ExtResource("3_w8ce4")
 offset = Vector2(0, -5)
 hframes = 16
 vframes = 8
@@ -1305,5 +1305,5 @@ libraries = {
 [node name="CenterReference" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0.501961)
-texture = ExtResource("4_eakdf")
+texture = ExtResource("5_m64wf")
 hframes = 4

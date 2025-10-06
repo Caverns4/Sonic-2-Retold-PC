@@ -247,7 +247,7 @@ var playerskins = [
 	[preload("res://Graphics/Players/PlayerAnimations/Tails.tscn"),HITBOXESTAILS],
 	[preload("res://Graphics/Players/PlayerAnimations/Knuckles.tscn"),HITBOXESSONIC],
 	[preload("res://Graphics/Players/PlayerAnimations/Amy.tscn"),HITBOXESTAILS],
-	[preload("res://Graphics/Players/PlayerAnimations/Sonic_Beta.tscn"),HITBOXESSONIC],
+	[preload("res://Graphics/Players/PlayerAnimations/Mighty.tscn"),HITBOXESSONIC],
 	[preload("res://Graphics/Players/PlayerAnimations/Ray.tscn"),HITBOXESSONIC],
 	[preload("res://Graphics/Players/PlayerAnimations/Sonic_Old.tscn"),HITBOXESSONIC],
 ]

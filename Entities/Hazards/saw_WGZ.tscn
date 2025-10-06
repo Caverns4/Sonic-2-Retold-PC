@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://b7wcvm62xxtxm"]
+
+[ext_resource type="Script" uid="uid://dy2gqcb551jcu" path="res://Scripts/Objects/Hazard.gd" id="1_ncitp"]
+[ext_resource type="Texture2D" uid="uid://rw1redg56k65" path="res://Graphics/Hazards/WGZ_Saw.png" id="2_ncitp"]
+[ext_resource type="AudioStream" uid="uid://bbs3g7tgral72" path="res://Audio/SFX/Objects/BuzzSaw.wav" id="3_p6n7v"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ow6jb"]
+atlas = ExtResource("2_ncitp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6n7v"]
+atlas = ExtResource("2_ncitp")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_01a3q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ow6jb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6n7v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+
+[node name="WGZ_Saw" type="Area2D"]
+collision_layer = 0
+collision_mask = 4096
+script = ExtResource("1_ncitp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+shape = SubResource("1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_01a3q")
+autoplay = "default"
+frame = 1
+frame_progress = 0.7437921
+
+[node name="SawNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_p6n7v")
+volume_db = -10.0
+autoplay = true
+max_distance = 500.0
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

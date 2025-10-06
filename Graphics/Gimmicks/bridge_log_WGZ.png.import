@@ -2,22 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0uoatd1qn8nj"
-path="res://.godot/imported/FBZPylon.png-8ad6a40e19b9f911a9b6000ff2618af0.ctex"
+uid="uid://r4e6d5t5c2wl"
+path="res://.godot/imported/bridge_log_WGZ.png-9b3b614463d59ce1e67c9f17a58885df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Gimmicks/FBZPylon.png"
-dest_files=["res://.godot/imported/FBZPylon.png-8ad6a40e19b9f911a9b6000ff2618af0.ctex"]
+source_file="res://Graphics/Gimmicks/bridge_log_WGZ.png"
+dest_files=["res://.godot/imported/bridge_log_WGZ.png-9b3b614463d59ce1e67c9f17a58885df.ctex"]
 
 [params]
 
 compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
@@ -25,6 +27,10 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

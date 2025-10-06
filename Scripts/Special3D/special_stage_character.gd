@@ -134,7 +134,7 @@ func handle_input(delta):
 	inertia = clampf(inertia,0-top_speed,top_speed)
 	#print(inertia)
 	
-	movement = (Vector3(input_axis*8.0,movement.y,0-inertia))
+	movement = (Vector3(input_axis*(top_speed*0.75),movement.y,0-inertia))
 
 func hit_player(damagePosition: Vector3,ammount: int):
 	if rings > 0:
