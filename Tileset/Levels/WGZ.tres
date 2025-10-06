@@ -340,7 +340,6 @@ texture = ExtResource("1_ffc5f")
 10:3/0 = 0
 10:3/0/z_index = 10
 9:3/0 = 0
-9:3/0/z_index = 10
 8:3/0 = 0
 8:3/0/z_index = 10
 7:3/0 = 0

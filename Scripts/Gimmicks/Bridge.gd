@@ -37,9 +37,14 @@ func _ready():
 			bridges.append(newLog)
 			$log.position.x += 16
 		bridges.append($log)
+	else:
+		if (texture != null):
+			$log.texture = texture
 
 func _process(_delta):
 	if Engine.is_editor_hint():
+		if (texture != null):
+			$log.texture = texture
 		queue_redraw()
 	frameCount=wrapi(frameCount+1,0,frameDiff.size()*4)
 
@@ -124,4 +129,8 @@ func _draw():
 	if Engine.is_editor_hint():
 		for i in length:
 			if i > 0:
-				draw_texture($log.texture,Vector2(($log.texture.get_width()*i)-$log.texture.get_width()/2,-$log.texture.get_height()/2))
+				draw_texture(
+					$log.texture,
+					Vector2(($log.texture.get_width()*i)-$log.texture.get_width()/2,
+					-$log.texture.get_height()/2)
+					)

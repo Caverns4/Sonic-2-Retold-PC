@@ -4,8 +4,7 @@ extends StaticBody2D
 @export var SpriteTexture = preload("res://Graphics/Obstacles/Blocks/breakable_block.png")
 var Piece = preload("res://Entities/Misc/BlockPiece.tscn")
 @export var sound = preload("res://Audio/SFX/Gimmicks/s2br_Collapse.wav")
-## If true only Knuckles can break this object. Not Implimented yet.
-@export var knuckles_only = false
+@export var strength_tier: Global.STRENGTH_TIER = Global.STRENGTH_TIER.NORMAL
 
 
 func _ready() -> void:
@@ -15,7 +14,7 @@ func _ready() -> void:
 	# Change platform sprite texture
 	$Sprite2D.texture = SpriteTexture
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		$Sprite2D.texture = SpriteTexture
 		queue_redraw()
@@ -23,7 +22,7 @@ func _process(delta: float) -> void:
 
 
 func physics_collision(body:Player2D, hitVector):
-	if knuckles_only and body.character != Global.CHARACTERS.KNUCKLES:
+	if body.strength < strength_tier:
 		return false
 	
 	# check if physics object is coming down and check for a bit where the player isn't on floor
