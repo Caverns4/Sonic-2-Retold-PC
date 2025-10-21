@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://bufpacdd4qqgr"]
+[gd_scene load_steps=23 format=4 uid="uid://bufpacdd4qqgr"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_bq4rn"]
 [ext_resource type="AudioStream" uid="uid://cmtn72t7dtgf" path="res://Audio/Soundtrack/s2br_Tropical.ogg" id="2_qonje"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://bct374kjctkxr" path="res://Entities/Items/Checkpoint.tscn" id="19_gfd43"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="19_gtjj4"]
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="19_q3qpr"]
+[ext_resource type="PackedScene" uid="uid://c3dq6cs7sku84" path="res://Entities/Gimmicks/CNZFlipper.tscn" id="22_8gs7u"]
 
 [node name="WoodGadget1" type="Node2D"]
 script = ExtResource("1_bq4rn")
@@ -30,6 +31,7 @@ music2P = ExtResource("3_gc0vh")
 animal1 = 11
 animal2 = 12
 defaultRightBoundry = 11008
+defaultBottomBoundry = 1408
 
 [node name="08-WoodGadget" parent="." instance=ExtResource("5_lmmyl")]
 
@@ -124,7 +126,7 @@ position = Vector2(2800, 696)
 position = Vector2(3312, 1336)
 
 [node name="Spring7" parent="Entities" instance=ExtResource("9_fveb4")]
-position = Vector2(3928, 1160)
+position = Vector2(3936, 1160)
 type = 1
 
 [node name="Spring8" parent="Entities" instance=ExtResource("9_fveb4")]
@@ -148,7 +150,6 @@ springDirection = 2
 
 [node name="Spring12" parent="Entities" instance=ExtResource("9_fveb4")]
 position = Vector2(7952, 1272)
-type = 1
 
 [node name="Spring13" parent="Entities" instance=ExtResource("9_fveb4")]
 position = Vector2(8688, 376)
@@ -157,7 +158,7 @@ position = Vector2(8688, 376)
 position = Vector2(9584, 1272)
 
 [node name="Spring15" parent="Entities" instance=ExtResource("9_fveb4")]
-position = Vector2(9800, 1032)
+position = Vector2(9816, 1032)
 type = 1
 killTransSpeed = true
 
@@ -178,6 +179,7 @@ texture = ExtResource("11_oxd0m")
 
 [node name="ConveyorBelt" parent="Entities" instance=ExtResource("12_t3h1o")]
 position = Vector2(2048, 208)
+constant_linear_velocity = Vector2(-60, 0)
 speed = -60
 length = 19
 
@@ -447,3 +449,6 @@ position = Vector2(10688, 768)
 [node name="Badniks" type="Node" parent="."]
 
 [node name="Rings" type="Node" parent="."]
+
+[node name="CnzFlipper" parent="." instance=ExtResource("22_8gs7u")]
+position = Vector2(7064, 888)
