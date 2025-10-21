@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://oce7phvjxdbv"]
+[gd_scene load_steps=27 format=3 uid="uid://oce7phvjxdbv"]
 
 [ext_resource type="Script" uid="uid://bbk1lqyklbxgi" path="res://Scripts/Misc/tornado.gd" id="1_gohbb"]
 [ext_resource type="Texture2D" uid="uid://efvmmjbj4otb" path="res://Graphics/Misc/Tornado_Main.png" id="2_8cebi"]
@@ -109,6 +109,9 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mvrs"]
+size = Vector2(40, 20)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b6v0j"]
 size = Vector2(106, 56)
 
@@ -148,6 +151,7 @@ _data = {
 }
 
 [node name="Tornado" type="CharacterBody2D"]
+collision_mask = 8193
 script = ExtResource("1_gohbb")
 
 [node name="TornadoMain" type="Node2D" parent="."]
@@ -191,6 +195,15 @@ autoplay = "default"
 frame_progress = 0.235888
 centered = false
 
+[node name="PlayerSensor" type="Area2D" parent="TornadoMain"]
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TornadoMain/PlayerSensor"]
+position = Vector2(28, -64)
+shape = SubResource("RectangleShape2D_4mvrs")
+debug_color = Color(0.30980393, 0.4745098, 1, 0.5019608)
+
 [node name="SONIC" type="Sprite2D" parent="."]
 position = Vector2(0, -40)
 texture = ExtResource("7_pkbdi")
@@ -201,6 +214,9 @@ shape = SubResource("RectangleShape2D_b6v0j")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ot57m")
+&"": SubResource("AnimationLibrary_ot57m")
 }
 autoplay = "RESET"
+
+[connection signal="body_entered" from="TornadoMain/PlayerSensor" to="." method="_on_player_sensor_body_entered"]
+[connection signal="body_exited" from="TornadoMain/PlayerSensor" to="." method="_on_player_sensor_body_exited"]

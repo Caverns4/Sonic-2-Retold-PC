@@ -1,10 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://wc6hh8dbtg1w"]
+[gd_scene load_steps=12 format=4 uid="uid://wc6hh8dbtg1w"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_bgm8p"]
 [ext_resource type="AudioStream" uid="uid://chigxw75acdkr" path="res://Audio/Soundtrack/s2br_SkyFortress.ogg" id="2_1cysq"]
 [ext_resource type="PackedScene" uid="uid://cm6qjxupawbta" path="res://Scene/Backgrounds/14-SkyFortress.tscn" id="3_sfen5"]
+[ext_resource type="PackedScene" uid="uid://d2ectm23ulm50" path="res://Scene/Backgrounds/15-DeathEgg.tscn" id="4_etpkg"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_20kpp"]
+[ext_resource type="PackedScene" uid="uid://oce7phvjxdbv" path="res://Entities/Misc/Tornado.tscn" id="6_0fwjd"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_1g2m4"]
+[ext_resource type="TileSet" uid="uid://boj0ri7pkn13m" path="res://Tileset/Levels/SCZ.tres" id="6_fx22q"]
+[ext_resource type="Script" uid="uid://lekpwkfad1pq" path="res://Scripts/Misc/path_follow_2d.gd" id="6_pe4xw"]
+[ext_resource type="Script" uid="uid://cgc0jvkdayt0m" path="res://Scripts/Objects/tornado_mover.gd" id="6_ulsoj"]
+
+[sub_resource type="Curve2D" id="Curve2D_ulsoj"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 256, 0)
+}
+point_count = 2
 
 [node name="SkyFortress2" type="Node2D"]
 script = ExtResource("1_bgm8p")
@@ -14,6 +25,11 @@ music2P = ExtResource("2_1cysq")
 animal1 = 8
 animal2 = 3
 
+[node name="15-deathEgg" parent="." instance=ExtResource("4_etpkg")]
+offset = Vector2(0, -296)
+transform = Transform2D(1, 0, 0, 1, 0, -296)
+scroll_base_scale = Vector2(0, 1)
+
 [node name="15-skyFortress" parent="." instance=ExtResource("3_sfen5")]
 
 [node name="HUD" parent="." instance=ExtResource("5_20kpp")]
@@ -22,6 +38,29 @@ act = 0
 
 [node name="Level_Layout" type="Node" parent="."]
 
+[node name="Low" type="TileMapLayer" parent="Level_Layout"]
+tile_map_data = PackedByteArray("AAAYAC4AAAAEAAYAAAAZAC4AAAAFAAYAAAAYAC8AAAAMAAYAAAAZAC8AAAANAAYAAAAaAC4AAAAFAAYAAAAbAC4AAAAFAAYAAAAcAC4AAAAFAAYAAAAdAC4AAAAFAAYAAAAeAC4AAAAFAAYAAAAfAC4AAAAFAAYAAAAaAC8AAAANAAYAAAAbAC8AAAANAAYAAAAcAC8AAAANAAYAAAAdAC8AAAANAAYAAAAeAC8AAAANAAYAAAAfAC8AAAANAAYAAAAZAC0AAAAMAAcAAAAfAC0AAAAMAAcAAAAcAC0AAAAMAAcAAAAgAC8AAAANAAYAAAAhAC8AAAANAAYAAAAiAC8AAAANAAYAAAAjAC8AAAANAAYAAAAkAC8AAAANAAYAAAAlAC8AAAANAAYAAAAmAC8AAAANAAYAAAAnAC8AAAANAAYAAAAgAC4AAAAFAAYAAAAhAC4AAAAFAAYAAAAiAC4AAAAFAAYAAAAjAC4AAAAFAAYAAAAkAC4AAAAFAAYAAAAlAC4AAAAFAAYAAAAmAC4AAAAFAAYAAAAnAC4AAAAFAAYAAAAoAC4AAAAFAAYAAAAoAC8AAAANAAYAAAApAC4AAAAFAAYAAAApAC8AAAANAAYAAAAqAC4AAAAFAAYAAAAqAC8AAAANAAYAAAArAC4AAAAFAAYAAAArAC8AAAANAAYAAAAsAC4AAAAFAAYAAAAsAC8AAAANAAYAAAAtAC4AAAAFAAYAAAAtAC8AAAANAAYAAAAuAC4AAAAFAAYAAAAuAC8AAAANAAYAAAAvAC4AAAAFAAYAAAAvAC8AAAANAAYAAAAwAC4AAAAFAAYAAAAwAC8AAAANAAYAAAAxAC4AAAAFAAYAAAAxAC8AAAANAAYAAAAyAC4AAAAFAAYAAAAyAC8AAAANAAYAAAAzAC4AAAAFAAYAAAAzAC8AAAANAAYAAAA0AC4AAAAFAAYAAAA0AC8AAAANAAYAAAA1AC4AAAAFAAYAAAA1AC8AAAANAAYAAAA2AC4AAAAFAAYAAAA2AC8AAAANAAYAAAA3AC4AAAAFAAYAAAA3AC8AAAANAAYAAAA4AC4AAAAFAAYAAAA4AC8AAAANAAYAAAA5AC4AAAAFAAYAAAA5AC8AAAANAAYAAAA6AC4AAAAFAAYAAAA6AC8AAAANAAYAAAA7AC4AAAAFAAYAAAA7AC8AAAANAAYAAAA8AC4AAAAFAAYAAAA8AC8AAAANAAYAAAA9AC4AAAAFAAYAAAA9AC8AAAANAAYAAAA+AC4AAAAFAAYAAAA+AC8AAAANAAYAAAA/AC4AAAAFAAYAAAA/AC8AAAANAAYAAAA=")
+tile_set = ExtResource("6_fx22q")
+
 [node name="Player" parent="." instance=ExtResource("6_1g2m4")]
 position = Vector2(96, 656)
 disablePartner = true
+
+[node name="Entities" type="Node" parent="."]
+
+[node name="Path2D" type="Path2D" parent="Entities"]
+position = Vector2(72, 664)
+curve = SubResource("Curve2D_ulsoj")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Entities/Path2D"]
+rotates = false
+cubic_interp = false
+script = ExtResource("6_pe4xw")
+
+[node name="Tornado_mover" type="Node2D" parent="Entities/Path2D/PathFollow2D"]
+script = ExtResource("6_ulsoj")
+allow_player_steering = false
+
+[node name="Tornado" parent="Entities/Path2D/PathFollow2D/Tornado_mover" instance=ExtResource("6_0fwjd")]
+position = Vector2(0, 72)
+pilotType = 3

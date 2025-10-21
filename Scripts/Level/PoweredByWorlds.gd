@@ -7,8 +7,14 @@ var alreadyChanged = false
 var globalTime = 0.0
 
 func _ready():
+	var rng: int = randi_range(0,255)
+	if rng == Global.ZONES.DEATH_EGG:
+		$CanvasLayer/Center/SilverSonic.visible = true
+		$CanvasLayer/Center/Sonic.visible = false
+	
 	# delay so game can start
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(1.0).timeout
+	
 	# play title if the scene isn't already skipping
 	if !alreadyChanged:
 		$AnimationPlayer.play("Animation")
@@ -23,6 +29,7 @@ func _ready():
 
 func _process(delta: float) -> void:
 	globalTime += delta
+
 
 func _input(event):
 	# check if start gets pressed

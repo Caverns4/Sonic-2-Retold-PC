@@ -11,6 +11,7 @@ var droppedBomb: bool = false
 func  _ready() -> void:
 	super()
 	velocity.y = -40
+	global_position.y += 128
 
 func _physics_process(delta: float) -> void:
 	match state:
