@@ -56,6 +56,8 @@ func _physics_process(delta: float) -> void:
 				for player in players:
 					if player.ground:
 						player.controlObject = self
+					elif player.movement.y == 0:
+						player.movement.y = 60
 					
 					if player.controlObject == self:
 						player.animator.play("roll")

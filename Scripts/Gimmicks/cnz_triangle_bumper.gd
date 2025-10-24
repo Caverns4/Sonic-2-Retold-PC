@@ -6,7 +6,7 @@ var bounceSound = preload("res://Audio/SFX/Objects/CNZ_BigBumper.wav")
 #When a body(player) enters the area and it not controlled by an outside object,
 #Bounce off based on the angle of the player relative to the object.
 
-func physics_collision(body, hitVector):
+func physics_collision(body: Player2D, _hitVector):
 	var col = body.objectCheck.get_collision_normal()
 	if col:
 		body.movement = (col.normalized()*power)
