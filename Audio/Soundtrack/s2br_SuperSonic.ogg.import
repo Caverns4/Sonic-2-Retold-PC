@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/s2br_SuperSonic.ogg-0af464a3ba6c4d072c91b786d
 [params]
 
 loop=true
-loop_offset=0.17
+loop_offset=0.58
 bpm=0.0
 beat_count=0
 bar_beats=4
