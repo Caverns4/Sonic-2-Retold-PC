@@ -266,7 +266,7 @@ fallTimer = 1.0
 floorOffset = 4
 
 [node name="Platform2" parent="Platforms" instance=ExtResource("22_vde0v")]
-position = Vector2(2306, 617)
+position = Vector2(2306, 620)
 endPosition = Vector2(0, 128)
 offset = 1.0
 floorOffset = 4

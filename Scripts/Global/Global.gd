@@ -98,7 +98,7 @@ var globalTimer = 0 # global timer, used as reference for animations
 var maxTime = 60*10
 
 ## Strength Tiers used for item destruction. 1 = Mighty's stomp, 2 = Knuckles or Super Sonic
-enum STRENGTH_TIER{NORMAL,STRONG,SUPER}
+enum STRENGTH_TIER{NORMAL,STRONG,SUPER,UNBREAKABLE}
 
 ## If a Boss Fight is currently active.
 var fightingBoss = false

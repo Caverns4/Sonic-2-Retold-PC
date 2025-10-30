@@ -7,7 +7,7 @@
 size = Vector2(16, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4pm5"]
-size = Vector2(56, 17)
+size = Vector2(56, 24)
 
 [node name="CnzFlipper" type="StaticBody2D"]
 collision_layer = 8192
@@ -20,8 +20,7 @@ hframes = 3
 vframes = 2
 
 [node name="AngledCollision" type="CollisionPolygon2D" parent="."]
-visible = false
-polygon = PackedVector2Array(-24, -8, -12, -8, 24, 12, 24, 20, -24, 8)
+polygon = PackedVector2Array(-24, -8, 24, 12, 24, 20, -24, 8)
 
 [node name="VeritcalCollison" type="CollisionShape2D" parent="."]
 visible = false
@@ -34,7 +33,7 @@ collision_layer = 0
 collision_mask = 4096
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(4, -0.5)
+position = Vector2(4, -4)
 shape = SubResource("RectangleShape2D_h4pm5")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

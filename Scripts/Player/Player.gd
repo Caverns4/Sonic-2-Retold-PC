@@ -343,11 +343,11 @@ func _ready():
 				playerPal.set_shader_parameter("paletteTexture",load("res://Graphics/Palettes/SuperKnuckles.png"))
 				strength = Global.STRENGTH_TIER.SUPER
 		
-			Global.CHARACTERS.AMY:
-				playerPal.set_shader_parameter("amount",4)
-				playerPal.set_shader_parameter("palRows",8)
-				playerPal.set_shader_parameter("row",0)
-				playerPal.set_shader_parameter("paletteTexture",load("res://Graphics/Palettes/SuperAmy.png"))
+			#Global.CHARACTERS.AMY:
+			#	playerPal.set_shader_parameter("amount",4)
+			#	playerPal.set_shader_parameter("palRows",8)
+			#	playerPal.set_shader_parameter("row",0)
+			#	playerPal.set_shader_parameter("paletteTexture",load("res://Graphics/Palettes/SuperAmy.png"))
 				
 			Global.CHARACTERS.MIGHTY:
 				playerPal.set_shader_parameter("amount",4)
@@ -706,7 +706,7 @@ func _physics_process(delta):
 	
 	# physics sets
 	# collide with solids if not rolling layer
-	set_collision_mask_value(16,(!attacking or !curled))
+	set_collision_mask_value(16,(!attacking and !curled))
 	# collide with solids if not knuckles layer
 	set_collision_mask_value(19,!character == Global.CHARACTERS.KNUCKLES or
 	!(character == Global.CHARACTERS.SONIC and isSuper))

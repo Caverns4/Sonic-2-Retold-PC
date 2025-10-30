@@ -60,9 +60,11 @@ func _physics_process(delta: float) -> void:
 						player.movement.y = 60
 					
 					if player.controlObject == self:
+						player.movement.x = 0
+						player.disconect_from_floor(true)
+						player.direction = direction
 						player.animator.play("roll")
 						player.set_state(player.STATES.ANIMATION,player.currentHitbox.ROLL)
-						player.movement.x = 0
 						player.global_position.x += (60*delta)*direction
 						if player.jumpBuffer > 0.0:
 							launch = true
@@ -74,6 +76,7 @@ func _physics_process(delta: float) -> void:
 					for player in players:
 						if player.controlObject == self:
 							var offsetDiff = (player.global_position.x - global_position.x)*direction
+							offsetDiff = max(offsetDiff,0)
 							var height = offsetDiff/2
 							if height > 0:
 								height = clamp(height,8,16)

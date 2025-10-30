@@ -261,109 +261,109 @@ springDirection = 3
 position = Vector2(2496, 756)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("13_3qwgs")
-knuckles_only = true
+strength_tier = 2
 
 [node name="Breakable2" parent="Entities" instance=ExtResource("12_atlde")]
 position = Vector2(2968, 755)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("13_3qwgs")
-knuckles_only = true
+strength_tier = 2
 
 [node name="Breakable3" parent="Entities" instance=ExtResource("12_atlde")]
 position = Vector2(4000, 500)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("13_3qwgs")
-knuckles_only = true
+strength_tier = 2
 
 [node name="Breakable4" parent="Entities" instance=ExtResource("12_atlde")]
 position = Vector2(4056, 628)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("13_3qwgs")
-knuckles_only = true
+strength_tier = 2
 
 [node name="Breakable5" parent="Entities" instance=ExtResource("12_atlde")]
 position = Vector2(7472, 1140)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("13_3qwgs")
-knuckles_only = true
+strength_tier = 2
 
 [node name="Breakable6" parent="Entities" instance=ExtResource("12_atlde")]
 position = Vector2(7872, 756)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("13_3qwgs")
-knuckles_only = true
+strength_tier = 2
 
 [node name="Breakable7" parent="Entities" instance=ExtResource("12_atlde")]
 position = Vector2(8416, 884)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("13_3qwgs")
-knuckles_only = true
+strength_tier = 2
 
 [node name="Breakable8" parent="Entities" instance=ExtResource("12_atlde")]
 position = Vector2(10200, 1268)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("13_3qwgs")
-knuckles_only = true
+strength_tier = 2
 
 [node name="Breakable9" parent="Entities" instance=ExtResource("12_atlde")]
 position = Vector2(10736, 1400)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("13_3qwgs")
-knuckles_only = true
+strength_tier = 2
 
 [node name="Breakable10" parent="Entities" instance=ExtResource("12_atlde")]
 position = Vector2(11184, 1844)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("13_3qwgs")
-knuckles_only = true
+strength_tier = 2
 
 [node name="Breakable11" parent="Entities" instance=ExtResource("12_atlde")]
 position = Vector2(11768, 1396)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("13_3qwgs")
-knuckles_only = true
+strength_tier = 2
 
 [node name="Breakable12" parent="Entities" instance=ExtResource("12_atlde")]
 position = Vector2(12056, 1460)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("13_3qwgs")
-knuckles_only = true
+strength_tier = 2
 
 [node name="Breakable13" parent="Entities" instance=ExtResource("12_atlde")]
 position = Vector2(12136, 1968)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("13_3qwgs")
-knuckles_only = true
+strength_tier = 2
 
 [node name="Breakable14" parent="Entities" instance=ExtResource("12_atlde")]
 position = Vector2(13120, 1912)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("13_3qwgs")
-knuckles_only = true
+strength_tier = 2
 
 [node name="Breakable15" parent="Entities" instance=ExtResource("12_atlde")]
 position = Vector2(14104, 1656)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("13_3qwgs")
-knuckles_only = true
+strength_tier = 2
 
 [node name="Breakable16" parent="Entities" instance=ExtResource("12_atlde")]
 position = Vector2(16064, 1524)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("13_3qwgs")
-knuckles_only = true
+strength_tier = 2
 
 [node name="Breakable17" parent="Entities" instance=ExtResource("12_atlde")]
 position = Vector2(16096, 2100)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("13_3qwgs")
-knuckles_only = true
+strength_tier = 2
 
 [node name="Breakable18" parent="Entities" instance=ExtResource("12_atlde")]
 position = Vector2(16816, 2196)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("13_3qwgs")
-knuckles_only = true
+strength_tier = 2
 
 [node name="Platforms" type="Node" parent="."]
 
@@ -545,7 +545,7 @@ chains = 7
 plat_img = ExtResource("18_chteg")
 
 [node name="Platform32" parent="Platforms" instance=ExtResource("17_1baq8")]
-position = Vector2(16328, 2144)
+position = Vector2(16296, 2152)
 chains = 6
 plat_img = ExtResource("18_chteg")
 
