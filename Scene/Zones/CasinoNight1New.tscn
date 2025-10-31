@@ -176,6 +176,21 @@ position = Vector2(9032, 856)
 [node name="Bumper42" parent="Entities" instance=ExtResource("11_cyorj")]
 position = Vector2(9056, 1336)
 
+[node name="Bumper52" parent="Entities" instance=ExtResource("11_cyorj")]
+position = Vector2(5776, 1728)
+
+[node name="Bumper53" parent="Entities" instance=ExtResource("11_cyorj")]
+position = Vector2(7040, 1776)
+
+[node name="Bumper54" parent="Entities" instance=ExtResource("11_cyorj")]
+position = Vector2(7168, 1776)
+
+[node name="Bumper55" parent="Entities" instance=ExtResource("11_cyorj")]
+position = Vector2(7296, 1776)
+
+[node name="Bumper56" parent="Entities" instance=ExtResource("11_cyorj")]
+position = Vector2(7424, 1776)
+
 [node name="Bumper37" parent="Entities" instance=ExtResource("11_cyorj")]
 position = Vector2(8680, 528)
 
@@ -317,10 +332,10 @@ position = Vector2(2280, 1248)
 scale = Vector2(-1, 1)
 
 [node name="CnzFlipper8" parent="Entities" instance=ExtResource("13_wyhjd")]
-position = Vector2(1608, 608)
+position = Vector2(1608, 600)
 
 [node name="CnzFlipper9" parent="Entities" instance=ExtResource("13_wyhjd")]
-position = Vector2(1664, 656)
+position = Vector2(1664, 632)
 
 [node name="CnzFlipper11" parent="Entities" instance=ExtResource("13_wyhjd")]
 position = Vector2(2584, 512)
@@ -486,6 +501,36 @@ position = Vector2(8688, 1536)
 
 [node name="HexBumper" parent="Entities" instance=ExtResource("17_2um2t")]
 position = Vector2(640, 768)
+
+[node name="HexBumper2" parent="Entities" instance=ExtResource("17_2um2t")]
+position = Vector2(1184, 1344)
+
+[node name="HexBumper3" parent="Entities" instance=ExtResource("17_2um2t")]
+position = Vector2(1728, 672)
+
+[node name="HexBumper4" parent="Entities" instance=ExtResource("17_2um2t")]
+position = Vector2(2176, 1312)
+
+[node name="HexBumper5" parent="Entities" instance=ExtResource("17_2um2t")]
+position = Vector2(4160, 1120)
+
+[node name="HexBumper6" parent="Entities" instance=ExtResource("17_2um2t")]
+position = Vector2(4608, 912)
+
+[node name="HexBumper7" parent="Entities" instance=ExtResource("17_2um2t")]
+position = Vector2(5624, 1304)
+
+[node name="HexBumper8" parent="Entities" instance=ExtResource("17_2um2t")]
+position = Vector2(6528, 720)
+
+[node name="HexBumper9" parent="Entities" instance=ExtResource("17_2um2t")]
+position = Vector2(8192, 1168)
+
+[node name="HexBumper10" parent="Entities" instance=ExtResource("17_2um2t")]
+position = Vector2(8192, 640)
+
+[node name="HexBumper11" parent="Entities" instance=ExtResource("17_2um2t")]
+position = Vector2(8808, 440)
 
 [node name="Platforms" type="Node2D" parent="."]
 material = ExtResource("8_cpekc")
@@ -1314,34 +1359,34 @@ position = Vector2(4144, 1704)
 position = Vector2(4176, 1720)
 
 [node name="Ring73" parent="Rings" instance=ExtResource("29_3q16r")]
-position = Vector2(4584, 936)
+position = Vector2(4584, 952)
 
 [node name="Ring74" parent="Rings" instance=ExtResource("29_3q16r")]
-position = Vector2(4608, 936)
+position = Vector2(4608, 952)
 
 [node name="Ring75" parent="Rings" instance=ExtResource("29_3q16r")]
-position = Vector2(4632, 936)
+position = Vector2(4632, 952)
 
 [node name="Ring76" parent="Rings" instance=ExtResource("29_3q16r")]
-position = Vector2(4572, 960)
+position = Vector2(4572, 976)
 
 [node name="Ring77" parent="Rings" instance=ExtResource("29_3q16r")]
-position = Vector2(4596, 960)
+position = Vector2(4596, 976)
 
 [node name="Ring78" parent="Rings" instance=ExtResource("29_3q16r")]
-position = Vector2(4620, 960)
+position = Vector2(4620, 976)
 
 [node name="Ring79" parent="Rings" instance=ExtResource("29_3q16r")]
-position = Vector2(4644, 960)
+position = Vector2(4644, 976)
 
 [node name="Ring80" parent="Rings" instance=ExtResource("29_3q16r")]
-position = Vector2(4584, 984)
+position = Vector2(4584, 1000)
 
 [node name="Ring81" parent="Rings" instance=ExtResource("29_3q16r")]
-position = Vector2(4608, 984)
+position = Vector2(4608, 1000)
 
 [node name="Ring82" parent="Rings" instance=ExtResource("29_3q16r")]
-position = Vector2(4632, 984)
+position = Vector2(4632, 1000)
 
 [node name="Ring83" parent="Rings" instance=ExtResource("29_3q16r")]
 position = Vector2(4872, 400)
@@ -1718,6 +1763,21 @@ position = Vector2(10096, 1368)
 [node name="Ring207" parent="Rings" instance=ExtResource("29_3q16r")]
 position = Vector2(10120, 1368)
 
+[node name="Ring208" parent="Rings" instance=ExtResource("29_3q16r")]
+position = Vector2(4208, 1512)
+
+[node name="Ring209" parent="Rings" instance=ExtResource("29_3q16r")]
+position = Vector2(4208, 1552)
+
+[node name="Ring210" parent="Rings" instance=ExtResource("29_3q16r")]
+position = Vector2(4208, 1592)
+
+[node name="Ring211" parent="Rings" instance=ExtResource("29_3q16r")]
+position = Vector2(4208, 1632)
+
+[node name="Ring212" parent="Rings" instance=ExtResource("29_3q16r")]
+position = Vector2(4208, 1672)
+
 [node name="SlotMachineManager" type="Node" parent="."]
 script = ExtResource("25_j7vub")
 
@@ -1749,7 +1809,7 @@ position = Vector2(2176, 1176)
 position = Vector2(4608, 1120)
 
 [node name="CNZSlot6" parent="SlotMachineManager" instance=ExtResource("24_vdjfc")]
-position = Vector2(5632, 1376)
+position = Vector2(5632, 1424)
 
 [node name="CNZSlot7" parent="SlotMachineManager" instance=ExtResource("24_vdjfc")]
 position = Vector2(5632, 1616)
