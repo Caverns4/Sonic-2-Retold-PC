@@ -34,7 +34,7 @@ hframes = 2
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 visible = false
 z_index = -100
-position = Vector2(0, -160)
+position = Vector2(0, -200)
 rect = Rect2(-160, -10, 320, 224)
 
 [connection signal="area_entered" from="Masher/DamageArea" to="Masher" method="_on_DamageArea_area_entered"]

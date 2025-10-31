@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfesqgvh63scg"
-path="res://.godot/imported/Amy.png-0da14c41a1f90f960604a265de7e6bd6.ctex"
+uid="uid://cxhwsnexniv60"
+path="res://.godot/imported/SS_Amy.png-78823b2b8f4b84b33c3552a5bff65242.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Players/Amy.png"
-dest_files=["res://.godot/imported/Amy.png-0da14c41a1f90f960604a265de7e6bd6.ctex"]
+source_file="res://Graphics/Special Stage/SS_Amy.png"
+dest_files=["res://.godot/imported/SS_Amy.png-78823b2b8f4b84b33c3552a5bff65242.ctex"]
 
 [params]
 
@@ -37,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

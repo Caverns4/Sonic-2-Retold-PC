@@ -15,7 +15,7 @@ const HANG_OFFSET = 20
 func _ready():
 	$Grab.stream = grabSound
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	for body in players:
 		if body.poleGrabID == self:
 			body.global_position.y = global_position.y + HANG_OFFSET
@@ -28,6 +28,7 @@ func _player_jumpoff(body:Player2D):
 	if players.has(body):
 		body.animator.play("hang")
 		body.set_state(body.STATES.AIR)
+		body.airControl = true
 		body.movement.x = 120*body.direction
 		body.movement.y = -240
 		body.allowTranslate = false
@@ -35,7 +36,7 @@ func _player_jumpoff(body:Player2D):
 		players.erase(body)
 
 # All that happens in phyhsics process is the player checks 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	for body in players:
 		if (!body.poleGrabID and 
 		body.movement.y > 0 and 
@@ -48,7 +49,7 @@ func _physics_process(delta: float) -> void:
 			body.allowTranslate = true
 			body.animator.play("hang")
 			body.set_state(body.STATES.HANG,body.currentHitbox.NORMAL)
-			$Grab.play
+			$Grab.play()
 
 
 func _on_body_entered(body: Player2D) -> void:

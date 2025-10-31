@@ -110,6 +110,9 @@ func physics_collision(player, hitVector):
 
 func _on_area_2d_body_entered(body: Player2D) -> void:
 	players.append(body)
+	if abs(body.movement.x) > 60.0:
+		body.movement.x = 60.0 * direction
+		
 
 
 func _on_area_2d_body_exited(body: Player2D) -> void:

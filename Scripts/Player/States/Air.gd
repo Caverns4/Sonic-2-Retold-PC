@@ -47,20 +47,21 @@ func _process(_delta):
 						if !$"../../InvincibilityBarrier".visible:
 							match (parent.shield):
 								# insta shield
-								#parent.SHIELDS.NONE:
+								parent.SHIELDS.NONE:
+									parent.airControl = true
 								#	parent.sfx[16].play()
 								#	parent.shieldSprite.play("Insta")
-								#	parent.shieldSprite.frame = 0
+									parent.shieldSprite.frame = 0
 								#	parent.shieldSprite.visible = true
-									# enable insta shield hitbox
+								#	enable insta shield hitbox
 								#	parent.shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled = false
-									# wait for animation for the shield to finish
+								# 	wait for animation for the shield to finish
 								#	await parent.shieldSprite.animation_finished
-									# check shields hasn't changed
+								#	check shields hasn't changed
 								#	if (parent.shield == parent.SHIELDS.NONE):
 								#		parent.shieldSprite.visible = false
 								#		parent.shieldSprite.stop()
-									# disable insta shield
+								#	disable insta shield
 								#	parent.shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled = true
 								
 								# elec shield action
@@ -135,6 +136,11 @@ func _process(_delta):
 						parent.sfx[30].play()
 						# play dropDash animation
 						parent.animator.play("dropDash")
+						await get_tree().create_timer(0.2).timeout #12 frames of true invinicibility.
+						# disable insta shield
+						parent.shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled = true
+						
+						
 					Global.CHARACTERS.MIGHTY:
 						if !parent.abilityUsed:
 							# set ability used to true to prevent multiple uses

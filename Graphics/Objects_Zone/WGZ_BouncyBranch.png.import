@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfesqgvh63scg"
-path="res://.godot/imported/Amy.png-0da14c41a1f90f960604a265de7e6bd6.ctex"
+uid="uid://duqfnuydavynf"
+path="res://.godot/imported/WGZ_BouncyBranch.png-05462a3b2a4eab90630a9644bebec7b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Players/Amy.png"
-dest_files=["res://.godot/imported/Amy.png-0da14c41a1f90f960604a265de7e6bd6.ctex"]
+source_file="res://Graphics/Objects_Zone/WGZ_BouncyBranch.png"
+dest_files=["res://.godot/imported/WGZ_BouncyBranch.png-05462a3b2a4eab90630a9644bebec7b2.ctex"]
 
 [params]
 

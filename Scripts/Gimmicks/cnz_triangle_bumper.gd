@@ -7,20 +7,21 @@ var bounceSound = preload("res://Audio/SFX/Objects/CNZ_BigBumper.wav")
 #Bounce off based on the angle of the player relative to the object.
 
 func physics_collision(body: Player2D, _hitVector):
+	var bounce: bool = false
+	
 	var col = body.objectCheck.get_collision_normal()
-	if col:
+	if col and (col.x != 0 and col.y != 0):
 		body.movement = (col.normalized()*power)
+		bounce = true
 	else:
 		var posedif = body.global_position - global_position
-		posedif = posedif.normalized()
-		#print(posedif)
-		if posedif.y > abs(posedif.x):
+		if posedif.y > 0 and abs(posedif.x) < 32 and body.movement.y <= 0:
 			body.movement.y = 60
-		#else:
-		#	body.movement.x = -power/2*sign(0-posedif.x)
-	body.set_state(body.STATES.AIR)
-	body.angle = 0
-	body.ground = false
-	if body.currentState == body.STATES.JUMP: # set the state to air
+			bounce = true
+	if bounce:
 		body.set_state(body.STATES.AIR)
-	SoundDriver.play_sound(bounceSound)
+		body.angle = 0
+		body.ground = false
+		if body.currentState == body.STATES.JUMP: # set the state to air
+			body.set_state(body.STATES.AIR)
+		SoundDriver.play_sound(bounceSound)

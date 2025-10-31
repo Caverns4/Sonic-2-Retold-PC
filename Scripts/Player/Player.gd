@@ -6,7 +6,7 @@ const HITBOXESSONIC = {
 	CROUCH = Vector2(9,11)*2, 
 	GLIDE = Vector2(10,10)*2, 
 	HORIZONTAL = Vector2(22,9)*2}
-# Tails, Amy
+# Tails & Amy
 const HITBOXESTAILS = {
 	NORMAL = Vector2(9,15)*2, 
 	ROLL = Vector2(7,14)*2, 
@@ -36,37 +36,52 @@ var slprolldown: float = 0.3125		#slope factor when rolling downhill
 var fall: float = 2.5*60			#tolerance ground speed for sticking to walls and ceilings
 
 #Sonic's Airborne Speed Constants
-#var air = 0.09375			#air acceleration (2x acc)
-var jmp = 6.5*60			#jump force (6 for knuckles)
-var grv = 0.21875			#gravity
-var releaseJmp = 4			#jump release velocity
+var jmp: float = 6.5*60			#jump force (6 for knuckles)
+var grv: float = 0.21875			#gravity
+var releaseJmp: float = 4			#jump release velocity
 
 var spindashPower: float = 0.0
 var peelOutCharge: float = 0.0
+## If the Character has used their air ability.
 var abilityUsed: bool = false
+## This is Mighty-specific. If the character is in a ball with armor.
 var curled: bool = false
-var bounceReaction: float = 0 # for bubble shield
+## Amount to bounce when landing from a Bubble Shield or Mighty stomp.
+var bounceReaction: float = 0
+## Invulnerability time remaining (Seconds)
 var invTime: float = 0
+## This is also used for invincibility monitors. When super, it doesn't count down.
 var supTime: float = 0
+## True is the Character is in Super Form. Depends on invTime.
 var isSuper: bool = false
+## Speed Shoes time remaining (Seconds)
 var shoeTime: float = 0
+## Time remaining for the player can interact with Rings again (Seconds)
 var ringDisTime: float = 0 # ring collecting disable timer
 
 # water settings
+## If true, the Player is treated as underwater.
 var is_in_water: bool = false
+## Breath remaining (Seconds)
 var airTimer: float = defaultAirTime
 # force roll variables
-var forceRoll: int = 0 # each force roll object the player is in, this increments.
+## The number of force roll objects the player is interacting with.
+var forceRoll: int = 0
+## The direction the player is pushed in if they happen to lose too much momentum.
 var forceDirection: int = 0
+## If the Player presses jump too early, jump presses are stored here. This also helps prevent missed inputs from physics oddities.
 var jumpBuffer: float = 0.0
 
 # collision related values
+## This is the DIRECTION of the pushed wall.
 var pushingWall: int = 0
-
+## Number of enmies the player has defeated since leaving the ground.
 var enemyCounter: int = 0
+## If the player dies (in two player mode), they will respawn here. Essentially useless in single player.
 var respawnPosition: Vector2i = Vector2.ZERO
-
+## Global.CHARACTERS ID
 var character: int = Global.CHARACTERS.SONIC
+## Strength level of this character.
 var strength: Global.STRENGTH_TIER = Global.STRENGTH_TIER.NORMAL
 
 # physics list order
@@ -99,6 +114,7 @@ const waterPhysicsListNew: Array = [
 # 3 Super Forms besides Sonic
 [12/256.0, 0.375, 12/256.0,8*60, 0, 8/256.0, 32/256.0],
 ]
+
 #Depricated
 const waterPhysicsList: Array = [
 # 0 Sonic (Primary Character physics)
@@ -125,10 +141,11 @@ var superSprite = load("res://Graphics/Players/SuperSonic.png")
 var playerPal = preload("res://Shaders/PlayerPalette.tres")
 
 # ================
-
+## Timer before the Player can input left/right. 
 var horizontalLockTimer: float = 0
 ## Updating the angle over time helps prevent angle "fighting"
 var spriteRotation: float = 0
+## If false, ignore player left/right inputs in the air (Roll jumping).
 var airControl: bool = true
 
 # States
@@ -1398,9 +1415,8 @@ func cam_update(forceMove = false):
 	if rachetScrollBottom:
 		limitBottom = max(limitBottom,camera.get_screen_center_position().y+viewSize.y/2)
 
-func lock_camera(time = 1):
+func lock_camera(time: float = 1):
 	camLockTime = max(time,camLockTime)
-	
 
 func snap_camera_to_limits():
 	camera.limit_left = max(limitLeft,Global.hardBorderLeft)
@@ -1500,7 +1516,7 @@ func action_water_run_handle():
 	else:
 		sfx[29].stop()
 
-func handle_animation_speed(gSpeed = groundSpeed):
+func handle_animation_speed(gSpeed: float = groundSpeed):
 	match(animator.current_animation):
 		"walk", "run", "peelOut":
 			var duration = floor(max(0,8.0-abs(gSpeed/60.0)))

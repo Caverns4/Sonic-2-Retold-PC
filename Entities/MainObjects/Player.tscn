@@ -714,7 +714,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Insta",
-"speed": 30.0
+"speed": 25.0
 }]
 
 [sub_resource type="CircleShape2D" id="102"]
@@ -1339,8 +1339,9 @@ visible = false
 z_index = 6
 material = SubResource("2")
 sprite_frames = SubResource("57")
-animation = &"Default"
-frame_progress = 0.536007
+animation = &"Insta"
+frame = 5
+frame_progress = 1.0
 script = ExtResource("19")
 
 [node name="ShieldTimer" type="Timer" parent="Shields"]
