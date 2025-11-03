@@ -5,6 +5,7 @@ OIL_OCEAN,NEO_GREEN_HILL,METROPOLIS,DUST_HILL,
 WOOD_GADGET,CASINO_NIGHT,JEWEL_GROTTO,WINTER,
 SAND_SHOWER,TROPICAL,SKY_FORTRESS,DEATH_EGG,
 ENDING,SPECIAL_STAGE}
+# Winter Zone is scrapped, I just don't feel like removing all the references.
 
 #Two Player Mode flag. Either false or true.
 var two_player_mode = false

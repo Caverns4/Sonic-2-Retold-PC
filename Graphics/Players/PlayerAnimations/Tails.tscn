@@ -1,10 +1,11 @@
-[gd_scene load_steps=78 format=3 uid="uid://by3kgbgiinm60"]
+[gd_scene load_steps=80 format=3 uid="uid://by3kgbgiinm60"]
 
-[ext_resource type="Material" uid="uid://bveqi5m5ihsgj" path="res://Shaders/PlayerPalette.tres" id="1"]
 [ext_resource type="Texture2D" uid="uid://c05fsbnx0p7xf" path="res://Graphics/Players/Tails.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://dlomjk6vm15ep" path="res://Graphics/Misc/DashDust.png" id="3"]
 [ext_resource type="Script" uid="uid://nuug3t5ikkw1" path="res://Scripts/Player/TailsAnimator.gd" id="4"]
 [ext_resource type="Script" uid="uid://cd5v27g17hp0v" path="res://Scripts/Player/TailsSpriteSettings.gd" id="5"]
+[ext_resource type="Shader" uid="uid://drq4hwqwwn03c" path="res://Shaders/PaletteSwapRow.gdshader" id="5_5niup"]
+[ext_resource type="Texture2D" uid="uid://dh6fghheeip4i" path="res://Graphics/Palettes/SuperTails.png" id="6_1lxhp"]
 [ext_resource type="Texture2D" uid="uid://dvqglf8dididc" path="res://Graphics/Items/shield_plain.png" id="6_kof51"]
 
 [sub_resource type="Animation" id="86"]
@@ -1198,6 +1199,14 @@ _data = {
 &"yRotationLookUp": SubResource("135")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7tbjw"]
+shader = ExtResource("5_5niup")
+shader_parameter/amount = 4.0
+shader_parameter/palRows = 16.0
+shader_parameter/row = 1.0
+shader_parameter/approximation = 0.0
+shader_parameter/paletteTexture = ExtResource("6_1lxhp")
+
 [sub_resource type="AtlasTexture" id="89"]
 atlas = ExtResource("3")
 region = Rect2(0, 0, 48, 48)
@@ -1654,13 +1663,12 @@ autoplay = "idle"
 [node name="Sprite2D" type="Sprite2D" parent="."]
 light_mask = 4096
 z_index = 5
-material = ExtResource("1")
+material = SubResource("ShaderMaterial_7tbjw")
 position = Vector2(0, -4)
 texture = ExtResource("2")
 offset = Vector2(0, -5)
 hframes = 16
 vframes = 8
-frame = 30
 script = ExtResource("5")
 
 [node name="DashDust" type="AnimatedSprite2D" parent="Sprite2D"]
@@ -1674,7 +1682,7 @@ offset = Vector2(-9, -4)
 visible = false
 show_behind_parent = true
 light_mask = 4096
-material = ExtResource("1")
+material = SubResource("ShaderMaterial_7tbjw")
 rotation = 6.28318
 texture = ExtResource("2")
 offset = Vector2(-5, -7)

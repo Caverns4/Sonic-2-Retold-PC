@@ -261,6 +261,7 @@ func HandleHUDBlinking(delta):
 func UpdateHUD(_delta):
 	# clamp time so that it won't go to 10 minutes
 	var hud_time = min(Global.levelTime,Global.maxTime-0.001)
+	@warning_ignore("integer_division")
 	var hud_time_minutes: int = int(hud_time)/60
 	var hud_time_seconds: int = int(hud_time)%60
 	var hud_time_hundredths:int = int(hud_time * 100) % 100
@@ -283,8 +284,8 @@ func UpdateHUD(_delta):
 		$P1Counters/LifeIcon/LifeText.text = "%3d" % Global.lives
 		$P2Counters/LifeIcon/LifeText.text = "%3d" % Global.livesP2
 		if $Timer.time_left > 0:
-			$DeathTimers/CountdownP1.text = str(ceil($Timer.time_left))
-			$DeathTimers/CountdownP2.text = str(ceil($Timer.time_left))
+			$DeathTimers/CountdownP1.text = str( int($Timer.time_left) ).pad_zeros(2)
+			$DeathTimers/CountdownP2.text = str( int($Timer.time_left) ).pad_zeros(2)
 	else:
 		# set score string to match global score with leading 0s
 		scoreText.text = "%6d" % Global.score
@@ -383,7 +384,7 @@ func SetupGameOver(_delta):
 			Global.levelTimeP2 = 0
 
 ## Run Stage Clear Functionality
-func ProcessStageClear(delta):
+func ProcessStageClear(_delta):
 	# initialize stage clear sequence
 	if !isStageEnding:
 		

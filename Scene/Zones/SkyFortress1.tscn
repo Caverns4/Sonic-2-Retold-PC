@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=4 uid="uid://bsgfc2hjo6knr"]
+[gd_scene load_steps=16 format=4 uid="uid://bsgfc2hjo6knr"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_f2s8f"]
 [ext_resource type="AudioStream" uid="uid://chigxw75acdkr" path="res://Audio/Soundtrack/s2br_SkyFortress.ogg" id="2_5abqf"]
+[ext_resource type="AudioStream" uid="uid://tmgggw0smfu2" path="res://Audio/Soundtrack/s2br_WinterHill.ogg" id="2_j55bp"]
 [ext_resource type="TileSet" uid="uid://boj0ri7pkn13m" path="res://Tileset/Levels/SCZ.tres" id="5_g1ite"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_vrigx"]
 [ext_resource type="PackedScene" uid="uid://oce7phvjxdbv" path="res://Entities/Misc/Tornado.tscn" id="6_blbh4"]
@@ -23,7 +24,7 @@ point_count = 2
 [node name="SkyFortress1" type="Node2D"]
 script = ExtResource("1_f2s8f")
 zoneID = 14
-music = ExtResource("2_5abqf")
+music = ExtResource("2_j55bp")
 music2P = ExtResource("2_5abqf")
 animal1 = 8
 animal2 = 3

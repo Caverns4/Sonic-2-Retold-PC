@@ -1,6 +1,6 @@
 extends Node
 
-const NUM_SPRITES: int = 4
+const NUM_SPRITES: int = 3
 const TIME_BETWEEN: float = 0.0667
 
 ## Array of sprites.
@@ -13,12 +13,19 @@ var sprite_timer: float = TIME_BETWEEN
 @onready var player: Player2D = get_parent()
 
 func _ready() -> void:
+	call_deferred("_check_character")
 	var parent_node: Node = player.get_parent()
 	for i in NUM_SPRITES:
 		var sprite: Sprite2D = Sprite2D.new()
 		parent_node.call_deferred("add_child",sprite)
 		sprites.append(sprite)
 	player.turned_super.connect(activate)
+
+func _check_character():
+	if player.character != Global.CHARACTERS.SONIC:
+		for i in sprites:
+			i.queue_free()
+		queue_free()
 
 func activate():
 	active = true

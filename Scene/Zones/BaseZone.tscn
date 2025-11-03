@@ -35,6 +35,7 @@
 script = ExtResource("2")
 zoneID = 4
 music = ExtResource("2_tkxs0")
+music2P = ExtResource("2_tkxs0")
 animal1 = 4
 animal2 = 5
 defaultBottomBoundry = 1920
@@ -431,19 +432,16 @@ position = Vector2(10432, 896)
 position = Vector2(9024, 240)
 pieces = Vector2(4, 4)
 SpriteTexture = ExtResource("18_8qid8")
-knockBack = null
 
 [node name="Breakable2" parent="Entities" instance=ExtResource("17_baqjm")]
 position = Vector2(10432, 880)
 pieces = Vector2(4, 4)
 SpriteTexture = ExtResource("18_8qid8")
-knockBack = null
 
 [node name="Breakable3" parent="Entities" instance=ExtResource("17_baqjm")]
 position = Vector2(9920, 1392)
 pieces = Vector2(4, 4)
 SpriteTexture = ExtResource("18_8qid8")
-knockBack = null
 
 [node name="Spring3" parent="Entities" instance=ExtResource("13_i3joy")]
 position = Vector2(10864, 1800)
