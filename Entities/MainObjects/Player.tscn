@@ -1,4 +1,4 @@
-[gd_scene load_steps=203 format=4 uid="uid://cioq5saowvqxj"]
+[gd_scene load_steps=204 format=4 uid="uid://cioq5saowvqxj"]
 
 [ext_resource type="Script" uid="uid://b8n3tffrte7fv" path="res://Scripts/Player/Player.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://d1e4muavtnun6" path="res://Graphics/Players/PlayerAnimations/Sonic.tscn" id="2"]
@@ -67,6 +67,7 @@
 [ext_resource type="Texture2D" uid="uid://b1k615l251fu5" path="res://Graphics/Misc/WaterSurfaceSplash.png" id="64_ovmgw"]
 [ext_resource type="AudioStream" uid="uid://buu4anko53vx2" path="res://Audio/SFX/Objects/ChemJump.wav" id="65_7v2sx"]
 [ext_resource type="AudioStream" uid="uid://cdtor5hfjq5w1" path="res://Audio/SFX/Player/s2br_Stomp.wav" id="66_ues7n"]
+[ext_resource type="Script" uid="uid://cb3yg4lwjxi3p" path="res://Scripts/Player/player_after_images.gd" id="67_0chip"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 resource_local_to_scene = true
@@ -1549,6 +1550,9 @@ bus = &"SFX"
 stream = ExtResource("66_ues7n")
 volume_db = 15.0
 bus = &"SFX"
+
+[node name="PlayerAfterImages" type="Node" parent="."]
+script = ExtResource("67_0chip")
 
 [node name="CrushSensorLeft" type="Area2D" parent="."]
 position = Vector2(-8, 0)

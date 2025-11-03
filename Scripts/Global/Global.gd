@@ -73,7 +73,7 @@ var continues = 0 #Never used
 var scoreP2 = 0
 var livesP2 = 3
 # emeralds use bitwise flag operations, the equivelent for 7 emeralds would be 127
-var emeralds = 0
+var emeralds = 127
 # emerald bit flags
 enum EMERALD {
 	CYAN=1,

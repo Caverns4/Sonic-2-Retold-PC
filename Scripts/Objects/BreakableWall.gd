@@ -2,7 +2,7 @@ extends StaticBody2D
 @export var texture = preload("res://Graphics/Obstacles/Blocks/small_block2.png")
 @export var pieces = Vector2(1,1)
 var Piece = preload("res://Entities/Misc/BlockPiece.tscn")
-@export var sound = preload("res://Audio/SFX/Gimmicks/Collapse.wav")
+@export var sound = preload("res://Audio/SFX/Gimmicks/s2br_Collapse.wav")
 
 @export_enum("Normal","Fragile")var type = 0
 enum TYPE {NORMAL,CD}

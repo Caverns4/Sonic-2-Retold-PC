@@ -5,4 +5,3 @@ extends Node2D
 
 func _ready() -> void:
 	$Masher.jumpHeight = jumpHeight
-	$VisibleOnScreenEnabler2D.visible = true

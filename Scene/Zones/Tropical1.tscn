@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://doa3l4i0elj6x"]
+[gd_scene load_steps=30 format=4 uid="uid://doa3l4i0elj6x"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_5m80k"]
 [ext_resource type="AudioStream" uid="uid://c5w5g34eta480" path="res://Audio/Soundtrack/GremeraldHillZone.ogg" id="2_jmnhx"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bct374kjctkxr" path="res://Entities/Items/Checkpoint.tscn" id="12_ha8ae"]
 [ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="12_xoec6"]
 [ext_resource type="Texture2D" uid="uid://cp6jo03lhimqi" path="res://Graphics/Obstacles/Blocks/HTZ_Boulder.png" id="13_3qwgs"]
+[ext_resource type="PackedScene" uid="uid://deeopkxf5fwh4" path="res://Entities/Obstacles/BreakableWall.tscn" id="14_cwk8f"]
 [ext_resource type="Texture2D" uid="uid://ci13nuikdwatn" path="res://Graphics/Tiles/WorldsTiles/EHZ_Platform_Large.png" id="15_rtglf"]
 [ext_resource type="PackedScene" uid="uid://cfteqnft5ynr7" path="res://Entities/Hazards/Spikes.tscn" id="16_cb774"]
 [ext_resource type="PackedScene" uid="uid://di23q55vk6wuq" path="res://Entities/ZoneObjects/EHZ_collapsing_platform.tscn" id="16_rtglf"]
@@ -364,6 +365,122 @@ position = Vector2(16816, 2196)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("13_3qwgs")
 strength_tier = 2
+
+[node name="BustableWall" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10632, 1672)
+
+[node name="BustableWall2" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10632, 1688)
+
+[node name="BustableWall3" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10632, 1704)
+
+[node name="BustableWall4" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10632, 1720)
+
+[node name="BustableWall5" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10648, 1672)
+
+[node name="BustableWall6" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10648, 1688)
+
+[node name="BustableWall7" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10648, 1704)
+
+[node name="BustableWall8" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10648, 1720)
+
+[node name="BustableWall9" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10664, 1672)
+
+[node name="BustableWall10" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10664, 1688)
+
+[node name="BustableWall11" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10664, 1704)
+
+[node name="BustableWall12" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10664, 1720)
+
+[node name="BustableWall13" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10680, 1672)
+
+[node name="BustableWall14" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10680, 1688)
+
+[node name="BustableWall15" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10680, 1704)
+
+[node name="BustableWall16" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10680, 1720)
+
+[node name="BustableWall17" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10696, 1672)
+
+[node name="BustableWall18" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10696, 1688)
+
+[node name="BustableWall19" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10696, 1704)
+
+[node name="BustableWall20" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10696, 1720)
+
+[node name="BustableWall21" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10712, 1672)
+
+[node name="BustableWall22" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10712, 1688)
+
+[node name="BustableWall23" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10712, 1704)
+
+[node name="BustableWall24" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10712, 1720)
+
+[node name="BustableWall25" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10728, 1672)
+
+[node name="BustableWall26" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10728, 1688)
+
+[node name="BustableWall27" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10728, 1704)
+
+[node name="BustableWall28" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10728, 1720)
+
+[node name="BustableWall29" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10744, 1672)
+
+[node name="BustableWall30" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10744, 1688)
+
+[node name="BustableWall31" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10744, 1704)
+
+[node name="BustableWall32" parent="Entities" instance=ExtResource("14_cwk8f")]
+position = Vector2(10744, 1720)
+
+[node name="InvisibleBarrier" parent="Entities" instance=ExtResource("17_tm15y")]
+position = Vector2(17184, 1920)
+scale = Vector2(2, 8)
+
+[node name="InvisibleBarrier2" parent="Entities" instance=ExtResource("17_tm15y")]
+position = Vector2(17312, 2016)
+scale = Vector2(6, 2)
+
+[node name="InvisibleBarrier3" parent="Entities" instance=ExtResource("17_tm15y")]
+position = Vector2(13728.001, 1911.9999)
+scale = Vector2(6, 10)
+
+[node name="InvisibleBarrier4" parent="Entities" instance=ExtResource("17_tm15y")]
+position = Vector2(9888, 1631.9999)
+scale = Vector2(6, 10)
+
+[node name="InvisibleBarrier5" parent="Entities" instance=ExtResource("17_tm15y")]
+position = Vector2(15776, 1951.9999)
+scale = Vector2(6, 10)
 
 [node name="Platforms" type="Node" parent="."]
 
@@ -1353,3 +1470,366 @@ position = Vector2(9176, 1176)
 
 [node name="Ring109" parent="Rings" instance=ExtResource("24_b1sbj")]
 position = Vector2(9208, 1192)
+
+[node name="Ring128" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(10376, 1200)
+
+[node name="Ring129" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(10400, 1200)
+
+[node name="Ring130" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(10424, 1200)
+
+[node name="Ring131" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(10728, 1176)
+
+[node name="Ring132" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(10728, 1200)
+
+[node name="Ring133" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(10728, 1224)
+
+[node name="Ring134" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(10728, 1248)
+
+[node name="Ring135" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(10728, 1272)
+
+[node name="Ring136" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(11376, 1264)
+
+[node name="Ring137" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(11400, 1264)
+
+[node name="Ring138" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(11424, 1264)
+
+[node name="Ring139" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(11448, 1264)
+
+[node name="Ring140" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(11472, 1264)
+
+[node name="Ring141" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(11376, 1656)
+
+[node name="Ring142" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(11400, 1656)
+
+[node name="Ring143" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(11424, 1656)
+
+[node name="Ring144" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(11448, 1656)
+
+[node name="Ring145" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(11472, 1656)
+
+[node name="Ring146" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(12128, 1432)
+
+[node name="Ring147" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(12368, 1432)
+
+[node name="Ring148" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(12136, 1496)
+
+[node name="Ring149" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(12360, 1496)
+
+[node name="Ring150" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(12160, 1528)
+
+[node name="Ring151" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(12336, 1528)
+
+[node name="Ring152" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(12192, 1552)
+
+[node name="Ring153" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(12304, 1552)
+
+[node name="Ring154" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(12248, 1560)
+
+[node name="Ring155" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(12368, 1584)
+
+[node name="Ring156" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(12368, 1624)
+
+[node name="Ring157" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(12368, 1664)
+
+[node name="Ring158" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(12360, 1696)
+
+[node name="Ring159" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(12344, 1720)
+
+[node name="Ring160" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(12312, 1744)
+
+[node name="Ring161" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(12280, 1744)
+
+[node name="Ring162" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(12240, 1728)
+
+[node name="Ring163" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(12120, 1896)
+
+[node name="Ring164" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(12144, 1896)
+
+[node name="Ring165" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(12976, 1552)
+
+[node name="Ring166" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(12976, 1592)
+
+[node name="Ring167" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(12976, 1632)
+
+[node name="Ring168" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(12976, 1672)
+
+[node name="Ring169" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(12992, 1712)
+
+[node name="Ring170" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13024, 1736)
+
+[node name="Ring171" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13064, 1744)
+
+[node name="Ring172" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13104, 1736)
+
+[node name="Ring173" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13368, 1680)
+
+[node name="Ring174" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13512, 1680)
+
+[node name="Ring175" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13360, 1640)
+
+[node name="Ring176" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13520, 1640)
+
+[node name="Ring177" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13368, 1600)
+
+[node name="Ring178" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13512, 1600)
+
+[node name="Ring179" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13408, 1568)
+
+[node name="Ring180" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13472, 1568)
+
+[node name="Ring181" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13440, 1560)
+
+[node name="Ring182" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13336, 1520)
+
+[node name="Ring183" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13360, 1520)
+
+[node name="Ring184" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13384, 1520)
+
+[node name="Ring185" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13408, 1520)
+
+[node name="Ring186" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13348, 1496)
+
+[node name="Ring187" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13372, 1496)
+
+[node name="Ring188" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13396, 1496)
+
+[node name="Ring189" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13360, 1472)
+
+[node name="Ring190" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13384, 1472)
+
+[node name="Ring191" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13372, 1448)
+
+[node name="Ring192" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13472, 1520)
+
+[node name="Ring193" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13496, 1520)
+
+[node name="Ring194" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13520, 1520)
+
+[node name="Ring195" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13544, 1520)
+
+[node name="Ring196" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13484, 1496)
+
+[node name="Ring197" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13508, 1496)
+
+[node name="Ring198" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13532, 1496)
+
+[node name="Ring199" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13496, 1472)
+
+[node name="Ring200" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13520, 1472)
+
+[node name="Ring201" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13508, 1448)
+
+[node name="Ring202" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13840, 1712)
+
+[node name="Ring203" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13864, 1704)
+
+[node name="Ring204" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13888, 1688)
+
+[node name="Ring205" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(13896, 1664)
+
+[node name="Ring206" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(14160, 1592)
+
+[node name="Ring207" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(14184, 1592)
+
+[node name="Ring208" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(14288, 1568)
+
+[node name="Ring209" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(14312, 1568)
+
+[node name="Ring210" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(14480, 1592)
+
+[node name="Ring211" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(14504, 1592)
+
+[node name="Ring212" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(14608, 1568)
+
+[node name="Ring213" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(14632, 1568)
+
+[node name="Ring214" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(14736, 1568)
+
+[node name="Ring215" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(14760, 1568)
+
+[node name="Ring216" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(14928, 1568)
+
+[node name="Ring217" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(14952, 1568)
+
+[node name="Ring218" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(15064, 1600)
+
+[node name="Ring219" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(15088, 1600)
+
+[node name="Ring220" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(15512, 1704)
+
+[node name="Ring221" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(15544, 1696)
+
+[node name="Ring222" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(15576, 1688)
+
+[node name="Ring223" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(15608, 1680)
+
+[node name="Ring224" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(15632, 1136)
+
+[node name="Ring225" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(15632, 1160)
+
+[node name="Ring226" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(15632, 1184)
+
+[node name="Ring227" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(15632, 1208)
+
+[node name="Ring228" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(15632, 1232)
+
+[node name="Ring229" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(15616, 1144)
+
+[node name="Ring230" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(15616, 1168)
+
+[node name="Ring231" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(15616, 1192)
+
+[node name="Ring232" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(15648, 1144)
+
+[node name="Ring233" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(15648, 1168)
+
+[node name="Ring234" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(15648, 1192)
+
+[node name="Ring235" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(16232, 1480)
+
+[node name="Ring236" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(16256, 1480)
+
+[node name="Ring237" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(16280, 1480)
+
+[node name="Ring238" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(16304, 1480)
+
+[node name="Ring239" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(16328, 1480)
+
+[node name="Ring240" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(16352, 1480)
+
+[node name="Ring241" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(16560, 1552)
+
+[node name="Ring242" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(16560, 1592)
+
+[node name="Ring243" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(16560, 1632)
+
+[node name="Ring244" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(16560, 1672)
+
+[node name="Ring245" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(16576, 1712)
+
+[node name="Ring246" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(16608, 1736)
+
+[node name="Ring247" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(16648, 1744)
+
+[node name="Ring248" parent="Rings" instance=ExtResource("24_b1sbj")]
+position = Vector2(16680, 1752)

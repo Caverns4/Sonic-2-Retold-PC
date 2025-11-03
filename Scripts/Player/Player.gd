@@ -22,7 +22,11 @@ const airWarning: float = 5.0 # time between air meter sound
 
 @export var disablePartner: bool = false
 
-#Sonic's Speed constants
+# Signals
+signal enemy_bounced
+signal turned_super
+
+# Speed variables
 var acc: float = 0.046875			#acceleration
 var dec: float = 0.5				#deceleration
 var frc: float = 0.046875			#friction (same as acc)
@@ -35,10 +39,13 @@ var slprollup: float = 0.078125		#slope factor when rolling uphill
 var slprolldown: float = 0.3125		#slope factor when rolling downhill
 var fall: float = 2.5*60			#tolerance ground speed for sticking to walls and ceilings
 
-#Sonic's Airborne Speed Constants
-var jmp: float = 6.5*60			#jump force (6 for knuckles)
-var grv: float = 0.21875			#gravity
-var releaseJmp: float = 4			#jump release velocity
+# Airborne Speed variables
+## jump force (6 for knuckles)
+var jmp: float = 6.5*60
+## gravity
+var grv: float = 0.21875
+## jump release velocity
+var releaseJmp: float = 4
 
 var spindashPower: float = 0.0
 var peelOutCharge: float = 0.0
@@ -53,7 +60,10 @@ var invTime: float = 0
 ## This is also used for invincibility monitors. When super, it doesn't count down.
 var supTime: float = 0
 ## True is the Character is in Super Form. Depends on invTime.
-var isSuper: bool = false
+var isSuper: bool = false:
+	set(value):
+		turned_super.emit()
+		isSuper = value
 ## Speed Shoes time remaining (Seconds)
 var shoeTime: float = 0
 ## Time remaining for the player can interact with Rings again (Seconds)
@@ -285,10 +295,6 @@ var cameraMargin = 16
 var poleGrabID = null
 ## A node, if any, that id overrideing normal object control.
 var controlObject = null
-
-# Enemy related
-@warning_ignore("unused_signal")
-signal enemy_bounced
 
 func _ready():
 	super()
