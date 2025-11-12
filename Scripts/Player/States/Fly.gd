@@ -80,7 +80,7 @@ func _physics_process(delta):
 	var carriedPlayer = null
 	
 	if carryBox.get_player_contacting_count() > 0:
-		carriedPlayer = carryBox.get_player(0)
+		carriedPlayer = carryBox.players[0]
 		SavedPartner = carriedPlayer
 
 	# Set carried player attributes when there *is* a carried player
@@ -90,22 +90,21 @@ func _physics_process(delta):
 			carriedPlayer.stateList[parent.STATES.AIR].lockDir = true
 			# set carried player direction
 			carriedPlayer.direction = parent.direction
-			carriedPlayer.sprite.flip_h = (parent.direction < 0)
+			carriedPlayer.sprite.flip_h = parent.sprite.flip_h
 			if PartnerPriority == 0:
 				PartnerPriority = carriedPlayer.z_index
 				carriedPlayer.z_index = parent.z_index-1
 		
 		# set immediate inputs if ai
 		if parent.playerControl == 0:
-			for i in range(parent.inputs.size()):
-				carriedPlayer.inputMemory[parent.INPUT_MEMORY_LENGTH-1][i] = carriedPlayer.inputs[i]
-				parent.inputs[i] = carriedPlayer.inputs[i]
+			#carriedPlayer.inputMemory[parent.INPUT_MEMORY_LENGTH-1] = carriedPlayer.inputs
+			parent.inputs = carriedPlayer.inputs
 			# Sonic 3 A.I.R. Hybrid Style - convert holding up into continual A presses while in AI mode
 			if parent.is_up_held():
 				parent.inputs[parent.INPUTS.ACTION] = 1
-			carryBox.playerCarryAI = 1
+			carryBox.playerCarryAI = true
 		else:
-			carryBox.playerCarryAI = 0
+			carryBox.playerCarryAI = false
 	
 	elif !carriedPlayer and SavedPartner:
 		SavedPartner.z_index = PartnerPriority

@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://ct8eli6int2kq" path="res://Scripts/Player/ShieldAnimations.gd" id="19"]
 [ext_resource type="Texture2D" uid="uid://frqq7h80cju8" path="res://Graphics/Items/shield_insta.png" id="20"]
 [ext_resource type="Texture2D" uid="uid://bjj8rpibbtgsk" path="res://Graphics/Items/S2Shield.png" id="22_gkej0"]
+[ext_resource type="Script" uid="uid://b3dlgsscem205" path="res://Scripts/Objects/hanger_2.gd" id="29_0chip"]
 [ext_resource type="AudioStream" uid="uid://j82xa85ycfx6" path="res://Audio/SFX/Player/InstShield.wav" id="32"]
 [ext_resource type="Texture2D" uid="uid://bihgasvpr4jyb" path="res://Graphics/Items/invincible_stars.png" id="33"]
 [ext_resource type="Script" uid="uid://dp4256rqs1q8i" path="res://Scripts/Player/States/CorkScrew.gd" id="35"]
@@ -53,7 +54,6 @@
 [ext_resource type="AudioStream" uid="uid://c6lhq5ur8p8f8" path="res://Audio/SFX/Player/s2br_Brake.wav" id="55_rye1s"]
 [ext_resource type="Script" uid="uid://bhp0vybycv8xf" path="res://Scripts/Player/States/Hang.gd" id="56"]
 [ext_resource type="AudioStream" uid="uid://b3m4vp1snp7i0" path="res://Audio/SFX/Player/s2br_TailsFly.wav" id="56_pgcrt"]
-[ext_resource type="Script" uid="uid://cyn486keal6mv" path="res://Scripts/Gimmicks/Hanger.gd" id="57"]
 [ext_resource type="AudioStream" uid="uid://b13bxfx1mjlhb" path="res://Audio/SFX/Player/s2br_TailsTired.wav" id="57_5d4tt"]
 [ext_resource type="Script" uid="uid://bchmn6wjdi3lj" path="res://Scripts/Player/States/Glide.gd" id="59"]
 [ext_resource type="AudioStream" uid="uid://cmh44m3x3us3a" path="res://Audio/SFX/Player/s2br_AirGulp.wav" id="59_ic2ra"]
@@ -1374,9 +1374,7 @@ visible = false
 position = Vector2(0, 8)
 collision_layer = 0
 collision_mask = 4096
-script = ExtResource("57")
-holdDownToDrop = true
-onlyActiveMovingDown = false
+script = ExtResource("29_0chip")
 
 [node name="HitBox" type="CollisionShape2D" parent="TailsCarryBox"]
 position = Vector2(0, -3.5)
@@ -1602,5 +1600,5 @@ offset = Vector2(-16, -8)
 [connection signal="timeout" from="BubbleTimer" to="." method="_on_BubbleTimer_timeout"]
 [connection signal="frame_changed" from="Shields" to="Shields" method="_on_Shields_frame_changed"]
 [connection signal="timeout" from="Shields/ShieldTimer" to="States/Jump" method="_on_ShieldTimer_timeout"]
-[connection signal="body_entered" from="TailsCarryBox" to="TailsCarryBox" method="_on_Hanger_body_entered"]
-[connection signal="body_exited" from="TailsCarryBox" to="TailsCarryBox" method="_on_Hanger_body_exited"]
+[connection signal="body_entered" from="TailsCarryBox" to="TailsCarryBox" method="_on_body_entered"]
+[connection signal="body_exited" from="TailsCarryBox" to="TailsCarryBox" method="_on_body_exited"]

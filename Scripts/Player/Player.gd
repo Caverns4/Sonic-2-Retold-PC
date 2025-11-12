@@ -1273,10 +1273,7 @@ func touch_ceiling():
 	movement.y = 0
 
 func land_floor():
-	curled = false
-	
-	if character == Global.CHARACTERS.MIGHTY and (abilityUsed):
-		curled = true
+	curled = (character == Global.CHARACTERS.MIGHTY and abilityUsed)
 
 	abilityUsed = false
 	# landing movement calculation
@@ -1483,15 +1480,13 @@ func action_move(delta):
 
 func action_jump(animation = "roll", airJumpControl = true, playSound=true):
 	if forceRoll <= 0: # check to prevent jumping in roll tubes
-		curled = false
+		curled = (character == Global.CHARACTERS.MIGHTY)
 		animator.play(animation)
 		animator.advance(0)
 		movement.y = -jmp
 		jumpBuffer = 0
 		if playSound:
 			sfx[0].play()
-		if Global.CHARACTERS.MIGHTY:
-			curled = true
 			
 		airControl = airJumpControl
 		cameraDragLerp = 1

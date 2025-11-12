@@ -51,7 +51,7 @@ func _process(_delta):
 									parent.airControl = true
 								#	parent.sfx[16].play()
 								#	parent.shieldSprite.play("Insta")
-									parent.shieldSprite.frame = 0
+								#	parent.shieldSprite.frame = 0
 								#	parent.shieldSprite.visible = true
 								#	enable insta shield hitbox
 								#	parent.shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled = false

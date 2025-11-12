@@ -1,14 +1,20 @@
 extends Area2D
 
 ## If true, align the player to the center of the bar.
-@export var setCenter = true
+@export var setCenter: bool = true
 ## Allow directional input on this vine/bar
-@export var directional_input = true
+@export var directional_input: bool = true
 ## Optionally set sound to play when making contact
 @export var grabSound = preload("res://Audio/SFX/Player/s2br_Grab.wav")
+## Press down to drop off the object instead of jump.
+@export var press_down_to_drop: bool = true
+## Not yet implimented
+@export var player_can_slide: bool = false
 
 ## Players hanging onto the vine
 var players: Array[Player2D] = []
+## If set to true, some paramaters about the object will behave slightly differently.
+var playerCarryAI: bool = false
 
 const HANG_OFFSET = 20
 
@@ -16,13 +22,10 @@ func _ready():
 	$Grab.stream = grabSound
 
 func _process(_delta: float) -> void:
-	for body in players:
+	for body:Player2D in players:
 		if body.poleGrabID == self:
-			body.global_position.y = global_position.y + HANG_OFFSET
-			if body.inputActions[body.INPUTS.XINPUT]:
-				body.direction = sign(body.INPUTS.XINPUT)
-			if body.any_action_pressed():
-				_player_jumpoff(body)
+			if $HitBox.disabled == true or body.is_on_floor():
+				_player_dropoff(body)
 
 func _player_jumpoff(body:Player2D):
 	if players.has(body):
@@ -33,13 +36,41 @@ func _player_jumpoff(body:Player2D):
 		body.movement.y = -240
 		body.allowTranslate = false
 		body.poleGrabID = null
-		players.erase(body)
+		_disconnect_player(body)
+
+func _player_dropoff(body:Player2D):
+	if players.has(body):
+		body.set_state(body.STATES.AIR)
+		body.airControl = true
+		body.allowTranslate = false
+		body.poleGrabID = null
+		_disconnect_player(body)
+
+## Remove the player from this object's detection.
+func _disconnect_player(body):
+	players.erase(body)
 
 # All that happens in phyhsics process is the player checks 
 func _physics_process(_delta: float) -> void:
-	for body in players:
-		if (!body.poleGrabID and 
-		body.movement.y > 0 and 
+	for body:Player2D in players:
+		if body.poleGrabID == self:
+			if !player_can_slide or playerCarryAI:
+				body.global_position.x = global_position.x
+				body.cam_update()
+			body.global_position.y = global_position.y + HANG_OFFSET
+			if body.any_action_pressed():
+				_player_jumpoff(body)
+			if body.inputActions[body.INPUTS.XINPUT]:
+				body.direction = sign(body.INPUTS.XINPUT)
+			if (body.is_down_held() and press_down_to_drop):
+				_player_dropoff(body)
+			
+			if playerCarryAI:
+				body.update_sensors()
+				if body.verticalSensorMiddle.is_colliding():
+					_player_dropoff(body)
+		
+		if (!body.poleGrabID and body.movement.y > 0 and 
 		body.global_position.y > global_position.y and 
 		!body.controlObject):
 			body.poleGrabID = self
@@ -52,14 +83,22 @@ func _physics_process(_delta: float) -> void:
 			$Grab.play()
 
 
+# Returns the count of players contacting with the hanger. Used by external scripts.
+func get_player_contacting_count():
+	return players.size()
+
+
 func _on_body_entered(body: Player2D) -> void:
-	players.append(body)
+	var parent = get_parent()
+	if body != parent:
+		players.append(body)
+		print(body)
 
 
 func _on_body_exited(body: Player2D) -> void:
 	if !body.poleGrabID == self:
-		players.erase(body)
+		_disconnect_player(body)
 	if body.poleGrabID == self && body.currentState != body.STATES.HANG:
 		body.poleGrabID = null
 		body.allowTranslate = false
-		players.erase(body)
+		_disconnect_player(body)
