@@ -1,9 +1,10 @@
-[gd_scene load_steps=40 format=4 uid="uid://esqx6201854"]
+[gd_scene load_steps=41 format=4 uid="uid://esqx6201854"]
 
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_67gif"]
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_swaun"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="2_0nln4"]
-[ext_resource type="AudioStream" uid="uid://dlgpinnh0yca3" path="res://Audio/Soundtrack/s2br_Metropolis.ogg" id="2_hx3eb"]
+[ext_resource type="AudioStream" uid="uid://bqki542g2mt4h" path="res://Audio/Soundtrack/s2br_Metropolis3.ogg" id="2_xntwa"]
+[ext_resource type="AudioStream" uid="uid://bomm2jjdsrep3" path="res://Audio/Soundtrack/s2br_Boss2.ogg" id="3_7hpa3"]
 [ext_resource type="PackedScene" uid="uid://br54h8eixiokf" path="res://Scene/Backgrounds/06-Metropolis.tscn" id="4_1dnfb"]
 [ext_resource type="Shader" uid="uid://dws4ymg0bel70" path="res://Shaders/PaletteSwapRow_Timerbased.gdshader" id="6_7hqel"]
 [ext_resource type="TileSet" uid="uid://b78s7tfu844gd" path="res://Tileset/Levels/MTZ_Tiles.tres" id="6_085do"]
@@ -50,8 +51,9 @@ shader_parameter/time_scale = 0.1
 [node name="Metropolis1" type="Node2D"]
 script = ExtResource("1_swaun")
 zoneID = 6
-music = ExtResource("2_hx3eb")
-music2P = ExtResource("2_hx3eb")
+music = ExtResource("2_xntwa")
+music2P = ExtResource("2_xntwa")
+boss_theme = ExtResource("3_7hpa3")
 animal1 = 9
 animal2 = 7
 defaultRightBoundry = 9088

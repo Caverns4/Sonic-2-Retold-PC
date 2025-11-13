@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=4 uid="uid://wc6hh8dbtg1w"]
+[gd_scene load_steps=11 format=4 uid="uid://wc6hh8dbtg1w"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_bgm8p"]
 [ext_resource type="AudioStream" uid="uid://chigxw75acdkr" path="res://Audio/Soundtrack/s2br_SkyFortress.ogg" id="2_1cysq"]
 [ext_resource type="PackedScene" uid="uid://cm6qjxupawbta" path="res://Scene/Backgrounds/14-SkyFortress.tscn" id="3_sfen5"]
-[ext_resource type="PackedScene" uid="uid://d2ectm23ulm50" path="res://Scene/Backgrounds/15-DeathEgg.tscn" id="4_etpkg"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_20kpp"]
 [ext_resource type="PackedScene" uid="uid://oce7phvjxdbv" path="res://Entities/Misc/Tornado.tscn" id="6_0fwjd"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_1g2m4"]
@@ -24,11 +23,6 @@ music = ExtResource("2_1cysq")
 music2P = ExtResource("2_1cysq")
 animal1 = 8
 animal2 = 3
-
-[node name="15-deathEgg" parent="." instance=ExtResource("4_etpkg")]
-offset = Vector2(0, -296)
-transform = Transform2D(1, 0, 0, 1, 0, -296)
-scroll_base_scale = Vector2(0, 1)
 
 [node name="15-skyFortress" parent="." instance=ExtResource("3_sfen5")]
 

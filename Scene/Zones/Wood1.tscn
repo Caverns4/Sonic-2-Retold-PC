@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_bq4rn"]
 [ext_resource type="AudioStream" uid="uid://cmtn72t7dtgf" path="res://Audio/Soundtrack/s2br_Tropical.ogg" id="2_qonje"]
-[ext_resource type="AudioStream" uid="uid://dlgpinnh0yca3" path="res://Audio/Soundtrack/s2br_Metropolis.ogg" id="3_gc0vh"]
+[ext_resource type="AudioStream" uid="uid://bqki542g2mt4h" path="res://Audio/Soundtrack/s2br_Metropolis3.ogg" id="3_ofqvb"]
 [ext_resource type="PackedScene" uid="uid://da47pd80u7kac" path="res://Scene/Backgrounds/08-WoodGadget.tscn" id="5_lmmyl"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_pa5el"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_13xdv"]
@@ -28,7 +28,7 @@
 script = ExtResource("1_bq4rn")
 zoneID = 8
 music = ExtResource("2_qonje")
-music2P = ExtResource("3_gc0vh")
+music2P = ExtResource("3_ofqvb")
 animal1 = 11
 animal2 = 12
 defaultRightBoundry = 11008

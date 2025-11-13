@@ -1,9 +1,11 @@
-[gd_scene load_steps=31 format=4 uid="uid://hj3tt0gklwba"]
+[gd_scene load_steps=33 format=4 uid="uid://hj3tt0gklwba"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="2_tkxs0"]
+[ext_resource type="AudioStream" uid="uid://b23aiesjup068" path="res://Audio/Soundtrack/s2br_HyperHyper.ogg" id="3_3iobi"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="3_hkybi"]
 [ext_resource type="PackedScene" uid="uid://cm1lcnrr22juy" path="res://Scene/Backgrounds/04-OilOcean.tscn" id="4_g00mk"]
+[ext_resource type="AudioStream" uid="uid://bomm2jjdsrep3" path="res://Audio/Soundtrack/s2br_Boss2.ogg" id="4_ueqy3"]
 [ext_resource type="TileSet" uid="uid://qd7e8tmf376" path="res://Tileset/Levels/OOZ.tres" id="5_rw54e"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="5_tgx6m"]
 [ext_resource type="Material" uid="uid://bmldxi1kyy54f" path="res://Shaders/Materials/OOZ_OilPalette.tres" id="6_fh7ua"]
@@ -35,7 +37,8 @@
 script = ExtResource("2")
 zoneID = 4
 music = ExtResource("2_tkxs0")
-music2P = ExtResource("2_tkxs0")
+music2P = ExtResource("3_3iobi")
+boss_theme = ExtResource("4_ueqy3")
 animal1 = 4
 animal2 = 5
 defaultBottomBoundry = 1920

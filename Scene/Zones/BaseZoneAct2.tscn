@@ -1,7 +1,9 @@
-[gd_scene load_steps=40 format=4 uid="uid://bjavywoj00j1j"]
+[gd_scene load_steps=42 format=4 uid="uid://bjavywoj00j1j"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="2_533ik"]
+[ext_resource type="AudioStream" uid="uid://bomm2jjdsrep3" path="res://Audio/Soundtrack/s2br_Boss2.ogg" id="3_uemc5"]
+[ext_resource type="AudioStream" uid="uid://b23aiesjup068" path="res://Audio/Soundtrack/s2br_HyperHyper.ogg" id="3_w8bgu"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://cm1lcnrr22juy" path="res://Scene/Backgrounds/04-OilOcean.tscn" id="4_wms2a"]
 [ext_resource type="Script" uid="uid://cqt4ecbyppstm" path="res://Scripts/Objects/StateMovers/StateMoverMaster.gd" id="5"]
@@ -44,7 +46,8 @@
 script = ExtResource("2")
 zoneID = 4
 music = ExtResource("2_533ik")
-music2P = ExtResource("2_533ik")
+music2P = ExtResource("3_w8bgu")
+boss_theme = ExtResource("3_uemc5")
 animal1 = 4
 animal2 = 5
 defaultRightBoundry = 11392
@@ -270,29 +273,21 @@ position = Vector2(9280, 1280)
 position = Vector2(4416, 624)
 pieces = Vector2(4, 4)
 SpriteTexture = ExtResource("20_ebkgg")
-score = false
-knockBack = false
 
 [node name="Breakable2" parent="Entities" instance=ExtResource("19_xm583")]
 position = Vector2(6720, 1008)
 pieces = Vector2(4, 4)
 SpriteTexture = ExtResource("20_ebkgg")
-score = false
-knockBack = false
 
 [node name="Breakable3" parent="Entities" instance=ExtResource("19_xm583")]
 position = Vector2(7104, 1008)
 pieces = Vector2(4, 4)
 SpriteTexture = ExtResource("20_ebkgg")
-score = false
-knockBack = false
 
 [node name="Breakable4" parent="Entities" instance=ExtResource("19_xm583")]
 position = Vector2(8256, 624)
 pieces = Vector2(4, 4)
 SpriteTexture = ExtResource("20_ebkgg")
-score = false
-knockBack = false
 
 [node name="OOZ Launcher7" parent="Entities" instance=ExtResource("18_1elsj")]
 position = Vector2(4416, 640)

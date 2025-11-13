@@ -4,6 +4,7 @@ extends Node2D
 @export var zoneID = 0 as Global.ZONES
 @export var music = preload("res://Audio/Soundtrack/s2br_EmeraldHilll.ogg")
 @export var music2P = preload("res://Audio/Soundtrack/s2br_Tropical.ogg")
+@export var boss_theme = preload("res://Audio/Soundtrack/s2br_Boss.ogg")
 
 var nextZone = load("res://Scene/Presentation/ZoneLoader.tscn")
 
@@ -76,18 +77,22 @@ func level_reset_data(_playCard = true):
 	Global.fightingBoss = false
 	SoundDriver.music.stop()
 	# music handling
-	var levelMusic = null
+	var level_theme = null
 	if SoundDriver.music != null:
 		if music != null:
 			if !Global.two_player_mode:
-				levelMusic = music
+				level_theme = music
 				
 			else:
-				levelMusic = music2P
+				level_theme = music2P
 			SoundDriver.music.stream_paused = false
-			SoundDriver.themes[SoundDriver.THEME.NORMAL] = levelMusic
+			SoundDriver.themes[SoundDriver.THEME.NORMAL] = level_theme
+	
+	if boss_theme:
+		SoundDriver.themes[SoundDriver.THEME.BOSS] = boss_theme
+	
 	SoundDriver.currentTheme = SoundDriver.THEME.NORMAL
-	SoundDriver.playMusic(levelMusic,true)
+	SoundDriver.playMusic(level_theme,true)
 	
 	if Global.currentCheckPoint < 0:
 		Global.levelTime = 0

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_vg3f0"]
 [ext_resource type="AudioStream" uid="uid://cmtn72t7dtgf" path="res://Audio/Soundtrack/s2br_Tropical.ogg" id="2_0b10k"]
-[ext_resource type="AudioStream" uid="uid://dlgpinnh0yca3" path="res://Audio/Soundtrack/s2br_Metropolis.ogg" id="3_rkisb"]
+[ext_resource type="AudioStream" uid="uid://bqki542g2mt4h" path="res://Audio/Soundtrack/s2br_Metropolis3.ogg" id="3_0b10k"]
 [ext_resource type="PackedScene" uid="uid://da47pd80u7kac" path="res://Scene/Backgrounds/08-WoodGadget.tscn" id="4_un5s1"]
 [ext_resource type="TileSet" uid="uid://b46hc7u2nrvbf" path="res://Tileset/Levels/WGZ.tres" id="5_m417a"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_vkwgj"]
@@ -15,7 +15,7 @@
 script = ExtResource("1_vg3f0")
 zoneID = 8
 music = ExtResource("2_0b10k")
-music2P = ExtResource("3_rkisb")
+music2P = ExtResource("3_0b10k")
 animal1 = 11
 animal2 = 12
 
