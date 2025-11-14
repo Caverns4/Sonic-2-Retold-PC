@@ -341,7 +341,7 @@ func _ready():
 		
 		# set my character
 		character = Global.PlayerChar1
-		if Global.betaSonic and character == Global.CHARACTERS.SONIC:
+		if Global.beta_sonic and character == Global.CHARACTERS.SONIC:
 			character = Global.CHARACTERS.SONIC_BETA
 		
 		# set super palettes

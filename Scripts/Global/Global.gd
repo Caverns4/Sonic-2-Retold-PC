@@ -121,13 +121,14 @@ enum UNLOCKS{
 	STARTEMERALDS = 512, # Start with any number of Chaose Emralds: 50 coins
 	RINGDRAIN = 1024, # Disable Super Sonic limits: 100 coins
 }
-var livesMode = true
-var airSpeedCap = true
-var superRingDrain = true
-var superAnyone = false
-var anyCharacters = false
-var betaCasinoNight = false
-var betaSonic = false
+var livesMode:bool = true
+var airSpeedCap:bool = true
+var superRingDrain:bool = true
+var superAnyone:bool = false
+var anyCharacters:bool = false
+var betaCasinoNight:bool = false
+var beta_sonic:bool = false
+var insta_shield:bool = true
 
 # Two Player settings
 #Single Race: Pick a character and a zone for each race

@@ -39,80 +39,12 @@ func _process(_delta):
 			# Normal actions
 			else:
 				match (parent.character):
-					Global.CHARACTERS.SONIC,Global.CHARACTERS.SONIC_BETA:
+					# Sonic Shield abilities, Instashield, and Dropdash
+					Global.CHARACTERS.SONIC:
 						# set ability used to true to prevent multiple uses
 						parent.abilityUsed = true
 						parent.airControl = true
-						# check that the invincibility barrier isn't visible
-						if !$"../../InvincibilityBarrier".visible:
-							match (parent.shield):
-								# insta shield
-								parent.SHIELDS.NONE:
-									parent.airControl = true
-								#	parent.sfx[16].play()
-								#	parent.shieldSprite.play("Insta")
-								#	parent.shieldSprite.frame = 0
-								#	parent.shieldSprite.visible = true
-								#	enable insta shield hitbox
-								#	parent.shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled = false
-								# 	wait for animation for the shield to finish
-								#	await parent.shieldSprite.animation_finished
-								#	check shields hasn't changed
-								#	if (parent.shield == parent.SHIELDS.NONE):
-								#		parent.shieldSprite.visible = false
-								#		parent.shieldSprite.stop()
-								#	disable insta shield
-								#	parent.shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled = true
-								
-								# elec shield action
-								parent.SHIELDS.ELEC:
-									parent.sfx[13].play()
-									# set movement upwards
-									parent.movement.y = -5.5*60.0
-									# generate 4 electric particles and send them out diagonally (rotated for each iteration of i to 4)
-									for i in range(4):
-										var part = elecPart.instantiate()
-										part.global_position = parent.global_position
-										part.direction = Vector2(1,1).rotated(deg_to_rad(90*i))
-										parent.get_parent().add_child(part)
-								
-								# fire shield action
-								parent.SHIELDS.FIRE:
-									# partner check (so you don't flame boost when you're trying to fly with tails
-									if !(parent.inputs[parent.INPUTS.YINPUT] < 0 and parent.partner != null):
-										parent.sfx[14].play()
-										parent.movement = Vector2(8*60*parent.direction,0)
-										parent.shieldSprite.play("FireAction")
-										# set timer for animation related resets
-										var getTimer = parent.shieldSprite.get_node_or_null("ShieldTimer")
-										# Start fire dash timer
-										if getTimer != null:
-											getTimer.start(0.5)
-										# change orientation to match the movement
-										parent.shieldSprite.flip_h = (parent.direction < 0)
-										# lock camera for a short time
-										parent.lock_camera(16.0/60.0)
-								
-								# bubble shield actions
-								parent.SHIELDS.BUBBLE:
-									# check animation isn't already bouncing
-									if parent.shieldSprite.animation != "BubbleBounce":
-										parent.sfx[15].play()
-										# set movement and bounce reaction
-										parent.movement = Vector2(0,8*60)
-										if parent.is_in_water:
-											parent.bounceReaction = 4.0
-										else:
-											parent.bounceReaction = 7.5
-										
-										parent.shieldSprite.play("BubbleAction")
-										# set timer for animation related resets
-										var getTimer = parent.shieldSprite.get_node_or_null("ShieldTimer")
-										# Start bubble timer
-										if getTimer != null:
-											getTimer.start(0.25)
-									else:
-										parent.abilityUsed = false
+						sonic_shield_abilities()
 					# Tails flight
 					Global.CHARACTERS.TAILS:
 						# prevent double tap flight (aka super jumps)
@@ -139,8 +71,6 @@ func _process(_delta):
 						await get_tree().create_timer(0.2).timeout #12 frames of true invinicibility.
 						# disable insta shield
 						parent.shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled = true
-						
-						
 					Global.CHARACTERS.MIGHTY:
 						if !parent.abilityUsed:
 							# set ability used to true to prevent multiple uses
@@ -158,9 +88,14 @@ func _process(_delta):
 							parent.sfx[30].play()
 							# play dropDash animation
 							parent.animator.play("drop")
-						
 					Global.CHARACTERS.RAY:
 						pass
+					# Sonic Shield abilities, Instashield, and Dropdash
+					Global.CHARACTERS.SONIC_BETA:
+						# set ability used to true to prevent multiple uses
+						parent.abilityUsed = true
+						parent.airControl = true
+						sonic_shield_abilities()
 
 
 func _physics_process(delta):
@@ -267,8 +202,79 @@ func _physics_process(delta):
 	# if velocity going up reset bounce reaction
 	elif parent.movement.y < 0:
 		parent.bounceReaction = 0
-	
-	
+
+
+func sonic_shield_abilities():
+						# check that the invincibility barrier isn't visible
+						if !$"../../InvincibilityBarrier".visible:
+							match (parent.shield):
+								# insta shield
+								parent.SHIELDS.NONE:
+									parent.airControl = true
+									if Global.insta_shield:
+										parent.sfx[16].play()
+										parent.shieldSprite.play("Insta")
+										parent.shieldSprite.frame = 0
+										parent.shieldSprite.visible = true
+										#enable insta shield hitbox
+										parent.shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled = false
+								 		#wait for animation for the shield to finish
+										await parent.shieldSprite.animation_finished
+										#check shields hasn't changed
+										if (parent.shield == parent.SHIELDS.NONE):
+											parent.shieldSprite.visible = false
+											parent.shieldSprite.stop()
+										#disable insta shield
+										parent.shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled = true
+								# elec shield action
+								parent.SHIELDS.ELEC:
+									parent.sfx[13].play()
+									# set movement upwards
+									parent.movement.y = -5.5*60.0
+									# generate 4 electric particles and send them out diagonally (rotated for each iteration of i to 4)
+									for i in range(4):
+										var part = elecPart.instantiate()
+										part.global_position = parent.global_position
+										part.direction = Vector2(1,1).rotated(deg_to_rad(90*i))
+										parent.get_parent().add_child(part)
+								
+								# fire shield action
+								parent.SHIELDS.FIRE:
+									# partner check (so you don't flame boost when you're trying to fly with tails
+									if !(parent.inputs[parent.INPUTS.YINPUT] < 0 and parent.partner != null):
+										parent.sfx[14].play()
+										parent.movement = Vector2(8*60*parent.direction,0)
+										parent.shieldSprite.play("FireAction")
+										# set timer for animation related resets
+										var getTimer = parent.shieldSprite.get_node_or_null("ShieldTimer")
+										# Start fire dash timer
+										if getTimer != null:
+											getTimer.start(0.5)
+										# change orientation to match the movement
+										parent.shieldSprite.flip_h = (parent.direction < 0)
+										# lock camera for a short time
+										parent.lock_camera(16.0/60.0)
+								
+								# bubble shield actions
+								parent.SHIELDS.BUBBLE:
+									# check animation isn't already bouncing
+									if parent.shieldSprite.animation != "BubbleBounce":
+										parent.sfx[15].play()
+										# set movement and bounce reaction
+										parent.movement = Vector2(0,8*60)
+										if parent.is_in_water:
+											parent.bounceReaction = 4.0
+										else:
+											parent.bounceReaction = 7.5
+										
+										parent.shieldSprite.play("BubbleAction")
+										# set timer for animation related resets
+										var getTimer = parent.shieldSprite.get_node_or_null("ShieldTimer")
+										# Start bubble timer
+										if getTimer != null:
+											getTimer.start(0.25)
+									else:
+										parent.abilityUsed = false
 
 # Shield timer timeouts (used to reset animations)
 func _on_ShieldTimer_timeout():

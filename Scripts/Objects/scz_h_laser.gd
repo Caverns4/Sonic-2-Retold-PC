@@ -10,8 +10,6 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if $VisibleOnScreenNotifier2D.is_on_screen():
 		move_and_slide()
-		if !$VisibleOnScreenNotifier2D.is_on_screen():
-			queue_free()
 
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
@@ -25,3 +23,10 @@ func _on_scz_h_laser_body_entered(body: Node2D) -> void:
 	elif body is Tornado2D:
 		var this: Tornado2D = body
 		this._damage_plane()
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	#if !Global.players:
+	#	return
+	#if global_position.x > ((global_position.x - Global.players[0].position.x)*sign(speed)):
+		queue_free()

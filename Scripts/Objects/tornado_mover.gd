@@ -20,9 +20,11 @@ func _process(delta: float) -> void:
 		if tornado.global_position.y > Global.hardBorderBottom:
 			tornado.queue_free()
 			player = null
+			print("Tornado deleted")
 			queue_free()
 	else:
 		player = null
+		print("Tornado deleted")
 		queue_free()
 	
 	if !player:
@@ -56,6 +58,7 @@ func _process(delta: float) -> void:
 	else:
 		player.position.x = global_position.x + 32
 	
+	## The following only occurs if the direct parent is a Path2D, so this can't happen in Sky Chase.
 	if parent is PathFollow2D:
 		var this: PathFollow2D = parent
 		if this.progress_ratio >= 1.0 and player:

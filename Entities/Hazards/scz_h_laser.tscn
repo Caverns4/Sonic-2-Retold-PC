@@ -43,6 +43,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w3lqw"]
+size = Vector2(144, 20)
 
 [node name="SCZ_HLaser" type="CharacterBody2D"]
 collision_layer = 16777216
@@ -72,3 +73,4 @@ rect = Rect2(-72, -128, 144, 256)
 
 [connection signal="body_entered" from="SCZ_HLaser" to="." method="_on_scz_h_laser_body_entered"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

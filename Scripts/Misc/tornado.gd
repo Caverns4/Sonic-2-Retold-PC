@@ -96,6 +96,6 @@ func _on_player_sensor_body_exited(body: Node2D) -> void:
 func _damage_plane():
 	if !explosion_timer:
 		plane_damaged.emit()
-		explosion_timer = 1.0
+		explosion_timer = 0.6
 		velocity.y = 60.0
 		$CollisionShape2D.disabled = true
