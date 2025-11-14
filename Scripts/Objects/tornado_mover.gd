@@ -7,13 +7,24 @@ extends Node2D
 
 var player: Player2D = null
 @onready var tornado = get_node("Tornado")
+@onready var parent = get_parent()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = Global.players[0]
+	tornado.plane_damaged.connect(tornado_damage)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if is_instance_valid(tornado):
+		if tornado.global_position.y > Global.hardBorderBottom:
+			tornado.queue_free()
+			player = null
+			queue_free()
+	else:
+		player = null
+		queue_free()
+	
 	if !player:
 		return
 
@@ -44,3 +55,13 @@ func _process(delta: float) -> void:
 		global_position.y = clamp(global_position.y,camera.limit_top + 40,camera.limit_bottom - 64)
 	else:
 		player.position.x = global_position.x + 32
+	
+	if parent is PathFollow2D:
+		var this: PathFollow2D = parent
+		if this.progress_ratio >= 1.0 and player:
+			player = null
+
+func tornado_damage():
+	allow_player_steering = false
+	player = null
+	

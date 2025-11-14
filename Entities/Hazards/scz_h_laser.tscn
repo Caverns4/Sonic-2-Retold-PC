@@ -1,0 +1,74 @@
+[gd_scene load_steps=10 format=3 uid="uid://cdr25gnarvsy8"]
+
+[ext_resource type="Script" uid="uid://c6elkb3o5xbgm" path="res://Scripts/Objects/scz_h_laser.gd" id="1_w3lqw"]
+[ext_resource type="Texture2D" uid="uid://ygnuwt8t4s6n" path="res://Graphics/Hazards/SCZ_HLaserBeam.png" id="2_67rpk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fgrft"]
+size = Vector2(144, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqpvk"]
+atlas = ExtResource("2_67rpk")
+region = Rect2(0, 0, 144, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nn5jh"]
+atlas = ExtResource("2_67rpk")
+region = Rect2(0, 16, 144, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dvio"]
+atlas = ExtResource("2_67rpk")
+region = Rect2(0, 32, 144, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8pdq"]
+atlas = ExtResource("2_67rpk")
+region = Rect2(0, 48, 144, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yq2ih"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqpvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nn5jh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3dvio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8pdq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w3lqw"]
+
+[node name="SCZ_HLaser" type="CharacterBody2D"]
+collision_layer = 16777216
+collision_mask = 0
+motion_mode = 1
+slide_on_ceiling = false
+script = ExtResource("1_w3lqw")
+speed = 128.0
+
+[node name="SCZ_HLaser" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16777216
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SCZ_HLaser"]
+shape = SubResource("RectangleShape2D_fgrft")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SCZ_HLaser"]
+z_index = 20
+sprite_frames = SubResource("SpriteFrames_yq2ih")
+frame_progress = 0.652056
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_w3lqw")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-72, -128, 144, 256)
+
+[connection signal="body_entered" from="SCZ_HLaser" to="." method="_on_scz_h_laser_body_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

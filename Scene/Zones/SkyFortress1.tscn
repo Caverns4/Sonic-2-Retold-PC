@@ -26,8 +26,8 @@ script = ExtResource("1_f2s8f")
 zoneID = 14
 music = ExtResource("2_j55bp")
 music2P = ExtResource("2_5abqf")
-animal1 = 8
-animal2 = 3
+animal1 = 3
+animal2 = 7
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_base_scale = Vector2(0.5, 0)

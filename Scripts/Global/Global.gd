@@ -100,6 +100,7 @@ var maxTime = 60*10
 
 ## Strength Tiers used for item destruction. 1 = Mighty's stomp, 2 = Knuckles or Super Sonic
 enum STRENGTH_TIER{NORMAL,STRONG,SUPER,UNBREAKABLE}
+enum DAMAGE_TYPES{NORMAL,FIRE,ELEC,WATER} 
 
 ## If a Boss Fight is currently active.
 var fightingBoss = false

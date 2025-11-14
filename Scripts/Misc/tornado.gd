@@ -1,3 +1,4 @@
+class_name Tornado2D
 extends CharacterBody2D
 
 # This object doesn't do much on its own; It simply updates graphics. All controls are extrnal.
@@ -10,7 +11,11 @@ extends CharacterBody2D
 @export_enum("Left","Right") var startDirection = 1
 ## If true, show the jet engine used to repair the Tornado.
 @export var jet_engine: bool = false
+## The sound effect when the plane is damaged.
+@export var boom_sfx = preload("res://Audio/SFX/Boss/s2br_SmallExplosion.wav")
 
+## Scene instantiated when the Tornado is on a timer.
+var explosion = preload("res://Entities/Misc/GenericParticle.tscn")
 
 var parenter_pilots = [
 	Global.CHARACTERS.TAILS, #NONE
@@ -23,6 +28,9 @@ var parenter_pilots = [
 ]
 
 var standing_players: Array[Player2D] = []
+var explosion_timer: float = 0.0
+
+signal plane_damaged
 
 func _ready() -> void:
 	if jet_engine:
@@ -40,9 +48,6 @@ func _ready() -> void:
 		pilot = parenter_pilots[min(Global.PlayerChar1,parenter_pilots.size())]
 	
 	SetPilot()
-
-
-
 
 func UpdateDirection(dir):
 	$TornadoMain.scale.x = dir
@@ -62,6 +67,22 @@ func SetPilot():
 			$TornadoMain/Pilot/PilotSonic.visible = false
 			$TornadoMain/Pilot/PilotTails.visible = true
 
+func _physics_process(delta: float) -> void:
+	if explosion_timer:
+		explosion_timer -= delta
+		if explosion_timer < 0.6:
+			var this: AnimatedSprite2D = explosion.instantiate()
+			this.play("Explosion")
+			this.global_position = global_position - Vector2(0,40)
+			this.z_index = 30
+			this.top_level = true
+			get_parent().get_parent().add_child(this)
+			if $VisibleOnScreenNotifier2D.is_on_screen():
+				SoundDriver.play_sound2(boom_sfx)
+			explosion_timer = 1.0
+	move_and_slide()
+
+
 
 func _on_player_sensor_body_entered(body: Node2D) -> void:
 	if body is Player2D:
@@ -71,3 +92,10 @@ func _on_player_sensor_body_entered(body: Node2D) -> void:
 func _on_player_sensor_body_exited(body: Node2D) -> void:
 	if body is Player2D:
 		standing_players.erase(body)
+
+func _damage_plane():
+	if !explosion_timer:
+		plane_damaged.emit()
+		explosion_timer = 1.0
+		velocity.y = 60.0
+		$CollisionShape2D.disabled = true
