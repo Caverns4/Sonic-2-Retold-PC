@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://bjavywoj00j1j"]
+[gd_scene load_steps=43 format=4 uid="uid://bjavywoj00j1j"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="2_533ik"]
@@ -41,6 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://c8djwr7o6d6f7" path="res://Entities/Enemies/Octus.tscn" id="34_bvw6j"]
 [ext_resource type="PackedScene" uid="uid://bp678wjhmnwip" path="res://Entities/Boss/Submarine Eggman/GetawaySubmarine.tscn" id="37_ud3r1"]
 [ext_resource type="Script" uid="uid://ioiij6aukh60" path="res://Scripts/Misc/AltSpawn.gd" id="38_es7xl"]
+[ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="38_nxyu5"]
 
 [node name="BaseZoneAct2" type="Node2D"]
 script = ExtResource("2")
@@ -899,6 +900,9 @@ checkPointID = 2
 
 [node name="Capsule" parent="ItemsHolder" instance=ExtResource("22_gayax")]
 position = Vector2(10688, 576)
+
+[node name="SignpostNew" parent="ItemsHolder" instance=ExtResource("38_nxyu5")]
+position = Vector2(9728, 640)
 
 [node name="Rings" type="Node" parent="."]
 

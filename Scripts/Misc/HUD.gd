@@ -375,7 +375,7 @@ func SetupGameOver(_delta):
 			else:
 				Global.main.change_scene_to_file(Global.startScene,"FadeOut")
 			await Global.main.scene_faded
-			Global.reset_values()
+			call_deferred("Global.reset_values")
 		# reset level (if time over and lives aren't out)
 		else:
 			Global.main.change_scene_to_file(null,"FadeOut")

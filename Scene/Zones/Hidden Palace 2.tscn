@@ -1059,7 +1059,6 @@ present = 4
 
 [node name="SignpostNew" parent="Items" instance=ExtResource("38_47n6l")]
 position = Vector2(11648, 1472)
-multiplayerOnly = true
 
 [node name="GoalArea" parent="Items" instance=ExtResource("45_b4gpf")]
 position = Vector2(11648, -44)

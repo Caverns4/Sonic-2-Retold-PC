@@ -930,7 +930,6 @@ characterTexture = ExtResource("37_s7txa")
 
 [node name="SignpostNew" parent="Items" instance=ExtResource("35_4ds1j")]
 position = Vector2(11712, 1344)
-multiplayerOnly = true
 
 [node name="Badniks" type="Node" parent="."]
 

@@ -74,7 +74,7 @@ var continues = 0 #Never used
 var scoreP2 = 0
 var livesP2 = 3
 # emeralds use bitwise flag operations, the equivelent for 7 emeralds would be 127
-var emeralds = 127
+var emeralds = 63
 # emerald bit flags
 enum EMERALD {
 	CYAN=1,
@@ -261,22 +261,33 @@ func _process(delta):
 	
 # reset values, self explanatory, put any variables to their defaults in here
 func reset_values():
-	lives = 3
-	livesP2 = 3
+	#Wipe the player arrays to avoid contamination.
+	players.clear()
+	special_stage_players.clear()
+	checkPoints.clear()
+	#Clear Casino Night Zone contexts
+	slotMachines.clear()
+	characterReels = null
+	#Clear general game variables
+	two_player_mode = false
 	score = 0
-	continues = 0
+	scoreP2 = 0
 	levelTime = 0
 	levelTimeP2 = 0
+	lives = 3
+	livesP2 = 3
+	twoPlayerZoneResults.clear()
+	twoPlayActResults.clear()
+	twoPlayerRound = 0
+	continues = 0
 	#emeralds = 0
 	#specialStageID = 0
-	checkPoints = []
 	checkPointTime = 0
 	checkPointTimeP2 = 0
 	currentCheckPoint = -1
 	currentCheckPointP2 = -1
 	animals = [0,1]
 	nodeMemory = []
-	nextZone = load("res://Scene/Presentation/ZoneLoader.tscn")
 
 # add a score object, see res://Scripts/Misc/Score.gd for reference
 func add_score(position: Vector2,value: int,playerID: int):
@@ -312,10 +323,10 @@ func loadNextLevel():
 		match savedZoneID:
 			ZONES.EMERALD_HILL:
 				savedActID = 0
-				savedZoneID = ZONES.NEO_GREEN_HILL
+				savedZoneID = ZONES.HILL_TOP
 			ZONES.HIDDEN_PALACE:
 				savedActID = 0
-				savedZoneID = ZONES.OIL_OCEAN
+				savedZoneID = ZONES.CASINO_NIGHT
 			ZONES.HILL_TOP:
 				savedActID = 0
 				savedZoneID = ZONES.DUST_HILL
@@ -324,23 +335,23 @@ func loadNextLevel():
 				savedZoneID = ZONES.CASINO_NIGHT
 			ZONES.OIL_OCEAN:
 				savedActID = 0
-				savedZoneID = ZONES.METROPOLIS #Demo credits
+				savedZoneID = ZONES.METROPOLIS
 			ZONES.NEO_GREEN_HILL:
 				savedActID = 0
 				savedZoneID = ZONES.CHEMICAL_PLANT
 			ZONES.METROPOLIS:
-				if savedActID > 2:
+				if savedActID > 2: #Discount Act 3
 					savedActID = 0
 					savedZoneID = ZONES.ENDING
 			ZONES.DUST_HILL:
 				savedActID = 0
-				savedZoneID = ZONES.OIL_OCEAN
+				savedZoneID = ZONES.HIDDEN_PALACE
 			ZONES.WOOD_GADGET:
 				savedActID = 0
 				savedZoneID = ZONES.DUST_HILL
 			ZONES.CASINO_NIGHT:
 				savedActID = 0
-				savedZoneID = ZONES.WOOD_GADGET
+				savedZoneID = ZONES.METROPOLIS
 			ZONES.JEWEL_GROTTO:
 				savedActID = 0
 				savedZoneID = ZONES.SAND_SHOWER

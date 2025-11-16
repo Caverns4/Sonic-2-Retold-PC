@@ -5,7 +5,7 @@ extends StaticBody2D
 
 @export var counterWeight = true
 @export var counterWeightDamage = true
-@export var counterWeightSprite = preload("res://Graphics/Enemies/TEST.png")
+@export var counterWeightSprite = preload("res://Graphics/Enemies/CHIPPA.png")
 # Image should be a horizonal sprite sheet with each frame being of equal width and height.
 # It will cycle through frames at a consistent speed.
 

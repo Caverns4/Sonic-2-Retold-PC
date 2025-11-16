@@ -32,7 +32,7 @@ offset_left = -28.0
 offset_top = -8.0
 offset_right = -4.0
 offset_bottom = 6.0
-color = Color(0.933333, 0.933333, 0, 1)
+color = Color(0.26666668, 0.13333334, 0.8, 1)
 
 [node name="JarTop" type="Sprite2D" parent="PumpPosition/Jar"]
 position = Vector2(-16, 0)

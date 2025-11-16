@@ -76,10 +76,8 @@ var cheatInputCount = 0 #Correct inputs
 var lastCheatInput = Vector2.ZERO
 
 func _ready():
-	#Wipe the player array to avoide contamination.
-	Global.players.clear()
-	Global.special_stage_players.clear()
-	Global.checkPoints.clear()
+	#Wipe the player arrays to avoid contamination.
+	Global.reset_values()
 	#Clear game variables
 	Global.two_player_mode = false
 	Global.score = 0
@@ -145,7 +143,7 @@ func MenuOptionChosen():
 	
 	match menuEntry:
 		0:
-			Global.savedZoneID = Global.ZONES.TROPICAL
+			Global.savedZoneID = Global.ZONES.EMERALD_HILL
 			Global.savedActID = 0
 			SetFadeOut(nextZone)
 		1:
