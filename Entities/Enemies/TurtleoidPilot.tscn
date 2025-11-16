@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://mhiwjp660jlu"]
+
+[ext_resource type="Script" uid="uid://btpe51l5imfjy" path="res://Scripts/Enemies/EnemyBase.gd" id="1_2p8xo"]
+[ext_resource type="Texture2D" uid="uid://b4dk86pdwecwe" path="res://Graphics/Enemies/Turtloid.png" id="2_2p8xo"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(16, 24)
+
+[node name="TurtloidPilot" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 16384
+collision_mask = 0
+script = ExtResource("1_2p8xo")
+
+[node name="CollissionMask" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 528384
+
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+modulate = Color(1, 0, 0, 1)
+shape = SubResource("1")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("2_2p8xo")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(0, 64, 64, 32)
+
+[connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]

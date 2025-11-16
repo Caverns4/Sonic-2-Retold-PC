@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://cl4msslpnhrue"]
+
+[ext_resource type="Texture2D" uid="uid://b4dk86pdwecwe" path="res://Graphics/Enemies/Turtloid.png" id="1_cqjvl"]
+[ext_resource type="Script" uid="uid://bxueff870qwjm" path="res://Scripts/Enemies/turtloid.gd" id="1_hsq1i"]
+[ext_resource type="PackedScene" uid="uid://mhiwjp660jlu" path="res://Entities/Enemies/TurtleoidPilot.tscn" id="2_6h3ip"]
+[ext_resource type="Texture2D" uid="uid://dxa2a45aax5hl" path="res://Graphics/Enemies/Turtloid_Fire.png" id="3_k0h3p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsq1i"]
+atlas = ExtResource("3_k0h3p")
+region = Rect2(0, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rr5vx"]
+atlas = ExtResource("3_k0h3p")
+region = Rect2(0, 8, 16, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_66bv8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsq1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rr5vx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6h3ip"]
+size = Vector2(48, 32)
+
+[node name="Turtloid" type="CharacterBody2D"]
+collision_mask = 0
+script = ExtResource("1_hsq1i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cqjvl")
+vframes = 3
+
+[node name="Flame" type="AnimatedSprite2D" parent="Sprite2D"]
+position = Vector2(31, 10)
+sprite_frames = SubResource("SpriteFrames_66bv8")
+autoplay = "default"
+
+[node name="BulletPoint" type="Node2D" parent="Sprite2D"]
+position = Vector2(-24, 7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6h3ip")
+
+[node name="TurtloidPilot" parent="." instance=ExtResource("2_6h3ip")]
+position = Vector2(0, -25)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+visible = false
+rect = Rect2(-160, -112, 320, 224)
