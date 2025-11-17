@@ -9,9 +9,6 @@ var attackTimer = 0
 
 @onready var getPose = [$LeftPoint.global_position,$RightPoint.global_position]
 var currentPoint = 1
-var Explosion = preload("res://Entities/Misc/GenericParticle.tscn")
-
-var hoverOffset = 0
 
 var animationPriority = ["default","move","laugh","hit","exploded"]
 

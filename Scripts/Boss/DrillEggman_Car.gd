@@ -14,6 +14,9 @@ var readyToLaunch = false #If true, shoot the drill when the player is in front
 
 var currentPoint = 1 #The point for the boss to move toward while alive
 
+## The parent node, should be Helicopter Eggman
+@export_node_path var helicopter_eggman
+
 @onready var tires = [
 	#Back wheels
 	$DrillEggmanWheel,
@@ -39,7 +42,8 @@ func _ready():
 	tires[2].global_position.y = global_position.y
 	tires[3].top_level = true
 	tires[3].global_position.y = global_position.y
-	parent = get_tree().get_root().find_child("HelicopterEggman",true,false)
+	
+	parent = get_node_or_null(helicopter_eggman)
 	if !parent:
 		queue_free()
 	top_level = true

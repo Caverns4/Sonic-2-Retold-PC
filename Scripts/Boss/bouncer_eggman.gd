@@ -7,23 +7,27 @@ var dead = false
 var phase = 0
 var attackTimer = 0
 
+@onready var eggpod_controller: Node2D = $EggpodController
+@onready var bulletpoint: = $EggMobile/Eggmobile_Laser
 @onready var getPose = [
+	$LeftPoint.global_position,
+	$RightPoint.global_position,
 	$LeftPoint.global_position,
 	$RightPoint.global_position,
 	$TopPoint.global_position
 	]
-var currentPoint = 1
-var Explosion = preload("res://Entities/Misc/GenericParticle.tscn")
-
-var hoverOffset = 0
+var currentPoint = 4
+var laser_y: float = 128
 
 var animationPriority = ["default","move","laugh","hit","exploded"]
+var laser: = preload("res://Entities/Boss/Bouncer Eggman/bouncer_eggman_laser.tscn")
 
 func _ready():
 	# move to the set currentPoint position before the boss starts (plus 128 pixels higher)
-	global_position = getPose[currentPoint]+Vector2(0,-1)*128
+	global_position = getPose[currentPoint]+Vector2(0,-1)*160
 	# run laugh function for every time the player gets hit
 	connect("hit_player",Callable(self,"do_laugh"))
+	connect("got_hit",Callable(self,"panic"))
 	super()
 
 func _process(delta):
@@ -87,29 +91,78 @@ func _physics_process(delta):
 					currentPoint = 0
 				
 			1: # main attack
+				if !eggpod_controller.children:
+					phase = 3
+					currentPoint = posmod(currentPoint+1,2)
+					print("Final Phase")
 				
 				# reset hover position
-				global_position.y = global_position.y-hoverOffset
-				# change the hover
-				hoverOffset = move_toward(hoverOffset,cos(Global.levelTime*4)*4,delta*10)
-				# move
-				var getPosition = (getPose[currentPoint]-global_position)*60
-				velocity = getPosition.limit_length(64)
-				# now move the hover position back
-				global_position.y = global_position.y+hoverOffset
+				updateHoveringPos(delta)
 				
 				# set scale to face the current point position
 				if velocity.x:
 					scale.x = 0-sign(velocity.x)
 				
-				# increase attack timer
-				attackTimer += delta
+				var target_position = getPose[currentPoint]
+				if global_position.distance_to(target_position) > 2.0:
+					var direction = (target_position - global_position).normalized()
+					velocity = direction * 60
+				else:
+					velocity = Vector2.ZERO # Stop when close enough to the target
+					if currentPoint < 4:
+						currentPoint = posmod(currentPoint+1,getPose.size())
+					else:
+						attackTimer += delta
+						
+						if attackTimer <3.0:
+							eggpod_controller.target_radius = 128
+							eggpod_controller.target_speed = 4.0
+						
+						if attackTimer > 3.0:
+							eggpod_controller.target_radius = 32
+							eggpod_controller.target_speed = 3.0
+							
+						if attackTimer > 5.0:
+							currentPoint = posmod(currentPoint+1,getPose.size())
+							attackTimer = 0
 				
-				# switch positions after 5 seconds
-				if attackTimer >= 5:
-					currentPoint = wrapi(currentPoint+1,0,getPose.size())
-					attackTimer = 0
-	
+				
+				
+			2: # Flee to the top position until no decoys are loose.
+				# reset hover position
+				updateHoveringPos(delta)
+				
+				var target_position = getPose[4] - Vector2(0,64)
+				if global_position.distance_to(target_position) > 2.0:
+					var direction = (target_position - global_position).normalized()
+					velocity = direction * 120
+				else:
+					velocity = Vector2.ZERO 
+
+				if !eggpod_controller.decoys:
+					phase = 1
+					currentPoint = 0
+			3: #Out of Children
+				# reset hover position
+				updateHoveringPos(delta)
+				var target_position = getPose[currentPoint] - Vector2(0,laser_y)
+				if global_position.distance_to(target_position) > 2.0:
+					var direction = (target_position - global_position).normalized()
+					velocity = direction * 120
+				else:
+					velocity = Vector2.ZERO 
+					scale.x = 0-sign(Global.players[0].global_position.x-global_position.x)
+					attackTimer += delta
+					if attackTimer > 0.5:
+						laser_y -= 32
+						fire_laser()
+						attackTimer = 0.0
+						#await get_tree().create_timer(1.0).timeout
+					if laser_y < 0:
+						laser_y = 96
+						currentPoint = wrapi(currentPoint+1,0,2)
+
+
 	# default reactions (use animation time to avoid running this every frame)
 	if $AnimationTime.is_stopped():
 		# if moving, then run move animation
@@ -121,7 +174,25 @@ func _physics_process(delta):
 	# only run hit if flash timer is above 0
 	if flashTimer > 0:
 		set_animation("hit",flashTimer)
-	
+
+# Updated to allow precise calculate per-frame(hopefully)
+func updateHoveringPos(delta):
+	# change the hover offset
+	global_position.y = global_position.y-hoverOffset
+	hoverOffset = move_toward(hoverOffset,cos(Global.levelTime*4)*4,delta*10)
+	call_deferred("restore_hover_pose")
+
+func restore_hover_pose():
+	global_position.y = global_position.y+hoverOffset
+
+func fire_laser():
+	var bullet = laser.instantiate()
+	bullet.global_position = bulletpoint.global_position
+	bullet.speed *= scale.x
+	get_parent().add_child(bullet)
+	pass
+
+
 
 # animation to play, time is how long the animation should play for until it stops
 func set_animation(animation = "default", time = 0.0):
@@ -154,6 +225,11 @@ func _on_boss_defeated():
 # do a laugh for 1 second
 func do_laugh():
 	set_animation("laugh",1)
+
+func panic():
+	if phase == 1 and hp > 0 and eggpod_controller.children:
+		phase = 2
+		velocity = Vector2.ZERO
 
 func _on_SmokeTimer_timeout():
 	# check that deathtimer's still going and that we are actually dead

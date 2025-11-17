@@ -1150,6 +1150,7 @@ lockTop = false
 [node name="DrillEggmanCar" parent="Boss" instance=ExtResource("35_w4jcd")]
 top_level = true
 position = Vector2(11016, 1056)
+helicopter_eggman = NodePath("../HelicopterEggman")
 
 [node name="Capsule" parent="Boss" instance=ExtResource("36_lon64")]
 position = Vector2(11264, 1060)

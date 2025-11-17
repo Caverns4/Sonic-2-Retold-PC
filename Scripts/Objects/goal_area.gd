@@ -28,7 +28,6 @@ func _on_body_entered(body: Node2D) -> void:
 		#getCam.limit_bottom = getCam.global_position.y
 		for i in Global.players:
 			i.playerControl = -1
-			# set inputs to right
 			i.inputs[i.INPUTS.XINPUT] = 0
 			i.inputs[i.INPUTS.YINPUT] = 0
 			i.inputs[i.INPUTS.ACTION] = 0

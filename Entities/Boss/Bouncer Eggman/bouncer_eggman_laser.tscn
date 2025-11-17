@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bj3cnj8gdelnn"]
+
+[ext_resource type="Script" uid="uid://c6elkb3o5xbgm" path="res://Scripts/Objects/scz_h_laser.gd" id="1_8n832"]
+[ext_resource type="Texture2D" uid="uid://dtvurvh4ul6qi" path="res://Graphics/Boss/MTZ/Boss_BouncerEggmanLaser.png" id="2_rxqj2"]
+[ext_resource type="AudioStream" uid="uid://jrifawtuotyd" path="res://Audio/SFX/Boss/s2br_SmallLaser.wav" id="2_t540j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t540j"]
+size = Vector2(64, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sr7hk"]
+size = Vector2(64, 20)
+
+[node name="BouncerEggmanLaser" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_8n832")
+speed = 128.0
+sfx = ExtResource("2_t540j")
+
+[node name="LaserArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserArea"]
+shape = SubResource("RectangleShape2D_t540j")
+
+[node name="Sprite2D" type="Sprite2D" parent="LaserArea"]
+texture = ExtResource("2_rxqj2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sr7hk")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-32, -10, 64, 20)
+
+[connection signal="body_entered" from="LaserArea" to="." method="_on_laser_area_body_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

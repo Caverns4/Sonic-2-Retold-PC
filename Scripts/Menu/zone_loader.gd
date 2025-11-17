@@ -8,6 +8,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
+	await get_tree().create_timer(0.5).timeout
 	if !loaded:
 		match clampi(Global.savedZoneID,0,Global.ZONES.size()+1):
 			Global.ZONES.EMERALD_HILL:
@@ -53,7 +54,7 @@ func _physics_process(_delta: float) -> void:
 					1:
 						Global.nextZone = load("res://Scene/Zones/Metropolis2.tscn")
 					2:
-						Global.nextZone = load("res://Scene/Zones/Metropolis3.tscn")
+						Global.nextZone = load("res://Scene/Zones/BossZone.tscn")
 			Global.ZONES.DUST_HILL:
 				match Global.savedActID:
 					0:

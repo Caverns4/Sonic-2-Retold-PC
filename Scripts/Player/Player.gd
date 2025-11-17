@@ -157,6 +157,8 @@ var horizontalLockTimer: float = 0
 var spriteRotation: float = 0
 ## If false, ignore player left/right inputs in the air (Roll jumping).
 var airControl: bool = true
+## if the player is in a general damaging state.
+var attacking = false
 
 # States
 enum STATES {NORMAL, AIR, JUMP, ROLL, SPINDASH, PEELOUT, ANIMATION, HIT, DIE, CORKSCREW, JUMPCANCEL,
@@ -710,7 +712,7 @@ func _physics_process(delta):
 			sfx[1].play()
 	
 	# Attacking is for rolling type animations
-	var attacking = false
+	attacking = false
 	# lists to check through for attack animations
 	var currentAnimChecks = [
 	"roll","dropDash","spinDash","glide","drop",

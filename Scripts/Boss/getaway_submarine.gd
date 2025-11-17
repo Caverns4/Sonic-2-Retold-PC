@@ -9,9 +9,7 @@ var soundTimer = 0.0
 
 @onready var getPose = [$TopPoint.global_position,$BottomPoint.global_position]
 var currentPoint = 1
-var Explosion = preload("res://Entities/Misc/GenericParticle.tscn")
 
-var hoverOffset = 0
 var direction = -1 #left is -1, right is 1
 
 var animationPriority = ["default","move","laugh","hit","exploded"]

@@ -8,6 +8,10 @@ var flashTimer = 0
 var forceDamage = false
 @export var hitTime = 32.0/60.0
 
+
+var Explosion = preload("res://Entities/Misc/GenericParticle.tscn")
+var hoverOffset = 0
+
 signal got_hit
 signal hit_player
 signal flash_finished

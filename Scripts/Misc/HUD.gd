@@ -391,6 +391,13 @@ func ProcessStageClear(_delta):
 		# reset air in case we are under water
 		_reset_air()
 		isStageEnding = true
+		
+		for i:Player2D in Global.players:
+			i.playerControl = -1
+			i.inputs[i.INPUTS.XINPUT] = 0
+			i.inputs[i.INPUTS.YINPUT] = 0
+			i.inputs[i.INPUTS.ACTION] = 0
+		
 		if Global.players[0].totalRings >= ringsForPerfect and perfectEnabled:
 			$LevelClear/PerfectBonusText.visible = true
 			perfectBonus = 50000

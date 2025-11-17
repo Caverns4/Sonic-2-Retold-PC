@@ -1,13 +1,16 @@
-[gd_scene load_steps=19 format=3 uid="uid://3n283yjcshus"]
+[gd_scene load_steps=22 format=3 uid="uid://3n283yjcshus"]
 
 [ext_resource type="Script" uid="uid://kmbg52matmq3" path="res://Scripts/Boss/bouncer_eggman.gd" id="1_xy0pm"]
 [ext_resource type="Texture2D" uid="uid://6ds1jcc8jmyf" path="res://Graphics/Boss/Eggmobile.png" id="2_bpb65"]
 [ext_resource type="Texture2D" uid="uid://dam0q6u1k8paq" path="res://Graphics/Boss/Jet.png" id="3_iwerh"]
 [ext_resource type="Texture2D" uid="uid://c31pi0okhicpx" path="res://Graphics/Boss/Eggmobile_Top.png" id="4_el4kk"]
 [ext_resource type="Texture2D" uid="uid://d0i06mnbra5yc" path="res://Graphics/Boss/Robotnik.png" id="5_b4yb1"]
+[ext_resource type="Texture2D" uid="uid://bsr6qgv0jb6mk" path="res://Graphics/Boss/MTZ/Eggmobile_Laser.png" id="5_bpb65"]
 [ext_resource type="Texture2D" uid="uid://bf0ytf63vlq5c" path="res://Graphics/Boss/EggmobileFlash.png" id="6_l2xn3"]
 [ext_resource type="AudioStream" uid="uid://bq25mlko4saoj" path="res://Audio/SFX/Boss/s2br_BossHit.wav" id="7_sgf7u"]
 [ext_resource type="AudioStream" uid="uid://u14e5d6axr7x" path="res://Audio/SFX/Boss/s2br_BossExplosion.wav" id="8_838d0"]
+[ext_resource type="Script" uid="uid://3fibic4tsodc" path="res://Scripts/Boss/eggpod_controller.gd" id="10_el4kk"]
+[ext_resource type="PackedScene" uid="uid://blngoqqusgqxd" path="res://Entities/Boss/Bouncer Eggman/egg_pod.tscn" id="10_iwerh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8gg6r"]
 atlas = ExtResource("5_b4yb1")
@@ -97,7 +100,7 @@ animations = [{
 size = Vector2(48, 48)
 
 [node name="BouncerEggman" type="CharacterBody2D"]
-z_index = 1
+z_index = 3
 collision_layer = 16384
 collision_mask = 0
 script = ExtResource("1_xy0pm")
@@ -115,6 +118,10 @@ texture = ExtResource("3_iwerh")
 [node name="Eggmobile_Top" type="Sprite2D" parent="EggMobile"]
 position = Vector2(10, -48)
 texture = ExtResource("4_el4kk")
+
+[node name="Eggmobile_Laser" type="Sprite2D" parent="EggMobile"]
+position = Vector2(-24, -12)
+texture = ExtResource("5_bpb65")
 
 [node name="Robotnik" type="AnimatedSprite2D" parent="EggMobile"]
 z_index = -1
@@ -147,19 +154,43 @@ modulate = Color(1, 0, 0, 1)
 shape = SubResource("5")
 
 [node name="LeftPoint" type="Node2D" parent="."]
-position = Vector2(-128, 0)
+position = Vector2(-128, 8)
 
 [node name="RightPoint" type="Node2D" parent="."]
-position = Vector2(128, 0)
+position = Vector2(128, 8)
 
 [node name="TopPoint" type="Node2D" parent="."]
-position = Vector2(0, -128)
+position = Vector2(0, -64)
 
 [node name="SmokeTimer" type="Timer" parent="."]
 wait_time = 0.1
 
 [node name="AnimationTime" type="Timer" parent="."]
 one_shot = true
+
+[node name="EggpodController" type="Node2D" parent="."]
+script = ExtResource("10_el4kk")
+
+[node name="EggPod" parent="EggpodController" instance=ExtResource("10_iwerh")]
+position = Vector2(-72, 0)
+
+[node name="EggPod2" parent="EggpodController" instance=ExtResource("10_iwerh")]
+position = Vector2(-48, -32)
+
+[node name="EggPod3" parent="EggpodController" instance=ExtResource("10_iwerh")]
+position = Vector2(-16, -56)
+
+[node name="EggPod4" parent="EggpodController" instance=ExtResource("10_iwerh")]
+position = Vector2(16, -56)
+
+[node name="EggPod5" parent="EggpodController" instance=ExtResource("10_iwerh")]
+position = Vector2(56, -32)
+
+[node name="EggPod6" parent="EggpodController" instance=ExtResource("10_iwerh")]
+position = Vector2(72, 0)
+
+[node name="EggPod7" parent="EggpodController" instance=ExtResource("10_iwerh")]
+position = Vector2(0, 56)
 
 [connection signal="defeated" from="." to="." method="_on_boss_defeated"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_DamageArea_area_entered"]

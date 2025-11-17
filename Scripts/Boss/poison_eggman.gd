@@ -11,12 +11,10 @@ var soundTimer = 0.0
 @onready var pump = $EggMobile/WaterPump
 @onready var pipe = $PipeTexture
 var currentPoint = 1
-var Explosion = preload("res://Entities/Misc/GenericParticle.tscn")
 
 var pipe_extension = 0
 var state_timer = 0
 
-var hoverOffset = 0
 var direction = -1 #left is -1, right is 1
 
 var animationPriority = ["default","move","laugh","hit","exploded"]
@@ -118,6 +116,9 @@ func updateHoveringPos(delta):
 	# change the hover offset
 	global_position.y = global_position.y-hoverOffset
 	hoverOffset = move_toward(hoverOffset,cos(Global.levelTime*4)*4,delta*10)
+	call_deferred("restore_hover_pose")
+
+func restore_hover_pose():
 	global_position.y = global_position.y+hoverOffset
 
 func set_pipe_extension(delta):
