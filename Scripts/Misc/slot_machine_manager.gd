@@ -67,7 +67,7 @@ func  _process(delta: float) -> void:
 	_setup_child_graphics(delta)
 
 ## Update the slot machine's graphics to match the needed frames.
-func _setup_child_graphics(delta):
+func _setup_child_graphics(_delta):
 	for this_machine in all_slot_machines:
 		var slotpicID = 0
 		for pic in this_machine.get_children(true):

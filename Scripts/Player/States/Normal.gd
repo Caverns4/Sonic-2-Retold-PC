@@ -159,7 +159,7 @@ func _process(delta):
 				# No edge detected
 				if getM or !parent.ground or parent.angle != parent.gravityAngle:
 					# Play default idle animation
-					if Global.hud.isStageEnding and parent.animator.has_animation("victory"):
+					if is_instance_valid(Global.hud) and Global.hud.isStageEnding and parent.animator.has_animation("victory"):
 						parent.animator.play("victory")
 					elif parent.isSuper and parent.animator.has_animation("idle_super"):
 						parent.animator.play("idle_super")

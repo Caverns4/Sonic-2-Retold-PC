@@ -80,15 +80,6 @@ func _ready():
 	Global.reset_values()
 	#Clear game variables
 	Global.two_player_mode = false
-	Global.score = 0
-	Global.scoreP2 = 0
-	Global.levelTime = 0
-	Global.levelTimeP2 = 0
-	Global.lives = 3
-	Global.livesP2 = 3
-	Global.twoPlayerZoneResults.clear()
-	Global.twoPlayActResults.clear()
-	Global.twoPlayerRound = 0
 	#Prepare the Title Streen Music
 	SoundDriver.music.stream = music
 	#Prepare the background
@@ -145,6 +136,7 @@ func MenuOptionChosen():
 		0:
 			Global.savedZoneID = Global.ZONES.EMERALD_HILL
 			Global.savedActID = 0
+			Global.emeralds = 126
 			SetFadeOut(nextZone)
 		1:
 			Global.two_player_mode = true

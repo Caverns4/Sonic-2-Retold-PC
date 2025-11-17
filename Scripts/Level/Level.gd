@@ -87,6 +87,8 @@ func level_reset_data(_playCard = true):
 				level_theme = music2P
 			SoundDriver.music.stream_paused = false
 			SoundDriver.themes[SoundDriver.THEME.NORMAL] = level_theme
+		
+		Global.main.set_volume(0,0.01)
 	
 	if boss_theme:
 		SoundDriver.themes[SoundDriver.THEME.BOSS] = boss_theme
