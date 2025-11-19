@@ -3,7 +3,7 @@ extends Node
 ## Time to wait before moving on automaticaly, or 0 to disable the timer.
 @export var time: float = 0.0 
 @export var music: AudioStream = preload("res://Audio/Soundtrack/s2br_2PResults.ogg")
-@export var returnScene: PackedScene = load("res://Scene/Presentation/Title.tscn")
+@export var returnScene: String ="res://Scene/Presentation/Title.tscn"
 
 var endScene = false
 ## The created Timer Node, if applicable.
@@ -29,9 +29,9 @@ func _input(event):
 		or event.is_action_pressed("gm_action2")
 		or event.is_action_pressed("gm_action3")) and !endScene:
 			endScene = true
-			Global.main.change_scene_to_file(returnScene,"FadeOut","FadeOut",1)
+			Global.main.change_scene(returnScene)
 
 func _is_timer_expired():
 	if !endScene:
 		endScene = true
-		Global.main.change_scene_to_file(returnScene,"FadeOut","FadeOut",1)
+		Global.main.change_scene(returnScene)

@@ -10,9 +10,7 @@ var restPos = 0 #Position the invisible platforms move up to.
 
 func _ready():
 	if !Engine.is_editor_hint():
-		if (get_tree().current_scene is MainGameScene): # and !Global.levelSelectFlag:
-			visible = false
-		var size = Vector2(32*scale.x,32*scale.y)
+		visible = Global.debug_mode
 		restPos = global_position.y - 8
 
 func _physics_process(delta: float) -> void:

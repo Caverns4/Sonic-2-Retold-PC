@@ -1,8 +1,8 @@
 extends Node2D
 
 @export var music = preload("res://Audio/Soundtrack/s2br_2PResults.ogg")
-var nextAct = preload("res://Scene/Presentation/ZoneLoader.tscn")
-var returnScene = preload("res://Scene/Presentation/TwoPlayerMenu.tscn")
+var zone_loader: String = "res://Scene/Presentation/ZoneLoader.tscn"
+var two_player_menu: String = "res://Scene/Presentation/TwoPlayerMenu.tscn"
 
 var results = 0 #Winner of the current act, or zone if zone is complete.
 var endScene = false
@@ -47,10 +47,10 @@ func _input(event):
 			Global.scoreP2 = 0
 			if Global.savedActID == 0 and Global.lives > 0 and Global.livesP2 > 0:
 				Global.loadNextLevel()
-				Global.main.change_scene_to_file(nextAct,"FadeOut","FadeOut",1)
+				Global.main.change_scene(zone_loader)
 			else:
 				Global.twoPlayerZoneResults.append(results)
-				Global.main.change_scene_to_file(returnScene,"FadeOut","FadeOut",1)
+				Global.main.change_scene(two_player_menu)
 
 func GetWinner(result: Array):
 	if Global.lives <=0:

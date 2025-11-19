@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var music = preload("res://Audio/Soundtrack/s2br_Options.ogg")
-var returnScene = load("res://Scene/Presentation/Title.tscn")
+var title_screen: String = "res://Scene/Presentation/Title.tscn"
 
 @onready var textField = $UI/Labels/OptionsMenu
 
@@ -156,7 +156,7 @@ func _unhandledInput(event):
 					selected = true
 					SetPlayerCharacterIDs()
 					Global.save_settings()
-					Global.main.change_scene_to_file(returnScene,"FadeOut","FadeOut",1)
+					Global.main.change_scene(title_screen)
 					Global.characterSelectMemory = characterID
 
 

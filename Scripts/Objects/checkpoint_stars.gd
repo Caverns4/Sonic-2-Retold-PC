@@ -35,24 +35,17 @@ func _process(delta):
 			
 			SoundDriver.music.stop()
 			$Warp.play()
-			# set next zone to current zone (this will reset when the stage is loaded back in)
-			Global.nextZone = Global.main.lastScene
 			
 			# add ring to node memory so you can't farm the ring
-			Global.nodeMemory.append(get_path())
+			Global.keep_memory = [Global.players[0].global_position,
+			Global.players[0].rings,
+			Global.currentCheckPoint]
 			
 			# fade to new scene
-			Global.main.change_scene_to_file(
-				load("res://Scene/SpecialStage/SpecialStage.tscn"),"WhiteOut","WhiteOut",1.0,true,false)
+			Global.main.change_scene("res://Scene/SpecialStage/SpecialStage.tscn","WhiteOut",1.0,false)
 			# wait for scene to fade
 			await Global.main.scene_faded
-			player.allowTranslate = false
-			player.set_state(player.STATES.NORMAL)
-			player.collision_layer = mask_memory[0]
-			player.collision_mask = mask_memory[1]
-			SoundDriver.music.play(0.0)
 			queue_free()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -100,7 +93,7 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 	if !active and body.playerControl == 1:
 		active = true
 		player = body
-		#body.visible = false
+		#player.visible = false
 		body.movement = Vector2.ZERO
 		# set players state to animation so nothing takes them out of it
 		body.set_state(body.STATES.ANIMATION)

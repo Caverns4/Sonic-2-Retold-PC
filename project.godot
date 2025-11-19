@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Sonic 2:Retold"
-run/main_scene="res://Scene/Main.tscn"
+run/main_scene="uid://c58ontqoxjuti"
 config/features=PackedStringArray("4.5")
 run/max_fps=60
 boot_splash/bg_color=Color(0.933333, 0.933333, 0.933333, 1)
@@ -23,6 +23,7 @@ config/windows_native_icon="res://sonic.ico"
 
 Global="*res://Scripts/Global/Global.gd"
 GlobalFunctions="*res://Scripts/Global/GlobalFunctions.gd"
+Main="*res://Scene/Main.tscn"
 SoundDriver="*res://Scripts/Global/SoundDriver.gd"
 
 [debug]

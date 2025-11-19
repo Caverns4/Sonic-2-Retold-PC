@@ -3,8 +3,7 @@ extends StaticBody2D
 
 func _ready():
 	if !Engine.is_editor_hint():
-		if (get_tree().current_scene is MainGameScene): # and !Global.levelSelectFlag:
-			visible = false
+		visible = Global.debug_mode
 
 func _process(_delta):
 	if Engine.is_editor_hint():

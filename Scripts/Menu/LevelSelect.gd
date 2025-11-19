@@ -2,7 +2,7 @@ extends Node2D
 
 
 @export var music = preload("res://Audio/Soundtrack/s2br_Options.ogg")
-@export var nextZone = load("res://Scene/Presentation/ZoneLoader.tscn")
+@export var next_zone_loader: String = "res://Scene/Presentation/ZoneLoader.tscn"
 var selected: bool = false
 
 const LEFT_ROWS: float = 26 # number of columns to draw, including blank ones
@@ -103,8 +103,8 @@ func _ready():
 	characterID = Global.characterSelectMemory
 	SoundDriver.music.stream = music
 	SoundDriver.music.play()
-	if nextZone != null:
-		Global.nextZone = nextZone
+	if next_zone_loader != null:
+		Global.nextZone = next_zone_loader
 
 func _process(delta):
 	levelSelect_UpdateText()
@@ -194,8 +194,8 @@ func _input(event):
 					Global.savedZoneID = Global.ZONES.METROPOLIS
 					Global.savedActID = 1
 				14: #Metropolis 3
-					Global.savedZoneID = Global.ZONES.METROPOLIS
-					Global.savedActID = 2
+					Global.savedZoneID = Global.ZONES.CYBER_CITY
+					Global.savedActID = 0
 				15: #Dust Hill 1
 					Global.savedZoneID = Global.ZONES.DUST_HILL
 					Global.savedActID = 0
@@ -247,7 +247,7 @@ func _input(event):
 					Global.two_player_mode = false
 					return
 			
-			Global.main.change_scene_to_file(Global.nextZone,"FadeOut","FadeOut",1)
+			Global.main.change_scene(Global.nextZone)
 			Global.characterSelectMemory = characterID
 
 func levelSelectSetupDirectionalInput():

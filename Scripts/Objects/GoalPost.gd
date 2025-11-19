@@ -132,4 +132,4 @@ func _on_timer_timeout() -> void:
 	Global.twoPlayActResults.append(results)
 	#Set flag to load the results screen.
 	#print(results)
-	Global.main.change_scene_to_file(twoPlayerResults,"FadeOut","FadeOut",1)
+	Global.main.change_scene(twoPlayerResults)

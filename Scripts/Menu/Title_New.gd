@@ -3,11 +3,11 @@ extends Node2D
 @export var music = preload("res://Audio/Soundtrack/s2br_TitleScreen.ogg")
 ## For debug/test builds only.
 @export var disable_menu: bool = false
-var nextZone = preload("res://Scene/Presentation/ZoneLoader.tscn")
-var twoPlayerScene = load("res://Scene/Presentation/TwoPlayerMenu.tscn")
-var testScene = load("res://Scene/Presentation/LevelSelect.tscn")
-var returnScene = load("res://Scene/Cutscenes/Opening.tscn")
-var optionsScene = load("res://Scene/Presentation/OptionsMenu.tscn")
+var zone_loader: String = "res://Scene/Presentation/ZoneLoader.tscn"
+var two_player_menu: String = "res://Scene/Presentation/TwoPlayerMenu.tscn"
+var level_select_menu: String = "res://Scene/Presentation/LevelSelect.tscn"
+var opening_cutscene: String = "res://Scene/Cutscenes/Opening.tscn"
+var optionsScene: String = "res://Scene/Presentation/OptionsMenu.tscn"
 
 enum STATES{INTRO,WAITING,FADEOUT}
 var titleState: int = STATES.INTRO
@@ -78,8 +78,10 @@ var cheatInputCount = 0 #Correct inputs
 var lastCheatInput = Vector2.ZERO
 
 func _ready():
+	get_tree().paused = false
 	#Wipe the player arrays to avoid contamination.
 	Global.reset_values()
+	Global.debug_mode = false
 	#Clear game variables
 	Global.two_player_mode = false
 	#Prepare the Title Streen Music
@@ -139,16 +141,16 @@ func MenuOptionChosen():
 			Global.savedZoneID = Global.ZONES.EMERALD_HILL
 			Global.savedActID = 0
 			Global.emeralds = 126
-			SetFadeOut(nextZone)
+			SetFadeOut(zone_loader)
 		1:
 			Global.two_player_mode = true
 			Global.PlayerChar1 = Global.CHARACTERS.SONIC
 			Global.PlayerChar2 = Global.CHARACTERS.TAILS
-			SetFadeOut(twoPlayerScene)
+			SetFadeOut(two_player_menu)
 		2:
 			SetFadeOut(optionsScene)
-		128:
-			SetFadeOut(testScene)
+		_:
+			SetFadeOut(level_select_menu)
 
 func CheckCheatInputs():
 	var inputs = Input.get_vector("gm_left","gm_right","gm_up","ui_down")
@@ -199,11 +201,11 @@ func SetFadeOut(newScene):
 	if titleState < STATES.FADEOUT:
 		titleState = STATES.FADEOUT
 		menuActive = false
-		Global.main.change_scene_to_file(newScene,"FadeOut","FadeOut",1)
+		Global.main.change_scene(newScene)
 
 #The sparkling rings have finished, fade out to demo
 func _on_celebrations_finished() -> void:
-	SetFadeOut(returnScene)
+	SetFadeOut(opening_cutscene)
 	menuActive = false
 
 #The wait timer has run out, activate the spakls in time with the shooting star sound

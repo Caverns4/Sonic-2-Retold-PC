@@ -2,7 +2,7 @@ extends Node2D
 
 
 @export var music = preload("res://Audio/Soundtrack/s2br_2PResults.ogg")
-var returnScene = load("res://Scene/Presentation/Title.tscn")
+var title_screen: String = "res://Scene/Presentation/Title.tscn"
 var explosion = preload("res://Entities/Misc/GenericParticle.tscn")
 
 var endScene = false
@@ -20,7 +20,7 @@ func _input(event):
 func returnTitleScreen():
 	if !endScene:
 		endScene = true
-		Global.main.change_scene_to_file(returnScene,"FadeOut","FadeOut",1)
+		Global.main.change_scene(title_screen)
 
 func spawnExplosion(pos):
 	# create explosion

@@ -10,13 +10,8 @@ var mask_memory = [0,0]
 func _ready():
 	# check that the current ring hasn't already been collected and all 7 emeralds aren't collected
 	# the emerald check is so that it'll spawn if you have all emeralds anyway
-
-	#if Global.nodeMemory.has(get_path()) and Global.emeralds < 127:
-	#	print("An attempt to spawn a special ring failed")
-	#	queue_free()
-	#else:
-	#	print("Spawn Special Ring")
-	pass
+	if Global.nodeMemory.has(get_path()) or Global.emeralds > 127:
+		queue_free()
 
 func _process(delta):
 	if active:
@@ -29,22 +24,16 @@ func _process(delta):
 			
 			SoundDriver.music.stop()
 			$Warp.play()
-			# set next zone to current zone (this will reset when the stage is loaded back in)
-			Global.nextZone = Global.main.lastScene
-			
 			# add ring to node memory so you can't farm the ring
 			Global.nodeMemory.append(get_path())
+			Global.keep_memory = [Global.players[0].global_position,
+			Global.players[0].rings,
+			Global.currentCheckPoint]
 			
 			# fade to new scene
-			Global.main.change_scene_to_file(
-				load("res://Scene/SpecialStage/SpecialStage.tscn"),"WhiteOut","WhiteOut",1,true,false)
+			Global.main.change_scene("res://Scene/SpecialStage/SpecialStage.tscn","WhiteOut",1,false)
 			# wait for scene to fade
 			await Global.main.scene_faded
-			player.allowTranslate = false
-			player.set_state(player.STATES.NORMAL)
-			player.collision_layer = mask_memory[0]
-			player.collision_mask = mask_memory[1]
-			SoundDriver.music.play(0.0)
 			queue_free()
 	# Spinning ring logic
 	else:
@@ -62,7 +51,7 @@ func _on_Hitbox_body_entered(body):
 		if Global.emeralds < 127:
 			active = true
 			player = body
-			#body.visible = false
+			player.visible = false
 			body.movement = Vector2.ZERO
 			# set players state to animation so nothing takes them out of it
 			body.set_state(body.STATES.ANIMATION)

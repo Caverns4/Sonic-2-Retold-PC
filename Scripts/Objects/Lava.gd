@@ -7,11 +7,11 @@ func _ready():
 	positionIcons()
 	if !Engine.is_editor_hint():
 		$CollisionShape2D.scale = size/32
-		if (get_tree().current_scene is MainGameScene): #and !Global.levelSelectFlag
-			$TopLeft.visible = false
-			$TopRight.visible = false
-			$BottomLeft.visible = false
-			$BottomRight.visible = false
+		visible = Global.debug_mode
+		#$TopLeft.visible = Global.debug_mode
+		#$TopRight.visible = Global.debug_mode
+		#$BottomLeft.visible = Global.debug_mode
+		#$BottomRight.visible = Global.debug_mode
 		
 
 func _process(delta):

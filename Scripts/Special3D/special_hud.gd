@@ -8,7 +8,7 @@ extends CanvasLayer
 enum MESSAGES{NULL,GET_RINGS,RINGS_TO_GO,NOT_ENOUGH_RINGS,GOOD,COURSE_OUT}
 var message_state = MESSAGES.GET_RINGS
 
-var resultsScreen = preload("res://Scene/SpecialStage/SpecialStageResult.tscn")
+var resultsScreen: String = "res://Scene/SpecialStage/SpecialStageResult.tscn"
 var messageTime = 3.0
 var message_text: String = ""
 var current_round: int = 0
@@ -21,7 +21,7 @@ var message_flash_timer:float = 0.25
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Global.hud = self
+	Global.special_hud = self
 	if !Global.PlayerChar2 or !Global.two_player_mode:
 		$TopRight.queue_free()
 		$TopLeft.queue_free()
@@ -169,4 +169,4 @@ func ShowThumbsUp():
 
 func endStage():
 	await resultSound.finished
-	Global.main.change_scene_to_file(resultsScreen,"WhiteOut","WhiteOut",1,false,false)
+	Global.main.change_scene(resultsScreen,"WhiteOut",1.0,false)

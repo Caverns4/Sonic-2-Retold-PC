@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=4 uid="uid://caxc44uymh48a"]
+[gd_scene load_steps=24 format=4 uid="uid://caxc44uymh48a"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_8ynvh"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="2_yrcwh"]
 [ext_resource type="PackedScene" uid="uid://deaxge481u7mk" path="res://Scene/Backgrounds/00-EmeraldHill.tscn" id="3_jdx3s"]
+[ext_resource type="PackedScene" uid="uid://c1n8wnllp8pk2" path="res://Entities/Items/SpecialStageRing.tscn" id="14_fk11x"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="15_005t2"]
 [ext_resource type="TileSet" uid="uid://uplqwsi0o4gi" path="res://Tileset/Levels/EHZ_HTZ_Tiles.tres" id="16_5813u"]
 [ext_resource type="PackedScene" uid="uid://c1ldunfxhq0he" path="res://Entities/Obstacles/ForceAngleSides.tscn" id="18_u1d8p"]
@@ -282,6 +283,9 @@ platform_sprite = ExtResource("24_qyfb0")
 endPosition = Vector2(0, 64)
 dropSlightly = false
 fullySolid = true
+
+[node name="GiantRing" parent="Platforms" instance=ExtResource("14_fk11x")]
+position = Vector2(224, 600)
 
 [node name="Hazards" type="Node" parent="."]
 

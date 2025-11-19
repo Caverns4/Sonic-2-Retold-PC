@@ -1,7 +1,7 @@
 extends Node2D
 
 
-var zone_loader = preload("res://Scene/Presentation/ZoneLoader.tscn")
+var zone_loader:String ="res://Scene/Presentation/ZoneLoader.tscn"
 
 enum STATE{IDLE,COUNTDOWN,SHOWTEXT,WAITTOEXIT,EXITING}
 var state: STATE = STATE.IDLE
@@ -91,10 +91,7 @@ func returnToLevel():
 	Global.special_stage_rings = 0
 	Global.special_stage_players.clear()
 	
-	if Global.stageInstanceMemory:
-		Global.main.change_scene_to_file(null,"WhiteOut","WhiteOut",1,true,false)
-	else:
-		Global.main.change_scene_to_file(zone_loader,"WhiteOut","WhiteOut",1,false,true)
+	Global.main.change_scene(zone_loader,"WhiteOut")
 
 func SpecialResults_SetupText():
 	if !Global.lastSpecialStageResult:

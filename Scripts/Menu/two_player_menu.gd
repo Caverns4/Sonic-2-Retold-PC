@@ -2,8 +2,8 @@ extends Node2D
 
 @export var music = preload("res://Audio/Soundtrack/s2br_Options.ogg")
 
-var nextScene = preload("res://Scene/Presentation/Title.tscn")
-var nextZone = preload("res://Scene/Presentation/ZoneLoader.tscn")
+var title_scene: String = "res://Scene/Presentation/Title.tscn"
+var zone_loader: String = "res://Scene/Presentation/ZoneLoader.tscn"
 
 var sfx_Select = preload("res://Audio/SFX/Gimmicks/s2br_Switch.wav")
 var sfx_Confirm = preload("res://Audio/SFX/Objects/s2br_Checkpoint.wav")
@@ -120,7 +120,7 @@ func updateCharacterSelection():
 	(Input.is_action_just_pressed("gm_action2") and !playersReady[0]) or
 	(Input.is_action_just_pressed("gm_action2_P2") and !playersReady[1])
 	):
-		Global.main.change_scene_to_file(nextScene,"FadeOut","FadeOut",1)
+		Global.main.change_scene(title_scene,)
 	elif (Input.is_action_just_pressed("gm_action2") and playersReady[0]):
 		playersReady[0] = false
 		$Control/Player1READY.visible = false
@@ -155,7 +155,7 @@ func updateZoneSelection():
 		Global.savedZoneID = Global.twoPlayerZones[zoneSelection]
 		Global.savedActID = 0
 		Global.twoPlayerItems = itemSelection as Global.ITEM_MODE
-		Global.main.change_scene_to_file(nextZone,"FadeOut","FadeOut",1)
+		Global.main.change_scene(zone_loader)
 
 
 func UpdateCharacterFrameInMenu(_delta: float = 0.0):

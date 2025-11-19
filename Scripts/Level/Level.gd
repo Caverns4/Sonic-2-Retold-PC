@@ -6,7 +6,7 @@ extends Node2D
 @export var music2P = preload("res://Audio/Soundtrack/s2br_Tropical.ogg")
 @export var boss_theme = preload("res://Audio/Soundtrack/s2br_Boss.ogg")
 
-var nextZone = load("res://Scene/Presentation/ZoneLoader.tscn")
+var next_zone_loader: String = "res://Scene/Presentation/ZoneLoader.tscn"
 
 ## Animals dropped from Badniks in this act.
 @export_enum("Bird","Squirrel",
@@ -41,17 +41,8 @@ var nextZone = load("res://Scene/Presentation/ZoneLoader.tscn")
 
 var twoPlayerWindow = preload("res://Scene/TwoPlayerScreenView.tscn")
 
-# was loaded is used for room loading, this can prevent overwriting global information, see Global.gd for more information on scene loading
-var wasLoaded = false
-
 func _ready():
 	Global.savedZoneID = zoneID as Global.ZONES
-	# debuging
-	if !Global.is_main_loaded:
-		return false
-	# skip if scene was loaded
-	if wasLoaded:
-		return false
 
 	# Setup Boundries
 	if setDefaultLeft:
@@ -69,7 +60,6 @@ func _ready():
 	if Global.two_player_mode == true:
 		var twoPlayerScene = twoPlayerWindow.instantiate()
 		add_child(twoPlayerScene)
-	wasLoaded = true
 
 # used for stage starts, also used for returning from special stages
 func level_reset_data(_playCard = true):
@@ -87,8 +77,6 @@ func level_reset_data(_playCard = true):
 				level_theme = music2P
 			SoundDriver.music.stream_paused = false
 			SoundDriver.themes[SoundDriver.THEME.NORMAL] = level_theme
-		
-		Global.main.set_volume(0,0.01)
 	
 	if boss_theme:
 		SoundDriver.themes[SoundDriver.THEME.BOSS] = boss_theme
@@ -109,8 +97,8 @@ func level_reset_data(_playCard = true):
 			index +=1
 	
 	# set next zone
-	if nextZone != null:
-		Global.nextZone = nextZone
+	if next_zone_loader != null:
+		Global.nextZone = next_zone_loader
 	
 	# set pausing to true
 	if Global.main != null:

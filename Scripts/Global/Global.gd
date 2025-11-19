@@ -9,13 +9,16 @@ DEATH_EGG,ENDING,SPECIAL_STAGE}
 
 #Two Player Mode flag. Either false or true.
 var two_player_mode = false
-# player pointers (0 is usually player 1)
+## Player references
 var players: Array[Player2D] = []
+## Player references in special stages only
 var special_stage_players: Array = []
-# main object reference
+## Main object reference
 var main: MainGameScene = null
-# hud object reference
+## HUD object reference
 var hud: CanvasLayer = null
+## HUD object specificiall in special stages.
+var special_hud = null
 # Slot machines (Casino Night Zone Only), probably not needed.
 var slotMachines = []
 # Character Reel Master
@@ -37,11 +40,10 @@ var checkPointTimeP2 = 0
 var checkPointRings = 0
 var checkPointRingsP2 = 0
 # the starting room, this is loaded on game resets, you may want to change this
-var startScene = preload("res://Scene/Presentation/Title.tscn")
-var nextZone = load("res://Scene/Zones/EmeraldHill1.tscn") # change this to the first level in the game (also set in "reset_values")
-# use this to store the current state of the room, changing scene will clear everything
-var stageInstanceMemory = null
-var stageLoadMemory = null
+var start_scene: String = "res://Scene/Presentation/Title.tscn"
+var nextZone: String = "res://Scene/Zones/EmeraldHill1.tscn" # change this to the first level in the game (also set in "reset_values")
+## A previously loaded stage to be called back to later.
+var keep_memory: Array = []
 
 # score instace for add_score()
 var Score = preload("res://Entities/Misc/Score.tscn")
@@ -129,6 +131,7 @@ var anyCharacters:bool = false
 var betaCasinoNight:bool = false
 var beta_sonic:bool = false
 var insta_shield:bool = true
+var debug_mode: bool = true
 
 # Two Player settings
 #Single Race: Pick a character and a zone for each race
@@ -238,18 +241,18 @@ func _ready():
 		print("Global Save Data does not exist. Skipping.")
 	
 	# check if main scene is root (prevents crashing if you started from another scene)
-	if !(get_tree().current_scene is MainGameScene):
-		get_tree().paused = true
-		# change scene root to main scene, keep current scene in memory
-		var loadNode = get_tree().current_scene.scene_file_path
-		var mainScene = load("res://Scene/Main.tscn").instantiate()
-		get_tree().root.call_deferred("remove_child",get_tree().current_scene)
-		#get_tree().root.current_scene.call_deferred("queue_free")
-		get_tree().root.call_deferred("add_child",mainScene)
-		mainScene.get_node("SceneLoader").get_child(0).nextScene = load(loadNode)
-		await get_tree().process_frame
-		get_tree().paused = false
-	is_main_loaded = true
+	#if !(get_tree().current_scene is MainGameScene):
+	#	get_tree().paused = true
+	#	# change scene root to main scene, keep current scene in memory
+	#	var loadNode = get_tree().current_scene.scene_file_path
+	#	var mainScene = load("res://Scene/Main.tscn").instantiate()
+	#	get_tree().root.call_deferred("remove_child",get_tree().current_scene)
+	#	#get_tree().root.current_scene.call_deferred("queue_free")
+	#	get_tree().root.call_deferred("add_child",mainScene)
+	#	mainScene.get_node("SceneLoader").get_child(0).nextScene = load(loadNode)
+	#	await get_tree().process_frame
+	#	get_tree().paused = false
+	#is_main_loaded = true
 
 func _process(delta):
 	# do a check for certain variables, if it's all clear then count the level timer up
@@ -264,14 +267,11 @@ func _process(delta):
 	
 # reset values, self explanatory, put any variables to their defaults in here
 func reset_values():
-	#Wipe the player arrays to avoid contamination.
-	players.clear()
-	special_stage_players.clear()
-	checkPoints.clear()
-	#Clear Casino Night Zone contexts
-	slotMachines.clear()
-	characterReels = null
+	Clean_Up()
 	#Clear general game variables
+	main.wasPaused = false
+	if keep_memory:
+		return	
 	two_player_mode = false
 	score = 0
 	scoreP2 = 0
@@ -291,6 +291,16 @@ func reset_values():
 	currentCheckPointP2 = -1
 	animals = [0,1]
 	nodeMemory = []
+
+## Wipe all data arrays to avoid contamination.
+func Clean_Up():
+	#Wipe the player arrays to avoid contamination.
+	players.clear()
+	special_stage_players.clear()
+	checkPoints.clear()
+	#Clear Casino Night Zone contexts
+	slotMachines.clear()
+	characterReels = null
 
 # add a score object, see res://Scripts/Misc/Score.gd for reference
 func add_score(position: Vector2,value: int,playerID: int):
@@ -314,6 +324,8 @@ func loadNextLevel():
 	#Reset all Checkpoints so the player doesn't respawn in a bad spot
 	currentCheckPoint = -1
 	currentCheckPointP2 = -1
+	nodeMemory.clear()
+	keep_memory.clear()
 	maxTime = 60*10
 	
 	if special_exit > ZONES.EMERALD_HILL:

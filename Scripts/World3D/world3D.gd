@@ -10,8 +10,8 @@ var wasLoaded = false
 func _ready():
 	get_tree().paused = false
 	# debuging
-	if !Global.is_main_loaded:
-		return false
+	#if !Global.is_main_loaded:
+	#	return false
 	# skip if scene was loaded
 	if wasLoaded:
 		return false

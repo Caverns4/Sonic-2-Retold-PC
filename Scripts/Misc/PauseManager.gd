@@ -117,7 +117,7 @@ func _input(event):
 						visible = false
 						Global.checkPointTime = 0
 						Global.currentCheckPoint = -1
-						Global.main.change_scene_to_file(null,"FadeOut")
+						Global.main.Reload_Level()
 						#await Global.main.scene_faded
 						Global.main.set_volume(0)
 			MENUS.QUIT: # quit option
@@ -125,7 +125,9 @@ func _input(event):
 					0: # cancel
 						set_menu(0)
 					1: # ok
-						await get_tree().process_frame
+						visible = false
+						set_menu(0)
+						Global.main.sceneCanPause = false
 						Global.main.reset_game()
 
 
@@ -135,8 +137,8 @@ func _unhandledInput(_event):
 		return
 	
 	# check if paused and visible, otherwise cancel it out
-	#if !get_tree().paused or !visible:
-	#	return null
+	if !get_tree().paused or !visible:
+		return
 	#Get input vector, round to -1, 0, or 1
 	var inputCue = Input.get_vector("gm_left","gm_right","gm_up","gm_down")
 	inputCue.x = round(inputCue.x)

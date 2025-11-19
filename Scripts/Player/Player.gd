@@ -306,7 +306,12 @@ func _ready():
 	var _con = connect("connectFloor",Callable(self,"land_floor"))
 	_con = connect("connectCeiling",Callable(self,"touch_ceiling"))
 	
-	respawnPosition = global_position
+	if !Global.keep_memory:
+		respawnPosition = global_position
+	else:
+		global_position = Global.keep_memory[0]
+		rings = Global.keep_memory[1]
+		Global.currentCheckPoint = Global.keep_memory[2]
 	
 	# Camera settings
 	get_parent().call_deferred("add_child", (camera))
@@ -387,6 +392,7 @@ func _ready():
 	for i in Global.checkPoints:
 		if Global.currentCheckPoint == i.checkPointID:
 			global_position = i.global_position+Vector2(0,8)
+			respawnPosition = global_position
 			camera.global_position = i.global_position+Vector2(0,8)
 			Global.levelTime = Global.checkPointTime
 			Global.levelTimeP2 = Global.checkPointTime
@@ -397,10 +403,7 @@ func _ready():
 	
 	# run switch physics to ensure character specific physics
 	switch_physics()
-	
-	# Set hitbox
-	#hitbox.shape.size = currentHitbox.NORMAL
-	
+
 	# connect animator
 	animator.connect("animation_started",Callable(self,"_on_PlayerAnimation_animation_started"))
 	defaultSpriteOffset = sprite.offset
@@ -446,6 +449,7 @@ func _ready():
 	if playerControl == 1 and partner:
 		partner.sfx = sfx
 	
+	Global.keep_memory.clear()
 
 
 # 0 not pressed, 1 pressed, 2 held (best to do > 0 when checking input), -1 released
@@ -1168,7 +1172,7 @@ func hit_player(damagePoint = global_position, damageType = 0, soundID = 6):
 				get_parent().add_child(ring)
 			rings = 0
 		elif shield == SHIELDS.NONE and (playerControl == 1 or Global.two_player_mode):
-			if !(get_tree().current_scene is MainGameScene):
+			if Global.debug_mode:
 				sfx[soundID].play()
 				return false
 			else:

@@ -105,7 +105,7 @@ func _physics_process(delta: float) -> void:
 		jumpBuffer -= delta
 		
 	if movement.y < -32.0 and !dead:
-		Global.hud.SetupNextRound(true)
+		Global.special_hud.SetupNextRound(true)
 		dead = true
 
 func handle_input(delta):

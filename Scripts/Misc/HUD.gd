@@ -51,7 +51,7 @@ var accumulatedDelta: float = 0.0
 # signal that gets emited once the stage tally is over
 signal tally_clear
 
-var twoPlayerResults = load("res://Scene/Presentation/TwoPlayerResults.tscn")
+var two_player_results = load("res://Scene/Presentation/two_player_results.tscn")
 var lifeTextures = [
 	preload("res://Graphics/HUD/hud_lives.png"),
 	preload("res://Graphics/HUD/hud_lives_Miles.png")
@@ -71,8 +71,8 @@ func _ready():
 	if !Global.airSpeedCap:
 		$Counters/Text.self_modulate = Color.RED
 	# error prevention
-	if !Global.is_main_loaded:
-		return false
+	#if !Global.is_main_loaded:
+	#	return false
 	$Water/WaterOverlay.material["shader_parameter/originalPalette"] = waterSourceColor
 	$Water/WaterOverlay.material["shader_parameter/swapPalette"] = waterReplaceColor
 	
@@ -371,9 +371,9 @@ func SetupGameOver(_delta):
 				Global.twoPlayActResults.append(results)
 				#Set flag to load the results screen.
 				#print(results)
-				Global.main.change_scene_to_file(twoPlayerResults,"FadeOut")
+				Global.main.change_scene(two_player_results)
 			else:
-				Global.main.change_scene_to_file(Global.startScene,"FadeOut")
+				Global.main.change_scene(Global.start_scene)
 			await Global.main.scene_faded
 			call_deferred("Global.reset_values")
 		# reset level (if time over and lives aren't out)
@@ -445,7 +445,7 @@ func ProcessStageClear(_delta):
 		Global.totalCoins += coins
 		# after clear, change to next level in Global.nextZone (you can set the next zone in the level script node)
 		Global.loadNextLevel()
-		Global.main.change_scene_to_file(Global.nextZone,"FadeOut","FadeOut",1)
+		Global.main.change_scene(Global.nextZone)
 
 func InitTimerForPlayer(index):
 	if index == 0:
