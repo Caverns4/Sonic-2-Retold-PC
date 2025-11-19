@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_588bb"]
 [ext_resource type="AudioStream" uid="uid://g0a01sst32bm" path="res://Audio/Soundtrack/s2br_DeathEgg.ogg" id="2_j7ucr"]
-[ext_resource type="PackedScene" uid="uid://d2ectm23ulm50" path="res://Scene/Backgrounds/15-DeathEgg.tscn" id="3_dgxjp"]
+[ext_resource type="PackedScene" uid="uid://d2ectm23ulm50" path="res://Scene/Backgrounds/16-DeathEgg.tscn" id="3_dgxjp"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="3_l1prs"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="4_lrbjf"]
 [ext_resource type="Material" uid="uid://cb361gtn7ru3w" path="res://Shaders/Materials/DEZ Palsetter.tres" id="5_w8yld"]

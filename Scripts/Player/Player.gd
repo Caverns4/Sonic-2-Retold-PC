@@ -1117,6 +1117,7 @@ func hit_player(damagePoint = global_position, damageType = 0, soundID = 6):
 	if (currentState != STATES.HIT and invTime <= 0 and 
 	supTime <= 0 and (shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled 
 	or character != Global.CHARACTERS.SONIC)):
+		attacking = false
 		movement.x = sign(global_position.x-damagePoint.x)*2*60
 		
 		if !check_for_ceiling():

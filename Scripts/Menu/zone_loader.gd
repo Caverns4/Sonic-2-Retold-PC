@@ -53,8 +53,6 @@ func _physics_process(_delta: float) -> void:
 						Global.nextZone = load("res://Scene/Zones/Metropolis1.tscn")
 					1:
 						Global.nextZone = load("res://Scene/Zones/Metropolis2.tscn")
-					2:
-						Global.nextZone = load("res://Scene/Zones/BossZone.tscn")
 			Global.ZONES.DUST_HILL:
 				match Global.savedActID:
 					0:
@@ -97,6 +95,13 @@ func _physics_process(_delta: float) -> void:
 						Global.nextZone = load("res://Scene/Zones/Tropical1.tscn")
 					1:
 						Global.nextZone = load("res://Scene/Zones/Tropical2.tscn")
+			Global.ZONES.CYBER_CITY:
+				match Global.savedActID:
+					0:
+						Global.nextZone = load("res://Scene/Zones/CyberCity.tscn")
+					1:
+						Global.nextZone = load("res://Scene/Zones/Metropolis3.tscn")
+						
 			Global.ZONES.SKY_FORTRESS:
 				match Global.savedActID:
 					0:

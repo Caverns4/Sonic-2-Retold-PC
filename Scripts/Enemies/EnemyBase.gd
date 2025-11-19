@@ -31,7 +31,8 @@ func _process(delta):
 					else:
 						# Bounce slightly down
 						i.movement.y += 120
-						
+					
+					#Original badnik bounce behaviour. Jankier but more accurate.
 					#if i.movement.y > 0 and i.global_position.y < global_position.y:
 					#	# Bounce high upward
 					#	i.movement.y = -i.movement.y

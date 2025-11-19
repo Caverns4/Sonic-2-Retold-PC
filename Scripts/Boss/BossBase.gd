@@ -24,6 +24,8 @@ func _ready() -> void:
 	if Global.two_player_mode:
 		queue_free()
 
+# Todo: Player should still bounce even if the boss can't yet be hit again
+
 func _physics_process(delta):
 	# flashing timer
 	if flashTimer > 0:

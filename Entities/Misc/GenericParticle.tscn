@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=3 uid="uid://dmrtm7r6hfbfr"]
+[gd_scene load_steps=120 format=3 uid="uid://dmrtm7r6hfbfr"]
 
 [ext_resource type="Texture2D" uid="uid://bihgasvpr4jyb" path="res://Graphics/Items/invincible_stars.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://c5cooxne7gmco" path="res://Graphics/Misc/NGHZRocks.png" id="1_14h1g"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://nc4htsilrkus" path="res://Graphics/Misc/explosion3.png" id="6_vlx8u"]
 [ext_resource type="Texture2D" uid="uid://c3em2xm0y2fip" path="res://Graphics/Items/Rings/RingSparkle.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://cciqyn4fgs3st" path="res://Graphics/Enemies/MotobugSmoke.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://bhxvpgtquriqi" path="res://Graphics/Boss/MTZ/Boss_Eggpod_Pop.png" id="9_uksht"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3qua2"]
 atlas = ExtResource("1_14h1g")
@@ -249,6 +250,10 @@ region = Rect2(0, 8, 8, 8)
 [sub_resource type="AtlasTexture" id="188"]
 atlas = ExtResource("8")
 region = Rect2(0, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fguef"]
+atlas = ExtResource("9_uksht")
+region = Rect2(0, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="166"]
 atlas = ExtResource("7")
@@ -656,6 +661,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_fguef")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fguef")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"Pop",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("166")
 }, {
 "duration": 1.0,
@@ -830,6 +852,9 @@ animations = [{
 
 [node name="GenericParticle" type="AnimatedSprite2D"]
 sprite_frames = SubResource("157")
+animation = &"Pop"
+frame = 3
+frame_progress = 1.0
 script = ExtResource("2")
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

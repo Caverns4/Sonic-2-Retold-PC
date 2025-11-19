@@ -3,8 +3,8 @@ extends Node
 enum ZONES{EMERALD_HILL,HIDDEN_PALACE,HILL_TOP,CHEMICAL_PLANT,
 OIL_OCEAN,NEO_GREEN_HILL,METROPOLIS,DUST_HILL,
 WOOD_GADGET,CASINO_NIGHT,JEWEL_GROTTO,WINTER,
-SAND_SHOWER,TROPICAL,SKY_FORTRESS,DEATH_EGG,
-ENDING,SPECIAL_STAGE}
+SAND_SHOWER,TROPICAL,CYBER_CITY,SKY_FORTRESS,
+DEATH_EGG,ENDING,SPECIAL_STAGE}
 # Winter Zone is scrapped, I just don't feel like removing all the references.
 
 #Two Player Mode flag. Either false or true.
@@ -161,7 +161,8 @@ var zoneNames = [
 	"Emerald Hill", "Hidden Palace","Hill Top", "Chemical Plant",
 	"Oil Ocean", "Neo Green Hill","Metropolis","Dust Hill",
 	"Wood Gadget","Casino Night","Jewel Grotto","Winter",
-	"Sand Shower","Tropical Sun","Sky Fortress","Death Egg"
+	"Sand Shower","Tropical Sun","Cyber City","Sky Fortress",
+	"Death Egg","XXX"
 ]
 
 var savedZoneID = ZONES.EMERALD_HILL # Last played zone. Will mainly be used for the Title Screen.
@@ -176,7 +177,8 @@ var waterScrollSpeed = 64 # used by other nodes for how fast to move the water t
 var hardBorderLeft: int  = 0
 var hardBorderRight: int = 16384
 var hardBorderTop: int   = 0
-var hardBorderBottom:int = 4096
+var hardBorderBottom:int = 2048 # Normal max in Sonic 2
+## Ideally, this will never be used. Redesign levels as much as possible to avoid it.
 var y_wrap: bool = false
 
 # Animal spawn type reference, see the level script for more information on the types
@@ -340,9 +342,8 @@ func loadNextLevel():
 				savedActID = 0
 				savedZoneID = ZONES.CHEMICAL_PLANT
 			ZONES.METROPOLIS:
-				if savedActID > 2: #Discount Act 3
-					savedActID = 0
-					savedZoneID = ZONES.ENDING
+				savedActID = 0
+				savedZoneID = ZONES.CYBER_CITY
 			ZONES.DUST_HILL:
 				savedActID = 0
 				savedZoneID = ZONES.HIDDEN_PALACE
@@ -360,16 +361,14 @@ func loadNextLevel():
 				savedZoneID = ZONES.EMERALD_HILL
 			ZONES.SAND_SHOWER:
 				savedActID = 0
-				savedZoneID = ZONES.EMERALD_HILL
+				savedZoneID = ZONES.OIL_OCEAN
 			ZONES.TROPICAL:
 				savedActID = 0
 				savedZoneID = ZONES.EMERALD_HILL
-			ZONES.SKY_FORTRESS:
-				savedActID = 0
-				savedZoneID = ZONES.DEATH_EGG
-			ZONES.DEATH_EGG:
+			ZONES.CYBER_CITY:
 				savedActID = 0
 				savedZoneID = ZONES.ENDING
+			# Sky Fortress and Death Egg are special cases.
 
 # Godot doesn't like not having emit signal only done in other nodes so we're using a function to call it
 func emit_stage_start():

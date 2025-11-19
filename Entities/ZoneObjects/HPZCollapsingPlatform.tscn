@@ -12,7 +12,6 @@ collision_mask = 4096
 script = ExtResource("1_kc31n")
 tile = NodePath("Tiles")
 speed = 6.0
-soundDelay = 0.0
 
 [node name="Tiles" type="TileMapLayer" parent="."]
 use_parent_material = true

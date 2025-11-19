@@ -91,10 +91,9 @@ func _physics_process(delta):
 					currentPoint = 0
 				
 			1: # main attack
-				if !eggpod_controller.children:
+				if !eggpod_controller.children and !eggpod_controller.decoys:
 					phase = 3
 					currentPoint = posmod(currentPoint+1,2)
-					print("Final Phase")
 				
 				# reset hover position
 				updateHoveringPos(delta)
@@ -115,19 +114,17 @@ func _physics_process(delta):
 						attackTimer += delta
 						
 						if attackTimer <3.0:
-							eggpod_controller.target_radius = 128
+							eggpod_controller.target_radius = 160
 							eggpod_controller.target_speed = 4.0
-						
-						if attackTimer > 3.0:
+						elif attackTimer > 3.0:
+							eggpod_controller.target_radius = 16
+							eggpod_controller.target_speed = 2.0
+						if attackTimer > 6.0:
+							currentPoint = posmod(currentPoint+1,getPose.size())
 							eggpod_controller.target_radius = 32
 							eggpod_controller.target_speed = 3.0
-							
-						if attackTimer > 5.0:
-							currentPoint = posmod(currentPoint+1,getPose.size())
 							attackTimer = 0
-				
-				
-				
+
 			2: # Flee to the top position until no decoys are loose.
 				# reset hover position
 				updateHoveringPos(delta)
@@ -141,7 +138,7 @@ func _physics_process(delta):
 
 				if !eggpod_controller.decoys:
 					phase = 1
-					currentPoint = 0
+					currentPoint = wrapi(currentPoint,0,1)
 			3: #Out of Children
 				# reset hover position
 				updateHoveringPos(delta)

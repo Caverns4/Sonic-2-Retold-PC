@@ -28,6 +28,13 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if decoys:
+		var rebuild: Array[CharacterBody2D] = []
+		for i in decoys:
+			if is_instance_valid(i):
+				rebuild.append(i)
+			decoys = rebuild
+	
 	if !children:
 		return
 	timer += delta
@@ -43,23 +50,17 @@ func _process(delta: float) -> void:
 		if orb is CharacterBody2D:
 			var angle: float= orb.angle + timer * orbit_speed
 			var local := Vector2(
-				cos(angle) * orbit_radius,
-				sin(angle) * orbit_radius* dynamic_bulge)
+				cos(angle) * orbit_radius* dynamic_bulge,
+				sin(angle) * orbit_radius)
 			local = local.rotated(axis_angle)
 			orb.position = local
-			orb.z_index = 3 + int(local.y)
+			orb.z_index = 3 + int(local.x)
 			orb.position = local + global_position
-	
-	if decoys:
-		var rebuild: Array[CharacterBody2D] = []
-		for i in decoys:
-			if is_instance_valid(i):
-				rebuild.append(i)
-			decoys = rebuild
+
 
 
 func _on_eggman_damaged():
 	if children:
 		var decoy = children.pop_back()
 		decoy.break_away()
-		decoys.append(decoy)
+		decoys.push_front(decoy)

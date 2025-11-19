@@ -1,7 +1,6 @@
-[gd_scene load_steps=49 format=4 uid="uid://cx126ulu8rjba"]
+[gd_scene load_steps=48 format=4 uid="uid://cx126ulu8rjba"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_74d0b"]
-[ext_resource type="AudioStream" uid="uid://bjoynvot2wdjm" path="res://Audio/Soundtrack/s2br_HiddenPalace.ogg" id="2_g4evx"]
 [ext_resource type="AudioStream" uid="uid://bg1fcuqr8mk1d" path="res://Audio/Soundtrack/s2br_Jewel.ogg" id="3_2gqg0"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="4_xgdih"]
 [ext_resource type="Texture2D" uid="uid://tdr31l1fyfos" path="res://Graphics/Palettes/HPZ_Pal_Dry.png" id="5_7us6y"]
@@ -88,7 +87,7 @@ _data = {
 [node name="HiddenPalace2" type="Node2D"]
 script = ExtResource("1_74d0b")
 zoneID = 1
-music = ExtResource("2_g4evx")
+music = ExtResource("3_2gqg0")
 music2P = ExtResource("3_2gqg0")
 animal1 = 8
 animal2 = 5

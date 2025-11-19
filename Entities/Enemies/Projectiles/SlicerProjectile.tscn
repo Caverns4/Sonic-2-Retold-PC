@@ -26,12 +26,12 @@ shape = SubResource("1")
 
 [node name="projectile" type="Sprite2D" parent="ClawSprites"]
 texture_repeat = 1
-position = Vector2(-8, 0)
+position = Vector2(-6, 0)
 texture = ExtResource("2_ecrgd")
 
 [node name="projectile2" type="Sprite2D" parent="ClawSprites"]
 texture_repeat = 1
-position = Vector2(8, 0)
+position = Vector2(6, 0)
 texture = ExtResource("2_ecrgd")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

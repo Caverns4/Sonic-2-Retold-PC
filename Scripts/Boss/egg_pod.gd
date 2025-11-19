@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+## Scene instantiated when the Tornado is on a timer.
+var explosion = preload("res://Entities/Misc/GenericParticle.tscn")
+
 @onready var animation = $AnimationPlayer
 @onready var ballon_hit_box = $CollisionShape2D
 @onready var hitbox = $Area2D
@@ -40,11 +43,12 @@ func break_away():
 	reparent(get_parent().get_parent().get_parent())
 	global_position = saved_position
 	animation.play("free")
+	ballon_hit_box.disabled = false
 
 ## Only one animation, so that's probably all that's needed.
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
-	ballon_hit_box.disabled = false
 	vulnerable = true
+	
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -55,4 +59,19 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		elif player.attacking or player.supTime:
 			queue_free()
 			Global.add_score(global_position,1,Global.players.find(player))
-		
+			
+			var skipBounce = (player.animator.current_animation == "drop")
+			if !player.ground and !(skipBounce):
+				if player.movement.y > 0:
+					# Bounce high upward
+					player.movement.y = -player.movement.y
+				else:
+					# Bounce slightly down
+					player.movement.y += 120
+					
+			var this: AnimatedSprite2D = explosion.instantiate()
+			this.play("Pop")
+			this.global_position = global_position - Vector2(0,00)
+			this.z_index = 30
+			this.top_level = true
+			get_parent().get_parent().add_child(this)
