@@ -165,7 +165,8 @@ var zoneNames = [
 	"Death Egg","XXX"
 ]
 
-var savedZoneID = ZONES.EMERALD_HILL # Last played zone. Will mainly be used for the Title Screen.
+## The current played zone. Necessary for Two-Player Mode and the Title Screen.
+var savedZoneID = ZONES.ENDING
 var savedActID = 0 # selected act ID
 
 # water level of the current level, setting this to null will disable the water

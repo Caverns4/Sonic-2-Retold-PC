@@ -63,6 +63,7 @@ var paraOffsets = [
 	0,
 	0,
 	0,
+	0
 ]
 
 #Cheat Code Inputs
