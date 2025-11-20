@@ -23,8 +23,8 @@ func _ready():
 
 func _process(_delta: float) -> void:
 	for body:Player2D in players:
-		if body.poleGrabID == self:
-			if $HitBox.disabled == true or body.is_on_floor():
+		if body.poleGrabID == self and playerCarryAI == true:
+			if $HitBox.disabled == true or body.is_on_floor() or body.is_on_wall():
 				_player_dropoff(body)
 
 func _player_jumpoff(body:Player2D):
@@ -64,11 +64,6 @@ func _physics_process(_delta: float) -> void:
 				body.direction = sign(body.INPUTS.XINPUT)
 			if (body.is_down_held() and press_down_to_drop):
 				_player_dropoff(body)
-			
-			if playerCarryAI:
-				body.update_sensors()
-				if body.verticalSensorMiddle.is_colliding():
-					_player_dropoff(body)
 		
 		if (!body.poleGrabID and body.movement.y > 0 and 
 		body.global_position.y > global_position.y and 
@@ -85,14 +80,17 @@ func _physics_process(_delta: float) -> void:
 
 # Returns the count of players contacting with the hanger. Used by external scripts.
 func get_player_contacting_count():
-	return players.size()
+	var count: int = 0
+	for i:Player2D in players:
+		if i.poleGrabID == self:
+			count += 1
+	return count
 
 
 func _on_body_entered(body: Player2D) -> void:
 	var parent = get_parent()
 	if body != parent:
 		players.append(body)
-		print(body)
 
 
 func _on_body_exited(body: Player2D) -> void:

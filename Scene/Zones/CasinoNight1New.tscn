@@ -370,7 +370,7 @@ position = Vector2(8296, 1288)
 scale = Vector2(-1, 1)
 
 [node name="CnzFlipper25" parent="Entities" instance=ExtResource("13_wyhjd")]
-position = Vector2(8088, 1608)
+position = Vector2(8088, 1600)
 
 [node name="CnzFlipper27" parent="Entities" instance=ExtResource("13_wyhjd")]
 position = Vector2(8984, 1320)
@@ -404,7 +404,7 @@ position = Vector2(8808, 856)
 scale = Vector2(-1, 1)
 
 [node name="CnzFlipper26" parent="Entities" instance=ExtResource("13_wyhjd")]
-position = Vector2(8232, 1608)
+position = Vector2(8232, 1600)
 scale = Vector2(-1, 1)
 
 [node name="CnzFlipper16" parent="Entities" instance=ExtResource("13_wyhjd")]

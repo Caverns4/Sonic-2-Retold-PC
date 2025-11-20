@@ -10,7 +10,7 @@ var flyHitBox
 var carryHitBox
 var carryBox
 
-var SavedPartner = null
+var carried_partner: Player2D = null
 
 func _ready():
 	flyHitBox = parent.get_node("TailsFlightHitArea/HitBox")
@@ -25,10 +25,10 @@ func state_activated():
 	actionPressed = true
 	
 func state_exit():
-	if SavedPartner:
-		SavedPartner.z_index = clamp(parent.z_index+1,1,6)
-		SavedPartner.poleGrabID = null
-		SavedPartner = null
+	if carried_partner:
+		carried_partner.z_index = clamp(parent.z_index+1,1,6)
+		carried_partner.poleGrabID = null
+		carried_partner = null
 	
 	flyHitBox.call_deferred("set","disabled",true)
 	carryHitBox.call_deferred("set","disabled",true)
@@ -76,41 +76,31 @@ func _process(_delta):
 
 func _physics_process(delta):
 	
-	# If carrying another player, 
-	var carriedPlayer = null
-	
+	var player_memory = carried_partner
 	if carryBox.get_player_contacting_count() > 0:
-		carriedPlayer = carryBox.players[0]
-		SavedPartner = carriedPlayer
-
-	# Set carried player attributes when there *is* a carried player
-	if carriedPlayer != null:
-		if carriedPlayer.poleGrabID == carryBox:
-			carriedPlayer.movement = parent.movement
-			carriedPlayer.stateList[parent.STATES.AIR].lockDir = true
-			# set carried player direction
-			carriedPlayer.direction = parent.direction
-			carriedPlayer.sprite.flip_h = parent.sprite.flip_h
-			if PartnerPriority == 0:
-				PartnerPriority = carriedPlayer.z_index
-				carriedPlayer.z_index = parent.z_index-1
-		
+		carried_partner = carryBox.players[0]
+		carried_partner.update_sensors()
+		if carried_partner.verticalSensorMiddle.is_colliding():
+			carryBox._player_dropoff(carried_partner)
+			carried_partner = null
+	
+	if player_memory and !carried_partner:
+		carryBox.playerCarryAI = false
+		player_memory.z_index = parent.z_index+1
+		player_memory = null
+	
+	if carried_partner:
+		# set carried player direction
+		carried_partner.direction = parent.direction
+		carried_partner.sprite.flip_h = parent.sprite.flip_h
+	
 		# set immediate inputs if ai
 		if parent.playerControl == 0:
-			#carriedPlayer.inputMemory[parent.INPUT_MEMORY_LENGTH-1] = carriedPlayer.inputs
-			parent.inputs = carriedPlayer.inputs
+			parent.inputs = carried_partner.inputs.duplicate()
 			# Sonic 3 A.I.R. Hybrid Style - convert holding up into continual A presses while in AI mode
 			if parent.is_up_held():
 				parent.inputs[parent.INPUTS.ACTION] = 1
 			carryBox.playerCarryAI = true
-		else:
-			carryBox.playerCarryAI = false
-	
-	elif !carriedPlayer and SavedPartner:
-		SavedPartner.z_index = PartnerPriority
-		PartnerPriority = 0
-		SavedPartner.poleGrabID = null
-		SavedPartner = null
 	
 	# air movement
 	if (parent.get_x_input() != 0):
@@ -126,8 +116,8 @@ func _physics_process(delta):
 	# Change parent direction
 	if (parent.get_x_input() != 0):
 		parent.direction = parent.get_x_input()
-		if carriedPlayer != null:
-			carriedPlayer.direction = parent.direction
+	#	if carriedPlayer:
+	#		carriedPlayer.direction = parent.direction
 	
 	# set facing direction
 	parent.sprite.flip_h = (parent.direction < 0)

@@ -702,6 +702,8 @@ func _process(delta):
 	set_inputs()
 	if any_action_pressed():
 		jumpBuffer = JUMP_BUFFER_TIME
+	# Update the player's attacking state every step.
+	Update_Attacking_Flag()
 
 
 func _physics_process(delta):
@@ -714,24 +716,6 @@ func _physics_process(delta):
 			set_state(STATES.ROLL)
 			animator.play("roll")
 			sfx[1].play()
-	
-	# Attacking is for rolling type animations
-	attacking = false
-	# lists to check through for attack animations
-	var currentAnimChecks = [
-	"roll","dropDash","spinDash","glide","drop",
-	]
-	var lastActiveAnimCheck = [
-	"glide","glideSlide"
-	]
-	# if any animations match up turn on attacking flag
-	for i in currentAnimChecks:
-		if animator.current_animation == i:
-			attacking = true
-	
-	for i in lastActiveAnimCheck:
-		if lastActiveAnimation == i:
-			attacking = true
 	
 	# physics sets
 	# collide with solids if not rolling layer
@@ -1112,6 +1096,25 @@ func set_shield(setShieldID):
 		_: # disable
 			shieldSprite.visible = false
 
+
+func Update_Attacking_Flag():
+	# Attacking is for rolling type animations
+	attacking = false
+	# lists to check through for attack animations
+	var currentAnimChecks = [
+	"roll","dropDash","spinDash","glide","glideSlide","drop",
+	]
+	#var lastActiveAnimCheck = [
+	#"glide","glideSlide"
+	#]
+	# if any animations match up turn on attacking flag
+	for i in currentAnimChecks:
+		if animator.current_animation == i:
+			attacking = true
+	
+	#for i in lastActiveAnimCheck:
+	#	if lastActiveAnimation == i:
+	#		attacking = true
 
 
 # see Global for damage types, 0 = none, 1 = Fire, 2 = Elec, 3 = Water

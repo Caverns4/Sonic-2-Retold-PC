@@ -73,13 +73,12 @@ func reset_game():
 	$GUI/Pause.visible = false
 	# remove the was paused check
 	wasPaused = false
-	Global.keep_memory.clear()
 	# reset game values
 	Global.reset_values()
 	# Godot doesn't like returning values with empty variables so create a dummy variable for it to assign
 	change_scene("res://Scene/Presentation/Title.tscn")
 
-## New Scene Change function.
+## New Scene Change function.Args: Scene path, fade animation, time of transition, clear data
 func change_scene(scene: String, fade_anim: String = "FadeOut", length: float = 1.0, resetData:bool = true):
 	$GUI/Fader.speed_scale = 1.0/float(length)
 	# if fadeOut isn't blank, play the fade out animation and then wait, otherwise skip this
@@ -92,20 +91,7 @@ func change_scene(scene: String, fade_anim: String = "FadeOut", length: float = 
 	get_tree().change_scene_to_file(scene)
 	# reset data level data, if reset data is true
 	if resetData:
-		Global.players.clear()
-		Global.special_stage_players.clear()
-		Global.checkPoints.clear()
-		Global.hud = null
-		Global.waterLevel = null
-		Global.gameOver = false
-		if Global.stageClearPhase != 0:
-			Global.currentCheckPoint = -1
-			Global.levelTime = 0
-			Global.levelTimeP2 = 0
-			Global.timerActive = false
-			Global.timerActiveP2 = false
-		Global.globalTimer = 0
-		Global.stageClearPhase = 0
+		Global.reset_level_data()
 	# play fade in animation back if it's not blank
 	if fade_anim != "":
 		$GUI/Fader.play_backwards(fade_anim)
@@ -125,21 +111,11 @@ func Reload_Level(fade_anim = "FadeOut",length = 1.0):
 	emit_signal("scene_faded")
 	await get_tree().process_frame
 	Global.Clean_Up()
+	Global.nodeMemory.clear()
 	get_tree().reload_current_scene()
 	# play fade in animation back if it's not blank
 	if fade_anim != "":
 		$GUI/Fader.play_backwards(fade_anim)
-
-func load_saved_scene():
-	if Global.stageInstanceMemory:
-		var prev = get_tree().root.get_child(0)
-		prev.queue_free()
-		get_tree().root.add_child(Global.stageInstanceMemory)
-		Global.stageInstanceMemory = null
-		print("Did this work?")
-	else:
-		print("No valid scene to call back from!")
-		reset_game()
 
 # executed when life sound has finished
 func _on_Life_finished():

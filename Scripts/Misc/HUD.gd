@@ -51,7 +51,7 @@ var accumulatedDelta: float = 0.0
 # signal that gets emited once the stage tally is over
 signal tally_clear
 
-var two_player_results = load("res://Scene/Presentation/two_player_results.tscn")
+var two_player_results = "res://Scene/Presentation/two_player_results.tscn"
 var lifeTextures = [
 	preload("res://Graphics/HUD/hud_lives.png"),
 	preload("res://Graphics/HUD/hud_lives_Miles.png")

@@ -121,4 +121,4 @@ func _physics_process(_delta: float) -> void:
 				Global.nextZone = "res://Scene/Presentation/DemoCredits.tscn"
 		#Load the Zone
 		loaded = true
-		Global.main.change_scene(Global.nextZone)
+		Global.main.change_scene(Global.nextZone,"",0.0)

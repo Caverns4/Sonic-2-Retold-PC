@@ -41,7 +41,7 @@ var checkPointRings = 0
 var checkPointRingsP2 = 0
 # the starting room, this is loaded on game resets, you may want to change this
 var start_scene: String = "res://Scene/Presentation/Title.tscn"
-var nextZone: String = "res://Scene/Zones/EmeraldHill1.tscn" # change this to the first level in the game (also set in "reset_values")
+var nextZone: String = "res://Scene/Zones/EmeraldHill1.tscn"
 ## A previously loaded stage to be called back to later.
 var keep_memory: Array = []
 
@@ -292,6 +292,26 @@ func reset_values():
 	animals = [0,1]
 	nodeMemory = []
 
+func reset_level_data():
+	players.clear()
+	checkPoints.clear()
+	#Clear Casino Night Zone contexts
+	slotMachines.clear()
+	characterReels = null
+	keep_memory.clear()
+	hud = null
+	waterLevel = null
+	gameOver = false
+	if stageClearPhase != 0:
+		currentCheckPoint = -1
+		levelTime = 0
+		levelTimeP2 = 0
+		timerActive = false
+		timerActiveP2 = false
+	globalTimer = 0
+	stageClearPhase = 0
+
+
 ## Wipe all data arrays to avoid contamination.
 func Clean_Up():
 	#Wipe the player arrays to avoid contamination.
@@ -334,6 +354,9 @@ func loadNextLevel():
 		return
 	
 	savedActID +=1
+	if savedZoneID == ZONES.CYBER_CITY:
+		savedZoneID = ZONES.ENDING
+	
 	if savedActID >= 2:
 		match savedZoneID:
 			ZONES.EMERALD_HILL:

@@ -114,7 +114,7 @@ func _physics_process(delta):
 						attackTimer += delta
 						
 						if attackTimer <3.0:
-							eggpod_controller.target_radius = 160
+							eggpod_controller.target_radius = 128
 							eggpod_controller.target_speed = 4.0
 						elif attackTimer > 3.0:
 							eggpod_controller.target_radius = 16
