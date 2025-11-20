@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=3 uid="uid://fjvyccyenyxe"]
+
+[ext_resource type="Texture2D" uid="uid://cdpouu6cfwxce" path="res://Graphics/Enemies/CHIPPA.png" id="1_ebdnc"]
+[ext_resource type="Texture2D" uid="uid://b6nbr2mujveni" path="res://Graphics/Misc/Checkpoint_Stars.png" id="1_jnrra"]
+[ext_resource type="Script" uid="uid://bp8s6nexfdnci" path="res://Entities/Misc/orbit_test.gd" id="2_eeee8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ebdnc"]
+radius = 8.0
+
+[node name="Orbit_Test" type="Node2D"]
+
+[node name="OrbitPoint" type="Sprite2D" parent="."]
+z_index = 3
+position = Vector2(192, 112)
+texture = ExtResource("1_ebdnc")
+script = ExtResource("2_eeee8")
+
+[node name="OrbittingStar" type="CharacterBody2D" parent="OrbitPoint"]
+position = Vector2(0, -47)
+
+[node name="Sprite2D" type="Sprite2D" parent="OrbitPoint/OrbittingStar"]
+texture = ExtResource("1_jnrra")
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OrbitPoint/OrbittingStar"]
+shape = SubResource("CircleShape2D_ebdnc")
+
+[node name="OrbittingStar2" type="CharacterBody2D" parent="OrbitPoint"]
+position = Vector2(0, -47)
+
+[node name="Sprite2D" type="Sprite2D" parent="OrbitPoint/OrbittingStar2"]
+texture = ExtResource("1_jnrra")
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OrbitPoint/OrbittingStar2"]
+shape = SubResource("CircleShape2D_ebdnc")
+
+[node name="OrbittingStar3" type="CharacterBody2D" parent="OrbitPoint"]
+position = Vector2(0, -47)
+
+[node name="Sprite2D" type="Sprite2D" parent="OrbitPoint/OrbittingStar3"]
+texture = ExtResource("1_jnrra")
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OrbitPoint/OrbittingStar3"]
+shape = SubResource("CircleShape2D_ebdnc")
+
+[node name="OrbittingStar4" type="CharacterBody2D" parent="OrbitPoint"]
+position = Vector2(0, -47)
+
+[node name="Sprite2D" type="Sprite2D" parent="OrbitPoint/OrbittingStar4"]
+texture = ExtResource("1_jnrra")
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OrbitPoint/OrbittingStar4"]
+shape = SubResource("CircleShape2D_ebdnc")
+
+[node name="OrbittingStar5" type="CharacterBody2D" parent="OrbitPoint"]
+position = Vector2(0, -47)
+
+[node name="Sprite2D" type="Sprite2D" parent="OrbitPoint/OrbittingStar5"]
+texture = ExtResource("1_jnrra")
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OrbitPoint/OrbittingStar5"]
+shape = SubResource("CircleShape2D_ebdnc")
+
+[node name="OrbittingStar6" type="CharacterBody2D" parent="OrbitPoint"]
+position = Vector2(0, -47)
+
+[node name="Sprite2D" type="Sprite2D" parent="OrbitPoint/OrbittingStar6"]
+texture = ExtResource("1_jnrra")
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OrbitPoint/OrbittingStar6"]
+shape = SubResource("CircleShape2D_ebdnc")

@@ -63,12 +63,10 @@ func _on_upper_censor_body_entered(body: Node2D) -> void:
 
 func _on_front_censor_body_exited(body: Node2D) -> void:
 	players.erase(body)
-	#print("Front")
 
 
 func _on_upper_censor_body_exited(body: Node2D) -> void:
 	players.erase(body)
-	#print("Above")
 
 
 func _on_bumper_coll_body_entered(body: Node2D) -> void:

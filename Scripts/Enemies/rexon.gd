@@ -59,7 +59,6 @@ func _process(delta: float) -> void:
 			ShootBullet()
 		
 		swayDist += sign(swayDirection) * (delta*6)
-		#print(swayDist)
 		var rememberedPosition = Vector2.ZERO
 		for i in children.size():
 			childPositions[i] = rememberedPosition.rotated(deg_to_rad(direction*swayDist))
@@ -79,7 +78,6 @@ func UpdateDirection():
 		get_child(i).scale.x = direction
 
 func ShootBullet():
-	#print("shoot")
 	SoundDriver.play_sound(bulletSound)
 	bullet = Projectile.instantiate()
 	get_parent().add_child(bullet)

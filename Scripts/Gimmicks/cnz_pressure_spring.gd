@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var max_launch_power = 24
-@export var min_launch_power = 4
+@export var max_launch_power: float = 24.0
+@export var min_launch_power: float = 4.0
 
 @export var sfx = preload("res://Audio/SFX/Objects/CNZ_Booster.wav")
 
@@ -12,7 +12,7 @@ var ready_to_fire: bool = false
 @onready var spring_cap = $Area2D
 @onready var spring_coils = $SpringCoils
 
-func  _process(delta: float) -> void:
+func  _process(_delta: float) -> void:
 	for body in players:
 		body.global_position = $Area2D.global_position
 	_update_spring()
@@ -26,7 +26,6 @@ func _physics_process(delta: float) -> void:
 		return
 	else:
 		charge_time += delta*2*(max_launch_power/min_launch_power)
-		#print(charge_time)
 		for body in players:
 			if body.any_action_held() and body.playerControl > 0:
 				return
@@ -38,8 +37,8 @@ func _physics_process(delta: float) -> void:
 			body.allowTranslate = false
 			body.ground = true
 			body.angle = global_rotation_degrees
-			var clamp = clampf(charge_time,abs(min_launch_power),abs(max_launch_power))
-			body.movement = (Vector2.UP * clamp*60).rotated(global_rotation)
+			var clamp_amt = clampf(charge_time,abs(min_launch_power),abs(max_launch_power))
+			body.movement = (Vector2.UP * clamp_amt*60).rotated(global_rotation)
 		charge_time = 0.0
 		players.clear()
 
@@ -47,7 +46,7 @@ func _physics_process(delta: float) -> void:
 func _update_spring():
 	spring_cap.position.y = round(-64 + min(charge_time,24))
 	spring_coils.position.y = spring_cap.position.y/2
-	$Area2D/SpringCap.frame = wrapi(charge_time,0,2)
+	$Area2D/SpringCap.frame = round(wrapf(charge_time,0,2))
 
 func _on_area_2d_body_entered(body: Player2D) -> void:
 	players.append(body)

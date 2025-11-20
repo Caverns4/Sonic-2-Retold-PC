@@ -1,51 +1,49 @@
-extends Node2D
+extends Sprite2D
 
 ## The decoys still flying around Eggman.
 @onready var children = get_children()
 var child_count: int = 0
-## The decoys eggman has already dropped, if still alive.
-var decoys: Array[CharacterBody2D] = []
 
 var timer: float = 0.0
 
-var target_radius: float = 40
-var target_speed: float = 3.0
-
 ## Distance the particles should orbit at.
-var orbit_radius: float = 32
+@export var orbit_radius: float = 32
 ## Speed of the particles to move.
-var orbit_speed: float = 3.0
+@export var orbit_speed: float = 3.0
 ## The eccentricity of the orbit. 1.0 would be a perfect circle.
-var orbit_roundness: float = 1.0
+@export var orbit_roundness: float = 1.0
 ## Turn the oject's rotation to this, gives the objects its erratic motion.
 var orbit_angle: float = 0.0
 
 func _ready() -> void:
-	get_parent().got_hit.connect(_on_eggman_damaged)
 	children = get_children()
 	child_count = get_child_count(true)
 
-
 func _process(delta: float) -> void:
-	if decoys:
-		var rebuild: Array[CharacterBody2D] = []
-		for i in decoys:
-			if is_instance_valid(i):
-				rebuild.append(i)
-			decoys = rebuild
-	
 	if !children:
 		return
 	timer += delta
-
-	orbit_speed = move_toward(orbit_speed,target_speed,delta*8)
-	orbit_radius = move_toward(orbit_radius,target_radius,delta*8)
-
+	
+	# Debug controls
+	if Input.is_action_pressed("gm_up"):
+		orbit_speed += delta
+	if Input.is_action_pressed("gm_down"):
+		orbit_speed -= delta
+	if Input.is_action_pressed("gm_right"):
+		orbit_radius += delta*8
+	if Input.is_action_pressed("gm_left"):
+		orbit_radius -= delta*8
+	if Input.is_action_just_pressed("gm_super"):
+		if get_child_count() > 0:
+			children.erase(get_child(0))
+			get_child(0).free()
+	
 	var bulge = sin(timer*0.5*orbit_roundness)
+	
 	var z_rot = Vector2(bulge,-1.0+bulge).normalized()
 	orbit_angle = wrapf(orbit_angle+delta*2,0,360)
 	z_rot = z_rot.rotated(orbit_angle)
-
+	
 	var direction = Vector2.RIGHT
 	var xOffset = 0.0
 	for i in child_count:
@@ -56,9 +54,3 @@ func _process(delta: float) -> void:
 			children[i].position = local_pos * z_rot
 			local_pos = local_pos
 			children[i].z_index = z_index + int(local_pos.y)
-
-func _on_eggman_damaged():
-	if children:
-		var decoy = children.pop_back()
-		decoy.break_away()
-		decoys.push_front(decoy)

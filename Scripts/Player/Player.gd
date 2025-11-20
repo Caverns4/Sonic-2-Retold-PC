@@ -488,7 +488,6 @@ func _process(delta):
 				if abs(global_position.x-partner.global_position.x) <= 64:
 					# get behind Player 1
 					var testPos = round(global_position.x + ((0-direction)))
-					#print(sign((partner.global_position.x - testPos)*direction))
 					if sign((partner.global_position.x - testPos)*direction) > 0:
 						partner.inputs[INPUTS.XINPUT] = sign(0-direction)
 				
@@ -792,6 +791,7 @@ func _physics_process(delta):
 			camera.limit_left = max(viewPos.x-viewSize.x*0.5,camera.limit_left)
 		# if limit is inside the camera then pan over
 		if abs(camera.limit_left-(viewPos.x-viewSize.x*0.5)) <= viewSize.x*0.5:
+			@warning_ignore('narrowing_conversion')
 			camera.limit_left = move_toward(camera.limit_left,limitLeft,scrollSpeed)
 		# else just snap the camera limit since it's not going to move the camera
 		else:
@@ -803,6 +803,7 @@ func _physics_process(delta):
 			camera.limit_right = min(viewPos.x+viewSize.x*0.5,camera.limit_right)
 		# if limit is inside the camera then pan over
 		if abs(camera.limit_right-(viewPos.x+viewSize.x*0.5)) <= viewSize.x*0.5:
+			@warning_ignore('narrowing_conversion')
 			camera.limit_right = move_toward(camera.limit_right,limitRight,scrollSpeed)
 		# else just snap the camera limit since it's not going to move the camera
 		else:
@@ -815,6 +816,7 @@ func _physics_process(delta):
 				camera.limit_top = max(viewPos.y-viewSize.y*0.5,camera.limit_top)
 			# if limit is inside the camera then pan over
 			if abs(camera.limit_top-(viewPos.y-viewSize.y*0.5)) <= viewSize.y*0.5:
+				@warning_ignore('narrowing_conversion')
 				camera.limit_top = move_toward(camera.limit_top,limitTop,scrollSpeed)
 			# else just snap the camera limit since it's not going to move the camera
 			else:
@@ -826,6 +828,7 @@ func _physics_process(delta):
 				camera.limit_bottom = min(viewPos.y+viewSize.y*0.5,camera.limit_bottom)
 			# if limit is inside the camera then pan over
 			if abs(camera.limit_bottom-(viewPos.y+viewSize.y*0.5)) <= viewSize.y*0.5:
+				@warning_ignore('narrowing_conversion')
 				camera.limit_bottom = move_toward(camera.limit_bottom,limitBottom,scrollSpeed)
 			# else just snap the camera limit since it's not going to move the camera
 			else:

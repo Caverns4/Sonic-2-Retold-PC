@@ -87,10 +87,8 @@ func _process(delta: float) -> void:
 
 func reward_player():
 	if player:
-		#print("Prizes: " + str(reels))
 		state = STATES.GIVING_PRIZE
 		prizes = Parse_Prize()
-		#print(prizes)
 
 func dropPlayer():
 	if player:

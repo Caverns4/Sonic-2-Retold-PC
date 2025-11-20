@@ -182,7 +182,6 @@ func respawnPlayer():
 		if Global.checkPoints.size() > 0:
 			for i in Global.checkPoints:
 				if Global.currentCheckPoint == i.checkPointID:
-					#print(i.checkPointID)
 					player.camera.global_position = i.global_position+Vector2(0,8)
 					player.global_position = i.global_position+Vector2(0,8)
 					Global.levelTime = Global.checkPointTime
@@ -370,7 +369,6 @@ func SetupGameOver(_delta):
 				Global.scoreP2,Global.levelTimeP2,Global.players[1].rings]
 				Global.twoPlayActResults.append(results)
 				#Set flag to load the results screen.
-				#print(results)
 				Global.main.change_scene(two_player_results)
 			else:
 				Global.main.change_scene(Global.start_scene)

@@ -34,7 +34,6 @@ func physics_collision(body, hitVector):
 		and body.ground) and body.movement.x > 200 and body.angle !=0) or (
 		(body.animator.current_animation == "roll") and type == 1
 		):
-			# print(body.movement)
 			# disable physics altering masks
 			set_collision_layer_value(16,false)
 			set_collision_layer_value(14,false)

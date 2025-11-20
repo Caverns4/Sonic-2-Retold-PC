@@ -53,7 +53,6 @@ func _physics_process(delta: float) -> void:
 					velocity.y = JUMP_VEL
 					animator.play("JUMP")
 					position.y -= 6
-					#print("Jump")
 		STATES.JUMP:
 			MoveWithGravity(delta)
 			if velocity.y >= 0.0:
@@ -93,7 +92,7 @@ func MoveWithGravity(delta):
 	if !is_on_floor():
 		velocity.y += GRAVITY*delta
 
-func SpeedToPos(delta):
+func SpeedToPos(_delta):
 	# Velocity movement
 	set_velocity(velocity)
 	move_and_slide()

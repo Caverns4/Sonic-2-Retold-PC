@@ -14,7 +14,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	for player in players:
 		if player.controlObject != self:
 			players.erase(player)
@@ -45,12 +45,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		node.allowTranslate = true
 		SoundDriver.play_sound(sfx)
 		var animName = (str(directionNames[startDirection]) + str(directionNames[launchDir]))
-		#print(animName)
 		$AnimatedSprite2D.play(animName)
 
 
 
-func _on_area_2d_body_exited(body: Node2D) -> void:
+func _on_area_2d_body_exited(_body: Node2D) -> void:
 	pass # Replace with function body.
 
 
@@ -61,4 +60,3 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		i.animator.queue("roll")
 		i.movement = LaunchPlayerDirection * 800
 		i.set_state(i.STATES.ANIMATION)
-		#print(LaunchPlayerDirection)

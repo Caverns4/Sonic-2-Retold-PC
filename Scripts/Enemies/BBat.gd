@@ -86,11 +86,9 @@ func LookAtPlayer():
 
 func _on_player_sensor_body_entered(body):
 	targets.append(body)
-	#print("Entered" + str(targets))
 
 func _on_player_sensor_body_exited(body):
 	targets.erase(body)
-	#print("Exited" + str(targets))
 
 func _on_seek_timer_timeout():
 	match state:

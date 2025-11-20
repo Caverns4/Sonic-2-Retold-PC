@@ -24,7 +24,6 @@ func _ready():
 		var test = Vector2.UP.rotated(global_rotation)
 		test.x = roundi(test.x)
 		direction = sign(test.x)+1 as DIRECTIONS
-		#print(names[direction])
 
 	$fan.global_scale = Vector2(1,1)
 	if $fan.texture != null:
@@ -71,7 +70,6 @@ func _physics_process(delta):
 		#Veritcal Fans
 		DIRECTIONS.VERTICAL:
 			for i in players:
-				#print(names[direction])
 				if pushPlayers and (!i.controlObject and !i.allowTranslate):
 					i.movement.y += -30
 					i.movement.y = clamp(i.movement.y,-240,120)

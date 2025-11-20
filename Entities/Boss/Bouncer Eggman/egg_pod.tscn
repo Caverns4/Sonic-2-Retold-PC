@@ -48,7 +48,6 @@ _data = {
 }
 
 [node name="EggPod" type="CharacterBody2D"]
-top_level = true
 collision_layer = 16384
 collision_mask = 15
 script = ExtResource("1_etgrn")

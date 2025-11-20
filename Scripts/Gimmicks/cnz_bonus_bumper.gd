@@ -5,7 +5,6 @@ var sfx = preload("res://Audio/SFX/Objects/CNZ_Bonus.wav")
 var state = 0
 
 func physics_collision(body, hitVector):
-	#print(hitVector)
 	if abs(hitVector.y) >= 1.0:
 		var testpos: float = body.global_position.y-global_position.y
 		body.movement.y = max(abs(body.movement.y),360) * sign(testpos)

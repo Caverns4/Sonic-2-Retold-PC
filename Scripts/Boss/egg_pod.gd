@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 ## Scene instantiated when the Tornado is on a timer.
 var explosion = preload("res://Entities/Misc/GenericParticle.tscn")
+@export var pop_sfx = preload("res://Audio/SFX/Boss/s2br_SmallExplosion.wav") 
 
 @onready var animation = $AnimationPlayer
 @onready var ballon_hit_box = $CollisionShape2D
@@ -48,7 +49,7 @@ func break_away():
 ## Only one animation, so that's probably all that's needed.
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	vulnerable = true
-	
+	$Area2D.global_scale = Vector2(2,2)
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -74,4 +75,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			this.global_position = global_position - Vector2(0,00)
 			this.z_index = 30
 			this.top_level = true
+			SoundDriver.play_sound2(pop_sfx)
 			get_parent().get_parent().add_child(this)

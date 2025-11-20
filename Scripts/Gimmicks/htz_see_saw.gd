@@ -82,7 +82,7 @@ func UpdateMappingsAndCollision(delta):
 		balance = temp
 	UpdateCollision(delta)
 
-func UpdateCollision(delta):
+func UpdateCollision(_delta):
 	match balance:
 		-1:
 			$CollisionShape2D.disabled = true
@@ -167,21 +167,18 @@ func springObjectsOnBoard(delta):
 	pass
 
 func clampChildXCoords():
-	child.global_position.x = clampi(child.global_position.x,global_position.x-32,global_position.x+32)
+	child.global_position.x = clampf(child.global_position.x,global_position.x-32,global_position.x+32)
 
 func physics_collision(body, hitVector):
 	if hitVector.y > 0 and body.ground:
 		body.angle = 0
 		if !weights.has(body):
 			weights.append(body)
-			#print("PLAYER LAND")
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body == child:
 		weights.append(body)
-		#print("CHILD LAND")
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if weights.has(body):
 		weights.erase(body)
-		#print("PLAYER LEAVE")

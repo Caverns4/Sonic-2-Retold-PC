@@ -38,7 +38,7 @@ func _physics_process(_delta):
 					Global.stageClearPhase = 3
 
 func TriggerSignpostMultiPlayer():
-	for playerObj in Global.players:
+	for playerObj:Player2D in Global.players:
 		if (playerObj.global_position.x > global_position.x and
 		!triggers.has(playerObj)):
 			triggers.append(playerObj)
@@ -49,7 +49,7 @@ func TriggerSignpostMultiPlayer():
 			getCam = playerObj.camera
 		
 			if !winner:
-				winner = playerObj.character
+				winner = playerObj.character as Global.CHARACTERS
 				$Signpost/GoalPost2P.play()
 		
 			SetSignpostAnimation(winner)
@@ -130,6 +130,4 @@ func _on_timer_timeout() -> void:
 	var results = [Global.score,Global.levelTime,Global.players[0].rings,
 	Global.scoreP2,Global.levelTimeP2,Global.players[1].rings]
 	Global.twoPlayActResults.append(results)
-	#Set flag to load the results screen.
-	#print(results)
 	Global.main.change_scene(twoPlayerResults)

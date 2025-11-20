@@ -239,20 +239,7 @@ func _ready():
 				unlockFlags = a[1] 
 	else:
 		print("Global Save Data does not exist. Skipping.")
-	
-	# check if main scene is root (prevents crashing if you started from another scene)
-	#if !(get_tree().current_scene is MainGameScene):
-	#	get_tree().paused = true
-	#	# change scene root to main scene, keep current scene in memory
-	#	var loadNode = get_tree().current_scene.scene_file_path
-	#	var mainScene = load("res://Scene/Main.tscn").instantiate()
-	#	get_tree().root.call_deferred("remove_child",get_tree().current_scene)
-	#	#get_tree().root.current_scene.call_deferred("queue_free")
-	#	get_tree().root.call_deferred("add_child",mainScene)
-	#	mainScene.get_node("SceneLoader").get_child(0).nextScene = load(loadNode)
-	#	await get_tree().process_frame
-	#	get_tree().paused = false
-	#is_main_loaded = true
+
 
 func _process(delta):
 	# do a check for certain variables, if it's all clear then count the level timer up

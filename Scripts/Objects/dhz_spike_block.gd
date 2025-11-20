@@ -17,13 +17,6 @@ func _physics_process(delta: float) -> void:
 			if i.ground:
 				active = true
 	else:
-		
-		#motionScale -= (64*delta)
-		#var getPos = Vector2(motionScale,0.0)
-		#print(getPos)
-		#if abs(motionScale) > abs(slide_distance):
-		#	motionScale = slide_distance
-			
 		slide_position = move_toward(slide_position,slide_distance,delta*64)
 		var getPos = Vector2(slide_position,0)
 		$DHZ_SpikeBlock.position = (getPos).round()

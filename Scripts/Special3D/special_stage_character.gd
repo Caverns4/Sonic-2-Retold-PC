@@ -70,9 +70,9 @@ func _ready() -> void:
 		inputActions = INPUTACTIONS_P2
 	
 	#instantiate the player's skin
-	var character = min(character,playerSkins.size())
+	var character_skin = min(character,playerSkins.size())
 	sprite.queue_free()
-	var newSprite = playerSkins[character-1].instantiate()
+	var newSprite = playerSkins[character_skin-1].instantiate()
 	add_child(newSprite)
 	sprite = newSprite
 	
@@ -132,13 +132,12 @@ func handle_input(delta):
 	if inertia < top_speed:
 		inertia += (8*delta)
 	inertia = clampf(inertia,0-top_speed,top_speed)
-	#print(inertia)
 	
 	movement = (Vector3(input_axis*(top_speed*0.75),movement.y,0-inertia))
 
-func hit_player(damagePosition: Vector3,ammount: int):
+func hit_player(_damagePosition: Vector3,ammount: int):
 	if rings > 0:
-		sfx[9].play
+		sfx[9].play()
 	rings = max(rings-abs(ammount),0)
 	if inertia > 0.0:
 		inertia = 0.0
@@ -159,7 +158,6 @@ func rotate_to_floor_angle(delta):
 func get_floor():
 	# Check collision with the rays for floor, wall, and ceiling
 	if floor_ray.is_colliding():
-		#print(floor_ray.get_collision_normal())
 		shadow_sprite.global_position = floor_ray.get_collision_point()
 		var scale_factor: float = 1.0 - (
 			global_position.distance_to(floor_ray.get_collision_point()) /5.0)

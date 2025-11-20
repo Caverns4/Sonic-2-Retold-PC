@@ -197,7 +197,6 @@ func physics_collision(body, hitVector):
 			body.movement.y *= -1
 	# check that player has the rolling layer bit set
 	elif body.get_collision_layer_value(20):
-		#print(body.animator.current_animation)
 		# Bounce from below
 		if hitVector.x != 0:
 			# check conditions for interaction (and the player is the first player)
@@ -211,7 +210,6 @@ func physics_collision(body, hitVector):
 		# check if player is actually "playable"
 		if (body.playerControl == 1 or Global.two_player_mode) and (
 		body.currentState != body.STATES.SPINDASH):
-			#print(body.animator.current_animation)
 			if  (body.animator.current_animation == "drop"):
 				body.movement.y = 8*60
 			else:

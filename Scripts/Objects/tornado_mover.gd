@@ -20,11 +20,9 @@ func _process(delta: float) -> void:
 		if tornado.global_position.y > Global.hardBorderBottom:
 			tornado.queue_free()
 			player = null
-			print("Tornado deleted")
 			queue_free()
 	else:
 		player = null
-		print("Tornado deleted")
 		queue_free()
 	
 	if !player:

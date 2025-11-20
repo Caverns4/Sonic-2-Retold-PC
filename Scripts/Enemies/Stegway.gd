@@ -63,7 +63,6 @@ func _physics_process(delta: float) -> void:
 						if (node.supTime > 0):
 							direction = sign(global_position.x - node.global_position.x)
 							waitTime = DASH_CHARGE_TIME/2.0
-							#print(direction)
 				movement.x = 0
 				stateTimer = waitTime
 				animator.play("CHARGE")

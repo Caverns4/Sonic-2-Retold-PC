@@ -231,12 +231,11 @@ func _handle_input(delta):
 	if is_jumping and isActionHeld():
 		var add = Vector3(0,jump_hold_strength,0)*delta
 		velocity += add.rotated(up_direction,turn_up_speed*delta)
-		print(velocity)
 		
 
 func hit_player(damagePosition: Vector3,ammount: int):
 	if rings > 0:
-		sfx[9].play
+		sfx[9].play()
 	rings = max(rings-abs(ammount),0)
 
 

@@ -61,7 +61,6 @@ func _physics_process(delta: float) -> void:
 	UpdateCharacterMotion(delta)
 	# Delete self if way out of bounds
 	if character.global_position.y > 4096:
-		#print("Character culled successfully")
 		queue_free()
 
 func UpdateCharacterMotion(delta):

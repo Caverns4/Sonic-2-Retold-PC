@@ -60,7 +60,6 @@ func _process(delta: float) -> void:
 							head.scale.x = 1
 						else:
 							head.scale.x = -1
-						#print(taret_position)
 			STATES.EXTEND:
 				if extend_length < taret_position.length()/8:
 					extend_length += delta*32

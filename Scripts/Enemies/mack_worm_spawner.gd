@@ -123,7 +123,6 @@ func ArcMotion(i,delta):
 
 func WaitTimer(i):
 	var currentChild = get_child(i)
-	#print(childTimes[i])
 	if childTimes[i] <= 0.0:
 		if behavior > 1: #If type is arching
 			childStates[i] = STATES.ARCHING
