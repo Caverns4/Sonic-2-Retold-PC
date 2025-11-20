@@ -42,7 +42,7 @@ func state_exit():
 func _process(_delta):
 	# Animation
 	if parent.is_in_water:
-		if carryBox.get_player_contacting_count() != 0:
+		if carried_partner:
 			parent.animator.play("swimCarry")
 		elif flightTime > 0:
 			parent.animator.play("swim")
@@ -50,7 +50,7 @@ func _process(_delta):
 			parent.animator.play("swimTired")
 	else:
 		if flightTime > 0:
-			if carryBox.get_player_contacting_count() == 0:
+			if !carried_partner:
 				parent.animator.play("fly")
 			else:
 				if parent.movement.y >= 0:
@@ -77,8 +77,9 @@ func _process(_delta):
 func _physics_process(delta):
 	
 	var player_memory = carried_partner
-	if carryBox.get_player_contacting_count() > 0:
-		carried_partner = carryBox.players[0]
+	var grabbing_characters = carryBox.get_contacting_players()
+	if grabbing_characters:
+		carried_partner = grabbing_characters[0]
 		carried_partner.update_sensors()
 		if carried_partner.verticalSensorMiddle.is_colliding():
 			carryBox._player_dropoff(carried_partner)
@@ -128,7 +129,7 @@ func _physics_process(delta):
 	flightTime -= delta
 	# Button press
 	if parent.movement.y >= -1*60 and flightTime > 0 and !parent.roof and parent.position.y >= parent.limitTop+16:
-		if parent.any_action_held_or_pressed() and (!actionPressed or parent.get_y_input() < 0) and (carryBox.get_player_contacting_count() == 0 or !parent.is_in_water):
+		if parent.any_action_held_or_pressed() and (!actionPressed or parent.get_y_input() < 0) and (!carried_partner or !parent.is_in_water):
 			flyGrav = -0.125
 	# return gravity to normal after velocity is less then -1
 	else:

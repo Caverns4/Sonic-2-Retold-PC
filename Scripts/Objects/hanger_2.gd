@@ -79,11 +79,11 @@ func _physics_process(_delta: float) -> void:
 
 
 # Returns the count of players contacting with the hanger. Used by external scripts.
-func get_player_contacting_count():
-	var count: int = 0
+func get_contacting_players():
+	var count: Array = []
 	for i:Player2D in players:
 		if i.poleGrabID == self:
-			count += 1
+			count.append(i)
 	return count
 
 
