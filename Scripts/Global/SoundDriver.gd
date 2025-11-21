@@ -5,6 +5,12 @@ var musicParent = null
 var music: AudioStreamPlayer = null
 var life: AudioStreamPlayer = null
 
+
+var startVolumeLevel = 0 # used as reference for when a volume change started
+var setVolumeLevel = 0 # where to fade the volume to
+var volume_fade_amount = 0 # current stage between start and set for volume level
+var volumeFadeSpeed = 1 # speed for volume changing
+
 # index for current theme
 var currentTheme = 0
 # The Audio Resource that is the currently playing song.
@@ -28,6 +34,8 @@ var soundChannel = AudioStreamPlayer.new()
 #Alternate global Sound player
 var soundChannel2 = AudioStreamPlayer.new()
 
+## Emitted once a volume fade function is complete.
+signal volume_set
 
 func _ready() -> void:
 	# set sound settings
@@ -35,7 +43,18 @@ func _ready() -> void:
 	soundChannel.bus = "SFX"
 	add_child(soundChannel2)
 	soundChannel2.bus = "SFX"
+	volume_set.connect(On_volume_set)
 
+func _process(delta):
+	if !get_tree().paused and !music.stream_paused:
+		# check that volume lerp isn't transitioned yet
+		if volume_fade_amount < 1:
+			# move volume lerp to 1
+			volume_fade_amount = move_toward(volume_fade_amount,1,delta*volumeFadeSpeed)
+			# use volume lerp to set the effect volume
+			SoundDriver.music.volume_db = lerp(float(startVolumeLevel),float(setVolumeLevel),float(volume_fade_amount))
+			if volume_fade_amount >= 1:
+				emit_signal("volume_set")
 
 # use this to play a sound globally, use load("res:..") or a preloaded sound
 func play_sound(sound = null):
@@ -81,3 +100,27 @@ func playMusic(musID = null,agnostic = false):
 		SoundDriver.music.stream = musID
 		SoundDriver.music.play()
 		currentMusic = musID
+
+func playExtraLifeMusic():
+	music.stream_paused = true
+	music.volume_db = -100
+	life.stop()
+	life.play()
+	await life.finished
+	music.stream_paused = false
+	set_volume(1.0,0.5)
+
+# set the volume level
+func set_volume(final_volume: float = 0, fade_speed: float = 1):
+	# set the start volume level to the curren volume
+	startVolumeLevel = music.volume_db
+	# set the volume level to go to
+	setVolumeLevel = final_volume
+	# set volume transition
+	volume_fade_amount = 0
+	# set the speed for the transition
+	volumeFadeSpeed = fade_speed
+	# this is continued in _process() as it needs to run during gameplay
+
+func On_volume_set():
+	pass

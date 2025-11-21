@@ -1,20 +1,8 @@
 class_name MainGameScene
 extends Node2D
 
-# last scene is used for referencing the current scene (this is used for stage restarting)
-var lastScene = null
-
 # this gets emited when the scene fades, used to load in level details and data to hide it from the player
 signal scene_faded
-# signal that emits when volume fades
-signal volume_set
-
-# note: volumes can be set with set_volume(), these variables are just for volume control reference
-var startVolumeLevel = 0 # used as reference for when a volume change started
-var setVolumeLevel = 0 # where to fade the volume to
-var volumeLerp = 0 # current stage between start and set for volume level
-var volumeFadeSpeed = 1 # speed for volume changing
-
 # was paused enables menu control when the player pauses manually so they don't get stuck (get_tree().paused may want to be used by other intances)
 var wasPaused = false
 # determines if the current scene can pause
@@ -29,23 +17,6 @@ func _ready():
 	# initialize game data using global reset (it's better then assigning variables twice)
 	Global.reset_values()
 	scene_faded.connect(On_scene_faded)
-	volume_set.connect(On_volume_set)
-
-func _process(delta):
-	# verify scene isn't paused
-	if !get_tree().paused and SoundDriver.music != null:
-		# pause main music if Extra Life song is playing
-		SoundDriver.music.stream_paused = (SoundDriver.life.playing)
-		
-		# check that volume lerp isn't transitioned yet
-		if volumeLerp < 1:
-			# move volume lerp to 1
-			volumeLerp = move_toward(volumeLerp,1,delta*volumeFadeSpeed)
-			# use volume lerp to set the effect volume
-			SoundDriver.music.volume_db = lerp(float(startVolumeLevel),float(setVolumeLevel),float(volumeLerp))
-			#SoundDriver.music.volume_db = SoundDriver.music.volume_db
-			if volumeLerp >= 1:
-				emit_signal("volume_set")
 
 func _input(event):
 	# Pausing
@@ -99,7 +70,7 @@ func change_scene(scene: String, fade_anim: String = "FadeOut", length: float = 
 	if SoundDriver.life.is_playing():
 		SoundDriver.life.stop()
 		# set volume level to default
-	SoundDriver.music.volume_db = SoundDriver.music.volume_db
+	set_volume(1.0,0.01)
 
 func Reload_Level(fade_anim = "FadeOut",length = 1.0):
 	$GUI/Fader.speed_scale = 1.0/float(length)
@@ -117,25 +88,9 @@ func Reload_Level(fade_anim = "FadeOut",length = 1.0):
 	if fade_anim != "":
 		$GUI/Fader.play_backwards(fade_anim)
 
-# executed when life sound has finished
-func _on_Life_finished():
-	# set volume level to default
-	set_volume()
-
-# set the volume level
-func set_volume(volume = 0, fadeSpeed = 1):
-	# set the start volume level to the curren volume
-	startVolumeLevel = SoundDriver.music.volume_db
-	# set the volume level to go to
-	setVolumeLevel = volume
-	# set volume transition
-	volumeLerp = 0
-	# set the speed for the transition
-	volumeFadeSpeed = fadeSpeed
-	# this is continued in _process() as it needs to run during gameplay
+# set the volume level. All this does is push a request to the Sound Driver.
+func set_volume(final_volume: float = 0, fade_speed: float = 1):
+	SoundDriver.set_volume(final_volume,fade_speed)
 
 func On_scene_faded():
-	pass
-
-func On_volume_set():
 	pass

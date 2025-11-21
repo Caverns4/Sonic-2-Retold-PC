@@ -165,17 +165,13 @@ func destroy():
 		ITEMTYPES.QMARK:
 			pass
 		ITEMTYPES.LIFEP1: # 1up
-			SoundDriver.life.stop()
-			SoundDriver.life.play()
 			Global.lives += 1
 			if Global.hud and !Global.two_player_mode:
 				Global.hud.coins += 1
-			SoundDriver.music.volume_db = -100
+			SoundDriver.playExtraLifeMusic()
 		ITEMTYPES.LIFEP2: #2-Player 1up
-			SoundDriver.life.stop()
-			SoundDriver.life.play()
 			Global.livesP2 +=1
-			SoundDriver.music.volume_db = -100
+			SoundDriver.playExtraLifeMusic()
 
 
 func _physics_process(delta):

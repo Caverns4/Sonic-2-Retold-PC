@@ -72,8 +72,13 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 					
 			var this: AnimatedSprite2D = explosion.instantiate()
 			this.play("Pop")
-			this.global_position = global_position - Vector2(0,00)
+			this.global_position = global_position - Vector2(0,0)
 			this.z_index = 30
 			this.top_level = true
 			SoundDriver.play_sound2(pop_sfx)
 			get_parent().get_parent().add_child(this)
+
+func disable_collision_after_damage():
+	$Area2D.disable_mode = true
+	await get_tree().create_timer(0.2).timeout
+	$Area2D.disable_mode = false

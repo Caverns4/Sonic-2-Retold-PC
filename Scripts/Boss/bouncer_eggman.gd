@@ -121,7 +121,7 @@ func _physics_process(delta):
 							eggpod_controller.target_speed = 2.0
 						if attackTimer > 6.0:
 							currentPoint = posmod(currentPoint+1,getPose.size())
-							eggpod_controller.target_radius = 32
+							eggpod_controller.target_radius = 48
 							eggpod_controller.target_speed = 3.0
 							attackTimer = 0
 

@@ -8,11 +8,11 @@ var decoys: Array[CharacterBody2D] = []
 
 var timer: float = 0.0
 
-var target_radius: float = 40
+var target_radius: float = 48
 var target_speed: float = 3.0
 
 ## Distance the particles should orbit at.
-var orbit_radius: float = 32
+var orbit_radius: float = 48
 ## Speed of the particles to move.
 var orbit_speed: float = 3.0
 ## The eccentricity of the orbit. 1.0 would be a perfect circle.
@@ -62,3 +62,5 @@ func _on_eggman_damaged():
 		var decoy = children.pop_back()
 		decoy.break_away()
 		decoys.push_front(decoy)
+		for i in children:
+			i.disable_collision_after_damage()

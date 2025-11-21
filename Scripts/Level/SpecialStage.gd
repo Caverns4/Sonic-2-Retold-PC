@@ -20,6 +20,9 @@ func _ready():
 	$SpecialHud.ring_requirements = stage.ring_requirements
 	$SpecialHud.ring_requirement = stage.ring_requirements[0]
 	$SpecialHud.message_state = $SpecialHud.MESSAGES.GET_RINGS
+	
+	SoundDriver.themes[SoundDriver.THEME.NORMAL] = music
+	SoundDriver.playMusic(music,true)
 
 func new_round():
 	current_round += 1

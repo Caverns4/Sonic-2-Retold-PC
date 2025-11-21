@@ -320,12 +320,10 @@ func add_score(position: Vector2,value: int,playerID: int):
 # use a check function to see if a score increase would go above 50,000
 func check_score_life(scoreAdd = 0):
 	if fmod(score,50000) > fmod(score+scoreAdd,50000):
-		SoundDriver.life.stop()
-		SoundDriver.life.play()
 		lives += 1
 		if hud:
 			hud.coins += 1
-		SoundDriver.music.volume_db = -100
+		SoundDriver.playExtraLifeMusic()
 
 func loadNextLevel():
 	#Reset all Checkpoints so the player doesn't respawn in a bad spot

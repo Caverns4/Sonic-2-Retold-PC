@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var multiplayerOnly: bool = false
-var twoPlayerResults = load("res://Scene/Presentation/TwoPlayerResults.tscn")
+var two_player_results: String = "res://Scene/Presentation/two_player_results.tscn"
 var getCam = null
 var player = null
 var winner = Global.CHARACTERS.NONE
@@ -130,4 +130,4 @@ func _on_timer_timeout() -> void:
 	var results = [Global.score,Global.levelTime,Global.players[0].rings,
 	Global.scoreP2,Global.levelTimeP2,Global.players[1].rings]
 	Global.twoPlayActResults.append(results)
-	Global.main.change_scene(twoPlayerResults)
+	Global.main.change_scene(two_player_results)

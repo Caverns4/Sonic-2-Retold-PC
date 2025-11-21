@@ -622,13 +622,11 @@ func _process(delta):
 	# Rings 1up
 	if rings >= ring1upCounter:
 		ring1upCounter += 100
-		# award 1up
-		SoundDriver.life.stop()
-		SoundDriver.life.play()
+		# Award Exra Life
 		Global.lives += 1
 		if Global.hud and !Global.two_player_mode:
 			Global.hud.coins += 1
-		SoundDriver.music.volume_db = -100
+		SoundDriver.playExtraLifeMusic()
 
 	#Rotating stars
 	if ($InvincibilityBarrier.visible):
