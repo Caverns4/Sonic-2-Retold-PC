@@ -97,10 +97,9 @@ func _physics_process(_delta: float) -> void:
 			Global.ZONES.CYBER_CITY:
 				match Global.savedActID:
 					0:
-						Global.nextZone = "res://Scene/Zones/CyberCity.tscn"
-					1:
 						Global.nextZone = "res://Scene/Zones/Metropolis3.tscn"
-						
+					1:
+						Global.nextZone = "res://Scene/Zones/CyberCity.tscn"
 			Global.ZONES.SKY_FORTRESS:
 				match Global.savedActID:
 					0:

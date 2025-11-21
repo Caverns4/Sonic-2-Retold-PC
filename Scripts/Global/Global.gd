@@ -339,9 +339,6 @@ func loadNextLevel():
 		return
 	
 	savedActID +=1
-	if savedZoneID == ZONES.CYBER_CITY:
-		savedZoneID = ZONES.ENDING
-	
 	if savedActID >= 2:
 		match savedZoneID:
 			ZONES.EMERALD_HILL:
@@ -363,7 +360,7 @@ func loadNextLevel():
 				savedActID = 0
 				savedZoneID = ZONES.CHEMICAL_PLANT
 			ZONES.METROPOLIS:
-				savedActID = 0
+				savedActID = 1 ## Skip Cyber City 1 for now
 				savedZoneID = ZONES.CYBER_CITY
 			ZONES.DUST_HILL:
 				savedActID = 0

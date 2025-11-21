@@ -195,7 +195,7 @@ func _input(event):
 					Global.savedActID = 1
 				14: #Metropolis 3
 					Global.savedZoneID = Global.ZONES.CYBER_CITY
-					Global.savedActID = 0
+					Global.savedActID = 1
 				15: #Dust Hill 1
 					Global.savedZoneID = Global.ZONES.DUST_HILL
 					Global.savedActID = 0
@@ -239,7 +239,6 @@ func _input(event):
 					Global.savedZoneID = Global.ZONES.DEATH_EGG
 					Global.savedActID = 1
 				29:
-					Global.two_player_mode = false
 					Global.savedZoneID = Global.ZONES.SPECIAL_STAGE
 					Global.savedActID = 0
 				_: # Invalid Entry
@@ -325,8 +324,8 @@ func levelSelect_UpdateText(): # levelID
 			else:
 				textFieldLeft.text += str(levelLabels[i]).to_upper() + "\n"
 	$UI/LabelsRight/LevelIcon.frame = levelIcons[k-1]
-	if levelIcons[k-1] <= Global.ZONES.DEATH_EGG:
-		Global.savedZoneID = levelIcons[k-1]
+	#if levelIcons[k-1] <= Global.ZONES.DEATH_EGG:
+	#	Global.savedZoneID = levelIcons[k-1]
 
 func UpdateCharacterSprites():
 	if characterID == 0:

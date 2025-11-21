@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="2_vtuux"]
 [ext_resource type="AudioStream" uid="uid://bomm2jjdsrep3" path="res://Audio/Soundtrack/s2br_Boss2.ogg" id="3_g3ene"]
 [ext_resource type="PackedScene" uid="uid://br54h8eixiokf" path="res://Scene/Backgrounds/06-Metropolis.tscn" id="4_rvg24"]
-[ext_resource type="TileSet" uid="uid://dtp1ltbawuwlp" path="res://Tileset/Levels/GCZ.tres" id="6_g3ene"]
+[ext_resource type="TileSet" uid="uid://b78s7tfu844gd" path="res://Tileset/Levels/MTZ_Tiles.tres" id="6_g3ene"]
 [ext_resource type="PackedScene" uid="uid://bjuh5cvbt06af" path="res://Entities/MainObjects/Capsule.tscn" id="8_d45e3"]
 [ext_resource type="PackedScene" uid="uid://kvy8b2y8v76e" path="res://Entities/Gimmicks/LeverSpring.tscn" id="9_bgg2a"]
 [ext_resource type="PackedScene" uid="uid://c8avehxrawcvu" path="res://Entities/Gimmicks/MTZSteamPipe.tscn" id="9_v5nym"]
@@ -17,7 +17,7 @@
 
 [node name="Metropolis3" type="Node2D"]
 script = ExtResource("1_fdfw1")
-zoneID = 6
+zoneID = 14
 music = ExtResource("2_jat8k")
 music2P = ExtResource("2_jat8k")
 boss_theme = ExtResource("3_g3ene")
