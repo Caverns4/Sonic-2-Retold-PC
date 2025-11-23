@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bw86f5evgbvjc"]
+[gd_scene load_steps=14 format=4 uid="uid://bw86f5evgbvjc"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_fdfw1"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_rm2lr"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://c8avehxrawcvu" path="res://Entities/Gimmicks/MTZSteamPipe.tscn" id="9_v5nym"]
 [ext_resource type="PackedScene" uid="uid://cuy6501gydmja" path="res://Entities/ZoneObjects/MTZ_WallSpring.tscn" id="10_bgg2a"]
 [ext_resource type="PackedScene" uid="uid://b8bt0u45oqhe6" path="res://Entities/Hazards/Lava.tscn" id="12_8vh3d"]
-[ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="12_031cy"]
 [ext_resource type="PackedScene" uid="uid://cii6vdv1nbk6k" path="res://Entities/Enemies/Slicer.tscn" id="13_jat8k"]
 
 [node name="Metropolis3" type="Node2D"]
@@ -63,7 +62,7 @@ size = Vector2(1024, 32)
 [node name="Items" type="Node" parent="."]
 
 [node name="Capsule" parent="Items" instance=ExtResource("8_d45e3")]
-position = Vector2(2816, 544)
+position = Vector2(320, 672)
 
 [node name="Badniks" type="Node" parent="."]
 
@@ -72,80 +71,5 @@ position = Vector2(1080, 368)
 model = 2
 
 [node name="Rings" type="Node" parent="."]
-
-[node name="Ring" parent="Rings" instance=ExtResource("12_031cy")]
-position = Vector2(152, 624)
-
-[node name="Ring2" parent="Rings" instance=ExtResource("12_031cy")]
-position = Vector2(176, 624)
-
-[node name="Ring3" parent="Rings" instance=ExtResource("12_031cy")]
-position = Vector2(200, 624)
-
-[node name="Ring4" parent="Rings" instance=ExtResource("12_031cy")]
-position = Vector2(488, 680)
-
-[node name="Ring5" parent="Rings" instance=ExtResource("12_031cy")]
-position = Vector2(512, 680)
-
-[node name="Ring6" parent="Rings" instance=ExtResource("12_031cy")]
-position = Vector2(536, 680)
-
-[node name="Ring23" parent="Rings" instance=ExtResource("12_031cy")]
-position = Vector2(1944, 472)
-
-[node name="Ring24" parent="Rings" instance=ExtResource("12_031cy")]
-position = Vector2(1968, 472)
-
-[node name="Ring25" parent="Rings" instance=ExtResource("12_031cy")]
-position = Vector2(1992, 472)
-
-[node name="Ring7" parent="Rings" instance=ExtResource("12_031cy")]
-position = Vector2(816, 416)
-
-[node name="Ring8" parent="Rings" instance=ExtResource("12_031cy")]
-position = Vector2(816, 440)
-
-[node name="Ring9" parent="Rings" instance=ExtResource("12_031cy")]
-position = Vector2(816, 464)
-
-[node name="Ring10" parent="Rings" instance=ExtResource("12_031cy")]
-position = Vector2(816, 488)
-
-[node name="Ring11" parent="Rings" instance=ExtResource("12_031cy")]
-position = Vector2(816, 536)
-
-[node name="Ring12" parent="Rings" instance=ExtResource("12_031cy")]
-position = Vector2(816, 560)
-
-[node name="Ring13" parent="Rings" instance=ExtResource("12_031cy")]
-position = Vector2(816, 584)
-
-[node name="Ring14" parent="Rings" instance=ExtResource("12_031cy")]
-position = Vector2(816, 608)
-
-[node name="Ring15" parent="Rings" instance=ExtResource("12_031cy")]
-position = Vector2(848, 416)
-
-[node name="Ring16" parent="Rings" instance=ExtResource("12_031cy")]
-position = Vector2(848, 440)
-
-[node name="Ring17" parent="Rings" instance=ExtResource("12_031cy")]
-position = Vector2(848, 464)
-
-[node name="Ring18" parent="Rings" instance=ExtResource("12_031cy")]
-position = Vector2(848, 488)
-
-[node name="Ring19" parent="Rings" instance=ExtResource("12_031cy")]
-position = Vector2(848, 536)
-
-[node name="Ring20" parent="Rings" instance=ExtResource("12_031cy")]
-position = Vector2(848, 560)
-
-[node name="Ring21" parent="Rings" instance=ExtResource("12_031cy")]
-position = Vector2(848, 584)
-
-[node name="Ring22" parent="Rings" instance=ExtResource("12_031cy")]
-position = Vector2(848, 608)
 
 [node name="Boss" type="Node" parent="."]

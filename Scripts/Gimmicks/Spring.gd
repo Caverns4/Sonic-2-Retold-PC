@@ -65,7 +65,7 @@ func set_spring():
 		$Spring.texture = springTextures[type]
 
 # Collision check
-func physics_collision(body, hitVector):
+func physics_collision(body: Player2D, hitVector):
 	# check that the players hit direction matches the direction we're facing (ignored for diagonal)
 	if hitVector == -hitDirection:
 		# do a Rock launch HAUGH!!!
@@ -90,7 +90,8 @@ func physics_collision(body, hitVector):
 			body.animator.queue(curAnim)
 			# set vertical speed
 			body.movement.y = setMove.y
-			body.set_state(body.STATES.AIR)
+			body.position.y = global_position.y + (hitDirection.y*32)
+			body.set_state(body.STATES.AIR,body.currentHitbox.NORMAL)
 			body.disconect_from_floor()
 			if killTransSpeed == true:
 				body.movement.x = 0

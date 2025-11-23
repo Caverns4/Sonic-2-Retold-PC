@@ -27,6 +27,7 @@ func state_activated():
 func state_exit():
 	if carried_partner:
 		carried_partner.z_index = clamp(parent.z_index+1,1,6)
+		carryBox._player_dropoff(carried_partner)
 		carried_partner.poleGrabID = null
 		carried_partner = null
 	

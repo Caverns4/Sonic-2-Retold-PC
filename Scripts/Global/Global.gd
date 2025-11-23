@@ -386,6 +386,9 @@ func loadNextLevel():
 			ZONES.CYBER_CITY:
 				savedActID = 0
 				savedZoneID = ZONES.ENDING
+			ZONES.SKY_FORTRESS:
+				savedActID = 0
+				savedZoneID = ZONES.DEATH_EGG
 			# Sky Fortress and Death Egg are special cases.
 
 # Godot doesn't like not having emit signal only done in other nodes so we're using a function to call it

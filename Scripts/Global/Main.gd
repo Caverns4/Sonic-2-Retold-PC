@@ -66,11 +66,7 @@ func change_scene(scene: String, fade_anim: String = "FadeOut", length: float = 
 	# play fade in animation back if it's not blank
 	if fade_anim != "":
 		$GUI/Fader.play_backwards(fade_anim)
-	# stop life sound (if it's still playing)
-	if SoundDriver.life.is_playing():
-		SoundDriver.life.stop()
-		# set volume level to default
-	set_volume(1.0,0.01)
+	SoundDriver.reset_volume()
 
 func Reload_Level(fade_anim = "FadeOut",length = 1.0):
 	$GUI/Fader.speed_scale = 1.0/float(length)

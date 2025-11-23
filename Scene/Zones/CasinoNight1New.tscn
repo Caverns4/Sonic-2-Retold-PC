@@ -502,8 +502,13 @@ position = Vector2(8688, 1536)
 [node name="HexBumper" parent="Entities" instance=ExtResource("17_2um2t")]
 position = Vector2(640, 768)
 
+[node name="HexBumper12" parent="Entities" instance=ExtResource("17_2um2t")]
+position = Vector2(256, 624)
+move_distance = Vector2(64, 0)
+
 [node name="HexBumper2" parent="Entities" instance=ExtResource("17_2um2t")]
 position = Vector2(1184, 1344)
+move_distance = Vector2(64, 0)
 
 [node name="HexBumper3" parent="Entities" instance=ExtResource("17_2um2t")]
 position = Vector2(1728, 672)
@@ -516,21 +521,30 @@ position = Vector2(4160, 1120)
 
 [node name="HexBumper6" parent="Entities" instance=ExtResource("17_2um2t")]
 position = Vector2(4608, 912)
+move_distance = Vector2(64, 0)
 
 [node name="HexBumper7" parent="Entities" instance=ExtResource("17_2um2t")]
-position = Vector2(5624, 1304)
+position = Vector2(5632, 1320)
+move_distance = Vector2(64, 0)
+
+[node name="HexBumper13" parent="Entities" instance=ExtResource("17_2um2t")]
+position = Vector2(7168, 1704)
+move_distance = Vector2(256, 0)
 
 [node name="HexBumper8" parent="Entities" instance=ExtResource("17_2um2t")]
 position = Vector2(6528, 720)
+move_distance = Vector2(64, 0)
 
 [node name="HexBumper9" parent="Entities" instance=ExtResource("17_2um2t")]
 position = Vector2(8192, 1168)
+move_distance = Vector2(64, 0)
 
 [node name="HexBumper10" parent="Entities" instance=ExtResource("17_2um2t")]
 position = Vector2(8192, 640)
 
 [node name="HexBumper11" parent="Entities" instance=ExtResource("17_2um2t")]
 position = Vector2(8808, 440)
+move_distance = Vector2(64, 0)
 
 [node name="Platforms" type="Node2D" parent="."]
 material = ExtResource("8_cpekc")
@@ -944,22 +958,28 @@ position = Vector2(1816, 712)
 rotation = -0.785398
 
 [node name="BonusBumper7" parent="Bumpers" instance=ExtResource("26_6nfl8")]
-position = Vector2(4528, 1416)
+position = Vector2(4536.0005, 1416)
+rotation = 0.7853982
 
 [node name="BonusBumper8" parent="Bumpers" instance=ExtResource("26_6nfl8")]
 position = Vector2(4560, 1440)
+rotation = 0.78539705
 
 [node name="BonusBumper9" parent="Bumpers" instance=ExtResource("26_6nfl8")]
-position = Vector2(4592, 1472)
+position = Vector2(4584.0005, 1464.0001)
+rotation = 0.7853982
 
 [node name="BonusBumper10" parent="Bumpers" instance=ExtResource("26_6nfl8")]
-position = Vector2(4624, 1472)
+position = Vector2(4632, 1463.9999)
+rotation = -0.7853982
 
 [node name="BonusBumper11" parent="Bumpers" instance=ExtResource("26_6nfl8")]
-position = Vector2(4656, 1440)
+position = Vector2(4656.0005, 1440.0001)
+rotation = -0.7853982
 
 [node name="BonusBumper12" parent="Bumpers" instance=ExtResource("26_6nfl8")]
-position = Vector2(4688, 1416)
+position = Vector2(4680.0005, 1416.0001)
+rotation = -0.7853982
 
 [node name="BonusBumper13" parent="Bumpers" instance=ExtResource("26_6nfl8")]
 position = Vector2(5272, 1200)

@@ -55,7 +55,7 @@ speed = 128.0
 
 [node name="LaserArea" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 528384
+collision_mask = 16777216
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LaserArea"]
 shape = SubResource("RectangleShape2D_fgrft")

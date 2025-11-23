@@ -3,3 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://bfqn8cun070vp" path="res://Models/SpecialStage/SpecialStage.glb" id="1_wb6ni"]
 
 [node name="SpecialStage" instance=ExtResource("1_wb6ni")]
+
+[node name="CurveFR" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
+
+[node name="CurveFL" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 0)
+
+[node name="CurveRF" parent="." index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 0)
+
+[node name="CurveLF" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)

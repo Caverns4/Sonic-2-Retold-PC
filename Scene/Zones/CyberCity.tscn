@@ -39,8 +39,8 @@ defaultBottomBoundry = 1024
 [node name="14-CyberCity" parent="." instance=ExtResource("5_dx3sm")]
 
 [node name="HUD" parent="." instance=ExtResource("5_a3l5i")]
-zoneName = "METROPOLIS"
-act = 3
+zoneName = "  CYBER CITY"
+act = 0
 
 [node name="Level_Layout" type="Node" parent="."]
 

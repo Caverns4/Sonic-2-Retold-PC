@@ -19,7 +19,7 @@ cell_size = Vector3(5, 5, 5)
 data = {
 "cells": PackedInt32Array(-65536, 14, 0, -65536, 10, 0, -65536, 6, 0, -65536, 2, 0, -65536, 65534, 7, -65536, 18, 0, -65536, 22, 0, -65536, 65530, 0, -65536, 65526, 0, -65536, 65522, 3, -65532, 65521, 9, -65531, 65517, 0, -65531, 65513, 0, -65531, 65509, 0, -65531, 65505, 0, -65531, 65501, 0, -65531, 65497, 0, -65531, 65493, 0, -65531, 65489, 0, -65531, 65485, 0, -65531, 65481, 1, -65531, 65477, 1, -65528, 65474, 1, -65534, 65474, 1, -65534, 65470, 2, -65528, 65470, 2, 8, 65466, 1, 2, 65466, 1, 5, 65463, 1, 5, 65459, 0, 5, 65455, 0, 5, 65451, 7, 5, 65447, 7, 5, 65443, 7, 5, 65439, 0, 5, 65435, 0, 5, 65431, 1, 5, 65427, 1, 2, 65424, 1, 2, 65420, 1, 8, 65424, 1, 8, 65420, 1, 2, 65416, 2, 8, 65416, 2, 65544, 65412, 1, 65538, 65412, 1, 8, 65408, 655362, 2, 65408, 655362, 8, 65404, 2, 2, 65404, 2, 65538, 65400, 1, 65544, 65400, 1, 65541, 65397, 1, 65541, 65393, 1, 65541, 65389, 7, 65541, 65385, 7, 65541, 65381, 7, 65541, 65377, 0, 65541, 65373, 0, 65541, 65369, 0, 65541, 65365, 0, 65541, 65361, 0, 65541, 65357, 0, 65541, 65353, 0, 65541, 65349, 0, 65541, 65345, 0)
 }
-metadata/_editor_floor_ = Vector3(0, 5, 0)
+metadata/_editor_floor_ = Vector3(0, -1, 0)
 
 [node name="Entitites" type="Node3D" parent="."]
 
@@ -543,7 +543,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 12, -791)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.9601)
 
 [node name="ForceChararcterRotation2" parent="Entitites" instance=ExtResource("8_q2j35")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -87.9601)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -82.9601)
+
+[node name="ForceChararcterRotation5" parent="Entitites" instance=ExtResource("8_q2j35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -56.9601)
+
+[node name="ForceChararcterRotation6" parent="Entitites" instance=ExtResource("8_q2j35")]
+transform = Transform3D(0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.49999997, 6, 0, -69.9601)
+
+[node name="ForceChararcterRotation8" parent="Entitites" instance=ExtResource("8_q2j35")]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 1, 0, -63.9601)
+
+[node name="ForceChararcterRotation7" parent="Entitites" instance=ExtResource("8_q2j35")]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 23, 0, -77.9601)
+
+[node name="ForceChararcterRotation9" parent="Entitites" instance=ExtResource("8_q2j35")]
+transform = Transform3D(0.25881904, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.25881904, 17, 0, -72.9601)
 
 [node name="ForceChararcterRotation3" parent="Entitites" instance=ExtResource("8_q2j35")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 14, -737.96)

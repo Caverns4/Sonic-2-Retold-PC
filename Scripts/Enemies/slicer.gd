@@ -89,8 +89,8 @@ func ScanForPlayers():
 	players.clear()
 	var nearest = GlobalFunctions.get_nearest_player(global_position)
 	#var nearest = GlobalFunctions.get_nearest_player_x(global_position.x)
-	var diff = nearest.global_position.x - global_position.x
-	if (abs(diff) <= 160 ): #and sign(diff) == sign(move_dir)
+	var diff = nearest.global_position - global_position
+	if (abs(diff).length() <= 128 ): #and sign(diff) == sign(move_dir)
 		players.append(nearest)
 
 func updateSprite():
