@@ -23,7 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://ctg1aeiewvyvj" path="res://Entities/Gimmicks/ForceRoll.tscn" id="30_ej03w"]
 [ext_resource type="Texture2D" uid="uid://beqh6fywjj4lt" path="res://Graphics/Enemies/Sol.png" id="31_8xakr"]
 [ext_resource type="PackedScene" uid="uid://c1ldunfxhq0he" path="res://Entities/Obstacles/ForceAngleSides.tscn" id="31_qjmib"]
-[ext_resource type="Texture2D" uid="uid://ci13nuikdwatn" path="res://Graphics/Tiles/WorldsTiles/EHZ_Platform_Large.png" id="31_ygsss"]
+[ext_resource type="Texture2D" uid="uid://ci13nuikdwatn" path="res://Graphics/Tiles/EHZ_HTZ/EHZ_Platform_Large.png" id="31_ygsss"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="33_ommvj"]
 [ext_resource type="PackedScene" uid="uid://85umccwskeyx" path="res://Entities/Gimmicks/HTZSeeSaw.tscn" id="37_geevq"]
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="38_biojh"]
@@ -107,25 +107,21 @@ endDistance = 448
 position = Vector2(4184, 820)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("27_vnla0")
-knuckles_only = null
 
 [node name="Breakable3" parent="Entities" instance=ExtResource("26_w6quw")]
 position = Vector2(5032, 1016)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("27_vnla0")
-knuckles_only = null
 
 [node name="Breakable5" parent="Entities" instance=ExtResource("26_w6quw")]
 position = Vector2(9152, 1684)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("27_vnla0")
-knuckles_only = null
 
 [node name="Breakable4" parent="Entities" instance=ExtResource("26_w6quw")]
 position = Vector2(4656, 1396)
 pieces = Vector2(3, 2)
 SpriteTexture = ExtResource("27_vnla0")
-knuckles_only = null
 
 [node name="Spring" parent="Entities" instance=ExtResource("24_tu1me")]
 position = Vector2(3088, 624)

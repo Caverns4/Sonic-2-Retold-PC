@@ -112,7 +112,6 @@ func playExtraLifeMusic():
 
 # set the volume level
 func set_volume(final_volume: float = 0, fade_speed: float = 1):
-	print("SetVolumeCall")
 	# set the start volume level to the curren volume
 	startVolumeLevel = music.volume_db
 	# set the volume level to go to
@@ -124,7 +123,6 @@ func set_volume(final_volume: float = 0, fade_speed: float = 1):
 	# this is continued in _process() as it needs to run during gameplay
 
 func reset_volume():
-	print("HardVolumeReset")
 	# stop life sound (if it's still playing)
 	if SoundDriver.life.is_playing():
 		SoundDriver.life.stop()

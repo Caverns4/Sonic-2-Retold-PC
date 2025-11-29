@@ -1,10 +1,10 @@
 [gd_resource type="TileSet" load_steps=226 format=3 uid="uid://uplqwsi0o4gi"]
 
-[ext_resource type="Texture2D" uid="uid://daotqmrehgsyj" path="res://Graphics/Tiles/WorldsTiles/EHZ_Blocks.png" id="1_teryk"]
-[ext_resource type="Texture2D" uid="uid://bbjucb5ijljlo" path="res://Graphics/Tiles/WorldsTiles/EHZ_AniTiles.png" id="2_ivv35"]
-[ext_resource type="Texture2D" uid="uid://dikd0wyfwrbyx" path="res://Graphics/Tiles/WorldsTiles/EHZFalls_Blocks.png" id="3_du0ld"]
-[ext_resource type="Texture2D" uid="uid://bgp5q5ye58p56" path="res://Graphics/Tiles/WorldsTiles/HTZ_Lava.png" id="4_4n87g"]
-[ext_resource type="Texture2D" uid="uid://waiwkweg8iws" path="res://Graphics/Tiles/WorldsTiles/HTZ_Zips.png" id="5_c0xai"]
+[ext_resource type="Texture2D" uid="uid://daotqmrehgsyj" path="res://Graphics/Tiles/EHZ_HTZ/EHZ_Blocks.png" id="1_teryk"]
+[ext_resource type="Texture2D" uid="uid://bbjucb5ijljlo" path="res://Graphics/Tiles/EHZ_HTZ/EHZ_AniTiles.png" id="2_ivv35"]
+[ext_resource type="Texture2D" uid="uid://dikd0wyfwrbyx" path="res://Graphics/Tiles/EHZ_HTZ/EHZFalls_Blocks.png" id="3_c31ho"]
+[ext_resource type="Texture2D" uid="uid://bgp5q5ye58p56" path="res://Graphics/Tiles/EHZ_HTZ/HTZ_Lava.png" id="4_4n87g"]
+[ext_resource type="Texture2D" uid="uid://waiwkweg8iws" path="res://Graphics/Tiles/EHZ_HTZ/HTZ_Zips.png" id="5_c0xai"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_syoxf"]
 tile_data = PackedInt32Array(0, 1179648, 13, 65536, 1179648, 13, 131072, 1179648, 13, 196608, 1179648, 13, 262144, 1179648, 13, 327680, 1179648, 13, 393216, 1179648, 13, 458752, 1179648, 13, 3, 1179648, 13, 65539, 1179648, 13, 131075, 1179648, 13, 196611, 1179648, 13, 262147, 1179648, 13, 327683, 1179648, 13, 393219, 1179648, 13, 458755, 1179648, 13)
@@ -1843,7 +1843,7 @@ texture = ExtResource("2_ivv35")
 0:5/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_slu7s"]
-texture = ExtResource("3_du0ld")
+texture = ExtResource("3_c31ho")
 0:0/animation_frame_0/duration = 0.1
 0:0/animation_frame_1/duration = 0.1
 0:0/animation_frame_2/duration = 0.1
