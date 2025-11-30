@@ -7,9 +7,10 @@ var title_screen: String = "res://Scene/Presentation/Title.tscn"
 
 var selected = false
 var menuOption = 0
-# character id lines up with Global.playerModes
+## Character ids line up with Global.playerModes
 var characterID = 0
-var lastInput = Vector2.ZERO #Last saved direction input.
+## Last saved directional input.
+var lastInput = Vector2.ZERO
 
 var optionsText = [
 "player select",
@@ -225,13 +226,5 @@ func SetPlayerCharacterIDs():
 		0: # Sonic and Tails
 			Global.PlayerChar1 = Global.CHARACTERS.SONIC
 			Global.PlayerChar2 = Global.CHARACTERS.TAILS
-		1: # Sonic
-			Global.PlayerChar1 = Global.CHARACTERS.SONIC
-		2: # Tails
-			Global.PlayerChar1 = Global.CHARACTERS.TAILS
-		3: # Knuckles
-			Global.PlayerChar1 = Global.CHARACTERS.KNUCKLES
-		4: # Amy
-			Global.PlayerChar1 = Global.CHARACTERS.AMY
-		5: # Mighty
-			Global.PlayerChar1 = Global.CHARACTERS.MIGHTY
+		_: # Sonic
+			Global.PlayerChar1 = characterID as Global.CHARACTERS

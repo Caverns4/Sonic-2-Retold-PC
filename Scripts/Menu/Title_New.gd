@@ -76,6 +76,8 @@ var levelSelectCheat = [
 ]
 var cheatInputCount = 0 #Correct inputs
 var lastCheatInput = Vector2.ZERO
+## Last saved directional input.
+var lastInput = Vector2.ZERO
 
 func _ready():
 	get_tree().paused = false
@@ -96,15 +98,23 @@ func _process(delta):
 	if titleScroll:
 		$TitleBanner.global_position.x += (4*60*delta)
 		$Celebrations.global_position.x += (4*60*delta)
-	
 	if titleState < STATES.FADEOUT:
-		CheckCheatInputs()
+		_unhandledInput(Input)
+
+func _unhandledInput(_event):
+	var inputCue = Input.get_vector("gm_left","gm_right","gm_up","gm_down")
+	inputCue.x = round(inputCue.x)
+	inputCue.y = round(inputCue.y)
 	
+	if menuActive:
+		UpdateMenuDisplay(inputCue)
+	CheckCheatInputs(inputCue)
+	lastInput = inputCue
 
 func _input(event):
 	#Update menu if menu is enabled
-	if menuActive:
-		UpdateMenuDisplay()
+	#if menuActive:
+	#	UpdateMenuDisplay()
 	
 	# On start button press, skip intro or make selection
 	if event.is_action_pressed("gm_pause") and $TitleAnimate.is_playing():
@@ -114,14 +124,11 @@ func _input(event):
 	elif event.is_action_pressed("gm_pause") and menuActive:
 		MenuOptionChosen()
 
-func UpdateMenuDisplay():
+func UpdateMenuDisplay(inputCue: Vector2 = Vector2.ZERO):
 	if disable_menu:
 		return
-	if Input.is_action_just_pressed("gm_down"):
-		menuEntry +=1
-		$Switch.play()
-	if Input.is_action_just_pressed("gm_up"):
-		menuEntry -=1
+	if inputCue.y != lastInput.y and inputCue.y:
+		menuEntry += round(inputCue.y)
 		$Switch.play()
 	menuEntry = wrapi(menuEntry,0,3)
 	$CanvasLayer/Labels/TitleMenu/MenuIcon.position.y = (menuEntry*8)+4
@@ -151,22 +158,15 @@ func MenuOptionChosen():
 		_:
 			SetFadeOut(level_select_menu)
 
-func CheckCheatInputs():
-	var inputs = Input.get_vector("gm_left","gm_right","gm_up","ui_down")
-	inputs.x = round(inputs.x)
-	inputs.y = round(inputs.y)
-	#If this input is null, rmember it, but don't count it against Cheats
-	if inputs == Vector2.ZERO:
-		lastCheatInput = inputs
-	#in any othe case, consider this a valid cheat attempt
-	elif inputs != lastCheatInput:
+func CheckCheatInputs(inputCue: Vector2 = Vector2.ZERO):
+	if inputCue != lastCheatInput and inputCue:
 		if !cheatActive:
-			if inputs == levelSelectCheat[cheatInputCount]:
+			if inputCue == levelSelectCheat[cheatInputCount]:
 				cheatInputCount += 1
-				print("Correct input!"+ str(inputs))
+				print("Correct input!"+ str(inputCue))
 			else:
 				cheatInputCount = 0
-				print("Wrong input!" + str(inputs))
+				print("Wrong input!" + str(inputCue))
 			if cheatInputCount == levelSelectCheat.size():
 				cheatInputCount = 0
 				cheatActive = true
@@ -182,7 +182,7 @@ func CheckCheatInputs():
 					Global.characterNames[1] = "TAILS"
 					Global.playerModes[0] = "SONIC & TAILS"
 					Global.playerModes[2] = "TAILS"
-	lastCheatInput = inputs
+	lastCheatInput = inputCue
 
 func InstantiateBG():
 	if sceneInstance == null:
