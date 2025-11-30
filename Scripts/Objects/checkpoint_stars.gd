@@ -36,10 +36,8 @@ func _process(delta):
 			SoundDriver.music.stop()
 			$Warp.play()
 			
-			# add ring to node memory so you can't farm the ring
-			Global.keep_memory = [Global.players[0].global_position,
-			Global.players[0].rings,
-			Global.currentCheckPoint]
+			# Set up level memory so Sonic won't lose level progress.
+			Global.save_level_data(player.respawnPosition)
 			
 			# fade to new scene
 			Global.main.change_scene("res://Scene/SpecialStage/SpecialStage.tscn","WhiteOut",1.0,false)

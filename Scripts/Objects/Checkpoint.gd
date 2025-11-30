@@ -4,7 +4,7 @@ var active = false
 
 var specialStageEntry = preload("res://Entities/Items/CheckpointStars.tscn")
 
-var PlayerMemory = [] #List of Players that have triggered this Checkpoint
+var player_memory = [] #List of Players that have triggered this Checkpoint
 
 func _ready():
 	# add self to global check point list (it's cleared in the stage start script in global)
@@ -23,21 +23,22 @@ func _ready():
 					i.get_node("Spinner").play("flash")
 
 
-func activate(playerNode: Player2D):
+func activate(player: Player2D):
 	
 	# queue flash, incase an animation is already playing
 	$Spinner.queue("flash")
 	active = true
 	Global.currentCheckPoint = checkPointID
+	player.respawnPosition = global_position
 	
 	#Save player 1 data if main character passes.
-	if playerNode == Global.players[0]:
+	if player == Global.players[0]:
 		Global.checkPointTime = Global.levelTime
-		Global.checkPointRings = playerNode.rings
+		Global.checkPointRings = player.rings
 	#save player 2 data if sidekick passed.
-	elif Global.two_player_mode == true and !Global.players[0] == playerNode:
+	elif Global.two_player_mode == true and !Global.players[0] == player:
 		Global.checkPointTimeP2 = Global.levelTimeP2
-		Global.checkPointRingsP2 = playerNode.rings
+		Global.checkPointRingsP2 = player.rings
 	
 	# set checkpoint to self (and set any checkpoitns with a lower ID to active)
 	for i in Global.checkPoints:
@@ -51,7 +52,6 @@ func activate(playerNode: Player2D):
 		var spawn = specialStageEntry.instantiate()
 		spawn.global_position = global_position + Vector2(0,-64)
 		get_parent().call_deferred("add_child",spawn)
-		#add_child(spawn)
 
 func _on_Checkpoint_body_entered(body):
 	# do the spin and activate
@@ -60,10 +60,11 @@ func _on_Checkpoint_body_entered(body):
 			$Spinner.play("spin")
 			$Checkpoint.play()
 			activate(body)
-	if Global.two_player_mode and !PlayerMemory.has(body):
+			Global.save_level_data(global_position)
+	if Global.two_player_mode and !player_memory.has(body):
 			$Spinner.play("spin")
 			$Checkpoint.play()
 			activate(body)
-			PlayerMemory.append(body)
-			body.respawnPosition = global_position
+			player_memory.append(body)
+	
 	

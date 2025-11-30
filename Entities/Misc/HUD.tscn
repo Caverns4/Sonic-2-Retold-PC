@@ -1,11 +1,16 @@
-[gd_scene load_steps=37 format=3 uid="uid://c30uceea18q1w"]
+[gd_scene load_steps=42 format=3 uid="uid://c30uceea18q1w"]
 
 [ext_resource type="Texture2D" uid="uid://dloxtqer7p78l" path="res://Graphics/HUD/hud_lives.png" id="2_cfvjc"]
 [ext_resource type="Material" uid="uid://bveqi5m5ihsgj" path="res://Shaders/PlayerPalette.tres" id="2_xy7bp"]
 [ext_resource type="FontFile" uid="uid://cj70hn8i05uo5" path="res://Graphics/HUD/hud_lives_numerals.png" id="3_eauoj"]
+[ext_resource type="Texture2D" uid="uid://dd5ffcchxy6kx" path="res://Graphics/HUD/HUD_BossHP_Icon.png" id="3_v2qyy"]
+[ext_resource type="Texture2D" uid="uid://c71s1heajyvoh" path="res://Graphics/HUD/HUD_BossHP_MeterEnd.png" id="4_85yys"]
 [ext_resource type="Texture2D" uid="uid://c7d6313minexh" path="res://Graphics/HUD/hud_text.png" id="5_kre34"]
+[ext_resource type="Texture2D" uid="uid://0mx07k67lplh" path="res://Graphics/HUD/HUD_BossHP_Tic.png" id="5_viguv"]
 [ext_resource type="Script" uid="uid://cwj54jpt3ua1p" path="res://Scripts/Misc/HUD.gd" id="6"]
+[ext_resource type="FontFile" uid="uid://ml62eqfe7avn" path="res://Graphics/Fonts/small_font.png" id="6_85yys"]
 [ext_resource type="FontFile" uid="uid://cticydrc4dda2" path="res://Graphics/HUD/hud_numerals.png" id="6_synv7"]
+[ext_resource type="Texture2D" uid="uid://uvmyci3hoce" path="res://Graphics/HUD/HUD_BossHP_Meter.png" id="6_viguv"]
 [ext_resource type="Texture2D" uid="uid://cjyag5wmcqw5j" path="res://Graphics/HUD/YIcon.png" id="7_6q7he"]
 [ext_resource type="Texture2D" uid="uid://gswo6rq3uyy8" path="res://Graphics/HUD/LevelCards/Banner.png" id="7_ccygi"]
 [ext_resource type="Texture2D" uid="uid://c7a17v25ap4ow" path="res://Graphics/HUD/LevelCards/ActCards.png" id="9_3i4aq"]
@@ -832,6 +837,68 @@ script = ExtResource("6")
 zoneName = "EMERALD HILL"
 zone = "ZONE"
 
+[node name="Boss Life" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="EggMeterStart" type="Sprite2D" parent="Boss Life"]
+material = ExtResource("2_xy7bp")
+position = Vector2(-48, 16)
+texture = ExtResource("3_v2qyy")
+centered = false
+
+[node name="EggMeterEnd" type="Sprite2D" parent="Boss Life"]
+material = ExtResource("2_xy7bp")
+position = Vector2(112, 24)
+texture = ExtResource("4_85yys")
+centered = false
+
+[node name="BossName" type="Label" parent="Boss Life"]
+modulate = Color(1, 1, 0, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 128.0
+offset_bottom = -16.0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_85yys")
+text = "Egg Drillster II"
+vertical_alignment = 2
+uppercase = true
+
+[node name="EggMeter" type="TextureRect" parent="Boss Life"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 24.0
+offset_right = 112.0
+offset_bottom = 32.0
+texture = ExtResource("6_viguv")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="EggMeterFull" type="TextureRect" parent="Boss Life"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 24.0
+offset_right = 112.0
+offset_bottom = 32.0
+texture = ExtResource("5_viguv")
+expand_mode = 1
+stretch_mode = 1
+
 [node name="LifeCounter" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 2
@@ -1159,7 +1226,7 @@ anchor_top = 0.003
 anchor_right = 1.0
 anchor_bottom = 0.003
 offset_top = -86.944
-offset_right = 23046.4
+offset_right = 24102.4
 offset_bottom = 169.056
 grow_horizontal = 0
 grow_vertical = 2

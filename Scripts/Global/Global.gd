@@ -42,8 +42,11 @@ var checkPointRingsP2 = 0
 # the starting room, this is loaded on game resets, you may want to change this
 var start_scene: String = "res://Scene/Presentation/Title.tscn"
 var nextZone: String = "res://Scene/Zones/EmeraldHill1.tscn"
-## A previously loaded stage to be called back to later.
-var keep_memory: Array = []
+## Respawn data if applicable
+var level_respawn_stats: Array = []
+
+## MarkObjGone Table, nodes that have been used/coolected
+var object_table = []
 
 # score instace for add_score()
 var Score = preload("res://Entities/Misc/Score.tscn")
@@ -191,13 +194,6 @@ var animals = [0,1]
 # emited when a stage gets started
 signal stage_started
 
-# Level memory
-# this value contains node paths and can be used for nodes to know if it's been collected from previous playthroughs
-# the only way to reset permanent memory is to reset the game, this is used primarily for special stage rings
-# Note: make sure you're not naming your level nodes the same thing, it's good practice but if the node's
-# share the same paths there can be some overlap and some nodes may not spawn when they're meant to
-var nodeMemory = []
-
 ## Game settings
 var zoomSize = 2
 ## 0 for 4:3, 1 for 16x9 (roughly)
@@ -252,14 +248,13 @@ func _process(delta):
 	if !get_tree().paused:
 		globalTimer += delta
 	
-# reset values, self explanatory, put any variables to their defaults in here
+# Called only when the game is reset.
 func reset_values():
-	Clean_Up()
-	#Clear general game variables
+	Clean_Up_Dirty_Object_Arrays()
 	main.wasPaused = false
-	if keep_memory:
-		return	
 	two_player_mode = false
+	level_respawn_stats.clear()
+	object_table.clear()
 	score = 0
 	scoreP2 = 0
 	levelTime = 0
@@ -277,7 +272,6 @@ func reset_values():
 	currentCheckPoint = -1
 	currentCheckPointP2 = -1
 	animals = [0,1]
-	nodeMemory = []
 
 func reset_level_data():
 	players.clear()
@@ -285,7 +279,6 @@ func reset_level_data():
 	#Clear Casino Night Zone contexts
 	slotMachines.clear()
 	characterReels = null
-	keep_memory.clear()
 	hud = null
 	waterLevel = null
 	gameOver = false
@@ -298,14 +291,13 @@ func reset_level_data():
 	globalTimer = 0
 	stageClearPhase = 0
 
-
-## Wipe all data arrays to avoid contamination.
-func Clean_Up():
-	#Wipe the player arrays to avoid contamination.
+## Wipe all data arrays to avoid contamination. This only wipse object references.
+func Clean_Up_Dirty_Object_Arrays():
+	hud = null
+	special_hud = null
 	players.clear()
 	special_stage_players.clear()
 	checkPoints.clear()
-	#Clear Casino Night Zone contexts
 	slotMachines.clear()
 	characterReels = null
 
@@ -329,8 +321,8 @@ func loadNextLevel():
 	#Reset all Checkpoints so the player doesn't respawn in a bad spot
 	currentCheckPoint = -1
 	currentCheckPointP2 = -1
-	nodeMemory.clear()
-	keep_memory.clear()
+	level_respawn_stats.clear()
+	object_table.clear()
 	maxTime = 60*10
 	
 	if special_exit > ZONES.EMERALD_HILL:
@@ -390,6 +382,21 @@ func loadNextLevel():
 				savedActID = 0
 				savedZoneID = ZONES.DEATH_EGG
 			# Sky Fortress and Death Egg are special cases.
+
+## Build the respawn array
+func save_level_data(pos: Vector2):
+	level_respawn_stats.clear()
+	if !pos:
+		object_table.clear()
+		return
+	level_respawn_stats.append(pos)
+	level_respawn_stats.push_back(Global.players[0].rings)
+	if players.size() > 1:
+		level_respawn_stats.push_back(players[1].rings)
+	else:
+		level_respawn_stats.push_back(0)
+	level_respawn_stats.push_back(currentCheckPoint)
+
 
 # Godot doesn't like not having emit signal only done in other nodes so we're using a function to call it
 func emit_stage_start():

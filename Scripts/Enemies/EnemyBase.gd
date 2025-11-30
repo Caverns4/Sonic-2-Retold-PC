@@ -11,7 +11,7 @@ var defaultMovement: bool = true
 signal destroyed
 
 func  _ready() -> void:
-	if Global.nodeMemory.has(get_path()):
+	if Global.object_table.has(get_path()):
 		queue_free()
 	if $VisibleOnScreenEnabler2D:
 		$VisibleOnScreenEnabler2D.visible = true
@@ -94,7 +94,7 @@ func destroy():
 	animal.animal = Global.animals[round(randf())]
 	get_parent().add_child(animal)
 	animal.global_position = global_position
-	Global.nodeMemory.append(get_path())
+	Global.object_table.append(get_path())
 	# free node
 	queue_free()
 

@@ -306,12 +306,18 @@ func _ready():
 	var _con = connect("connectFloor",Callable(self,"land_floor"))
 	_con = connect("connectCeiling",Callable(self,"touch_ceiling"))
 	
-	if !Global.keep_memory:
-		respawnPosition = global_position
+	if Global.level_respawn_stats:
+		global_position = Global.level_respawn_stats[0]
+		var index: int = Global.players.find(self)
+		rings = Global.level_respawn_stats[index+1]
+		Global.currentCheckPoint = Global.level_respawn_stats[3]
 	else:
-		global_position = Global.keep_memory[0]
-		rings = Global.keep_memory[1]
-		Global.currentCheckPoint = Global.keep_memory[2]
+		respawnPosition = global_position
+	
+	var ring_flags = rings
+	while ring_flags > 100:
+		ring_flags -= 100
+		ring1upCounter += 100
 	
 	# Camera settings
 	get_parent().call_deferred("add_child", (camera))
@@ -449,7 +455,6 @@ func _ready():
 	if playerControl == 1 and partner:
 		partner.sfx = sfx
 	
-	Global.keep_memory.clear()
 
 
 # 0 not pressed, 1 pressed, 2 held (best to do > 0 when checking input), -1 released

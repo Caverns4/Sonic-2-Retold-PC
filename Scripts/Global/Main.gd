@@ -77,8 +77,9 @@ func Reload_Level(fade_anim = "FadeOut",length = 1.0):
 	# error prevention
 	emit_signal("scene_faded")
 	await get_tree().process_frame
-	Global.Clean_Up()
-	Global.nodeMemory.clear()
+	Global.Clean_Up_Dirty_Object_Arrays()
+	Global.level_respawn_stats.clear()
+	Global.object_table.clear()
 	get_tree().reload_current_scene()
 	# play fade in animation back if it's not blank
 	if fade_anim != "":

@@ -48,6 +48,10 @@ var gameOver: bool = false
 # used for the score countdown
 var accumulatedDelta: float = 0.0
 
+# Boss-related
+var boss_max_health: int = 0
+var boss_current_health: int = 0
+
 # signal that gets emited once the stage tally is over
 signal tally_clear
 
@@ -82,20 +86,18 @@ func _ready():
 	Global.hud = self
 
 	var lifeCounterFrame = 0
+	# Set Life Icon textures
+	var iconTex: int = 1 if Global.tailsNameCheat else 0
+	#If Tails' name is set to Miles, use an alrenate texture set
+	$LifeCounter/Icon.texture = lifeTextures[iconTex]
+	$P1Counters/LifeIcon.texture = lifeTextures[iconTex]
+	$P2Counters/LifeIcon.texture = lifeTextures[iconTex]
 
 	if Global.two_player_mode:
 		$Counters.visible = false
 		$LifeCounter.visible = false
 		$P1Counters.visible = true
 		$P2Counters.visible = true
-		# Set Life Icon textures
-		var iconTex = lifeTextures[0]
-		#If Tails' name is set to Miles, use an alrenate texture set
-		if Global.tailsNameCheat:
-			iconTex = lifeTextures[1]
-		$LifeCounter/Icon.texture = iconTex
-		$P1Counters/LifeIcon.texture = iconTex
-		$P2Counters/LifeIcon.texture = iconTex
 		# Set character Icon
 		$P1Counters/LifeIcon.frame = Global.PlayerChar1
 		$P2Counters/LifeIcon.frame = Global.PlayerChar2
@@ -372,8 +374,6 @@ func SetupGameOver(_delta):
 				Global.main.change_scene(two_player_results)
 			else:
 				Global.main.change_scene(Global.start_scene)
-			await Global.main.scene_faded
-			call_deferred("Global.reset_values")
 		# reset level (if time over and lives aren't out)
 		else:
 			Global.main.change_scene_to_file(null,"FadeOut")
@@ -507,3 +507,21 @@ func _add_score(subtractFrom,delta):
 	subtractFrom -= points
 	Global.score += points
 	return subtractFrom
+"res://Scene/Zones/EmeraldHill2.tscn"
+
+## Setup the intial boss meter.
+func setup_boss_meter(boss: BossBase):
+	$"Boss Life/BossName".text = boss.boss_name
+	boss_max_health = boss.hp
+	boss_current_health = boss.hp
+	$"Boss Life".visible = true
+	boss.got_hit.connect(boss_hit)
+
+func boss_hit():
+	boss_current_health -= 1
+	@warning_ignore("integer_division")
+	$"Boss Life/EggMeterFull".set_size(Vector2((128/boss_max_health)*boss_current_health,8))
+	if boss_current_health == 0:
+		disconnect("got_hit",boss_hit)
+		$"Boss Life".visible = false
+		

@@ -60,6 +60,8 @@ func _on_BoundrySetter_body_entered(body):
 						SoundDriver.set_volume(0,100)
 					
 					emit_signal("boss_start")
+					if Global.hud:
+						Global.hud.setup_boss_meter(boss)
 					
 					Global.fightingBoss = true
 					#Global.playMusic(bossMusic,true)

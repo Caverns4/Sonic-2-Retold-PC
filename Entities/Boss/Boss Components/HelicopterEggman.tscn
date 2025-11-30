@@ -193,6 +193,7 @@ z_index = 1
 collision_layer = 16384
 collision_mask = 8388608
 script = ExtResource("1_adpj0")
+boss_name = "Egg Drillster"
 
 [node name="EggMobile" type="Sprite2D" parent="."]
 position = Vector2(0, 19)
@@ -253,7 +254,7 @@ one_shot = true
 
 [node name="Helicopter" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_fbdxo")
+&"": SubResource("AnimationLibrary_fbdxo")
 }
 autoplay = "SPIN"
 

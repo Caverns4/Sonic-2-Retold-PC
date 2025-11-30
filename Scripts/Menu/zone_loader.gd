@@ -3,7 +3,7 @@ extends CanvasLayer
 var loaded = false
 
 func _ready() -> void:
-	Global.Clean_Up()
+	Global.Clean_Up_Dirty_Object_Arrays()
 	SoundDriver.music.stop()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

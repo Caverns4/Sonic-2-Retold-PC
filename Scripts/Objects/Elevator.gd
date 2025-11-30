@@ -1,7 +1,7 @@
 @tool
 extends Node2D
 
-@export var texture = preload("res://Graphics/Tiles/WorldsTiles/EHZ_Platform_Small.png")
+@export var texture = preload("res://Graphics/Tiles/EHZ_HTZ/EHZ_Platform_Small.png")
 ## This is actually where the platform *starts*
 @export var endPosition = Vector2(0,256) # End travel point for platform
 ## How fast this platform should move.

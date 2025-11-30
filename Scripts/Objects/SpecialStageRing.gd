@@ -4,13 +4,13 @@ var timer = 0
 # active is set to true when the player enters the ring
 var active = false
 
-var player = null
+var player:Player2D = null
 var mask_memory = [0,0]
 
 func _ready():
 	# check that the current ring hasn't already been collected and all 7 emeralds aren't collected
 	# the emerald check is so that it'll spawn if you have all emeralds anyway
-	if Global.nodeMemory.has(get_path()) or Global.emeralds > 127:
+	if Global.object_table.has(get_path()) or Global.emeralds > 127:
 		queue_free()
 
 func _process(delta):
@@ -24,11 +24,9 @@ func _process(delta):
 			
 			SoundDriver.music.stop()
 			$Warp.play()
-			# add ring to node memory so you can't farm the ring
-			Global.nodeMemory.append(get_path())
-			Global.keep_memory = [Global.players[0].global_position,
-			Global.players[0].rings,
-			Global.currentCheckPoint]
+			# Set up level memory so Sonic won't lose level progress.
+			Global.object_table.append(get_path())
+			Global.save_level_data(global_position)
 			
 			# fade to new scene
 			Global.main.change_scene("res://Scene/SpecialStage/SpecialStage.tscn","WhiteOut",1,false)

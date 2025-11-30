@@ -10,7 +10,7 @@ var ringacceleration = [0.75,0.1875]
 var Particle = preload("res://Entities/Misc/GenericParticle.tscn")
 
 func _ready():
-	if Global.nodeMemory.has(get_path()):
+	if Global.object_table.has(get_path()):
 		queue_free()
 
 func _process(delta):
@@ -29,7 +29,7 @@ func _process(delta):
 			# get ring to player
 			player.get_ring()
 			if !scattered:
-				Global.nodeMemory.append(get_path())
+				Global.object_table.append(get_path())
 			var part = Particle.instantiate()
 			get_parent().add_child(part)
 			part.global_position = global_position

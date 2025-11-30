@@ -7,6 +7,7 @@ var playerHit = []
 var flashTimer = 0
 var forceDamage = false
 @export var hitTime = 32.0/60.0
+@export var boss_name: String = "Eggman" 
 
 
 var Explosion = preload("res://Entities/Misc/GenericParticle.tscn")

@@ -130,11 +130,10 @@ func UpdateMenuDisplay():
 func MenuOptionChosen():
 	#if Global.music.get_playback_position() < 14.0:
 	#	Global.music.seek(14.0)
-	if Global.tailsNameCheat:
+	if Global.levelSelectFlag:
 		#TODO: Make a proper level select code, distinct from the Tails Name Cheat
 		if Input.is_action_pressed("gm_action"):
 			menuEntry = 128
-			Global.levelSelectFlag = true
 	
 	match menuEntry:
 		0:
@@ -171,6 +170,7 @@ func CheckCheatInputs():
 			if cheatInputCount == levelSelectCheat.size():
 				cheatInputCount = 0
 				cheatActive = true
+				Global.levelSelectFlag = true
 				$TitleBanner/RingChime.play(0.0)
 				if !Global.tailsNameCheat:
 					Global.tailsNameCheat = true

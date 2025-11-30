@@ -96,6 +96,8 @@ func _physics_process(delta):
 					await get_tree().create_timer(0.25).timeout
 					hp = 8
 					phase = 1
+					if Global.hud:
+						Global.hud.setup_boss_meter(self)
 					drillCar.pilot = true
 					drillCar.playMotor()
 			_: # Controlled by external object.
