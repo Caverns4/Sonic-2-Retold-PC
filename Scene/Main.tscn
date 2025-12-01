@@ -1,6 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://byje3iiukvt4p"]
+[gd_scene load_steps=14 format=3 uid="uid://byje3iiukvt4p"]
 
 [ext_resource type="Script" uid="uid://856g6l24nl6o" path="res://Scripts/Global/Main.gd" id="2"]
+[ext_resource type="Script" uid="uid://cyus5h4y0rk47" path="res://Scripts/Menu/control_map.gd" id="5_aan6j"]
+[ext_resource type="Texture2D" uid="uid://coubnpmflmo4r" path="res://Graphics/HUD/InputMap.png" id="5_togfq"]
 [ext_resource type="PackedScene" uid="uid://b2xskcomtpo2x" path="res://Entities/Misc/ControllerMenu.tscn" id="6"]
 [ext_resource type="AudioStream" uid="uid://dk4rjhevrqj00" path="res://Audio/Soundtrack/s2br_ExtraLife.ogg" id="6_5mxpv"]
 [ext_resource type="PackedScene" uid="uid://c1xhc4uh26inb" path="res://Entities/Misc/PauseMenu.tscn" id="7"]
@@ -168,3 +170,91 @@ autoplay = "RESET"
 [node name="ControllerMenu" parent="GUI" instance=ExtResource("6")]
 
 [node name="Pause" parent="GUI" instance=ExtResource("7")]
+
+[node name="ControlMap" type="Control" parent="GUI"]
+process_mode = 3
+z_index = 100
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -144.0
+offset_bottom = 40.0
+grow_horizontal = 0
+script = ExtResource("5_aan6j")
+
+[node name="InputMap" type="Sprite2D" parent="GUI/ControlMap"]
+position = Vector2(80, 24)
+texture = ExtResource("5_togfq")
+
+[node name="up" type="ColorRect" parent="GUI/ControlMap"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 32.0
+offset_bottom = 16.0
+color = Color(0, 1, 0, 1)
+
+[node name="left" type="ColorRect" parent="GUI/ControlMap"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 24.0
+offset_bottom = 24.0
+color = Color(0, 1, 0, 1)
+
+[node name="right" type="ColorRect" parent="GUI/ControlMap"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 16.0
+offset_right = 40.0
+offset_bottom = 24.0
+color = Color(0, 1, 0, 1)
+
+[node name="down" type="ColorRect" parent="GUI/ControlMap"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 32.0
+offset_bottom = 32.0
+color = Color(0, 1, 0, 1)
+
+[node name="start" type="ColorRect" parent="GUI/ControlMap"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 16.0
+offset_right = 64.0
+offset_bottom = 32.0
+color = Color(1, 0, 1, 1)
+
+[node name="A" type="ColorRect" parent="GUI/ControlMap"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 24.0
+offset_right = 80.0
+offset_bottom = 32.0
+color = Color(0, 1, 0, 1)
+
+[node name="B" type="ColorRect" parent="GUI/ControlMap"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 24.0
+offset_right = 96.0
+offset_bottom = 32.0
+color = Color(0, 0, 1, 1)
+
+[node name="C" type="ColorRect" parent="GUI/ControlMap"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 24.0
+offset_right = 112.0
+offset_bottom = 32.0
+color = Color(1, 0, 0, 1)
+
+[node name="Y" type="ColorRect" parent="GUI/ControlMap"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 24.0
+offset_right = 128.0
+offset_bottom = 32.0
+color = Color(1, 1, 0, 1)

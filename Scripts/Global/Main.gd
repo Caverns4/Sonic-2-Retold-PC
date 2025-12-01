@@ -39,6 +39,7 @@ func _input(event):
 	if event.is_action_pressed("ui_reset"):
 		reset_game()
 
+
 # reset game function
 func reset_game():
 	$GUI/Pause.visible = false

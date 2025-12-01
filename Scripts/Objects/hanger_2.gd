@@ -9,17 +9,20 @@ extends Area2D
 ## Press down to drop off the object instead of jump.
 @export var press_down_to_drop: bool = true
 ## Not yet implimented
-@export var player_can_slide: bool = false
+@export var player_can_shimmy: bool = false
 
 ## Players hanging onto the vine
 var players: Array[Player2D] = []
 ## If set to true, some paramaters about the object will behave slightly differently.
 var playerCarryAI: bool = false
+var anim_name: String = "hang"
 
 const HANG_OFFSET = 20
 
 func _ready():
 	$Grab.stream = grabSound
+	if player_can_shimmy:
+		anim_name = "hang2"
 
 func _process(_delta: float) -> void:
 	for body:Player2D in players:
@@ -29,7 +32,7 @@ func _process(_delta: float) -> void:
 
 func _player_jumpoff(body:Player2D):
 	if players.has(body):
-		body.animator.play("hang")
+		body.animator.play(anim_name)
 		body.set_state(body.STATES.AIR)
 		body.airControl = true
 		body.movement.x = 120*body.direction
@@ -54,26 +57,39 @@ func _disconnect_player(body):
 func _physics_process(_delta: float) -> void:
 	for body:Player2D in players:
 		if body.poleGrabID == self:
-			if !player_can_slide or playerCarryAI:
+			if setCenter or playerCarryAI:
 				body.global_position.x = global_position.x
 				body.cam_update()
 			body.global_position.y = global_position.y + HANG_OFFSET
 			if body.any_action_pressed():
-				_player_jumpoff(body)
-			if body.inputActions[body.INPUTS.XINPUT]:
-				body.direction = sign(body.INPUTS.XINPUT)
+				if player_can_shimmy:
+					_player_dropoff(body)
+				else:
+					_player_jumpoff(body)
+			
+			if directional_input or player_can_shimmy:
+				var dir = body.get_x_input()
+				if dir:
+					body.direction = sign(dir)
+					body.sprite.flip_h = (body.direction < 0)
+				if player_can_shimmy:
+					body.movement.x = 120*dir
+					var anim = "hangShimmy" if body.movement.x != 0 else anim_name
+					body.animator.play(anim)
+			
 			if (body.is_down_held() and press_down_to_drop):
 				_player_dropoff(body)
 		
+		# initial hook
 		if (!body.poleGrabID and body.movement.y > 0 and 
 		body.global_position.y > global_position.y and 
 		!body.controlObject):
 			body.poleGrabID = self
-			if setCenter:
+			if setCenter and !player_can_shimmy:
 				body.global_position.x = global_position.x
 			body.movement = Vector2.ZERO
 			body.allowTranslate = true
-			body.animator.play("hang")
+			body.animator.play(anim_name)
 			body.set_state(body.STATES.HANG,body.currentHitbox.NORMAL)
 			$Grab.play()
 
@@ -96,7 +112,9 @@ func _on_body_entered(body: Player2D) -> void:
 func _on_body_exited(body: Player2D) -> void:
 	if !body.poleGrabID == self:
 		_disconnect_player(body)
-	if body.poleGrabID == self && body.currentState != body.STATES.HANG:
+	if body.poleGrabID == self && (body.currentState != body.STATES.HANG or player_can_shimmy):
+		body.set_state(body.STATES.AIR)
+		body.airControl = true
 		body.poleGrabID = null
 		body.allowTranslate = false
 		_disconnect_player(body)
