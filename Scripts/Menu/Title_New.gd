@@ -89,7 +89,7 @@ func _ready():
 	#Prepare the Title Streen Music
 	SoundDriver.music.stream = music
 	#Prepare the background
-	var parallax = parallaxBackgrounds[min(Global.savedZoneID,parallaxBackgrounds.size()-1)]
+	var parallax = parallaxBackgrounds[min(Global.saved_zone_id,parallaxBackgrounds.size()-1)]
 	BackgroundScene = load(parallax)
 	if disable_menu:
 		$CanvasLayer/Labels/TitleMenu.queue_free()
@@ -144,8 +144,8 @@ func MenuOptionChosen():
 	
 	match menuEntry:
 		0:
-			Global.savedZoneID = Global.ZONES.EMERALD_HILL
-			Global.savedActID = 0
+			Global.saved_zone_id = Global.ZONES.EMERALD_HILL
+			Global.saved_act_id = 0
 			Global.emeralds = 126
 			SetFadeOut(zone_loader)
 		1:
@@ -187,7 +187,7 @@ func CheckCheatInputs(inputCue: Vector2 = Vector2.ZERO):
 func InstantiateBG():
 	if sceneInstance == null:
 		sceneInstance = BackgroundScene.instantiate()
-		sceneInstance.scroll_base_offset.y = paraOffsets[min(Global.savedZoneID,parallaxBackgrounds.size()-1)]
+		sceneInstance.scroll_base_offset.y = paraOffsets[min(Global.saved_zone_id,parallaxBackgrounds.size()-1)]
 		add_child(sceneInstance)
 	#Activate the Menu
 	menuActive = true

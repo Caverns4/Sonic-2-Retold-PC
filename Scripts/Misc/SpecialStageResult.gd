@@ -20,11 +20,11 @@ var flicker_time = 0.01
 func _ready():
 	$HUD/CounterWait.start()
 	ring_bonus = Global.special_stage_rings*10
-	if Global.lastSpecialStageResult:
-		Global.specialStageID += 1
+	if Global.special_stage_result:
+		Global.special_stage_id += 1
 		gems_bonus = 10000
 	
-	# $HUD/Stage.text = "Stage "+str(Global.specialStageID+1)
+	# $HUD/Stage.text = "Stage "+str(Global.special_stage_id+1)
 	# cycle through emeralds on the hud
 	for i in $HUD/ColorRect.get_child_count():
 		$HUD/ColorRect.get_child(i).visible = (Global.emeralds & (1 << i))
@@ -87,14 +87,14 @@ func _physics_process(delta: float) -> void:
 
 func returnToLevel():
 	#Wipe some data to avoid contamination.
-	Global.lastSpecialStageResult = false
+	Global.special_stage_result = false
 	Global.special_stage_rings = 0
 	Global.special_stage_players.clear()
 	
 	Global.main.change_scene(zone_loader,"WhiteOut")
 
 func SpecialResults_SetupText():
-	if !Global.lastSpecialStageResult:
+	if !Global.special_stage_result:
 		$HUD/ResultLabel/SonicGot.text = "CHAOS EMERALDS"
 		$HUD/ResultLabel/Through.text = ""
 	else:

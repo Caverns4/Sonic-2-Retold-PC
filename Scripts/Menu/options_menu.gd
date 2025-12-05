@@ -40,7 +40,7 @@ var animationTimer = 0.5
 var animationframe = 0
 
 func _ready():
-	characterID = Global.characterSelectMemory
+	characterID = Global.character_selection
 	SoundDriver.music.stream = music
 	SoundDriver.music.play()
 
@@ -158,7 +158,7 @@ func _unhandledInput(event):
 					SetPlayerCharacterIDs()
 					Global.save_settings()
 					Global.main.change_scene(title_screen)
-					Global.characterSelectMemory = characterID
+					Global.character_selection = characterID
 
 
 func OptionsMenu_RedrawText():

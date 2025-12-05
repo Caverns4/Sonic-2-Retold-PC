@@ -1,7 +1,7 @@
 extends Node2D
 
 ## The current Zone ID, for Global.ZONES
-@export var zoneID = 0 as Global.ZONES
+@export var zone_id = 0 as Global.ZONES
 @export var music = preload("res://Audio/Soundtrack/s2br_EmeraldHilll.ogg")
 @export var music2P = preload("res://Audio/Soundtrack/s2br_Tropical.ogg")
 @export var boss_theme = preload("res://Audio/Soundtrack/s2br_Boss.ogg")
@@ -42,7 +42,7 @@ var next_zone_loader: String = "res://Scene/Presentation/ZoneLoader.tscn"
 var twoPlayerWindow = preload("res://Scene/TwoPlayerScreenView.tscn")
 
 func _ready():
-	Global.savedZoneID = zoneID as Global.ZONES
+	Global.saved_zone_id = zone_id as Global.ZONES
 
 	# Setup Boundries
 	if setDefaultLeft:
@@ -84,15 +84,15 @@ func level_reset_data(_playCard = true):
 	SoundDriver.currentTheme = SoundDriver.THEME.NORMAL
 	SoundDriver.playMusic(level_theme,true)
 	
-	if Global.currentCheckPoint < 0:
+	if Global.saved_checkpoint < 0:
 		Global.levelTime = 0
 		Global.levelTimeP2 = 0
 
 	#Clear Object Arrays used within levels
 	var index: int = 0
-	while index < len(Global.slotMachines):
-		if !is_instance_valid(Global.slotMachines[index]):
-			Global.slotMachines.remove_at(index)
+	while index < len(Global.slot_machines):
+		if !is_instance_valid(Global.slot_machines[index]):
+			Global.slot_machines.remove_at(index)
 		else:
 			index +=1
 	

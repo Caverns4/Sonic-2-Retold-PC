@@ -1,6 +1,6 @@
 extends Area2D
 var active = false
-@export var checkPointID = 0
+@export var checkpoint_id = 0
 
 var specialStageEntry = preload("res://Entities/Items/CheckpointStars.tscn")
 
@@ -8,17 +8,17 @@ var player_memory = [] #List of Players that have triggered this Checkpoint
 
 func _ready():
 	# add self to global check point list (it's cleared in the stage start script in global)
-	Global.checkPoints.append(self)
+	Global.checkpoints.append(self)
 	
 	# if we're the current checkpoint then activate on level start
-	if Global.currentCheckPoint == checkPointID:
+	if Global.saved_checkpoint == checkpoint_id:
 		# give a frame to to check activation
 		await get_tree().process_frame
 		$Spinner.queue("flash")
 		active = true
-		for i in Global.checkPoints:
-			if i.get("checkPointID") != null:
-				if i.checkPointID < checkPointID:
+		for i in Global.checkpoints:
+			if i.get("checkpoint_id") != null:
+				if i.checkpoint_id < checkpoint_id:
 					i.active = true
 					i.get_node("Spinner").play("flash")
 
@@ -28,7 +28,7 @@ func activate(player: Player2D):
 	# queue flash, incase an animation is already playing
 	$Spinner.queue("flash")
 	active = true
-	Global.currentCheckPoint = checkPointID
+	Global.saved_checkpoint = checkpoint_id
 	player.respawnPosition = global_position
 	
 	#Save player 1 data if main character passes.
@@ -41,9 +41,9 @@ func activate(player: Player2D):
 		Global.checkPointRingsP2 = player.rings
 	
 	# set checkpoint to self (and set any checkpoitns with a lower ID to active)
-	for i in Global.checkPoints:
-		if i.get("checkPointID") != null:
-			if i.checkPointID < checkPointID:
+	for i in Global.checkpoints:
+		if i.get("checkpoint_id") != null:
+			if i.checkpoint_id < checkpoint_id:
 				i.active = true
 				i.get_node("Spinner").play("flash")
 	

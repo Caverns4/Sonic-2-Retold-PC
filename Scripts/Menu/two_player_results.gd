@@ -21,7 +21,7 @@ func _ready():
 	time = result[4]
 	var timeTextP2: String = "%2d" % floor(time/60) + ":" + str(fmod(floor(time),60)).pad_zeros(2) + ":" + str(fmod(floor(time*100),100)).pad_zeros(2)
 	
-	$"UI/Labels/Act Results Text".text = ("Act " + str(Global.savedActID+1) + " results\n\n"
+	$"UI/Labels/Act Results Text".text = ("Act " + str(Global.saved_act_id+1) + " results\n\n"
 	+ "SCORE  " + str(result[0]).lpad(6) + " :   " + str(result[3]).lpad(6) + "\n\n"
 	+ "TIME " + timeTextP1 + " : " + timeTextP2 + "\n\n"
 	+ "RINGS     " + str(result[2]).lpad(3) + " :      " + str(result[5]).lpad(3) + "\n\n")
@@ -45,7 +45,7 @@ func _input(event):
 			endScene = true
 			Global.score = 0
 			Global.scoreP2 = 0
-			if Global.savedActID == 0 and Global.lives > 0 and Global.livesP2 > 0:
+			if Global.saved_act_id == 0 and Global.lives > 0 and Global.livesP2 > 0:
 				Global.loadNextLevel()
 				Global.main.change_scene(zone_loader)
 			else:

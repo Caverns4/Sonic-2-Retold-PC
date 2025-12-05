@@ -26,7 +26,7 @@ var prize_nodes = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if type > 0:
-		Global.slotMachines.append(self)
+		Global.slot_machines.append(self)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

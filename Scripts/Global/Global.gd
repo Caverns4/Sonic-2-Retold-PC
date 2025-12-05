@@ -20,20 +20,20 @@ var hud: CanvasLayer = null
 ## HUD object specificiall in special stages.
 var special_hud = null
 # Slot machines (Casino Night Zone Only), probably not needed.
-var slotMachines = []
+var slot_machines = []
 # Character Reel Master
 var characterReels: SlotMachineManager = null
 # Cheats implimented
 var levelSelectFlag = false
 var tailsNameCheat = false #if TRUE, Tails will be called "Miles"
 var special_exit = ZONES.EMERALD_HILL
-var characterSelectMemory = 0
+var character_selection = 0
 var levelSelctMemory = 0
 # checkpoint memory
-var checkPoints = []
+var checkpoints = []
 # reference for the current checkpoint
-var currentCheckPoint = -1
-var currentCheckPointP2 = -1
+var saved_checkpoint = -1
+var saved_checkpointP2 = -1
 # the current level time from when the checkpoint got hit
 var checkPointTime = 0
 var checkPointTimeP2 = 0
@@ -93,9 +93,9 @@ enum EMERALD {
 	}
 	#RED = 1, BLUE = 2, GREEN = 4, YELLOW = 8, CYAN = 16, SILVER = 32, PURPLE = 64}
 ## The next special stage to play.
-var specialStageID = 0
+var special_stage_id = 0
 ## Prevoius Special Stage result. true for win.
-var lastSpecialStageResult: bool = false
+var special_stage_result: bool = false
 ## Saved Ring Count from the special stage.
 var special_stage_rings: int = 0
 var levelTime = 0 # the timer that counts down while the level isn't completed or in a special ring
@@ -172,8 +172,8 @@ var zoneNames = [
 ]
 
 ## The current played zone. Necessary for Two-Player Mode and the Title Screen.
-var savedZoneID = ZONES.ENDING
-var savedActID = 0 # selected act ID
+var saved_zone_id = ZONES.ENDING
+var saved_act_id = 0 # selected act ID
 
 # water level of the current level, setting this to null will disable the water
 var waterLevel = null
@@ -266,24 +266,24 @@ func reset_values():
 	twoPlayerRound = 0
 	continues = 0
 	#emeralds = 0
-	#specialStageID = 0
+	#special_stage_id = 0
 	checkPointTime = 0
 	checkPointTimeP2 = 0
-	currentCheckPoint = -1
-	currentCheckPointP2 = -1
+	saved_checkpoint = -1
+	saved_checkpointP2 = -1
 	animals = [0,1]
 
 func reset_level_data():
 	players.clear()
-	checkPoints.clear()
+	checkpoints.clear()
 	#Clear Casino Night Zone contexts
-	slotMachines.clear()
+	slot_machines.clear()
 	characterReels = null
 	hud = null
 	waterLevel = null
 	gameOver = false
 	if stageClearPhase != 0:
-		currentCheckPoint = -1
+		saved_checkpoint = -1
 		levelTime = 0
 		levelTimeP2 = 0
 		timerActive = false
@@ -297,8 +297,8 @@ func Clean_Up_Dirty_Object_Arrays():
 	special_hud = null
 	players.clear()
 	special_stage_players.clear()
-	checkPoints.clear()
-	slotMachines.clear()
+	checkpoints.clear()
+	slot_machines.clear()
 	characterReels = null
 
 # add a score object, see res://Scripts/Misc/Score.gd for reference
@@ -318,69 +318,69 @@ func check_score_life(scoreAdd = 0):
 		SoundDriver.playExtraLifeMusic()
 
 func loadNextLevel():
-	#Reset all Checkpoints so the player doesn't respawn in a bad spot
-	currentCheckPoint = -1
-	currentCheckPointP2 = -1
+	#Reset all checkpoints so the player doesn't respawn in a bad spot
+	saved_checkpoint = -1
+	saved_checkpointP2 = -1
 	level_respawn_stats.clear()
 	object_table.clear()
 	maxTime = 60*10
 	
 	if special_exit > ZONES.EMERALD_HILL:
-		savedActID = 0
-		savedZoneID = special_exit
+		saved_act_id = 0
+		saved_zone_id = special_exit
 		return
 	
-	savedActID +=1
-	if savedActID >= 2:
-		match savedZoneID:
+	saved_act_id +=1
+	if saved_act_id >= 2:
+		match saved_zone_id:
 			ZONES.EMERALD_HILL:
-				savedActID = 0
-				savedZoneID = ZONES.HILL_TOP
+				saved_act_id = 0
+				saved_zone_id = ZONES.HILL_TOP
 			ZONES.HIDDEN_PALACE:
-				savedActID = 0
-				savedZoneID = ZONES.CASINO_NIGHT
+				saved_act_id = 0
+				saved_zone_id = ZONES.CASINO_NIGHT
 			ZONES.HILL_TOP:
-				savedActID = 0
-				savedZoneID = ZONES.DUST_HILL
+				saved_act_id = 0
+				saved_zone_id = ZONES.DUST_HILL
 			ZONES.CHEMICAL_PLANT:
-				savedActID = 0
-				savedZoneID = ZONES.CASINO_NIGHT
+				saved_act_id = 0
+				saved_zone_id = ZONES.CASINO_NIGHT
 			ZONES.OIL_OCEAN:
-				savedActID = 0
-				savedZoneID = ZONES.METROPOLIS
+				saved_act_id = 0
+				saved_zone_id = ZONES.METROPOLIS
 			ZONES.NEO_GREEN_HILL:
-				savedActID = 0
-				savedZoneID = ZONES.CHEMICAL_PLANT
+				saved_act_id = 0
+				saved_zone_id = ZONES.CHEMICAL_PLANT
 			ZONES.METROPOLIS:
-				savedActID = 1 ## Skip Cyber City 1 for now
-				savedZoneID = ZONES.CYBER_CITY
+				saved_act_id = 1 ## Skip Cyber City 1 for now
+				saved_zone_id = ZONES.CYBER_CITY
 			ZONES.DUST_HILL:
-				savedActID = 0
-				savedZoneID = ZONES.HIDDEN_PALACE
+				saved_act_id = 0
+				saved_zone_id = ZONES.HIDDEN_PALACE
 			ZONES.WOOD_GADGET:
-				savedActID = 0
-				savedZoneID = ZONES.DUST_HILL
+				saved_act_id = 0
+				saved_zone_id = ZONES.DUST_HILL
 			ZONES.CASINO_NIGHT:
-				savedActID = 0
-				savedZoneID = ZONES.METROPOLIS
+				saved_act_id = 0
+				saved_zone_id = ZONES.METROPOLIS
 			ZONES.JEWEL_GROTTO:
-				savedActID = 0
-				savedZoneID = ZONES.SAND_SHOWER
+				saved_act_id = 0
+				saved_zone_id = ZONES.SAND_SHOWER
 			ZONES.WINTER:
-				savedActID = 0
-				savedZoneID = ZONES.EMERALD_HILL
+				saved_act_id = 0
+				saved_zone_id = ZONES.EMERALD_HILL
 			ZONES.SAND_SHOWER:
-				savedActID = 0
-				savedZoneID = ZONES.OIL_OCEAN
+				saved_act_id = 0
+				saved_zone_id = ZONES.OIL_OCEAN
 			ZONES.TROPICAL:
-				savedActID = 0
-				savedZoneID = ZONES.EMERALD_HILL
+				saved_act_id = 0
+				saved_zone_id = ZONES.EMERALD_HILL
 			ZONES.CYBER_CITY:
-				savedActID = 0
-				savedZoneID = ZONES.ENDING
+				saved_act_id = 0
+				saved_zone_id = ZONES.ENDING
 			ZONES.SKY_FORTRESS:
-				savedActID = 0
-				savedZoneID = ZONES.DEATH_EGG
+				saved_act_id = 0
+				saved_zone_id = ZONES.DEATH_EGG
 			# Sky Fortress and Death Egg are special cases.
 
 ## Build the respawn array
@@ -395,7 +395,7 @@ func save_level_data(pos: Vector2):
 		level_respawn_stats.push_back(players[1].rings)
 	else:
 		level_respawn_stats.push_back(0)
-	level_respawn_stats.push_back(currentCheckPoint)
+	level_respawn_stats.push_back(saved_checkpoint)
 
 
 # Godot doesn't like not having emit signal only done in other nodes so we're using a function to call it
@@ -478,6 +478,6 @@ func SaveGameData():
 	if saveFileSelected == 0:
 		return
 	var _filename = "Sonic" + str(saveFileSelected) + ".dat"
-	var a = Global.Score*(savedZoneID*4)/30+PlayerChar2*PlayerChar1
+	var a = Global.Score*(saved_zone_id*4)/30+PlayerChar2*PlayerChar1
 	print(a)
 	

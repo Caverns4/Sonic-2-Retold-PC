@@ -14,7 +14,7 @@ var collected: bool = false
 
 func _ready() -> void:
 	if !Engine.is_editor_hint():
-		color = Global.specialStageID
+		color = Global.special_stage_id
 		$Sprite3D.frame = color*4
 
 func _process(delta: float) -> void:

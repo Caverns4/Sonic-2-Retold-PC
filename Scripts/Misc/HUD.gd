@@ -181,14 +181,14 @@ func respawnPlayer():
 		var player = Global.players[0]
 		# set player's position to rings (and player 2)
 		# helps sell the illusion that we reset the room
-		if Global.checkPoints.size() > 0:
-			for i in Global.checkPoints:
-				if Global.currentCheckPoint == i.checkPointID:
+		if Global.checkpoints.size() > 0:
+			for i in Global.checkpoints:
+				if Global.saved_checkpoint == i.checkpoint_id:
 					player.camera.global_position = i.global_position+Vector2(0,8)
 					player.global_position = i.global_position+Vector2(0,8)
 					Global.levelTime = Global.checkPointTime
 					Global.levelTimeP2 = Global.checkPointTime
-					Global.lastSpecialStageResult = false
+					Global.special_stage_result = false
 		player.direction = 1
 		# Remember to give the player's air back, they might have been under water
 		# imagine if you were underwater and got sucked into another dimension only for when

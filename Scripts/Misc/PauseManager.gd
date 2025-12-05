@@ -116,7 +116,7 @@ func _input(event):
 						Global.main.wasPaused = false
 						visible = false
 						Global.checkPointTime = 0
-						Global.currentCheckPoint = -1
+						Global.saved_checkpoint = -1
 						Global.main.Reload_Level()
 						#await Global.main.scene_faded
 						Global.main.set_volume(0)

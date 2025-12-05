@@ -100,7 +100,7 @@ var animationframe:int = 0
 var lastInput = Vector2.ZERO
 
 func _ready():
-	characterID = Global.characterSelectMemory
+	characterID = Global.character_selection
 	SoundDriver.music.stream = music
 	SoundDriver.music.play()
 	if next_zone_loader != null:
@@ -152,102 +152,102 @@ func _input(event):
 			# set the level
 			match(levelID):
 				0: # Emerald Hill Act 1
-					Global.savedZoneID = Global.ZONES.EMERALD_HILL
-					Global.savedActID = 0
+					Global.saved_zone_id = Global.ZONES.EMERALD_HILL
+					Global.saved_act_id = 0
 				1: # Emerald Hill Act 2
-					Global.savedZoneID = Global.ZONES.EMERALD_HILL
-					Global.savedActID = 1
+					Global.saved_zone_id = Global.ZONES.EMERALD_HILL
+					Global.saved_act_id = 1
 				2: # Hidden Palace 2
-					Global.savedZoneID = Global.ZONES.HIDDEN_PALACE
-					Global.savedActID = 0
+					Global.saved_zone_id = Global.ZONES.HIDDEN_PALACE
+					Global.saved_act_id = 0
 				3: # Hidden Palace 2
-					Global.savedZoneID = Global.ZONES.HIDDEN_PALACE
-					Global.savedActID = 1
+					Global.saved_zone_id = Global.ZONES.HIDDEN_PALACE
+					Global.saved_act_id = 1
 				4: # Hill Top Zone 1
-					Global.savedZoneID = Global.ZONES.HILL_TOP
-					Global.savedActID = 0
+					Global.saved_zone_id = Global.ZONES.HILL_TOP
+					Global.saved_act_id = 0
 				5: # Hill Top Zone 2
-					Global.savedZoneID = Global.ZONES.HILL_TOP
-					Global.savedActID = 1
+					Global.saved_zone_id = Global.ZONES.HILL_TOP
+					Global.saved_act_id = 1
 				6: # Chemical Plant 1
-					Global.savedZoneID = Global.ZONES.CHEMICAL_PLANT
-					Global.savedActID = 0
+					Global.saved_zone_id = Global.ZONES.CHEMICAL_PLANT
+					Global.saved_act_id = 0
 				7: # Chemical Plant 2
-					Global.savedZoneID = Global.ZONES.CHEMICAL_PLANT
-					Global.savedActID =1
+					Global.saved_zone_id = Global.ZONES.CHEMICAL_PLANT
+					Global.saved_act_id =1
 				8: # Oil Ocean Zone 1
-					Global.savedZoneID = Global.ZONES.OIL_OCEAN
-					Global.savedActID = 0
+					Global.saved_zone_id = Global.ZONES.OIL_OCEAN
+					Global.saved_act_id = 0
 				9: # Oil Ocean Zone 2
-					Global.savedZoneID = Global.ZONES.OIL_OCEAN
-					Global.savedActID = 1
+					Global.saved_zone_id = Global.ZONES.OIL_OCEAN
+					Global.saved_act_id = 1
 				10: # Neo Green Hill 1
-					Global.savedZoneID = Global.ZONES.NEO_GREEN_HILL
-					Global.savedActID = 0
+					Global.saved_zone_id = Global.ZONES.NEO_GREEN_HILL
+					Global.saved_act_id = 0
 				11: # Neo Green Hill 2
-					Global.savedZoneID = Global.ZONES.NEO_GREEN_HILL
-					Global.savedActID = 1
+					Global.saved_zone_id = Global.ZONES.NEO_GREEN_HILL
+					Global.saved_act_id = 1
 				12: #Metropolis 1
-					Global.savedZoneID = Global.ZONES.METROPOLIS
-					Global.savedActID = 0
+					Global.saved_zone_id = Global.ZONES.METROPOLIS
+					Global.saved_act_id = 0
 				13: #Metropolis 2
-					Global.savedZoneID = Global.ZONES.METROPOLIS
-					Global.savedActID = 1
+					Global.saved_zone_id = Global.ZONES.METROPOLIS
+					Global.saved_act_id = 1
 				14: #Metropolis 3
-					Global.savedZoneID = Global.ZONES.CYBER_CITY
-					Global.savedActID = 1
+					Global.saved_zone_id = Global.ZONES.CYBER_CITY
+					Global.saved_act_id = 1
 				15: #Dust Hill 1
-					Global.savedZoneID = Global.ZONES.DUST_HILL
-					Global.savedActID = 0
+					Global.saved_zone_id = Global.ZONES.DUST_HILL
+					Global.saved_act_id = 0
 				16: #Dust Hill 2
-					Global.savedZoneID = Global.ZONES.DUST_HILL
-					Global.savedActID = 1
+					Global.saved_zone_id = Global.ZONES.DUST_HILL
+					Global.saved_act_id = 1
 				17: #Wood Gadget 1
-					Global.savedZoneID = Global.ZONES.WOOD_GADGET
-					Global.savedActID = 0
+					Global.saved_zone_id = Global.ZONES.WOOD_GADGET
+					Global.saved_act_id = 0
 				18: #Wood Gadget 2
-					Global.savedZoneID = Global.ZONES.WOOD_GADGET
-					Global.savedActID = 1
+					Global.saved_zone_id = Global.ZONES.WOOD_GADGET
+					Global.saved_act_id = 1
 				19: #Casino Night 1
-					Global.savedZoneID = Global.ZONES.CASINO_NIGHT
-					Global.savedActID = 0
+					Global.saved_zone_id = Global.ZONES.CASINO_NIGHT
+					Global.saved_act_id = 0
 				20: #Casino Night 2
-					Global.savedZoneID = Global.ZONES.CASINO_NIGHT
-					Global.savedActID = 1
+					Global.saved_zone_id = Global.ZONES.CASINO_NIGHT
+					Global.saved_act_id = 1
 				21: #Sky Fortress 1
-					Global.savedZoneID = Global.ZONES.JEWEL_GROTTO
-					Global.savedActID = 0
+					Global.saved_zone_id = Global.ZONES.JEWEL_GROTTO
+					Global.saved_act_id = 0
 				22: #Sky Fortress 2
-					Global.savedZoneID = Global.ZONES.JEWEL_GROTTO
-					Global.savedActID = 1
+					Global.saved_zone_id = Global.ZONES.JEWEL_GROTTO
+					Global.saved_act_id = 1
 				23: #Sand Shower 1
-					Global.savedZoneID = Global.ZONES.SAND_SHOWER
-					Global.savedActID = 0
+					Global.saved_zone_id = Global.ZONES.SAND_SHOWER
+					Global.saved_act_id = 0
 				24: #Sand Shower 2
-					Global.savedZoneID = Global.ZONES.SAND_SHOWER
-					Global.savedActID = 1
+					Global.saved_zone_id = Global.ZONES.SAND_SHOWER
+					Global.saved_act_id = 1
 				25: #Sky Fortress 1
-					Global.savedZoneID = Global.ZONES.SKY_FORTRESS
-					Global.savedActID = 0
+					Global.saved_zone_id = Global.ZONES.SKY_FORTRESS
+					Global.saved_act_id = 0
 				26: #Sky Fortress 2
-					Global.savedZoneID = Global.ZONES.SKY_FORTRESS
-					Global.savedActID = 1
+					Global.saved_zone_id = Global.ZONES.SKY_FORTRESS
+					Global.saved_act_id = 1
 				27: #Death Egg 1
-					Global.savedZoneID = Global.ZONES.DEATH_EGG
-					Global.savedActID = 0
+					Global.saved_zone_id = Global.ZONES.DEATH_EGG
+					Global.saved_act_id = 0
 				28: #Death Egg 2
-					Global.savedZoneID = Global.ZONES.DEATH_EGG
-					Global.savedActID = 1
+					Global.saved_zone_id = Global.ZONES.DEATH_EGG
+					Global.saved_act_id = 1
 				29:
-					Global.savedZoneID = Global.ZONES.SPECIAL_STAGE
-					Global.savedActID = 0
+					Global.saved_zone_id = Global.ZONES.SPECIAL_STAGE
+					Global.saved_act_id = 0
 				_: # Invalid Entry
 					selected = false
 					Global.two_player_mode = false
 					return
 			
 			Global.main.change_scene(Global.nextZone)
-			Global.characterSelectMemory = characterID
+			Global.character_selection = characterID
 
 func levelSelectSetupDirectionalInput():
 	var inputCue = Input.get_vector("gm_left","gm_right","gm_up","gm_down")
@@ -325,7 +325,7 @@ func levelSelect_UpdateText(): # levelID
 				textFieldLeft.text += str(levelLabels[i]).to_upper() + "\n"
 	$UI/LabelsRight/LevelIcon.frame = levelIcons[k-1]
 	#if levelIcons[k-1] <= Global.ZONES.DEATH_EGG:
-	#	Global.savedZoneID = levelIcons[k-1]
+	#	Global.saved_zone_id = levelIcons[k-1]
 
 func UpdateCharacterSprites():
 	if characterID == 0:

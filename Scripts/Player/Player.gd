@@ -310,7 +310,7 @@ func _ready():
 		global_position = Global.level_respawn_stats[0]
 		var index: int = Global.players.find(self)
 		rings = Global.level_respawn_stats[index+1]
-		Global.currentCheckPoint = Global.level_respawn_stats[3]
+		Global.saved_checkpoint = Global.level_respawn_stats[3]
 	else:
 		respawnPosition = global_position
 	
@@ -395,14 +395,13 @@ func _ready():
 	
 	# Checkpoints
 	await get_tree().process_frame
-	for i in Global.checkPoints:
-		if Global.currentCheckPoint == i.checkPointID:
+	for i in Global.checkpoints:
+		if Global.saved_checkpoint == i.checkpoint_id:
 			global_position = i.global_position+Vector2(0,8)
 			respawnPosition = global_position
 			camera.global_position = i.global_position+Vector2(0,8)
 			Global.levelTime = Global.checkPointTime
 			Global.levelTimeP2 = Global.checkPointTime
-			Global.lastSpecialStageResult = false
 		else:
 			Global.levelTime = 0
 			Global.levelTimeP2 = 0

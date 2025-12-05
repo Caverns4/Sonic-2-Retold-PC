@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 		if  (slotOffsets[0]/32 == slotTargets[0]
 		and slotOffsets[1]/32 == slotTargets[1]
 		and slotOffsets[2]/32 == slotTargets[2]) and forceSpinTime <= 0:
-			for i in Global.slotMachines:
+			for i in Global.slot_machines:
 				if i.has_method("DeterminPrize"):
 					i.reward_player(slotTargets)
 			active = false

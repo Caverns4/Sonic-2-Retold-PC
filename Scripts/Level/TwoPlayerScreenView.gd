@@ -26,7 +26,7 @@ var parallaxBackgrounds = [
 ]
 
 func _ready():
-	var parallax = parallaxBackgrounds[min(Global.savedZoneID,parallaxBackgrounds.size()-1)]
+	var parallax = parallaxBackgrounds[min(Global.saved_zone_id,parallaxBackgrounds.size()-1)]
 	var scene = load(parallax)
 	var instance = scene.instantiate()
 	$CanvasLayer/SubViewportContainer/SubViewport.add_child(instance)

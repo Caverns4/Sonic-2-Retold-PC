@@ -51,7 +51,7 @@ func _ready() -> void:
 	if Global.twoPlayerZoneResults: #If Game is started
 		p1CharacterSelection = Global.PlayerChar1-1
 		p2CharacterSelection = Global.PlayerChar2-1
-		zoneSelection = Global.twoPlayerZones.find(Global.savedZoneID)
+		zoneSelection = Global.twoPlayerZones.find(Global.saved_zone_id)
 	UpdateCharacterFrameInMenu()
 	UpdateZoneSelection()
 
@@ -152,8 +152,8 @@ func updateZoneSelection():
 		state = MENU_STATE.DECIDED
 		Global.PlayerChar1 = p1CharacterSelection+1 as Global.CHARACTERS
 		Global.PlayerChar2 = p2CharacterSelection+1 as Global.CHARACTERS
-		Global.savedZoneID = Global.twoPlayerZones[zoneSelection]
-		Global.savedActID = 0
+		Global.saved_zone_id = Global.twoPlayerZones[zoneSelection]
+		Global.saved_act_id = 0
 		Global.twoPlayerItems = itemSelection as Global.ITEM_MODE
 		Global.main.change_scene(zone_loader)
 
