@@ -74,9 +74,7 @@ func _ready():
 	
 	if !Global.airSpeedCap:
 		$Counters/Text.self_modulate = Color.RED
-	# error prevention
-	#if !Global.is_main_loaded:
-	#	return false
+
 	$Water/WaterOverlay.material["shader_parameter/originalPalette"] = waterSourceColor
 	$Water/WaterOverlay.material["shader_parameter/swapPalette"] = waterReplaceColor
 	
@@ -87,7 +85,7 @@ func _ready():
 
 	var lifeCounterFrame = 0
 	# Set Life Icon textures
-	var iconTex: int = 1 if Global.tailsNameCheat else 0
+	var iconTex: int = 1 if Global.tails_name_cheat else 0
 	#If Tails' name is set to Miles, use an alrenate texture set
 	$LifeCounter/Icon.texture = lifeTextures[iconTex]
 	$P1Counters/LifeIcon.texture = lifeTextures[iconTex]
@@ -160,7 +158,7 @@ func PlayTitleCardAnimaiton():
 		Global.emit_stage_start()
 		# wait for title card animator to finish ending before starting the level timer
 		await $LevelCard/CardPlayer.animation_finished
-		Global.main.sceneCanPause = true
+		Main.sceneCanPause = true
 	#else:
 	#	get_tree().paused = true
 	#	await get_tree().process_frame # delay unpausing for one frame so the player doesn't die immediately
@@ -186,8 +184,8 @@ func respawnPlayer():
 				if Global.saved_checkpoint == i.checkpoint_id:
 					player.camera.global_position = i.global_position+Vector2(0,8)
 					player.global_position = i.global_position+Vector2(0,8)
-					Global.levelTime = Global.checkPointTime
-					Global.levelTimeP2 = Global.checkPointTime
+					Global.levelTime = Global.checkpoint_time_p1
+					Global.levelTimeP2 = Global.checkpoint_time_p1
 					Global.special_stage_result = false
 		player.direction = 1
 		# Remember to give the player's air back, they might have been under water
@@ -371,13 +369,13 @@ func SetupGameOver(_delta):
 				Global.scoreP2,Global.levelTimeP2,Global.players[1].rings]
 				Global.twoPlayActResults.append(results)
 				#Set flag to load the results screen.
-				Global.main.change_scene(two_player_results)
+				Main.change_scene(two_player_results)
 			else:
-				Global.main.change_scene(Global.start_scene)
+				Main.change_scene(Global.start_scene)
 		# reset level (if time over and lives aren't out)
 		else:
-			Global.main.change_scene_to_file(null,"FadeOut")
-			await Global.main.scene_faded
+			Main.change_scene_to_file(null,"FadeOut")
+			await Main.scene_faded
 			Global.levelTime = 0
 			Global.levelTimeP2 = 0
 
@@ -441,9 +439,9 @@ func ProcessStageClear(_delta):
 		$LevelClear/CounterWait.start(3)
 		await $LevelClear/CounterWait.timeout
 		Global.totalCoins += coins
-		# after clear, change to next level in Global.nextZone (you can set the next zone in the level script node)
+		# after clear, change to next level in Global.next_zone_pointer (you can set the next zone in the level script node)
 		Global.loadNextLevel()
-		Global.main.change_scene(Global.nextZone)
+		Main.change_scene(Global.next_zone_pointer)
 
 func InitTimerForPlayer(index):
 	if index == 0:

@@ -9,9 +9,6 @@ var wasLoaded = false
 
 func _ready():
 	get_tree().paused = false
-	# debuging
-	#if !Global.is_main_loaded:
-	#	return false
 	# skip if scene was loaded
 	if wasLoaded:
 		return false
@@ -34,5 +31,4 @@ func level_reset_data():
 			SoundDriver.music.stream = null
 
 	# set pausing to true
-	if Global.main != null:
-		Global.main.sceneCanPause = true
+	Main.sceneCanPause = true

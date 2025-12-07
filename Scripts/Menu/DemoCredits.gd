@@ -29,9 +29,9 @@ func _input(event):
 		or event.is_action_pressed("gm_action2")
 		or event.is_action_pressed("gm_action3")) and !endScene:
 			endScene = true
-			Global.main.change_scene(returnScene)
+			Main.change_scene(returnScene)
 
 func _is_timer_expired():
 	if !endScene:
 		endScene = true
-		Global.main.change_scene(returnScene)
+		Main.change_scene(returnScene)

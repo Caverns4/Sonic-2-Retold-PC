@@ -145,19 +145,17 @@ func _unhandledInput(event):
 					get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (!((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN))) else Window.MODE_WINDOWED
 				6: # Controls
 						Global.save_settings()
-						
-						var menu = Global.main
-						menu = menu.get_child(2).get_child(2) #God this is bad
+						var menu = Main.get_child(2).get_child(2) #God this is bad
 						print(menu)
 						menu.visible = true
 						visible = false
-						Global.main.wasPaused = false
+						Main.wasPaused = false
 						get_tree().paused = true
 				7: #Back to title
 					selected = true
 					SetPlayerCharacterIDs()
 					Global.save_settings()
-					Global.main.change_scene(title_screen)
+					Main.change_scene(title_screen)
 					Global.character_selection = characterID
 
 

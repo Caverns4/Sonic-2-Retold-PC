@@ -45,13 +45,14 @@ func CheckGameOver(lifeCount,timerVal):
 	# check if lives are remaining or death was a time over
 	if (lifeCount > 0 or (!Global.livesMode and !Global.two_player_mode)) and timerVal < Global.maxTime:
 		if !Global.two_player_mode:
-			Global.main.Reload_Level()
+			Main.Reload_Level()
 		else:
 			RespawnInTwoPlayer()
 	else:
 		Global.gameOver = true
 		# reset checkpoint time
-		Global.checkPointTime = 0
+		Global.checkpoint_time_p1 = 0
+		Global.checkpoint_time_p2 = 0
 
 func RespawnInTwoPlayer():
 	invulnerability = false

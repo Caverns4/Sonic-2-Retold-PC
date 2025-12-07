@@ -20,7 +20,7 @@ func _input(event):
 func returnTitleScreen():
 	if !endScene:
 		endScene = true
-		Global.main.change_scene(title_screen)
+		Main.change_scene(title_screen)
 
 func spawnExplosion(pos):
 	# create explosion

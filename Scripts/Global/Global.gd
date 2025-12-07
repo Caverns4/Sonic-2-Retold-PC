@@ -13,8 +13,6 @@ var two_player_mode = false
 var players: Array[Player2D] = []
 ## Player references in special stages only
 var special_stage_players: Array = []
-## Main object reference
-var main: MainGameScene = null
 ## HUD object reference
 var hud: CanvasLayer = null
 ## HUD object specificiall in special stages.
@@ -23,29 +21,39 @@ var special_hud = null
 var slot_machines = []
 # Character Reel Master
 var characterReels: SlotMachineManager = null
-# Cheats implimented
-var levelSelectFlag = false
-var tailsNameCheat = false #if TRUE, Tails will be called "Miles"
-var special_exit = ZONES.EMERALD_HILL
+
+
+# Menu-related memory
+var level_select_flag = false
+var tails_name_cheat = false #if true, Tails will be called "Miles"
 var character_selection = 0
-var levelSelctMemory = 0
+
 # checkpoint memory
 var checkpoints = []
-# reference for the current checkpoint
-var saved_checkpoint = -1
-var saved_checkpointP2 = -1
-# the current level time from when the checkpoint got hit
-var checkPointTime = 0
-var checkPointTimeP2 = 0
-var checkPointRings = 0
-var checkPointRingsP2 = 0
-# the starting room, this is loaded on game resets, you may want to change this
-var start_scene: String = "res://Scene/Presentation/Title.tscn"
-var nextZone: String = "res://Scene/Zones/EmeraldHill1.tscn"
+## Reference for the current checkpoint index for Player 1
+var saved_checkpoint: int = -1
+## Level time loaded at the Checkpoint
+var checkpoint_time_p1: float = 0
+## Ring count loaded at the Checkpoint
+var checkpoint_rings_p1: int = 0
+## Saved Checkpoint position
+var checkpoint_pos_p1: Vector2
+
+## Reference for the current checkpoint index for Player 2
+var saved_checkpointP2: int = -1
+## Level time loaded at the Checkpoint
+var checkpoint_time_p2: float = 0
+## Ring count loaded at the Checkpoint
+var checkpoint_rings_p2: int = 0
+## Saved Checkpoint position
+var checkpoint_pos_p2: Vector2
+## Scene when resetting the game
+const start_scene: String = "res://Scene/Presentation/Title.tscn"
+var next_zone_pointer: String = "res://Scene/Zones/EmeraldHill1.tscn"
 ## Respawn data if applicable
 var level_respawn_stats: Array = []
 
-## MarkObjGone Table, nodes that have been used/coolected
+## MarkObjGone Table, nodes that have been used/collected
 var object_table = []
 
 # score instace for add_score()
@@ -174,6 +182,7 @@ var zoneNames = [
 ## The current played zone. Necessary for Two-Player Mode and the Title Screen.
 var saved_zone_id = ZONES.ENDING
 var saved_act_id = 0 # selected act ID
+var special_exit = ZONES.EMERALD_HILL
 
 # water level of the current level, setting this to null will disable the water
 var waterLevel = null
@@ -208,9 +217,6 @@ var saveFileSelected = 0 #0 = no save
 
 # Hazard type references
 enum HAZARDS {NORMAL, FIRE, ELEC, WATER}
-
-# Debugging
-var is_main_loaded = false
 
 func _ready():
 	# load game data
@@ -251,7 +257,7 @@ func _process(delta):
 # Called only when the game is reset.
 func reset_values():
 	Clean_Up_Dirty_Object_Arrays()
-	main.wasPaused = false
+	Main.wasPaused = false
 	two_player_mode = false
 	level_respawn_stats.clear()
 	object_table.clear()
@@ -267,8 +273,8 @@ func reset_values():
 	continues = 0
 	#emeralds = 0
 	#special_stage_id = 0
-	checkPointTime = 0
-	checkPointTimeP2 = 0
+	checkpoint_time_p1 = 0
+	checkpoint_time_p2 = 0
 	saved_checkpoint = -1
 	saved_checkpointP2 = -1
 	animals = [0,1]

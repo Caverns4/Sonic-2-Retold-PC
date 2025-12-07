@@ -29,9 +29,8 @@ func _process(delta):
 			Global.save_level_data(global_position)
 			
 			# fade to new scene
-			Global.main.change_scene("res://Scene/SpecialStage/SpecialStage.tscn","WhiteOut",1,false)
-			# wait for scene to fade
-			await Global.main.scene_faded
+			Main.change_scene("res://Scene/SpecialStage/SpecialStage.tscn","WhiteOut",1,false)
+			await Main.scene_faded
 			queue_free()
 	# Spinning ring logic
 	else:

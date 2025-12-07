@@ -400,8 +400,8 @@ func _ready():
 			global_position = i.global_position+Vector2(0,8)
 			respawnPosition = global_position
 			camera.global_position = i.global_position+Vector2(0,8)
-			Global.levelTime = Global.checkPointTime
-			Global.levelTimeP2 = Global.checkPointTime
+			Global.levelTime = Global.checkpoint_time_p1
+			Global.levelTimeP2 = Global.checkpoint_time_p1
 		else:
 			Global.levelTime = 0
 			Global.levelTimeP2 = 0
@@ -1247,7 +1247,7 @@ func kill(soundID: int = 6):
 		set_state(STATES.DIE,currentHitbox.NORMAL)
 		
 		if playerControl == 1 and !Global.two_player_mode:
-			Global.main.sceneCanPause = false # stop the ability to pause
+			Main.sceneCanPause = false # stop the ability to pause
 
 func respawn():
 	if partner != null:

@@ -33,12 +33,12 @@ func activate(player: Player2D):
 	
 	#Save player 1 data if main character passes.
 	if player == Global.players[0]:
-		Global.checkPointTime = Global.levelTime
-		Global.checkPointRings = player.rings
+		Global.checkpoint_time_p1 = Global.levelTime
+		Global.checkpoint_rings_p1 = player.rings
 	#save player 2 data if sidekick passed.
 	elif Global.two_player_mode == true and !Global.players[0] == player:
-		Global.checkPointTimeP2 = Global.levelTimeP2
-		Global.checkPointRingsP2 = player.rings
+		Global.checkpoint_time_p2 = Global.levelTimeP2
+		Global.checkpoint_rings_p2 = player.rings
 	
 	# set checkpoint to self (and set any checkpoitns with a lower ID to active)
 	for i in Global.checkpoints:

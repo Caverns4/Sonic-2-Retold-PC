@@ -9,8 +9,7 @@ var wasPaused = false
 var sceneCanPause = false
 
 func _ready():
-	# global object references
-	Global.main = self
+	# Sound Driver object references
 	SoundDriver.musicParent = get_node_or_null("Music")
 	SoundDriver.music = get_node_or_null("Music/Music")
 	SoundDriver.life = get_node_or_null("Music/Life")

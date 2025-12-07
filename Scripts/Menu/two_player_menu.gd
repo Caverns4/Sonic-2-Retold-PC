@@ -120,7 +120,7 @@ func updateCharacterSelection():
 	(Input.is_action_just_pressed("gm_action2") and !playersReady[0]) or
 	(Input.is_action_just_pressed("gm_action2_P2") and !playersReady[1])
 	):
-		Global.main.change_scene(title_scene,)
+		Main.change_scene(title_scene,)
 	elif (Input.is_action_just_pressed("gm_action2") and playersReady[0]):
 		playersReady[0] = false
 		$Control/Player1READY.visible = false
@@ -155,7 +155,7 @@ func updateZoneSelection():
 		Global.saved_zone_id = Global.twoPlayerZones[zoneSelection]
 		Global.saved_act_id = 0
 		Global.twoPlayerItems = itemSelection as Global.ITEM_MODE
-		Global.main.change_scene(zone_loader)
+		Main.change_scene(zone_loader)
 
 
 func UpdateCharacterFrameInMenu(_delta: float = 0.0):

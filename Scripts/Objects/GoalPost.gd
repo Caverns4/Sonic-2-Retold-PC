@@ -70,7 +70,7 @@ func TriggerSignpostSinglePlayer():
 		return
 	
 	if Global.players[0].global_position.x > global_position.x and Global.stageClearPhase == 0:
-		Global.main.sceneCanPause = false
+		Main.sceneCanPause = false
 		# set player variable
 		player = Global.players[0]
 		# Camera limit set
@@ -130,4 +130,4 @@ func _on_timer_timeout() -> void:
 	var results = [Global.score,Global.levelTime,Global.players[0].rings,
 	Global.scoreP2,Global.levelTimeP2,Global.players[1].rings]
 	Global.twoPlayActResults.append(results)
-	Global.main.change_scene(two_player_results)
+	Main.change_scene(two_player_results)

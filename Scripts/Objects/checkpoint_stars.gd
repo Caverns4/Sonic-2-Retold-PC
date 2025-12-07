@@ -40,9 +40,9 @@ func _process(delta):
 			Global.save_level_data(player.respawnPosition)
 			
 			# fade to new scene
-			Global.main.change_scene("res://Scene/SpecialStage/SpecialStage.tscn","WhiteOut",1.0,false)
+			Main.change_scene("res://Scene/SpecialStage/SpecialStage.tscn","WhiteOut",1.0,false)
 			# wait for scene to fade
-			await Global.main.scene_faded
+			await Main.scene_faded
 			queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

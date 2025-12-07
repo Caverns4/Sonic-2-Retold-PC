@@ -169,4 +169,4 @@ func ShowThumbsUp():
 
 func endStage():
 	await resultSound.finished
-	Global.main.change_scene(resultsScreen,"WhiteOut",1.0,false)
+	Main.change_scene(resultsScreen,"WhiteOut",1.0,false)

@@ -104,7 +104,7 @@ func _ready():
 	SoundDriver.music.stream = music
 	SoundDriver.music.play()
 	if next_zone_loader != null:
-		Global.nextZone = next_zone_loader
+		Global.next_zone_pointer = next_zone_loader
 
 func _process(delta):
 	levelSelect_UpdateText()
@@ -246,7 +246,7 @@ func _input(event):
 					Global.two_player_mode = false
 					return
 			
-			Global.main.change_scene(Global.nextZone)
+			Main.change_scene(Global.next_zone_pointer)
 			Global.character_selection = characterID
 
 func levelSelectSetupDirectionalInput():

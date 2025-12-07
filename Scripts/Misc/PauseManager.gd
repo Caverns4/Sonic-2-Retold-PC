@@ -69,10 +69,10 @@ func _input(event):
 	if Global.two_player_mode and (
 		event.is_action_pressed("gm_pause") or 
 		event.is_action_pressed("gm_pause_P2")):
-			if Global.main.wasPaused:
+			if Main.wasPaused:
 				# give frame so game doesn't immedaitely unpause
 				await get_tree().process_frame
-				Global.main.wasPaused = false
+				Main.wasPaused = false
 				get_tree().paused = false
 				visible = false
 				
@@ -84,10 +84,10 @@ func _input(event):
 			MENUS.MAIN: # main menu
 				match(option): # Options
 					0: # continue
-						if Global.main.wasPaused:
+						if Main.wasPaused:
 							# give frame so game doesn't immedaitely unpause
 							await get_tree().process_frame
-							Global.main.wasPaused = false
+							Main.wasPaused = false
 							get_tree().paused = false
 							visible = false
 					_: # Set menu to option
@@ -102,7 +102,7 @@ func _input(event):
 						set_menu(0)
 						$"../ControllerMenu".visible = true
 						visible = false
-						Global.main.wasPaused = false
+						Main.wasPaused = false
 						get_tree().paused = true
 					5: # back
 						Global.save_settings()
@@ -113,13 +113,13 @@ func _input(event):
 						set_menu(0)
 					1: # ok
 						set_menu(0)
-						Global.main.wasPaused = false
+						Main.wasPaused = false
 						visible = false
-						Global.checkPointTime = 0
+						Global.checkpoint_time_p1 = 0
 						Global.saved_checkpoint = -1
-						Global.main.Reload_Level()
+						Main.Reload_Level()
 						#await Global.main.scene_faded
-						Global.main.set_volume(0)
+						Main.set_volume(0)
 			MENUS.QUIT: # quit option
 				match(option): # Options
 					0: # cancel
@@ -127,8 +127,8 @@ func _input(event):
 					1: # ok
 						visible = false
 						set_menu(0)
-						Global.main.sceneCanPause = false
-						Global.main.reset_game()
+						Main.sceneCanPause = false
+						Main.reset_game()
 
 
 func _unhandledInput(_event):
