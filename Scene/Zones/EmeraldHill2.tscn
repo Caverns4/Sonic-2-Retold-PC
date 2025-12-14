@@ -521,19 +521,19 @@ position = Vector2(4736, 874)
 
 [node name="Checkpoint2" parent="Items" instance=ExtResource("28_6xh85")]
 position = Vector2(6272, 236)
-checkPointID = 1
+checkpoint_id = 1
 
 [node name="Checkpoint3" parent="Items" instance=ExtResource("28_6xh85")]
 position = Vector2(7104, 1198)
-checkPointID = 2
+checkpoint_id = 2
 
 [node name="Checkpoint4" parent="Items" instance=ExtResource("28_6xh85")]
 position = Vector2(8376, 648)
-checkPointID = 3
+checkpoint_id = 3
 
 [node name="Checkpoint5" parent="Items" instance=ExtResource("28_6xh85")]
 position = Vector2(10104, 1004)
-checkPointID = 4
+checkpoint_id = 4
 
 [node name="SignpostNew" parent="Items" instance=ExtResource("25_je0kn")]
 position = Vector2(10688, 1091)

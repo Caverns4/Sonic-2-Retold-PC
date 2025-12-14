@@ -16,7 +16,7 @@
 
 [node name="Metropolis3" type="Node2D"]
 script = ExtResource("1_fdfw1")
-zoneID = 14
+zone_id = 6
 music = ExtResource("2_jat8k")
 music2P = ExtResource("2_jat8k")
 boss_theme = ExtResource("3_g3ene")

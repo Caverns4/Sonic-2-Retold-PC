@@ -23,7 +23,7 @@ var target_reached = false
 
 func _ready() -> void:
 	slots = [$SlotA,$SlotB,$SlotC]
-	Global.characterReels.append(self)
+	Global.character_reels.append(self)
 
 
 func _process(delta: float) -> void:

@@ -26,7 +26,7 @@
 
 [node name="WoodGadget1" type="Node2D"]
 script = ExtResource("1_bq4rn")
-zoneID = 8
+zone_id = 8
 music = ExtResource("2_qonje")
 music2P = ExtResource("3_ofqvb")
 animal1 = 11
@@ -441,15 +441,12 @@ position = Vector2(9456, 240)
 
 [node name="Checkpoint" parent="Items" instance=ExtResource("19_gfd43")]
 position = Vector2(5184, 1000)
-checkPointID = 1
 
 [node name="Checkpoint2" parent="Items" instance=ExtResource("19_gfd43")]
 position = Vector2(5760, 232)
-checkPointID = 2
 
 [node name="Checkpoint3" parent="Items" instance=ExtResource("19_gfd43")]
 position = Vector2(6464, 936)
-checkPointID = 3
 
 [node name="SignpostNew" parent="Items" instance=ExtResource("19_q3qpr")]
 position = Vector2(10688, 768)

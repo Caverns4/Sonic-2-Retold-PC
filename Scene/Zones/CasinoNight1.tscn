@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://cmqfbxox5j2ce"]
+[gd_scene load_steps=19 format=4 uid="uid://cmqfbxox5j2ce"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_d0vec"]
 [ext_resource type="AudioStream" uid="uid://c354qh8pof6fe" path="res://Audio/Soundtrack/s2br_CasinoNight.ogg" id="2_lgh7f"]
@@ -9,13 +9,11 @@
 [ext_resource type="TileSet" uid="uid://cfd5uopegfocd" path="res://Tileset/Levels/CNZ.tres" id="7_8s1gc"]
 [ext_resource type="Material" uid="uid://b2v0ktdlj41ql" path="res://Shaders/Materials/CNZ_Palcycle.tres" id="7_u4qi2"]
 [ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="10_thkbi"]
-[ext_resource type="Texture2D" uid="uid://bd7qotjdqnsst" path="res://Graphics/Objects_Zone/CNZ_MovingBlock.png" id="11_8ctuc"]
 [ext_resource type="PackedScene" uid="uid://4q0hpddgto2k" path="res://Entities/Gimmicks/Spring.tscn" id="12_8gpk4"]
 [ext_resource type="PackedScene" uid="uid://dkn7hhll7o4or" path="res://Entities/MainObjects/LayerSwitcher.tscn" id="12_6028l"]
 [ext_resource type="PackedScene" uid="uid://dwybbnboecmkw" path="res://Entities/Obstacles/Bumper.tscn" id="13_1an8l"]
 [ext_resource type="PackedScene" uid="uid://c2t7hwn0iln3x" path="res://Entities/Obstacles/Elevator.tscn" id="13_b21uh"]
 [ext_resource type="PackedScene" uid="uid://mrkujxuspvgk" path="res://Entities/Gimmicks/CNZ_CharacterReels.tscn" id="13_gf317"]
-[ext_resource type="Texture2D" uid="uid://bsbg06aqri8m1" path="res://Graphics/Objects_Zone/CNZ_Elevator.png" id="14_iicyt"]
 [ext_resource type="PackedScene" uid="uid://c3dq6cs7sku84" path="res://Entities/Gimmicks/CNZFlipper.tscn" id="14_p6yve"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="16_55g4f"]
 [ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="18_15k1m"]
@@ -23,7 +21,7 @@
 
 [node name="CasinoNight1" type="Node2D"]
 script = ExtResource("1_d0vec")
-zoneID = 9
+zone_id = 9
 music = ExtResource("2_lgh7f")
 music2P = ExtResource("3_ei1j6")
 animal1 = 13
@@ -184,7 +182,6 @@ material = ExtResource("7_u4qi2")
 [node name="Platform" parent="MovingPlatforms" instance=ExtResource("10_thkbi")]
 use_parent_material = true
 position = Vector2(2400, 1696)
-platformSprite = ExtResource("11_8ctuc")
 endPosition = Vector2(192, 0)
 speed = 0.5
 dropSlightly = false
@@ -194,7 +191,6 @@ platformDepth = 0
 [node name="Platform6" parent="MovingPlatforms" instance=ExtResource("10_thkbi")]
 use_parent_material = true
 position = Vector2(3744, 864)
-platformSprite = ExtResource("11_8ctuc")
 endPosition = Vector2(192, 0)
 speed = 0.5
 dropSlightly = false
@@ -204,7 +200,6 @@ platformDepth = 0
 [node name="Platform2" parent="MovingPlatforms" instance=ExtResource("10_thkbi")]
 use_parent_material = true
 position = Vector2(2208, 1760)
-platformSprite = ExtResource("11_8ctuc")
 endPosition = Vector2(192, 0)
 speed = 0.5
 offset = 192.0
@@ -215,7 +210,6 @@ platformDepth = 0
 [node name="Platform3" parent="MovingPlatforms" instance=ExtResource("10_thkbi")]
 use_parent_material = true
 position = Vector2(2016, 1568)
-platformSprite = ExtResource("11_8ctuc")
 endPosition = Vector2(0, 192)
 speed = 0.5
 dropSlightly = false
@@ -225,7 +219,6 @@ platformDepth = 0
 [node name="Platform5" parent="MovingPlatforms" instance=ExtResource("10_thkbi")]
 use_parent_material = true
 position = Vector2(2848, 1504)
-platformSprite = ExtResource("11_8ctuc")
 endPosition = Vector2(0, 192)
 speed = 0.5
 dropSlightly = false
@@ -235,7 +228,6 @@ platformDepth = 0
 [node name="Platform7" parent="MovingPlatforms" instance=ExtResource("10_thkbi")]
 use_parent_material = true
 position = Vector2(2592, 736)
-platformSprite = ExtResource("11_8ctuc")
 endPosition = Vector2(0, 192)
 speed = 0.5
 dropSlightly = false
@@ -245,7 +237,6 @@ platformDepth = 0
 [node name="Platform8" parent="MovingPlatforms" instance=ExtResource("10_thkbi")]
 use_parent_material = true
 position = Vector2(2848, 928)
-platformSprite = ExtResource("11_8ctuc")
 endPosition = Vector2(192, 0)
 speed = 0.5
 dropSlightly = false
@@ -255,7 +246,6 @@ platformDepth = 0
 [node name="Platform9" parent="MovingPlatforms" instance=ExtResource("10_thkbi")]
 use_parent_material = true
 position = Vector2(2848, 672)
-platformSprite = ExtResource("11_8ctuc")
 endPosition = Vector2(192, 0)
 speed = 0.5
 dropSlightly = false
@@ -265,7 +255,6 @@ platformDepth = 0
 [node name="Platform10" parent="MovingPlatforms" instance=ExtResource("10_thkbi")]
 use_parent_material = true
 position = Vector2(3040, 800)
-platformSprite = ExtResource("11_8ctuc")
 endPosition = Vector2(-192, 0)
 speed = 0.5
 dropSlightly = false
@@ -275,7 +264,6 @@ platformDepth = 0
 [node name="Platform4" parent="MovingPlatforms" instance=ExtResource("10_thkbi")]
 use_parent_material = true
 position = Vector2(1888, 1568)
-platformSprite = ExtResource("11_8ctuc")
 endPosition = Vector2(0, 192)
 speed = 0.5
 offset = 192.0
@@ -285,31 +273,26 @@ platformDepth = 0
 
 [node name="Elevator" parent="MovingPlatforms" instance=ExtResource("13_b21uh")]
 position = Vector2(3376, 1672)
-platformSprite = ExtResource("14_iicyt")
 endPosition = Vector2(0, -320)
 soundFile = ExtResource("18_vpdhg")
 
 [node name="Elevator4" parent="MovingPlatforms" instance=ExtResource("13_b21uh")]
 position = Vector2(7728, 968)
-platformSprite = ExtResource("14_iicyt")
 endPosition = Vector2(0, 448)
 soundFile = ExtResource("18_vpdhg")
 
 [node name="Elevator5" parent="MovingPlatforms" instance=ExtResource("13_b21uh")]
 position = Vector2(7600, 1416)
-platformSprite = ExtResource("14_iicyt")
 endPosition = Vector2(0, 448)
 soundFile = ExtResource("18_vpdhg")
 
 [node name="Elevator3" parent="MovingPlatforms" instance=ExtResource("13_b21uh")]
 position = Vector2(5424, 392)
-platformSprite = ExtResource("14_iicyt")
 endPosition = Vector2(0, 320)
 soundFile = ExtResource("18_vpdhg")
 
 [node name="Elevator2" parent="MovingPlatforms" instance=ExtResource("13_b21uh")]
 position = Vector2(3248, 584)
-platformSprite = ExtResource("14_iicyt")
 endPosition = Vector2(0, 576)
 speed = 0.5
 soundFile = ExtResource("18_vpdhg")

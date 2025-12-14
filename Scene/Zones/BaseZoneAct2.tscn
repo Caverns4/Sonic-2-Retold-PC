@@ -45,7 +45,7 @@
 
 [node name="BaseZoneAct2" type="Node2D"]
 script = ExtResource("2")
-zoneID = 4
+zone_id = 4
 music = ExtResource("2_533ik")
 music2P = ExtResource("3_w8bgu")
 boss_theme = ExtResource("3_uemc5")
@@ -892,11 +892,9 @@ position = Vector2(6592, 1000)
 
 [node name="LampPost2" parent="ItemsHolder" instance=ExtResource("29_w7iey")]
 position = Vector2(6296, 1672)
-checkPointID = 1
 
 [node name="LampPost3" parent="ItemsHolder" instance=ExtResource("29_w7iey")]
 position = Vector2(8512, 552)
-checkPointID = 2
 
 [node name="Capsule" parent="ItemsHolder" instance=ExtResource("22_gayax")]
 position = Vector2(10688, 576)

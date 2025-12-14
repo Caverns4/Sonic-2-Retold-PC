@@ -7,7 +7,7 @@ SAND_SHOWER,TROPICAL,CYBER_CITY,SKY_FORTRESS,
 DEATH_EGG,ENDING,SPECIAL_STAGE}
 # Winter Zone is scrapped, I just don't feel like removing all the references.
 
-#Two Player Mode flag. Either false or true.
+## Two Player Mode flag.
 var two_player_mode = false
 ## Player references
 var players: Array[Player2D] = []
@@ -17,10 +17,10 @@ var special_stage_players: Array = []
 var hud: CanvasLayer = null
 ## HUD object specificiall in special stages.
 var special_hud = null
-# Slot machines (Casino Night Zone Only), probably not needed.
+## Slot machines (Casino Night Zone Only), probably not needed.
 var slot_machines = []
-# Character Reel Master
-var characterReels: SlotMachineManager = null
+## Character Reel Master
+var character_reels: SlotMachineManager = null
 
 
 # Menu-related memory
@@ -30,14 +30,13 @@ var character_selection = 0
 
 # checkpoint memory
 var checkpoints = []
+
 ## Reference for the current checkpoint index for Player 1
 var saved_checkpoint: int = -1
 ## Level time loaded at the Checkpoint
 var checkpoint_time_p1: float = 0
 ## Ring count loaded at the Checkpoint
 var checkpoint_rings_p1: int = 0
-## Saved Checkpoint position
-var checkpoint_pos_p1: Vector2
 
 ## Reference for the current checkpoint index for Player 2
 var saved_checkpointP2: int = -1
@@ -45,13 +44,19 @@ var saved_checkpointP2: int = -1
 var checkpoint_time_p2: float = 0
 ## Ring count loaded at the Checkpoint
 var checkpoint_rings_p2: int = 0
-## Saved Checkpoint position
-var checkpoint_pos_p2: Vector2
+
+## Bonus Stage Stored Data
+var bonus_stage_saved_pos: Vector2
+var bonus_stage_saved_rings: int
+var bonus_stage_saved_time: float
+
+
 ## Scene when resetting the game
 const start_scene: String = "res://Scene/Presentation/Title.tscn"
-var next_zone_pointer: String = "res://Scene/Zones/EmeraldHill1.tscn"
-## Respawn data if applicable
-var level_respawn_stats: Array = []
+## the current zone in the queue
+var current_zone_pointer: String = "res://Scene/Zones/EmeraldHill1.tscn"
+## The next zone in the queue
+var next_zone_pointer: String = ""
 
 ## MarkObjGone Table, nodes that have been used/collected
 var object_table = []
@@ -253,39 +258,11 @@ func _process(delta):
 	# count global timer if game isn't paused
 	if !get_tree().paused:
 		globalTimer += delta
-	
-# Called only when the game is reset.
-func reset_values():
-	Clean_Up_Dirty_Object_Arrays()
-	Main.wasPaused = false
-	two_player_mode = false
-	level_respawn_stats.clear()
-	object_table.clear()
-	score = 0
-	scoreP2 = 0
-	levelTime = 0
-	levelTimeP2 = 0
-	lives = 3
-	livesP2 = 3
-	twoPlayerZoneResults.clear()
-	twoPlayActResults.clear()
-	twoPlayerRound = 0
-	continues = 0
-	#emeralds = 0
-	#special_stage_id = 0
-	checkpoint_time_p1 = 0
-	checkpoint_time_p2 = 0
-	saved_checkpoint = -1
-	saved_checkpointP2 = -1
-	animals = [0,1]
+
 
 func reset_level_data():
-	players.clear()
-	checkpoints.clear()
-	#Clear Casino Night Zone contexts
-	slot_machines.clear()
-	characterReels = null
-	hud = null
+	Clean_Up_Object_References()
+	object_table.clear()
 	waterLevel = null
 	gameOver = false
 	if stageClearPhase != 0:
@@ -294,18 +271,24 @@ func reset_level_data():
 		levelTimeP2 = 0
 		timerActive = false
 		timerActiveP2 = false
+	if bonus_stage_saved_pos:
+		bonus_stage_saved_pos = Vector2.ZERO
+		bonus_stage_saved_rings = 0
+		bonus_stage_saved_time = 0.0
 	globalTimer = 0
 	stageClearPhase = 0
 
+
 ## Wipe all data arrays to avoid contamination. This only wipse object references.
-func Clean_Up_Dirty_Object_Arrays():
+func Clean_Up_Object_References():
 	hud = null
 	special_hud = null
 	players.clear()
 	special_stage_players.clear()
 	checkpoints.clear()
 	slot_machines.clear()
-	characterReels = null
+	character_reels = null
+
 
 # add a score object, see res://Scripts/Misc/Score.gd for reference
 func add_score(position: Vector2,value: int,playerID: int):
@@ -324,12 +307,7 @@ func check_score_life(scoreAdd = 0):
 		SoundDriver.playExtraLifeMusic()
 
 func loadNextLevel():
-	#Reset all checkpoints so the player doesn't respawn in a bad spot
-	saved_checkpoint = -1
-	saved_checkpointP2 = -1
-	level_respawn_stats.clear()
-	object_table.clear()
-	maxTime = 60*10
+	Global.current_zone_pointer = Global.next_zone_pointer
 	
 	if special_exit > ZONES.EMERALD_HILL:
 		saved_act_id = 0
@@ -388,20 +366,13 @@ func loadNextLevel():
 				saved_act_id = 0
 				saved_zone_id = ZONES.DEATH_EGG
 			# Sky Fortress and Death Egg are special cases.
+	Main.change_scene("res://Scene/Presentation/ZoneLoader.tscn")
 
 ## Build the respawn array
 func save_level_data(pos: Vector2):
-	level_respawn_stats.clear()
-	if !pos:
-		object_table.clear()
-		return
-	level_respawn_stats.append(pos)
-	level_respawn_stats.push_back(Global.players[0].rings)
-	if players.size() > 1:
-		level_respawn_stats.push_back(players[1].rings)
-	else:
-		level_respawn_stats.push_back(0)
-	level_respawn_stats.push_back(saved_checkpoint)
+	bonus_stage_saved_pos = pos
+	bonus_stage_saved_rings = Global.players[0].rings
+	bonus_stage_saved_time = levelTime
 
 
 # Godot doesn't like not having emit signal only done in other nodes so we're using a function to call it

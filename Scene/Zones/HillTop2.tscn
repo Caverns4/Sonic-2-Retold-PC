@@ -44,7 +44,7 @@ size = Vector2(1216, 2048)
 
 [node name="HillTop2" type="Node2D"]
 script = ExtResource("1_o6dl6")
-zoneID = 2
+zone_id = 2
 music = ExtResource("2_5rsgg")
 music2P = ExtResource("2_5rsgg")
 animal1 = 9
@@ -905,23 +905,18 @@ position = Vector2(1792, 1264)
 
 [node name="Checkpoint2" parent="Items" instance=ExtResource("46_3s8wa")]
 position = Vector2(3520, 1520)
-checkPointID = 1
 
 [node name="Checkpoint3" parent="Items" instance=ExtResource("46_3s8wa")]
 position = Vector2(4416, 1292)
-checkPointID = 2
 
 [node name="Checkpoint4" parent="Items" instance=ExtResource("46_3s8wa")]
 position = Vector2(4912, 1708)
-checkPointID = 3
 
 [node name="Checkpoint5" parent="Items" instance=ExtResource("46_3s8wa")]
 position = Vector2(8072, 456)
-checkPointID = 4
 
 [node name="Checkpoint6" parent="Items" instance=ExtResource("46_3s8wa")]
 position = Vector2(11328, 1260)
-checkPointID = 4
 
 [node name="CharacterCameo" parent="Items" instance=ExtResource("36_cqqa6")]
 position = Vector2(5603, 1385)

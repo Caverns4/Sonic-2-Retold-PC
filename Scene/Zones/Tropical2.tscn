@@ -9,7 +9,7 @@
 
 [node name="Tropical2" type="Node2D"]
 script = ExtResource("1_03k2s")
-zoneID = 13
+zone_id = 13
 music = ExtResource("2_b6v6e")
 animal1 = 9
 animal2 = 13

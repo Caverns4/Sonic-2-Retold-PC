@@ -36,7 +36,7 @@
 
 [node name="CasinoNight2" type="Node2D"]
 script = ExtResource("1_ssdve")
-zoneID = 9
+zone_id = 9
 music = ExtResource("2_last2")
 music2P = ExtResource("3_ge8lu")
 animal1 = 13
@@ -1006,11 +1006,9 @@ position = Vector2(9984, 576)
 
 [node name="Checkpoint" parent="Items" instance=ExtResource("26_doyiw")]
 position = Vector2(6336, 744)
-checkPointID = 1
 
 [node name="Checkpoint2" parent="Items" instance=ExtResource("26_doyiw")]
 position = Vector2(9472, 1640)
-checkPointID = 2
 
 [node name="Badniks" type="Node" parent="."]
 

@@ -50,7 +50,7 @@ shader_parameter/time_scale = 0.1
 
 [node name="Metropolis1" type="Node2D"]
 script = ExtResource("1_swaun")
-zoneID = 6
+zone_id = 6
 music = ExtResource("2_xntwa")
 music2P = ExtResource("2_xntwa")
 boss_theme = ExtResource("3_7hpa3")
@@ -563,23 +563,18 @@ item = 2
 
 [node name="LampPost" parent="Items" instance=ExtResource("31_rmaop")]
 position = Vector2(4800, 1128)
-checkPointID = 1
 
 [node name="LampPost2" parent="Items" instance=ExtResource("31_rmaop")]
 position = Vector2(6080, 1352)
-checkPointID = 2
 
 [node name="LampPost3" parent="Items" instance=ExtResource("31_rmaop")]
 position = Vector2(6848, 1000)
-checkPointID = 3
 
 [node name="LampPost4" parent="Items" instance=ExtResource("31_rmaop")]
 position = Vector2(5952, 328)
-checkPointID = 4
 
 [node name="LampPost5" parent="Items" instance=ExtResource("31_rmaop")]
 position = Vector2(7232, 1352)
-checkPointID = 5
 
 [node name="CharacterCameo" parent="Items" instance=ExtResource("21_4tdd8")]
 position = Vector2(7488, 72)

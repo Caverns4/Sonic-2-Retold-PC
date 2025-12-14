@@ -35,7 +35,7 @@
 
 [node name="BaseZone" type="Node2D"]
 script = ExtResource("2")
-zoneID = 4
+zone_id = 4
 music = ExtResource("2_tkxs0")
 music2P = ExtResource("3_3iobi")
 boss_theme = ExtResource("4_ueqy3")

@@ -13,8 +13,6 @@ func _ready():
 	SoundDriver.musicParent = get_node_or_null("Music")
 	SoundDriver.music = get_node_or_null("Music/Music")
 	SoundDriver.life = get_node_or_null("Music/Life")
-	# initialize game data using global reset (it's better then assigning variables twice)
-	Global.reset_values()
 	scene_faded.connect(On_scene_faded)
 
 func _input(event):
@@ -44,8 +42,6 @@ func reset_game():
 	$GUI/Pause.visible = false
 	# remove the was paused check
 	wasPaused = false
-	# reset game values
-	Global.reset_values()
 	# Godot doesn't like returning values with empty variables so create a dummy variable for it to assign
 	change_scene("res://Scene/Presentation/Title.tscn")
 
@@ -59,31 +55,19 @@ func change_scene(scene: String, fade_anim: String = "FadeOut", length: float = 
 	# error prevention
 	emit_signal("scene_faded")
 	await get_tree().process_frame
-	get_tree().change_scene_to_file(scene)
+	if scene:
+		get_tree().change_scene_to_file(scene)
+	else:
+		get_tree().reload_current_scene()
 	# reset data level data, if reset data is true
 	if resetData:
 		Global.reset_level_data()
+	else:
+		Global.Clean_Up_Object_References()
 	# play fade in animation back if it's not blank
 	if fade_anim != "":
 		$GUI/Fader.play_backwards(fade_anim)
 	SoundDriver.reset_volume()
-
-func Reload_Level(fade_anim = "FadeOut",length = 1.0):
-	$GUI/Fader.speed_scale = 1.0/float(length)
-	# if fadeOut isn't blank, play the fade out animation and then wait, otherwise skip this
-	if fade_anim != "":
-		$GUI/Fader.queue(fade_anim)
-		await $GUI/Fader.animation_finished
-	# error prevention
-	emit_signal("scene_faded")
-	await get_tree().process_frame
-	Global.Clean_Up_Dirty_Object_Arrays()
-	Global.level_respawn_stats.clear()
-	Global.object_table.clear()
-	get_tree().reload_current_scene()
-	# play fade in animation back if it's not blank
-	if fade_anim != "":
-		$GUI/Fader.play_backwards(fade_anim)
 
 # set the volume level. All this does is push a request to the Sound Driver.
 func set_volume(final_volume: float = 0, fade_speed: float = 1):

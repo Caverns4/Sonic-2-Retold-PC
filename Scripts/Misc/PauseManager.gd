@@ -117,7 +117,7 @@ func _input(event):
 						visible = false
 						Global.checkpoint_time_p1 = 0
 						Global.saved_checkpoint = -1
-						Main.Reload_Level()
+						Main.change_scene("","FadeOut",1,true)
 						#await Global.main.scene_faded
 						Main.set_volume(0)
 			MENUS.QUIT: # quit option

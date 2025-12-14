@@ -10,7 +10,7 @@
 
 [node name="SandShower1" type="Node2D"]
 script = ExtResource("1_frx6l")
-zoneID = 12
+zone_id = 12
 music = ExtResource("2_wi255")
 music2P = ExtResource("2_wi255")
 animal1 = 11

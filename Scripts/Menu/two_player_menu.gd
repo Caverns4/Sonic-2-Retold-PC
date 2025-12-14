@@ -120,7 +120,7 @@ func updateCharacterSelection():
 	(Input.is_action_just_pressed("gm_action2") and !playersReady[0]) or
 	(Input.is_action_just_pressed("gm_action2_P2") and !playersReady[1])
 	):
-		Main.change_scene(title_scene,)
+		Main.change_scene(title_scene)
 	elif (Input.is_action_just_pressed("gm_action2") and playersReady[0]):
 		playersReady[0] = false
 		$Control/Player1READY.visible = false

@@ -47,7 +47,6 @@ func _input(event):
 			Global.scoreP2 = 0
 			if Global.saved_act_id == 0 and Global.lives > 0 and Global.livesP2 > 0:
 				Global.loadNextLevel()
-				Main.change_scene(zone_loader)
 			else:
 				Global.twoPlayerZoneResults.append(results)
 				Main.change_scene(two_player_menu)

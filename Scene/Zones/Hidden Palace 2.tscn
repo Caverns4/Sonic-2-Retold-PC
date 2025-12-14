@@ -86,7 +86,7 @@ _data = {
 
 [node name="HiddenPalace2" type="Node2D"]
 script = ExtResource("1_74d0b")
-zoneID = 1
+zone_id = 1
 music = ExtResource("3_2gqg0")
 music2P = ExtResource("3_2gqg0")
 animal1 = 8
@@ -1034,23 +1034,18 @@ shieldAffinity = null
 
 [node name="Checkpoint" parent="Items" instance=ExtResource("37_nssuk")]
 position = Vector2(5264, 1448)
-checkPointID = 1
 
 [node name="Checkpoint2" parent="Items" instance=ExtResource("37_nssuk")]
 position = Vector2(5560, 104)
-checkPointID = 2
 
 [node name="Checkpoint3" parent="Items" instance=ExtResource("37_nssuk")]
 position = Vector2(8416, 1320)
-checkPointID = 3
 
 [node name="Checkpoint4" parent="Items" instance=ExtResource("37_nssuk")]
 position = Vector2(8960, 104)
-checkPointID = 4
 
 [node name="Checkpoint5" parent="Items" instance=ExtResource("37_nssuk")]
 position = Vector2(11152, 1448)
-checkPointID = 4
 
 [node name="CharacterCameo" parent="Items" instance=ExtResource("35_o1y58")]
 position = Vector2(10960, 232)

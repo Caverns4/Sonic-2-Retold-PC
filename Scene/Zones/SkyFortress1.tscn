@@ -92,7 +92,7 @@ point_count = 2
 
 [node name="SkyFortress1" type="Node2D"]
 script = ExtResource("1_f2s8f")
-zoneID = 15
+zone_id = 15
 music = ExtResource("2_j55bp")
 music2P = ExtResource("2_5abqf")
 animal1 = 3

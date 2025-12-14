@@ -441,7 +441,6 @@ func ProcessStageClear(_delta):
 		Global.totalCoins += coins
 		# after clear, change to next level in Global.next_zone_pointer (you can set the next zone in the level script node)
 		Global.loadNextLevel()
-		Main.change_scene(Global.next_zone_pointer)
 
 func InitTimerForPlayer(index):
 	if index == 0:

@@ -38,7 +38,7 @@
 
 [node name="DustHill2" type="Node2D"]
 script = ExtResource("1_ednaa")
-zoneID = 7
+zone_id = 7
 music = ExtResource("2_xwbm1")
 music2P = ExtResource("3_h5jpw")
 animal1 = 8
@@ -623,19 +623,15 @@ shieldAffinity = 1
 
 [node name="Checkpoint" parent="Items" instance=ExtResource("23_pvtvm")]
 position = Vector2(960, 872)
-checkPointID = 1
 
 [node name="Checkpoint2" parent="Items" instance=ExtResource("23_pvtvm")]
 position = Vector2(2608, 936)
-checkPointID = 2
 
 [node name="Checkpoint3" parent="Items" instance=ExtResource("23_pvtvm")]
 position = Vector2(4240, 1320)
-checkPointID = 3
 
 [node name="Checkpoint4" parent="Items" instance=ExtResource("23_pvtvm")]
 position = Vector2(6976, 1576)
-checkPointID = 4
 
 [node name="GoalArea" parent="Items" instance=ExtResource("28_uh1tu")]
 position = Vector2(5448, 2160)

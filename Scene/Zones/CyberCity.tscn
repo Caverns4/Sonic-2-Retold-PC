@@ -27,7 +27,7 @@ shader_parameter/time_scale = 0.1999999955296
 
 [node name="BossZone" type="Node2D"]
 script = ExtResource("1_2qba3")
-zoneID = 14
+zone_id = 14
 music = ExtResource("2_wqlgd")
 music2P = ExtResource("2_t02ck")
 boss_theme = ExtResource("3_u6dil")

@@ -25,7 +25,7 @@ func _ready():
 		if !alreadyChanged:
 			alreadyChanged = true
 			$Warp.play()
-			Main.change_scene(nextScene)
+			Main.change_scene(nextScene,"WhiteOut",1,false)
 
 func _process(delta: float) -> void:
 	globalTime += delta
@@ -36,7 +36,7 @@ func _input(event):
 	if event.is_action_pressed("gm_pause") and !alreadyChanged and globalTime > 1.5:
 		alreadyChanged = true # used so that room skipping isn't doubled
 		$Warp.play()
-		Main.change_scene(nextScene)
+		Main.change_scene(nextScene,"WhiteOut",1,false)
 
 func playDashSound():
 	$DashSFX.play()

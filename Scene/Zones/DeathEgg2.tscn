@@ -15,7 +15,7 @@
 
 [node name="DeathEgg2" type="Node2D"]
 script = ExtResource("1_588bb")
-zoneID = 16
+zone_id = 16
 music = ExtResource("2_j7ucr")
 music2P = ExtResource("2_j7ucr")
 animal1 = 6

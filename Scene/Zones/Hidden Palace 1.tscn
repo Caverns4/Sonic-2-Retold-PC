@@ -205,7 +205,7 @@ _data = {
 
 [node name="HiddenPalace1" type="Node2D"]
 script = ExtResource("1_snbg3")
-zoneID = 1
+zone_id = 1
 music = ExtResource("2_tvhrw")
 music2P = ExtResource("2_tvhrw")
 animal1 = 8
@@ -1145,19 +1145,15 @@ position = Vector2(13008, 1808)
 
 [node name="Checkpoint" parent="Items" instance=ExtResource("40_hvbof")]
 position = Vector2(4864, 2024)
-checkPointID = 1
 
 [node name="Checkpoint2" parent="Items" instance=ExtResource("40_hvbof")]
 position = Vector2(9984, 1640)
-checkPointID = 2
 
 [node name="Checkpoint3" parent="Items" instance=ExtResource("40_hvbof")]
 position = Vector2(10968, 1704)
-checkPointID = 3
 
 [node name="Checkpoint4" parent="Items" instance=ExtResource("40_hvbof")]
 position = Vector2(13016, 1064)
-checkPointID = 5
 
 [node name="SignpostNew" parent="Items" instance=ExtResource("33_piux2")]
 position = Vector2(15008, 1792)

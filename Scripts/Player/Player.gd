@@ -306,18 +306,7 @@ func _ready():
 	var _con = connect("connectFloor",Callable(self,"land_floor"))
 	_con = connect("connectCeiling",Callable(self,"touch_ceiling"))
 	
-	if Global.level_respawn_stats:
-		global_position = Global.level_respawn_stats[0]
-		var index: int = Global.players.find(self)
-		rings = Global.level_respawn_stats[index+1]
-		Global.saved_checkpoint = Global.level_respawn_stats[3]
-	else:
-		respawnPosition = global_position
-	
-	var ring_flags = rings
-	while ring_flags > 100:
-		ring_flags -= 100
-		ring1upCounter += 100
+	respawnPosition = global_position
 	
 	# Camera settings
 	get_parent().call_deferred("add_child", (camera))
@@ -405,6 +394,17 @@ func _ready():
 		else:
 			Global.levelTime = 0
 			Global.levelTimeP2 = 0
+	
+	if Global.bonus_stage_saved_pos:
+		global_position = Global.bonus_stage_saved_pos
+		rings = Global.bonus_stage_saved_rings
+		Global.levelTime = Global.bonus_stage_saved_time
+	
+	var ring_flags = rings
+	while ring_flags > 100:
+		ring_flags -= 100
+		ring1upCounter += 100
+	
 	
 	# run switch physics to ensure character specific physics
 	switch_physics()

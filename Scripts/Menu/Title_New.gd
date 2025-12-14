@@ -82,7 +82,7 @@ var lastInput = Vector2.ZERO
 func _ready():
 	get_tree().paused = false
 	#Wipe the player arrays to avoid contamination.
-	Global.reset_values()
+	reset_values()
 	Global.debug_mode = false
 	#Clear game variables
 	Global.two_player_mode = false
@@ -201,7 +201,7 @@ func SetFadeOut(newScene):
 	if titleState < STATES.FADEOUT:
 		titleState = STATES.FADEOUT
 		menuActive = false
-		Main.change_scene(newScene)
+		Main.change_scene(newScene,"FadeOut",1.0,false)
 
 #The sparkling rings have finished, fade out to demo
 func _on_celebrations_finished() -> void:
@@ -213,3 +213,26 @@ func _on_title_wait_timer_timeout() -> void:
 	#If and only if a selection has not yet been made
 	if menuActive:
 		$Celebrations.emitting = true
+
+func reset_values():
+	Global.stageClearPhase = 1
+	Global.reset_level_data()
+	Main.wasPaused = false
+	Global.two_player_mode = false
+	Global.score = 0
+	Global.scoreP2 = 0
+	Global.levelTime = 0
+	Global.levelTimeP2 = 0
+	Global.lives = 3
+	Global.livesP2 = 3
+	Global.twoPlayerZoneResults.clear()
+	Global.twoPlayActResults.clear()
+	Global.twoPlayerRound = 0
+	Global.continues = 0
+	#Global.emeralds = 0
+	#Global.special_stage_id = 0
+	Global.checkpoint_time_p1 = 0
+	Global.checkpoint_time_p2 = 0
+	Global.saved_checkpoint = -1
+	Global.saved_checkpointP2 = -1
+	Global.animals = [0,1]

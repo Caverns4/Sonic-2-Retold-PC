@@ -65,7 +65,7 @@ shader_parameter/time_scale = 0.1
 
 [node name="ChemicalPlant1" type="Node2D"]
 script = ExtResource("2")
-zoneID = 3
+zone_id = 3
 music = ExtResource("2_8olfy")
 music2P = ExtResource("2_8olfy")
 animal1 = 2
@@ -732,27 +732,21 @@ position = Vector2(3772, 1072)
 
 [node name="LampPost" parent="Items" instance=ExtResource("23_ogxdu")]
 position = Vector2(4272, 1512)
-checkPointID = 1
 
 [node name="LampPost6" parent="Items" instance=ExtResource("23_ogxdu")]
 position = Vector2(5184, 232)
-checkPointID = 2
 
 [node name="LampPost2" parent="Items" instance=ExtResource("23_ogxdu")]
 position = Vector2(5824, 80)
-checkPointID = 3
 
 [node name="LampPost5" parent="Items" instance=ExtResource("23_ogxdu")]
 position = Vector2(6120, 1512)
-checkPointID = 4
 
 [node name="LampPost3" parent="Items" instance=ExtResource("23_ogxdu")]
 position = Vector2(7936, 744)
-checkPointID = 5
 
 [node name="LampPost4" parent="Items" instance=ExtResource("23_ogxdu")]
 position = Vector2(8640, 488)
-checkPointID = 6
 
 [node name="SignpostNew" parent="Items" instance=ExtResource("16_fl0b7")]
 position = Vector2(10304, 1088)

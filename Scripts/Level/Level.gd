@@ -6,7 +6,7 @@ extends Node2D
 @export var music2P = preload("res://Audio/Soundtrack/s2br_Tropical.ogg")
 @export var boss_theme = preload("res://Audio/Soundtrack/s2br_Boss.ogg")
 
-var next_zone_loader: String = "res://Scene/Presentation/ZoneLoader.tscn"
+var zone_loader: String = "res://Scene/Presentation/ZoneLoader.tscn"
 
 ## Animals dropped from Badniks in this act.
 @export_enum("Bird","Squirrel",
@@ -97,8 +97,7 @@ func level_reset_data(_playCard = true):
 			index +=1
 	
 	# set next zone
-	if next_zone_loader != null:
-		Global.next_zone_pointer = next_zone_loader
+	Global.next_zone_pointer = zone_loader
 	
 	Main.sceneCanPause = true
 	

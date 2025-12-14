@@ -41,7 +41,7 @@
 
 [node name="NeoGreenHill1" type="Node2D"]
 script = ExtResource("1_20uxj")
-zoneID = 5
+zone_id = 5
 music = ExtResource("2_orsd1")
 music2P = ExtResource("2_orsd1")
 animal1 = 4
@@ -593,15 +593,12 @@ position = Vector2(10680, 976)
 
 [node name="Checkpoint" parent="Items" instance=ExtResource("20_l8ica")]
 position = Vector2(3008, 760)
-checkPointID = 1
 
 [node name="Checkpoint2" parent="Items" instance=ExtResource("20_l8ica")]
 position = Vector2(5584, 824)
-checkPointID = 2
 
 [node name="Checkpoint3" parent="Items" instance=ExtResource("20_l8ica")]
 position = Vector2(5960, 600)
-checkPointID = 3
 
 [node name="Badniks" type="Node" parent="."]
 

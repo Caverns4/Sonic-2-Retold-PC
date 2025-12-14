@@ -23,7 +23,7 @@ var slot_cage = null
 
 
 func _ready() -> void:
-	Global.characterReels = self
+	Global.character_reels = self
 	force_spin_times = SPIN_TIME_ARRAY.duplicate(true)
 	for child in get_children():
 		if child.is_in_group("SlotMachine"):

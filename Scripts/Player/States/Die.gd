@@ -45,7 +45,7 @@ func CheckGameOver(lifeCount,timerVal):
 	# check if lives are remaining or death was a time over
 	if (lifeCount > 0 or (!Global.livesMode and !Global.two_player_mode)) and timerVal < Global.maxTime:
 		if !Global.two_player_mode:
-			Main.Reload_Level()
+			Main.change_scene("","FadeOut",1,true)
 		else:
 			RespawnInTwoPlayer()
 	else:

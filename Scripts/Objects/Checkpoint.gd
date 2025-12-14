@@ -1,5 +1,6 @@
 extends Area2D
 var active = false
+## This is now setup at runtime, basically useless.
 @export var checkpoint_id = 0
 
 var specialStageEntry = preload("res://Entities/Items/CheckpointStars.tscn")
@@ -9,6 +10,7 @@ var player_memory = [] #List of Players that have triggered this Checkpoint
 func _ready():
 	# add self to global check point list (it's cleared in the stage start script in global)
 	Global.checkpoints.append(self)
+	checkpoint_id = Global.checkpoints.find(self)
 	
 	# if we're the current checkpoint then activate on level start
 	if Global.saved_checkpoint == checkpoint_id:
