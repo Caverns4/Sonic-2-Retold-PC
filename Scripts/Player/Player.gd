@@ -400,10 +400,12 @@ func _ready():
 		rings = Global.bonus_stage_saved_rings
 		Global.levelTime = Global.bonus_stage_saved_time
 	
-	var ring_flags = rings
-	while ring_flags > 100:
-		ring_flags -= 100
-		ring1upCounter += 100
+		while ring1upCounter > rings:
+			ring1upCounter += 100
+		
+		global_position = Vector2.ZERO
+		rings = 0
+		Global.levelTime = 0.0
 	
 	
 	# run switch physics to ensure character specific physics
