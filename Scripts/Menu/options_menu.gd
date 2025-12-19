@@ -6,14 +6,14 @@ var title_screen: String = "res://Scene/Presentation/Title.tscn"
 @onready var textField = $UI/Labels/OptionsMenu
 
 var selected = false
-var menuOption = 0
+var menuOption = 1
 ## Character ids line up with Global.playerModes
 var characterID = 0
 ## Last saved directional input.
 var lastInput = Vector2.ZERO
 
 var optionsText = [
-"player select",
+"options menu",
 "sound volume ",
 "music volume ",
 "scale        ",
@@ -40,9 +40,9 @@ var animationTimer = 0.5
 var animationframe = 0
 
 func _ready():
-	characterID = Global.character_selection
 	SoundDriver.music.stream = music
 	SoundDriver.music.play()
+	characterID = Global.character_selection
 
 
 func _process(delta: float):
@@ -81,22 +81,16 @@ func _unhandledInput(event):
 		if inputCue != lastInput:
 			if inputCue.y > 0:
 				stepTimer = BUTTON_TIME
-				menuOption = wrapi(menuOption+1,0,optionsText.size())
+				menuOption = wrapi(menuOption+1,1,optionsText.size())
 				$Switch.play()
 			if inputCue.y < 0:
 				stepTimer = BUTTON_TIME
-				menuOption = wrapi(menuOption-1,0,optionsText.size())
+				menuOption = wrapi(menuOption-1,1,optionsText.size())
 				$Switch.play()
 			
 			match menuOption:
 				0: #Character(s)
-					if inputCue.x < 0:
-						characterID = wrapi(characterID-1,0,Global.playerModes.size()-1)
-						$Switch.play()
-					elif inputCue.x > 0:
-						characterID = wrapi(characterID+1,0,Global.playerModes.size()-1)
-						$Switch.play()
-					UpdateCharacterSelect()
+					pass
 				1,2: #SFX and Music Volume
 					if inputCue.x != 0 and stepTimer > 0:
 						soundExample[menuOption-1].play()
@@ -153,14 +147,12 @@ func _unhandledInput(event):
 						get_tree().paused = true
 				7: #Back to title
 					selected = true
-					SetPlayerCharacterIDs()
 					Global.save_settings()
 					Main.change_scene(title_screen)
-					Global.character_selection = characterID
 
 
 func OptionsMenu_RedrawText():
-	textField.text = ""
+	textField.text = "[center]"
 	
 	for i in optionsText.size():
 		if menuOption == i:
@@ -193,36 +185,9 @@ func OptionsMenu_RedrawText():
 
 		textField.text += "\n\n"
 
-
-func UpdateCharacterSelect():
-	# turn on and off visibility of the characters based on the current selection
-	match(characterID):
-		0: # Sonic and Tails
-			$UI/Labels/CharacterOrigin/Sonic.visible = true
-			$UI/Labels/CharacterOrigin/Tails.visible = true
-			$UI/Labels/CharacterOrigin/Sonic.position.x = 8
-			$UI/Labels/CharacterOrigin/Tails.position.x = -8
-		_: # Other
-			$UI/Labels/CharacterOrigin/Sonic.visible = true
-			$UI/Labels/CharacterOrigin/Sonic.position.x = 0
-			$UI/Labels/CharacterOrigin/Tails.visible = false
-	UpdateCharacterSprites()
-
 func UpdateCharacterSprites():
 	if characterID == 0:
 		$UI/Labels/CharacterOrigin/Sonic.frame = animationframe
 		$UI/Labels/CharacterOrigin/Tails.frame = 2+animationframe
 	else:
 		$UI/Labels/CharacterOrigin/Sonic.frame = (characterID-1)*2+animationframe
-
-func SetPlayerCharacterIDs():
-	# set player 2 to none to prevent redundant code
-	Global.PlayerChar2 = Global.CHARACTERS.NONE
-	
-	# set the character
-	match(characterID):
-		0: # Sonic and Tails
-			Global.PlayerChar1 = Global.CHARACTERS.SONIC
-			Global.PlayerChar2 = Global.CHARACTERS.TAILS
-		_: # Sonic
-			Global.PlayerChar1 = characterID as Global.CHARACTERS

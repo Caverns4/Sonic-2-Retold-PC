@@ -83,6 +83,8 @@ var PlayerChar1 = CHARACTERS.SONIC
 var PlayerChar2 = CHARACTERS.TAILS
 # character name strings, used for "[player] has cleared", this matches the players character ID so you'll want to add the characters name in here matching the ID if you want more characters
 var characterNames = ["SONIC","TAILS","KNUCKLES","AMY","MIGHTY","RAY","SONIC"]
+# Player Modes in menus
+enum PLAYER_MODES {SONIC_AND_TAILS,SONIC,TAILS,KNUCKLES,AMY,MIGHTY,RAY}
 #Only used in menus for single player mode.
 var playerModes = ["SONIC & TAILS","SONIC","TAILS","KNUCKLES","AMY","MIGHTY","RAY"]
 # Gameplay values
@@ -305,6 +307,17 @@ func check_score_life(scoreAdd = 0):
 		if hud:
 			hud.coins += 1
 		SoundDriver.playExtraLifeMusic()
+
+
+func getPlayerIDsFromPlayerMode(mode: int = 0):
+	# set the character
+	match(mode):
+		0: # Sonic and Tails
+			Global.PlayerChar1 = Global.CHARACTERS.SONIC
+			Global.PlayerChar2 = Global.CHARACTERS.TAILS
+		_: # Sonic
+			Global.PlayerChar1 = mode as Global.CHARACTERS
+			Global.PlayerChar2 = Global.CHARACTERS.NONE
 
 func loadNextLevel():
 	Global.current_zone_pointer = Global.next_zone_pointer

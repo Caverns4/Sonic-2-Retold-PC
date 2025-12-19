@@ -3,7 +3,7 @@ extends Node2D
 @export var music = preload("res://Audio/Soundtrack/s2br_TitleScreen.ogg")
 ## For debug/test builds only.
 @export var disable_menu: bool = false
-var zone_loader: String = "res://Scene/Presentation/ZoneLoader.tscn"
+var zone_loader: String = "res://Scene/Presentation/DataSelectMenu.tscn"
 var two_player_menu: String = "res://Scene/Presentation/TwoPlayerMenu.tscn"
 var level_select_menu: String = "res://Scene/Presentation/LevelSelect.tscn"
 var opening_cutscene: String = "res://Scene/Cutscenes/Opening.tscn"
@@ -171,6 +171,7 @@ func CheckCheatInputs(inputCue: Vector2 = Vector2.ZERO):
 				cheatInputCount = 0
 				cheatActive = true
 				Global.level_select_flag = true
+				Main.input_view.visible = true
 				$TitleBanner/RingChime.play(0.0)
 				if !Global.tails_name_cheat:
 					Global.tails_name_cheat = true

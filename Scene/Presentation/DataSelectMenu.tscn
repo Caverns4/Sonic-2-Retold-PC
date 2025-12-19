@@ -1,28 +1,33 @@
-[gd_scene load_steps=6 format=4 uid="uid://b0livp60bisfo"]
+[gd_scene load_steps=6 format=4 uid="uid://bhghpc4f4sgnd"]
 
-[ext_resource type="TileSet" uid="uid://bk1ere21h4285" path="res://Tileset/Menus.tres" id="1_2ksgu"]
-[ext_resource type="Script" uid="uid://b0kjaiaw0tt0l" path="res://Scripts/Menu/options_menu.gd" id="1_qjo47"]
-[ext_resource type="Texture2D" uid="uid://dm4ejufaxy62s" path="res://Graphics/Menus/MiniCharacters.png" id="3_6udcv"]
-[ext_resource type="Theme" uid="uid://b5b5ux4822p0m" path="res://Resources/Standard_Font.tres" id="3_pjmsk"]
-[ext_resource type="AudioStream" uid="uid://uay8t1b3i1hi" path="res://Audio/SFX/Gimmicks/s2br_Switch.wav" id="5_pyoer"]
+[ext_resource type="Script" uid="uid://ce2sictyaj6jn" path="res://Scripts/Menu/data_select_menu.gd" id="1_y1b2j"]
+[ext_resource type="AudioStream" uid="uid://c5n2q4eujjnyj" path="res://Audio/Soundtrack/s2br_Options2.ogg" id="2_echdj"]
+[ext_resource type="TileSet" uid="uid://bk1ere21h4285" path="res://Tileset/Menus.tres" id="2_iwpom"]
+[ext_resource type="PackedScene" uid="uid://douh8pscjw7hm" path="res://Entities/MenuObjects/SavePanel.tscn" id="3_echdj"]
+[ext_resource type="Theme" uid="uid://qblf2beyokrn" path="res://Resources/TwoPlayerMenuTheme.tres" id="5_slue5"]
 
-[node name="OptionsMenu" type="Node2D"]
-script = ExtResource("1_qjo47")
+[node name="DataSelect" type="Node2D"]
+script = ExtResource("1_y1b2j")
+music = ExtResource("2_echdj")
 
-[node name="UI" type="CanvasLayer" parent="."]
-layer = -1
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="Backdrop" type="Parallax2D" parent="UI"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="Backdrop" type="Parallax2D" parent="ParallaxBackground/ParallaxLayer"]
 scroll_scale = Vector2(0, 0)
 repeat_size = Vector2(192, 0)
 repeat_times = 8
 
-[node name="Back" type="TileMapLayer" parent="UI/Backdrop"]
+[node name="Back" type="TileMapLayer" parent="ParallaxBackground/ParallaxLayer/Backdrop"]
 use_parent_material = true
 tile_map_data = PackedByteArray("AAADAAAAAAAAAAAAAAADAAEAAAAAAAEAAAAEAAAAAAAAAAEAAAAEAAEAAAAAAAIAAAAFAAAAAAAAAAIAAAAFAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAEAAAABAAAAAAAAAAEAAAABAAEAAAAAAAIAAAACAAAAAAAAAAIAAAACAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAEAAAABAAIAAAAAAAEAAAABAAMAAAAAAAIAAAACAAIAAAAAAAIAAAACAAMAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAEAAAAEAAIAAAAAAAEAAAAEAAMAAAAAAAIAAAAFAAIAAAAAAAIAAAAFAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAEAAAABAAQAAAAAAAEAAAABAAUAAAAAAAIAAAACAAQAAAAAAAIAAAACAAUAAAAAAAAAAAADAAQAAAAAAAAAAAADAAUAAAAAAAEAAAAEAAQAAAAAAAEAAAAEAAUAAAAAAAIAAAAFAAQAAAAAAAIAAAAFAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAEAAAABAAYAAAAAAAEAAAABAAcAAAAAAAIAAAACAAYAAAAAAAIAAAACAAcAAAAAAAAAAAADAAYAAAAAAAAAAAADAAcAAAAAAAEAAAAEAAYAAAAAAAEAAAAEAAcAAAAAAAIAAAAFAAYAAAAAAAIAAAAFAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAEAAAABAAgAAAAAAAEAAAABAAkAAAAAAAIAAAACAAgAAAAAAAIAAAACAAkAAAAAAAAAAAADAAgAAAAAAAAAAAADAAkAAAAAAAEAAAAEAAgAAAAAAAEAAAAEAAkAAAAAAAIAAAAFAAgAAAAAAAIAAAAFAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAEAAAABAAoAAAAAAAEAAAABAAsAAAAAAAIAAAACAAoAAAAAAAIAAAACAAsAAAAAAAAAAAADAAoAAAAAAAAAAAADAAsAAAAAAAEAAAAEAAoAAAAAAAEAAAAEAAsAAAAAAAIAAAAFAAoAAAAAAAIAAAAFAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAEAAAABAAwAAAAAAAEAAAABAA0AAAAAAAIAAAACAAwAAAAAAAIAAAACAA0AAAAAAAAAAAADAAwAAAAAAAAAAAADAA0AAAAAAAEAAAAEAAwAAAAAAAEAAAAEAA0AAAAAAAIAAAAFAAwAAAAAAAIAAAAFAA0AAAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAEAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAEAAAAGAAQAAAAAAAAAAAAGAAUAAAAAAAEAAAAGAAYAAAAAAAAAAAAGAAcAAAAAAAEAAAAGAAgAAAAAAAAAAAAGAAkAAAAAAAEAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAEAAAAGAAwAAAAAAAAAAAAGAA0AAAAAAAEAAAAHAAAAAAAAAAEAAAAHAAEAAAAAAAIAAAAHAAIAAAAAAAEAAAAHAAMAAAAAAAIAAAAHAAQAAAAAAAEAAAAHAAUAAAAAAAIAAAAHAAYAAAAAAAEAAAAHAAcAAAAAAAIAAAAHAAgAAAAAAAEAAAAHAAkAAAAAAAIAAAAHAAoAAAAAAAEAAAAHAAsAAAAAAAIAAAAHAAwAAAAAAAEAAAAHAA0AAAAAAAIAAAAIAAAAAAAAAAIAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAIAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAIAAAAIAAUAAAAAAAAAAAAIAAYAAAAAAAIAAAAIAAcAAAAAAAAAAAAIAAgAAAAAAAIAAAAIAAkAAAAAAAAAAAAIAAoAAAAAAAIAAAAIAAsAAAAAAAAAAAAIAAwAAAAAAAIAAAAIAA0AAAAAAAAAAAAJAAAAAAAAAAAAAAAJAAEAAAAAAAEAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAEAAAAJAAQAAAAAAAAAAAAJAAUAAAAAAAEAAAAJAAYAAAAAAAAAAAAJAAcAAAAAAAEAAAAJAAgAAAAAAAAAAAAJAAkAAAAAAAEAAAAJAAoAAAAAAAAAAAAJAAsAAAAAAAEAAAAJAAwAAAAAAAAAAAAJAA0AAAAAAAEAAAAKAAAAAAAAAAEAAAAKAAEAAAAAAAIAAAAKAAIAAAAAAAEAAAAKAAMAAAAAAAIAAAAKAAQAAAAAAAEAAAAKAAUAAAAAAAIAAAAKAAYAAAAAAAEAAAAKAAcAAAAAAAIAAAAKAAgAAAAAAAEAAAAKAAkAAAAAAAIAAAAKAAoAAAAAAAEAAAAKAAsAAAAAAAIAAAAKAAwAAAAAAAEAAAAKAA0AAAAAAAIAAAALAAAAAAAAAAIAAAALAAEAAAAAAAAAAAALAAIAAAAAAAIAAAALAAMAAAAAAAAAAAALAAQAAAAAAAIAAAALAAUAAAAAAAAAAAALAAYAAAAAAAIAAAALAAcAAAAAAAAAAAALAAgAAAAAAAIAAAALAAkAAAAAAAAAAAALAAoAAAAAAAIAAAALAAsAAAAAAAAAAAALAAwAAAAAAAIAAAALAA0AAAAAAAAAAAA=")
-tile_set = ExtResource("1_2ksgu")
+tile_set = ExtResource("2_iwpom")
 
-[node name="Labels" type="Control" parent="UI"]
+[node name="CanvasTop" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasTop"]
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -32,84 +37,57 @@ offset_right = 20.0
 offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="OptionsMenu" type="RichTextLabel" parent="UI/Labels"]
-layout_mode = 0
-offset_left = -76.0
-offset_top = 16.0
-offset_right = 116.0
-offset_bottom = 216.0
-theme = ExtResource("3_pjmsk")
+[node name="GameModeText" type="RichTextLabel" parent="CanvasTop/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_top = 8.0
+offset_right = 160.0
+offset_bottom = 24.0
+grow_horizontal = 2
+theme = ExtResource("5_slue5")
 bbcode_enabled = true
-text = "[center]Player Select
-
-Sound
-
-Music
-
-Aspect Ratio
-
-Scale
-
-FullscreenZz
-
-Controls
-
-Back to Title"
+text = "[center]SELECT DATA"
 scroll_active = false
 autowrap_mode = 0
-
-[node name="CharacterOrigin" type="Node2D" parent="UI/Labels"]
-position = Vector2(160, 192)
-
-[node name="Sonic" type="Sprite2D" parent="UI/Labels/CharacterOrigin"]
-z_index = 3
-position = Vector2(8, 0)
-texture = ExtResource("3_6udcv")
-hframes = 2
-vframes = 8
-region_rect = Rect2(731, 9, 24, 40)
-region_filter_clip_enabled = true
-
-[node name="Tails" type="Sprite2D" parent="UI/Labels/CharacterOrigin"]
-z_index = 2
-position = Vector2(-8, 0)
-texture = ExtResource("3_6udcv")
-hframes = 2
-vframes = 8
-frame = 2
-
-[node name="Knuckles" type="Sprite2D" parent="UI/Labels/CharacterOrigin"]
-visible = false
-z_index = 3
-texture = ExtResource("3_6udcv")
-hframes = 2
-vframes = 8
-frame = 4
-region_rect = Rect2(402, 468, 38, 36)
-
-[node name="Amy" type="Sprite2D" parent="UI/Labels/CharacterOrigin"]
-visible = false
-z_index = 3
-texture = ExtResource("3_6udcv")
-hframes = 2
-vframes = 8
-frame = 6
-region_rect = Rect2(488, 8, 32, 40)
 
 [node name="Cover" type="CanvasLayer" parent="."]
 layer = 0
 visible = false
 
 [node name="Back" type="ColorRect" parent="Cover"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="Switch" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_pyoer")
-bus = &"SFX"
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(160, 112)
+limit_left = 0
+limit_top = 0
+limit_bottom = 224
 
-[node name="MenuMusicVolume" type="AudioStreamPlayer" parent="."]
-bus = &"Music"
+[node name="SaveFileContainer" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 32)
+
+[node name="SavePanel" parent="SaveFileContainer" instance=ExtResource("3_echdj")]
+
+[node name="SavePanel2" parent="SaveFileContainer" instance=ExtResource("3_echdj")]
+character_id = 1
+
+[node name="SavePanel3" parent="SaveFileContainer" instance=ExtResource("3_echdj")]
+character_id = 2
+
+[node name="SavePanel4" parent="SaveFileContainer" instance=ExtResource("3_echdj")]
+character_id = 3
+
+[node name="SavePanel5" parent="SaveFileContainer" instance=ExtResource("3_echdj")]
+character_id = 4
+
+[node name="SavePanel6" parent="SaveFileContainer" instance=ExtResource("3_echdj")]
+character_id = 5

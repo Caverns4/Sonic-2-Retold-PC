@@ -8,6 +8,8 @@ var wasPaused = false
 # determines if the current scene can pause
 var sceneCanPause = false
 
+@onready var input_view: Control = $GUI/ControlMap
+
 func _ready():
 	# Sound Driver object references
 	SoundDriver.musicParent = get_node_or_null("Music")
