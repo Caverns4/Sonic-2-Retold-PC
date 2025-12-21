@@ -1,12 +1,12 @@
 extends Node2D
 
 @export var multiplayerOnly: bool = false
-var two_player_results: String = "res://Scene/Presentation/two_player_results.tscn"
-var getCam = null
-var player = null
-var winner = Global.CHARACTERS.NONE
+var two_player_results: String = "res://Scene/Presentation/TwoPlayerResults.tscn"
+var camera: Camera2D = null
+var player: Player2D = null
+var winner: Global.CHARACTERS = Global.CHARACTERS.NONE
 
-var triggers = []
+var triggers: Array[Player2D] = []
 
 @onready var screenXSize = GlobalFunctions.get_screen_size().x
 
@@ -27,8 +27,8 @@ func _physics_process(_delta):
 		# stage clear settings
 		if Global.stageClearPhase != 0:
 			# lock camera to self
-			if getCam:
-				getCam.global_position.x = global_position.x
+			if camera:
+				camera.global_position.x = global_position.x
 			# if player greater then screen and stage clear phase is 2 then activate the stage clear sequence
 			if player:
 				if player.global_position.x > global_position.x+(screenXSize/2) and player.movement.x >= 0 and Global.stageClearPhase == 2:
@@ -46,7 +46,7 @@ func TriggerSignpostMultiPlayer():
 			# Camera limit set
 			playerObj.limitLeft = global_position.x - screenXSize/2
 			playerObj.limitRight = global_position.x + (screenXSize/2)
-			getCam = playerObj.camera
+			camera = playerObj.camera
 		
 			if !winner:
 				winner = playerObj.character as Global.CHARACTERS
@@ -62,6 +62,7 @@ func TriggerSignpostMultiPlayer():
 					Global.hud.InitTimerForPlayer(i)
 		
 			if triggers.size() >= Global.players.size():
+				Main.can_pause = false
 				$Timer.start()
 		
 
@@ -70,14 +71,14 @@ func TriggerSignpostSinglePlayer():
 		return
 	
 	if Global.players[0].global_position.x > global_position.x and Global.stageClearPhase == 0:
-		Main.sceneCanPause = false
+		Main.can_pause = false
 		# set player variable
 		player = Global.players[0]
 		# Camera limit set
 		for i in Global.players:
 			i.limitLeft = global_position.x -screenXSize/2
 			i.limitRight = global_position.x +(screenXSize/2)+64
-		getCam = player.camera
+		camera = player.camera
 		SetSignpostAnimation(player.character)
 		# set global stage clear phase to 1, 1 is used to stop the timer (see HUD script)
 		Global.stageClearPhase = 1

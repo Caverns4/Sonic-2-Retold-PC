@@ -12,11 +12,10 @@ var rotationTimer = 0.0
 var spinningStars = []
 
 # active is set to true when the player enters the ring
-var active = false
+var active: bool = false
 # timer used for time to a room change
-var timer = 0
+var timer: float = 0
 var player: Player2D = null
-var mask_memory = [0,0]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -95,10 +94,7 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 		body.movement = Vector2.ZERO
 		# set players state to animation so nothing takes them out of it
 		body.set_state(body.STATES.ANIMATION)
-		# set player collision layer and mask to nothing to avoid collissions
-		mask_memory[0] = body.collision_layer
-		mask_memory[1] = body.collision_mask
 		body.collision_layer = 0
 		body.collision_mask = 0
 		body.invTime = 0
-		#$Hitbox/CollisionShape2D.disabled = true
+		Main.can_pause = false

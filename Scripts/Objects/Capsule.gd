@@ -53,7 +53,7 @@ func activate():
 	if Global.stageClearPhase == 0:
 		$Animator.play("Open")
 		$Explode.play()
-		Main.sceneCanPause = false
+		Main.can_pause = false
 		# set global stage clear phase to 1, 1 is used to stop the timer (see HUD script)
 		Global.stageClearPhase = 1
 		

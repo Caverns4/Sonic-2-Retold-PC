@@ -31,4 +31,4 @@ func level_reset_data():
 			SoundDriver.music.stream = null
 
 	# set pausing to true
-	Main.sceneCanPause = true
+	Main.can_pause = true

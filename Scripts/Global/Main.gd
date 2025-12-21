@@ -6,7 +6,7 @@ signal scene_faded
 # was paused enables menu control when the player pauses manually so they don't get stuck (get_tree().paused may want to be used by other intances)
 var wasPaused = false
 # determines if the current scene can pause
-var sceneCanPause = false
+var can_pause = false
 
 @onready var input_view: Control = $GUI/ControlMap
 
@@ -19,8 +19,8 @@ func _ready():
 
 func _input(event):
 	# Pausing
-	if (event.is_action_pressed("gm_pause") and sceneCanPause) or (
-		event.is_action_pressed("gm_pause_P2") and sceneCanPause and Global.two_player_mode):
+	if (event.is_action_pressed("gm_pause") and can_pause) or (
+		event.is_action_pressed("gm_pause_P2") and can_pause and Global.two_player_mode):
 		# check if the game wasn't paused and the tree isn't paused either
 		if !wasPaused and !get_tree().paused:
 			# Do the pause
@@ -37,6 +37,7 @@ func _input(event):
 	# reset game if F2 is pressed (this button can be changed in project settings)
 	if event.is_action_pressed("ui_reset"):
 		reset_game()
+	
 
 
 # reset game function

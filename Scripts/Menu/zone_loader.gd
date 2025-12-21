@@ -113,7 +113,9 @@ func queue_level():
 		Global.ZONES.SPECIAL_STAGE:
 				Global.saved_zone_id = Global.ZONES.EMERALD_HILL
 				Global.saved_act_id = 0
-				Global.current_zone_pointer = "res://Scene/SpecialStage/SpecialStage.tscn"
+				Global.current_zone_pointer = "res://Scene/Zones/EmeraldHill1.tscn"
+				Main.change_scene("res://Scene/SpecialStage/SpecialStage.tscn","WhiteOut",0.0,true)
+				return
 		_:
 			Global.current_zone_pointer = "res://Scene/Presentation/DemoCredits.tscn"
 	#Load the Zone

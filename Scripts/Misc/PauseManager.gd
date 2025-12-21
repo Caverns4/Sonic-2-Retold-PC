@@ -127,7 +127,7 @@ func _input(event):
 					1: # ok
 						visible = false
 						set_menu(0)
-						Main.sceneCanPause = false
+						Main.can_pause = false
 						Main.reset_game()
 
 

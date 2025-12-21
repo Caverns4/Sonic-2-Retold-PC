@@ -99,8 +99,6 @@ func level_reset_data(_playCard = true):
 	# set next zone
 	Global.next_zone_pointer = zone_loader
 	
-	Main.sceneCanPause = true
-	
 	# set animals
 	Global.animals = [animal1,animal2]
 	# if global hud and play card, run hud ready script

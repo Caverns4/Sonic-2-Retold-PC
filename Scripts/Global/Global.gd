@@ -230,24 +230,47 @@ func _ready():
 	load_settings()
 	# load Global Save data flags
 	var SaveName = "user://Sonic.dat"
+	var file: ConfigFile = ConfigFile.new()
 	if FileAccess.file_exists(SaveName):
-		var save_file = FileAccess.open(SaveName, FileAccess.READ)
-		while save_file.get_position() < save_file.get_length():
-			var json_string = save_file.get_line()
-			# Creates the helper class to interact with JSON.
-			var json = JSON.new()
-			# Check if there is any error while parsing the JSON string, skip in case of failure.
-			var parse_result = json.parse(json_string)
-			if !parse_result == OK:
-				print("Global Save Data Parse Error!")
-				continue
-			
-			var a = json.data
-			if a is Array and a.size() > 0:
-				totalCoins = a[0]
-				unlockFlags = a[1] 
+		var parse_result = file.load(SaveName)
+		if parse_result != OK:
+			print("Global Save Data Parse Error!")
+			return false # Return false as an error
+		#var save_file = FileAccess.open(SaveName, FileAccess.READ)
+		#while save_file.get_position() < save_file.get_length():
+		
+		
+		if !file.has_section_key("Global","c"):
+			DirAccess.remove_absolute(SaveName)
+			print("Checksum Fail")
+			return false
+		
+		var a = 0
+		var b = 0
+		var c = 0
+		
+		if file.has_section_key("Global","a"):
+			a = (file.get_value("Global","a"))
+			c+=a
+		if file.has_section_key("Global","b"):
+			b = (file.get_value("Global","b"))
+			c+=b
+
+		var checksum = (file.get_value("Global","c"))
+		if checksum == c:
+			totalCoins = a
+			unlockFlags = b
+		else:
+			DirAccess.remove_absolute(SaveName)
+			print("Checksum Fail")
+			return false
+		print("Global Save Data loaded!")
 	else:
-		print("Global Save Data does not exist. Skipping.")
+		file.set_value("Global","a",totalCoins)
+		file.set_value("Global","b",unlockFlags)
+		file.set_value("Global","c",(unlockFlags+totalCoins))
+		file.save(SaveName)
+		print("Global Save Data file created.")
 
 
 func _process(delta):

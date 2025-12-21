@@ -91,7 +91,7 @@ func returnToLevel():
 	Global.special_stage_rings = 0
 	Global.special_stage_players.clear()
 	
-	Main.change_scene("","WhiteOut",1,false)
+	Main.change_scene(Global.current_zone_pointer,"WhiteOut",1,false)
 
 func SpecialResults_SetupText():
 	if !Global.special_stage_result:

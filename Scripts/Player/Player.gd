@@ -1249,7 +1249,7 @@ func kill(soundID: int = 6):
 		set_state(STATES.DIE,currentHitbox.NORMAL)
 		
 		if playerControl == 1 and !Global.two_player_mode:
-			Main.sceneCanPause = false # stop the ability to pause
+			Main.can_pause = false # stop the ability to pause
 
 func respawn():
 	if partner != null:

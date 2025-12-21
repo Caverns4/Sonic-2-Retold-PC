@@ -1,11 +1,10 @@
 extends Node2D
 # timer used for time to a room change
-var timer = 0
+var timer: float = 0
 # active is set to true when the player enters the ring
-var active = false
+var active: bool = false
 
 var player:Player2D = null
-var mask_memory = [0,0]
 
 func _ready():
 	# check that the current ring hasn't already been collected and all 7 emeralds aren't collected
@@ -53,12 +52,10 @@ func _on_Hitbox_body_entered(body):
 			# set players state to animation so nothing takes them out of it
 			body.set_state(body.STATES.ANIMATION)
 			# set player collision layer and mask to nothing to avoid collissions
-			mask_memory[0] = body.collision_layer
-			mask_memory[1] = body.collision_mask
 			body.collision_layer = 0
 			body.collision_mask = 0
 			body.invTime = 0
-			#$Hitbox/CollisionShape2D.disabled = true
+			Main.can_pause = false
 		else:
 			body.rings += 50
 		
