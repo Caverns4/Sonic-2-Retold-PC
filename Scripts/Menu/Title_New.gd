@@ -218,7 +218,6 @@ func _on_title_wait_timer_timeout() -> void:
 func reset_values():
 	Global.stageClearPhase = 1
 	Global.reset_level_data()
-	Main.wasPaused = false
 	Global.two_player_mode = false
 	Global.score = 0
 	Global.scoreP2 = 0

@@ -140,10 +140,8 @@ func _unhandledInput(event):
 				6: # Controls
 						Global.save_settings()
 						var menu = Main.get_child(2).get_child(2) #God this is bad
-						print(menu)
 						menu.visible = true
 						visible = false
-						Main.wasPaused = false
 						get_tree().paused = true
 				7: #Back to title
 					selected = true

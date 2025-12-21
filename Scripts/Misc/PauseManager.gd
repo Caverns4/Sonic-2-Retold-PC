@@ -65,17 +65,15 @@ func _input(event):
 	# check if paused and visible, otherwise cancel it out
 	if !get_tree().paused or !visible:
 		return null
-	# menu button activate
-	if Global.two_player_mode and (
-		event.is_action_pressed("gm_pause") or 
+	# Two Player Mode
+	if Global.two_player_mode:
+		if (event.is_action_pressed("gm_pause") or 
 		event.is_action_pressed("gm_pause_P2")):
-			if Main.wasPaused:
-				# give frame so game doesn't immedaitely unpause
+			if Main.can_pause:
 				await get_tree().process_frame
-				Main.wasPaused = false
 				get_tree().paused = false
 				visible = false
-				
+		return
 	# menu button activate
 	if (event.is_action_pressed("gm_pause")
 	or event.is_action_pressed("gm_action")
@@ -84,10 +82,8 @@ func _input(event):
 			MENUS.MAIN: # main menu
 				match(option): # Options
 					0: # continue
-						if Main.wasPaused:
-							# give frame so game doesn't immedaitely unpause
+						#if Main.can_pause:
 							await get_tree().process_frame
-							Main.wasPaused = false
 							get_tree().paused = false
 							visible = false
 					_: # Set menu to option
@@ -102,7 +98,6 @@ func _input(event):
 						set_menu(0)
 						$"../ControllerMenu".visible = true
 						visible = false
-						Main.wasPaused = false
 						get_tree().paused = true
 					5: # back
 						Global.save_settings()
@@ -112,13 +107,14 @@ func _input(event):
 					0: # cancel
 						set_menu(0)
 					1: # ok
-						set_menu(0)
-						Main.wasPaused = false
 						visible = false
+						set_menu(0)
+						get_tree().paused = true
 						Global.checkpoint_time_p1 = 0
 						Global.saved_checkpoint = -1
 						Main.change_scene("","FadeOut",1,true)
-						#await Global.main.scene_faded
+						await Main.scene_faded
+						SoundDriver.music.stop()
 						Main.set_volume(0)
 			MENUS.QUIT: # quit option
 				match(option): # Options
@@ -127,8 +123,12 @@ func _input(event):
 					1: # ok
 						visible = false
 						set_menu(0)
+						get_tree().paused = true
 						Main.can_pause = false
 						Main.reset_game()
+						await Main.scene_faded
+						SoundDriver.music.stop()
+						Main.set_volume(0)
 
 
 func _unhandledInput(_event):

@@ -1,11 +1,9 @@
 class_name MainGameScene
 extends Node2D
 
-# this gets emited when the scene fades, used to load in level details and data to hide it from the player
+## Emited when the scene fades, used to load in level details and data to hide it from the player
 signal scene_faded
-# was paused enables menu control when the player pauses manually so they don't get stuck (get_tree().paused may want to be used by other intances)
-var wasPaused = false
-# determines if the current scene can pause
+## If the game can be paused in its current state
 var can_pause = false
 
 @onready var input_view: Control = $GUI/ControlMap
@@ -22,16 +20,12 @@ func _input(event):
 	if (event.is_action_pressed("gm_pause") and can_pause) or (
 		event.is_action_pressed("gm_pause_P2") and can_pause and Global.two_player_mode):
 		# check if the game wasn't paused and the tree isn't paused either
-		if !wasPaused and !get_tree().paused:
-			# Do the pause
-			wasPaused = true
+		if !get_tree().paused:
 			get_tree().paused = true
 			$GUI/Pause.visible = true
 		# else if the scene was paused manually and the game was paused, check that the gui menu isn't visible and unpause
 		# Note: the gui menu has some settings to unpause itself so we don't want to override that while the user is in the settings
-		elif wasPaused and get_tree().paused and !$GUI/Pause.visible:
-			# Do the unpause
-			wasPaused = false
+		elif get_tree().paused and !$GUI/Pause.visible:
 			get_tree().paused = false
 
 	# reset game if F2 is pressed (this button can be changed in project settings)
@@ -43,10 +37,8 @@ func _input(event):
 # reset game function
 func reset_game():
 	$GUI/Pause.visible = false
-	# remove the was paused check
-	wasPaused = false
 	# Godot doesn't like returning values with empty variables so create a dummy variable for it to assign
-	change_scene("res://Scene/Presentation/Title.tscn")
+	change_scene("res://Scene/Presentation/Title.tscn","FadeOut",1.0,true)
 
 ## New Scene Change function.Args: Scene path, fade animation, time of transition, clear data
 func change_scene(scene: String, fade_anim: String = "FadeOut", length: float = 1.0, resetData:bool = true):
