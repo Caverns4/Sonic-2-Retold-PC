@@ -76,6 +76,9 @@ func updateCharacterSelection():
 		current_selection = wrapi(current_selection,0,%SaveFileContainer.get_child_count())
 		highlight_selected_child(current_selection)
 		SoundDriver.play_sound2(sfx_Select)
+		
+	if inputCue.y !=0 and inputCue.y != lastInput.y:
+		selected_save_slot.update_menu_item(inputCue.y)
 	
 	if (Input.is_action_just_pressed("gm_action") or
 	Input.is_action_just_pressed("gm_pause")):
@@ -85,6 +88,7 @@ func updateCharacterSelection():
 	(Input.is_action_just_pressed("gm_action2")) or
 	(Input.is_action_just_pressed("gm_action2_P2"))
 	):
+		state = MENU_STATE.DECIDED
 		Main.change_scene(title_scene)
 
 func highlight_selected_child(current: int):

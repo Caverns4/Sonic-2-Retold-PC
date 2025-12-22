@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqo5gtlj0xdsy"]
+
+[ext_resource type="Script" uid="uid://c6yvyol22q5ah" path="res://Scripts/Menu/no_save_panel.gd" id="1_i6q4q"]
+[ext_resource type="Texture2D" uid="uid://dkbs1h30coegf" path="res://Graphics/Menus/Character_Box.png" id="2_g1ty6"]
+[ext_resource type="Texture2D" uid="uid://b2m8w8il8ycx8" path="res://Graphics/Menus/CharacterPreviews.png" id="5_op2sm"]
+
+[node name="NoSavePanel" type="Node2D"]
+script = ExtResource("1_i6q4q")
+
+[node name="DataBox" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(-2, -4)
+texture = ExtResource("2_g1ty6")
+centered = false
+
+[node name="Label" type="Label" parent="DataBox"]
+offset_left = 16.0
+offset_top = 88.0
+offset_right = 72.0
+offset_bottom = 96.0
+text = "no save"
+
+[node name="CharacterIcon" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+z_index = 2
+position = Vector2(40, 40)
+texture = ExtResource("5_op2sm")
+vframes = 8

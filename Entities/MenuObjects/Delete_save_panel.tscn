@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dixrimnofcfc5"]
+
+[ext_resource type="Script" uid="uid://cbh8qcpx617lo" path="res://Scripts/Menu/delete_save_panel.gd" id="1_mksyj"]
+[ext_resource type="Texture2D" uid="uid://dkbs1h30coegf" path="res://Graphics/Menus/Character_Box.png" id="2_440cw"]
+[ext_resource type="Texture2D" uid="uid://d12r0uq1qch01" path="res://Graphics/Boss/Eggman.png" id="3_mksyj"]
+
+[node name="DeleteSavePanel" type="Node2D"]
+script = ExtResource("1_mksyj")
+
+[node name="DataBox" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(-2, -4)
+texture = ExtResource("2_440cw")
+centered = false
+
+[node name="Label" type="Label" parent="DataBox"]
+offset_left = 16.0
+offset_top = 88.0
+offset_right = 72.0
+offset_bottom = 96.0
+text = "delete"
+
+[node name="CharacterIcon" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+z_index = 2
+position = Vector2(40, 40)
+texture = ExtResource("3_mksyj")
+hframes = 8
+vframes = 2
+frame = 3

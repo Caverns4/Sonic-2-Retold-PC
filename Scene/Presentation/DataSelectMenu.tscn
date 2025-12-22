@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=4 uid="uid://bhghpc4f4sgnd"]
+[gd_scene load_steps=8 format=4 uid="uid://bhghpc4f4sgnd"]
 
 [ext_resource type="Script" uid="uid://ce2sictyaj6jn" path="res://Scripts/Menu/data_select_menu.gd" id="1_y1b2j"]
 [ext_resource type="AudioStream" uid="uid://c5n2q4eujjnyj" path="res://Audio/Soundtrack/s2br_Options2.ogg" id="2_echdj"]
 [ext_resource type="TileSet" uid="uid://bk1ere21h4285" path="res://Tileset/Menus.tres" id="2_iwpom"]
 [ext_resource type="PackedScene" uid="uid://douh8pscjw7hm" path="res://Entities/MenuObjects/SavePanel.tscn" id="3_echdj"]
+[ext_resource type="PackedScene" uid="uid://dqo5gtlj0xdsy" path="res://Entities/MenuObjects/no_save_panel.tscn" id="5_3bafg"]
 [ext_resource type="Theme" uid="uid://qblf2beyokrn" path="res://Resources/TwoPlayerMenuTheme.tres" id="5_slue5"]
+[ext_resource type="PackedScene" uid="uid://dixrimnofcfc5" path="res://Entities/MenuObjects/Delete_save_panel.tscn" id="7_y1b2j"]
 
 [node name="DataSelect" type="Node2D"]
 script = ExtResource("1_y1b2j")
@@ -75,19 +77,35 @@ limit_bottom = 224
 unique_name_in_owner = true
 position = Vector2(0, 32)
 
+[node name="NoSavePanel" parent="SaveFileContainer" instance=ExtResource("5_3bafg")]
+position = Vector2(8, 0)
+
 [node name="SavePanel" parent="SaveFileContainer" instance=ExtResource("3_echdj")]
+position = Vector2(104, 0)
 
 [node name="SavePanel2" parent="SaveFileContainer" instance=ExtResource("3_echdj")]
+position = Vector2(208, 0)
 character_id = 1
 
 [node name="SavePanel3" parent="SaveFileContainer" instance=ExtResource("3_echdj")]
+position = Vector2(312, 0)
+level_id = 3
 character_id = 2
 
 [node name="SavePanel4" parent="SaveFileContainer" instance=ExtResource("3_echdj")]
+position = Vector2(416, 0)
+level_id = 5
 character_id = 3
 
 [node name="SavePanel5" parent="SaveFileContainer" instance=ExtResource("3_echdj")]
+position = Vector2(520, 0)
+level_id = 9
 character_id = 4
 
 [node name="SavePanel6" parent="SaveFileContainer" instance=ExtResource("3_echdj")]
+position = Vector2(624, 0)
+level_id = 4
 character_id = 5
+
+[node name="DeleteSavePanel" parent="SaveFileContainer" instance=ExtResource("7_y1b2j")]
+position = Vector2(728, 0)

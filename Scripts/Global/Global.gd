@@ -7,6 +7,9 @@ SAND_SHOWER,TROPICAL,CYBER_CITY,SKY_FORTRESS,
 DEATH_EGG,ENDING,SPECIAL_STAGE}
 # Winter Zone is scrapped, I just don't feel like removing all the references.
 
+const save_path = "user://Sonic.dat"
+## The Save slot (section in the file). if 0, treat game file as a NO SAVE
+var current_save_index: int = 0
 ## Two Player Mode flag.
 var two_player_mode = false
 ## Player references
@@ -220,8 +223,6 @@ var aspectResolutions = [
 	Vector2(400,224)
 	]
 
-var saveFileSelected = 0 #0 = no save
-
 # Hazard type references
 enum HAZARDS {NORMAL, FIRE, ELEC, WATER}
 
@@ -229,48 +230,45 @@ func _ready():
 	# load game data
 	load_settings()
 	# load Global Save data flags
-	var SaveName = "user://Sonic.dat"
 	var file: ConfigFile = ConfigFile.new()
-	if FileAccess.file_exists(SaveName):
-		var parse_result = file.load(SaveName)
-		if parse_result != OK:
-			print("Global Save Data Parse Error!")
-			return false # Return false as an error
-		#var save_file = FileAccess.open(SaveName, FileAccess.READ)
-		#while save_file.get_position() < save_file.get_length():
-		
-		
-		if !file.has_section_key("Global","c"):
-			DirAccess.remove_absolute(SaveName)
-			print("Checksum Fail")
-			return false
-		
-		var a = 0
-		var b = 0
-		var c = 0
-		
-		if file.has_section_key("Global","a"):
-			a = (file.get_value("Global","a"))
-			c+=a
-		if file.has_section_key("Global","b"):
-			b = (file.get_value("Global","b"))
-			c+=b
+	var savegame: bool = LoadSaveGameFile(file)
+	if !savegame:
+		CreateSaveGameFile(file)
 
-		var checksum = (file.get_value("Global","c"))
-		if checksum == c:
-			totalCoins = a
-			unlockFlags = b
-		else:
-			DirAccess.remove_absolute(SaveName)
-			print("Checksum Fail")
-			return false
-		print("Global Save Data loaded!")
-	else:
-		file.set_value("Global","a",totalCoins)
-		file.set_value("Global","b",unlockFlags)
-		file.set_value("Global","c",(unlockFlags+totalCoins))
-		file.save(SaveName)
-		print("Global Save Data file created.")
+
+func LoadSaveGameFile(file: ConfigFile) -> bool:
+	var err := file.load_encrypted_pass(save_path,"SEGA")
+	if err != OK:
+		DirAccess.remove_absolute(save_path)
+		print("Global Save Data Parse Error. Deleted.")
+		return false # Return false as an error
+	# Parse data
+	if file.has_section_key("0","a"):
+		totalCoins = (file.get_value("0","a"))
+	if file.has_section_key("0","b"):
+		unlockFlags = (file.get_value("0","b"))
+	print("Global Save loaded")
+	#OS.shell_open(OS.get_user_data_dir())
+	return true
+
+func SaveGameFile():
+	var file: ConfigFile = ConfigFile.new()
+	file.set_value("0","a",totalCoins)
+	file.set_value("0","b",unlockFlags)
+	file.set_value("0","c",(unlockFlags+totalCoins))
+	
+	if current_save_index:
+		pass
+	
+	file.save_encrypted_pass(save_path,"SEGA")
+	print("Game saved")
+
+func CreateSaveGameFile(file: ConfigFile):
+	file.set_value("0","a",totalCoins)
+	file.set_value("0","b",unlockFlags)
+	file.set_value("0","c",(unlockFlags+totalCoins))
+	file.save_encrypted_pass(save_path,"SEGA")
+	print("Global Save Data file created.")
 
 
 func _process(delta):
@@ -401,7 +399,9 @@ func loadNextLevel():
 			ZONES.SKY_FORTRESS:
 				saved_act_id = 0
 				saved_zone_id = ZONES.DEATH_EGG
-			# Sky Fortress and Death Egg are special cases.
+			# Death Egg is a special case.
+		if !two_player_mode:
+			SaveGameFile()
 	Main.change_scene("res://Scene/Presentation/ZoneLoader.tscn")
 
 ## Build the respawn array
@@ -488,9 +488,5 @@ func SaveGlobalData():
 	
 
 func SaveGameData():
-	if saveFileSelected == 0:
-		return
-	var _filename = "Sonic" + str(saveFileSelected) + ".dat"
-	var a = Global.Score*(saved_zone_id*4)/30+PlayerChar2*PlayerChar1
-	print(a)
-	
+	if !current_save_index:
+		return false
