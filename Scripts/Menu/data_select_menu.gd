@@ -31,9 +31,12 @@ func _ready() -> void:
 	SoundDriver.music.play()
 	
 	var pos: int = 8
-	for i in %SaveFileContainer.get_children():
+	var index = 0
+	for i:DataSelectPanel in %SaveFileContainer.get_children():
 		i.global_position.x = pos
-		pos += 104
+		pos+=104
+		i.save_game_id = index
+		index+=1
 	
 	highlight_selected_child(current_selection)
 
@@ -78,7 +81,9 @@ func updateCharacterSelection():
 		SoundDriver.play_sound2(sfx_Select)
 		
 	if inputCue.y !=0 and inputCue.y != lastInput.y:
-		selected_save_slot.update_menu_item(inputCue.y)
+		var change: bool = selected_save_slot.update_menu_item(inputCue.y)
+		if change:
+			$Switch.play()
 	
 	if (Input.is_action_just_pressed("gm_action") or
 	Input.is_action_just_pressed("gm_pause")):

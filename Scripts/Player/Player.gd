@@ -397,15 +397,16 @@ func _ready():
 	
 	if Global.bonus_stage_saved_pos:
 		global_position = Global.bonus_stage_saved_pos
+		camera.global_position = global_position
 		rings = Global.bonus_stage_saved_rings
 		Global.levelTime = Global.bonus_stage_saved_time
 	
-		while ring1upCounter > rings:
+		while ring1upCounter < rings:
 			ring1upCounter += 100
 		
-		global_position = Vector2.ZERO
-		rings = 0
-		Global.levelTime = 0.0
+		Global.bonus_stage_saved_pos = Vector2.ZERO
+		Global.bonus_stage_saved_rings = 0
+		Global.bonus_stage_saved_time = 0.0
 	
 	
 	# run switch physics to ensure character specific physics
@@ -1250,6 +1251,8 @@ func kill(soundID: int = 6):
 		
 		if playerControl == 1 and !Global.two_player_mode:
 			Main.can_pause = false # stop the ability to pause
+			if get_tree().paused:
+				get_tree().paused = false
 
 func respawn():
 	if partner != null:

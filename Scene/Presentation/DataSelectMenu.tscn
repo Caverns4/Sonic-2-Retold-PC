@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://bhghpc4f4sgnd"]
+[gd_scene load_steps=9 format=4 uid="uid://bhghpc4f4sgnd"]
 
 [ext_resource type="Script" uid="uid://ce2sictyaj6jn" path="res://Scripts/Menu/data_select_menu.gd" id="1_y1b2j"]
 [ext_resource type="AudioStream" uid="uid://c5n2q4eujjnyj" path="res://Audio/Soundtrack/s2br_Options2.ogg" id="2_echdj"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dqo5gtlj0xdsy" path="res://Entities/MenuObjects/no_save_panel.tscn" id="5_3bafg"]
 [ext_resource type="Theme" uid="uid://qblf2beyokrn" path="res://Resources/TwoPlayerMenuTheme.tres" id="5_slue5"]
 [ext_resource type="PackedScene" uid="uid://dixrimnofcfc5" path="res://Entities/MenuObjects/Delete_save_panel.tscn" id="7_y1b2j"]
+[ext_resource type="AudioStream" uid="uid://uay8t1b3i1hi" path="res://Audio/SFX/Gimmicks/s2br_Switch.wav" id="8_iwpom"]
 
 [node name="DataSelect" type="Node2D"]
 script = ExtResource("1_y1b2j")
@@ -109,3 +110,7 @@ character_id = 5
 
 [node name="DeleteSavePanel" parent="SaveFileContainer" instance=ExtResource("7_y1b2j")]
 position = Vector2(728, 0)
+
+[node name="Switch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_iwpom")
+bus = &"SFX"

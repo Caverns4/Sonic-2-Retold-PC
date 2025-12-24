@@ -28,6 +28,7 @@ func _input(event):
 		elif get_tree().paused and !$GUI/Pause.visible:
 			get_tree().paused = false
 
+
 	# reset game if F2 is pressed (this button can be changed in project settings)
 	if event.is_action_pressed("ui_reset"):
 		reset_game()

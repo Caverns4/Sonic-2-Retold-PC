@@ -5,6 +5,8 @@ extends Node2D
 
 var save_game_id: int = 0
 var selected: bool = true
+var data: Array = []
+
 
 ## Called when this menu item's selection state changes.
 func update_selection_state(state: bool) -> void:
@@ -15,7 +17,7 @@ func update_selection_state(state: bool) -> void:
 
 ## When input is given on this child.
 func update_menu_item(_direction: int = 0):
-	pass
+	return false
 
 ## When the Action or start button is pressed on this item 
 func use() -> bool:

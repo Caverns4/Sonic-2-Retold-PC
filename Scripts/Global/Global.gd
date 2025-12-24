@@ -247,28 +247,55 @@ func LoadSaveGameFile(file: ConfigFile) -> bool:
 		totalCoins = (file.get_value("0","a"))
 	if file.has_section_key("0","b"):
 		unlockFlags = (file.get_value("0","b"))
-	print("Global Save loaded")
+	#print("Global Save loaded")
 	#OS.shell_open(OS.get_user_data_dir())
 	return true
 
 func SaveGameFile():
 	var file: ConfigFile = ConfigFile.new()
+	var err := file.load_encrypted_pass(save_path,"SEGA")
+	if err != OK:
+		DirAccess.remove_absolute(save_path)
+		print("Could not parse save file.")
+		return false # Return false as an error
+	
 	file.set_value("0","a",totalCoins)
 	file.set_value("0","b",unlockFlags)
 	file.set_value("0","c",(unlockFlags+totalCoins))
 	
+	var section: String = str(current_save_index)
 	if current_save_index:
-		pass
+		file.set_value(section,"a",character_selection)
+		file.set_value(section,"b",0)
+		file.set_value(section,"c",continues)
+		file.set_value(section,"d",saved_zone_id)
+		file.set_value(section,"e",emeralds)
+		file.set_value(section,"f",lives)
+		file.set_value(section,"g",score)
 	
 	file.save_encrypted_pass(save_path,"SEGA")
-	print("Game saved")
+	#print(file.get_section_keys(section))
+
+func LoadSaveGameSlotData(index):
+	var data: Array = []
+	var file: ConfigFile = ConfigFile.new()
+	var err := file.load_encrypted_pass(save_path,"SEGA")
+	if err != OK:
+		print("Could not parse save file.")
+		return data
+	
+	var section: String = str(index)
+	if index and file.has_section(section):
+		for i in file.get_section_keys(section):
+			data.push_back(file.get_value(section,i))
+	return data
 
 func CreateSaveGameFile(file: ConfigFile):
 	file.set_value("0","a",totalCoins)
 	file.set_value("0","b",unlockFlags)
 	file.set_value("0","c",(unlockFlags+totalCoins))
 	file.save_encrypted_pass(save_path,"SEGA")
-	print("Global Save Data file created.")
+	#print("Global Save Data file created.")
 
 
 func _process(delta):

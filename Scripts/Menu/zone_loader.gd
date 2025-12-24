@@ -94,8 +94,8 @@ func queue_level():
 					Global.current_zone_pointer = "res://Scene/Zones/Tropical2.tscn"
 		Global.ZONES.CYBER_CITY:
 			match Global.saved_act_id:
-				0:
-					Global.current_zone_pointer = "res://Scene/Zones/Metropolis3.tscn"
+				#0:
+				#	Global.current_zone_pointer = "res://Scene/Zones/Metropolis3.tscn"
 				_:
 					Global.current_zone_pointer = "res://Scene/Zones/CyberCity.tscn"
 		Global.ZONES.SKY_FORTRESS:

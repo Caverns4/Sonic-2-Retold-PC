@@ -18,11 +18,11 @@ func update_selection_state(state: bool) -> void:
 
 func update_menu_item(direction: int = 0):
 	@warning_ignore("int_as_enum_without_cast")
-	character_id += direction
 	character_id = wrapi(
-		character_id,
+		character_id+direction,
 		Global.PLAYER_MODES.SONIC_AND_TAILS,
 		Global.PLAYER_MODES.RAY) as Global.PLAYER_MODES
+	return true
 
 
 func use():

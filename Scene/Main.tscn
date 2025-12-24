@@ -132,6 +132,7 @@ _data = {
 }
 
 [node name="Main" type="Node2D"]
+process_mode = 3
 script = ExtResource("2")
 
 [node name="Music" type="Node" parent="."]

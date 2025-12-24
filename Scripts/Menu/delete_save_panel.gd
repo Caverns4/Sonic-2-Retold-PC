@@ -9,7 +9,7 @@ func update_selection_state(state: bool) -> void:
 		$DataBox.modulate = Color.WHITE
 
 func update_menu_item(_direction: int = 0):
-	pass
+	return false
 
 
 func use():
