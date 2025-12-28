@@ -39,6 +39,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		player = body
 		var success: bool = Global.special_hud.CheckForEmerald(jingleTheme)
 		if success:
-			Global.lastSpecialStageResult = true
+			Global.special_stage_result = true
+			Global.special_stage_result = true
 			var value: int = (1 << color)
 			Global.emeralds += value

@@ -5,6 +5,9 @@ extends DataSelectPanel
 
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
+	
 	await get_tree().process_frame
 	data = Global.LoadSaveGameSlotData(save_game_id)
 	
@@ -66,7 +69,7 @@ func use():
 		Global.character_selection = data[0]
 		Global.continues = data[2]
 		Global.emeralds = data[4]
-		Global.lived = data[5]
+		Global.lives = data[5]
 		Global.score = data[6]
 	
 	Global.current_save_index = save_game_id
