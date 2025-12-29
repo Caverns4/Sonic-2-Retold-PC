@@ -40,8 +40,8 @@ enum INTERPOLATION_MODE {linear, center_parabolic}
 @export var springConstant = 30.0 # How rapidly the trampoline snaps back
 @export var dampingFactorWeightless = 0.03 # Rate at which the trampoline loses energy when no player is onboard. A higher value will make it snap back quicker
 @export var dampingFactorWeighted = 0.02 # Rate at which the trampoline loses energy when a player is onboard. A higher value will make it snap back quicker but also reduce the launch power and increase the initial speed required to launch.
-@export var maxVelocity = 700 # The maximum velocity the trampoline can have at any point in time in the downward direction.
-@export var minVelocityForLaunch = 150 # If yVelocity of the trampoline exceeds this as the trampoline moves past its rest point (roughly), any players riding it will be launched into the air
+@export var maxVelocity = 720 # The maximum velocity the trampoline can have at any point in time in the downward direction.
+@export var minVelocityForLaunch = 120 # If yVelocity of the trampoline exceeds this as the trampoline moves past its rest point (roughly), any players riding it will be launched into the air
 @export var bounceFactor = 1.75 # Multiplier for how much of the trampoline's velocity should be imparted to the player when the player is launched (should always be higher than 1)
 @export var baseWeight = 0 # If above zero, the trampoline itself will have weight causing it to sag at rest with no one on it.
 @export var jumpPushback = 225 # How hard the trampoline should be pushed downward if a riding player jumps off
@@ -76,12 +76,14 @@ func set_launch(isLaunchOn):
 	launchEnabled = isLaunchOn
 
 func add_player(player):
+	if !players.has(Global.players[0]):
+		impart_force(player.movement.y)
+		weight += 1
+		launchEnabled = true
+		player.movement.y = 0
+		skipGroundCheck = true
 	players.append(player)
-	impart_force(player.movement.y)
-	weight += 1
-	launchEnabled = true
 	player.movement.y = 0
-	skipGroundCheck = true
 
 func physics_process_game(delta):
 	var pivot = weight * weightFactor
@@ -103,7 +105,7 @@ func physics_process_game(delta):
 	if (launchEnabled and passedMidpoint):
 		for i in players:
 			i.set_state(i.STATES.AIR)
-			i.movement.y += yVelocity * bounceFactor
+			i.movement.y += clampf(yVelocity * bounceFactor,-maxVelocity,0)
 			i.animator.play("spring")
 			if(abs(i.groundSpeed) >= min(6*60,i.top)):
 				i.animator.queue("run")
@@ -124,7 +126,7 @@ func physics_process_game(delta):
 		if not players.has(i):
 			var curVel = i.movement.y
 			i.movement.y += yVelocity
-			if (curVel < 50):
+			if (curVel <= 0):
 				impart_force(jumpPushback) # bounce downwards on jump
 
 	# Reset player count, weight and launch to zero for next pass
