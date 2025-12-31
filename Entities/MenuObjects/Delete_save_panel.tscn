@@ -1,8 +1,66 @@
-[gd_scene load_steps=4 format=3 uid="uid://dixrimnofcfc5"]
+[gd_scene load_steps=8 format=3 uid="uid://dixrimnofcfc5"]
 
 [ext_resource type="Script" uid="uid://cbh8qcpx617lo" path="res://Scripts/Menu/delete_save_panel.gd" id="1_mksyj"]
 [ext_resource type="Texture2D" uid="uid://dkbs1h30coegf" path="res://Graphics/Menus/Character_Box.png" id="2_440cw"]
-[ext_resource type="Texture2D" uid="uid://d12r0uq1qch01" path="res://Graphics/Boss/Eggman.png" id="3_mksyj"]
+[ext_resource type="Texture2D" uid="uid://b6tu5dfysi026" path="res://Graphics/Menus/Robotnik_Del.png" id="3_mksyj"]
+
+[sub_resource type="Animation" id="Animation_mksyj"]
+resource_name = "RESET"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterIcon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_440cw"]
+resource_name = "spinning"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterIcon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 6, 2, 8, 5, 1, 7, 3]
+}
+
+[sub_resource type="Animation" id="Animation_w5tei"]
+resource_name = "delete"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterIcon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w5tei"]
+_data = {
+&"RESET": SubResource("Animation_mksyj"),
+&"delete": SubResource("Animation_w5tei"),
+&"spin": SubResource("Animation_440cw")
+}
 
 [node name="DeleteSavePanel" type="Node2D"]
 script = ExtResource("1_mksyj")
@@ -23,8 +81,13 @@ text = "delete"
 [node name="CharacterIcon" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 z_index = 2
-position = Vector2(40, 40)
+position = Vector2(40, 39)
 texture = ExtResource("3_mksyj")
-hframes = 8
+hframes = 5
 vframes = 2
-frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_w5tei")
+}
+autoplay = "RESET"

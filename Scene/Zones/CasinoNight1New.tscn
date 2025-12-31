@@ -177,7 +177,7 @@ position = Vector2(9032, 856)
 position = Vector2(9056, 1336)
 
 [node name="Bumper52" parent="Entities" instance=ExtResource("11_cyorj")]
-position = Vector2(5776, 1728)
+position = Vector2(5784, 1728)
 
 [node name="Bumper53" parent="Entities" instance=ExtResource("11_cyorj")]
 position = Vector2(7040, 1776)
@@ -501,10 +501,6 @@ position = Vector2(8688, 1536)
 
 [node name="HexBumper" parent="Entities" instance=ExtResource("17_2um2t")]
 position = Vector2(640, 768)
-
-[node name="HexBumper12" parent="Entities" instance=ExtResource("17_2um2t")]
-position = Vector2(256, 624)
-move_distance = Vector2(64, 0)
 
 [node name="HexBumper2" parent="Entities" instance=ExtResource("17_2um2t")]
 position = Vector2(1184, 1344)
@@ -1829,7 +1825,7 @@ position = Vector2(4608, 1120)
 position = Vector2(5632, 1424)
 
 [node name="CNZSlot7" parent="SlotMachineManager" instance=ExtResource("24_vdjfc")]
-position = Vector2(5632, 1616)
+position = Vector2(5632, 1600)
 
 [node name="CNZSlot8" parent="SlotMachineManager" instance=ExtResource("24_vdjfc")]
 position = Vector2(7104, 608)

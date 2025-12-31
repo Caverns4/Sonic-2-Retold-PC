@@ -83,9 +83,6 @@ func _ready():
 	get_tree().paused = false
 	#Wipe the player arrays to avoid contamination.
 	reset_values()
-	Global.debug_mode = false
-	#Clear game variables
-	Global.two_player_mode = false
 	#Prepare the Title Streen Music
 	SoundDriver.music.stream = music
 	#Prepare the background
@@ -236,3 +233,4 @@ func reset_values():
 	Global.saved_checkpoint = -1
 	Global.saved_checkpointP2 = -1
 	Global.animals = [0,1]
+	Global.debug_mode = false

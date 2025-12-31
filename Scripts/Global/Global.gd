@@ -152,6 +152,7 @@ var anyCharacters:bool = false
 var betaCasinoNight:bool = false
 var beta_sonic:bool = false
 var insta_shield:bool = true
+## If certain debug features will be enabled.
 var debug_mode: bool = true
 
 # Two Player settings

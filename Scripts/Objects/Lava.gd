@@ -8,11 +8,6 @@ func _ready():
 	if !Engine.is_editor_hint():
 		$CollisionShape2D.scale = size/32
 		visible = Global.debug_mode
-		#$TopLeft.visible = Global.debug_mode
-		#$TopRight.visible = Global.debug_mode
-		#$BottomLeft.visible = Global.debug_mode
-		#$BottomRight.visible = Global.debug_mode
-		
 
 func _process(delta):
 	if Engine.is_editor_hint():

@@ -8,12 +8,13 @@ var zone_loader: String = "res://Scene/Presentation/ZoneLoader.tscn"
 var sfx_Select = preload("res://Audio/SFX/Gimmicks/s2br_Switch.wav")
 var sfx_Confirm = preload("res://Audio/SFX/Objects/s2br_Checkpoint.wav")
 
-enum MENU_STATE{CHARACTER_SELECT,DECIDED}
+enum MENU_STATE{SAVE_SELECT,DELETE_FILE,DECIDED}
 var state = 0
 var timer = 0.0
 
 var current_selection: int = 0
 var selected_save_slot: Node2D = null
+var delete_slot: DataSelectPanel = null
 
 #Input storage
 var inputCue: Vector2 = Vector2.ZERO # Current inputs (this frame)
@@ -24,6 +25,8 @@ var lastInputP2: Vector2 = Vector2.ZERO
 # button delay
 const BUTTON_TIME = 0.3 # Time to wait before counting repeat inputs.
 var stepTimer: float = 0.3
+
+@onready var title_bar: RichTextLabel = $CanvasTop/Control/GameModeText
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -45,7 +48,7 @@ func _physics_process(delta: float) -> void:
 	timer+=delta
 	#Recieve input
 	_unhandledInput(Input)
-	if state == MENU_STATE.CHARACTER_SELECT:
+	if state <= MENU_STATE.DELETE_FILE:
 		updateCharacterSelection()
 	
 	var target_pos = clampf(
@@ -87,14 +90,18 @@ func updateCharacterSelection():
 	
 	if (Input.is_action_just_pressed("gm_action") or
 	Input.is_action_just_pressed("gm_pause")):
-		UseSelectedItem()
+		if state == MENU_STATE.SAVE_SELECT:
+			UseSelectedItem()
+		elif state == MENU_STATE.DELETE_FILE:
+			delete_slot.ConfirmDeletion(selected_save_slot)
 	
-	if (
-	(Input.is_action_just_pressed("gm_action2")) or
-	(Input.is_action_just_pressed("gm_action2_P2"))
-	):
-		state = MENU_STATE.DECIDED
-		Main.change_scene(title_scene)
+	if (Input.is_action_just_pressed("gm_action2") or
+	Input.is_action_just_pressed("gm_action2_P2")):
+		if state == MENU_STATE.SAVE_SELECT:
+			state = MENU_STATE.DECIDED
+			Main.change_scene(title_scene)
+		elif state == MENU_STATE.DELETE_FILE:
+			delete_slot.ClearDeletionState()
 
 func highlight_selected_child(current: int):
 	for i in %SaveFileContainer.get_child_count():
@@ -108,4 +115,3 @@ func UseSelectedItem():
 		SoundDriver.play_sound2(sfx_Confirm)
 		Main.change_scene(zone_loader)
 		state = MENU_STATE.DECIDED
-	

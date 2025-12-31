@@ -9,7 +9,7 @@ var spikeprize = preload("res://Entities/Gimmicks/spike_prize.tscn")
 
 const POINTS_TIME = 1.0
 
-var player = null
+var player: Player2D = null
 var timer = 2.0 # Not used for Character reels, that will be signal-based.
 var sfxTimer = 0.0
 
@@ -75,8 +75,8 @@ func _process(delta: float) -> void:
 										prizes = move_toward(prizes,0,1)
 						if prizes == 0 and !prize_nodes:
 							state = STATES.PRIZE_GIVEN
-							Global.characterReels.is_in_use = false
-							Global.characterReels.idle_timer = 5.0
+							Global.character_reels.is_in_use = false
+							Global.character_reels.idle_timer = 5.0
 							timer = 1.0
 					STATES.PRIZE_GIVEN:
 						timer -= delta
@@ -99,6 +99,7 @@ func dropPlayer():
 		sfxTimer = 0.0
 		#Free the player
 		player.set_state(player.STATES.AIR,player.currentHitbox.ROLL)
+		player.airControl = true
 		player.controlObject = null
 		player.allowTranslate = false
 		player = null
@@ -113,9 +114,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		body.movement = Vector2.ZERO
 		body.controlObject = self
 		state = STATES.WAITING_REEL
-		if type > 0 and !Global.characterReels.is_in_use:
+		if type > 0 and !Global.character_reels.is_in_use:
 			reels = determine_each_slot()
-			Global.characterReels.roll_character_slots(reels,self)
+			Global.character_reels.roll_character_slots(reels,self)
 
 ## TODO: Second slot and third shot should have probable outcomes.
 func determine_each_slot():
@@ -151,7 +152,7 @@ func Parse_Prize():
 	for jack in reels:
 		if jack == SLOT.JACKPOT:
 			compare +=1
-	ring_reward * compare
+	ring_reward *= compare
 	# If the player got even one Ring, they can't have gotten any other outcome.
 	if ring_reward:
 		return ring_reward
