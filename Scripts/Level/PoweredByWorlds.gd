@@ -7,6 +7,7 @@ var alreadyChanged = false
 var globalTime = 0.0
 
 func _ready():
+	Global.debug_mode = false
 	var rng: int = randi_range(0,255)
 	if rng == Global.ZONES.DEATH_EGG:
 		$CanvasLayer/Center/SilverSonic.visible = true

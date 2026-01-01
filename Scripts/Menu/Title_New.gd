@@ -168,7 +168,7 @@ func CheckCheatInputs(inputCue: Vector2 = Vector2.ZERO):
 				cheatInputCount = 0
 				cheatActive = true
 				Global.level_select_flag = true
-				Main.input_view.visible = true
+				Global.debug_mode = true
 				$TitleBanner/RingChime.play(0.0)
 				if !Global.tails_name_cheat:
 					Global.tails_name_cheat = true
@@ -233,4 +233,3 @@ func reset_values():
 	Global.saved_checkpoint = -1
 	Global.saved_checkpointP2 = -1
 	Global.animals = [0,1]
-	Global.debug_mode = false

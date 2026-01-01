@@ -153,7 +153,10 @@ var betaCasinoNight:bool = false
 var beta_sonic:bool = false
 var insta_shield:bool = true
 ## If certain debug features will be enabled.
-var debug_mode: bool = true
+var debug_mode: bool = true: set = _set_debug_mode
+func _set_debug_mode(value):
+	Main.input_view.visible = value
+	debug_mode = value
 
 # Two Player settings
 #Single Race: Pick a character and a zone for each race

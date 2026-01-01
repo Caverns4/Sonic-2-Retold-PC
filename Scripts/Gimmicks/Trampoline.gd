@@ -24,15 +24,15 @@ var trampolineYPosition = 0
 # How the connective rings are positioned
 # linear - the rings are placed in a line. Plain, but true to the form of the original. Works best with spaced out rings.
 # center_parabolice - the center platform is the apex/trough of the parabola of rings for that classy look
-# edge_parabolic - XXX Coming eventually maybe.
-enum INTERPOLATION_MODE {linear, center_parabolic}
-@export var interpolationMode: INTERPOLATION_MODE = INTERPOLATION_MODE.linear
+# edge_parabolic - XXX Coming eventually maybe.00
+#enum INTERPOLATION_MODE {linear, center_parabolic}
+#@export var interpolationMode: INTERPOLATION_MODE = INTERPOLATION_MODE.linear
 
 # Edit this to change the graphic used for the central platform
 @export var platformSprite = preload("res://Graphics/Gimmicks/ICZTrampoline.png")
 # Edit these values if you change the platform graphic to something of a different size
 @export var platformWidth = 22 # how many pixels wide your collider for the platform is. 
-@export var platformHeight = 8 # How many pixels tall the platform should be
+@export var platformHeight = 12 # How many pixels tall the platform should be
 @export var platformYOffset = 6 # How many vertical pixels to offset the platform
 
 # These are your physical values for the trampoline and affect things
@@ -76,7 +76,8 @@ func set_launch(isLaunchOn):
 	launchEnabled = isLaunchOn
 
 func add_player(player):
-	if !players.has(Global.players[0]):
+	print("add_player(" + str(player.name) + ")")
+	if (!players.has(Global.players[0])):
 		impart_force(player.movement.y)
 		weight += 1
 		launchEnabled = true
@@ -150,15 +151,15 @@ func draw_tool():
 	var platformOffset = weightFactor * baseWeight
 	for n in ringsPerSide:
 		var yOffset = 0
-		if interpolationMode == INTERPOLATION_MODE.linear:
-			yOffset = (ringsPerSide - n - 1.0) * (platformOffset) / (ringsPerSide - 1.0)
-		elif interpolationMode == INTERPOLATION_MODE.center_parabolic:
+		#if interpolationMode == INTERPOLATION_MODE.linear:
+		#	yOffset = (ringsPerSide - n - 1.0) * (platformOffset) / (ringsPerSide - 1.0)
+		#if interpolationMode == INTERPOLATION_MODE.center_parabolic:
 			# vertex is at the platform
 			# y = a(x)^2 + k (k = platformOffset)
-			yOffset = platformOffset - platformOffset * pow(1.0 * n / (ringsPerSide - 1), 2)
-		else:
+		yOffset = platformOffset - platformOffset * pow(1.0 * n / (ringsPerSide - 1), 2)
+		#else:
 			# This shouldn't be possible.
-			pass
+		#	pass
 
 		draw_at_pos_internal(Vector2(-ringsMargin - (n * ringsBetween), yOffset))
 		draw_at_pos_internal(Vector2(ringsMargin + (n * ringsBetween), yOffset))
@@ -180,17 +181,17 @@ func _draw():
 	for n in ringsPerSide:
 		var yOffset = 0
 
-		if interpolationMode == INTERPOLATION_MODE.linear:
-			yOffset = (ringsPerSide - n - 1) * (platformOffset) / (ringsPerSide - 1)
-			pass
-		elif interpolationMode == INTERPOLATION_MODE.center_parabolic:
+		#if interpolationMode == INTERPOLATION_MODE.linear:
+		#	yOffset = (ringsPerSide - n - 1) * (platformOffset) / (ringsPerSide - 1)
+		#	pass
+		#elif interpolationMode == INTERPOLATION_MODE.center_parabolic:
 			# vertex is at the platform
 			# y = a(x)^2 + k (k = platformOffset)
-			yOffset = platformOffset - platformOffset * pow(1.0 * n / (ringsPerSide - 1), 2)
-			pass
-		else:
+		yOffset = platformOffset - platformOffset * pow(1.0 * n / (ringsPerSide - 1), 2)
+		#	pass
+		#else:
 			# This shouldn't be possible.
-			pass
+		#	pass
 
 		draw_at_pos_internal(Vector2(-ringsMargin - (n * ringsBetween), yOffset))
 		draw_at_pos_internal(Vector2( ringsMargin + (n * ringsBetween), yOffset))
