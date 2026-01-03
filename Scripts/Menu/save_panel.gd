@@ -3,7 +3,6 @@ extends DataSelectPanel
 
 @export var level_id: Global.ZONES
 
-
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
@@ -14,6 +13,7 @@ func _ready() -> void:
 	if data:
 		character_id = data[0]
 		level_id = data[3]
+		text_label.text = "file " + str(save_game_id).pad_zeros(2)
 	
 	%CharacterIcon.frame = character_id
 	%LevelIcon.frame = level_id

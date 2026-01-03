@@ -7,6 +7,7 @@ var save_game_id: int = 0
 var selected: bool = true
 var data: Array = []
 
+@onready var text_label = $DataBox/Label
 
 ## Called when this menu item's selection state changes.
 func update_selection_state(state: bool) -> void:

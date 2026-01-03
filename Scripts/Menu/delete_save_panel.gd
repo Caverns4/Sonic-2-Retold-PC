@@ -58,4 +58,5 @@ func DeleteSelectedFile(selected_save_slot: DataSelectPanel):
 	if selected_save_slot.save_game_id:
 		selected_save_slot.data.clear()
 		selected_save_slot.level_id = Global.ZONES.EMERALD_HILL
+		selected_save_slot.text_label.text = "no save"
 	ClearDeletionState()

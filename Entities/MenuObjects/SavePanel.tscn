@@ -14,6 +14,13 @@ z_index = 1
 position = Vector2(48, 96)
 texture = ExtResource("1_k7mkp")
 
+[node name="Label" type="Label" parent="DataBox"]
+offset_left = -31.0
+offset_top = 80.0
+offset_right = 25.0
+offset_bottom = 88.0
+text = "no save"
+
 [node name="TitleBanner" type="Sprite2D" parent="."]
 position = Vector2(45, 32)
 texture = ExtResource("2_8ocpa")
