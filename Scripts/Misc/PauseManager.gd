@@ -259,7 +259,6 @@ func _on_visibility_changed() -> void:
 		var img = get_viewport().get_texture().get_image()
 		var tex = ImageTexture.create_from_image(img)
 		$PauseCover.texture = tex
-		$PauseCover.size = tex.get_size()
 	
 	if Global.two_player_mode:
 		$PauseMenu.visible = false

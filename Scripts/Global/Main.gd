@@ -1,5 +1,5 @@
 class_name MainGameScene
-extends Node2D
+extends CanvasLayer
 
 ## Emited when the scene fades, used to load in level details and data to hide it from the player
 signal scene_faded
@@ -7,6 +7,7 @@ signal scene_faded
 var can_pause = false
 
 @onready var input_view: Control = $GUI/ControlMap
+@onready var crt_filter: ColorRect = $CanvasLayer/ColorRect
 
 func _ready():
 	# Sound Driver object references

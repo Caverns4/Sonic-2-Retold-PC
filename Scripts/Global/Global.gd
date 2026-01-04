@@ -506,7 +506,7 @@ func IsFullScreen():
 func SetupWindowSize():
 		var window = get_window()
 		var resolution = aspectResolutions[aspectRatio]
-		window.content_scale_size = Vector2i(resolution.x*2, resolution.y*2)
+		window.content_scale_size = Vector2i(resolution.x, resolution.y)
 		var newSize = Vector2i((get_viewport().get_visible_rect().size*zoomSize).round())
 		window.set_position(window.get_position()+(window.size-newSize)/2)
 		window.set_size(resolution * Global.zoomSize)

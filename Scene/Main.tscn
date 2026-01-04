@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://byje3iiukvt4p"]
+[gd_scene load_steps=16 format=3 uid="uid://byje3iiukvt4p"]
 
 [ext_resource type="Script" uid="uid://856g6l24nl6o" path="res://Scripts/Global/Main.gd" id="2"]
 [ext_resource type="Script" uid="uid://cyus5h4y0rk47" path="res://Scripts/Menu/control_map.gd" id="5_aan6j"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b2xskcomtpo2x" path="res://Entities/Misc/ControllerMenu.tscn" id="6"]
 [ext_resource type="AudioStream" uid="uid://dk4rjhevrqj00" path="res://Audio/Soundtrack/s2br_ExtraLife.ogg" id="6_5mxpv"]
 [ext_resource type="PackedScene" uid="uid://c1xhc4uh26inb" path="res://Entities/Misc/PauseMenu.tscn" id="7"]
+[ext_resource type="Shader" uid="uid://hv4tpe8p5fc3" path="res://Shaders/vhs_crt.gdshader" id="7_h3nmf"]
 
 [sub_resource type="CanvasItemMaterial" id="1"]
 
@@ -131,8 +132,31 @@ _data = {
 &"WhiteOut": SubResource("Animation_rqlip")
 }
 
-[node name="Main" type="Node2D"]
-process_mode = 3
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3nmf"]
+shader = ExtResource("7_h3nmf")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.050000002375
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.10000000475
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = true
+shader_parameter/roll = false
+shader_parameter/roll_speed = 0.0
+shader_parameter/roll_size = 0.0
+shader_parameter/roll_variation = 0.92000004044012
+shader_parameter/distort_intensity = 0.0
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.02000004845000003
+shader_parameter/brightness = 1.2
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.0
+shader_parameter/vignette_opacity = 0.0
+
+[node name="Main" type="CanvasLayer"]
 script = ExtResource("2")
 
 [node name="Music" type="Node" parent="."]
@@ -148,7 +172,7 @@ bus = &"Music"
 
 [node name="GUI" type="CanvasLayer" parent="."]
 process_mode = 3
-layer = 128
+layer = 12
 
 [node name="ScreenFader" type="ColorRect" parent="GUI"]
 material = SubResource("1")
@@ -172,7 +196,7 @@ autoplay = "RESET"
 [node name="ControlMap" type="Control" parent="GUI"]
 process_mode = 3
 visible = false
-z_index = 100
+z_index = 1
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
@@ -259,3 +283,14 @@ offset_top = 24.0
 offset_right = 128.0
 offset_bottom = 32.0
 color = Color(1, 1, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 16
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_h3nmf")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

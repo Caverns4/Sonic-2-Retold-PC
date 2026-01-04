@@ -50,23 +50,31 @@ uppercase = true
 
 [node name="Credits Text" type="RichTextLabel" parent="UI/Labels"]
 layout_mode = 0
-offset_left = -100.0
-offset_top = 72.0
-offset_right = 156.0
-offset_bottom = 160.0
+offset_left = -140.0
+offset_top = 56.0
+offset_right = 180.0
+offset_bottom = 224.0
 theme_override_fonts/normal_font = ExtResource("2_4wis2")
 bbcode_enabled = true
-text = "[center]Special thanks:
+text = "[center]Credits too: SEGA and Sonic Team
 
-SEGA
-Sharb
-Techokami
-Dimensionwarped
+Sonic Worlds Next Development:
+Sharb, Techokami, Dimensionwarped
+
 The Sonic modding community
-Tee Lopes for the music
+Tee Lopes
+
+Art contributions:
+CRT Filter: A7mED,Pend00
+Knuckles Sprites: EmmaNerd,
+Joshyflip, panoramhusky, C.F.A
+
+Mighty, Ray and Amy Sprites:
+Christian Whitehead, Random Talking Bush
+
 Testers:
-Retro KOH
-Tonlim
-XModGodX"
+Retro KoH, Tonlim64, XModGodX
+
+Created by Ikey Ilex"
 scroll_active = false
 autowrap_mode = 0

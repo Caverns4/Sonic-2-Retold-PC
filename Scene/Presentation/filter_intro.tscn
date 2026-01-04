@@ -1,0 +1,113 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtlk8krmkmm4a"]
+
+[ext_resource type="Script" uid="uid://c8ft0gla487bm" path="res://Scripts/Menu/filter_intro.gd" id="1_1k4ub"]
+[ext_resource type="Texture2D" uid="uid://djgyh2vkmwqyx" path="res://Graphics/title/SEGA_BG.png" id="1_ks5kd"]
+[ext_resource type="FontFile" uid="uid://db35jkdl2gan2" path="res://Graphics/Special Stage/SS_HUD_Font.png" id="2_1k4ub"]
+[ext_resource type="FontFile" uid="uid://ml62eqfe7avn" path="res://Graphics/Fonts/small_font.png" id="3_7pg3q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ks5kd"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.93333334, 0.93333334, 0.93333334, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1k4ub"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.93333334, 0.93333334, 0, 1)
+
+[node name="FilterIntro" type="Node"]
+script = ExtResource("1_1k4ub")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Backdrop" type="TextureRect" parent="CanvasLayer"]
+offset_right = 640.0
+offset_bottom = 224.0
+texture = ExtResource("1_ks5kd")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Labels" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/Labels"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 8.0
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_1k4ub")
+text = "CRT Filter"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Title2" type="Label" parent="CanvasLayer/Labels"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_7pg3q")
+text = "Sonic The Hedgehog 2: Retold is a
+remaster of Sonic 2 for the Sega
+Genesis or Mega Drive.
+
+Retro games were designed for
+CRT screens, which would alias pixels,
+making sprites looking smoother
+than they do on modern screens.
+
+A crt-style filter is provided to
+attempt to perserve the feel of the
+original. This filter can be toggled
+anytime in the options menu.
+Would you like to start the game with
+the CRT filter?"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -32.0
+offset_right = 64.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="YesButton" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ks5kd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1k4ub")
+text = " YES "
+
+[node name="NoButton" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ks5kd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1k4ub")
+text = "  No "
+
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/NoButton" to="." method="_on_no_button_pressed"]
