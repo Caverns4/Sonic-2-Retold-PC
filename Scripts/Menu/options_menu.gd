@@ -17,6 +17,7 @@ var optionsText = [
 "sound volume ",
 "music volume ",
 "scale        ",
+"crt filter   ",
 "aspect ratio ",
 "full screen  ",
 "set controls",
@@ -104,7 +105,10 @@ func _unhandledInput(event):
 					if (inputCue.x != 0) and !Global.IsFullScreen() and(inputCue != lastInput):
 						Global.zoomSize = clamp(Global.zoomSize+inputCue.x,zoomClamp[0],zoomClamp[1])
 						Global.SetupWindowSize()
-				4: #aspect ratio
+				4:
+					#Main.crt_filter.visible = !Main.crt_filter.visible
+					pass
+				5: #aspect ratio
 					if (inputCue.x > 0):
 						Global.aspectRatio = wrapi(Global.aspectRatio+1,0,Global.aspectResolutions.size())
 						if !Global.IsFullScreen():
@@ -112,38 +116,37 @@ func _unhandledInput(event):
 						else:
 							var resolution = Global.aspectResolutions[Global.aspectRatio]
 							get_window().content_scale_size = Vector2i(resolution.x*2, resolution.y*2)
-				5: #full screen
-					if (inputCue.x != 0):
-						get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (!((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN))) else Window.MODE_WINDOWED
-				6: #Controls
+				6: #full screen
 					pass
+					#if (inputCue.x != 0):
+					#	get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (!((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN))) else Window.MODE_WINDOWED
 				_: #Back to title
 					pass
 		lastInput = inputCue
 		
 		# finish character select if start is pressed
-		if (event.is_action_pressed("gm_pause")
-		or event.is_action_pressed("gm_action")
-		or event.is_action_pressed("gm_action2")
-		or event.is_action_pressed("gm_action3")) and !selected:
+		if (event.is_action_just_pressed("gm_pause")
+		or event.is_action_just_pressed("gm_action")
+		or event.is_action_just_pressed("gm_action2")
+		or event.is_action_just_pressed("gm_action3")) and !selected:
 			match menuOption:
-				
-				4: #Aspecct Ratio
+				4:
+					Main.crt_filter.visible = !Main.crt_filter.visible
+				5: #Aspecct Ratio
 					Global.aspectRatio = wrapi(Global.aspectRatio+1,0,Global.aspectResolutions.size())
 					if !Global.IsFullScreen():
 						Global.SetupWindowSize()
 					else:
 						var resolution = Global.aspectResolutions[Global.aspectRatio]
 						get_window().content_scale_size = Vector2i(resolution.x*2, resolution.y*2)
-				5: # full screen
+				6: # full screen
 					get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (!((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN))) else Window.MODE_WINDOWED
-				6: # Controls
+				7: # Controls
 						Global.save_settings()
-						var menu = Main.get_child(2).get_child(2) #God this is bad
-						menu.visible = true
+						Main.control_menu.visible = true
 						visible = false
 						get_tree().paused = true
-				7: #Back to title
+				8: #Back to title
 					selected = true
 					Global.save_settings()
 					Main.change_scene(title_screen)
@@ -157,28 +160,32 @@ func OptionsMenu_RedrawText():
 			textField.text += "[color=#FFFF00]" + optionsText[i].to_upper()
 			match i:
 				1:
-					textField.text += str(round(((AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX"))-clampSounds[0])/(abs(clampSounds[0])+abs(clampSounds[1])))*100))
+					textField.text += str(roundi(((AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX"))-clampSounds[0])/(abs(clampSounds[0])+abs(clampSounds[1])))*100))
 				2:
-					textField.text += str(round(((AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))-clampSounds[0])/(abs(clampSounds[0])+abs(clampSounds[1])))*100))
+					textField.text += str(roundi(((AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))-clampSounds[0])/(abs(clampSounds[0])+abs(clampSounds[1])))*100))
 				3:
-					textField.text += str(Global.zoomSize) + "X"
+					textField.text += str(int(Global.zoomSize)) + "X"
 				4:
-					textField.text += str(aspectClamp[Global.aspectRatio])
+					textField.text += onOff[int(Main.crt_filter.visible)]
 				5:
+					textField.text += str(aspectClamp[Global.aspectRatio])
+				6:
 					textField.text += onOff[int(((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN)))]
 			textField.text += "[/color]"
 		else:
 			textField.text += optionsText[i].to_upper()
 			match i:
 				1:
-					textField.text += str(round(((AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX"))-clampSounds[0])/(abs(clampSounds[0])+abs(clampSounds[1])))*100))
+					textField.text += str(roundi(((AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX"))-clampSounds[0])/(abs(clampSounds[0])+abs(clampSounds[1])))*100))
 				2:
-					textField.text += str(round(((AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))-clampSounds[0])/(abs(clampSounds[0])+abs(clampSounds[1])))*100))
+					textField.text += str(roundi(((AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))-clampSounds[0])/(abs(clampSounds[0])+abs(clampSounds[1])))*100))
 				3:
-					textField.text += str(Global.zoomSize) + "X"
+					textField.text += str(int(Global.zoomSize)) + "X"
 				4:
-					textField.text += str(aspectClamp[Global.aspectRatio])
+					textField.text += onOff[int(Main.crt_filter.visible)]
 				5:
+					textField.text += str(aspectClamp[Global.aspectRatio])
+				6:
 					textField.text += onOff[int(((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN)))]
 
 		textField.text += "\n\n"

@@ -21,36 +21,36 @@ shader_parameter/approximation = 0.0
 shader_parameter/paletteTexture = ExtResource("3_i4tmo")
 shader_parameter/time_scale = 0.1
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tuv02"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_iiwg2"]
 atlas = ExtResource("4_mbm2e")
-region = Rect2(0, 0, 512, 48)
+region = Rect2(0, 0, 768, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1wvhy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cof7c"]
 atlas = ExtResource("4_mbm2e")
-region = Rect2(0, 48, 512, 48)
+region = Rect2(0, 48, 768, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1djx5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_23ap5"]
 atlas = ExtResource("4_mbm2e")
-region = Rect2(0, 96, 512, 48)
+region = Rect2(0, 96, 768, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j0ob7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ghpj"]
 atlas = ExtResource("4_mbm2e")
-region = Rect2(0, 144, 512, 48)
+region = Rect2(0, 144, 768, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b2d52"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tuv02")
+"texture": SubResource("AtlasTexture_iiwg2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1wvhy")
+"texture": SubResource("AtlasTexture_cof7c")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1djx5")
+"texture": SubResource("AtlasTexture_23ap5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j0ob7")
+"texture": SubResource("AtlasTexture_4ghpj")
 }],
 "loop": true,
 "name": &"default",
@@ -63,7 +63,7 @@ scroll_ignore_camera_zoom = true
 
 [node name="ParallaxLayerAB" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.01, 0.05)
-motion_mirroring = Vector2(512, 0)
+motion_mirroring = Vector2(768, 0)
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxLayerAB"]
 offset_right = 512.0
@@ -78,7 +78,7 @@ material = SubResource("ShaderMaterial_023dl")
 position = Vector2(0, 80)
 sprite_frames = SubResource("SpriteFrames_b2d52")
 autoplay = "default"
-frame_progress = 0.97222
+frame_progress = 0.92492175
 centered = false
 
 [node name="ParallaxLayerC" type="ParallaxLayer" parent="."]

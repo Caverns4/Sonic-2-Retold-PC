@@ -227,6 +227,11 @@ var aspectResolutions = [
 	Vector2(400,224)
 	]
 
+var crt_resolutions: Array[Vector2] = [
+	Vector2i(320,240),
+	Vector2i(400,240)
+]
+
 # Hazard type references
 enum HAZARDS {NORMAL, FIRE, ELEC, WATER}
 
@@ -506,6 +511,8 @@ func IsFullScreen():
 func SetupWindowSize():
 		var window = get_window()
 		var resolution = aspectResolutions[aspectRatio]
+		var crt_res = (crt_resolutions[aspectRatio])*zoomSize*2
+		RenderingServer.global_shader_parameter_set("screen_res",crt_res)
 		window.content_scale_size = Vector2i(resolution.x, resolution.y)
 		var newSize = Vector2i((get_viewport().get_visible_rect().size*zoomSize).round())
 		window.set_position(window.get_position()+(window.size-newSize)/2)

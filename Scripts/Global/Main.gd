@@ -8,6 +8,7 @@ var can_pause = false
 
 @onready var input_view: Control = $GUI/ControlMap
 @onready var crt_filter: ColorRect = $CanvasLayer/ColorRect
+@onready var control_menu: CanvasLayer = $GUI/ControllerMenu
 
 func _ready():
 	# Sound Driver object references
@@ -28,6 +29,9 @@ func _input(event):
 		# Note: the gui menu has some settings to unpause itself so we don't want to override that while the user is in the settings
 		elif get_tree().paused and !$GUI/Pause.visible:
 			get_tree().paused = false
+	if Input.is_action_just_pressed("ui_control_menu") and !get_tree().paused:
+		get_tree().paused = true
+		control_menu.show()
 
 
 	# reset game if F2 is pressed (this button can be changed in project settings)

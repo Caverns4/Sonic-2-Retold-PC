@@ -8,6 +8,29 @@
 [ext_resource type="PackedScene" uid="uid://c1xhc4uh26inb" path="res://Entities/Misc/PauseMenu.tscn" id="7"]
 [ext_resource type="Shader" uid="uid://hv4tpe8p5fc3" path="res://Shaders/vhs_crt.gdshader" id="7_h3nmf"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3nmf"]
+shader = ExtResource("7_h3nmf")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.2000000095
+shader_parameter/scanlines_width = 0.250000011875
+shader_parameter/grille_opacity = 0.10000000475
+shader_parameter/pixelate = true
+shader_parameter/roll = false
+shader_parameter/roll_speed = 0.0
+shader_parameter/roll_size = 0.0
+shader_parameter/roll_variation = 0.92000004044012
+shader_parameter/distort_intensity = 0.0
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.02000004845000003
+shader_parameter/brightness = 1.2
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.0
+shader_parameter/vignette_opacity = 0.0
+
 [sub_resource type="CanvasItemMaterial" id="1"]
 
 [sub_resource type="Animation" id="2"]
@@ -132,30 +155,6 @@ _data = {
 &"WhiteOut": SubResource("Animation_rqlip")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3nmf"]
-shader = ExtResource("7_h3nmf")
-shader_parameter/overlay = true
-shader_parameter/scanlines_opacity = 0.050000002375
-shader_parameter/scanlines_width = 0.25
-shader_parameter/grille_opacity = 0.10000000475
-shader_parameter/resolution = Vector2(640, 480)
-shader_parameter/pixelate = true
-shader_parameter/roll = false
-shader_parameter/roll_speed = 0.0
-shader_parameter/roll_size = 0.0
-shader_parameter/roll_variation = 0.92000004044012
-shader_parameter/distort_intensity = 0.0
-shader_parameter/noise_opacity = 0.4
-shader_parameter/noise_speed = 5.0
-shader_parameter/static_noise_intensity = 0.06
-shader_parameter/aberration = 0.02000004845000003
-shader_parameter/brightness = 1.2
-shader_parameter/discolor = true
-shader_parameter/warp_amount = 0.0
-shader_parameter/clip_warp = false
-shader_parameter/vignette_intensity = 0.0
-shader_parameter/vignette_opacity = 0.0
-
 [node name="Main" type="CanvasLayer"]
 script = ExtResource("2")
 
@@ -170,9 +169,20 @@ bus = &"Music"
 stream = ExtResource("6_5mxpv")
 bus = &"Music"
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 15
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_h3nmf")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="GUI" type="CanvasLayer" parent="."]
 process_mode = 3
-layer = 12
+layer = 10
 
 [node name="ScreenFader" type="ColorRect" parent="GUI"]
 material = SubResource("1")
@@ -188,8 +198,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_iltn5")
 }
 autoplay = "RESET"
-
-[node name="ControllerMenu" parent="GUI" instance=ExtResource("6")]
 
 [node name="Pause" parent="GUI" instance=ExtResource("7")]
 
@@ -284,13 +292,4 @@ offset_right = 128.0
 offset_bottom = 32.0
 color = Color(1, 1, 0, 1)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 16
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-material = SubResource("ShaderMaterial_h3nmf")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ControllerMenu" parent="GUI" instance=ExtResource("6")]

@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 var playerControlIndex = 0 # current selected gamepad
 var clearEventStep = 0 # used for iterating through canceled inputs
@@ -19,6 +19,8 @@ var joyAxisNameList = [
 ]
 
 var defaultMap = []
+
+@onready var buttons: Array[Button] = []
 
 func _ready():
 	# get defaults before loading inputs
@@ -192,3 +194,10 @@ func _on_Defaults_pressed():
 		InputMap.action_erase_events(getActions[i])
 		for j in defaultMap[i]:
 			InputMap.action_add_event(getActions[i],j)
+
+
+func _on_visibility_changed() -> void:
+	if !is_node_ready():
+		await ready
+	#if visible == true:
+	#	buttons[0].grab_focus()

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg66wlapd6lpv"]
+
+[ext_resource type="Texture2D" uid="uid://6s6dhdvbfud2" path="res://s2built000.png" id="1_lo1d2"]
+
+[node name="crtTest" type="Node"]
+
+[node name="S2Built000" type="Sprite2D" parent="."]
+position = Vector2(160, 112)
+texture = ExtResource("1_lo1d2")

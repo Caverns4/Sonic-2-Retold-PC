@@ -17,6 +17,7 @@ var menusText = [
 "sound 100",
 "music 100",
 "scale x1",
+"crt filter on",
 "full screen off",
 "controls",
 "back",],
@@ -90,16 +91,19 @@ func _input(event):
 						set_menu(option)
 			MENUS.OPTIONS: # options menu
 				match(option): # Options
-					3: # full screen
+					3: # CRT Filter
+						Main.crt_filter.visible = !Main.crt_filter.visible
+						$PauseMenu/VBoxContainer.get_child(option+1).get_child(0).text = update_text(option+1)
+					4: # full screen
 						get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (!((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN))) else Window.MODE_WINDOWED
 						$PauseMenu/VBoxContainer.get_child(option+1).get_child(0).text = update_text(option+1)
-					4: # control menu
+					5: # control menu
 						Global.save_settings()
 						set_menu(0)
-						$"../ControllerMenu".visible = true
+						Main.control_menu.visible = true
 						visible = false
 						get_tree().paused = true
-					5: # back
+					6: # back
 						Global.save_settings()
 						set_menu(0)
 			MENUS.RESTART: # reset level
@@ -247,8 +251,10 @@ func update_text(textRow = 0):
 		2: # Music
 			return "music "+str(int(((AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))-clampSounds[0])/(abs(clampSounds[0])+abs(clampSounds[1])))*100))
 		3: # Scale
-			return "scale x"+str(Global.zoomSize)
-		4: # Full screen
+			return "scale x"+str(int(Global.zoomSize))
+		4: # CRT Filter
+			return "crt filter: " + onOff[int(Main.crt_filter.visible)]
+		5: # Full screen
 			return "full screen "+onOff[int(((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN)))]
 		_: # Default
 			return menusText[menu][textRow]
