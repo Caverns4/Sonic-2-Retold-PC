@@ -68,6 +68,23 @@ func _ready() -> void:
 		if $ButtonPanels.get_child(i) is Button:
 			var btn =  $ButtonPanels.get_child(i)
 			btn.pressed.connect(keybind_button_pressed.bind(btn))
+	_update_button_text()
+
+func _update_button_text():
+	for i in $ButtonPanels.get_child_count():
+		if $ButtonPanels.get_child(i) is Button:
+			var btn =  $ButtonPanels.get_child(i)
+			
+			var player_id = ""
+			if current_player > 0:
+				player_id = "_P2"
+			var j = player_inputs[i] + player_id
+			if j is InputEventJoypadButton:
+				buttons_list[current_bind].text = j.as_text().right(3).trim_suffix(")")
+				buttons_list[current_bind].text = "button " + buttons_list[current_bind].text
+			elif j is InputEventJoypadMotion:
+				buttons_list[current_bind].text = joyAxisNameList[j.axis]+str(int(j.axis_value))
+			btn.text = InputMap.get_action_description(j)
 	
 
 func _input(event: InputEvent) -> void:
@@ -103,11 +120,13 @@ func _input(event: InputEvent) -> void:
 
 func _on_player_1_pressed() -> void:
 	current_player = 0
+	_update_button_text()
 	bind_each_input()
 
 
 func _on_player_2_pressed() -> void:
 	current_player = 1
+	_update_button_text()
 	bind_each_input()
 
 func keybind_button_pressed(emitter: Button):

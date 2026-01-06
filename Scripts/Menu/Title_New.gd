@@ -93,8 +93,8 @@ func _ready():
 
 func _process(delta):
 	if titleScroll:
-		$TitleBanner.global_position.x += (4*60*delta)
-		$Celebrations.global_position.x += (4*60*delta)
+		$TitleBanner.global_position.x += (5*60*delta)
+		$Celebrations.global_position.x += (5*60*delta)
 	if titleState < STATES.FADEOUT:
 		_unhandledInput(Input)
 

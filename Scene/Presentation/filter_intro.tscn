@@ -100,12 +100,14 @@ alignment = 1
 [node name="YesButton" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_ks5kd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ks5kd")
 theme_override_styles/focus = SubResource("StyleBoxFlat_1k4ub")
 text = " YES "
 
 [node name="NoButton" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_ks5kd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ks5kd")
 theme_override_styles/focus = SubResource("StyleBoxFlat_1k4ub")
 text = "  No "
 

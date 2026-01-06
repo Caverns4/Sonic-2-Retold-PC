@@ -604,6 +604,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_bottom = 32.0
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Cover" type="ColorRect" parent="CanvasLayer"]
@@ -614,6 +615,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(0, 70)
+mouse_filter = 2
 color = Color(0.533333, 0.533333, 0.533333, 1)
 
 [node name="Labels" type="Control" parent="CanvasLayer"]
@@ -623,22 +625,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Date" type="Label" parent="CanvasLayer/Labels"]
-modulate = Color(1, 1, 0, 1)
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = -8.0
-offset_right = 138.0
-grow_vertical = 0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_yuhp3")
-text = "2026.01.04.01 alpha"
-vertical_alignment = 2
-uppercase = true
 
 [node name="TitleMenu" type="Control" parent="CanvasLayer/Labels"]
 layout_mode = 1
@@ -677,7 +663,34 @@ autowrap_mode = 0
 position = Vector2(-56, 4)
 texture = ExtResource("6_0yyi7")
 
-[node name="Credit" type="Label" parent="CanvasLayer"]
+[node name="Cover" type="CanvasLayer" parent="."]
+layer = -1
+follow_viewport_scale = 0.001
+
+[node name="Back" type="ColorRect" parent="Cover"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Date" type="Label" parent="Cover"]
+modulate = Color(1, 1, 0, 1)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -8.0
+offset_right = 154.0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_yuhp3")
+text = "2026.01.06.01 alpha"
+vertical_alignment = 2
+uppercase = true
+
+[node name="Credit" type="Label" parent="Cover"]
 modulate = Color(1, 1, 0, 1)
 anchors_preset = 3
 anchor_left = 1.0
@@ -692,20 +705,6 @@ theme_override_fonts/font = ExtResource("3_yuhp3")
 text = "IKEY ILEX"
 horizontal_alignment = 2
 vertical_alignment = 2
-
-[node name="Cover" type="CanvasLayer" parent="."]
-layer = -1
-scale = Vector2(64, 64)
-transform = Transform2D(64, 0, 0, 64, 0, 0)
-follow_viewport_scale = 0.001
-
-[node name="Back" type="ColorRect" parent="Cover"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0)
 
 [node name="TitleAnimate" type="AnimationPlayer" parent="."]
 libraries = {
