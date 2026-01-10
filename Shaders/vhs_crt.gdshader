@@ -156,8 +156,8 @@ void fragment()
     }
 
     if (discolor){
-        float saturation = 0.5;
-        float contrast = 1.2;
+        float saturation = 0.5; // 0.5
+        float contrast = 1.3; // 1.2
         vec3 greyscale = vec3(text.r + text.g + text.b) / 3.;
         text.rgb = mix(text.rgb, greyscale, saturation);
 
