@@ -427,6 +427,7 @@ func _ready():
 	superAnimator = newSprite.get_node_or_null("SuperPalette")
 	spriteController.queue_free()
 	spriteController = newSprite
+	superAnimator.play("RESET")
 	
 	# set secondary hitboxes
 	crouchBox = spriteController.get_node_or_null("CrouchBox")

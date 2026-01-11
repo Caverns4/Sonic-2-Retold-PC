@@ -340,6 +340,22 @@ tracks/0/keys = {
 "values": [13, 14]
 }
 
+[sub_resource type="Animation" id="Animation_aqoqg"]
+resource_name = "hang2"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mighty/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [92]
+}
+
 [sub_resource type="Animation" id="Animation_pv58b"]
 resource_name = "hangShimmy"
 length = 0.8
@@ -355,7 +371,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [117, 118, 119, 118]
+"values": [91, 92, 93, 92]
 }
 
 [sub_resource type="Animation" id="78"]
@@ -755,22 +771,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [97, 98, 99, 100, 101, 102]
-}
-
-[sub_resource type="Animation" id="Animation_aqoqg"]
-resource_name = "hang2"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Mighty/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_36uej"]
