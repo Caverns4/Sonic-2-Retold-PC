@@ -1,9 +1,6 @@
 extends Node2D
 
-# Todo: Behavior
-#if a player enters the area range, wait for the player to "land" at the
-#bottom before starting to spin the player up and own in their corkscrew
-#animation.
+# TODO: Check animation
 
 const SPEED = 6
 const AMPLITUDE = 36

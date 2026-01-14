@@ -4,8 +4,7 @@ extends EnemyBase
 
 var target_position: Vector2 = Vector2.ZERO
 var Projectile = preload("res://Entities/Enemies/Projectiles/AsteronProjectile.tscn")
- 
-#Todo: custom sprite art
+
 var bullet_stats: Array[Vector2] = [
 	Vector2(0,-360),
 	Vector2(-360,0),

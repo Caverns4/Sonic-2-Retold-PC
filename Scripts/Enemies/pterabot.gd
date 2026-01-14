@@ -1,7 +1,5 @@
 @tool
 extends EnemyBase
-# Thanks to VAdaPEGA for accuracy testing
-#Todo: Get rid of dependencies from Buzzbombers
 
 var Projectile = preload("res://Entities/Enemies/Projectiles/PterabotProjectile.tscn")
 

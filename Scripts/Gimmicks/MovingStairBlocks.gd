@@ -8,8 +8,6 @@ extends Node2D
 
 # The taget position of each child stair block, in order, by phase, clockwise
 var phase = 0
-#Todo: Custom dimension support, allow hiding inner-2 children
-
 # Each block MUST be 32x32 pixels, witth vertical sprites
 var spriteFrame = 0
 var maxFrames = 1

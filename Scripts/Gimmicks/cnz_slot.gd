@@ -86,9 +86,14 @@ func _process(delta: float) -> void:
 
 
 func reward_player():
-	if player:
+	if !player:
+		return
+	if player == Global.players[0] or Global.two_player_mode:
 		state = STATES.GIVING_PRIZE
 		prizes = Parse_Prize()
+	else:
+		dropPlayer()
+		state = STATES.NONE
 
 func dropPlayer():
 	if player:
@@ -118,7 +123,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			reels = determine_each_slot()
 			Global.character_reels.roll_character_slots(reels,self)
 
-## TODO: Second slot and third shot should have probable outcomes.
 func determine_each_slot():
 	var a = randi_range(1,SLOT.size()-1)
 	var b = randi_range(1,SLOT.size()-1)

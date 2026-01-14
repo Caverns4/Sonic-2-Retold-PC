@@ -35,7 +35,6 @@ func _physics_process(delta):
 func MoveWithGravity(delta):
 	# Velocity movement
 	set_velocity(movement)
-	# TODOConverter40 looks that snap in Godot 4.0 is float, not vector like in Godot 3 - previous value `Vector2.DOWN`
 	set_up_direction(Vector2.UP)
 	move_and_slide()
 	ground = is_on_floor()

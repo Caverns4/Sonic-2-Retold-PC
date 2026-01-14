@@ -2,7 +2,7 @@ extends Node3D
 
 @export var music: AudioStream = preload("res://Audio/Soundtrack/s2br_SpecialStage.ogg")
 @export var stage_layouts: Array[PackedScene] = []
-## Todo
+## TODO
 @onready var stage: SpecialStagePropertiesComponent = $Stage1
 
 var primary_material: StandardMaterial3D = preload("res://Models/SpecialStage/Materials/Color1.tres")

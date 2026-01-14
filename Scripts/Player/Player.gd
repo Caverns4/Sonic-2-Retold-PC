@@ -246,25 +246,12 @@ var partnerControlTime = DEFAULT_PLAYER2_CONTROL_TIME
 @onready var defaultMask = collision_mask
 @onready var defaultZIndex = z_index
 
-# Input Memory is a circular queue backed by a 2D array. Player 2 draws from memoryPosition + 1
-# while the player inserts at memoryPosition. In effect, Player 2 is always drawing control memory
-# from the memory that was written memoryPosition frames ago.
-#
-# The first indice of the inputMemory queue is the queue position.
-# The Second indice refers to the particular input.
-#
-# Example: inputMemory[5][INPUT.XINPUT] is controller memory that was written while memoryPosition was equal to 5
-# and the specific input tracked is INPUT.XINPUT
-#
-# Note: Unless you are specifically writing something that manipulates player 2's AI control, you
-# should never need to worry about any of these details.
+## Control memory queue
 var inputMemory = []
-# Used to track current position in the queue - this is where the player inserts into memory
-#
 # XXX TODO; Note that since we're doing this on process and not physics_process, the speed that we
-# exhaust the memoryPosition is going to vary based on monitor refresh rate. Once we migrate to
-# Godot 4, we can check the refresh rate of the user's monitor and adjust the buffer size
-# accordingly.
+# exhaust the memoryPosition is going to vary based on monitor refresh rate.
+# Should be updated to run at consistent rate.
+## Used to track current position in the queue - this is where the player inserts into memory
 var memoryPosition = 0
 const INPUT_MEMORY_LENGTH = 20
 

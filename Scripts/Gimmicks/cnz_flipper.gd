@@ -1,7 +1,6 @@
 @tool
 extends StaticBody2D
 
-#Todo
 @export_enum("Angled","Vertical") var type: int = 0
 
 var flipsound: AudioStream = preload("res://Audio/SFX/Objects/CNZ_Flipper.wav")
