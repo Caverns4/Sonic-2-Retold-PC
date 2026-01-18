@@ -4,11 +4,11 @@ extends CanvasLayer
 @export var focusPlayer: int = 0
 
 # counter elements pointers
-@onready var scoreText = $Counters/Text/ScoreNumber
-@onready var timeText = $Counters/Text/TimeNumbers
-@onready var ringText = $Counters/Text/RingCount
-@onready var lifeText = $LifeCounter/Icon/LifeText
-@onready var iconAnim = $Counters/Text/IconAnim
+@onready var scoreText: Label = $Counters/Text/ScoreNumber
+@onready var timeText: Label = $Counters/Text/TimeNumbers
+@onready var ringText: Label = $Counters/Text/RingCount
+@onready var lifeText: Label = $LifeCounter/Icon/LifeText
+@onready var iconAnim: AnimationPlayer = $Counters/Text/IconAnim
 
 ## If true, play the level card animator and use the Zone Name Text
 @export var playLevelCard: bool = true
@@ -519,4 +519,10 @@ func boss_hit():
 	if boss_current_health == 0:
 		disconnect("got_hit",boss_hit)
 		$"Boss Life".visible = false
-		
+
+
+func super_icon_ready(state: bool = false):
+	if state:
+		iconAnim.play("Super")
+	else:
+		iconAnim.play("RESET")

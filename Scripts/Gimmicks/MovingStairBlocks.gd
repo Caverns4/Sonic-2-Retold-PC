@@ -10,7 +10,7 @@ extends Node2D
 var phase = 0
 # Each block MUST be 32x32 pixels, witth vertical sprites
 var spriteFrame = 0
-var maxFrames = 1
+var maxFrames: int = 1
 
 # Each target pos relative to center, in order of child, by phase
 var targetPositions = [
@@ -28,6 +28,7 @@ var stateTimer = 0.0
 var offsetTimer = 0 #To be used for editor preview if I feel like figuring it out
 
 func _ready():
+	@warning_ignore('integer_division')
 	maxFrames = platformSprite.get_height()/platformSprite.get_width()
 	if !Engine.is_editor_hint():
 		if childCount == 0:
@@ -73,7 +74,7 @@ func _physics_process(delta):
 			phase = wrapi(phase,0,targetPositions.size())
 		setvframeOfChildren(delta)
 
-func positionChildren(delta):
+func positionChildren(_delta):
 	var getPos = Vector2.ZERO
 	var curArray = targetPositions[phase]
 	var lastArray = targetPositions[wrapi(phase-1,0,targetPositions.size())]
@@ -87,7 +88,7 @@ func positionChildren(delta):
 		getPos = lastArray[i] + ((curArray[i]-lastArray[i]) * stateTimer)
 		operand.position = round(getPos)
 
-func setvframeOfChildren(delta):
+func setvframeOfChildren(_delta):
 	spriteFrame = wrapi(round(Global.globalTimer*6.0),0,maxFrames)
 	for i in get_child_count():
 		var temp = get_child(i)

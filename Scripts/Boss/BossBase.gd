@@ -75,6 +75,10 @@ func _on_body_exited(body):
 		playerHit.erase(body)
 
 
+func _mark_defeated():
+	boss_over.emit()
+
+
 func _on_DamageArea_area_entered(area):
 	# damage checking
 	if area.get("parent") != null and area.get_collision_layer_value(20):

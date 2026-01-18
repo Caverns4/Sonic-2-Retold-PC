@@ -28,8 +28,11 @@ script = ExtResource("1_1k4ub")
 layer = -1
 
 [node name="Backdrop" type="TextureRect" parent="CanvasLayer"]
-offset_right = 640.0
-offset_bottom = 224.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_ks5kd")
 expand_mode = 1
 stretch_mode = 1
@@ -70,8 +73,8 @@ remaster of Sonic 2 for the Sega
 Genesis or Mega Drive.
 
 Retro games were designed for
-CRT screens, which would alias pixels,
-making sprites looking smoother
+CRT screens, which blended pixels,
+making sprites appear smoother
 than they do on modern screens.
 
 A crt-style filter is provided to

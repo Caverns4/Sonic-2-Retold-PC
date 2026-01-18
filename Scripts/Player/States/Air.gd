@@ -21,15 +21,11 @@ func _process(_delta):
 	if parent.playerControl != 0 or (parent.inputs[parent.INPUTS.YINPUT] < 0 and parent.character == Global.CHARACTERS.TAILS):
 		# Super
 		if (parent.inputs[parent.INPUTS.SUPER] == 1
-		and Global.stageClearPhase == 0
-		and !parent.isSuper
-		and isJump
-		and parent.movement.y > 0-abs(parent.releaseJmp)):
+		and (isJump and parent.movement.y > 0) and parent.super_form_ready()):
 			# Global emeralds use a bit flag, 127 would mean all 7 are 1, see bitwise operations for more info
-			if parent.rings > 49 and Global.emeralds >= 127:
-				parent.set_state(parent.STATES.SUPER)
-				if Global.hud and Global.hud.iconAnim.current_animation == "Super":
-					Global.hud.iconAnim.play("RESET")
+			parent.set_state(parent.STATES.SUPER)
+			if Global.hud:
+				Global.hud.iconAnim.play("RESET")
 				
 		# Shield actions
 		elif ((parent.inputs[parent.INPUTS.ACTION] == 1 or parent.inputs[parent.INPUTS.ACTION2] == 1 or parent.inputs[parent.INPUTS.ACTION3] == 1) and !parent.abilityUsed and isJump):

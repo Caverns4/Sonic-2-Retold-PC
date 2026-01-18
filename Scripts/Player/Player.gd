@@ -382,19 +382,13 @@ func _ready():
 			Global.levelTime = 0
 			Global.levelTimeP2 = 0
 	
-	if Global.bonus_stage_saved_pos:
-		global_position = Global.bonus_stage_saved_pos
+	if Global.bonus_stage_saved_data:
+		global_position = Global.bonus_stage_saved_data.pop_front()
 		camera.global_position = global_position
-		rings = Global.bonus_stage_saved_rings
-		Global.levelTime = Global.bonus_stage_saved_time
-	
+		rings = Global.bonus_stage_saved_data.pop_front()
+		Global.levelTime = Global.bonus_stage_saved_data.pop_front()
 		while ring1upCounter < rings:
 			ring1upCounter += 100
-		
-		Global.bonus_stage_saved_pos = Vector2.ZERO
-		Global.bonus_stage_saved_rings = 0
-		Global.bonus_stage_saved_time = 0.0
-	
 	
 	# run switch physics to ensure character specific physics
 	switch_physics()
@@ -1143,8 +1137,7 @@ func hit_player(damagePoint = global_position, damageType = 0, soundID = 6):
 			#ringDisTime = 30.0/60.0 # ignore rings for 64 frames
 			if Global.hud:
 				Global.hud.perfectEnabled = false
-				if Global.hud.iconAnim.current_animation == "Super":
-					Global.hud.iconAnim.play("RESET")
+				Global.hud.super_icon_ready(false)
 			
 			ringDisTime = 1.0/60.0 # ignore rings for 1/60th second after landing
 			var ringCount = 0
@@ -1185,22 +1178,23 @@ func hit_player(damagePoint = global_position, damageType = 0, soundID = 6):
 
 func get_ring():
 	if playerControl == 1 or Global.two_player_mode:
-		var prev_rings = rings
+		#var prev_rings = rings
 		rings += 1
 		totalRings+=1
 		sfx[7+ringChannel].play()
 		sfx[7].play()
 		ringChannel = int(!ringChannel)
-		
-		if Global.hud: #If the HUD Exists
-			if (Global.emeralds == 127 and 
-			(prev_rings < 50 and rings > 49) and 
-			!isSuper):
-				Global.hud.iconAnim.play("Super")
+		if Global.hud and super_form_ready():
+			Global.hud.super_icon_ready(true)
 		
 	elif partner != null:
 		partner.get_ring()
-	
+
+func super_form_ready() -> bool:
+	if Global.stageClearPhase == 0 and (Global.emeralds == 127 and rings > 49 and !isSuper):
+		return true
+	return false
+
 func kill(soundID: int = 6):
 	if currentState != STATES.DIE:
 		hitbox.disabled = true

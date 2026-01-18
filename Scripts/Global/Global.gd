@@ -47,11 +47,8 @@ var saved_checkpointP2: int = -1
 var checkpoint_time_p2: float = 0
 ## Ring count loaded at the Checkpoint
 var checkpoint_rings_p2: int = 0
-
 ## Bonus Stage Stored Data
-var bonus_stage_saved_pos: Vector2
-var bonus_stage_saved_rings: int
-var bonus_stage_saved_time: float
+var bonus_stage_saved_data: Array = []
 
 
 ## Scene when resetting the game
@@ -91,13 +88,14 @@ enum PLAYER_MODES {SONIC_AND_TAILS,SONIC,TAILS,KNUCKLES,AMY,MIGHTY,RAY}
 #Only used in menus for single player mode.
 var playerModes = ["SONIC & TAILS","SONIC","TAILS","KNUCKLES","AMY","MIGHTY","RAY"]
 # Gameplay values
-var score = 0
-var lives = 3
-var continues = 0 #Never used
-var scoreP2 = 0
-var livesP2 = 3
+var score: int = 0
+var lives: int = 3
+var continues: int = 0 #Never used
+var scoreP2: int = 0
+var livesP2: int = 3
 # emeralds use bitwise flag operations, the equivelent for 7 emeralds would be 127
-var emeralds = 63
+var emeralds: int = 63
+const ALL_EMERALDS: int = 127
 # emerald bit flags
 enum EMERALD {
 	CYAN=1,
@@ -126,11 +124,11 @@ enum STRENGTH_TIER{NORMAL,STRONG,SUPER,UNBREAKABLE}
 enum DAMAGE_TYPES{NORMAL,FIRE,ELEC,WATER} 
 
 ## If a Boss Fight is currently active.
-var fightingBoss = false
+var fightingBoss: bool = false
 
 #Save Data Atributes
-var totalCoins = 0
-var unlockFlags = 0
+var totalCoins: int = 0
+var unlockFlags: int = 0
 enum UNLOCKS{
 	KNUCKLES = 1, # Play as Knuckles: 5 coins
 	AMY = 2, # Play as Amy: 10 coins
@@ -222,9 +220,9 @@ var zoomSize = 2
 ## 0 for 4:3, 1 for 16x9 (roughly)
 var aspectRatio = 0
 
-var aspectResolutions = [
-	Vector2(320,224),
-	Vector2(400,224)
+var aspectResolutions: Array[Vector2] = [
+	Vector2i(320,224),
+	Vector2i(400,224)
 	]
 
 var crt_resolutions: Array[Vector2] = [
@@ -330,10 +328,7 @@ func reset_level_data():
 		levelTimeP2 = 0
 		timerActive = false
 		timerActiveP2 = false
-	if bonus_stage_saved_pos:
-		bonus_stage_saved_pos = Vector2.ZERO
-		bonus_stage_saved_rings = 0
-		bonus_stage_saved_time = 0.0
+	bonus_stage_saved_data.clear()
 	globalTimer = 0
 	stageClearPhase = 0
 
@@ -442,9 +437,9 @@ func loadNextLevel():
 
 ## Build the respawn array
 func save_level_data(pos: Vector2):
-	bonus_stage_saved_pos = pos
-	bonus_stage_saved_rings = Global.players[0].rings
-	bonus_stage_saved_time = levelTime
+	bonus_stage_saved_data.push_back(pos)
+	bonus_stage_saved_data.push_back(Global.players[0].rings)
+	bonus_stage_saved_data.push_back(levelTime)
 
 
 # Godot doesn't like not having emit signal only done in other nodes so we're using a function to call it

@@ -86,23 +86,18 @@ position = Vector2(104, 0)
 
 [node name="SavePanel2" parent="SaveFileContainer" instance=ExtResource("3_echdj")]
 position = Vector2(208, 0)
-character_id = 1
 
 [node name="SavePanel3" parent="SaveFileContainer" instance=ExtResource("3_echdj")]
 position = Vector2(312, 0)
-character_id = 2
 
 [node name="SavePanel4" parent="SaveFileContainer" instance=ExtResource("3_echdj")]
 position = Vector2(416, 0)
-character_id = 3
 
 [node name="SavePanel5" parent="SaveFileContainer" instance=ExtResource("3_echdj")]
 position = Vector2(520, 0)
-character_id = 4
 
 [node name="SavePanel6" parent="SaveFileContainer" instance=ExtResource("3_echdj")]
 position = Vector2(624, 0)
-character_id = 5
 
 [node name="DeleteSavePanel" parent="SaveFileContainer" instance=ExtResource("7_y1b2j")]
 position = Vector2(728, 0)

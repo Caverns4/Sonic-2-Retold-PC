@@ -51,7 +51,7 @@ func _process(delta):
 			# start running away once timer hits 0
 			if deathTimer <= 0:
 				#scale.x = -abs(scale.x)
-				emit_signal("boss_over")
+				_mark_defeated()
 
 func _physics_process(delta):
 	# move boss

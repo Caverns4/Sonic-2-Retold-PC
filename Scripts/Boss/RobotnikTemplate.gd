@@ -44,7 +44,6 @@ func _process(delta):
 			elif deathTimer > 0.5:
 				if velocity.y > -200:
 					velocity.y -= 400*delta
-				
 				# if the next step is going to be below 0.5 seconds then stop moving
 				if deathTimer-delta <= 0.5:
 					velocity.y = 0
@@ -53,7 +52,7 @@ func _process(delta):
 			if deathTimer <= 0:
 				velocity = Vector2(200,-25)
 				scale.x = -abs(scale.x)
-				emit_signal("boss_over")
+				_mark_defeated()
 
 func _physics_process(delta):
 	super(delta)

@@ -71,7 +71,7 @@ func _physics_process(delta):
 		setvframeOfChildren(delta)
 
 
-func setvframeOfChildren(delta):
+func setvframeOfChildren(_delta):
 	spriteFrame = wrapi(round(Global.globalTimer*6.0),0,maxFrames)
 	for i in get_child_count():
 		var temp = get_child(i)
