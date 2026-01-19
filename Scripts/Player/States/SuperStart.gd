@@ -3,7 +3,7 @@ extends PlayerState
 var activated = true
 
 func _process(_delta):
-	if activated and !parent.isSuper:
+	if activated and !parent.is_super:
 		var remVel = parent.movement
 		var lastAnim = parent.animator.current_animation
 		# hide shield
@@ -33,14 +33,14 @@ func _process(_delta):
 			parent.sprite.texture = parent.superSprite
 		# reset velocity to memory
 		parent.movement = remVel
-		parent.isSuper = true
+		parent.is_super = true
 		parent.switch_physics()
-		parent.supTime = 1
+		parent.super_time = 1
 		# start super theme
 		SoundDriver.playNormalMusic()
 		
 	# if already super just go to air state
-	elif parent.isSuper:
+	elif parent.is_super:
 		parent.set_state(parent.STATES.AIR)
 		
 

@@ -3,15 +3,15 @@ extends Area2D
 
 var texture = load("res://Graphics/EditorUI/layer_switchers.png")
 # layer settings, should be self explanatory
-@export var size = Vector2(1,3)
-@export_enum("Horizontal", "Vertical") var orientation = 0
-@export_enum("Low", "High") var leftLayer = 1
-@export_enum("Low", "High") var rightLayer = 0
-@export var onlyOnFloor = false
-@export var affectPriority = false
+@export var size: Vector2i = Vector2(1,3)
+@export_enum("Horizontal", "Vertical") var orientation: int = 0
+@export_enum("Low", "High") var leftLayer: int = 1
+@export_enum("Low", "High") var rightLayer: int = 0
+@export var onlyOnFloor: bool = false
+@export var affectPriority: bool = false
 
 # list of player contacts
-var playerList = []
+var playerList: Array[Player2D] = []
 
 func _ready():
 	# set the mask scale to match the visual scale

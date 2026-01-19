@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwr3g232p2psd"]
+
+[ext_resource type="Script" uid="uid://c8x7yqihiij8g" path="res://Scripts/Boss/silver_sonic.gd" id="1_muoi7"]
+[ext_resource type="Texture2D" uid="uid://bkgdgsmqi1lh5" path="res://Graphics/Boss/SilverSonic.png" id="2_muoi7"]
+[ext_resource type="AudioStream" uid="uid://bq25mlko4saoj" path="res://Audio/SFX/Boss/s2br_BossHit.wav" id="5_tdqkg"]
+
+[sub_resource type="RectangleShape2D" id="5"]
+size = Vector2(32, 48)
+
+[node name="SilverSonic" type="CharacterBody2D"]
+collision_layer = 16384
+collision_mask = 0
+script = ExtResource("1_muoi7")
+
+[node name="SilverSonic" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("2_muoi7")
+hframes = 8
+vframes = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="SilverSonic"]
+show_behind_parent = true
+texture = ExtResource("2_muoi7")
+hframes = 8
+vframes = 2
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("5")
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_tdqkg")
+bus = &"SFX"
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 528384
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+modulate = Color(1, 0, 0, 1)
+shape = SubResource("5")
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_DamageArea_area_entered"]
+[connection signal="area_exited" from="HitBox" to="." method="_on_HitBox_area_exited"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="HitBox" to="." method="_on_body_exited"]

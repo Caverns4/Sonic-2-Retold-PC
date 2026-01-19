@@ -66,7 +66,7 @@ position = Vector2(96, 688)
 
 [node name="LayerSwitcher" parent="Entities" instance=ExtResource("18_p75ke")]
 position = Vector2(4216, 803)
-size = Vector2(1, 20)
+size = Vector2i(1, 20)
 leftLayer = 0
 
 [node name="LayerSwitcher2" parent="Entities" instance=ExtResource("18_p75ke")]
@@ -74,11 +74,11 @@ position = Vector2(4351, 809)
 
 [node name="LayerSwitcher3" parent="Entities" instance=ExtResource("18_p75ke")]
 position = Vector2(4471, 923)
-size = Vector2(1, 16)
+size = Vector2i(1, 16)
 
 [node name="LayerSwitcher4" parent="Entities" instance=ExtResource("18_p75ke")]
 position = Vector2(4600, 931)
-size = Vector2(1, 20)
+size = Vector2i(1, 20)
 leftLayer = 0
 
 [node name="LayerSwitcher5" parent="Entities" instance=ExtResource("18_p75ke")]
@@ -86,11 +86,11 @@ position = Vector2(4735, 937)
 
 [node name="LayerSwitcher6" parent="Entities" instance=ExtResource("18_p75ke")]
 position = Vector2(4855, 1051)
-size = Vector2(1, 16)
+size = Vector2i(1, 16)
 
 [node name="LayerSwitcher7" parent="Entities" instance=ExtResource("18_p75ke")]
 position = Vector2(6137, 291)
-size = Vector2(1, 20)
+size = Vector2i(1, 20)
 leftLayer = 0
 
 [node name="LayerSwitcher8" parent="Entities" instance=ExtResource("18_p75ke")]
@@ -98,11 +98,11 @@ position = Vector2(6272, 297)
 
 [node name="LayerSwitcher9" parent="Entities" instance=ExtResource("18_p75ke")]
 position = Vector2(6392, 411)
-size = Vector2(1, 16)
+size = Vector2i(1, 16)
 
 [node name="LayerSwitcher10" parent="Entities" instance=ExtResource("18_p75ke")]
 position = Vector2(6521, 419)
-size = Vector2(1, 20)
+size = Vector2i(1, 20)
 leftLayer = 0
 
 [node name="LayerSwitcher11" parent="Entities" instance=ExtResource("18_p75ke")]
@@ -110,11 +110,11 @@ position = Vector2(6656, 425)
 
 [node name="LayerSwitcher12" parent="Entities" instance=ExtResource("18_p75ke")]
 position = Vector2(6776, 539)
-size = Vector2(1, 16)
+size = Vector2i(1, 16)
 
 [node name="LayerSwitcher13" parent="Entities" instance=ExtResource("18_p75ke")]
 position = Vector2(8569, 675)
-size = Vector2(1, 20)
+size = Vector2i(1, 20)
 leftLayer = 0
 
 [node name="LayerSwitcher14" parent="Entities" instance=ExtResource("18_p75ke")]
@@ -122,7 +122,7 @@ position = Vector2(8704, 681)
 
 [node name="LayerSwitcher15" parent="Entities" instance=ExtResource("18_p75ke")]
 position = Vector2(8824, 795)
-size = Vector2(1, 16)
+size = Vector2i(1, 16)
 
 [node name="Bridge" parent="Entities" instance=ExtResource("19_p3tnf")]
 position = Vector2(840, 778)
@@ -229,36 +229,36 @@ position = Vector2(6640, 1208)
 
 [node name="LayerSwitcher16" parent="Entities" instance=ExtResource("18_p75ke")]
 position = Vector2(8128, 1032)
-size = Vector2(8, 1)
+size = Vector2i(8, 1)
 orientation = 1
 leftLayer = 0
 
 [node name="LayerSwitcher21" parent="Entities" instance=ExtResource("18_p75ke")]
 position = Vector2(7904, 1032)
-size = Vector2(6, 1)
+size = Vector2i(6, 1)
 orientation = 1
 leftLayer = 0
 rightLayer = 1
 
 [node name="LayerSwitcher20" parent="Entities" instance=ExtResource("18_p75ke")]
 position = Vector2(7840, 1184)
-size = Vector2(1, 4)
+size = Vector2i(1, 4)
 leftLayer = 0
 
 [node name="LayerSwitcher18" parent="Entities" instance=ExtResource("18_p75ke")]
 position = Vector2(8776, 1119)
-size = Vector2(1, 16)
+size = Vector2i(1, 16)
 
 [node name="LayerSwitcher17" parent="Entities" instance=ExtResource("18_p75ke")]
 position = Vector2(5472, 764)
-size = Vector2(8, 1)
+size = Vector2i(8, 1)
 orientation = 1
 leftLayer = 0
 rightLayer = 1
 
 [node name="LayerSwitcher19" parent="Entities" instance=ExtResource("18_p75ke")]
 position = Vector2(6472, 1088)
-size = Vector2(1, 8)
+size = Vector2i(1, 8)
 
 [node name="ForceAngleSides" parent="Entities" instance=ExtResource("22_brwg2")]
 position = Vector2(1302, 770)

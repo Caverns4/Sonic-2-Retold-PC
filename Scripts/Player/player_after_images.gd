@@ -32,7 +32,7 @@ func activate():
 
 func _physics_process(_delta: float) -> void:
 	if active:
-		if !player.isSuper:
+		if !player.is_super:
 			active = false
 			for i:Sprite2D in sprites:
 				i.visible = false

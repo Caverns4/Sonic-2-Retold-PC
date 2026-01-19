@@ -59,8 +59,8 @@ func _physics_process(delta: float) -> void:
 				
 				for i in targets.size():
 					var node = targets[i]
-					if (node.get("supTime") != null):
-						if (node.supTime > 0):
+					if (node.get("super_time") != null):
+						if (node.super_time > 0):
 							direction = sign(global_position.x - node.global_position.x)
 							waitTime = DASH_CHARGE_TIME/2.0
 				movement.x = 0

@@ -49,7 +49,7 @@ var inputMemory = []
 var inertia : float  = 0.0 # Movement Speed forward
 var movement : Vector3 = Vector3.ZERO #linear motion
 var target_up_dir: Vector3 = Vector3.UP
-var jumpBuffer: float = 0
+var jump_buffer: float = 0
 var dead: bool = false
 var top_speed: float = TOP_SPEED
 
@@ -101,8 +101,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	rotate_to_floor_angle(delta)
 	# jump buffer time
-	if jumpBuffer > 0.0:
-		jumpBuffer -= delta
+	if jump_buffer > 0.0:
+		jump_buffer -= delta
 		
 	if movement.y < -32.0 and !dead:
 		Global.special_hud.SetupNextRound(true)
@@ -111,15 +111,15 @@ func _physics_process(delta: float) -> void:
 func handle_input(delta):
 	# Handle jump.
 	if isActionPressed():
-		jumpBuffer = JUMP_BUFFER_TIME
+		jump_buffer = JUMP_BUFFER_TIME
 	
-	if jumpBuffer > 0 and is_on_floor():
+	if jump_buffer > 0 and is_on_floor():
 		if character != Global.CHARACTERS.KNUCKLES:
 			movement.y = JUMP_VELOCITY
-			jumpBuffer = 0.0
+			jump_buffer = 0.0
 		else:
 			movement.y = JUMP_KNUCKLES
-			jumpBuffer = 0.0
+			jump_buffer = 0.0
 		
 		sfx[0].play()
 		if sprite:

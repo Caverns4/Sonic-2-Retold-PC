@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://vs0jloj5swvg"]
+[gd_scene load_steps=15 format=4 uid="uid://vs0jloj5swvg"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_588bb"]
 [ext_resource type="AudioStream" uid="uid://g0a01sst32bm" path="res://Audio/Soundtrack/s2br_DeathEgg.ogg" id="2_j7ucr"]
@@ -9,8 +9,10 @@
 [ext_resource type="TileSet" uid="uid://degtrdfi1sc00" path="res://Tileset/Levels/CPZ.tres" id="6_45kyl"]
 [ext_resource type="PackedScene" uid="uid://blwewyk2fnrew" path="res://Entities/Gimmicks/Shutter.tscn" id="7_7thrb"]
 [ext_resource type="PackedScene" uid="uid://p7n68euqgca8" path="res://Entities/MainObjects/GoalArea.tscn" id="8_1i625"]
+[ext_resource type="PackedScene" uid="uid://bwr3g232p2psd" path="res://Entities/Boss/SilverSonic/SilverSonic.tscn" id="11_6iumj"]
 [ext_resource type="PackedScene" uid="uid://bgodeg4oddje6" path="res://Entities/MainObjects/BoundrySetter.tscn" id="11_cvek8"]
 [ext_resource type="PackedScene" uid="uid://cr0ig40i3kkmg" path="res://Entities/Boss/SilverSonic/eggman_window.tscn" id="12_iu1cr"]
+[ext_resource type="PackedScene" uid="uid://vh0ailk0432j" path="res://Entities/Boss/BossBoundrySetter.tscn" id="14_uwhgd"]
 [ext_resource type="PackedScene" uid="uid://bmsutfc5bals8" path="res://Entities/Boss/eggman_mechless.tscn" id="16_i313q"]
 
 [node name="DeathEgg2" type="Node2D"]
@@ -46,6 +48,29 @@ disablePartner = true
 [node name="Shutter" parent="Entities" instance=ExtResource("7_7thrb")]
 position = Vector2(504, 288)
 
+[node name="Shutter2" parent="Entities" instance=ExtResource("7_7thrb")]
+position = Vector2(904, 352)
+side = 2
+
+[node name="Shutter3" parent="Entities" instance=ExtResource("7_7thrb")]
+position = Vector2(1016, 352)
+side = 2
+
+[node name="Shutter4" parent="Entities" instance=ExtResource("7_7thrb")]
+position = Vector2(1272, 352)
+
+[node name="Shutter5" parent="Entities" instance=ExtResource("7_7thrb")]
+position = Vector2(1416, 352)
+
+[node name="Shutter6" parent="Entities" instance=ExtResource("7_7thrb")]
+position = Vector2(1528, 352)
+
+[node name="Shutter7" parent="Entities" instance=ExtResource("7_7thrb")]
+position = Vector2(1656, 352)
+
+[node name="Shutter8" parent="Entities" instance=ExtResource("7_7thrb")]
+position = Vector2(2184, 352)
+
 [node name="GoalArea" parent="Entities" instance=ExtResource("8_1i625")]
 position = Vector2(3880, 256)
 scale = Vector2(1, 16)
@@ -62,8 +87,18 @@ bottomBoundry = 416
 
 [node name="Boss" type="Node" parent="."]
 
+[node name="BossBoundrySetter" parent="Boss" instance=ExtResource("14_uwhgd")]
+position = Vector2(704, 304)
+bossPath = NodePath("../SilverSonic")
+keepRightLocked = false
+
+[node name="SilverSonic" parent="Boss" instance=ExtResource("11_6iumj")]
+position = Vector2(856, 360)
+boss_name = "Silver Sonic"
+
 [node name="EggmanWindow" parent="Boss" instance=ExtResource("12_iu1cr")]
 position = Vector2(704, 312)
+silver_sonic = NodePath("../SilverSonic")
 
 [node name="Eggman_Mechless" parent="Boss" instance=ExtResource("16_i313q")]
 position = Vector2(1088, 368)

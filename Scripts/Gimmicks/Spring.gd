@@ -75,7 +75,7 @@ func physics_collision(body: Player2D, hitVector):
 			# disable ground
 			body.ground = false
 			body.set_state(body.STATES.AIR)
-			body.airControl = true
+			body.air_control = true
 			# figure out the animation based on the players current animation
 			var curAnim = "walk"
 			match(body.animator.current_animation):
@@ -120,14 +120,13 @@ func physics_collision(body: Player2D, hitVector):
 		return true
 	
 
-func _on_Diagonal_body_entered(body):
+func _on_Diagonal_body_entered(body:Player2D):
 	# diagonal springs are pretty straightforward
 	body.angle = body.gravityAngle
-	body.currentState = body.STATES.AIR
+	body.set_state(body.STATES.AIR,body.currentHitbox.NORMAL)
 	body.position.x = position.x
 	body.position.y = position.y-8
-	#body.movement = hitDirection.rotated(rotation).rotated(-body.rotation)*speed[type]*60
-	#body.movement = hitDirection.rotated(rotation)*(speed[type]*60)
+	body.air_control = true
 	body.movement = hitDirection*(speed[type]*60)
 	$SpringAnimator.play(animList[animID])
 	if (hitDirection.y < 0):
@@ -147,4 +146,4 @@ func _on_Diagonal_body_entered(body):
 	if $VisibleOnScreenNotifier2D.is_on_screen():
 		SoundDriver.play_sound(spring_sfx)
 	# Disable pole grabs
-	body.poleGrabID = self
+	body.poleGrabID = null

@@ -65,7 +65,7 @@ func _physics_process(delta: float) -> void:
 						player.animator.play("roll")
 						player.set_state(player.STATES.ANIMATION,player.currentHitbox.ROLL)
 						player.global_position.x += (60*delta)*direction
-						if player.jumpBuffer > 0.0:
+						if player.jump_buffer > 0.0:
 							launch = true
 				if launch:
 					$Sprite2D.frame = 1

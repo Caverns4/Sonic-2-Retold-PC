@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://cr0ig40i3kkmg"]
+[gd_scene load_steps=17 format=3 uid="uid://cr0ig40i3kkmg"]
 
 [ext_resource type="Texture2D" uid="uid://bl0i4wir2nb2n" path="res://Graphics/Boss/DEZWindow.png" id="1_rcmjm"]
+[ext_resource type="Script" uid="uid://bpb0lqubcuvfp" path="res://Scripts/Boss/eggman_window.gd" id="2_igy0h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a11ke"]
 atlas = ExtResource("1_rcmjm")
@@ -49,6 +50,10 @@ region = Rect2(0, 120, 32, 24)
 [sub_resource type="AtlasTexture" id="AtlasTexture_liwd7"]
 atlas = ExtResource("1_rcmjm")
 region = Rect2(0, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igy0h"]
+atlas = ExtResource("1_rcmjm")
+region = Rect2(0, 96, 32, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qk5b0"]
 animations = [{
@@ -112,8 +117,20 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igy0h")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
 }]
 
 [node name="EggmanWindow" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_qk5b0")
+animation = &"Appear"
 autoplay = "default"
+script = ExtResource("2_igy0h")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

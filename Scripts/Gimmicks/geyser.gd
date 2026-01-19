@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
 			i.movement = Vector2(velocityPreVec).rotated(rotation)
 			i.disconect_from_floor()
 			i.set_state(i.STATES.AIR)
-			i.airControl = true
+			i.air_control = true
 			i.animator.play("hurt")
 
 func UpdatePosition(delta):

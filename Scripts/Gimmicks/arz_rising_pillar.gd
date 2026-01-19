@@ -41,7 +41,7 @@ func physics_collision(body, hitVector):
 			body.animator.current_animation = "roll"
 			BreakPillar(body)
 		elif body.character == Global.CHARACTERS.KNUCKLES or (
-			body.character == Global.CHARACTERS.SONIC and body.isSuper):
+			body.character == Global.CHARACTERS.SONIC and body.is_super):
 			destroyed = true
 			#body.movement.x += (120 * body.direction)
 			BreakPillar(body)

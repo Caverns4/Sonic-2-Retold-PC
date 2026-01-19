@@ -30,7 +30,7 @@ func _process(_delta):
 		# Shield actions
 		elif ((parent.inputs[parent.INPUTS.ACTION] == 1 or parent.inputs[parent.INPUTS.ACTION2] == 1 or parent.inputs[parent.INPUTS.ACTION3] == 1) and !parent.abilityUsed and isJump):
 			# Super actions
-			if parent.isSuper and (parent.character == Global.CHARACTERS.SONIC or parent.character == Global.CHARACTERS.AMY):
+			if parent.is_super and (parent.character == Global.CHARACTERS.SONIC or parent.character == Global.CHARACTERS.AMY):
 				parent.abilityUsed = true # has to be set to true for drop dash (Sonic and amy only)
 			# Normal actions
 			else:
@@ -39,25 +39,25 @@ func _process(_delta):
 					Global.CHARACTERS.SONIC:
 						# set ability used to true to prevent multiple uses
 						parent.abilityUsed = true
-						parent.airControl = true
+						parent.air_control = true
 						sonic_shield_abilities()
 					# Tails flight
 					Global.CHARACTERS.TAILS:
 						# prevent double tap flight (aka super jumps)
 						if not parent.any_action_held():
-							parent.airControl = true
+							parent.air_control = true
 							parent.set_state(parent.STATES.FLY)
 					# Knuckles gliding
 					Global.CHARACTERS.KNUCKLES:
 						# set initial movement
 						parent.movement = Vector2(parent.direction*4*60,max(parent.movement.y,0))
 						parent.set_state(parent.STATES.GLIDE,parent.currentHitbox.GLIDE)
-						parent.airControl = true
+						parent.air_control = true
 					# Amy hammer drop dash
 					Global.CHARACTERS.AMY:
 						# set ability used to true to prevent multiple uses
 						parent.abilityUsed = true
-						parent.airControl = true
+						parent.air_control = true
 						# enable insta shield hitbox if hammer drop dashing
 						parent.shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled = (parent.animator.current_animation == "dropDash")
 						# play hammer sound
@@ -71,7 +71,7 @@ func _process(_delta):
 						if !parent.abilityUsed:
 							# set ability used to true to prevent multiple uses
 							parent.abilityUsed = true
-							parent.airControl = true
+							parent.air_control = true
 							parent.curled = true
 							parent.bounceReaction = 3.5
 						
@@ -90,13 +90,13 @@ func _process(_delta):
 					Global.CHARACTERS.SONIC_BETA:
 						# set ability used to true to prevent multiple uses
 						parent.abilityUsed = true
-						parent.airControl = true
+						parent.air_control = true
 						sonic_shield_abilities()
 
 
 func _physics_process(delta):
 	# air movement
-	if (parent.inputs[parent.INPUTS.XINPUT] != 0 and parent.airControl):
+	if (parent.inputs[parent.INPUTS.XINPUT] != 0 and parent.air_control):
 		
 		if (parent.movement.x*parent.inputs[parent.INPUTS.XINPUT] < parent.top):
 			if (abs(parent.movement.x) < parent.top):
@@ -118,7 +118,7 @@ func _physics_process(delta):
 		# Drop dash (for sonic / amy)
 		if parent.character == Global.CHARACTERS.SONIC:
 			
-			if parent.any_action_held_or_pressed() and parent.abilityUsed and (parent.shield <= parent.SHIELDS.NORMAL or parent.isSuper or $"../../InvincibilityBarrier".visible or parent.character == Global.CHARACTERS.AMY):
+			if parent.any_action_held_or_pressed() and parent.abilityUsed and (parent.shield <= parent.SHIELDS.NORMAL or parent.is_super or $"../../InvincibilityBarrier".visible or parent.character == Global.CHARACTERS.AMY):
 				if dropTimer < 1:
 					dropTimer += (delta/20)*60 # should be ready in the equivelent of 20 frames at 60FPS
 					if dropTimer >= 1:
@@ -146,7 +146,7 @@ func _physics_process(delta):
 	
 	# Reset state if on ground
 	if (parent.ground):
-		parent.airControl = true
+		parent.air_control = true
 		# Check bounce reaction first
 		if !bounce():
 			# reset animations (this is for shared animations like the corkscrews)
@@ -161,15 +161,15 @@ func _physics_process(delta):
 				# Forward landing
 				if sign(parent.movement.x) == sign(parent.direction) or parent.movement.x == 0:
 					# Calculate landing and limit to top speed
-					parent.movement.x = clamp((parent.movement.x/4) + (dropSpeed[int(parent.isSuper)]*60*parent.direction), -dropMax[int(parent.isSuper)]*60,dropMax[int(parent.isSuper)]*60)
+					parent.movement.x = clamp((parent.movement.x/4) + (dropSpeed[int(parent.is_super)]*60*parent.direction), -dropMax[int(parent.is_super)]*60,dropMax[int(parent.is_super)]*60)
 				# Backwards landing
 				else:
 					# if floor angle is flat then just set to drop speed
 					if is_equal_approx(parent.angle,parent.gravityAngle):
-						parent.movement.x = dropSpeed[int(parent.isSuper)]*60*parent.direction
+						parent.movement.x = dropSpeed[int(parent.is_super)]*60*parent.direction
 					# else calculate landing
 					else:
-						parent.movement.x = clamp((parent.movement.x/2) + (dropSpeed[int(parent.isSuper)]*60*parent.direction), -dropMax[int(parent.isSuper)]*60,dropMax[int(parent.isSuper)]*60)
+						parent.movement.x = clamp((parent.movement.x/2) + (dropSpeed[int(parent.is_super)]*60*parent.direction), -dropMax[int(parent.is_super)]*60,dropMax[int(parent.is_super)]*60)
 				# Sonics drop dash handle
 				if parent.character == Global.CHARACTERS.SONIC:
 					# stop vertical movement downard
@@ -206,7 +206,7 @@ func sonic_shield_abilities():
 							match (parent.shield):
 								# insta shield
 								parent.SHIELDS.NONE:
-									parent.airControl = true
+									parent.air_control = true
 									if Global.insta_shield:
 										parent.sfx[16].play()
 										parent.shieldSprite.play("Insta")

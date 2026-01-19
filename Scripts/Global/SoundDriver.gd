@@ -77,17 +77,17 @@ func playNormalMusic():
 	
 	currentTheme = THEME.NORMAL # Assume normal level Theme
 	for i in Global.players:
-		if i.shoeTime > 0 and currentTheme == THEME.NORMAL:
+		if i.shoe_time > 0 and currentTheme == THEME.NORMAL:
 			currentTheme = THEME.SPEED
-		if i.supTime > 0:
-			if !i.isSuper:
+		if i.super_time > 0:
+			if !i.is_super:
 				if currentTheme != THEME.SUPER:
 					currentTheme = THEME.INVINCIBLE
 			else:
 				currentTheme = THEME.SUPER #Boss theme unless Super
 
 	if Global.fightingBoss:
-		if !Global.players[0].isSuper:
+		if !Global.players[0].is_super:
 			currentTheme = THEME.BOSS #Boss theme unless Super
 		else:
 			currentTheme = THEME.SUPER #Boss theme unless Super

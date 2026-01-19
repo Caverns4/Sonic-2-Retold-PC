@@ -3,17 +3,17 @@ extends Node2D
 
 @export var platformSprite = preload("res://Graphics/Obstacles/Blocks/CPZ Block.png")
 @export_enum("two","four") var childCount = 1
-@export var speed = 1.0 # How fast to move
+@export var speed: float = 1.0 # How fast to move
 @export_enum("Clockwise","Counter-Clockwise") var direction = 0
 
-# The taget position of each child stair block, in order, by phase, clockwise
-var phase = 0
+# The taget position of each child stair block, in order, by current_point, clockwise
+var current_point: int = 0
 # Each block MUST be 32x32 pixels, witth vertical sprites
-var spriteFrame = 0
+var spriteFrame: int = 0
 var maxFrames: int = 1
 
-# Each target pos relative to center, in order of child, by phase
-var targetPositions = [
+# Each target pos relative to center, in order of child, by current_point
+var target_points = [
 	[Vector2(-48,-48),Vector2( 48, 48),Vector2(-16,-16),Vector2( 16, 16)],
 	# + x
 	[Vector2( 48,-48),Vector2(-48, 48),Vector2( 16,-16),Vector2(-16, 16)],
@@ -67,20 +67,20 @@ func _physics_process(delta):
 		positionChildren(delta)
 		if stateTimer >= 1.0:
 			if direction > 0:
-				phase -= 1
+				current_point -= 1
 			else:
-				phase += 1
+				current_point += 1
 			stateTimer = 0
-			phase = wrapi(phase,0,targetPositions.size())
+			current_point = wrapi(current_point,0,target_points.size())
 		setvframeOfChildren(delta)
 
 func positionChildren(_delta):
 	var getPos = Vector2.ZERO
-	var curArray = targetPositions[phase]
-	var lastArray = targetPositions[wrapi(phase-1,0,targetPositions.size())]
+	var curArray = target_points[current_point]
+	var lastArray = target_points[wrapi(current_point-1,0,target_points.size())]
 	
 	if direction > 0:
-		lastArray = targetPositions[wrapi(phase+1,0,targetPositions.size())]
+		lastArray = target_points[wrapi(current_point+1,0,target_points.size())]
 	
 	for i in get_child_count():
 		# Get the facotr if the difference, therefore the total distance
@@ -99,9 +99,9 @@ func setvframeOfChildren(_delta):
 func _draw():
 	if Engine.is_editor_hint():
 		# Draw the platform positions for the editor
-		var drawVec = targetPositions[0]
+		var drawVec = target_points[0]
 		if direction > 0:
-			drawVec = targetPositions[1]
+			drawVec = target_points[1]
 		var drawLoop = ((childCount + 1) * 2) #Number of times to draw
 		
 		for i in drawLoop:

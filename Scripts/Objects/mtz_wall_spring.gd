@@ -13,7 +13,7 @@ func _on_body_entered(body: Player2D) -> void:
 		body.set_state(body.STATES.AIR)
 		body.angle = 0
 		body.allowTranslate = false
-		body.airControl = true
+		body.air_control = true
 		body.movement.y = 0-(60*spring_power)
 		body.movement.x = 60*(spring_power*spring_direction)
 		var curAnim = "walk"

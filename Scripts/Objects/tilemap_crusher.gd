@@ -127,7 +127,7 @@ func DestroyTiles(delta):
 					queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.isSuper and intact:
+	if body.is_super and intact:
 		intact = false
 		tiles.collision_enabled = false
 		SoundDriver.play_sound(collapse_sound)

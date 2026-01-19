@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 		for player in players:
 			player.movement.y = -60+(0-abs(spring_power))
 			player.set_state(player.STATES.AIR)
-			player.airControl = true
+			player.air_control = true
 			player.angle = 0
 			player.animator.play("spring")
 			player.animator.queue("curAnimwalk")

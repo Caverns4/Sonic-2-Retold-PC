@@ -34,7 +34,7 @@ func _player_jumpoff(body:Player2D):
 	if players.has(body):
 		body.animator.play(anim_name)
 		body.set_state(body.STATES.AIR)
-		body.airControl = true
+		body.air_control = true
 		body.movement.x = 120*body.direction
 		body.movement.y = -240
 		body.allowTranslate = false
@@ -44,7 +44,7 @@ func _player_jumpoff(body:Player2D):
 func _player_dropoff(body:Player2D):
 	if players.has(body):
 		body.set_state(body.STATES.AIR)
-		body.airControl = true
+		body.air_control = true
 		body.allowTranslate = false
 		body.poleGrabID = null
 		_disconnect_player(body)
@@ -114,7 +114,7 @@ func _on_body_exited(body: Player2D) -> void:
 		_disconnect_player(body)
 	if body.poleGrabID == self && (body.currentState != body.STATES.HANG or player_can_shimmy):
 		body.set_state(body.STATES.AIR)
-		body.airControl = true
+		body.air_control = true
 		body.poleGrabID = null
 		body.allowTranslate = false
 		_disconnect_player(body)

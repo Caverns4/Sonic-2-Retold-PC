@@ -207,8 +207,8 @@ func respawnPlayer():
 			player.partner.airTimer = player.partner.defaultAirTime
 				
 		# reset invincibility and shoes (or super low so they player can exit these states normally)
-		player.supTime = min(player.supTime,0.01)
-		player.shoeTime = min(player.supTime,0.01)
+		player.super_time = min(player.super_time,0.01)
+		player.shoe_time = min(player.super_time,0.01)
 		player.switch_physics()
 		player.visible = true
 		# reset state
@@ -515,7 +515,7 @@ func setup_boss_meter(boss: BossBase):
 func boss_hit():
 	boss_current_health -= 1
 	@warning_ignore("integer_division")
-	$"Boss Life/EggMeterFull".set_size(Vector2((128/boss_max_health)*boss_current_health,8))
+	$"Boss Life/EggMeterFull".set_size(Vector2((128/min(boss_max_health,8))*min(boss_current_health,8),8))
 	if boss_current_health == 0:
 		disconnect("got_hit",boss_hit)
 		$"Boss Life".visible = false

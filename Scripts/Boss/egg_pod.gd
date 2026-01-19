@@ -55,9 +55,9 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player2D:
 		var player:Player2D = body
-		if !vulnerable or (!player.attacking and !player.supTime):
+		if !vulnerable or (!player.attacking and !player.super_time):
 			player.hit_player(global_position)
-		elif player.attacking or player.supTime:
+		elif player.attacking or player.super_time:
 			queue_free()
 			Global.add_score(global_position,1,Global.players.find(player))
 			

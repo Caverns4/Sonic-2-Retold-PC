@@ -130,17 +130,17 @@ func destroy():
 			if Global.hud: #If the HUD Exists
 				if (Global.emeralds == 127 and 
 				(prev_rings < 50 and playerTouch.rings > 49) and 
-				!playerTouch.isSuper):
+				!playerTouch.is_super):
 					Global.hud.iconAnim.play("Super")
 			$SFX/Ring.play()
 		ITEMTYPES.SPEED_SHOES: # Speed Shoes
-			if !playerTouch.get("isSuper"):
-				playerTouch.shoeTime = 20
+			if !playerTouch.get("is_super"):
+				playerTouch.shoe_time = 20
 				playerTouch.switch_physics()
 				SoundDriver.playMusic(SoundDriver.themes[SoundDriver.THEME.SPEED])
 		ITEMTYPES.INVINCIBILITY: # Invincibility
-			if !playerTouch.get("isSuper"):
-				playerTouch.supTime = 20
+			if !playerTouch.get("is_super"):
+				playerTouch.super_time = 20
 				playerTouch.shieldSprite.visible = false # turn off barrier for stars
 				playerTouch.get_node("InvincibilityBarrier").visible = true
 				SoundDriver.playMusic(SoundDriver.themes[SoundDriver.THEME.INVINCIBLE])
@@ -154,7 +154,7 @@ func destroy():
 			playerTouch.set_shield(playerTouch.SHIELDS.BUBBLE)
 		ITEMTYPES.SUPER: # Super
 			playerTouch.rings += 50
-			if !playerTouch.get("isSuper"):
+			if !playerTouch.get("is_super"):
 				playerTouch.set_state(playerTouch.STATES.SUPER)
 		ITEMTYPES.TELEPORT:
 			pass

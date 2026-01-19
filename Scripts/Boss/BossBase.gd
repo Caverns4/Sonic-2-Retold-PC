@@ -18,8 +18,14 @@ signal hit_player
 signal flash_finished
 signal defeated
 signal boss_over
+signal boss_started
 
-var active = false
+var active = false: set = boss_start
+func boss_start(value):
+	if value:
+		boss_started.emit()
+	active = value
+
 
 func _ready() -> void:
 	if Global.two_player_mode:
@@ -38,7 +44,7 @@ func _physics_process(delta):
 			# loop through players as i
 			for i in playerHit:
 				# check if damage entity is on or supertime is bigger then 0
-				if (i.get_collision_layer_value(20) or i.supTime > 0 or forceDamage):
+				if (i.get_collision_layer_value(20) or i.super_time > 0 or forceDamage):
 					i.movement = i.movement*-1 #i.movement*-0.5
 					# hit
 					if hp > 0:

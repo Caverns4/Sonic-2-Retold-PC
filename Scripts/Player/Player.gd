@@ -58,14 +58,14 @@ var bounceReaction: float = 0
 ## Invulnerability time remaining (Seconds)
 var invTime: float = 0
 ## This is also used for invincibility monitors. When super, it doesn't count down.
-var supTime: float = 0
+var super_time: float = 0
 ## True is the Character is in Super Form. Depends on invTime.
-var isSuper: bool = false:
+var is_super: bool = false:
 	set(value):
 		turned_super.emit()
-		isSuper = value
+		is_super = value
 ## Speed Shoes time remaining (Seconds)
-var shoeTime: float = 0
+var shoe_time: float = 0
 ## Time remaining for the player can interact with Rings again (Seconds)
 var ringDisTime: float = 0 # ring collecting disable timer
 
@@ -80,11 +80,11 @@ var forceRoll: int = 0
 ## The direction the player is pushed in if they happen to lose too much momentum.
 var forceDirection: int = 0
 ## If the Player presses jump too early, jump presses are stored here. This also helps prevent missed inputs from physics oddities.
-var jumpBuffer: float = 0.0
+var jump_buffer: float = 0.0
 
 # collision related values
 ## This is the DIRECTION of the pushed wall.
-var pushingWall: int = 0
+var pushing_wall: int = 0
 ## Number of enmies the player has defeated since leaving the ground.
 var enemyCounter: int = 0
 ## If the player dies (in two player mode), they will respawn here. Essentially useless in single player.
@@ -156,7 +156,7 @@ var horizontalLockTimer: float = 0
 ## Updating the angle over time helps prevent angle "fighting"
 var spriteRotation: float = 0
 ## If false, ignore player left/right inputs in the air (Roll jumping).
-var airControl: bool = true
+var air_control: bool = true
 ## if the player is in a general damaging state.
 var attacking = false
 
@@ -225,7 +225,7 @@ enum INPUTS {XINPUT, YINPUT, ACTION, ACTION2, ACTION3, SUPER, PAUSE}
 # Input control, 0 = 0ff, 1 = pressed, 2 = held
 # (for held it's best to use inputs[INPUTS.ACTION] > 0)
 # XInput and YInput are directions and are either -1, 0 or 1.
-var inputs = [0,0,0,0,0,0,0,0]
+var inputs: Array[float] = [0,0,0,0,0,0,0,0]
 const INPUTACTIONS_P1 = [["gm_left","gm_right"],["gm_up","gm_down"],"gm_action","gm_action2","gm_action3","gm_super","gm_pause"]
 const INPUTACTIONS_P2 = [["gm_left_P2","gm_right_P2"],["gm_up_P2","gm_down_P2"],"gm_action_P2","gm_action2_P2","gm_action3_P2","gm_super_P2","gm_pause_P2"]
 var inputActions = INPUTACTIONS_P1
@@ -481,7 +481,7 @@ func _process(delta):
 						partner.inputs[INPUTS.XINPUT] = sign(0-direction)
 				
 				# Jump if pushing a wall, slower then half speed, on a flat surface and is either normal or jumping
-				if (partner.currentState == STATES.NORMAL or partner.currentState == STATES.JUMP) and snap_angle(partner.angle) == 0 or (partner.pushingWall != 0 and pushingWall == 0):
+				if (partner.currentState == STATES.NORMAL or partner.currentState == STATES.JUMP) and snap_angle(partner.angle) == 0 or (partner.pushing_wall != 0 and pushing_wall == 0):
 					# check partners position, only jump ever 0.25 seconds (prevent jump spam)
 					if global_position.y+32 < partner.global_position.y and partner.inputs[INPUTS.ACTION] == 0 and partner.ground and ground and (fmod(Global.globalTimer+delta,0.25) < fmod(Global.globalTimer,0.25)):
 						partner.inputs[INPUTS.ACTION] = 1
@@ -551,13 +551,13 @@ func _process(delta):
 		inputs[INPUTS.XINPUT] = 0
 
 	# jump buffer time
-	if jumpBuffer > 0.0:
-		jumpBuffer -= delta
+	if jump_buffer > 0.0:
+		jump_buffer -= delta
 
 	# super / invincibility handling
-	if (supTime > 0):
-		if !isSuper:
-			supTime -= delta
+	if (super_time > 0):
+		if !is_super:
+			super_time -= delta
 			
 		else:
 			$InvincibilityBarrier.visible = false
@@ -574,25 +574,25 @@ func _process(delta):
 					superRingTimer = 1.0
 			else:
 				# Deactivate super
-				supTime = 0
+				super_time = 0
 				if character == Global.CHARACTERS.SONIC:
 					sprite.texture = normalSprite
 				
-		if (supTime <= 0):
+		if (super_time <= 0):
 			if (shield != SHIELDS.NONE):
 				shieldSprite.visible = true
 			$InvincibilityBarrier.visible = false
 			# turn off super palette and physics (if super)
-			if is_instance_valid(superAnimator) and isSuper:
-				isSuper = false
+			if is_instance_valid(superAnimator) and is_super:
+				is_super = false
 				superAnimator.play("PowerDown")
 				switch_physics()
 			SoundDriver.playNormalMusic()
 			invTime = 60
 	
-	if (shoeTime > 0):
-		shoeTime -= delta
-		if (shoeTime <= 0):
+	if (shoe_time > 0):
+		shoe_time -= delta
+		if (shoe_time <= 0):
 			switch_physics()
 			SoundDriver.playNormalMusic()
 	
@@ -687,7 +687,7 @@ func _process(delta):
 	# Set player inputs
 	set_inputs()
 	if any_action_pressed():
-		jumpBuffer = JUMP_BUFFER_TIME
+		jump_buffer = JUMP_BUFFER_TIME
 	# Update the player's attacking state every step.
 	Update_Attacking_Flag()
 
@@ -708,7 +708,7 @@ func _physics_process(delta):
 	set_collision_mask_value(16,(!attacking and !curled))
 	# collide with solids if not knuckles layer
 	set_collision_mask_value(19,!character == Global.CHARACTERS.KNUCKLES or
-	!(character == Global.CHARACTERS.SONIC and isSuper))
+	!(character == Global.CHARACTERS.SONIC and is_super))
 	# collide with solids if not rolling or not knuckles layer
 	set_collision_mask_value(21,(character != Global.CHARACTERS.KNUCKLES and !attacking))
 	# damage mask bit
@@ -716,7 +716,7 @@ func _physics_process(delta):
 	# water surface running
 	set_collision_mask_value(23,ground and abs(groundSpeed) >= 7*60 and !is_in_water)
 	
-	if (ground):
+	if ground:
 		groundSpeed = movement.x
 		
 	# wall detection
@@ -725,17 +725,17 @@ func _physics_process(delta):
 		if is_on_wall():
 			getDir = -sign(get_wall_normal().x)
 		
-		# give pushingWall a buffer otherwise this just switches on and off
-		pushingWall = getDir*2
+		# give pushing_wall a buffer otherwise this just switches on and off
+		pushing_wall = getDir*2
 		if sign(movement.x) == sign(horizontalSensor.target_position.x):
 			movement.x = 0
 		# disable pushing wall
-		if inputs[INPUTS.XINPUT] != sign(pushingWall):
-			pushingWall = 0
+		if inputs[INPUTS.XINPUT] != sign(pushing_wall):
+			pushing_wall = 0
 		
-	elif pushingWall != 0:
-		# count down pushingwall
-		pushingWall -= sign(pushingWall)
+	elif pushing_wall != 0:
+		# count down pushing_wall
+		pushing_wall -= sign(pushing_wall)
 	
 	
 	
@@ -922,7 +922,7 @@ func set_inputs():
 	if playerControl < 0:
 		return
 	
-	if playerControl != 1:
+	if playerControl > 1:
 		# player 2 active time check, if below 0 return to ai state
 		if partnerControlTime <= 0 and playerControl == 2:
 			playerControl = 0
@@ -941,14 +941,14 @@ func set_inputs():
 				# if none of the button checks fail, give the player control
 				playerControl = 2
 				partnerControlTime = DEFAULT_PLAYER2_CONTROL_TIME
-	
-	if playerControl > 0:
+
+	if playerControl:
 		inputs[INPUTS.ACTION] = (int(Input.is_action_pressed(inputActions[INPUTS.ACTION]))*2)-int(Input.is_action_just_pressed(inputActions[INPUTS.ACTION]))
 		inputs[INPUTS.ACTION2] = (int(Input.is_action_pressed(inputActions[INPUTS.ACTION2]))*2)-int(Input.is_action_just_pressed(inputActions[INPUTS.ACTION2]))
 		inputs[INPUTS.ACTION3] =  (int(Input.is_action_pressed(inputActions[INPUTS.ACTION3]))*2)-int(Input.is_action_just_pressed(inputActions[INPUTS.ACTION3]))
 		inputs[INPUTS.SUPER] =  (int(Input.is_action_pressed(inputActions[INPUTS.SUPER]))*2)-int(Input.is_action_just_pressed(inputActions[INPUTS.SUPER]))
 	
-	#if (playerControl > 0 and horizontalLockTimer <= 0):
+		#if horizontalLockTimer <= 0:
 		inputs[INPUTS.XINPUT] = -int(Input.is_action_pressed(inputActions[INPUTS.XINPUT][0]))+int(Input.is_action_pressed(inputActions[INPUTS.XINPUT][1]))
 		inputs[INPUTS.YINPUT] = -int(Input.is_action_pressed(inputActions[INPUTS.YINPUT][0]))+int(Input.is_action_pressed(inputActions[INPUTS.YINPUT][1]))
 
@@ -1068,7 +1068,7 @@ func set_shield(setShieldID):
 	
 	shield = setShieldID
 	# make shield visible if not super and the invincibility barrier isn't going
-	shieldSprite.visible = !isSuper and !$InvincibilityBarrier.visible
+	shieldSprite.visible = !is_super and !$InvincibilityBarrier.visible
 	match (shield):
 		SHIELDS.NORMAL:
 			shieldSprite.play("Default")
@@ -1112,7 +1112,7 @@ func hit_player(damagePoint = global_position, damageType = 0, soundID = 6):
 	if damageType != 0 and shield == damageType+1:
 		return false
 	if (currentState != STATES.HIT and invTime <= 0 and 
-	supTime <= 0 and (shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled 
+	super_time <= 0 and (shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled 
 	or character != Global.CHARACTERS.SONIC)):
 		attacking = false
 		movement.x = sign(global_position.x-damagePoint.x)*2*60
@@ -1191,7 +1191,7 @@ func get_ring():
 		partner.get_ring()
 
 func super_form_ready() -> bool:
-	if Global.stageClearPhase == 0 and (Global.emeralds == 127 and rings > 49 and !isSuper):
+	if Global.stageClearPhase == 0 and (Global.emeralds == 127 and rings > 49 and !is_super):
 		return true
 	return false
 
@@ -1199,13 +1199,13 @@ func kill(soundID: int = 6):
 	if currentState != STATES.DIE:
 		hitbox.disabled = true
 		disconect_from_floor()
-		supTime = 0
-		shoeTime = 0
+		super_time = 0
+		shoe_time = 0
 		allowTranslate = true
 		# turn off super palette and physics (if super)
-		if is_instance_valid(superAnimator) and isSuper:
+		if is_instance_valid(superAnimator) and is_super:
 			superAnimator.play("PowerDown")
-			isSuper = false
+			is_super = false
 		# stop special music
 		#if playerControl == 1:
 		#	Global.music.play()
@@ -1313,12 +1313,12 @@ func determine_physics():
 	# get physics from character
 	match (character):
 		Global.CHARACTERS.SONIC:
-			if isSuper:
+			if is_super:
 				return 2 # Super Sonic
 	#Anyone who isn't a special case:
-	if isSuper:
+	if is_super:
 		return 3 # Super
-	elif shoeTime > 0:
+	elif shoe_time > 0:
 		return 1 # Shoes
 	return 0 #Default to Sonic 
 
@@ -1326,7 +1326,7 @@ func determine_jump_property():
 	if !is_in_water:
 		match (character):
 			Global.CHARACTERS.SONIC:
-				if isSuper:
+				if is_super:
 					return 8*60
 			Global.CHARACTERS.KNUCKLES:
 				return 6*60
@@ -1362,7 +1362,7 @@ func switch_physics():
 
 
 func _on_SparkleTimer_timeout():
-	if isSuper and abs(groundSpeed) >= top:
+	if is_super and abs(groundSpeed) >= top:
 		var sparkle = Particle.instantiate()
 		sparkle.global_position = global_position
 		sparkle.play("Super")
@@ -1486,11 +1486,11 @@ func action_jump(animation = "roll", airJumpControl = true, playSound=true):
 		animator.play(animation)
 		animator.advance(0)
 		movement.y = -jmp
-		jumpBuffer = 0
+		jump_buffer = 0
 		if playSound:
 			sfx[0].play()
 			
-		airControl = airJumpControl
+		air_control = airJumpControl
 		cameraDragLerp = 1
 		disconect_from_floor()
 		set_state(STATES.JUMP)
@@ -1535,6 +1535,6 @@ func handle_animation_speed(gSpeed: float = groundSpeed):
 		"dropDash":
 			animator.speed_scale = 20.0/10.0
 		"climb":
-			animator.speed_scale = -movement.y/(40.0*(1.0+float(isSuper)))
+			animator.speed_scale = -movement.y/(40.0*(1.0+float(is_super)))
 		_:
 			animator.speed_scale = 1

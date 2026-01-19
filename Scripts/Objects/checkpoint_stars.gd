@@ -5,11 +5,11 @@ const MAXSPEED = 1.5
 enum STATES{INTRO,WAITING,EXIT}
 var state: int = STATES.INTRO
 
-var speed = 0.0
-var frameVar = 0.0
-var starRotation = 0.0
-var rotationTimer = 0.0
-var spinningStars = []
+var speed: float = 0.0
+var frameVar: float = 0.0
+var starRotation: float = 0.0
+var rotationTimer: float = 0.0
+var spinningStars: Array = [Sprite2D]
 
 # active is set to true when the player enters the ring
 var active: bool = false

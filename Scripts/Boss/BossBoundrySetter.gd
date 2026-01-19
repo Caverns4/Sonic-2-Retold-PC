@@ -23,8 +23,6 @@ extends Area2D
 @export var ratchetScrollRight = false
 @export var ratchetScrollBottom = false
 
-@export var bossMusic = preload("res://Audio/Soundtrack/s2br_Boss.ogg")
-
 var bossActive = false
 
 signal boss_start()
@@ -54,7 +52,7 @@ func _on_BoundrySetter_body_entered(body):
 						if lockBottom:
 							i.limitBottom = min(global_position.y+screenSize.y/2,Global.hardBorderBottom)
 					
-					if !Global.players[0].isSuper:
+					if !Global.players[0].is_super:
 						SoundDriver.set_volume(-50)
 						await SoundDriver.volume_set
 						SoundDriver.set_volume(0,100)
@@ -64,7 +62,6 @@ func _on_BoundrySetter_body_entered(body):
 						Global.hud.setup_boss_meter(boss)
 					
 					Global.fightingBoss = true
-					#Global.playMusic(bossMusic,true)
 					SoundDriver.playNormalMusic()
 					boss.active = true
 					

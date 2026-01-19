@@ -97,7 +97,7 @@ func LookInMoveDirection():
 		$Aquis_Sprite.scale.x = direction
 
 func FleeIfSuper():
-	if Global.players.size() > 0 and Global.players[0].isSuper:
+	if Global.players.size() > 0 and Global.players[0].is_super:
 		var player = GlobalFunctions.get_nearest_player(global_position)
 		if player:
 			animator.play("float")

@@ -114,7 +114,7 @@ func LookAtPlayer():
 	else: #If a player was not found, or is left.
 		direction = 1
 	$Sprite2D.scale.x = direction
-	if nearestPlayer.isSuper:
+	if nearestPlayer.is_super:
 		behavior = 1 #Flee
 
 func _on_player_check_body_entered(body: Node2D) -> void:

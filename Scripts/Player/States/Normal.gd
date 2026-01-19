@@ -45,7 +45,7 @@ func state_exit():
 func _process(delta):
 	
 	# jumping / rolling and more (note, you'll want to adjust the other actions if your character does something different)
-	if parent.jumpBuffer > 0: #any_action_pressed():
+	if parent.jump_buffer > 0: #any_action_pressed():
 		if (parent.movement.x == 0 and parent.inputs[parent.INPUTS.YINPUT] > 0):
 			parent.animator.play("spinDash")
 			parent.sfx[2].play()
@@ -98,7 +98,7 @@ func _process(delta):
 				match (parent.character):
 					Global.CHARACTERS.SONIC: #default
 						# super edge
-						if parent.isSuper and parent.animator.has_animation("edge_super"):
+						if parent.is_super and parent.animator.has_animation("edge_super"):
 							parent.animator.play("edge_super")
 							balancing = true
 						# normal edge
@@ -143,7 +143,7 @@ func _process(delta):
 			elif (parent.inputs[parent.INPUTS.YINPUT] < 0) and !balancing:
 				lookTimer -= (delta*4.0)
 				
-				if(parent.isSuper and parent.character == Global.CHARACTERS.SONIC):
+				if(parent.is_super and parent.character == Global.CHARACTERS.SONIC):
 					if parent.lastActiveAnimation != "lookUp_Super":
 						parent.animator.play("lookUp_Super")
 				else:
@@ -161,7 +161,7 @@ func _process(delta):
 					# Play default idle animation
 					if is_instance_valid(Global.hud) and Global.hud.isStageEnding and parent.animator.has_animation("victory"):
 						parent.animator.play("victory")
-					elif parent.isSuper and parent.animator.has_animation("idle_super"):
+					elif parent.is_super and parent.animator.has_animation("idle_super"):
 						parent.animator.play("idle_super")
 					else:
 						
@@ -177,7 +177,7 @@ func _process(delta):
 							for i in playerIdles[parent.character-1]:
 								parent.animator.queue(i)
 		#Non-idle cases
-		elif sign(parent.pushingWall) == sign(parent.movement.x) and parent.pushingWall != 0:
+		elif sign(parent.pushing_wall) == sign(parent.movement.x) and parent.pushing_wall != 0:
 			parent.animator.play("push")
 		elif(abs(parent.movement.x) < 6*60):
 			parent.animator.play("walk")

@@ -16,7 +16,7 @@ func physics_collision(body, hitVector):
 		and body.ground and abs(body.movement.x) > 4.5*60 or (body.ground and type == TYPE.CD))
 		and !get_collision_layer_value(19) 
 		or body.character == Global.CHARACTERS.KNUCKLES
-		or (body.character == Global.CHARACTERS.SONIC and body.isSuper)):
+		or (body.character == Global.CHARACTERS.SONIC and body.is_super)):
 			# disable physics altering masks
 			set_collision_layer_value(16,false)
 			set_collision_mask_value(14,false)
