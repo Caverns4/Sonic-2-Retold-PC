@@ -1,24 +1,27 @@
 class_name BossBase extends CharacterBody2D
 
 @export_enum("Normal", "Fire", "Elec", "Water") var damageType = 0
-var playerHit = []
+var playerHit: Array = []
 
-@export var hp = 8
-var flashTimer = 0
-var forceDamage = false
-@export var hitTime = 32.0/60.0
+@export var hp: int = 8
+var flashTimer: float = 0.0
+var forceDamage: bool = false
+@export var hitTime: float = 32.0/60.0
 @export var boss_name: String = "Eggman" 
 
+var deathTimer: float = 4.0
+var defeated_flag: bool = false
 
 var Explosion = preload("res://Entities/Misc/GenericParticle.tscn")
-var hoverOffset = 0
+var hoverOffset: float = 0.0
 
 signal got_hit
 signal hit_player
 signal flash_finished
-signal defeated
+signal boss_defeated
 signal boss_over
 signal boss_started
+signal destroyed
 
 var active = false: set = boss_start
 func boss_start(value):
@@ -61,9 +64,9 @@ func _physics_process(delta):
 								i.reflective = false
 								if i.get_node_or_null("States/Glide") != null:
 									i.get_node("States/Glide").isFall = true
-					# check if dead
+					# check if defeated
 					if hp <= 0:
-						emit_signal("defeated")
+						boss_defeated.emit()
 				# if destroying the enemy fails and hit player exists then hit player
 				elif (i.has_method("hit_player")):
 					if i.hit_player(global_position,damageType):
@@ -83,6 +86,7 @@ func _on_body_exited(body):
 
 func _mark_defeated():
 	boss_over.emit()
+	destroyed.emit()
 
 
 func _on_DamageArea_area_entered(area):

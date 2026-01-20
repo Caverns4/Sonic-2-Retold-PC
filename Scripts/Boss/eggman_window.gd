@@ -8,7 +8,7 @@ func _ready() -> void:
 		boss.boss_started.connect(appear)
 		boss.hit_player.connect(laugh)
 		boss.got_hit.connect(cry)
-		boss.defeated.connect(retreat)
+		boss.boss_defeated.connect(retreat)
 
 func appear():
 	play("Appear")

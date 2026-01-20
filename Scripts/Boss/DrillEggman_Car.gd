@@ -124,7 +124,7 @@ func UpdateDrillIfAttached():
 		drill.global_position.y = global_position.y + 8
 		drill.scale.x = -1.0 * direction
 
-func Die():
+func die():
 	dead = true
 	pilot = false
 	velocity = Vector2.ZERO

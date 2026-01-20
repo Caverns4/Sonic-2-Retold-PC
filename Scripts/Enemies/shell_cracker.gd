@@ -1,9 +1,9 @@
 extends EnemyBase
 
-@export var chain_length = 8
-@export var move_speed = 30
-@export var walk_time = 1.0
-@export var cooldown_time = 2.0
+@export var chain_length: int = 8
+@export var move_speed: float = 30
+@export var walk_time:float = 1.0
+@export var cooldown_time: float = 2.0
 @onready var _claw:Node2D = $ClawAttack
 @onready var _animation:AnimationPlayer = $AnimationPlayer
 
@@ -11,6 +11,7 @@ var children = [] #List of nodes for each child and the head
 var childPositions = [Vector2.ZERO] #position of each child and the head
 var extend_length = 0.0
 var taret_position = 0.0
+var claw_time: float = 0.0
 
 enum STATE{WALK,WAIT,JAB}
 var state: int = 0
@@ -40,11 +41,13 @@ func _ready() -> void:
 	super()
 
 func _physics_process(delta: float) -> void:
+	claw_time -= delta
 	match state:
 		STATE.WALK:
 			state_time -= delta
-			var look_at = GlobalFunctions.get_orientation_to_player(global_position)
-			if abs(look_at.length()) <= 128 and look_at.x < 0:
+			var pos_diff = GlobalFunctions.get_orientation_to_player(global_position)
+			if (abs(pos_diff.length()) <= 128 and 
+			pos_diff.x < 0 and claw_time < 0.0):
 				state = STATE.JAB
 				velocity.x = 0
 				taret_position = chain_length * 2
@@ -74,6 +77,7 @@ func _physics_process(delta: float) -> void:
 			if extend_length == 0:
 				state = STATE.WALK
 				velocity.x = move_speed*move_dir
+				claw_time = 3.0
 	if !is_on_floor():
 		velocity.y += 9.8*delta
 	move_and_slide()

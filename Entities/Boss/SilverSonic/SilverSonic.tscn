@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwr3g232p2psd"]
+[gd_scene load_steps=6 format=3 uid="uid://bwr3g232p2psd"]
 
 [ext_resource type="Script" uid="uid://c8x7yqihiij8g" path="res://Scripts/Boss/silver_sonic.gd" id="1_muoi7"]
 [ext_resource type="Texture2D" uid="uid://bkgdgsmqi1lh5" path="res://Graphics/Boss/SilverSonic.png" id="2_muoi7"]
+[ext_resource type="AudioStream" uid="uid://u14e5d6axr7x" path="res://Audio/SFX/Boss/s2br_BossExplosion.wav" id="4_d8vsg"]
 [ext_resource type="AudioStream" uid="uid://bq25mlko4saoj" path="res://Audio/SFX/Boss/s2br_BossHit.wav" id="5_tdqkg"]
 
 [sub_resource type="RectangleShape2D" id="5"]
@@ -40,7 +41,16 @@ collision_mask = 528384
 modulate = Color(1, 0, 0, 1)
 shape = SubResource("5")
 
+[node name="Explode" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_d8vsg")
+bus = &"SFX"
+
+[node name="SmokeTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="boss_defeated" from="." to="." method="_on_boss_defeated"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_DamageArea_area_entered"]
 [connection signal="area_exited" from="HitBox" to="." method="_on_HitBox_area_exited"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="HitBox" to="." method="_on_body_exited"]
+[connection signal="timeout" from="SmokeTimer" to="." method="_on_smoke_timer_timeout"]

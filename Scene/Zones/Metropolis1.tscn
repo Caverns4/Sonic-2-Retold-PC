@@ -83,15 +83,12 @@ position = Vector2(64, 652)
 
 [node name="CorkscrewHTube" parent="Entities" instance=ExtResource("7_ry86e")]
 position = Vector2(1216, 576)
-length = 3
 
 [node name="CorkscrewHTube2" parent="Entities" instance=ExtResource("7_ry86e")]
 position = Vector2(4224, 1472)
-length = 5
 
 [node name="CorkscrewHTube3" parent="Entities" instance=ExtResource("7_ry86e")]
 position = Vector2(5184, 704)
-length = 2
 
 [node name="Switch" parent="Entities" instance=ExtResource("8_25fm7")]
 position = Vector2(1744, 472)
@@ -159,10 +156,10 @@ position = Vector2(1248, 140)
 open_direction = 1
 
 [node name="VerticalShutter3" parent="Entities" instance=ExtResource("11_f4xj6")]
-position = Vector2(2592, 236)
+position = Vector2(2592, 240)
 
 [node name="VerticalShutter4" parent="Entities" instance=ExtResource("11_f4xj6")]
-position = Vector2(2656, 236)
+position = Vector2(2656, 240)
 open_direction = 1
 
 [node name="Switch6" parent="Entities" instance=ExtResource("8_25fm7")]

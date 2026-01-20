@@ -142,7 +142,7 @@ func springObjectsOnBoard(delta):
 				node.movement.y = yspeed
 				
 				node.set_state(node.STATES.AIR)
-				node.airControl = true
+				node.air_control = true
 				node.angle = 0
 				node.animator.play("spring")
 				node.animator.queue("curAnimwalk")

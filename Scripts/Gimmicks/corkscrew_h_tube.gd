@@ -6,11 +6,11 @@ const SPEED = 6
 const AMPLITUDE = 36
 
 # length of the corkscrew
-@export var length = 1
+@export var length: float = 1
 
 # player tracking array struct
 # Array of [player,landed,wave_timer]
-var playerList: Array = []
+var player_list: Array = []
 
 func _ready() -> void:
 	scale.x = length
@@ -18,7 +18,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	
-	for i in playerList:
+	for i in player_list:
 		var player: Player2D = i[0]
 		if player.ground and !i[1]:
 			i[1] = true
@@ -32,9 +32,9 @@ func _physics_process(delta: float) -> void:
 			player.position.y = position.y + offset
 			player.camera.position.y = player.position.y
 			if (player.direction > 0):
-				player.animator.play("corkScrew")
+				player.animator.play_backwards("corkScrew")
 			else:
-				player.animator.play("corkScrewOffset")
+				player.animator.play_backwards("corkScrewOffset")
 			if player.movement.y < 0:
 				player.movement.y = 0
 				player.allowTranslate = false
@@ -50,14 +50,14 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player2D:
-		playerList.insert(playerList.size(),[body,false,0.0])
+		player_list.insert(player_list.size(),[body,false,0.0])
 		body.controlObject = self
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	for list in playerList:
+	for list in player_list:
 		if list[0] == body:
-			playerList.erase(list)
+			player_list.erase(list)
 			body.allowTranslate = false
 			body.controlObject = null
 			body.set_state(body.STATES.AIR)

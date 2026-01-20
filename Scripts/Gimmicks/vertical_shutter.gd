@@ -3,10 +3,9 @@ extends AnimatableBody2D
 
 ## Texture2D that the object will be rendered with. Also determines collision size.
 @export var texture: Texture2D = preload("res://Graphics/Objects_Zone/MTZ_Platform.png")
-## 
 @export_enum("Left","Right") var open_direction: int = 0
 
-var origin = Vector2.ZERO
+var origin: Vector2 = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -2,9 +2,6 @@ extends BossBase
 
 @export var entrySound = preload("res://Audio/SFX/Boss/s2br_helicopter.wav")
 
-var deathTimer = 4
-var dead = false
-
 # you can use these to control behaviour
 var phase = 0
 var soundTimer = 0.0
@@ -41,8 +38,8 @@ func _process(delta):
 	else:
 		$EggMobile/EggFlash.visible = false
 	
-	# dead animation timer (default time is 3 seconds)
-	if dead:
+	# defeated animation timer (default time is 3 seconds)
+	if defeated_flag:
 		# flame jet (only visible when moving)
 		$EggMobile/EggmobileFlame.visible = !(velocity.x == 0 or $EggMobile/EggmobileFlame.visible)
 		# if above 0 then count down
@@ -72,7 +69,7 @@ func _physics_process(delta):
 	# move boss
 	global_position += velocity*delta
 	# check if alive
-	if active and !dead and drillCar:
+	if active and !defeated_flag and drillCar:
 		# boss phase
 		match(phase):
 			0: # intro
@@ -108,8 +105,8 @@ func _physics_process(delta):
 		# if moving, then run move animation
 		if velocity.x != 0:
 			set_animation("move")
-		# check if dead, this can cause a conflict where the idle animation would play when it shouldn't
-		elif !dead:
+		# check if defeated_flag, this can cause a conflict where the idle animation would play when it shouldn't
+		elif !defeated_flag:
 			set_animation("default")
 	# only run hit if flash timer is above 0
 	if flashTimer > 0:
@@ -148,16 +145,11 @@ func updateDirection():
 
 # boss defeated
 func _on_boss_defeated():
-	# set dead to true
-	dead = true
+	defeated_flag = true
 	if drillCar:
-		drillCar.Die()
-		#drillCar.z_index = 0
-	# hit animation for 1.5 seconds (see the dead section in _process)
+		drillCar.die()
 	set_animation("hit",1.5)
-	# set velocity to 0 to prevent moving
 	velocity = Vector2.ZERO
-	# star the smoke timer
 	$SmokeTimer.start(0.01667*7)
 
 # do a laugh for 1 second
@@ -171,8 +163,8 @@ func play_intro(delta):
 		soundTimer = 0.3
 
 func _on_SmokeTimer_timeout():
-	# check that deathtimer's still going and that we are actually dead
-	if dead and deathTimer > 1.5:
+	# check that deathtimer's still going and that we are actually defeated.
+	if defeated_flag and deathTimer > 1.5:
 		# play explosion sound
 		$Explode.play()
 		# spawn exposion particles
@@ -187,5 +179,5 @@ func _on_SmokeTimer_timeout():
 
 
 func _on_drill_eggman_car_car_touched():
-	if !dead:
+	if !defeated_flag:
 		readyEnterCar = true

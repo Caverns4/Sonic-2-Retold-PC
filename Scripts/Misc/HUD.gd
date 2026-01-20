@@ -517,7 +517,7 @@ func boss_hit():
 	@warning_ignore("integer_division")
 	$"Boss Life/EggMeterFull".set_size(Vector2((128/min(boss_max_health,8))*min(boss_current_health,8),8))
 	if boss_current_health == 0:
-		disconnect("got_hit",boss_hit)
+		#disconnect("boss.got_hit",boss_hit)
 		$"Boss Life".visible = false
 
 

@@ -7,6 +7,7 @@ var explosion = preload("res://Entities/Misc/GenericParticle.tscn")
 @onready var animation = $AnimationPlayer
 @onready var ballon_hit_box = $CollisionShape2D
 @onready var hitbox = $Area2D
+@onready var sprite: Sprite2D = $Sprite2D
 
 ## If this Eggpod is still connected to the mech.
 var connected: bool = true
@@ -55,9 +56,11 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player2D:
 		var player:Player2D = body
-		if !vulnerable or (!player.attacking and !player.super_time):
+		if !vulnerable or (!player.is_attacking() and !player.super_time):
 			player.hit_player(global_position)
-		elif player.attacking or player.super_time:
+		if connected and vulnerable:
+			pass
+		elif !connected and (player.is_attacking() or player.super_time):
 			queue_free()
 			Global.add_score(global_position,1,Global.players.find(player))
 			

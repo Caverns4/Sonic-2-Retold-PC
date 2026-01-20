@@ -168,6 +168,12 @@ position = Vector2(8192, 840)
 scale = Vector2(16, 64)
 special_exit_zone = 14
 
+[node name="Platforms" type="Node" parent="."]
+
+[node name="Hazards" type="Node" parent="."]
+
+[node name="Items" type="Node" parent="."]
+
 [node name="Badnks" type="Node" parent="."]
 
 [node name="Nebula" parent="Badnks" instance=ExtResource("13_wkjyq")]

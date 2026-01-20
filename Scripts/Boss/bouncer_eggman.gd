@@ -1,8 +1,5 @@
 extends BossBase
 
-var deathTimer = 4
-var dead = false
-
 # you can use these to control behaviour
 var phase = 0
 var attackTimer = 0
@@ -40,37 +37,34 @@ func _process(delta):
 	else:
 		$EggMobile/EggFlash.visible = false
 	
-	# dead animation timer (default time is 3 seconds)
-	if dead:
-		# if above 0 then count down
-		if deathTimer > 0:
-			# count down
-			deathTimer -= delta
-			# if about to hit 1.5 seconds, set velocity downward
-			if deathTimer > 1.5:
-				if deathTimer-delta <= 1.5:
-					set_animation("exploded",1.5)
-					velocity.y = 200
-			# if above 0.5 seconds left, move the momentum upwards until it's about -200
-			elif deathTimer > 0.5:
-				if velocity.y > -200:
-					velocity.y -= 400*delta
-				# if the next step is going to be below 0.5 seconds then stop moving
-				if deathTimer-delta <= 0.5:
-					velocity.y = 0
-			
-			# start running away once timer hits 0
-			if deathTimer <= 0:
-				velocity = Vector2(200,-25)
-				scale.x = -abs(scale.x)
-				_mark_defeated()
+	# defeated animation timer (default time is 3 seconds)
+	if defeated_flag and deathTimer > 0:
+		# count down
+		deathTimer -= delta
+		# if about to hit 1.5 seconds, set velocity downward
+		if deathTimer > 1.5:
+			if deathTimer-delta <= 1.5:
+				set_animation("exploded",1.5)
+				velocity.y = 200
+		# if above 0.5 seconds left, move the momentum upwards until it's about -200
+		elif deathTimer > 0.5:
+			if velocity.y > -200:
+				velocity.y -= 400*delta
+			# if the next step is going to be below 0.5 seconds then stop moving
+			if deathTimer-delta <= 0.5:
+				velocity.y = 0
+		# start running away once timer hits 0
+		elif deathTimer <= 0:
+			velocity = Vector2(200,-25)
+			scale.x = -abs(scale.x)
+			_mark_defeated()
 
 func _physics_process(delta):
 	super(delta)
 	# move boss
 	global_position += velocity*delta
 	# check if alive
-	if active and !dead:
+	if active and !defeated_flag:
 		# boss phase
 		match(phase):
 			0: # intro
@@ -164,8 +158,8 @@ func _physics_process(delta):
 		# if moving, then run move animation
 		if velocity.x != 0:
 			set_animation("move")
-		# check if dead, this can cause a conflict where the idle animation would play when it shouldn't
-		elif !dead:
+		# check if defeated, this can cause a conflict where the idle animation would play when it shouldn't
+		elif !defeated_flag:
 			set_animation("default")
 	# only run hit if flash timer is above 0
 	if flashTimer > 0:
@@ -186,8 +180,6 @@ func fire_laser():
 	bullet.global_position = bulletpoint.global_position
 	bullet.speed *= scale.x
 	get_parent().add_child(bullet)
-	pass
-
 
 
 # animation to play, time is how long the animation should play for until it stops
@@ -209,13 +201,9 @@ func set_animation(animation = "default", time = 0.0):
 
 # boss defeated
 func _on_boss_defeated():
-	# set dead to true
-	dead = true
-	# hit animation for 1.5 seconds (see the dead section in _process)
+	defeated_flag = true
 	set_animation("hit",1.5)
-	# set velocity to 0 to prevent moving
 	velocity = Vector2.ZERO
-	# star the smoke timer
 	$SmokeTimer.start(0.01667*7)
 
 # do a laugh for 1 second
@@ -228,8 +216,8 @@ func panic():
 		velocity = Vector2.ZERO
 
 func _on_SmokeTimer_timeout():
-	# check that deathtimer's still going and that we are actually dead
-	if dead and deathTimer > 1.5:
+	# check that deathtimer's still going and that we are actually defeated.
+	if defeated_flag and deathTimer > 1.5:
 		# play explosion sound
 		$Explode.play()
 		# spawn exposion particles

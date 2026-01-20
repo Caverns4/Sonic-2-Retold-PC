@@ -177,7 +177,7 @@ position = Vector2(-128, 0)
 [node name="RightPoint" type="Node2D" parent="."]
 position = Vector2(128, 0)
 
-[connection signal="defeated" from="." to="." method="_on_defeated"]
+[connection signal="boss_defeated" from="." to="." method="_on_boss_defeated"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_DamageArea_area_entered"]
 [connection signal="area_exited" from="HitBox" to="." method="_on_HitBox_area_exited"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_body_entered"]

@@ -36,7 +36,7 @@ func physics_collision(body, hitVector):
 		# disable ground
 		body.ground = false
 		body.set_state(body.STATES.AIR)
-		body.airControl = true
+		body.air_control = true
 		#Setup Player animation
 		var curAnim = "walk"
 		match(body.animator.current_animation):

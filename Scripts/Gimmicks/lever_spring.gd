@@ -48,7 +48,7 @@ func SpringCharacters():
 		
 		node.set_state(node.STATES.AIR)
 		node.ground = false
-		node.airControl = true
+		node.air_control = true
 		node.animator.queue("walk")
 		node.animator.play("corkScrew")
 		

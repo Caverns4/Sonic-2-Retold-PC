@@ -1,3 +1,4 @@
+class_name CutsceneControlledCharacter
 extends CharacterBody2D
 
 @onready var sprite = $AnimatedSprite2D
@@ -14,7 +15,7 @@ var inputs: Array[float] = [0,0,0,0,0,0,0,0]
 const INPUTACTIONS_P1 = [["gm_left","gm_right"],["gm_up","gm_down"],"gm_action","gm_action2","gm_action3","gm_super","gm_pause"]
 var inputActions = INPUTACTIONS_P1
 
-var controller: Node2D = null
+var controller: Node = null
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -300.0

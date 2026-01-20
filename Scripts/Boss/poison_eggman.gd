@@ -1,8 +1,5 @@
 extends BossBase
 
-var deathTimer = 4
-var dead = false
-
 # you can use these to control behaviour
 var phase = 0
 var soundTimer = 0.0
@@ -37,8 +34,8 @@ func _process(delta):
 	else:
 		$EggMobile/EggFlash.visible = false
 	
-	# dead animation timer (default time is 3 seconds)
-	if dead:
+	# defeated animation timer (default time is 3 seconds)
+	if defeated_flag:
 		# flame jet (only visible when moving)
 		$EggMobile/EggmobileFlame.visible = !(velocity.x == 0 or $EggMobile/EggmobileFlame.visible)
 		# if above 0 then count down
@@ -69,7 +66,7 @@ func _physics_process(delta):
 	# move boss
 	global_position += velocity*delta
 	# check if alive
-	if active and !dead:
+	if active and !defeated_flag:
 		# boss phase
 		match(phase):
 			0: # intro
@@ -103,8 +100,7 @@ func _physics_process(delta):
 		# if moving, then run move animation
 		if velocity.x != 0:
 			set_animation("move")
-		# check if dead, this can cause a conflict where the idle animation would play when it shouldn't
-		elif !dead:
+		elif !defeated_flag:
 			set_animation("default")
 	# only run hit if flash timer is above 0
 	if flashTimer > 0:
@@ -164,8 +160,8 @@ func do_laugh():
 	set_animation("laugh",1)
 
 func _on_smoke_timer_timeout() -> void:
-	# check that deathtimer's still going and that we are actually dead
-	if dead and deathTimer > 1.5:
+	# check that deathtimer's still going and that we are actually defeated
+	if defeated_flag and deathTimer > 1.5:
 		# play explosion sound
 		$Explode.play()
 		# spawn exposion particles
@@ -179,15 +175,12 @@ func _on_smoke_timer_timeout() -> void:
 		expl.global_position = global_position+Vector2(randf_range(-32,32),randf_range(-32,32))
 
 
-func _on_defeated() -> void:
-	# set dead to true
-	dead = true
-	# hit animation for 1.5 seconds (see the dead section in _process)
+func _on_boss_defeated() -> void:
+	defeated_flag = true
 	set_animation("hit",1.5)
-	# set velocity to 0 to prevent moving
 	velocity = Vector2.ZERO
-	# star the smoke timer
 	$SmokeTimer.start(0.01667*7)
+	
 	$PipeTexture.queue_free()
 	$PumpPosition.queue_free()
 	pipe = null

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djb1c4up1hyr0"
-path="res://.godot/imported/EGZ_SkyPH.png-c126a85564c07ad98ff293800c5d0eb6.ctex"
+uid="uid://duv6cdwi13nvk"
+path="res://.godot/imported/CCZ_Sky.png-d9a0d923a98339f0af0c7674fa488808.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Backgrounds/EGZ/EGZ_SkyPH.png"
-dest_files=["res://.godot/imported/EGZ_SkyPH.png-c126a85564c07ad98ff293800c5d0eb6.ctex"]
+source_file="res://Graphics/Backgrounds/EGZ/CCZ_Sky.png"
+dest_files=["res://.godot/imported/CCZ_Sky.png-d9a0d923a98339f0af0c7674fa488808.ctex"]
 
 [params]
 

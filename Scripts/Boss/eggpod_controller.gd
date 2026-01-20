@@ -55,7 +55,9 @@ func _process(delta: float) -> void:
 			var local_pos = (direction * orbit_radius).round()
 			children[i].position = local_pos * z_rot
 			local_pos = local_pos
-			children[i].z_index = z_index + int(local_pos.y)
+			children[i].z_index = z_index + sign(local_pos.y)
+			children[i].sprite.frame = 1+sign(local_pos.y/16)
+			children[i].vulnerable = (local_pos.y<0)
 
 func _on_eggman_damaged():
 	if children:

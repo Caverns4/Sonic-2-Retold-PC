@@ -1,11 +1,13 @@
 @tool
+class_name Cutscene_Eggman
 extends CharacterBody2D
-
 
 ## Texture2D that the object will be rendered with. Also determines collision size.
 @export var texture = preload("res://Graphics/Obstacles/Walls/shutter.png")
-@export_enum("left","right","switch")var side = 0
-var open = false
+@export_enum("left","right","node_deletion")var side: int = 0
+@export_node_path var node_path
+
+var open: bool = false
 var playerList = []
 
 func _ready():
@@ -26,7 +28,10 @@ func _ready():
 			$OpenShutter.queue_free()
 			$CloseShutter.queue_free()
 			$CloseShutter2.queue_free()
-		
+			if node_path:
+				var unlocker = get_node_or_null(node_path)
+				if unlocker and unlocker.has_signal("destroyed"):
+					unlocker.destroyed.connect(force_open)
 
 func _process(delta):
 	if !Engine.is_editor_hint():

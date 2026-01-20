@@ -1061,7 +1061,12 @@ func set_hitbox(mask = Vector2.ZERO, forcePoseChange = false):
 
 # set shields
 func set_shield(setShieldID):
+	call_deferred("set_shield_deffered",setShieldID)
+
+
+func set_shield_deffered(setShieldID):
 	magnetShape.disabled = true
+	#magnetShape.disabled = true
 	# verify not in water and shield compatible
 	if is_in_water and (setShieldID == SHIELDS.FIRE or setShieldID == SHIELDS.ELEC):
 		return false
@@ -1106,6 +1111,16 @@ func Update_Attacking_Flag():
 	#	if lastActiveAnimation == i:
 	#		attacking = true
 
+func is_attacking() -> bool:
+	# Attacking is for rolling type animations
+	var attacking_state: bool = false
+	var currentAnimChecks = [
+	"roll","dropDash","spinDash","glide","glideSlide","drop",
+	]
+	for i in currentAnimChecks:
+		if animator.current_animation == i:
+			attacking_state = true
+	return attacking_state
 
 # see Global for damage types, 0 = none, 1 = Fire, 2 = Elec, 3 = Water
 func hit_player(damagePoint = global_position, damageType = 0, soundID = 6):
@@ -1138,7 +1153,21 @@ func hit_player(damagePoint = global_position, damageType = 0, soundID = 6):
 			if Global.hud:
 				Global.hud.perfectEnabled = false
 				Global.hud.super_icon_ready(false)
-			
+			call_deferred('deferred_spill_rings')
+		elif shield == SHIELDS.NONE and (playerControl == 1 or Global.two_player_mode):
+			if Global.debug_mode:
+				sfx[soundID].play()
+				return false
+			else:
+				kill(soundID)
+		else:
+			sfx[soundID].play()
+		# Disable Shield
+		set_shield(SHIELDS.NONE)
+		return true
+	return false
+
+func deferred_spill_rings():
 			ringDisTime = 1.0/60.0 # ignore rings for 1/60th second after landing
 			var ringCount = 0
 			var ringAngle = 101.25
@@ -1163,18 +1192,6 @@ func hit_player(damagePoint = global_position, damageType = 0, soundID = 6):
 					ringAngle = 101.25 # Reset angle
 				get_parent().add_child(ring)
 			rings = 0
-		elif shield == SHIELDS.NONE and (playerControl == 1 or Global.two_player_mode):
-			if Global.debug_mode:
-				sfx[soundID].play()
-				return false
-			else:
-				kill(soundID)
-		else:
-			sfx[soundID].play()
-		# Disable Shield
-		set_shield(SHIELDS.NONE)
-		return true
-	return false
 
 func get_ring():
 	if playerControl == 1 or Global.two_player_mode:

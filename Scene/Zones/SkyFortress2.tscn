@@ -106,15 +106,27 @@ player_can_shimmy = true
 
 [node name="LayerSwitcher" parent="Entities" instance=ExtResource("13_pm2l4")]
 position = Vector2(2280, 768)
-size = Vector2(1, 32)
+size = Vector2i(1, 32)
 
 [node name="LayerSwitcher3" parent="Entities" instance=ExtResource("13_pm2l4")]
 position = Vector2(3088, 768)
-size = Vector2(1, 32)
+size = Vector2i(1, 32)
 leftLayer = 0
 rightLayer = 1
 
 [node name="LayerSwitcher2" parent="Entities" instance=ExtResource("13_pm2l4")]
 position = Vector2(2688, 1056)
-size = Vector2(48, 1)
+size = Vector2i(48, 1)
 orientation = 1
+
+[node name="Platforms" type="Node" parent="."]
+
+[node name="Hazards" type="Node" parent="."]
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="Items" type="Node" parent="."]
+
+[node name="Badniks" type="Node" parent="."]
+
+[node name="Rings" type="Node" parent="."]
