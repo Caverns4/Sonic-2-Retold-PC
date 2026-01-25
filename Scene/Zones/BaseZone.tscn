@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://hj3tt0gklwba"]
+[gd_scene load_steps=31 format=4 uid="uid://hj3tt0gklwba"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="2_tkxs0"]
@@ -15,16 +15,14 @@
 [ext_resource type="PackedScene" uid="uid://tvwn5saboqsa" path="res://Entities/Gimmicks/OOZ_launcher.tscn" id="14_pxnl8"]
 [ext_resource type="PackedScene" uid="uid://dh3178ok4om00" path="res://Entities/Misc/player_reset_field.tscn" id="15_apjlh"]
 [ext_resource type="PackedScene" uid="uid://chgov1cta70sn" path="res://Entities/Gimmicks/OOZ_Lid.tscn" id="16_5e18u"]
-[ext_resource type="PackedScene" uid="uid://bxxqw6i4k1tti" path="res://Entities/Gimmicks/Invisible_launcher.tscn" id="16_ruu4q"]
-[ext_resource type="PackedScene" uid="uid://bfjam0ov4pku5" path="res://Entities/Obstacles/BreakableBlock.tscn" id="17_baqjm"]
 [ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="17_pi7lu"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="17_tkmdx"]
 [ext_resource type="PackedScene" uid="uid://bqknlkx2y1d0q" path="res://Entities/ZoneObjects/OOZ_Platform_SpawnerLeft.tscn" id="17_upxqn"]
 [ext_resource type="PackedScene" uid="uid://cfteqnft5ynr7" path="res://Entities/Hazards/Spikes.tscn" id="18_0adhf"]
 [ext_resource type="PackedScene" uid="uid://f2u7qhtothnl" path="res://Entities/ZoneObjects/OOZ_Platform_Spawner.tscn" id="18_3ugf2"]
-[ext_resource type="Texture2D" uid="uid://bv257m85p2es3" path="res://Graphics/Obstacles/Blocks/OOZ_BreakableBlocks.png" id="18_8qid8"]
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="19_3h71u"]
 [ext_resource type="PackedScene" uid="uid://bqttecb8klixv" path="res://Entities/Gimmicks/OilSlick.tscn" id="19_80env"]
+[ext_resource type="PackedScene" uid="uid://c25uslo56f3u1" path="res://Entities/Obstacles/BreakableTubeLauncher.tscn" id="19_uk4cf"]
 [ext_resource type="PackedScene" uid="uid://c2t7hwn0iln3x" path="res://Entities/Obstacles/Elevator.tscn" id="21_dmurq"]
 [ext_resource type="PackedScene" uid="uid://bvtk4rs7h7sup" path="res://Entities/Gimmicks/Oil.tscn" id="21_yc6vl"]
 [ext_resource type="Texture2D" uid="uid://cyco1uten7qfm" path="res://Graphics/Objects_Zone/OOZ_Elevator.png" id="22_mb3so"]
@@ -36,6 +34,7 @@
 [node name="BaseZone" type="Node2D"]
 script = ExtResource("2")
 zone_id = 4
+zone_name = "Oil Ocean"
 music = ExtResource("2_tkxs0")
 music2P = ExtResource("3_3iobi")
 boss_theme = ExtResource("4_ueqy3")
@@ -46,8 +45,6 @@ defaultBottomBoundry = 1920
 [node name="04-OilOcean" parent="." instance=ExtResource("4_g00mk")]
 
 [node name="HUD" parent="." instance=ExtResource("3_hkybi")]
-zoneName = "OIL OCEAN"
-ringsForPerfect = 180
 
 [node name="Level_Layout" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -422,30 +419,6 @@ scale = Vector2(4, 4)
 position = Vector2(10432, 1408)
 scale = Vector2(4, 4)
 
-[node name="OOZ Launcher15" parent="Entities" instance=ExtResource("16_ruu4q")]
-position = Vector2(9920, 1408)
-
-[node name="OOZ Launcher16" parent="Entities" instance=ExtResource("16_ruu4q")]
-position = Vector2(9024, 256)
-
-[node name="OOZ Launcher17" parent="Entities" instance=ExtResource("16_ruu4q")]
-position = Vector2(10432, 896)
-
-[node name="Breakable" parent="Entities" instance=ExtResource("17_baqjm")]
-position = Vector2(9024, 240)
-pieces = Vector2(4, 4)
-SpriteTexture = ExtResource("18_8qid8")
-
-[node name="Breakable2" parent="Entities" instance=ExtResource("17_baqjm")]
-position = Vector2(10432, 880)
-pieces = Vector2(4, 4)
-SpriteTexture = ExtResource("18_8qid8")
-
-[node name="Breakable3" parent="Entities" instance=ExtResource("17_baqjm")]
-position = Vector2(9920, 1392)
-pieces = Vector2(4, 4)
-SpriteTexture = ExtResource("18_8qid8")
-
 [node name="Spring3" parent="Entities" instance=ExtResource("13_i3joy")]
 position = Vector2(10864, 1800)
 type = 1
@@ -457,6 +430,15 @@ position = Vector2(10384, 1656)
 [node name="OilSlick" parent="Entities" instance=ExtResource("19_80env")]
 position = Vector2(1472, 1776)
 scale = Vector2(3, 1)
+
+[node name="BreakableTubeLauncher" parent="Entities" instance=ExtResource("19_uk4cf")]
+position = Vector2(9024, 240)
+
+[node name="BreakableTubeLauncher2" parent="Entities" instance=ExtResource("19_uk4cf")]
+position = Vector2(10432, 880)
+
+[node name="BreakableTubeLauncher3" parent="Entities" instance=ExtResource("19_uk4cf")]
+position = Vector2(9920, 1392)
 
 [node name="Platforms" type="Node" parent="."]
 

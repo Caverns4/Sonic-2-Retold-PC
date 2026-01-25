@@ -1,6 +1,7 @@
 @tool
+class_name BreakableBlock
 extends StaticBody2D
-@export var pieces = Vector2(2,2)
+@export var pieces: Vector2i = Vector2i(2,2)
 @export var SpriteTexture = preload("res://Graphics/Obstacles/Blocks/breakable_block.png")
 var Piece = preload("res://Entities/Misc/BlockPiece.tscn")
 @export var sound = preload("res://Audio/SFX/Gimmicks/s2br_Collapse.wav")
@@ -23,13 +24,13 @@ func _process(_delta: float) -> void:
 
 func physics_collision(body:Player2D, hitVector):
 	if body.strength < strength_tier:
-		return false
+		return
 	
 	# check if physics object is coming down and check for a bit where the player isn't on floor
 	if hitVector == Vector2.DOWN and body.get_collision_layer_value(20):
 		# disable collision
 		$CollisionShape2D.disabled = true
-		$Sprite2D.visible = false
+		$Sprite2D.hide()
 		SoundDriver.play_sound(sound)
 		
 		# set player variables
@@ -41,6 +42,10 @@ func physics_collision(body:Player2D, hitVector):
 			Global.players.find(body))
 		body.enemyCounter += 1
 		
+		_break_object_to_pieces()
+		_on_destruction()
+
+func _break_object_to_pieces():
 		# generate pieces of the block to scatter, use i and j to determine the velocity of each one
 		# and set the settings for each piece to match up with the $Sprite2D node
 		for i in range(pieces.x):
@@ -67,8 +72,9 @@ func physics_collision(body:Player2D, hitVector):
 				Vector2((spriteWidth/pieces.x)*i,(spriteHeight/pieces.y)*j),
 				Vector2(spriteWidth/pieces.x,spriteHeight/pieces.y))
 				get_parent().add_child(piece)
-				
-	return true
+
+func _on_destruction():
+	pass
 
 func _draw():
 	if Engine.is_editor_hint():

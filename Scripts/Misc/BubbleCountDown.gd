@@ -16,7 +16,6 @@ func _process(delta):
 		if global_position.y < Global.waterLevel+8:
 			global_position.y = Global.waterLevel+8
 
-
 func _on_BubbleCountDown_animation_finished():
 	# on first animation finish, set screen offset to current position, then play the bubble count
 	# if already screen locked then free

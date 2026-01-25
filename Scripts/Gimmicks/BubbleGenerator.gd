@@ -2,8 +2,8 @@ extends Node2D
 
 # Note: big bubble has been adjusted and does not follow the original games behaviour
 
-var bubbleTimer = 0
-var bigBubbleTimer = 5
+var bubbleTimer: float = 0
+var bigBubbleTimer: float = 5
 var Bubble = preload("res://Entities/Misc/Bubbles.tscn")
 
 func _process(delta):

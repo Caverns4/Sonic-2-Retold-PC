@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://wglsmsb8bq77" path="res://Scripts/Gimmicks/TrampolineChild.gd" id="3"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(64, 8)
+size = Vector2(64, 12)
 
 [node name="Trampoline" type="Node2D"]
 script = ExtResource("1")

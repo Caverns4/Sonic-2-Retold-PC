@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c25uslo56f3u1"]
+
+[ext_resource type="Script" uid="uid://bf240115k3lrk" path="res://Scripts/Gimmicks/breakable_tube_launcher.gd" id="1_dfght"]
+[ext_resource type="Texture2D" uid="uid://bv257m85p2es3" path="res://Graphics/Obstacles/Blocks/OOZ_BreakableBlocks.png" id="2_hbmej"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(32, 32)
+
+[node name="BreakableTubeLauncher" type="StaticBody2D"]
+process_priority = 10
+collision_layer = 8192
+collision_mask = 0
+script = ExtResource("1_dfght")
+pieces = Vector2i(4, 4)
+SpriteTexture = ExtResource("2_hbmej")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+process_priority = 10
+texture = ExtResource("2_hbmej")

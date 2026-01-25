@@ -38,10 +38,14 @@
 [node name="NeoGreenHill2" type="Node2D"]
 script = ExtResource("1_uxs8x")
 zone_id = 5
+zone_name = "Aquatic Ruin"
+act_number = 2
 music = ExtResource("2_vjshq")
 music2P = ExtResource("2_vjshq")
 animal1 = 4
 animal2 = 0
+waterSourceColor = ExtResource("7_ylfia")
+waterReplaceColor = ExtResource("8_ofcp2")
 defaultTopBoundry = 384
 defaultRightBoundry = 11648
 defaultBottomBoundry = 2016
@@ -49,11 +53,6 @@ defaultBottomBoundry = 2016
 [node name="05-NeoGreenHill" parent="." instance=ExtResource("4_dt52b")]
 
 [node name="HUD" parent="." instance=ExtResource("1_u8gl0")]
-zoneName = "AQUATIC RUIN"
-act = 2
-waterSourceColor = ExtResource("7_ylfia")
-waterReplaceColor = ExtResource("8_ofcp2")
-ringsForPerfect = 130
 
 [node name="Level_Layout" type="Node" parent="."]
 
@@ -94,94 +93,94 @@ position = Vector2(128, 1296)
 
 [node name="LayerSwitcher" parent="Entities" instance=ExtResource("12_2vmd5")]
 position = Vector2(2432, 976)
-size = Vector2(1, 16)
+size = Vector2i(1, 16)
 leftLayer = 0
 rightLayer = 1
 
 [node name="LayerSwitcher4" parent="Entities" instance=ExtResource("12_2vmd5")]
 position = Vector2(3968, 784)
-size = Vector2(1, 32)
+size = Vector2i(1, 32)
 leftLayer = 0
 rightLayer = 1
 
 [node name="LayerSwitcher6" parent="Entities" instance=ExtResource("12_2vmd5")]
 position = Vector2(4360, 1088)
-size = Vector2(1, 12)
+size = Vector2i(1, 12)
 rightLayer = 1
 
 [node name="LayerSwitcher10" parent="Entities" instance=ExtResource("12_2vmd5")]
 position = Vector2(4920, 1040)
-size = Vector2(1, 12)
+size = Vector2i(1, 12)
 leftLayer = 0
 rightLayer = 1
 
 [node name="LayerSwitcher13" parent="Entities" instance=ExtResource("12_2vmd5")]
 position = Vector2(8952, 1136)
-size = Vector2(1, 12)
+size = Vector2i(1, 12)
 leftLayer = 0
 rightLayer = 1
 
 [node name="LayerSwitcher16" parent="Entities" instance=ExtResource("12_2vmd5")]
 position = Vector2(9056, 1048)
-size = Vector2(12, 1)
+size = Vector2i(12, 1)
 orientation = 1
 leftLayer = 0
 rightLayer = 1
 
 [node name="LayerSwitcher15" parent="Entities" instance=ExtResource("12_2vmd5")]
 position = Vector2(9416, 1168)
-size = Vector2(1, 12)
+size = Vector2i(1, 12)
 leftLayer = 0
 
 [node name="LayerSwitcher14" parent="Entities" instance=ExtResource("12_2vmd5")]
 position = Vector2(9216, 1088)
-size = Vector2(1, 4)
+size = Vector2i(1, 4)
 leftLayer = 0
 rightLayer = 1
 onlyOnFloor = true
 
 [node name="LayerSwitcher8" parent="Entities" instance=ExtResource("12_2vmd5")]
 position = Vector2(4608, 960)
-size = Vector2(1, 4)
+size = Vector2i(1, 4)
 rightLayer = 1
 onlyOnFloor = true
 
 [node name="LayerSwitcher9" parent="Entities" instance=ExtResource("12_2vmd5")]
 position = Vector2(4544, 1104)
-size = Vector2(4, 1)
+size = Vector2i(4, 1)
 orientation = 1
 onlyOnFloor = true
 
 [node name="LayerSwitcher11" parent="Entities" instance=ExtResource("12_2vmd5")]
 position = Vector2(5120, 832)
-size = Vector2(1, 4)
+size = Vector2i(1, 4)
 rightLayer = 1
 onlyOnFloor = true
 
 [node name="LayerSwitcher12" parent="Entities" instance=ExtResource("12_2vmd5")]
 position = Vector2(5056, 976)
-size = Vector2(4, 1)
+size = Vector2i(4, 1)
 orientation = 1
 onlyOnFloor = true
 
 [node name="LayerSwitcher5" parent="Entities" instance=ExtResource("12_2vmd5")]
 position = Vector2(3976, 1216)
-size = Vector2(1, 8)
+size = Vector2i(1, 8)
 leftLayer = 0
 
 [node name="LayerSwitcher7" parent="Entities" instance=ExtResource("12_2vmd5")]
 position = Vector2(4200, 688)
-size = Vector2(1, 32)
+size = Vector2i(1, 32)
 leftLayer = 0
 
 [node name="LayerSwitcher3" parent="Entities" instance=ExtResource("12_2vmd5")]
 position = Vector2(1416, 1504)
-size = Vector2(1, 16)
+size = Vector2i(1, 16)
 leftLayer = 0
 
 [node name="LayerSwitcher2" parent="Entities" instance=ExtResource("12_2vmd5")]
 position = Vector2(2560, 792)
-size = Vector2(16, 1)
+size = Vector2i(16, 1)
 orientation = 1
 leftLayer = 0
 

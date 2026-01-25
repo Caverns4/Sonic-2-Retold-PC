@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqj1smfkc5m7n"]
+[gd_scene load_steps=6 format=3 uid="uid://bqj1smfkc5m7n"]
 
 [ext_resource type="Script" uid="uid://dcpq0ragawmhg" path="res://Scripts/Gimmicks/SpeedBooster.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://r7ggpq8j3dr1" path="res://Graphics/Gimmicks/speed_booster.png" id="2"]
-[ext_resource type="AudioStream" uid="uid://d3jrmv0604402" path="res://Audio/SFX/Gimmicks/s2br_Spring.wav" id="3_xkrfc"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(8, 8)
@@ -29,6 +28,7 @@ animations = [{
 collision_layer = 0
 collision_mask = 4096
 script = ExtResource("1")
+visible_sprite = null
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
 shape = SubResource("1")
@@ -44,10 +44,6 @@ sprite_frames = SubResource("3")
 autoplay = "default"
 frame = 1
 frame_progress = 0.382781
-
-[node name="sfxSpring" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_xkrfc")
-bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_SpeedBooster_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

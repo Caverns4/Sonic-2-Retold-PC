@@ -1,9 +1,11 @@
-[gd_scene load_steps=47 format=4 uid="uid://b73oxpdf64ys2"]
+[gd_scene load_steps=49 format=4 uid="uid://b73oxpdf64ys2"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_r8kv3"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_sbiln"]
 [ext_resource type="AudioStream" uid="uid://hikbyuhih7uc" path="res://Audio/Soundtrack/s2br_ChemicalPlant.ogg" id="2_mig6y"]
+[ext_resource type="Texture2D" uid="uid://dxcdt4qimdnl7" path="res://Graphics/Palettes/CPZ_Pal_Dry.png" id="3_6erob"]
 [ext_resource type="TileSet" uid="uid://degtrdfi1sc00" path="res://Tileset/Levels/CPZ.tres" id="3_wgb1x"]
+[ext_resource type="Texture2D" uid="uid://7lh056irm1m8" path="res://Graphics/Palettes/CPZ_Pal_Wet.png" id="4_77ua5"]
 [ext_resource type="PackedScene" uid="uid://skb3vyib11ye" path="res://Scene/Backgrounds/03-ChemicalPlant.tscn" id="5_5j7ri"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="5_eai8g"]
 [ext_resource type="Shader" uid="uid://dws4ymg0bel70" path="res://Shaders/PaletteSwapRow_Timerbased.gdshader" id="8_fvcep"]
@@ -74,6 +76,8 @@ music = ExtResource("2_mig6y")
 music2P = ExtResource("2_mig6y")
 animal1 = 2
 animal2 = 7
+waterSourceColor = ExtResource("3_6erob")
+waterReplaceColor = ExtResource("4_77ua5")
 defaultRightBoundry = 12416
 
 [node name="03-ChemicalPlant" parent="." instance=ExtResource("5_5j7ri")]
@@ -369,78 +373,96 @@ springDirection = 2
 [node name="SpeedBooster" parent="Entities" instance=ExtResource("14_cb2w8")]
 position = Vector2(800, 376)
 boostDirection = 1
+visible_sprite = true
 
 [node name="SpeedBooster2" parent="Entities" instance=ExtResource("14_cb2w8")]
 position = Vector2(1696, 504)
+visible_sprite = true
 
 [node name="SpeedBooster17" parent="Entities" instance=ExtResource("14_cb2w8")]
 position = Vector2(2592, 1784)
 boostDirection = 1
 speed = 12
+visible_sprite = true
 
 [node name="SpeedBooster5" parent="Entities" instance=ExtResource("14_cb2w8")]
 position = Vector2(2720, 248)
 boostDirection = 1
+visible_sprite = true
 
 [node name="SpeedBooster18" parent="Entities" instance=ExtResource("14_cb2w8")]
 position = Vector2(2336, 440)
 boostDirection = 1
+visible_sprite = true
 
 [node name="SpeedBooster6" parent="Entities" instance=ExtResource("14_cb2w8")]
 position = Vector2(3488, 888)
 boostDirection = 1
+visible_sprite = true
 
 [node name="SpeedBooster7" parent="Entities" instance=ExtResource("14_cb2w8")]
 position = Vector2(4256, 1144)
 boostDirection = 1
+visible_sprite = true
 
 [node name="SpeedBooster8" parent="Entities" instance=ExtResource("14_cb2w8")]
 position = Vector2(5664, 888)
 boostDirection = 1
 speed = 10
+visible_sprite = true
 
 [node name="SpeedBooster15" parent="Entities" instance=ExtResource("14_cb2w8")]
 position = Vector2(4384, 1912)
 speed = 10
+visible_sprite = true
 
 [node name="SpeedBooster9" parent="Entities" instance=ExtResource("14_cb2w8")]
 position = Vector2(5920, 1144)
 boostDirection = 1
+visible_sprite = true
 
 [node name="SpeedBooster16" parent="Entities" instance=ExtResource("14_cb2w8")]
 position = Vector2(7520, 1656)
 boostDirection = 1
+visible_sprite = true
 
 [node name="SpeedBooster10" parent="Entities" instance=ExtResource("14_cb2w8")]
 position = Vector2(6688, 760)
 speed = 10
+visible_sprite = true
 
 [node name="SpeedBooster12" parent="Entities" instance=ExtResource("14_cb2w8")]
 position = Vector2(7712, 888)
 speed = 10
+visible_sprite = true
 
 [node name="SpeedBooster13" parent="Entities" instance=ExtResource("14_cb2w8")]
 position = Vector2(7968, 760)
 boostDirection = 1
 speed = 10
+visible_sprite = true
 
 [node name="SpeedBooster14" parent="Entities" instance=ExtResource("14_cb2w8")]
 position = Vector2(8736, 568)
 boostDirection = 1
 speed = 10
+visible_sprite = true
 
 [node name="SpeedBooster11" parent="Entities" instance=ExtResource("14_cb2w8")]
 position = Vector2(6176, 376)
 boostDirection = 1
 speed = 10
+visible_sprite = true
 
 [node name="SpeedBooster19" parent="Entities" instance=ExtResource("14_cb2w8")]
 position = Vector2(544, 760)
 boostDirection = 1
+visible_sprite = true
 
 [node name="SpeedBooster4" parent="Entities" instance=ExtResource("14_cb2w8")]
 position = Vector2(800, 1400)
 speed = 12
+visible_sprite = true
 
 [node name="Spring2" parent="Entities" instance=ExtResource("13_fvoj7")]
 position = Vector2(6152, 624)

@@ -1,7 +1,9 @@
-[gd_scene load_steps=46 format=4 uid="uid://cun7sa0v2mwiq"]
+[gd_scene load_steps=48 format=4 uid="uid://cun7sa0v2mwiq"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_snbg3"]
 [ext_resource type="AudioStream" uid="uid://bg1fcuqr8mk1d" path="res://Audio/Soundtrack/s2br_Jewel.ogg" id="2_tvhrw"]
+[ext_resource type="Texture2D" uid="uid://tdr31l1fyfos" path="res://Graphics/Palettes/HPZ_Pal_Dry.png" id="3_4xjsl"]
+[ext_resource type="Texture2D" uid="uid://cqxsc88x0mm7k" path="res://Graphics/Palettes/HPZ_Pal_Wet.png" id="4_7ayah"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_avawk"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="5_gd4l3"]
 [ext_resource type="PackedScene" uid="uid://b0xmqvvpy42o3" path="res://Scene/Backgrounds/01-HiddenPalace.tscn" id="7_vtcww"]
@@ -209,6 +211,8 @@ music = ExtResource("2_tvhrw")
 music2P = ExtResource("2_tvhrw")
 animal1 = 8
 animal2 = 5
+waterSourceColor = ExtResource("3_4xjsl")
+waterReplaceColor = ExtResource("4_7ayah")
 defaultBottomBoundry = 3072
 
 [node name="HUD" parent="." instance=ExtResource("5_avawk")]

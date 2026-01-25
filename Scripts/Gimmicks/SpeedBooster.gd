@@ -5,12 +5,15 @@ extends Area2D
 @export_enum("left", "right") var boostDirection = 0
 var dirMemory = boostDirection
 @export var speed = 16
+@export var sfx = preload("res://Audio/SFX/Gimmicks/s2br_Spring.wav")
+@export var visible_sprite: bool = true
 
 var players =[]
 
 func _ready():
 	# set direction
 	$Booster.flip_h = bool(boostDirection)
+	$Booster.visible = visible_sprite
 
 func _process(_delta):
 	if Engine.is_editor_hint():
@@ -23,8 +26,8 @@ func _process(_delta):
 				if i.ground == true:
 					i.movement.x = speed*(-1+(boostDirection*2))*60
 					i.horizontalLockTimer = (15.0/60.0) # lock for 15 frames
-					$sfxSpring.play()
-					
+					if sfx:
+						SoundDriver.play_sound2(sfx)
 
 func _on_SpeedBooster_body_entered(body):
 	# DO THE BOOST, WHOOOOOSH!!!!!!!
@@ -35,7 +38,8 @@ func _on_SpeedBooster_body_entered(body):
 		if (sameDir and abs(body.movement.x) < abs(speed*60)) or !sameDir:
 			body.movement.x = speed*(-1+(boostDirection*2))*60
 		body.horizontalLockTimer = (15.0/60.0) # lock for 15 frames
-		$sfxSpring.play()
+		if sfx:
+			SoundDriver.play_sound2(sfx)
 		# exit out of state on certain states
 	else:
 		match(body.currentState):

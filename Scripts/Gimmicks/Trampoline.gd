@@ -76,7 +76,6 @@ func set_launch(isLaunchOn):
 	launchEnabled = isLaunchOn
 
 func add_player(player):
-	print("add_player(" + str(player.name) + ")")
 	if (!players.has(Global.players[0])):
 		impart_force(player.movement.y)
 		weight += 1

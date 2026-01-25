@@ -4,12 +4,12 @@ extends Area2D
 
 var players: Array[Player2D] = []
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	for player in players:
 		if player.ground and abs(player.movement.x) < minimum_speed and !player.controlObject:
 			player.movement.x = minimum_speed*sign(player.movement.x)
 			if player.movement.x == 0:
-				player.movement.x = player.direction.x *minimum_speed
+				player.movement.x = player.direction * minimum_speed
 			player.movement.x += (12 * sign(player.movement.x))
 
 

@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jc3mb"]
 size = Vector2(30, 48)
 
-[node name="OOZ Launcher" type="Node2D"]
+[node name="Invisible Launcher" type="Node2D"]
 script = ExtResource("1_fafho")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -17,4 +17,3 @@ shape = SubResource("RectangleShape2D_jc3mb")
 debug_color = Color(1, 0, 0, 0.501961)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

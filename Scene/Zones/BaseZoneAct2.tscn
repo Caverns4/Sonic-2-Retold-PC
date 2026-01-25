@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://bjavywoj00j1j"]
+[gd_scene load_steps=42 format=4 uid="uid://bjavywoj00j1j"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://bp1gu4a6y3bo0" path="res://Audio/Soundtrack/s2br_OilOcean.ogg" id="2_533ik"]
@@ -25,14 +25,13 @@
 [ext_resource type="PackedScene" uid="uid://chgov1cta70sn" path="res://Entities/Gimmicks/OOZ_Lid.tscn" id="17_kwdjh"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="18"]
 [ext_resource type="PackedScene" uid="uid://bxxqw6i4k1tti" path="res://Entities/Gimmicks/Invisible_launcher.tscn" id="18_1elsj"]
-[ext_resource type="PackedScene" uid="uid://bfjam0ov4pku5" path="res://Entities/Obstacles/BreakableBlock.tscn" id="19_xm583"]
-[ext_resource type="Texture2D" uid="uid://bv257m85p2es3" path="res://Graphics/Obstacles/Blocks/OOZ_BreakableBlocks.png" id="20_ebkgg"]
 [ext_resource type="PackedScene" uid="uid://bvvxl5bmelnk1" path="res://Entities/Gimmicks/WaterSlide.tscn" id="21_1fygu"]
 [ext_resource type="PackedScene" uid="uid://dh3178ok4om00" path="res://Entities/Misc/player_reset_field.tscn" id="21_k3j71"]
 [ext_resource type="PackedScene" uid="uid://bjuh5cvbt06af" path="res://Entities/MainObjects/Capsule.tscn" id="22_gayax"]
 [ext_resource type="PackedScene" uid="uid://bqttecb8klixv" path="res://Entities/Gimmicks/OilSlick.tscn" id="22_tegdf"]
 [ext_resource type="PackedScene" uid="uid://7k14xkpjguop" path="res://Entities/Obstacles/SwingingPlatform.tscn" id="23_q608s"]
 [ext_resource type="PackedScene" uid="uid://bbf1sa8l70ygh" path="res://Entities/Gimmicks/fan.tscn" id="23_uuon4"]
+[ext_resource type="PackedScene" uid="uid://c25uslo56f3u1" path="res://Entities/Obstacles/BreakableTubeLauncher.tscn" id="23_w8bgu"]
 [ext_resource type="Texture2D" uid="uid://b5e1b22f63hkx" path="res://Graphics/Obstacles/OOZ_Swing.png" id="24_8ymcl"]
 [ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="26_h0mhp"]
 [ext_resource type="PackedScene" uid="uid://cfteqnft5ynr7" path="res://Entities/Hazards/Spikes.tscn" id="27_rhtyr"]
@@ -46,6 +45,8 @@
 [node name="BaseZoneAct2" type="Node2D"]
 script = ExtResource("2")
 zone_id = 4
+zone_name = "Oil Ocean"
+act_number = 2
 music = ExtResource("2_533ik")
 music2P = ExtResource("3_w8bgu")
 boss_theme = ExtResource("3_uemc5")
@@ -58,9 +59,6 @@ metadata/_edit_vertical_guides_ = [3600.0]
 [node name="04-OilOcean" parent="." instance=ExtResource("4_wms2a")]
 
 [node name="HUD" parent="." instance=ExtResource("4")]
-zoneName = "OIL OCEAN"
-act = 2
-ringsForPerfect = 100
 
 [node name="Level_Layout" type="Node2D" parent="."]
 material = ExtResource("5_15fkl")
@@ -248,10 +246,10 @@ position = Vector2(2624, 1280)
 [node name="OOZ_Lid4" parent="Entities" instance=ExtResource("17_kwdjh")]
 position = Vector2(2752, 1280)
 
-[node name="OOZ Launcher4" parent="Entities" instance=ExtResource("18_1elsj")]
+[node name="OOZ Tube Launcher" parent="Entities" instance=ExtResource("18_1elsj")]
 position = Vector2(2496, 1056)
 
-[node name="OOZ Launcher5" parent="Entities" instance=ExtResource("18_1elsj")]
+[node name="OOZ Tube Launcher2" parent="Entities" instance=ExtResource("18_1elsj")]
 position = Vector2(2752, 1056)
 
 [node name="PlayerResetField2" parent="Entities" instance=ExtResource("21_k3j71")]
@@ -270,29 +268,6 @@ position = Vector2(9152, 1408)
 [node name="OOZ_Lid8" parent="Entities" instance=ExtResource("17_kwdjh")]
 position = Vector2(9280, 1280)
 
-[node name="Breakable" parent="Entities" instance=ExtResource("19_xm583")]
-position = Vector2(4416, 624)
-pieces = Vector2(4, 4)
-SpriteTexture = ExtResource("20_ebkgg")
-
-[node name="Breakable2" parent="Entities" instance=ExtResource("19_xm583")]
-position = Vector2(6720, 1008)
-pieces = Vector2(4, 4)
-SpriteTexture = ExtResource("20_ebkgg")
-
-[node name="Breakable3" parent="Entities" instance=ExtResource("19_xm583")]
-position = Vector2(7104, 1008)
-pieces = Vector2(4, 4)
-SpriteTexture = ExtResource("20_ebkgg")
-
-[node name="Breakable4" parent="Entities" instance=ExtResource("19_xm583")]
-position = Vector2(8256, 624)
-pieces = Vector2(4, 4)
-SpriteTexture = ExtResource("20_ebkgg")
-
-[node name="OOZ Launcher7" parent="Entities" instance=ExtResource("18_1elsj")]
-position = Vector2(4416, 640)
-
 [node name="OOZ Launcher8" parent="Entities" instance=ExtResource("13_bjjaa")]
 position = Vector2(4416, 448)
 startDirection = 2
@@ -309,12 +284,6 @@ position = Vector2(4680, 736)
 [node name="OOZ Launcher11" parent="Entities" instance=ExtResource("13_bjjaa")]
 position = Vector2(5312, 736)
 startDirection = 3
-
-[node name="OOZ Launcher12" parent="Entities" instance=ExtResource("18_1elsj")]
-position = Vector2(6720, 1024)
-
-[node name="OOZ Launcher13" parent="Entities" instance=ExtResource("18_1elsj")]
-position = Vector2(7104, 1024)
 
 [node name="OOZ Launcher14" parent="Entities" instance=ExtResource("13_bjjaa")]
 position = Vector2(6720, 800)
@@ -368,9 +337,6 @@ startDirection = 2
 position = Vector2(7656, 328)
 startDirection = 1
 turnDirection = 1
-
-[node name="OOZ Launcher26" parent="Entities" instance=ExtResource("18_1elsj")]
-position = Vector2(8256, 640)
 
 [node name="Spring3" parent="Entities" instance=ExtResource("12_rrmya")]
 position = Vector2(7920, 216)
@@ -556,6 +522,19 @@ position = Vector2(3584, 1008)
 [node name="OilSlick" parent="Entities" instance=ExtResource("22_tegdf")]
 position = Vector2(3776, 1392)
 scale = Vector2(3, 1)
+
+[node name="BreakableTubeLauncher" parent="Entities" instance=ExtResource("23_w8bgu")]
+position = Vector2(4416, 624)
+
+[node name="BreakableTubeLauncher2" parent="Entities" instance=ExtResource("23_w8bgu")]
+position = Vector2(6720, 1008)
+
+[node name="BreakableTubeLauncher3" parent="Entities" instance=ExtResource("23_w8bgu")]
+position = Vector2(7104, 1008)
+
+[node name="BreakableTubeLauncher4" parent="Entities" instance=ExtResource("23_w8bgu")]
+position = Vector2(32, 1336)
+rotation = 1.5707964
 
 [node name="Platforms" type="Node" parent="."]
 
@@ -1358,4 +1337,4 @@ position = Vector2(10432, 664)
 [node name="BossTestSpawn" type="Node2D" parent="."]
 position = Vector2(9888, 552)
 script = ExtResource("38_es7xl")
-currentCharacter = 7
+currentCharacter = 0
