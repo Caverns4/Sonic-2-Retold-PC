@@ -106,6 +106,8 @@ func InitEndOfAct():
 	if Global.stageClearPhase == 1 and player:
 		# wait for spinner to finish
 		await $Signpost/Animator.animation_finished
+		Global.emit_stage_clear()
+		
 		# after finishing spin, set stage clear to 2 and disable the players controls,
 		# stage clear is set to 2 so that the level ending doesn't start prematurely but we can track where the player is
 		Global.stageClearPhase = 2

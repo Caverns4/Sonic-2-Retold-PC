@@ -15,7 +15,7 @@ func _ready() -> void:
 		animation.play("Fly")
 		state = STATES.FLY
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	match state:
 		STATES.FLY:
 			velocity = Vector2(-180,0)
@@ -28,7 +28,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		flame.visible = true
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_body_entered(_body: Node2D) -> void:
 	PlayerSensor.queue_free()
 	animation.play("Launch")
 	velocity = Vector2(-60,-60)

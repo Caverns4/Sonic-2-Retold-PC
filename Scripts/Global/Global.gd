@@ -71,6 +71,7 @@ var timerActive = false
 var timerActiveP2 = false
 var gameOver = false
 
+## TODO: Make this work better.
 # stage clear is used to identify the current state of the stage clear sequence
 # this is reference in
 # res://Scripts/Misc/HUD.gd
@@ -197,7 +198,13 @@ var saved_act_id = 0 # selected act ID
 var special_exit = ZONES.EMERALD_HILL
 
 # water level of the current level, setting this to null will disable the water
-var waterLevel = null
+var waterLevel = 0: set = _set_water
+func _set_water(value: int):
+	if Global.hud:
+		Global.hud.UpdateWaterOverlay(value)
+	waterLevel = value
+
+
 var setWaterLevel = 0 # used by other nodes to change the water level
 var waterScrollSpeed = 64 # used by other nodes for how fast to move the water to different levels
 
@@ -214,6 +221,7 @@ var animals = [0,1]
 
 # emited when a stage gets started
 signal stage_started
+signal stage_clear
 
 ## Game settings
 var zoomSize = 2
@@ -320,14 +328,14 @@ func _process(delta):
 func reset_level_data():
 	Clean_Up_Object_References()
 	object_table.clear()
-	waterLevel = null
+	waterLevel = 0
 	gameOver = false
 	if stageClearPhase != 0:
 		saved_checkpoint = -1
 		levelTime = 0
 		levelTimeP2 = 0
-		timerActive = false
-		timerActiveP2 = false
+	timerActive = false
+	timerActiveP2 = false
 	bonus_stage_saved_data.clear()
 	globalTimer = 0
 	stageClearPhase = 0
@@ -442,9 +450,11 @@ func save_level_data(pos: Vector2):
 	bonus_stage_saved_data.push_back(levelTime)
 
 
-# Godot doesn't like not having emit signal only done in other nodes so we're using a function to call it
-func emit_stage_start():
+func emit_stage_started():
 	emit_signal("stage_started")
+
+func emit_stage_clear():
+	emit_signal("stage_clear")
 
 # save data settings
 func save_settings():

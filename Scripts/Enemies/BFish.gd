@@ -94,9 +94,7 @@ func BFish_ReturnHome(delta):
 	calc_dir()
 
 func BFish_ForceUnderwater():
-	if Global.waterLevel:
-		global_position.y = max(global_position.y,Global.waterLevel)
-
+	global_position.y = max(global_position.y,Global.waterLevel)
 
 func calc_dir():
 	# calculate direction based on side movement and rotation

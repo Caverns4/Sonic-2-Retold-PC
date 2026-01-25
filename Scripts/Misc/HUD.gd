@@ -1,8 +1,5 @@
 extends CanvasLayer
 
-## player ID look up
-@export var focusPlayer: int = 0
-
 # counter elements pointers
 @onready var scoreText: Label = $Counters/Text/ScoreNumber
 @onready var timeText: Label = $Counters/Text/TimeNumbers
@@ -11,26 +8,21 @@ extends CanvasLayer
 @onready var iconAnim: AnimationPlayer = $Counters/Text/IconAnim
 
 ## If true, play the level card animator and use the Zone Name Text
-@export var playLevelCard: bool = true
-## Text to use in the Zone Name label.
-@export var zoneName: String = "Base"
-## Text to use in the Zone label.
-@export var zone: String = "Zone"
-## Act ID
-@export var act: int = 1
+var playLevelCard: bool = true
+var end_cutscene: bool = false
 
-@export var waterSourceColor = preload("res://Graphics/Palettes/BasePal.png")
-@export var waterReplaceColor = preload("res://Graphics/Palettes/WetPal.png")
+enum STATES{INIT,INTRO,LEVEL,END_OF_LEVEL,CUTSCENE}
+var state: STATES = STATES.INIT
+
+var waterSourceColor = preload("res://Graphics/Palettes/BasePal.png")
+var waterReplaceColor = preload("res://Graphics/Palettes/WetPal.png")
 
 ## The total number of rings required for a Perfect Bonus in this level. If 0, calculate automatically.
-@export var ringsForPerfect: int = 0
+var ringsForPerfect: int = 0
 
 # used for flashing ui elements (rings, time)
 var flashTimer = 0
-var cheating = (
-	Global.airSpeedCap or 
-	(Global.superAnyone and Global.PlayerChar1 != Global.CHARACTERS.SONIC) or 
-	!Global.superRingDrain)
+var cheating: bool = false
 
 # Used for level completion, stop loop recursions
 var isStageEnding: bool = false
@@ -55,67 +47,82 @@ var boss_current_health: int = 0
 # signal that gets emited once the stage tally is over
 signal tally_clear
 
-var two_player_results = "res://Scene/Presentation/two_player_results.tscn"
-var lifeTextures = [
+var two_player_results: String = "res://Scene/Presentation/two_player_results.tscn"
+var lifeTextures: Array[Texture2D] = [
 	preload("res://Graphics/HUD/hud_lives.png"),
 	preload("res://Graphics/HUD/hud_lives_Miles.png")
 ]
 
 func _ready():
+	set_hud_visibility(false)
+	Global.hud = self
+	cheating = (!Global.superRingDrain or !Global.airSpeedCap)
 	# create a new stream for the tick sound (so the original stream
 	# will remain unchanged, as it's also used by the switch gimmick),
 	# and set loop parameters, but don't enable looping yet
 	$LevelClear/CounterSFX.stream = $LevelClear/CounterSFX.stream.duplicate()
 	$LevelClear/CounterSFX.stream.loop_end = roundi($LevelClear/CounterSFX.stream.mix_rate / (60.0 / 4))
-	
-	if ringsForPerfect <= 0:
-		ringsForPerfect = get_tree().get_nodes_in_group("Rings").size()
-		print(str(ringsForPerfect) + " rings to perfect.")
-	
-	if !Global.airSpeedCap:
+
+	# If cheating, make it apparent on the HUD
+	if cheating:
 		$Counters/Text.self_modulate = Color.RED
-
-	$Water/WaterOverlay.material["shader_parameter/originalPalette"] = waterSourceColor
-	$Water/WaterOverlay.material["shader_parameter/swapPalette"] = waterReplaceColor
 	
-	# stop timer from counting during stage start up and set global hud to self
-	Global.timerActive = false
-	Global.timerActiveP2 = false
-	Global.hud = self
-
-	var lifeCounterFrame = 0
 	# Set Life Icon textures
 	var iconTex: int = 1 if Global.tails_name_cheat else 0
-	#If Tails' name is set to Miles, use an alrenate texture set
+	# If Tails' name is set to Miles, use an alrenate texture set
 	$LifeCounter/Icon.texture = lifeTextures[iconTex]
 	$P1Counters/LifeIcon.texture = lifeTextures[iconTex]
 	$P2Counters/LifeIcon.texture = lifeTextures[iconTex]
-
 	if Global.two_player_mode:
-		$Counters.visible = false
-		$LifeCounter.visible = false
-		$P1Counters.visible = true
-		$P2Counters.visible = true
-		# Set character Icon
 		$P1Counters/LifeIcon.frame = Global.PlayerChar1
 		$P2Counters/LifeIcon.frame = Global.PlayerChar2
+	$LifeCounter/Icon.frame = Global.PlayerChar1 if Global.livesMode else 0
 
-	else:
-		$Counters.visible = true
-		$LifeCounter.visible = true
-		$P1Counters.visible = false
-		$P2Counters.visible = false
-		# Set character Icon
-		if Global.livesMode:
-			lifeCounterFrame = Global.PlayerChar1
-		else:
-			lifeCounterFrame = 0
-		$LifeCounter/Icon.frame = lifeCounterFrame
+func initialize_hud(zone_name: String,zone_text: String,act_number: int):
+	# set level name strings
+	$LevelCard/LevelName.text = zone_name
+	$LevelCard/Zone.text = zone_text
+	# set act graphic
+	$LevelCard/Act.frame = act_number-1
+	$LevelCard/Act.visible = (act_number > 0)
+	# replace "sonic" in stage clear to match the player clear string
+	$LevelClear/SonicGot.text = Global.characterNames[Global.PlayerChar1-1] + " GOT"
+	# set the act clear frame
+	$LevelClear/Act.frame = act_number-1
+	
+	Global.stage_started.connect(_on_stage_started)
+	Global.stage_clear.connect(ProcessStageClear)
+	$Water/WaterOverlay.material["shader_parameter/originalPalette"] = waterSourceColor
+	$Water/WaterOverlay.material["shader_parameter/swapPalette"] = waterReplaceColor
+	state = STATES.INTRO
 	PlayTitleCardAnimaiton()
+
+func set_hud_visibility(vis: bool):
+	if vis:
+		$Counters.visible = !Global.two_player_mode
+		$LifeCounter.visible = !Global.two_player_mode
+		$P1Counters.visible = Global.two_player_mode
+		$P2Counters.visible = Global.two_player_mode
+		$DeathTimers.visible = Global.two_player_mode
+	else:
+		$LifeCounter.hide()
+		$Counters.hide()
+		$P1Counters.hide()
+		$P2Counters.hide()
+		$DeathTimers.hide()
+
 
 
 func PlayTitleCardAnimaiton():
-	# play level card routine if level card is true
+	$LevelCard.visible = true
+	# make sure level card isn't paused so it can keep playing
+	$LevelCard/CardPlayer.process_mode = PROCESS_MODE_ALWAYS
+	# temporarily let music play during pauses
+	if SoundDriver.musicParent != null:
+		SoundDriver.musicParent.process_mode = PROCESS_MODE_ALWAYS
+	# pause game while card is playing
+	get_tree().paused = true
+	## The only difference here is the visibility of the elements.
 	if !playLevelCard:
 		$LevelCard/Banner.visible = false
 		$LevelCard/PatternLeft.visible = false
@@ -124,53 +131,23 @@ func PlayTitleCardAnimaiton():
 		$LevelCard/LevelName.visible = false
 		$LevelCard/Act.visible = false
 		$"LevelCard/Retold Text".visible = false
-		get_tree().paused = true
-		await get_tree().create_timer(0.5).timeout
-		get_tree().paused = false
-		Main.can_pause = true
-	else:
-		$LevelCard/CardPlayer.play("Start")
-		# set level card
-		$LevelCard.visible = true
-		# set level name strings
-		$LevelCard/LevelName.text = zoneName
-		$LevelCard/Zone.text = zone
-		# set act graphic
-		$LevelCard/Act.frame = act-1
-		# make visible if act isn't 0 (0 will just be zone)
-		if playLevelCard:
-			$LevelCard/Act.visible = (act > 0)
-		# make sure level card isn't paused so it can keep playing
-		$LevelCard/CardPlayer.process_mode = PROCESS_MODE_ALWAYS
-		# temporarily let music play during pauses
-		if SoundDriver.musicParent != null:
-			SoundDriver.musicParent.process_mode = PROCESS_MODE_ALWAYS
-		# pause game while card is playing
-		get_tree().paused = true
-		# play card animations
-		$LevelCard/CardPlayer.play("Start")
-		$LevelCard/CardMover.play("Slider")
-		# wait for card to finish it's entrance animation, then play the end
-		await $LevelCard/CardPlayer.animation_finished
-		$LevelCard/CardPlayer.play("End")
-		# unpause the game and set previous pause mode nodes to stop on pause
-		get_tree().paused = false
-		respawnPlayer()
-		SoundDriver.musicParent.process_mode = PROCESS_MODE_PAUSABLE
-		$LevelCard/CardPlayer.process_mode = PROCESS_MODE_PAUSABLE
-		# emit stage start signal
-		Global.emit_stage_start()
-		# wait for title card animator to finish ending before starting the level timer
-		await $LevelCard/CardPlayer.animation_finished
-		Main.can_pause = true
-
-	Global.timerActive = true
-	Global.timerActiveP2 = true
-	# replace "sonic" in stage clear to match the player clear string
-	$LevelClear/SonicGot.text = Global.characterNames[Global.PlayerChar1-1] + " GOT"
+	# play card animations
+	$LevelCard/CardPlayer.play("Start")
+	$LevelCard/CardMover.play("Slider")
+	# wait for card to finish it's entrance animation, then play the end
+	await $LevelCard/CardPlayer.animation_finished
+	$LevelCard/CardPlayer.play("End")
+	# unpause the game and set previous pause mode nodes to stop on pause
+	get_tree().paused = false
+	respawnPlayer()
+	SoundDriver.musicParent.process_mode = PROCESS_MODE_PAUSABLE
+	$LevelCard/CardPlayer.process_mode = PROCESS_MODE_PAUSABLE
+	# emit stage start signal
+	Global.emit_stage_started()
+	# wait for title card animator to finish ending before starting the level timer
+	await $LevelCard/CardPlayer.animation_finished
+	Main.can_pause = true
 	
-	# set the act clear frame
-	$LevelClear/Act.frame = act-1
 
 func respawnPlayer():
 	if Global.players and Global.players[0] is CharacterBody2D:
@@ -218,24 +195,22 @@ func respawnPlayer():
 		player.collision_layer = player.defaultLayer
 		player.collision_mask = player.defaultMask
 
-
 func _process(delta):
-	# HUD flashing text
-	HandleHUDBlinking(delta)
-	UpdateHUD(delta)
-	# Water Overlay
-	if Global.waterLevel != null:
-		WaterOverlay(delta)
-	else: # Disable water overlay
-		$Water/WaterOverlay.visible = false
-	
-	# Stage Clear handling
-	if Global.stageClearPhase > 2:
-		ProcessStageClear(delta)
-	# Game Over Sequence if NOT stage complete
-	elif Global.gameOver and !gameOver:
-		SetupGameOver(delta)
-	
+	match state:
+		STATES.INTRO:
+			pass
+		STATES.LEVEL:
+			# HUD flashing text
+			HandleHUDBlinking(delta)
+			UpdateHUD(delta)
+			# Game Over Sequence if NOT stage complete
+			if Global.gameOver and !gameOver:
+				SetupGameOver(delta)
+		STATES.END_OF_LEVEL:
+			pass
+	## Update the water display.
+	WaterOverlay()
+
 
 ## HUD flashing text
 func HandleHUDBlinking(delta):
@@ -244,7 +219,7 @@ func HandleHUDBlinking(delta):
 		flashTimer = 0.133333
 		if Global.players.size() > 0:
 			# if ring count at zero, flash rings
-			if Global.players[focusPlayer].rings <= 0:
+			if Global.players[0].rings <= 0:
 				$Counters/Text/Rings.visible = !$Counters/Text/Rings.visible
 			else:
 				$Counters/Text/Rings.visible = false
@@ -290,33 +265,26 @@ func UpdateHUD(_delta):
 		timeText.text = timer_text
 		#Ring Text Player 1
 		if Global.players:
-			ringText.text = "%3d" % Global.players[focusPlayer].rings
-		
+			ringText.text = "%3d" % Global.players[0].rings
 		# Life Counter
 		if Global.livesMode:
 			lifeText.text = "%3d" % Global.lives
 		else:
 			lifeText.text = "%3d" % min(Global.totalCoins + coins,999)
-	
+
+## Called when the Water Level is updated.
+func UpdateWaterOverlay(value):
+	$Water/WaterOverlay.visible = (value > 0)
 
 ## Check that this level has water
-func WaterOverlay(_delta):
+func WaterOverlay():
 	# get current camera
 	var cam = GlobalFunctions.getCurrentCamera2D()
-	if !Global.two_player_mode:
-		if cam != null:
-			# if camera exists place the water's y position based on the screen position as the water is a UI overlay
-			$Water/WaterOverlay.position.y = clamp(
-				Global.waterLevel-GlobalFunctions.getCurrentCamera2D().get_screen_center_position().y+(get_viewport().get_visible_rect().size.y/2
-				),0,get_viewport().get_visible_rect().size.y)
-		# scale water level to match the visible screen
-		$Water/WaterOverlay.scale.y = clamp(Global.waterLevel-$Water/WaterOverlay.position.y,0,get_viewport().size.y)
-		$Water/WaterOverlay.visible = true
-	else:
+	if !Global.two_player_mode and cam != null:
 		# if camera exists place the water's y position based on the screen position as the water is a UI overlay
 		$Water/WaterOverlay.position.y = clamp(
-			Global.waterLevel-GlobalFunctions.getCurrentCamera2D().get_screen_center_position().y+(get_viewport().get_visible_rect().size.y/4
-			),0,get_viewport().get_visible_rect().size.y/2)
+			Global.waterLevel-GlobalFunctions.getCurrentCamera2D().get_screen_center_position().y+(get_viewport().get_visible_rect().size.y/2
+			),0,get_viewport().get_visible_rect().size.y)
 		# scale water level to match the visible screen
 		$Water/WaterOverlay.scale.y = clamp(Global.waterLevel-$Water/WaterOverlay.position.y,0,get_viewport().size.y)
 		$Water/WaterOverlay.visible = true
@@ -377,14 +345,23 @@ func SetupGameOver(_delta):
 			Global.levelTime = 0
 			Global.levelTimeP2 = 0
 
+func _on_stage_started():
+	set_hud_visibility(true)
+	Global.levelTime = 0
+	Global.levelTimeP2 = 0
+	Global.timerActive = true
+	Global.timerActiveP2 = true
+	state = STATES.LEVEL
+
 ## Run Stage Clear Functionality
-func ProcessStageClear(_delta):
+func ProcessStageClear():
 	# initialize stage clear sequence
 	if !isStageEnding:
-		
+		isStageEnding = true
+		set_hud_visibility(false)
+		state = STATES.END_OF_LEVEL
 		# reset air in case we are under water
 		_reset_air()
-		isStageEnding = true
 		
 		for i:Player2D in Global.players:
 			i.playerControl = -1
@@ -397,12 +374,12 @@ func ProcessStageClear(_delta):
 			perfectBonus = 50000
 	
 		# show level clear elements
-		$LevelClear.visible = true
+		$LevelClear.show()
 		$LevelClear/TotalText/TallyTotal.text = scoreText.text
 		$LevelClear/Animator.play("LevelClear")
 	
 		# set bonuses
-		ringBonus = floor(Global.players[focusPlayer].rings)*100
+		ringBonus = floor(Global.players[0].rings)*100
 		$LevelClear/RingBonusText/RingBonus.text = "%6d" % ringBonus
 		$LevelClear/PerfectBonusText/PerfectBonus.text = "%6d" % perfectBonus
 		timeBonus = 0
@@ -487,10 +464,8 @@ func _reset_air():
 	for player in Global.players:
 		player.airTimer = player.defaultAirTime
 
+## We count the number of points based on time passed since the previous frame.
 func _add_score(subtractFrom,delta):
-	# Normally we add 100 points per frame at 60 FPS, but player's framerate may
-	# be different. To accommodate for that, we count the number of points based
-	# on time passed since the previous frame.
 	accumulatedDelta += delta
 	var standardDelta = 1.0 / 60.0
 	var points = floor(accumulatedDelta / standardDelta) * 100
@@ -502,7 +477,6 @@ func _add_score(subtractFrom,delta):
 	subtractFrom -= points
 	Global.score += points
 	return subtractFrom
-"res://Scene/Zones/EmeraldHill2.tscn"
 
 ## Setup the intial boss meter.
 func setup_boss_meter(boss: BossBase):
@@ -521,8 +495,8 @@ func boss_hit():
 		$"Boss Life".visible = false
 
 
-func super_icon_ready(state: bool = false):
-	if state:
+func super_icon_ready(vis: bool = false):
+	if vis:
 		iconAnim.play("Super")
 	else:
 		iconAnim.play("RESET")

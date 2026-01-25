@@ -66,6 +66,7 @@ shader_parameter/time_scale = 0.1
 [node name="ChemicalPlant1" type="Node2D"]
 script = ExtResource("2")
 zone_id = 3
+zone_name = "Chemical Plant"
 music = ExtResource("2_8olfy")
 music2P = ExtResource("2_8olfy")
 animal1 = 2
@@ -75,8 +76,6 @@ defaultRightBoundry = 10496
 [node name="03-ChemicalPlant" parent="." instance=ExtResource("5_n8awx")]
 
 [node name="HUD" parent="." instance=ExtResource("4")]
-zoneName = "CHEMICAL PLANT"
-ringsForPerfect = 150
 
 [node name="Level_Layout" type="Node" parent="."]
 
@@ -565,7 +564,6 @@ width = 32.0
 default_color = Color(1, 0, 0, 0.529412)
 texture = SubResource("ImageTexture_ll0mr")
 script = ExtResource("11_gpbo7")
-splitChance = 50
 
 [node name="ZoomTube1Split" type="Line2D" parent="VacumTubes/ZoomTube1"]
 z_index = 21
@@ -584,7 +582,6 @@ width = 32.0
 default_color = Color(1, 1, 0, 0.501961)
 texture = SubResource("ImageTexture_iwuua")
 script = ExtResource("11_gpbo7")
-splitChance = 50
 
 [node name="ZoomTube2Split" type="Line2D" parent="VacumTubes/ZoomTube2"]
 z_index = 21
@@ -604,7 +601,6 @@ width = 32.0
 default_color = Color(0, 1, 0.454902, 0.678431)
 texture = SubResource("ImageTexture_iwuua")
 script = ExtResource("11_gpbo7")
-splitChance = 50
 
 [node name="ZoomTube5Split" type="Line2D" parent="VacumTubes/ZoomTube5"]
 z_index = 21
@@ -623,7 +619,6 @@ width = 32.0
 default_color = Color(1, 0, 1, 0.611765)
 texture = SubResource("ImageTexture_d45ix")
 script = ExtResource("11_gpbo7")
-splitChance = 50
 
 [node name="ZoomTube4Split" type="Line2D" parent="VacumTubes/ZoomTube4"]
 points = PackedVector2Array(9488, 1328, 9616, 1328, 9616, 816, 9456, 816, 9456, 880, 9232, 880, 9232, 736)

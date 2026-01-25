@@ -42,7 +42,7 @@ func _physics_process(delta):
 			STATES.HOME:
 				BFish_ReturnHome(delta)
 		
-		if Global.waterLevel != null and global_position.y > Global.waterLevel:
+		if global_position.y > Global.waterLevel:
 			bubbleTimer += 1*delta
 			if bubbleTimer > 2.0:
 				var bubble = Bubble.instantiate()
@@ -53,7 +53,7 @@ func _physics_process(delta):
 				bubbleTimer = 0.0
 
 func BFish_IdleState():
-	if Global.waterLevel == null:
+	if !Global.waterLevel>0:
 		queue_free()
 	elif global_position.y < Global.waterLevel:
 		global_position.y += 1
@@ -84,8 +84,7 @@ func BFish_ReturnHome(delta):
 		TargetPosition = Vector2.ZERO
 
 func BFish_ForceUnderwater():
-	if Global.waterLevel:
-		global_position.y = max(global_position.y,Global.waterLevel)
+	global_position.y = max(global_position.y,Global.waterLevel)
 
 func calc_dir():
 	# calculate direction based on side movement and rotation

@@ -45,6 +45,8 @@ size = Vector2(1216, 2048)
 [node name="HillTop2" type="Node2D"]
 script = ExtResource("1_o6dl6")
 zone_id = 2
+zone_name = "Hill Top"
+act_number = 2
 music = ExtResource("2_5rsgg")
 music2P = ExtResource("2_5rsgg")
 animal1 = 9
@@ -54,9 +56,6 @@ defaultRightBoundry = 12928
 [node name="02-HillTop" parent="." instance=ExtResource("4_uwk6t")]
 
 [node name="HUD" parent="." instance=ExtResource("16_sexxm")]
-zoneName = "HILL TOP"
-act = 2
-ringsForPerfect = 150
 
 [node name="Level_Layout" type="Node" parent="."]
 
@@ -85,38 +84,38 @@ position = Vector2(96, 1712)
 
 [node name="LayerSwitcher" parent="Entities" instance=ExtResource("19_uiybw")]
 position = Vector2(1792, 1328)
-size = Vector2(1, 4)
+size = Vector2i(1, 4)
 
 [node name="LayerSwitcher4" parent="Entities" instance=ExtResource("19_uiybw")]
 position = Vector2(1712, 1504)
-size = Vector2(4, 1)
+size = Vector2i(4, 1)
 orientation = 1
 
 [node name="LayerSwitcher5" parent="Entities" instance=ExtResource("19_uiybw")]
 position = Vector2(3120, 1792)
-size = Vector2(4, 1)
+size = Vector2i(4, 1)
 orientation = 1
 
 [node name="LayerSwitcher6" parent="Entities" instance=ExtResource("19_uiybw")]
 position = Vector2(7472, 384)
-size = Vector2(4, 1)
+size = Vector2i(4, 1)
 orientation = 1
 
 [node name="LayerSwitcher2" parent="Entities" instance=ExtResource("19_uiybw")]
 position = Vector2(3200, 1584)
-size = Vector2(1, 4)
+size = Vector2i(1, 4)
 
 [node name="LayerSwitcher3" parent="Entities" instance=ExtResource("19_uiybw")]
 position = Vector2(7552, 176)
-size = Vector2(1, 4)
+size = Vector2i(1, 4)
 
 [node name="BoundrySetter" parent="Entities" instance=ExtResource("20_nb3p5")]
-position = Vector2(12256, 1232)
-leftBoundry = 11903
+position = Vector2(11552, 1264)
+leftBoundry = 11393
 topBoundry = 1024
 setRight = false
-rightBoundry = 12480
-bottomBoundry = 1408
+rightBoundry = 12928
+bottomBoundry = 1376
 
 [node name="Spring" parent="Entities" instance=ExtResource("21_ejlob")]
 position = Vector2(2152, 1468)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://b73oxpdf64ys2"]
+[gd_scene load_steps=47 format=4 uid="uid://b73oxpdf64ys2"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_r8kv3"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="1_sbiln"]
@@ -6,8 +6,6 @@
 [ext_resource type="TileSet" uid="uid://degtrdfi1sc00" path="res://Tileset/Levels/CPZ.tres" id="3_wgb1x"]
 [ext_resource type="PackedScene" uid="uid://skb3vyib11ye" path="res://Scene/Backgrounds/03-ChemicalPlant.tscn" id="5_5j7ri"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="5_eai8g"]
-[ext_resource type="Texture2D" uid="uid://dxcdt4qimdnl7" path="res://Graphics/Palettes/CPZ_Pal_Dry.png" id="6_56ngg"]
-[ext_resource type="Texture2D" uid="uid://7lh056irm1m8" path="res://Graphics/Palettes/CPZ_Pal_Wet.png" id="7_eewh6"]
 [ext_resource type="Shader" uid="uid://dws4ymg0bel70" path="res://Shaders/PaletteSwapRow_Timerbased.gdshader" id="8_fvcep"]
 [ext_resource type="Texture2D" uid="uid://dhtxsayycsc6c" path="res://Graphics/Palettes/CPZFlashPal.png" id="9_7s1h8"]
 [ext_resource type="PackedScene" uid="uid://dkn7hhll7o4or" path="res://Entities/MainObjects/LayerSwitcher.tscn" id="9_bhtgv"]
@@ -70,6 +68,8 @@ shader_parameter/time_scale = 0.1
 [node name="ChemicalPlant2" type="Node2D"]
 script = ExtResource("1_r8kv3")
 zone_id = 3
+zone_name = "Chemical Plant"
+act_number = 2
 music = ExtResource("2_mig6y")
 music2P = ExtResource("2_mig6y")
 animal1 = 2
@@ -79,11 +79,6 @@ defaultRightBoundry = 12416
 [node name="03-ChemicalPlant" parent="." instance=ExtResource("5_5j7ri")]
 
 [node name="HUD" parent="." instance=ExtResource("1_sbiln")]
-zoneName = "CHEMICAL PLANT"
-act = 2
-waterSourceColor = ExtResource("6_56ngg")
-waterReplaceColor = ExtResource("7_eewh6")
-ringsForPerfect = 150
 
 [node name="Level_Layout" type="Node" parent="."]
 
@@ -108,91 +103,91 @@ position = Vector2(1928, 1504)
 
 [node name="LayerSwitcher" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(1316, 128)
-size = Vector2(1, 16)
+size = Vector2i(1, 16)
 
 [node name="LayerSwitcher3" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(1600, 384)
-size = Vector2(2, 16)
+size = Vector2i(2, 16)
 
 [node name="LayerSwitcher4" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(192, 936)
-size = Vector2(8, 2)
+size = Vector2i(8, 2)
 orientation = 1
 leftLayer = 0
 rightLayer = 1
 
 [node name="LayerSwitcher5" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(2112, 1360)
-size = Vector2(16, 2)
+size = Vector2i(16, 2)
 orientation = 1
 rightLayer = 1
 
 [node name="LayerSwitcher6" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(1928, 1504)
-size = Vector2(1, 4)
+size = Vector2i(1, 4)
 
 [node name="LayerSwitcher7" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(888, 1376)
-size = Vector2(1, 4)
+size = Vector2i(1, 4)
 leftLayer = 0
 rightLayer = 1
 
 [node name="LayerSwitcher8" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(768, 1088)
-size = Vector2(1, 4)
+size = Vector2i(1, 4)
 leftLayer = 0
 rightLayer = 1
 
 [node name="LayerSwitcher9" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(624, 1184)
-size = Vector2(2, 14)
+size = Vector2i(2, 14)
 
 [node name="LayerSwitcher10" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(9432, 1016)
-size = Vector2(8, 1)
+size = Vector2i(8, 1)
 orientation = 1
 leftLayer = 0
 rightLayer = 1
 
 [node name="LayerSwitcher14" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(9280, 760)
-size = Vector2(8, 1)
+size = Vector2i(8, 1)
 orientation = 1
 leftLayer = 0
 rightLayer = 1
 
 [node name="LayerSwitcher11" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(9344, 448)
-size = Vector2(1, 4)
+size = Vector2i(1, 4)
 leftLayer = 0
 rightLayer = 1
 
 [node name="LayerSwitcher13" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(9472, 704)
-size = Vector2(1, 4)
+size = Vector2i(1, 4)
 leftLayer = 0
 rightLayer = 1
 
 [node name="LayerSwitcher12" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(8896, 448)
-size = Vector2(2, 16)
+size = Vector2i(2, 16)
 leftLayer = 0
 rightLayer = 1
 
 [node name="LayerSwitcher15" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(7792, 736)
-size = Vector2(2, 4)
+size = Vector2i(2, 4)
 leftLayer = 0
 
 [node name="LayerSwitcher16" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(7408, 1248)
-size = Vector2(2, 4)
+size = Vector2i(2, 4)
 leftLayer = 0
 rightLayer = 1
 
 [node name="LayerSwitcher2" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(920, 336)
-size = Vector2(1, 8)
+size = Vector2i(1, 8)
 
 [node name="WaterLevel" parent="Entities" instance=ExtResource("12_b2fuv")]
 position = Vector2(0, 1800)
@@ -204,13 +199,13 @@ rightLayer = 1
 
 [node name="LayerSwitcher34" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(3256, 1632)
-size = Vector2(1, 4)
+size = Vector2i(1, 4)
 leftLayer = 0
 rightLayer = 1
 
 [node name="LayerSwitcher33" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(2568, 1680)
-size = Vector2(2, 14)
+size = Vector2i(2, 14)
 leftLayer = 0
 rightLayer = 1
 
@@ -222,55 +217,55 @@ onlyOnFloor = true
 
 [node name="LayerSwitcher45" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(6792, 664)
-size = Vector2(1, 16)
+size = Vector2i(1, 16)
 leftLayer = 0
 onlyOnFloor = true
 
 [node name="LayerSwitcher46" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(6216, 520)
-size = Vector2(1, 16)
+size = Vector2i(1, 16)
 rightLayer = 1
 onlyOnFloor = true
 
 [node name="LayerSwitcher47" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(6920, 448)
-size = Vector2(1, 8)
+size = Vector2i(1, 8)
 leftLayer = 0
 onlyOnFloor = true
 
 [node name="LayerSwitcher36" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(4768, 1008)
-size = Vector2(1, 12)
+size = Vector2i(1, 12)
 leftLayer = 0
 rightLayer = 1
 
 [node name="LayerSwitcher56" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(5704, 672)
-size = Vector2(1, 32)
+size = Vector2i(1, 32)
 rightLayer = 1
 
 [node name="LayerSwitcher58" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(4992, 440)
-size = Vector2(32, 1)
+size = Vector2i(32, 1)
 orientation = 1
 
 [node name="LayerSwitcher52" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(5496, 1800)
-size = Vector2(1, 17)
+size = Vector2i(1, 17)
 rightLayer = 1
 
 [node name="LayerSwitcher54" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(7272, 1800)
-size = Vector2(1, 17)
+size = Vector2i(1, 17)
 
 [node name="LayerSwitcher53" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(5752, 1320)
-size = Vector2(1, 17)
+size = Vector2i(1, 17)
 leftLayer = 0
 
 [node name="LayerSwitcher37" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(4408, 1040)
-size = Vector2(1, 14)
+size = Vector2i(1, 14)
 leftLayer = 0
 rightLayer = 1
 
@@ -282,67 +277,67 @@ onlyOnFloor = true
 
 [node name="LayerSwitcher49" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(6920, 224)
-size = Vector2(1, 12)
+size = Vector2i(1, 12)
 leftLayer = 0
 rightLayer = 1
 
 [node name="LayerSwitcher59" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(7032, 32)
-size = Vector2(1, 12)
+size = Vector2i(1, 12)
 leftLayer = 0
 rightLayer = 1
 
 [node name="LayerSwitcher50" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(6496, 272)
-size = Vector2(1, 14)
+size = Vector2i(1, 14)
 rightLayer = 1
 
 [node name="LayerSwitcher51" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(6232, 288)
-size = Vector2(1, 12)
+size = Vector2i(1, 12)
 rightLayer = 1
 
 [node name="LayerSwitcher38" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(2424, 344)
-size = Vector2(1, 14)
+size = Vector2i(1, 14)
 leftLayer = 0
 rightLayer = 1
 
 [node name="LayerSwitcher43" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(3448, 448)
-size = Vector2(1, 8)
+size = Vector2i(1, 8)
 leftLayer = 0
 
 [node name="LayerSwitcher44" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(3272, 864)
-size = Vector2(1, 4)
+size = Vector2i(1, 4)
 leftLayer = 0
 
 [node name="LayerSwitcher55" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(4408, 416)
-size = Vector2(1, 12)
+size = Vector2i(1, 12)
 leftLayer = 0
 rightLayer = 1
 
 [node name="LayerSwitcher39" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(4728, 864)
-size = Vector2(1, 4)
+size = Vector2i(1, 4)
 leftLayer = 0
 
 [node name="LayerSwitcher40" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(7360, 352)
-size = Vector2(1, 4)
+size = Vector2i(1, 4)
 leftLayer = 0
 rightLayer = 1
 
 [node name="LayerSwitcher41" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(8120, 320)
-size = Vector2(1, 8)
+size = Vector2i(1, 8)
 leftLayer = 0
 
 [node name="LayerSwitcher42" parent="Entities" instance=ExtResource("9_bhtgv")]
 position = Vector2(7680, 448)
-size = Vector2(1, 8)
+size = Vector2i(1, 8)
 leftLayer = 0
 rightLayer = 1
 

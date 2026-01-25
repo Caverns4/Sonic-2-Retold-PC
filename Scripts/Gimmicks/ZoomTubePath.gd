@@ -1,15 +1,12 @@
 extends Line2D
 
 @export var speed: float = 8
-@export var twoWay: bool = false
 @export var hitBoxSize: Vector2 = Vector2(4,4)
 
 @export var split: bool = false
 @export_range(0, 100)var splitChance: int = 100
 
 var enteranceArea: Area2D = Area2D.new()
-var exitArea: Area2D = null
-
 ## Player reference
 var player: Player2D = null
 
@@ -29,18 +26,7 @@ func _ready():
 	enteranceArea.set_collision_mask_value(13,true)
 	enteranceArea.connect("body_entered",Callable(self,"_on_hitbox_enter"))
 	enteranceArea.global_position = global_position+get_point_position(0)
-	
-	# check if two way
-	if (twoWay):
-		# create exit area collider
-		exitArea = Area2D.new()
-		exitArea.add_child(hitbox)
-		add_child(exitArea)
-		exitArea.collision_layer = enteranceArea.collision_layer
-		exitArea.collision_mask = enteranceArea.collision_mask
-		exitArea.connect("body_entered",Callable(self,"_on_hitbox_enter"))
-		exitArea.global_position = global_position+get_point_position(get_point_count()-1)
-	
+
 
 func _on_hitbox_enter(body):
 	if (body.currentState == body.STATES.ANIMATION) == split:

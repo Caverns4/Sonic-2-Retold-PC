@@ -20,7 +20,7 @@ func runDeathinSinglePlayer():
 		# check if speed above certain threshold
 		if parent.movement.y > 1000 and (Global.lives > 0 or !Global.livesMode) and !Global.gameOver:
 			parent.movement = Vector2.ZERO
-			if Global.livesMode:
+			if Global.livesMode and Global.hud:
 				Global.lives -= 1
 			CheckGameOver(Global.lives,Global.levelTime)
 	else:

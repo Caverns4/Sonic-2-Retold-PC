@@ -19,6 +19,8 @@ func _process(_delta):
 		parent.animator.play("fly")
 
 func _physics_process(delta):
+	if !parent.partner:
+		return
 	
 	parent.allowTranslate = true
 	# slowly move the target point towards the player based on distance
@@ -45,7 +47,7 @@ func _physics_process(delta):
 		parent.movement.y = 0
 		# move to player y position
 		parent.global_position.y = move_toward(parent.global_position.y,targetPoint.y,delta*60)
-		if (Global.waterLevel != null):
+		if Global.waterLevel > 0:
 			parent.global_position.y = min(parent.global_position.y,Global.waterLevel-16)
 		else:
 			parent.global_position.y = min(parent.global_position.y,parent.limitBottom-16)

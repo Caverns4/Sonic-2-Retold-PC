@@ -1,10 +1,8 @@
-[gd_scene load_steps=48 format=4 uid="uid://cx126ulu8rjba"]
+[gd_scene load_steps=46 format=4 uid="uid://cx126ulu8rjba"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_74d0b"]
 [ext_resource type="AudioStream" uid="uid://bg1fcuqr8mk1d" path="res://Audio/Soundtrack/s2br_Jewel.ogg" id="3_2gqg0"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="4_xgdih"]
-[ext_resource type="Texture2D" uid="uid://tdr31l1fyfos" path="res://Graphics/Palettes/HPZ_Pal_Dry.png" id="5_7us6y"]
-[ext_resource type="Texture2D" uid="uid://cqxsc88x0mm7k" path="res://Graphics/Palettes/HPZ_Pal_Wet.png" id="6_hs534"]
 [ext_resource type="PackedScene" uid="uid://b0xmqvvpy42o3" path="res://Scene/Backgrounds/01-HiddenPalace.tscn" id="7_fo3jc"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="8_yrrxu"]
 [ext_resource type="Material" uid="uid://d137eh38374f" path="res://Shaders/Materials/HPZ_Palcycle.tres" id="9_qwhwp"]
@@ -87,6 +85,8 @@ _data = {
 [node name="HiddenPalace2" type="Node2D"]
 script = ExtResource("1_74d0b")
 zone_id = 1
+zone_name = "Hidden Palace"
+act_number = 2
 music = ExtResource("3_2gqg0")
 music2P = ExtResource("3_2gqg0")
 animal1 = 8
@@ -94,11 +94,6 @@ animal2 = 5
 defaultRightBoundry = 12544
 
 [node name="HUD" parent="." instance=ExtResource("4_xgdih")]
-zoneName = "HIDDEN PALACE"
-act = 2
-waterSourceColor = ExtResource("5_7us6y")
-waterReplaceColor = ExtResource("6_hs534")
-ringsForPerfect = 180
 
 [node name="01-HiddenPalace" parent="." instance=ExtResource("7_fo3jc")]
 offset = Vector2(0, -256)

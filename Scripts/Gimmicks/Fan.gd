@@ -131,7 +131,7 @@ func deactivate_touch_active():
 # generate bubbles
 func _on_bubble_timer_timeout():
 	if (isActive and (!touchActive or players.size() > 0) and
-	(Global.waterLevel and Global.waterLevel < global_position.y)):
+	(Global.waterLevel > 0 and Global.waterLevel < global_position.y)):
 		var bub = Bubble.instantiate()
 		bub.global_position = global_position+Vector2((16.0*abs(scale.x)-4.0)*randf_range(-1.0,1.0),-8.0*sign(scale.y))
 		# choose between 2 bubble types, both cosmetic

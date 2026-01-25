@@ -1379,6 +1379,7 @@ script = ExtResource("29_0chip")
 [node name="HitBox" type="CollisionShape2D" parent="TailsCarryBox"]
 position = Vector2(0, -3.5)
 shape = SubResource("167")
+disabled = true
 
 [node name="Grab" type="AudioStreamPlayer" parent="TailsCarryBox"]
 stream = SubResource("AudioStreamWAV_4t3b4")
@@ -1593,6 +1594,7 @@ autoplay = "default"
 frame_progress = 0.400739
 offset = Vector2(-16, -8)
 
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="timeout" from="States/Fly/FlyBugStop" to="States/Fly" method="_on_FlyBugStop_timeout"]
 [connection signal="timeout" from="SkidDustTimer" to="States/Normal" method="_on_SkidDustTimer_timeout"]
 [connection signal="timeout" from="SkidDustTimer" to="States/Glide" method="_on_SkidDustTimer_timeout"]

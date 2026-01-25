@@ -7,7 +7,7 @@ var bigBubbleTimer = 5
 var Bubble = preload("res://Entities/Misc/Bubbles.tscn")
 
 func _process(delta):
-	if Global.waterLevel != null:
+	if Global.waterLevel > 0:
 		visible = global_position.y > Global.waterLevel
 	else:
 		visible = false

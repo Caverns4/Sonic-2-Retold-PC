@@ -25,7 +25,7 @@ func _on_Bubble_animation_finished():
 
 func _physics_process(delta):
 	# check if below water level and rise
-	if Global.waterLevel != null:
+	if Global.waterLevel > 0:
 		if global_position.y > Global.waterLevel and (global_position.y > maxDistance or maxDistance == 0):
 			translate(velocity*delta)
 			offsetTime += delta

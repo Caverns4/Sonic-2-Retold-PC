@@ -89,7 +89,7 @@ rightAngle = 86.0
 
 [node name="LayerSwitcher" parent="Entities" instance=ExtResource("19_fxa4t")]
 position = Vector2(4089, 418)
-size = Vector2(1, 20)
+size = Vector2i(1, 20)
 leftLayer = 0
 
 [node name="LayerSwitcher2" parent="Entities" instance=ExtResource("19_fxa4t")]
@@ -97,11 +97,11 @@ position = Vector2(4224, 424)
 
 [node name="LayerSwitcher3" parent="Entities" instance=ExtResource("19_fxa4t")]
 position = Vector2(4344, 538)
-size = Vector2(1, 16)
+size = Vector2i(1, 16)
 
 [node name="LayerSwitcher4" parent="Entities" instance=ExtResource("19_fxa4t")]
 position = Vector2(6648, 544)
-size = Vector2(1, 20)
+size = Vector2i(1, 20)
 leftLayer = 0
 
 [node name="LayerSwitcher5" parent="Entities" instance=ExtResource("19_fxa4t")]
@@ -109,11 +109,11 @@ position = Vector2(6784, 552)
 
 [node name="LayerSwitcher6" parent="Entities" instance=ExtResource("19_fxa4t")]
 position = Vector2(6904, 668)
-size = Vector2(1, 16)
+size = Vector2i(1, 16)
 
 [node name="LayerSwitcher7" parent="Entities" instance=ExtResource("19_fxa4t")]
 position = Vector2(7033, 672)
-size = Vector2(1, 20)
+size = Vector2i(1, 20)
 leftLayer = 0
 
 [node name="LayerSwitcher8" parent="Entities" instance=ExtResource("19_fxa4t")]
@@ -121,11 +121,11 @@ position = Vector2(7168, 680)
 
 [node name="LayerSwitcher9" parent="Entities" instance=ExtResource("19_fxa4t")]
 position = Vector2(7288, 796)
-size = Vector2(1, 16)
+size = Vector2i(1, 16)
 
 [node name="LayerSwitcher10" parent="Entities" instance=ExtResource("19_fxa4t")]
 position = Vector2(8697, 416)
-size = Vector2(1, 20)
+size = Vector2i(1, 20)
 leftLayer = 0
 
 [node name="LayerSwitcher11" parent="Entities" instance=ExtResource("19_fxa4t")]
@@ -133,7 +133,7 @@ position = Vector2(8832, 424)
 
 [node name="LayerSwitcher12" parent="Entities" instance=ExtResource("19_fxa4t")]
 position = Vector2(8952, 536)
-size = Vector2(1, 16)
+size = Vector2i(1, 16)
 
 [node name="CorkscrewLoop" parent="Entities" instance=ExtResource("20_op5yc")]
 position = Vector2(4800, 640)

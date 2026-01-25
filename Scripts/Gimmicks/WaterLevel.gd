@@ -40,7 +40,6 @@ func _physics_process(delta):
 			Global.waterLevel = global_position.y
 	elif isStatic:
 		hoverY = global_position.y
-	
 	if !isStatic:
 		global_position.y = hoverY+cos(Global.globalTimer*2)*4
 		Global.waterLevel = global_position.y

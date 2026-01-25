@@ -831,11 +831,8 @@ _data = {
 }
 
 [node name="HUD" type="CanvasLayer"]
-process_mode = 3
 layer = 2
 script = ExtResource("6")
-zoneName = "EMERALD HILL"
-zone = "ZONE"
 
 [node name="Boss Life" type="Control" parent="."]
 visible = false
@@ -900,6 +897,7 @@ expand_mode = 1
 stretch_mode = 1
 
 [node name="LifeCounter" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
@@ -927,6 +925,7 @@ text = "100"
 horizontal_alignment = 2
 
 [node name="Counters" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 8.0
@@ -1127,6 +1126,7 @@ text = "100"
 horizontal_alignment = 2
 
 [node name="DeathTimers" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -1226,7 +1226,7 @@ anchor_top = 0.003
 anchor_right = 1.0
 anchor_bottom = 0.003
 offset_top = -86.272
-offset_right = 25862.4
+offset_right = 27110.4
 offset_bottom = 169.728
 grow_horizontal = 0
 grow_vertical = 2
@@ -1310,7 +1310,7 @@ horizontal_alignment = 1
 layout_mode = 0
 offset_left = 256.0
 offset_top = 80.0
-offset_right = 512.0
+offset_right = 511.99997
 offset_bottom = 96.0
 theme_override_fonts/font = ExtResource("11_6cefa")
 text = "THROUGH ACT"

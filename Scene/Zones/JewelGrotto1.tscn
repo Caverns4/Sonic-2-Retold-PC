@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://dldinsc8u4m2q"]
+[gd_scene load_steps=10 format=4 uid="uid://dldinsc8u4m2q"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_7bqi0"]
 [ext_resource type="AudioStream" uid="uid://bg1fcuqr8mk1d" path="res://Audio/Soundtrack/s2br_Jewel.ogg" id="3_y5ytd"]
@@ -7,6 +7,9 @@
 [ext_resource type="TileSet" uid="uid://ctbov0uv4xqwe" path="res://Tileset/Levels/HPZ_Tiles.tres" id="6_dtvom"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_u04jb"]
 [ext_resource type="PackedScene" uid="uid://bnn5io8fk2i4h" path="res://Entities/Gimmicks/WaterLevel.tscn" id="7_b71m7"]
+[ext_resource type="Script" uid="uid://dndi2gkjj5eo6" path="res://Scripts/Gimmicks/ZoomTubePath.gd" id="8_mb7b8"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_0foq0"]
 
 [node name="JewelGrotto1" type="Node2D"]
 script = ExtResource("1_7bqi0")
@@ -34,3 +37,15 @@ position = Vector2(96, 656)
 
 [node name="WaterLevel" parent="Entities" instance=ExtResource("7_b71m7")]
 position = Vector2(128, 744)
+
+[node name="VacumTubes" type="Node2D" parent="."]
+
+[node name="ZoomTube1" type="Line2D" parent="VacumTubes"]
+z_index = 21
+points = PackedVector2Array(512, 688, 768, 688, 768, 496, 896, 496, 896, 688, 1024, 688)
+width = 32.0
+default_color = Color(1, 0, 0, 0.529412)
+texture = SubResource("ImageTexture_0foq0")
+script = ExtResource("8_mb7b8")
+twoWay = true
+splitChance = 50

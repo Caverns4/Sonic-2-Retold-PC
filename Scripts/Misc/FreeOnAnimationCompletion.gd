@@ -13,7 +13,7 @@ func _ready():
 func _process(_delta):
 	match(behaviour):
 		TYPE.FOLLOW_WATER_SURFACE:
-			if Global.waterLevel != null:
+			if Global.waterLevel>0:
 				global_position.y = Global.waterLevel-16
 
 func _on_animation_finished():

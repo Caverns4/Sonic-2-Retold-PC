@@ -232,7 +232,7 @@ var inputActions = INPUTACTIONS_P1
 # 0 = ai, 1 = player 1, 2 = player 2
 var playerControl = 1
 
-var partner = null
+var partner: Player2D = null
 var partnerPanic = 0
 
 const RESPAWN_DEFAULT_TIME = 5
@@ -287,37 +287,26 @@ var controlObject = null
 
 func _ready():
 	super()
-	# Disable and enable states
-	set_state(currentState)
 	Global.players.append(self)
-	var _con = connect("connectFloor",Callable(self,"land_floor"))
-	_con = connect("connectCeiling",Callable(self,"touch_ceiling"))
+	call_deferred("setup_initial_state")
 	
-	respawnPosition = global_position
+	connectFloor.connect(land_floor)
+	connectCeiling.connect(touch_ceiling)
+	positionChanged.connect(on_position_changed)
 	
-	# Camera settings
-	get_parent().call_deferred("add_child", (camera))
-	camera.enabled = (playerControl == 1)
-	var viewSize = get_viewport_rect().size
-	camera.drag_left_margin =   camDist.x/viewSize.x
-	camera.drag_right_margin =  camDist.x/viewSize.x
-	camera.drag_top_margin =    camDist.y/viewSize.y
-	camera.drag_bottom_margin = camDist.y/viewSize.y
-	camera.drag_horizontal_enabled = true
-	camera.drag_vertical_enabled = true
-	_con = connect("positionChanged",Callable(self,"on_position_changed"))
-	camera.global_position = global_position
-	
-	# Tails carry stuff
-	$TailsCarryBox/HitBox.disabled = true
+	intialize_camera()
+	init_player_bounds()
+	call_deferred("init_player_bounds") ## I had that I have to do this
+	call_deferred("snap_camera_to_limits")
 	
 	# verify that we're player 1
 	if Global.players[0] == self:
+		character = Global.PlayerChar1
 		# input memory
 		for _i in range(INPUT_MEMORY_LENGTH):
 			inputMemory.append(inputs.duplicate(true))
 		# Partner (if player character 2 isn't none)
-		if Global.PlayerChar2 != Global.CHARACTERS.NONE and (!disablePartner):
+		if Global.PlayerChar2 > Global.CHARACTERS.NONE and (!disablePartner):
 			partner = Player.instantiate()
 			partner.name = "Partner"
 			get_parent().call_deferred("add_child", (partner))
@@ -328,46 +317,49 @@ func _ready():
 			partner.character = Global.PlayerChar2
 			partner.inputActions = INPUTACTIONS_P2
 		
-		# set my character
-		character = Global.PlayerChar1
-		if Global.beta_sonic and character == Global.CHARACTERS.SONIC:
-			character = Global.CHARACTERS.SONIC_BETA
-		
-		# set super palettes
-		match (character):
-			Global.CHARACTERS.SONIC:
-				# shader texture sizes need to be to the power of 2
-				playerPal.set_shader_parameter("amount",5)
-				playerPal.set_shader_parameter("palRows",16)
-				playerPal.set_shader_parameter("row",0)
-				playerPal.set_shader_parameter("paletteTexture",load("res://Graphics/Palettes/SuperSonicPal.png"))
-		
-			Global.CHARACTERS.TAILS:
-				playerPal.set_shader_parameter("amount",8)
-				playerPal.set_shader_parameter("palRows",16)
-				playerPal.set_shader_parameter("row",0)
-				playerPal.set_shader_parameter("paletteTexture",load("res://Graphics/Palettes/SuperTails.png"))
-		
-			Global.CHARACTERS.KNUCKLES:
-				playerPal.set_shader_parameter("amount",4)
-				playerPal.set_shader_parameter("palRows",16)
-				playerPal.set_shader_parameter("row",0)
-				playerPal.set_shader_parameter("paletteTexture",load("res://Graphics/Palettes/SuperKnuckles.png"))
-				strength = Global.STRENGTH_TIER.SUPER
-		
-			#Global.CHARACTERS.AMY:
-			#	playerPal.set_shader_parameter("amount",4)
-			#	playerPal.set_shader_parameter("palRows",8)
-			#	playerPal.set_shader_parameter("row",0)
-			#	playerPal.set_shader_parameter("paletteTexture",load("res://Graphics/Palettes/SuperAmy.png"))
-				
-			Global.CHARACTERS.MIGHTY:
-				playerPal.set_shader_parameter("amount",4)
-				playerPal.set_shader_parameter("palRows",16)
-				playerPal.set_shader_parameter("row",0)
-				playerPal.set_shader_parameter("paletteTexture",load("res://Graphics/Palettes/SuperKnuckles.png"))
-		
-			#Global.CHARACTERS.RAY:
+	# Character settings
+	var skin = playerskins[max(min(character-1,playerskins.size()),0)]
+	currentHitbox = skin[1]
+	spriteController.name = "OldSprite"
+	var newSprite = skin[0].instantiate()
+	add_child(newSprite)
+	sprite = newSprite.get_node("Sprite2D")
+	animator = newSprite.get_node("PlayerAnimation")
+	superAnimator = newSprite.get_node_or_null("SuperPalette")
+	spriteController.queue_free()
+	spriteController = newSprite
+	superAnimator.play("RESET")
+	
+	# set super palettes
+	match (character):
+		Global.CHARACTERS.SONIC:
+			# shader texture sizes need to be to the power of 2
+			playerPal.set_shader_parameter("amount",5)
+			playerPal.set_shader_parameter("palRows",16)
+			playerPal.set_shader_parameter("row",0)
+			playerPal.set_shader_parameter("paletteTexture",load("res://Graphics/Palettes/SuperSonicPal.png"))
+		Global.CHARACTERS.TAILS:
+			playerPal.set_shader_parameter("amount",8)
+			playerPal.set_shader_parameter("palRows",16)
+			playerPal.set_shader_parameter("row",0)
+			playerPal.set_shader_parameter("paletteTexture",load("res://Graphics/Palettes/SuperTails.png"))
+		Global.CHARACTERS.KNUCKLES:
+			playerPal.set_shader_parameter("amount",4)
+			playerPal.set_shader_parameter("palRows",16)
+			playerPal.set_shader_parameter("row",0)
+			playerPal.set_shader_parameter("paletteTexture",load("res://Graphics/Palettes/SuperKnuckles.png"))
+			strength = Global.STRENGTH_TIER.SUPER
+		Global.CHARACTERS.AMY:
+			playerPal.set_shader_parameter("amount",4)
+			playerPal.set_shader_parameter("palRows",8)
+			playerPal.set_shader_parameter("row",0)
+			playerPal.set_shader_parameter("paletteTexture",load("res://Graphics/Palettes/SuperAmy.png"))
+		Global.CHARACTERS.MIGHTY:
+			playerPal.set_shader_parameter("amount",4)
+			playerPal.set_shader_parameter("palRows",16)
+			playerPal.set_shader_parameter("row",0)
+			playerPal.set_shader_parameter("paletteTexture",load("res://Graphics/Palettes/SuperKnuckles.png"))
+		#Global.CHARACTERS.RAY:
 	
 	# Checkpoints
 	await get_tree().process_frame
@@ -397,19 +389,12 @@ func _ready():
 	animator.connect("animation_started",Callable(self,"_on_PlayerAnimation_animation_started"))
 	defaultSpriteOffset = sprite.offset
 	
-	# Character settings
-	var skin = playerskins[max(min(character-1,playerskins.size()),0)]
-	currentHitbox = skin[1]
-	spriteController.name = "OldSprite"
-	var newSprite = skin[0].instantiate()
-	add_child(newSprite)
-	sprite = newSprite.get_node("Sprite2D")
-	animator = newSprite.get_node("PlayerAnimation")
-	superAnimator = newSprite.get_node_or_null("SuperPalette")
-	spriteController.queue_free()
-	spriteController = newSprite
-	superAnimator.play("RESET")
+	# set partner sounds to share players (prevents sound overlap)
+	if playerControl == 1 and partner:
+		partner.sfx = sfx
 	
+
+func setup_initial_state():
 	# set secondary hitboxes
 	crouchBox = spriteController.get_node_or_null("CrouchBox")
 	if crouchBox != null:
@@ -417,13 +402,13 @@ func _ready():
 		add_child(crouchBox)
 		crouchBox.disabled = true
 		hitBoxOffset.crouch = crouchBox.position
-	
 	# add center reference node
 	centerReference = spriteController.get_node_or_null("CenterReference")
-	# hide reference
-	#if centerReference:
-	#	centerReference.visible = false
-	
+	# Disable and enable states
+	set_state(currentState)
+	respawnPosition = global_position
+
+func init_player_bounds():
 	# reset camera limits
 	limitLeft = Global.hardBorderLeft
 	limitRight = Global.hardBorderRight
@@ -433,12 +418,19 @@ func _ready():
 	else:
 		limitTop = Global.hardBorderTop
 		limitBottom = Global.hardBorderBottom
-	snap_camera_to_limits()
-	
-	# set partner sounds to share players (prevents sound overlap)
-	if playerControl == 1 and partner:
-		partner.sfx = sfx
-	
+
+func intialize_camera():
+	# Camera settings
+	get_parent().call_deferred("add_child", (camera))
+	camera.enabled = (playerControl == 1)
+	var viewSize = get_viewport_rect().size
+	camera.drag_left_margin =   camDist.x/viewSize.x
+	camera.drag_right_margin =  camDist.x/viewSize.x
+	camera.drag_top_margin =    camDist.y/viewSize.y
+	camera.drag_bottom_margin = camDist.y/viewSize.y
+	camera.drag_horizontal_enabled = true
+	camera.drag_vertical_enabled = true
+	camera.global_position = global_position
 
 
 # 0 not pressed, 1 pressed, 2 held (best to do > 0 when checking input), -1 released
@@ -853,7 +845,7 @@ func _physics_process(delta):
 			hitbox.position = centerReference.position
 	
 	# Water
-	if Global.waterLevel != null and currentState != STATES.DIE:
+	if Global.waterLevel > 0 and currentState != STATES.DIE:
 		# Enter water
 		if global_position.y > Global.waterLevel and !is_in_water:
 			is_in_water = true
@@ -1003,7 +995,6 @@ func get_state():
 	return currentState
 
 func set_state(newState, forceMask = Vector2.ZERO):
-	
 	defaultHitBoxPos = hitBoxOffset.normal
 	hitbox.position = defaultHitBoxPos
 	# reset the center offset
@@ -1269,7 +1260,7 @@ func respawn():
 		
 		# update physics (prevents player having water physics on respawn)
 		switch_physics()
-		global_position = partner.global_position+Vector2(0,-get_viewport_rect().size.y)
+		global_position = partner.global_position+Vector2(0,-224)
 		limitLeft = partner.limitLeft
 		limitRight = partner.limitRight
 		if !Global.y_wrap:
@@ -1555,3 +1546,9 @@ func handle_animation_speed(gSpeed: float = groundSpeed):
 			animator.speed_scale = -movement.y/(40.0*(1.0+float(is_super)))
 		_:
 			animator.speed_scale = 1
+
+
+func _on_tree_exiting() -> void:
+	Global.players.erase(self)
+	if partner and partner.partner == self:
+		partner.partner = null

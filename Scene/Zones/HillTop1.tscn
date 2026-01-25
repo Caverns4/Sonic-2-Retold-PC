@@ -44,6 +44,7 @@ size = Vector2(1416, 2045)
 [node name="HillTop1" type="Node2D"]
 script = ExtResource("1_ijtho")
 zone_id = 2
+zone_name = "Hill Top"
 music = ExtResource("2_y1o2m")
 music2P = ExtResource("2_y1o2m")
 animal1 = 9
@@ -53,8 +54,6 @@ defaultRightBoundry = 10752
 [node name="02-HillTop" parent="." instance=ExtResource("4_e5550")]
 
 [node name="HUD" parent="." instance=ExtResource("2_vefax")]
-zoneName = "HILL TOP"
-ringsForPerfect = 150
 
 [node name="Level_Layout" type="Node" parent="."]
 
@@ -165,26 +164,26 @@ springDirection = 4
 
 [node name="LayerSwitcher" parent="Entities" instance=ExtResource("25_0yxob")]
 position = Vector2(5760, 304)
-size = Vector2(1, 4)
+size = Vector2i(1, 4)
 
 [node name="LayerSwitcher5" parent="Entities" instance=ExtResource("25_0yxob")]
 position = Vector2(5752, 416)
-size = Vector2(1, 4)
+size = Vector2i(1, 4)
 leftLayer = 0
 
 [node name="LayerSwitcher3" parent="Entities" instance=ExtResource("25_0yxob")]
 position = Vector2(5504, 256)
-size = Vector2(2, 32)
+size = Vector2i(2, 32)
 leftLayer = 0
 
 [node name="LayerSwitcher4" parent="Entities" instance=ExtResource("25_0yxob")]
 position = Vector2(5504, 1536)
-size = Vector2(2, 32)
+size = Vector2i(2, 32)
 leftLayer = 0
 
 [node name="LayerSwitcher2" parent="Entities" instance=ExtResource("25_0yxob")]
 position = Vector2(9472, 1584)
-size = Vector2(1, 4)
+size = Vector2i(1, 4)
 
 [node name="Shutter" parent="Entities" instance=ExtResource("26_xrxdg")]
 position = Vector2(6136, 1440)
@@ -237,15 +236,6 @@ scale = Vector2(3, 2)
 [node name="InvisibleBarrier6" parent="Entities" instance=ExtResource("28_r5ji8")]
 position = Vector2(7680, 1248)
 scale = Vector2(3, 2)
-
-[node name="BoundrySetter" parent="Entities" instance=ExtResource("29_4tpw0")]
-position = Vector2(6392, 1392)
-leftBoundry = 5760
-topBoundry = 1152
-setRight = false
-rightBoundry = 10496
-setBottom = false
-bottomBoundry = 2048
 
 [node name="Spring9" parent="Entities" instance=ExtResource("24_tu1me")]
 position = Vector2(3200, 1720)
@@ -357,6 +347,22 @@ SpriteTexture = ExtResource("44_n0x2o")
 [node name="Breakable13" parent="Entities" instance=ExtResource("42_0cebl")]
 position = Vector2(9392, 1784)
 SpriteTexture = ExtResource("45_p5a0n")
+
+[node name="BoundrySetter" parent="Entities" instance=ExtResource("29_4tpw0")]
+position = Vector2(6392, 1392)
+setLeft = false
+topBoundry = 1152
+setRight = false
+setBottom = false
+bottomBoundry = 2048
+
+[node name="BoundrySetter2" parent="Entities" instance=ExtResource("29_4tpw0")]
+position = Vector2(10464, 1744)
+leftBoundry = 10112
+topBoundry = 1632
+setRight = false
+rightBoundry = 10752
+bottomBoundry = 1856.0
 
 [node name="Platforms" type="Node2D" parent="."]
 
