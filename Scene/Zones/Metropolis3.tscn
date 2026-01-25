@@ -17,15 +17,17 @@
 [node name="Metropolis3" type="Node2D"]
 script = ExtResource("1_fdfw1")
 zone_id = 6
+zone_name = "Metropolis"
+act_number = 3
 music = ExtResource("2_jat8k")
 music2P = ExtResource("2_jat8k")
 boss_theme = ExtResource("3_g3ene")
+animal1 = 9
+animal2 = 7
 
 [node name="06-Metropolis" parent="." instance=ExtResource("4_rvg24")]
 
 [node name="HUD" parent="." instance=ExtResource("1_rm2lr")]
-zoneName = "METROPOLIS"
-act = 3
 
 [node name="Level_Layout" type="Node" parent="."]
 

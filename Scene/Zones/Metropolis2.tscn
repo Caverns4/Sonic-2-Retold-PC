@@ -52,6 +52,8 @@ shader_parameter/time_scale = 0.1
 [node name="Metropolis2" type="Node2D"]
 script = ExtResource("1_rpqfi")
 zone_id = 6
+zone_name = "Metropolis"
+act_number = 2
 music = ExtResource("2_4vde7")
 music2P = ExtResource("2_4vde7")
 boss_theme = ExtResource("3_3dxql")
@@ -62,8 +64,6 @@ defaultRightBoundry = 8960
 [node name="06-Metropolis" parent="." instance=ExtResource("4_bsr7b")]
 
 [node name="HUD" parent="." instance=ExtResource("1_f4g8u")]
-zoneName = "METROPOLIS"
-act = 2
 
 [node name="Level_Layout" type="Node" parent="."]
 
@@ -326,11 +326,11 @@ starting_dir = 3
 
 [node name="CorkscrewHTube" parent="Entities" instance=ExtResource("24_3r4uh")]
 position = Vector2(2560, 1864)
-length = 6
+length = 6.0
 
 [node name="CorkscrewHTube2" parent="Entities" instance=ExtResource("24_3r4uh")]
 position = Vector2(5312, 1600)
-length = 3
+length = 3.0
 
 [node name="Platforms" type="Node" parent="."]
 

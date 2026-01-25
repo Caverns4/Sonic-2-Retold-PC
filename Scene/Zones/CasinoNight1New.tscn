@@ -38,6 +38,7 @@
 [node name="CasinoNight1" type="Node2D"]
 script = ExtResource("1_0yy3m")
 zone_id = 9
+zone_name = "Casino Night"
 music = ExtResource("2_20443")
 music2P = ExtResource("3_gfykd")
 animal1 = 13
@@ -47,7 +48,6 @@ defaultRightBoundry = 10752
 [node name="09-CasinoNightF" parent="." instance=ExtResource("22_5pai5")]
 
 [node name="HUD" parent="." instance=ExtResource("6_etkld")]
-zoneName = "CASINO NIGHT"
 
 [node name="Level_Layout" type="Node" parent="."]
 
@@ -283,13 +283,13 @@ position = Vector2(3688, 288)
 
 [node name="LayerSwitcher" parent="Entities" instance=ExtResource("12_pf8po")]
 position = Vector2(3464, 1632)
-size = Vector2(1, 4)
+size = Vector2i(1, 4)
 leftLayer = 0
 onlyOnFloor = true
 
 [node name="LayerSwitcher8" parent="Entities" instance=ExtResource("12_pf8po")]
 position = Vector2(5896, 1760)
-size = Vector2(1, 4)
+size = Vector2i(1, 4)
 leftLayer = 0
 onlyOnFloor = true
 
@@ -299,7 +299,7 @@ onlyOnFloor = true
 
 [node name="LayerSwitcher2" parent="Entities" instance=ExtResource("12_pf8po")]
 position = Vector2(4008, 1600)
-size = Vector2(1, 8)
+size = Vector2i(1, 8)
 
 [node name="LayerSwitcher3" parent="Entities" instance=ExtResource("12_pf8po")]
 position = Vector2(6272, 1592)

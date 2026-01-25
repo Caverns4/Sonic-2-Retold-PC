@@ -93,6 +93,8 @@ point_count = 2
 [node name="SkyFortress1" type="Node2D"]
 script = ExtResource("1_f2s8f")
 zone_id = 15
+zone_name = "Sky Chase"
+act_number = 0
 music = ExtResource("2_j55bp")
 music2P = ExtResource("2_5abqf")
 animal1 = 3
@@ -129,8 +131,6 @@ libraries = {
 autoplay = "Default"
 
 [node name="HUD" parent="." instance=ExtResource("5_vrigx")]
-zoneName = "   SKY CHASE"
-act = 0
 
 [node name="Player" parent="." instance=ExtResource("6_vktrr")]
 position = Vector2(288, 112)

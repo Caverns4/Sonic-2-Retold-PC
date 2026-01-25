@@ -36,13 +36,13 @@ extends Node2D
 "Mouse", "Monkey",
 "Turtle", "Bear",
 "Beaver","Fox")var animal2: int = 1
-@export var waterSourceColor = preload("res://Graphics/Palettes/BasePal.png")
-@export var waterReplaceColor = preload("res://Graphics/Palettes/WetPal.png")
 ## If 0, the number of rings will be calculated automatically.
 @export var ringsForPerfect: int = 0
 @export_subgroup("Optional")
-@export var end_cutscene: bool = false
+@export var waterSourceColor = preload("res://Graphics/Palettes/BasePal.png")
+@export var waterReplaceColor = preload("res://Graphics/Palettes/WetPal.png")
 @export var wind_force: Vector2 = Vector2.ZERO
+@export var end_cutscene: bool = false
 
 @export_group("Scrolling")
 # Boundries

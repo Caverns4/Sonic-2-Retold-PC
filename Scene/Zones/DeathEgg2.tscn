@@ -19,6 +19,8 @@
 [node name="DeathEgg2" type="Node2D"]
 script = ExtResource("1_588bb")
 zone_id = 16
+zone_name = "Death Egg"
+act_number = 2
 music = ExtResource("2_j7ucr")
 music2P = ExtResource("2_j7ucr")
 animal1 = 6
@@ -29,8 +31,6 @@ defaultBottomBoundry = 416
 [node name="15-deathEgg" parent="." instance=ExtResource("3_dgxjp")]
 
 [node name="HUD" parent="." instance=ExtResource("3_l1prs")]
-zoneName = "DEATH EGG"
-act = 2
 
 [node name="Level_Layout" type="Node2D" parent="."]
 material = ExtResource("5_w8yld")

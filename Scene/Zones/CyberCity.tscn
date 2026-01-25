@@ -28,19 +28,20 @@ shader_parameter/time_scale = 0.1999999955296
 [node name="BossZone" type="Node2D"]
 script = ExtResource("1_2qba3")
 zone_id = 14
+zone_name = "Metropolis"
+act_number = 3
 music = ExtResource("2_wqlgd")
 music2P = ExtResource("2_t02ck")
 boss_theme = ExtResource("3_u6dil")
 animal1 = 13
 animal2 = 8
+end_cutscene = true
 defaultRightBoundry = 3200
 defaultBottomBoundry = 1024
 
 [node name="14-CyberCity" parent="." instance=ExtResource("5_dx3sm")]
 
 [node name="HUD" parent="." instance=ExtResource("5_a3l5i")]
-zoneName = "  CYBER CITY"
-act = 4
 
 [node name="Level_Layout" type="Node" parent="."]
 

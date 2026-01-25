@@ -11,6 +11,8 @@
 [node name="CasinoNight2" type="Node2D"]
 script = ExtResource("1_766pe")
 zone_id = 9
+zone_name = "Casino Night"
+act_number = 2
 music = ExtResource("2_kas0w")
 music2P = ExtResource("3_lgk7y")
 animal1 = 13
@@ -19,8 +21,6 @@ animal2 = 0
 [node name="09-CasinoNight" parent="." instance=ExtResource("4_rm0tf")]
 
 [node name="HUD" parent="." instance=ExtResource("4_3n00e")]
-zoneName = "CASINO NIGHT"
-act = 2
 
 [node name="Player" parent="." instance=ExtResource("5_0mxre")]
 position = Vector2(96, 1676)

@@ -27,6 +27,7 @@
 [node name="WoodGadget1" type="Node2D"]
 script = ExtResource("1_bq4rn")
 zone_id = 8
+zone_name = "Wood Gadget"
 music = ExtResource("2_qonje")
 music2P = ExtResource("3_ofqvb")
 animal1 = 11
@@ -37,7 +38,6 @@ defaultBottomBoundry = 1408
 [node name="08-WoodGadget" parent="." instance=ExtResource("5_lmmyl")]
 
 [node name="HUD" parent="." instance=ExtResource("5_pa5el")]
-zoneName = "WOOD GADGET"
 
 [node name="Level_Layout" type="Node" parent="."]
 
@@ -75,11 +75,11 @@ onlyOnFloor = true
 
 [node name="LayerSwitcher2" parent="Entities" instance=ExtResource("8_wqog5")]
 position = Vector2(2248, 1160)
-size = Vector2(1, 16)
+size = Vector2i(1, 16)
 
 [node name="LayerSwitcher3" parent="Entities" instance=ExtResource("8_wqog5")]
 position = Vector2(1880, 1160)
-size = Vector2(1, 16)
+size = Vector2i(1, 16)
 leftLayer = 0
 
 [node name="LayerSwitcher4" parent="Entities" instance=ExtResource("8_wqog5")]
@@ -88,11 +88,11 @@ onlyOnFloor = true
 
 [node name="LayerSwitcher5" parent="Entities" instance=ExtResource("8_wqog5")]
 position = Vector2(4424, 136)
-size = Vector2(1, 16)
+size = Vector2i(1, 16)
 
 [node name="LayerSwitcher6" parent="Entities" instance=ExtResource("8_wqog5")]
 position = Vector2(4056, 136)
-size = Vector2(1, 16)
+size = Vector2i(1, 16)
 leftLayer = 0
 
 [node name="LayerSwitcher7" parent="Entities" instance=ExtResource("8_wqog5")]
@@ -101,11 +101,11 @@ onlyOnFloor = true
 
 [node name="LayerSwitcher8" parent="Entities" instance=ExtResource("8_wqog5")]
 position = Vector2(7496, 264)
-size = Vector2(1, 16)
+size = Vector2i(1, 16)
 
 [node name="LayerSwitcher9" parent="Entities" instance=ExtResource("8_wqog5")]
 position = Vector2(7128, 264)
-size = Vector2(1, 16)
+size = Vector2i(1, 16)
 leftLayer = 0
 
 [node name="Spring" parent="Entities" instance=ExtResource("9_fveb4")]

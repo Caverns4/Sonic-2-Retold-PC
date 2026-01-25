@@ -9,6 +9,8 @@
 [node name="JewelGrotto2" type="Node2D"]
 script = ExtResource("1_a5u21")
 zone_id = 10
+zone_name = "Jewel Grotto"
+act_number = 2
 music = ExtResource("3_k6phh")
 music2P = ExtResource("3_k6phh")
 animal1 = 8
@@ -17,8 +19,6 @@ animal2 = 3
 [node name="10-jewelGrotto" parent="." instance=ExtResource("3_ev15n")]
 
 [node name="HUD" parent="." instance=ExtResource("5_um8eq")]
-zoneName = "JEWEL GROTTO"
-act = 2
 
 [node name="Level_Layout" type="Node" parent="."]
 

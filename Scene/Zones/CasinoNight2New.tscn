@@ -37,6 +37,8 @@
 [node name="CasinoNight2" type="Node2D"]
 script = ExtResource("1_ssdve")
 zone_id = 9
+zone_name = "Casino Night"
+act_number = 2
 music = ExtResource("2_last2")
 music2P = ExtResource("3_ge8lu")
 animal1 = 13
@@ -46,8 +48,6 @@ defaultRightBoundry = 10112
 [node name="09-CasinoNightF" parent="." instance=ExtResource("5_gne2c")]
 
 [node name="HUD" parent="." instance=ExtResource("4_h5i0i")]
-zoneName = "CASINO NIGHT"
-act = 2
 
 [node name="Level_Layout" type="Node" parent="."]
 
@@ -81,7 +81,7 @@ position = Vector2(176, 1420)
 
 [node name="LayerSwitcher" parent="Entities" instance=ExtResource("9_5ohby")]
 position = Vector2(1144, 1440)
-size = Vector2(1, 4)
+size = Vector2i(1, 4)
 leftLayer = 0
 onlyOnFloor = true
 
@@ -91,11 +91,11 @@ onlyOnFloor = true
 
 [node name="LayerSwitcher2" parent="Entities" instance=ExtResource("9_5ohby")]
 position = Vector2(1576, 1312)
-size = Vector2(1, 8)
+size = Vector2i(1, 8)
 
 [node name="LayerSwitcher3" parent="Entities" instance=ExtResource("9_5ohby")]
 position = Vector2(3832, 544)
-size = Vector2(1, 4)
+size = Vector2i(1, 4)
 leftLayer = 0
 onlyOnFloor = true
 
@@ -105,11 +105,11 @@ onlyOnFloor = true
 
 [node name="LayerSwitcher4" parent="Entities" instance=ExtResource("9_5ohby")]
 position = Vector2(4264, 416)
-size = Vector2(1, 8)
+size = Vector2i(1, 8)
 
 [node name="LayerSwitcher5" parent="Entities" instance=ExtResource("9_5ohby")]
 position = Vector2(6904, 1312)
-size = Vector2(1, 4)
+size = Vector2i(1, 4)
 leftLayer = 0
 onlyOnFloor = true
 
@@ -119,11 +119,11 @@ onlyOnFloor = true
 
 [node name="LayerSwitcher6" parent="Entities" instance=ExtResource("9_5ohby")]
 position = Vector2(7336, 1216)
-size = Vector2(1, 8)
+size = Vector2i(1, 8)
 
 [node name="LayerSwitcher10" parent="Entities" instance=ExtResource("9_5ohby")]
 position = Vector2(8696, 928)
-size = Vector2(1, 4)
+size = Vector2i(1, 4)
 leftLayer = 0
 onlyOnFloor = true
 
@@ -133,7 +133,7 @@ onlyOnFloor = true
 
 [node name="LayerSwitcher12" parent="Entities" instance=ExtResource("9_5ohby")]
 position = Vector2(9112, 808)
-size = Vector2(1, 8)
+size = Vector2i(1, 8)
 
 [node name="Spring" parent="Entities" instance=ExtResource("10_366g0")]
 position = Vector2(648, 1520)

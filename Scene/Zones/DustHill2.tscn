@@ -39,6 +39,8 @@
 [node name="DustHill2" type="Node2D"]
 script = ExtResource("1_ednaa")
 zone_id = 7
+zone_name = "Mystic Cave"
+act_number = 2
 music = ExtResource("2_xwbm1")
 music2P = ExtResource("3_h5jpw")
 animal1 = 8
@@ -49,8 +51,6 @@ defaultRightBoundry = 9344
 [node name="07-DustHill" parent="." instance=ExtResource("5_nbiqy")]
 
 [node name="HUD" parent="." instance=ExtResource("5_57iih")]
-zoneName = "DUST HILL"
-act = 2
 
 [node name="Level_Layout" type="Node" parent="."]
 

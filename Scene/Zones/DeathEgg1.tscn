@@ -11,6 +11,7 @@
 [node name="DeathEgg1" type="Node2D"]
 script = ExtResource("1_yyvsh")
 zone_id = 16
+zone_name = "Death Egg"
 music = ExtResource("2_fqqc2")
 music2P = ExtResource("2_fqqc2")
 animal1 = 6
@@ -20,7 +21,6 @@ animal2 = 3
 scroll_base_scale = Vector2(0, 0.2)
 
 [node name="HUD" parent="." instance=ExtResource("5_1knt1")]
-zoneName = "DEATH EGG"
 
 [node name="Level_Layout" type="Node" parent="."]
 
