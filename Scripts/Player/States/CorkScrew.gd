@@ -38,7 +38,7 @@ func _physics_process(delta):
 				parent.movement.x -= parent.movement.x
 	
 	# reset state
-	if parent.ground:
+	if parent.ground and !parent.controlObject:
 		if parent.animator.current_animation == "roll":
 			parent.set_state(parent.STATES.ROLL)
 		else:
