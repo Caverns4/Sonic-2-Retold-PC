@@ -103,7 +103,7 @@ func _on_seek_timer_timeout():
 			else:
 				BBatReturnToIdleState()
 		STATES.WARMUP:
-			currentTarget = Picktarget(targets)
+			currentTarget = Picktarget()
 			
 			if currentTarget:
 				SetupDive()
@@ -121,7 +121,7 @@ func BBatReturnToIdleState():
 	#print ("Idle")
 	$SeekTimer.start(WAIT_TIMER)
 
-func Picktarget(targets):
+func Picktarget():
 	# Probably bad practice but it works so ¯\_(ツ)_/¯
 	var stillInRange = false
 	for i in targets.size():
