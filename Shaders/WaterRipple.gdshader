@@ -25,6 +25,8 @@ uniform bool freezeFirstHalf = false;
 // Keeps one half stuck. Useful for things like flags.
 uniform bool freezeSecondHalf = false;
 
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_nearest;
+
 void vertex() {
 	if (correctVertex) {
 		VERTEX = (verticalWave ? vec2(VERTEX.x, VERTEX.y * (1.0 + waveAmplitude)): vec2(VERTEX.x * (1.0 + waveAmplitude), VERTEX.y));
@@ -32,6 +34,8 @@ void vertex() {
 }
 
 void fragment() {
+	vec4 screen = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0);
+	
 	vec2 uv = UV;
 	float waveUv = (verticalWave ? uv.x : uv.y);
 	float againstWaveUv = (verticalWave ? uv.y: uv.x);
@@ -60,7 +64,7 @@ void fragment() {
 		// Clamp the UVs to prevent texture wrapping.
 		uv = clamp(uv, vec2(0.0), vec2(1.0));
 		againstWaveUv = (verticalWave ? uv.y : uv.x);
-		vec4 texColor = texture(TEXTURE, uv);
+		vec4 texColor = texture(SCREEN_TEXTURE, uv);
 		// Apply the calculated color.
 		if (keepTransparency) {
 			if (againstWaveUv <= 0.0 || againstWaveUv >= 1.0) {

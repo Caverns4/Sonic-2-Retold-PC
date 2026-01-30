@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://uh2c8jbp8qwd"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://uh2c8jbp8qwd"]
 
 [ext_resource type="Texture2D" uid="uid://dxcdt4qimdnl7" path="res://Graphics/Palettes/CPZ_Pal_Dry.png" id="2_pf8vr"]
 [ext_resource type="Shader" uid="uid://y2o3yrr3tdag" path="res://Shaders/PaletteSwap.gdshader" id="3"]

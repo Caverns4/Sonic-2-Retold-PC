@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://bhtsckwsr2bjs"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://bhtsckwsr2bjs"]
 
 [ext_resource type="Texture2D" uid="uid://cdh1bosp3smqs" path="res://Graphics/Items/rings.png" id="1_p6de8"]
 

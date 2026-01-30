@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://c30uceea18q1w"]
+[gd_scene format=3 uid="uid://c30uceea18q1w"]
 
 [ext_resource type="Texture2D" uid="uid://dloxtqer7p78l" path="res://Graphics/HUD/hud_lives.png" id="2_cfvjc"]
 [ext_resource type="Material" uid="uid://bveqi5m5ihsgj" path="res://Shaders/PlayerPalette.tres" id="2_xy7bp"]
@@ -19,12 +19,14 @@
 [ext_resource type="Texture2D" uid="uid://bbm5bncrd1o4k" path="res://Graphics/HUD/LevelCards/EdgePattern.png" id="10_xpi0a"]
 [ext_resource type="FontFile" uid="uid://corcgkvvv7msb" path="res://Graphics/HUD/LevelCards/font/TitleCard_Normal.png" id="11_6cefa"]
 [ext_resource type="Texture2D" uid="uid://bulw3223o3c01" path="res://Graphics/HUD/LevelCards/TitleCardRetold.png" id="11_7g7rf"]
-[ext_resource type="Material" uid="uid://uh2c8jbp8qwd" path="res://Shaders/WaterPalette.tres" id="13_1ly2g"]
 [ext_resource type="Texture2D" uid="uid://60ak1q0xrn1s" path="res://Graphics/HUD/hud_gametimeover.png" id="15_7eshx"]
 [ext_resource type="PackedScene" uid="uid://bass3w6af55vw" path="res://Tools/Timing/ProcessTimer.tscn" id="15_hk65o"]
 [ext_resource type="AudioStream" uid="uid://cxg3gcqe1mwv4" path="res://Audio/SFX/Misc/s2br_Tally.wav" id="15_p0n0b"]
 [ext_resource type="AudioStream" uid="uid://c3tsd0xi30f6s" path="res://Audio/Soundtrack/s2br_GameOver.ogg" id="15_y325l"]
 [ext_resource type="AudioStream" uid="uid://kqq77sj3uqur" path="res://Audio/SFX/Misc/s2br_Beep.wav" id="16_0ei7l"]
+[ext_resource type="Shader" uid="uid://bl6rkxasb1wlh" path="res://Shaders/Waterpalette.gdshader" id="25_dwo3g"]
+[ext_resource type="Texture2D" uid="uid://t83ys4beivkw" path="res://Graphics/Palettes/NGHZ_Pal_Dry.png" id="27_nvppe"]
+[ext_resource type="Texture2D" uid="uid://bwnjh5ghvt0xs" path="res://Graphics/Palettes/NGHZ_Pal_Wet.png" id="28_vthpf"]
 
 [sub_resource type="Animation" id="Animation_uxdxe"]
 length = 0.1
@@ -830,11 +832,17 @@ _data = {
 &"RESET": SubResource("10")
 }
 
-[node name="HUD" type="CanvasLayer"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vthpf"]
+shader = ExtResource("25_dwo3g")
+shader_parameter/amount = 64.0
+shader_parameter/originalPalette = ExtResource("27_nvppe")
+shader_parameter/swapPalette = ExtResource("28_vthpf")
+
+[node name="HUD" type="CanvasLayer" unique_id=1449505827]
 layer = 2
 script = ExtResource("6")
 
-[node name="Boss Life" type="Control" parent="."]
+[node name="Boss Life" type="Control" parent="." unique_id=938776638]
 visible = false
 layout_mode = 3
 anchors_preset = 3
@@ -847,19 +855,19 @@ offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="EggMeterStart" type="Sprite2D" parent="Boss Life"]
+[node name="EggMeterStart" type="Sprite2D" parent="Boss Life" unique_id=439878615]
 material = ExtResource("2_xy7bp")
 position = Vector2(-48, 16)
 texture = ExtResource("3_v2qyy")
 centered = false
 
-[node name="EggMeterEnd" type="Sprite2D" parent="Boss Life"]
+[node name="EggMeterEnd" type="Sprite2D" parent="Boss Life" unique_id=1331917535]
 material = ExtResource("2_xy7bp")
 position = Vector2(112, 24)
 texture = ExtResource("4_85yys")
 centered = false
 
-[node name="BossName" type="Label" parent="Boss Life"]
+[node name="BossName" type="Label" parent="Boss Life" unique_id=1345714991]
 modulate = Color(1, 1, 0, 1)
 layout_mode = 1
 anchors_preset = 2
@@ -876,7 +884,7 @@ text = "Egg Drillster II"
 vertical_alignment = 2
 uppercase = true
 
-[node name="EggMeter" type="TextureRect" parent="Boss Life"]
+[node name="EggMeter" type="TextureRect" parent="Boss Life" unique_id=1771799135]
 layout_mode = 0
 offset_left = -16.0
 offset_top = 24.0
@@ -886,7 +894,7 @@ texture = ExtResource("6_viguv")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="EggMeterFull" type="TextureRect" parent="Boss Life"]
+[node name="EggMeterFull" type="TextureRect" parent="Boss Life" unique_id=381165614]
 layout_mode = 0
 offset_left = -16.0
 offset_top = 24.0
@@ -896,7 +904,7 @@ texture = ExtResource("5_viguv")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="LifeCounter" type="Control" parent="."]
+[node name="LifeCounter" type="Control" parent="." unique_id=775456047]
 visible = false
 layout_mode = 3
 anchors_preset = 2
@@ -908,13 +916,13 @@ offset_right = 72.0
 offset_bottom = -8.0
 grow_vertical = 0
 
-[node name="Icon" type="Sprite2D" parent="LifeCounter"]
+[node name="Icon" type="Sprite2D" parent="LifeCounter" unique_id=1925817341]
 material = ExtResource("2_xy7bp")
 texture = ExtResource("2_cfvjc")
 centered = false
 vframes = 8
 
-[node name="LifeText" type="Label" parent="LifeCounter/Icon"]
+[node name="LifeText" type="Label" parent="LifeCounter/Icon" unique_id=1050420844]
 offset_left = 24.0
 offset_top = 8.0
 offset_right = 72.0
@@ -924,7 +932,7 @@ theme_override_fonts/font = ExtResource("3_eauoj")
 text = "100"
 horizontal_alignment = 2
 
-[node name="Counters" type="Control" parent="."]
+[node name="Counters" type="Control" parent="." unique_id=115005870]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -933,19 +941,19 @@ offset_top = 8.0
 offset_right = 48.0
 offset_bottom = 48.0
 
-[node name="Text" type="Sprite2D" parent="Counters"]
+[node name="Text" type="Sprite2D" parent="Counters" unique_id=141957875]
 texture = ExtResource("5_kre34")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 40, 48)
 
-[node name="ScoreNumber" type="Label" parent="Counters/Text"]
+[node name="ScoreNumber" type="Label" parent="Counters/Text" unique_id=1384161828]
 offset_left = 48.0
 offset_right = 48.0
 theme_override_fonts/font = ExtResource("6_synv7")
 text = "0"
 
-[node name="TimeNumbers" type="Label" parent="Counters/Text"]
+[node name="TimeNumbers" type="Label" parent="Counters/Text" unique_id=924655162]
 offset_left = 32.0
 offset_top = 16.0
 offset_right = 40.0
@@ -953,7 +961,7 @@ offset_bottom = 35.0
 theme_override_fonts/font = ExtResource("6_synv7")
 text = "00:00:00"
 
-[node name="RingCount" type="Label" parent="Counters/Text"]
+[node name="RingCount" type="Label" parent="Counters/Text" unique_id=1352249242]
 offset_left = 48.0
 offset_top = 32.0
 offset_right = 56.0
@@ -961,7 +969,7 @@ offset_bottom = 51.0
 theme_override_fonts/font = ExtResource("6_synv7")
 text = "0"
 
-[node name="Time" type="Sprite2D" parent="Counters/Text"]
+[node name="Time" type="Sprite2D" parent="Counters/Text" unique_id=663951329]
 visible = false
 position = Vector2(0, 16)
 texture = ExtResource("5_kre34")
@@ -969,7 +977,7 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 48, 40, 16)
 
-[node name="Rings" type="Sprite2D" parent="Counters/Text"]
+[node name="Rings" type="Sprite2D" parent="Counters/Text" unique_id=287935360]
 visible = false
 position = Vector2(0, 32)
 texture = ExtResource("5_kre34")
@@ -977,7 +985,7 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 64, 40, 16)
 
-[node name="BlueRings" type="Sprite2D" parent="Counters/Text"]
+[node name="BlueRings" type="Sprite2D" parent="Counters/Text" unique_id=1965249264]
 visible = false
 position = Vector2(0, 32)
 texture = ExtResource("5_kre34")
@@ -985,7 +993,7 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 80, 40, 16)
 
-[node name="Icon" type="Sprite2D" parent="Counters/Text"]
+[node name="Icon" type="Sprite2D" parent="Counters/Text" unique_id=1902296329]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(8, 56)
 texture = ExtResource("7_6q7he")
@@ -993,12 +1001,10 @@ centered = false
 vframes = 8
 frame = 4
 
-[node name="IconAnim" type="AnimationPlayer" parent="Counters/Text"]
-libraries = {
-&"": SubResource("AnimationLibrary_3qsc1")
-}
+[node name="IconAnim" type="AnimationPlayer" parent="Counters/Text" unique_id=1357752795]
+libraries/ = SubResource("AnimationLibrary_3qsc1")
 
-[node name="P1Counters" type="Control" parent="."]
+[node name="P1Counters" type="Control" parent="." unique_id=489039075]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -1007,21 +1013,21 @@ offset_top = 8.0
 offset_right = 48.0
 offset_bottom = 48.0
 
-[node name="Text" type="Sprite2D" parent="P1Counters"]
+[node name="Text" type="Sprite2D" parent="P1Counters" unique_id=1276166921]
 position = Vector2(0, -8)
 texture = ExtResource("5_kre34")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 16, 40, 32)
 
-[node name="TimeNumbers" type="Label" parent="P1Counters/Text"]
+[node name="TimeNumbers" type="Label" parent="P1Counters/Text" unique_id=1431730791]
 offset_left = 32.0
 offset_right = 96.0
 offset_bottom = 16.0
 theme_override_fonts/font = ExtResource("6_synv7")
 text = "00:00:00"
 
-[node name="RingCount" type="Label" parent="P1Counters/Text"]
+[node name="RingCount" type="Label" parent="P1Counters/Text" unique_id=1370105762]
 offset_left = 48.0
 offset_top = 16.0
 offset_right = 56.0
@@ -1029,14 +1035,14 @@ offset_bottom = 32.0
 theme_override_fonts/font = ExtResource("6_synv7")
 text = "0"
 
-[node name="Time" type="Sprite2D" parent="P1Counters/Text"]
+[node name="Time" type="Sprite2D" parent="P1Counters/Text" unique_id=1519947489]
 visible = false
 texture = ExtResource("5_kre34")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 48, 40, 16)
 
-[node name="Rings" type="Sprite2D" parent="P1Counters/Text"]
+[node name="Rings" type="Sprite2D" parent="P1Counters/Text" unique_id=355731143]
 visible = false
 position = Vector2(0, 16)
 texture = ExtResource("5_kre34")
@@ -1044,14 +1050,14 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 64, 40, 16)
 
-[node name="LifeIcon" type="Sprite2D" parent="P1Counters"]
+[node name="LifeIcon" type="Sprite2D" parent="P1Counters" unique_id=1443727772]
 material = ExtResource("2_xy7bp")
 position = Vector2(0, 88)
 texture = ExtResource("2_cfvjc")
 centered = false
 vframes = 8
 
-[node name="LifeText" type="Label" parent="P1Counters/LifeIcon"]
+[node name="LifeText" type="Label" parent="P1Counters/LifeIcon" unique_id=1763448039]
 offset_left = 24.0
 offset_top = 8.0
 offset_right = 72.0
@@ -1061,7 +1067,7 @@ theme_override_fonts/font = ExtResource("3_eauoj")
 text = "100"
 horizontal_alignment = 2
 
-[node name="P2Counters" type="Control" parent="."]
+[node name="P2Counters" type="Control" parent="." unique_id=943431150]
 visible = false
 layout_mode = 3
 anchors_preset = 4
@@ -1071,21 +1077,21 @@ offset_right = 40.0
 offset_bottom = 40.0
 grow_vertical = 2
 
-[node name="Text" type="Sprite2D" parent="P2Counters"]
+[node name="Text" type="Sprite2D" parent="P2Counters" unique_id=712723185]
 position = Vector2(8, 0)
 texture = ExtResource("5_kre34")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 16, 40, 32)
 
-[node name="TimeNumbers" type="Label" parent="P2Counters/Text"]
+[node name="TimeNumbers" type="Label" parent="P2Counters/Text" unique_id=951011870]
 offset_left = 32.0
 offset_right = 96.0
 offset_bottom = 16.0
 theme_override_fonts/font = ExtResource("6_synv7")
 text = "00:00:00"
 
-[node name="RingCount" type="Label" parent="P2Counters/Text"]
+[node name="RingCount" type="Label" parent="P2Counters/Text" unique_id=2092425173]
 offset_left = 48.0
 offset_top = 16.0
 offset_right = 56.0
@@ -1093,14 +1099,14 @@ offset_bottom = 32.0
 theme_override_fonts/font = ExtResource("6_synv7")
 text = "0"
 
-[node name="Time" type="Sprite2D" parent="P2Counters/Text"]
+[node name="Time" type="Sprite2D" parent="P2Counters/Text" unique_id=121042190]
 visible = false
 texture = ExtResource("5_kre34")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 48, 40, 16)
 
-[node name="Rings" type="Sprite2D" parent="P2Counters/Text"]
+[node name="Rings" type="Sprite2D" parent="P2Counters/Text" unique_id=1722124109]
 visible = false
 position = Vector2(0, 16)
 texture = ExtResource("5_kre34")
@@ -1108,14 +1114,14 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 64, 40, 16)
 
-[node name="LifeIcon" type="Sprite2D" parent="P2Counters"]
+[node name="LifeIcon" type="Sprite2D" parent="P2Counters" unique_id=1280979907]
 material = ExtResource("2_xy7bp")
 position = Vector2(8, 96)
 texture = ExtResource("2_cfvjc")
 centered = false
 vframes = 8
 
-[node name="LifeText" type="Label" parent="P2Counters/LifeIcon"]
+[node name="LifeText" type="Label" parent="P2Counters/LifeIcon" unique_id=1884077709]
 offset_left = 24.0
 offset_top = 8.0
 offset_right = 72.0
@@ -1125,7 +1131,7 @@ theme_override_fonts/font = ExtResource("3_eauoj")
 text = "100"
 horizontal_alignment = 2
 
-[node name="DeathTimers" type="Control" parent="."]
+[node name="DeathTimers" type="Control" parent="." unique_id=567647489]
 visible = false
 layout_mode = 3
 anchors_preset = 5
@@ -1136,7 +1142,7 @@ offset_right = 20.0
 offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="CountdownP1" type="Label" parent="DeathTimers"]
+[node name="CountdownP1" type="Label" parent="DeathTimers" unique_id=2112891322]
 visible = false
 layout_mode = 0
 offset_left = -12.0
@@ -1147,7 +1153,7 @@ theme_override_fonts/font = ExtResource("6_synv7")
 text = "00
 "
 
-[node name="CountdownP2" type="Label" parent="DeathTimers"]
+[node name="CountdownP2" type="Label" parent="DeathTimers" unique_id=202135856]
 visible = false
 layout_mode = 0
 offset_left = -12.0
@@ -1158,7 +1164,7 @@ theme_override_fonts/font = ExtResource("6_synv7")
 text = "00
 "
 
-[node name="LevelCard" type="Control" parent="."]
+[node name="LevelCard" type="Control" parent="." unique_id=145391432]
 process_mode = 3
 visible = false
 layout_mode = 3
@@ -1170,13 +1176,13 @@ grow_vertical = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
-[node name="Cover" type="ColorRect" parent="LevelCard"]
+[node name="Cover" type="ColorRect" parent="LevelCard" unique_id=237176956]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0, 0, 0, 1)
 
-[node name="Banner" type="TextureRect" parent="LevelCard"]
+[node name="Banner" type="TextureRect" parent="LevelCard" unique_id=2008081989]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1189,12 +1195,12 @@ size_flags_stretch_ratio = 0.0
 texture = ExtResource("7_ccygi")
 stretch_mode = 2
 
-[node name="PatternLeft" type="Control" parent="LevelCard"]
+[node name="PatternLeft" type="Control" parent="LevelCard" unique_id=1535167847]
 anchors_preset = 0
 anchor_bottom = 1.0
 offset_bottom = 39456.0
 
-[node name="PatternLeft" type="TextureRect" parent="LevelCard/PatternLeft"]
+[node name="PatternLeft" type="TextureRect" parent="LevelCard/PatternLeft" unique_id=971705692]
 layout_mode = 1
 anchors_preset = -1
 offset_left = -32.0
@@ -1204,13 +1210,13 @@ grow_vertical = 2
 texture = ExtResource("10_xpi0a")
 stretch_mode = 1
 
-[node name="RightRatio" type="Control" parent="LevelCard"]
+[node name="RightRatio" type="Control" parent="LevelCard" unique_id=1072735663]
 anchors_preset = 0
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="PatternRight" type="Control" parent="LevelCard/RightRatio"]
+[node name="PatternRight" type="Control" parent="LevelCard/RightRatio" unique_id=1837482658]
 anchors_preset = 0
 anchor_left = 0.5
 anchor_right = 0.5
@@ -1218,7 +1224,7 @@ anchor_bottom = 1.0
 offset_top = -32.0
 offset_bottom = 39168.0
 
-[node name="PatternRight" type="TextureRect" parent="LevelCard/RightRatio/PatternRight"]
+[node name="PatternRight" type="TextureRect" parent="LevelCard/RightRatio/PatternRight" unique_id=41073748]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -1226,20 +1232,20 @@ anchor_top = 0.003
 anchor_right = 1.0
 anchor_bottom = 0.003
 offset_top = -86.272
-offset_right = 27110.4
+offset_right = 29830.4
 offset_bottom = 169.728
 grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("10_xpi0a")
 stretch_mode = 1
 
-[node name="Act" type="Sprite2D" parent="LevelCard"]
+[node name="Act" type="Sprite2D" parent="LevelCard" unique_id=1445416003]
 position = Vector2(240, 104)
 texture = ExtResource("9_3i4aq")
 centered = false
 hframes = 4
 
-[node name="Zone" type="Label" parent="LevelCard"]
+[node name="Zone" type="Label" parent="LevelCard" unique_id=1565175903]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 108.0
@@ -1251,7 +1257,7 @@ text = "ZONE"
 horizontal_alignment = 2
 uppercase = true
 
-[node name="LevelName" type="Label" parent="LevelCard"]
+[node name="LevelName" type="Label" parent="LevelCard" unique_id=893003028]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 64.0
@@ -1261,25 +1267,21 @@ theme_override_fonts/font = ExtResource("10_hdf42")
 text = "EMERALD HILL"
 uppercase = true
 
-[node name="Retold Text" type="Sprite2D" parent="LevelCard"]
+[node name="Retold Text" type="Sprite2D" parent="LevelCard" unique_id=1214064550]
 position = Vector2(640, 176)
 texture = ExtResource("11_7g7rf")
 
-[node name="CardMover" type="AnimationPlayer" parent="LevelCard"]
+[node name="CardMover" type="AnimationPlayer" parent="LevelCard" unique_id=1458752163]
 process_mode = 1
-libraries = {
-&"": SubResource("AnimationLibrary_15hsr")
-}
-autoplay = "Slider"
+libraries/ = SubResource("AnimationLibrary_15hsr")
+autoplay = &"Slider"
 speed_scale = 4.0
 
-[node name="CardPlayer" type="AnimationPlayer" parent="LevelCard"]
-libraries = {
-&"": SubResource("AnimationLibrary_fgko3")
-}
-autoplay = "Start"
+[node name="CardPlayer" type="AnimationPlayer" parent="LevelCard" unique_id=1469216838]
+libraries/ = SubResource("AnimationLibrary_fgko3")
+autoplay = &"Start"
 
-[node name="LevelClear" type="Control" parent="."]
+[node name="LevelClear" type="Control" parent="." unique_id=1076494174]
 process_mode = 1
 visible = false
 layout_mode = 3
@@ -1290,13 +1292,11 @@ grow_horizontal = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
-[node name="Animator" type="AnimationPlayer" parent="LevelClear"]
-libraries = {
-&"": SubResource("AnimationLibrary_2thdl")
-}
-autoplay = "RESET"
+[node name="Animator" type="AnimationPlayer" parent="LevelClear" unique_id=965651848]
+libraries/ = SubResource("AnimationLibrary_2thdl")
+autoplay = &"RESET"
 
-[node name="SonicGot" type="Label" parent="LevelClear"]
+[node name="SonicGot" type="Label" parent="LevelClear" unique_id=214001984]
 layout_mode = 0
 offset_left = -448.0
 offset_top = 64.0
@@ -1306,7 +1306,7 @@ theme_override_fonts/font = ExtResource("11_6cefa")
 text = "SONIC GOT"
 horizontal_alignment = 1
 
-[node name="Through" type="Label" parent="LevelClear"]
+[node name="Through" type="Label" parent="LevelClear" unique_id=1344804264]
 layout_mode = 0
 offset_left = 256.0
 offset_top = 80.0
@@ -1316,20 +1316,20 @@ theme_override_fonts/font = ExtResource("11_6cefa")
 text = "THROUGH ACT"
 horizontal_alignment = 1
 
-[node name="Act" type="Sprite2D" parent="LevelClear"]
+[node name="Act" type="Sprite2D" parent="LevelClear" unique_id=1814320956]
 position = Vector2(488, 64)
 texture = ExtResource("9_3i4aq")
 centered = false
 hframes = 4
 
-[node name="TimeBonusText" type="Sprite2D" parent="LevelClear"]
+[node name="TimeBonusText" type="Sprite2D" parent="LevelClear" unique_id=1970780723]
 position = Vector2(304, 128)
 texture = ExtResource("10_ddlv5")
 centered = false
 vframes = 6
 region_rect = Rect2(0, 0, 80, 16)
 
-[node name="TimeBonus" type="Label" parent="LevelClear/TimeBonusText"]
+[node name="TimeBonus" type="Label" parent="LevelClear/TimeBonusText" unique_id=284594428]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -1341,7 +1341,7 @@ theme_override_fonts/font = ExtResource("6_synv7")
 text = "0"
 horizontal_alignment = 2
 
-[node name="RingBonusText" type="Sprite2D" parent="LevelClear"]
+[node name="RingBonusText" type="Sprite2D" parent="LevelClear" unique_id=510300691]
 position = Vector2(304, 144)
 texture = ExtResource("10_ddlv5")
 centered = false
@@ -1349,7 +1349,7 @@ vframes = 6
 frame = 1
 region_rect = Rect2(0, 0, 40, 16)
 
-[node name="RingBonus" type="Label" parent="LevelClear/RingBonusText"]
+[node name="RingBonus" type="Label" parent="LevelClear/RingBonusText" unique_id=1452466502]
 offset_left = 144.0
 offset_right = 192.0
 offset_bottom = 16.0
@@ -1357,7 +1357,7 @@ theme_override_fonts/font = ExtResource("6_synv7")
 text = "0"
 horizontal_alignment = 2
 
-[node name="PerfectBonusText" type="Sprite2D" parent="LevelClear"]
+[node name="PerfectBonusText" type="Sprite2D" parent="LevelClear" unique_id=295091283]
 visible = false
 position = Vector2(304, 160)
 texture = ExtResource("10_ddlv5")
@@ -1366,7 +1366,7 @@ vframes = 6
 frame = 2
 region_rect = Rect2(0, 0, 40, 16)
 
-[node name="PerfectBonus" type="Label" parent="LevelClear/PerfectBonusText"]
+[node name="PerfectBonus" type="Label" parent="LevelClear/PerfectBonusText" unique_id=2029230145]
 offset_left = 144.0
 offset_right = 192.0
 offset_bottom = 16.0
@@ -1374,7 +1374,7 @@ theme_override_fonts/font = ExtResource("6_synv7")
 text = "0"
 horizontal_alignment = 2
 
-[node name="TotalText" type="Sprite2D" parent="LevelClear"]
+[node name="TotalText" type="Sprite2D" parent="LevelClear" unique_id=720146906]
 position = Vector2(304, 176)
 texture = ExtResource("10_ddlv5")
 centered = false
@@ -1382,7 +1382,7 @@ vframes = 6
 frame = 3
 region_rect = Rect2(0, 0, 40, 16)
 
-[node name="TallyTotal" type="Label" parent="LevelClear/TotalText"]
+[node name="TallyTotal" type="Label" parent="LevelClear/TotalText" unique_id=1631738156]
 offset_left = 144.0
 offset_right = 192.0
 offset_bottom = 16.0
@@ -1390,22 +1390,22 @@ theme_override_fonts/font = ExtResource("6_synv7")
 text = "000000"
 horizontal_alignment = 2
 
-[node name="CounterWait" type="Timer" parent="LevelClear"]
+[node name="CounterWait" type="Timer" parent="LevelClear" unique_id=698294758]
 wait_time = 6.0
 one_shot = true
 
-[node name="CounterCount" parent="LevelClear" instance=ExtResource("15_hk65o")]
+[node name="CounterCount" parent="LevelClear" unique_id=1041433393 instance=ExtResource("15_hk65o")]
 
-[node name="CounterSFX" type="AudioStreamPlayer" parent="LevelClear"]
+[node name="CounterSFX" type="AudioStreamPlayer" parent="LevelClear" unique_id=1952691135]
 stream = ExtResource("16_0ei7l")
 mix_target = 2
 bus = &"SFX"
 
-[node name="Score" type="AudioStreamPlayer" parent="LevelClear"]
+[node name="Score" type="AudioStreamPlayer" parent="LevelClear" unique_id=1073666839]
 stream = ExtResource("15_p0n0b")
 bus = &"SFX"
 
-[node name="GameOver" type="Control" parent="."]
+[node name="GameOver" type="Control" parent="." unique_id=2139456405]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -1415,14 +1415,14 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Game" type="Sprite2D" parent="GameOver"]
+[node name="Game" type="Sprite2D" parent="GameOver" unique_id=1671167112]
 position = Vector2(-256, 0)
 scale = Vector2(1, 1e-05)
 texture = ExtResource("15_7eshx")
 offset = Vector2(-40, 0)
 vframes = 3
 
-[node name="Over" type="Sprite2D" parent="GameOver"]
+[node name="Over" type="Sprite2D" parent="GameOver" unique_id=1427887425]
 position = Vector2(256, 0)
 scale = Vector2(1, 1e-05)
 texture = ExtResource("15_7eshx")
@@ -1430,33 +1430,31 @@ offset = Vector2(40, 0)
 vframes = 3
 frame = 2
 
-[node name="GameOver" type="AnimationPlayer" parent="GameOver"]
-libraries = {
-&"": SubResource("AnimationLibrary_dmnhc")
-}
+[node name="GameOver" type="AnimationPlayer" parent="GameOver" unique_id=752830227]
+libraries/ = SubResource("AnimationLibrary_dmnhc")
 
-[node name="GameOverMusic" type="AudioStreamPlayer" parent="GameOver"]
+[node name="GameOverMusic" type="AudioStreamPlayer" parent="GameOver" unique_id=1328731752]
 stream = ExtResource("15_y325l")
 bus = &"Music"
 
-[node name="Water" type="CanvasLayer" parent="."]
+[node name="Water" type="CanvasLayer" parent="." unique_id=1014315741]
 
-[node name="WaterOverlay" type="ColorRect" parent="Water"]
+[node name="WaterOverlay" type="ColorRect" parent="Water" unique_id=2022153359]
 visible = false
-material = ExtResource("13_1ly2g")
+material = SubResource("ShaderMaterial_vthpf")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ElecFlash" type="ColorRect" parent="Water/WaterOverlay"]
+[node name="ElecFlash" type="ColorRect" parent="Water/WaterOverlay" unique_id=1608336814]
 visible = false
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=796148481]
 process_mode = 1
 wait_time = 60.0
 one_shot = true
