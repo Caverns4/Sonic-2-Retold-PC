@@ -79,7 +79,7 @@ func MoveWithGravity(delta):
 	if !ground:
 		velocity.y += GRAVITY*delta
 
-func _on_player_check_body_entered(body: Node2D) -> void:
+func _on_player_check_body_entered(_body: Node2D) -> void:
 	$PlayerCheck.queue_free()
 	grounder.play("hide2")
 	for i in bricks.size():

@@ -113,7 +113,3 @@ func _on_player_check_body_entered(body: Node2D) -> void:
 		sprite.play("attack")
 		stateTimer = 2.0
 		TargetPosition = global_position + (Vector2(body.global_position - global_position).normalized()*160)
-
-
-func _on_player_check_body_exited(body: Node2D) -> void:
-	pass

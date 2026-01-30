@@ -65,14 +65,13 @@ func BreakPillar(body):
 	# and set the settings for each piece to match up with the $Sprite2D node
 	
 	var sprite = $TopSprite
-	var pieces = Vector2(2,2)
-	BreakIntoPieces(sprite,pieces)
+	BreakIntoPieces(sprite)
 	sprite = $PillarSprite
 	var temp = max(round($PillarSprite.region_rect.size.y/16),1)
 	pieces = Vector2(2,temp+1)
-	BreakIntoPieces(sprite,pieces)
+	BreakIntoPieces(sprite)
 	
-func BreakIntoPieces(sprite, pieces):
+func BreakIntoPieces(sprite):
 	for i in range(pieces.x):
 		for j in range (pieces.y):
 			var piece = Piece.instantiate()

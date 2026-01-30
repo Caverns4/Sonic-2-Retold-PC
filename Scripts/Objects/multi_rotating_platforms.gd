@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 	# Update is used in editor, and for the chains on the swing.
 	queue_redraw()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if(!Engine.is_editor_hint()): # In-Game
 		# Calcutlate direction
 		var yOffset = chains * 16 + (float(16) / 2.0)

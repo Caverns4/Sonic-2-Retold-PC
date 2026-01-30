@@ -13,8 +13,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:	
 	if activated:
-		if $Area2D:
-			$Area2D.queue_free()
 		delay -= delta
 		if delay <= 0.0:
 			velocity.y += 9.8*delta
@@ -27,5 +25,6 @@ func _physics_process(delta: float) -> void:
 			$RayCast2D.force_raycast_update()
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_body_entered(_body: Node2D) -> void:
 	activated = true
+	$Area2D.queue_free()

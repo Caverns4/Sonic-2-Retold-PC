@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ch1qrcq0vtwe0"]
+[gd_scene format=3 uid="uid://ch1qrcq0vtwe0"]
 
 [ext_resource type="Script" uid="uid://dngjlydrewgk6" path="res://Scripts/Enemies/chop_chop.gd" id="1_povk6"]
 [ext_resource type="Texture2D" uid="uid://dluaa70276puw" path="res://Graphics/Enemies/ChopChop.png" id="2_lr8at"]
@@ -43,43 +43,43 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fdaay"]
 size = Vector2(112, 64)
 
-[node name="ChopChop" type="CharacterBody2D" groups=["Enemy"]]
+[node name="ChopChop" type="CharacterBody2D" unique_id=1179758556 groups=["Enemy"]]
 collision_layer = 16384
 collision_mask = 0
 script = ExtResource("1_povk6")
 
-[node name="CollissionMask" type="CollisionShape2D" parent="."]
+[node name="CollissionMask" type="CollisionShape2D" parent="." unique_id=1687967064]
 shape = SubResource("1")
 
-[node name="DamageArea" type="Area2D" parent="."]
+[node name="DamageArea" type="Area2D" parent="." unique_id=1864413063]
 collision_layer = 0
 collision_mask = 528384
 
-[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea" unique_id=1593082264]
 modulate = Color(1, 0, 0, 1)
 shape = SubResource("1")
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1735761571]
 visible = false
 position = Vector2(1.90735e-06, -1.90735e-06)
 rect = Rect2(-160, -120, 320, 240)
 
-[node name="Sample" type="Sprite2D" parent="."]
+[node name="Sample" type="Sprite2D" parent="." unique_id=888924023]
 visible = false
 texture = ExtResource("2_lr8at")
 hframes = 2
 
-[node name="ChopchopSprite" type="AnimatedSprite2D" parent="."]
+[node name="ChopchopSprite" type="AnimatedSprite2D" parent="." unique_id=281771634]
 sprite_frames = SubResource("SpriteFrames_1uld4")
 autoplay = "default"
 frame_progress = 0.718448
 
-[node name="PlayerCheck" type="Area2D" parent="ChopchopSprite"]
+[node name="PlayerCheck" type="Area2D" parent="ChopchopSprite" unique_id=1735232347]
 visible = false
 collision_layer = 0
 collision_mask = 4096
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ChopchopSprite/PlayerCheck"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChopchopSprite/PlayerCheck" unique_id=1169000195]
 position = Vector2(-56, -8)
 shape = SubResource("RectangleShape2D_fdaay")
 
@@ -87,4 +87,3 @@ shape = SubResource("RectangleShape2D_fdaay")
 [connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
 [connection signal="body_entered" from="ChopchopSprite/PlayerCheck" to="." method="_on_player_check_body_entered"]
-[connection signal="body_exited" from="ChopchopSprite/PlayerCheck" to="." method="_on_player_check_body_exited"]

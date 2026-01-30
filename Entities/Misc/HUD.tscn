@@ -837,6 +837,8 @@ shader = ExtResource("25_dwo3g")
 shader_parameter/amount = 64.0
 shader_parameter/originalPalette = ExtResource("27_nvppe")
 shader_parameter/swapPalette = ExtResource("28_vthpf")
+shader_parameter/speed = 2.0
+shader_parameter/waves = 60.0
 
 [node name="HUD" type="CanvasLayer" unique_id=1449505827]
 layer = 2
@@ -1232,7 +1234,7 @@ anchor_top = 0.003
 anchor_right = 1.0
 anchor_bottom = 0.003
 offset_top = -86.272
-offset_right = 29830.4
+offset_right = 29894.4
 offset_bottom = 169.728
 grow_horizontal = 0
 grow_vertical = 2

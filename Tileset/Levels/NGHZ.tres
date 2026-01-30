@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=200 format=3 uid="uid://b0b5lpm7k65k5"]
+[gd_resource type="TileSet" format=3 uid="uid://b0b5lpm7k65k5"]
 
 [ext_resource type="Texture2D" uid="uid://kmr4ss8dketx" path="res://Graphics/Backgrounds/NGHZ/NGHZ_BGTiles.png" id="1_2bo2t"]
 [ext_resource type="Texture2D" uid="uid://lthkpc74pig5" path="res://Graphics/Tiles/NGHZ/NGHZ_Blocks.png" id="1_dit63"]

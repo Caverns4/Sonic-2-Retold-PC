@@ -12,11 +12,6 @@ var state = STATES.IDLE
 func _ready() -> void:
 	$Area2D.visible = true
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func ShootArrow():
 	$AudioStreamPlayer.play()
 	bullet = Projectile.instantiate()
@@ -26,13 +21,13 @@ func ShootArrow():
 	bullet.scale.x = 1
 	bullet.velocity.x = 200
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_body_entered(_body: Node2D) -> void:
 	if state == STATES.IDLE:
 		state = STATES.DETECT
 		anim.play("flash")
 
 
-func _on_area_2d_body_exited(body: Node2D) -> void:
+func _on_area_2d_body_exited(_body: Node2D) -> void:
 	if state == STATES.DETECT:
 		anim.play("open")
 		state = STATES.FIRE

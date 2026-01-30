@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=205 format=3 uid="uid://ctbov0uv4xqwe"]
+[gd_resource type="TileSet" format=3 uid="uid://ctbov0uv4xqwe"]
 
 [ext_resource type="Texture2D" uid="uid://fmcrbtnii5bo" path="res://Graphics/Tiles/HPZ/HPZ_Blocks.png" id="1_6mcut"]
 [ext_resource type="Texture2D" uid="uid://dhxilw5utmrcb" path="res://Graphics/Tiles/HPZ/HPZOrbGreen.png" id="2_21bm8"]

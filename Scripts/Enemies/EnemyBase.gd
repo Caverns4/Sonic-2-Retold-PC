@@ -13,7 +13,7 @@ signal destroyed
 func  _ready() -> void:
 	if Global.object_table.has(get_path()):
 		queue_free()
-	if $VisibleOnScreenEnabler2D:
+	if get_node_or_null('VisibleOnScreenEnabler2D') != null:
 		$VisibleOnScreenEnabler2D.visible = true
 	destroyed.connect(On_destroyed)
 
