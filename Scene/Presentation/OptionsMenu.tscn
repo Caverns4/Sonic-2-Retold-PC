@@ -1,28 +1,30 @@
-[gd_scene load_steps=6 format=4 uid="uid://b0livp60bisfo"]
+[gd_scene format=4 uid="uid://b0livp60bisfo"]
 
 [ext_resource type="TileSet" uid="uid://bk1ere21h4285" path="res://Tileset/Menus.tres" id="1_2ksgu"]
 [ext_resource type="Script" uid="uid://b0kjaiaw0tt0l" path="res://Scripts/Menu/options_menu.gd" id="1_qjo47"]
+[ext_resource type="AudioStream" uid="uid://c5n2q4eujjnyj" path="res://Audio/Soundtrack/s2br_Options2.ogg" id="2_lbgyq"]
 [ext_resource type="Texture2D" uid="uid://dm4ejufaxy62s" path="res://Graphics/Menus/MiniCharacters.png" id="3_6udcv"]
 [ext_resource type="Theme" uid="uid://b5b5ux4822p0m" path="res://Resources/Standard_Font.tres" id="3_pjmsk"]
 [ext_resource type="AudioStream" uid="uid://uay8t1b3i1hi" path="res://Audio/SFX/Gimmicks/s2br_Switch.wav" id="5_pyoer"]
 
-[node name="OptionsMenu" type="Node2D"]
+[node name="OptionsMenu" type="Node2D" unique_id=2028896601]
 script = ExtResource("1_qjo47")
+music = ExtResource("2_lbgyq")
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." unique_id=532548708]
 layer = -1
 
-[node name="Backdrop" type="Parallax2D" parent="UI"]
+[node name="Backdrop" type="Parallax2D" parent="UI" unique_id=1699640992]
 scroll_scale = Vector2(0, 0)
 repeat_size = Vector2(192, 0)
 repeat_times = 8
 
-[node name="Back" type="TileMapLayer" parent="UI/Backdrop"]
+[node name="Back" type="TileMapLayer" parent="UI/Backdrop" unique_id=1945243270]
 use_parent_material = true
 tile_map_data = PackedByteArray("AAADAAAAAAAAAAAAAAADAAEAAAAAAAEAAAAEAAAAAAAAAAEAAAAEAAEAAAAAAAIAAAAFAAAAAAAAAAIAAAAFAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAEAAAABAAAAAAAAAAEAAAABAAEAAAAAAAIAAAACAAAAAAAAAAIAAAACAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAEAAAABAAIAAAAAAAEAAAABAAMAAAAAAAIAAAACAAIAAAAAAAIAAAACAAMAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAEAAAAEAAIAAAAAAAEAAAAEAAMAAAAAAAIAAAAFAAIAAAAAAAIAAAAFAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAEAAAABAAQAAAAAAAEAAAABAAUAAAAAAAIAAAACAAQAAAAAAAIAAAACAAUAAAAAAAAAAAADAAQAAAAAAAAAAAADAAUAAAAAAAEAAAAEAAQAAAAAAAEAAAAEAAUAAAAAAAIAAAAFAAQAAAAAAAIAAAAFAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAEAAAABAAYAAAAAAAEAAAABAAcAAAAAAAIAAAACAAYAAAAAAAIAAAACAAcAAAAAAAAAAAADAAYAAAAAAAAAAAADAAcAAAAAAAEAAAAEAAYAAAAAAAEAAAAEAAcAAAAAAAIAAAAFAAYAAAAAAAIAAAAFAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAEAAAABAAgAAAAAAAEAAAABAAkAAAAAAAIAAAACAAgAAAAAAAIAAAACAAkAAAAAAAAAAAADAAgAAAAAAAAAAAADAAkAAAAAAAEAAAAEAAgAAAAAAAEAAAAEAAkAAAAAAAIAAAAFAAgAAAAAAAIAAAAFAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAEAAAABAAoAAAAAAAEAAAABAAsAAAAAAAIAAAACAAoAAAAAAAIAAAACAAsAAAAAAAAAAAADAAoAAAAAAAAAAAADAAsAAAAAAAEAAAAEAAoAAAAAAAEAAAAEAAsAAAAAAAIAAAAFAAoAAAAAAAIAAAAFAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAEAAAABAAwAAAAAAAEAAAABAA0AAAAAAAIAAAACAAwAAAAAAAIAAAACAA0AAAAAAAAAAAADAAwAAAAAAAAAAAADAA0AAAAAAAEAAAAEAAwAAAAAAAEAAAAEAA0AAAAAAAIAAAAFAAwAAAAAAAIAAAAFAA0AAAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAEAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAEAAAAGAAQAAAAAAAAAAAAGAAUAAAAAAAEAAAAGAAYAAAAAAAAAAAAGAAcAAAAAAAEAAAAGAAgAAAAAAAAAAAAGAAkAAAAAAAEAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAEAAAAGAAwAAAAAAAAAAAAGAA0AAAAAAAEAAAAHAAAAAAAAAAEAAAAHAAEAAAAAAAIAAAAHAAIAAAAAAAEAAAAHAAMAAAAAAAIAAAAHAAQAAAAAAAEAAAAHAAUAAAAAAAIAAAAHAAYAAAAAAAEAAAAHAAcAAAAAAAIAAAAHAAgAAAAAAAEAAAAHAAkAAAAAAAIAAAAHAAoAAAAAAAEAAAAHAAsAAAAAAAIAAAAHAAwAAAAAAAEAAAAHAA0AAAAAAAIAAAAIAAAAAAAAAAIAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAIAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAIAAAAIAAUAAAAAAAAAAAAIAAYAAAAAAAIAAAAIAAcAAAAAAAAAAAAIAAgAAAAAAAIAAAAIAAkAAAAAAAAAAAAIAAoAAAAAAAIAAAAIAAsAAAAAAAAAAAAIAAwAAAAAAAIAAAAIAA0AAAAAAAAAAAAJAAAAAAAAAAAAAAAJAAEAAAAAAAEAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAEAAAAJAAQAAAAAAAAAAAAJAAUAAAAAAAEAAAAJAAYAAAAAAAAAAAAJAAcAAAAAAAEAAAAJAAgAAAAAAAAAAAAJAAkAAAAAAAEAAAAJAAoAAAAAAAAAAAAJAAsAAAAAAAEAAAAJAAwAAAAAAAAAAAAJAA0AAAAAAAEAAAAKAAAAAAAAAAEAAAAKAAEAAAAAAAIAAAAKAAIAAAAAAAEAAAAKAAMAAAAAAAIAAAAKAAQAAAAAAAEAAAAKAAUAAAAAAAIAAAAKAAYAAAAAAAEAAAAKAAcAAAAAAAIAAAAKAAgAAAAAAAEAAAAKAAkAAAAAAAIAAAAKAAoAAAAAAAEAAAAKAAsAAAAAAAIAAAAKAAwAAAAAAAEAAAAKAA0AAAAAAAIAAAALAAAAAAAAAAIAAAALAAEAAAAAAAAAAAALAAIAAAAAAAIAAAALAAMAAAAAAAAAAAALAAQAAAAAAAIAAAALAAUAAAAAAAAAAAALAAYAAAAAAAIAAAALAAcAAAAAAAAAAAALAAgAAAAAAAIAAAALAAkAAAAAAAAAAAALAAoAAAAAAAIAAAALAAsAAAAAAAAAAAALAAwAAAAAAAIAAAALAA0AAAAAAAAAAAA=")
 tile_set = ExtResource("1_2ksgu")
 
-[node name="Labels" type="Control" parent="UI"]
+[node name="Labels" type="Control" parent="UI" unique_id=1734868385]
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -32,7 +34,7 @@ offset_right = 20.0
 offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="OptionsMenu" type="RichTextLabel" parent="UI/Labels"]
+[node name="OptionsMenu" type="RichTextLabel" parent="UI/Labels" unique_id=367242014]
 layout_mode = 0
 offset_left = -76.0
 offset_top = 16.0
@@ -60,10 +62,10 @@ Back to Title"
 scroll_active = false
 autowrap_mode = 0
 
-[node name="CharacterOrigin" type="Node2D" parent="UI/Labels"]
+[node name="CharacterOrigin" type="Node2D" parent="UI/Labels" unique_id=1679999568]
 position = Vector2(160, 192)
 
-[node name="Sonic" type="Sprite2D" parent="UI/Labels/CharacterOrigin"]
+[node name="Sonic" type="Sprite2D" parent="UI/Labels/CharacterOrigin" unique_id=668045641]
 z_index = 3
 position = Vector2(8, 0)
 texture = ExtResource("3_6udcv")
@@ -72,7 +74,7 @@ vframes = 8
 region_rect = Rect2(731, 9, 24, 40)
 region_filter_clip_enabled = true
 
-[node name="Tails" type="Sprite2D" parent="UI/Labels/CharacterOrigin"]
+[node name="Tails" type="Sprite2D" parent="UI/Labels/CharacterOrigin" unique_id=1038561771]
 z_index = 2
 position = Vector2(-8, 0)
 texture = ExtResource("3_6udcv")
@@ -80,7 +82,7 @@ hframes = 2
 vframes = 8
 frame = 2
 
-[node name="Knuckles" type="Sprite2D" parent="UI/Labels/CharacterOrigin"]
+[node name="Knuckles" type="Sprite2D" parent="UI/Labels/CharacterOrigin" unique_id=1993835868]
 visible = false
 z_index = 3
 texture = ExtResource("3_6udcv")
@@ -89,7 +91,7 @@ vframes = 8
 frame = 4
 region_rect = Rect2(402, 468, 38, 36)
 
-[node name="Amy" type="Sprite2D" parent="UI/Labels/CharacterOrigin"]
+[node name="Amy" type="Sprite2D" parent="UI/Labels/CharacterOrigin" unique_id=1185369202]
 visible = false
 z_index = 3
 texture = ExtResource("3_6udcv")
@@ -98,20 +100,20 @@ vframes = 8
 frame = 6
 region_rect = Rect2(488, 8, 32, 40)
 
-[node name="Cover" type="CanvasLayer" parent="."]
+[node name="Cover" type="CanvasLayer" parent="." unique_id=17616086]
 layer = 0
 visible = false
 
-[node name="Back" type="ColorRect" parent="Cover"]
+[node name="Back" type="ColorRect" parent="Cover" unique_id=1722318817]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(1, 1, 1, 0)
 
-[node name="Switch" type="AudioStreamPlayer" parent="."]
+[node name="Switch" type="AudioStreamPlayer" parent="." unique_id=2128100245]
 stream = ExtResource("5_pyoer")
 bus = &"SFX"
 
-[node name="MenuMusicVolume" type="AudioStreamPlayer" parent="."]
+[node name="MenuMusicVolume" type="AudioStreamPlayer" parent="." unique_id=425373569]
 bus = &"Music"

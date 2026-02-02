@@ -1,17 +1,19 @@
-[gd_scene load_steps=18 format=3 uid="uid://qs5dmtxxf1w1"]
+[gd_scene format=3 uid="uid://qs5dmtxxf1w1"]
 
-[ext_resource type="Script" uid="uid://bh20dqq421i7d" path="res://Scripts/Menu/Title_New.gd" id="1_jsjd7"]
+[ext_resource type="Script" uid="uid://bh20dqq421i7d" path="res://Scripts/Menu/Title.gd" id="1_jsjd7"]
 [ext_resource type="Texture2D" uid="uid://eih0pbfohmyc" path="res://Graphics/title/TitleEmblem_Final.png" id="2_oku5l"]
 [ext_resource type="Texture2D" uid="uid://d1g4mtdkr6al" path="res://Graphics/title/Title_RETOLD.png" id="3_vbbsi"]
 [ext_resource type="FontFile" uid="uid://ml62eqfe7avn" path="res://Graphics/Fonts/small_font.png" id="3_yuhp3"]
 [ext_resource type="Texture2D" uid="uid://bgbuxncngj8e4" path="res://Graphics/title/TailsTitle.png" id="4_d2xjp"]
 [ext_resource type="Texture2D" uid="uid://dt51ojxk80oqh" path="res://Graphics/Items/Rings/Ring.tres" id="4_vmy7g"]
 [ext_resource type="Texture2D" uid="uid://de5i6e2h1ov1c" path="res://Graphics/title/SonicTitle.png" id="5_tsdwn"]
-[ext_resource type="Texture2D" uid="uid://c2xdraklm0ah7" path="res://Graphics/title/TitleMenu.png" id="6_0yyi7"]
 [ext_resource type="AudioStream" uid="uid://jt28gfxybprb" path="res://Audio/SFX/Objects/RingStereo.wav" id="6_fm38o"]
 [ext_resource type="Texture2D" uid="uid://botkv2viswa0h" path="res://Graphics/title/TitleBanner.png" id="6_g2y20"]
 [ext_resource type="PackedScene" uid="uid://0msnmityfdws" path="res://Entities/Misc/twinkle_star.tscn" id="8_yu50n"]
+[ext_resource type="PackedScene" uid="uid://cpf18ojcsovuc" path="res://Scene/Presentation/assets/title_menu_button.tscn" id="9_8i1fh"]
 [ext_resource type="AudioStream" uid="uid://uay8t1b3i1hi" path="res://Audio/SFX/Gimmicks/s2br_Switch.wav" id="12_71qhx"]
+
+[sub_resource type="Theme" id="Theme_8i1fh"]
 
 [sub_resource type="Animation" id="2"]
 length = 0.01
@@ -150,19 +152,19 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("CanvasLayer/Labels:visible")
+tracks/11/path = NodePath("TitleBanner:self_modulate")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("TitleBanner:self_modulate")
+tracks/12/path = NodePath("TitleBanner/TitleCover:self_modulate")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -171,25 +173,13 @@ tracks/12/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
-tracks/13/type = "value"
+tracks/13/type = "method"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("TitleBanner/TitleCover:self_modulate")
+tracks/13/path = NodePath(".")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/14/type = "method"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath(".")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -217,46 +207,34 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Labels:visible")
+tracks/1/path = NodePath("TitleBanner/RetoldText:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 4.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("TitleBanner/RetoldText:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(3.8, 4.1, 4.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 28), Vector2(0, 66), Vector2(0, 48)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("TitleBanner/RetoldText:z_index")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TitleBanner/RetoldText:z_index")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 4, 4.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [-1, -1, 1]
 }
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(1.4, 4.1),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
@@ -267,110 +245,122 @@ tracks/4/keys = {
 "method": &"InstantiateBG"
 }]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer/Back:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Back:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0, 4.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("TitleBanner/Title_Tails:frame")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TitleBanner/Title_Tails:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0, 3.05, 3.2, 3.35, 3.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("TitleBanner/Title_Sonic:frame")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TitleBanner/Title_Sonic:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(2, 2.2, 2.3, 2.4, 4.2, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 3]
 }
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("TitleBanner/Title_Tails:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TitleBanner/Title_Tails:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0, 2.85),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("TitleBanner/Title_Sonic:position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TitleBanner/Title_Sonic:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(2, 2.2, 2.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(13, 4), Vector2(13, -43), Vector2(33, -43)]
 }
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("TitleBanner/Title_Tails:position")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("TitleBanner/Title_Tails:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(2.85, 3.05),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-25, 1), Vector2(-37, -40)]
 }
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("TitleBanner/Title_Sonic:visible")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("TitleBanner/Title_Sonic:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("TitleBanner/Title_Sonic:z_index")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("TitleBanner/Title_Sonic:z_index")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
 "times": PackedFloat32Array(0, 2.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("TitleBanner/TwinkleStar:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("TitleBanner/TwinkleStar:visible")
+tracks/13/path = NodePath("TitleBanner/TwinkleStar2:visible")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.9),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -378,11 +368,11 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("TitleBanner/TwinkleStar2:visible")
+tracks/14/path = NodePath("TitleBanner/TwinkleStar3:visible")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0.9),
+"times": PackedFloat32Array(1.3),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -390,11 +380,11 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("TitleBanner/TwinkleStar3:visible")
+tracks/15/path = NodePath("TitleBanner/TwinkleStar4:visible")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(1.3),
+"times": PackedFloat32Array(1.5),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -402,11 +392,11 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("TitleBanner/TwinkleStar4:visible")
+tracks/16/path = NodePath("TitleBanner/TwinkleStar5:visible")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
-"times": PackedFloat32Array(1.5),
+"times": PackedFloat32Array(1.7),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -414,11 +404,11 @@ tracks/16/keys = {
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("TitleBanner/TwinkleStar5:visible")
+tracks/17/path = NodePath("TitleBanner/TwinkleStar6:visible")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"times": PackedFloat32Array(1.7),
+"times": PackedFloat32Array(2),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -426,11 +416,11 @@ tracks/17/keys = {
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("TitleBanner/TwinkleStar6:visible")
+tracks/18/path = NodePath("TitleBanner/TwinkleStar7:visible")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
-"times": PackedFloat32Array(2),
+"times": PackedFloat32Array(2.4),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -438,11 +428,11 @@ tracks/18/keys = {
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("TitleBanner/TwinkleStar7:visible")
+tracks/19/path = NodePath("TitleBanner/TwinkleStar8:visible")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
-"times": PackedFloat32Array(2.4),
+"times": PackedFloat32Array(2.6),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -450,11 +440,11 @@ tracks/19/keys = {
 tracks/20/type = "value"
 tracks/20/imported = false
 tracks/20/enabled = true
-tracks/20/path = NodePath("TitleBanner/TwinkleStar8:visible")
+tracks/20/path = NodePath("TitleBanner/TwinkleStar9:visible")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
-"times": PackedFloat32Array(2.6),
+"times": PackedFloat32Array(2.9),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -462,11 +452,11 @@ tracks/20/keys = {
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("TitleBanner/TwinkleStar9:visible")
+tracks/21/path = NodePath("TitleBanner/TwinkleStar10:visible")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
-"times": PackedFloat32Array(2.9),
+"times": PackedFloat32Array(3.3),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -474,34 +464,22 @@ tracks/21/keys = {
 tracks/22/type = "value"
 tracks/22/imported = false
 tracks/22/enabled = true
-tracks/22/path = NodePath("TitleBanner/TwinkleStar10:visible")
+tracks/22/path = NodePath("TitleBanner:self_modulate")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = {
-"times": PackedFloat32Array(3.3),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/23/type = "value"
-tracks/23/imported = false
-tracks/23/enabled = true
-tracks/23/path = NodePath("TitleBanner:self_modulate")
-tracks/23/interp = 1
-tracks/23/loop_wrap = true
-tracks/23/keys = {
 "times": PackedFloat32Array(1, 1.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(2.48353e-08, 2.48353e-08, 2.48353e-08, 1), Color(1, 1, 1, 1)]
 }
-tracks/24/type = "value"
-tracks/24/imported = false
-tracks/24/enabled = true
-tracks/24/path = NodePath("TitleBanner/TitleCover:self_modulate")
-tracks/24/interp = 1
-tracks/24/loop_wrap = true
-tracks/24/keys = {
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("TitleBanner/TitleCover:self_modulate")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
 "times": PackedFloat32Array(1, 1.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -522,29 +500,29 @@ point_count = 2
 offsets = PackedFloat32Array(0.294461, 0.466472, 0.769679, 1)
 colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1)
 
-[node name="TitleScreen" type="Node2D"]
+[node name="TitleScreen" type="Node2D" unique_id=584188141]
 script = ExtResource("1_jsjd7")
 
-[node name="TitleBanner" type="Sprite2D" parent="."]
+[node name="TitleBanner" type="Sprite2D" parent="." unique_id=2145731558]
 z_index = 2
 position = Vector2(160, 112)
 texture = ExtResource("2_oku5l")
 region_rect = Rect2(2, 173, 182, 36)
 metadata/_edit_lock_ = true
 
-[node name="RetoldText" type="Sprite2D" parent="TitleBanner"]
+[node name="RetoldText" type="Sprite2D" parent="TitleBanner" unique_id=731519974]
 z_index = 1
 position = Vector2(0, 48)
 texture = ExtResource("3_vbbsi")
 
-[node name="Title_Tails" type="Sprite2D" parent="TitleBanner"]
+[node name="Title_Tails" type="Sprite2D" parent="TitleBanner" unique_id=274796690]
 position = Vector2(-36, -40)
 texture = ExtResource("4_d2xjp")
 hframes = 5
 frame = 4
 region_rect = Rect2(190, 173, 17, 36)
 
-[node name="Title_Sonic" type="Sprite2D" parent="TitleBanner"]
+[node name="Title_Sonic" type="Sprite2D" parent="TitleBanner" unique_id=829517201]
 z_index = 1
 position = Vector2(33, -43)
 texture = ExtResource("5_tsdwn")
@@ -553,129 +531,105 @@ hframes = 5
 frame = 3
 region_rect = Rect2(214, 173, 15, 36)
 
-[node name="TitleCover" type="Sprite2D" parent="TitleBanner"]
+[node name="TitleCover" type="Sprite2D" parent="TitleBanner" unique_id=1689865038]
 position = Vector2(0, 32)
 texture = ExtResource("6_g2y20")
 metadata/_edit_lock_ = true
 
-[node name="Camera2D" type="Camera2D" parent="TitleBanner"]
+[node name="Camera2D" type="Camera2D" parent="TitleBanner" unique_id=945536668]
 metadata/_edit_lock_ = true
 
-[node name="RingChime" type="AudioStreamPlayer" parent="TitleBanner"]
+[node name="RingChime" type="AudioStreamPlayer" parent="TitleBanner" unique_id=338589811]
 stream = ExtResource("6_fm38o")
 bus = &"SFX"
 
-[node name="TwinkleStar" parent="TitleBanner" instance=ExtResource("8_yu50n")]
+[node name="TwinkleStar" parent="TitleBanner" unique_id=1288257031 instance=ExtResource("8_yu50n")]
 position = Vector2(-34, -56)
 
-[node name="TwinkleStar2" parent="TitleBanner" instance=ExtResource("8_yu50n")]
+[node name="TwinkleStar2" parent="TitleBanner" unique_id=1108467768 instance=ExtResource("8_yu50n")]
 position = Vector2(-60, 1)
 
-[node name="TwinkleStar3" parent="TitleBanner" instance=ExtResource("8_yu50n")]
+[node name="TwinkleStar3" parent="TitleBanner" unique_id=1414921240 instance=ExtResource("8_yu50n")]
 position = Vector2(64, -5)
 
-[node name="TwinkleStar4" parent="TitleBanner" instance=ExtResource("8_yu50n")]
+[node name="TwinkleStar4" parent="TitleBanner" unique_id=972192968 instance=ExtResource("8_yu50n")]
 position = Vector2(21, 49)
 
-[node name="TwinkleStar5" parent="TitleBanner" instance=ExtResource("8_yu50n")]
+[node name="TwinkleStar5" parent="TitleBanner" unique_id=162663637 instance=ExtResource("8_yu50n")]
 position = Vector2(126, -78)
 
-[node name="TwinkleStar6" parent="TitleBanner" instance=ExtResource("8_yu50n")]
+[node name="TwinkleStar6" parent="TitleBanner" unique_id=576559542 instance=ExtResource("8_yu50n")]
 position = Vector2(-96, -14)
 
-[node name="TwinkleStar7" parent="TitleBanner" instance=ExtResource("8_yu50n")]
+[node name="TwinkleStar7" parent="TitleBanner" unique_id=1610962742 instance=ExtResource("8_yu50n")]
 position = Vector2(97, -24)
 
-[node name="TwinkleStar8" parent="TitleBanner" instance=ExtResource("8_yu50n")]
+[node name="TwinkleStar8" parent="TitleBanner" unique_id=1578795396 instance=ExtResource("8_yu50n")]
 position = Vector2(-75, 43)
 
-[node name="TwinkleStar9" parent="TitleBanner" instance=ExtResource("8_yu50n")]
+[node name="TwinkleStar9" parent="TitleBanner" unique_id=2085122304 instance=ExtResource("8_yu50n")]
 position = Vector2(-89, -65)
 
-[node name="TwinkleStar10" parent="TitleBanner" instance=ExtResource("8_yu50n")]
+[node name="TwinkleStar10" parent="TitleBanner" unique_id=1976935735 instance=ExtResource("8_yu50n")]
 position = Vector2(70, 17)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1565368427]
 layer = -1
 
-[node name="Back" type="ColorRect" parent="CanvasLayer"]
+[node name="Back" type="ColorRect" parent="CanvasLayer" unique_id=1935741855]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Cover" type="ColorRect" parent="CanvasLayer"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(0, 70)
-mouse_filter = 2
-color = Color(0.533333, 0.533333, 0.533333, 1)
-
-[node name="Labels" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TitleMenu" type="Control" parent="CanvasLayer/Labels"]
-layout_mode = 1
+[node name="Menu" type="VBoxContainer" parent="CanvasLayer" unique_id=1422099939]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = -32.0
+offset_left = -68.0
+offset_top = -48.0
+offset_right = 68.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = SubResource("Theme_8i1fh")
+theme_override_constants/separation = 0
 
-[node name="Text" type="RichTextLabel" parent="CanvasLayer/Labels/TitleMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -12.0
-offset_right = 56.0
-offset_bottom = 12.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("3_yuhp3")
-bbcode_enabled = true
-text = "[color=#ffff00]1 PLAYER[/color]
-2 PLAYER VS
-OPTIONS"
-scroll_active = false
-autowrap_mode = 0
+[node name="1Player" parent="CanvasLayer/Menu" unique_id=1390657914 instance=ExtResource("9_8i1fh")]
+layout_mode = 2
 
-[node name="MenuIcon" type="Sprite2D" parent="CanvasLayer/Labels/TitleMenu"]
-position = Vector2(-56, 4)
-texture = ExtResource("6_0yyi7")
+[node name="2PlayerVS" parent="CanvasLayer/Menu" unique_id=1940073986 instance=ExtResource("9_8i1fh")]
+layout_mode = 2
+text = "2 Player vs"
 
-[node name="Cover" type="CanvasLayer" parent="."]
+[node name="Options" parent="CanvasLayer/Menu" unique_id=849526015 instance=ExtResource("9_8i1fh")]
+layout_mode = 2
+text = "options"
+
+[node name="Quit" parent="CanvasLayer/Menu" unique_id=165990656 instance=ExtResource("9_8i1fh")]
+layout_mode = 2
+text = "quit to desktop"
+
+[node name="Cover" type="CanvasLayer" parent="." unique_id=877930667]
 layer = -1
 follow_viewport_scale = 0.001
 
-[node name="Back" type="ColorRect" parent="Cover"]
+[node name="Back" type="ColorRect" parent="Cover" unique_id=869473028]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(1, 1, 1, 0)
 
-[node name="Date" type="Label" parent="Cover"]
+[node name="Date" type="Label" parent="Cover" unique_id=1128556914]
 modulate = Color(1, 1, 0, 1)
 anchors_preset = 2
 anchor_top = 1.0
@@ -686,11 +640,11 @@ offset_right = 154.0
 grow_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_yuhp3")
-text = "2026.01.10.01 alpha"
+text = "2026.02.02.01 alpha"
 vertical_alignment = 2
 uppercase = true
 
-[node name="Credit" type="Label" parent="Cover"]
+[node name="Credit" type="Label" parent="Cover" unique_id=476429211]
 modulate = Color(1, 1, 0, 1)
 anchors_preset = 3
 anchor_left = 1.0
@@ -706,13 +660,11 @@ text = "IKEY ILEX"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="TitleAnimate" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_pb3yv")
-}
-autoplay = "TitleAssemble"
+[node name="TitleAnimate" type="AnimationPlayer" parent="." unique_id=1454639311]
+libraries/ = SubResource("AnimationLibrary_pb3yv")
+autoplay = &"TitleAssemble"
 
-[node name="Celebrations" type="CPUParticles2D" parent="."]
+[node name="Celebrations" type="CPUParticles2D" parent="." unique_id=1430691443]
 position = Vector2(256, 112)
 emitting = false
 amount = 32
@@ -731,13 +683,17 @@ color_ramp = SubResource("Gradient_nd4eu")
 hue_variation_min = -0.39
 hue_variation_max = 0.68
 
-[node name="Switch" type="AudioStreamPlayer" parent="."]
+[node name="Switch" type="AudioStreamPlayer" parent="." unique_id=708307794]
 stream = ExtResource("12_71qhx")
 bus = &"SFX"
 
-[node name="TitleWaitTimer" type="Timer" parent="."]
+[node name="TitleWaitTimer" type="Timer" parent="." unique_id=407782041]
 wait_time = 15.0
 one_shot = true
 
+[connection signal="pressed" from="CanvasLayer/Menu/1Player" to="." method="_on_player_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menu/2PlayerVS" to="." method="_on_player_vs_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menu/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menu/Quit" to="." method="_on_quit_pressed"]
 [connection signal="finished" from="Celebrations" to="." method="_on_celebrations_finished"]
 [connection signal="timeout" from="TitleWaitTimer" to="." method="_on_title_wait_timer_timeout"]

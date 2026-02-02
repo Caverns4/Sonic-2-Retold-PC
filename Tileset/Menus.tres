@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bk1ere21h4285"]
+[gd_resource type="TileSet" format=3 uid="uid://bk1ere21h4285"]
 
 [ext_resource type="Texture2D" uid="uid://gdlceifl27va" path="res://Graphics/Menus/MenuBGTiles.png" id="1_coa86"]
 

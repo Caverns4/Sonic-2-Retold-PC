@@ -43,7 +43,6 @@ var animationframe = 0
 func _ready():
 	SoundDriver.music.stream = music
 	SoundDriver.music.play()
-	characterID = Global.character_selection
 
 
 func _process(delta: float):

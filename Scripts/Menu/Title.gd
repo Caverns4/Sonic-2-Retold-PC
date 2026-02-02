@@ -1,8 +1,7 @@
 extends Node2D
 
 @export var music = preload("res://Audio/Soundtrack/s2br_TitleScreen.ogg")
-## For debug/test builds only.
-@export var disable_menu: bool = false
+@onready var title_menu: VBoxContainer = $CanvasLayer/Menu
 var zone_loader: String = "res://Scene/Presentation/DataSelectMenu.tscn"
 var two_player_menu: String = "res://Scene/Presentation/TwoPlayerMenu.tscn"
 var level_select_menu: String = "res://Scene/Presentation/LevelSelect.tscn"
@@ -11,18 +10,24 @@ var optionsScene: String = "res://Scene/Presentation/OptionsMenu.tscn"
 
 enum STATES{INTRO,WAITING,FADEOUT}
 var titleState: int = STATES.INTRO
-var titleScroll: bool = false #If the Title Screen should move
-var menuActive: bool = false #If the menu is usable
+## If the Title Screen should be moving
+var titleScroll: bool = false
 
-var cheatActive: bool = false #If a cheat code has been applied on this loop, don't allow it to be again
+## Toggle when the menu should display.
+var menuActive: bool = false:
+	set(value):
+		menuActive = value
+		if value:
+			title_menu.show()
+			await get_tree().create_timer(0.5).timeout
+			title_menu.get_child(0).grab_focus()
 
-var menuEntry: int = 0
-var menuText = [
-	"[color=#FFFF00]1 PLAYER[/color]\n2 PLAYER VS\nOPTIONS",
-	"1 PLAYER\n[color=#FFFF00]2 PLAYER VS[/color]\nOPTIONS",
-	"1 PLAYER\n2 PLAYER VS\n[color=#FFFF00]OPTIONS[/color]"
-]
-var BackgroundScene
+## If a cheat code has been applied on this loop, don't allow it to be again
+var cheatActive: bool = false
+
+var delete_me: int = 0
+
+var BackgroundScene: PackedScene
 var parallaxBackgrounds = [
 	"res://Scene/Backgrounds/00-EmeraldHill.tscn",
 	"res://Scene/Backgrounds/01-HiddenPalace.tscn",
@@ -80,6 +85,7 @@ var lastCheatInput = Vector2.ZERO
 var lastInput = Vector2.ZERO
 
 func _ready():
+	title_menu.hide()
 	get_tree().paused = false
 	#Wipe the player arrays to avoid contamination.
 	reset_values()
@@ -88,8 +94,6 @@ func _ready():
 	#Prepare the background
 	var parallax = parallaxBackgrounds[min(Global.saved_zone_id,parallaxBackgrounds.size()-1)]
 	BackgroundScene = load(parallax)
-	if disable_menu:
-		$CanvasLayer/Labels/TitleMenu.queue_free()
 
 func _process(delta):
 	if titleScroll:
@@ -103,8 +107,8 @@ func _unhandledInput(_event):
 	inputCue.x = round(inputCue.x)
 	inputCue.y = round(inputCue.y)
 	
-	if menuActive:
-		UpdateMenuDisplay(inputCue)
+	#if menuActive:
+	#	UpdateMenuDisplay(inputCue)
 	CheckCheatInputs(inputCue)
 	lastInput = inputCue
 
@@ -118,18 +122,8 @@ func _input(event):
 		if !$TitleWaitTimer.is_stopped():
 			$TitleAnimate.play("RESET")
 			menuActive = true
-	elif event.is_action_pressed("gm_pause") and menuActive:
-		MenuOptionChosen()
-
-func UpdateMenuDisplay(inputCue: Vector2 = Vector2.ZERO):
-	if disable_menu:
-		return
-	if inputCue.y != lastInput.y and inputCue.y:
-		menuEntry += round(inputCue.y)
-		$Switch.play()
-	menuEntry = wrapi(menuEntry,0,3)
-	$CanvasLayer/Labels/TitleMenu/MenuIcon.position.y = (menuEntry*8)+4
-	$CanvasLayer/Labels/TitleMenu/Text.text = menuText[menuEntry]
+	#elif event.is_action_pressed("gm_pause") and menuActive:
+	#	MenuOptionChosen()
 
 func MenuOptionChosen():
 	#if Global.music.get_playback_position() < 14.0:
@@ -137,9 +131,9 @@ func MenuOptionChosen():
 	if Global.level_select_flag:
 		#TODO: Make a proper level select code, distinct from the Tails Name Cheat
 		if Input.is_action_pressed("gm_action"):
-			menuEntry = 128
+			delete_me = 128
 	
-	match menuEntry:
+	match delete_me:
 		0:
 			Global.saved_zone_id = Global.ZONES.EMERALD_HILL
 			Global.saved_act_id = 0
@@ -233,3 +227,26 @@ func reset_values():
 	Global.saved_checkpoint = -1
 	Global.saved_checkpointP2 = -1
 	Global.animals = [0,1]
+
+
+func _on_player_pressed() -> void:
+	Global.saved_zone_id = Global.ZONES.EMERALD_HILL
+	Global.saved_act_id = 0
+	Global.emeralds = 126
+	SetFadeOut(zone_loader)
+
+
+func _on_player_vs_pressed() -> void:
+	Global.two_player_mode = true
+	Global.PlayerChar1 = Global.CHARACTERS.SONIC
+	Global.PlayerChar2 = Global.CHARACTERS.TAILS
+	SetFadeOut(two_player_menu)
+
+
+func _on_options_pressed() -> void:
+	SetFadeOut(optionsScene)
+
+
+func _on_quit_pressed() -> void:
+	## TODO: Make a fadeout
+	get_tree().quit()
