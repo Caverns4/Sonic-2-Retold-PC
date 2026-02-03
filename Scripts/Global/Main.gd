@@ -70,6 +70,17 @@ func change_scene(scene: String, fade_anim: String = "FadeOut", length: float = 
 		$GUI/Fader.play_backwards(fade_anim)
 	SoundDriver.reset_volume()
 
+func quit_game(fade_anim: String = "FadeOut", length: float = 1.0):
+	$GUI/Fader.speed_scale = 1.0/float(length)
+	# if fadeOut isn't blank, play the fade out animation and then wait, otherwise skip this
+	if fade_anim != "":
+		$GUI/Fader.queue(fade_anim)
+		await $GUI/Fader.animation_finished
+	# error prevention
+	emit_signal("scene_faded")
+	await get_tree().process_frame
+	get_tree().quit()
+
 # set the volume level. All this does is push a request to the Sound Driver.
 func set_volume(final_volume: float = 0, fade_speed: float = 1):
 	SoundDriver.set_volume(final_volume,fade_speed)

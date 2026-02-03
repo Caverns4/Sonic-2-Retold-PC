@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://b1ucupog3a1yg"]
+
+[ext_resource type="FontFile" uid="uid://ml62eqfe7avn" path="res://Graphics/Fonts/small_font.png" id="1_kpnpu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2x3fi"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iik4c"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qrct0"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hwuk"]
+draw_center = false
+
+[sub_resource type="Theme" id="Theme_xig2q"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(0.93333334, 0.93333334, 0, 1)
+Button/colors/font_hover_color = Color(0.93333334, 0.93333334, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0.93333334, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0.93333334, 0, 0, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 0)
+Button/constants/h_separation = 0
+Button/font_sizes/font_size = 8
+Button/fonts/font = ExtResource("1_kpnpu")
+Button/styles/focus = SubResource("StyleBoxFlat_2x3fi")
+Button/styles/hover = SubResource("StyleBoxFlat_iik4c")
+Button/styles/normal = SubResource("StyleBoxFlat_qrct0")
+Button/styles/pressed = SubResource("StyleBoxFlat_7hwuk")
+VBoxContainer/constants/separation = 0
+
+[node name="OptionsMenuButton" type="Button" unique_id=1390657914]
+offset_right = 128.0
+offset_bottom = 8.0
+theme = SubResource("Theme_xig2q")
+text = "Option Text"
+alignment = 0

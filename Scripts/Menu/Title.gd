@@ -113,10 +113,6 @@ func _unhandledInput(_event):
 	lastInput = inputCue
 
 func _input(event):
-	#Update menu if menu is enabled
-	#if menuActive:
-	#	UpdateMenuDisplay()
-	
 	# On start button press, skip intro or make selection
 	if event.is_action_pressed("gm_pause") and $TitleAnimate.is_playing():
 		if !$TitleWaitTimer.is_stopped():
@@ -126,8 +122,6 @@ func _input(event):
 	#	MenuOptionChosen()
 
 func MenuOptionChosen():
-	#if Global.music.get_playback_position() < 14.0:
-	#	Global.music.seek(14.0)
 	if Global.level_select_flag:
 		#TODO: Make a proper level select code, distinct from the Tails Name Cheat
 		if Input.is_action_pressed("gm_action"):
@@ -154,10 +148,10 @@ func CheckCheatInputs(inputCue: Vector2 = Vector2.ZERO):
 		if !cheatActive:
 			if inputCue == levelSelectCheat[cheatInputCount]:
 				cheatInputCount += 1
-				print("Correct input!"+ str(inputCue))
+				#print("Correct input!"+ str(inputCue))
 			else:
 				cheatInputCount = 0
-				print("Wrong input!" + str(inputCue))
+				#print("Wrong input!" + str(inputCue))
 			if cheatInputCount == levelSelectCheat.size():
 				cheatInputCount = 0
 				cheatActive = true
@@ -197,8 +191,8 @@ func SetFadeOut(newScene):
 
 #The sparkling rings have finished, fade out to demo
 func _on_celebrations_finished() -> void:
-	SetFadeOut(opening_cutscene)
 	menuActive = false
+	SetFadeOut(opening_cutscene)
 
 #The wait timer has run out, activate the spakls in time with the shooting star sound
 func _on_title_wait_timer_timeout() -> void:
@@ -249,4 +243,6 @@ func _on_options_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	## TODO: Make a fadeout
-	get_tree().quit()
+	titleState = STATES.FADEOUT
+	menuActive = false
+	Main.quit_game()

@@ -2,113 +2,140 @@
 
 [ext_resource type="TileSet" uid="uid://bk1ere21h4285" path="res://Tileset/Menus.tres" id="1_2ksgu"]
 [ext_resource type="Script" uid="uid://b0kjaiaw0tt0l" path="res://Scripts/Menu/options_menu.gd" id="1_qjo47"]
-[ext_resource type="AudioStream" uid="uid://c5n2q4eujjnyj" path="res://Audio/Soundtrack/s2br_Options2.ogg" id="2_lbgyq"]
-[ext_resource type="Texture2D" uid="uid://dm4ejufaxy62s" path="res://Graphics/Menus/MiniCharacters.png" id="3_6udcv"]
-[ext_resource type="Theme" uid="uid://b5b5ux4822p0m" path="res://Resources/Standard_Font.tres" id="3_pjmsk"]
+[ext_resource type="PackedScene" uid="uid://b1ucupog3a1yg" path="res://Scene/Presentation/assets/options_menu_button.tscn" id="5_lbgyq"]
 [ext_resource type="AudioStream" uid="uid://uay8t1b3i1hi" path="res://Audio/SFX/Gimmicks/s2br_Switch.wav" id="5_pyoer"]
+[ext_resource type="FontFile" uid="uid://ml62eqfe7avn" path="res://Graphics/Fonts/small_font.png" id="6_k1rep"]
+[ext_resource type="AudioStream" uid="uid://jt28gfxybprb" path="res://Audio/SFX/Objects/RingStereo.wav" id="7_xnorb"]
+[ext_resource type="Theme" uid="uid://qblf2beyokrn" path="res://Resources/TwoPlayerMenuTheme.tres" id="7_xnt8k"]
 
-[node name="OptionsMenu" type="Node2D" unique_id=2028896601]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2x3fi"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iik4c"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qrct0"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hwuk"]
+draw_center = false
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_k1rep"]
+color = Color(1, 1, 1, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 2
+
+[sub_resource type="Theme" id="Theme_pbrim"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(0.93333334, 0.93333334, 0, 1)
+Button/colors/font_hover_color = Color(0.93333334, 0.93333334, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0.93333334, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0.93333334, 0, 0, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 0)
+Button/constants/h_separation = 0
+Button/font_sizes/font_size = 8
+Button/fonts/font = ExtResource("6_k1rep")
+Button/styles/focus = SubResource("StyleBoxFlat_2x3fi")
+Button/styles/hover = SubResource("StyleBoxFlat_iik4c")
+Button/styles/normal = SubResource("StyleBoxFlat_qrct0")
+Button/styles/pressed = SubResource("StyleBoxFlat_7hwuk")
+HSeparator/constants/separation = 0
+HSeparator/styles/separator = SubResource("StyleBoxLine_k1rep")
+VBoxContainer/constants/separation = 8
+
+[node name="OptionsMenu" type="Control" unique_id=1333255001]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_qjo47")
-music = ExtResource("2_lbgyq")
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=532548708]
-layer = -1
-
-[node name="Backdrop" type="Parallax2D" parent="UI" unique_id=1699640992]
+[node name="Backdrop" type="Parallax2D" parent="." unique_id=1699640992]
 scroll_scale = Vector2(0, 0)
 repeat_size = Vector2(192, 0)
 repeat_times = 8
 
-[node name="Back" type="TileMapLayer" parent="UI/Backdrop" unique_id=1945243270]
+[node name="Back" type="TileMapLayer" parent="Backdrop" unique_id=1945243270]
 use_parent_material = true
 tile_map_data = PackedByteArray("AAADAAAAAAAAAAAAAAADAAEAAAAAAAEAAAAEAAAAAAAAAAEAAAAEAAEAAAAAAAIAAAAFAAAAAAAAAAIAAAAFAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAEAAAABAAAAAAAAAAEAAAABAAEAAAAAAAIAAAACAAAAAAAAAAIAAAACAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAEAAAABAAIAAAAAAAEAAAABAAMAAAAAAAIAAAACAAIAAAAAAAIAAAACAAMAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAEAAAAEAAIAAAAAAAEAAAAEAAMAAAAAAAIAAAAFAAIAAAAAAAIAAAAFAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAEAAAABAAQAAAAAAAEAAAABAAUAAAAAAAIAAAACAAQAAAAAAAIAAAACAAUAAAAAAAAAAAADAAQAAAAAAAAAAAADAAUAAAAAAAEAAAAEAAQAAAAAAAEAAAAEAAUAAAAAAAIAAAAFAAQAAAAAAAIAAAAFAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAEAAAABAAYAAAAAAAEAAAABAAcAAAAAAAIAAAACAAYAAAAAAAIAAAACAAcAAAAAAAAAAAADAAYAAAAAAAAAAAADAAcAAAAAAAEAAAAEAAYAAAAAAAEAAAAEAAcAAAAAAAIAAAAFAAYAAAAAAAIAAAAFAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAEAAAABAAgAAAAAAAEAAAABAAkAAAAAAAIAAAACAAgAAAAAAAIAAAACAAkAAAAAAAAAAAADAAgAAAAAAAAAAAADAAkAAAAAAAEAAAAEAAgAAAAAAAEAAAAEAAkAAAAAAAIAAAAFAAgAAAAAAAIAAAAFAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAEAAAABAAoAAAAAAAEAAAABAAsAAAAAAAIAAAACAAoAAAAAAAIAAAACAAsAAAAAAAAAAAADAAoAAAAAAAAAAAADAAsAAAAAAAEAAAAEAAoAAAAAAAEAAAAEAAsAAAAAAAIAAAAFAAoAAAAAAAIAAAAFAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAEAAAABAAwAAAAAAAEAAAABAA0AAAAAAAIAAAACAAwAAAAAAAIAAAACAA0AAAAAAAAAAAADAAwAAAAAAAAAAAADAA0AAAAAAAEAAAAEAAwAAAAAAAEAAAAEAA0AAAAAAAIAAAAFAAwAAAAAAAIAAAAFAA0AAAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAEAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAEAAAAGAAQAAAAAAAAAAAAGAAUAAAAAAAEAAAAGAAYAAAAAAAAAAAAGAAcAAAAAAAEAAAAGAAgAAAAAAAAAAAAGAAkAAAAAAAEAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAEAAAAGAAwAAAAAAAAAAAAGAA0AAAAAAAEAAAAHAAAAAAAAAAEAAAAHAAEAAAAAAAIAAAAHAAIAAAAAAAEAAAAHAAMAAAAAAAIAAAAHAAQAAAAAAAEAAAAHAAUAAAAAAAIAAAAHAAYAAAAAAAEAAAAHAAcAAAAAAAIAAAAHAAgAAAAAAAEAAAAHAAkAAAAAAAIAAAAHAAoAAAAAAAEAAAAHAAsAAAAAAAIAAAAHAAwAAAAAAAEAAAAHAA0AAAAAAAIAAAAIAAAAAAAAAAIAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAIAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAIAAAAIAAUAAAAAAAAAAAAIAAYAAAAAAAIAAAAIAAcAAAAAAAAAAAAIAAgAAAAAAAIAAAAIAAkAAAAAAAAAAAAIAAoAAAAAAAIAAAAIAAsAAAAAAAAAAAAIAAwAAAAAAAIAAAAIAA0AAAAAAAAAAAAJAAAAAAAAAAAAAAAJAAEAAAAAAAEAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAEAAAAJAAQAAAAAAAAAAAAJAAUAAAAAAAEAAAAJAAYAAAAAAAAAAAAJAAcAAAAAAAEAAAAJAAgAAAAAAAAAAAAJAAkAAAAAAAEAAAAJAAoAAAAAAAAAAAAJAAsAAAAAAAEAAAAJAAwAAAAAAAAAAAAJAA0AAAAAAAEAAAAKAAAAAAAAAAEAAAAKAAEAAAAAAAIAAAAKAAIAAAAAAAEAAAAKAAMAAAAAAAIAAAAKAAQAAAAAAAEAAAAKAAUAAAAAAAIAAAAKAAYAAAAAAAEAAAAKAAcAAAAAAAIAAAAKAAgAAAAAAAEAAAAKAAkAAAAAAAIAAAAKAAoAAAAAAAEAAAAKAAsAAAAAAAIAAAAKAAwAAAAAAAEAAAAKAA0AAAAAAAIAAAALAAAAAAAAAAIAAAALAAEAAAAAAAAAAAALAAIAAAAAAAIAAAALAAMAAAAAAAAAAAALAAQAAAAAAAIAAAALAAUAAAAAAAAAAAALAAYAAAAAAAIAAAALAAcAAAAAAAAAAAALAAgAAAAAAAIAAAALAAkAAAAAAAAAAAALAAoAAAAAAAIAAAALAAsAAAAAAAAAAAALAAwAAAAAAAIAAAALAA0AAAAAAAAAAAA=")
 tile_set = ExtResource("1_2ksgu")
 
-[node name="Labels" type="Control" parent="UI" unique_id=1734868385]
-layout_mode = 3
+[node name="Menu" type="VBoxContainer" parent="." unique_id=1548940081]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
+offset_left = -116.0
+offset_right = 76.0
+offset_bottom = 152.0
 grow_horizontal = 2
+theme = SubResource("Theme_pbrim")
 
-[node name="OptionsMenu" type="RichTextLabel" parent="UI/Labels" unique_id=367242014]
-layout_mode = 0
-offset_left = -76.0
-offset_top = 16.0
-offset_right = 116.0
-offset_bottom = 216.0
-theme = ExtResource("3_pjmsk")
+[node name="WinnerText" type="RichTextLabel" parent="Menu" unique_id=267995800]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme = ExtResource("7_xnt8k")
 bbcode_enabled = true
-text = "[center]Player Select
-
-Sound
-
-Music
-
-CRT Flilter
-
-Aspect Ratio
-
-Scale
-
-Fullscreen
-
-Controls
-
-Back to Title"
+text = "OPTIONS"
 scroll_active = false
 autowrap_mode = 0
+horizontal_alignment = 1
 
-[node name="CharacterOrigin" type="Node2D" parent="UI/Labels" unique_id=1679999568]
-position = Vector2(160, 192)
+[node name="HSeparator" type="HSeparator" parent="Menu" unique_id=180915379]
+layout_mode = 2
+theme = SubResource("Theme_pbrim")
 
-[node name="Sonic" type="Sprite2D" parent="UI/Labels/CharacterOrigin" unique_id=668045641]
-z_index = 3
-position = Vector2(8, 0)
-texture = ExtResource("3_6udcv")
-hframes = 2
-vframes = 8
-region_rect = Rect2(731, 9, 24, 40)
-region_filter_clip_enabled = true
+[node name="SFXVolumeButton" parent="Menu" unique_id=1390657914 instance=ExtResource("5_lbgyq")]
+layout_mode = 2
+text = "SFX Volume"
 
-[node name="Tails" type="Sprite2D" parent="UI/Labels/CharacterOrigin" unique_id=1038561771]
-z_index = 2
-position = Vector2(-8, 0)
-texture = ExtResource("3_6udcv")
-hframes = 2
-vframes = 8
-frame = 2
+[node name="MusicVolumeButton" parent="Menu" unique_id=491141629 instance=ExtResource("5_lbgyq")]
+layout_mode = 2
+text = "Music Volume"
 
-[node name="Knuckles" type="Sprite2D" parent="UI/Labels/CharacterOrigin" unique_id=1993835868]
-visible = false
-z_index = 3
-texture = ExtResource("3_6udcv")
-hframes = 2
-vframes = 8
-frame = 4
-region_rect = Rect2(402, 468, 38, 36)
+[node name="CRTFilterButton" parent="Menu" unique_id=503826889 instance=ExtResource("5_lbgyq")]
+layout_mode = 2
+text = "CRT Filter"
 
-[node name="Amy" type="Sprite2D" parent="UI/Labels/CharacterOrigin" unique_id=1185369202]
-visible = false
-z_index = 3
-texture = ExtResource("3_6udcv")
-hframes = 2
-vframes = 8
-frame = 6
-region_rect = Rect2(488, 8, 32, 40)
+[node name="AspectRatioButton" parent="Menu" unique_id=652605200 instance=ExtResource("5_lbgyq")]
+layout_mode = 2
+text = "Aspect Ratio"
+
+[node name="ScaleButton" parent="Menu" unique_id=1123021765 instance=ExtResource("5_lbgyq")]
+layout_mode = 2
+text = "Scale"
+
+[node name="FullscreenButton" parent="Menu" unique_id=50793408 instance=ExtResource("5_lbgyq")]
+layout_mode = 2
+text = "Fullscreen
+"
+
+[node name="ControlsButton" parent="Menu" unique_id=1415996320 instance=ExtResource("5_lbgyq")]
+layout_mode = 2
+text = "Controls"
+
+[node name="BackToTitleButton" parent="Menu" unique_id=513809566 instance=ExtResource("5_lbgyq")]
+layout_mode = 2
+text = "Back To Title"
 
 [node name="Cover" type="CanvasLayer" parent="." unique_id=17616086]
 layer = 0
 visible = false
 
 [node name="Back" type="ColorRect" parent="Cover" unique_id=1722318817]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
 [node name="Switch" type="AudioStreamPlayer" parent="." unique_id=2128100245]
@@ -117,3 +144,16 @@ bus = &"SFX"
 
 [node name="MenuMusicVolume" type="AudioStreamPlayer" parent="." unique_id=425373569]
 bus = &"Music"
+
+[node name="MenuSfxVolume" type="AudioStreamPlayer" parent="." unique_id=1940523766]
+stream = ExtResource("7_xnorb")
+bus = &"SFX"
+
+[connection signal="pressed" from="Menu/SFXVolumeButton" to="." method="_on_sfx_volume_button_pressed"]
+[connection signal="pressed" from="Menu/MusicVolumeButton" to="." method="_on_music_volume_button_pressed"]
+[connection signal="pressed" from="Menu/CRTFilterButton" to="." method="_on_crt_filter_button_pressed"]
+[connection signal="pressed" from="Menu/AspectRatioButton" to="." method="_on_aspect_ratio_button_pressed"]
+[connection signal="pressed" from="Menu/ScaleButton" to="." method="_on_scale_button_pressed"]
+[connection signal="pressed" from="Menu/FullscreenButton" to="." method="_on_fullscreen_button_pressed"]
+[connection signal="pressed" from="Menu/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="Menu/BackToTitleButton" to="." method="_on_back_to_title_button_pressed"]

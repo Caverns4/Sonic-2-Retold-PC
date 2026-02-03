@@ -56,6 +56,7 @@ var player_inputs: Array[String] = [
 var default_map = []
 
 signal assign_button_pressed()
+signal menu_exit()
 
 @onready var map_label: Label = $CurrentMapList
 
@@ -164,7 +165,8 @@ func _on_confirm_pressed() -> void:
 	if current_bind < 0:
 		save_control_data()
 		visible = false
-		get_tree().paused = visible
+		get_tree().paused = false
+		menu_exit.emit()
 
 
 func _on_defaults_pressed() -> void:

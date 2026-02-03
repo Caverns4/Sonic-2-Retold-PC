@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2xskcomtpo2x"]
+[gd_scene format=3 uid="uid://b2xskcomtpo2x"]
 
 [ext_resource type="Script" uid="uid://dq2rm0ggfwkqo" path="res://Scripts/Menu/controller_menu_new.gd" id="1_xsuqy"]
 [ext_resource type="FontFile" uid="uid://dbiyiqdov7fag" path="res://Graphics/Fonts/mid_font.png" id="2_vjcje"]
@@ -9,19 +9,19 @@ draw_center = false
 [sub_resource type="LabelSettings" id="LabelSettings_xxoep"]
 font = ExtResource("2_vjcje")
 
-[node name="ControllerMenuNew" type="CanvasLayer"]
+[node name="ControllerMenuNew" type="CanvasLayer" unique_id=714376856]
 process_mode = 3
 layer = 15
 visible = false
 script = ExtResource("1_xsuqy")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=1739674547]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0, 0.333333, 0.560784, 0.72549)
 
-[node name="ClearInfo" type="Label" parent="."]
+[node name="ClearInfo" type="Label" parent="." unique_id=297905948]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -32,7 +32,7 @@ offset_top = -14.0
 offset_right = 160.0
 uppercase = true
 
-[node name="PlayerPanel" type="Panel" parent="."]
+[node name="PlayerPanel" type="Panel" parent="." unique_id=166771303]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -43,7 +43,7 @@ offset_bottom = 48.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xsuqy")
 
-[node name="Player1" type="Button" parent="PlayerPanel"]
+[node name="Player1" type="Button" parent="PlayerPanel" unique_id=591453599]
 layout_mode = 0
 offset_left = 72.0
 offset_right = 144.0
@@ -52,7 +52,7 @@ focus_next = NodePath("../Player2")
 focus_previous = NodePath("../Player2")
 text = "Player 1"
 
-[node name="Player2" type="Button" parent="PlayerPanel"]
+[node name="Player2" type="Button" parent="PlayerPanel" unique_id=1638098360]
 layout_mode = 0
 offset_left = 160.0
 offset_right = 232.0
@@ -61,7 +61,7 @@ focus_next = NodePath("../Player1")
 focus_previous = NodePath("../Player1")
 text = "Player 2"
 
-[node name="ButtonPanels" type="Panel" parent="."]
+[node name="ButtonPanels" type="Panel" parent="." unique_id=1078348293]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -74,7 +74,7 @@ offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Up" type="Button" parent="ButtonPanels"]
+[node name="Up" type="Button" parent="ButtonPanels" unique_id=1485001085]
 layout_mode = 0
 offset_left = 48.0
 offset_top = 8.0
@@ -83,7 +83,7 @@ offset_bottom = 24.0
 focus_previous = NodePath("../Down")
 text = "_"
 
-[node name="Label" type="Label" parent="ButtonPanels/Up"]
+[node name="Label" type="Label" parent="ButtonPanels/Up" unique_id=1117823430]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -98,7 +98,7 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "   UP"
 
-[node name="Down" type="Button" parent="ButtonPanels"]
+[node name="Down" type="Button" parent="ButtonPanels" unique_id=769111950]
 layout_mode = 0
 offset_left = 48.0
 offset_top = 32.0
@@ -109,7 +109,7 @@ focus_next = NodePath("../Up")
 focus_previous = NodePath("../Left")
 text = "_"
 
-[node name="Label" type="Label" parent="ButtonPanels/Down"]
+[node name="Label" type="Label" parent="ButtonPanels/Down" unique_id=1280992475]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -124,7 +124,7 @@ grow_horizontal = 2
 grow_vertical = 0
 text = " DOWN"
 
-[node name="Left" type="Button" parent="ButtonPanels"]
+[node name="Left" type="Button" parent="ButtonPanels" unique_id=125827515]
 layout_mode = 0
 offset_left = 48.0
 offset_top = 56.0
@@ -135,7 +135,7 @@ focus_next = NodePath("../Down")
 focus_previous = NodePath("../Right")
 text = "_"
 
-[node name="Label" type="Label" parent="ButtonPanels/Left"]
+[node name="Label" type="Label" parent="ButtonPanels/Left" unique_id=378308656]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -150,7 +150,7 @@ grow_horizontal = 2
 grow_vertical = 0
 text = " LEFT"
 
-[node name="Right" type="Button" parent="ButtonPanels"]
+[node name="Right" type="Button" parent="ButtonPanels" unique_id=124441145]
 layout_mode = 0
 offset_left = 48.0
 offset_top = 80.0
@@ -161,7 +161,7 @@ focus_next = NodePath("../Left")
 focus_previous = NodePath("../Action")
 text = "_"
 
-[node name="Label" type="Label" parent="ButtonPanels/Right"]
+[node name="Label" type="Label" parent="ButtonPanels/Right" unique_id=179701378]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -176,7 +176,7 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "RIGHT"
 
-[node name="Action" type="Button" parent="ButtonPanels"]
+[node name="Action" type="Button" parent="ButtonPanels" unique_id=548354969]
 layout_mode = 0
 offset_left = 192.0
 offset_top = 8.0
@@ -187,7 +187,7 @@ focus_next = NodePath("../Right")
 focus_previous = NodePath("../Action2")
 text = "_"
 
-[node name="Label" type="Label" parent="ButtonPanels/Action"]
+[node name="Label" type="Label" parent="ButtonPanels/Action" unique_id=611205351]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -202,7 +202,7 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "    A"
 
-[node name="Action2" type="Button" parent="ButtonPanels"]
+[node name="Action2" type="Button" parent="ButtonPanels" unique_id=62392002]
 layout_mode = 0
 offset_left = 192.0
 offset_top = 32.0
@@ -213,7 +213,7 @@ focus_next = NodePath("../Action")
 focus_previous = NodePath("../Action3")
 text = "_"
 
-[node name="Label" type="Label" parent="ButtonPanels/Action2"]
+[node name="Label" type="Label" parent="ButtonPanels/Action2" unique_id=1315906281]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -228,7 +228,7 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "    B"
 
-[node name="Action3" type="Button" parent="ButtonPanels"]
+[node name="Action3" type="Button" parent="ButtonPanels" unique_id=1904264425]
 layout_mode = 0
 offset_left = 192.0
 offset_top = 56.0
@@ -239,7 +239,7 @@ focus_next = NodePath("../Action2")
 focus_previous = NodePath("../Super")
 text = "_"
 
-[node name="Label" type="Label" parent="ButtonPanels/Action3"]
+[node name="Label" type="Label" parent="ButtonPanels/Action3" unique_id=1332438154]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -254,7 +254,7 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "    C"
 
-[node name="Super" type="Button" parent="ButtonPanels"]
+[node name="Super" type="Button" parent="ButtonPanels" unique_id=1339492193]
 layout_mode = 0
 offset_left = 192.0
 offset_top = 80.0
@@ -265,7 +265,7 @@ focus_next = NodePath("../Action3")
 focus_previous = NodePath("../Pause")
 text = "_"
 
-[node name="Label" type="Label" parent="ButtonPanels/Super"]
+[node name="Label" type="Label" parent="ButtonPanels/Super" unique_id=1065734894]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -281,7 +281,7 @@ grow_vertical = 0
 text = "super"
 uppercase = true
 
-[node name="Pause" type="Button" parent="ButtonPanels"]
+[node name="Pause" type="Button" parent="ButtonPanels" unique_id=1537338024]
 layout_mode = 0
 offset_left = 104.0
 offset_top = 104.0
@@ -292,7 +292,7 @@ focus_next = NodePath("../Super")
 focus_previous = NodePath("../../ConfirmOrReset/Confirm")
 text = "_"
 
-[node name="Label" type="Label" parent="ButtonPanels/Pause"]
+[node name="Label" type="Label" parent="ButtonPanels/Pause" unique_id=750714097]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -309,14 +309,14 @@ text = "Start"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="ConfirmOrReset" type="Control" parent="."]
+[node name="ConfirmOrReset" type="Control" parent="." unique_id=1145752547]
 layout_mode = 3
 anchors_preset = 0
 offset_top = 184.0
 offset_right = 40.0
 offset_bottom = 224.0
 
-[node name="Confirm" type="Button" parent="ConfirmOrReset"]
+[node name="Confirm" type="Button" parent="ConfirmOrReset" unique_id=1184532517]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -330,7 +330,7 @@ focus_next = NodePath("../Defaults")
 focus_previous = NodePath("../Defaults")
 text = " CONFIRM "
 
-[node name="Defaults" type="Button" parent="ConfirmOrReset"]
+[node name="Defaults" type="Button" parent="ConfirmOrReset" unique_id=1996495627]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -347,7 +347,7 @@ focus_next = NodePath("../Confirm")
 focus_previous = NodePath("../Confirm")
 text = "RESET TO DEFAULTS"
 
-[node name="Title" type="Label" parent="."]
+[node name="Title" type="Label" parent="." unique_id=1044909732]
 anchors_preset = 10
 anchor_right = 1.0
 offset_top = 8.0
@@ -358,7 +358,7 @@ label_settings = SubResource("LabelSettings_xxoep")
 horizontal_alignment = 1
 uppercase = true
 
-[node name="CurrentMapList" type="Label" parent="."]
+[node name="CurrentMapList" type="Label" parent="." unique_id=1271778272]
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 8.0

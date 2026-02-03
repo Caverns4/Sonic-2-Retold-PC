@@ -238,6 +238,10 @@ var crt_resolutions: Array[Vector2] = [
 	Vector2i(400,240)
 ]
 
+## On or off strings
+const on_off: Array = ["off","on"]
+const aspect_strings: Array = ["4x3","16x9"]
+
 # Hazard type references
 enum HAZARDS {NORMAL, FIRE, ELEC, WATER}
 
