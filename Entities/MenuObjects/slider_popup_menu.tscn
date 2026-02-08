@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://ml62eqfe7avn" path="res://Graphics/Fonts/small_font.png" id="2_v2yco"]
 [ext_resource type="Texture2D" uid="uid://bf2lhfxal46gj" path="res://Graphics/Menus/ButtonUp.png" id="3_ckswm"]
 [ext_resource type="Texture2D" uid="uid://ddug2c5c54nvl" path="res://Graphics/Menus/ButtonDown.png" id="4_uthpa"]
+[ext_resource type="Texture2D" uid="uid://c2xdraklm0ah7" path="res://Graphics/title/TitleMenu.png" id="6_ckswm"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eu4y8"]
 
@@ -29,6 +30,27 @@ texture_margin_top = 8.0
 texture_margin_right = 8.0
 texture_margin_bottom = 8.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eu4y8"]
+bg_color = Color(0, 0.93333334, 0, 1)
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uthpa"]
+bg_color = Color(1, 1, 1, 1)
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ckswm"]
+bg_color = Color(0.4, 0.4, 0.4, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0076186024, 0.0076186024, 0.0076186024, 1)
+corner_detail = 1
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
 [sub_resource type="Theme" id="Theme_6bx2a"]
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/font_sizes/font_size = 8
@@ -36,6 +58,14 @@ Button/fonts/font = ExtResource("2_v2yco")
 Button/styles/hover = SubResource("StyleBoxTexture_pn5gd")
 Button/styles/normal = SubResource("StyleBoxTexture_yc2j2")
 Button/styles/pressed = SubResource("StyleBoxTexture_wealy")
+HSlider/icons/grabber = ExtResource("6_ckswm")
+HSlider/icons/grabber_highlight = ExtResource("6_ckswm")
+HSlider/icons/tick = null
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_eu4y8")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_uthpa")
+HSlider/styles/slider = SubResource("StyleBoxFlat_ckswm")
+VSlider/icons/grabber = ExtResource("6_ckswm")
+VSlider/icons/grabber_highlight = ExtResource("6_ckswm")
 
 [sub_resource type="LabelSettings" id="LabelSettings_v2yco"]
 line_spacing = 0.0
@@ -62,6 +92,7 @@ theme = SubResource("Theme_6bx2a")
 tick_count = 1
 
 [node name="AcceptButton" type="Button" parent="Panel/NinePatchRect/MenuOptions" index="1" unique_id=323654261]
+self_modulate = Color(0, 0.93333334, 0, 1)
 layout_mode = 0
 offset_left = 8.0
 offset_top = 44.0
@@ -70,7 +101,16 @@ offset_bottom = 68.0
 theme = SubResource("Theme_6bx2a")
 text = "accept"
 
+[node name="Label" type="Label" parent="Panel/NinePatchRect/MenuOptions/AcceptButton" index="0" unique_id=959514356]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 16.0
+text = "Accept"
+
 [node name="CancelButton" type="Button" parent="Panel/NinePatchRect/MenuOptions" index="2" unique_id=2116592866]
+self_modulate = Color(0.93333334, 0.13333334, 0.4, 1)
 layout_mode = 0
 offset_left = 72.0
 offset_top = 44.0
@@ -78,6 +118,14 @@ offset_right = 136.0
 offset_bottom = 68.0
 theme = SubResource("Theme_6bx2a")
 text = "cancel"
+
+[node name="Label2" type="Label" parent="Panel/NinePatchRect/MenuOptions/CancelButton" index="0" unique_id=444111903]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 16.0
+text = "Cancel"
 
 [node name="Label" type="Label" parent="Panel/NinePatchRect/MenuOptions" index="3" unique_id=1443699236]
 layout_mode = 0
