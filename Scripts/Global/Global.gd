@@ -71,13 +71,6 @@ var timerActive = false
 var timerActiveP2 = false
 var gameOver = false
 
-## TODO: Make this work better.
-# stage clear is used to identify the current state of the stage clear sequence
-# this is reference in
-# res://Scripts/Misc/HUD.gd
-# res://Scripts/Objects/GoalPost.gd
-var stageClearPhase: int = 0
-
 # characters (if you want more you should add one here, see the player script too for more settings)
 enum CHARACTERS {NONE,SONIC,TAILS,KNUCKLES,AMY,MIGHTY,RAY,SONIC_BETA}
 var PlayerChar1 = CHARACTERS.SONIC
@@ -126,6 +119,13 @@ enum DAMAGE_TYPES{NORMAL,FIRE,ELEC,WATER}
 
 ## If a Boss Fight is currently active.
 var fightingBoss: bool = false
+## If the stage is to be considered cleared.
+var stage_cleared: bool = false:
+	set(value):
+		stage_cleared = value
+		Main.can_pause = !value
+		timerActive = !value
+		timerActiveP2 = !value
 
 #Save Data Atributes
 var totalCoins: int = 0
@@ -221,6 +221,7 @@ var animals = [0,1]
 
 # emited when a stage gets started
 signal stage_started
+signal await_stage_end
 signal stage_clear
 
 ## Game settings
@@ -319,7 +320,7 @@ func CreateSaveGameFile(file: ConfigFile):
 
 func _process(delta):
 	# do a check for certain variables, if it's all clear then count the level timer up
-	if timerActive and stageClearPhase == 0 and !get_tree().paused:
+	if timerActive and !get_tree().paused:
 		levelTime += delta
 		
 	if timerActiveP2 and !get_tree().paused:
@@ -334,7 +335,7 @@ func reset_level_data():
 	object_table.clear()
 	waterLevel = 0
 	gameOver = false
-	if stageClearPhase != 0:
+	if stage_cleared:
 		saved_checkpoint = -1
 		levelTime = 0
 		levelTimeP2 = 0
@@ -342,7 +343,7 @@ func reset_level_data():
 	timerActiveP2 = false
 	bonus_stage_saved_data.clear()
 	globalTimer = 0
-	stageClearPhase = 0
+	stage_cleared = false
 
 
 ## Wipe all data arrays to avoid contamination. This only wipse object references.
@@ -456,9 +457,18 @@ func save_level_data(pos: Vector2):
 
 func emit_stage_started():
 	emit_signal("stage_started")
+	stage_cleared = false
+
+func emit_await_stage_end():
+	emit_signal("await_stage_end")
+	stage_cleared = true
+	
 
 func emit_stage_clear():
 	emit_signal("stage_clear")
+	stage_cleared = true
+	var currentTheme = SoundDriver.themes[SoundDriver.THEME.RESULTS]
+	SoundDriver.playMusic(currentTheme)
 
 # save data settings
 func save_settings():

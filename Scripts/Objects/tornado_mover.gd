@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 	if allow_player_steering:
 		global_position.x = player.global_position.x - 32
 		var camera = player.camera
-		if Global.stageClearPhase > 0:
+		if Global.stage_cleared:
 			global_position.x = move_toward(global_position.x,camera.limit_left+160,delta*128)
 			player.position.x = global_position.x+32
 

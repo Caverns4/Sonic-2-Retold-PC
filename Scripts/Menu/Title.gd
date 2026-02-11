@@ -201,7 +201,7 @@ func _on_title_wait_timer_timeout() -> void:
 		$Celebrations.emitting = true
 
 func reset_values():
-	Global.stageClearPhase = 1
+	Global.stage_cleared = false 
 	Global.reset_level_data()
 	Global.two_player_mode = false
 	Global.score = 0

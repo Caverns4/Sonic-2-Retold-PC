@@ -31,6 +31,7 @@ var twoPlayerItems = [
 
 var Explosion = preload("res://Entities/Misc/BadnickSmoke.tscn")
 
+signal destroyed
 
 func _ready():
 	if !Engine.is_editor_hint():
@@ -48,7 +49,7 @@ func _ready():
 			#	nextFrame = item + 1
 			$Item.frame = nextFrame
 			
-	
+	destroyed.connect(_on_destroyed)
 
 func _process(_delta):
 	# update for editor
@@ -63,6 +64,10 @@ func FrameUpdate():
 	$Item.frame = item+2
 
 func destroy():
+	if !isActive:
+		return false
+	
+	destroyed.emit()
 	# skip if not activated
 	if Global.two_player_mode:
 		match Global.twoPlayerItems:
@@ -82,8 +87,6 @@ func destroy():
 			Global.ITEM_MODE.EGGMAN_ONLY:
 				item = ITEMTYPES.EGGMAN
 				$Item.frame = item+2
-			_:
-				pass
 
 
 	
@@ -103,9 +106,7 @@ func destroy():
 			elif rand == 2:
 				item = ITEMTYPES.BUBBLESHIELD
 		$Item.frame = item + 2
-	
-	if !isActive:
-		return false
+
 	# create explosion
 	var explosion = Explosion.instantiate()
 	get_parent().add_child(explosion)
@@ -227,3 +228,6 @@ func _on_InstaArea_area_entered(area):
 		playerTouch = area.parent
 		area.parent.movement.y *= -1
 		destroy()
+
+func _on_destroyed():
+	pass

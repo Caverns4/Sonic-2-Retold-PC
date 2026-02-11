@@ -26,7 +26,7 @@ func _ready() -> void:
 		if button and button.has_signal("pressed"):
 			button.connect("pressed",activatePlatform)
 
-func _process(delta):
+func _process(_delta):
 	if Engine.is_editor_hint():
 		$Shape2D.shape.size.x = platform_sprite.get_size().x
 		$Shape2D.shape.size.y = platform_sprite.get_size().y

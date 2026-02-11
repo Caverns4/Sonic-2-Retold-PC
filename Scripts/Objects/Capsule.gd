@@ -3,72 +3,79 @@ var getCam = null
 
 @onready var screenXSize = get_viewport_rect().size.x
 
-var Animal = preload("res://Entities/Misc/Animal.tscn")
-var animalTrackers = []
-var checkAnimals = false
-var timerActive = false
+var animal_inst = preload("res://Entities/Misc/Animal.tscn")
+var animals = []
 var timer = 180.0/60.0
+
+enum STATE{IDLE,SPAWN_ANIMALS,WAIT,NULL}
+var state: int = STATE.IDLE
 
 func _ready() -> void:
 	if Global.two_player_mode:
 		queue_free()
 
 func _physics_process(delta):
-	if timerActive and timer > 0:
-			# every 8/60 steps spawn an animal in the animal ground with an alarm of 12/60
-			if wrapf(timer,0,8.0/60.0) < wrapf(timer-delta,0,8.0/60.0):
-				var animal = Animal.instantiate()
-				# set animal sprite
-				animal.animal = Global.animals[round(randf())]
-				# deactivate animal to stop movement
-				animal.active = false
-				# random directions
-				animal.forceDirection = false
-				get_parent().add_child(animal)
-				animalTrackers.append(animal)
-				# set animal position, starting from -28 on the x position and increasing by 8 per animal
-				animal.global_position = global_position+Vector2(randf_range(-20,20),0)
-				# set alarms, starting at 12.0/60.0 (converting the original timer)
-				animal.get_node("ActivationTimer").start(12.0/60.0)
-			
-			timer -= delta
+	match state:
+		STATE.SPAWN_ANIMALS:
+			_run_animal_timer(delta)
+		STATE.WAIT:
+			_update_animals_array()
+
+func _run_animal_timer(delta: float):
+	# every 8/60 steps spawn an animal in the animal ground with an alarm of 12/60
+	if wrapf(timer,0,8.0/60.0) < wrapf(timer-delta,0,8.0/60.0):
+		var animal_node = animal_inst.instantiate()
+		# set animal sprite
+		animal_node.animal = Global.animals[round(randf())]
+		# deactivate animal to stop movement
+		animal_node.active = false
+		# random directions
+		animal_node.forceDirection = false
+		get_parent().add_child(animal_node)
+		animals.append(animal_node)
+		# set animal position, starting from -28 on the x position and increasing by 8 per animal
+		animal_node.global_position = global_position+Vector2(randf_range(-20,20),0)
+		# set alarms, starting at 12.0/60.0 (converting the original timer)
+		animal_node.get_node("ActivationTimer").start(12.0/60.0)
 		
-	# after flickes are gone, set stage clear to 3 (2's for running off screen, see the goal post)
-	if checkAnimals and animalTrackers.size() > 0:
+		timer -= delta
+		if timer < 0.0:
+			state = STATE.WAIT
+
+func _update_animals_array():
+	for i in animals:
+		if !is_instance_valid(i):
+			animals.erase(i)
 		
-		for i in animalTrackers:
-			if !is_instance_valid(i):
-				animalTrackers.erase(i)
-		
-		if animalTrackers.size() <= 0:
-			var currentTheme = SoundDriver.themes[SoundDriver.THEME.RESULTS]
-			SoundDriver.playMusic(currentTheme)
-			# set stage clear to 3 to continue playing the level clear phase
-			Global.stageClearPhase = 3
-			checkAnimals = false
+	if animals.size() == 0:
+		state = STATE.NULL
+		Global.emit_stage_clear()
+
 
 
 func activate():
 	# check if to clear level
-	if Global.stageClearPhase == 0:
+	if !Global.stage_cleared:
 		$Animator.play("Open")
 		$Explode.play()
-		Main.can_pause = false
-		# set global stage clear phase to 1, 1 is used to stop the timer (see HUD script)
-		Global.stageClearPhase = 1
-		
+		Global.emit_await_stage_end()
+
+		# Camera limit set
+		for i in Global.players:
+			i.limitLeft = global_position.x -screenXSize/2
+			i.limitRight = global_position.x +(screenXSize/2)+64
 		# set player camera limits
 		for i in Global.players:
 			# Camera limit set
 			i.limitLeft = global_position.x -screenXSize/2
 			i.limitRight = global_position.x +screenXSize/2
-
+		state = STATE.SPAWN_ANIMALS
 
 
 func spawn_animals():
 	# create animals
 	for i in range(8):
-		var animal = Animal.instantiate()
+		var animal = animal_inst.instantiate()
 		# set animal sprite
 		animal.animal = Global.animals[round(randf())]
 		# deactivate animal to stop movement
@@ -76,12 +83,11 @@ func spawn_animals():
 		# random directions
 		animal.forceDirection = false
 		get_parent().add_child(animal)
-		animalTrackers.append(animal)
+		animals.append(animal)
 		# set animal position, starting from -28 on the x position and increasing by 8 per animal
 		animal.global_position = global_position+Vector2(-28+(7*i),0)
 		# set alarms, starting at 154.0/60.0 (converting the original timer) and counting down by 8.0/60.0 for each animal
 		animal.get_node("ActivationTimer").start((154.0/60.0)-((8.0/60.0)*i))
 	
-	checkAnimals = true
-	timerActive = true
+	state = STATE.WAIT
 	

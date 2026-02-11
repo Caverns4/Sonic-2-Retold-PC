@@ -12,20 +12,11 @@ func _ready() -> void:
 		queue_free()
 
 func _on_body_entered(body: Node2D) -> void:
-	if body == Global.players[0] and Global.stageClearPhase == 0:
-		Main.can_pause = false
-		monitoring = false
+	if body == Global.players[0] and !Global.stage_cleared:
 		if special_exit:
 			Global.special_exit = special_exit_zone
-		var currentTheme = SoundDriver.themes[SoundDriver.THEME.RESULTS]
-		SoundDriver.playMusic(currentTheme)
-		Global.stageClearPhase = 3
+		Global.emit_stage_clear()
 		camera = body.camera
-		#if camera is Camera2D:
-		#	camera.limit_left = camera.global_position.x
-		#	camera.limit_right = camera.global_position.x
-		#	camera.limit_top = camera.global_position.y
-		#camera.limit_bottom = camera.global_position.y
 		for i in Global.players:
 			i.playerControl = -1
 			i.inputs[i.INPUTS.XINPUT] = 0

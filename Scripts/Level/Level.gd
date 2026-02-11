@@ -87,7 +87,7 @@ func setup_hud_properties():
 
 # used for stage starts, also used for returning from special stages
 func level_reset_data(_playCard = true):
-	Global.stageClearPhase = 0
+	Global.stage_cleared = false
 	Global.fightingBoss = false
 	SoundDriver.music.stop()
 	# music handling

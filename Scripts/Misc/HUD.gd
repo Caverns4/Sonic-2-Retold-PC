@@ -349,8 +349,6 @@ func _on_stage_started():
 	set_hud_visibility(true)
 	Global.levelTime = 0
 	Global.levelTimeP2 = 0
-	Global.timerActive = true
-	Global.timerActiveP2 = true
 	state = STATES.LEVEL
 
 ## Run Stage Clear Functionality

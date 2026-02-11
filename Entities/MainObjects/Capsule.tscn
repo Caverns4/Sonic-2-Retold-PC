@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bjuh5cvbt06af"]
+[gd_scene format=3 uid="uid://bjuh5cvbt06af"]
 
 [ext_resource type="Texture2D" uid="uid://cot8xrd84iivq" path="res://Graphics/Items/Capsule.png" id="1"]
 [ext_resource type="Script" uid="uid://cq13kfnsorn6s" path="res://Scripts/Objects/Capsule.gd" id="2"]
@@ -441,39 +441,37 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="31"]
 size = Vector2(32, 16)
 
-[node name="Capsule" type="StaticBody2D"]
+[node name="Capsule" type="StaticBody2D" unique_id=1220542392]
 material = ExtResource("4")
 collision_layer = 8192
 collision_mask = 8192
 script = ExtResource("2")
 
-[node name="Animator" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_by7gt")
-}
+[node name="Animator" type="AnimationPlayer" parent="." unique_id=1522094434]
+libraries/ = SubResource("AnimationLibrary_by7gt")
 
-[node name="Explode" type="AudioStreamPlayer" parent="."]
+[node name="Explode" type="AudioStreamPlayer" parent="." unique_id=1642693774]
 stream = ExtResource("3_abcs2")
 bus = &"SFX"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1663334117]
 position = Vector2(0, 4)
 shape = SubResource("30")
 
-[node name="Capsule" type="Sprite2D" parent="."]
+[node name="Capsule" type="Sprite2D" parent="." unique_id=597071462]
 z_index = 6
 texture = ExtResource("1")
 region_enabled = true
 region_rect = Rect2(0, 0, 64, 64)
 
-[node name="Switch" type="Sprite2D" parent="."]
+[node name="Switch" type="Sprite2D" parent="." unique_id=1156162045]
 z_index = 4
 position = Vector2(0, -40)
 texture = ExtResource("1")
 region_enabled = true
 region_rect = Rect2(64, 0, 32, 16)
 
-[node name="CapsulePiece" type="Sprite2D" parent="."]
+[node name="CapsulePiece" type="Sprite2D" parent="." unique_id=306384409]
 z_index = 6
 position = Vector2(0, -16)
 texture = ExtResource("1")
@@ -482,7 +480,7 @@ offset = Vector2(-8, 0)
 region_enabled = true
 region_rect = Rect2(88, 16, 16, 24)
 
-[node name="CapsulePiece2" type="Sprite2D" parent="."]
+[node name="CapsulePiece2" type="Sprite2D" parent="." unique_id=392644815]
 z_index = 6
 position = Vector2(-32, 8)
 texture = ExtResource("1")
@@ -491,7 +489,7 @@ offset = Vector2(0, -24)
 region_enabled = true
 region_rect = Rect2(64, 16, 24, 24)
 
-[node name="CapsulePiece3" type="Sprite2D" parent="."]
+[node name="CapsulePiece3" type="Sprite2D" parent="." unique_id=2006448816]
 z_index = 6
 position = Vector2(8, 8)
 texture = ExtResource("1")
@@ -500,25 +498,25 @@ offset = Vector2(0, -24)
 region_enabled = true
 region_rect = Rect2(104, 16, 24, 24)
 
-[node name="Lock" type="Sprite2D" parent="."]
+[node name="Lock" type="Sprite2D" parent="." unique_id=1624841533]
 z_index = 6
 position = Vector2(0, -24)
 texture = ExtResource("1")
 region_enabled = true
 region_rect = Rect2(96, 0, 16, 16)
 
-[node name="BadnickSmoke" type="AnimatedSprite2D" parent="."]
+[node name="BadnickSmoke" type="AnimatedSprite2D" parent="." unique_id=1988391089]
 visible = false
 z_index = 6
 position = Vector2(0, -24)
 sprite_frames = SubResource("27")
 animation = &"fire3"
 
-[node name="Button" type="StaticBody2D" parent="."]
+[node name="Button" type="StaticBody2D" parent="." unique_id=540400937]
 collision_layer = 8192
 collision_mask = 8192
 script = ExtResource("10")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Button"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Button" unique_id=253600670]
 position = Vector2(0, -32)
 shape = SubResource("31")

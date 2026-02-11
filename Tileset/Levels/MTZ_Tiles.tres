@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=197 format=3 uid="uid://b78s7tfu844gd"]
+[gd_resource type="TileSet" format=3 uid="uid://b78s7tfu844gd"]
 
 [ext_resource type="Texture2D" uid="uid://27eyp2hmwvta" path="res://Graphics/Tiles/MTZ/MTZ_BlocksNew.png" id="1_py6sd"]
 [ext_resource type="Texture2D" uid="uid://bqn5tej0c8552" path="res://Graphics/Backgrounds/MTZ/MTZ_BG.png" id="2_svucf"]

@@ -204,22 +204,22 @@ var shakefade: float = 5.0
 var shakeStrength : float = 0.0
 
 # boundries
-var limitLeft = 0
-var limitRight = 0
-var limitTop = 0
-var limitBottom = 0
+var limitLeft: int = 0
+var limitRight: int = 0
+var limitTop: int = 0
+var limitBottom: int = 0
 
 # screen scroll locking as the camera scrolls
-var rachetScrollLeft = false
-var rachetScrollRight = false
-var rachetScrollTop = false
-var rachetScrollBottom = false
+var rachetScrollLeft: bool = false
+var rachetScrollRight: bool = false
+var rachetScrollTop: bool = false
+var rachetScrollBottom: bool = false
 
 var rotatableSprites = ["walk", "run", "peelOut", "hammerSwing"]
-var direction = scale.x
+var direction: float = scale.x
 
 # Ground speed is mostly used for timing and animations, there isn't any functionality to it.
-var groundSpeed = 0
+var groundSpeed: float = 0
 
 enum INPUTS {XINPUT, YINPUT, ACTION, ACTION2, ACTION3, SUPER, PAUSE}
 # Input control, 0 = 0ff, 1 = pressed, 2 = held
@@ -559,7 +559,7 @@ func _process(delta):
 					superAnimator.play("Flash")
 			# check if ring count is greater then 0
 			# deactivate if stage cleared
-			if rings > 0 and Global.stageClearPhase == 0:
+			if rings > 0 and !Global.stage_cleared:
 				superRingTimer -= delta
 				if Global.superRingDrain and superRingTimer <= 0.0:
 					rings -=1
@@ -724,13 +724,13 @@ func _physics_process(delta):
 		# disable pushing wall
 		if inputs[INPUTS.XINPUT] != sign(pushing_wall):
 			pushing_wall = 0
-		
+	
 	elif pushing_wall != 0:
 		# count down pushing_wall
 		pushing_wall -= sign(pushing_wall)
 	
 	
-	
+	## TODO: Rewrite camera system
 	# Camera settings
 	if (camera != null):
 		
@@ -740,78 +740,13 @@ func _physics_process(delta):
 		cameraDragLerp = max(int(!ground),min(cameraDragLerp,playerOffset)-6*delta)
 		
 		# Looking/Lag
-		# camLookDist is the distance, 0 is up, 1 is down
 		camLookAmount = clamp(camLookAmount,camLookDist[0],camLookDist[1])
 		if currentState != STATES.NORMAL or velocity.x != 0:
 			camLookAmount = move_toward(camLookAmount,0.0,6.0)
-		#var scrollSpeed = delta*2
-		#if camLookAmount != 0:
-		#	if sign(camLookAmount - scrollSpeed) == sign(camLookAmount) && velocity.x == 0:
-		#		camLookAmount -= sign(camLookAmount)*delta*2
-		#	elif velocity.x != 0:
-		#		camLookAmount = 0
-		#	else:
-		#		camLookAmount = 0
 		
 		# Camera Lock
-		if camLockTime > 0:
-			camLockTime -= delta
-		
-		# Boundry handling
-		# Pan camera limits to boundries
-		
-		var viewSize = get_viewport_rect().size
-		var viewPos = camera.get_screen_center_position()
-		var scrollSpeed = 4.0*60.0*delta
-		
-		# Left
-		# snap the limit to the edge of the camera if snap out of range
-		if limitLeft > viewPos.x-viewSize.x*0.5:
-			camera.limit_left = max(viewPos.x-viewSize.x*0.5,camera.limit_left)
-		# if limit is inside the camera then pan over
-		if abs(camera.limit_left-(viewPos.x-viewSize.x*0.5)) <= viewSize.x*0.5:
-			@warning_ignore('narrowing_conversion')
-			camera.limit_left = move_toward(camera.limit_left,limitLeft,scrollSpeed)
-		# else just snap the camera limit since it's not going to move the camera
-		else:
-			camera.limit_left = limitLeft
-		
-		# Right
-		# snap the limit to the edge of the camera if snap out of range
-		if limitRight < viewPos.x+viewSize.x*0.5:
-			camera.limit_right = min(viewPos.x+viewSize.x*0.5,camera.limit_right)
-		# if limit is inside the camera then pan over
-		if abs(camera.limit_right-(viewPos.x+viewSize.x*0.5)) <= viewSize.x*0.5:
-			@warning_ignore('narrowing_conversion')
-			camera.limit_right = move_toward(camera.limit_right,limitRight,scrollSpeed)
-		# else just snap the camera limit since it's not going to move the camera
-		else:
-			camera.limit_right = limitRight
-
-		if !Global.y_wrap:
-			# Top
-			# snap the limit to the edge of the camera if snap out of range
-			if limitTop > viewPos.y-viewSize.y*0.5:
-				camera.limit_top = max(viewPos.y-viewSize.y*0.5,camera.limit_top)
-			# if limit is inside the camera then pan over
-			if abs(camera.limit_top-(viewPos.y-viewSize.y*0.5)) <= viewSize.y*0.5:
-				@warning_ignore('narrowing_conversion')
-				camera.limit_top = move_toward(camera.limit_top,limitTop,scrollSpeed)
-			# else just snap the camera limit since it's not going to move the camera
-			else:
-				camera.limit_top = limitTop
-			
-			# Bottom
-			# snap the limit to the edge of the camera if snap out of range
-			if limitBottom < viewPos.y+viewSize.y*0.5:
-				camera.limit_bottom = min(viewPos.y+viewSize.y*0.5,camera.limit_bottom)
-			# if limit is inside the camera then pan over
-			if abs(camera.limit_bottom-(viewPos.y+viewSize.y*0.5)) <= viewSize.y*0.5:
-				@warning_ignore('narrowing_conversion')
-				camera.limit_bottom = move_toward(camera.limit_bottom,limitBottom,scrollSpeed)
-			# else just snap the camera limit since it's not going to move the camera
-			else:
-				camera.limit_bottom = limitBottom
+		#if camLockTime > 0: Its faster to just do the math.
+		camLockTime -= delta
 		
 		#rumbling timer
 		if cameraShakeTime > 0.0:
@@ -828,7 +763,7 @@ func _physics_process(delta):
 		if camera and global_position.y != test_pos:
 			camera.global_position.y = wrapf(camera.global_position.y,0,2048)
 	# Death at border bottom
-	elif global_position.y > limitBottom and Global.stageClearPhase == 0:
+	elif global_position.y > limitBottom and !Global.stage_cleared:
 		kill()
 	
 	# Stop movement at borders
@@ -907,7 +842,7 @@ func _physics_process(delta):
 func RandomOffset() -> Vector2:
 	return Vector2(randf_range(-shakeStrength,shakeStrength),randf_range(-shakeStrength,shakeStrength))
 
-# Input buttons
+## Input buttons
 func set_inputs():
 	# player control inputs
 	# check if ai or player 2
@@ -1199,7 +1134,7 @@ func get_ring():
 		partner.get_ring()
 
 func super_form_ready() -> bool:
-	if Global.stageClearPhase == 0 and (Global.emeralds == 127 and rings > 49 and !is_super):
+	if !Global.stage_cleared and (Global.emeralds == 127 and rings > 49 and !is_super):
 		return true
 	return false
 

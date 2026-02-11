@@ -29,7 +29,7 @@ func _on_BoundrySetter_body_entered(body: Player2D):
 	# set boundry settings
 	if (!Engine.is_editor_hint()):
 		# Check body has a camera variable
-		if body.camera and Global.stageClearPhase == 0:
+		if body.camera and !Global.stage_cleared:
 			# Check if set boundry is true, if it is then set the camera's boundries
 			if setLeft:
 				body.limitLeft = max(leftBoundry,Global.hardBorderLeft)

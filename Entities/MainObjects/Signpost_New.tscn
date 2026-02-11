@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://l26y1wupkm3f"]
+[gd_scene format=3 uid="uid://l26y1wupkm3f"]
 
 [ext_resource type="Material" uid="uid://bveqi5m5ihsgj" path="res://Shaders/PlayerPalette.tres" id="1_kh2rr"]
 [ext_resource type="Texture2D" uid="uid://t0a50iu2sqj1" path="res://Graphics/Items/goal_signs.png" id="2_0uxmf"]
@@ -146,31 +146,30 @@ _data = {
 &"Tails": SubResource("Animation_g2rwe")
 }
 
-[node name="SignpostNew" type="Node2D"]
+[node name="SignpostNew" type="Node2D" unique_id=2084193526]
 script = ExtResource("3_fwd0o")
 
-[node name="Signpost" type="Sprite2D" parent="."]
+[node name="Signpost" type="Sprite2D" parent="." unique_id=415556925]
 material = ExtResource("1_kh2rr")
 texture = ExtResource("2_0uxmf")
 offset = Vector2(0, -24)
 hframes = 12
 region_rect = Rect2(0, 0, 48, 48)
 
-[node name="Animator" type="AnimationPlayer" parent="Signpost"]
-libraries = {
-&"": SubResource("AnimationLibrary_3s12x")
-}
-autoplay = "RESET"
+[node name="Animator" type="AnimationPlayer" parent="Signpost" unique_id=1441145620]
+libraries/ = SubResource("AnimationLibrary_3s12x")
+autoplay = &"RESET"
 
-[node name="GoalPost" type="AudioStreamPlayer" parent="Signpost"]
+[node name="GoalPost" type="AudioStreamPlayer" parent="Signpost" unique_id=1598354804]
 stream = ExtResource("4_er5i5")
 bus = &"SFX"
 
-[node name="GoalPost2P" type="AudioStreamPlayer" parent="Signpost"]
+[node name="GoalPost2P" type="AudioStreamPlayer" parent="Signpost" unique_id=120677596]
 stream = ExtResource("5_yjxdb")
 bus = &"SFX"
 
-[node name="Timer" type="Timer" parent="."]
+[node name="TwoPlayerTimer" type="Timer" parent="." unique_id=316026656]
 wait_time = 3.0
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="Signpost/Animator" to="." method="_on_animator_animation_finished"]
+[connection signal="timeout" from="TwoPlayerTimer" to="." method="_on_TwoPlayerTimer_timeout"]

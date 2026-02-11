@@ -15,7 +15,7 @@ func  _ready() -> void:
 		queue_free()
 	if get_node_or_null('VisibleOnScreenEnabler2D') != null:
 		$VisibleOnScreenEnabler2D.visible = true
-	destroyed.connect(On_destroyed)
+	destroyed.connect(_on_destroyed)
 
 func _process(delta):
 	# checks if player hit has players inside
@@ -98,5 +98,5 @@ func destroy():
 	# free node
 	queue_free()
 
-func On_destroyed():
+func _on_destroyed():
 	pass

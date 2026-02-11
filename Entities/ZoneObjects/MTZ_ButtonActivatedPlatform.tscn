@@ -1,17 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://xgv0jguatv2j"]
+[gd_scene format=3 uid="uid://xgv0jguatv2j"]
 
 [ext_resource type="Script" uid="uid://j2bmihgk30st" path="res://Scripts/Objects/mtz_button_activated_platform.gd" id="1_33w44"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hjb5j"]
 size = Vector2(128, 24)
 
-[node name="Platform" type="AnimatableBody2D"]
+[node name="Platform" type="AnimatableBody2D" unique_id=1063870280]
 process_priority = 10
 collision_layer = 8207
 collision_mask = 0
 script = ExtResource("1_33w44")
 
-[node name="Shape2D" type="CollisionShape2D" parent="."]
+[node name="Shape2D" type="CollisionShape2D" parent="." unique_id=1178189992]
 shape = SubResource("RectangleShape2D_hjb5j")
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=68786548]

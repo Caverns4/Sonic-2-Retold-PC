@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 @export var music = preload("res://Audio/Soundtrack/s2br_Options.ogg")
 

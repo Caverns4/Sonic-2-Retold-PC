@@ -72,7 +72,7 @@ func playNormalMusic():
 	# Heirarchy:
 	# Assume theme is 0 by default
 	
-	if Global.stageClearPhase > 0:
+	if Global.stage_cleared:
 		return
 	
 	currentTheme = THEME.NORMAL # Assume normal level Theme
