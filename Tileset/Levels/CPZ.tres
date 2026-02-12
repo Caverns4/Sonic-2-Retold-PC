@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=47 format=3 uid="uid://degtrdfi1sc00"]
+[gd_resource type="TileSet" format=3 uid="uid://degtrdfi1sc00"]
 
 [ext_resource type="Texture2D" uid="uid://ddkj4dk5n0tkx" path="res://Graphics/Tiles/CPZ/CPZ_Blocks_Redux.png" id="2_6r6ns"]
 [ext_resource type="Texture2D" uid="uid://bk0t2arr06ftt" path="res://Graphics/Backgrounds/CPZ/CPZBGBlocks.png" id="2_fnsjo"]

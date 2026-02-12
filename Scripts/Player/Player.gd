@@ -729,10 +729,8 @@ func _physics_process(delta):
 		# count down pushing_wall
 		pushing_wall -= sign(pushing_wall)
 	
-	
-	## TODO: Rewrite camera system
 	# Camera settings
-	if (camera != null):
+	if camera:
 		
 		# Lerp camera scroll based on if on floor
 		var playerOffset = ((abs(global_position.y-camera.get_target_position().y)*2)/camDist.y)

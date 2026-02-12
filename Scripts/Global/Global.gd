@@ -123,7 +123,6 @@ var fightingBoss: bool = false
 var stage_cleared: bool = false:
 	set(value):
 		stage_cleared = value
-		Main.can_pause = !value
 		timerActive = !value
 		timerActiveP2 = !value
 
@@ -462,11 +461,13 @@ func emit_stage_started():
 func emit_await_stage_end():
 	emit_signal("await_stage_end")
 	stage_cleared = true
+	Main.can_pause = false
 	
 
 func emit_stage_clear():
 	emit_signal("stage_clear")
 	stage_cleared = true
+	Main.can_pause = false
 	var currentTheme = SoundDriver.themes[SoundDriver.THEME.RESULTS]
 	SoundDriver.playMusic(currentTheme)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dixrimnofcfc5"]
+[gd_scene format=3 uid="uid://dixrimnofcfc5"]
 
 [ext_resource type="Script" uid="uid://cbh8qcpx617lo" path="res://Scripts/Menu/delete_save_panel.gd" id="1_mksyj"]
 [ext_resource type="Texture2D" uid="uid://dkbs1h30coegf" path="res://Graphics/Menus/Character_Box.png" id="2_440cw"]
@@ -62,23 +62,23 @@ _data = {
 &"spin": SubResource("Animation_440cw")
 }
 
-[node name="DeleteSavePanel" type="Node2D"]
+[node name="DeleteSavePanel" type="Node2D" unique_id=1014442072]
 script = ExtResource("1_mksyj")
 
-[node name="DataBox" type="Sprite2D" parent="."]
+[node name="DataBox" type="Sprite2D" parent="." unique_id=130298376]
 z_index = 1
 position = Vector2(-2, -4)
 texture = ExtResource("2_440cw")
 centered = false
 
-[node name="Label" type="Label" parent="DataBox"]
+[node name="Label" type="Label" parent="DataBox" unique_id=494009149]
 offset_left = 16.0
 offset_top = 88.0
 offset_right = 72.0
 offset_bottom = 96.0
 text = "delete"
 
-[node name="CharacterIcon" type="Sprite2D" parent="."]
+[node name="CharacterIcon" type="Sprite2D" parent="." unique_id=1033147469]
 unique_name_in_owner = true
 z_index = 2
 position = Vector2(40, 39)
@@ -86,8 +86,6 @@ texture = ExtResource("3_mksyj")
 hframes = 5
 vframes = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_w5tei")
-}
-autoplay = "RESET"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=452192354]
+libraries/ = SubResource("AnimationLibrary_w5tei")
+autoplay = &"RESET"
