@@ -114,11 +114,11 @@ func _on_crt_filter_button_pressed() -> void:
 
 func _on_aspect_ratio_button_pressed() -> void:
 	Global.aspectRatio = wrapi(Global.aspectRatio+1,0,Global.aspectResolutions.size())
-	if !Global.IsFullScreen():
-		Global.SetupWindowSize()
-	else:
-		var resolution = Global.aspectResolutions[Global.aspectRatio]
-		get_window().content_scale_size = Vector2i(resolution.x*2, resolution.y*2)
+	#if !Global.IsFullScreen():
+	Global.SetupWindowSize()
+	#else:
+	#	var resolution = Global.aspectResolutions[Global.aspectRatio]
+	#	get_window().content_scale_size = Vector2i(resolution.x*Global.zoomSize, resolution.y*Global.zoomSize)
 	aspect_ratio_button.text = "Aspect Ratio:    " + Global.aspect_strings[int(Global.aspectRatio)]
 
 
