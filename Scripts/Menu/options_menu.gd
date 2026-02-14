@@ -125,12 +125,13 @@ func _on_aspect_ratio_button_pressed() -> void:
 func _on_scale_button_pressed() -> void:
 	controls_locked = true
 	var sfx_menu: SliderPopUpMenu = slider_menu_scene.instantiate()
-	sfx_menu.initial_value = Global.zoomSize-1
+	sfx_menu.initial_value = Global.zoomSize
+	sfx_menu.min_slider_value = 1
 	sfx_menu.max_slider_value = 5
 	sfx_menu.title = "Scale:"
 	add_child(sfx_menu)
 	var new_scale = await sfx_menu.menu_exit
-	Global.zoomSize = new_scale+1
+	Global.zoomSize = new_scale
 	if (
 		(get_window().mode != Window.MODE_EXCLUSIVE_FULLSCREEN) and 
 		(get_window().mode != Window.MODE_FULLSCREEN)):

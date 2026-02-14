@@ -8,6 +8,8 @@ var clampSounds = [-40.0,6.0]
 
 ## The value this slider was initialized to
 var initial_value: int = 0
+## Minimum value of the slider
+var min_slider_value: int = 0
 ## Maximum value of the slider
 var max_slider_value: int = 100
 ## The name of the Slider

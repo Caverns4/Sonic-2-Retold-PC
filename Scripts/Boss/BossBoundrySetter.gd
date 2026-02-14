@@ -31,13 +31,13 @@ func _ready() -> void:
 	if Global.two_player_mode:
 		queue_free()
 
-func _on_BoundrySetter_body_entered(body):
+func _on_BoundrySetter_body_entered(body: Player2D):
 	if !Engine.is_editor_hint():
 		$CollisionShape2D.set.call_deferred("disabled",true)
 		# set boundry settings
 		if !bossActive:
 			# Check body has a camera variable
-			if (body.get("camera") != null):
+			if body.camera:
 				var boss = get_node_or_null(bossPath)
 				if boss != null:
 					bossActive = true
@@ -51,6 +51,7 @@ func _on_BoundrySetter_body_entered(body):
 							i.limitRight = min(global_position.x+screenSize.x/2,Global.hardBorderRight)
 						if lockBottom:
 							i.limitBottom = min(global_position.y+screenSize.y/2,Global.hardBorderBottom)
+						i.snap_camera_to_limits()
 					
 					if !Global.players[0].is_super:
 						SoundDriver.set_volume(-50)
@@ -87,3 +88,4 @@ func boss_completed():
 			i.rachetScrollTop = ratchetScrollTop
 			i.rachetScrollRight = ratchetScrollRight
 			i.rachetScrollBottom = ratchetScrollBottom
+			i.snap_camera_to_limits()

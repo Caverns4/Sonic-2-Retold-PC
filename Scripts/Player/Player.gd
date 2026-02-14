@@ -1364,10 +1364,10 @@ func cam_update(forceMove = false):
 	_adjust_camera_zoom()
 
 func _adjust_camera_zoom():
-	if movement.length() < 600.0:
-		camera.zoom.x = move_toward(camera.zoom.x, 1.0, get_physics_process_delta_time()/3)
-	else:
+	if movement.length() > 600.0 and Global.zoomSize > 1:
 		camera.zoom.x = move_toward(camera.zoom.x, 0.8, get_physics_process_delta_time()/3)
+	else:
+		camera.zoom.x = move_toward(camera.zoom.x, 1.0, get_physics_process_delta_time()/3)
 	camera.zoom.y = camera.zoom.x
 
 func lock_camera(time: float = 1):

@@ -39,6 +39,7 @@ func _on_BoundrySetter_body_entered(body: Player2D):
 				body.limitRight = min(rightBoundry,Global.hardBorderRight)
 			if setBottom:
 				body.limitBottom = min(bottomBoundry,Global.hardBorderBottom)
+			body.snap_camera_to_limits()
 
 
 func _process(_delta):
