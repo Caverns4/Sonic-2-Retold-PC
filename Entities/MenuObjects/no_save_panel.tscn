@@ -1,28 +1,52 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqo5gtlj0xdsy"]
+[gd_scene format=3 uid="uid://dqo5gtlj0xdsy"]
 
 [ext_resource type="Script" uid="uid://c6yvyol22q5ah" path="res://Scripts/Menu/no_save_panel.gd" id="1_i6q4q"]
 [ext_resource type="Texture2D" uid="uid://dkbs1h30coegf" path="res://Graphics/Menus/Character_Box.png" id="2_g1ty6"]
 [ext_resource type="Texture2D" uid="uid://b2m8w8il8ycx8" path="res://Graphics/Menus/CharacterPreviews.png" id="5_op2sm"]
 
-[node name="NoSavePanel" type="Node2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7prb"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_544rh"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6q4q"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g1ty6"]
+draw_center = false
+
+[sub_resource type="Theme" id="Theme_k7prb"]
+Button/colors/icon_focus_color = Color(0.93333334, 0.93333334, 0, 1)
+Button/colors/icon_hover_color = Color(0.93333334, 0.93333334, 0, 1)
+Button/colors/icon_hover_pressed_color = Color(0.93333334, 0, 0, 1)
+Button/colors/icon_pressed_color = Color(0.93333334, 0, 0, 1)
+Button/styles/focus = SubResource("StyleBoxFlat_k7prb")
+Button/styles/hover = SubResource("StyleBoxFlat_544rh")
+Button/styles/normal = SubResource("StyleBoxFlat_i6q4q")
+Button/styles/pressed = SubResource("StyleBoxFlat_g1ty6")
+
+[node name="NoSavePanel" type="Button" unique_id=1373281132]
+offset_right = 8.0
+offset_bottom = 8.0
+theme = SubResource("Theme_k7prb")
+icon = ExtResource("2_g1ty6")
+vertical_icon_alignment = 0
 script = ExtResource("1_i6q4q")
 
-[node name="DataBox" type="Sprite2D" parent="."]
-z_index = 1
-position = Vector2(-2, -4)
-texture = ExtResource("2_g1ty6")
-centered = false
-
-[node name="Label" type="Label" parent="DataBox"]
+[node name="Label" type="Label" parent="." unique_id=1158037855]
+layout_mode = 0
 offset_left = 16.0
-offset_top = 88.0
+offset_top = 72.0
 offset_right = 72.0
-offset_bottom = 96.0
+offset_bottom = 80.0
 text = "no save"
 
-[node name="CharacterIcon" type="Sprite2D" parent="."]
+[node name="CharacterIcon" type="Sprite2D" parent="." unique_id=633381395]
 unique_name_in_owner = true
 z_index = 2
 position = Vector2(40, 40)
 texture = ExtResource("5_op2sm")
 vframes = 8
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

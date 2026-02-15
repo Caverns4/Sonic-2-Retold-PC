@@ -10,7 +10,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterIcon:frame")
+tracks/0/path = NodePath("../CharacterIcon:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -27,7 +27,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterIcon:frame")
+tracks/0/path = NodePath("../CharacterIcon:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -45,7 +45,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterIcon:frame")
+tracks/0/path = NodePath("../CharacterIcon:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -62,7 +62,9 @@ _data = {
 &"spin": SubResource("Animation_440cw")
 }
 
-[node name="DeleteSavePanel" type="Node2D" unique_id=1014442072]
+[node name="DeleteSavePanel" type="Button" unique_id=998142527]
+offset_right = 8.0
+offset_bottom = 8.0
 script = ExtResource("1_mksyj")
 
 [node name="DataBox" type="Sprite2D" parent="." unique_id=130298376]
@@ -87,5 +89,6 @@ hframes = 5
 vframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=452192354]
+root_node = NodePath("")
 libraries/ = SubResource("AnimationLibrary_w5tei")
 autoplay = &"RESET"

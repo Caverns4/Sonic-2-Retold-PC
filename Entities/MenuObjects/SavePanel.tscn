@@ -1,43 +1,62 @@
-[gd_scene load_steps=6 format=3 uid="uid://douh8pscjw7hm"]
+[gd_scene format=3 uid="uid://douh8pscjw7hm"]
 
 [ext_resource type="Texture2D" uid="uid://6x38yqia731l" path="res://Graphics/Menus/DataBox.png" id="1_k7mkp"]
 [ext_resource type="Script" uid="uid://fhosnxb7v1xy" path="res://Scripts/Menu/save_panel.gd" id="1_vt2ve"]
-[ext_resource type="Texture2D" uid="uid://gdlceifl27va" path="res://Graphics/Menus/MenuBGTiles.png" id="2_8ocpa"]
 [ext_resource type="Texture2D" uid="uid://d3g0w6uwq7bvj" path="res://Graphics/Menus/Icons_All.png" id="2_85gd5"]
 [ext_resource type="Texture2D" uid="uid://b2m8w8il8ycx8" path="res://Graphics/Menus/CharacterPreviews.png" id="4_4i5fd"]
 
-[node name="SavePanel" type="Node2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7prb"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_544rh"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6q4q"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g1ty6"]
+draw_center = false
+
+[sub_resource type="Theme" id="Theme_vt2ve"]
+Button/colors/icon_focus_color = Color(0.93333334, 0.93333334, 0, 1)
+Button/colors/icon_hover_color = Color(0.93333334, 0.93333334, 0, 1)
+Button/colors/icon_hover_pressed_color = Color(0.93333334, 0, 0, 1)
+Button/colors/icon_pressed_color = Color(0.93333334, 0, 0, 1)
+Button/styles/focus = SubResource("StyleBoxFlat_k7prb")
+Button/styles/hover = SubResource("StyleBoxFlat_544rh")
+Button/styles/normal = SubResource("StyleBoxFlat_i6q4q")
+Button/styles/pressed = SubResource("StyleBoxFlat_g1ty6")
+
+[node name="SavePanel" type="Button" unique_id=6753834]
+offset_right = 96.0
+offset_bottom = 176.0
+theme = SubResource("Theme_vt2ve")
+icon = ExtResource("1_k7mkp")
 script = ExtResource("1_vt2ve")
+character_id = null
 
-[node name="DataBox" type="Sprite2D" parent="."]
-z_index = 1
-position = Vector2(48, 96)
-texture = ExtResource("1_k7mkp")
-
-[node name="Label" type="Label" parent="DataBox"]
-offset_left = -31.0
-offset_top = 80.0
-offset_right = 25.0
-offset_bottom = 88.0
+[node name="Label" type="Label" parent="." unique_id=1774549869]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 160.0
+offset_right = 72.0
+offset_bottom = 168.0
 text = "no save"
 
-[node name="TitleBanner" type="Sprite2D" parent="."]
-position = Vector2(45, 32)
-texture = ExtResource("2_8ocpa")
-region_enabled = true
-region_rect = Rect2(0, 48, 96, 56)
-
-[node name="LevelIcon" type="Sprite2D" parent="TitleBanner"]
+[node name="LevelIcon" type="Sprite2D" parent="." unique_id=519870549]
 unique_name_in_owner = true
-position = Vector2(-16, -12)
+position = Vector2(12, 8)
+scale = Vector2(2, 2)
 texture = ExtResource("2_85gd5")
 centered = false
 hframes = 4
 vframes = 7
 
-[node name="CharacterIcon" type="Sprite2D" parent="."]
+[node name="CharacterIcon" type="Sprite2D" parent="." unique_id=1415201798]
 unique_name_in_owner = true
 z_index = 2
-position = Vector2(46, 96)
+position = Vector2(48, 96)
 texture = ExtResource("4_4i5fd")
 vframes = 8
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

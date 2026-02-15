@@ -224,10 +224,10 @@ func reset_values():
 
 
 func _on_player_pressed() -> void:
-	Global.saved_zone_id = Global.ZONES.EMERALD_HILL
 	Global.saved_act_id = 0
 	Global.emeralds = 126
-	SetFadeOut(zone_loader)
+	#SetFadeOut(zone_loader)
+	SetFadeOut(level_select_menu)
 
 
 func _on_player_vs_pressed() -> void:

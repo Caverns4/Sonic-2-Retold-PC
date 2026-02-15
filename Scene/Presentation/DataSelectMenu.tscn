@@ -3,16 +3,51 @@
 [ext_resource type="Script" uid="uid://ce2sictyaj6jn" path="res://Scripts/Menu/data_select_menu.gd" id="1_y1b2j"]
 [ext_resource type="TileSet" uid="uid://bk1ere21h4285" path="res://Tileset/Menus.tres" id="2_y1b2j"]
 [ext_resource type="PackedScene" uid="uid://douh8pscjw7hm" path="res://Entities/MenuObjects/SavePanel.tscn" id="3_echdj"]
+[ext_resource type="Texture2D" uid="uid://bf2lhfxal46gj" path="res://Graphics/Menus/ButtonUp.png" id="4_iwpom"]
 [ext_resource type="PackedScene" uid="uid://dqo5gtlj0xdsy" path="res://Entities/MenuObjects/no_save_panel.tscn" id="5_3bafg"]
 [ext_resource type="Theme" uid="uid://qblf2beyokrn" path="res://Resources/TwoPlayerMenuTheme.tres" id="5_slue5"]
-[ext_resource type="PackedScene" uid="uid://dixrimnofcfc5" path="res://Entities/MenuObjects/Delete_save_panel.tscn" id="7_y1b2j"]
+[ext_resource type="Texture2D" uid="uid://ddug2c5c54nvl" path="res://Graphics/Menus/ButtonDown.png" id="5_wvq33"]
 [ext_resource type="AudioStream" uid="uid://uay8t1b3i1hi" path="res://Audio/SFX/Gimmicks/s2br_Switch.wav" id="8_iwpom"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ucjvh"]
+texture = ExtResource("4_iwpom")
+texture_margin_left = 8.0
+texture_margin_top = 4.0
+texture_margin_right = 8.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_slue5"]
+texture = ExtResource("4_iwpom")
+texture_margin_left = 8.0
+texture_margin_top = 4.0
+texture_margin_right = 8.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i2h8k"]
+texture = ExtResource("5_wvq33")
+texture_margin_left = 8.0
+texture_margin_top = 4.0
+texture_margin_right = 8.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1b2j"]
+bg_color = Color(1.5561339, 0, 0, 0)
+border_width_top = 8
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_iwpom"]
+HScrollBar/styles/grabber = SubResource("StyleBoxTexture_ucjvh")
+HScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_slue5")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_i2h8k")
+HScrollBar/styles/scroll = SubResource("StyleBoxFlat_y1b2j")
 
 [node name="DataSelect" type="Control" unique_id=1562835269]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_y1b2j")
 
 [node name="Backdrop" type="Parallax2D" parent="." unique_id=362907693]
@@ -65,33 +100,42 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="SaveFileContainer" type="Node2D" parent="." unique_id=2117464831]
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1662878450]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.125
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_iwpom")
+follow_focus = true
+
+[node name="SaveFileContainer" type="HBoxContainer" parent="ScrollContainer" unique_id=1880676420]
 unique_name_in_owner = true
-position = Vector2(0, 32)
+layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="NoSavePanel" parent="SaveFileContainer" unique_id=2044579652 instance=ExtResource("5_3bafg")]
-position = Vector2(8, 0)
+[node name="NoSavePanel" parent="ScrollContainer/SaveFileContainer" unique_id=2044579652 instance=ExtResource("5_3bafg")]
+layout_mode = 2
 
-[node name="SavePanel" parent="SaveFileContainer" unique_id=46724171 instance=ExtResource("3_echdj")]
-position = Vector2(104, 0)
+[node name="SavePanel" parent="ScrollContainer/SaveFileContainer" unique_id=46724171 instance=ExtResource("3_echdj")]
+layout_mode = 2
 
-[node name="SavePanel2" parent="SaveFileContainer" unique_id=1835513417 instance=ExtResource("3_echdj")]
-position = Vector2(208, 0)
+[node name="SavePanel2" parent="ScrollContainer/SaveFileContainer" unique_id=1835513417 instance=ExtResource("3_echdj")]
+layout_mode = 2
 
-[node name="SavePanel3" parent="SaveFileContainer" unique_id=133056875 instance=ExtResource("3_echdj")]
-position = Vector2(312, 0)
+[node name="SavePanel3" parent="ScrollContainer/SaveFileContainer" unique_id=133056875 instance=ExtResource("3_echdj")]
+layout_mode = 2
 
-[node name="SavePanel4" parent="SaveFileContainer" unique_id=406826946 instance=ExtResource("3_echdj")]
-position = Vector2(416, 0)
+[node name="SavePanel4" parent="ScrollContainer/SaveFileContainer" unique_id=406826946 instance=ExtResource("3_echdj")]
+layout_mode = 2
 
-[node name="SavePanel5" parent="SaveFileContainer" unique_id=668580021 instance=ExtResource("3_echdj")]
-position = Vector2(520, 0)
+[node name="SavePanel5" parent="ScrollContainer/SaveFileContainer" unique_id=668580021 instance=ExtResource("3_echdj")]
+layout_mode = 2
 
-[node name="SavePanel6" parent="SaveFileContainer" unique_id=614272837 instance=ExtResource("3_echdj")]
-position = Vector2(624, 0)
-
-[node name="DeleteSavePanel" parent="SaveFileContainer" unique_id=1908393536 instance=ExtResource("7_y1b2j")]
-position = Vector2(728, 0)
+[node name="SavePanel6" parent="ScrollContainer/SaveFileContainer" unique_id=614272837 instance=ExtResource("3_echdj")]
+layout_mode = 2
 
 [node name="Switch" type="AudioStreamPlayer" parent="." unique_id=1330843891]
 stream = ExtResource("8_iwpom")

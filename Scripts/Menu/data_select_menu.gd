@@ -33,81 +33,17 @@ func _ready() -> void:
 	SoundDriver.music.stream = music
 	SoundDriver.music.play()
 	
-	var pos: int = 8
-	var index = 0
-	for i:DataSelectPanel in %SaveFileContainer.get_children():
-		i.global_position.x = pos
-		pos+=104
-		i.save_game_id = index
-		index+=1
+	var index: int = 0
+	for child:DataSelectPanel in %SaveFileContainer.get_children():
+		child.save_game_id = index
+		child.press.connect(use)
+		index += 1
 	
-	highlight_selected_child(current_selection)
+	%SaveFileContainer.get_child(0).grab_focus()
 
 
-func _physics_process(delta: float) -> void:
-	timer+=delta
-	#Recieve input
-	_unhandledInput(Input)
-	if state <= MENU_STATE.DELETE_FILE:
-		updateCharacterSelection()
-	
-	var target_pos = clampf(
-		%SaveFileContainer.get_child(current_selection).global_position.x+56,
-		160,
-		(%SaveFileContainer.get_child_count()-1) * 104
-	)
-	
-	$Camera2D.global_position.x = move_toward(
-		$Camera2D.global_position.x,
-		target_pos,
-		delta * 512
-	)
-	#Remember input
-	lastInput = inputCue
-	
-
-func _unhandledInput(_event):
-	#Player 1
-	inputCue = Input.get_vector("gm_left","gm_right","gm_up","gm_down")
-	inputCue.x = round(inputCue.x)
-	inputCue.y = round(inputCue.y)
-	#PLayer 2
-	inputCueP2 = Input.get_vector("gm_left_P2","gm_right_P2","gm_up_P2","gm_down_P2")
-	inputCueP2.x = round(inputCueP2.x)
-	inputCueP2.y = round(inputCueP2.y)
-
-func updateCharacterSelection():
-	if inputCue.x !=0 and inputCue.x != lastInput.x:
-		current_selection += round(inputCue.x)
-		current_selection = wrapi(current_selection,0,%SaveFileContainer.get_child_count())
-		highlight_selected_child(current_selection)
-		SoundDriver.play_sound2(sfx_Select)
-		
-	if inputCue.y !=0 and inputCue.y != lastInput.y:
-		var change: bool = selected_save_slot.update_menu_item(inputCue.y)
-		if change:
-			$Switch.play()
-	
-	if (Input.is_action_just_pressed("gm_action") or
-	Input.is_action_just_pressed("gm_pause")):
-		if state == MENU_STATE.SAVE_SELECT:
-			UseSelectedItem()
-		elif state == MENU_STATE.DELETE_FILE:
-			delete_slot.ConfirmDeletion(selected_save_slot)
-	
-	if (Input.is_action_just_pressed("gm_action2") or
-	Input.is_action_just_pressed("gm_action2_P2")):
-		if state == MENU_STATE.SAVE_SELECT:
-			state = MENU_STATE.DECIDED
-			Main.change_scene(title_scene)
-		elif state == MENU_STATE.DELETE_FILE:
-			delete_slot.ClearDeletionState()
-
-func highlight_selected_child(current: int):
-	for i in %SaveFileContainer.get_child_count():
-		%SaveFileContainer.get_child(i).update_selection_state(i == current)
-		if i == current:
-			selected_save_slot = %SaveFileContainer.get_child(i)
+func use(save_file_id: int):
+	print(save_file_id)
 
 func UseSelectedItem():
 	var fadeout: bool = selected_save_slot.use()

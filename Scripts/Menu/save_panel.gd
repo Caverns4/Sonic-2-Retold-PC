@@ -1,15 +1,11 @@
-@tool
 extends DataSelectPanel
 
-@export var level_id: Global.ZONES
+var level_id: Global.ZONES
+@onready var text_label: Label = $Label
 
-func _ready() -> void:
-	if Engine.is_editor_hint():
-		return
-	
+func _update_save_preview():
 	await get_tree().process_frame
 	data = Global.LoadSaveGameSlotData(save_game_id)
-	
 	if data:
 		character_id = data[0]
 		level_id = data[3]
@@ -18,17 +14,6 @@ func _ready() -> void:
 	%CharacterIcon.frame = character_id
 	%LevelIcon.frame = level_id
 
-
-func _process(_delta: float) -> void:
-	%CharacterIcon.frame = character_id
-	%LevelIcon.frame = level_id
-
-func update_selection_state(state: bool) -> void:
-	if state:
-		$DataBox.modulate = Color.YELLOW
-	else:
-		$DataBox.modulate = Color.WHITE
-
 var skip_zones = [Global.ZONES.WOOD_GADGET,
 Global.ZONES.JEWEL_GROTTO,
 Global.ZONES.WINTER,
@@ -36,6 +21,8 @@ Global.ZONES.SAND_SHOWER,
 Global.ZONES.TROPICAL,
 Global.ZONES.SKY_FORTRESS,
 Global.ZONES.DEATH_EGG]
+
+## TODO: Scrap this
 
 func update_menu_item(direction: int = 0):
 	if !data:

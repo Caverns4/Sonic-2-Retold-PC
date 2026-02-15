@@ -1,25 +1,19 @@
 class_name DataSelectPanel
-extends Node2D
+extends Button
 
 @export var character_id: Global.PLAYER_MODES = 0 as Global.PLAYER_MODES
 
-var save_game_id: int = 0
-var selected: bool = true
+var save_game_id: int = 0:
+	set(value):
+		save_game_id = value
+		_update_save_preview()
+	
 var data: Array = []
 
-@onready var text_label = $DataBox/Label
+signal press(saved_game_id)
 
-## Called when this menu item's selection state changes.
-func update_selection_state(state: bool) -> void:
-	if state:
-		$DataBox.modulate = Color.YELLOW
-	else:
-		$DataBox.modulate = Color.WHITE
+func _update_save_preview():
+	pass
 
-## When input is given on this child.
-func update_menu_item(_direction: int = 0):
-	return false
-
-## When the Action or start button is pressed on this item 
-func use() -> bool:
-	return false
+func _on_pressed() -> void:
+	press.emit(save_game_id)
