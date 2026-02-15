@@ -19,7 +19,6 @@ func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		$Sprite2D.texture = SpriteTexture
 		queue_redraw()
-	
 
 
 func physics_collision(body:Player2D, hitVector):

@@ -138,7 +138,7 @@ const waterPhysicsList: Array = [
 ]
 # ================
 
-var Ring = preload("res://Entities/Items/Ring.tscn")
+var Ring: PackedScene = preload("res://Entities/Items/Ring.tscn")
 var ringChannel: int = 0
 
 var Particle: PackedScene = preload("res://Entities/Misc/GenericParticle.tscn")
@@ -230,7 +230,7 @@ const INPUTACTIONS_P1 = [["gm_left","gm_right"],["gm_up","gm_down"],"gm_action",
 const INPUTACTIONS_P2 = [["gm_left_P2","gm_right_P2"],["gm_up_P2","gm_down_P2"],"gm_action_P2","gm_action2_P2","gm_action3_P2","gm_super_P2","gm_pause_P2"]
 var inputActions = INPUTACTIONS_P1
 # 0 = ai, 1 = player 1, 2 = player 2
-var playerControl = 1
+var playerControl: int = 1
 
 var partner: Player2D = null
 var partnerPanic = 0
@@ -450,7 +450,7 @@ func _process(delta):
 		memoryPosition = (memoryPosition + 1) % INPUT_MEMORY_LENGTH
 
 		# Partner ai logic
-		if partner != null && !Global.two_player_mode:
+		if partner && !Global.two_player_mode:
 			# Check if partner panic
 			if partnerPanic <= 0:
 				if partner.playerControl == 0:
@@ -492,7 +492,7 @@ func _process(delta):
 						partner.inputs[INPUTS.ACTION] = 1
 					else:
 						partner.inputs[INPUTS.ACTION] = 0
-
+	
 			# Panic
 			# if partner is locked, and stopped then do a spindash
 			# panic for 128 frames before letting go of spindash
@@ -844,10 +844,7 @@ func RandomOffset() -> Vector2:
 func set_inputs():
 	# player control inputs
 	# check if ai or player 2
-	if playerControl < 0:
-		return
-	
-	if playerControl > 1:
+	if playerControl != 1:
 		# player 2 active time check, if below 0 return to ai state
 		if partnerControlTime <= 0 and playerControl == 2:
 			playerControl = 0

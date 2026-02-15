@@ -1,11 +1,24 @@
+@tool
 extends StaticBody2D
 @export var texture = preload("res://Graphics/Obstacles/Blocks/small_block2.png")
-@export var pieces = Vector2(1,1)
+@export var pieces = Vector2i(1,1)
 var Piece = preload("res://Entities/Misc/BlockPiece.tscn")
 @export var sound = preload("res://Audio/SFX/Gimmicks/s2br_Collapse.wav")
 
 @export_enum("Normal","Fragile")var type = 0
 enum TYPE {NORMAL,CD}
+
+func _ready() -> void:
+	# Change platform shape
+	$CollisionShape2D.shape.size.x = texture.get_size().x
+	$CollisionShape2D.shape.size.y = texture.get_size().y
+	# Change platform sprite texture
+	$Sprite2D.texture = texture
+
+func _process(_delta: float) -> void:
+	if Engine.is_editor_hint():
+		$Sprite2D.texture = texture
+		queue_redraw()
 
 func physics_collision(body, hitVector):
 	# check hit is either left or right
@@ -56,3 +69,8 @@ func physics_collision(body, hitVector):
 				body.movement.x = 0
 				
 	return true
+
+func _draw():
+	if Engine.is_editor_hint():
+		#draw_texture(SpriteTexture,SpriteTexture.get_size()/2,Color.WHITE)
+		draw_texture(texture,-texture.get_size()/2,Color.WHITE)
