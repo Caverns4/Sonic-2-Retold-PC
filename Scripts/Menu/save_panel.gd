@@ -10,7 +10,7 @@ func _update_save_preview():
 		character_id = data[0]
 		level_id = data[3]
 		text_label.text = "file " + str(save_game_id).pad_zeros(2)
-	
+		
 	%CharacterIcon.frame = character_id
 	%LevelIcon.frame = level_id
 

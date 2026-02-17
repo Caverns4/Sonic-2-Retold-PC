@@ -5,6 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://d3g0w6uwq7bvj" path="res://Graphics/Menus/Icons_All.png" id="2_85gd5"]
 [ext_resource type="Texture2D" uid="uid://b2m8w8il8ycx8" path="res://Graphics/Menus/CharacterPreviews.png" id="4_4i5fd"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4i5fd"]
+draw_center = false
+corner_detail = 1
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7prb"]
 draw_center = false
 
@@ -22,6 +26,7 @@ Button/colors/icon_focus_color = Color(0.93333334, 0.93333334, 0, 1)
 Button/colors/icon_hover_color = Color(0.93333334, 0.93333334, 0, 1)
 Button/colors/icon_hover_pressed_color = Color(0.93333334, 0, 0, 1)
 Button/colors/icon_pressed_color = Color(0.93333334, 0, 0, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_4i5fd")
 Button/styles/focus = SubResource("StyleBoxFlat_k7prb")
 Button/styles/hover = SubResource("StyleBoxFlat_544rh")
 Button/styles/normal = SubResource("StyleBoxFlat_i6q4q")
@@ -33,7 +38,6 @@ offset_bottom = 176.0
 theme = SubResource("Theme_vt2ve")
 icon = ExtResource("1_k7mkp")
 script = ExtResource("1_vt2ve")
-character_id = null
 
 [node name="Label" type="Label" parent="." unique_id=1774549869]
 layout_mode = 0
@@ -54,7 +58,6 @@ vframes = 7
 
 [node name="CharacterIcon" type="Sprite2D" parent="." unique_id=1415201798]
 unique_name_in_owner = true
-z_index = 2
 position = Vector2(48, 96)
 texture = ExtResource("4_4i5fd")
 vframes = 8

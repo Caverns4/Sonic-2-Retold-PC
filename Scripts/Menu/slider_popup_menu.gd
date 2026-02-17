@@ -23,6 +23,7 @@ var sound_effect: AudioStreamPlayer = null
 
 
 func  _ready() -> void:
+	SoundDriver.play_sound(sfx_select)
 	title_label.text = title + str(int(initial_value)).lpad(3)
 	slider.value = initial_value
 	slider.max_value = max_slider_value
@@ -41,7 +42,9 @@ func _on_h_slider_value_changed(value: float) -> void:
 
 func _on_accept_button_pressed() -> void:
 	close_menu(slider.value)
+	SoundDriver.play_sound(sfx_confirm)
 
 
 func _on_cancel_button_pressed() -> void:
 	close_menu(initial_value)
+	SoundDriver.play_sound(sfx_cancel)

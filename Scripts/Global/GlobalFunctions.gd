@@ -16,6 +16,16 @@ func getCurrentCamera2D():
 			return camera
 	return null
 
+func get_chaos_emerald_count(value: int):
+	var index: int = 1
+	var emerald_count: int = 0
+	while index < 255:
+		if (value & index) > 0:
+			emerald_count +=1
+		index += index
+	return emerald_count
+
+
 # the original game logic runs at 60 fps, this function is meant to be used to help calculate this,
 # usually a division by the normal delta will cause the game to freak out at different FPS speeds
 func div_by_delta(delta):

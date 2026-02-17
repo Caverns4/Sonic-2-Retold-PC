@@ -101,6 +101,7 @@ grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1662878450]
+clip_contents = false
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.125
@@ -110,6 +111,10 @@ grow_horizontal = 0
 grow_vertical = 0
 theme = SubResource("Theme_iwpom")
 follow_focus = true
+scroll_horizontal = 8
+scroll_horizontal_custom_step = 8.0
+scroll_hint_mode = 1
+tile_scroll_hint = true
 
 [node name="SaveFileContainer" type="HBoxContainer" parent="ScrollContainer" unique_id=1880676420]
 unique_name_in_owner = true

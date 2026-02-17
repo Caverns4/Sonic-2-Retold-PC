@@ -2,6 +2,10 @@
 
 [ext_resource type="FontFile" uid="uid://ml62eqfe7avn" path="res://Graphics/Fonts/small_font.png" id="1_kpnpu"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_20cgu"]
+draw_center = false
+corner_detail = 1
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2x3fi"]
 draw_center = false
 
@@ -28,6 +32,7 @@ Button/colors/icon_normal_color = Color(1, 1, 1, 0)
 Button/constants/h_separation = 0
 Button/font_sizes/font_size = 8
 Button/fonts/font = ExtResource("1_kpnpu")
+Button/styles/disabled = SubResource("StyleBoxFlat_20cgu")
 Button/styles/focus = SubResource("StyleBoxFlat_2x3fi")
 Button/styles/hover = SubResource("StyleBoxFlat_iik4c")
 Button/styles/normal = SubResource("StyleBoxFlat_qrct0")
