@@ -94,6 +94,7 @@ leftLayer = 0
 
 [node name="LayerSwitcher2" parent="Entities" unique_id=599116588 instance=ExtResource("19_fxa4t")]
 position = Vector2(4224, 424)
+onlyOnFloor = true
 
 [node name="LayerSwitcher3" parent="Entities" unique_id=236698181 instance=ExtResource("19_fxa4t")]
 position = Vector2(4344, 538)
@@ -106,6 +107,7 @@ leftLayer = 0
 
 [node name="LayerSwitcher5" parent="Entities" unique_id=128091975 instance=ExtResource("19_fxa4t")]
 position = Vector2(6784, 552)
+onlyOnFloor = true
 
 [node name="LayerSwitcher6" parent="Entities" unique_id=588641595 instance=ExtResource("19_fxa4t")]
 position = Vector2(6904, 668)
@@ -118,6 +120,7 @@ leftLayer = 0
 
 [node name="LayerSwitcher8" parent="Entities" unique_id=736434705 instance=ExtResource("19_fxa4t")]
 position = Vector2(7168, 680)
+onlyOnFloor = true
 
 [node name="LayerSwitcher9" parent="Entities" unique_id=2097313719 instance=ExtResource("19_fxa4t")]
 position = Vector2(7288, 796)
@@ -130,6 +133,7 @@ leftLayer = 0
 
 [node name="LayerSwitcher11" parent="Entities" unique_id=649574436 instance=ExtResource("19_fxa4t")]
 position = Vector2(8832, 424)
+onlyOnFloor = true
 
 [node name="LayerSwitcher12" parent="Entities" unique_id=51706544 instance=ExtResource("19_fxa4t")]
 position = Vector2(8952, 536)
