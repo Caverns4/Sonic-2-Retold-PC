@@ -1,0 +1,310 @@
+[gd_scene format=3 uid="uid://5m871g2m7kxy"]
+
+[ext_resource type="Script" uid="uid://1xy7ot758q3s" path="res://Scripts/Menu/delete_file_popup_menu.gd" id="1_txv0i"]
+[ext_resource type="Texture2D" uid="uid://pybphols1sb2" path="res://Graphics/Menus/MenuBox.png" id="2_02f35"]
+[ext_resource type="FontFile" uid="uid://ml62eqfe7avn" path="res://Graphics/Fonts/small_font.png" id="3_45fqb"]
+[ext_resource type="Texture2D" uid="uid://bf2lhfxal46gj" path="res://Graphics/Menus/ButtonUp.png" id="4_txv0i"]
+[ext_resource type="Texture2D" uid="uid://ddug2c5c54nvl" path="res://Graphics/Menus/ButtonDown.png" id="5_qr7xe"]
+[ext_resource type="Texture2D" uid="uid://c2xdraklm0ah7" path="res://Graphics/title/TitleMenu.png" id="6_jr2rn"]
+[ext_resource type="Texture2D" uid="uid://b6tu5dfysi026" path="res://Graphics/Menus/Robotnik_Del.png" id="7_txv0i"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pn5gd"]
+texture = ExtResource("4_txv0i")
+texture_margin_left = 4.0
+texture_margin_top = 8.0
+texture_margin_right = 4.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yc2j2"]
+texture = ExtResource("4_txv0i")
+texture_margin_left = 4.0
+texture_margin_top = 8.0
+texture_margin_right = 4.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wealy"]
+texture = ExtResource("5_qr7xe")
+texture_margin_left = 4.0
+texture_margin_top = 8.0
+texture_margin_right = 4.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eu4y8"]
+bg_color = Color(0, 0.93333334, 0, 1)
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uthpa"]
+bg_color = Color(1, 1, 1, 1)
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ckswm"]
+bg_color = Color(0.4, 0.4, 0.4, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0076186024, 0.0076186024, 0.0076186024, 1)
+corner_detail = 1
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="Theme" id="Theme_5n7oa"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 8
+Button/fonts/font = ExtResource("3_45fqb")
+Button/styles/hover = SubResource("StyleBoxTexture_pn5gd")
+Button/styles/normal = SubResource("StyleBoxTexture_yc2j2")
+Button/styles/pressed = SubResource("StyleBoxTexture_wealy")
+HSlider/icons/grabber = ExtResource("6_jr2rn")
+HSlider/icons/grabber_highlight = ExtResource("6_jr2rn")
+HSlider/icons/tick = null
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_eu4y8")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_uthpa")
+HSlider/styles/slider = SubResource("StyleBoxFlat_ckswm")
+VSlider/icons/grabber = ExtResource("6_jr2rn")
+VSlider/icons/grabber_highlight = ExtResource("6_jr2rn")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txv0i"]
+atlas = ExtResource("7_txv0i")
+region = Rect2(0, 0, 48, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qr7xe"]
+atlas = ExtResource("7_txv0i")
+region = Rect2(0, 72, 48, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jr2rn"]
+atlas = ExtResource("7_txv0i")
+region = Rect2(48, 0, 48, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5n7oa"]
+atlas = ExtResource("7_txv0i")
+region = Rect2(96, 72, 48, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owy6e"]
+atlas = ExtResource("7_txv0i")
+region = Rect2(144, 0, 48, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tovns"]
+atlas = ExtResource("7_txv0i")
+region = Rect2(0, 72, 48, 72)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0p3bf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txv0i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qr7xe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jr2rn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5n7oa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owy6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tovns")
+}],
+"loop": true,
+"name": &"delete",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_yc2j2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-72, -152)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(144, 72)]
+}
+
+[sub_resource type="Animation" id="Animation_pn5gd"]
+resource_name = "enter"
+length = 0.25
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-512, -152), Vector2(-72, -152)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(144, 72)]
+}
+
+[sub_resource type="Animation" id="Animation_wealy"]
+resource_name = "exit"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(144, 72)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-72, -152), Vector2(512, -152)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yc2j2"]
+_data = {
+&"RESET": SubResource("Animation_yc2j2"),
+&"enter": SubResource("Animation_pn5gd"),
+&"exit": SubResource("Animation_wealy")
+}
+
+[node name="DeleteFilePopupMenu" type="Control" unique_id=1743264185]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_txv0i")
+
+[node name="Panel" type="Panel" parent="." unique_id=666953647]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -152.0
+offset_right = 72.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Panel" unique_id=474981065]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_02f35")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="QueryText" type="Label" parent="Panel/NinePatchRect" unique_id=1490487495]
+modulate = Color(0.53333336, 0.53333336, 0.53333336, 1)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 128.0
+offset_bottom = 12.0
+text = "delete file 1?"
+
+[node name="DeleteButton" type="Button" parent="Panel/NinePatchRect" unique_id=1703439781]
+self_modulate = Color(0, 0.93333334, 0, 1)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 96.0
+offset_right = 72.0
+offset_bottom = 120.0
+theme = SubResource("Theme_5n7oa")
+text = "Delete"
+
+[node name="Label" type="Label" parent="Panel/NinePatchRect/DeleteButton" unique_id=894743097]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 16.0
+text = "Delete"
+
+[node name="CancelButton" type="Button" parent="Panel/NinePatchRect" unique_id=1156684291]
+self_modulate = Color(0.93333334, 0.13333334, 0.4, 1)
+layout_mode = 0
+offset_left = 72.0
+offset_top = 96.0
+offset_right = 136.0
+offset_bottom = 120.0
+theme = SubResource("Theme_5n7oa")
+text = "cancel"
+
+[node name="Label" type="Label" parent="Panel/NinePatchRect/CancelButton" unique_id=1051229750]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 16.0
+text = "Cancel"
+
+[node name="EggmanIcon" type="AnimatedSprite2D" parent="Panel/NinePatchRect" unique_id=1987282652]
+position = Vector2(72, 56)
+sprite_frames = SubResource("SpriteFrames_0p3bf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1217389098]
+libraries/ = SubResource("AnimationLibrary_yc2j2")
+autoplay = &"enter"
+
+[connection signal="pressed" from="Panel/NinePatchRect/DeleteButton" to="." method="_on_delete_button_pressed"]
+[connection signal="pressed" from="Panel/NinePatchRect/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

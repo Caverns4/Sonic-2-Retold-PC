@@ -12,9 +12,11 @@ var level_select_id: int = 0
 @onready var param_text : Label = $Panel/NinePatchRect/ParamText
 @onready var left_button : Button = $Panel/NinePatchRect/LeftButton
 @onready var right_button : Button = $Panel/NinePatchRect/RightButton
-
+@onready var accept_button : Button = $Panel/NinePatchRect/AcceptButton
+@onready var cancel_button : Button = $Panel/NinePatchRect/CancelButton
 
 func _ready() -> void:
+	SoundDriver.play_sound(sfx_select)
 	if !save_file_id:
 		query_text.text = "Play without\nsaving"
 		level_select.get_parent().queue_free()
@@ -29,8 +31,9 @@ func _ready() -> void:
 		print(GlobalFunctions.get_chaos_emerald_count(save_data[4]))
 	else:
 		level_select.get_parent().queue_free()
-		query_text.text = "Select character\nfor slot " + str(save_file_id)
+		query_text.text = "Select character\nfor file " + str(save_file_id)
 		print(GlobalFunctions.get_chaos_emerald_count(0))
+	accept_button.grab_focus()
 
 
 var normal_zones = [
@@ -51,10 +54,12 @@ func update_level_select(direction: int = 0):
 	level_select.frame = selection_id
 
 func _on_cancel_button_pressed() -> void:
+	disable_buttons()
 	SoundDriver.play_sound(sfx_cancel)
 	close_menu(-1)
 
 func _on_accept_button_pressed() -> void:
+	disable_buttons()
 	SoundDriver.play_sound(sfx_confirm)
 	if save_data and selection_id == Global.ZONES.ENDING:
 		selection_id = Global.ZONES.EMERALD_HILL
@@ -77,3 +82,11 @@ func _on_right_button_pressed() -> void:
 		param_text.text = Global.playerModes[selection_id]
 	else:
 		update_level_select(1)
+
+func disable_buttons():
+	accept_button.disabled = true
+	cancel_button.disabled = true
+	if left_button:
+		left_button.disabled = true
+		right_button.disabled = true
+	

@@ -3,6 +3,7 @@ extends Control
 @export var music = preload("res://Audio/Soundtrack/s2br_Options.ogg")
 
 var popup_path: PackedScene = preload("res://Entities/MenuObjects/save_file_popup_menu.tscn")
+var delete_popup: PackedScene = preload("res://Entities/MenuObjects/delete_file_popup_menu.tscn")
 
 var title_scene: String = "res://Scene/Presentation/Title.tscn"
 var zone_loader: String = "res://Scene/Presentation/ZoneLoader.tscn"
