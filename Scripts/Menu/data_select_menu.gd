@@ -44,7 +44,7 @@ func use(save_file_id: int):
 		if !selected_save_slot.data:
 			selected_save_slot.character_id = menu_option
 		else:
-			pass
+			selected_save_slot.level_id = menu_option
 		UseSelectedItem()
 	
 

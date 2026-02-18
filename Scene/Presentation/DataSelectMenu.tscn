@@ -142,6 +142,9 @@ layout_mode = 2
 [node name="SavePanel6" parent="ScrollContainer/SaveFileContainer" unique_id=614272837 instance=ExtResource("3_echdj")]
 layout_mode = 2
 
+[node name="SavePanel7" parent="ScrollContainer/SaveFileContainer" unique_id=6753834 instance=ExtResource("3_echdj")]
+layout_mode = 2
+
 [node name="Switch" type="AudioStreamPlayer" parent="." unique_id=1330843891]
 stream = ExtResource("8_iwpom")
 bus = &"SFX"
