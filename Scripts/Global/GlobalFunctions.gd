@@ -25,6 +25,14 @@ func get_chaos_emerald_count(value: int):
 		index += index
 	return emerald_count
 
+func convert_player_mode_to_players(mode: int):
+	if mode == 0:
+		Global.PlayerChar1 = Global.CHARACTERS.SONIC
+		Global.PlayerChar2 = Global.CHARACTERS.TAILS
+	else:
+		Global.PlayerChar1 = mode
+		Global.PlayerChar2 = Global.CHARACTERS.NONE
+	
 
 # the original game logic runs at 60 fps, this function is meant to be used to help calculate this,
 # usually a division by the normal delta will cause the game to freak out at different FPS speeds

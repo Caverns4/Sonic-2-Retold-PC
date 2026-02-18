@@ -1,7 +1,7 @@
 class_name DataSelectPanel
 extends Button
 
-@export var character_id: Global.PLAYER_MODES = 0 as Global.PLAYER_MODES
+@export var character_id: int = 0
 
 var save_game_id: int = 0:
 	set(value):

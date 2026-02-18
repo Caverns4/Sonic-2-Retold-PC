@@ -35,13 +35,18 @@ func use(save_file_id: int):
 	set_controls_locked_state(true)
 	
 	add_child(popup_scene)
-	var menu_option = await popup_scene.menu_exit
-	if menu_option < 0:
+	var menu_option: int = await popup_scene.menu_exit
+	if menu_option < 0: # Cancel
 		set_controls_locked_state(false)
 		await get_tree().process_frame
 		selected_save_slot = null
 	else:
+		if !selected_save_slot.data:
+			selected_save_slot.character_id = menu_option
+		else:
+			pass
 		UseSelectedItem()
+	
 
 func set_controls_locked_state(lock_state: bool):
 		#$ScrollContainer.
@@ -53,7 +58,10 @@ func set_controls_locked_state(lock_state: bool):
 		
 
 func UseSelectedItem():
-	var fadeout: bool = selected_save_slot.use()
+	selected_save_slot.use()
+	if !selected_save_slot.data:
+		GlobalFunctions.convert_player_mode_to_players(selected_save_slot.character_id)
+	
 	Global.saved_zone_id = selected_save_slot.level_id
 	Main.change_scene(zone_loader)
 	state = MENU_STATE.DECIDED

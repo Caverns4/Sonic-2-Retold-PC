@@ -50,9 +50,11 @@ func _on_left_button_pressed() -> void:
 	if !save_data:
 		character_selection = wrapi(character_selection-1,0,Global.PLAYER_MODES.size())
 		char_select.frame = character_selection
+		param_text.text = Global.playerModes[character_selection]
 
 
 func _on_right_button_pressed() -> void:
 	if !save_data:
 		character_selection = wrapi(character_selection+1,0,Global.PLAYER_MODES.size())
 		char_select.frame = character_selection
+		param_text.text = Global.playerModes[character_selection]
