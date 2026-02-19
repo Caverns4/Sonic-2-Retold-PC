@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cii6vdv1nbk6k"]
+[gd_scene format=3 uid="uid://cii6vdv1nbk6k"]
 
 [ext_resource type="Script" uid="uid://n81dm8emn3g4" path="res://Scripts/Enemies/slicer.gd" id="1_y81fk"]
 [ext_resource type="Texture2D" uid="uid://dk36bgkg6tusy" path="res://Graphics/Enemies/Slicer.png" id="2_y81fk"]
@@ -196,52 +196,50 @@ _data = {
 &"Walk": SubResource("Animation_v7f3y")
 }
 
-[node name="Slicer" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Slicer" type="CharacterBody2D" unique_id=777494846 groups=["Enemy"]]
 collision_layer = 16384
 collision_mask = 15
 script = ExtResource("1_y81fk")
 
-[node name="CollissionMask" type="CollisionShape2D" parent="."]
+[node name="CollissionMask" type="CollisionShape2D" parent="." unique_id=307086465]
 shape = SubResource("1")
 
-[node name="DamageArea" type="Area2D" parent="."]
+[node name="DamageArea" type="Area2D" parent="." unique_id=829676014]
 collision_layer = 0
 collision_mask = 528384
 
-[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea" unique_id=869869307]
 modulate = Color(1, 0, 0, 1)
 shape = SubResource("1")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1392814547]
 texture = ExtResource("2_y81fk")
 hframes = 3
 
-[node name="ColorMask" type="Sprite2D" parent="Sprite2D"]
+[node name="ColorMask" type="Sprite2D" parent="Sprite2D" unique_id=2007034524]
 visible = false
 self_modulate = Color(0.4, 0.4, 1, 1)
 texture = ExtResource("3_v7f3y")
 hframes = 3
 
-[node name="ClawL" type="Sprite2D" parent="Sprite2D"]
+[node name="ClawL" type="Sprite2D" parent="Sprite2D" unique_id=1265725345]
 unique_name_in_owner = true
 position = Vector2(-24, 0)
 texture = ExtResource("4_x68up")
 
-[node name="ClawR" type="Sprite2D" parent="Sprite2D"]
+[node name="ClawR" type="Sprite2D" parent="Sprite2D" unique_id=1572480831]
 unique_name_in_owner = true
 position = Vector2(-4, 0)
 texture = ExtResource("4_x68up")
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1576908478]
 visible = false
 position = Vector2(1.90735e-06, -1.90735e-06)
 rect = Rect2(-160, -120, 320, 240)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_uni67")
-}
-autoplay = "RESET"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1401845065]
+libraries/ = SubResource("AnimationLibrary_uni67")
+autoplay = &"RESET"
 
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]

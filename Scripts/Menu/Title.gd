@@ -9,9 +9,9 @@ var opening_cutscene: String = "res://Scene/Cutscenes/Opening.tscn"
 var optionsScene: String = "res://Scene/Presentation/OptionsMenu.tscn"
 
 enum STATES{INTRO,WAITING,FADEOUT}
-var titleState: int = STATES.INTRO
+var state: int = STATES.INTRO
 ## If the Title Screen should be moving
-var titleScroll: bool = false
+var title_scroll: bool = false
 
 ## Toggle when the menu should display.
 var menuActive: bool = false:
@@ -23,9 +23,7 @@ var menuActive: bool = false:
 			title_menu.get_child(0).grab_focus()
 
 ## If a cheat code has been applied on this loop, don't allow it to be again
-var cheatActive: bool = false
-
-var delete_me: int = 0
+var cheat_active: bool = false
 
 var BackgroundScene: PackedScene
 var parallaxBackgrounds = [
@@ -96,21 +94,19 @@ func _ready():
 	BackgroundScene = load(parallax)
 
 func _process(delta):
-	if titleScroll:
+	if title_scroll:
 		$TitleBanner.global_position.x += (5*60*delta)
 		$Celebrations.global_position.x += (5*60*delta)
-	if titleState < STATES.FADEOUT:
+	if state < STATES.FADEOUT:
 		_unhandledInput(Input)
 
 func _unhandledInput(_event):
 	var inputCue = Input.get_vector("gm_left","gm_right","gm_up","gm_down")
 	inputCue.x = round(inputCue.x)
 	inputCue.y = round(inputCue.y)
-	
-	#if menuActive:
-	#	UpdateMenuDisplay(inputCue)
 	CheckCheatInputs(inputCue)
 	lastInput = inputCue
+
 
 func _input(event):
 	# On start button press, skip intro or make selection
@@ -118,34 +114,11 @@ func _input(event):
 		if !$TitleWaitTimer.is_stopped():
 			$TitleAnimate.play("RESET")
 			menuActive = true
-	#elif event.is_action_pressed("gm_pause") and menuActive:
-	#	MenuOptionChosen()
 
-func MenuOptionChosen():
-	if Global.level_select_flag:
-		#TODO: Make a proper level select code, distinct from the Tails Name Cheat
-		if Input.is_action_pressed("gm_action"):
-			delete_me = 128
-	
-	match delete_me:
-		0:
-			Global.saved_zone_id = Global.ZONES.EMERALD_HILL
-			Global.saved_act_id = 0
-			Global.emeralds = 126
-			SetFadeOut(zone_loader)
-		1:
-			Global.two_player_mode = true
-			Global.PlayerChar1 = Global.CHARACTERS.SONIC
-			Global.PlayerChar2 = Global.CHARACTERS.TAILS
-			SetFadeOut(two_player_menu)
-		2:
-			SetFadeOut(optionsScene)
-		_:
-			SetFadeOut(level_select_menu)
 
 func CheckCheatInputs(inputCue: Vector2 = Vector2.ZERO):
 	if inputCue != lastCheatInput and inputCue:
-		if !cheatActive:
+		if !cheat_active:
 			if inputCue == levelSelectCheat[cheatInputCount]:
 				cheatInputCount += 1
 				#print("Correct input!"+ str(inputCue))
@@ -154,17 +127,14 @@ func CheckCheatInputs(inputCue: Vector2 = Vector2.ZERO):
 				#print("Wrong input!" + str(inputCue))
 			if cheatInputCount == levelSelectCheat.size():
 				cheatInputCount = 0
-				cheatActive = true
-				Global.level_select_flag = true
 				Global.debug_mode = true
 				$TitleBanner/RingChime.play(0.0)
+				Global.tails_name_cheat = !Global.tails_name_cheat
 				if !Global.tails_name_cheat:
-					Global.tails_name_cheat = true
 					Global.characterNames[1] = "MILES"
 					Global.playerModes[0] = "SONIC & MILES"
 					Global.playerModes[2] = "MILES"
 				else:
-					Global.tails_name_cheat = false
 					Global.characterNames[1] = "TAILS"
 					Global.playerModes[0] = "SONIC & TAILS"
 					Global.playerModes[2] = "TAILS"
@@ -180,12 +150,12 @@ func InstantiateBG():
 
 func PlayMusic():
 	SoundDriver.music.play()
-	titleScroll = true #Begin scrolling
+	title_scroll = true #Begin scrolling
 	$TitleWaitTimer.start()
 
 func SetFadeOut(newScene):
-	if titleState < STATES.FADEOUT:
-		titleState = STATES.FADEOUT
+	if state < STATES.FADEOUT:
+		state = STATES.FADEOUT
 		menuActive = false
 		Main.change_scene(newScene,"FadeOut",1.0,false)
 
@@ -226,8 +196,8 @@ func reset_values():
 func _on_player_pressed() -> void:
 	Global.saved_act_id = 0
 	Global.emeralds = 126
-	#SetFadeOut(zone_loader)
-	SetFadeOut(level_select_menu)
+	SetFadeOut(zone_loader)
+	#SetFadeOut(level_select_menu)
 
 
 func _on_player_vs_pressed() -> void:
@@ -242,7 +212,6 @@ func _on_options_pressed() -> void:
 
 
 func _on_quit_pressed() -> void:
-	## TODO: Make a fadeout
-	titleState = STATES.FADEOUT
+	state = STATES.FADEOUT
 	menuActive = false
 	Main.quit_game()

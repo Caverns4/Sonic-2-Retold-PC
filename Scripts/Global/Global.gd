@@ -183,11 +183,11 @@ var twoPlayerZones = [
 #Which round the Two Player Mode is in.
 var twoPlayerRound = 0
 
-var zoneNames = [
+var zone_names = [
 	"Emerald Hill", "Hidden Palace","Hill Top", "Chemical Plant",
-	"Oil Ocean", "Neo Green Hill","Metropolis","Dust Hill",
-	"Wood Gadget","Casino Night","Jewel Grotto","Winter",
-	"Sand Shower","Tropical Sun","Cyber City","Sky Fortress",
+	"Oil Ocean", "Aquatic Ruin","Metropolis","Dust Hill",
+	"Wood Gadget","Casino Night","Jewel Grotto","Unused",
+	"Sand Shower","Apr01","Cyber City","Sky Fortress",
 	"Death Egg","XXX"
 ]
 

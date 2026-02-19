@@ -107,6 +107,6 @@ func _throw_bullet():
 	bullet.global_position = global_position
 	bullet.move_dir = move_dir
 	bullet.slicer_tracking_time = slicer_tracking_time
-	bullet.velocity.x = 120*sign(move_dir)
+	bullet.velocity.x = sign(move_dir)*120
 	bullet.target = players[0]
 	bullet.parent = self

@@ -1,0 +1,367 @@
+[gd_scene format=3 uid="uid://5fc3xh4spwvb"]
+
+[ext_resource type="Script" uid="uid://bgq7nsnc7g5hv" path="res://Scripts/Menu/level_select_popup_menu.gd" id="1_w1c5l"]
+[ext_resource type="Texture2D" uid="uid://pybphols1sb2" path="res://Graphics/Menus/MenuBox.png" id="2_1gemr"]
+[ext_resource type="FontFile" uid="uid://ml62eqfe7avn" path="res://Graphics/Fonts/small_font.png" id="3_jjs8a"]
+[ext_resource type="Texture2D" uid="uid://b2uehcf1dvsdi" path="res://Graphics/Menus/ArrowL.png" id="4_l0y4x"]
+[ext_resource type="Texture2D" uid="uid://cjockams3s1gs" path="res://Graphics/Menus/ArrowR.png" id="5_bo5w2"]
+[ext_resource type="Texture2D" uid="uid://bf2lhfxal46gj" path="res://Graphics/Menus/ButtonUp.png" id="6_7vs3l"]
+[ext_resource type="Texture2D" uid="uid://ddug2c5c54nvl" path="res://Graphics/Menus/ButtonDown.png" id="7_8gsau"]
+[ext_resource type="Texture2D" uid="uid://c2xdraklm0ah7" path="res://Graphics/title/TitleMenu.png" id="8_hxvga"]
+[ext_resource type="Texture2D" uid="uid://bhldf71m4a4w7" path="res://Graphics/Menus/MenuBanner.png" id="9_lnipc"]
+[ext_resource type="Texture2D" uid="uid://d3g0w6uwq7bvj" path="res://Graphics/Menus/Icons_All.png" id="10_t77ue"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cf63m"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0, 0, 1)
+corner_detail = 1
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+anti_aliasing = false
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_01y51"]
+load_path = "res://.godot/imported/ButtonUp.png-62c89bed24155f4dd710465451da26cf.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_um0ct"]
+texture = SubResource("CompressedTexture2D_01y51")
+texture_margin_left = 4.0
+texture_margin_top = 8.0
+texture_margin_right = 4.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hrjki"]
+load_path = "res://.godot/imported/ButtonUp.png-62c89bed24155f4dd710465451da26cf.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3kduu"]
+texture = SubResource("CompressedTexture2D_hrjki")
+texture_margin_left = 4.0
+texture_margin_top = 8.0
+texture_margin_right = 4.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bkh20"]
+load_path = "res://.godot/imported/ButtonDown.png-dbe7320456c08a42662d667eabcb1d0f.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nu2h8"]
+texture = SubResource("CompressedTexture2D_bkh20")
+texture_margin_left = 4.0
+texture_margin_top = 8.0
+texture_margin_right = 4.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_14qof"]
+load_path = "res://.godot/imported/TitleMenu.png-849e88b65dda81f79445c0e44f28cfda.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w6gsq"]
+load_path = "res://.godot/imported/TitleMenu.png-849e88b65dda81f79445c0e44f28cfda.ctex"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ysjo"]
+bg_color = Color(0, 0.93333334, 0, 1)
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ku0ic"]
+bg_color = Color(1, 1, 1, 1)
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g1r3k"]
+bg_color = Color(0.4, 0.4, 0.4, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0076186024, 0.0076186024, 0.0076186024, 1)
+corner_detail = 1
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jkgth"]
+load_path = "res://.godot/imported/TitleMenu.png-849e88b65dda81f79445c0e44f28cfda.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_385s2"]
+load_path = "res://.godot/imported/TitleMenu.png-849e88b65dda81f79445c0e44f28cfda.ctex"
+
+[sub_resource type="Theme" id="Theme_h7pju"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 8
+Button/fonts/font = ExtResource("3_jjs8a")
+Button/styles/focus = SubResource("StyleBoxFlat_cf63m")
+Button/styles/hover = SubResource("StyleBoxTexture_um0ct")
+Button/styles/normal = SubResource("StyleBoxTexture_3kduu")
+Button/styles/pressed = SubResource("StyleBoxTexture_nu2h8")
+HSlider/icons/grabber = SubResource("CompressedTexture2D_14qof")
+HSlider/icons/grabber_highlight = SubResource("CompressedTexture2D_w6gsq")
+HSlider/icons/tick = null
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_1ysjo")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_ku0ic")
+HSlider/styles/slider = SubResource("StyleBoxFlat_g1r3k")
+VSlider/icons/grabber = SubResource("CompressedTexture2D_jkgth")
+VSlider/icons/grabber_highlight = SubResource("CompressedTexture2D_385s2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yjmvn"]
+texture = ExtResource("6_7vs3l")
+texture_margin_left = 4.0
+texture_margin_top = 8.0
+texture_margin_right = 4.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_75m4w"]
+texture = ExtResource("6_7vs3l")
+texture_margin_left = 4.0
+texture_margin_top = 8.0
+texture_margin_right = 4.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_14qof"]
+texture = ExtResource("7_8gsau")
+texture_margin_left = 4.0
+texture_margin_top = 8.0
+texture_margin_right = 4.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w6gsq"]
+bg_color = Color(0, 0.93333334, 0, 1)
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jkgth"]
+bg_color = Color(1, 1, 1, 1)
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_385s2"]
+bg_color = Color(0.4, 0.4, 0.4, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0076186024, 0.0076186024, 0.0076186024, 1)
+corner_detail = 1
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="Theme" id="Theme_v6wle"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 8
+Button/fonts/font = ExtResource("3_jjs8a")
+Button/styles/hover = SubResource("StyleBoxTexture_yjmvn")
+Button/styles/normal = SubResource("StyleBoxTexture_75m4w")
+Button/styles/pressed = SubResource("StyleBoxTexture_14qof")
+HSlider/icons/grabber = ExtResource("8_hxvga")
+HSlider/icons/grabber_highlight = ExtResource("8_hxvga")
+HSlider/icons/tick = null
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_w6gsq")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_jkgth")
+HSlider/styles/slider = SubResource("StyleBoxFlat_385s2")
+VSlider/icons/grabber = ExtResource("8_hxvga")
+VSlider/icons/grabber_highlight = ExtResource("8_hxvga")
+
+[sub_resource type="Animation" id="Animation_yc2j2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-72, -152)]
+}
+
+[sub_resource type="Animation" id="Animation_pn5gd"]
+resource_name = "enter"
+length = 0.25
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-512, -152), Vector2(-72, -152)]
+}
+
+[sub_resource type="Animation" id="Animation_wealy"]
+resource_name = "exit"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-72, -152), Vector2(512, -152)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yc2j2"]
+_data = {
+&"RESET": SubResource("Animation_yc2j2"),
+&"enter": SubResource("Animation_pn5gd"),
+&"exit": SubResource("Animation_wealy")
+}
+
+[node name="LevelSelectPopupMenu" type="Control" unique_id=1743264185]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_w1c5l")
+
+[node name="Panel" type="Panel" parent="." unique_id=666953647]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -152.0
+offset_right = 72.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Panel" unique_id=474981065]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_right = 8.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1gemr")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Control" type="Control" parent="Panel/NinePatchRect" unique_id=161855552]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LeftButton" type="Button" parent="Panel/NinePatchRect/Control" unique_id=1107930033]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 24.0
+offset_bottom = 72.0
+focus_neighbor_right = NodePath("../RightButton")
+theme = SubResource("Theme_h7pju")
+icon = ExtResource("4_l0y4x")
+
+[node name="RightButton" type="Button" parent="Panel/NinePatchRect/Control" unique_id=355686321]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 24.0
+offset_right = 152.0
+offset_bottom = 72.0
+focus_neighbor_left = NodePath("../LeftButton")
+theme = SubResource("Theme_h7pju")
+icon = ExtResource("5_bo5w2")
+
+[node name="AcceptButton" type="Button" parent="Panel/NinePatchRect/Control" unique_id=647123923]
+self_modulate = Color(0, 0.93333334, 0, 1)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 96.0
+offset_right = 80.0
+offset_bottom = 120.0
+theme = SubResource("Theme_v6wle")
+text = "accept"
+
+[node name="Label" type="Label" parent="Panel/NinePatchRect/Control/AcceptButton" unique_id=1277001849]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 16.0
+text = "Accept"
+
+[node name="CancelButton" type="Button" parent="Panel/NinePatchRect/Control" unique_id=2095380607]
+self_modulate = Color(0.93333334, 0.13333334, 0.4, 1)
+layout_mode = 0
+offset_left = 80.0
+offset_top = 96.0
+offset_right = 144.0
+offset_bottom = 120.0
+theme = SubResource("Theme_v6wle")
+text = "cancel"
+
+[node name="Label" type="Label" parent="Panel/NinePatchRect/Control/CancelButton" unique_id=2076291133]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 16.0
+text = "Cancel"
+
+[node name="QueryText" type="Label" parent="Panel/NinePatchRect" unique_id=1470670407]
+modulate = Color(0.53333336, 0.53333336, 0.53333336, 1)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 136.0
+offset_bottom = 16.0
+text = " Select a level "
+
+[node name="ParamText" type="Label" parent="Panel/NinePatchRect" unique_id=139478606]
+modulate = Color(0.53333336, 0.53333336, 0.53333336, 1)
+layout_mode = 0
+offset_top = 80.0
+offset_right = 160.0
+offset_bottom = 88.0
+text = "level name"
+horizontal_alignment = 1
+
+[node name="LevelBanner" type="TextureRect" parent="Panel/NinePatchRect" unique_id=532374033]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 16.0
+offset_right = 128.0
+offset_bottom = 72.0
+texture = ExtResource("9_lnipc")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="LevelIcon" type="Sprite2D" parent="Panel/NinePatchRect/LevelBanner" unique_id=797958573]
+position = Vector2(32, 16)
+texture = ExtResource("10_t77ue")
+centered = false
+hframes = 4
+vframes = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1217389098]
+libraries/ = SubResource("AnimationLibrary_yc2j2")
+autoplay = &"enter"
+
+[connection signal="pressed" from="Panel/NinePatchRect/Control/LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="Panel/NinePatchRect/Control/RightButton" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="Panel/NinePatchRect/Control/AcceptButton" to="." method="_on_accept_button_pressed"]
+[connection signal="pressed" from="Panel/NinePatchRect/Control/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

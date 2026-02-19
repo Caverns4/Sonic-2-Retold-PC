@@ -7,7 +7,6 @@ extends DataSelectPanel
 #	_update_save_preview()
 
 func _update_save_preview():
-	print("update")
 	await get_tree().process_frame
 	if data:
 		character_id = data[0]

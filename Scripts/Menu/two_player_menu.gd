@@ -169,7 +169,7 @@ func UpdateZoneSelection(_delta: float = 0.0):
 	%LevelIcon.frame = Global.twoPlayerZones[zoneSelection]
 	%"Level Menu".text = ""
 	for i in Global.twoPlayerZones.size():
-		var zoneName = Global.zoneNames[Global.twoPlayerZones[i]]
+		var zoneName = Global.zone_names[Global.twoPlayerZones[i]]
 		if i == zoneSelection and state >= MENU_STATE.ZONE_SELECT:
 			%"Level Menu".text += "[color=EEEE00]" + zoneName + "[/color]\n\n"
 		else:

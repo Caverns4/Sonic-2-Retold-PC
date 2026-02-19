@@ -30,7 +30,7 @@ func convert_player_mode_to_players(mode: int):
 		Global.PlayerChar1 = Global.CHARACTERS.SONIC
 		Global.PlayerChar2 = Global.CHARACTERS.TAILS
 	else:
-		Global.PlayerChar1 = mode
+		Global.PlayerChar1 = mode as Global.CHARACTERS
 		Global.PlayerChar2 = Global.CHARACTERS.NONE
 	
 

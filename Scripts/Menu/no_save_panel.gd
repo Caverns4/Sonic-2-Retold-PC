@@ -6,9 +6,5 @@ func _update_save_preview():
 	%CharacterIcon.frame = character_id
 
 func use():
-	Global.PlayerChar1 = max(character_id,1)
-	if character_id == 0:
-		Global.PlayerChar2 = Global.CHARACTERS.TAILS 
-	else:
-		Global.PlayerChar2 = Global.CHARACTERS.NONE
+	GlobalFunctions.convert_player_mode_to_players(character_id)
 	return true

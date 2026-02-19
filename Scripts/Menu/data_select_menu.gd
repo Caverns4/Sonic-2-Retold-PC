@@ -4,6 +4,7 @@ extends Control
 
 var popup_path: PackedScene = preload("res://Entities/MenuObjects/save_file_popup_menu.tscn")
 var delete_popup: PackedScene = preload("res://Entities/MenuObjects/delete_file_popup_menu.tscn")
+var level_select_popup: PackedScene = preload("res://Entities/MenuObjects/Level_Select_popup_menu.tscn")
 
 var title_scene: String = "res://Scene/Presentation/Title.tscn"
 var zone_loader: String = "res://Scene/Presentation/ZoneLoader.tscn"
@@ -30,8 +31,9 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if !selected_save_slot and Input.is_action_just_pressed("gm_super"):
 		show_delete_options()
-	#	print("options")
-	#print(get_viewport().gui_get_focus_owner())
+	elif !selected_save_slot and Input.is_action_just_pressed("gm_action2"):
+		Main.change_scene(title_scene)
+		state = MENU_STATE.DECIDED
 
 func show_delete_options():
 	selected_save_slot = get_viewport().gui_get_focus_owner()
@@ -44,6 +46,14 @@ func show_delete_options():
 			selected_save_slot.data.clear()
 			selected_save_slot.level_id = Global.ZONES.EMERALD_HILL
 			selected_save_slot._update_save_preview()
+		set_controls_locked_state(false)
+	elif selected_save_slot.save_game_id == 0 and Global.debug_mode:
+		var level_scene: GeneralPopUpMenu = level_select_popup.instantiate()
+		set_controls_locked_state(true)
+		add_child(level_scene)
+		var menu_option: int = await level_scene.menu_exit
+		if menu_option >= 0: #Level Select
+			selected_save_slot.level_id = menu_option as Global.ZONES
 		set_controls_locked_state(false)
 	await get_tree().process_frame
 	selected_save_slot = null
