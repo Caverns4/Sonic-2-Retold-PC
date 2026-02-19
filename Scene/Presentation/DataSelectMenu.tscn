@@ -4,6 +4,7 @@
 [ext_resource type="TileSet" uid="uid://bk1ere21h4285" path="res://Tileset/Menus.tres" id="2_y1b2j"]
 [ext_resource type="PackedScene" uid="uid://douh8pscjw7hm" path="res://Entities/MenuObjects/SavePanel.tscn" id="3_echdj"]
 [ext_resource type="Texture2D" uid="uid://bf2lhfxal46gj" path="res://Graphics/Menus/ButtonUp.png" id="4_iwpom"]
+[ext_resource type="Texture2D" uid="uid://bagglne5v1i3i" path="res://Graphics/HUD/YIcon_solo.png" id="4_wvq33"]
 [ext_resource type="PackedScene" uid="uid://dqo5gtlj0xdsy" path="res://Entities/MenuObjects/no_save_panel.tscn" id="5_3bafg"]
 [ext_resource type="Theme" uid="uid://qblf2beyokrn" path="res://Resources/TwoPlayerMenuTheme.tres" id="5_slue5"]
 [ext_resource type="Texture2D" uid="uid://ddug2c5c54nvl" path="res://Graphics/Menus/ButtonDown.png" id="5_wvq33"]
@@ -62,18 +63,7 @@ tile_set = ExtResource("2_y1b2j")
 
 [node name="CanvasTop" type="CanvasLayer" parent="." unique_id=1228995231]
 
-[node name="Control" type="Control" parent="CanvasTop" unique_id=1001250952]
-layout_mode = 3
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
-grow_horizontal = 2
-
-[node name="GameModeText" type="RichTextLabel" parent="CanvasTop/Control" unique_id=426431054]
-layout_mode = 1
+[node name="GameModeText" type="RichTextLabel" parent="CanvasTop" unique_id=426431054]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -88,17 +78,16 @@ text = "[center]SELECT DATA"
 scroll_active = false
 autowrap_mode = 0
 
-[node name="Cover" type="CanvasLayer" parent="." unique_id=1438213798]
-layer = 0
-visible = false
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1738603278]
+texture = ExtResource("4_wvq33")
+centered = false
 
-[node name="Back" type="ColorRect" parent="Cover" unique_id=942873448]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0)
+[node name="Label" type="Label" parent="Sprite2D" unique_id=1024834224]
+offset_left = 16.0
+offset_top = 4.0
+offset_right = 72.0
+offset_bottom = 12.0
+text = "options"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1662878450]
 clip_contents = false
@@ -144,6 +133,19 @@ layout_mode = 2
 
 [node name="SavePanel7" parent="ScrollContainer/SaveFileContainer" unique_id=6753834 instance=ExtResource("3_echdj")]
 layout_mode = 2
+
+[node name="Cover" type="CanvasLayer" parent="." unique_id=1438213798]
+layer = 0
+visible = false
+
+[node name="Back" type="ColorRect" parent="Cover" unique_id=942873448]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
 
 [node name="Switch" type="AudioStreamPlayer" parent="." unique_id=1330843891]
 stream = ExtResource("8_iwpom")

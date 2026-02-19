@@ -244,6 +244,7 @@ offset_right = 72.0
 offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_force_pass_scroll_events = false
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Panel" unique_id=474981065]
 layout_mode = 1
@@ -258,6 +259,67 @@ patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
+
+[node name="Control" type="Control" parent="Panel/NinePatchRect" unique_id=631853345]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LeftButton" type="Button" parent="Panel/NinePatchRect/Control" unique_id=641213419]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 24.0
+offset_bottom = 72.0
+focus_neighbor_right = NodePath("../RightButton")
+theme = SubResource("Theme_raxch")
+icon = ExtResource("10_um0ct")
+
+[node name="RightButton" type="Button" parent="Panel/NinePatchRect/Control" unique_id=858793655]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 24.0
+offset_right = 136.0
+offset_bottom = 72.0
+focus_neighbor_left = NodePath("../LeftButton")
+theme = SubResource("Theme_raxch")
+icon = ExtResource("7_yjmvn")
+
+[node name="AcceptButton" type="Button" parent="Panel/NinePatchRect/Control" unique_id=84632496]
+self_modulate = Color(0, 0.93333334, 0, 1)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 96.0
+offset_right = 72.0
+offset_bottom = 120.0
+theme = SubResource("Theme_yjmvn")
+text = "accept"
+
+[node name="Label" type="Label" parent="Panel/NinePatchRect/Control/AcceptButton" unique_id=927047686]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 16.0
+text = "Accept"
+
+[node name="CancelButton" type="Button" parent="Panel/NinePatchRect/Control" unique_id=123154814]
+self_modulate = Color(0.93333334, 0.13333334, 0.4, 1)
+layout_mode = 0
+offset_left = 72.0
+offset_top = 96.0
+offset_right = 136.0
+offset_bottom = 120.0
+theme = SubResource("Theme_yjmvn")
+text = "cancel"
+
+[node name="Label" type="Label" parent="Panel/NinePatchRect/Control/CancelButton" unique_id=1649125097]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 16.0
+text = "Cancel"
 
 [node name="QueryText" type="Label" parent="Panel/NinePatchRect" unique_id=1465527008]
 modulate = Color(0.53333336, 0.53333336, 0.53333336, 1)
@@ -300,66 +362,12 @@ texture = ExtResource("3_4stxo")
 centered = false
 vframes = 8
 
-[node name="LeftButton" type="Button" parent="Panel/NinePatchRect" unique_id=641213419]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 24.0
-offset_right = 24.0
-offset_bottom = 72.0
-theme = SubResource("Theme_raxch")
-icon = ExtResource("10_um0ct")
-
-[node name="RightButton" type="Button" parent="Panel/NinePatchRect" unique_id=858793655]
-layout_mode = 0
-offset_left = 120.0
-offset_top = 24.0
-offset_right = 136.0
-offset_bottom = 72.0
-theme = SubResource("Theme_raxch")
-icon = ExtResource("7_yjmvn")
-
-[node name="AcceptButton" type="Button" parent="Panel/NinePatchRect" unique_id=84632496]
-self_modulate = Color(0, 0.93333334, 0, 1)
-layout_mode = 0
-offset_left = 8.0
-offset_top = 96.0
-offset_right = 72.0
-offset_bottom = 120.0
-theme = SubResource("Theme_yjmvn")
-text = "accept"
-
-[node name="Label" type="Label" parent="Panel/NinePatchRect/AcceptButton" unique_id=927047686]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 56.0
-offset_bottom = 16.0
-text = "Accept"
-
-[node name="CancelButton" type="Button" parent="Panel/NinePatchRect" unique_id=123154814]
-self_modulate = Color(0.93333334, 0.13333334, 0.4, 1)
-layout_mode = 0
-offset_left = 72.0
-offset_top = 96.0
-offset_right = 136.0
-offset_bottom = 120.0
-theme = SubResource("Theme_yjmvn")
-text = "cancel"
-
-[node name="Label" type="Label" parent="Panel/NinePatchRect/CancelButton" unique_id=1649125097]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 56.0
-offset_bottom = 16.0
-text = "Cancel"
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1217389098]
 libraries/ = SubResource("AnimationLibrary_yc2j2")
 autoplay = &"enter"
 
-[connection signal="pressed" from="Panel/NinePatchRect/LeftButton" to="." method="_on_left_button_pressed"]
-[connection signal="pressed" from="Panel/NinePatchRect/RightButton" to="." method="_on_right_button_pressed"]
-[connection signal="pressed" from="Panel/NinePatchRect/AcceptButton" to="." method="_on_accept_button_pressed"]
-[connection signal="pressed" from="Panel/NinePatchRect/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="Panel/NinePatchRect/Control/LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="Panel/NinePatchRect/Control/RightButton" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="Panel/NinePatchRect/Control/AcceptButton" to="." method="_on_accept_button_pressed"]
+[connection signal="pressed" from="Panel/NinePatchRect/Control/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

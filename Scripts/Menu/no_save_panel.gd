@@ -1,6 +1,9 @@
 extends DataSelectPanel
 
-var level_id: Global.ZONES = Global.ZONES.EMERALD_HILL
+
+func _update_save_preview():
+	await get_tree().process_frame
+	%CharacterIcon.frame = character_id
 
 func use():
 	Global.PlayerChar1 = max(character_id,1)

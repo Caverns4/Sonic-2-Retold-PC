@@ -255,6 +255,7 @@ func _ready():
 		CreateSaveGameFile(file)
 
 
+
 func LoadSaveGameFile(file: ConfigFile) -> bool:
 	var err := file.load_encrypted_pass(save_path,"SEGA")
 	if err != OK:

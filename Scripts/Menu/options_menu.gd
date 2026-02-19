@@ -143,6 +143,10 @@ func set_control_lock_state(state: bool):
 	for i in menu_text.get_children():
 		if i.has_signal("pressed"):
 			i.disabled = state
+			if state:
+				i.focus_mode = Control.FOCUS_NONE
+			else:
+				i.focus_mode = Control.FOCUS_ALL
 	if menu_option.disabled == false:
 		await get_tree().process_frame
 		menu_option.grab_focus()

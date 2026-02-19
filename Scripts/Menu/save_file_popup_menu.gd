@@ -10,10 +10,10 @@ var level_select_id: int = 0
 @onready var char_select : Sprite2D = $Panel/NinePatchRect/PlayerSprites
 @onready var level_select : Sprite2D = $Panel/NinePatchRect/LevelBanner/LevelIcon
 @onready var param_text : Label = $Panel/NinePatchRect/ParamText
-@onready var left_button : Button = $Panel/NinePatchRect/LeftButton
-@onready var right_button : Button = $Panel/NinePatchRect/RightButton
-@onready var accept_button : Button = $Panel/NinePatchRect/AcceptButton
-@onready var cancel_button : Button = $Panel/NinePatchRect/CancelButton
+@onready var left_button : Button = $Panel/NinePatchRect/Control/LeftButton
+@onready var right_button : Button = $Panel/NinePatchRect/Control/RightButton
+@onready var accept_button : Button = $Panel/NinePatchRect/Control/AcceptButton
+@onready var cancel_button : Button = $Panel/NinePatchRect/Control/CancelButton
 
 func _ready() -> void:
 	SoundDriver.play_sound(sfx_select)
@@ -25,8 +25,10 @@ func _ready() -> void:
 		query_text.text = "Continue file " + str(save_file_id) + "?"
 		selection_id = save_data[3]
 		if !save_data[3] == Global.ZONES.ENDING:
-			left_button.queue_free()
-			right_button.queue_free()
+			left_button.disabled = true
+			right_button.disabled = true
+			#left_button.queue_free()
+			#right_button.queue_free()
 		level_select.frame = selection_id
 		print(GlobalFunctions.get_chaos_emerald_count(save_data[4]))
 	else:

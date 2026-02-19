@@ -1,16 +1,20 @@
 extends DataSelectPanel
 
-var level_id: Global.ZONES
 @onready var text_label: Label = $Label
 
+#func _ready() -> void:
+#	data = Global.LoadSaveGameSlotData(save_game_id)
+#	_update_save_preview()
+
 func _update_save_preview():
+	print("update")
 	await get_tree().process_frame
-	data = Global.LoadSaveGameSlotData(save_game_id)
 	if data:
 		character_id = data[0]
 		level_id = data[3]
 		text_label.text = "file " + str(save_game_id).pad_zeros(2)
-		
+	else:
+		text_label.text = "empty"
 	%CharacterIcon.frame = character_id
 	%LevelIcon.frame = level_id
 

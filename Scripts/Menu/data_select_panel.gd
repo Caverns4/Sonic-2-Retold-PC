@@ -1,14 +1,18 @@
 class_name DataSelectPanel
 extends Button
 
-@export var character_id: int = 0
+var character_id: int = 0
+var level_id: Global.ZONES = Global.ZONES.EMERALD_HILL
 
 var save_game_id: int = 0:
 	set(value):
 		save_game_id = value
-		_update_save_preview()
+		data = Global.LoadSaveGameSlotData(save_game_id)
 	
-var data: Array = []
+var data: Array = []:
+	set(value):
+		data = value
+		_update_save_preview()
 
 signal press(saved_game_id)
 

@@ -13,7 +13,7 @@ var state = 0
 
 var selected_save_slot: DataSelectPanel = null
 
-@onready var title_bar: RichTextLabel = $CanvasTop/Control/GameModeText
+@onready var title_bar: RichTextLabel = $CanvasTop/GameModeText
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,6 +27,26 @@ func _ready() -> void:
 		index += 1
 	%SaveFileContainer.get_child(0).grab_focus()
 
+func _physics_process(_delta: float) -> void:
+	if !selected_save_slot and Input.is_action_just_pressed("gm_super"):
+		show_delete_options()
+	#	print("options")
+	#print(get_viewport().gui_get_focus_owner())
+
+func show_delete_options():
+	selected_save_slot = get_viewport().gui_get_focus_owner()
+	if selected_save_slot is DataSelectPanel and selected_save_slot.save_game_id > 0:
+		var delete_popup_scene: GeneralPopUpMenu = delete_popup.instantiate()
+		set_controls_locked_state(true)
+		add_child(delete_popup_scene)
+		var menu_option: int = await delete_popup_scene.menu_exit
+		if menu_option > 0: #Delete save file
+			selected_save_slot.data.clear()
+			selected_save_slot.level_id = Global.ZONES.EMERALD_HILL
+			selected_save_slot._update_save_preview()
+		set_controls_locked_state(false)
+	await get_tree().process_frame
+	selected_save_slot = null
 
 func use(save_file_id: int):
 	var popup_scene: SavePopupMenu = popup_path.instantiate()
@@ -34,7 +54,7 @@ func use(save_file_id: int):
 	popup_scene.save_file_id = save_file_id
 	popup_scene.save_data = selected_save_slot.data
 	set_controls_locked_state(true)
-	
+
 	add_child(popup_scene)
 	var menu_option: int = await popup_scene.menu_exit
 	if menu_option < 0: # Cancel
@@ -44,19 +64,27 @@ func use(save_file_id: int):
 	else:
 		if !selected_save_slot.data:
 			selected_save_slot.character_id = menu_option
+			selected_save_slot._update_save_preview()
 		else:
-			selected_save_slot.level_id = menu_option
+			selected_save_slot.level_id = menu_option as Global.ZONES
+			selected_save_slot._update_save_preview()
 		UseSelectedItem()
 	
 
 func set_controls_locked_state(lock_state: bool):
 		#$ScrollContainer.
-		for i in %SaveFileContainer.get_children():
+		for i:Button in %SaveFileContainer.get_children():
 			i.disabled = lock_state
+			if lock_state:
+				i.focus_mode = Control.FOCUS_NONE
+			else:
+				i.focus_mode = Control.FOCUS_ALL
 		await get_tree().process_frame
-		if selected_save_slot.disabled == false:
+		if !lock_state:
 			selected_save_slot.grab_focus()
-		
+
+
+
 
 func UseSelectedItem():
 	selected_save_slot.use()
