@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://b2klfn6g7sn8j"]
+
+[ext_resource type="Script" uid="uid://cs4qekbpk2bnb" path="res://Scripts/Objects/ghz_log_spike.gd" id="1_gp6er"]
+[ext_resource type="Texture2D" uid="uid://bhr1rne4boshe" path="res://Graphics/Hazards/SpikeLog.png" id="2_gp6er"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gp6er"]
+size = Vector2(16, 16)
+
+[node name="LogSpike" type="Area2D" unique_id=333475861]
+collision_layer = 0
+collision_mask = 4096
+script = ExtResource("1_gp6er")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=807445127]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_gp6er")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1710884190]
+z_index = 1
+texture = ExtResource("2_gp6er")
+hframes = 8
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="frame_changed" from="Sprite2D" to="." method="_on_sprite_2d_frame_changed"]

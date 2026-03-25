@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bl01bxflmr52e"]
+
+[ext_resource type="Script" uid="uid://cavlwmoboki4v" path="res://Scripts/Objects/ghz_log_spike_group.gd" id="1_0asys"]
+[ext_resource type="PackedScene" uid="uid://b2klfn6g7sn8j" path="res://Entities/Hazards/GHZ_LogSpike.tscn" id="1_qb1ni"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0awgp"]
+size = Vector2(128, 12)
+
+[node name="GHZLogSpikeGroup" type="StaticBody2D" unique_id=1072813949]
+collision_mask = 0
+script = ExtResource("1_0asys")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=751465575]
+shape = SubResource("RectangleShape2D_0awgp")
+
+[node name="LogSpike" parent="." unique_id=333475861 instance=ExtResource("1_qb1ni")]
+position = Vector2(-56, 0)
+speed = null
+
+[node name="LogSpike2" parent="." unique_id=1275975199 instance=ExtResource("1_qb1ni")]
+position = Vector2(-40, 0)
+start_frame = 1
+speed = null
+
+[node name="LogSpike3" parent="." unique_id=2092092136 instance=ExtResource("1_qb1ni")]
+position = Vector2(-24, 0)
+monitoring = false
+monitorable = false
+start_frame = 2
+speed = null
+
+[node name="LogSpike4" parent="." unique_id=576655203 instance=ExtResource("1_qb1ni")]
+position = Vector2(-8, 0)
+monitoring = false
+monitorable = false
+start_frame = 3
+speed = null
+
+[node name="LogSpike5" parent="." unique_id=503342647 instance=ExtResource("1_qb1ni")]
+position = Vector2(8, 0)
+monitoring = false
+monitorable = false
+start_frame = 4
+speed = null
+
+[node name="LogSpike6" parent="." unique_id=1358821098 instance=ExtResource("1_qb1ni")]
+position = Vector2(24, 0)
+monitoring = false
+monitorable = false
+start_frame = 5
+speed = null
+
+[node name="LogSpike7" parent="." unique_id=368824598 instance=ExtResource("1_qb1ni")]
+position = Vector2(40, 0)
+monitoring = false
+monitorable = false
+start_frame = 6
+speed = null
+
+[node name="LogSpike8" parent="." unique_id=215764563 instance=ExtResource("1_qb1ni")]
+position = Vector2(56, 0)
+monitoring = false
+monitorable = false
+start_frame = 7
+speed = null

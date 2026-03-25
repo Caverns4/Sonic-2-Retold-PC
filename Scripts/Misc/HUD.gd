@@ -439,22 +439,22 @@ func _on_counter_count_timeout(delta: float) -> void:
 	# if you add other bonuses (like perfect bonus) you'll want to add it to the end of the sequence before the end
 	if timeBonus > 0:
 		@warning_ignore("narrowing_conversion")
-		var num:int = await _add_score(timeBonus,delta)
+		var num:int = _add_score(timeBonus,delta)
 		timeBonus = num
 	elif ringBonus > 0:
 		@warning_ignore("narrowing_conversion")
-		var num:int = await _add_score(ringBonus,delta)
+		var num:int = _add_score(ringBonus,delta)
 		ringBonus = num
 	elif perfectBonus > 0:
 		@warning_ignore("narrowing_conversion")
-		var num:int = await _add_score(perfectBonus,delta)
+		var num:int = _add_score(perfectBonus,delta)
 		perfectBonus = num
 	else:
+		# stop counter timer and play score sound
+		$LevelClear/CounterCount.stop()
 		# Don't stop the tick sound abruptly, just disable looping,
 		# so it stops by itself after it plays until the end once
 		$LevelClear/CounterSFX.stream.loop_mode = AudioStreamWAV.LOOP_DISABLED
-		# stop counter timer and play score sound
-		$LevelClear/CounterCount.stop()
 		$LevelClear/Score.play()
 		# emit tally clear signal
 		emit_signal("tally_clear")
@@ -469,17 +469,18 @@ func _reset_air() -> void:
 		player.airTimer = player.defaultAirTime
 
 ## We count the number of points based on time passed since the previous frame.
-func _add_score(subtractFrom: float,delta: float) -> float:
+func _add_score(subtractFrom: int,delta: float) -> float:
 	accumulatedDelta += delta
 	var standardDelta: float = 1.0 / 60.0
-	var points: float = floor(accumulatedDelta / standardDelta) * 100
+	var points: int = floor(accumulatedDelta / standardDelta) * 100
 	if (points > subtractFrom):
 		points = subtractFrom
 	accumulatedDelta -= points / 100 * standardDelta
 	# check if adding score would hit the life bonus
-	await Global.check_score_life(int(points))
+	@warning_ignore("missing_await")
+	Global.check_score_life(int(points))
 	subtractFrom -= points
-	Global.score += int(points)
+	Global.score += points
 	return subtractFrom
 
 ## Setup the intial boss meter.

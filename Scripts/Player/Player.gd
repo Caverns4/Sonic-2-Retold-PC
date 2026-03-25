@@ -1362,7 +1362,7 @@ func cam_update(forceMove: bool = false) -> void:
 	if rachetScrollBottom:
 		limitBottom = max(limitBottom,camera.get_screen_center_position().y+viewSize.y/2)
 	
-	_adjust_camera_zoom()
+	#_adjust_camera_zoom()
 
 func _adjust_camera_zoom() -> void:
 	if movement.length() > 600.0 and Global.zoomSize > 1:
