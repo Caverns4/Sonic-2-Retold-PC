@@ -1,23 +1,23 @@
 @tool
 extends Node2D
 
-@export var length = 12
-@export var smoothDrop = true #Turn to false to match sonic 1 bridges
-@export var texture = preload("res://Graphics/Gimmicks/bridge_log.png")
-@export var texture2 = preload("res://Graphics/Gimmicks/bridge_log.png")
-@export var texture3 = preload("res://Graphics/Gimmicks/bridge_log.png")
+@export var length: int = 12
+@export var smoothDrop: bool = true #Turn to false to match sonic 1 bridges
+@export var texture: Texture2D = preload("res://Graphics/Gimmicks/bridge_log.png")
+@export var texture2: Texture2D = preload("res://Graphics/Gimmicks/bridge_log.png")
+@export var texture3: Texture2D = preload("res://Graphics/Gimmicks/bridge_log.png")
 
-var frameCount = 0 #Count up
-var frameDiff = [0,0,0,0,0,1,1,1,1,1]
+var frameCount: int = 0 #Count up
+var frameDiff: Array[int] = [0,0,0,0,0,1,1,1,1,1]
 
-var dropIndex = 1
-var maxDepression = 0
+var dropIndex: float = 1
+var maxDepression: float = 0
 
-var player = []
-var bridges = []
-var buffer = 0
+var player: Array[CharacterBody2D] = []
+var bridges: Array = []
+var buffer: float = 0
 
-func _ready():
+func _ready() -> void:
 	if !Engine.is_editor_hint():
 		# texture overwrite
 		if (texture != null):
@@ -32,7 +32,7 @@ func _ready():
 		
 		# duplicate log sprites until it matches the length
 		for _i in range(length-1):
-			var newLog = $log.duplicate()
+			var newLog: Sprite2D = $log.duplicate()
 			add_child(newLog)
 			bridges.append(newLog)
 			$log.position.x += 16
@@ -41,17 +41,17 @@ func _ready():
 		if (texture != null):
 			$log.texture = texture
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		if (texture != null):
 			$log.texture = texture
 		queue_redraw()
 	frameCount=wrapi(frameCount+1,0,frameDiff.size()*4)
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	if !Engine.is_editor_hint():
 		
-		var playerTouch = false
+		var playerTouch: bool = false
 		
 		for i in player:
 			if i.movement.y >= 0:
@@ -60,7 +60,7 @@ func _physics_process(delta):
 		if (playerTouch):
 			# set buffer for colissions
 			buffer = 1
-			var averagePlayerOffset = 0
+			var averagePlayerOffset: float = 0
 			for i in player:
 				if i.movement.y >= 0:
 					# check if average offset is set, if not then assign it to the first player
@@ -91,10 +91,10 @@ func _physics_process(delta):
 		# Loop through all segments to find their y position
 		for i in range(bridges.size()):
 			# Get difference in position of this log to current log
-			var difference = abs((i+1)-dropIndex)
+			var difference: int = abs((i+1)-dropIndex)
 			
 			# Get distance from current log to the closest side
-			var logDistance = 0
+			var logDistance: float = 0
 			if (i < dropIndex):
 				logDistance = 1-(difference/dropIndex) # Working from the left
 			else:
@@ -105,27 +105,26 @@ func _physics_process(delta):
 			if texture2 != null:
 				animateBridgeLog(bridges[i],logDistance)
 
-func animateBridgeLog(bridgeLog,logDist):
-	var texArray = [texture,texture,texture2,texture3]	
-	var curFrame = logDist * (texArray.size()-1)
+func animateBridgeLog(bridgeLog: Sprite2D,logDist: float) -> void:
+	var texArray: Array[Texture2D] = [texture,texture,texture2,texture3]
+	var curFrame: float = logDist * (texArray.size()-1)
 	curFrame = max(0,round(curFrame-(frameDiff[frameCount/4.0])))
 	
 	if maxDepression > 0 and buffer:
 		bridgeLog.texture = texArray[curFrame]
 	else:
 		bridgeLog.texture = texArray[0]
-	pass
 
 # add players to array when entering or exiting area
-func _on_PlayerCheck_body_entered(body):
+func _on_PlayerCheck_body_entered(body: CharacterBody2D) -> void:
 	player.append(body)
 
-func _on_PlayerCheck_body_exited(body):
+func _on_PlayerCheck_body_exited(body: CharacterBody2D) -> void:
 	if (player.has(body)):
 		player.erase(body)
 
 # draw logs
-func _draw():
+func _draw() -> void:
 	if Engine.is_editor_hint():
 		for i in length:
 			if i > 0:

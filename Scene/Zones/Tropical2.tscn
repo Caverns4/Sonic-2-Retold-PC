@@ -199,7 +199,7 @@ type = 1
 springDirection = 3
 
 [node name="Spring8" parent="Entities" unique_id=787709238 instance=ExtResource("8_57ybw")]
-position = Vector2(5440, 1080)
+position = Vector2(5528, 1080)
 
 [node name="Spring9" parent="Entities" unique_id=2127182873 instance=ExtResource("8_57ybw")]
 position = Vector2(6320, 1152)
