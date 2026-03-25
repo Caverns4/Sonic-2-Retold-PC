@@ -1,16 +1,16 @@
 extends PlayerState
 
-var climbPosition = Vector2.ZERO
-var climbUp = false
-var climbTimer = 0
+var climbPosition: Vector2 = Vector2.ZERO
+var climbUp: bool = false
+var climbTimer: float = 0
 
-var shiftPoses = [Vector2(4,-4),Vector2(13,-15),Vector2(4,-28),Vector2(13,-34)]
+var shiftPoses: Array[Vector2] = [Vector2(4,-4),Vector2(13,-15),Vector2(4,-28),Vector2(13,-34)]
 
-func state_activated():
+func state_activated() -> void:
 	climbUp = false
 	climbTimer = 0
 	
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	# do climb logic if climbUp is false
 	if !climbUp:
 		
@@ -35,11 +35,11 @@ func _physics_process(delta):
 			parent.groundSpeed = 1
 			parent.disconect_from_floor()
 			parent.set_state(parent.STATES.AIR,parent.currentHitbox.NORMAL)
-			return false
+			return
 		
 		# check for wall using the wall sensors
 
-		var velMem = parent.velocity
+		var velMem: Vector2 = parent.velocity
 		parent.velocity = Vector2(parent.direction,-1)
 		parent.update_sensors()
 		parent.velocity = velMem
@@ -49,7 +49,7 @@ func _physics_process(delta):
 			parent.movement = Vector2.ZERO
 			parent.animator.speed_scale = 1
 			parent.set_state(parent.STATES.GLIDE,parent.currentHitbox.NORMAL)
-			return false
+			return
 		
 		# climbing edge
 		# move sensor to the top
@@ -72,7 +72,7 @@ func _physics_process(delta):
 		parent.animator.stop()
 		parent.animator.play("climbUp")
 		# use offset based on the current animations and how many poses there are in shiftPoses (shiftPoses should match how many frames you're using)
-		var offset = (climbTimer/parent.animator.current_animation_length)*shiftPoses.size()
+		var offset: float = (climbTimer/parent.animator.current_animation_length)*shiftPoses.size()
 		
 		parent.animator.advance(floor(offset)*0.1)
 		parent.global_position = climbPosition+(shiftPoses[min(floor(offset),shiftPoses.size()-1)]*Vector2(parent.direction,1))
@@ -83,7 +83,7 @@ func _physics_process(delta):
 			climbUp = false
 			parent.global_position = climbPosition+(shiftPoses[shiftPoses.size()-1]*Vector2(parent.direction,1))
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	# jumping off
 	if (parent.inputs[parent.INPUTS.ACTION] == 1 or parent.inputs[parent.INPUTS.ACTION2] == 1 or parent.inputs[parent.INPUTS.ACTION3] == 1) and !climbUp:
 		parent.movement = Vector2(-4*60*parent.direction,-4*60)

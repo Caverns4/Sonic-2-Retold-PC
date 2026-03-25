@@ -1,10 +1,10 @@
 class_name EnemyBase extends CharacterBody2D
 
-@export_enum("Normal", "Fire", "Elec", "Water") var damageType = 0
-var playerHit = []
+@export_enum("Normal", "Fire", "Elec", "Water") var damageType: int = 0
+var playerHit: Array[Player2D] = []
 
-var Explosion = preload("res://Entities/Misc/BadnickSmoke.tscn")
-var Animal = preload("res://Entities/Misc/Animal.tscn")
+var Explosion: PackedScene = preload("res://Entities/Misc/BadnickSmoke.tscn")
+var Animal: PackedScene = preload("res://Entities/Misc/Animal.tscn")
 var forceDamage: bool = false
 var defaultMovement: bool = true
 
@@ -17,7 +17,7 @@ func  _ready() -> void:
 		$VisibleOnScreenEnabler2D.visible = true
 	destroyed.connect(_on_destroyed)
 
-func _process(delta):
+func _process(delta: float) -> void:
 	# checks if player hit has players inside
 	if (playerHit.size() > 0):
 		# loop through players as i
@@ -25,7 +25,7 @@ func _process(delta):
 			# check if damage entity is on or supertime is bigger then 0
 			if (i.get_collision_layer_value(20) or i.super_time > 0 or forceDamage):
 				# check player is not on floor
-				var skipBounce = (i.animator.current_animation == "drop")
+				var skipBounce: bool = (i.animator.current_animation == "drop")
 				if !i.ground and !(skipBounce):
 					if i.movement.y > 0:
 						# Bounce high upward
@@ -49,14 +49,14 @@ func _process(delta):
 					if i.shield == i.SHIELDS.BUBBLE:
 							i.emit_enemy_bounce()
 				# destroy
-				var playerID = Global.players.find(i)
+				var playerID: int = Global.players.find(i)
 				Global.add_score(global_position,
 				Global.SCORE_COMBO[min(Global.SCORE_COMBO.size()-1,i.enemyCounter)],
 				playerID)
 				i.enemyCounter += 1
 				destroy()
 				# cut the script short
-				return false
+				return
 			# if destroying the enemy fails and hit player exists then hit player
 			if (i.has_method("hit_player")):
 				i.hit_player(global_position,damageType)

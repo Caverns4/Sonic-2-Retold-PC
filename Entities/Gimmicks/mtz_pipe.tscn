@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxxc6n1f6go4w"]
+[gd_scene format=3 uid="uid://dxxc6n1f6go4w"]
 
 [ext_resource type="Script" uid="uid://ix6871prk8ml" path="res://Scripts/Gimmicks/mtz_pipe.gd" id="1_uotn6"]
 
@@ -42,16 +42,16 @@ _data = {
 &"RESET": SubResource("Animation_e7q6y")
 }
 
-[node name="MTZ_Pipe" type="Area2D"]
+[node name="MTZ_Pipe" type="Area2D" unique_id=339582161]
 collision_layer = 4096
 collision_mask = 4096
 script = ExtResource("1_uotn6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1772054529]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_uotn6")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1283283310]
 z_index = 10
 offset_left = -12.0
 offset_top = -16.0
@@ -59,11 +59,9 @@ offset_right = 16.0
 offset_bottom = 24.0
 color = Color(1, 1, 1, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1932567862]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_e7q6y")
-}
+libraries/ = SubResource("AnimationLibrary_e7q6y")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

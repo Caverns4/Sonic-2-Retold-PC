@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyx38ouxk43dn"]
+[gd_scene format=3 uid="uid://cyx38ouxk43dn"]
 
 [ext_resource type="Script" uid="uid://bdm1b3wf0gqwf" path="res://Scripts/Special3D/special_hud.gd" id="1_4ib6a"]
 [ext_resource type="Texture2D" uid="uid://d0yay16k5lfhw" path="res://Graphics/Special Stage/SS_HUD_Sprites.png" id="1_tgu3l"]
@@ -6,30 +6,30 @@
 [ext_resource type="Texture2D" uid="uid://bphan27in8ku2" path="res://Graphics/Special Stage/SS_HUD_Banner.png" id="4_ylmpt"]
 [ext_resource type="Script" uid="uid://7arhsr6od14i" path="res://Scripts/Special3D/banner_thumb.gd" id="5_qbx1f"]
 
-[node name="SpecialHud" type="CanvasLayer"]
+[node name="SpecialHud" type="CanvasLayer" unique_id=1967345530]
 layer = 5
 script = ExtResource("1_4ib6a")
 
-[node name="TopLeft" type="Control" parent="."]
+[node name="TopLeft" type="Control" parent="." unique_id=1621159634]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Player1" type="Sprite2D" parent="TopLeft"]
+[node name="Player1" type="Sprite2D" parent="TopLeft" unique_id=206302479]
 position = Vector2(40, 16)
 texture = ExtResource("1_tgu3l")
 centered = false
 vframes = 12
 
-[node name="RINGS" type="Sprite2D" parent="TopLeft"]
+[node name="RINGS" type="Sprite2D" parent="TopLeft" unique_id=1363890260]
 position = Vector2(32, 24)
 texture = ExtResource("1_tgu3l")
 centered = false
 vframes = 6
 frame = 2
 
-[node name="RingCountP1" type="RichTextLabel" parent="TopLeft"]
+[node name="RingCountP1" type="RichTextLabel" parent="TopLeft" unique_id=1975940450]
 layout_mode = 0
 offset_left = 80.0
 offset_top = 24.0
@@ -40,7 +40,7 @@ bbcode_enabled = true
 text = "999
 "
 
-[node name="TopRight" type="Control" parent="."]
+[node name="TopRight" type="Control" parent="." unique_id=344245838]
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
@@ -49,21 +49,21 @@ offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
 
-[node name="Player2" type="Sprite2D" parent="TopRight"]
+[node name="Player2" type="Sprite2D" parent="TopRight" unique_id=1257938629]
 position = Vector2(-32, 16)
 texture = ExtResource("1_tgu3l")
 centered = false
 vframes = 12
 frame = 1
 
-[node name="RINGS" type="Sprite2D" parent="TopRight"]
+[node name="RINGS" type="Sprite2D" parent="TopRight" unique_id=399161115]
 position = Vector2(-40, 24)
 texture = ExtResource("1_tgu3l")
 centered = false
 vframes = 6
 frame = 2
 
-[node name="RingCountP2" type="RichTextLabel" parent="TopRight"]
+[node name="RingCountP2" type="RichTextLabel" parent="TopRight" unique_id=1500579289]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 24.0
@@ -73,7 +73,7 @@ theme = ExtResource("3_utlc0")
 bbcode_enabled = true
 text = "999"
 
-[node name="TopCenter" type="Control" parent="."]
+[node name="TopCenter" type="Control" parent="." unique_id=1463251581]
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -83,14 +83,14 @@ offset_right = 20.0
 offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="TOTAL" type="Sprite2D" parent="TopCenter"]
+[node name="TOTAL" type="Sprite2D" parent="TopCenter" unique_id=165677186]
 position = Vector2(-4, 16)
 texture = ExtResource("1_tgu3l")
 centered = false
 vframes = 3
 frame = 2
 
-[node name="RingCount" type="RichTextLabel" parent="TopCenter"]
+[node name="RingCount" type="RichTextLabel" parent="TopCenter" unique_id=1298026703]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 24.0
@@ -104,7 +104,7 @@ autowrap_mode = 0
 tab_size = 0
 shortcut_keys_enabled = false
 
-[node name="Center" type="Control" parent="."]
+[node name="Center" type="Control" parent="." unique_id=971541753]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -118,13 +118,13 @@ offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Banner" type="Sprite2D" parent="Center"]
+[node name="Banner" type="Sprite2D" parent="Center" unique_id=790660935]
 visible = false
 position = Vector2(64, 0)
 texture = ExtResource("4_ylmpt")
 vframes = 2
 
-[node name="BannerThumb" type="Sprite2D" parent="Center"]
+[node name="BannerThumb" type="Sprite2D" parent="Center" unique_id=37426200]
 visible = false
 position = Vector2(64, -8)
 texture = ExtResource("4_ylmpt")
@@ -132,7 +132,7 @@ vframes = 2
 frame = 1
 script = ExtResource("5_qbx1f")
 
-[node name="TextMessage" type="RichTextLabel" parent="Center"]
+[node name="TextMessage" type="RichTextLabel" parent="Center" unique_id=674060218]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -152,5 +152,5 @@ tab_size = 0
 shortcut_keys_enabled = false
 horizontal_alignment = 1
 
-[node name="ResultSound" type="AudioStreamPlayer" parent="."]
+[node name="ResultSound" type="AudioStreamPlayer" parent="." unique_id=447449657]
 bus = &"SFX"

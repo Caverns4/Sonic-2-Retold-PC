@@ -4,20 +4,20 @@ extends CanvasLayer
 ## Emited when the scene fades, used to load in level details and data to hide it from the player
 signal scene_faded
 ## If the game can be paused in its current state
-var can_pause = false
+var can_pause: bool = false
 
 @onready var input_view: Control = $GUI/ControlMap
 @onready var crt_filter: ColorRect = $CanvasLayer/ColorRect
 @onready var control_menu: CanvasLayer = $GUI/ControllerMenu
 
-func _ready():
+func _ready()-> void:
 	# Sound Driver object references
 	SoundDriver.musicParent = get_node_or_null("Music")
 	SoundDriver.music = get_node_or_null("Music/Music")
 	SoundDriver.life = get_node_or_null("Music/Life")
 	scene_faded.connect(On_scene_faded)
 
-func _input(event):
+func _input(event: InputEvent)-> void:
 	# Pausing
 	if (event.is_action_pressed("gm_pause") and can_pause) or (
 		event.is_action_pressed("gm_pause_P2") and can_pause and Global.two_player_mode):
@@ -36,18 +36,17 @@ func _input(event):
 
 	# reset game if F2 is pressed (this button can be changed in project settings)
 	if event.is_action_pressed("ui_reset"):
-		reset_game()
+		await reset_game()
 	
 
 
 # reset game function
-func reset_game():
+func reset_game()-> void:
 	$GUI/Pause.visible = false
-	# Godot doesn't like returning values with empty variables so create a dummy variable for it to assign
-	change_scene("res://Scene/Presentation/Title.tscn","FadeOut",1.0,true)
+	await change_scene("res://Scene/Presentation/Title.tscn","FadeOut",1.0,true)
 
 ## New Scene Change function.Args: Scene path, fade animation, time of transition, clear data
-func change_scene(scene: String, fade_anim: String = "FadeOut", length: float = 1.0, resetData:bool = true):
+func change_scene(scene: String, fade_anim: String = "FadeOut", length: float = 1.0, resetData:bool = true)-> void:
 	$GUI/Fader.speed_scale = 1.0/float(length)
 	# if fadeOut isn't blank, play the fade out animation and then wait, otherwise skip this
 	if fade_anim != "":
@@ -70,7 +69,7 @@ func change_scene(scene: String, fade_anim: String = "FadeOut", length: float = 
 		$GUI/Fader.play_backwards(fade_anim)
 	SoundDriver.reset_volume()
 
-func quit_game(fade_anim: String = "FadeOut", length: float = 1.0):
+func quit_game(fade_anim: String = "FadeOut", length: float = 1.0) -> void:
 	$GUI/Fader.speed_scale = 1.0/float(length)
 	# if fadeOut isn't blank, play the fade out animation and then wait, otherwise skip this
 	if fade_anim != "":
@@ -82,8 +81,8 @@ func quit_game(fade_anim: String = "FadeOut", length: float = 1.0):
 	get_tree().quit()
 
 # set the volume level. All this does is push a request to the Sound Driver.
-func set_volume(final_volume: float = 0, fade_speed: float = 1):
+func set_volume(final_volume: float = 0, fade_speed: float = 1)-> void:
 	SoundDriver.set_volume(final_volume,fade_speed)
 
-func On_scene_faded():
+func On_scene_faded()-> void:
 	pass

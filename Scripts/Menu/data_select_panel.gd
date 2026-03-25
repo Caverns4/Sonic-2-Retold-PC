@@ -14,9 +14,9 @@ var data: Array = []:
 		data = value
 		_update_save_preview()
 
-signal press(saved_game_id)
+signal press(saved_game_id: int)
 
-func _update_save_preview():
+func _update_save_preview() -> void:
 	pass
 
 func _on_pressed() -> void:

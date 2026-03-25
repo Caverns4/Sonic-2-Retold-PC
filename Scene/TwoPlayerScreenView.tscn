@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8crjq12ork7"]
+[gd_scene format=3 uid="uid://b8crjq12ork7"]
 
 [ext_resource type="Script" uid="uid://2ac4isxha7iy" path="res://Scripts/Level/TwoPlayerScreenView.gd" id="1_07734"]
 
-[node name="TwoPlayerScreenView" type="Control"]
+[node name="TwoPlayerScreenView" type="Control" unique_id=1346944916]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,17 +11,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_07734")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1774293400]
 layer = 0
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer" unique_id=206176310]
 z_as_relative = false
 offset_right = 320.0
 offset_bottom = 112.0
 size_flags_vertical = 4
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer" unique_id=15576852]
 handle_input_locally = false
 scaling_3d_mode = 1
 fsr_sharpness = 0.0
@@ -31,13 +31,13 @@ size_2d_override = Vector2i(320, 224)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
-[node name="CameraP1" type="Camera2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+[node name="CameraP1" type="Camera2D" parent="CanvasLayer/SubViewportContainer/SubViewport" unique_id=2099784029]
 limit_left = 0
 limit_top = 0
 limit_right = 16384
 limit_bottom = 2048
 
-[node name="SubViewportContainer2" type="SubViewportContainer" parent="CanvasLayer"]
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="CanvasLayer" unique_id=490183573]
 z_as_relative = false
 offset_top = 112.0
 offset_right = 320.0
@@ -45,7 +45,7 @@ offset_bottom = 224.0
 size_flags_vertical = 6
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer2"]
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer2" unique_id=661822979]
 handle_input_locally = false
 scaling_3d_mode = 1
 fsr_sharpness = 0.0
@@ -55,7 +55,7 @@ size_2d_override = Vector2i(320, 224)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
-[node name="CameraP2" type="Camera2D" parent="CanvasLayer/SubViewportContainer2/SubViewport"]
+[node name="CameraP2" type="Camera2D" parent="CanvasLayer/SubViewportContainer2/SubViewport" unique_id=1399793234]
 limit_left = 0
 limit_top = 0
 limit_right = 16384

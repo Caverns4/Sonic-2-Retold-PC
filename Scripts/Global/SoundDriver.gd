@@ -1,26 +1,26 @@
 extends Node
 
 # Music
-var musicParent = null
+var musicParent: Node = null
 var music: AudioStreamPlayer = null
 var life: AudioStreamPlayer = null
 
 
-var startVolumeLevel = 0 # used as reference for when a volume change started
-var setVolumeLevel = 0 # where to fade the volume to
-var volume_fade_amount = 0 # current stage between start and set for volume level
-var volumeFadeSpeed = 1 # speed for volume changing
+var startVolumeLevel: float = 0 # used as reference for when a volume change started
+var setVolumeLevel: float = 0 # where to fade the volume to
+var volume_fade_amount: float = 0 # current stage between start and set for volume level
+var volumeFadeSpeed: float = 1 # speed for volume changing
 
 # index for current theme
-var currentTheme = 0
+var currentTheme: int = 0
 # The Audio Resource that is the currently playing song.
 # Used to avoid the same song being queued twice,
 # unless the queue request is agnostic.
-var currentMusic = null
+var currentMusic: AudioStream = null
 # song themes to play for things like invincibility and speed shoes
 
 enum THEME{NORMAL,INVINCIBLE,SPEED,SUPER,BOSS,DROWN,RESULTS}
-var themes = [
+var themes:Array[AudioStream] = [
 	null, # Level Music
 	preload("res://Audio/Soundtrack/s2br_Invincible.ogg"), # INVINCIBLE
 	preload("res://Audio/Soundtrack/s2br_SuperSonic.ogg"), # SPEED
@@ -30,9 +30,9 @@ var themes = [
 	preload("res://Audio/Soundtrack/s2br_Result.ogg")] # RESULTS
 
 # Sound, used for play_sound (used for a global sound, use this if multiple nodes use the same sound)
-var soundChannel = AudioStreamPlayer.new()
+var soundChannel: AudioStreamPlayer = AudioStreamPlayer.new()
 #Alternate global Sound player
-var soundChannel2 = AudioStreamPlayer.new()
+var soundChannel2: AudioStreamPlayer = AudioStreamPlayer.new()
 
 ## Emitted once a volume fade function is complete.
 signal volume_set
@@ -45,7 +45,7 @@ func _ready() -> void:
 	soundChannel2.bus = "SFX"
 	volume_set.connect(On_volume_set)
 
-func _process(delta):
+func _process(delta: float) -> void:
 	if !get_tree().paused and !music.stream_paused:
 		# check that volume lerp isn't transitioned yet
 		if volume_fade_amount < 1:
@@ -57,18 +57,18 @@ func _process(delta):
 				emit_signal("volume_set")
 
 # use this to play a sound globally, use load("res:..") or a preloaded sound
-func play_sound(sound = null):
+func play_sound(sound: AudioStream = null) -> void:
 	if sound != null:
 		soundChannel.stream = sound
 		soundChannel.play()
 
-func play_sound2(sound = null):
+func play_sound2(sound: AudioStream = null) -> void:
 	if sound != null:
 		soundChannel2.stream = sound
 		soundChannel2.play()
 
 #Logically pick which song should be picked.
-func playNormalMusic():
+func playNormalMusic() -> void:
 	# Heirarchy:
 	# Assume theme is 0 by default
 	
@@ -94,14 +94,14 @@ func playNormalMusic():
 	playMusic(themes[currentTheme],false)
 
 ## Play Arg1, unless it matches the current song and arg2 is false.
-func playMusic(musID = null,agnostic = false):
+func playMusic(musID: AudioStream = null,agnostic: bool = false) -> void:
 	#If agnostic is set, the song is queued even if the same song is playing.
 	if musID and (musID != currentMusic) or (agnostic):
 		SoundDriver.music.stream = musID
 		SoundDriver.music.play()
 		currentMusic = musID
 
-func playExtraLifeMusic():
+func playExtraLifeMusic() -> void:
 	music.stream_paused = true
 	music.volume_db = -100
 	life.stop()
@@ -111,7 +111,7 @@ func playExtraLifeMusic():
 	set_volume(1.0,0.5)
 
 # set the volume level
-func set_volume(final_volume: float = 0, fade_speed: float = 1):
+func set_volume(final_volume: float = 0, fade_speed: float = 1) -> void:
 	# set the start volume level to the curren volume
 	startVolumeLevel = music.volume_db
 	# set the volume level to go to
@@ -122,7 +122,7 @@ func set_volume(final_volume: float = 0, fade_speed: float = 1):
 	volumeFadeSpeed = fade_speed
 	# this is continued in _process() as it needs to run during gameplay
 
-func reset_volume():
+func reset_volume() -> void:
 	# stop life sound (if it's still playing)
 	if SoundDriver.life.is_playing():
 		SoundDriver.life.stop()
@@ -131,5 +131,5 @@ func reset_volume():
 	startVolumeLevel = 0
 
 
-func On_volume_set():
+func On_volume_set() -> void:
 	pass

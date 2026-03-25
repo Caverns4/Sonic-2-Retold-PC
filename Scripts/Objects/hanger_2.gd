@@ -5,7 +5,7 @@ extends Area2D
 ## Allow directional input on this vine/bar
 @export var directional_input: bool = true
 ## Optionally set sound to play when making contact
-@export var grabSound = preload("res://Audio/SFX/Player/s2br_Grab.wav")
+@export var grabSound: AudioStream = preload("res://Audio/SFX/Player/s2br_Grab.wav")
 ## Press down to drop off the object instead of jump.
 @export var press_down_to_drop: bool = true
 ## Not yet implimented
@@ -19,7 +19,7 @@ var anim_name: String = "hang"
 
 const HANG_OFFSET = 20
 
-func _ready():
+func _ready() -> void:
 	$Grab.stream = grabSound
 	if player_can_shimmy:
 		anim_name = "hang2"
@@ -30,7 +30,7 @@ func _process(_delta: float) -> void:
 			if $HitBox.disabled == true or body.is_on_floor() or body.is_on_wall():
 				_player_dropoff(body)
 
-func _player_jumpoff(body:Player2D):
+func _player_jumpoff(body:Player2D) -> void:
 	if players.has(body):
 		body.animator.play(anim_name)
 		body.set_state(body.STATES.AIR)
@@ -41,7 +41,7 @@ func _player_jumpoff(body:Player2D):
 		body.poleGrabID = null
 		_disconnect_player(body)
 
-func _player_dropoff(body:Player2D):
+func _player_dropoff(body:Player2D) -> void:
 	if players.has(body):
 		body.set_state(body.STATES.AIR)
 		body.air_control = true
@@ -50,7 +50,7 @@ func _player_dropoff(body:Player2D):
 		_disconnect_player(body)
 
 ## Remove the player from this object's detection.
-func _disconnect_player(body):
+func _disconnect_player(body: Player2D) -> void:
 	players.erase(body)
 
 # All that happens in phyhsics process is the player checks 
@@ -68,13 +68,13 @@ func _physics_process(_delta: float) -> void:
 					_player_jumpoff(body)
 			
 			if directional_input or player_can_shimmy:
-				var dir = body.get_x_input()
+				var dir: float = body.get_x_input()
 				if dir:
 					body.direction = sign(dir)
 					body.sprite.flip_h = (body.direction < 0)
 				if player_can_shimmy:
 					body.movement.x = 120*dir
-					var anim = "hangShimmy" if body.movement.x != 0 else anim_name
+					var anim: StringName = "hangShimmy" if body.movement.x != 0 else anim_name
 					body.animator.play(anim)
 			
 			if (body.is_down_held() and press_down_to_drop):
@@ -95,7 +95,7 @@ func _physics_process(_delta: float) -> void:
 
 
 # Returns the count of players contacting with the hanger. Used by external scripts.
-func get_contacting_players():
+func get_contacting_players() -> Array:
 	var count: Array = []
 	for i:Player2D in players:
 		if i.poleGrabID == self:
@@ -104,7 +104,7 @@ func get_contacting_players():
 
 
 func _on_body_entered(body: Player2D) -> void:
-	var parent = get_parent()
+	var parent: Player2D = get_parent()
 	if body != parent:
 		players.append(body)
 

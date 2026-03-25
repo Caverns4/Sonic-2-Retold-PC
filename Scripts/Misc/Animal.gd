@@ -1,14 +1,14 @@
 extends Node2D
-var animType = 0 # 0 flap, 1 change on fall
+var animType: int = 0 # 0 flap, 1 change on fall
 @export_enum("Bird", "Squirrel",
 "Rabbit", "Chicken",
 "Penguin", "Seal",
 "Pig", "Eagle",
 "Mouse", "Monkey",
 "Turtle", "Bear",
-"Beaver","Fox")var animal = 0
+"Beaver","Fox")var animal: int = 0
 
-var animalPhysics = [
+var animalPhysics: Array = [
 # (Bird)
 Vector2(3.0,4.0),
 # (Squirrel)
@@ -39,15 +39,15 @@ Vector2(2.0,3.0),
 Vector2(2.0,4.0),
 ]
 
-var animTime = 0
-var bouncePower = 300
-var velocity = Vector2(0,-4*60)
-var speed = 180
-var gravity = 0.21875
-var forceDirection = true # set this to false for capsule logic
-var active = true
+var animTime: float = 0
+var bouncePower: float = 300
+var velocity: Vector2 = Vector2(0,-4*60)
+var speed: float = 180
+var gravity: float = 0.21875
+var forceDirection: bool = true # set this to false for capsule logic
+var active: bool = true
 
-func _ready():
+func _ready()-> void:
 	if forceDirection:
 		scale.x = -scale.x
 	else:
@@ -92,10 +92,10 @@ func _ready():
 			$animals.region_rect.position = Vector2(72,192)
 			animType = 1
 
-func _physics_process(delta):
+func _physics_process(delta: float)-> void:
 	# check if active, if not then stop processing physics
 	if !active:
-		return false
+		return
 	# gravity
 	velocity.y += gravity*60
 	
@@ -116,7 +116,7 @@ func _physics_process(delta):
 
 
 
-func _process(delta):
+func _process(delta: float)-> void:
 	# animation code
 	if (velocity.x != 0):
 		match (animType):
@@ -132,9 +132,9 @@ func _process(delta):
 					$animals.frame = 1
 
 
-func _on_VisibilityNotifier2D_screen_exited():
+func _on_VisibilityNotifier2D_screen_exited()-> void:
 	queue_free()
 
 # set active on time out (some spawning scenerios like a capsule sets a delay)
-func _on_ActivationTimer_timeout():
+func _on_ActivationTimer_timeout()-> void:
 	active = true

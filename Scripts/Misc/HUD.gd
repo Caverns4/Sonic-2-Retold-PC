@@ -14,14 +14,14 @@ var end_cutscene: bool = false
 enum STATES{INIT,INTRO,LEVEL,END_OF_LEVEL,CUTSCENE}
 var state: STATES = STATES.INIT
 
-var waterSourceColor = preload("res://Graphics/Palettes/BasePal.png")
-var waterReplaceColor = preload("res://Graphics/Palettes/WetPal.png")
+var waterSourceColor: Texture2D = preload("res://Graphics/Palettes/BasePal.png")
+var waterReplaceColor: Texture2D = preload("res://Graphics/Palettes/WetPal.png")
 
 ## The total number of rings required for a Perfect Bonus in this level. If 0, calculate automatically.
 var ringsForPerfect: int = 0
 
 # used for flashing ui elements (rings, time)
-var flashTimer = 0
+var flashTimer: float = 0
 var cheating: bool = false
 
 # Used for level completion, stop loop recursions
@@ -53,7 +53,7 @@ var lifeTextures: Array[Texture2D] = [
 	preload("res://Graphics/HUD/hud_lives_Miles.png")
 ]
 
-func _ready():
+func _ready() -> void:
 	set_hud_visibility(false)
 	Global.hud = self
 	cheating = (!Global.superRingDrain or !Global.airSpeedCap)
@@ -78,7 +78,7 @@ func _ready():
 		$P2Counters/LifeIcon.frame = Global.PlayerChar2
 	$LifeCounter/Icon.frame = Global.PlayerChar1 if Global.livesMode else 0
 
-func initialize_hud(zone_name: String,zone_text: String,act_number: int):
+func initialize_hud(zone_name: String,zone_text: String,act_number: int) -> void:
 	# set level name strings
 	$LevelCard/LevelName.text = zone_name
 	$LevelCard/Zone.text = zone_text
@@ -95,9 +95,9 @@ func initialize_hud(zone_name: String,zone_text: String,act_number: int):
 	$Water/WaterOverlay.material["shader_parameter/originalPalette"] = waterSourceColor
 	$Water/WaterOverlay.material["shader_parameter/swapPalette"] = waterReplaceColor
 	state = STATES.INTRO
-	PlayTitleCardAnimaiton()
+	await PlayTitleCardAnimaiton()
 
-func set_hud_visibility(vis: bool):
+func set_hud_visibility(vis: bool) -> void:
 	if vis:
 		$Counters.visible = !Global.two_player_mode
 		$LifeCounter.visible = !Global.two_player_mode
@@ -113,7 +113,7 @@ func set_hud_visibility(vis: bool):
 
 
 
-func PlayTitleCardAnimaiton():
+func PlayTitleCardAnimaiton() -> void:
 	$LevelCard.visible = true
 	# make sure level card isn't paused so it can keep playing
 	$LevelCard/CardPlayer.process_mode = PROCESS_MODE_ALWAYS
@@ -149,9 +149,9 @@ func PlayTitleCardAnimaiton():
 	Main.can_pause = true
 	
 
-func respawnPlayer():
+func respawnPlayer() -> void:
 	if Global.players and Global.players[0] is CharacterBody2D:
-		var player = Global.players[0]
+		var player: Player2D = Global.players[0]
 		# set player's position to rings (and player 2)
 		# helps sell the illusion that we reset the room
 		if Global.checkpoints.size() > 0:
@@ -195,7 +195,7 @@ func respawnPlayer():
 		player.collision_layer = player.defaultLayer
 		player.collision_mask = player.defaultMask
 
-func _process(delta):
+func _process(delta: float) -> void:
 	match state:
 		STATES.INTRO:
 			pass
@@ -205,15 +205,15 @@ func _process(delta):
 			UpdateHUD(delta)
 			# Game Over Sequence if NOT stage complete
 			if Global.gameOver and !gameOver:
-				SetupGameOver(delta)
+				await SetupGameOver(delta)
 		STATES.END_OF_LEVEL:
 			pass
 	## Update the water display.
-	WaterOverlay()
+	await WaterOverlay()
 
 
 ## HUD flashing text
-func HandleHUDBlinking(delta):
+func HandleHUDBlinking(delta: float) -> void:
 	flashTimer -= delta
 	if flashTimer <= 0:
 		flashTimer = 0.133333
@@ -230,9 +230,9 @@ func HandleHUDBlinking(delta):
 			$Counters/Text/Time.visible = false
 
 ## Update HUD Text
-func UpdateHUD(_delta):
+func UpdateHUD(_delta: float) -> void:
 	# clamp time so that it won't go to 10 minutes
-	var hud_time = min(Global.levelTime,Global.maxTime-0.001)
+	var hud_time: float = min(Global.levelTime,Global.maxTime-0.001)
 	@warning_ignore("integer_division")
 	var hud_time_minutes: int = int(hud_time)/60
 	var hud_time_seconds: int = int(hud_time)%60
@@ -247,7 +247,7 @@ func UpdateHUD(_delta):
 		if Global.timerActiveP2:
 			$P2Counters/Text/TimeNumbers.text = timer_text
 		# check that there's player, if there is then track the focus players ring count
-		var playerCount = Global.players.size()
+		var playerCount: int = Global.players.size()
 		$P1Counters/Text/RingCount.text = "%3d" % Global.players[0].rings
 		if (playerCount > 1):
 			$P2Counters/Text/RingCount.text = "%3d" % Global.players[1].rings
@@ -273,13 +273,13 @@ func UpdateHUD(_delta):
 			lifeText.text = "%3d" % min(Global.totalCoins + coins,999)
 
 ## Called when the Water Level is updated.
-func UpdateWaterOverlay(value):
+func UpdateWaterOverlay(value: int) -> void:
 	$Water/WaterOverlay.visible = (value > 0)
 
 ## Check that this level has water
-func WaterOverlay():
+func WaterOverlay() -> void:
 	# get current camera
-	var cam = GlobalFunctions.getCurrentCamera2D()
+	var cam: Camera2D = GlobalFunctions.getCurrentCamera2D()
 	if !Global.two_player_mode and cam != null:
 		# if camera exists place the water's y position based on the screen position as the water is a UI overlay
 		$Water/WaterOverlay.position.y = clamp(
@@ -314,7 +314,7 @@ func WaterOverlay():
 						i.set_shield(i.SHIELDS.NONE)
 
 ## Run Game Over routine
-func SetupGameOver(_delta):
+func SetupGameOver(_delta: float) -> void:
 		# set game over to true so this doesn't loop
 		gameOver = true
 		# determine if the game over is a time over (game over and time over sequences are the same but game says time)
@@ -331,13 +331,13 @@ func SetupGameOver(_delta):
 		# reset game
 		if Global.levelTime < Global.maxTime or (Global.lives <= 0 and Global.livesMode):
 			if Global.two_player_mode:
-				var results = [Global.score,Global.levelTime,Global.players[0].rings,
+				var results: Array[Variant] = [Global.score,Global.levelTime,Global.players[0].rings,
 				Global.scoreP2,Global.levelTimeP2,Global.players[1].rings]
 				Global.twoPlayActResults.append(results)
 				#Set flag to load the results screen.
-				Main.change_scene(two_player_results)
+				await Main.change_scene(two_player_results)
 			else:
-				Main.change_scene(Global.start_scene)
+				await Main.change_scene(Global.start_scene)
 		# reset level (if time over and lives aren't out)
 		else:
 			Main.change_scene_to_file(null,"FadeOut")
@@ -345,14 +345,14 @@ func SetupGameOver(_delta):
 			Global.levelTime = 0
 			Global.levelTimeP2 = 0
 
-func _on_stage_started():
+func _on_stage_started() -> void:
 	set_hud_visibility(true)
 	Global.levelTime = 0
 	Global.levelTimeP2 = 0
 	state = STATES.LEVEL
 
 ## Run Stage Clear Functionality
-func ProcessStageClear():
+func ProcessStageClear() -> void:
 	# initialize stage clear sequence
 	if !isStageEnding:
 		isStageEnding = true
@@ -382,7 +382,7 @@ func ProcessStageClear():
 		$LevelClear/PerfectBonusText/PerfectBonus.text = "%6d" % perfectBonus
 		timeBonus = 0
 		# bonus time table
-		var bonusTable = [
+		var bonusTable: Array = [
 		[60*5,500],
 		[60*4,1000],
 		[60*3,2000],
@@ -394,7 +394,7 @@ func ProcessStageClear():
 		]
 		# loop through the bonus table, if current time is less then the first value then set it to that bonus
 		# you'll want to make sure the order of the table goes down in time and up in score otherwise it could cause some weirdness
-		for i in bonusTable:
+		for i: Variant in bonusTable:
 			if Global.levelTime < i[0]:
 				timeBonus = i[1]
 		# set bonus text for time
@@ -413,9 +413,9 @@ func ProcessStageClear():
 		await $LevelClear/CounterWait.timeout
 		Global.totalCoins += coins
 		# after clear, change to next level in Global.next_zone_pointer (you can set the next zone in the level script node)
-		Global.loadNextLevel()
+		await Global.loadNextLevel()
 
-func InitTimerForPlayer(index):
+func InitTimerForPlayer(index: int) -> void:
 	if index == 0:
 		$DeathTimers/CountdownP1.visible = true
 	if index == 1:
@@ -438,11 +438,17 @@ func _on_counter_count_timeout(delta: float) -> void:
 	# decrease bonuses in order, if time bonus not 0 then count time down, then do the same for rings
 	# if you add other bonuses (like perfect bonus) you'll want to add it to the end of the sequence before the end
 	if timeBonus > 0:
-		timeBonus = _add_score(timeBonus,delta)
+		@warning_ignore("narrowing_conversion")
+		var num:int = await _add_score(timeBonus,delta)
+		timeBonus = num
 	elif ringBonus > 0:
-		ringBonus = _add_score(ringBonus,delta)
+		@warning_ignore("narrowing_conversion")
+		var num:int = await _add_score(ringBonus,delta)
+		ringBonus = num
 	elif perfectBonus > 0:
-		perfectBonus = _add_score(perfectBonus,delta)
+		@warning_ignore("narrowing_conversion")
+		var num:int = await _add_score(perfectBonus,delta)
+		perfectBonus = num
 	else:
 		# Don't stop the tick sound abruptly, just disable looping,
 		# so it stops by itself after it plays until the end once
@@ -458,33 +464,33 @@ func _on_counter_count_timeout(delta: float) -> void:
 	$LevelClear/PerfectBonusText/PerfectBonus.text = "%6d" % perfectBonus
 	$LevelClear/RingBonusText/RingBonus.text = "%6d" % ringBonus
 
-func _reset_air():
-	for player in Global.players:
+func _reset_air() -> void:
+	for player: Player2D in Global.players:
 		player.airTimer = player.defaultAirTime
 
 ## We count the number of points based on time passed since the previous frame.
-func _add_score(subtractFrom,delta):
+func _add_score(subtractFrom: float,delta: float) -> float:
 	accumulatedDelta += delta
-	var standardDelta = 1.0 / 60.0
-	var points = floor(accumulatedDelta / standardDelta) * 100
+	var standardDelta: float = 1.0 / 60.0
+	var points: float = floor(accumulatedDelta / standardDelta) * 100
 	if (points > subtractFrom):
 		points = subtractFrom
 	accumulatedDelta -= points / 100 * standardDelta
 	# check if adding score would hit the life bonus
-	Global.check_score_life(points)
+	await Global.check_score_life(int(points))
 	subtractFrom -= points
-	Global.score += points
+	Global.score += int(points)
 	return subtractFrom
 
 ## Setup the intial boss meter.
-func setup_boss_meter(boss: BossBase):
+func setup_boss_meter(boss: BossBase) -> void:
 	$"Boss Life/BossName".text = boss.boss_name
 	boss_max_health = boss.hp
 	boss_current_health = boss.hp
 	$"Boss Life".visible = true
 	boss.got_hit.connect(boss_hit)
 
-func boss_hit():
+func boss_hit() -> void:
 	boss_current_health -= 1
 	@warning_ignore("integer_division")
 	$"Boss Life/EggMeterFull".set_size(Vector2((128/min(boss_max_health,8))*min(boss_current_health,8),8))
@@ -493,7 +499,7 @@ func boss_hit():
 		$"Boss Life".visible = false
 
 
-func super_icon_ready(vis: bool = false):
+func super_icon_ready(vis: bool = false) -> void:
 	if vis:
 		iconAnim.play("Super")
 	else:

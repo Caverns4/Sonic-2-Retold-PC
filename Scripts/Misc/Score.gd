@@ -15,14 +15,14 @@ const RECTS = [
 	Rect2(Vector2(0,0),
 	Vector2(25,8))]
 
-var scoreID = 0
-var playerID = 0
+var scoreID: int = 0
+var playerID: int = 0
 
-var yspeed = -3
+var yspeed: float = -3
 
-func _ready():
+func _ready() -> void:
 	# check if adding score would hit the life bonus
-	Global.check_score_life(SCORE[scoreID])
+	await Global.check_score_life(SCORE[scoreID])
 	
 	# add score
 	if playerID == 0 or !Global.two_player_mode:
@@ -33,7 +33,7 @@ func _ready():
 	$Sprite2D.frame = scoreID
 	
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	# move score
 	yspeed += 0.09375*60*delta
 	translate(Vector2(0,yspeed*60*delta))

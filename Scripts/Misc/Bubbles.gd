@@ -1,13 +1,13 @@
 extends Node2D
 
 # 0 = normal, 1 = medium, 2 = airbubble
-var bubbleType = 0
+var bubbleType: int = 0
 
-var velocity = Vector2(1,-32)
-@onready var offsetTime = randf()*4
-var maxDistance = 0
+var velocity: Vector2 = Vector2(1,-32)
+@onready var offsetTime: float = randf()*4
+var maxDistance: float = 0
 
-func _ready():
+func _ready() -> void:
 	$Bubble.frame = 0
 	match(bubbleType):
 		0:
@@ -19,11 +19,11 @@ func _ready():
 			$BubbleCollect/CollisionShape2D.disabled = false
 
 # queue if popped
-func _on_Bubble_animation_finished():
+func _on_Bubble_animation_finished() -> void:
 	if $Bubble.animation == "bigPop":
 		queue_free()
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	# check if below water level and rise
 	if Global.waterLevel > 0:
 		if global_position.y > Global.waterLevel and (global_position.y > maxDistance or maxDistance == 0):
@@ -44,7 +44,7 @@ func _physics_process(delta):
 				queue_free()
 
 # player collect bubble
-func _on_BubbleCollect_body_entered(body: Player2D):
+func _on_BubbleCollect_body_entered(body: Player2D) -> void:
 	# player get air, ignore if they're already in a bubble
 	if !body.ground and $Bubble.frame >= 6 and body.shield != body.SHIELDS.BUBBLE:
 		body.airTimer = body.defaultAirTime
@@ -62,5 +62,5 @@ func _on_BubbleCollect_body_entered(body: Player2D):
 		set_physics_process(false)
 
 # clear if off screen
-func _on_VisibilityNotifier2D_screen_exited():
+func _on_VisibilityNotifier2D_screen_exited() -> void:
 	queue_free()

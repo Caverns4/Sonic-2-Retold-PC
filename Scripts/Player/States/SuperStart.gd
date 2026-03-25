@@ -1,11 +1,11 @@
 extends PlayerState
 
-var activated = true
+var activated: bool = true
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	if activated and !parent.is_super:
-		var remVel = parent.movement
-		var lastAnim = parent.animator.current_animation
+		var remVel: Vector2 = parent.movement
+		var lastAnim: String = parent.animator.current_animation
 		# hide shield
 		parent.shieldSprite.visible = false
 		# set movement to 0
@@ -44,5 +44,5 @@ func _process(_delta):
 		parent.set_state(parent.STATES.AIR)
 		
 
-func state_exit():
+func state_exit() -> void:
 	activated = true

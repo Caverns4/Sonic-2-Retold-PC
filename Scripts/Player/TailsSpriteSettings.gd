@@ -1,8 +1,8 @@
 extends Sprite2D
 
-var defaultPosition = position
+var defaultPosition: Vector2 = position
 
-func _on_PlayerAnimation_animation_started(anim_name):
+func _on_PlayerAnimation_animation_started(anim_name: StringName) -> void:
 	# handle tails positions based on parents animation
 	match (anim_name):
 		"roll":

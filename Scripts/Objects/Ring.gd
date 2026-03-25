@@ -1,19 +1,19 @@
 extends Node2D
 const MAX_LIFETIME = 256.0/60.0
-var scattered = false
-var lifetime = MAX_LIFETIME
-var velocity = Vector2.ZERO
-var player
-var magnet = null
-var magnetShape = null
-var ringacceleration = [0.75,0.1875]
-var Particle = preload("res://Entities/Misc/GenericParticle.tscn")
+var scattered: bool = false
+var lifetime: float = MAX_LIFETIME
+var velocity: Vector2 = Vector2.ZERO
+var player: Player2D
+var magnet: Area2D = null
+var magnetShape: CollisionObject2D = null
+var ringacceleration: Array[float] = [0.75,0.1875]
+var Particle: PackedScene = preload("res://Entities/Misc/GenericParticle.tscn")
 
-func _ready():
+func _ready() -> void:
 	if Global.object_table.has(get_path()):
 		queue_free()
 
-func _process(delta):
+func _process(delta: float) -> void:
 	# scattered logic
 	if (scattered):
 		z_index = 7
@@ -30,13 +30,13 @@ func _process(delta):
 			player.get_ring()
 			if !scattered:
 				Global.object_table.append(get_path())
-			var part = Particle.instantiate()
+			var part: AnimatedSprite2D = Particle.instantiate()
 			get_parent().add_child(part)
 			part.global_position = global_position
 			part.play("RingSparkle")
 			queue_free()
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	# scattered physics logic
 	if (scattered):
 		velocity.y += 0.09375*60.0
@@ -45,12 +45,12 @@ func _physics_process(delta):
 			velocity.y *= -0.75
 	elif (magnet):
 		#relative positions
-		var sx = sign(magnet.global_position.x - global_position.x)
-		var sy = sign(magnet.global_position.y - global_position.y)
+		var sx: int = sign(magnet.global_position.x - global_position.x)
+		var sy: int = sign(magnet.global_position.y - global_position.y)
 		
 		#check relative movement
-		var tx = int(sign(velocity.x) == sx)
-		var ty = int(sign(velocity.y) == sy)
+		var tx: int = int(sign(velocity.x) == sx)
+		var ty: int = int(sign(velocity.y) == sy)
 		
 		#add to speed
 		velocity.x += (ringacceleration[tx] * sx)/GlobalFunctions.div_by_delta(delta)
@@ -62,18 +62,18 @@ func _physics_process(delta):
 		
 		
 
-func _on_Hitbox_body_entered(body):
+func _on_Hitbox_body_entered(body: Player2D) -> void:
 	if (player != body):
 		if (!scattered) or (scattered and lifetime < (3.3)):
 			player = body
 
 
-func _on_Hitbox_body_exited(body):
+func _on_Hitbox_body_exited(body: Player2D) -> void:
 	if (player == body):
 		player = null
 
 
-func _on_Hitbox_area_shape_entered(_area_id, area, _area_shape, _local_shape):
+func _on_Hitbox_area_shape_entered(_area_id: int, area:Area2D, _area_shape:CollisionShape2D, _local_shape: CollisionShape2D) -> void:
 	if (magnet == null):
 		magnet = area
 		magnetShape = area.get_child(0)

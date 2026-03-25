@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cd27rgk5o5jg2"]
+[gd_scene format=3 uid="uid://cd27rgk5o5jg2"]
 
 [ext_resource type="Texture2D" uid="uid://ceangqioyo4uf" path="res://Graphics/Items/air_bubbles.png" id="1"]
 [ext_resource type="Script" uid="uid://cv5sf6208a6dh" path="res://Scripts/Misc/Bubbles.gd" id="2"]
@@ -317,23 +317,23 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Bubbles" type="Node2D"]
+[node name="Bubbles" type="Node2D" unique_id=670104565]
 script = ExtResource("2")
 
-[node name="BubbleCollect" type="Area2D" parent="."]
+[node name="BubbleCollect" type="Area2D" parent="." unique_id=370781868]
 collision_layer = 0
 collision_mask = 4096
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BubbleCollect"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BubbleCollect" unique_id=1615211506]
 shape = SubResource("1")
 disabled = true
 
-[node name="Bubble" type="AnimatedSprite2D" parent="."]
+[node name="Bubble" type="AnimatedSprite2D" parent="." unique_id=1765087442]
 z_index = 6
 sprite_frames = SubResource("19")
 frame = 2
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=178564794]
 scale = Vector2(1.6, 12.8)
 
 [connection signal="body_entered" from="BubbleCollect" to="." method="_on_BubbleCollect_body_entered"]

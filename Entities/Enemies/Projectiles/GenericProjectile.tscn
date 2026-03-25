@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bin13qynebdk0"]
+[gd_scene format=3 uid="uid://bin13qynebdk0"]
 
 [ext_resource type="Script" uid="uid://bklc6yvifgigq" path="res://Scripts/Enemies/generic_projectile.gd" id="1_uslf8"]
 [ext_resource type="Texture2D" uid="uid://ccd6qcavs57xg" path="res://Graphics/Enemies/Octus_Bullets.png" id="2_fmhxl"]
@@ -29,34 +29,32 @@ _data = {
 &"RESET": SubResource("Animation_orbrr")
 }
 
-[node name="GenericProjectile" type="CharacterBody2D"]
+[node name="GenericProjectile" type="CharacterBody2D" unique_id=1224950572]
 collision_layer = 16384
 collision_mask = 0
 script = ExtResource("1_uslf8")
 damageType = 2
 
-[node name="CollissionMask" type="CollisionShape2D" parent="."]
+[node name="CollissionMask" type="CollisionShape2D" parent="." unique_id=871998402]
 shape = SubResource("1")
 
-[node name="DamageArea" type="Area2D" parent="."]
+[node name="DamageArea" type="Area2D" parent="." unique_id=16952984]
 collision_layer = 0
 collision_mask = 528384
 
-[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea" unique_id=886784997]
 modulate = Color(1, 0, 0, 1)
 shape = SubResource("1")
 
-[node name="projectile" type="Sprite2D" parent="."]
+[node name="projectile" type="Sprite2D" parent="." unique_id=1657804671]
 texture = ExtResource("2_fmhxl")
 hframes = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_62pdh")
-}
-autoplay = "RESET"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2142586464]
+libraries/ = SubResource("AnimationLibrary_62pdh")
+autoplay = &"RESET"
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=882645457]
 scale = Vector2(2.1, 2.1)
 
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]

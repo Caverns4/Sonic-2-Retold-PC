@@ -6,7 +6,7 @@ extends DataSelectPanel
 #	data = Global.LoadSaveGameSlotData(save_game_id)
 #	_update_save_preview()
 
-func _update_save_preview():
+func _update_save_preview() -> void:
 	await get_tree().process_frame
 	if data:
 		character_id = data[0]
@@ -18,7 +18,7 @@ func _update_save_preview():
 	%LevelIcon.frame = level_id
 
 
-func use():
+func use() -> bool:
 	if !data:
 		GlobalFunctions.convert_player_mode_to_players(character_id)
 		Global.character_selection = character_id
@@ -33,4 +33,3 @@ func use():
 	
 	Global.current_save_index = save_game_id
 	return true
-	

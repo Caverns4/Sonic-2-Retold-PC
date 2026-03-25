@@ -1,28 +1,28 @@
 extends Area2D
 
 ## Speed the players can move through the tube at.
-@export var speed = 8
+@export var speed: float = 8
 ## Speed the player should move horizontally when exiting the tube.
-@export var release_velocity = 0
+@export var release_velocity: float = 0
 ## Sound to play when charging.
-@export var charge_sfx = preload("res://Audio/SFX/Player/s2br_Roll.wav")
+@export var charge_sfx: AudioStream = preload("res://Audio/SFX/Player/s2br_Roll.wav")
 ## Sound to play when the player is launched.
-@export var release_sfx = preload("res://Audio/SFX/Player/s2br_DashRelease.wav")
+@export var release_sfx: AudioStream = preload("res://Audio/SFX/Player/s2br_DashRelease.wav")
 
 @onready var path: Line2D = null
 @onready var animator: AnimationPlayer = $AnimationPlayer
 
 enum STATES{WAIT,ZOOM,RELEASE}
-var state = STATES.WAIT
+var state: STATES = STATES.WAIT
 
 ## Player Reference
 var player: Player2D = null
 ## Current point in tube
-var getPoint = 0
+var getPoint: int = 0
 ## Hover position of the player waiting in the tube
 var hoverOffset: float = 0
 ## Direction this pipe is facing.
-var direction = 0
+var direction: float = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -45,7 +45,7 @@ func _process(delta: float) -> void:
 			if getPoint >= path.get_point_count():
 				_free_player()
 				return
-			var target = path.global_position 
+			var target: Vector2 = path.global_position 
 			target.x += (path.get_point_position(getPoint).x*direction)
 			target.y += path.get_point_position(getPoint).y
 			
@@ -53,7 +53,7 @@ func _process(delta: float) -> void:
 			if player.global_position == target:
 				getPoint+=1
 
-func updateHoveringPos(delta):
+func updateHoveringPos(delta: float) -> void:
 	# change the hover offset
 	player.global_position.y = global_position.y+8-hoverOffset
 	hoverOffset = move_toward(hoverOffset,cos(Global.levelTime*4)*4,delta*10)
@@ -79,7 +79,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		SoundDriver.play_sound(release_sfx)
 		state = STATES.ZOOM
 
-func _free_player():
+func _free_player() -> void:
 	player.allowTranslate = false
 	player.controlObject = null
 	player.set_state(player.STATES.ROLL)

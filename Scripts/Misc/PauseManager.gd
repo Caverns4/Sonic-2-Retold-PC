@@ -1,9 +1,10 @@
 extends Control
 
-var Text = preload("res://Entities/Misc/PauseMenuText.tscn")
+var Text: PackedScene = preload("res://Entities/Misc/PauseMenuText.tscn")
 
+## TODO: TOTAL REWRITE
 # note: first option in an array is the title, it can't be selected
-var menusText = [
+var menusText: Array = [
 # menu 0 (starting menu)
 [
 " ",
@@ -34,38 +35,38 @@ var menusText = [
 ]
 
 # on or off strings
-var onOff = ["off","on"]
+var onOff: Array = ["off","on"]
 # clamp for minimum and maximum sound volume (muted when audio is at lowest)
-var clampSounds = [-40.0,6.0]
+var clampSounds: Array = [-40.0,6.0]
 # how much to iterate through (take the total sum then divide it by how many steps we want)
-@onready var soundStep = (abs(clampSounds[0])+abs(clampSounds[1]))/100.0
+@onready var soundStep: float = (abs(clampSounds[0])+abs(clampSounds[1]))/100.0
 # button delay
 const BUTTON_TIME = 0.3
-var stepTimer = BUTTON_TIME
+var stepTimer: float = BUTTON_TIME
 # screen size limit
-var zoomClamp = [1,6]
+var zoomClamp: Array = [1,6]
 
-var menu = 0 # current menu option
+var menu: int = 0 # current menu option
 enum MENUS {MAIN, OPTIONS, RESTART, QUIT}
-var option = 0
-var lastInput = Vector2.ZERO #Last saved direction input.
+var option: int = 0
+var lastInput: Vector2 = Vector2.ZERO #Last saved direction input.
 
-func _ready():
+func _ready() -> void:
 	set_menu(menu)
 
 
-func _process(delta):
+func _process(delta: float) -> void:
 	# check if paused and visible, otherwise cancel it out
 	if !get_tree().paused or !visible:
-		return null
+		return
 	if stepTimer > 0.0 and lastInput != Vector2.ZERO:
 		stepTimer -= delta
-	_unhandledInput(Input)
+	_unhandledInput()
 
-func _input(event):
+func _input(event: InputEvent) -> void:
 	# check if paused and visible, otherwise cancel it out
 	if !get_tree().paused or !visible:
-		return null
+		return
 	# Two Player Mode
 	if Global.two_player_mode:
 		if (event.is_action_pressed("gm_pause") or 
@@ -116,7 +117,7 @@ func _input(event):
 						get_tree().paused = true
 						Global.checkpoint_time_p1 = 0
 						Global.saved_checkpoint = -1
-						Main.change_scene("","FadeOut",1,true)
+						await Main.change_scene("","FadeOut",1,true)
 						await Main.scene_faded
 						SoundDriver.music.stop()
 						Main.set_volume(0)
@@ -135,7 +136,7 @@ func _input(event):
 						Main.set_volume(0)
 
 
-func _unhandledInput(_event):
+func _unhandledInput() -> void:
 	#Ignore menu in 2-Player mode so player's can't grief eachother.
 	if Global.two_player_mode:
 		return
@@ -144,7 +145,7 @@ func _unhandledInput(_event):
 	if !get_tree().paused or !visible:
 		return
 	#Get input vector, round to -1, 0, or 1
-	var inputCue = Input.get_vector("gm_left","gm_right","gm_up","gm_down")
+	var inputCue: Vector2 = Input.get_vector("gm_left","gm_right","gm_up","gm_down")
 	inputCue.x = round(inputCue.x)
 	inputCue.y = round(inputCue.y)
 	#var inputCueP2: Vector2 = Vector2.ZERO
@@ -175,10 +176,10 @@ func _unhandledInput(_event):
 			return
 		
 		# set audio busses
-		var getBus = "SFX"
+		var getBus: String = "SFX"
 		if option > 0:
 			getBus = "Music"
-		var soundExample = [$MenuVert,$MenuMusicVolume]
+		var soundExample: Array = [$MenuVert,$MenuMusicVolume]
 		
 		match(option):
 			0, 1: # Volume
@@ -209,7 +210,7 @@ func _unhandledInput(_event):
 	lastInput = inputCue
 	
 
-func choose_option(optionSet = option+1, playSound = true):
+func choose_option(optionSet: int = option+1, playSound: int = true) -> void:
 	# reset curren option colour to white
 	$PauseMenu/VBoxContainer.get_child(option+1).modulate = Color.WHITE
 	# change to new option, set the new option colour to yellow
@@ -219,7 +220,7 @@ func choose_option(optionSet = option+1, playSound = true):
 	if playSound:
 		$MenuVert.play()
 
-func set_menu(menuID = 0):
+func set_menu(menuID: int = 0) -> void:
 	# clear all current text nodes
 	for i in $PauseMenu/VBoxContainer.get_children():
 		i.queue_free()
@@ -227,10 +228,10 @@ func set_menu(menuID = 0):
 	menu = menuID
 	
 	# loop through menu lists and create a text node for each option
-	for i in menusText[menuID].size():
-		var text = Text.instantiate()
+	for i: int in menusText[menuID].size():
+		var text: Node = Text.instantiate()
 		$PauseMenu/VBoxContainer.add_child(text)
-		var getText = text.get_child(0)
+		var getText: Node = text.get_child(0)
 		if menuID != 1:
 			getText.text = menusText[menuID][i]
 		else: # options menu settings
@@ -244,7 +245,7 @@ func set_menu(menuID = 0):
 
 
 # updates for the option menu texts
-func update_text(textRow = 0):
+func update_text(textRow: int = 0) -> String:
 	match(textRow):
 		1: # Sound
 			return "sound "+str(int(((AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX"))-clampSounds[0])/(abs(clampSounds[0])+abs(clampSounds[1])))*100))
@@ -262,8 +263,8 @@ func update_text(textRow = 0):
 
 func _on_visibility_changed() -> void:
 	if visible:
-		var img = get_viewport().get_texture().get_image()
-		var tex = ImageTexture.create_from_image(img)
+		var img: Image = get_viewport().get_texture().get_image()
+		var tex: Texture2D = ImageTexture.create_from_image(img)
 		$PauseCover.texture = tex
 	
 	if Global.two_player_mode:

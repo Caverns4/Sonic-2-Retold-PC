@@ -1,16 +1,16 @@
 extends PlayerState
 
-var skid = false
+var skid: bool = false
 # timer for looking up and down
 # the original game uses 120 frames before panning over, so multiply delta by 0.5 for the same time
 var lookTimer: float = 0
-var actionPressed = false
+var actionPressed: bool = false
 
 # player idle animation array
 # first array is player ID (Sonic, Tails, Knuckles), second array is the idle number
 # note: idle is always played first
 # you'll want to increase this for the number of playable characters
-var playerIdles = [
+var playerIdles: Array = [
 # SONIC
 ["idle1","idle1","idle1","idle2","idle3"],
 # TAILS
@@ -27,14 +27,14 @@ var playerIdles = [
 ["idle1","idle1","idle1","idle2","idle3"]
 ]
 
-func state_activated():
+func state_activated() -> void:
 	if (parent.playerControl < 1 and
 	parent.collision_layer == 0 and
 	parent.collision_mask == 0):
 		parent.collision_layer = parent.defaultLayer
 		parent.collision_mask = parent.defaultMask
 
-func state_exit():
+func state_exit() -> void:
 	skid = false
 	parent.get_node("HitBox").position = parent.hitBoxOffset.normal
 	parent.get_node("HitBox").shape.size = parent.currentHitbox.NORMAL
@@ -42,8 +42,7 @@ func state_exit():
 	lookTimer = 0.0
 	parent.sfx[29].stop()
 
-func _process(delta):
-	
+func _process(delta: float) -> void:
 	# jumping / rolling and more (note, you'll want to adjust the other actions if your character does something different)
 	if parent.jump_buffer > 0: #any_action_pressed():
 		if (parent.movement.x == 0 and parent.inputs[parent.INPUTS.YINPUT] > 0):
@@ -65,25 +64,25 @@ func _process(delta):
 				parent.animator.play("RESET")
 				parent.action_jump()
 				parent.set_state(parent.STATES.JUMP)
-		return null
+		return
 	
 	if parent.ground and !skid:
 		if parent.movement.x == 0:
 			
-			var balancing = false
+			var balancing: bool = false
 			# edge checking
 			# set vertical sensors to check for objects
-			var maskMemory = [parent.verticalSensorLeft.collision_mask,parent.verticalSensorRight.collision_mask]
+			var maskMemory: Array = [parent.verticalSensorLeft.collision_mask,parent.verticalSensorRight.collision_mask]
 			parent.verticalSensorLeft.set_collision_mask_value(14,true)
 			parent.verticalSensorRight.set_collision_mask_value(14,true)
 			
 			parent.verticalSensorLeft.force_raycast_update()
 			parent.verticalSensorRight.force_raycast_update()
 			
-			var getL = parent.verticalSensorLeft.is_colliding()
-			var getR = parent.verticalSensorRight.is_colliding()
-			var getM = parent.verticalSensorMiddle.is_colliding()
-			var getMEdge = parent.verticalSensorMiddleEdge.is_colliding()
+			var getL: bool = parent.verticalSensorLeft.is_colliding()
+			var getR: bool = parent.verticalSensorRight.is_colliding()
+			var getM: bool = parent.verticalSensorMiddle.is_colliding()
+			var getMEdge: bool = parent.verticalSensorMiddleEdge.is_colliding()
 			
 			# flip sensors
 			if parent.direction < 0:
@@ -166,15 +165,15 @@ func _process(delta):
 					else:
 						
 						# loop through idle animations to see if there is an idle match
-						var matchIdleCheck = false
-						for i in playerIdles[parent.character-1]:
+						var matchIdleCheck: bool = false
+						for i: String in playerIdles[parent.character-1]:
 							if parent.lastActiveAnimation == i:
 								matchIdleCheck = true
 						
 						if parent.lastActiveAnimation != "idle" and !matchIdleCheck or !parent.animator.is_playing():
 							parent.animator.play("idle")
 							# queue player specific idle animations
-							for i in playerIdles[parent.character-1]:
+							for i: String in playerIdles[parent.character-1]:
 								parent.animator.queue(i)
 		#Non-idle cases
 		elif sign(parent.pushing_wall) == sign(parent.movement.x) and parent.pushing_wall != 0:
@@ -202,20 +201,20 @@ func _process(delta):
 	parent.action_water_run_handle()
 	
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	
 	# rolling
 	if (parent.inputs[parent.INPUTS.YINPUT] == 1 and parent.inputs[parent.INPUTS.XINPUT] == 0 and abs(parent.movement.x) > 0.5*60):
 		parent.set_state(parent.STATES.ROLL)
 		parent.animator.play("roll")
 		parent.sfx[1].play()
-		return null
+		return
 	
 	# set air state
 	if (!parent.ground):
 		parent.set_state(parent.STATES.AIR)
 		#Stop script
-		return null
+		return
 	
 	# skidding
 	if !skid and sign(parent.inputs[parent.INPUTS.XINPUT]) != sign(parent.movement.x) and abs(parent.movement.x) >= 5*60 and parent.inputs[parent.INPUTS.XINPUT] != 0 and parent.horizontalLockTimer <= 0:
@@ -225,7 +224,7 @@ func _physics_process(delta):
 		$"../../SkidDustTimer".start(0.1)
 	
 	elif skid:
-		var inputX = parent.inputs[parent.INPUTS.XINPUT]
+		var inputX: float = parent.inputs[parent.INPUTS.XINPUT]
 		
 		if round(parent.movement.x/200) == 0 and sign(inputX) != sign(parent.movement.x):
 			if parent.animator.has_animation("skidTurn"):
@@ -245,7 +244,7 @@ func _physics_process(delta):
 	else:
 		parent.camLookAmount = move_toward(parent.camLookAmount,0.0,6.0)
 
-	var calcAngle = rad_to_deg(parent.angle-parent.gravityAngle)
+	var calcAngle: float = rad_to_deg(parent.angle-parent.gravityAngle)
 	calcAngle = wrapf(calcAngle,0,360)
 	
 	# Apply slope factor
@@ -263,12 +262,12 @@ func _physics_process(delta):
 	parent.action_move(delta)
 
 
-func _on_SkidDustTimer_timeout():
+func _on_SkidDustTimer_timeout() -> void:
 	if parent.currentState == parent.STATES.NORMAL:
 		if !skid:
 			$"../../SkidDustTimer".stop()
 		else:
-			var dust = parent.Particle.instantiate()
+			var dust: Node2D = parent.Particle.instantiate()
 			dust.play("SkidDust")
 			dust.global_position = parent.global_position+(Vector2.DOWN*16).rotated(deg_to_rad(parent.spriteRotation-90))
 			parent.get_parent().add_child(dust)

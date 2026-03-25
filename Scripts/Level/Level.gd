@@ -1,7 +1,7 @@
 extends Node2D
 
 ## The current Zone ID, for Global.ZONES
-@export var zone_id = 0 as Global.ZONES
+@export var zone_id: Global.ZONES = 0 as Global.ZONES
 
 @export_group("Title Card Properties")
 ## If true, play the level card animator and use the Zone Name Text
@@ -15,9 +15,9 @@ extends Node2D
 
 
 @export_group("Music")
-@export var music = preload("res://Audio/Soundtrack/s2br_EmeraldHilll.ogg")
-@export var music2P = preload("res://Audio/Soundtrack/s2br_Tropical.ogg")
-@export var boss_theme = preload("res://Audio/Soundtrack/s2br_Boss.ogg")
+@export var music: AudioStream = preload("res://Audio/Soundtrack/s2br_EmeraldHilll.ogg")
+@export var music2P: AudioStream = preload("res://Audio/Soundtrack/s2br_Tropical.ogg")
+@export var boss_theme: AudioStream = preload("res://Audio/Soundtrack/s2br_Boss.ogg")
 
 @export_group("Features")
 ## Animals dropped from Badniks in this act.
@@ -39,8 +39,8 @@ extends Node2D
 ## If 0, the number of rings will be calculated automatically.
 @export var ringsForPerfect: int = 0
 @export_subgroup("Optional")
-@export var waterSourceColor = preload("res://Graphics/Palettes/BasePal.png")
-@export var waterReplaceColor = preload("res://Graphics/Palettes/WetPal.png")
+@export var waterSourceColor: Texture2D = preload("res://Graphics/Palettes/BasePal.png")
+@export var waterReplaceColor: Texture2D = preload("res://Graphics/Palettes/WetPal.png")
 @export var wind_force: Vector2 = Vector2.ZERO
 @export var end_cutscene: bool = false
 
@@ -55,9 +55,9 @@ extends Node2D
 @export var y_wrap: bool = false
 
 var zone_loader: String = "res://Scene/Presentation/ZoneLoader.tscn"
-var twoPlayerWindow = preload("res://Scene/TwoPlayerScreenView.tscn")
+var twoPlayerWindow: PackedScene  = preload("res://Scene/TwoPlayerScreenView.tscn")
 
-func _ready():
+func _ready() -> void:
 	level_reset_data()
 	Global.saved_zone_id = zone_id as Global.ZONES
 
@@ -70,10 +70,10 @@ func _ready():
 
 	call_deferred("setup_hud_properties")
 	if Global.two_player_mode == true:
-		var twoPlayerScene = twoPlayerWindow.instantiate()
+		var twoPlayerScene: Control = twoPlayerWindow.instantiate()
 		add_child(twoPlayerScene)
 
-func setup_hud_properties():
+func setup_hud_properties() -> void:
 	if Global.hud:
 		Global.hud.playLevelCard = playLevelCard
 		Global.hud.end_cutscene = end_cutscene
@@ -86,12 +86,12 @@ func setup_hud_properties():
 		Global.hud.initialize_hud(zone_name,zone_text,act_number)
 
 # used for stage starts, also used for returning from special stages
-func level_reset_data(_playCard = true):
+func level_reset_data(_playCard: bool = true) -> void:
 	Global.stage_cleared = false
 	Global.fightingBoss = false
 	SoundDriver.music.stop()
 	# music handling
-	var level_theme = null
+	var level_theme: AudioStream = null
 	if SoundDriver.music != null:
 		if music != null:
 			if !Global.two_player_mode:

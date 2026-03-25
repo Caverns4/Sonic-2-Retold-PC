@@ -1,18 +1,18 @@
 extends Sprite2D
 
-@onready var tailsAnimator = $TailsAnimator
-@onready var animator = get_parent().get_parent().get_node("PlayerAnimation")
+@onready var tailsAnimator: AnimationPlayer = $TailsAnimator
+@onready var animator: AnimationPlayer = get_parent().get_parent().get_node("PlayerAnimation")
 
 enum HANDLE {DEFAULT, ROTATE, SPEED}
-var currentHandle = HANDLE.DEFAULT
+var currentHandle: HANDLE = HANDLE.DEFAULT
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	match(currentHandle):
 		HANDLE.DEFAULT:
 			rotation = 0
 			scale = Vector2(1-(int(get_parent().flip_h)*2),1)
 		HANDLE.ROTATE:
-			var player = get_parent().get_parent().get_parent()
+			var player: Player2D = get_parent().get_parent().get_parent()
 			if player:
 				if player.ground:
 					global_rotation = deg_to_rad(snapped(rad_to_deg(player.angle),45))-player.gravityAngle
@@ -27,9 +27,9 @@ func _process(_delta):
 					scale = Vector2(1,1-(int(rad_to_deg(rotation) > 90 and rad_to_deg(rotation) < 270)*2))
 				
 
-func _on_PlayerAnimation_animation_started(anim_name):
+func _on_PlayerAnimation_animation_started(anim_name: StringName) -> void:
 	if tailsAnimator == null:
-		return null
+		return
 	match(anim_name):
 		"idle", "idle1", "crouch", "lookUp":
 			tailsAnimator.speed_scale = 1

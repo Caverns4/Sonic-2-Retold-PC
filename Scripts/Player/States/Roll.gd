@@ -2,7 +2,7 @@ extends PlayerState
 
 
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	if parent.jump_buffer > 0 and !parent.check_for_ceiling(): #(parent.any_action_pressed()) and !parent.check_for_ceiling():
 		# use parent.action_jump("roll",false) to have jump lock similar to sonic 1-3
 		# true replicates CD and Mania
@@ -13,16 +13,16 @@ func _process(_delta):
 	# water running
 	parent.action_water_run_handle()
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	
 	# Set air if not on floor
 	if (!parent.ground):
 		parent.set_state(parent.STATES.AIR,parent.currentHitbox.ROLL)
-		return null
+		return
 	# Set normal if speed is 0
 	if (parent.movement.x == 0 and !parent.forceRoll):
 		parent.set_state(parent.STATES.NORMAL)
-		return null
+		return
 	
 	# Lock vertical movement
 	parent.movement.y = min(parent.movement.y,0)
@@ -33,7 +33,7 @@ func _physics_process(delta):
 	else:
 		parent.movement.x += (parent.slprolldown*sin(parent.angle-parent.gravityAngle))/GlobalFunctions.div_by_delta(delta)
 	
-	var calcAngle = rad_to_deg(parent.angle-parent.gravityAngle)
+	var calcAngle: float = rad_to_deg(parent.angle-parent.gravityAngle)
 	if (calcAngle < 0):
 		calcAngle += 360
 	
@@ -45,7 +45,7 @@ func _physics_process(delta):
 		parent.horizontalLockTimer = 30.0/60.0
 	
 	if (parent.movement.x != 0):
-		var checkX = sign(parent.movement.x)
+		var checkX: int = sign(parent.movement.x)
 		if (parent.inputs[parent.INPUTS.XINPUT] != 0 and sign(parent.movement.x) != parent.inputs[parent.INPUTS.XINPUT]):
 			parent.movement.x += parent.rolldec/GlobalFunctions.div_by_delta(delta)*parent.inputs[parent.INPUTS.XINPUT]
 		
@@ -58,5 +58,5 @@ func _physics_process(delta):
 	parent.movement.x = clamp(parent.movement.x,-parent.toproll,parent.toproll)
 
 # stop the water run sound
-func state_exit():
+func state_exit() -> void:
 	parent.sfx[29].stop()

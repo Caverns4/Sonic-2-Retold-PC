@@ -38,7 +38,7 @@ func _ready() -> void:
 	accept_button.grab_focus()
 
 
-var normal_zones = [
+var normal_zones: Array[Global.ZONES] = [
 	Global.ZONES.EMERALD_HILL,
 	Global.ZONES.HILL_TOP,
 	Global.ZONES.DUST_HILL,
@@ -47,7 +47,7 @@ var normal_zones = [
 	Global.ZONES.METROPOLIS,
 ]
 
-func update_level_select(direction: int = 0):
+func update_level_select(direction: int = 0) -> void:
 	if save_data[3] == Global.ZONES.ENDING:
 		@warning_ignore("int_as_enum_without_cast")
 		level_select_id = wrapi(selection_id + direction,
@@ -85,7 +85,7 @@ func _on_right_button_pressed() -> void:
 	else:
 		update_level_select(1)
 
-func disable_buttons():
+func disable_buttons() -> void:
 	accept_button.disabled = true
 	cancel_button.disabled = true
 	if left_button:

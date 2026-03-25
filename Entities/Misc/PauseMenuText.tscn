@@ -1,12 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bevjxswfnxfuq"]
+[gd_scene format=3 uid="uid://bevjxswfnxfuq"]
 
 [ext_resource type="FontFile" uid="uid://ml62eqfe7avn" path="res://Graphics/Fonts/small_font.png" id="1_qaiyf"]
 
-[node name="TextPointer" type="Control"]
+[node name="TextPointer" type="Control" unique_id=1980038387]
 layout_mode = 3
 anchors_preset = 0
 
-[node name="Text" type="Label" parent="."]
+[node name="Text" type="Label" parent="." unique_id=954880237]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -1,22 +1,22 @@
 extends PlayerState
 
 # first is normal, second is super speed
-var glideAccel = [0.015625,0.046875]
-var glideGrav = 0.125
-var friction = 0.125
-var speedClamp = 24*60
+var glideAccel: Array[float] = [0.015625,0.046875]
+var glideGrav: float = 0.125
+var friction: float = 0.125
+var speedClamp: float = 24*60
 
-var turnTimer = 0
-var speedPreservation = 0
+var turnTimer: float = 0
+var speedPreservation: float = 0
 
-var isFall = false
-var landed = false
-var sliding = false
+var isFall: bool = false
+var landed: bool = false
+var sliding: bool = false
 
 # add a ground buffer so that the player won't have just 1 frame on the ground send them into a slide (for example monitors)
-var groundBuffer = 0
+var groundBuffer: float = 0
 
-func state_activated():
+func state_activated() -> void:
 	groundBuffer = 0
 	# if no movement on the x axis then go into a fall immediately
 	if parent.movement.x == 0:
@@ -40,11 +40,11 @@ func state_activated():
 		sliding = false
 		parent.reflective = true
 
-func state_exit():
+func state_exit() -> void:
 	parent.reflective = false
 
 # process mostly used for inputs (see player)
-func _process(_delta):
+func _process(_delta: float) -> void:
 	# Jump and Spindash cancel
 	if (parent.inputs[parent.INPUTS.ACTION] == 1 or parent.inputs[parent.INPUTS.ACTION2] == 1 or parent.inputs[parent.INPUTS.ACTION3] == 1) and parent.ground and (sliding or isFall):
 		parent.movement.x = 0
@@ -73,14 +73,10 @@ func _process(_delta):
 			isFall = true
 			parent.reflective = false
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	# Change parent direction
 	if parent.inputs[parent.INPUTS.XINPUT] != 0 and !sliding:
 		parent.direction = parent.inputs[parent.INPUTS.XINPUT]
-	
-	
-	
-	
 	# check if not falling, if not then do glide routine
 	if !isFall and !sliding:
 		# Turning
@@ -102,12 +98,10 @@ func _physics_process(delta):
 		turnTimer = clamp(turnTimer,0,180)
 		
 		# Animation
-		var animSize = parent.animator.current_animation_length
-		var offset = turnTimer/180
+		var animSize: float = parent.animator.current_animation_length
+		var offset: float = turnTimer/180
 		
 		parent.animator.advance(-parent.animator.current_animation_position+(animSize*offset))
-		
-		
 		# set facing direction
 		parent.sprite.flip_h = false
 		
@@ -131,13 +125,11 @@ func _physics_process(delta):
 			parent.reflective = false
 			$"../../SkidDustTimer".start(0.1)
 			groundBuffer = 0
-		
 		# apply ground buffer
 		elif parent.ground:
 			groundBuffer = 1
 		else:
 			groundBuffer = 0
-		
 		# Go into wall cling if on wall
 		parent.horizontalSensor.force_raycast_update()
 		if parent.horizontalSensor.is_colliding() and !parent.ground:
@@ -157,10 +149,8 @@ func _physics_process(delta):
 		parent.horizontalSensor.force_raycast_update()
 		if parent.horizontalSensor.is_colliding() and !parent.ground:
 			parent.movement.x = 0
-	
 	# if sliding then do sliding routine
 	elif sliding:
-		
 		if parent.movement.x != 0:
 			parent.direction = sign(parent.movement.x)
 		parent.movement.x = move_toward(parent.movement.x,0,friction/GlobalFunctions.div_by_delta(delta))
@@ -175,11 +165,9 @@ func _physics_process(delta):
 			await parent.animator.animation_finished
 			if parent.currentState == parent.STATES.GLIDE and sliding:
 				parent.set_state(parent.STATES.NORMAL)
-		
 		# check if angle is default, if not then set movement to 0
 		if !is_equal_approx(parent.snap_angle(parent.gravityAngle),parent.snap_angle(parent.global_rotation)):
 			parent.movement.x = 0
-		
 		# check for ground, if not on ground go into falling
 		if !parent.ground and groundBuffer >= 1:
 			sliding = false
@@ -192,7 +180,6 @@ func _physics_process(delta):
 			# ground buffer's needed to prevent the player immediately disconecting
 			groundBuffer = 1
 			parent.movement.y = 0
-	
 	# Do falling routine
 	else:
 		# regular movement
@@ -221,12 +208,12 @@ func _physics_process(delta):
 
 
 # create skid dust
-func _on_SkidDustTimer_timeout():
+func _on_SkidDustTimer_timeout() -> void:
 	if parent.currentState == parent.STATES.GLIDE:
 		if !sliding or (parent.movement.x == 0 and parent.ground):
 			$"../../SkidDustTimer".stop()
 		elif parent.ground:
-			var dust = parent.Particle.instantiate()
+			var dust: Node2D = parent.Particle.instantiate()
 			dust.play("SkidDust")
 			dust.global_position = parent.global_position+(Vector2.DOWN*8).rotated(deg_to_rad(parent.spriteRotation-90))
 			dust.z_index = 10

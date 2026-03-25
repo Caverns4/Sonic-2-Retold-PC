@@ -1,26 +1,26 @@
 class_name PhysicsObject extends CharacterBody2D
 
 # Sensors
-var verticalObjectCheck = RayCast2D.new()
-var verticalSensorLeft = RayCast2D.new()
-var verticalSensorMiddle = RayCast2D.new() # mostly used for edge detection and clipping prevention
-var verticalSensorMiddleEdge = RayCast2D.new() # used for far edge detection
-var verticalSensorRight = RayCast2D.new()
-var horizontalSensor = RayCast2D.new()
-var slopeCheck = RayCast2D.new()
-var objectCheck = RayCast2D.new()
-var backSensor = RayCast2D.new()
+var verticalObjectCheck: RayCast2D = RayCast2D.new()
+var verticalSensorLeft: RayCast2D = RayCast2D.new()
+var verticalSensorMiddle: RayCast2D = RayCast2D.new() # mostly used for edge detection and clipping prevention
+var verticalSensorMiddleEdge: RayCast2D = RayCast2D.new() # used for far edge detection
+var verticalSensorRight: RayCast2D = RayCast2D.new()
+var horizontalSensor: RayCast2D = RayCast2D.new()
+var slopeCheck: RayCast2D = RayCast2D.new()
+var objectCheck: RayCast2D = RayCast2D.new()
+var backSensor: RayCast2D = RayCast2D.new()
 
-@onready var sensorList = [verticalSensorLeft,verticalSensorMiddle,verticalSensorMiddleEdge,verticalSensorRight,horizontalSensor,slopeCheck,backSensor]
+@onready var sensorList: Array[RayCast2D] = [verticalSensorLeft,verticalSensorMiddle,verticalSensorMiddleEdge,verticalSensorRight,horizontalSensor,slopeCheck,backSensor]
 
-var maxCharGroundHeight = 16 # this is to stop players getting stuck at the bottom of 16x16 tiles, 
+var maxCharGroundHeight: float = 16 # this is to stop players getting stuck at the bottom of 16x16 tiles, 
 # you may want to adjust this to match the height of your tile collisions
 # this only works when on the floor
-var yGroundDiff = 0 # used for y differences on ground sensors
+var yGroundDiff: float = 0 # used for y differences on ground sensors
 
 
-var groundLookDistance = 14 # how far down to look
-@onready var pushRadius = max(($HitBox.shape.size.x/2)+1,10) # original push radius is 10
+var groundLookDistance: float = 14 # how far down to look
+@onready var pushRadius: float = max(($HitBox.shape.size.x/2)+1,10) # original push radius is 10
 
 
 # physics variables
@@ -32,13 +32,13 @@ var moveStepLength: float = 8*60
 var angle: float = 0
 var gravityAngle: float = 0
 # the collission layer, 0 for low, 1 for high
-var collissionLayer = 0
+var collissionLayer: int = 0
 
 # translate, (ignores physics)
 var allowTranslate: bool = false
 
 # Vertical sensor reference
-var getVert = null
+var getVert: RayCast2D = null
 
 signal disconectFloor
 signal connectFloor
@@ -47,9 +47,9 @@ signal connectCeiling
 signal positionChanged
 
 # how many pixels can you step on top of objects
-@export var pixelObjectStep = 4
+@export var pixelObjectStep: int = 4
 
-func _ready():
+func _ready() -> void:
 	slopeCheck.modulate = Color.GREEN
 	verticalSensorLeft.modulate = Color.BLUE
 	verticalSensorMiddleEdge.modulate = Color.BLUE_VIOLET
@@ -92,9 +92,9 @@ func _ready():
 	connectCeiling.connect(On_connectCeiling)
 	positionChanged.connect(On_positionChanged)
 
-func update_sensors():
-	var rotationSnap = snapped(rotation,deg_to_rad(90))
-	var shape = $HitBox.shape.size/2
+func update_sensors() -> void:
+	var rotationSnap: float = snapped(rotation,deg_to_rad(90))
+	var shape: Vector2 = $HitBox.shape.size/2
 	
 	# floor sensors
 	yGroundDiff = 0
@@ -107,7 +107,7 @@ func update_sensors():
 	
 	# calculate how far down to look if on the floor, the sensor extends more if the objects is moving, if the objects moving up then it's ignored,
 	# if you want behaviour similar to sonic 1, replace "min(abs(movement.x/60)+4,groundLookDistance)" with "groundLookDistance"
-	var extendFloorLook = min(abs(movement.x/60)+4,groundLookDistance)*(int(movement.y >= 0)*int(ground))
+	var extendFloorLook: float = min(abs(movement.x/60)+4,groundLookDistance)*(int(movement.y >= 0)*int(ground))
 	
 	verticalSensorLeft.target_position.y = ((shape.y+extendFloorLook)*(int(movement.y >= 0)-int(movement.y < 0)))+yGroundDiff
 	
@@ -123,7 +123,7 @@ func update_sensors():
 	# Object offsets, prevent clipping
 	if !ground:
 		# check left
-		var offset = 0
+		var offset: float = 0
 		verticalObjectCheck.position.y = verticalSensorLeft.position.y
 		# give a bit of distance for collissions
 		verticalObjectCheck.target_position = Vector2(0,-(shape.y*0.25)+shape.y*-sign(verticalSensorLeft.target_position.y))
@@ -141,7 +141,7 @@ func update_sensors():
 		if verticalObjectCheck.is_colliding():
 			# calculate the offset using the collission point and the cast positions,
 			# compare it to the old offset, if it's larger then use new offset
-			var newOffset = (verticalObjectCheck.get_collision_point()-(verticalObjectCheck.global_position+verticalObjectCheck.target_position)).y
+			var newOffset: float = (verticalObjectCheck.get_collision_point()-(verticalObjectCheck.global_position+verticalObjectCheck.target_position)).y
 			if abs(newOffset) > abs(offset):
 				offset = newOffset
 		
@@ -206,25 +206,25 @@ func update_sensors():
 	
 
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	#movement += Vector2(-int(Input.is_action_pressed("gm_left"))+int(Input.is_action_pressed("gm_right")),-int(Input.is_action_pressed("gm_up"))+int(Input.is_action_pressed("gm_down")))*_delta*100
-	var moveRemaining = movement # copy of the movement variable to cut down on until it hits 0
-	var checkOverride = true
+	var moveRemaining: Vector2 = movement # copy of the movement variable to cut down on until it hits 0
+	var checkOverride: bool = true
 	while (!moveRemaining.is_equal_approx(Vector2.ZERO) or checkOverride) and !allowTranslate:
 		checkOverride = false
-		var moveCalc = moveRemaining.normalized()*min(moveStepLength,moveRemaining.length())
+		var moveCalc: Vector2 = moveRemaining.normalized()*min(moveStepLength,moveRemaining.length())
 		
 		velocity = moveCalc.rotated(angle)
 		set_up_direction(Vector2.UP.rotated(gravityAngle))
 		# wasMovedUp is set to true if an object collision occurs
-		var wasMovedUp = false
+		var wasMovedUp: bool = false
 		# check for any object collisions, if a collision doesn't occur internally, shift up by pixel steps then shift back down
 		if test_move(global_transform,velocity*delta) and test_move(global_transform,velocity*(Vector2.RIGHT.rotated(gravityAngle))*delta) and !test_move(global_transform,Vector2.ZERO) and ground:
-			var testTransform = global_transform
+			var testTransform: Transform2D = global_transform
 			testTransform.origin += up_direction*pixelObjectStep
 			# if there's no collision occuring in the upper section then set was moved to true (if there's isn't another collision up if shifted up)
 			if !test_move(testTransform,velocity*delta):
-				var col = move_and_collide(up_direction*pixelObjectStep)
+				var col: KinematicCollision2D = move_and_collide(up_direction*pixelObjectStep)
 				wasMovedUp = (col==null)
 		# do the shift
 		move_and_slide()
@@ -232,10 +232,10 @@ func _physics_process(delta):
 		if wasMovedUp:
 			move_and_collide(-up_direction*pixelObjectStep)
 		
-		var _move = velocity
+		var _move: Vector2 = velocity
 		update_sensors()
-		var groundMemory = ground
-		var roofMemory = roof
+		var groundMemory: bool = ground
+		var roofMemory: bool = roof
 		ground = is_on_floor()
 		roof = is_on_ceiling()
 		
@@ -244,14 +244,14 @@ func _physics_process(delta):
 		# Check if colliding
 		if horizontalSensor.is_colliding():
 			#  Calculate the move distance vectorm, then move
-			var rayHitVec = (horizontalSensor.get_collision_point()-horizontalSensor.global_position)
-			var normHitVec = -Vector2.LEFT.rotated(snap_angle(rayHitVec.normalized().angle()))
+			var rayHitVec: Vector2 = (horizontalSensor.get_collision_point()-horizontalSensor.global_position)
+			var normHitVec: Vector2 = -Vector2.LEFT.rotated(snap_angle(rayHitVec.normalized().angle()))
 			position += (rayHitVec-(normHitVec*(pushRadius)))
 
 		if backSensor.is_colliding():
 			#  Calculate the move distance vectorm, then move
-			var rayHitVec = (backSensor.get_collision_point()-backSensor.global_position)
-			var normHitVec = -Vector2.LEFT.rotated(snap_angle(rayHitVec.normalized().angle()))
+			var rayHitVec: Vector2 = (backSensor.get_collision_point()-backSensor.global_position)
+			var normHitVec: Vector2 = -Vector2.LEFT.rotated(snap_angle(rayHitVec.normalized().angle()))
 			position += (rayHitVec-(normHitVec*(pushRadius)))
 		
 		# Floor sensors
@@ -270,11 +270,11 @@ func _physics_process(delta):
 				roof = true
 			
 			#  Calculate the move distance vectorm, then move
-			var rayHitVec = (getVert.get_collision_point()-getVert.global_position)
+			var rayHitVec: Vector2 = (getVert.get_collision_point()-getVert.global_position)
 			# Snap the Vector and normalize it
-			var normHitVec = -Vector2.LEFT.rotated(snap_angle(rayHitVec.normalized().angle()))
+			var normHitVec: Vector2 = -Vector2.LEFT.rotated(snap_angle(rayHitVec.normalized().angle()))
 			if move_and_collide(rayHitVec-(normHitVec*($HitBox.shape.size.y/2))-Vector2(0,yGroundDiff).rotated(rotation),true,true,true):
-				var _col = move_and_collide(rayHitVec-(normHitVec*($HitBox.shape.size.y/2))-Vector2(0,yGroundDiff).rotated(rotation))
+				var _col: KinematicCollision2D = move_and_collide(rayHitVec-(normHitVec*($HitBox.shape.size.y/2))-Vector2(0,yGroundDiff).rotated(rotation))
 			else:
 				# Do a check that we're not in the middle of a rotation, otherwise the player can get caught on outter curves (more noticable on higher physics frame rates)
 				if snap_angle(angle) == snap_angle(rotation):
@@ -290,12 +290,12 @@ func _physics_process(delta):
 		slopeCheck.force_raycast_update()
 		
 		if slopeCheck.is_colliding():
-			var getSlope = snap_angle(slopeCheck.get_collision_normal().angle()+deg_to_rad(90))
+			var getSlope: float = snap_angle(slopeCheck.get_collision_normal().angle()+deg_to_rad(90))
 			# compare slope to current angle, check that it's not going to result in our current angle if we rotated
 			if getSlope != rotation:
 				rotation = snap_angle(angle)
 		else: #if no slope check then just rotate
-			var preRotate = rotation
+			var preRotate: float = rotation
 			rotation = snap_angle(angle)
 			# verify if new angle would find ground
 			if get_nearest_vertical_sensor() == null:
@@ -335,14 +335,14 @@ func _physics_process(delta):
 	#Object checks
 	else:
 		# temporarily reset mask and layer
-		var layerMemory = collision_layer
-		var maskMemory = collision_mask
+		var layerMemory: int = collision_layer
+		var maskMemory: int = collision_mask
 		
 		# move in place to make sure the player doesn't clip into objects
 		set_collision_mask_value(17,true)
-		var _col = move_and_collide(Vector2.ZERO)
+		var _col: KinematicCollision2D = move_and_collide(Vector2.ZERO)
 		
-		var dirList = [Vector2.UP,Vector2.DOWN,Vector2.LEFT,Vector2.RIGHT]
+		var dirList: Array[Vector2] = [Vector2.UP,Vector2.DOWN,Vector2.LEFT,Vector2.RIGHT]
 		
 		# loop through directions for collisions
 		for i in dirList:
@@ -378,8 +378,8 @@ func _physics_process(delta):
 	emit_signal("positionChanged")
 	
 
-func snap_angle(angleSnap = 0.0):
-	var wrapAngle = wrapf(angleSnap,deg_to_rad(0.0),deg_to_rad(360.0))
+func snap_angle(angleSnap: float = 0.0) -> float:
+	var wrapAngle: float = wrapf(angleSnap,deg_to_rad(0.0),deg_to_rad(360.0))
 
 	if wrapAngle >= deg_to_rad(315.0) or wrapAngle <= deg_to_rad(45.0): # Floor
 		return deg_to_rad(0.0)
@@ -392,7 +392,7 @@ func snap_angle(angleSnap = 0.0):
 	return deg_to_rad(270.0)
 	
 
-func get_nearest_vertical_sensor():
+func get_nearest_vertical_sensor() -> RayCast2D:
 	verticalSensorLeft.force_raycast_update()
 	verticalSensorRight.force_raycast_update()
 	
@@ -411,7 +411,7 @@ func get_nearest_vertical_sensor():
 	else:
 		return verticalSensorRight
 
-func disconect_from_floor(force = false):
+func disconect_from_floor(force: bool = false) -> void:
 	if ground or force:
 		# convert velocity
 		movement = movement.rotated(angle-gravityAngle)
@@ -421,10 +421,10 @@ func disconect_from_floor(force = false):
 			rotation = snap_angle(gravityAngle)
 
 # checks and pushes the player out if a collision is detected vertically in either direction
-func push_vertical():
+func push_vertical() -> void:
 	# set movement memory
-	var movementMemory = movement
-	var directions = [-1,1]
+	var movementMemory: Vector2 = movement
+	var directions: Array[int] = [-1,1]
 	# check directions
 	for i in directions:
 		movement.y = i
@@ -432,19 +432,19 @@ func push_vertical():
 		getVert = get_nearest_vertical_sensor()
 		if getVert:
 			#  Calculate the move distance vectorm, then move
-			var rayHitVec = (getVert.get_collision_point()-getVert.global_position)
+			var rayHitVec:Vector2 = (getVert.get_collision_point()-getVert.global_position)
 			# Snap the Vector and normalize it
-			var normHitVec = -Vector2.LEFT.rotated(snap_angle(rayHitVec.normalized().angle()))
+			var normHitVec: Vector2 = -Vector2.LEFT.rotated(snap_angle(rayHitVec.normalized().angle()))
 			# shift
 			position += (rayHitVec-(normHitVec*(($HitBox.shape.size.y/2)+0.25))-Vector2(0,yGroundDiff).rotated(rotation))
 	# reset movement
 	movement = movementMemory
 
 # Return true if there is a ceiling above the object based on its y size.
-func check_for_ceiling():
-	var detection = false
+func check_for_ceiling() -> bool:
+	var detection: bool = false
 	# Create and set up a temporary Raycast
-	var ceilChecker = RayCast2D.new()
+	var ceilChecker: RayCast2D = RayCast2D.new()
 	$HitBox.add_child(ceilChecker)
 	ceilChecker.collision_mask = 2184
 	ceilChecker.set_collision_mask_value(4,true)
@@ -465,13 +465,13 @@ func check_for_ceiling():
 	return detection
 
 #Skeleton functions for signals so Godot doesn't throw a warning
-func On_disconectFloor():
+func On_disconectFloor() -> void:
 	pass
-func On_connectFloor():
+func On_connectFloor() -> void:
 	pass
-func On_disconectCeiling():
+func On_disconectCeiling() -> void:
 	pass
-func On_connectCeiling():
+func On_connectCeiling() -> void:
 	pass
-func On_positionChanged():
+func On_positionChanged() -> void:
 	pass

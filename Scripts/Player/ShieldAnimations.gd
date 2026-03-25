@@ -2,13 +2,13 @@
 extends AnimatedSprite2D
 
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	# prevent rotation
 	if (!Engine.is_editor_hint()):
 		global_rotation = 0
 
 # Shields have different effects so this is where you'll want to code your animations
-func _on_Shields_frame_changed():
+func _on_Shields_frame_changed() -> void:
 	match (animation):
 		"Default": # regular shield
 			z_index = 6

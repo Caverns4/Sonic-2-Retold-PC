@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://oce7phvjxdbv"]
+[gd_scene format=3 uid="uid://oce7phvjxdbv"]
 
 [ext_resource type="Script" uid="uid://bbk1lqyklbxgi" path="res://Scripts/Misc/tornado.gd" id="1_gohbb"]
 [ext_resource type="Texture2D" uid="uid://efvmmjbj4otb" path="res://Graphics/Misc/Tornado_Main.png" id="2_8cebi"]
@@ -150,76 +150,74 @@ _data = {
 &"RESET": SubResource("Animation_r3x4b")
 }
 
-[node name="Tornado" type="CharacterBody2D"]
+[node name="Tornado" type="CharacterBody2D" unique_id=500510628]
 collision_layer = 16777217
 collision_mask = 0
 script = ExtResource("1_gohbb")
 
-[node name="TornadoMain" type="Node2D" parent="."]
+[node name="TornadoMain" type="Node2D" parent="." unique_id=2013053544]
 
-[node name="Pilot" type="Node2D" parent="TornadoMain"]
+[node name="Pilot" type="Node2D" parent="TornadoMain" unique_id=1194669602]
 
-[node name="PilotSonic" type="Sprite2D" parent="TornadoMain/Pilot"]
+[node name="PilotSonic" type="Sprite2D" parent="TornadoMain/Pilot" unique_id=1667294242]
 visible = false
 position = Vector2(-2, -48)
 texture = ExtResource("2_bfbtt")
 hframes = 16
 vframes = 8
 
-[node name="PilotTails" type="Sprite2D" parent="TornadoMain/Pilot"]
+[node name="PilotTails" type="Sprite2D" parent="TornadoMain/Pilot" unique_id=1331008189]
 position = Vector2(-2, -48)
 texture = ExtResource("2_jit23")
 hframes = 16
 vframes = 8
 
-[node name="TornadoBody" type="Sprite2D" parent="TornadoMain"]
+[node name="TornadoBody" type="Sprite2D" parent="TornadoMain" unique_id=910834844]
 position = Vector2(1, -32)
 texture = ExtResource("2_8cebi")
 
-[node name="Propeller" type="AnimatedSprite2D" parent="TornadoMain"]
+[node name="Propeller" type="AnimatedSprite2D" parent="TornadoMain" unique_id=682010871]
 position = Vector2(41, -40)
 sprite_frames = SubResource("SpriteFrames_gnswb")
 autoplay = "default"
 frame_progress = 0.152227
 centered = false
 
-[node name="Jet" type="Sprite2D" parent="TornadoMain"]
+[node name="Jet" type="Sprite2D" parent="TornadoMain" unique_id=2111327855]
 visible = false
 position = Vector2(-5, -16)
 texture = ExtResource("5_pk086")
 centered = false
 
-[node name="JetFlame" type="AnimatedSprite2D" parent="TornadoMain/Jet"]
+[node name="JetFlame" type="AnimatedSprite2D" parent="TornadoMain/Jet" unique_id=1550190483]
 position = Vector2(-32, 0)
 sprite_frames = SubResource("SpriteFrames_nnl2y")
 autoplay = "default"
 frame_progress = 0.235888
 centered = false
 
-[node name="PlayerSensor" type="Area2D" parent="TornadoMain"]
+[node name="PlayerSensor" type="Area2D" parent="TornadoMain" unique_id=1531812763]
 collision_layer = 0
 collision_mask = 4096
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TornadoMain/PlayerSensor"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TornadoMain/PlayerSensor" unique_id=200592362]
 position = Vector2(28, -64)
 shape = SubResource("RectangleShape2D_4mvrs")
 debug_color = Color(0.30980393, 0.4745098, 1, 0.5019608)
 
-[node name="SONIC" type="Sprite2D" parent="."]
+[node name="SONIC" type="Sprite2D" parent="." unique_id=399499752]
 position = Vector2(0, -40)
 texture = ExtResource("7_pkbdi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=938764927]
 position = Vector2(30.5, -28)
 shape = SubResource("RectangleShape2D_b6v0j")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ot57m")
-}
-autoplay = "RESET"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=196524757]
+libraries/ = SubResource("AnimationLibrary_ot57m")
+autoplay = &"RESET"
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=731658038]
 rect = Rect2(-64, -88, 128, 98)
 
 [connection signal="body_entered" from="TornadoMain/PlayerSensor" to="." method="_on_player_sensor_body_entered"]

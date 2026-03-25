@@ -11,7 +11,7 @@ const save_path = "user://Sonic.dat"
 ## The Save slot (section in the file). if 0, treat game file as a NO SAVE
 var current_save_index: int = 0
 ## Two Player Mode flag.
-var two_player_mode = false
+var two_player_mode: bool = false
 ## Player references
 var players: Array[Player2D] = []
 ## Player references in special stages only
@@ -19,20 +19,21 @@ var special_stage_players: Array = []
 ## HUD object reference
 var hud: CanvasLayer = null
 ## HUD object specificiall in special stages.
-var special_hud = null
+var special_hud: CanvasLayer = null
 ## Slot machines (Casino Night Zone Only), probably not needed.
-var slot_machines = []
+var slot_machines: Array = []
 ## Character Reel Master
 var character_reels: SlotMachineManager = null
 
 
 # Menu-related memory
-var level_select_flag = false
-var tails_name_cheat = false #if true, Tails will be called "Miles"
-var character_selection = 0
+var level_select_flag: bool = false
+var tails_name_cheat: bool = false #if true, Tails will be called "Miles"
+## Selected Character data on the menu.
+var character_selection:int = 0
 
 # checkpoint memory
-var checkpoints = []
+var checkpoints: Array[Area2D] = []
 
 ## Reference for the current checkpoint index for Player 1
 var saved_checkpoint: int = -1
@@ -59,28 +60,28 @@ var current_zone_pointer: String = "res://Scene/Zones/EmeraldHill1.tscn"
 var next_zone_pointer: String = ""
 
 ## MarkObjGone Table, nodes that have been used/collected
-var object_table = []
+var object_table: Array[Node] = []
 
 # score instace for add_score()
-var Score = preload("res://Entities/Misc/Score.tscn")
+var Score: PackedScene = preload("res://Entities/Misc/Score.tscn")
 # order for score combo
-const SCORE_COMBO = [1,2,3,4,4,4,4,4,4,4,4,4,4,4,4,5]
+const SCORE_COMBO: Array[int] = [1,2,3,4,4,4,4,4,4,4,4,4,4,4,4,5]
 
 # timerActive sets if the stage timer should be going
-var timerActive = false
-var timerActiveP2 = false
-var gameOver = false
+var timerActive: bool = false
+var timerActiveP2: bool = false
+var gameOver: bool = false
 
 # characters (if you want more you should add one here, see the player script too for more settings)
 enum CHARACTERS {NONE,SONIC,TAILS,KNUCKLES,AMY,MIGHTY,RAY,SONIC_BETA}
-var PlayerChar1 = CHARACTERS.SONIC
-var PlayerChar2 = CHARACTERS.TAILS
+var PlayerChar1: int = CHARACTERS.SONIC
+var PlayerChar2: int = CHARACTERS.TAILS
 # character name strings, used for "[player] has cleared", this matches the players character ID so you'll want to add the characters name in here matching the ID if you want more characters
-var characterNames = ["SONIC","TAILS","KNUCKLES","AMY","MIGHTY","RAY","SONIC"]
+var characterNames: PackedStringArray = ["SONIC","TAILS","KNUCKLES","AMY","MIGHTY","RAY","SONIC"]
 # Player Modes in menus
 enum PLAYER_MODES {SONIC_AND_TAILS,SONIC,TAILS,KNUCKLES,AMY,MIGHTY,RAY}
 #Only used in menus for single player mode.
-var playerModes = ["SONIC & TAILS","SONIC","TAILS","KNUCKLES","AMY","MIGHTY","RAY"]
+var playerModes: PackedStringArray = ["SONIC & TAILS","SONIC","TAILS","KNUCKLES","AMY","MIGHTY","RAY"]
 # Gameplay values
 var score: int = 0
 var lives: int = 3
@@ -103,15 +104,15 @@ enum EMERALD {
 	}
 	#RED = 1, BLUE = 2, GREEN = 4, YELLOW = 8, CYAN = 16, SILVER = 32, PURPLE = 64}
 ## The next special stage to play.
-var special_stage_id = 0
+var special_stage_id: int = 0
 ## Prevoius Special Stage result. true for win.
 var special_stage_result: bool = false
 ## Saved Ring Count from the special stage.
 var special_stage_rings: int = 0
-var levelTime = 0 # the timer that counts down while the level isn't completed or in a special ring
-var levelTimeP2 = 0
-var globalTimer = 0 # global timer, used as reference for animations
-var maxTime = 60*10
+var levelTime: float = 0 # the timer that counts down while the level isn't completed or in a special ring
+var levelTimeP2: float = 0
+var globalTimer: float = 0 # global timer, used as reference for animations
+var maxTime: float = 60*10
 
 ## Strength Tiers used for item destruction. 1 = Mighty's stomp, 2 = Knuckles or Super Sonic
 enum STRENGTH_TIER{NORMAL,STRONG,SUPER,UNBREAKABLE}
@@ -152,7 +153,7 @@ var beta_sonic:bool = false
 var insta_shield:bool = true
 ## If certain debug features will be enabled.
 var debug_mode: bool = true: set = _set_debug_mode
-func _set_debug_mode(value):
+func _set_debug_mode(value: bool) -> void:
 	Main.input_view.visible = value
 	debug_mode = value
 
@@ -162,28 +163,28 @@ func _set_debug_mode(value):
 #Grand Prix: Go through each Zone in Order
 enum TWO_PLAYER{SINGLE_RACE,ELIMINATION,GRAND_PRIX}
 enum ITEM_MODE{ALL_KINDS_ITEMS,TELEPORT_ONLY,RING_ONLY,EGGMAN_ONLY}
-var twoPlayerGameMode = TWO_PLAYER.SINGLE_RACE
-var twoPlayerItems = ITEM_MODE.ALL_KINDS_ITEMS
+var twoPlayerGameMode: TWO_PLAYER = TWO_PLAYER.SINGLE_RACE
+var twoPlayerItems: ITEM_MODE = ITEM_MODE.ALL_KINDS_ITEMS
 
 # Arrays per act
 # Score,Time,Rings,ScoreP2,TimeP2,RingsP2
-var twoPlayActResults = []
-var twoPlayActResultsFinal = []
+var twoPlayActResults: Array = []
+var twoPlayActResultsFinal: Array = []
 
 # Array of 0 = no game, 1=player1, 2=player2, 3=draw
 # Init to no game
-var twoPlayerZoneResults = []
+var twoPlayerZoneResults: Array = []
 
-var twoPlayerZones = [
+var twoPlayerZones: Array[ZONES] = [
 	ZONES.EMERALD_HILL,
 	ZONES.CASINO_NIGHT,
 	ZONES.CHEMICAL_PLANT,
 	ZONES.OIL_OCEAN
 ]
 #Which round the Two Player Mode is in.
-var twoPlayerRound = 0
+var twoPlayerRound: int = 0
 
-var zone_names = [
+var zone_names: PackedStringArray = [
 	"Emerald Hill", "Hidden Palace","Hill Top", "Chemical Plant",
 	"Oil Ocean", "Aquatic Ruin","Metropolis","Dust Hill",
 	"Wood Gadget","Casino Night","Jewel Grotto","Unused",
@@ -192,20 +193,20 @@ var zone_names = [
 ]
 
 ## The current played zone. Necessary for Two-Player Mode and the Title Screen.
-var saved_zone_id = ZONES.ENDING
-var saved_act_id = 0 # selected act ID
-var special_exit = ZONES.EMERALD_HILL
+var saved_zone_id: ZONES = ZONES.ENDING
+var saved_act_id: int = 0 # selected act ID
+var special_exit: ZONES = ZONES.EMERALD_HILL
 
 # water level of the current level, setting this to null will disable the water
-var waterLevel = 0: set = _set_water
-func _set_water(value: int):
+var waterLevel: float = 0: set = _set_water
+func _set_water(value: float) -> void:
 	if Global.hud:
 		Global.hud.UpdateWaterOverlay(value)
 	waterLevel = value
 
 
-var setWaterLevel = 0 # used by other nodes to change the water level
-var waterScrollSpeed = 64 # used by other nodes for how fast to move the water to different levels
+var setWaterLevel: float = 0 # used by other nodes to change the water level
+var waterScrollSpeed: float = 64 # used by other nodes for how fast to move the water to different levels
 
 # Level settings
 var hardBorderLeft: int  = 0
@@ -216,7 +217,7 @@ var hardBorderBottom:int = 2048 # Normal max in Sonic 2
 var y_wrap: bool = false
 
 # Animal spawn type reference, see the level script for more information on the types
-var animals = [0,1]
+var animals: Array[int] = [0,1]
 
 # emited when a stage gets started
 signal stage_started
@@ -224,9 +225,9 @@ signal await_stage_end
 signal stage_clear
 
 ## Game settings
-var zoomSize = 2
+var zoomSize: int = 2
 ## 0 for 4:3, 1 for 16x9 (roughly)
-var aspectRatio = 0
+var aspectRatio: int = 0
 
 var aspectResolutions: Array[Vector2] = [
 	Vector2i(320,224),
@@ -245,7 +246,7 @@ const aspect_strings: Array = ["4x3","16x9"]
 # Hazard type references
 enum HAZARDS {NORMAL, FIRE, ELEC, WATER}
 
-func _ready():
+func _ready() -> void:
 	# load game data
 	load_settings()
 	# load Global Save data flags
@@ -271,7 +272,7 @@ func LoadSaveGameFile(file: ConfigFile) -> bool:
 	#OS.shell_open(OS.get_user_data_dir())
 	return true
 
-func SaveGameFile():
+func SaveGameFile() -> bool:
 	var file: ConfigFile = ConfigFile.new()
 	var err := file.load_encrypted_pass(save_path,"SEGA")
 	if err != OK:
@@ -295,8 +296,9 @@ func SaveGameFile():
 	
 	file.save_encrypted_pass(save_path,"SEGA")
 	#print(file.get_section_keys(section))
+	return true
 
-func LoadSaveGameSlotData(index):
+func LoadSaveGameSlotData(index: int) -> Array:
 	var data: Array = []
 	var file: ConfigFile = ConfigFile.new()
 	var err := file.load_encrypted_pass(save_path,"SEGA")
@@ -310,7 +312,7 @@ func LoadSaveGameSlotData(index):
 			data.push_back(file.get_value(section,i))
 	return data
 
-func CreateSaveGameFile(file: ConfigFile):
+func CreateSaveGameFile(file: ConfigFile) -> void:
 	file.set_value("0","a",totalCoins)
 	file.set_value("0","b",unlockFlags)
 	file.set_value("0","c",(unlockFlags+totalCoins))
@@ -318,7 +320,7 @@ func CreateSaveGameFile(file: ConfigFile):
 	#print("Global Save Data file created.")
 
 
-func _process(delta):
+func _process(delta: float) -> void:
 	# do a check for certain variables, if it's all clear then count the level timer up
 	if timerActive and !get_tree().paused:
 		levelTime += delta
@@ -330,7 +332,7 @@ func _process(delta):
 		globalTimer += delta
 
 
-func reset_level_data():
+func reset_level_data() -> void:
 	Clean_Up_Object_References()
 	object_table.clear()
 	waterLevel = 0
@@ -347,7 +349,7 @@ func reset_level_data():
 
 
 ## Wipe all data arrays to avoid contamination. This only wipse object references.
-func Clean_Up_Object_References():
+func Clean_Up_Object_References() -> void:
 	hud = null
 	special_hud = null
 	players.clear()
@@ -358,33 +360,33 @@ func Clean_Up_Object_References():
 
 
 # add a score object, see res://Scripts/Misc/Score.gd for reference
-func add_score(position: Vector2,value: int,playerID: int):
-	var scoreObj = Score.instantiate()
+func add_score(position: Vector2,value: int,playerID: int) -> void:
+	var scoreObj: Node = Score.instantiate()
 	scoreObj.scoreID = value
 	scoreObj.playerID = playerID
 	scoreObj.global_position = position
 	add_child(scoreObj)
 
 # use a check function to see if a score increase would go above 50,000
-func check_score_life(scoreAdd = 0):
+func check_score_life(scoreAdd: int = 0) -> void:
 	if fmod(score,50000) > fmod(score+scoreAdd,50000):
 		lives += 1
 		if hud:
 			hud.coins += 1
-		SoundDriver.playExtraLifeMusic()
+		await SoundDriver.playExtraLifeMusic()
 
 
-func getPlayerIDsFromPlayerMode(mode: int = 0):
+func getPlayerIDsFromPlayerMode(mode: int = 0) -> void:
 	# set the character
 	match(mode):
 		0: # Sonic and Tails
 			Global.PlayerChar1 = Global.CHARACTERS.SONIC
 			Global.PlayerChar2 = Global.CHARACTERS.TAILS
 		_: # Sonic
-			Global.PlayerChar1 = mode as Global.CHARACTERS
+			Global.PlayerChar1 = mode
 			Global.PlayerChar2 = Global.CHARACTERS.NONE
 
-func loadNextLevel():
+func loadNextLevel() -> void:
 	Global.current_zone_pointer = Global.next_zone_pointer
 	
 	if special_exit > ZONES.EMERALD_HILL:
@@ -446,35 +448,35 @@ func loadNextLevel():
 			# Death Egg is a special case.
 		if !two_player_mode:
 			SaveGameFile()
-	Main.change_scene("res://Scene/Presentation/ZoneLoader.tscn")
+	await Main.change_scene("res://Scene/Presentation/ZoneLoader.tscn")
 
 ## Build the respawn array
-func save_level_data(pos: Vector2):
+func save_level_data(pos: Vector2) -> void:
 	bonus_stage_saved_data.push_back(pos)
 	bonus_stage_saved_data.push_back(Global.players[0].rings)
 	bonus_stage_saved_data.push_back(levelTime)
 
 
-func emit_stage_started():
+func emit_stage_started() -> void:
 	emit_signal("stage_started")
 	stage_cleared = false
 
-func emit_await_stage_end():
+func emit_await_stage_end() -> void:
 	emit_signal("await_stage_end")
 	stage_cleared = true
 	Main.can_pause = false
 	
 
-func emit_stage_clear():
+func emit_stage_clear() -> void:
 	emit_signal("stage_clear")
 	stage_cleared = true
 	Main.can_pause = false
-	var currentTheme = SoundDriver.themes[SoundDriver.THEME.RESULTS]
+	var currentTheme: AudioStream = SoundDriver.themes[SoundDriver.THEME.RESULTS]
 	SoundDriver.playMusic(currentTheme)
 
 # save data settings
-func save_settings():
-	var file = ConfigFile.new()
+func save_settings() -> void:
+	var file: ConfigFile = ConfigFile.new()
 	# save settings
 	file.set_value("Volume","SFX",AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")))
 	file.set_value("Volume","Music",AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")))
@@ -487,9 +489,9 @@ func save_settings():
 	file.save("user://Settings.cfg")
 
 # load settings
-func load_settings():
-	var file = ConfigFile.new()
-	var err = file.load("user://Settings.cfg")
+func load_settings() -> bool:
+	var file: ConfigFile = ConfigFile.new()
+	var err: Error = file.load("user://Settings.cfg")
 	if err != OK:
 		return false # Return false as an error
 	
@@ -521,31 +523,32 @@ func load_settings():
 	if file.has_section_key("Resolution","AspectRatio"):
 		aspectRatio = file.get_value("Resolution","AspectRatio")
 		SetupWindowSize()
-	
+	return true
 
-func IsFullScreen():
+func IsFullScreen() -> bool:
 	if (get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN or 
 	get_window().mode == Window.MODE_FULLSCREEN):
 		return true
 	return false
 
-func SetupWindowSize():
-		var window = get_window()
-		var resolution = aspectResolutions[aspectRatio]
-		var crt_res = (crt_resolutions[aspectRatio])*zoomSize*2
+func SetupWindowSize() -> void:
+		var window: Window = get_window()
+		var resolution: Vector2 = aspectResolutions[aspectRatio]
+		var crt_res: Vector2 = (crt_resolutions[aspectRatio])*zoomSize*2
 		RenderingServer.global_shader_parameter_set("screen_res",crt_res)
-		window.content_scale_size = Vector2i(resolution.x, resolution.y)
-		var newSize = Vector2i((get_viewport().get_visible_rect().size*zoomSize).round())
+		window.content_scale_size = Vector2i(int(resolution.x), int(resolution.y))
+		var newSize: Vector2i = Vector2i((get_viewport().get_visible_rect().size*zoomSize).round())
 		window.set_position(window.get_position()+(window.size-newSize)/2)
 		window.set_size(resolution * Global.zoomSize)
 
-func SaveGlobalData():
-	var save_file = FileAccess.open("user://Sonic.dat",FileAccess.WRITE)
-	var a = [totalCoins,Global.unlockFlags]
-	var json_string = JSON.stringify(a)
+func SaveGlobalData() -> void:
+	var save_file: FileAccess = FileAccess.open("user://Sonic.dat",FileAccess.WRITE)
+	var a: Array = [totalCoins,Global.unlockFlags]
+	var json_string: String = JSON.stringify(a)
 	save_file.store_line(json_string)
 	
 
-func SaveGameData():
+func SaveGameData() -> bool:
 	if !current_save_index:
 		return false
+	return true

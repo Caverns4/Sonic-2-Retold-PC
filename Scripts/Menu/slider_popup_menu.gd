@@ -2,9 +2,9 @@ class_name SliderPopUpMenu
 extends GeneralPopUpMenu
 
 ## clamp for minimum and maximum sound volume
-var clampSounds = [-40.0,6.0]
+var clampSounds: Array[float] = [-40.0,6.0]
 ## how much to iterate through (take the total sum then divide it by how many steps we want)
-@onready var soundStep = (abs(clampSounds[0])+abs(clampSounds[1]))/100.0
+var soundStep: float = (abs(clampSounds[0])+abs(clampSounds[1]))/100.0
 
 ## The value this slider was initialized to
 var initial_value: int = 0
@@ -28,14 +28,14 @@ func  _ready() -> void:
 	slider.value = initial_value
 	slider.max_value = max_slider_value
 
-func activate_menu():
+func activate_menu() -> void:
 	$Panel/NinePatchRect/MenuOptions/HSlider.grab_focus()
 
 func _on_h_slider_value_changed(value: float) -> void:
 	title_label.text = title + str(int(value)).lpad(3)
 	if sound_effect and !sound_effect.playing:
 		sound_effect.play()
-		var get_bus = sound_effect.bus
+		var get_bus: String = sound_effect.bus
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(get_bus),
 		clamp(clampSounds[0]+(value*soundStep),
 		clampSounds[0],clampSounds[1]))

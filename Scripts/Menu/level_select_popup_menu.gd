@@ -15,7 +15,7 @@ func _ready() -> void:
 	update_preview(0)
 	accept_button.grab_focus()
 
-func update_preview(direction: int):
+func update_preview(direction: int) -> void:
 	selection_id = wrapi(selection_id + direction,0,Global.zone_names.size()-1)
 	level_icon.frame = selection_id
 	level_name.text = Global.zone_names[selection_id]

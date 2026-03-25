@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=3 uid="uid://dmrtm7r6hfbfr"]
+[gd_scene format=3 uid="uid://dmrtm7r6hfbfr"]
 
 [ext_resource type="Texture2D" uid="uid://bihgasvpr4jyb" path="res://Graphics/Items/invincible_stars.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://c5cooxne7gmco" path="res://Graphics/Misc/NGHZRocks.png" id="1_14h1g"]
@@ -850,7 +850,7 @@ animations = [{
 "speed": 30.0
 }]
 
-[node name="GenericParticle" type="AnimatedSprite2D"]
+[node name="GenericParticle" type="AnimatedSprite2D" unique_id=2093924985]
 sprite_frames = SubResource("157")
 animation = &"Pop"
 frame = 3

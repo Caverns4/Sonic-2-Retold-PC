@@ -3,11 +3,11 @@ extends Node2D
 #Handle the following logic for the Tornado in Sky Chase Zone and Wing Fortress.
 
 ## If false, the player cannot control the Tornado.
-@export var allow_player_steering = true
+@export var allow_player_steering: bool = true
 
 var player: Player2D = null
-@onready var tornado = get_node("Tornado")
-@onready var parent = get_parent()
+@onready var tornado: CharacterBody2D = get_node("Tornado")
+@onready var parent: Node2D = get_parent()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

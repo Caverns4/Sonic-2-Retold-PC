@@ -1,23 +1,23 @@
 extends PlayerState
 
-var elecPart = preload("res://Entities/Misc/ElecParticles.tscn")
+var elecPart: PackedScene = preload("res://Entities/Misc/ElecParticles.tscn")
 
-@export var isJump = false
+@export var isJump: bool = false
 
 # drop dash variables
-var dropSpeedAmy = [6,10]
-var dropSpeedSonic = [10,12] #the base speed for a drop dash, second is super
-var dropMax = [16,16]   #the top speed for a drop dash, second is super
-var dropTimer = 0
+var dropSpeedAmy: Array[float] = [6,10]
+var dropSpeedSonic: Array[float] = [10,12] #the base speed for a drop dash, second is super
+var dropMax: Array[float] = [16,16]   #the top speed for a drop dash, second is super
+var dropTimer: float = 0
 
-var lockDir = false
+var lockDir: bool = false
 
-func _ready():
+func _ready() -> void:
 	if isJump: # we only want to connect it once so only apply this to the jump variation
 		parent.connect("enemy_bounced",Callable(self,"bounce"))
 
 # Jump actions
-func _process(_delta):
+func _process(_delta: float) -> void:
 	if parent.playerControl != 0 or (parent.inputs[parent.INPUTS.YINPUT] < 0 and parent.character == Global.CHARACTERS.TAILS):
 		# Super
 		if (parent.inputs[parent.INPUTS.SUPER] == 1
@@ -40,7 +40,7 @@ func _process(_delta):
 						# set ability used to true to prevent multiple uses
 						parent.abilityUsed = true
 						parent.air_control = true
-						sonic_shield_abilities()
+						await sonic_shield_abilities()
 					# Tails flight
 					Global.CHARACTERS.TAILS:
 						# prevent double tap flight (aka super jumps)
@@ -91,10 +91,10 @@ func _process(_delta):
 						# set ability used to true to prevent multiple uses
 						parent.abilityUsed = true
 						parent.air_control = true
-						sonic_shield_abilities()
+						await sonic_shield_abilities()
 
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	# air movement
 	if (parent.inputs[parent.INPUTS.XINPUT] != 0 and parent.air_control):
 		
@@ -104,7 +104,7 @@ func _physics_process(delta):
 		#If the input * speed is positive, meaning the signs match up.
 		elif (parent.movement.x*parent.inputs[parent.INPUTS.XINPUT]) > 0 and Global.airSpeedCap and !parent.ground:
 			#Air Speed Cap
-			var capSpeed = abs(parent.top)
+			var capSpeed: float = abs(parent.top)
 			parent.movement.x = clamp(parent.movement.x,0-capSpeed,capSpeed)
 	# Air drag
 	if (parent.movement.y < 0 and parent.movement.y > -parent.releaseJmp*60):
@@ -156,7 +156,7 @@ func _physics_process(delta):
 			
 			# Drop dash release (for sonic / amy)
 			if dropTimer >= 1 and parent.character == Global.CHARACTERS.SONIC:
-				var dropSpeed = dropSpeedSonic 
+				var dropSpeed: Array[float] = dropSpeedSonic 
 				# Check if moving forward or back
 				# Forward landing
 				if sign(parent.movement.x) == sign(parent.direction) or parent.movement.x == 0:
@@ -182,7 +182,7 @@ func _physics_process(delta):
 					parent.lock_camera(16.0/60.0)
 					
 					# drop dash dust
-					var dust = parent.Particle.instantiate()
+					var dust: Node2D = parent.Particle.instantiate()
 					dust.play("DropDash")
 					dust.global_position = parent.global_position+Vector2(0,2).rotated(parent.rotation)
 					dust.scale.x = parent.direction
@@ -200,7 +200,7 @@ func _physics_process(delta):
 		parent.bounceReaction = 0
 
 
-func sonic_shield_abilities():
+func sonic_shield_abilities() -> void:
 						# check that the invincibility barrier isn't visible
 						if !$"../../InvincibilityBarrier".visible:
 							match (parent.shield):
@@ -229,7 +229,7 @@ func sonic_shield_abilities():
 									parent.movement.y = -5.5*60.0
 									# generate 4 electric particles and send them out diagonally (rotated for each iteration of i to 4)
 									for i in range(4):
-										var part = elecPart.instantiate()
+										var part: Node2D = elecPart.instantiate()
 										part.global_position = parent.global_position
 										part.direction = Vector2(1,1).rotated(deg_to_rad(90*i))
 										parent.get_parent().add_child(part)
@@ -242,7 +242,7 @@ func sonic_shield_abilities():
 										parent.movement = Vector2(8*60*parent.direction,0)
 										parent.shieldSprite.play("FireAction")
 										# set timer for animation related resets
-										var getTimer = parent.shieldSprite.get_node_or_null("ShieldTimer")
+										var getTimer: Timer = parent.shieldSprite.get_node_or_null("ShieldTimer")
 										# Start fire dash timer
 										if getTimer != null:
 											getTimer.start(0.5)
@@ -265,7 +265,7 @@ func sonic_shield_abilities():
 										
 										parent.shieldSprite.play("BubbleAction")
 										# set timer for animation related resets
-										var getTimer = parent.shieldSprite.get_node_or_null("ShieldTimer")
+										var getTimer: Timer = parent.shieldSprite.get_node_or_null("ShieldTimer")
 										# Start bubble timer
 										if getTimer != null:
 											getTimer.start(0.25)
@@ -273,7 +273,7 @@ func sonic_shield_abilities():
 										parent.abilityUsed = false
 
 # Shield timer timeouts (used to reset animations)
-func _on_ShieldTimer_timeout():
+func _on_ShieldTimer_timeout() -> void:
 	match(parent.shieldSprite.animation):
 		"FireAction":
 			parent.shieldSprite.play("Fire")
@@ -283,13 +283,13 @@ func _on_ShieldTimer_timeout():
 			parent.shieldSprite.play("Bubble")
 
 # reset drop dash timer and gripping when this state is set
-func state_activated():
+func state_activated() -> void:
 	dropTimer = 0
 	# parent.poleGrabID = null
 	# disable water run splash
 	parent.action_water_run_handle()
 
-func state_exit():
+func state_exit() -> void:
 	# deactivate insta shield
 	if (parent.shield == parent.SHIELDS.NONE):
 		parent.shieldSprite.visible = false
@@ -302,7 +302,7 @@ func state_exit():
 	lockDir = false
 
 # bounce handling
-func bounce():
+func bounce() -> bool:
 	# check if bounce reaction is set
 	if parent.bounceReaction != 0:
 		# set bounce movement
@@ -314,7 +314,7 @@ func bounce():
 			if parent.shieldSprite.animation == "BubbleAction" or parent.shieldSprite.animation == "Bubble":
 				parent.shieldSprite.play("BubbleBounce")
 				parent.sfx[15].play()
-				var getTimer = parent.shieldSprite.get_node_or_null("ShieldTimer")
+				var getTimer: Timer = parent.shieldSprite.get_node_or_null("ShieldTimer")
 				# Start bubble timer
 				if getTimer != null:
 					getTimer.start(0.15)

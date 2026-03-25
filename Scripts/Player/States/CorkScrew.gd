@@ -1,6 +1,6 @@
 extends PlayerState
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	# jumping off
 	if parent.inputs[parent.INPUTS.ACTION] == 1 or parent.inputs[parent.INPUTS.ACTION2] == 1 or parent.inputs[parent.INPUTS.ACTION3] == 1:
 		parent.action_jump()
@@ -11,7 +11,7 @@ func _process(_delta):
 		parent.sprite.offset.y = 4
 	
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	# gravity
 	parent.movement.y += parent.grv/GlobalFunctions.div_by_delta(delta)
 	

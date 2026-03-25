@@ -1,16 +1,16 @@
 extends PlayerState
 
-var dashPower = 12
+var dashPower: float = 12
 
-func _process(delta):
+func _process(delta: float) -> void:
 	# dust sprite
-	var dash = parent.sprite.get_node("DashDust")
+	var dash: AnimatedSprite2D = parent.sprite.get_node("DashDust")
 	dash.visible = true
 	dash.flip_h = parent.sprite.flip_h
 	dash.offset.x = abs(dash.offset.x)*sign(-1+int(dash.flip_h)*2)
 	
 	# how much power the player has from the peelout
-	var speedCalc = parent.spindashPower*60
+	var speedCalc: float = parent.spindashPower*60
 	
 	# increase spindashPower gradually
 	parent.spindashPower = min(parent.spindashPower+delta*24,dashPower)
@@ -37,7 +37,7 @@ func _process(delta):
 		parent.peelOutCharge = 0.0
 		parent.set_state(parent.STATES.NORMAL)
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	# Gravity
 	if !parent.ground:
 		parent.movement.y += parent.grv/GlobalFunctions.div_by_delta(delta)

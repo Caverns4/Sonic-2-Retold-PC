@@ -21,13 +21,13 @@ func _ready() -> void:
 		sprites.append(sprite)
 	player.turned_super.connect(activate)
 
-func _check_character():
+func _check_character() -> void:
 	if player.character != Global.CHARACTERS.SONIC:
 		for i in sprites:
 			i.queue_free()
 		queue_free()
 
-func activate():
+func activate() -> void:
 	active = true
 
 func _physics_process(_delta: float) -> void:
@@ -43,9 +43,9 @@ func _physics_process(_delta: float) -> void:
 			sprite_timer = TIME_BETWEEN
 			copySprite()
 
-func update_transparency():
-	var mod_time = NUM_SPRITES
-	var source = player.sprite
+func update_transparency() -> void:
+	var mod_time: int = NUM_SPRITES
+	var source: Sprite2D = player.sprite
 	for i:Sprite2D in sprites:
 		i.visible = (fmod(round(Global.levelTime*60),mod_time) == 0)
 		mod_time -= 1
@@ -54,9 +54,9 @@ func update_transparency():
 		i.flip_h = source.flip_h
 		i.flip_v = source.flip_v
 
-func copySprite():
-	var source = player.sprite
-	var dest = sprites.pop_front()
+func copySprite() -> void:
+	var source: Sprite2D = player.sprite
+	var dest: Sprite2D = sprites.pop_front()
 	dest.texture = source.texture
 	dest.hframes = source.hframes
 	dest.vframes = source.vframes

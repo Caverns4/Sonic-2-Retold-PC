@@ -17,9 +17,9 @@ var idle_timer: float = 0.0
 ## The time the reels are forced into a spinning state before they are allowed to settle.
 var force_spin_times: Array[float] = [3,1,1]
 ## If this slot is in use by a Slot Cage.
-var is_in_use = false
+var is_in_use: bool = false
 ## If the machine was activated by the player, a slot cage is saved to since the OK to.
-var slot_cage = null
+var slot_cage: Node2D = null
 
 
 func _ready() -> void:
@@ -67,9 +67,9 @@ func  _process(delta: float) -> void:
 	_setup_child_graphics(delta)
 
 ## Update the slot machine's graphics to match the needed frames.
-func _setup_child_graphics(_delta):
+func _setup_child_graphics(_delta: float) -> void:
 	for this_machine in all_slot_machines:
-		var slotpicID = 0
+		var slotpicID: int = 0
 		for pic in this_machine.get_children(true):
 			if pic is Sprite2D:
 				pic.region_rect = Rect2(0,slot_offsets[slotpicID]*32,32,32)
@@ -84,9 +84,9 @@ func roll_character_slots(result: Array, user: Node2D) -> void:
 	slot_targets = result
 
 
-func determine_each_slot():
-	var a = randi_range(1,SLOT.size()-1)
-	var b = randi_range(1,SLOT.size()-1)
-	var c = randi_range(1,SLOT.size()-1)
-	var d = [a,b,c]
+func determine_each_slot() -> Array[int]:
+	var a: int = randi_range(1,SLOT.size()-1)
+	var b: int = randi_range(1,SLOT.size()-1)
+	var c: int = randi_range(1,SLOT.size()-1)
+	var d: Array[int] = [a,b,c]
 	return d

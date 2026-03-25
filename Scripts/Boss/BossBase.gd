@@ -1,6 +1,6 @@
 class_name BossBase extends CharacterBody2D
 
-@export_enum("Normal", "Fire", "Elec", "Water") var damageType = 0
+@export_enum("Normal", "Fire", "Elec", "Water") var damageType: int = 0
 var playerHit: Array = []
 
 @export var hp: int = 8
@@ -12,7 +12,7 @@ var forceDamage: bool = false
 var deathTimer: float = 4.0
 var defeated_flag: bool = false
 
-var Explosion = preload("res://Entities/Misc/GenericParticle.tscn")
+var Explosion: PackedScene = preload("res://Entities/Misc/GenericParticle.tscn")
 var hoverOffset: float = 0.0
 
 signal got_hit
@@ -23,8 +23,8 @@ signal boss_over
 signal boss_started
 signal destroyed
 
-var active = false: set = boss_start
-func boss_start(value):
+var active: bool = false: set = boss_start
+func boss_start(value: bool) -> void:
 	if value:
 		boss_started.emit()
 	active = value
@@ -34,7 +34,7 @@ func _ready() -> void:
 	if Global.two_player_mode:
 		queue_free()
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	# flashing timer
 	if flashTimer > 0:
 		flashTimer -= delta
@@ -45,7 +45,7 @@ func _physics_process(delta):
 		# checks if player hit has players inside
 		if playerHit.size() > 0:
 			# loop through players as i
-			for i in playerHit:
+			for i: Player2D in playerHit:
 				# check if damage entity is on or supertime is bigger then 0
 				if (i.get_collision_layer_value(20) or i.super_time > 0 or forceDamage):
 					i.movement = i.movement*-1 #i.movement*-0.5
@@ -72,24 +72,24 @@ func _physics_process(delta):
 					if i.hit_player(global_position,damageType):
 						emit_signal("hit_player")
 
-func _on_body_entered(body):
+func _on_body_entered(body: Player2D) -> void:
 	# add to player list
 	if (!playerHit.has(body)):
 		playerHit.append(body)
 
 
-func _on_body_exited(body):
+func _on_body_exited(body: Player2D) -> void:
 	# remove from player list
 	if (playerHit.has(body)):
 		playerHit.erase(body)
 
 
-func _mark_defeated():
+func _mark_defeated() -> void:
 	boss_over.emit()
 	destroyed.emit()
 
 
-func _on_DamageArea_area_entered(area):
+func _on_DamageArea_area_entered(area: Area2D) -> void:
 	# damage checking
 	if area.get("parent") != null and area.get_collision_layer_value(20):
 		if !playerHit.has(area.parent):
@@ -97,7 +97,7 @@ func _on_DamageArea_area_entered(area):
 			playerHit.append(area.parent)
 
 
-func _on_HitBox_area_exited(area):
+func _on_HitBox_area_exited(area: Area2D) -> void:
 	# remove from damage area
 	if area.get("parent") != null:
 		if playerHit.has(area.parent):

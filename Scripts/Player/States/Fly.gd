@@ -1,30 +1,30 @@
 extends PlayerState
 
 # Tails flight
-var flightTime = 8*60
+var flightTime: float = 8*60
 var flyGrav: float = 0.03125
 var actionPressed: bool = true
 var PartnerPriority: int = 0
 
-var flyHitBox
-var carryHitBox
-var carryBox
+var flyHitBox: CollisionShape2D
+var carryHitBox: CollisionShape2D
+var carryBox: Area2D
 
 var carried_partner: Player2D = null
 
-func _ready():
+func _ready() -> void:
 	flyHitBox = parent.get_node("TailsFlightHitArea/HitBox")
 	carryHitBox = parent.get_node("TailsCarryBox/HitBox")
 	carryBox = parent.get_node("TailsCarryBox")
 
-func state_activated():
+func state_activated() -> void:
 	flightTime = 8
 	flyGrav = 0.03125
 	flyHitBox.disabled = false
 	carryHitBox.disabled = false
 	actionPressed = true
 	
-func state_exit():
+func state_exit() -> void:
 	if carried_partner:
 		carried_partner.z_index = clamp(parent.z_index+1,1,6)
 		carryBox._player_dropoff(carried_partner)
@@ -40,7 +40,7 @@ func state_exit():
 	if $FlyBugStop.is_inside_tree():
 		$FlyBugStop.start(0.1)
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	# Animation
 	if parent.is_in_water:
 		if carried_partner:
@@ -75,10 +75,9 @@ func _process(_delta):
 		parent.sfx[22].stop()
 	
 
-func _physics_process(delta):
-	
-	var player_memory = carried_partner
-	var grabbing_characters = carryBox.get_contacting_players()
+func _physics_process(delta: float) -> void:
+	var player_memory: Player2D = carried_partner
+	var grabbing_characters: Array = carryBox.get_contacting_players()
 	if grabbing_characters:
 		carried_partner = grabbing_characters[0]
 		carried_partner.update_sensors()
@@ -147,6 +146,6 @@ func _physics_process(delta):
 		parent.set_state(parent.STATES.NORMAL)
 
 
-func _on_FlyBugStop_timeout():
+func _on_FlyBugStop_timeout() -> void:
 	parent.sfx[21].stop()
 	parent.sfx[22].stop()

@@ -1,13 +1,13 @@
 extends PlayerState
 
 
-func state_exit():
+func state_exit() -> void:
 	parent.get_node("HitBox").shape.size = parent.currentHitbox.NORMAL
 	
-func state_activated():
+func state_activated() -> void:
 	parent.get_node("HitBox").position = parent.hitBoxOffset.crouch
 	
-func _process(delta):
+func _process(delta: float) -> void:
 	
 	# Charging up (if your character does something different for button 2 or 3 you'll want to adjust this)
 	if parent.inputs[parent.INPUTS.ACTION] == 1 or parent.inputs[parent.INPUTS.ACTION2] == 1 or parent.inputs[parent.INPUTS.ACTION3] == 1:
@@ -22,7 +22,7 @@ func _process(delta):
 		parent.sfx[2].pitch_scale = 1.0+((float(parent.spindashPower)/8.0)*0.5)
 	
 	# dust sprite
-	var dash = parent.sprite.get_node("DashDust")
+	var dash: Node2D = parent.sprite.get_node("DashDust")
 	dash.visible = true
 	dash.flip_h = parent.sprite.flip_h
 	dash.offset.x = abs(dash.offset.x)*sign(-1+int(dash.flip_h)*2)
@@ -44,7 +44,7 @@ func _process(delta):
 	# decrease the dash power for next frame
 	parent.spindashPower -= ((parent.spindashPower / 0.125) / (256))*60*delta
 
-func _physics_process(_delta):
+func _physics_process(_delta: float) -> void:
 	# Gravity
 	if !parent.ground:
 		parent.set_state(parent.STATES.AIR)

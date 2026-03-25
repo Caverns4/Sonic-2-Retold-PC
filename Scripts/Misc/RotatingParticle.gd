@@ -1,11 +1,11 @@
 extends AnimatedSprite2D
-var time = 0
-var direction = 1
-var velocity = Vector2.ZERO
-var getTarget = null
+var time: float = 0
+var direction: int = 1
+var velocity: Vector2 = Vector2.ZERO
+var getTarget: Node2D = null
 
 
-func _process(delta):
+func _process(delta: float) -> void:
 	# rotate
 	position = position.rotated(deg_to_rad(360*delta)*direction)
 	if getTarget != null:

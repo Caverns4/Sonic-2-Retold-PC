@@ -3,8 +3,8 @@ extends Control
 func _process(_delta: float) -> void:
 	debug_inputs()
 
-func debug_inputs():
-	var input_list = [
+func debug_inputs() -> void:
+	var input_list: Array = [
 		Input.is_action_pressed("gm_up"),
 		Input.is_action_pressed("gm_down"),
 		Input.is_action_pressed("gm_left"),
@@ -15,7 +15,7 @@ func debug_inputs():
 		Input.is_action_pressed("gm_action3"),
 		Input.is_action_pressed("gm_super")
 	]
-	var icons = [
+	var icons: Array = [
 		$up,
 		$down,
 		$left,

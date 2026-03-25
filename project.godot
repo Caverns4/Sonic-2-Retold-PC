@@ -15,6 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Sonic 2:Retold"
+config/tags=PackedStringArray("2d", "arcade", "multiplayer", "singleplayer")
 run/main_scene="uid://dtlk8krmkmm4a"
 config/features=PackedStringArray("4.6")
 run/max_fps=60
@@ -32,6 +33,10 @@ SoundDriver="*res://Scripts/Global/SoundDriver.gd"
 
 [debug]
 
+gdscript/warnings/untyped_declaration=1
+gdscript/warnings/missing_await=1
+gdscript/warnings/integer_division=0
+gdscript/warnings/int_as_enum_without_cast=0
 shapes/collision/shape_color=Color(1, 1, 1, 0.501961)
 
 [display]

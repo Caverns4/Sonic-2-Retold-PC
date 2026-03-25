@@ -1,6 +1,6 @@
 extends Node2D
 
-var queue = false
+var queue: bool = false
 
 func _ready() -> void:
 	visible = false

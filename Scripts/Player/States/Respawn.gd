@@ -1,24 +1,24 @@
 extends PlayerState
 
 # this is for respawning a second player
-var targetPoint = Vector2.ZERO
+var targetPoint: Vector2 = Vector2.ZERO
 
-var spawnTicker = (1.0/64.0)*60.0
+var spawnTicker: float = (1.0/64.0)*60.0
 
-func _ready():
+func _ready() -> void:
 	invulnerability = true # ironic
 
-func state_activated():
+func state_activated() -> void:
 	targetPoint = parent.partner.global_position
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	# Animation
 	if parent.is_in_water:
 		parent.animator.play("swim")
 	else:
 		parent.animator.play("fly")
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	if !parent.partner:
 		return
 	
@@ -27,12 +27,12 @@ func _physics_process(delta):
 	targetPoint = targetPoint.lerp(parent.partner.global_position,(targetPoint.distance_to(parent.partner.global_position)/32)*delta)
 	
 	# if player is in range or is in a valid state, return to normal
-	var goToNormal = (parent.global_position.distance_to(targetPoint) <= 64 and round(parent.global_position.y) == round(targetPoint.y)
+	var goToNormal: bool = (parent.global_position.distance_to(targetPoint) <= 64 and round(parent.global_position.y) == round(targetPoint.y)
 		or parent.global_position.distance_to(parent.partner.global_position) <= 16) and (
 		parent.partner.currentState == parent.STATES.NORMAL or parent.partner.currentState == parent.STATES.AIR
 		or parent.partner.currentState == parent.STATES.JUMP)
 	
-	var layerMemory = parent.collision_layer
+	var layerMemory: int = parent.collision_layer
 	# set parent layer to collide with terrain
 	parent.set_collision_layer_value(1,true)
 	parent.set_collision_layer_value(2,true)
@@ -52,7 +52,7 @@ func _physics_process(delta):
 		else:
 			parent.global_position.y = min(parent.global_position.y,parent.limitBottom-16)
 		
-		var distance = targetPoint.x-parent.global_position.x
+		var distance: float = targetPoint.x-parent.global_position.x
 		# if far then fly by distance
 		if distance < 192:
 			#parent.movement.x += (distance/16)*delta*60

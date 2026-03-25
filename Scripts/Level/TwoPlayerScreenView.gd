@@ -1,13 +1,13 @@
 extends Control
 
-@onready var viewport1 = $CanvasLayer/SubViewportContainer/SubViewport
-@onready var viewport2 = $CanvasLayer/SubViewportContainer2/SubViewport
+@onready var viewport1: SubViewport = $CanvasLayer/SubViewportContainer/SubViewport
+@onready var viewport2: SubViewport = $CanvasLayer/SubViewportContainer2/SubViewport
 
-@onready var cameraPlayer1 = $CanvasLayer/SubViewportContainer/SubViewport/CameraP1
-@onready var cameraPlayer2 = $CanvasLayer/SubViewportContainer2/SubViewport/CameraP2
+@onready var cameraPlayer1: Camera2D = $CanvasLayer/SubViewportContainer/SubViewport/CameraP1
+@onready var cameraPlayer2: Camera2D = $CanvasLayer/SubViewportContainer2/SubViewport/CameraP2
 
 # Parallax Layers
-var parallaxBackgrounds = [
+var parallaxBackgrounds: Array[String] = [
 	"res://Scene/Backgrounds/00-EmeraldHill.tscn",	# Two-Player zone
 	"res://Scene/Backgrounds/01-HiddenPalace.tscn",
 	"res://Scene/Backgrounds/02-HillTop.tscn",
@@ -25,10 +25,10 @@ var parallaxBackgrounds = [
 	# Sky Fortress and Death Egg are excluded from Two-Player Mode
 ]
 
-func _ready():
-	var parallax = parallaxBackgrounds[min(Global.saved_zone_id,parallaxBackgrounds.size()-1)]
-	var scene = load(parallax)
-	var instance = scene.instantiate()
+func _ready() -> void:
+	var parallax: String = parallaxBackgrounds[min(Global.saved_zone_id,parallaxBackgrounds.size()-1)]
+	var scene: PackedScene = load(parallax)
+	var instance: ParallaxBackground = scene.instantiate()
 	$CanvasLayer/SubViewportContainer/SubViewport.add_child(instance)
 	instance = scene.instantiate()
 	$CanvasLayer/SubViewportContainer2/SubViewport.add_child(instance)
@@ -37,7 +37,7 @@ func _ready():
 	viewport1.world_2d = get_viewport().world_2d
 	viewport2.world_2d = get_viewport().world_2d
 	
-	var resolution = Global.aspectResolutions[Global.aspectRatio]
+	var resolution: Vector2i = Global.aspectResolutions[Global.aspectRatio]
 	$CanvasLayer/SubViewportContainer.size.x = resolution.x
 	$CanvasLayer/SubViewportContainer2.size.x = resolution.x
 	$CanvasLayer/SubViewportContainer/SubViewport.size = Vector2i(resolution.x,112)
@@ -45,12 +45,12 @@ func _ready():
 	$CanvasLayer/SubViewportContainer/SubViewport.size_2d_override =  Vector2i(resolution.x,224)
 	$CanvasLayer/SubViewportContainer2/SubViewport.size_2d_override =  Vector2i(resolution.x,224)
 
-func _all_players_ready():
+func _all_players_ready() -> void:
 	if Global.players.size() < 1:
 		Global.TwoPlayer = false
 		queue_free()
 
-func _physics_process(_delta):
+func _physics_process(_delta: float) -> void:
 	if Global.players[0].camera:
 		cameraPlayer1.global_position = Global.players[0].camera.global_position
 		cameraPlayer1.limit_left = Global.players[0].camera.limit_left

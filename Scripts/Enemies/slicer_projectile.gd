@@ -3,7 +3,7 @@ extends EnemyProjectileBase
 var move_dir: int = 1
 var slicer_tracking_time: float = 4.0
 var target: Player2D = null
-var parent = null
+var parent: EnemyBase = null
 
 const acceleration = 360
 
@@ -13,7 +13,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	slicer_tracking_time -= delta
 	$ClawSprites.rotate(deg_to_rad((20*(move_dir))))
-	var diff = target.global_position - global_position
+	var diff: Vector2 = target.global_position - global_position
 	
 	if slicer_tracking_time > 0 and parent != null:
 		velocity.x += acceleration*sign(diff.x)*delta

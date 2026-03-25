@@ -4,9 +4,9 @@ func _ready() -> void:
 	#await Main.scene_faded
 	Global.Clean_Up_Object_References()
 	SoundDriver.music.stop()
-	queue_level()
+	await queue_level()
 
-func queue_level():
+func queue_level() -> void:
 	match clampi(Global.saved_zone_id,0,Global.ZONES.size()+1):
 		Global.ZONES.EMERALD_HILL:
 			match Global.saved_act_id:
@@ -114,9 +114,9 @@ func queue_level():
 				Global.saved_zone_id = Global.ZONES.EMERALD_HILL
 				Global.saved_act_id = 0
 				Global.current_zone_pointer = "res://Scene/Zones/EmeraldHill1.tscn"
-				Main.change_scene("res://Scene/SpecialStage/SpecialStage.tscn","WhiteOut",0.0,true)
+				await Main.change_scene("res://Scene/SpecialStage/SpecialStage.tscn","WhiteOut",0.0,true)
 				return
 		_:
 			Global.current_zone_pointer = "res://Scene/Presentation/DemoCredits.tscn"
 	#Load the Zone
-	Main.change_scene(Global.current_zone_pointer,"",0.0,true)
+	await Main.change_scene(Global.current_zone_pointer,"",0.0,true)

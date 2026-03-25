@@ -3,13 +3,13 @@ extends Node2D
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
-	var xSize = get_viewport_rect().size.x/2
-	var ySize = get_viewport_rect().size.y/2
+	var xSize: float = get_viewport_rect().size.x/2
+	var ySize: float = get_viewport_rect().size.y/2
 	
 	for i in Global.players:
 		var player: Player2D = i
-		player.limitLeft = (global_position.x - xSize)
-		player.limitRight = (global_position.x + xSize)
+		player.limitLeft = int(global_position.x - xSize)
+		player.limitRight = int(global_position.x + xSize)
 		#i.limitBottom = (global_position.y + ySize)
 		#i.limitTop = (global_position.y - ySize)
 		

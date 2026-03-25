@@ -22,7 +22,7 @@ var sequence_mode: bool = false
 ## If the player has control at the moment. Used to prevent accidental swapping.
 var recieve_input: bool = true
 
-@onready var buttons_panel = $ButtonPanels
+@onready var buttons_panel: Control = $ButtonPanels
 
 @onready var buttons_list: Array[Button] = [
 	$ButtonPanels/Up,
@@ -53,7 +53,7 @@ var player_inputs: Array[String] = [
 	"gm_pause"
 ]
 
-var default_map = []
+var default_map: Array = []
 
 signal assign_button_pressed()
 signal menu_exit()
@@ -67,19 +67,19 @@ func _ready() -> void:
 		default_map.append(InputMap.action_get_events(i))
 	for i in $ButtonPanels.get_child_count():
 		if $ButtonPanels.get_child(i) is Button:
-			var btn =  $ButtonPanels.get_child(i)
+			var btn: Button =  $ButtonPanels.get_child(i)
 			btn.pressed.connect(keybind_button_pressed.bind(btn))
 	_update_button_text()
 
-func _update_button_text():
+func _update_button_text() -> void:
 	for i in $ButtonPanels.get_child_count():
 		if $ButtonPanels.get_child(i) is Button:
-			var btn =  $ButtonPanels.get_child(i)
+			var btn: Button =  $ButtonPanels.get_child(i)
 			
-			var player_id = ""
+			var player_id: String = ""
 			if current_player > 0:
 				player_id = "_P2"
-			var j = player_inputs[i] + player_id
+			var j: Variant = player_inputs[i] + player_id
 			if j is InputEventJoypadButton:
 				buttons_list[current_bind].text = j.as_text().right(3).trim_suffix(")")
 				buttons_list[current_bind].text = "button " + buttons_list[current_bind].text
@@ -90,7 +90,7 @@ func _update_button_text():
 
 func _input(event: InputEvent) -> void:
 	if visible and current_bind > -1 and recieve_input:
-		var player_id = ""
+		var player_id: String = ""
 		if current_player > 0:
 			player_id = "_P2"
 		buttons_list[current_bind].grab_focus()
@@ -122,23 +122,23 @@ func _input(event: InputEvent) -> void:
 func _on_player_1_pressed() -> void:
 	current_player = 0
 	_update_button_text()
-	bind_each_input()
+	await bind_each_input()
 
 
 func _on_player_2_pressed() -> void:
 	current_player = 1
 	_update_button_text()
-	bind_each_input()
+	await bind_each_input()
 
-func keybind_button_pressed(emitter: Button):
+func keybind_button_pressed(emitter: Button) -> void:
 	if !sequence_mode and recieve_input:
-		var index = buttons_list.find(emitter)
+		var index: int = buttons_list.find(emitter)
 		current_bind = index
 		map_label.text = "press command for " + player_inputs[current_bind]
 		$ButtonPanels.process_mode = Node.PROCESS_MODE_DISABLED
 	
 
-func bind_each_input():
+func bind_each_input() -> void:
 	$ButtonPanels.process_mode = Node.PROCESS_MODE_DISABLED
 	sequence_mode = true
 	$PlayerPanel/Player1.disabled = true
@@ -171,10 +171,10 @@ func _on_confirm_pressed() -> void:
 
 func _on_defaults_pressed() -> void:
 	if current_bind < 0:
-		var getActions = InputMap.get_actions()
+		var getActions: Array = InputMap.get_actions()
 		for i in getActions.size():
 			InputMap.action_erase_events(getActions[i])
-			for j in default_map[i]:
+			for j:InputEvent in default_map[i]:
 				InputMap.action_add_event(getActions[i],j)
 		
 		visible = false
@@ -190,10 +190,10 @@ func _on_visibility_changed() -> void:
 
 # Save and load routines directly copied from the original
 # save configuration data
-func save_control_data():
-	var file = ConfigFile.new()
+func save_control_data() -> void:
+	var file: ConfigFile = ConfigFile.new()
 	# save inputs
-	var actionCount = 0
+	var actionCount: int = 0
 	for i in InputMap.get_actions(): # input names
 		actionCount = 0
 		for j in InputMap.action_get_events(i): # the keys
@@ -214,14 +214,14 @@ func save_control_data():
 	file.save("user://Config.cfg")
 
 # load config data
-func load_data():
-	var file = ConfigFile.new()
-	var err = file.load("user://Config.cfg")
+func load_data() -> void:
+	var file: ConfigFile = ConfigFile.new()
+	var err: Error = file.load("user://Config.cfg")
 	if err != OK:
-		return false # Return false as an error
+		return
 	
 	# load inputs
-	var actionCount = 0
+	var actionCount: int = 0
 	for i in InputMap.get_actions(): # loop through input names
 		# prefix keys: K = Key, B = joypad Button, A = Axis, V = AxisValue
 		
@@ -241,7 +241,7 @@ func load_data():
 			# keyboard check
 			if (file.has_section_key("controls","K"+str(actionCount)+i)):
 				# define new key
-				var getInput = InputEventKey.new()
+				var getInput: InputEvent = InputEventKey.new()
 				# grab keycode
 				getInput.keycode = file.get_value("controls","K"+str(actionCount)+i)
 				# set new input
@@ -249,7 +249,7 @@ func load_data():
 			# joypad button check
 			if (file.has_section_key("controls","B"+str(actionCount)+i)):
 				# define new key
-				var getInput = InputEventJoypadButton.new()
+				var getInput: InputEvent = InputEventJoypadButton.new()
 				# grab button index
 				getInput.button_index = file.get_value("controls","B"+str(actionCount)+i)
 				# set device
@@ -261,7 +261,7 @@ func load_data():
 			if (file.has_section_key("controls","A"+str(actionCount)+i) and
 			file.has_section_key("controls","V"+str(actionCount)+i)):
 				# define new key
-				var getInput = InputEventJoypadMotion.new()
+				var getInput: InputEvent = InputEventJoypadMotion.new()
 				# grab axis
 				getInput.axis = file.get_value("controls","A"+str(actionCount)+i)
 				getInput.axis_value = file.get_value("controls","V"+str(actionCount)+i)

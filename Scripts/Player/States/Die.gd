@@ -1,20 +1,20 @@
 extends PlayerState
 
-func _ready():
+func _ready() -> void:
 	invulnerability = true # ironic
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	# gravity
 	parent.movement.y += parent.grv/GlobalFunctions.div_by_delta(delta)
 	# do allowTranslate to avoid collision
 	parent.allowTranslate = true
 	
 	if !Global.two_player_mode:
-		runDeathinSinglePlayer()
+		await runDeathinSinglePlayer()
 	else:
-		runDeathInTwoPlayer()
+		await runDeathInTwoPlayer()
 
-func runDeathinSinglePlayer():
+func runDeathinSinglePlayer() -> void:
 	# check if main player
 	if parent.playerControl == 1:
 		# check if speed above certain threshold
@@ -22,30 +22,29 @@ func runDeathinSinglePlayer():
 			parent.movement = Vector2.ZERO
 			if Global.livesMode and Global.hud:
 				Global.lives -= 1
-			CheckGameOver(Global.lives,Global.levelTime)
+			await CheckGameOver(Global.lives,Global.levelTime)
 	else:
 	# if not run respawn code
 		if parent.movement.y > 1000:
 			parent.respawn()
 
-func runDeathInTwoPlayer():
+func runDeathInTwoPlayer() -> void:
 	if parent.playerControl == 1:
 		if parent.movement.y > 1000 and Global.lives > 0 and !Global.gameOver:
 			parent.movement = Vector2.ZERO
 			Global.lives -= 1
-			CheckGameOver(Global.lives,Global.levelTime)
+			await CheckGameOver(Global.lives,Global.levelTime)
 	else:
 		if parent.movement.y > 1000 and Global.livesP2 > 0 and !Global.gameOver:
 			parent.movement = Vector2.ZERO
 			Global.livesP2 -= 1
-			CheckGameOver(Global.livesP2,Global.levelTimeP2)
-	
+			await CheckGameOver(Global.livesP2,Global.levelTimeP2)
 
-func CheckGameOver(lifeCount,timerVal):
+func CheckGameOver(lifeCount: int,timerVal: float) -> void:
 	# check if lives are remaining or death was a time over
 	if (lifeCount > 0 or (!Global.livesMode and !Global.two_player_mode)) and timerVal < Global.maxTime:
 		if !Global.two_player_mode:
-			Main.change_scene("","FadeOut",1,true)
+			await Main.change_scene("","FadeOut",1,true)
 		else:
 			RespawnInTwoPlayer()
 	else:
@@ -54,7 +53,7 @@ func CheckGameOver(lifeCount,timerVal):
 		Global.checkpoint_time_p1 = 0
 		Global.checkpoint_time_p2 = 0
 
-func RespawnInTwoPlayer():
+func RespawnInTwoPlayer() -> void:
 	invulnerability = false
 	parent.hitbox.disabled = false
 	parent.allowTranslate = false
@@ -67,4 +66,3 @@ func RespawnInTwoPlayer():
 	parent.collision_layer = parent.defaultLayer
 	parent.collision_mask = parent.defaultMask
 	parent.z_index = parent.defaultZIndex
-	

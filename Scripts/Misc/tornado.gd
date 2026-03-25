@@ -4,20 +4,20 @@ extends CharacterBody2D
 # This object doesn't do much on its own; It simply updates graphics. All controls are extrnal.
 
 ## Which Character should be shown as the pilot. If Inheret, the character will be dynamically chosen.
-@export_enum("Static Character","Player 1","Player 2","Inheret") var pilotType = 0
+@export_enum("Static Character","Player 1","Player 2","Inheret") var pilotType: int = 0
 ## If Static Character is set, which Character.
 @export var pilot: Global.CHARACTERS = Global.CHARACTERS.SONIC
 ## Which direction the Tornado should face.
-@export_enum("Left","Right") var startDirection = 1
+@export_enum("Left","Right") var startDirection: int = 1
 ## If true, show the jet engine used to repair the Tornado.
 @export var jet_engine: bool = false
 ## The sound effect when the plane is damaged.
-@export var boom_sfx = preload("res://Audio/SFX/Boss/s2br_SmallExplosion.wav")
+@export var boom_sfx: AudioStream = preload("res://Audio/SFX/Boss/s2br_SmallExplosion.wav")
 
 ## Scene instantiated when the Tornado is on a timer.
-var explosion = preload("res://Entities/Misc/GenericParticle.tscn")
+var explosion: PackedScene = preload("res://Entities/Misc/GenericParticle.tscn")
 
-var parenter_pilots = [
+var parenter_pilots: Array[int] = [
 	Global.CHARACTERS.TAILS, #NONE
 	Global.CHARACTERS.TAILS, #SONIC
 	Global.CHARACTERS.SONIC, #TAILS
@@ -49,10 +49,10 @@ func _ready() -> void:
 	
 	SetPilot()
 
-func UpdateDirection(dir):
+func UpdateDirection(dir: float) -> void:
 	$TornadoMain.scale.x = dir
 
-func SetPilot():
+func SetPilot() -> void:
 	match pilot:
 		Global.CHARACTERS.NONE:
 			$TornadoMain/Pilot/PilotSonic.visible = false
@@ -93,7 +93,7 @@ func _on_player_sensor_body_exited(body: Node2D) -> void:
 	if body is Player2D:
 		standing_players.erase(body)
 
-func _damage_plane():
+func _damage_plane() -> void:
 	if !explosion_timer:
 		plane_damaged.emit()
 		explosion_timer = 0.6

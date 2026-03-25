@@ -1,12 +1,12 @@
 extends EnemyBase
 
-@export_enum("Launch","Flying") var behavior = 0
-@onready var animation = $AnimationPlayer
-@onready var PlayerSensor = $PlayerSensor/Area2D
-@onready var flame = $Balkerie/Fire
+@export_enum("Launch","Flying") var behavior: int = 0
+@onready var animation: AnimationPlayer = $AnimationPlayer
+@onready var PlayerSensor: Area2D = $PlayerSensor/Area2D
+@onready var flame: AnimatedSprite2D = $Balkerie/Fire
 
 enum STATES{WAIT,LAUNCH,FLY}
-var state = STATES.WAIT
+var state: STATES = STATES.WAIT
 
 func _ready() -> void:
 	$VisibleOnScreenEnabler2D.visible = true
