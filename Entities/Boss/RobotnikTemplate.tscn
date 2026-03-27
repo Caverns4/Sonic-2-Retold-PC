@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bcoqgftnr4isn"]
+[gd_scene format=3 uid="uid://bcoqgftnr4isn"]
 
 [ext_resource type="Script" uid="uid://cxi6sccejwrhj" path="res://Scripts/Boss/RobotnikTemplate.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://6ds1jcc8jmyf" path="res://Graphics/Boss/Eggmobile.png" id="3"]
@@ -96,70 +96,70 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="5"]
 size = Vector2(48, 48)
 
-[node name="Robotnik" type="CharacterBody2D"]
+[node name="Robotnik" type="CharacterBody2D" unique_id=2093113368]
 z_index = 1
 collision_layer = 16384
 collision_mask = 0
 script = ExtResource("1")
 boss_name = "Floating Eggman"
 
-[node name="EggMobile" type="Sprite2D" parent="."]
+[node name="EggMobile" type="Sprite2D" parent="." unique_id=779842042]
 position = Vector2(0, 19)
 texture = ExtResource("3")
 offset = Vector2(0, -8)
 
-[node name="EggmobileFlame" type="Sprite2D" parent="EggMobile"]
+[node name="EggmobileFlame" type="Sprite2D" parent="EggMobile" unique_id=1665233412]
 visible = false
 position = Vector2(36, -8)
 texture = ExtResource("6")
 
-[node name="Eggmobile_Top" type="Sprite2D" parent="EggMobile"]
+[node name="Eggmobile_Top" type="Sprite2D" parent="EggMobile" unique_id=121569847]
 position = Vector2(10, -48)
 texture = ExtResource("4_qaw8p")
 
-[node name="Robotnik" type="AnimatedSprite2D" parent="EggMobile"]
+[node name="Robotnik" type="AnimatedSprite2D" parent="EggMobile" unique_id=1237152115]
 z_index = -1
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_x1amu")
 animation = &"laugh"
 
-[node name="EggFlash" type="Sprite2D" parent="EggMobile"]
+[node name="EggFlash" type="Sprite2D" parent="EggMobile" unique_id=707700044]
 visible = false
 texture = ExtResource("7")
 offset = Vector2(0, -8)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=229542517]
 shape = SubResource("5")
 
-[node name="Hit" type="AudioStreamPlayer" parent="."]
+[node name="Hit" type="AudioStreamPlayer" parent="." unique_id=1562293085]
 stream = ExtResource("7_23kef")
 bus = &"SFX"
 
-[node name="Explode" type="AudioStreamPlayer" parent="."]
+[node name="Explode" type="AudioStreamPlayer" parent="." unique_id=1700283717]
 stream = ExtResource("8_xm5st")
 bus = &"SFX"
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="HitBox" type="Area2D" parent="." unique_id=623459366]
 collision_layer = 0
 collision_mask = 528384
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1573779945]
 modulate = Color(1, 0, 0, 1)
 shape = SubResource("5")
 
-[node name="LeftPoint" type="Node2D" parent="."]
+[node name="LeftPoint" type="Node2D" parent="." unique_id=1428432640]
 position = Vector2(-72, 0)
 
-[node name="RightPoint" type="Node2D" parent="."]
+[node name="RightPoint" type="Node2D" parent="." unique_id=1212275241]
 position = Vector2(72, 0)
 
-[node name="SmokeTimer" type="Timer" parent="."]
+[node name="SmokeTimer" type="Timer" parent="." unique_id=984387679]
 wait_time = 0.1
 
-[node name="AnimationTime" type="Timer" parent="."]
+[node name="AnimationTime" type="Timer" parent="." unique_id=1723827773]
 one_shot = true
 
-[connection signal="defeated" from="." to="." method="_on_boss_defeated"]
+[connection signal="boss_defeated" from="." to="." method="_on_boss_defeated"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_DamageArea_area_entered"]
 [connection signal="area_exited" from="HitBox" to="." method="_on_HitBox_area_exited"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_body_entered"]

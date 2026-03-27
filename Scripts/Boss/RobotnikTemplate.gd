@@ -1,22 +1,22 @@
 extends BossBase
 
 # you can use these to control behaviour
-var phase = 0
-var attackTimer = 0
+var phase: int = 0
+var attackTimer: float = 0
 
-@onready var getPose = [$LeftPoint.global_position,$RightPoint.global_position]
-var currentPoint = 1
+@onready var getPose: Array[Vector2] = [$LeftPoint.global_position,$RightPoint.global_position]
+var currentPoint: int = 1
 
-var animationPriority = ["default","move","laugh","hit","exploded"]
+var animationPriority: Array = ["default","move","laugh","hit","exploded"]
 
-func _ready():
+func _ready() -> void:
 	# move to the set currentPoint position before the boss starts (plus 128 pixels higher)
 	global_position = getPose[currentPoint]+Vector2(0,-1)*128
 	# run laugh function for every time the player gets hit
 	connect("hit_player",Callable(self,"do_laugh"))
 	super()
 
-func _process(delta):
+func _process(delta: float) -> void:
 	# flame jet (only visible when moving)
 	$EggMobile/EggmobileFlame.visible = !(velocity.x == 0 or $EggMobile/EggmobileFlame.visible)
 	
@@ -51,7 +51,7 @@ func _process(delta):
 				scale.x = -abs(scale.x)
 				_mark_defeated()
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	super(delta)
 	# move boss
 	global_position += velocity*delta
@@ -82,7 +82,7 @@ func _physics_process(delta):
 				# change the hover
 				hoverOffset = move_toward(hoverOffset,cos(Global.levelTime*4)*4,delta*10)
 				# move
-				var getPosition = (getPose[currentPoint]-global_position)*60
+				var getPosition: Vector2 = (getPose[currentPoint]-global_position)*60
 				velocity = getPosition.limit_length(64)
 				# now move the hover position back
 				global_position.y = global_position.y+hoverOffset
@@ -113,7 +113,7 @@ func _physics_process(delta):
 	
 
 # animation to play, time is how long the animation should play for until it stops
-func set_animation(animation = "default", time = 0.0):
+func set_animation(animation: StringName = "default", time: float = 0.0) -> void:
 	# check that the animation exists in the animationPriority list
 	if animationPriority.has(animation):
 		# if the animation exists then compare the position
@@ -130,17 +130,17 @@ func set_animation(animation = "default", time = 0.0):
 		$AnimationTime.start(time)
 
 # boss defeated
-func _on_boss_defeated():
+func _on_boss_defeated() -> void:
 	defeated_flag = true
 	set_animation("hit",1.5)
 	velocity = Vector2.ZERO
 	$SmokeTimer.start(0.01667*7)
 
 # do a laugh for 1 second
-func do_laugh():
+func do_laugh() -> void:
 	set_animation("laugh",1)
 
-func _on_SmokeTimer_timeout():
+func _on_SmokeTimer_timeout() -> void:
 	# check that deathtimer's still going and that we are actually defeated
 	if defeated_flag and deathTimer > 1.5:
 		# play explosion sound

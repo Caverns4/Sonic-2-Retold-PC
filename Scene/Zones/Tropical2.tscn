@@ -21,7 +21,6 @@
 [ext_resource type="PackedScene" uid="uid://di23q55vk6wuq" path="res://Entities/ZoneObjects/EHZ_collapsing_platform.tscn" id="15_f4ecq"]
 [ext_resource type="PackedScene" uid="uid://ctg1aeiewvyvj" path="res://Entities/Gimmicks/ForceRoll.tscn" id="16_7tcco"]
 [ext_resource type="PackedScene" uid="uid://vh0ailk0432j" path="res://Entities/Boss/BossBoundrySetter.tscn" id="17_dxyqo"]
-[ext_resource type="PackedScene" uid="uid://bfcfm2qdipj7y" path="res://Entities/Boss/Boss Components/HelicopterEggman.tscn" id="18_4w48s"]
 [ext_resource type="PackedScene" uid="uid://bjuh5cvbt06af" path="res://Entities/MainObjects/Capsule.tscn" id="19_5yjib"]
 [ext_resource type="PackedScene" uid="uid://bct374kjctkxr" path="res://Entities/Items/Checkpoint.tscn" id="19_ec022"]
 [ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="23_n1vgy"]
@@ -29,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://bl01bxflmr52e" path="res://Entities/Hazards/ghz_log_spike_group.tscn" id="25_awmp3"]
 [ext_resource type="PackedScene" uid="uid://ds7bmlo2s41ji" path="res://Entities/Enemies/BuzzBomber.tscn" id="25_okshu"]
 [ext_resource type="PackedScene" uid="uid://dpedjdbyu3jqv" path="res://Entities/Enemies/ShellCracker.tscn" id="26_he821"]
+[ext_resource type="PackedScene" uid="uid://bcoqgftnr4isn" path="res://Entities/Boss/RobotnikTemplate.tscn" id="29_he821"]
 
 [node name="Tropical2" type="Node2D" unique_id=1047750896]
 script = ExtResource("1_03k2s")
@@ -700,13 +700,13 @@ position = Vector2(7304, 920)
 
 [node name="BossBoundrySetter" parent="Boss" unique_id=267494378 instance=ExtResource("17_dxyqo")]
 position = Vector2(11008, 888)
-bossPath = NodePath("../HelicopterEggman")
+bossPath = NodePath("../Robotnik")
 keepTopLocked = false
 keepRightLocked = false
 lockTop = false
 
-[node name="HelicopterEggman" parent="Boss" unique_id=1630195835 instance=ExtResource("18_4w48s")]
-position = Vector2(10968, 888)
-
 [node name="Capsule" parent="Boss" unique_id=1220542392 instance=ExtResource("19_5yjib")]
 position = Vector2(11456, 932)
+
+[node name="Robotnik" parent="Boss" unique_id=1297098002 instance=ExtResource("29_he821")]
+position = Vector2(11008, 856)
