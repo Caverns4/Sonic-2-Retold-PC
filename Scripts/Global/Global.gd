@@ -88,9 +88,10 @@ var lives: int = 3
 var continues: int = 0 #Never used
 var scoreP2: int = 0
 var livesP2: int = 3
-# emeralds use bitwise flag operations, the equivelent for 7 emeralds would be 127
-var emeralds: int = 63
-const ALL_EMERALDS: int = 127
+## emeralds use bitwise flag operations, the equivelent for 7 emeralds would be 127
+var emeralds: int = 0
+## Fake const for all Emeralds. 127 is hard coded in most places (for demo purposes)
+const ALL_EMERALDS: int = 1 #127
 # emerald bit flags
 enum EMERALD {
 	CYAN=1,
@@ -438,7 +439,7 @@ func loadNextLevel() -> void:
 				saved_zone_id = ZONES.OIL_OCEAN
 			ZONES.TROPICAL:
 				saved_act_id = 0
-				saved_zone_id = ZONES.EMERALD_HILL
+				saved_zone_id = ZONES.ENDING
 			ZONES.CYBER_CITY:
 				saved_act_id = 0
 				saved_zone_id = ZONES.ENDING

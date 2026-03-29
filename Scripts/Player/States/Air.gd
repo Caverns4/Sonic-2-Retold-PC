@@ -22,7 +22,6 @@ func _process(_delta: float) -> void:
 		# Super
 		if (parent.inputs[parent.INPUTS.SUPER] == 1
 		and (isJump and parent.movement.y > 0) and parent.super_form_ready()):
-			# Global emeralds use a bit flag, 127 would mean all 7 are 1, see bitwise operations for more info
 			parent.set_state(parent.STATES.SUPER)
 			if Global.hud:
 				Global.hud.iconAnim.play("RESET")

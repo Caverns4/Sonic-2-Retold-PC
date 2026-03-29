@@ -50,12 +50,12 @@ func activate(player: Player2D):
 				i.get_node("Spinner").play("flash")
 	
 	if (!Global.two_player_mode and Global.players[0].rings > 49
-	and Global.emeralds < 127): #If 1P, >=50 rings, > 7 emeralds...
-		var spawn = specialStageEntry.instantiate()
+	and Global.emeralds < Global.ALL_EMERALDS): #If 1P, >=50 rings, > 7 emeralds...
+		var spawn: Node2D = specialStageEntry.instantiate()
 		spawn.global_position = global_position + Vector2(0,-64)
 		get_parent().call_deferred("add_child",spawn)
 
-func _on_Checkpoint_body_entered(body):
+func _on_Checkpoint_body_entered(body: CharacterBody2D) -> void:
 	# do the spin and activate
 	if !active and !Global.two_player_mode:
 		if body.playerControl == 1:

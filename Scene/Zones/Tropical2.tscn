@@ -72,7 +72,7 @@ tile_map_data = PackedByteArray("AACgASoAAgAAAAAAAACgASsAAgAAAAEAAACgASwAAgAAAAI
 tile_set = ExtResource("5_ug33s")
 
 [node name="Player" parent="." unique_id=1721101508 instance=ExtResource("6_bflto")]
-position = Vector2(10096, 776)
+position = Vector2(72, 944)
 
 [node name="Entities" type="Node" parent="." unique_id=1373858848]
 

@@ -5,19 +5,19 @@ var zone_loader:String ="res://Scene/Presentation/ZoneLoader.tscn"
 
 enum STATE{IDLE,COUNTDOWN,SHOWTEXT,WAITTOEXIT,EXITING}
 var state: STATE = STATE.IDLE
-var state_timer = 1.0
+var state_timer: float = 1.0
 var ring_bonus: int = 0
 var gems_bonus: int = 0
 var total: int = 0
 
-var flicker_time = 0.01
+var flicker_time: float = 0.01
 
 @onready var ring_counter = %RingScore
 @onready var gem_counter = %GemScore
 @onready var total_text = %TotalScore
 
 
-func _ready():
+func _ready() -> void:
 	$HUD/CounterWait.start()
 	ring_bonus = Global.special_stage_rings*10
 	if Global.special_stage_result:
@@ -73,7 +73,7 @@ func _process(delta: float) -> void:
 			if !SoundDriver.music.playing and state_timer <= 0.0:
 				state = STATE.EXITING
 				$Emerald.play()
-				returnToLevel()
+				await returnToLevel()
 
 	ring_counter.text = str(int(ring_bonus))
 	gem_counter.text = str(int(gems_bonus))
@@ -85,15 +85,14 @@ func _physics_process(delta: float) -> void:
 		flicker_time = 0.01
 		$HUD/ColorRect.visible = !$HUD/ColorRect.visible
 
-func returnToLevel():
+func returnToLevel() -> void:
 	#Wipe some data to avoid contamination.
 	Global.special_stage_result = false
 	Global.special_stage_rings = 0
 	Global.special_stage_players.clear()
-	
-	Main.change_scene(Global.current_zone_pointer,"WhiteOut",1,false)
+	await Main.change_scene(Global.current_zone_pointer,"WhiteOut",1,false)
 
-func SpecialResults_SetupText():
+func SpecialResults_SetupText() -> void:
 	if !Global.special_stage_result:
 		$HUD/ResultLabel/SonicGot.text = "CHAOS EMERALDS"
 		$HUD/ResultLabel/Through.text = ""
@@ -101,11 +100,11 @@ func SpecialResults_SetupText():
 		$HUD/ResultLabel/SonicGot.text = Global.characterNames[Global.PlayerChar1-1]
 		$HUD/ResultLabel/SonicGot.text += " GOT"
 		
-		if Global.emeralds >= 127:
+		if Global.emeralds == 127:
 			$HUD/ResultLabel/Through.text = "THEM ALL"
 	$HUD/ResultLabel.visible = true
 
-func SuperText():
+func SuperText() -> void:
 	var charName = str(Global.characterNames[Global.PlayerChar1-1])
 	$HUD/ResultLabel/SonicGot.text = "NOW " + charName + " CAN BE"
 	$HUD/ResultLabel/Through.text = "SUPER " + charName

@@ -1306,7 +1306,7 @@ func switch_physics() -> void:
 
 func _on_SparkleTimer_timeout() -> void:
 	if is_super and abs(groundSpeed) >= top:
-		var sparkle: CharacterBody2D = Particle.instantiate()
+		var sparkle: AnimatedSprite2D = Particle.instantiate()
 		sparkle.global_position = global_position
 		sparkle.play("Super")
 		get_parent().add_child(sparkle)

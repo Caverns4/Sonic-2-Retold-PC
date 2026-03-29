@@ -50,6 +50,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_y1b2j")
+demo_flag = true
 
 [node name="Backdrop" type="Parallax2D" parent="." unique_id=362907693]
 scroll_scale = Vector2(0, 0)
@@ -79,6 +80,7 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1738603278]
+position = Vector2(0, -32)
 texture = ExtResource("4_wvq33")
 centered = false
 

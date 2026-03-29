@@ -8,6 +8,8 @@ var level_select_menu: String = "res://Scene/Presentation/LevelSelect.tscn"
 var opening_cutscene: String = "res://Scene/Cutscenes/Opening.tscn"
 var optionsScene: String = "res://Scene/Presentation/OptionsMenu.tscn"
 
+@export var demo_flag: bool = false
+
 enum STATES{INTRO,WAITING,FADEOUT}
 var state: int = STATES.INTRO
 ## If the Title Screen should be moving
@@ -92,6 +94,8 @@ func _ready() -> void:
 	#Prepare the background
 	var parallax: String = parallaxBackgrounds[min(Global.saved_zone_id,parallaxBackgrounds.size()-1)]
 	BackgroundScene = load(parallax)
+	if demo_flag:
+		$"CanvasLayer/Menu/2PlayerVS".queue_free()
 
 func _process(delta: float) -> void:
 	if title_scroll:
@@ -127,7 +131,9 @@ func CheckCheatInputs(inputCue: Vector2 = Vector2.ZERO) -> void:
 				#print("Wrong input!" + str(inputCue))
 			if cheatInputCount == levelSelectCheat.size():
 				cheatInputCount = 0
-				Global.debug_mode = true
+				if !demo_flag:
+					Global.debug_mode = true
+				Global.emeralds += 1
 				$TitleBanner/RingChime.play(0.0)
 				Global.tails_name_cheat = !Global.tails_name_cheat
 				if !Global.tails_name_cheat:
@@ -185,7 +191,7 @@ func reset_values() -> void:
 	Global.twoPlayerRound = 0
 	Global.continues = 0
 	#Global.emeralds = 0
-	#Global.special_stage_id = 0
+	Global.special_stage_id = 0
 	Global.checkpoint_time_p1 = 0
 	Global.checkpoint_time_p2 = 0
 	Global.saved_checkpoint = -1
@@ -195,7 +201,6 @@ func reset_values() -> void:
 
 func _on_player_pressed() -> void:
 	Global.saved_act_id = 0
-	Global.emeralds = 126
 	await SetFadeOut(zone_loader)
 	#SetFadeOut(level_select_menu)
 

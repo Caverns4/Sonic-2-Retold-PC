@@ -70,7 +70,7 @@ func _on_accept_button_pressed() -> void:
 
 func _on_left_button_pressed() -> void:
 	if !save_data:
-		selection_id = wrapi(selection_id-1,0,Global.PLAYER_MODES.size())
+		selection_id = wrapi(selection_id-1,0,Global.PLAYER_MODES.size()-1)
 		char_select.frame = selection_id
 		param_text.text = Global.playerModes[selection_id]
 	else:
@@ -79,7 +79,7 @@ func _on_left_button_pressed() -> void:
 
 func _on_right_button_pressed() -> void:
 	if !save_data:
-		selection_id = wrapi(selection_id+1,0,Global.PLAYER_MODES.size())
+		selection_id = wrapi(selection_id+1,0,Global.PLAYER_MODES.size()-1)
 		char_select.frame = selection_id
 		param_text.text = Global.playerModes[selection_id]
 	else:
