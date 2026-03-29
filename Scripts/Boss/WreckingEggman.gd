@@ -7,6 +7,8 @@ var attackTimer: float = 0
 @onready var getPose: Array[Vector2] = [$LeftPoint.global_position,$RightPoint.global_position]
 var currentPoint: int = 1
 
+@onready var wrecking_ball: Node2D = $BallAndChain
+
 var animationPriority: Array = ["default","move","laugh","hit","exploded"]
 
 func boss_start(value: bool) -> void:
@@ -17,6 +19,11 @@ func _ready() -> void:
 	global_position = getPose[currentPoint]+Vector2(0,-1)*128
 	# run laugh function for every time the player gets hit
 	connect("hit_player",Callable(self,"do_laugh"))
+	if wrecking_ball:
+		wrecking_ball.top_level = true
+		wrecking_ball.set_hazard_collsions(false)
+		wrecking_ball.active = false
+		wrecking_ball.hazard.visible = false
 	super()
 
 func _process(delta: float) -> void:
@@ -53,6 +60,8 @@ func _process(delta: float) -> void:
 				velocity = Vector2(200,-25)
 				scale.x = -abs(scale.x)
 				_mark_defeated()
+	if wrecking_ball:
+		wrecking_ball.position = global_position + Vector2(0,24)
 
 func _physics_process(delta: float) -> void:
 	super(delta)
@@ -68,17 +77,27 @@ func _physics_process(delta: float) -> void:
 				# move to center between positions
 				elif global_position.x > (getPose[0].lerp(getPose[1],0.5)).x:
 					velocity = ((getPose[0].lerp(getPose[1],0.5)-global_position)*60).limit_length(64)
-				elif attackTimer < 2:
-					# do laugh
+				else: # end intro
 					if flashTimer <= 0:
 						set_animation("laugh")
 					velocity = Vector2.ZERO
-					attackTimer += delta
-				else: # end intro
 					phase = 1
 					currentPoint = 0
-				
-			1: # main attack
+					if wrecking_ball:
+						wrecking_ball.hazard.visible = true
+						wrecking_ball.set_hazard_collsions(true)
+			1: # Descend the ball and chain
+				if attackTimer < 2:
+					# do laugh
+					attackTimer += delta
+				if wrecking_ball and wrecking_ball.chain_size < 16:
+					wrecking_ball.chain_size = move_toward(wrecking_ball.chain_size,16,delta*16)
+				else:
+					phase = 2
+					currentPoint = 0
+					if wrecking_ball:
+						wrecking_ball.active = true
+			2: # main attack
 				
 				# reset hover position
 				global_position.y = global_position.y-hoverOffset
@@ -98,7 +117,7 @@ func _physics_process(delta: float) -> void:
 				attackTimer += delta
 				
 				# switch positions after 5 seconds
-				if attackTimer >= 5:
+				if attackTimer >= 3:
 					currentPoint = 1-currentPoint
 					attackTimer = 0
 	
@@ -138,6 +157,12 @@ func _on_boss_defeated() -> void:
 	set_animation("hit",1.5)
 	velocity = Vector2.ZERO
 	$SmokeTimer.start(0.01667*7)
+	if wrecking_ball:
+		wrecking_ball.active = false
+		wrecking_ball.set_hazard_collsions(false)
+		await get_tree().create_timer(1.0).timeout
+		wrecking_ball.destroy_chan_and_hazard()
+		wrecking_ball = null
 
 # do a laugh for 1 second
 func do_laugh() -> void:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhr0o7moirsvy"
-path="res://.godot/imported/GHZ_Ball.png-8eb137f0f3752ef9563220444a59a998.ctex"
+uid="uid://du30o4wev3mcd"
+path="res://.godot/imported/GHZ_Ball_Prev.png-fb9fb39a0bfb3b4cb77989b4ed80dc46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Objects_Zone/GHZ_Ball.png"
-dest_files=["res://.godot/imported/GHZ_Ball.png-8eb137f0f3752ef9563220444a59a998.ctex"]
+source_file="res://Graphics/Obstacles/GHZ_Ball_Prev.png"
+dest_files=["res://.godot/imported/GHZ_Ball_Prev.png-fb9fb39a0bfb3b4cb77989b4ed80dc46.ctex"]
 
 [params]
 

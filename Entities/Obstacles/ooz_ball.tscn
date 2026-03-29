@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://cy6vpefnf62np"]
+
+[ext_resource type="Texture2D" uid="uid://dvo0aciytvfwl" path="res://Graphics/Obstacles/OOZ_Ball.png" id="1_jd63i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qskmn"]
+atlas = ExtResource("1_jd63i")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3h2w"]
+atlas = ExtResource("1_jd63i")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5odl7"]
+atlas = ExtResource("1_jd63i")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbvcw"]
+atlas = ExtResource("1_jd63i")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_miyif"]
+atlas = ExtResource("1_jd63i")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yn62b"]
+atlas = ExtResource("1_jd63i")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2qub"]
+atlas = ExtResource("1_jd63i")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6can"]
+atlas = ExtResource("1_jd63i")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_em70x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qskmn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3h2w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5odl7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbvcw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_miyif")
+}],
+"loop": true,
+"name": &"roll_left",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yn62b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2qub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6can")
+}],
+"loop": true,
+"name": &"roll_right",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v6qf2"]
+radius = 16.0
+
+[node name="OOZ_Ball" type="CharacterBody2D" unique_id=1856051428]
+collision_mask = 4095
+floor_stop_on_slope = false
+floor_block_on_wall = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=765378206]
+sprite_frames = SubResource("SpriteFrames_em70x")
+frame = 1
+frame_progress = 0.72829986
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1394968680]
+shape = SubResource("CircleShape2D_v6qf2")

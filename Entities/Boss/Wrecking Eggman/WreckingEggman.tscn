@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://c8yrn3upxlkyv"]
+
+[ext_resource type="Script" uid="uid://bqnahjnca4pn4" path="res://Scripts/Boss/WreckingEggman.gd" id="1_rewhg"]
+[ext_resource type="Texture2D" uid="uid://6ds1jcc8jmyf" path="res://Graphics/Boss/Eggmobile.png" id="2_j8qvl"]
+[ext_resource type="Texture2D" uid="uid://dam0q6u1k8paq" path="res://Graphics/Boss/Jet.png" id="3_m2u58"]
+[ext_resource type="Texture2D" uid="uid://c31pi0okhicpx" path="res://Graphics/Boss/Eggmobile_Top.png" id="4_jye54"]
+[ext_resource type="Texture2D" uid="uid://d0i06mnbra5yc" path="res://Graphics/Boss/Robotnik.png" id="5_wfu82"]
+[ext_resource type="Texture2D" uid="uid://bf0ytf63vlq5c" path="res://Graphics/Boss/EggmobileFlash.png" id="6_0bdrh"]
+[ext_resource type="AudioStream" uid="uid://bq25mlko4saoj" path="res://Audio/SFX/Boss/s2br_BossHit.wav" id="7_loam1"]
+[ext_resource type="AudioStream" uid="uid://u14e5d6axr7x" path="res://Audio/SFX/Boss/s2br_BossExplosion.wav" id="8_5pxsx"]
+[ext_resource type="PackedScene" uid="uid://c6byltw4bviqi" path="res://Entities/Hazards/SwingingHazard.tscn" id="9_r1mlw"]
+[ext_resource type="Texture2D" uid="uid://du30o4wev3mcd" path="res://Graphics/Obstacles/GHZ_Ball_Prev.png" id="10_e8p81"]
+[ext_resource type="PackedScene" uid="uid://drih671sfony1" path="res://Entities/Hazards/ghz_ball.tscn" id="11_cykmc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gg6r"]
+atlas = ExtResource("5_wfu82")
+region = Rect2(0, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41324"]
+atlas = ExtResource("5_wfu82")
+region = Rect2(0, 16, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vr3ju"]
+atlas = ExtResource("5_wfu82")
+region = Rect2(0, 48, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4lk1"]
+atlas = ExtResource("5_wfu82")
+region = Rect2(0, 32, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkgp8"]
+atlas = ExtResource("5_wfu82")
+region = Rect2(0, 64, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5w20l"]
+atlas = ExtResource("5_wfu82")
+region = Rect2(0, 80, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1afxm"]
+atlas = ExtResource("5_wfu82")
+region = Rect2(0, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8m5w5"]
+atlas = ExtResource("5_wfu82")
+region = Rect2(0, 16, 64, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x1amu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gg6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41324")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vr3ju")
+}],
+"loop": true,
+"name": &"exploded",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4lk1")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkgp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5w20l")
+}],
+"loop": true,
+"name": &"laugh",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1afxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8m5w5")
+}],
+"loop": true,
+"name": &"move",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="5"]
+size = Vector2(48, 48)
+
+[node name="Robotnik" type="CharacterBody2D" unique_id=2093113368]
+z_index = 1
+collision_layer = 16384
+collision_mask = 0
+script = ExtResource("1_rewhg")
+boss_name = "Egg Wrecker"
+
+[node name="EggMobile" type="Sprite2D" parent="." unique_id=779842042]
+position = Vector2(0, 19)
+texture = ExtResource("2_j8qvl")
+offset = Vector2(0, -8)
+
+[node name="EggmobileFlame" type="Sprite2D" parent="EggMobile" unique_id=1665233412]
+visible = false
+position = Vector2(36, -8)
+texture = ExtResource("3_m2u58")
+
+[node name="Eggmobile_Top" type="Sprite2D" parent="EggMobile" unique_id=121569847]
+position = Vector2(10, -48)
+texture = ExtResource("4_jye54")
+
+[node name="Robotnik" type="AnimatedSprite2D" parent="EggMobile" unique_id=1237152115]
+z_index = -1
+position = Vector2(0, -32)
+sprite_frames = SubResource("SpriteFrames_x1amu")
+animation = &"laugh"
+
+[node name="EggFlash" type="Sprite2D" parent="EggMobile" unique_id=707700044]
+visible = false
+texture = ExtResource("6_0bdrh")
+offset = Vector2(0, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=229542517]
+shape = SubResource("5")
+
+[node name="Hit" type="AudioStreamPlayer" parent="." unique_id=1562293085]
+stream = ExtResource("7_loam1")
+bus = &"SFX"
+
+[node name="Explode" type="AudioStreamPlayer" parent="." unique_id=1700283717]
+stream = ExtResource("8_5pxsx")
+bus = &"SFX"
+
+[node name="HitBox" type="Area2D" parent="." unique_id=623459366]
+collision_layer = 0
+collision_mask = 528384
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1573779945]
+modulate = Color(1, 0, 0, 1)
+shape = SubResource("5")
+
+[node name="LeftPoint" type="Node2D" parent="." unique_id=1428432640]
+position = Vector2(-32, 0)
+
+[node name="RightPoint" type="Node2D" parent="." unique_id=1212275241]
+position = Vector2(32, 0)
+
+[node name="SmokeTimer" type="Timer" parent="." unique_id=984387679]
+wait_time = 0.1
+
+[node name="AnimationTime" type="Timer" parent="." unique_id=1723827773]
+one_shot = true
+
+[node name="BallAndChain" parent="." unique_id=706640712 instance=ExtResource("9_r1mlw")]
+z_index = -1
+position = Vector2(0, 32)
+chains = 6
+chain_size = 0.0
+preview_img = ExtResource("10_e8p81")
+attached_object = ExtResource("11_cykmc")
+
+[connection signal="boss_defeated" from="." to="." method="_on_boss_defeated"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_DamageArea_area_entered"]
+[connection signal="area_exited" from="HitBox" to="." method="_on_HitBox_area_exited"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="HitBox" to="." method="_on_body_exited"]
+[connection signal="timeout" from="SmokeTimer" to="." method="_on_SmokeTimer_timeout"]

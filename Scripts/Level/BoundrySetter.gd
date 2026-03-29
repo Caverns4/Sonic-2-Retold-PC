@@ -1,22 +1,22 @@
 @tool
 extends Area2D
 
-@onready var screenSize = get_viewport().get_visible_rect().size
+@onready var screenSize: Vector2 = get_viewport().get_visible_rect().size
 
-@export var setLeft = true
-@export var leftBoundry  = 0
-@export var setTop = true
-@export var topBoundry  = 0
+@export var setLeft: bool = true
+@export var leftBoundry: int = 0
+@export var setTop: bool = true
+@export var topBoundry: int = 0
 
-@export var setRight = true
-@export var rightBoundry = 320
-@export var setBottom = true
-@export var bottomBoundry = 224
+@export var setRight: bool = true
+@export var rightBoundry: int = 320
+@export var setBottom: bool = true
+@export var bottomBoundry: int = 224
 
 @export var screen_ranges: Vector2 = Vector2(1,1)
 
-## Not actually implimented, disregard.
-@export var scrollSpeed = 0
+## Not actually implimented yet, disregard.
+@export var scrollSpeed: float = 0.0
 
 func _ready() -> void:
 	if (!Engine.is_editor_hint()):
@@ -25,7 +25,7 @@ func _ready() -> void:
 		else:
 			$CollisionShape2D.scale = screen_ranges
 
-func _on_BoundrySetter_body_entered(body: Player2D):
+func _on_BoundrySetter_body_entered(body: Player2D) -> void:
 	# set boundry settings
 	if (!Engine.is_editor_hint()):
 		# Check body has a camera variable
@@ -42,7 +42,7 @@ func _on_BoundrySetter_body_entered(body: Player2D):
 			body.snap_camera_to_limits()
 
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	if (Engine.is_editor_hint()):
 		queue_redraw()
 		# remember to change this for your game if the screen size gets changed, this is just for debugging
@@ -51,7 +51,7 @@ func _process(_delta):
 		bottomBoundry = max(topBoundry+screenSize.y,bottomBoundry)
 		$CollisionShape2D.scale = screen_ranges
 
-func _draw():
+func _draw() -> void:
 	if (Engine.is_editor_hint()):
 		# Left boundry
 		draw_line((Vector2(leftBoundry,topBoundry)-global_position)*scale,(Vector2(leftBoundry,bottomBoundry)-global_position)*scale,Color.WHITE)

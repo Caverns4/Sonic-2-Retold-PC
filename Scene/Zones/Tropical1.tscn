@@ -34,6 +34,8 @@
 [node name="Tropical1" type="Node2D" unique_id=1112146532]
 script = ExtResource("1_5m80k")
 zone_id = 13
+zone_name = "Totally Emerald"
+zone_text = "Hill Zone"
 music = ExtResource("2_jmnhx")
 music2P = ExtResource("2_jmnhx")
 animal1 = 9
@@ -131,10 +133,10 @@ setLeft = false
 leftBoundry = 6376
 setTop = false
 setRight = false
-rightBoundry = 6696.0
+rightBoundry = 6696
 bottomBoundry = 1280
 screen_ranges = Vector2(1, 8)
-scrollSpeed = 8
+scrollSpeed = 8.0
 
 [node name="BoundrySetter11" parent="Entities" unique_id=1969941367 instance=ExtResource("10_o6o00")]
 position = Vector2(9088, 896)
@@ -142,10 +144,10 @@ setLeft = false
 leftBoundry = 8928
 setTop = false
 setRight = false
-rightBoundry = 9248.0
+rightBoundry = 9248
 bottomBoundry = 1280
 screen_ranges = Vector2(1, 8)
-scrollSpeed = 8
+scrollSpeed = 8.0
 
 [node name="BoundrySetter4" parent="Entities" unique_id=1995315006 instance=ExtResource("10_o6o00")]
 position = Vector2(5776, 448)
@@ -153,7 +155,7 @@ setLeft = false
 leftBoundry = 5616
 setTop = false
 setRight = false
-rightBoundry = 5936.0
+rightBoundry = 5936
 bottomBoundry = 1024
 screen_ranges = Vector2(1, 4)
 
@@ -162,7 +164,7 @@ position = Vector2(160, 568)
 setLeft = false
 setTop = false
 setRight = false
-rightBoundry = 5936.0
+rightBoundry = 5936
 bottomBoundry = 1024
 screen_ranges = Vector2(1, 4)
 
@@ -182,7 +184,7 @@ setLeft = false
 leftBoundry = 13760
 setTop = false
 setRight = false
-rightBoundry = 14080.0
+rightBoundry = 14080
 bottomBoundry = 1792
 screen_ranges = Vector2(1, 8)
 
@@ -192,7 +194,7 @@ setLeft = false
 leftBoundry = 14665
 setTop = false
 setRight = false
-rightBoundry = 14985.0
+rightBoundry = 14985
 bottomBoundry = 1792
 screen_ranges = Vector2(1, 8)
 
@@ -202,7 +204,7 @@ setLeft = false
 leftBoundry = 16384
 setTop = false
 setRight = false
-rightBoundry = 16704.0
+rightBoundry = 16704
 bottomBoundry = 2304
 screen_ranges = Vector2(1, 8)
 
@@ -212,7 +214,7 @@ setLeft = false
 leftBoundry = 17664
 setTop = false
 setRight = false
-rightBoundry = 17984.0
+rightBoundry = 17984
 bottomBoundry = 2048
 screen_ranges = Vector2(1, 8)
 

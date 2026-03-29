@@ -28,16 +28,18 @@
 [ext_resource type="PackedScene" uid="uid://bl01bxflmr52e" path="res://Entities/Hazards/ghz_log_spike_group.tscn" id="25_awmp3"]
 [ext_resource type="PackedScene" uid="uid://ds7bmlo2s41ji" path="res://Entities/Enemies/BuzzBomber.tscn" id="25_okshu"]
 [ext_resource type="PackedScene" uid="uid://dpedjdbyu3jqv" path="res://Entities/Enemies/ShellCracker.tscn" id="26_he821"]
-[ext_resource type="PackedScene" uid="uid://bcoqgftnr4isn" path="res://Entities/Boss/RobotnikTemplate.tscn" id="29_he821"]
+[ext_resource type="PackedScene" uid="uid://c8yrn3upxlkyv" path="res://Entities/Boss/Wrecking Eggman/WreckingEggman.tscn" id="29_he821"]
 
 [node name="Tropical2" type="Node2D" unique_id=1047750896]
 script = ExtResource("1_03k2s")
 zone_id = 13
+zone_name = "Totally Emerald"
+zone_text = "Hill Zone"
 act_number = 2
 music = ExtResource("2_ug33s")
 animal1 = 9
 animal2 = 13
-defaultRightBoundry = 11776
+defaultRightBoundry = 11584
 
 [node name="13-TropicalJungle" parent="." unique_id=1072971734 instance=ExtResource("3_foqdm")]
 
@@ -70,7 +72,7 @@ tile_map_data = PackedByteArray("AACgASoAAgAAAAAAAACgASsAAgAAAAEAAACgASwAAgAAAAI
 tile_set = ExtResource("5_ug33s")
 
 [node name="Player" parent="." unique_id=1721101508 instance=ExtResource("6_bflto")]
-position = Vector2(88, 944)
+position = Vector2(10096, 776)
 
 [node name="Entities" type="Node" parent="." unique_id=1373858848]
 
@@ -78,6 +80,7 @@ position = Vector2(88, 944)
 position = Vector2(160, 912)
 setTop = false
 setRight = false
+rightBoundry = 320
 bottomBoundry = 1024
 
 [node name="BoundrySetter3" parent="Entities" unique_id=1367970691 instance=ExtResource("9_fiayl")]
@@ -85,6 +88,7 @@ position = Vector2(2656, 912)
 setLeft = false
 setTop = false
 setRight = false
+rightBoundry = 320
 bottomBoundry = 1024
 
 [node name="BoundrySetter4" parent="Entities" unique_id=1981010541 instance=ExtResource("9_fiayl")]
@@ -115,40 +119,43 @@ bottomBoundry = 1280
 position = Vector2(6560, 912)
 setLeft = false
 setTop = false
-setRight = false
-rightBoundry = 6855
+rightBoundry = 11584
 bottomBoundry = 1024
+scrollSpeed = 1.0
 
 [node name="BoundrySetter8" parent="Entities" unique_id=631010735 instance=ExtResource("9_fiayl")]
 position = Vector2(6560, 688)
 setLeft = false
 setTop = false
-setRight = false
-rightBoundry = 6855
+rightBoundry = 11584
 bottomBoundry = 1024
 
 [node name="BoundrySetter9" parent="Entities" unique_id=1535651636 instance=ExtResource("9_fiayl")]
 position = Vector2(6560, 464)
 setLeft = false
 setTop = false
-setRight = false
-rightBoundry = 6855
+rightBoundry = 11584
 bottomBoundry = 1024
 
 [node name="BoundrySetter10" parent="Entities" unique_id=1260125383 instance=ExtResource("9_fiayl")]
 position = Vector2(6560, 240)
 setLeft = false
 setTop = false
-setRight = false
-rightBoundry = 6855
+rightBoundry = 11584
 bottomBoundry = 1024
 
 [node name="BoundrySetter11" parent="Entities" unique_id=249147360 instance=ExtResource("9_fiayl")]
 position = Vector2(6560, 16)
 setLeft = false
 setTop = false
-setRight = false
-rightBoundry = 6855
+rightBoundry = 11584
+bottomBoundry = 1024
+
+[node name="BoundrySetter12" parent="Entities" unique_id=2054702956 instance=ExtResource("9_fiayl")]
+position = Vector2(10144, 912)
+setLeft = false
+setTop = false
+rightBoundry = 11584
 bottomBoundry = 1024
 
 [node name="LayerSwitcher" parent="Entities" unique_id=1011615255 instance=ExtResource("7_kftmf")]
@@ -699,14 +706,14 @@ position = Vector2(7304, 920)
 [node name="Boss" type="Node" parent="." unique_id=1248803052]
 
 [node name="BossBoundrySetter" parent="Boss" unique_id=267494378 instance=ExtResource("17_dxyqo")]
-position = Vector2(11008, 888)
+position = Vector2(11008, 864)
 bossPath = NodePath("../Robotnik")
 keepTopLocked = false
 keepRightLocked = false
 lockTop = false
 
+[node name="Robotnik" parent="Boss" unique_id=2093113368 instance=ExtResource("29_he821")]
+position = Vector2(11008, 784)
+
 [node name="Capsule" parent="Boss" unique_id=1220542392 instance=ExtResource("19_5yjib")]
 position = Vector2(11456, 932)
-
-[node name="Robotnik" parent="Boss" unique_id=1297098002 instance=ExtResource("29_he821")]
-position = Vector2(11008, 856)
