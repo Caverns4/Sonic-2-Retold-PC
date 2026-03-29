@@ -42,35 +42,33 @@ func _physics_process(delta: float) -> void:
 			emit_signal("flash_finished")
 	# if not flashing do damage routine
 	elif hp > 0 and active:
-		# checks if player hit has players inside
-		if playerHit.size() > 0:
-			# loop through players as i
-			for i: Player2D in playerHit:
-				# check if damage entity is on or supertime is bigger then 0
-				if (i.get_collision_layer_value(20) or i.super_time > 0 or forceDamage):
-					i.movement = i.movement*-1 #i.movement*-0.5
-					# hit
-					if hp > 0:
-						$Hit.play()
-						flashTimer = hitTime
-						emit_signal("got_hit")
-						hp -= 1
-						# check if gliding, if they are force them to fall
-						if i.get("currentState") != null:
-							if i.currentState == i.STATES.GLIDE:
-								i.animator.play("glideFall")
-								# reset player hitbox
-								i.set_hitbox(i.currentHitbox.NORMAL)
-								i.reflective = false
-								if i.get_node_or_null("States/Glide") != null:
-									i.get_node("States/Glide").isFall = true
-					# check if defeated
-					if hp <= 0:
-						boss_defeated.emit()
-				# if destroying the enemy fails and hit player exists then hit player
-				elif (i.has_method("hit_player")):
-					if i.hit_player(global_position,damageType):
-						emit_signal("hit_player")
+		# loop through player hit as i
+		for i: Player2D in playerHit:
+			# check if damage entity is on or supertime is bigger then 0
+			if (i.is_attacking() or i.super_time > 0 or forceDamage):
+				i.movement = i.movement*-1 #i.movement*-0.5
+				# hit
+				if hp > 0:
+					$Hit.play()
+					flashTimer = hitTime
+					emit_signal("got_hit")
+					hp -= 1
+					# check if gliding, if they are force them to fall
+					if i.get("currentState") != null:
+						if i.currentState == i.STATES.GLIDE:
+							i.animator.play("glideFall")
+							# reset player hitbox
+							i.set_hitbox(i.currentHitbox.NORMAL)
+							i.reflective = false
+							if i.get_node_or_null("States/Glide") != null:
+								i.get_node("States/Glide").isFall = true
+				# check if defeated
+				if hp <= 0:
+					boss_defeated.emit()
+			# if destroying the enemy fails and hit player exists then hit player
+			elif (i.has_method("hit_player")):
+				if i.hit_player(global_position,damageType):
+					emit_signal("hit_player")
 
 func _on_body_entered(body: Player2D) -> void:
 	# add to player list
@@ -91,7 +89,7 @@ func _mark_defeated() -> void:
 
 func _on_DamageArea_area_entered(area: Area2D) -> void:
 	# damage checking
-	if area.get("parent") != null and area.get_collision_layer_value(20):
+	if area.get("parent") != null and area.is_attacking():
 		if !playerHit.has(area.parent):
 			forceDamage = true
 			playerHit.append(area.parent)

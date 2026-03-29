@@ -1070,6 +1070,7 @@ func hit_player(damagePoint: Vector2 = global_position, damageType: int = 0, sou
 			allowTranslate = false
 		disconect_from_floor()
 		set_state(STATES.HIT)
+		$Shields/InstaShieldHitbox/HitBox.disabled = true
 		invTime = 120 # Ivulnerable for 2 seconds. Starts counting *after* landing.
 		# Ring loss
 		if (shield == SHIELDS.NONE and rings > 0 and (playerControl == 1 or Global.two_player_mode)):

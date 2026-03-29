@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/GremeraldHillZone.ogg-80bfda77b92095c19fac67f
 [params]
 
 loop=true
-loop_offset=8.32
+loop_offset=5.2
 bpm=0.0
 beat_count=0
 bar_beats=4
