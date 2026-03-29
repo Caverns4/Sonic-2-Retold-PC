@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://ds7bmlo2s41ji" path="res://Entities/Enemies/BuzzBomber.tscn" id="25_okshu"]
 [ext_resource type="PackedScene" uid="uid://dpedjdbyu3jqv" path="res://Entities/Enemies/ShellCracker.tscn" id="26_he821"]
 [ext_resource type="PackedScene" uid="uid://c8yrn3upxlkyv" path="res://Entities/Boss/Wrecking Eggman/WreckingEggman.tscn" id="29_he821"]
+[ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="30_0ggty"]
 
 [node name="Tropical2" type="Node2D" unique_id=1047750896]
 script = ExtResource("1_03k2s")
@@ -564,7 +565,7 @@ endPosition = Vector2(0, 0)
 fallTimer = 1.0
 
 [node name="Platform13" parent="Platforms" unique_id=1390805895 instance=ExtResource("23_n1vgy")]
-position = Vector2(7760, 864)
+position = Vector2(7760, 880)
 endPosition = Vector2(0, -128)
 
 [node name="Platform14" parent="Platforms" unique_id=110401015 instance=ExtResource("23_n1vgy")]
@@ -702,6 +703,9 @@ position = Vector2(5344, 1176)
 position = Vector2(7304, 920)
 
 [node name="Rings" type="Node" parent="." unique_id=134841632]
+
+[node name="Ring" parent="Rings" unique_id=369943830 instance=ExtResource("30_0ggty")]
+position = Vector2(336, 904)
 
 [node name="Boss" type="Node" parent="." unique_id=1248803052]
 

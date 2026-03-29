@@ -3,52 +3,52 @@ extends Area2D
 # collapsing platform code by sharb
 
 # platform particle
-var PlatPart = preload("res://Entities/Misc/falling_block_plat.tscn")
+var PlatPart: PackedScene = preload("res://Entities/Misc/falling_block_plat.tscn")
 
 # tilemap source to pull from
-@export_node_path("TileMapLayer") var tile
+@export_node_path("TileMapLayer") var tile: Variant
 # how fast the platform collapses
-@export var speed = 3.0
+@export var speed: float = 3.0
 # how long to wait before playing the sound
-@export var soundDelay = 0.5
+@export var soundDelay: float = 0.5
 
 # player array
-var players = []
-
+var players: Array[Player2D] = []
 # used for detecting if the platform is collapsing
-var active = false
+var active: bool = false
 
 # the collapsing sound
-@export var collapse_sound = preload("res://Audio/SFX/Gimmicks/s2br_Collapse.wav")
-@export var respawn = true #If the object should respawn on a timer.
-var respawnCoords = position
+@export var collapse_sound: AudioStream = preload("res://Audio/SFX/Gimmicks/s2br_Collapse.wav")
+@export var respawn: bool = true #If the object should respawn on a timer.
+var respawnCoords: Vector2 = position
 
 # tile list array, contains an array inside set up like this
 # [time left, cell coordinant]
-var getTiles = []
+var getTiles: Array = []
 
-func _ready():
+func _ready() -> void:
 	# set the tile reference to the tilemap
 	tile = get_node(tile)
 	# grab from first layer
 	
 	# Figure out the maximum distance away
-	var maxDist = Vector2.ZERO
-	for distance in tile.get_used_cells():
+	var maxDist: Vector2i = Vector2.ZERO
+	for distance: Vector2i in tile.get_used_cells():
 		if distance.length() > maxDist.length():
 			maxDist = distance
 	
-	for distance in tile.get_used_cells():
+	for distance: Vector2i in tile.get_used_cells():
 		# calculate by distance and give co-ordinant
 		getTiles.append([(maxDist.length() - distance.length())
 		/speed,distance])
 		
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	# check if to activate
 	if !active:
 		# if we can detect any players and they're on the flor, activate
-		for i in players:
+		for i: Player2D in players:
+			i.angle = 0
 			# do a active check to prevent the sound playing twice
 			if i.ground and !active:
 				active = true
@@ -67,7 +67,7 @@ func _physics_process(delta):
 				# remove timer (and array point) and create the block particle
 				else:
 					# create particle (we pull from the tilemap)
-					var platPart = PlatPart.instantiate()
+					var platPart: Sprite2D = PlatPart.instantiate()
 					add_child(platPart)
 					# set position
 					platPart.position += Vector2(getTiles[i][1]*tile.tile_set.tile_size)+tile.position
@@ -99,10 +99,10 @@ func _physics_process(delta):
 					queue_free()
 
 # check for players
-func _on_body_entered(body):
-	if !players.has(body):
+func _on_body_entered(body: CharacterBody2D) -> void:
+	if !players.has(body) and body is Player2D:
 		players.append(body)
 
-func _on_body_exited(body):
+func _on_body_exited(body: CharacterBody2D) -> void:
 	if players.has(body):
 		players.erase(body)

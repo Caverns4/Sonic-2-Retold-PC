@@ -60,7 +60,7 @@ var current_zone_pointer: String = "res://Scene/Zones/EmeraldHill1.tscn"
 var next_zone_pointer: String = ""
 
 ## MarkObjGone Table, nodes that have been used/collected
-var object_table: Array[Node] = []
+var object_table: Array[String] = []
 
 # score instace for add_score()
 var Score: PackedScene = preload("res://Entities/Misc/Score.tscn")

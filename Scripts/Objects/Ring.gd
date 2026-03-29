@@ -10,7 +10,7 @@ var ringacceleration: Array[float] = [0.75,0.1875]
 var Particle: PackedScene = preload("res://Entities/Misc/GenericParticle.tscn")
 
 func _ready() -> void:
-	if Global.object_table.has(str(get_path())):
+	if Global.object_table.has(get_path()):
 		queue_free()
 
 func _process(delta: float) -> void:
