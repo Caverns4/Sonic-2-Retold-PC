@@ -55,6 +55,9 @@ var player_inputs: Array[String] = [
 
 var default_map: Array = []
 
+## Whether the game was considered paused or not previously.
+var saved_state: bool = false
+
 signal assign_button_pressed()
 signal menu_exit()
 
@@ -165,7 +168,7 @@ func _on_confirm_pressed() -> void:
 	if current_bind < 0:
 		save_control_data()
 		visible = false
-		get_tree().paused = false
+		get_tree().paused = saved_state
 		menu_exit.emit()
 
 
@@ -176,13 +179,14 @@ func _on_defaults_pressed() -> void:
 			InputMap.action_erase_events(getActions[i])
 			for j:InputEvent in default_map[i]:
 				InputMap.action_add_event(getActions[i],j)
-		
 		visible = false
-		get_tree().paused = visible
+		get_tree().paused = saved_state
 
 
 func _on_visibility_changed() -> void:
 	if is_node_ready() and visible:
+		saved_state = get_tree().paused
+		get_tree().paused = true
 		$PlayerPanel/Player1.grab_focus()
 		recieve_input = true
 		$ButtonPanels.process_mode = Node.PROCESS_MODE_INHERIT
@@ -270,7 +274,6 @@ func load_data() -> void:
 					getInput.device = file.get_value("controls","A"+str(actionCount)+i+"Device")
 				# set new input
 				InputMap.action_add_event(i,getInput)
-			
 			actionCount += 1
 		# reset action counter
 		actionCount = 0

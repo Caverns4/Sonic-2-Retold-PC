@@ -24,11 +24,18 @@ var soundStep: float = (abs(clampSounds[0])+abs(clampSounds[1]))/100.0
 
 
 func _ready() -> void:
-	SoundDriver.music.stream = music
-	SoundDriver.music.play()
-	
+	if get_tree().current_scene == self:
+		SoundDriver.music.stream = music
+		SoundDriver.music.play()
+	else:
+		quit_button.text = "return to game"
+		aspect_ratio_button.queue_free()
+		aspect_ratio_button = null
+		$Backdrop.queue_free()
+
 	crt_filter_button.text = "Crt Filter:      " + Global.on_off[int(Main.crt_filter.visible)]
-	aspect_ratio_button.text = "Aspect Ratio:    " + Global.aspect_strings[int(Global.aspectRatio)]
+	if aspect_ratio_button:
+		aspect_ratio_button.text = "Aspect Ratio:    " + Global.aspect_strings[int(Global.aspectRatio)]
 	scale_button.text = "scale:" + (str(int(Global.zoomSize))+"x")
 	var onoff: String = Global.on_off[int(((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN)))]
 	full_screen_button.text = "Full Screen: " + onoff
@@ -122,22 +129,24 @@ func _on_fullscreen_button_pressed() -> void:
 
 func _on_controls_button_pressed() -> void:
 	menu_option = control_button
-	Global.save_settings()
 	await set_control_lock_state(true)
+	Global.save_settings()
 	menu_text.hide()
-	Main.control_menu.visible = true
-	get_tree().paused = true
-	
-	await set_control_lock_state(false)
+	await get_tree().process_frame
+	Main.control_menu.show()
+	await Main.control_menu.menu_exit
 	menu_text.show()
-	control_button.grab_focus()
+	await set_control_lock_state(false)
 
 
 func _on_back_to_title_button_pressed() -> void:
 	menu_option = quit_button
 	await set_control_lock_state(true)
 	Global.save_settings()
-	await Main.change_scene(title_screen)
+	if get_tree().current_scene == self:
+		await Main.change_scene(title_screen)
+	else:
+		queue_free()
 
 func set_control_lock_state(state: bool) -> void:
 	for i in menu_text.get_children():

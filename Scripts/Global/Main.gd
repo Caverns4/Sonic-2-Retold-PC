@@ -29,8 +29,7 @@ func _input(event: InputEvent)-> void:
 		# Note: the gui menu has some settings to unpause itself so we don't want to override that while the user is in the settings
 		elif get_tree().paused and !$GUI/Pause.visible:
 			get_tree().paused = false
-	if Input.is_action_just_pressed("ui_control_menu") and !get_tree().paused:
-		get_tree().paused = true
+	if Input.is_action_just_pressed("ui_control_menu") and !get_tree().paused and can_pause:
 		control_menu.show()
 
 

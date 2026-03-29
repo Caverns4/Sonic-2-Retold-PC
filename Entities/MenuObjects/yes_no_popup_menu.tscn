@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://ds7msvuei1rsg"]
+
+[ext_resource type="PackedScene" uid="uid://rw0txvf2lw6j" path="res://Entities/MenuObjects/general_popup_menu.tscn" id="1_t0bc8"]
+[ext_resource type="Script" uid="uid://byvgsfm7pxx2e" path="res://Entities/MenuObjects/yes_no_popup_menu.gd" id="2_32sro"]
+[ext_resource type="FontFile" uid="uid://ml62eqfe7avn" path="res://Graphics/Fonts/small_font.png" id="2_rgibv"]
+[ext_resource type="Texture2D" uid="uid://bf2lhfxal46gj" path="res://Graphics/Menus/ButtonUp.png" id="3_32sro"]
+[ext_resource type="Texture2D" uid="uid://ddug2c5c54nvl" path="res://Graphics/Menus/ButtonDown.png" id="4_2g0du"]
+[ext_resource type="Texture2D" uid="uid://c2xdraklm0ah7" path="res://Graphics/title/TitleMenu.png" id="5_0jc1d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oxs5w"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ckswm"]
+texture = ExtResource("3_32sro")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uthpa"]
+texture = ExtResource("3_32sro")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eu4y8"]
+texture = ExtResource("4_2g0du")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bx2a"]
+bg_color = Color(0, 0.93333334, 0, 1)
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2aqj"]
+bg_color = Color(1, 1, 1, 1)
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i8gs1"]
+bg_color = Color(0.4, 0.4, 0.4, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0076186024, 0.0076186024, 0.0076186024, 1)
+corner_detail = 1
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="Theme" id="Theme_vl680"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 8
+Button/fonts/font = ExtResource("2_rgibv")
+Button/styles/hover = SubResource("StyleBoxTexture_ckswm")
+Button/styles/normal = SubResource("StyleBoxTexture_uthpa")
+Button/styles/pressed = SubResource("StyleBoxTexture_eu4y8")
+HSlider/icons/grabber = ExtResource("5_0jc1d")
+HSlider/icons/grabber_highlight = ExtResource("5_0jc1d")
+HSlider/icons/tick = null
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_6bx2a")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_a2aqj")
+HSlider/styles/slider = SubResource("StyleBoxFlat_i8gs1")
+VSlider/icons/grabber = ExtResource("5_0jc1d")
+VSlider/icons/grabber_highlight = ExtResource("5_0jc1d")
+
+[sub_resource type="LabelSettings" id="LabelSettings_hesfh"]
+line_spacing = 0.0
+font = ExtResource("2_rgibv")
+font_size = 8
+font_color = Color(0.53333336, 0.53333336, 0.53333336, 1)
+
+[node name="YesNoPopupMenu" unique_id=1743264185 instance=ExtResource("1_t0bc8")]
+script = ExtResource("2_32sro")
+
+[node name="MenuOptions" type="Panel" parent="Panel/NinePatchRect" parent_id_path=PackedInt32Array(474981065) index="0" unique_id=1286199052]
+layout_mode = 0
+offset_right = 144.0
+offset_bottom = 68.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_oxs5w")
+
+[node name="AcceptButton" type="Button" parent="Panel/NinePatchRect/MenuOptions" index="0" unique_id=296901430]
+self_modulate = Color(0, 0.93333334, 0, 1)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 44.0
+offset_right = 72.0
+offset_bottom = 68.0
+theme = SubResource("Theme_vl680")
+text = " "
+
+[node name="Label" type="Label" parent="Panel/NinePatchRect/MenuOptions/AcceptButton" index="0" unique_id=1334279047]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 16.0
+text = "Yes"
+horizontal_alignment = 1
+
+[node name="CancelButton" type="Button" parent="Panel/NinePatchRect/MenuOptions" index="1" unique_id=957020853]
+self_modulate = Color(0.93333334, 0.13333334, 0.4, 1)
+layout_mode = 0
+offset_left = 72.0
+offset_top = 44.0
+offset_right = 136.0
+offset_bottom = 68.0
+theme = SubResource("Theme_vl680")
+text = " "
+
+[node name="Label" type="Label" parent="Panel/NinePatchRect/MenuOptions/CancelButton" index="0" unique_id=50282649]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 16.0
+text = "No"
+horizontal_alignment = 1
+
+[node name="Question" type="Label" parent="Panel/NinePatchRect/MenuOptions" index="2" unique_id=441053542]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 88.0
+offset_bottom = 12.0
+text = "Question?"
+label_settings = SubResource("LabelSettings_hesfh")
+
+[connection signal="pressed" from="Panel/NinePatchRect/MenuOptions/AcceptButton" to="." method="_on_accept_button_pressed"]
+[connection signal="pressed" from="Panel/NinePatchRect/MenuOptions/CancelButton" to="." method="_on_cancel_button_pressed"]

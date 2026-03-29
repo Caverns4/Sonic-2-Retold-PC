@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1xhc4uh26inb"]
+[gd_scene format=3 uid="uid://c1xhc4uh26inb"]
 
-[ext_resource type="Script" uid="uid://cnmabd2lrnomn" path="res://Scripts/Misc/PauseManager.gd" id="2"]
+[ext_resource type="Script" uid="uid://bupr06iwc8aex" path="res://Scripts/Misc/pause_menu.gd" id="1_0jcpr"]
 [ext_resource type="Shader" uid="uid://4bhsg3ho737k" path="res://Shaders/Greyscale.gdshader" id="2_nt3e0"]
 [ext_resource type="Texture2D" uid="uid://dv6m30yo07el2" path="res://Graphics/HUD/hud_pause.png" id="2_s4sog"]
+[ext_resource type="PackedScene" uid="uid://b1ucupog3a1yg" path="res://Scene/Presentation/assets/options_menu_button.tscn" id="4_0jcpr"]
 [ext_resource type="AudioStream" uid="uid://uay8t1b3i1hi" path="res://Audio/SFX/Gimmicks/s2br_Switch.wav" id="4_rtnwk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fvugk"]
@@ -12,7 +13,9 @@ shader_parameter/shift_color = Color(0.4, 0.4, 0.666667, 1)
 
 [sub_resource type="ImageTexture" id="ImageTexture_r71q7"]
 
-[node name="Pause" type="Control"]
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_abihq"]
+
+[node name="Pause" type="Control" unique_id=1168874349]
 process_mode = 2
 visible = false
 layout_mode = 3
@@ -21,9 +24,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2")
+script = ExtResource("1_0jcpr")
 
-[node name="PauseCover" type="TextureRect" parent="."]
+[node name="PauseCover" type="TextureRect" parent="." unique_id=1857160690]
 process_mode = 4
 material = SubResource("ShaderMaterial_fvugk")
 layout_mode = 1
@@ -35,45 +38,66 @@ grow_vertical = 2
 texture = SubResource("ImageTexture_r71q7")
 expand_mode = 1
 
-[node name="Control" type="Control" parent="."]
+[node name="PauseMenu" type="Control" parent="." unique_id=2071347491]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PauseText" type="Sprite2D" parent="Control"]
-position = Vector2(20, 0)
-texture = ExtResource("2_s4sog")
-
-[node name="PauseMenu" type="Control" parent="."]
-anchors_preset = 0
-anchor_top = 0.5
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu" unique_id=904923786]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
-layout_mode = 0
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 8
 
-[node name="MenuVert" type="AudioStreamPlayer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="PauseMenu/VBoxContainer" unique_id=1039652932]
+layout_mode = 2
+mouse_filter = 0
+texture = ExtResource("2_s4sog")
+stretch_mode = 3
+
+[node name="HSeparator" type="HSeparator" parent="PauseMenu/VBoxContainer" unique_id=124750322]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_abihq")
+
+[node name="Continue" parent="PauseMenu/VBoxContainer" unique_id=1390657914 instance=ExtResource("4_0jcpr")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "continue"
+
+[node name="Options" parent="PauseMenu/VBoxContainer" unique_id=200700822 instance=ExtResource("4_0jcpr")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "options"
+
+[node name="Restart" parent="PauseMenu/VBoxContainer" unique_id=2120541823 instance=ExtResource("4_0jcpr")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "restart"
+
+[node name="Quit" parent="PauseMenu/VBoxContainer" unique_id=1586281111 instance=ExtResource("4_0jcpr")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "quit"
+
+[node name="MenuVert" type="AudioStreamPlayer" parent="." unique_id=790286006]
 stream = ExtResource("4_rtnwk")
 volume_db = -10.0
 bus = &"SFX"
 
-[node name="MenuMusicVolume" type="AudioStreamPlayer" parent="."]
+[node name="MenuMusicVolume" type="AudioStreamPlayer" parent="." unique_id=76680511]
 stream = ExtResource("4_rtnwk")
 volume_db = -10.0
 bus = &"Music"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
