@@ -1,10 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqeqlsrjg62qs"]
+[gd_scene format=3 uid="uid://dqeqlsrjg62qs"]
 
 [ext_resource type="Script" uid="uid://djcyvq02nl216" path="res://Scripts/World3D/world3D.gd" id="1_0mra5"]
 [ext_resource type="Texture2D" uid="uid://jowkedgx35g5" path="res://Graphics/World3D/_f.png" id="1_a6jsl"]
 [ext_resource type="AudioStream" uid="uid://v1ed2ymggt61" path="res://Audio/Soundtrack/Sonic World.ogg" id="2_21u7o"]
-[ext_resource type="PackedScene" uid="uid://6tr5dhodgxto" path="res://Models/world_test.tscn" id="3_05bgd"]
-[ext_resource type="PackedScene" uid="uid://ble6so7nw6f7g" path="res://Entitites3D/WorldTest/Player_Base.tscn" id="3_lx1d5"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wfcgl"]
 panorama = ExtResource("1_a6jsl")
@@ -25,14 +23,10 @@ volumetric_fog_density = 1.0
 volumetric_fog_length = 48.41
 volumetric_fog_ambient_inject = 0.61
 
-[node name="WorldTest" type="Node3D"]
+[node name="WorldTest" type="Node3D" unique_id=507816604]
 process_mode = 1
 script = ExtResource("1_0mra5")
 music = ExtResource("2_21u7o")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1326539956]
 environment = SubResource("Environment_d2d7o")
-
-[node name="PlayerBase" parent="." instance=ExtResource("3_lx1d5")]
-
-[node name="WorldTest" parent="." instance=ExtResource("3_05bgd")]
