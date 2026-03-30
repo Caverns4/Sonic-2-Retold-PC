@@ -21,12 +21,12 @@ func _process(_delta: float) -> void:
 		queue_redraw()
 
 
-func physics_collision(body:Player2D, hitVector):
+func physics_collision(body:Player2D, hitVector: Vector2) -> void:
 	if body.strength < strength_tier:
 		return
 	
 	# check if physics object is coming down and check for a bit where the player isn't on floor
-	if hitVector == Vector2.DOWN and body.get_collision_layer_value(20):
+	if hitVector == Vector2.DOWN and body.is_attacking():
 		# disable collision
 		$CollisionShape2D.disabled = true
 		$Sprite2D.hide()

@@ -72,6 +72,7 @@ func _process(_delta: float) -> void:
 							parent.abilityUsed = true
 							parent.air_control = true
 							parent.curled = true
+							parent.reflective = true
 							parent.bounceReaction = 3.5
 						
 							parent.movement.x = clampf(parent.movement.x,-60.0,60.0)
@@ -322,6 +323,7 @@ func bounce() -> bool:
 			parent.abilityUsed = true
 			parent.animator.play("rebound")
 			parent.curled = false
+			parent.reflective = true
 		return true
 	# if no bounce then return false to continue with landing routine
 	return false

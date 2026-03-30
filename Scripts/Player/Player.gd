@@ -553,7 +553,6 @@ func _process(delta:float ) -> void:
 	if (super_time > 0):
 		if !is_super:
 			super_time -= delta
-			
 		else:
 			$InvincibilityBarrier.visible = false
 			# Animate Palette
@@ -572,6 +571,7 @@ func _process(delta:float ) -> void:
 				super_time = 0
 				if character == Global.CHARACTERS.SONIC:
 					sprite.texture = normalSprite
+					strength = Global.STRENGTH_TIER.NORMAL
 				
 		if (super_time <= 0):
 			if (shield != SHIELDS.NONE):
@@ -683,8 +683,9 @@ func _process(delta:float ) -> void:
 	set_inputs()
 	if any_action_pressed():
 		jump_buffer = JUMP_BUFFER_TIME
+	
 	# Update the player's attacking state every step.
-	Update_Attacking_Flag()
+	attacking = Update_Attacking_Flag()
 
 
 func _physics_process(delta: float) -> void:
@@ -701,13 +702,14 @@ func _physics_process(delta: float) -> void:
 	# physics sets
 	# collide with solids if not rolling layer
 	set_collision_mask_value(16,(!attacking and !curled))
-	# collide with solids if not knuckles layer
+	# collide with solids if not Knuckles or Super layer
 	set_collision_mask_value(19,!character == Global.CHARACTERS.KNUCKLES or
 	!(character == Global.CHARACTERS.SONIC and is_super))
-	# collide with solids if not rolling or not knuckles layer
+	# collide with solids if not rolling or Knuckles layer
 	set_collision_mask_value(21,(character != Global.CHARACTERS.KNUCKLES and !attacking))
 	# damage mask bit
-	set_collision_layer_value(20,attacking)
+	#EDIT: This is only used for projectile deflection
+	set_collision_layer_value(20,reflective)
 	# water surface running
 	set_collision_mask_value(23,ground and abs(groundSpeed) >= 7*60 and !is_in_water)
 	
@@ -1017,35 +1019,29 @@ func set_shield_deffered(setShieldID: int) -> bool:
 	return true
 
 
-func Update_Attacking_Flag() -> void:
-	# Attacking is for rolling type animations
-	attacking = false
-	# lists to check through for attack animations
-	var currentAnimChecks: Array[StringName] = [
+const currentAnimChecks: Array[StringName] = [
 	"roll","dropDash","spinDash","glide","glideSlide","drop",
 	]
-	var lastActiveAnimCheck: Array[StringName] = [
+
+const lastActiveAnimCheck: Array[StringName] = [
 	"glide","glideSlide"
 	]
-	# if any animations match up turn on attacking flag
-	for i in currentAnimChecks:
-		if animator.current_animation == i:
-			attacking = true
-	
-	for i in lastActiveAnimCheck:
-		if lastActiveAnimation == i:
-			attacking = true
+
+func Update_Attacking_Flag() -> bool:
+	var attacking_state: bool = false
+	if animator.is_playing():
+		for i in currentAnimChecks:
+			if animator.current_animation == i:
+				attacking_state = true
+	else:
+		for i in lastActiveAnimCheck:
+			if lastActiveAnimation == i:
+				attacking_state = true
+	return attacking_state
+
 
 func is_attacking() -> bool:
-	# Attacking is for rolling type animations
-	var attacking_state: bool = false
-	var currentAnimChecks: Array[StringName] = [
-	"roll","dropDash","spinDash","glide","glideSlide","drop",
-	]
-	for i in currentAnimChecks:
-		if animator.current_animation == i:
-			attacking_state = true
-	return attacking_state
+	return attacking
 
 # see Global for damage types, 0 = none, 1 = Fire, 2 = Elec, 3 = Water
 func hit_player(damagePoint: Vector2 = global_position, damageType: int = 0, soundID: int = 6) -> bool:
@@ -1054,7 +1050,6 @@ func hit_player(damagePoint: Vector2 = global_position, damageType: int = 0, sou
 	if (currentState != STATES.HIT and invTime <= 0 and 
 	super_time <= 0 and (shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled 
 	or character != Global.CHARACTERS.SONIC)):
-		attacking = false
 		movement.x = sign(global_position.x-damagePoint.x)*2*60
 		
 		if !check_for_ceiling():
@@ -1094,30 +1089,30 @@ func hit_player(damagePoint: Vector2 = global_position, damageType: int = 0, sou
 	return false
 
 func deferred_spill_rings() -> void:
-			ringDisTime = 1.0/60.0 # ignore rings for 1/60th second after landing
-			var ringCount: int = 0
-			var ringAngle: float = 101.25
-			var ringAlt: bool = false
-			var ringSpeed: float = 4
-			while (ringCount < min(rings,32)):
-				# Create ring
-				var ring: Node2D = Ring.instantiate()
-				ring.global_position = global_position
-				ring.scattered = true
-				ring.velocity.y = -sin(deg_to_rad(ringAngle))*ringSpeed*60
-				ring.velocity.x = cos(deg_to_rad(ringAngle))*ringSpeed*60
+	ringDisTime = 1.0/60.0 # ignore rings for 1/60th second after landing
+	var ringCount: int = 0
+	var ringAngle: float = 101.25
+	var ringAlt: bool = false
+	var ringSpeed: float = 4
+	while (ringCount < min(rings,32)):
+		# Create ring
+		var ring: Node2D = Ring.instantiate()
+		ring.global_position = global_position
+		ring.scattered = true
+		ring.velocity.y = -sin(deg_to_rad(ringAngle))*ringSpeed*60
+		ring.velocity.x = cos(deg_to_rad(ringAngle))*ringSpeed*60
 
-				if (ringAlt):
-					ring.velocity.x *= -1
-					ringAngle += 22.5
-				ringAlt = !ringAlt
-				ringCount += 1
-				# if we're on the second circle, decrease the speed
-				if (ringCount == 16):
-					ringSpeed = 2
-					ringAngle = 101.25 # Reset angle
-				get_parent().add_child(ring)
-			rings = 0
+		if (ringAlt):
+			ring.velocity.x *= -1
+			ringAngle += 22.5
+		ringAlt = !ringAlt
+		ringCount += 1
+		# if we're on the second circle, decrease the speed
+		if (ringCount == 16):
+			ringSpeed = 2
+			ringAngle = 101.25 # Reset angle
+		get_parent().add_child(ring)
+	rings = 0
 
 func get_ring() -> void:
 	if playerControl == 1 or Global.two_player_mode:
@@ -1436,6 +1431,7 @@ func action_jump(animation: StringName = "roll",
 airJumpControl: bool = true, playSound: bool =true) -> void:
 	if forceRoll <= 0: # check to prevent jumping in roll tubes
 		curled = (character == Global.CHARACTERS.MIGHTY)
+		reflective = curled
 		animator.play(animation)
 		animator.advance(0)
 		movement.y = -jmp

@@ -1,14 +1,14 @@
 extends StaticBody2D
 #variant of the breakable object
 
-var pieces = Vector2(2,2)
-var Piece = preload("res://Entities/Misc/BlockPiece.tscn")
-@export var sound = preload("res://Audio/SFX/Gimmicks/s2br_Collapse.wav")
-@export var score = true
+var pieces: Vector2 = Vector2(2,2)
+var Piece: PackedScene = preload("res://Entities/Misc/BlockPiece.tscn")
+@export var sound: AudioStream = preload("res://Audio/SFX/Gimmicks/s2br_Collapse.wav")
+@export var score: bool = true
 
-func physics_collision(body, hitVector):
+func physics_collision(body: Player2D, hitVector: Vector2) -> bool:
 	# check if physics object is coming down and check for a bit where the player isn't on floor
-	if hitVector == Vector2.DOWN and body.get_collision_layer_value(20):
+	if hitVector == Vector2.DOWN and body.is_attacking():
 		# disable collision
 		$CollisionShape2D.disabled = true
 		$Sprite2D.visible = false

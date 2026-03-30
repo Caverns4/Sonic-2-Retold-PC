@@ -6,12 +6,12 @@ extends StaticBody2D
 ## The number of pairs of Spikes. 
 @export_range (1,16) var count: int = 2
 
-@onready var start = position
-@onready var shiftPoint = position+(Vector2.DOWN*scale.sign()).rotated(rotation)*32
-var sunk = false
-var sunkShift = 0
+@onready var start: Vector2 = position
+@onready var shiftPoint: Vector2 = position+(Vector2.DOWN*scale.sign()).rotated(rotation)*32
+var sunk: bool = false
+var sunkShift: float = 0
 
-func _ready():
+func _ready() -> void:
 	if !Engine.is_editor_hint():
 		$VisibleOnScreenEnabler2D.visible = true
 		if abs(global_rotation_degrees) > 10:
@@ -28,7 +28,7 @@ func _ready():
 	$HitBox.scale.x = count
 	$VisibleOnScreenEnabler2D.scale.x = count
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		#$Spike.set_region_rect(Rect2(0,32,count*16,32))
 		$TextureRect.size.x = count*16
@@ -43,14 +43,16 @@ func _physics_process(delta):
 	
 
 # Collision check (this is where the player gets hurt, OW!)
-func physics_collision(body, hitVector):
+func physics_collision(body: CharacterBody2D, hitVector: Vector2) -> void:
 	if hitVector.is_equal_approx((Vector2.DOWN*scale.sign()).rotated(deg_to_rad(snapped(rotation_degrees,90)))):
 		if body.character == Global.CHARACTERS.MIGHTY and (
-			body.animator.current_animation == "drop" or 
-			body.animator.current_animation == "roll"):
+			#body.animator.current_animation == "drop" or 
+			#body.animator.current_animation == "roll"
+			body.curled):
 			body.disconect_from_floor()
 			body.global_position -= Vector2(ceil(hitVector.x),ceil(hitVector.y))*8
 			body.curled = false
+			body.reflective = body.curled
 			body.abilityUsed = true
 			body.sfx[4].play()
 			body.movement = (hitVector*-1)*3.5*60
@@ -62,7 +64,7 @@ func physics_collision(body, hitVector):
 			body.hit_player(global_position,0,4)
 
 
-func _on_ShiftTimer_timeout():
+func _on_ShiftTimer_timeout() -> void:
 	if $VisibleOnScreenEnabler2D.is_on_screen():
 		$sfxSpikeShift.play()
 	sunk = !sunk

@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 		# loop through players as i
 		for i in playerHit:
 			# check if damage entity is on or supertime is bigger then 0
-			if (i.get_collision_layer_value(20) or i.super_time > 0 or forceDamage):
+			if (i.is_attacking() or i.super_time > 0 or forceDamage):
 				# check player is not on floor
 				var skipBounce: bool = (i.animator.current_animation == "drop")
 				if !i.ground and !(skipBounce):
@@ -64,33 +64,33 @@ func _process(delta: float) -> void:
 	if defaultMovement:
 		translate(velocity*delta)
 
-func _on_body_entered(body):
+func _on_body_entered(body: CharacterBody2D) -> void:
 	# add to player list
 	if (!playerHit.has(body)):
 		playerHit.append(body)
 
 
-func _on_body_exited(body):
+func _on_body_exited(body: CharacterBody2D) -> void:
 	# remove from player list
 	if (playerHit.has(body)):
 		playerHit.erase(body)
 
-func _on_DamageArea_area_entered(area):
+func _on_DamageArea_area_entered(area: Area2D) -> void:
 	# damage checking
-	if area.get("parent") != null and area.get_collision_layer_value(20):
+	if area.get("parent") != null and area.is_attacking():
 		if !playerHit.has(area.parent):
 			forceDamage = true
 			playerHit.append(area.parent)
 
-func destroy():
+func destroy() -> void:
 	emit_signal("destroyed")
 	# create explosion
-	var explosion = Explosion.instantiate()
+	var explosion: Node2D = Explosion.instantiate()
 	get_parent().add_child(explosion)
 	explosion.global_position = global_position
 	explosion.z_index = z_index
 	# create animal
-	var animal = Animal.instantiate()
+	var animal: Node2D = Animal.instantiate()
 	animal.animal = Global.animals[round(randf())]
 	get_parent().add_child(animal)
 	animal.global_position = global_position
@@ -98,5 +98,5 @@ func destroy():
 	# free node
 	queue_free()
 
-func _on_destroyed():
+func _on_destroyed() -> void:
 	pass

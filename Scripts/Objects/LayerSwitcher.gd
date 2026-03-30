@@ -1,7 +1,7 @@
 @tool
 extends Area2D
 
-var texture = load("res://Graphics/EditorUI/layer_switchers.png")
+var texture: Texture2D = load("res://Graphics/EditorUI/layer_switchers.png")
 # layer settings, should be self explanatory
 @export var size: Vector2i = Vector2(1,3)
 @export_enum("Horizontal", "Vertical") var orientation: int = 0
@@ -13,14 +13,14 @@ var texture = load("res://Graphics/EditorUI/layer_switchers.png")
 # list of player contacts
 var playerList: Array[Player2D] = []
 
-func _ready():
+func _ready() -> void:
 	# set the mask scale to match the visual scale
 	$Mask.scale = size
 	# make invisible if not a hint
 	if not Engine.is_editor_hint():
 		visible = false
 
-func _physics_process(_delta):
+func _physics_process(_delta: float) -> void:
 	# check for players
 	if playerList.size() > 0:
 		for i in playerList:
@@ -30,7 +30,7 @@ func _physics_process(_delta):
 				if i.ground or not onlyOnFloor:
 					match(orientation):
 						0: #Horizontal
-							var priorityDirection = -1
+							var priorityDirection: int = -1
 							if (i.global_position.x > global_position.x):
 								i.collissionLayer = rightLayer
 								priorityDirection = rightLayer
@@ -46,7 +46,7 @@ func _physics_process(_delta):
 										i.z_index = (i.defaultZIndex)+10
 
 						1: #Vertical
-							var priorityDirection = -1
+							var priorityDirection: int = -1
 							if (i.global_position.y > global_position.y):
 								i.collissionLayer = rightLayer
 								priorityDirection = rightLayer
@@ -61,13 +61,13 @@ func _physics_process(_delta):
 									1:
 										i.z_index = (i.defaultZIndex)+10
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	# update for editor
 	if Engine.is_editor_hint():
 		$Mask.scale = size
 		queue_redraw()
 
-func _draw():
+func _draw() -> void:
 	# draw texture based on size, note this is purely for the editor
 	for i in range(size.x):
 		draw_texture_rect_region(texture,
@@ -84,13 +84,13 @@ func _draw():
 	
 
 
-func _on_layer_switcher_body_entered(body):
+func _on_layer_switcher_body_entered(body: CharacterBody2D) -> void:
 	if not Engine.is_editor_hint():
 		if not playerList.has(body):
 			playerList.append(body)
 
 
-func _on_layer_switcher_body_exited(body):
+func _on_layer_switcher_body_exited(body: CharacterBody2D) -> void:
 	if not Engine.is_editor_hint():
 		if playerList.has(body):
 			playerList.erase(body)

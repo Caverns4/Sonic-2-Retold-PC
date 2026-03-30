@@ -311,7 +311,7 @@ strength_tier = 2
 position = Vector2(10736, 1400)
 pieces = Vector2i(3, 2)
 SpriteTexture = ExtResource("13_3qwgs")
-strength_tier = 2
+strength_tier = 3
 
 [node name="Breakable10" parent="Entities" unique_id=969390783 instance=ExtResource("12_atlde")]
 position = Vector2(11184, 1844)

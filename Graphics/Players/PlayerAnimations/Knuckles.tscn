@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://bdaih80dlev3f"]
+[gd_scene format=3 uid="uid://bdaih80dlev3f"]
 
 [ext_resource type="Shader" uid="uid://drq4hwqwwn03c" path="res://Shaders/PaletteSwapRow.gdshader" id="1_v6hgx"]
 [ext_resource type="Texture2D" uid="uid://cndrds5482vh5" path="res://Graphics/Players/Knuckles.png" id="2"]
@@ -889,16 +889,14 @@ _data = {
 &"RESET": SubResource("Animation_f3r6g")
 }
 
-[node name="Knuckles" type="Node2D"]
+[node name="Knuckles" type="Node2D" unique_id=1627072942]
 
-[node name="PlayerAnimation" type="AnimationPlayer" parent="."]
+[node name="PlayerAnimation" type="AnimationPlayer" parent="." unique_id=1457233141]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_t3bqq")
-}
-autoplay = "idle"
+libraries/ = SubResource("AnimationLibrary_t3bqq")
+autoplay = &"idle"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1212828933]
 light_mask = 4096
 z_index = 5
 material = SubResource("ShaderMaterial_vbg0h")
@@ -907,25 +905,23 @@ offset = Vector2(0, -5)
 hframes = 16
 vframes = 8
 
-[node name="DashDust" type="AnimatedSprite2D" parent="Sprite2D"]
+[node name="DashDust" type="AnimatedSprite2D" parent="Sprite2D" unique_id=1317584524]
 visible = false
 sprite_frames = SubResource("96")
 autoplay = "default"
 frame = 2
 offset = Vector2(-9, -4)
 
-[node name="CrouchBox" type="CollisionShape2D" parent="."]
+[node name="CrouchBox" type="CollisionShape2D" parent="." unique_id=1832320425]
 position = Vector2(0, 8)
 shape = SubResource("111")
 disabled = true
 
-[node name="SuperPalette" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_u50eh")
-}
-autoplay = "RESET"
+[node name="SuperPalette" type="AnimationPlayer" parent="." unique_id=1702674537]
+libraries/ = SubResource("AnimationLibrary_u50eh")
+autoplay = &"RESET"
 
-[node name="CenterReference" type="Sprite2D" parent="."]
+[node name="CenterReference" type="Sprite2D" parent="." unique_id=352257517]
 visible = false
 modulate = Color(1, 1, 1, 0.501961)
 texture = ExtResource("4_6hh3f")

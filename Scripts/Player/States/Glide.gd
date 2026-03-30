@@ -38,7 +38,6 @@ func state_activated() -> void:
 		isFall = false
 		landed = false
 		sliding = false
-		parent.reflective = true
 
 func state_exit() -> void:
 	parent.reflective = false

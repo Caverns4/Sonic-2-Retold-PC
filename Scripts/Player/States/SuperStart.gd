@@ -46,3 +46,4 @@ func _process(_delta: float) -> void:
 
 func state_exit() -> void:
 	activated = true
+	parent.strength = Global.STRENGTH_TIER.SUPER

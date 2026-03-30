@@ -181,6 +181,7 @@ func _on_defaults_pressed() -> void:
 				InputMap.action_add_event(getActions[i],j)
 		visible = false
 		get_tree().paused = saved_state
+		menu_exit.emit()
 
 
 func _on_visibility_changed() -> void:
