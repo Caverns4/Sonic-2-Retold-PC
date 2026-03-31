@@ -1,7 +1,7 @@
 extends Sprite2D
 
 ## The decoys still flying around Eggman.
-@onready var children = get_children()
+@onready var children: Array = get_children()
 var child_count: int = 0
 
 var timer: float = 0.0
@@ -25,32 +25,32 @@ func _process(delta: float) -> void:
 	timer += delta
 	
 	# Debug controls
-	if Input.is_action_pressed("gm_up"):
+	if Input.is_action_pressed("ui_up"):
 		orbit_speed += delta
-	if Input.is_action_pressed("gm_down"):
+	if Input.is_action_pressed("ui_down"):
 		orbit_speed -= delta
-	if Input.is_action_pressed("gm_right"):
+	if Input.is_action_pressed("ui_right"):
 		orbit_radius += delta*8
-	if Input.is_action_pressed("gm_left"):
+	if Input.is_action_pressed("ui_left"):
 		orbit_radius -= delta*8
-	if Input.is_action_just_pressed("gm_super"):
+	if Input.is_action_just_pressed("ui_super"):
 		if get_child_count() > 0:
 			children.erase(get_child(0))
 			get_child(0).free()
 	
-	var bulge = sin(timer*0.5*orbit_roundness)
+	var bulge: float = sin(timer*0.5*orbit_roundness)
 	
-	var z_rot = Vector2(bulge,-1.0+bulge).normalized()
+	var z_rot: Vector2 = Vector2(bulge,-1.0+bulge).normalized()
 	orbit_angle = wrapf(orbit_angle+delta*2,0,360)
 	z_rot = z_rot.rotated(orbit_angle)
 	
-	var direction = Vector2.RIGHT
-	var xOffset = 0.0
+	var direction: Vector2 = Vector2.RIGHT
+	var xOffset: float = 0.0
 	for i in child_count:
 		if i < children.size():
 			direction = Vector2.RIGHT.rotated((deg_to_rad(fmod(xOffset + (Global.globalTimer * (orbit_speed * 60)),360))))
 			xOffset += (360.0/(child_count))
-			var local_pos = (direction * orbit_radius).round()
+			var local_pos: Vector2 = (direction * orbit_radius).round()
 			children[i].position = local_pos * z_rot
 			local_pos = local_pos
 			children[i].z_index = z_index + int(local_pos.y)

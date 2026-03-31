@@ -5,15 +5,15 @@ func _process(_delta: float) -> void:
 
 func debug_inputs() -> void:
 	var input_list: Array = [
-		Input.is_action_pressed("gm_up"),
-		Input.is_action_pressed("gm_down"),
-		Input.is_action_pressed("gm_left"),
-		Input.is_action_pressed("gm_right"),
-		Input.is_action_pressed("gm_pause"),
-		Input.is_action_pressed("gm_action"),
-		Input.is_action_pressed("gm_action2"),
-		Input.is_action_pressed("gm_action3"),
-		Input.is_action_pressed("gm_super")
+		Input.is_action_pressed("ui_up"),
+		Input.is_action_pressed("ui_down"),
+		Input.is_action_pressed("ui_left"),
+		Input.is_action_pressed("ui_right"),
+		Input.is_action_pressed("ui_pause"),
+		Input.is_action_pressed("ui_accept"),
+		Input.is_action_pressed("ui_select"),
+		Input.is_action_pressed("ui_cancel"),
+		Input.is_action_pressed("ui_super")
 	]
 	var icons: Array = [
 		$up,

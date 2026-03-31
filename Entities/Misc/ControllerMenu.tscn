@@ -1,35 +1,79 @@
 [gd_scene format=3 uid="uid://b2xskcomtpo2x"]
 
-[ext_resource type="Script" uid="uid://dq2rm0ggfwkqo" path="res://Scripts/Menu/controller_menu_new.gd" id="1_xsuqy"]
+[ext_resource type="Script" uid="uid://qfdpnkjdbh2q" path="res://Scripts/Menu/controller_menu.gd" id="1_vjcje"]
 [ext_resource type="FontFile" uid="uid://dbiyiqdov7fag" path="res://Graphics/Fonts/mid_font.png" id="2_vjcje"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xsuqy"]
-draw_center = false
+[ext_resource type="Script" uid="uid://ot3ubey0rie6" path="res://Scripts/Menu/ControlBindButton.gd" id="3_xxoep"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xxoep"]
 font = ExtResource("2_vjcje")
 
-[node name="ControllerMenuNew" type="CanvasLayer" unique_id=714376856]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xsuqy"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjcje"]
+bg_color = Color(0.004019165, 0.004019165, 0.004019165, 0.37254903)
+corner_detail = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_adhws"]
+line_spacing = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uuhgw"]
+bg_color = Color(0, 0.33333334, 0.56078434, 0.7254902)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nsh62"]
+bg_color = Color(0, 0, 0, 0.39215687)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_detail = 1
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5jgp"]
+bg_color = Color(0.16643128, 0.52139103, 0.6819768, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxoep"]
+bg_color = Color(0, 0, 0, 0.39215687)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_adhws"]
+bg_color = Color(0.34865278, 0.64106965, 0.7815576, 1)
+corner_detail = 1
+
+[sub_resource type="Theme" id="Theme_adhws"]
+Button/styles/disabled = SubResource("StyleBoxFlat_uuhgw")
+Button/styles/focus = SubResource("StyleBoxFlat_nsh62")
+Button/styles/hover = SubResource("StyleBoxFlat_h5jgp")
+Button/styles/normal = SubResource("StyleBoxFlat_xxoep")
+Button/styles/pressed = SubResource("StyleBoxFlat_adhws")
+
+[node name="ControllerMenu" type="CanvasLayer" unique_id=714376856]
 process_mode = 3
 layer = 15
 visible = false
-script = ExtResource("1_xsuqy")
+script = ExtResource("1_vjcje")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1739674547]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0.333333, 0.560784, 0.72549)
 
-[node name="ClearInfo" type="Label" parent="." unique_id=297905948]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -160.0
-offset_top = -14.0
-offset_right = 160.0
+[node name="Title" type="Label" parent="." unique_id=1044909732]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 4.0
+offset_bottom = 20.0
+grow_horizontal = 2
+text = "Controls"
+label_settings = SubResource("LabelSettings_xxoep")
+horizontal_alignment = 1
 uppercase = true
 
 [node name="PlayerPanel" type="Panel" parent="." unique_id=166771303]
@@ -37,9 +81,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -152.0
-offset_top = 32.0
+offset_top = 24.0
 offset_right = 152.0
-offset_bottom = 48.0
+offset_bottom = 40.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xsuqy")
 
@@ -48,8 +92,7 @@ layout_mode = 0
 offset_left = 72.0
 offset_right = 144.0
 offset_bottom = 16.0
-focus_next = NodePath("../Player2")
-focus_previous = NodePath("../Player2")
+focus_neighbor_bottom = NodePath("../../ButtonPanels/ui_up")
 text = "Player 1"
 
 [node name="Player2" type="Button" parent="PlayerPanel" unique_id=1638098360]
@@ -57,257 +100,390 @@ layout_mode = 0
 offset_left = 160.0
 offset_right = 232.0
 offset_bottom = 16.0
-focus_next = NodePath("../Player1")
-focus_previous = NodePath("../Player1")
+focus_neighbor_bottom = NodePath("../../ButtonPanels/ui_up2")
 text = "Player 2"
 
 [node name="ButtonPanels" type="Panel" parent="." unique_id=1078348293]
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = -1
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -152.0
-offset_top = -56.0
-offset_right = 152.0
-offset_bottom = 72.0
+offset_top = -64.0
+offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vjcje")
 
-[node name="Up" type="Button" parent="ButtonPanels" unique_id=1485001085]
-layout_mode = 0
-offset_left = 48.0
-offset_top = 8.0
-offset_right = 152.0
-offset_bottom = 24.0
-focus_previous = NodePath("../Down")
-text = "_"
-
-[node name="Label" type="Label" parent="ButtonPanels/Up" unique_id=1117823430]
+[node name="Label2" type="Label" parent="ButtonPanels" unique_id=1482999370]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -92.0
-offset_top = -16.0
-offset_right = -52.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "   UP"
+offset_left = 56.0
+offset_right = 112.0
+offset_bottom = 8.0
+mouse_filter = 0
+text = "Keyboard"
 
-[node name="Down" type="Button" parent="ButtonPanels" unique_id=769111950]
-layout_mode = 0
-offset_left = 48.0
-offset_top = 32.0
-offset_right = 152.0
-offset_bottom = 48.0
-focus_neighbor_right = NodePath("../Action2")
-focus_next = NodePath("../Up")
-focus_previous = NodePath("../Left")
-text = "_"
-
-[node name="Label" type="Label" parent="ButtonPanels/Down" unique_id=1280992475]
+[node name="Label3" type="Label" parent="ButtonPanels" unique_id=472742621]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -92.0
-offset_top = -16.0
-offset_right = -52.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 0
-text = " DOWN"
-
-[node name="Left" type="Button" parent="ButtonPanels" unique_id=125827515]
-layout_mode = 0
-offset_left = 48.0
-offset_top = 56.0
-offset_right = 152.0
-offset_bottom = 72.0
-focus_neighbor_right = NodePath("../Action3")
-focus_next = NodePath("../Down")
-focus_previous = NodePath("../Right")
-text = "_"
-
-[node name="Label" type="Label" parent="ButtonPanels/Left" unique_id=378308656]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -92.0
-offset_top = -16.0
-offset_right = -52.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 0
-text = " LEFT"
-
-[node name="Right" type="Button" parent="ButtonPanels" unique_id=124441145]
-layout_mode = 0
-offset_left = 48.0
-offset_top = 80.0
-offset_right = 152.0
-offset_bottom = 96.0
-focus_neighbor_right = NodePath("../Super")
-focus_next = NodePath("../Left")
-focus_previous = NodePath("../Action")
-text = "_"
-
-[node name="Label" type="Label" parent="ButtonPanels/Right" unique_id=179701378]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -92.0
-offset_top = -16.0
-offset_right = -52.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "RIGHT"
-
-[node name="Action" type="Button" parent="ButtonPanels" unique_id=548354969]
-layout_mode = 0
-offset_left = 192.0
-offset_top = 8.0
-offset_right = 296.0
-offset_bottom = 24.00003
-focus_neighbor_left = NodePath("../Up")
-focus_next = NodePath("../Right")
-focus_previous = NodePath("../Action2")
-text = "_"
-
-[node name="Label" type="Label" parent="ButtonPanels/Action" unique_id=611205351]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -92.0
-offset_top = -16.00003
-offset_right = -52.0
-offset_bottom = -8.0000305
-grow_horizontal = 2
-grow_vertical = 0
-text = "    A"
-
-[node name="Action2" type="Button" parent="ButtonPanels" unique_id=62392002]
-layout_mode = 0
-offset_left = 192.0
-offset_top = 32.0
-offset_right = 296.0
-offset_bottom = 48.0
-focus_neighbor_left = NodePath("../Down")
-focus_next = NodePath("../Action")
-focus_previous = NodePath("../Action3")
-text = "_"
-
-[node name="Label" type="Label" parent="ButtonPanels/Action2" unique_id=1315906281]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -92.0
-offset_top = -16.0
-offset_right = -52.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "    B"
-
-[node name="Action3" type="Button" parent="ButtonPanels" unique_id=1904264425]
-layout_mode = 0
-offset_left = 192.0
-offset_top = 56.0
-offset_right = 296.0
-offset_bottom = 72.0
-focus_neighbor_left = NodePath("../Left")
-focus_next = NodePath("../Action2")
-focus_previous = NodePath("../Super")
-text = "_"
-
-[node name="Label" type="Label" parent="ButtonPanels/Action3" unique_id=1332438154]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -92.0
-offset_top = -16.0
-offset_right = -52.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "    C"
-
-[node name="Super" type="Button" parent="ButtonPanels" unique_id=1339492193]
-layout_mode = 0
-offset_left = 192.0
-offset_top = 80.0
-offset_right = 296.0
-offset_bottom = 96.0
-focus_neighbor_left = NodePath("../Right")
-focus_next = NodePath("../Action3")
-focus_previous = NodePath("../Pause")
-text = "_"
-
-[node name="Label" type="Label" parent="ButtonPanels/Super" unique_id=1065734894]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -92.0
-offset_top = -16.0
-offset_right = -52.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "super"
-uppercase = true
-
-[node name="Pause" type="Button" parent="ButtonPanels" unique_id=1537338024]
-layout_mode = 0
-offset_left = 104.0
-offset_top = 104.0
+offset_left = 160.0
 offset_right = 232.0
-offset_bottom = 120.0
-focus_neighbor_bottom = NodePath("../../ConfirmOrReset/Confirm")
-focus_next = NodePath("../Super")
-focus_previous = NodePath("../../ConfirmOrReset/Confirm")
-text = "_"
+offset_bottom = 8.0
+mouse_filter = 0
+text = "Gamepad"
 
-[node name="Label" type="Label" parent="ButtonPanels/Pause" unique_id=750714097]
+[node name="Label4" type="Label" parent="ButtonPanels" unique_id=1012365107]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -112.0
-offset_top = -16.0
-offset_right = -72.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Start"
-horizontal_alignment = 1
-uppercase = true
+offset_left = 280.0
+offset_right = 336.0
+offset_bottom = 8.0
+mouse_filter = 0
+text = "Axis"
+
+[node name="upText" type="Label" parent="ButtonPanels" unique_id=1117823430]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -52.0
+offset_right = 40.0
+offset_bottom = 52.0
+grow_vertical = 2
+text = "up
+down
+left
+right
+a
+b
+c
+super
+start"
+label_settings = SubResource("LabelSettings_adhws")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="ui_up" type="Button" parent="ButtonPanels" unique_id=1485001085]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 8.0
+offset_right = 136.0
+offset_bottom = 18.0
+focus_neighbor_top = NodePath("../../PlayerPanel/Player1")
+theme = SubResource("Theme_adhws")
+text = "-"
+script = ExtResource("3_xxoep")
+bind = "ui_up"
+
+[node name="ui_up2" type="Button" parent="ButtonPanels" unique_id=758759908]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 8.0
+offset_right = 240.0
+offset_bottom = 18.0
+focus_neighbor_top = NodePath("../../PlayerPanel/Player2")
+theme = SubResource("Theme_adhws")
+text = "_"
+script = ExtResource("3_xxoep")
+bind = "ui_up"
+bind_index = 1
+
+[node name="ui_up3" type="Button" parent="ButtonPanels" unique_id=1909525477]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 8.0
+offset_right = 344.0
+offset_bottom = 18.0
+focus_neighbor_top = NodePath("../../PlayerPanel/Player2")
+theme = SubResource("Theme_adhws")
+text = "_"
+script = ExtResource("3_xxoep")
+bind = "ui_up"
+bind_index = 2
+
+[node name="ui_down" type="Button" parent="ButtonPanels" unique_id=769111950]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 20.0
+offset_right = 136.0
+offset_bottom = 30.0
+theme = SubResource("Theme_adhws")
+text = "_"
+script = ExtResource("3_xxoep")
+bind = "ui_down"
+
+[node name="ui_down2" type="Button" parent="ButtonPanels" unique_id=853488477]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 20.0
+offset_right = 240.0
+offset_bottom = 30.0
+theme = SubResource("Theme_adhws")
+text = "_"
+script = ExtResource("3_xxoep")
+bind = "ui_down"
+bind_index = 1
+
+[node name="ui_down3" type="Button" parent="ButtonPanels" unique_id=1100739633]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 20.0
+offset_right = 344.0
+offset_bottom = 30.0
+focus_neighbor_right = NodePath("../ui_select")
+focus_next = NodePath("../ui_up")
+focus_previous = NodePath("../ui_left")
+theme = SubResource("Theme_adhws")
+text = "_"
+script = ExtResource("3_xxoep")
+bind = "ui_down"
+bind_index = 2
+
+[node name="ui_left" type="Button" parent="ButtonPanels" unique_id=125827515]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 32.0
+offset_right = 136.0
+offset_bottom = 42.0
+theme = SubResource("Theme_adhws")
+text = "_"
+script = ExtResource("3_xxoep")
+bind = "ui_left"
+
+[node name="ui_left2" type="Button" parent="ButtonPanels" unique_id=897620023]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 32.0
+offset_right = 240.0
+offset_bottom = 42.0
+theme = SubResource("Theme_adhws")
+text = "_"
+script = ExtResource("3_xxoep")
+bind = "ui_left"
+bind_index = 1
+
+[node name="ui_left3" type="Button" parent="ButtonPanels" unique_id=1277643164]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 32.0
+offset_right = 344.0
+offset_bottom = 42.0
+theme = SubResource("Theme_adhws")
+text = "_"
+script = ExtResource("3_xxoep")
+bind = "ui_left"
+bind_index = 2
+
+[node name="ui_right" type="Button" parent="ButtonPanels" unique_id=124441145]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 44.0
+offset_right = 136.0
+offset_bottom = 54.0
+theme = SubResource("Theme_adhws")
+text = "_"
+script = ExtResource("3_xxoep")
+bind = "ui_right"
+
+[node name="ui_right2" type="Button" parent="ButtonPanels" unique_id=1275094849]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 44.0
+offset_right = 240.0
+offset_bottom = 54.0
+theme = SubResource("Theme_adhws")
+text = "_"
+script = ExtResource("3_xxoep")
+bind = "ui_right"
+bind_index = 1
+
+[node name="ui_right3" type="Button" parent="ButtonPanels" unique_id=1797725126]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 44.0
+offset_right = 344.0
+offset_bottom = 54.0
+theme = SubResource("Theme_adhws")
+text = "_"
+script = ExtResource("3_xxoep")
+bind = "ui_right"
+bind_index = 2
+
+[node name="ui_accept" type="Button" parent="ButtonPanels" unique_id=548354969]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 56.0
+offset_right = 136.0
+offset_bottom = 66.0
+focus_neighbor_left = NodePath("../ui_up")
+theme = SubResource("Theme_adhws")
+text = "_"
+script = ExtResource("3_xxoep")
+bind = "ui_accept"
+
+[node name="ui_accept2" type="Button" parent="ButtonPanels" unique_id=1530124512]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 56.0
+offset_right = 240.0
+offset_bottom = 66.0
+theme = SubResource("Theme_adhws")
+text = "_"
+script = ExtResource("3_xxoep")
+bind = "ui_accept"
+bind_index = 1
+
+[node name="ui_accept3" type="Button" parent="ButtonPanels" unique_id=1497035149]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 56.0
+offset_right = 344.0
+offset_bottom = 66.0
+theme = SubResource("Theme_adhws")
+text = "_"
+script = ExtResource("3_xxoep")
+bind = "ui_accept"
+bind_index = 2
+
+[node name="ui_select" type="Button" parent="ButtonPanels" unique_id=62392002]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 68.0
+offset_right = 136.0
+offset_bottom = 78.0
+theme = SubResource("Theme_adhws")
+text = "_"
+script = ExtResource("3_xxoep")
+bind = "ui_select"
+
+[node name="ui_select2" type="Button" parent="ButtonPanels" unique_id=642161684]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 68.0
+offset_right = 240.0
+offset_bottom = 78.0
+theme = SubResource("Theme_adhws")
+text = "_"
+script = ExtResource("3_xxoep")
+bind = "ui_select"
+bind_index = 1
+
+[node name="ui_select3" type="Button" parent="ButtonPanels" unique_id=654286653]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 68.0
+offset_right = 344.0
+offset_bottom = 78.0
+theme = SubResource("Theme_adhws")
+text = "_"
+script = ExtResource("3_xxoep")
+bind = "ui_select"
+bind_index = 2
+
+[node name="ui_cancel" type="Button" parent="ButtonPanels" unique_id=1904264425]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 80.0
+offset_right = 136.0
+offset_bottom = 90.0
+theme = SubResource("Theme_adhws")
+text = "_"
+script = ExtResource("3_xxoep")
+bind = "ui_cancel"
+
+[node name="ui_cancel2" type="Button" parent="ButtonPanels" unique_id=790963631]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 80.0
+offset_right = 240.0
+offset_bottom = 90.0
+theme = SubResource("Theme_adhws")
+text = "_"
+script = ExtResource("3_xxoep")
+bind = "ui_cancel"
+bind_index = 1
+
+[node name="ui_cancel3" type="Button" parent="ButtonPanels" unique_id=67462113]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 80.0
+offset_right = 344.0
+offset_bottom = 90.0
+theme = SubResource("Theme_adhws")
+text = "_"
+script = ExtResource("3_xxoep")
+bind = "ui_cancel"
+bind_index = 2
+
+[node name="ui_super" type="Button" parent="ButtonPanels" unique_id=1339492193]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 92.0
+offset_right = 136.0
+offset_bottom = 102.0
+theme = SubResource("Theme_adhws")
+text = "_"
+script = ExtResource("3_xxoep")
+bind = "ui_super"
+
+[node name="ui_super2" type="Button" parent="ButtonPanels" unique_id=582106374]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 92.0
+offset_right = 240.0
+offset_bottom = 102.0
+theme = SubResource("Theme_adhws")
+text = "_"
+script = ExtResource("3_xxoep")
+bind = "ui_super"
+bind_index = 1
+
+[node name="ui_super3" type="Button" parent="ButtonPanels" unique_id=1380108881]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 92.0
+offset_right = 344.0
+offset_bottom = 102.0
+theme = SubResource("Theme_adhws")
+text = "_"
+script = ExtResource("3_xxoep")
+bind = "ui_super"
+bind_index = 2
+
+[node name="ui_pause" type="Button" parent="ButtonPanels" unique_id=1537338024]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 104.0
+offset_right = 136.0
+offset_bottom = 114.0
+focus_neighbor_bottom = NodePath("../../ConfirmOrReset/Confirm")
+theme = SubResource("Theme_adhws")
+text = "_"
+script = ExtResource("3_xxoep")
+bind = "ui_pause"
+
+[node name="ui_pause2" type="Button" parent="ButtonPanels" unique_id=925923665]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 104.0
+offset_right = 240.0
+offset_bottom = 114.0
+focus_neighbor_bottom = NodePath("../../ConfirmOrReset/Defaults")
+theme = SubResource("Theme_adhws")
+text = "_"
+script = ExtResource("3_xxoep")
+bind = "ui_pause"
+bind_index = 1
+
+[node name="ui_pause3" type="Button" parent="ButtonPanels" unique_id=1118154777]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 104.0
+offset_right = 344.0
+offset_bottom = 114.0
+focus_neighbor_bottom = NodePath("../../ConfirmOrReset/Defaults")
+theme = SubResource("Theme_adhws")
+text = "_"
+script = ExtResource("3_xxoep")
+bind = "ui_pause"
+bind_index = 2
 
 [node name="ConfirmOrReset" type="Control" parent="." unique_id=1145752547]
 layout_mode = 3
@@ -322,10 +498,10 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 32.0
-offset_top = -32.0
+offset_top = -24.0
 offset_right = 112.0
-offset_bottom = -8.0
 grow_vertical = 0
+focus_neighbor_top = NodePath("../../ButtonPanels/ui_pause")
 focus_next = NodePath("../Defaults")
 focus_previous = NodePath("../Defaults")
 text = " CONFIRM "
@@ -338,34 +514,25 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 104.0
-offset_top = -32.0
+offset_top = -24.0
 offset_right = 248.0
-offset_bottom = -8.0
 grow_horizontal = 0
 grow_vertical = 0
+focus_neighbor_top = NodePath("../../ButtonPanels/ui_pause2")
+focus_neighbor_bottom = NodePath("../../ButtonPanels/ui_up")
 focus_next = NodePath("../Confirm")
 focus_previous = NodePath("../Confirm")
 text = "RESET TO DEFAULTS"
 
-[node name="Title" type="Label" parent="." unique_id=1044909732]
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 8.0
-offset_bottom = 24.0
-grow_horizontal = 2
-text = "Controls"
-label_settings = SubResource("LabelSettings_xxoep")
-horizontal_alignment = 1
-uppercase = true
-
-[node name="CurrentMapList" type="Label" parent="." unique_id=1271778272]
+[node name="WarningText" type="Label" parent="." unique_id=1271778272]
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 8.0
-offset_top = 184.0
+offset_top = 168.0
 offset_right = -8.0
-offset_bottom = 192.0
+offset_bottom = 198.0
 grow_horizontal = 2
+autowrap_mode = 2
 uppercase = true
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

@@ -1,5 +1,6 @@
 extends Node2D
 
+## Scene is in the game but no longer used.
 
 @export var music = preload("res://Audio/Soundtrack/s2br_Options.ogg")
 @export var next_zone_loader: String = "res://Scene/Presentation/ZoneLoader.tscn"
@@ -99,14 +100,14 @@ var animationframe:int = 0
 
 var lastInput = Vector2.ZERO
 
-func _ready():
+func _ready() -> void:
 	characterID = Global.character_selection
 	SoundDriver.music.stream = music
 	SoundDriver.music.play()
 	if next_zone_loader != null:
 		Global.next_zone_pointer = next_zone_loader
 
-func _process(delta):
+func _process(delta: float) -> void:
 	levelSelect_UpdateText()
 	animationTimer -= delta
 	if animationTimer < 0.0:
@@ -120,9 +121,9 @@ func _input(event):
 		UpdateCharacterSelect()
 		
 		# finish character select if start is pressed
-		if event.is_action_pressed("gm_pause"):
+		if event.is_action_pressed("ui_pause"):
 			
-			if Input.is_action_pressed("gm_action3"):
+			if Input.is_action_pressed("ui_cancel"):
 				Global.two_player_mode = true
 			
 			
@@ -249,8 +250,8 @@ func _input(event):
 			Main.change_scene(Global.next_zone_pointer)
 			Global.character_selection = characterID
 
-func levelSelectSetupDirectionalInput():
-	var inputCue = Input.get_vector("gm_left","gm_right","gm_up","gm_down")
+func levelSelectSetupDirectionalInput() -> void:
+	var inputCue: Vector2 = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
 	inputCue.x = round(inputCue.x)
 	inputCue.y = round(inputCue.y)
 	if inputCue != lastInput:
@@ -278,7 +279,7 @@ func levelSelectSetupDirectionalInput():
 			levelID = wrapi(levelID-1,0,levelIcons.size())
 	lastInput = inputCue
 
-func UpdateCharacterSelect():
+func UpdateCharacterSelect() -> void:
 	# turn on and off visibility of the characters based on the current selection
 	for i in $UI/LabelsRight/CharacterOrigin.get_children():
 		#hide all applicable children
@@ -296,7 +297,7 @@ func UpdateCharacterSelect():
 			$UI/LabelsRight/CharacterOrigin/Sonic.position.x = 0
 	UpdateCharacterSprites()
 
-func levelSelect_UpdateText(): # levelID
+func levelSelect_UpdateText() -> void: # levelID
 	var j = 0 #Which line to highlight
 	var k = 0 #Which label entry to retrieve(In other word, the "real" selection ID
 	var textFieldLeft = $UI/Labels/LevelsLeft
@@ -327,7 +328,7 @@ func levelSelect_UpdateText(): # levelID
 	#if levelIcons[k-1] <= Global.ZONES.DEATH_EGG:
 	#	Global.saved_zone_id = levelIcons[k-1]
 
-func UpdateCharacterSprites():
+func UpdateCharacterSprites() -> void:
 	if characterID == 0:
 		$UI/LabelsRight/CharacterOrigin/Sonic.frame = animationframe
 		$UI/LabelsRight/CharacterOrigin/Tails.frame = 2+animationframe

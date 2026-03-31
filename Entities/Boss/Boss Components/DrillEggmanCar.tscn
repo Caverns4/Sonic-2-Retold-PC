@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxk253s6p41vr"]
+[gd_scene format=3 uid="uid://bxk253s6p41vr"]
 
 [ext_resource type="Script" uid="uid://bk62v4i6d3lsf" path="res://Scripts/Boss/DrillEggman_Car.gd" id="1_harxd"]
 [ext_resource type="Texture2D" uid="uid://svwmdhvvxrws" path="res://Graphics/Boss/Boss_DrillEggman.png" id="2_ugcdw"]
@@ -15,54 +15,54 @@ size = Vector2(20, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0x5hy"]
 size = Vector2(222.5, 70)
 
-[node name="DrillEggmanCar" type="CharacterBody2D"]
+[node name="DrillEggmanCar" type="CharacterBody2D" unique_id=1117907919]
 z_index = 1
 collision_layer = 0
 collision_mask = 8388609
 script = ExtResource("1_harxd")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=530032494]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_b3h3o")
 
-[node name="DrillEggmanWheel" parent="." instance=ExtResource("3_fandu")]
+[node name="DrillEggmanWheel" parent="." unique_id=543308255 instance=ExtResource("3_fandu")]
 position = Vector2(-38, 15)
 wheelType = "Back"
 
-[node name="DrillEggmanWheel3" parent="." instance=ExtResource("3_fandu")]
+[node name="DrillEggmanWheel3" parent="." unique_id=1113312784 instance=ExtResource("3_fandu")]
 position = Vector2(15, 15)
 wheelType = "Back"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1204706604]
 texture = ExtResource("2_ugcdw")
 
-[node name="DrillEggmanWheel2" parent="." instance=ExtResource("3_fandu")]
+[node name="DrillEggmanWheel2" parent="." unique_id=1448576328 instance=ExtResource("3_fandu")]
 position = Vector2(-21, 15)
 
-[node name="DrillEggmanWheel4" parent="." instance=ExtResource("3_fandu")]
+[node name="DrillEggmanWheel4" parent="." unique_id=267240042 instance=ExtResource("3_fandu")]
 position = Vector2(36, 15)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=434117420]
 collision_layer = 8388608
 collision_mask = 8388608
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1463057917]
 shape = SubResource("RectangleShape2D_pcjmw")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2040814041]
 stream = ExtResource("4_v5v2r")
 volume_db = -5.0
 max_distance = 6000.0
 
-[node name="DrillEggmanDrill" parent="." instance=ExtResource("5_gje8e")]
+[node name="DrillEggmanDrill" parent="." unique_id=773430753 instance=ExtResource("5_gje8e")]
 position = Vector2(-53, 8)
 monitoring = false
 
-[node name="DrillLaunchBox" type="Area2D" parent="."]
+[node name="DrillLaunchBox" type="Area2D" parent="." unique_id=1819382847]
 collision_layer = 0
 collision_mask = 4096
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DrillLaunchBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DrillLaunchBox" unique_id=1391189327]
 position = Vector2(-150, -16)
 shape = SubResource("RectangleShape2D_0x5hy")
 debug_color = Color(1, 1, 0, 0.301961)

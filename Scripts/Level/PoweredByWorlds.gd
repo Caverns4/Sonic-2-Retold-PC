@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	# check if start gets pressed
-	if event.is_action_pressed("gm_pause") and !alreadyChanged and globalTime > 1.5:
+	if event.is_action_pressed("ui_pause") and !alreadyChanged and globalTime > 1.5:
 		alreadyChanged = true # used so that room skipping isn't doubled
 		$Warp.play()
 		await Main.change_scene(nextScene,"WhiteOut",1,false)

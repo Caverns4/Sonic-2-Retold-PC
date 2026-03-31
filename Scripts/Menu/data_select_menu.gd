@@ -38,9 +38,9 @@ func _ready() -> void:
 		use(0)
 
 func _physics_process(_delta: float) -> void:
-	if !selected_save_slot and Input.is_action_just_pressed("gm_super"):
+	if !selected_save_slot and Input.is_action_just_pressed("ui_super"):
 		await show_delete_options()
-	elif !selected_save_slot and Input.is_action_just_pressed("gm_action2"):
+	elif !selected_save_slot and Input.is_action_just_pressed("ui_cancel"):
 		await Main.change_scene(title_scene)
 		state = MENU_STATE.DECIDED
 

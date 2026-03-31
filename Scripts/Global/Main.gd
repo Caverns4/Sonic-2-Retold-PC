@@ -8,7 +8,7 @@ var can_pause: bool = false
 
 @onready var input_view: Control = $GUI/ControlMap
 @onready var crt_filter: ColorRect = $CanvasLayer/ColorRect
-@onready var control_menu: CanvasLayer = $GUI/ControllerMenu
+@onready var control_menu: ControllerMenu = $GUI/ControllerMenu
 
 func _ready()-> void:
 	# Sound Driver object references
@@ -19,8 +19,8 @@ func _ready()-> void:
 
 func _input(event: InputEvent)-> void:
 	# Pausing
-	if (event.is_action_pressed("gm_pause") and can_pause) or (
-		event.is_action_pressed("gm_pause_P2") and can_pause and Global.two_player_mode):
+	if (event.is_action_pressed("ui_pause") and can_pause) or (
+		event.is_action_pressed("ui_pause_P2") and can_pause and Global.two_player_mode):
 		# check if the game wasn't paused and the tree isn't paused either
 		if !get_tree().paused:
 			get_tree().paused = true

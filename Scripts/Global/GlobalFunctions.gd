@@ -1,7 +1,7 @@
 extends Node
 
 # returns an int, 0 = none, 1 = pressed, 2 = held (you'll most likely want to do > 0 if you're checking for pressed)
-func calculate_input(event: InputEvent, action: String = "gm_action") -> int:
+func calculate_input(event: InputEvent, action: String = "ui_accept") -> int:
 	return int(event.is_action(action) or event.is_action_pressed(action))-int(event.is_action_released(action))
 
 # get the current active camera

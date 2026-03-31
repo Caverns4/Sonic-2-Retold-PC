@@ -1,5 +1,8 @@
 extends Node2D
 
+
+## PENDING REWRITE
+
 @export var music = preload("res://Audio/Soundtrack/s2br_Options.ogg")
 
 var title_scene: String = "res://Scene/Presentation/Title.tscn"

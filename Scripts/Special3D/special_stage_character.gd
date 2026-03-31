@@ -38,8 +38,8 @@ enum INPUTS {XINPUT, YINPUT, ACTION, ACTION2, ACTION3, SUPER, PAUSE}
 # (for held it's best to use inputs[INPUTS.ACTION] > 0)
 # XInput and YInput are directions and are either -1, 0 or 1.
 var inputs = [0,0,0,0,0,0,0,0]
-const INPUTACTIONS_P1 = [["gm_left","gm_right"],["gm_up","gm_down"],"gm_action","gm_action2","gm_action3","gm_super","gm_pause"]
-const INPUTACTIONS_P2 = [["gm_left_P2","gm_right_P2"],["gm_up_P2","gm_down_P2"],"gm_action_P2","gm_action2_P2","gm_action3_P2","gm_super_P2","gm_pause_P2"]
+const INPUTACTIONS_P1 = [["ui_left","ui_right"],["ui_up","ui_down"],"ui_accept","ui_select","ui_cancel","ui_super","ui_pause"]
+const INPUTACTIONS_P2 = [["ui_left_P2","ui_right_P2"],["ui_up_P2","ui_down_P2"],"ui_accept_P2","ui_select_P2","ui_cancel_P2","ui_super_P2","ui_pause_P2"]
 var inputActions = INPUTACTIONS_P1
 # 0 = ai, 1 = player 1, 2 = player 2
 var playerControl = 1

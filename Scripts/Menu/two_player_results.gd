@@ -35,23 +35,23 @@ func _ready():
 	else:
 		$UI/Labels/WinnerText.text = "[center]2P WINS"
 
-func _input(event):
+func _input(event) -> void:
 	if !endScene:
 		# finish character select if start is pressed
-		if (event.is_action_pressed("gm_pause")
-		or event.is_action_pressed("gm_action")
-		or event.is_action_pressed("gm_action2")
-		or event.is_action_pressed("gm_action3")) and !endScene:
+		if (event.is_action_pressed("ui_pause")
+		or event.is_action_pressed("ui_accept")
+		or event.is_action_pressed("ui_select")
+		or event.is_action_pressed("ui_cancel")) and !endScene:
 			endScene = true
 			Global.score = 0
 			Global.scoreP2 = 0
 			if Global.saved_act_id == 0 and Global.lives > 0 and Global.livesP2 > 0:
-				Global.loadNextLevel()
+				await Global.loadNextLevel()
 			else:
 				Global.twoPlayerZoneResults.append(results)
-				Main.change_scene(two_player_menu)
+				await Main.change_scene(two_player_menu)
 
-func GetWinner(result: Array):
+func GetWinner(result: Array) -> int:
 	if Global.lives <=0:
 		return -1 #If a Game Over was obtained, the other Player wins.
 	if Global.livesP2 <=0:
@@ -60,9 +60,9 @@ func GetWinner(result: Array):
 	# For each pair of numbers, subtract Player 1's result from Player 2's, and
 	# get the signature. If it's negative, we know Player 2's value was higher.
 	#For the time, however, the winner needs to be LESS
-	var a = sign(result[0]-result[3])
-	var b = sign(result[4]-result[1])
-	var c = sign(result[2]-result[5])
+	var a: int = sign(result[0]-result[3])
+	var b: int = sign(result[4]-result[1])
+	var c: int = sign(result[2]-result[5])
 	#print(str(a) + str(b) + str(c) )
-	var winner = (a+b+c)
+	var winner: int = (a+b+c)
 	return winner

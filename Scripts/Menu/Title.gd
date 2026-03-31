@@ -105,7 +105,7 @@ func _process(delta: float) -> void:
 		_unhandledInput()
 
 func _unhandledInput() -> void:
-	var inputCue: Vector2 = Input.get_vector("gm_left","gm_right","gm_up","gm_down")
+	var inputCue: Vector2 = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
 	inputCue.x = round(inputCue.x)
 	inputCue.y = round(inputCue.y)
 	CheckCheatInputs(inputCue)
@@ -114,7 +114,7 @@ func _unhandledInput() -> void:
 
 func _input(event: InputEvent) -> void:
 	# On start button press, skip intro or make selection
-	if event.is_action_pressed("gm_pause") and $TitleAnimate.is_playing():
+	if event.is_action_pressed("ui_pause") and $TitleAnimate.is_playing():
 		if !$TitleWaitTimer.is_stopped():
 			$TitleAnimate.play("RESET")
 			menuActive = true

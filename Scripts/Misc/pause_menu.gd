@@ -35,8 +35,8 @@ func _input(event: InputEvent) -> void:
 	# check if paused and visible, otherwise cancel it out
 	if !get_tree().paused or !visible:
 		return
-	if (event.is_action_pressed("gm_pause") or 
-	event.is_action_pressed("gm_pause_P2")) and (continue_button.disabled == false):
+	if (event.is_action_pressed("ui_pause") or 
+	event.is_action_pressed("ui_pause_P2")) and (continue_button.disabled == false):
 		if Main.can_pause:
 			await get_tree().process_frame
 			get_tree().paused = false

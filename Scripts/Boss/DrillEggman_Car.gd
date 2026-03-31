@@ -1,23 +1,23 @@
 extends CharacterBody2D
 
 
-@export var drillSound = preload("res://Audio/SFX/Boss/s2br_Motor.wav")
+@export var drillSound: AudioStream = preload("res://Audio/SFX/Boss/s2br_Motor.wav")
 
 const DRIVE_SPEED = 120 #2 ppf, 60 FPS = 120
 
-var active = false #If this is active at all
-var direction = -1 #-1 or 1
-var phase = 0 #The phase of this machine
-var dead = false
-var pilot = false
-var readyToLaunch = false #If true, shoot the drill when the player is in front
+var active: bool = false #If this is active at all
+var direction: int = -1 #-1 or 1
+var phase: int = 0 #The phase of this machine
+var dead: bool = false
+var pilot: bool = false
+var readyToLaunch: bool = false #If true, shoot the drill when the player is in front
 
-var currentPoint = 1 #The point for the boss to move toward while alive
+var currentPoint: int = 1 #The point for the boss to move toward while alive
 
 ## The parent node, should be Helicopter Eggman
-@export_node_path var helicopter_eggman
+@export_node_path var helicopter_eggman: NodePath
 
-@onready var tires = [
+@onready var tires: Array = [ #CharacterBody2D
 	#Back wheels
 	$DrillEggmanWheel,
 	$DrillEggmanWheel2,
@@ -25,12 +25,12 @@ var currentPoint = 1 #The point for the boss to move toward while alive
 	$DrillEggmanWheel3,
 	$DrillEggmanWheel4
 	]
-@onready var drill = $DrillEggmanDrill
-var parent = null #The parent node, should be Helicopter Eggman
+@onready var drill: Variant = $DrillEggmanDrill # Area2D
+var parent: BossBase = null #The parent node, should be Helicopter Eggman
 
 signal carTouched()
 
-func _ready():
+func _ready() -> void:
 	if Global.two_player_mode:
 		queue_free()
 	
@@ -48,7 +48,7 @@ func _ready():
 		queue_free()
 	top_level = true
 
-func _process(delta):
+func _process(delta: float) -> void:
 	if active and !dead:
 		match phase:
 			0:
@@ -73,7 +73,7 @@ func _process(delta):
 	elif dead:
 		velocity.y += (0.09375/GlobalFunctions.div_by_delta(delta))
 
-func _physics_process(_delta):
+func _physics_process(_delta: float) -> void:
 	if !dead:
 		SetTirePositions()
 	
@@ -87,8 +87,8 @@ func _physics_process(_delta):
 		parent.global_position = global_position + Vector2(0,-11)
 	
 
-func SetTirePositions():
-	var tireOffsets = [-38,-20,12,36]
+func SetTirePositions() -> void:
+	var tireOffsets: Array[float] = [-38,-20,12,36]
 	
 	for i in tires.size():
 		tires[i].position.x = position.x - (tireOffsets[i] * direction)
@@ -107,24 +107,24 @@ func SetTirePositions():
 		$DrillLaunchBox/CollisionShape2D.position.x = -150
 	
 
-func debugControl():
+func debugControl() -> void:
 	if phase != 0 and pilot:
-		if Input.is_action_just_pressed("gm_left_P2"):
+		if Input.is_action_just_pressed("ui_left_P2"):
 			direction = -1
 			$Sprite2D.flip_h = false
-		if Input.is_action_just_pressed("gm_right_P2"):
+		if Input.is_action_just_pressed("ui_right_P2"):
 			direction = 1
 			$Sprite2D.flip_h = true
 		velocity.x = direction*100
 		parent.direction = direction
 
-func UpdateDrillIfAttached():
+func UpdateDrillIfAttached() -> void:
 	if drill:
 		drill.global_position.x = global_position.x - (-54 * direction)
 		drill.global_position.y = global_position.y + 8
 		drill.scale.x = -1.0 * direction
 
-func die():
+func die() -> void:
 	dead = true
 	pilot = false
 	velocity = Vector2.ZERO
@@ -145,11 +145,11 @@ func die():
 		drill = null
 		readyToLaunch = false
 
-func playMotor():
+func playMotor() -> void:
 	SoundDriver.play_sound(drillSound)
 	if drill: drill.monitoring = true
 
-func _on_area_2d_area_entered(_area): #Await Eggman to enter
+func _on_area_2d_area_entered(_area: Area2D) -> void: #Await Eggman to enter
 	if phase == 0 and active and !dead:
 		emit_signal("carTouched")
 		velocity = Vector2.ZERO
@@ -158,11 +158,11 @@ func _on_area_2d_area_entered(_area): #Await Eggman to enter
 		phase = 1
 
 
-func _on_boss_boundry_setter_boss_start():
+func _on_boss_boundry_setter_boss_start() -> void:
 	if !active:
 		active = true
 
-func _on_drill_launch_box_body_entered(_body):
+func _on_drill_launch_box_body_entered(_body: Node2D) -> void:
 	if readyToLaunch and drill:
 		drill.free = true
 		drill.position = drill.global_position
