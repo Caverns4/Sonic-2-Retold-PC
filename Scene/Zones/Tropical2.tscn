@@ -399,35 +399,27 @@ count = 12
 
 [node name="GHZLogGroup" parent="Hazards" unique_id=1072813949 instance=ExtResource("25_awmp3")]
 position = Vector2(5696, 904)
-speed = 6.0
 
 [node name="GHZLogGroup2" parent="Hazards" unique_id=2102230739 instance=ExtResource("25_awmp3")]
 position = Vector2(5824, 904)
-speed = 6.0
 
 [node name="GHZLogGroup3" parent="Hazards" unique_id=1405009327 instance=ExtResource("25_awmp3")]
 position = Vector2(5952, 904)
-speed = 6.0
 
 [node name="GHZLogGroup4" parent="Hazards" unique_id=2028185513 instance=ExtResource("25_awmp3")]
 position = Vector2(6080, 904)
-speed = 6.0
 
 [node name="GHZLogGroup5" parent="Hazards" unique_id=1182366684 instance=ExtResource("25_awmp3")]
 position = Vector2(6720, 648)
-speed = 6.0
 
 [node name="GHZLogGroup6" parent="Hazards" unique_id=1835048769 instance=ExtResource("25_awmp3")]
 position = Vector2(6848, 648)
-speed = 6.0
 
 [node name="GHZLogGroup7" parent="Hazards" unique_id=1909891490 instance=ExtResource("25_awmp3")]
 position = Vector2(6976, 648)
-speed = 6.0
 
 [node name="GHZLogGroup8" parent="Hazards" unique_id=1517878807 instance=ExtResource("25_awmp3")]
 position = Vector2(7104, 648)
-speed = 6.0
 
 [node name="Items" type="Node" parent="." unique_id=1175629642]
 

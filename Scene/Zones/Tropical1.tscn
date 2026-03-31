@@ -178,6 +178,16 @@ rightBoundry = 9904
 bottomBoundry = 2048
 screen_ranges = Vector2(1, 8)
 
+[node name="BoundrySetter13" parent="Entities" unique_id=1876177420 instance=ExtResource("10_o6o00")]
+position = Vector2(12672, 896)
+setLeft = false
+leftBoundry = 9472
+setTop = false
+setRight = false
+rightBoundry = 9904
+bottomBoundry = 2048
+screen_ranges = Vector2(1, 8)
+
 [node name="BoundrySetter8" parent="Entities" unique_id=1564921989 instance=ExtResource("10_o6o00")]
 position = Vector2(13920, 896)
 setLeft = false
@@ -408,7 +418,7 @@ position = Vector2(15776, 1951.9999)
 scale = Vector2(6, 10)
 
 [node name="InvisibleBarrier6" parent="Entities" unique_id=1879532602 instance=ExtResource("17_tm15y")]
-position = Vector2(17760, 2160)
+position = Vector2(17752, 2152)
 scale = Vector2(6, 10)
 
 [node name="Platforms" type="Node" parent="." unique_id=1424978899]
