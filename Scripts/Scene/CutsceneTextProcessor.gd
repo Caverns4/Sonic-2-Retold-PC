@@ -5,8 +5,8 @@ extends CanvasLayer
 
 @onready var textField = $Labels/CustsceneText
 
-var delaycounter = 0.5
-var textboxID = 0
+var delaycounter: float = 0.5
+var textboxID: int = 0
 var currentCharacter = 0
 var currentString = ""
 
