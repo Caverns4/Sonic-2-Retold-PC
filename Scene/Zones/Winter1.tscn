@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_e7pco"]
 [ext_resource type="TileSet" uid="uid://uplqwsi0o4gi" path="res://Tileset/Levels/EHZ_HTZ_Tiles.tres" id="5_jsoys"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_8kp2y"]
+[ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="7_da1ob"]
+[ext_resource type="PackedScene" uid="uid://bjuh5cvbt06af" path="res://Entities/MainObjects/Capsule.tscn" id="8_udyex"]
 
 [node name="Winter1" type="Node2D" unique_id=1326342612]
 script = ExtResource("1_8yfjs")
@@ -47,3 +49,26 @@ tile_set = ExtResource("5_jsoys")
 
 [node name="Player" parent="." unique_id=2053401634 instance=ExtResource("6_8kp2y")]
 position = Vector2(96, 656)
+
+[node name="Items" type="Node" parent="." unique_id=893028558]
+
+[node name="Ring" parent="Items" unique_id=2036927498 instance=ExtResource("7_da1ob")]
+position = Vector2(200, 608)
+
+[node name="Ring2" parent="Items" unique_id=203560625 instance=ExtResource("7_da1ob")]
+position = Vector2(224, 608)
+
+[node name="Ring3" parent="Items" unique_id=1858604189 instance=ExtResource("7_da1ob")]
+position = Vector2(248, 608)
+
+[node name="Ring4" parent="Items" unique_id=1000685941 instance=ExtResource("7_da1ob")]
+position = Vector2(968, 936)
+
+[node name="Ring5" parent="Items" unique_id=1137924377 instance=ExtResource("7_da1ob")]
+position = Vector2(992, 936)
+
+[node name="Ring6" parent="Items" unique_id=914212050 instance=ExtResource("7_da1ob")]
+position = Vector2(1016, 936)
+
+[node name="Capsule" parent="Items" unique_id=1220542392 instance=ExtResource("8_udyex")]
+position = Vector2(512, 608)

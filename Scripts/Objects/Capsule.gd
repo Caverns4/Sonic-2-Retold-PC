@@ -1,10 +1,9 @@
 extends StaticBody2D
-var getCam = null
 
-@onready var screenXSize = get_viewport_rect().size.x
+@onready var screenXSize: float = get_viewport_rect().size.x
 
-var animal_inst = preload("res://Entities/Misc/Animal.tscn")
-var animals = []
+var animal_inst: PackedScene = preload("res://Entities/Misc/Animal.tscn")
+var animals: Array = []
 var timer: float = 180.0/60.0
 
 enum STATE{IDLE,SPAWN_ANIMALS,WAIT,NULL}
@@ -42,7 +41,7 @@ func _run_animal_timer(delta: float) -> void:
 		state = STATE.WAIT
 
 func _update_animals_array() -> void:
-	for i in animals:
+	for i: Variant in animals:
 		if !is_instance_valid(i):
 			animals.erase(i)
 		
@@ -59,11 +58,14 @@ func activate() -> void:
 		$Explode.play()
 		Global.emit_await_stage_end()
 		# set player camera limits
-		for i in Global.players:
+		for playerObj in Global.players:
 			# Camera limit set
-			i.limitLeft = int(global_position.x -screenXSize/2)
-			i.limitRight = int(global_position.x +screenXSize/2)
-			i.snap_camera_to_limits()
+			playerObj.limitLeft = int(global_position.x -screenXSize/2)
+			playerObj.limitRight = int(global_position.x +screenXSize/2)
+			playerObj.camera_limits_target[0] = int(global_position.x-screenXSize/2)
+			playerObj.camera_limits_target[2] = int(global_position.x+screenXSize/2)
+			playerObj.camera_limits_target[3] = int(global_position.y+48)
+			playerObj.camera_shift_time = 1.0
 		state = STATE.SPAWN_ANIMALS
 
 

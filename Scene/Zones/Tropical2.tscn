@@ -91,6 +91,7 @@ setTop = false
 setRight = false
 rightBoundry = 320
 bottomBoundry = 1024
+scroll_time = 4.0
 
 [node name="BoundrySetter4" parent="Entities" unique_id=1981010541 instance=ExtResource("9_fiayl")]
 position = Vector2(2976, 912)
@@ -107,6 +108,7 @@ setTop = false
 setRight = false
 rightBoundry = 2817
 bottomBoundry = 1536
+scroll_time = 2.0
 
 [node name="BoundrySetter5" parent="Entities" unique_id=551046881 instance=ExtResource("9_fiayl")]
 position = Vector2(5152, 1168)
@@ -115,6 +117,7 @@ setTop = false
 setRight = false
 rightBoundry = 5384
 bottomBoundry = 1280
+scroll_time = 2.0
 
 [node name="BoundrySetter7" parent="Entities" unique_id=423822215 instance=ExtResource("9_fiayl")]
 position = Vector2(6560, 912)
@@ -122,7 +125,7 @@ setLeft = false
 setTop = false
 rightBoundry = 11584
 bottomBoundry = 1024
-scrollSpeed = 1.0
+scroll_time = 2.0
 
 [node name="BoundrySetter8" parent="Entities" unique_id=631010735 instance=ExtResource("9_fiayl")]
 position = Vector2(6560, 688)
@@ -130,6 +133,7 @@ setLeft = false
 setTop = false
 rightBoundry = 11584
 bottomBoundry = 1024
+scroll_time = 2.0
 
 [node name="BoundrySetter9" parent="Entities" unique_id=1535651636 instance=ExtResource("9_fiayl")]
 position = Vector2(6560, 464)
@@ -137,6 +141,7 @@ setLeft = false
 setTop = false
 rightBoundry = 11584
 bottomBoundry = 1024
+scroll_time = 2.0
 
 [node name="BoundrySetter10" parent="Entities" unique_id=1260125383 instance=ExtResource("9_fiayl")]
 position = Vector2(6560, 240)
@@ -144,6 +149,7 @@ setLeft = false
 setTop = false
 rightBoundry = 11584
 bottomBoundry = 1024
+scroll_time = 2.0
 
 [node name="BoundrySetter11" parent="Entities" unique_id=249147360 instance=ExtResource("9_fiayl")]
 position = Vector2(6560, 16)
@@ -151,6 +157,7 @@ setLeft = false
 setTop = false
 rightBoundry = 11584
 bottomBoundry = 1024
+scroll_time = 1.0
 
 [node name="BoundrySetter12" parent="Entities" unique_id=2054702956 instance=ExtResource("9_fiayl")]
 position = Vector2(10144, 912)
@@ -1101,6 +1108,7 @@ bossPath = NodePath("../Robotnik")
 keepTopLocked = false
 keepRightLocked = false
 lockTop = false
+ratchetScrollLeft = true
 
 [node name="Robotnik" parent="Boss" unique_id=2093113368 instance=ExtResource("29_he821")]
 position = Vector2(11008, 784)

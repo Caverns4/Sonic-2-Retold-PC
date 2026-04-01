@@ -16,7 +16,6 @@ const ACTION_NAMES: Array[String] = [
 ## String to append for two-player action checks.
 const PLAYER2STR: String = "_P2"
 
-signal assign_button_pressed()
 signal menu_exit()
 
 ## The current Player controller being modified

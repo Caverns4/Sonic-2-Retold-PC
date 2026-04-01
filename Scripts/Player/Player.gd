@@ -212,8 +212,6 @@ var limitBottom: int = 0
 # screen scroll locking as the camera scrolls
 var rachetScrollLeft: bool = false
 var rachetScrollRight: bool = false
-var rachetScrollTop: bool = false
-var rachetScrollBottom: bool = false
 
 var rotatableSprites: PackedStringArray = ["walk", "run", "peelOut", "hammerSwing"]
 var direction: float = scale.x
@@ -280,6 +278,11 @@ var superRingTimer: float = 1.0 #Time before a ring is taken.
 # How far in can the player can be towards the screen edge before they're limit_length
 var cameraMargin: float = 16
 
+# Variables responsible for shifting the camera's bound over time. left, top, right, bottom
+var camera_limits_target: Array[float] = [0,0,320,224]
+var camera_limits_current: Array[float] = [0,0,320,224]
+var camera_shift_time: float = 0.0
+
 ## A pole the player it grabbing onto.
 var poleGrabID: Node = null
 ## A node, if any, that id overrideing normal object control.
@@ -296,7 +299,7 @@ func _ready() -> void:
 	
 	intialize_camera()
 	init_player_bounds()
-	call_deferred("init_player_bounds") ## I had that I have to do this
+	call_deferred("init_player_bounds") ## I hate that I have to do this
 	call_deferred("snap_camera_to_limits")
 	
 	# verify that we're player 1
@@ -421,6 +424,12 @@ func init_player_bounds() -> void:
 	else:
 		limitTop = Global.hardBorderTop
 		limitBottom = Global.hardBorderBottom
+	if camera:
+		camera_limits_target[0] = limitLeft
+		camera_limits_target[1] = limitTop
+		camera_limits_target[2] = limitRight
+		camera_limits_target[3] = limitBottom
+	
 
 func intialize_camera() -> void:
 	# Camera settings
@@ -760,14 +769,16 @@ func _physics_process(delta: float) -> void:
 			shakeStrength = lerpf(shakeStrength,0.0,shakefade * delta)
 			camera.offset = RandomOffset()
 		
-	if Global.y_wrap:
-		var test_pos: float = global_position.y
-		global_position.y = wrapf(global_position.y,0,2048)
-		if camera and global_position.y != test_pos:
-			camera.global_position.y = wrapf(camera.global_position.y,0,2048)
-	# Death at border bottom
-	elif global_position.y > limitBottom and !Global.stage_cleared:
-		kill()
+		update_camera_limits(delta)
+		
+		if Global.y_wrap:
+			var test_pos: float = global_position.y
+			global_position.y = wrapf(global_position.y,0,2048)
+			if global_position.y != test_pos:
+				camera.global_position.y = wrapf(camera.global_position.y,0,2048)
+		# Death at border bottom
+		elif global_position.y > limitBottom and !Global.stage_cleared:
+			kill()
 	
 	# Stop movement at borders
 	if (global_position.x < limitLeft+cameraMargin or global_position.x > limitRight-cameraMargin):
@@ -799,7 +810,7 @@ func _physics_process(delta: float) -> void:
 				splash.z_index = sprite.z_index+10
 				get_parent().add_child(splash)
 			
-			# Elec shield/Fire shield logic is in HUD script (related to screen flashing)
+		# Elec shield/Fire shield logic is in HUD script (related to screen flashing)
 		# Exit water
 		if global_position.y < Global.waterLevel and is_in_water:
 			is_in_water = false
@@ -847,6 +858,9 @@ func RandomOffset() -> Vector2:
 
 ## Input buttons
 func set_inputs() -> void:
+	# If Player Control is negative, it means we're in a cutscene.
+	if playerControl < 0:
+		return
 	# player control inputs
 	# check if ai or player 2
 	if playerControl != 1:
@@ -1350,15 +1364,13 @@ func cam_update(forceMove: bool = false) -> void:
 	# Ratchet camera scrolling (locks the camera behind the player)
 	if rachetScrollLeft:
 		limitLeft = max(limitLeft,camera.get_screen_center_position().x-viewSize.x/2)
+		camera_limits_current[0] = limitLeft
+		camera_limits_target[0] = max(camera_limits_target[0],limitLeft)
 	if rachetScrollRight:
 		limitRight = max(limitRight,camera.get_screen_center_position().x+viewSize.x/2)
-	
-	if rachetScrollTop:
-		limitTop = max(limitTop,camera.get_screen_center_position().y-viewSize.y/2)
-	if rachetScrollBottom:
-		limitBottom = max(limitBottom,camera.get_screen_center_position().y+viewSize.y/2)
-	
-	#_adjust_camera_zoom()
+		camera_limits_current[2] = limitRight
+		camera_limits_target[2] = min(camera_limits_target[2],limitRight)
+
 
 func _adjust_camera_zoom() -> void:
 	if movement.length() > 600.0 and Global.zoomSize > 1:
@@ -1370,15 +1382,27 @@ func _adjust_camera_zoom() -> void:
 func lock_camera(time: float = 1) -> void:
 	camLockTime = max(time,camLockTime)
 
+func update_camera_limits(delta: float) -> void:
+	if camera_shift_time <= 0.0:
+		snap_camera_to_limits()
+		return
+	for i: int in 4:
+		camera_limits_current[i] = move_toward(camera_limits_current[i],camera_limits_target[i],camera_shift_time*(60*delta))
+	camera.limit_left = roundi(camera_limits_current[0])
+	camera.limit_top = roundi(camera_limits_current[1])
+	camera.limit_right = roundi(camera_limits_current[2])
+	camera.limit_bottom = roundi(camera_limits_current[3])
+
 func snap_camera_to_limits() -> void:
-	camera.limit_left = max(limitLeft,Global.hardBorderLeft)
-	camera.limit_right = min(limitRight,Global.hardBorderRight)
+	for i in 4:
+		camera_limits_current[i] = camera_limits_target[i]
+	camera.limit_left = roundi(camera_limits_current[0])
+	camera.limit_top = roundi(camera_limits_current[1])
+	camera.limit_right = roundi(camera_limits_current[2])
+	camera.limit_bottom = roundi(camera_limits_current[3])
 	if Global.y_wrap:
 		camera.limit_top = -4096
 		camera.limit_bottom = 4096
-	else:
-		camera.limit_top = max(limitTop,Global.hardBorderTop)
-		camera.limit_bottom = min(limitBottom,Global.hardBorderBottom)
 
 # Water bubble timer
 func _on_BubbleTimer_timeout() -> void:
