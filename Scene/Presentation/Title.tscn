@@ -502,7 +502,6 @@ colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1)
 
 [node name="TitleScreen" type="Node2D" unique_id=584188141]
 script = ExtResource("1_jsjd7")
-demo_flag = true
 
 [node name="TitleBanner" type="Sprite2D" parent="." unique_id=2145731558]
 z_index = 2
@@ -594,9 +593,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -68.0
-offset_top = 11.0
+offset_top = -48.0
 offset_right = 68.0
-offset_bottom = 51.0
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_8i1fh")
@@ -635,10 +634,8 @@ modulate = Color(1, 1, 0, 1)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 52.0
-offset_right = 154.0
-offset_bottom = 60.0
+offset_top = -8.0
+offset_right = 152.0
 grow_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_yuhp3")

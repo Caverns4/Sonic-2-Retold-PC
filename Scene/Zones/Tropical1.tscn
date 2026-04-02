@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://doa3l4i0elj6x"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_5m80k"]
-[ext_resource type="AudioStream" uid="uid://c5w5g34eta480" path="res://Audio/Soundtrack/GremeraldHillZone.ogg" id="2_jmnhx"]
+[ext_resource type="AudioStream" uid="uid://cmtn72t7dtgf" path="res://Audio/Soundtrack/s2br_Tropical.ogg" id="2_vnrac"]
 [ext_resource type="PackedScene" uid="uid://dp7idkejifmm1" path="res://Scene/Backgrounds/13-TropicalJungle.tscn" id="3_gh5a3"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_svd1m"]
 [ext_resource type="TileSet" uid="uid://uplqwsi0o4gi" path="res://Tileset/Levels/EHZ_HTZ_Tiles.tres" id="5_yua5c"]
@@ -34,10 +34,7 @@
 [node name="Tropical1" type="Node2D" unique_id=1112146532]
 script = ExtResource("1_5m80k")
 zone_id = 13
-zone_name = "Totally Emerald"
-zone_text = "Hill Zone"
-music = ExtResource("2_jmnhx")
-music2P = ExtResource("2_jmnhx")
+music = ExtResource("2_vnrac")
 animal1 = 9
 animal2 = 13
 defaultRightBoundry = 20480

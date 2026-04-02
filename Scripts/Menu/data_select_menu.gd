@@ -45,7 +45,11 @@ func _physics_process(_delta: float) -> void:
 		state = MENU_STATE.DECIDED
 
 func show_delete_options() -> void:
-	selected_save_slot = get_viewport().gui_get_focus_owner()
+	var test: Control = get_viewport().gui_get_focus_owner()
+	if test is DataSelectPanel:
+		selected_save_slot = test
+	else:
+		return
 	if selected_save_slot is DataSelectPanel and selected_save_slot.save_game_id > 0:
 		var delete_popup_scene: GeneralPopUpMenu = delete_popup.instantiate()
 		await set_controls_locked_state(true)
