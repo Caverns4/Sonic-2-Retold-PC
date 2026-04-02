@@ -1,6 +1,8 @@
 class_name DataSelectPanel
 extends Button
 
+@onready var parent: Window = get_tree().root
+
 var character_id: int = 0
 var level_id: Global.ZONES = Global.ZONES.EMERALD_HILL
 
@@ -14,10 +16,18 @@ var data: Array = []:
 		data = value
 		_update_save_preview()
 
-signal press(saved_game_id: int)
+signal press(selection: DataSelectPanel)
+signal select(selection: DataSelectPanel)
+
+
+func _ready() -> void:
+	focus_entered.connect(on_hover)
 
 func _update_save_preview() -> void:
 	pass
 
+func on_hover() -> void:
+	select.emit(self)
+
 func _on_pressed() -> void:
-	press.emit(save_game_id)
+	press.emit(self)

@@ -78,26 +78,13 @@ text = "[center]SELECT DATA"
 scroll_active = false
 autowrap_mode = 0
 
-[node name="Button" type="Button" parent="." unique_id=1426556726]
+[node name="OptionsButton" type="Button" parent="." unique_id=1426556726]
 layout_mode = 0
 offset_right = 84.0
 offset_bottom = 24.0
 theme_override_constants/h_separation = 0
 text = "Options"
 icon = ExtResource("4_wvq33")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1738603278]
-visible = false
-position = Vector2(0, -32)
-texture = ExtResource("4_wvq33")
-centered = false
-
-[node name="Label" type="Label" parent="Sprite2D" unique_id=1024834224]
-offset_left = 16.0
-offset_top = 4.0
-offset_right = 72.0
-offset_bottom = 12.0
-text = "options"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1662878450]
 clip_contents = false
@@ -166,3 +153,5 @@ position = Vector2(160, 112)
 limit_left = 0
 limit_top = 0
 limit_bottom = 224
+
+[connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]

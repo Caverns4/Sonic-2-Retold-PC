@@ -1,6 +1,5 @@
 extends DataSelectPanel
 
-
 func _update_save_preview() -> void:
 	await get_tree().process_frame
 	%CharacterIcon.frame = character_id

@@ -2,10 +2,6 @@ extends DataSelectPanel
 
 @onready var text_label: Label = $Label
 
-#func _ready() -> void:
-#	data = Global.LoadSaveGameSlotData(save_game_id)
-#	_update_save_preview()
-
 func _update_save_preview() -> void:
 	await get_tree().process_frame
 	if data:

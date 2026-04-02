@@ -5,9 +5,12 @@ extends GeneralPopUpMenu
 @onready var del_button: Button = $Panel/NinePatchRect/DeleteButton
 @onready var cancel_button: Button = $Panel/NinePatchRect/CancelButton
 
+var file_number: int = 1
+
 func _ready() -> void:
 	SoundDriver.play_sound(sfx_select)
 	cancel_button.grab_focus()
+	query_text.text = "Delete file " + str(file_number) + "?"
 
 func _on_cancel_button_pressed() -> void:
 	SoundDriver.play_sound(sfx_cancel)

@@ -3,7 +3,7 @@ extends Node2D
 # next scene
 @export var nextScene: String = "res://Scene/Presentation/Title.tscn"
 # already changed is used to check that the powered by isn't already being skipped
-var alreadyChanged: bool = false
+var ending_scene: bool = false
 var globalTime: float = 0.0
 
 func _ready() -> void:
@@ -17,27 +17,32 @@ func _ready() -> void:
 	await get_tree().create_timer(1.0).timeout
 	
 	# play title if the scene isn't already skipping
-	if !alreadyChanged:
+	if !ending_scene:
 		$AnimationPlayer.play("Animation")
 		#$Emerald.play()
 		# wait for the animation to finish
 		await $AnimationPlayer.animation_finished
 		# do another check, if the scene's not already fading then fade to the next
-		if !alreadyChanged:
-			alreadyChanged = true
-			$Warp.play()
-			await Main.change_scene(nextScene,"WhiteOut",1,false)
+		await end_scene()
 
 func _process(delta: float) -> void:
 	globalTime += delta
 
 
 func _input(event: InputEvent) -> void:
+	if ending_scene or globalTime < 1.0:
+		return
 	# check if start gets pressed
-	if event.is_action_pressed("ui_pause") and !alreadyChanged and globalTime > 1.5:
-		alreadyChanged = true # used so that room skipping isn't doubled
-		$Warp.play()
-		await Main.change_scene(nextScene,"WhiteOut",1,false)
+	if event.is_action_pressed("ui_pause"):
+		await end_scene()
+	elif event is InputEventMouseButton and event.is_pressed():
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			await end_scene()
+
+func end_scene() -> void:
+	ending_scene = true
+	$Warp.play()
+	await Main.change_scene(nextScene,"WhiteOut",1,false)
 
 func playDashSound() -> void:
 	$DashSFX.play()

@@ -6,7 +6,7 @@ extends Node2D
 var title_screen: String = "res://Scene/Presentation/Title.tscn"
 var explosion: PackedScene = preload("res://Entities/Misc/GenericParticle.tscn")
 
-var endScene = false
+var endScene: bool = false
 
 func _ready() -> void:
 	SoundDriver.playMusic(music)
@@ -16,8 +16,11 @@ func _ready() -> void:
 func _input(event) -> void:
 	if !endScene:
 		# finish character select if start is pressed
-		if (event.is_action_pressed("gm_pause")) and !endScene:
+		if (event.is_action_pressed("gm_pause")):
 			returnTitleScreen()
+		elif event is InputEventMouseButton and event.is_pressed():
+			if event.button_index == MOUSE_BUTTON_LEFT:
+				returnTitleScreen()
 
 func returnTitleScreen() -> void:
 	if !endScene:
