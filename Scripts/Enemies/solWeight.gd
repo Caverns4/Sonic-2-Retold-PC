@@ -6,7 +6,7 @@ var animationTimer: float = 0.1
 var animationFrame: int = 0
 var maxFrames: int = 1
 
-const GRAVITY = 800
+const GRAVITY: int = 800
 
 var direction: int = -1
 var ground: bool = false

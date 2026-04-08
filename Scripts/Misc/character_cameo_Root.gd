@@ -9,24 +9,23 @@ const JUMP_VELOCITY = -400.0
 "Shield","Elec Shield","Fire Shield",
 "Bubble Shield","Super","Teleport",
 "Boost","Eggman","?",
-"Extra Life","Tails Life") var present = 0
-@export var characterTexture = preload("res://Graphics/Misc/Kris.png")
+"Extra Life","Tails Life") var present: int = 0
+@export var characterTexture: Texture2D = preload("res://Graphics/Misc/Kris.png")
 
 #Object state controllers
 enum STATES{IDLE,THROW,JUMP}
-var state = STATES.IDLE
-var stateTimer = WAIT_TIME
-var direction = -1
-var active = false
+var state: STATES = STATES.IDLE
+var stateTimer: float = WAIT_TIME
+var direction: int = -1
+var active: bool = false
 
-var players = [] # targets in the sensor area
+var players: Array[Player2D] = [] # targets in the sensor area
 
 #Object projectile Controls
-var drop = preload("res://Entities/Items/Monitor.tscn")
-var droppedItem = null
+var drop: PackedScene = preload("res://Entities/Items/Monitor.tscn")
 
-@onready var sprite = $CharacterBody2D/CharacterSprite
-@onready var character = $CharacterBody2D
+@onready var sprite: Sprite2D = $CharacterBody2D/CharacterSprite
+@onready var character: CharacterBody2D = $CharacterBody2D
 
 func _ready() -> void:
 	if characterTexture:
@@ -42,14 +41,14 @@ func _physics_process(delta: float) -> void:
 	
 	match state:
 		STATES.IDLE:
-			UpdateLookDirection()
+			sprite.flip_h = UpdateLookDirection()
 			if stateTimer <- 0.0:
 				state = STATES.THROW
 				sprite.frame = 1
 				stateTimer = WAIT_TIME/2
 				ThrowGift()
 		STATES.THROW:
-			UpdateLookDirection()
+			sprite.flip_h = UpdateLookDirection()
 			if stateTimer <- 0.0:
 				state = STATES.JUMP
 				sprite.frame = 2
@@ -63,23 +62,19 @@ func _physics_process(delta: float) -> void:
 	if character.global_position.y > 4096:
 		queue_free()
 
-func UpdateCharacterMotion(delta):
+func UpdateCharacterMotion(delta: float) -> void:
 	if character.is_on_floor():
 		character.velocity.y = clampf(character.velocity.y,-3200,0)
 	else:
 		character.velocity += character.get_gravity() * delta
 	character.move_and_slide()
 
-func UpdateLookDirection():
+func UpdateLookDirection() -> bool:
 	direction = sign(global_position.x - Global.players[0].global_position.x)
-	#character.global_scale.y = direction
-	if direction > 0:
-		sprite.flip_h = false
-	else:
-		sprite.flip_h = true
+	return direction < 0
 
-func ThrowGift():
-	droppedItem = drop.instantiate()
+func ThrowGift() -> void:
+	var droppedItem: Node2D = drop.instantiate()
 	get_parent().add_child(droppedItem)
 	# set position with offset
 	droppedItem.global_position = global_position

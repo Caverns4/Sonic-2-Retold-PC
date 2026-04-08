@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=156 format=3 uid="uid://1x5agi75qcl8"]
+[gd_resource type="TileSet" format=3 uid="uid://1x5agi75qcl8"]
 
 [ext_resource type="Texture2D" uid="uid://bk5bmp07mkufr" path="res://Graphics/Backgrounds/DHZ/DHZBGBlocks.png" id="1_8ohon"]
 [ext_resource type="Texture2D" uid="uid://bu4jkaf6xqdod" path="res://Graphics/Tiles/DHZ/DHZ_Blocks.png" id="1_vsr5o"]

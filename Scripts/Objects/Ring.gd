@@ -5,7 +5,7 @@ var lifetime: float = MAX_LIFETIME
 var velocity: Vector2 = Vector2.ZERO
 var player: Player2D
 var magnet: Area2D = null
-var magnetShape: CollisionObject2D = null
+var magnetShape: CollisionShape2D = null
 var ringacceleration: Array[float] = [0.75,0.1875]
 var Particle: PackedScene = preload("res://Entities/Misc/GenericParticle.tscn")
 
@@ -62,18 +62,18 @@ func _physics_process(delta: float) -> void:
 		
 		
 
-func _on_Hitbox_body_entered(body: Player2D) -> void:
+func _on_Hitbox_body_entered(body: Node2D) -> void:
 	if (player != body):
 		if (!scattered) or (scattered and lifetime < (3.3)):
 			player = body
 
 
-func _on_Hitbox_body_exited(body: Player2D) -> void:
+func _on_Hitbox_body_exited(body: Node2D) -> void:
 	if (player == body):
 		player = null
 
 
-func _on_Hitbox_area_shape_entered(_area_id: int, area:Area2D, _area_shape:CollisionShape2D, _local_shape: CollisionShape2D) -> void:
-	if (magnet == null):
+func _on_hitbox_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
+	if !magnet:
 		magnet = area
 		magnetShape = area.get_child(0)

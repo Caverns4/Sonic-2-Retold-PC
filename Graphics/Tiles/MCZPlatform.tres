@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dn42tsjf760q0"]
+[gd_resource type="TileSet" format=3 uid="uid://dn42tsjf760q0"]
 
 [ext_resource type="Texture2D" uid="uid://ckl467lne71lc" path="res://Graphics/Gimmicks/CollapsingPlatform.png" id="1_figi8"]
 
