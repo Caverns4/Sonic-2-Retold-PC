@@ -1,24 +1,24 @@
 extends BossBase
 
-@export var entrySound = preload("res://Audio/SFX/Boss/s2br_helicopter.wav")
+@export var entrySound: AudioStream = preload("res://Audio/SFX/Boss/s2br_helicopter.wav")
 
 # you can use these to control behaviour
-var phase = 0
-var soundTimer = 0.0
+var phase: int = 0
+var soundTimer: float = 0.0
 
-@onready var getPose = [$LeftPoint.global_position,$RightPoint.global_position]
-var currentPoint = 1
+@onready var getPose: Array[Vector2] = [$LeftPoint.global_position,$RightPoint.global_position]
+var currentPoint: int = 1
 
-var direction = -1 #left is -1, right is 1
+var direction: int = -1 #left is -1, right is 1
 
-var animationPriority = ["default","move","laugh","hit","exploded"]
+var animationPriority: Array[StringName] = ["default","move","laugh","hit","exploded"]
 
-@onready var topAnimator = $Helicopter
-var drillCar = null #Node
-var readyEnterCar = false
-var targetPosition = Vector2.ZERO
+@onready var topAnimator: AnimationPlayer = $Helicopter
+var drillCar: CharacterBody2D = null #Node
+var readyEnterCar: bool = false
+var targetPosition: Vector2 = Vector2.ZERO
 
-func _ready():
+func _ready() -> void:
 	# move to the set currentPoint position before the boss starts (plus 128 pixels higher)
 	global_position = getPose[currentPoint]
 	# run laugh function for every time the player gets hit
@@ -29,7 +29,7 @@ func _ready():
 	hp = 255 #Can't kill Eggman til he lands, but can damage him for fun
 	super()
 
-func _process(delta):
+func _process(delta: float) -> void:
 	updateDirection()
 	
 	# flashing for the egg mobile 
@@ -65,7 +65,7 @@ func _process(delta):
 				direction = 1
 				_mark_defeated()
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	# move boss
 	global_position += velocity*delta
 	# check if alive
@@ -113,7 +113,7 @@ func _physics_process(delta):
 		set_animation("hit",flashTimer)
 	
 
-func updateHoveringPos(delta):
+func updateHoveringPos(delta: float) -> void:
 	# change the hover offset
 	global_position.y = global_position.y-hoverOffset
 	hoverOffset = move_toward(hoverOffset,cos(Global.levelTime*4)*4,delta*10)
@@ -121,12 +121,12 @@ func updateHoveringPos(delta):
 
 
 # animation to play, time is how long the animation should play for until it stops
-func set_animation(animation = "default", time = 0.0):
+func set_animation(animation: StringName = "default", time: float = 0.0) -> void:
 	# check that the animation exists in the animationPriority list
 	if animationPriority.has(animation):
 		# if the animation exists then compare the position
-		var animID = animationPriority.find(animation)
-		var currentAnimID = animationPriority.find($EggMobile/Robotnik.animation)
+		var animID: int = animationPriority.find(animation)
+		var currentAnimID: int = animationPriority.find($EggMobile/Robotnik.animation)
 		
 		# if the new animation ID is higher then the current one or the animation time isn't running then play the animation
 		if animID > currentAnimID or $AnimationTime.is_stopped():
@@ -137,14 +137,14 @@ func set_animation(animation = "default", time = 0.0):
 		$EggMobile/Robotnik.play(animation)
 		$AnimationTime.start(time)
 
-func updateDirection():
+func updateDirection() -> void:
 	if direction > 0:
 		$EggMobile.scale.x = -1
 	else:
 		$EggMobile.scale.x = 1
 
 # boss defeated
-func _on_boss_defeated():
+func _on_boss_defeated() -> void:
 	defeated_flag = true
 	if drillCar:
 		drillCar.die()
@@ -153,22 +153,22 @@ func _on_boss_defeated():
 	$SmokeTimer.start(0.01667*7)
 
 # do a laugh for 1 second
-func do_laugh():
+func do_laugh() -> void:
 	set_animation("laugh",1)
 
-func play_intro(delta):
+func play_intro(delta: float) -> void:
 	soundTimer -= delta
 	if soundTimer <= 0.0:
 		SoundDriver.play_sound(entrySound)
 		soundTimer = 0.3
 
-func _on_SmokeTimer_timeout():
+func _on_SmokeTimer_timeout() -> void:
 	# check that deathtimer's still going and that we are actually defeated.
 	if defeated_flag and deathTimer > 1.5:
 		# play explosion sound
 		$Explode.play()
 		# spawn exposion particles
-		var expl = Explosion.instantiate()
+		var expl: Node2D = Explosion.instantiate()
 		# set animation
 		expl.play("BossExplosion")
 		expl.z_index = 10
@@ -178,6 +178,6 @@ func _on_SmokeTimer_timeout():
 		expl.global_position = global_position+Vector2(randf_range(-32,32),randf_range(-32,32))
 
 
-func _on_drill_eggman_car_car_touched():
+func _on_drill_eggman_car_car_touched() -> void:
 	if !defeated_flag:
 		readyEnterCar = true

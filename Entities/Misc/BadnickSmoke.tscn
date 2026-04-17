@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://b8rfs0y4ldud2"]
+[gd_scene format=3 uid="uid://b8rfs0y4ldud2"]
 
 [ext_resource type="Script" uid="uid://jlaakv7f7ia5" path="res://Scripts/Misc/BadnickSmoke.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://nc4htsilrkus" path="res://Graphics/Misc/explosion3.png" id="2_xotpe"]
@@ -265,13 +265,13 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="BadnickSmoke" type="AnimatedSprite2D"]
+[node name="BadnickSmoke" type="AnimatedSprite2D" unique_id=1033286196]
 sprite_frames = SubResource("27")
 animation = &"fire2"
 autoplay = "fire2"
 script = ExtResource("1")
 
-[node name="Explode" type="AudioStreamPlayer" parent="."]
+[node name="Explode" type="AudioStreamPlayer" parent="." unique_id=624623294]
 stream = ExtResource("5_qguoe")
 autoplay = true
 bus = &"SFX"

@@ -3,14 +3,14 @@ extends Node2D
 
 @export var platform_sprite: Texture2D = preload("res://Graphics/Tiles/EHZ_HTZ/EHZ_Platform_Small.png")
 ## This is actually where the platform *starts*
-@export var endPosition = Vector2(256,0)
+@export var endPosition: Vector2 = Vector2(256,0)
 ## How fast this platform should move.
-@export var speed = 1.0
+@export var speed: float = 1.0
 ## Initial offset, this can be used to offset the movements between other platforms
-@export var offset = 0.0
+@export var offset: float = 0.0
 
 ## If this platform should drop slightly when a player stands on top
-@export var dropSlightly = true
+@export var dropSlightly: bool = true
 ## Time to wait(seconds) before this platform should fall. If 0, do not fall.
 @export var fallTimer: float = 0.0
 ## If true, all collision layers are active for this object.
@@ -20,14 +20,14 @@ extends Node2D
 ## Distance from the top to offset the collision by.
 @export var floorOffset: int = 0
 
-var offsetTimer = 0
-var dropDistance = 0
-var fallSpeed = 0
-var fallActive = false
-var doDrop = false
+var offsetTimer: float = 0
+var dropDistance: float = 0
+var fallSpeed: float = 0
+var fallActive: bool = false
+var doDrop: bool = false
 
 
-func _ready():
+func _ready() -> void:
 	# Change platform shape
 	if fullySolid:
 		$Platform/Shape3D.shape.size.x = platform_sprite.get_size().x
@@ -50,7 +50,7 @@ func _ready():
 		offsetTimer = 0
 	
 
-func _process(delta):
+func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		if fullySolid:
 			$Platform/Shape3D.shape.size.x = platform_sprite.get_size().x
@@ -64,17 +64,15 @@ func _process(delta):
 		# Offset timer for the editor to display
 		offsetTimer = wrapf(offsetTimer+(delta*speed),0,PI*2)
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	if !Engine.is_editor_hint():
 		# Sync the position up to tween between the start and end point based on level time
-		var getPos = (endPosition*(cos((Global.globalTimer*speed)+offset)*0.5+0.5))
+		var getPos: Vector2 = (endPosition*(cos((Global.globalTimer*speed)+offset)*0.5+0.5))
 		# set platform to rounded position to prevent jittering
 		if fallSpeed == 0:
 			$Platform.position = (getPos+Vector2(0,dropDistance)).round()
 		else:
 			$Platform.translate(Vector2(0,fallSpeed))
-		
-		# drop
 		
 		if doDrop:
 			# if a player collision was detected then activate fall if fall timer greater then 0
@@ -104,7 +102,7 @@ func _physics_process(delta):
 		doDrop = false
 
 
-func _draw():
+func _draw() -> void:
 	if Engine.is_editor_hint():
 		# Draw the platform positions for the editor
 		if speed > 0 or endPosition != Vector2.ZERO:

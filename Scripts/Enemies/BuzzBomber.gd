@@ -1,32 +1,32 @@
 @tool
 extends EnemyBase
 
-var Projectile = preload("res://Entities/Enemies/Projectiles/BuzzBomberProjectile.tscn")
-@export var bulletSound = preload("res://Audio/SFX/Objects/s2br_Projectile.wav")
+var Projectile: PackedScene = preload("res://Entities/Enemies/Projectiles/BuzzBomberProjectile.tscn")
+@export var bulletSound: AudioStream = preload("res://Audio/SFX/Objects/s2br_Projectile.wav")
 ## Not a thing in Sonic 2. Do not use.
 @export var flyDirection: float = 0.0 # (float,-180.0,180.0)
 ## Total distance travelled in pixels
 @export var x_range: int = 256
 @export var speed: float = 60
 @onready var origin: Vector2 = global_position
-@onready var animator = $Sprite2D/AnimationPlayer
+@onready var animator: AnimationPlayer = $Sprite2D/AnimationPlayer
 
 var editor_offset: float = 1.0
 var side: int = -1
 var target_pos: Vector2 = Vector2.ZERO
 var firing_flag: bool = false
 
-func _ready():
+func _ready() -> void:
 	# clear fire if destroyed before shooting
 	#var _con = connect("destroyed",Callable(self,"clear_fire"))
 	if !Engine.is_editor_hint():
 		$VisibleOnScreenEnabler2D.visible = true
 		$Sprite2D/PlayerCheck.visible = true
-		var direction = Vector2(x_range*clamp(side,-1,0),0).rotated(deg_to_rad(flyDirection))
+		var direction: Vector2 = Vector2(x_range*clamp(side,-1,0),0).rotated(deg_to_rad(flyDirection))
 		target_pos = origin + direction
 		super()
 
-func _process(delta):
+func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		queue_redraw()
 		
@@ -37,7 +37,7 @@ func _process(delta):
 	else:
 		super(delta)
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	if !Engine.is_editor_hint():
 		# move if not firing
 		if !firing_flag:
@@ -69,18 +69,18 @@ func _physics_process(delta):
 			else:
 				calc_dir()
 
-func calc_dir():
+func calc_dir() -> void:
 	# calculate direction based on side movement and rotation
-	var getDir = sign(Vector2(side,0).rotated(deg_to_rad(flyDirection)).x)
+	var getDir: int = sign(Vector2(side,0).rotated(deg_to_rad(flyDirection)).x)
 	# check that it's not 0 so it doesn't become invisible
 	if getDir != 0:
 		$Sprite2D.scale.x = -getDir
 
 
-func _draw():
+func _draw() -> void:
 	if Engine.is_editor_hint():
-		var sprite = $Sprite2D/Buzzer
-		var size = Vector2(sprite.texture.get_width()/sprite.hframes,sprite.texture.get_height()/sprite.vframes)
+		var sprite: Sprite2D = $Sprite2D/Buzzer
+		var size: Vector2 = Vector2(sprite.texture.get_width()/sprite.hframes,sprite.texture.get_height()/sprite.vframes)
 		# first buzzer pose
 		draw_texture_rect_region(sprite.texture,
 		Rect2(Vector2(0,0).rotated(deg_to_rad(flyDirection))-size/2,
@@ -100,7 +100,7 @@ func _draw():
 		size),Color(1,1,1,0.5))
 
 
-func _on_PlayerCheck_body_entered(_body):
+func _on_PlayerCheck_body_entered(_body: Player2D) -> void:
 	if !firing_flag:
 		firing_flag = true
 		
@@ -114,13 +114,13 @@ func _on_PlayerCheck_body_entered(_body):
 		await $Timer.timeout
 		
 		# fire projectile
-		var bullet = Projectile.instantiate()
+		var bullet: Node2D = Projectile.instantiate()
 		add_child(bullet)
 		
 		# set position with offset
 		bullet.global_position = global_position+Vector2(0*side,16)
 		bullet.scale.x = -side
-		var alive = weakref(bullet)
+		var alive: RefCounted = weakref(bullet)
 		
 		# wait for fire aniamtion to finish
 		$Timer.start(16.0/60.0)

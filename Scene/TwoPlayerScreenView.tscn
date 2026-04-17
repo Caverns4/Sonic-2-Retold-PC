@@ -19,11 +19,9 @@ z_as_relative = false
 offset_right = 320.0
 offset_bottom = 112.0
 size_flags_vertical = 4
-stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer" unique_id=15576852]
 handle_input_locally = false
-scaling_3d_mode = 1
 fsr_sharpness = 0.0
 canvas_item_default_texture_filter = 0
 size = Vector2i(320, 112)
@@ -43,11 +41,9 @@ offset_top = 112.0
 offset_right = 320.0
 offset_bottom = 224.0
 size_flags_vertical = 6
-stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer2" unique_id=661822979]
 handle_input_locally = false
-scaling_3d_mode = 1
 fsr_sharpness = 0.0
 canvas_item_default_texture_filter = 0
 size = Vector2i(320, 112)

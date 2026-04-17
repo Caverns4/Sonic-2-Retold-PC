@@ -1,13 +1,13 @@
 extends Area2D
-var active = false
+var active: bool = false
 ## This is now setup at runtime, basically useless.
-@export var checkpoint_id = 0
+@export var checkpoint_id: int = 0
 
-var specialStageEntry = preload("res://Entities/Items/CheckpointStars.tscn")
+var specialStageEntry: PackedScene = preload("res://Entities/Items/CheckpointStars.tscn")
 
-var player_memory = [] #List of Players that have triggered this Checkpoint
+var player_memory: Array[Player2D] = [] #List of Players that have triggered this Checkpoint
 
-func _ready():
+func _ready() -> void:
 	# add self to global check point list (it's cleared in the stage start script in global)
 	Global.checkpoints.append(self)
 	checkpoint_id = Global.checkpoints.find(self)
@@ -25,8 +25,7 @@ func _ready():
 					i.get_node("Spinner").play("flash")
 
 
-func activate(player: Player2D):
-	
+func activate(player: Player2D) -> void:
 	# queue flash, incase an animation is already playing
 	$Spinner.queue("flash")
 	active = true
@@ -68,5 +67,3 @@ func _on_Checkpoint_body_entered(body: CharacterBody2D) -> void:
 			$Checkpoint.play()
 			activate(body)
 			player_memory.append(body)
-	
-	

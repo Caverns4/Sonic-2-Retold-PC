@@ -4,7 +4,7 @@ extends Node2D
 
 var players: Array = []
 var active: bool = false
-var motionScale = 0.0
+var motionScale: float = 0.0
 var slide_position: float = 0
 
 func _ready() -> void:
@@ -13,12 +13,12 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if !active:
-		for i in players:
+		for i: Player2D in players:
 			if i.ground:
 				active = true
 	else:
 		slide_position = move_toward(slide_position,slide_distance,delta*64)
-		var getPos = Vector2(slide_position,0)
+		var getPos: Vector2 = Vector2(slide_position,0)
 		$DHZ_SpikeBlock.position = (getPos).round()
 		
 		if !$VisibleOnScreenNotifier2D.is_on_screen():

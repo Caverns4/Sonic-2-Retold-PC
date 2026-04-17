@@ -1,6 +1,7 @@
 extends Node2D
 
 const MAXSPEED = 1.5
+const yOffset: float = 16
 
 enum STATES{INTRO,WAITING,EXIT}
 var state: int = STATES.INTRO
@@ -23,7 +24,7 @@ func _ready() -> void:
 	speed = 0
 
 
-func _process(delta):
+func _process(delta: float) -> void:
 	if active:
 		# stop level timer (prevents time over)
 		Global.timerActive = false
@@ -39,7 +40,7 @@ func _process(delta):
 			Global.save_level_data(player.respawnPosition)
 			
 			# fade to new scene
-			Main.change_scene("res://Scene/SpecialStage/SpecialStage.tscn","WhiteOut",1.0,false)
+			await Main.change_scene("res://Scene/SpecialStage/SpecialStage.tscn","WhiteOut",1.0,false)
 			# wait for scene to fade
 			await Main.scene_faded
 			queue_free()
@@ -63,9 +64,8 @@ func _physics_process(delta: float) -> void:
 	frameVar += delta*30
 	
 	# Calcutlate direction
-	var yOffset = 16
-	var direction = Vector2.DOWN
-	var xOffset = 0.0
+	var direction: Vector2 = Vector2.DOWN
+	var xOffset: float = 0.0
 	for i in spinningStars.size():
 		direction = Vector2.DOWN.rotated(
 			deg_to_rad(

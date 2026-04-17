@@ -1,21 +1,20 @@
 extends CharacterBody2D
 
 @export_enum("Front","Back") var wheelType: String = "Front"
-var anim = "Front_RESET"
-var free = false
-var parent = null
+var anim: StringName = "Front_RESET"
+var free: bool = false
+var parent: Node2D = null
 
-func _ready():
-	if Global.two_player_mode:
-		queue_free()
-	
+func _ready() -> void:
+	#if Global.two_player_mode:
+	#	queue_free()
 	if wheelType == "Back":
 		z_index = 0
 	else:
 		z_index = 2
 
-func _physics_process(delta):
-	var curParent = get_parent().parent
+func _physics_process(delta: float) -> void:
+	var curParent: Node2D = get_parent().parent
 	if curParent and curParent.flashTimer > 0:
 		$Flash.visible = !$Flash.visible
 	else:
@@ -32,7 +31,7 @@ func _physics_process(delta):
 	$Flash.frame = $Sprite2D.frame
 	$Flash.flip_h = $Sprite2D.flip_h
 
-func updateAnim(xMove):
+func updateAnim(xMove: float) -> void:
 	if xMove < 0:
 		$Sprite2D.flip_h = false
 	elif xMove > 0:
@@ -43,5 +42,4 @@ func updateAnim(xMove):
 		anim += "_Drive"
 	else:
 		anim += "_RESET"
-	
 	$AnimationPlayer.play(anim)

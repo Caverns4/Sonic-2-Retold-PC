@@ -2,60 +2,55 @@
 extends StaticBody2D
 
 ## Red springs have more launch power than yellow springs.
-@export_enum("Yellow", "Red") var type = 0
-@export_enum("Up", "Down", "Right", "Left", "Diagonal Up Right", "Diagonal Up Left", "Diagonal Down Right", "Diagonal Down Left") var springDirection = 0
+@export_enum("Yellow", "Red") var type: int = 0:
+	set(value):
+		type = value
+		set_spring()
+	
+@export_enum("Up", "Down", "Right", "Left", "Diagonal Up Right", "Diagonal Up Left", "Diagonal Down Right", "Diagonal Down Left") var spring_direction: int = 0:
+	set(value):
+		spring_direction = value
+		set_spring()
 ## Kill transitional speed. If true, momentum no aligning with the launch direction will be haulted.
-@export var killTransSpeed = true
-var hitDirection = Vector2.UP
-var animList = ["SpringUp","SpringRight","SpringUpLeft","SpringUpRight"]
-var animID = 0
-var dirMemory = springDirection
-var typeMemory = type
-var speed = [10,16]
+@export var kill_lateral_motion: bool = true
+var hitDirection: Vector2 = Vector2.UP
+var animList: Array[StringName] = ["SpringUp","SpringRight","SpringUpLeft","SpringUpRight"]
+var animID: int = 0
+const speed: Array[float] = [10,16]
 
-var springTextures = [preload("res://Graphics/Gimmicks/springs_yellow.png"),preload("res://Graphics/Gimmicks/springs_red.png")]
+var springTextures: Array[Texture2D] = [preload("res://Graphics/Gimmicks/springs_yellow.png"),preload("res://Graphics/Gimmicks/springs_red.png")]
 
-@export var spring_sfx = preload("res://Audio/SFX/Gimmicks/s2br_Spring.wav")
+@export_group("Effect Properties")
+@export var spring_sfx: AudioStream = preload("res://Audio/SFX/Gimmicks/s2br_Spring.wav")
 
-func _ready():
-	set_spring()
-
-func _process(_delta):
-	if Engine.is_editor_hint():
-		if (springDirection != dirMemory or typeMemory != type):
-			dirMemory = springDirection
-			typeMemory = type
-			set_spring()
-
-
-func set_spring():
-	match (springDirection):
+func set_spring() -> void:
+	match (spring_direction):
 		0, 1: # up, down
 			$HitBox.disabled = false
 			$DiagonalHitBox/AreaShape.disabled = true
 			animID = 0
 			$HitBox.rotation = deg_to_rad(0)
-			scale = Vector2(1,1-(springDirection*2))
-			hitDirection = Vector2(0,-1+(springDirection*2))
+			scale = Vector2(1,1-(spring_direction*2))
+			hitDirection = Vector2(0,-1+(spring_direction*2))
 		2, 3: # right, left
 			$HitBox.disabled = false
 			$DiagonalHitBox/AreaShape.disabled = true
 			animID = 1
 			$HitBox.rotation = deg_to_rad(90)
-			scale = Vector2(1-((springDirection-2)*2),1)
-			hitDirection = Vector2(1-((springDirection-2)*2),0)
+			scale = Vector2(1-((spring_direction-2)*2),1)
+			hitDirection = Vector2(1-((spring_direction-2)*2),0)
 		4, 6: #diagonal right
 			$HitBox.disabled = true
 			$DiagonalHitBox/AreaShape.disabled = false
 			animID = 3
-			scale = Vector2(1,1-(springDirection-4))
+			scale = Vector2(1,1-(spring_direction-4))
 			# place super.normalized() at the end for CD physics
 			hitDirection = scale*Vector2(1,-1)
 		5, 7: #diagonal left
 			$HitBox.disabled = true
 			$DiagonalHitBox/AreaShape.disabled = false
 			animID = 2
-			scale = Vector2(1,1-(springDirection-5))
+			scale = Vector2(1,1-(spring_direction-5))
 			# place super.normalized() at the end for CD physics
 			hitDirection = -scale
 			
@@ -65,11 +60,11 @@ func set_spring():
 		$Spring.texture = springTextures[type]
 
 # Collision check
-func physics_collision(body: Player2D, hitVector):
+func physics_collision(body: Player2D, hitVector: Vector2) -> void:
 	# check that the players hit direction matches the direction we're facing (ignored for diagonal)
 	if hitVector == -hitDirection:
 		# do a Rock launch HAUGH!!!
-		var setMove = hitDirection.rotated(rotation).rotated(-body.rotation).round()*speed[type]*60
+		var setMove: Vector2 = hitDirection.rotated(rotation).rotated(-body.rotation).round()*speed[type]*60
 		# vertical movement
 		if setMove.y != 0:
 			# disable ground
@@ -77,7 +72,7 @@ func physics_collision(body: Player2D, hitVector):
 			body.set_state(body.STATES.AIR)
 			body.air_control = true
 			# figure out the animation based on the players current animation
-			var curAnim = "walk"
+			var curAnim: StringName = "walk"
 			match(body.animator.current_animation):
 				"walk", "run", "peelOut":
 					curAnim = body.animator.current_animation
@@ -93,7 +88,7 @@ func physics_collision(body: Player2D, hitVector):
 			body.position.y = global_position.y + (hitDirection.y*32)
 			body.set_state(body.STATES.AIR,body.currentHitbox.NORMAL)
 			body.disconect_from_floor()
-			if killTransSpeed == true:
+			if kill_lateral_motion == true:
 				body.movement.x = 0
 			$SpringAnimator.play(animList[animID])
 			if $VisibleOnScreenNotifier2D.is_on_screen():
@@ -117,10 +112,9 @@ func physics_collision(body: Player2D, hitVector):
 		
 		# Disable pole grabs
 		body.poleGrabID = null
-		return true
-	
 
-func _on_Diagonal_body_entered(body:Player2D):
+
+func _on_Diagonal_body_entered(body:Player2D) -> void:
 	# diagonal springs are pretty straightforward
 	body.angle = body.gravityAngle
 	body.set_state(body.STATES.AIR,body.currentHitbox.NORMAL)
@@ -132,7 +126,7 @@ func _on_Diagonal_body_entered(body:Player2D):
 	if (hitDirection.y < 0):
 		body.set_state(body.STATES.AIR)
 		# figure out the animation based on the players current animation
-		var curAnim = "walk"
+		var curAnim: StringName = "walk"
 		match(body.animator.current_animation):
 			"walk", "run", "peelOut":
 				curAnim = body.animator.current_animation

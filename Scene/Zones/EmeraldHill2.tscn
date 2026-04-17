@@ -162,72 +162,57 @@ position = Vector2(9280, 896)
 
 [node name="Spring" parent="Entities" unique_id=488303540 instance=ExtResource("21_kclfh")]
 position = Vector2(784, 680)
-springDirection = 4
-killTransSpeed = true
+spring_direction = 4
 
 [node name="Spring2" parent="Entities" unique_id=933338062 instance=ExtResource("21_kclfh")]
 position = Vector2(2116, 664)
-springDirection = 5
-killTransSpeed = true
+spring_direction = 5
 
 [node name="Spring3" parent="Entities" unique_id=960041253 instance=ExtResource("21_kclfh")]
 position = Vector2(3176, 762)
-killTransSpeed = true
 
 [node name="Spring17" parent="Entities" unique_id=1179447695 instance=ExtResource("21_kclfh")]
 position = Vector2(3656, 718)
 scale = Vector2(-1, 1)
 type = 1
-springDirection = 3
+spring_direction = 3
 
 [node name="Spring4" parent="Entities" unique_id=806443748 instance=ExtResource("21_kclfh")]
 position = Vector2(4880, 920)
-springDirection = 4
-killTransSpeed = true
+spring_direction = 4
 
 [node name="Spring5" parent="Entities" unique_id=662409624 instance=ExtResource("21_kclfh")]
 position = Vector2(5744, 1208)
-killTransSpeed = true
 
-[node name="Spring6" parent="Entities" unique_id=783230361 instance=ExtResource("21_kclfh")]
-position = Vector2(5618, 560)
-springDirection = 5
-killTransSpeed = true
-
-[node name="Spring7" parent="Entities" unique_id=472826777 instance=ExtResource("21_kclfh")]
+[node name="Spring6" parent="Entities" unique_id=472826777 instance=ExtResource("21_kclfh")]
 position = Vector2(5264, 526)
-springDirection = 4
-killTransSpeed = true
+spring_direction = 4
+
+[node name="Spring7" parent="Entities" unique_id=783230361 instance=ExtResource("21_kclfh")]
+position = Vector2(5618, 560)
+spring_direction = 5
 
 [node name="Spring9" parent="Entities" unique_id=2135059964 instance=ExtResource("21_kclfh")]
 position = Vector2(6576, 928)
-springDirection = 4
-killTransSpeed = true
+spring_direction = 4
 
 [node name="Spring10" parent="Entities" unique_id=155561519 instance=ExtResource("21_kclfh")]
 position = Vector2(6736, 743)
 scale = Vector2(1, -1)
-springDirection = 1
-killTransSpeed = true
 
 [node name="Spring11" parent="Entities" unique_id=1000139169 instance=ExtResource("21_kclfh")]
 position = Vector2(6768, 743)
 scale = Vector2(1, -1)
-springDirection = 1
-killTransSpeed = true
 
 [node name="Spring14" parent="Entities" unique_id=2024210764 instance=ExtResource("21_kclfh")]
 position = Vector2(8176, 1224)
-killTransSpeed = false
 
 [node name="Spring15" parent="Entities" unique_id=1117624407 instance=ExtResource("21_kclfh")]
 position = Vector2(8304, 1020)
-killTransSpeed = true
 
 [node name="Spring16" parent="Entities" unique_id=1612155788 instance=ExtResource("21_kclfh")]
 position = Vector2(8848, 664)
-springDirection = 4
-killTransSpeed = true
+spring_direction = 4
 
 [node name="Spring13" parent="Entities" unique_id=1387179447 instance=ExtResource("21_kclfh")]
 position = Vector2(6640, 1208)
@@ -298,7 +283,6 @@ topBoundry = 768
 setRight = false
 rightBoundry = 11392
 bottomBoundry = 1136
-scrollSpeed = 1
 
 [node name="Platforms" type="Node" parent="." unique_id=2099010818]
 

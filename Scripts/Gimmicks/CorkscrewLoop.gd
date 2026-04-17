@@ -3,46 +3,46 @@ extends Node2D
 
 
 # player tracking arrays
-var playerListL = []
-var playerListR = []
-var playerList = []
+var playerListL: Array[Player2D] = []
+var playerListR: Array[Player2D] = []
+var playerList: Array[Player2D] = []
 
 # length of the corkscrew
-@export var length = 1
+@export var length: int = 1
 
-func _ready():
+func _ready() -> void:
 	# set initial positions for arrays
 	$EnteranceR.position.x += $Corkscrew.texture.get_width()*(length-1)
 	if !Engine.is_editor_hint():
-		for i in length:
+		for i: int in length:
 			if i > 0:
-				var corkBG = $Corkscrew.duplicate()
-				var corkFG = $CorkscrewFG.duplicate()
+				var corkBG: Sprite2D = $Corkscrew.duplicate()
+				var corkFG: Sprite2D = $CorkscrewFG.duplicate()
 				add_child(corkBG)
 				add_child(corkFG)
 				corkBG.position.x += corkBG.texture.get_width()*i
 				corkFG.position.x += corkFG.texture.get_width()*i
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		$EnteranceR.position.x = $Corkscrew.texture.get_width()*(length-1)+($Corkscrew.texture.get_width()/2)
 		queue_redraw()
 
-func _physics_process(_delta):
+func _physics_process(_delta: float) -> void:
 	if !Engine.is_editor_hint():
 		# Check for player encounters
-		for i in playerListL: # left side
+		for i: Player2D in playerListL: # left side
 			if (i.global_position.x > $EnteranceL.global_position.x-8) and i.movement.x >= i.top/2 and round(i.movement.y) == 0:
 				if (!playerList.has(i)):
 					playerList.append(i)
 		
-		for i in playerListR: # right side
+		for i: Player2D in playerListR: # right side
 			if (i.global_position.x < $EnteranceR.global_position.x+8) and i.movement.x <= -i.top/2 and round(i.movement.y) == 0:
 				if (!playerList.has(i)):
 					playerList.append(i)
 		
 		# Set player sprites
-		for i in playerList:
+		for i: Player2D in playerList:
 			if (i.currentState != i.STATES.CORKSCREW and i.currentState != i.STATES.JUMP):
 				# Set state
 				i.set_state(i.STATES.CORKSCREW)
@@ -59,7 +59,7 @@ func _physics_process(_delta):
 			
 			# Set the player position based on x position and the distance between the corkscrews origin
 			# this uses a cosine function to create a wave pattern
-			var yDistance = -50+(i.currentHitbox.NORMAL.y/2.0)
+			var yDistance: float = -50+(i.currentHitbox.NORMAL.y/2.0)
 			i.global_position.y = global_position.y+((cos(clamp((i.global_position.x-global_position.x)/(192*scale.x),-1,2*length)*PI)*yDistance))*scale.y
 			
 			# Make player camera update as this change is applied after player movement
@@ -67,7 +67,7 @@ func _physics_process(_delta):
 
 			# Animation
 			if i.animator.current_animation == "corkScrew" or i.animator.current_animation == "corkScrewOffset":
-				var animSize = i.animator.current_animation_length
+				var animSize: float = i.animator.current_animation_length
 				i.animator.advance(-i.animator.current_animation_position+animSize-(global_position.x-i.global_position.x+(192*scale.x))/((192*scale.x)*2)*animSize)
 			
 			# Check to see if to remove player
@@ -80,7 +80,7 @@ func _physics_process(_delta):
 							i.set_state(i.STATES.ROLL)
 					else:
 						# otherwise reset animation settings
-						var animMem = i.animator.current_animation
+						var animMem: StringName = i.animator.current_animation
 						i.animator.play("RESET")
 						i.animator.queue(animMem)
 					playerList.erase(i)
@@ -88,29 +88,29 @@ func _physics_process(_delta):
 
 
 # player checks
-func _on_EnteranceL_body_entered(body):
+func _on_EnteranceL_body_entered(body: CharacterBody2D) -> void:
 	if !playerListL.has(body):
 		playerListL.append(body)
 
 
-func _on_EnteranceL_body_exited(body):
+func _on_EnteranceL_body_exited(body: CharacterBody2D) -> void:
 	if (playerListL.has(body)):
 		playerListL.erase(body)
 
-func _on_EnteranceR_body_entered(body):
+func _on_EnteranceR_body_entered(body: CharacterBody2D) -> void:
 	if !playerListR.has(body):
 		playerListR.append(body)
 
 
-func _on_EnteranceR_body_exited(body):
+func _on_EnteranceR_body_exited(body: CharacterBody2D) -> void:
 	if (playerListR.has(body)):
 		playerListR.erase(body)
 
 # draw self several times based on length
-func _draw():
+func _draw() -> void:
 	if Engine.is_editor_hint():
 		if length > 0:
-			for i in length:
+			for i: int in length:
 				if i > 0:
-					var getTexture = $Corkscrew.texture
+					var getTexture: Texture2D = $Corkscrew.texture
 					draw_texture(getTexture,Vector2(getTexture.get_width()*i-getTexture.get_width()/2,-getTexture.get_height()/2))

@@ -1,12 +1,12 @@
 extends EnemyBase
 
-var Projectile = preload("res://Entities/Enemies/Projectiles/CoconutProjectile.tscn")
-var coconut = null
+var Projectile: PackedScene = preload("res://Entities/Enemies/Projectiles/CoconutProjectile.tscn")
+var coconut: Node2D = null
 
 enum STATE{IDLE,CLIMB,THROW}
-var state = STATE.IDLE
+var state: STATE = STATE.IDLE
 
-var climbTimes = [ #Values from Sonic 2. Divide by 60.0
+var climbTimes: Array[float] = [ #Values from Sonic 2. Divide by 60.0
 	32,
 	24,
 	16,
@@ -15,21 +15,21 @@ var climbTimes = [ #Values from Sonic 2. Divide by 60.0
 	16
 	]
 
-var climbSpeeds = [1,-1] #y speeds
-var climb_state = 0 #Which climbing routine to do
-var timer_over = false
-var throw_nut = false
+var climbSpeeds: Array[int] = [1,-1] #y speeds
+var climb_state: int = 0 #Which climbing routine to do
+var timer_over: bool = false
+var throw_nut: bool = false
 
-var targets = [] #Players in the PlayerCheckBody
+var targets: Array[Player2D] = [] #Players in the PlayerCheckBody
 
-@onready var animator = $AnimationPlayer
+@onready var animator: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
 	$VisibleOnScreenEnabler2D.visible = true
 	$PlayerCheck.visible = true
 	super()
 
-func _process(delta):
+func _process(delta: float) -> void:
 	match state:
 		STATE.IDLE:
 			if timer_over:
@@ -60,26 +60,26 @@ func _process(delta):
 	global_position.y += (velocity.y*60*delta)
 	super(delta)
 	
-func LookAtPlayer():
-	var nearestPlayer = GlobalFunctions.get_nearest_player_x(global_position.x)
+func LookAtPlayer() -> void:
+	var nearestPlayer: Player2D = GlobalFunctions.get_nearest_player_x(global_position.x)
 	if nearestPlayer and nearestPlayer.global_position.x > global_position.x:
 		scale.x = -1
 	else: #If a player was not found, or is left.
 		scale.x = 1
 
-func startClimbing(_delta):
+func startClimbing(_delta: float) -> void:
 	if climb_state >= climbTimes.size():
 		climb_state = 0
 	timer_over = false
 	$ActionTimer.start(climbTimes[climb_state]/60.0)
 	$ThrowTimer.set_paused(true)
-	var t = wrapi(climb_state,0,(climbSpeeds.size()))
+	var t: int = wrapi(climb_state,0,(climbSpeeds.size()))
 	velocity.y = climbSpeeds[t]
 	climb_state += 1
 	animator.play("CLIMB")
 	state = STATE.CLIMB
 
-func throwCoconut():
+func throwCoconut() -> void:
 	animator.play("THROW")
 	# throw coconut
 	coconut = Projectile.instantiate()
@@ -90,16 +90,16 @@ func throwCoconut():
 	coconut.velocity.x = 0-(scale.x * 50)
 	coconut.velocity.y = -1 * 100
 
-func _on_player_check_body_entered(body):
+func _on_player_check_body_entered(body: Player2D) -> void:
 	targets.append(body)
 
-func _on_player_check_body_exited(body):
+func _on_player_check_body_exited(body: Player2D) -> void:
 	targets.erase(body)
 
-func _on_action_timer_timeout():
+func _on_action_timer_timeout() -> void:
 	timer_over = true
 	$ActionTimer.stop()
 
-func _on_throw_timer_timeout():
+func _on_throw_timer_timeout() -> void:
 	if state == STATE.IDLE:
 		throw_nut = true

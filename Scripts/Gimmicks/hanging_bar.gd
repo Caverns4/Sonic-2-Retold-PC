@@ -10,8 +10,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var touching = 0
-	for i in $Hanger.players:
+	var touching: int = 0
+	for i:Player2D in $Hanger.players:
 		var node: Player2D = i 
 		if node.poleGrabID == $Hanger:
 			touching += 1
@@ -24,6 +24,6 @@ func _process(delta: float) -> void:
 	updateChainLength()
 
 
-func updateChainLength():
+func updateChainLength() -> void:
 	$Sprite2D.position.y = abs(currentLength)
 	$Hanger.position.y = abs(currentLength)+60

@@ -51,12 +51,11 @@ func _all_players_ready() -> void:
 		queue_free()
 
 func _physics_process(_delta: float) -> void:
-	if Global.players[0].camera:
-		cameraPlayer1.global_position = Global.players[0].camera.global_position
-		cameraPlayer1.limit_left = Global.players[0].camera.limit_left
-		cameraPlayer1.limit_bottom = Global.players[0].camera.limit_bottom
-		cameraPlayer1.limit_right = Global.players[0].camera.limit_right
-	if Global.players[1].camera:
+	cameraPlayer1.global_position = Global.players[0].camera.global_position
+	cameraPlayer1.limit_left = Global.players[0].camera.limit_left
+	cameraPlayer1.limit_bottom = Global.players[0].camera.limit_bottom
+	cameraPlayer1.limit_right = Global.players[0].camera.limit_right
+	if Global.players.size() > 1:
 		cameraPlayer2.global_position = Global.players[1].camera.global_position
 		cameraPlayer2.limit_left = Global.players[1].camera.limit_left
 		cameraPlayer2.limit_bottom = Global.players[1].camera.limit_bottom

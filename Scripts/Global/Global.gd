@@ -11,7 +11,7 @@ const save_path = "user://Sonic.dat"
 ## The Save slot (section in the file). if 0, treat game file as a NO SAVE
 var current_save_index: int = 0
 ## Two Player Mode flag.
-var two_player_mode: bool = false
+var two_player_mode: bool = true
 ## Player references
 var players: Array[Player2D] = []
 ## Player references in special stages only

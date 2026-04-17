@@ -1,17 +1,13 @@
 extends AnimatedSprite2D
 
-var animFinished = false
+var animFinished: bool = false
 
-# fix animation
-#func _ready():
-	#playing = true
-
-func _on_animation_finished():
+func _on_animation_finished() -> void:
 	animFinished = true
 	visible = false
 	if (!$Explode.playing):
 		queue_free()
 
-func _on_Explode_finished():
+func _on_Explode_finished() -> void:
 	if (animFinished):
 		queue_free()

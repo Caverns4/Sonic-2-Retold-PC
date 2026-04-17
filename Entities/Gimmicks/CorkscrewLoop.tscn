@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://fn82q8rojkjl"]
+[gd_scene format=3 uid="uid://fn82q8rojkjl"]
 
 [ext_resource type="Texture2D" uid="uid://curyronsmebvd" path="res://Graphics/Gimmicks/Corkscrew.png" id="1"]
 [ext_resource type="Script" uid="uid://dd58lbtfwemto" path="res://Scripts/Gimmicks/CorkscrewLoop.gd" id="2"]
@@ -6,38 +6,39 @@
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(64, 16)
 
-[node name="CorkscrewLoop" type="Node2D"]
+[node name="CorkscrewLoop" type="Node2D" unique_id=1280297207]
 script = ExtResource("2")
 
-[node name="Corkscrew" type="Sprite2D" parent="."]
+[node name="Corkscrew" type="Sprite2D" parent="." unique_id=693386260]
+visible = false
 z_index = -10
 position = Vector2(-96, 0)
 texture = ExtResource("1")
 hframes = 2
 
-[node name="CorkscrewFG" type="Sprite2D" parent="."]
-z_index = 10
+[node name="CorkscrewFG" type="Sprite2D" parent="." unique_id=1420097040]
+z_index = 7
 position = Vector2(96, 0)
 texture = ExtResource("1")
 hframes = 2
 frame = 1
 
-[node name="EnteranceL" type="Area2D" parent="."]
+[node name="EnteranceL" type="Area2D" parent="." unique_id=957086330]
 modulate = Color(0, 0.321569, 1, 1)
 position = Vector2(-192, 32)
 collision_layer = 0
 collision_mask = 4096
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnteranceL"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnteranceL" unique_id=846971674]
 shape = SubResource("1")
 
-[node name="EnteranceR" type="Area2D" parent="."]
+[node name="EnteranceR" type="Area2D" parent="." unique_id=1767949895]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(192, 32)
 collision_layer = 0
 collision_mask = 4096
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnteranceR"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnteranceR" unique_id=1402931355]
 shape = SubResource("1")
 
 [connection signal="body_entered" from="EnteranceL" to="." method="_on_EnteranceL_body_entered"]

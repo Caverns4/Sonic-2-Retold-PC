@@ -94,7 +94,7 @@ func SetTirePositions() -> void:
 		tires[i].position.x = position.x - (tireOffsets[i] * direction)
 		tires[i].updateAnim(velocity.x)
 	#Update the Vehicle itself
-	var posbuff = (tires[0].global_position.y + tires[1].global_position.y)/2
+	var posbuff: float = (tires[0].global_position.y + tires[1].global_position.y)/2
 	posbuff += (tires[2].global_position.y + tires[3].global_position.y)/2
 	posbuff = round(posbuff/2) - 16
 	global_position.y = posbuff

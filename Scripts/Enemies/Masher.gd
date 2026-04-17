@@ -1,18 +1,18 @@
 extends EnemyBase
 
-var jumpHeight = 5
+var jumpHeight: float = 5.0
 
 # Original Code RefCounted translated by VAdaPEGA
-var animFrame = 0.0
+var animFrame: float = 0.0
 
-func _ready():
+func _ready() -> void:
 	# initial velocity
 	velocity.y = -4
 	set_physics_process(false)
 	set_process(false)
 	super()
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	# gravity
 	position.y = min(position.y,0)
 	velocity.y += (0.09375/GlobalFunctions.div_by_delta(delta))
@@ -22,7 +22,7 @@ func _physics_process(delta):
 		velocity.y = 0-abs(jumpHeight)*60
 	
 
-func _process(delta):
+func _process(delta: float) -> void:
 	super(delta)
 	# animation states
 	if velocity.y > 0:
@@ -36,11 +36,11 @@ func _process(delta):
 	$Masher.frame = floor(animFrame)
 
 
-func _on_VisibilityEnabler2D_screen_entered():
+func _on_VisibilityEnabler2D_screen_entered() -> void:
 	set_physics_process(true)
 	set_process(true)
 
 
-func _on_VisibilityEnabler2D_screen_exited():
+func _on_VisibilityEnabler2D_screen_exited() -> void:
 	set_physics_process(false)
 	set_process(false)
