@@ -3,6 +3,9 @@ extends CanvasLayer
 func _ready() -> void:
 	#await Main.scene_faded
 	Global.Clean_Up_Object_References()
+	
+	Global.betaCasinoNight = Input.is_action_pressed("ui_cancel")
+	
 	SoundDriver.music.stop()
 	await queue_level()
 
@@ -65,9 +68,15 @@ func queue_level() -> void:
 		Global.ZONES.CASINO_NIGHT:
 			match Global.saved_act_id:
 				0:
-					Global.current_zone_pointer = "res://Scene/Zones/CasinoNight1New.tscn"
+					if Global.betaCasinoNight:
+						Global.current_zone_pointer = "res://Scene/Zones/CasinoNight1.tscn"
+					else:
+						Global.current_zone_pointer = "res://Scene/Zones/CasinoNight1New.tscn"
 				_:
-					Global.current_zone_pointer = "res://Scene/Zones/CasinoNight2New.tscn"
+					if Global.betaCasinoNight:
+						Global.current_zone_pointer = "res://Scene/Zones/CasinoNight2.tscn"
+					else:
+						Global.current_zone_pointer = "res://Scene/Zones/CasinoNight2New.tscn"
 		Global.ZONES.JEWEL_GROTTO:
 			match Global.saved_act_id:
 				0:

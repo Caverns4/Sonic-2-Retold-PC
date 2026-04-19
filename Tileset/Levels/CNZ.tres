@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=164 format=3 uid="uid://cfd5uopegfocd"]
+[gd_resource type="TileSet" format=3 uid="uid://cfd5uopegfocd"]
 
 [ext_resource type="Texture2D" uid="uid://b8iex2edttah3" path="res://Graphics/Tiles/CNZ/CNZ_Blocks.png" id="1_lle38"]
 

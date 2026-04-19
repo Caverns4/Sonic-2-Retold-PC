@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=178 format=3 uid="uid://qd7e8tmf376"]
+[gd_resource type="TileSet" format=3 uid="uid://qd7e8tmf376"]
 
 [ext_resource type="Texture2D" uid="uid://d3fmwymushbdl" path="res://Graphics/Tiles/OOZ/OOZ_Blocks.png" id="1_xdo1m"]
 [ext_resource type="Texture2D" uid="uid://dwlgts7fmtnws" path="res://Graphics/Backgrounds/OOZ/OOZ_BGTiles.png" id="2_0fi1o"]

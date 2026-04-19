@@ -11,7 +11,7 @@ const save_path = "user://Sonic.dat"
 ## The Save slot (section in the file). if 0, treat game file as a NO SAVE
 var current_save_index: int = 0
 ## Two Player Mode flag.
-var two_player_mode: bool = true
+var two_player_mode: bool = false
 ## Player references
 var players: Array[Player2D] = []
 ## Player references in special stages only
@@ -74,7 +74,7 @@ var gameOver: bool = false
 
 # characters (if you want more you should add one here, see the player script too for more settings)
 enum CHARACTERS {NONE,SONIC,TAILS,KNUCKLES,AMY,MIGHTY,RAY,SONIC_BETA}
-var PlayerChar1: int = CHARACTERS.SONIC
+var PlayerChar1: int = CHARACTERS.SONIC_BETA
 var PlayerChar2: int = CHARACTERS.TAILS
 # character name strings, used for "[player] has cleared", this matches the players character ID so you'll want to add the characters name in here matching the ID if you want more characters
 var characterNames: PackedStringArray = ["SONIC","TAILS","KNUCKLES","AMY","MIGHTY","RAY","SONIC"]

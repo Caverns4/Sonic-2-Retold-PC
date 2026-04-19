@@ -37,7 +37,7 @@ func _check_players() -> void:
 					winner = playerObj.character as Global.CHARACTERS
 					$Signpost/GoalPost2P.play()
 	else:
-		if Global.players[0].global_position.x > global_position.x:
+		if Global.players[0].global_position.x > global_position.x and !multiplayerOnly:
 			state = STATE.SPINNING
 			player = Global.players[0]
 			# Camera limit set

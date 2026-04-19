@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://6j0cbv72pota"]
+[gd_scene format=3 uid="uid://6j0cbv72pota"]
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_a5u21"]
 [ext_resource type="PackedScene" uid="uid://dnch22ynqwt5e" path="res://Scene/Backgrounds/10-JewelGrotto.tscn" id="3_ev15n"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_um8eq"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_im413"]
 
-[node name="JewelGrotto2" type="Node2D"]
+[node name="JewelGrotto2" type="Node2D" unique_id=577032356]
 script = ExtResource("1_a5u21")
 zone_id = 10
 zone_name = "Jewel Grotto"
@@ -16,13 +16,13 @@ music2P = ExtResource("3_k6phh")
 animal1 = 8
 animal2 = 3
 
-[node name="10-jewelGrotto" parent="." instance=ExtResource("3_ev15n")]
+[node name="10-jewelGrotto" parent="." unique_id=64017343 instance=ExtResource("3_ev15n")]
 
-[node name="HUD" parent="." instance=ExtResource("5_um8eq")]
+[node name="HUD" parent="." unique_id=1786702488 instance=ExtResource("5_um8eq")]
 
-[node name="Level_Layout" type="Node" parent="."]
+[node name="Layout_JGZ2" type="Node" parent="." unique_id=1260354533]
 
-[node name="Player" parent="." instance=ExtResource("6_im413")]
+[node name="Player" parent="." unique_id=1638225710 instance=ExtResource("6_im413")]
 position = Vector2(96, 656)
 
-[node name="Entities" type="Node" parent="."]
+[node name="Entities" type="Node" parent="." unique_id=1597119531]

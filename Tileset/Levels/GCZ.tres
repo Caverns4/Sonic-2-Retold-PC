@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://dtp1ltbawuwlp"]
+[gd_resource type="TileSet" format=3 uid="uid://dtp1ltbawuwlp"]
 
 [ext_resource type="Texture2D" uid="uid://dgv5yq0x6kulr" path="res://Graphics/Tiles/EGZ/EGZ.png" id="1_7kjjy"]
 [ext_resource type="Texture2D" uid="uid://c2fl73tv7ou6y" path="res://Graphics/Tiles/EGZ/EGZ_FanAnim.png" id="2_qohgj"]

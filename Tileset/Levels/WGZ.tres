@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=94 format=3 uid="uid://b46hc7u2nrvbf"]
+[gd_resource type="TileSet" format=3 uid="uid://b46hc7u2nrvbf"]
 
 [ext_resource type="Texture2D" uid="uid://clu1dtqoy456h" path="res://Graphics/Tiles/WGZ/WGZ_Blocks.png" id="1_ffc5f"]
 
