@@ -1,20 +1,20 @@
 @tool
 extends CharacterBody2D
 
-var animType = 0 # 0 flap, 1 change on fall
+var animType: int = 0 # 0 flap, 1 change on fall
 @export_enum("Bird", "Squirrel",
 "Rabbit", "Chicken",
 "Penguin", "Seal",
 "Pig", "Eagle",
 "Mouse", "Monkey",
 "Turtle", "Bear",
-"Beaver","Fox")var animal = 0
+"Beaver","Fox")var animal: int = 0
 
-@export_enum("In place","right","left") var behavior = 0
+@export_enum("In place","right","left") var behavior: int = 0
 
-@export var blockMovement = false
+@export var blockMovement: bool = false
 
-var animalPhysics = [
+var animalPhysics: Array[Vector2] = [
 # (Bird)
 Vector2(3.0,4.0),
 # (Squirrel)
@@ -45,25 +45,13 @@ Vector2(2.0,3.0),
 Vector2(2.0,4.0),
 ]
 
-var animTime = 0
-var bouncePower = 300
+var animTime: float = 0
+var bouncePower: float = 300
 
-func _ready():
+func _ready() -> void:
 	SetupAnimalArt()
 
-func _physics_process(delta: float):
-	if Engine.is_editor_hint():
-		SetupAnimalArt()
-	else:
-		if !is_on_floor():
-			velocity += get_gravity()*delta
-		else:
-			bouncePower = animalPhysics[animal].y*60
-			velocity.y = 0-bouncePower
-		move_and_slide()
-
-
-func SetupAnimalArt():
+func SetupAnimalArt() -> void:
 	# set animal properties (animType is 0 by default)
 	match(animal):
 		0: #Bird
@@ -108,3 +96,14 @@ func SetupAnimalArt():
 		13: # Fox
 			$animals.region_rect.position = Vector2(72,192)
 			animType = 1
+
+func _physics_process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		SetupAnimalArt()
+	else:
+		if !is_on_floor():
+			velocity += get_gravity()*delta
+		else:
+			bouncePower = animalPhysics[animal].y*60
+			velocity.y = 0-bouncePower
+		move_and_slide()

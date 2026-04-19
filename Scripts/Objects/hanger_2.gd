@@ -104,7 +104,7 @@ func get_contacting_players() -> Array:
 
 
 func _on_body_entered(body: Player2D) -> void:
-	var parent: Node2D = get_parent()
+	var parent: Node = get_parent()
 	if body != parent: players.append(body)
 
 

@@ -1,12 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://tr33s3gs3j3n"]
+[gd_scene format=3 uid="uid://tr33s3gs3j3n"]
 
 [ext_resource type="Script" uid="uid://cmv1njb8nwqsf" path="res://Scripts/Menu/zone_loader.gd" id="1_3r84a"]
 [ext_resource type="FontFile" uid="uid://ml62eqfe7avn" path="res://Graphics/Fonts/small_font.png" id="2_q51dt"]
 
-[node name="ZoneLoader" type="CanvasLayer"]
+[node name="ZoneLoader" type="CanvasLayer" unique_id=1769504970]
 script = ExtResource("1_3r84a")
 
-[node name="Back" type="ColorRect" parent="."]
+[node name="Back" type="ColorRect" parent="." unique_id=329052833]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,7 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Date" type="Label" parent="."]
+[node name="Date" type="Label" parent="." unique_id=1846427071]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0

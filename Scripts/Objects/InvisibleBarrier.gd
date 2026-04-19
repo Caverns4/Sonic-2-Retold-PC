@@ -1,15 +1,12 @@
 @tool
 extends StaticBody2D
 
-func _ready():
+func _ready() -> void:
 	if !Engine.is_editor_hint():
 		visible = Global.debug_mode
 
-func _process(_delta):
-	if Engine.is_editor_hint():
-		pass
-	
-	var size = Vector2(32*scale.x,32*scale.y) 
+func _process(_delta: float) -> void:
+	var size: Vector2 = Vector2(32*scale.x,32*scale.y) 
 	$TopLeft.global_position.x = global_position.x - (size.x/2)
 	$TopLeft.global_position.y = global_position.y - (size.y/2)
 	$TopRight.global_position.x = global_position.x + ((size.x/2)-16)

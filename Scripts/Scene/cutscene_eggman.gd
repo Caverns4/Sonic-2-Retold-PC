@@ -1,14 +1,14 @@
 extends CharacterBody2D
 
 @export_enum("default","laugh","hurt") var animation: String = "default"
-@export var jet = false
+@export var jet: bool = false
 
-var savedAnim = "deafult"
+var savedAnim: StringName = "deafult"
 
-var timer = 0.0
+var timer: float = 0.0
 
-@onready var eggman = $Eggmobile/Eggman_Face
-@onready var fire = $Eggmobile/Eggmobile_Fire
+@onready var eggman: AnimatedSprite2D = $Eggmobile/Eggman_Face
+@onready var fire: Sprite2D = $Eggmobile/Eggmobile_Fire
 
 func _ready() -> void:
 	eggman.play(animation)

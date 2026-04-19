@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 
 	if allow_player_steering:
 		global_position.x = player.global_position.x - 32
-		var camera = player.camera
+		var camera: Camera2D = player.camera
 		if Global.stage_cleared:
 			global_position.x = move_toward(global_position.x,camera.limit_left+160,delta*128)
 			player.position.x = global_position.x+32
@@ -62,7 +62,6 @@ func _process(delta: float) -> void:
 		if this.progress_ratio >= 1.0 and player:
 			player = null
 
-func tornado_damage():
+func tornado_damage() -> void:
 	allow_player_steering = false
 	player = null
-	

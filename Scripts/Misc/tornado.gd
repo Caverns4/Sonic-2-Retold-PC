@@ -98,4 +98,7 @@ func _damage_plane() -> void:
 		plane_damaged.emit()
 		explosion_timer = 0.6
 		velocity.y = 60.0
-		$CollisionShape2D.disabled = true
+		call_deferred("_disable_collision")
+
+func _disable_collision() -> void:
+	$CollisionShape2D.disabled = true

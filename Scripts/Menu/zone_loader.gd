@@ -106,8 +106,8 @@ func queue_level() -> void:
 					Global.current_zone_pointer = "res://Scene/Zones/SkyFortress2.tscn"
 		Global.ZONES.DEATH_EGG:
 			match Global.saved_act_id:
-				0:
-					Global.current_zone_pointer = "res://Scene/Zones/DeathEgg1.tscn"
+				#0:
+				#	Global.current_zone_pointer = "res://Scene/Zones/DeathEgg1.tscn"
 				_:
 					Global.current_zone_pointer = "res://Scene/Zones/DeathEgg2.tscn"
 		Global.ZONES.SPECIAL_STAGE:

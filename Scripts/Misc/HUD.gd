@@ -83,12 +83,12 @@ func initialize_hud(zone_name: String,zone_text: String,act_number: int) -> void
 	$LevelCard/LevelName.text = zone_name
 	$LevelCard/Zone.text = zone_text
 	# set act graphic
-	$LevelCard/Act.frame = act_number-1
+	$LevelCard/Act.frame = wrapi(act_number-1,0,4)
 	$LevelCard/Act.visible = (act_number > 0)
 	# replace "sonic" in stage clear to match the player clear string
 	$LevelClear/SonicGot.text = Global.characterNames[Global.PlayerChar1-1] + " GOT"
 	# set the act clear frame
-	$LevelClear/Act.frame = act_number-1
+	$LevelClear/Act.frame = wrapi(act_number-1,0,4)
 	
 	Global.stage_started.connect(_on_stage_started)
 	Global.stage_clear.connect(ProcessStageClear)
@@ -330,7 +330,7 @@ func SetupGameOver(_delta: float) -> void:
 		await $GameOver/GameOver.animation_finished
 		# reset game
 		if Global.levelTime < Global.maxTime or (Global.lives <= 0 and Global.livesMode):
-			if Global.two_player_mode:
+			if Global.two_player_mode and Global.players.size() > 1:
 				var results: Array[Variant] = [Global.score,Global.levelTime,Global.players[0].rings,
 				Global.scoreP2,Global.levelTimeP2,Global.players[1].rings]
 				Global.twoPlayActResults.append(results)

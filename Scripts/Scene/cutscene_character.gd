@@ -2,16 +2,16 @@
 extends Node2D
 
 @export_enum("RESET","walk","run","peelout",
-"roll","crouch","spinDash","lookUp","idle","idle2") var animation = "RESET"
+"roll","crouch","spinDash","lookUp","idle","idle2") var animation: String = "RESET"
 
-@onready var animator = $PlayerAnimation
+@onready var animator: AnimationPlayer = $PlayerAnimation
 
-var prevAnim = "idle"
+var prevAnim: StringName = "idle"
 
-func _ready():
+func _ready() -> void:
 	pass
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	if animation != prevAnim:
 		animator.play(animation)
 		prevAnim = animation

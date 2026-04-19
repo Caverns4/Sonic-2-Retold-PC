@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cuoyniqg8gua3"]
+[gd_scene format=3 uid="uid://cuoyniqg8gua3"]
 
 [ext_resource type="Script" uid="uid://c4ue5qwul4rd8" path="res://Scripts/Scene/cutscene_eggman.gd" id="1_44o7g"]
 [ext_resource type="Texture2D" uid="uid://6ds1jcc8jmyf" path="res://Graphics/Boss/Eggmobile.png" id="1_vvqax"]
@@ -61,25 +61,25 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Cutscene_Eggman" type="CharacterBody2D"]
+[node name="Cutscene_Eggman" type="CharacterBody2D" unique_id=301143220]
 script = ExtResource("1_44o7g")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=737521710]
 shape = SubResource("RectangleShape2D_t3oj5")
 
-[node name="Eggmobile" type="Sprite2D" parent="."]
+[node name="Eggmobile" type="Sprite2D" parent="." unique_id=1764152495]
 texture = ExtResource("1_vvqax")
 
-[node name="Eggman_Face" type="AnimatedSprite2D" parent="Eggmobile"]
+[node name="Eggman_Face" type="AnimatedSprite2D" parent="Eggmobile" unique_id=1412196297]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_wahvj")
 autoplay = "default"
 
-[node name="Eggmobile_Top" type="Sprite2D" parent="Eggmobile"]
+[node name="Eggmobile_Top" type="Sprite2D" parent="Eggmobile" unique_id=1410508947]
 position = Vector2(11, -40)
 texture = ExtResource("3_hxbva")
 
-[node name="Eggmobile_Fire" type="Sprite2D" parent="Eggmobile"]
+[node name="Eggmobile_Fire" type="Sprite2D" parent="Eggmobile" unique_id=941765153]
 visible = false
 z_index = -1
 position = Vector2(35, 0)
