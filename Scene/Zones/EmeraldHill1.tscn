@@ -208,6 +208,7 @@ topBoundry = 512
 setRight = false
 rightBoundry = 11000
 bottomBoundry = 784
+scroll_time = 4.0
 
 [node name="Platforms" type="Node" parent="." unique_id=1887446974]
 

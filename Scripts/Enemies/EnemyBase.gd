@@ -100,3 +100,12 @@ func destroy() -> void:
 
 func _on_destroyed() -> void:
 	pass
+
+## Get the nearest player to this object, respective to only the X position.
+func get_nearest_player_by_x() -> float:
+	var x_diff: float = 64000
+	for player in Global.players:
+		var result: float = global_position.x - player.global_position.x
+		if  abs(x_diff) > abs(result):
+			x_diff = result
+	return x_diff
