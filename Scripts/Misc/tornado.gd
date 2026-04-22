@@ -25,6 +25,7 @@ var parenter_pilots: Array[int] = [
 	Global.CHARACTERS.TAILS, #AMY
 	Global.CHARACTERS.RAY,   #MIGHTY
 	Global.CHARACTERS.MIGHTY, #RAY
+	Global.CHARACTERS.TAILS, #SONIC
 ]
 
 var standing_players: Array[Player2D] = []

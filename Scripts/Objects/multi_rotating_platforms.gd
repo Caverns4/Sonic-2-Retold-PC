@@ -7,7 +7,7 @@ extends Node2D
 # Export Variables
 @export_range (1,4) var platformCount:int = 3
 @export var chains:int = 4 # How many chains will be rendered # (int,0,100)
-@export var speed = 1.0
+@export var speed: float = 1.0
 @export var plat_img:Texture2D # Texture2D for the platform
 @export var chain_img:Texture2D # Texture2D for the chains
 # Declare time, previous position, editor time, and grab the platform's node
@@ -52,7 +52,7 @@ func _physics_process(_delta: float) -> void:
 			xOffset += (360.0/platformCount)
 			platforms[i].position = (direction * yOffset).round()
 
-func _draw():
+func _draw() -> void:
 	if(!Engine.is_editor_hint()):  # Non-editor stuff
 		#for i # of platforms, in j # of chains
 		for i in platformCount:
@@ -73,5 +73,3 @@ func _draw():
 		diff += (360.0/platformCount)
 		temppos -= Vector2(float(plat_img.get_width()) / 2,float(plat_img.get_height()) / 2)
 		draw_texture(plat_img,temppos,Color(1,1,1,1))
-	
-	
