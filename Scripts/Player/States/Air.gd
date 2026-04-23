@@ -116,8 +116,8 @@ func _physics_process(delta: float) -> void:
 		if !parent.any_action_held_or_pressed() and parent.movement.y < -parent.releaseJmp*60:
 			parent.movement.y = -parent.releaseJmp*60
 		# Drop dash (for sonic / amy)
-		if parent.character == Global.CHARACTERS.SONIC:
-			
+		if (parent.character == Global.CHARACTERS.SONIC or
+		parent.character == Global.CHARACTERS.SONIC_BETA):
 			if parent.any_action_held_or_pressed() and parent.abilityUsed and (parent.shield <= parent.SHIELDS.NORMAL or parent.is_super or $"../../InvincibilityBarrier".visible or parent.character == Global.CHARACTERS.AMY):
 				if dropTimer < 1:
 					dropTimer += (delta/20)*60 # should be ready in the equivelent of 20 frames at 60FPS
@@ -129,7 +129,7 @@ func _physics_process(delta: float) -> void:
 			# Drop dash reset (if sonic, hammer keeps swinging for amy)
 			elif !parent.any_action_held_or_pressed() and dropTimer > 0:
 				dropTimer = 0
-				if parent.animator.current_animation == "dropDash" and parent.character == Global.CHARACTERS.SONIC:
+				if parent.animator.current_animation == "dropDash":
 					parent.animator.play("roll")
 	
 		
@@ -155,7 +155,7 @@ func _physics_process(delta: float) -> void:
 			parent.set_state(parent.STATES.NORMAL)
 			
 			# Drop dash release (for sonic / amy)
-			if dropTimer >= 1 and parent.character == Global.CHARACTERS.SONIC:
+			if dropTimer >= 1:
 				var dropSpeed: Array[float] = dropSpeedSonic 
 				# Check if moving forward or back
 				# Forward landing
@@ -201,76 +201,73 @@ func _physics_process(delta: float) -> void:
 
 
 func sonic_shield_abilities() -> void:
-						# check that the invincibility barrier isn't visible
-						if !$"../../InvincibilityBarrier".visible:
-							match (parent.shield):
-								# insta shield
-								parent.SHIELDS.NONE:
-									parent.air_control = true
-									if Global.insta_shield:
-										parent.sfx[16].play()
-										parent.shieldSprite.play("Insta")
-										parent.shieldSprite.frame = 0
-										parent.shieldSprite.visible = true
-										#enable insta shield hitbox
-										parent.shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled = false
-								 		#wait for animation for the shield to finish
-										await parent.shieldSprite.animation_finished
-										#check shields hasn't changed
-										if (parent.shield == parent.SHIELDS.NONE):
-											parent.shieldSprite.visible = false
-											parent.shieldSprite.stop()
-										#disable insta shield
-										parent.shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled = true
-								# elec shield action
-								parent.SHIELDS.ELEC:
-									parent.sfx[13].play()
-									# set movement upwards
-									parent.movement.y = -5.5*60.0
-									# generate 4 electric particles and send them out diagonally (rotated for each iteration of i to 4)
-									for i in range(4):
-										var part: Node2D = elecPart.instantiate()
-										part.global_position = parent.global_position
-										part.direction = Vector2(1,1).rotated(deg_to_rad(90*i))
-										parent.get_parent().add_child(part)
-								
-								# fire shield action
-								parent.SHIELDS.FIRE:
-									# partner check (so you don't flame boost when you're trying to fly with tails
-									if !(parent.inputs[parent.INPUTS.YINPUT] < 0 and parent.partner != null):
-										parent.sfx[14].play()
-										parent.movement = Vector2(8*60*parent.direction,0)
-										parent.shieldSprite.play("FireAction")
-										# set timer for animation related resets
-										var getTimer: Timer = parent.shieldSprite.get_node_or_null("ShieldTimer")
-										# Start fire dash timer
-										if getTimer != null:
-											getTimer.start(0.5)
-										# change orientation to match the movement
-										parent.shieldSprite.flip_h = (parent.direction < 0)
-										# lock camera for a short time
-										parent.lock_camera(16.0/60.0)
-								
-								# bubble shield actions
-								parent.SHIELDS.BUBBLE:
-									# check animation isn't already bouncing
-									if parent.shieldSprite.animation != "BubbleBounce":
-										parent.sfx[15].play()
-										# set movement and bounce reaction
-										parent.movement = Vector2(0,8*60)
-										if parent.is_in_water:
-											parent.bounceReaction = 4.0
-										else:
-											parent.bounceReaction = 7.5
-										
-										parent.shieldSprite.play("BubbleAction")
-										# set timer for animation related resets
-										var getTimer: Timer = parent.shieldSprite.get_node_or_null("ShieldTimer")
-										# Start bubble timer
-										if getTimer != null:
-											getTimer.start(0.25)
-									else:
-										parent.abilityUsed = false
+	# check that the invincibility barrier isn't visible
+	if !$"../../InvincibilityBarrier".visible:
+		match (parent.shield):
+			# insta shield
+			parent.SHIELDS.NONE:
+				parent.air_control = true
+				if Global.insta_shield:
+					parent.sfx[16].play()
+					parent.shieldSprite.play("Insta")
+					parent.shieldSprite.frame = 0
+					parent.shieldSprite.visible = true
+					#enable insta shield hitbox
+					parent.shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled = false
+					#wait for animation for the shield to finish
+					await parent.shieldSprite.animation_finished
+					#check shield hasn't changed
+					if (parent.shield == parent.SHIELDS.NONE):
+						parent.shieldSprite.visible = false
+						parent.shieldSprite.stop()
+					#disable insta shield
+					parent.shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled = true
+			# elec shield action
+			parent.SHIELDS.ELEC:
+				parent.sfx[13].play()
+				# set movement upwards
+				parent.movement.y = -5.5*60.0
+				# generate 4 electric particles and send them out diagonally (rotated for each iteration of i to 4)
+				for i in range(4):
+					var part: Node2D = elecPart.instantiate()
+					part.global_position = parent.global_position
+					part.direction = Vector2(1,1).rotated(deg_to_rad(90*i))
+					parent.get_parent().add_child(part)
+			# fire shield action
+			parent.SHIELDS.FIRE:
+				# partner check (so you don't flame boost when you're trying to fly with tails
+				if !(parent.inputs[parent.INPUTS.YINPUT] < 0 and parent.partner != null):
+					parent.sfx[14].play()
+					parent.movement = Vector2(8*60*parent.direction,0)
+					parent.shieldSprite.play("FireAction")
+					# set timer for animation related resets
+					var getTimer: Timer = parent.shieldSprite.get_node_or_null("ShieldTimer")
+					# Start fire dash timer
+					if getTimer != null:
+						getTimer.start(0.5)
+					# change orientation to match the movement
+					parent.shieldSprite.flip_h = (parent.direction < 0)
+					# lock camera for a short time
+					parent.lock_camera(16.0/60.0)
+			# bubble shield actions
+			parent.SHIELDS.BUBBLE:
+				# check animation isn't already bouncing
+				if parent.shieldSprite.animation != "BubbleBounce":
+					parent.sfx[15].play()
+					# set movement and bounce reaction
+					parent.movement = Vector2(0,8*60)
+					if parent.is_in_water:
+						parent.bounceReaction = 4.0
+					else:
+						parent.bounceReaction = 7.5
+					parent.shieldSprite.play("BubbleAction")
+					# set timer for animation related resets
+					var getTimer: Timer = parent.shieldSprite.get_node_or_null("ShieldTimer")
+					# Start bubble timer
+					if getTimer != null:
+						getTimer.start(0.25)
+					else:
+						parent.abilityUsed = false
 
 # Shield timer timeouts (used to reset animations)
 func _on_ShieldTimer_timeout() -> void:
