@@ -278,23 +278,11 @@ position = Vector2(2625, 832)
 rotation = 3.14159
 
 [node name="Spikes4" parent="Hazards" unique_id=1401887989 instance=ExtResource("25_e7tqq")]
-position = Vector2(2720, 864)
+position = Vector2(2720, 880)
 rotation = 3.14159
 
-[node name="Spikes6" parent="Hazards" unique_id=1586371680 instance=ExtResource("25_e7tqq")]
-position = Vector2(5136, 848)
-rotation = 3.14159
-
-[node name="Spikes7" parent="Hazards" unique_id=1998880331 instance=ExtResource("25_e7tqq")]
-position = Vector2(5168, 848)
-rotation = 3.14159
-
-[node name="Spikes8" parent="Hazards" unique_id=1427967712 instance=ExtResource("25_e7tqq")]
-position = Vector2(5264, 848)
-rotation = 3.14159
-
-[node name="Spikes9" parent="Hazards" unique_id=1604203821 instance=ExtResource("25_e7tqq")]
-position = Vector2(5296, 848)
+[node name="Spikes12" parent="Hazards" unique_id=1556135842 instance=ExtResource("25_e7tqq")]
+position = Vector2(3408, 880)
 rotation = 3.14159
 
 [node name="Environment" type="Node" parent="." unique_id=923142981]
