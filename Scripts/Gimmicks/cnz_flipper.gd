@@ -74,9 +74,9 @@ func _physics_process(delta: float) -> void:
 					just_used = true
 					for player in players:
 						if player.controlObject == self:
-							var offsetDiff = (player.global_position.x - global_position.x)*direction
+							var offsetDiff: float = (player.global_position.x - global_position.x)*direction
 							offsetDiff = max(offsetDiff,0)
-							var height = offsetDiff/2
+							var height: float = offsetDiff/2
 							if height > 0:
 								height = clamp(height,8,16)
 								player.angle = 0
@@ -89,7 +89,7 @@ func _physics_process(delta: float) -> void:
 								players.erase(player)
 
 
-func physics_collision(player, hitVector):
+func physics_collision(player: Player2D, hitVector: Vector2) -> void:
 	if type == 0:
 		if hitVector.y > 0:
 			player.set_state(player.STATES.ROLL)

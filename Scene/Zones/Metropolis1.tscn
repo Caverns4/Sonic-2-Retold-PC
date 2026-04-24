@@ -41,7 +41,6 @@
 [node name="Metropolis1" type="Node2D" unique_id=1257188195]
 script = ExtResource("1_swaun")
 zone_id = 6
-zone_name = "Metropolis"
 music = ExtResource("2_xntwa")
 music2P = ExtResource("2_xntwa")
 boss_theme = ExtResource("3_7hpa3")

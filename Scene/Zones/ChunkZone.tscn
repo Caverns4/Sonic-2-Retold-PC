@@ -50,7 +50,6 @@
 [node name="ChemicalPlant1" type="Node2D" unique_id=82589673]
 script = ExtResource("2")
 zone_id = 3
-zone_name = "Chemical Plant"
 music = ExtResource("2_8olfy")
 music2P = ExtResource("2_8olfy")
 animal1 = 2

@@ -18,7 +18,6 @@
 [node name="BossZone" type="Node2D" unique_id=956240958]
 script = ExtResource("1_2qba3")
 zone_id = 14
-zone_name = "Metropolis"
 act_number = 3
 music = ExtResource("2_wqlgd")
 music2P = ExtResource("2_t02ck")

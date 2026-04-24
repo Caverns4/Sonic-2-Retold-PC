@@ -38,7 +38,6 @@
 [node name="NeoGreenHill2" type="Node2D" unique_id=369776615]
 script = ExtResource("1_uxs8x")
 zone_id = 5
-zone_name = "Aquatic Ruin"
 act_number = 2
 music = ExtResource("2_vjshq")
 music2P = ExtResource("2_vjshq")

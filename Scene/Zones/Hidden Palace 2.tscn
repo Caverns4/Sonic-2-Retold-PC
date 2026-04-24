@@ -87,7 +87,6 @@ _data = {
 [node name="HiddenPalace2" type="Node2D" unique_id=437395440]
 script = ExtResource("1_74d0b")
 zone_id = 1
-zone_name = "Hidden Palace"
 act_number = 2
 music = ExtResource("3_2gqg0")
 music2P = ExtResource("3_2gqg0")
@@ -509,149 +508,6 @@ position = Vector2(7496, 1656)
 sfx = null
 visible_sprite = false
 
-[node name="Environment" type="Node" parent="." unique_id=126190199]
-
-[node name="PulsatingOrb" parent="Environment" unique_id=1473981725 instance=ExtResource("19_rixtc")]
-position = Vector2(344, 1344)
-
-[node name="PulsatingOrb2" parent="Environment" unique_id=1228720991 instance=ExtResource("19_rixtc")]
-position = Vector2(728, 1344)
-
-[node name="PulsatingOrb3" parent="Environment" unique_id=244174427 instance=ExtResource("19_rixtc")]
-position = Vector2(1224, 640)
-
-[node name="PulsatingOrb4" parent="Environment" unique_id=1029006160 instance=ExtResource("19_rixtc")]
-position = Vector2(712, 384)
-
-[node name="PulsatingOrb5" parent="Environment" unique_id=243248171 instance=ExtResource("19_rixtc")]
-position = Vector2(1496, 320)
-
-[node name="PulsatingOrb6" parent="Environment" unique_id=2071359141 instance=ExtResource("19_rixtc")]
-position = Vector2(2248, 1200)
-
-[node name="PulsatingOrb7" parent="Environment" unique_id=132940841 instance=ExtResource("19_rixtc")]
-position = Vector2(2248, 1280)
-
-[node name="PulsatingOrb8" parent="Environment" unique_id=510247488 instance=ExtResource("19_rixtc")]
-position = Vector2(2240, 1360)
-
-[node name="PulsatingOrb9" parent="Environment" unique_id=508635052 instance=ExtResource("19_rixtc")]
-position = Vector2(2272, 1424)
-
-[node name="PulsatingOrb10" parent="Environment" unique_id=78099209 instance=ExtResource("19_rixtc")]
-position = Vector2(2472, 544)
-
-[node name="PulsatingOrb11" parent="Environment" unique_id=2121562628 instance=ExtResource("19_rixtc")]
-position = Vector2(2472, 736)
-
-[node name="PulsatingOrb12" parent="Environment" unique_id=500823048 instance=ExtResource("19_rixtc")]
-position = Vector2(2776, 448)
-
-[node name="PulsatingOrb13" parent="Environment" unique_id=418769737 instance=ExtResource("19_rixtc")]
-position = Vector2(3032, 448)
-
-[node name="PulsatingOrb14" parent="Environment" unique_id=257567315 instance=ExtResource("19_rixtc")]
-position = Vector2(3288, 1856)
-
-[node name="PulsatingOrb39" parent="Environment" unique_id=2063547761 instance=ExtResource("19_rixtc")]
-position = Vector2(3544, 1504)
-
-[node name="PulsatingOrb15" parent="Environment" unique_id=5580260 instance=ExtResource("19_rixtc")]
-position = Vector2(4296, 384)
-
-[node name="PulsatingOrb16" parent="Environment" unique_id=2129109420 instance=ExtResource("19_rixtc")]
-position = Vector2(4288, 464)
-
-[node name="PulsatingOrb17" parent="Environment" unique_id=1663431019 instance=ExtResource("19_rixtc")]
-position = Vector2(4312, 64)
-
-[node name="PulsatingOrb18" parent="Environment" unique_id=1718103695 instance=ExtResource("19_rixtc")]
-position = Vector2(4320, 528)
-
-[node name="PulsatingOrb19" parent="Environment" unique_id=720255715 instance=ExtResource("19_rixtc")]
-position = Vector2(5344, 144)
-
-[node name="PulsatingOrb20" parent="Environment" unique_id=2049148119 instance=ExtResource("19_rixtc")]
-position = Vector2(5344, 1424)
-
-[node name="PulsatingOrb21" parent="Environment" unique_id=244568348 instance=ExtResource("19_rixtc")]
-position = Vector2(5344, 1680)
-
-[node name="PulsatingOrb22" parent="Environment" unique_id=1205104743 instance=ExtResource("19_rixtc")]
-position = Vector2(6088, 1920)
-
-[node name="PulsatingOrb40" parent="Environment" unique_id=1760120501 instance=ExtResource("19_rixtc")]
-position = Vector2(6088, 1840)
-
-[node name="PulsatingOrb41" parent="Environment" unique_id=1559224456 instance=ExtResource("19_rixtc")]
-position = Vector2(5472, 1936)
-
-[node name="PulsatingOrb23" parent="Environment" unique_id=1045247761 instance=ExtResource("19_rixtc")]
-position = Vector2(7000, 1344)
-
-[node name="PulsatingOrb24" parent="Environment" unique_id=1713600519 instance=ExtResource("19_rixtc")]
-position = Vector2(7872, 208)
-
-[node name="PulsatingOrb25" parent="Environment" unique_id=965755718 instance=ExtResource("19_rixtc")]
-position = Vector2(7880, 48)
-
-[node name="PulsatingOrb26" parent="Environment" unique_id=1828225449 instance=ExtResource("19_rixtc")]
-position = Vector2(7880, 128)
-
-[node name="PulsatingOrb27" parent="Environment" unique_id=851850654 instance=ExtResource("19_rixtc")]
-position = Vector2(7896, 1856)
-
-[node name="PulsatingOrb28" parent="Environment" unique_id=617418858 instance=ExtResource("19_rixtc")]
-position = Vector2(7904, 272)
-
-[node name="PulsatingOrb29" parent="Environment" unique_id=735742776 instance=ExtResource("19_rixtc")]
-position = Vector2(8408, 64)
-
-[node name="PulsatingOrb30" parent="Environment" unique_id=292351238 instance=ExtResource("19_rixtc")]
-position = Vector2(9272, 704)
-
-[node name="PulsatingOrb31" parent="Environment" unique_id=1738674794 instance=ExtResource("19_rixtc")]
-position = Vector2(9928, 944)
-
-[node name="PulsatingOrb32" parent="Environment" unique_id=2019476432 instance=ExtResource("19_rixtc")]
-position = Vector2(9928, 1024)
-
-[node name="PulsatingOrb33" parent="Environment" unique_id=370025948 instance=ExtResource("19_rixtc")]
-position = Vector2(10072, 320)
-
-[node name="PulsatingOrb34" parent="Environment" unique_id=1116292629 instance=ExtResource("19_rixtc")]
-position = Vector2(10696, 1920)
-
-[node name="PulsatingOrb35" parent="Environment" unique_id=360231867 instance=ExtResource("19_rixtc")]
-position = Vector2(10696, 1328)
-
-[node name="PulsatingOrb36" parent="Environment" unique_id=53125008 instance=ExtResource("19_rixtc")]
-position = Vector2(10696, 1408)
-
-[node name="PulsatingOrb37" parent="Environment" unique_id=765471286 instance=ExtResource("19_rixtc")]
-position = Vector2(11464, 1328)
-
-[node name="PulsatingOrb38" parent="Environment" unique_id=1341692167 instance=ExtResource("19_rixtc")]
-position = Vector2(11464, 1408)
-
-[node name="PulsatingOrb42" parent="Environment" unique_id=1679035756 instance=ExtResource("19_rixtc")]
-position = Vector2(12104, 1152)
-
-[node name="PulsatingOrb43" parent="Environment" unique_id=1732672735 instance=ExtResource("19_rixtc")]
-position = Vector2(12096, 1232)
-
-[node name="PulsatingOrb44" parent="Environment" unique_id=83949900 instance=ExtResource("19_rixtc")]
-position = Vector2(12120, 1344)
-
-[node name="PulsatingOrb45" parent="Environment" unique_id=316698411 instance=ExtResource("19_rixtc")]
-position = Vector2(12488, 1152)
-
-[node name="PulsatingOrb46" parent="Environment" unique_id=1556071641 instance=ExtResource("19_rixtc")]
-position = Vector2(12480, 1232)
-
-[node name="PulsatingOrb47" parent="Environment" unique_id=394188316 instance=ExtResource("19_rixtc")]
-position = Vector2(12504, 1344)
-
 [node name="Platforms" type="Node" parent="." unique_id=1550235058]
 
 [node name="HpzPlatformSpawner" parent="Platforms" unique_id=811546227 instance=ExtResource("31_s5co3")]
@@ -905,6 +761,149 @@ scale = Vector2(1, 26)
 position = Vector2(9576, 1496)
 rotation = 0.462512
 scale = Vector2(1, 30)
+
+[node name="Environment" type="Node" parent="." unique_id=126190199]
+
+[node name="PulsatingOrb" parent="Environment" unique_id=1473981725 instance=ExtResource("19_rixtc")]
+position = Vector2(344, 1344)
+
+[node name="PulsatingOrb2" parent="Environment" unique_id=1228720991 instance=ExtResource("19_rixtc")]
+position = Vector2(728, 1344)
+
+[node name="PulsatingOrb3" parent="Environment" unique_id=244174427 instance=ExtResource("19_rixtc")]
+position = Vector2(1224, 640)
+
+[node name="PulsatingOrb4" parent="Environment" unique_id=1029006160 instance=ExtResource("19_rixtc")]
+position = Vector2(712, 384)
+
+[node name="PulsatingOrb5" parent="Environment" unique_id=243248171 instance=ExtResource("19_rixtc")]
+position = Vector2(1496, 320)
+
+[node name="PulsatingOrb6" parent="Environment" unique_id=2071359141 instance=ExtResource("19_rixtc")]
+position = Vector2(2248, 1200)
+
+[node name="PulsatingOrb7" parent="Environment" unique_id=132940841 instance=ExtResource("19_rixtc")]
+position = Vector2(2248, 1280)
+
+[node name="PulsatingOrb8" parent="Environment" unique_id=510247488 instance=ExtResource("19_rixtc")]
+position = Vector2(2240, 1360)
+
+[node name="PulsatingOrb9" parent="Environment" unique_id=508635052 instance=ExtResource("19_rixtc")]
+position = Vector2(2272, 1424)
+
+[node name="PulsatingOrb10" parent="Environment" unique_id=78099209 instance=ExtResource("19_rixtc")]
+position = Vector2(2472, 544)
+
+[node name="PulsatingOrb11" parent="Environment" unique_id=2121562628 instance=ExtResource("19_rixtc")]
+position = Vector2(2472, 736)
+
+[node name="PulsatingOrb12" parent="Environment" unique_id=500823048 instance=ExtResource("19_rixtc")]
+position = Vector2(2776, 448)
+
+[node name="PulsatingOrb13" parent="Environment" unique_id=418769737 instance=ExtResource("19_rixtc")]
+position = Vector2(3032, 448)
+
+[node name="PulsatingOrb14" parent="Environment" unique_id=257567315 instance=ExtResource("19_rixtc")]
+position = Vector2(3288, 1856)
+
+[node name="PulsatingOrb39" parent="Environment" unique_id=2063547761 instance=ExtResource("19_rixtc")]
+position = Vector2(3544, 1504)
+
+[node name="PulsatingOrb15" parent="Environment" unique_id=5580260 instance=ExtResource("19_rixtc")]
+position = Vector2(4296, 384)
+
+[node name="PulsatingOrb16" parent="Environment" unique_id=2129109420 instance=ExtResource("19_rixtc")]
+position = Vector2(4288, 464)
+
+[node name="PulsatingOrb17" parent="Environment" unique_id=1663431019 instance=ExtResource("19_rixtc")]
+position = Vector2(4312, 64)
+
+[node name="PulsatingOrb18" parent="Environment" unique_id=1718103695 instance=ExtResource("19_rixtc")]
+position = Vector2(4320, 528)
+
+[node name="PulsatingOrb19" parent="Environment" unique_id=720255715 instance=ExtResource("19_rixtc")]
+position = Vector2(5344, 144)
+
+[node name="PulsatingOrb20" parent="Environment" unique_id=2049148119 instance=ExtResource("19_rixtc")]
+position = Vector2(5344, 1424)
+
+[node name="PulsatingOrb21" parent="Environment" unique_id=244568348 instance=ExtResource("19_rixtc")]
+position = Vector2(5344, 1680)
+
+[node name="PulsatingOrb22" parent="Environment" unique_id=1205104743 instance=ExtResource("19_rixtc")]
+position = Vector2(6088, 1920)
+
+[node name="PulsatingOrb40" parent="Environment" unique_id=1760120501 instance=ExtResource("19_rixtc")]
+position = Vector2(6088, 1840)
+
+[node name="PulsatingOrb41" parent="Environment" unique_id=1559224456 instance=ExtResource("19_rixtc")]
+position = Vector2(5472, 1936)
+
+[node name="PulsatingOrb23" parent="Environment" unique_id=1045247761 instance=ExtResource("19_rixtc")]
+position = Vector2(7000, 1344)
+
+[node name="PulsatingOrb24" parent="Environment" unique_id=1713600519 instance=ExtResource("19_rixtc")]
+position = Vector2(7872, 208)
+
+[node name="PulsatingOrb25" parent="Environment" unique_id=965755718 instance=ExtResource("19_rixtc")]
+position = Vector2(7880, 48)
+
+[node name="PulsatingOrb26" parent="Environment" unique_id=1828225449 instance=ExtResource("19_rixtc")]
+position = Vector2(7880, 128)
+
+[node name="PulsatingOrb27" parent="Environment" unique_id=851850654 instance=ExtResource("19_rixtc")]
+position = Vector2(7896, 1856)
+
+[node name="PulsatingOrb28" parent="Environment" unique_id=617418858 instance=ExtResource("19_rixtc")]
+position = Vector2(7904, 272)
+
+[node name="PulsatingOrb29" parent="Environment" unique_id=735742776 instance=ExtResource("19_rixtc")]
+position = Vector2(8408, 64)
+
+[node name="PulsatingOrb30" parent="Environment" unique_id=292351238 instance=ExtResource("19_rixtc")]
+position = Vector2(9272, 704)
+
+[node name="PulsatingOrb31" parent="Environment" unique_id=1738674794 instance=ExtResource("19_rixtc")]
+position = Vector2(9928, 944)
+
+[node name="PulsatingOrb32" parent="Environment" unique_id=2019476432 instance=ExtResource("19_rixtc")]
+position = Vector2(9928, 1024)
+
+[node name="PulsatingOrb33" parent="Environment" unique_id=370025948 instance=ExtResource("19_rixtc")]
+position = Vector2(10072, 320)
+
+[node name="PulsatingOrb34" parent="Environment" unique_id=1116292629 instance=ExtResource("19_rixtc")]
+position = Vector2(10696, 1920)
+
+[node name="PulsatingOrb35" parent="Environment" unique_id=360231867 instance=ExtResource("19_rixtc")]
+position = Vector2(10696, 1328)
+
+[node name="PulsatingOrb36" parent="Environment" unique_id=53125008 instance=ExtResource("19_rixtc")]
+position = Vector2(10696, 1408)
+
+[node name="PulsatingOrb37" parent="Environment" unique_id=765471286 instance=ExtResource("19_rixtc")]
+position = Vector2(11464, 1328)
+
+[node name="PulsatingOrb38" parent="Environment" unique_id=1341692167 instance=ExtResource("19_rixtc")]
+position = Vector2(11464, 1408)
+
+[node name="PulsatingOrb42" parent="Environment" unique_id=1679035756 instance=ExtResource("19_rixtc")]
+position = Vector2(12104, 1152)
+
+[node name="PulsatingOrb43" parent="Environment" unique_id=1732672735 instance=ExtResource("19_rixtc")]
+position = Vector2(12096, 1232)
+
+[node name="PulsatingOrb44" parent="Environment" unique_id=83949900 instance=ExtResource("19_rixtc")]
+position = Vector2(12120, 1344)
+
+[node name="PulsatingOrb45" parent="Environment" unique_id=316698411 instance=ExtResource("19_rixtc")]
+position = Vector2(12488, 1152)
+
+[node name="PulsatingOrb46" parent="Environment" unique_id=1556071641 instance=ExtResource("19_rixtc")]
+position = Vector2(12480, 1232)
+
+[node name="PulsatingOrb47" parent="Environment" unique_id=394188316 instance=ExtResource("19_rixtc")]
+position = Vector2(12504, 1344)
 
 [node name="Currents" type="Node" parent="." unique_id=823414491]
 

@@ -60,6 +60,34 @@ animations = [{
 "speed": 30.0
 }]
 
+[sub_resource type="Animation" id="Animation_cv3ee"]
+resource_name = "new_animation"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Item:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Monitor:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Busted"]
+}
+
 [sub_resource type="Animation" id="7"]
 resource_name = "DestroyMonitor"
 length = 0.533333
@@ -217,15 +245,12 @@ tracks/3/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_cv3ee"]
-resource_name = "new_animation"
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b4dus"]
 _data = {
+&"Broken": SubResource("Animation_cv3ee"),
 &"DestroyMonitor": SubResource("7"),
 &"RESET": SubResource("8"),
-&"fadeIcon": SubResource("9"),
-&"new_animation": SubResource("Animation_cv3ee")
+&"fadeIcon": SubResource("9")
 }
 
 [node name="Monitor" type="CharacterBody2D" unique_id=2054791048]
@@ -247,7 +272,6 @@ frame = 2
 [node name="Monitor" type="AnimatedSprite2D" parent="." unique_id=1327437861]
 sprite_frames = SubResource("6")
 autoplay = "default"
-frame_progress = 0.275708
 
 [node name="Animator" type="AnimationPlayer" parent="." unique_id=81452597]
 libraries/ = SubResource("AnimationLibrary_b4dus")

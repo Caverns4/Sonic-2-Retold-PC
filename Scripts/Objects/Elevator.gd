@@ -1,9 +1,9 @@
 @tool
 extends Node2D
 
-@export var texture = preload("res://Graphics/Tiles/EHZ_HTZ/EHZ_Platform_Small.png")
+@export var texture: Texture2D = preload("res://Graphics/Tiles/EHZ_HTZ/EHZ_Platform_Small.png")
 ## This is actually where the platform *starts*
-@export var endPosition = Vector2(0,256) # End travel point for platform
+@export var endPosition: Vector2 = Vector2(0,256) # End travel point for platform
 ## How fast this platform should move.
 @export var speed: float = 1.0
 
@@ -11,20 +11,20 @@ extends Node2D
 @export var waitTime: float = 4.0
 @export var soundFile: AudioStream
 
-var activated = false # If the player has stood on the platform
+var activated: bool = false # If the player has stood on the platform
 ## Timespan the object has been active for.
-var activeTimer = 0.0
+var activeTimer: float = 0.0
 ## Time to wait at the peak of the platform's motion.
-var delayTimer = 0.0
+var delayTimer: float = 0.0
 
 #State machine
 enum STATES{IDLE,PATHTO,COUNTDOWN,PATHFROM}
-var state = STATES.IDLE
+var state: STATES = STATES.IDLE
 
-var offsetTimer = 0
-var platformDepth = 4
+var offsetTimer: float = 0
+var platformDepth: float = 4
 
-func _ready():
+func _ready() -> void:
 	# Change platform shape
 	$Platform/Shape3D.shape.size.x = texture.get_size().x
 	$Platform/Shape3D.shape.size.y = platformDepth/2.0
@@ -41,7 +41,7 @@ func _ready():
 		offsetTimer = 0
 	
 
-func _process(delta):
+func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		$Platform/Shape3D.shape.size.x = texture.get_size().x
 		$Platform/Shape3D.shape.size.y = platformDepth/2.0
@@ -50,10 +50,10 @@ func _process(delta):
 		# Offset timer for the editor to display
 		offsetTimer = wrapf(offsetTimer-(delta*speed),0,PI*2)
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	if !Engine.is_editor_hint():
 		# Sync the position up to tween between the start and end point based on level time
-		var getPos = (
+		var getPos: Vector2 = (
 			endPosition*(cos(activeTimer*speed)*0.5+0.5)
 			)
 		
@@ -90,7 +90,7 @@ func _physics_process(delta):
 		$Platform.position = (getPos).round()
 
 
-func _draw():
+func _draw() -> void:
 	if Engine.is_editor_hint():
 		# Draw the platform positions for the editor
 		if speed > 0 or endPosition != Vector2.ZERO:

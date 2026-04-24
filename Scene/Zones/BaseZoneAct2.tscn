@@ -44,7 +44,6 @@
 [node name="BaseZoneAct2" type="Node2D" unique_id=1490191328]
 script = ExtResource("2")
 zone_id = 4
-zone_name = "Oil Ocean"
 act_number = 2
 music = ExtResource("2_533ik")
 music2P = ExtResource("3_w8bgu")

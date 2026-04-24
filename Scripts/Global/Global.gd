@@ -1,11 +1,19 @@
 extends Node
 
+# Winter Zone is scrapped, I just don't feel like removing all the references.
 enum ZONES{EMERALD_HILL,HIDDEN_PALACE,HILL_TOP,CHEMICAL_PLANT,
 OIL_OCEAN,NEO_GREEN_HILL,METROPOLIS,DUST_HILL,
 WOOD_GADGET,CASINO_NIGHT,JEWEL_GROTTO,WINTER,
 SAND_SHOWER,TROPICAL,CYBER_CITY,SKY_FORTRESS,
 DEATH_EGG,ENDING,SPECIAL_STAGE}
-# Winter Zone is scrapped, I just don't feel like removing all the references.
+
+const zone_names: Array[StringName] = [
+	"Emerald Hill","Hidden Palace","Hill Top","Chemical Plant",
+	"Oil Ocean","Aquatic Ruin","Metropolis","Mystic Cave",
+	"Wood Gadget","Casino Night","Jewel Grotto","Null",
+	"Sand Shower","Null","Cyber City","Sky Fortress",
+	"Death Egg","Emerald Hill"
+]
 
 const save_path = "user://Sonic.dat"
 ## The Save slot (section in the file). if 0, treat game file as a NO SAVE
@@ -185,13 +193,13 @@ var twoPlayerZones: Array[ZONES] = [
 #Which round the Two Player Mode is in.
 var twoPlayerRound: int = 0
 
-var zone_names: PackedStringArray = [
-	"Emerald Hill", "Hidden Palace","Hill Top", "Chemical Plant",
-	"Oil Ocean", "Aquatic Ruin","Metropolis","Dust Hill",
-	"Wood Gadget","Casino Night","Jewel Grotto","Unused",
-	"Sand Shower","Apr01","Cyber City","Sky Fortress",
-	"Death Egg","XXX"
-]
+#var zone_names: PackedStringArray = [
+#	"Emerald Hill", "Hidden Palace","Hill Top", "Chemical Plant",
+#	"Oil Ocean", "Aquatic Ruin","Metropolis","Dust Hill",
+#	"Wood Gadget","Casino Night","Jewel Grotto","Unused",
+#	"Sand Shower","Apr01","Cyber City","Sky Fortress",
+#	"Death Egg","XXX"
+#]
 
 ## The current played zone. Necessary for Two-Player Mode and the Title Screen.
 var saved_zone_id: ZONES = ZONES.ENDING

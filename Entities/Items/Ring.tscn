@@ -4,7 +4,7 @@
 [ext_resource type="SpriteFrames" uid="uid://bhtsckwsr2bjs" path="res://Graphics/Items/RingSprite.tres" id="2_lyx02"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(13, 13)
+size = Vector2(16, 16)
 
 [node name="Ring" type="Node2D" unique_id=193852301 groups=["Rings"]]
 z_index = 1

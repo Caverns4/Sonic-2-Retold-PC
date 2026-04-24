@@ -205,7 +205,6 @@ _data = {
 [node name="HiddenPalace1" type="Node2D" unique_id=517213821]
 script = ExtResource("1_snbg3")
 zone_id = 1
-zone_name = "Hidden Palace"
 music = ExtResource("2_tvhrw")
 music2P = ExtResource("2_tvhrw")
 animal1 = 8

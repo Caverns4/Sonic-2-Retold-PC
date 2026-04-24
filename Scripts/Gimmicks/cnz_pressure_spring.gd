@@ -9,8 +9,8 @@ var players: Array[Player2D] = []
 var charge_time: float = 0.0
 var ready_to_fire: bool = false
 
-@onready var spring_cap = $Area2D
-@onready var spring_coils = $SpringCoils
+@onready var spring_cap: Area2D = $Area2D
+@onready var spring_coils: TextureRect = $SpringCoils
 
 func  _process(_delta: float) -> void:
 	for body in players:
@@ -37,16 +37,16 @@ func _physics_process(delta: float) -> void:
 			body.allowTranslate = false
 			body.ground = true
 			body.angle = global_rotation_degrees
-			var clamp_amt = clampf(charge_time,abs(min_launch_power),abs(max_launch_power))
+			var clamp_amt: float = clampf(charge_time,abs(min_launch_power),abs(max_launch_power))
 			body.movement = (Vector2.UP * clamp_amt*60).rotated(global_rotation)
 		charge_time = 0.0
 		players.clear()
 
 
-func _update_spring():
+func _update_spring() -> void:
 	spring_cap.position.y = round(-64 + min(charge_time,24))
 	spring_coils.position.y = spring_cap.position.y/2
-	$Area2D/SpringCap.frame = round(wrapf(charge_time,0,2))
+	$Area2D/SpringCap.frame = wrapi(round(charge_time),0,1)
 
 func _on_area_2d_body_entered(body: Player2D) -> void:
 	players.append(body)

@@ -33,7 +33,6 @@
 [node name="DustHill1" type="Node2D" unique_id=755697521]
 script = ExtResource("1_3gh4r")
 zone_id = 7
-zone_name = "Mystic Cave"
 music = ExtResource("2_pw2ks")
 music2P = ExtResource("2_vln36")
 animal1 = 8

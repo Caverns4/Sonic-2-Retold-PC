@@ -15,7 +15,6 @@
 [node name="WoodGadget2" type="Node2D" unique_id=436450104]
 script = ExtResource("1_vg3f0")
 zone_id = 8
-zone_name = "Wood Gadget"
 act_number = 2
 music = ExtResource("2_0b10k")
 music2P = ExtResource("3_0b10k")

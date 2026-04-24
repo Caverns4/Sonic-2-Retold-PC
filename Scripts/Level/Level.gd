@@ -3,16 +3,15 @@ extends Node2D
 ## The current Zone ID, for Global.ZONES
 @export var zone_id: Global.ZONES = 0 as Global.ZONES
 
-@export_group("Title Card Properties")
 ## If true, play the level card animator and use the Zone Name Text
 @export var playLevelCard: bool = true
+@export_group("Title Card Properties")
 ## Text to use in the Zone Name label.
-@export var zone_name: String = "Emerald Hill"
+@export var zone_name_overide: String = ""
 ## Text to use in the Zone label.
 @export var zone_text: String = "Zone"
 ## Act ID
 @export var act_number: int = 1
-
 
 @export_group("Music")
 @export var music: AudioStream = preload("res://Audio/Soundtrack/s2br_EmeraldHilll.ogg")
@@ -83,7 +82,9 @@ func setup_hud_properties() -> void:
 			ringsForPerfect = get_tree().get_nodes_in_group("Rings").size()
 			print(str(ringsForPerfect) + " rings to perfect.")
 		Global.hud.ringsForPerfect = ringsForPerfect
-		Global.hud.initialize_hud(zone_name,zone_text,act_number)
+		
+		if !zone_name_overide: zone_name_overide = Global.zone_names[zone_id]
+		Global.hud.initialize_hud(zone_name_overide,zone_text,act_number)
 
 # used for stage starts, also used for returning from special stages
 func level_reset_data(_playCard: bool = true) -> void:

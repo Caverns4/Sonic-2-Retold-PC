@@ -1,7 +1,9 @@
 @tool
 extends CharacterBody2D
 
-var physics: bool = false
+enum STATE{NORMAL,PHYSICS,BROKEN}
+var state: STATE = STATE.NORMAL
+
 var grv: float = 0.21875
 var yspeed: float = 0
 var playerTouch: Player2D = null
@@ -39,7 +41,7 @@ func _ready() -> void:
 		return
 	if Global.object_table.has(get_path()):
 		disable_collision()
-		$Animator.play("DestroyMonitor")
+		$Animator.play("Broken")
 	if Global.two_player_mode:
 		item = ITEMTYPES.QMARK
 	# set frame
@@ -107,6 +109,7 @@ func destroy() -> void:
 		$Item.frame = item + 2
 
 	# create explosion
+	state = STATE.BROKEN
 	var explosion: Node2D = Explosion.instantiate()
 	get_parent().add_child(explosion)
 	explosion.global_position = global_position
@@ -173,19 +176,19 @@ func destroy() -> void:
 func _physics_process(delta: float) -> void:
 	if !Engine.is_editor_hint():
 		# if physics are on make it fall
-		if physics:
+		if state == STATE.PHYSICS:
 			var collide: KinematicCollision2D = move_and_collide(Vector2(velocity.x,yspeed)*delta)
 			yspeed += grv/GlobalFunctions.div_by_delta(delta)
 			if collide and yspeed > 0:
-				physics = false
 				yspeed = 0.0
 
 # physics collision check, see physics object
 func physics_collision(body: Player2D, hitVector: Vector2) -> void:
+	if state == STATE.BROKEN: return
 	# Monitor head bouncing
 	if hitVector.y < 0:
 		yspeed = -1.5*60
-		physics = true
+		state = STATE.PHYSICS
 		if body.movement.y < 0:
 			body.movement.y *= -1
 	# check that player has the rolling layer bit set
@@ -236,5 +239,5 @@ func disable_collision() -> void:
 	$CollisionShape2D.disabled = true
 	$InstaArea.monitorable = false
 	$InstaArea.monitoring = false
-	physics = false
+	state = STATE.PHYSICS
 	yspeed = 0.0

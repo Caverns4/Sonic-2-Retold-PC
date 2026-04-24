@@ -1,10 +1,10 @@
 extends StaticBody2D
 
-var sfx = preload("res://Audio/SFX/Objects/CNZ_Bonus.wav")
+var sfx: AudioStream = preload("res://Audio/SFX/Objects/CNZ_Bonus.wav")
 
-var state = 0
+var state: int = 0
 
-func physics_collision(body, hitVector):
+func physics_collision(body: Player2D, hitVector: Vector2) -> void:
 	if abs(hitVector.y) >= 1.0:
 		var testpos: float = body.global_position.y-global_position.y
 		body.movement.y = max(abs(body.movement.y),360) * sign(testpos)
@@ -13,6 +13,6 @@ func physics_collision(body, hitVector):
 	SoundDriver.play_sound(sfx)
 	Global.add_score(global_position,0,Global.players.find(body))
 	state +=1
-	$Sprite2D.frame = state
+	$Sprite2D.frame = wrapi(state,0,3)
 	if state > 2:
 		queue_free()

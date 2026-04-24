@@ -46,7 +46,6 @@ size = Vector2(1216, 2048)
 [node name="HillTop2" type="Node2D" unique_id=951477487]
 script = ExtResource("1_o6dl6")
 zone_id = 2
-zone_name = "Hill Top"
 act_number = 2
 music = ExtResource("2_5rsgg")
 music2P = ExtResource("2_5rsgg")

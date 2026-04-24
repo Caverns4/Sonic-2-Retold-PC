@@ -27,7 +27,6 @@
 [node name="WoodGadget1" type="Node2D" unique_id=526083953]
 script = ExtResource("1_bq4rn")
 zone_id = 8
-zone_name = "Wood Gadget"
 music = ExtResource("2_qonje")
 music2P = ExtResource("3_ofqvb")
 animal1 = 11

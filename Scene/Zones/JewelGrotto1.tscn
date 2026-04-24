@@ -14,7 +14,6 @@
 [node name="JewelGrotto1" type="Node2D" unique_id=437902492]
 script = ExtResource("1_7bqi0")
 zone_id = 10
-zone_name = "Jewel Grotto"
 music = ExtResource("3_y5ytd")
 music2P = ExtResource("3_y5ytd")
 animal1 = 8

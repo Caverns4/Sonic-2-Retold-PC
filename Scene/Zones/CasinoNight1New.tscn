@@ -38,7 +38,6 @@
 [node name="CasinoNight1" type="Node2D" unique_id=928999874]
 script = ExtResource("1_0yy3m")
 zone_id = 9
-zone_name = "Casino Night"
 music = ExtResource("2_20443")
 music2P = ExtResource("3_gfykd")
 animal1 = 13
