@@ -1,6 +1,7 @@
-[gd_scene load_steps=55 format=3 uid="uid://ducsw3pxib650"]
+[gd_scene format=3 uid="uid://ducsw3pxib650"]
 
 [ext_resource type="Shader" uid="uid://drq4hwqwwn03c" path="res://Shaders/PaletteSwapRow.gdshader" id="1_cjhir"]
+[ext_resource type="Script" uid="uid://c5bsudiuaxexk" path="res://Scripts/Player/player_skin.gd" id="1_waeh0"]
 [ext_resource type="Texture2D" uid="uid://cb15hqvojyfdf" path="res://Graphics/Palettes/SuperSonicPal_old.png" id="2_m4qvy"]
 [ext_resource type="Texture2D" uid="uid://dmd5x2a3fpjc1" path="res://Graphics/Players/Ray.png" id="3_p3kqj"]
 [ext_resource type="Texture2D" uid="uid://dlomjk6vm15ep" path="res://Graphics/Misc/DashDust.png" id="4_o75me"]
@@ -238,6 +239,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [91]
+}
+
+[sub_resource type="Animation" id="Animation_waeh0"]
+resource_name = "dieBW"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ray/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [92]
 }
 
 [sub_resource type="Animation" id="99"]
@@ -656,21 +672,6 @@ tracks/0/keys = {
 "values": [74, 75, 76, 77, 78, 79]
 }
 
-[sub_resource type="Animation" id="Animation_waeh0"]
-resource_name = "dieBW"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Ray/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [92]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_36uej"]
 _data = {
 &"RESET": SubResource("86"),
@@ -832,16 +833,15 @@ _data = {
 &"RESET": SubResource("Animation_y01gt")
 }
 
-[node name="Ray" type="Node2D"]
+[node name="Ray" type="Node2D" unique_id=1645223597]
+script = ExtResource("1_waeh0")
 
-[node name="PlayerAnimation" type="AnimationPlayer" parent="."]
+[node name="PlayerAnimation" type="AnimationPlayer" parent="." unique_id=1388780695]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_36uej")
-}
-autoplay = "idle"
+libraries/ = SubResource("AnimationLibrary_36uej")
+autoplay = &"idle"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1251761958]
 light_mask = 4096
 z_index = 5
 material = SubResource("ShaderMaterial_b1kv7")
@@ -851,7 +851,7 @@ hframes = 16
 vframes = 8
 frame = 2
 
-[node name="DashDust" type="AnimatedSprite2D" parent="Sprite2D"]
+[node name="DashDust" type="AnimatedSprite2D" parent="Sprite2D" unique_id=716784728]
 visible = false
 position = Vector2(1, 0)
 sprite_frames = SubResource("96")
@@ -859,17 +859,15 @@ autoplay = "default"
 frame = 3
 offset = Vector2(-9, -4)
 
-[node name="CrouchBox" type="CollisionShape2D" parent="."]
+[node name="CrouchBox" type="CollisionShape2D" parent="." unique_id=1860539870]
 position = Vector2(0, 8)
 shape = SubResource("111")
 disabled = true
 
-[node name="SuperPalette" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_yhl61")
-}
+[node name="SuperPalette" type="AnimationPlayer" parent="." unique_id=964386922]
+libraries/ = SubResource("AnimationLibrary_yhl61")
 
-[node name="CenterReference" type="Sprite2D" parent="."]
+[node name="CenterReference" type="Sprite2D" parent="." unique_id=447384603]
 visible = false
 modulate = Color(1, 1, 1, 0.501961)
 texture = ExtResource("5_vt7py")

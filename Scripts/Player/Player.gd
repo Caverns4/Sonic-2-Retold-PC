@@ -146,7 +146,7 @@ var Bubble: PackedScene = preload("res://Entities/Misc/Bubbles.tscn")
 var CountDown: PackedScene = preload("res://Entities/Misc/CountDownTimer.tscn")
 var RotatingParticle: PackedScene = preload("res://Entities/Misc/RotatingParticle.tscn")
 
-var superSprite: Texture2D = load("res://Graphics/Players/SuperSonic.png")
+var superSprite: Texture2D
 @onready var normalSprite: Texture2D = $Sonic/Sprite2D.texture
 var playerPal: Resource = preload("res://Shaders/PlayerPalette.tres")
 
@@ -319,14 +319,15 @@ func _ready() -> void:
 			partner.global_position = round(global_position+Vector2(-24,0))
 			partner.character = Global.PlayerChar2
 			partner.inputActions = INPUTACTIONS_P2
-		
+	if character == Global.CHARACTERS.SONIC and Global.beta_mode:
+		character = Global.CHARACTERS.SONIC_BETA
 	# Character settings
-	var skin: PackedScene = playerskins[max(min(character-1,playerskins.size()),0)]
 	currentHitbox = HITBOXESSONIC
 	if (character == Global.CHARACTERS.TAILS or
 	character == Global.CHARACTERS.AMY):
 		currentHitbox = HITBOXESTAILS
 	spriteController.name = "OldSprite"
+	var skin: PackedScene = playerskins[max(min(character-1,playerskins.size()),0)]
 	var newSprite: Node2D = skin.instantiate()
 	add_child(newSprite)
 	sprite = newSprite.get_node("Sprite2D")
@@ -334,7 +335,9 @@ func _ready() -> void:
 	superAnimator = newSprite.get_node_or_null("SuperPalette")
 	spriteController.queue_free()
 	spriteController = newSprite
+	
 	superAnimator.play("RESET")
+	superSprite = spriteController.super_sprites
 	
 	# set super palettes
 	match (character):
@@ -572,7 +575,7 @@ func _process(delta:float ) -> void:
 			# deactivate if stage cleared
 			if rings > 0 and !Global.stage_cleared:
 				superRingTimer -= delta
-				if Global.superRingDrain and superRingTimer <= 0.0:
+				if Global.super_ring_drain and superRingTimer <= 0.0:
 					rings -=1
 					superRingTimer = 1.0
 			else:

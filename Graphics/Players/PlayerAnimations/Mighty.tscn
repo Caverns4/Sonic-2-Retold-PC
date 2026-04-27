@@ -1,5 +1,6 @@
-[gd_scene load_steps=61 format=3 uid="uid://sbta787c4fwk"]
+[gd_scene format=3 uid="uid://sbta787c4fwk"]
 
+[ext_resource type="Script" uid="uid://c5bsudiuaxexk" path="res://Scripts/Player/player_skin.gd" id="1_3tvgo"]
 [ext_resource type="Shader" uid="uid://drq4hwqwwn03c" path="res://Shaders/PaletteSwapRow.gdshader" id="1_aqoqg"]
 [ext_resource type="Texture2D" uid="uid://bbpeu7ggf4kd4" path="res://Graphics/Palettes/SuperKnuckles.png" id="2_3tvgo"]
 [ext_resource type="Texture2D" uid="uid://cgq1nmr34au7o" path="res://Graphics/Players/Mighty.png" id="3_w8ce4"]
@@ -940,16 +941,15 @@ _data = {
 &"RESET": SubResource("Animation_y01gt")
 }
 
-[node name="Mighty" type="Node2D"]
+[node name="Mighty" type="Node2D" unique_id=657389136]
+script = ExtResource("1_3tvgo")
 
-[node name="PlayerAnimation" type="AnimationPlayer" parent="."]
+[node name="PlayerAnimation" type="AnimationPlayer" parent="." unique_id=1421857763]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_36uej")
-}
-autoplay = "idle"
+libraries/ = SubResource("AnimationLibrary_36uej")
+autoplay = &"idle"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=674466623]
 light_mask = 4096
 z_index = 5
 material = SubResource("ShaderMaterial_ppxn1")
@@ -958,24 +958,22 @@ offset = Vector2(0, -5)
 hframes = 16
 vframes = 8
 
-[node name="DashDust" type="AnimatedSprite2D" parent="Sprite2D"]
+[node name="DashDust" type="AnimatedSprite2D" parent="Sprite2D" unique_id=684246252]
 visible = false
 sprite_frames = SubResource("96")
 autoplay = "default"
 frame = 3
 offset = Vector2(-9, -4)
 
-[node name="CrouchBox" type="CollisionShape2D" parent="."]
+[node name="CrouchBox" type="CollisionShape2D" parent="." unique_id=2133037558]
 position = Vector2(0, 8)
 shape = SubResource("111")
 disabled = true
 
-[node name="SuperPalette" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_yhl61")
-}
+[node name="SuperPalette" type="AnimationPlayer" parent="." unique_id=5444631]
+libraries/ = SubResource("AnimationLibrary_yhl61")
 
-[node name="CenterReference" type="Sprite2D" parent="."]
+[node name="CenterReference" type="Sprite2D" parent="." unique_id=1469367757]
 visible = false
 modulate = Color(1, 1, 1, 0.501961)
 texture = ExtResource("5_m64wf")

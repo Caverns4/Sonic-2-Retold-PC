@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://d1e4muavtnun6"]
 
 [ext_resource type="Shader" uid="uid://drq4hwqwwn03c" path="res://Shaders/PaletteSwapRow.gdshader" id="1_22urb"]
+[ext_resource type="Script" uid="uid://c5bsudiuaxexk" path="res://Scripts/Player/player_skin.gd" id="1_tr44f"]
 [ext_resource type="Texture2D" uid="uid://lv4qey45t23s" path="res://Graphics/Palettes/SuperSonicPal.png" id="2_lu6d0"]
+[ext_resource type="Texture2D" uid="uid://ewcm8bns3lr4" path="res://Graphics/Players/SuperSonic.png" id="2_rlrft"]
 [ext_resource type="Texture2D" uid="uid://bjf2dsnw7ea5g" path="res://Graphics/Players/Sonic.png" id="2_uqmtl"]
 [ext_resource type="Texture2D" uid="uid://dlomjk6vm15ep" path="res://Graphics/Misc/DashDust.png" id="3_ll20w"]
 [ext_resource type="Texture2D" uid="uid://dvqglf8dididc" path="res://Graphics/Items/shield_plain.png" id="4_fe5jf"]
@@ -1069,6 +1071,8 @@ _data = {
 }
 
 [node name="Sonic" type="Node2D" unique_id=530439556]
+script = ExtResource("1_tr44f")
+super_sprites = ExtResource("2_rlrft")
 
 [node name="PlayerAnimation" type="AnimationPlayer" parent="." unique_id=80391745]
 root_node = NodePath("../..")

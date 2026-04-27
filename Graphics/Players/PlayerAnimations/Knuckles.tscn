@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bdaih80dlev3f"]
 
+[ext_resource type="Script" uid="uid://c5bsudiuaxexk" path="res://Scripts/Player/player_skin.gd" id="1_s576a"]
 [ext_resource type="Shader" uid="uid://drq4hwqwwn03c" path="res://Shaders/PaletteSwapRow.gdshader" id="1_v6hgx"]
 [ext_resource type="Texture2D" uid="uid://cndrds5482vh5" path="res://Graphics/Players/Knuckles.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://bbpeu7ggf4kd4" path="res://Graphics/Palettes/SuperKnuckles.png" id="2_86lr5"]
@@ -890,6 +891,7 @@ _data = {
 }
 
 [node name="Knuckles" type="Node2D" unique_id=1627072942]
+script = ExtResource("1_s576a")
 
 [node name="PlayerAnimation" type="AnimationPlayer" parent="." unique_id=1457233141]
 root_node = NodePath("../..")

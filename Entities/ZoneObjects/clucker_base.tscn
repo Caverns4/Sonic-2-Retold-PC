@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c01c2r12vwpbb"]
+
+[ext_resource type="PackedScene" uid="uid://2g7ovnq2n77w" path="res://Entities/Enemies/Scratch.tscn" id="1_f6kyj"]
+[ext_resource type="Texture2D" uid="uid://cuowge1h06ikt" path="res://Graphics/Objects_Zone/Clucker_Base.png" id="1_saovm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6kyj"]
+size = Vector2(48, 16)
+
+[node name="CluckerBase" type="StaticBody2D" unique_id=185151935]
+collision_layer = 8192
+collision_mask = 0
+
+[node name="Scratch" parent="." unique_id=930972453 instance=ExtResource("1_f6kyj")]
+position = Vector2(0, -32)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1784766345]
+position = Vector2(0, -8)
+texture = ExtResource("1_saovm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=189379412]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_f6kyj")

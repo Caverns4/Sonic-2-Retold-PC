@@ -29,7 +29,7 @@ func _process(_delta: float) -> void:
 		activated = true
 		
 		# swap sprite if sonic
-		if parent.character == Global.CHARACTERS.SONIC:
+		if parent.superSprite != null:
 			parent.sprite.texture = parent.superSprite
 		# reset velocity to memory
 		parent.movement = remVel

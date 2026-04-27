@@ -97,9 +97,9 @@ var continues: int = 0 #Never used
 var scoreP2: int = 0
 var livesP2: int = 3
 ## emeralds use bitwise flag operations, the equivelent for 7 emeralds would be 127
-var emeralds: int = 0
+var emeralds: int = 127
 ## Fake const for all Emeralds. 127 is hard coded in most places (for demo purposes)
-const ALL_EMERALDS: int = 1 #127
+const ALL_EMERALDS: int = 127 #127
 # emerald bit flags
 enum EMERALD {
 	CYAN=1,
@@ -153,13 +153,13 @@ enum UNLOCKS{
 	RINGDRAIN = 1024, # Disable Super Sonic limits: 100 coins
 }
 var livesMode:bool = true
+var siivagunner_music:bool = false
+var beta_mode: bool = false
 var airSpeedCap:bool = true
-var superRingDrain:bool = true
-var superAnyone:bool = false
-var anyCharacters:bool = false
-var betaCasinoNight:bool = false
-var beta_sonic:bool = false
+var super_ring_drain:bool = true
+var super_anyone:bool = false
 var insta_shield:bool = true
+
 ## If certain debug features will be enabled.
 var debug_mode: bool = true: set = _set_debug_mode
 func _set_debug_mode(value: bool) -> void:

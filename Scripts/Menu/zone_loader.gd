@@ -4,7 +4,7 @@ func _ready() -> void:
 	#await Main.scene_faded
 	Global.Clean_Up_Object_References()
 	
-	Global.betaCasinoNight = Input.is_action_pressed("ui_cancel")
+	Global.beta_mode = Input.is_action_pressed("ui_cancel")
 	
 	SoundDriver.music.stop()
 	await queue_level()
@@ -68,12 +68,12 @@ func queue_level() -> void:
 		Global.ZONES.CASINO_NIGHT:
 			match Global.saved_act_id:
 				0:
-					if Global.betaCasinoNight:
+					if Global.beta_mode:
 						Global.current_zone_pointer = "res://Scene/Zones/CasinoNight1.tscn"
 					else:
 						Global.current_zone_pointer = "res://Scene/Zones/CasinoNight1New.tscn"
 				_:
-					if Global.betaCasinoNight:
+					if Global.beta_mode:
 						Global.current_zone_pointer = "res://Scene/Zones/CasinoNight2.tscn"
 					else:
 						Global.current_zone_pointer = "res://Scene/Zones/CasinoNight2New.tscn"

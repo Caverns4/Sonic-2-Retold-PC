@@ -56,7 +56,7 @@ var lifeTextures: Array[Texture2D] = [
 func _ready() -> void:
 	set_hud_visibility(false)
 	Global.hud = self
-	cheating = (!Global.superRingDrain or !Global.airSpeedCap)
+	cheating = (!Global.super_ring_drain or !Global.airSpeedCap)
 	# create a new stream for the tick sound (so the original stream
 	# will remain unchanged, as it's also used by the switch gimmick),
 	# and set loop parameters, but don't enable looping yet
@@ -73,10 +73,16 @@ func _ready() -> void:
 	$LifeCounter/Icon.texture = lifeTextures[iconTex]
 	$P1Counters/LifeIcon.texture = lifeTextures[iconTex]
 	$P2Counters/LifeIcon.texture = lifeTextures[iconTex]
-	if Global.two_player_mode:
-		$P1Counters/LifeIcon.frame = Global.PlayerChar1
-		$P2Counters/LifeIcon.frame = Global.PlayerChar2
-	$LifeCounter/Icon.frame = Global.PlayerChar1 if Global.livesMode else 0
+	
+	if Global.livesMode or Global.two_player_mode:
+		var life_icons: Array[Sprite2D] = [$P1Counters/LifeIcon,$P2Counters/LifeIcon,$LifeCounter/Icon]
+		var indexes: Array[int] = [Global.PlayerChar1,Global.PlayerChar2,Global.PlayerChar1]
+		for i:int in life_icons.size():
+			if indexes[i] == Global.CHARACTERS.SONIC and Global.beta_mode:
+				indexes[i] = Global.CHARACTERS.SONIC_BETA
+			life_icons[i].frame = indexes[i]
+	else:
+		$LifeCounter/Icon.frame = 0
 
 func initialize_hud(zone_name: String,zone_text: String,act_number: int) -> void:
 	# set level name strings

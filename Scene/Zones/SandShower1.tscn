@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_i8rou"]
 [ext_resource type="TileSet" uid="uid://bs6m1abicetfn" path="res://Tileset/Levels/SSZ.tres" id="6_mhmmh"]
 [ext_resource type="PackedScene" uid="uid://bwlhmktikgcot" path="res://Entities/Enemies/EradiGator.tscn" id="7_guns1"]
+[ext_resource type="PackedScene" uid="uid://boorjic58wlh7" path="res://Entities/Enemies/Pterabot.tscn" id="8_b4y2w"]
 
 [node name="SandShower1" type="Node2D" unique_id=2080205400]
 script = ExtResource("1_frx6l")
@@ -33,3 +34,6 @@ position = Vector2(96, 652)
 
 [node name="EradiGator" parent="Badniks" unique_id=56207757 instance=ExtResource("7_guns1")]
 position = Vector2(752, 792)
+
+[node name="Pterabot" parent="." unique_id=451684072 instance=ExtResource("8_b4y2w")]
+position = Vector2(1080, 680)

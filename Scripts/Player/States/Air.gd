@@ -18,40 +18,43 @@ func _ready() -> void:
 
 # Jump actions
 func _process(_delta: float) -> void:
-	if parent.playerControl != 0 or (parent.inputs[parent.INPUTS.YINPUT] < 0 and parent.character == Global.CHARACTERS.TAILS):
+	if !isJump:
+		return
+	
+	if (parent.playerControl != 0 or
+	(parent.inputs[parent.INPUTS.YINPUT] < 0 and
+	parent.character == Global.CHARACTERS.TAILS)):
 		# Super
 		if (parent.inputs[parent.INPUTS.SUPER] == 1
-		and (isJump and parent.movement.y > 0) and parent.super_form_ready()):
+		and (parent.movement.y > 0) and parent.super_form_ready()):
 			parent.set_state(parent.STATES.SUPER)
 			if Global.hud:
 				Global.hud.iconAnim.play("RESET")
-				
 		# Shield actions
-		elif ((parent.inputs[parent.INPUTS.ACTION] == 1 or parent.inputs[parent.INPUTS.ACTION2] == 1 or parent.inputs[parent.INPUTS.ACTION3] == 1) and !parent.abilityUsed and isJump):
+		elif (parent.any_action_pressed() and !parent.abilityUsed):
 			# Super actions
-			if parent.is_super and (parent.character == Global.CHARACTERS.SONIC or parent.character == Global.CHARACTERS.AMY):
-				parent.abilityUsed = true # has to be set to true for drop dash (Sonic and amy only)
+			#if parent.is_super and (parent.character == Global.CHARACTERS.SONIC or parent.character == Global.CHARACTERS.AMY):
+			#	parent.abilityUsed = true # has to be set to true for drop dash (Sonic and amy only)
 			# Normal actions
-			else:
+			#else:
 				match (parent.character):
 					# Sonic Shield abilities, Instashield, and Dropdash
 					Global.CHARACTERS.SONIC:
 						# set ability used to true to prevent multiple uses
 						parent.abilityUsed = true
-						parent.air_control = true
 						await sonic_shield_abilities()
 					# Tails flight
 					Global.CHARACTERS.TAILS:
 						# prevent double tap flight (aka super jumps)
-						if not parent.any_action_held():
+						if !parent.any_action_held():
 							parent.air_control = true
 							parent.set_state(parent.STATES.FLY)
 					# Knuckles gliding
 					Global.CHARACTERS.KNUCKLES:
+						parent.air_control = true
 						# set initial movement
 						parent.movement = Vector2(parent.direction*4*60,max(parent.movement.y,0))
 						parent.set_state(parent.STATES.GLIDE,parent.currentHitbox.GLIDE)
-						parent.air_control = true
 					# Amy hammer drop dash
 					Global.CHARACTERS.AMY:
 						# set ability used to true to prevent multiple uses
@@ -90,7 +93,6 @@ func _process(_delta: float) -> void:
 					Global.CHARACTERS.SONIC_BETA:
 						# set ability used to true to prevent multiple uses
 						parent.abilityUsed = true
-						parent.air_control = true
 						await sonic_shield_abilities()
 
 
@@ -118,7 +120,9 @@ func _physics_process(delta: float) -> void:
 		# Drop dash (for sonic / amy)
 		if (parent.character == Global.CHARACTERS.SONIC or
 		parent.character == Global.CHARACTERS.SONIC_BETA):
-			if parent.any_action_held_or_pressed() and parent.abilityUsed and (parent.shield <= parent.SHIELDS.NORMAL or parent.is_super or $"../../InvincibilityBarrier".visible or parent.character == Global.CHARACTERS.AMY):
+			if parent.any_action_held_or_pressed() and parent.abilityUsed and (
+				parent.shield <= parent.SHIELDS.NORMAL or 
+				$"../../InvincibilityBarrier".visible):
 				if dropTimer < 1:
 					dropTimer += (delta/20)*60 # should be ready in the equivelent of 20 frames at 60FPS
 					if dropTimer >= 1:
@@ -171,7 +175,7 @@ func _physics_process(delta: float) -> void:
 					else:
 						parent.movement.x = clamp((parent.movement.x/2) + (dropSpeed[int(parent.is_super)]*60*parent.direction), -dropMax[int(parent.is_super)]*60,dropMax[int(parent.is_super)]*60)
 				# Sonics drop dash handle
-				if parent.character == Global.CHARACTERS.SONIC:
+				if parent.character == Global.CHARACTERS.SONIC or parent.character == Global.CHARACTERS.SONIC_BETA:
 					# stop vertical movement downard
 					parent.movement.y = min(0,parent.movement.y)
 					parent.set_state(parent.STATES.ROLL)
@@ -201,12 +205,12 @@ func _physics_process(delta: float) -> void:
 
 
 func sonic_shield_abilities() -> void:
+	parent.air_control = true
 	# check that the invincibility barrier isn't visible
 	if !$"../../InvincibilityBarrier".visible:
 		match (parent.shield):
 			# insta shield
 			parent.SHIELDS.NONE:
-				parent.air_control = true
 				if Global.insta_shield:
 					parent.sfx[16].play()
 					parent.shieldSprite.play("Insta")

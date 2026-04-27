@@ -308,26 +308,26 @@ scale = Vector2(2, 2)
 [node name="ConveyorBelt" parent="Entities" unique_id=243055637 instance=ExtResource("13_1h3r1")]
 position = Vector2(2816, 528)
 constant_linear_velocity = Vector2(-60, 0)
-speed = -60
-length = 7
+speed = -60.0
+length = 7.0
 
 [node name="ConveyorBelt2" parent="Entities" unique_id=727312348 instance=ExtResource("13_1h3r1")]
 position = Vector2(5888, 272)
 constant_linear_velocity = Vector2(-60, 0)
-speed = -60
-length = 7
+speed = -60.0
+length = 7.0
 
 [node name="ConveyorBelt3" parent="Entities" unique_id=245575127 instance=ExtResource("13_1h3r1")]
 position = Vector2(6144, 784)
 constant_linear_velocity = Vector2(-60, 0)
-speed = -60
-length = 7
+speed = -60.0
+length = 7.0
 
 [node name="ConveyorBelt4" parent="Entities" unique_id=546693194 instance=ExtResource("13_1h3r1")]
 position = Vector2(7168, 528)
 constant_linear_velocity = Vector2(-60, 0)
-speed = -60
-length = 7
+speed = -60.0
+length = 7.0
 
 [node name="CnzFlipper9" parent="Entities" unique_id=233529392 instance=ExtResource("11_67vxw")]
 position = Vector2(9112, 872)
@@ -593,7 +593,7 @@ soundFile = ExtResource("22_pvg54")
 [node name="Bumpers" type="Node" parent="." unique_id=702237138]
 
 [node name="TriangleBumper" parent="Bumpers" unique_id=442898270 instance=ExtResource("9_1i62p")]
-position = Vector2(3616, 1440)
+position = Vector2(3488, 1440)
 
 [node name="TriangleBumper3" parent="Bumpers" unique_id=1398260476 instance=ExtResource("9_1i62p")]
 position = Vector2(5024, 800)
@@ -624,7 +624,7 @@ position = Vector2(9632, 1312)
 scale = Vector2(-1, 1)
 
 [node name="TriangleBumper2" parent="Bumpers" unique_id=580744887 instance=ExtResource("9_1i62p")]
-position = Vector2(3936, 1440)
+position = Vector2(4064, 1440)
 rotation = -3.14159
 scale = Vector2(1, -1)
 
@@ -1681,7 +1681,7 @@ script = ExtResource("30_pvg54")
 position = Vector2(2752, 800)
 
 [node name="CnzCharacterReels2" parent="SlotMachineManager" unique_id=1661291316 instance=ExtResource("31_kr4gd")]
-position = Vector2(3776, 1600)
+position = Vector2(3776, 1568)
 
 [node name="CnzCharacterReels3" parent="SlotMachineManager" unique_id=1756645375 instance=ExtResource("31_kr4gd")]
 position = Vector2(5696, 800)

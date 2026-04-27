@@ -18,6 +18,9 @@ extends Node2D
 @export var music2P: AudioStream = preload("res://Audio/Soundtrack/s2br_Tropical.ogg")
 @export var boss_theme: AudioStream = preload("res://Audio/Soundtrack/s2br_Boss.ogg")
 
+## SiIvagunner
+@export var silvagunner_music: AudioStream
+
 @export_group("Features")
 ## Animals dropped from Badniks in this act.
 @export_enum("Bird","Squirrel",
