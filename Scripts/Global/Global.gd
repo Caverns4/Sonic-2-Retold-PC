@@ -113,7 +113,7 @@ enum EMERALD {
 	}
 	#RED = 1, BLUE = 2, GREEN = 4, YELLOW = 8, CYAN = 16, SILVER = 32, PURPLE = 64}
 ## The next special stage to play.
-var special_stage_id: int = 0
+var special_stage_id: int = 1
 ## Prevoius Special Stage result. true for win.
 var special_stage_result: bool = false
 ## Saved Ring Count from the special stage.

@@ -1,10 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://bma2174bd2vai"]
+[gd_scene format=3 uid="uid://bma2174bd2vai"]
 
 [ext_resource type="Texture2D" uid="uid://chcgf78a1t8ik" path="res://Graphics/Special Stage/SS_BG.png" id="1_mx8be"]
 [ext_resource type="Script" uid="uid://cencvxfcrxw0v" path="res://Scripts/Level/SpecialStage.gd" id="1_x3k1r"]
+[ext_resource type="PackedScene" uid="uid://dts8c45ta62by" path="res://Scene/SpecialStage/Layouts/stage_2.tscn" id="3_kp4wp"]
 [ext_resource type="PackedScene" uid="uid://c8ubncxkma30o" path="res://Entitites3D/special_stage_character.tscn" id="3_rcx61"]
 [ext_resource type="PackedScene" uid="uid://cyx38ouxk43dn" path="res://Entitites3D/SpecialHUD.tscn" id="3_ydt6i"]
-[ext_resource type="PackedScene" uid="uid://vnfel652ionu" path="res://Scene/SpecialStage/Layouts/Stage1.tscn" id="5_vd00g"]
+[ext_resource type="PackedScene" uid="uid://dvybt2lxf6xt2" path="res://Scene/SpecialStage/Layouts/stage_3.tscn" id="4_3506h"]
+[ext_resource type="PackedScene" uid="uid://l72eke5vhwtl" path="res://Scene/SpecialStage/Layouts/stage_4.tscn" id="5_mo8jp"]
+[ext_resource type="PackedScene" uid="uid://vnfel652ionu" path="res://Scene/SpecialStage/Layouts/stage_1.tscn" id="5_vd00g"]
+[ext_resource type="PackedScene" uid="uid://dgx1mtdxb0b6q" path="res://Scene/SpecialStage/Layouts/stage_5.tscn" id="6_esnj1"]
+[ext_resource type="PackedScene" uid="uid://8segcgt8d8j1" path="res://Scene/SpecialStage/Layouts/stage_6.tscn" id="7_qsvcy"]
+[ext_resource type="PackedScene" uid="uid://dhantlodhmcw1" path="res://Scene/SpecialStage/Layouts/stage_7.tscn" id="8_0ri1o"]
+[ext_resource type="PackedScene" uid="uid://c014q02egiq2x" path="res://Scene/SpecialStage/Layouts/stage_8.tscn" id="9_mo8jp"]
 
 [sub_resource type="Sky" id="Sky_7ob4j"]
 
@@ -15,17 +22,17 @@ ambient_light_source = 2
 ambient_light_color = Color(0.266667, 0.266667, 0.266667, 1)
 volumetric_fog_density = 1.11
 
-[node name="SpecialStage" type="Node3D"]
+[node name="SpecialStage" type="Node3D" unique_id=773438062]
 script = ExtResource("1_x3k1r")
-stage_layouts = Array[PackedScene]([ExtResource("5_vd00g"), ExtResource("5_vd00g"), ExtResource("5_vd00g"), ExtResource("5_vd00g"), ExtResource("5_vd00g"), ExtResource("5_vd00g"), ExtResource("5_vd00g"), ExtResource("5_vd00g")])
+stage_layouts = Array[PackedScene]([ExtResource("5_vd00g"), ExtResource("3_kp4wp"), ExtResource("4_3506h"), ExtResource("5_mo8jp"), ExtResource("6_esnj1"), ExtResource("7_qsvcy"), ExtResource("8_0ri1o"), ExtResource("9_mo8jp")])
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1481727296]
 environment = SubResource("Environment_o6ewc")
 
-[node name="Background" type="CanvasLayer" parent="."]
+[node name="Background" type="CanvasLayer" parent="." unique_id=122462432]
 layer = -1
 
-[node name="TextureRect2" type="TextureRect" parent="Background"]
+[node name="TextureRect2" type="TextureRect" parent="Background" unique_id=1559503019]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -37,7 +44,7 @@ texture = ExtResource("1_mx8be")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="TextureRect3" type="TextureRect" parent="Background"]
+[node name="TextureRect3" type="TextureRect" parent="Background" unique_id=1756183645]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -49,7 +56,7 @@ texture = ExtResource("1_mx8be")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="TextureRect4" type="TextureRect" parent="Background"]
+[node name="TextureRect4" type="TextureRect" parent="Background" unique_id=1927457771]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -61,7 +68,7 @@ texture = ExtResource("1_mx8be")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="TextureRect5" type="TextureRect" parent="Background"]
+[node name="TextureRect5" type="TextureRect" parent="Background" unique_id=1953309594]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -73,7 +80,7 @@ texture = ExtResource("1_mx8be")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="Background"]
+[node name="TextureRect" type="TextureRect" parent="Background" unique_id=1001304085]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -85,12 +92,14 @@ texture = ExtResource("1_mx8be")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="SpecialHud" parent="." instance=ExtResource("3_ydt6i")]
+[node name="SpecialHud" parent="." unique_id=1691718187 instance=ExtResource("3_ydt6i")]
 
-[node name="SpecialStageCharacter" parent="." instance=ExtResource("3_rcx61")]
+[node name="SpecialStageCharacter" parent="." unique_id=1202583615 instance=ExtResource("3_rcx61")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 27)
 
-[node name="Stage1" parent="." instance=ExtResource("5_vd00g")]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=730976689]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 50, 0)
+
+[node name="stage_layout" type="Node" parent="." unique_id=1340882594]
+
+[node name="Stage1" parent="stage_layout" unique_id=1737172573 instance=ExtResource("5_vd00g")]

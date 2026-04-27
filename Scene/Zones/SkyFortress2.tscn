@@ -123,9 +123,6 @@ position = Vector2(2688, 1056)
 size = Vector2i(48, 1)
 orientation = 1
 
-[node name="CluckerBase" parent="Entities" unique_id=185151935 instance=ExtResource("14_x2o55")]
-position = Vector2(2528, 1600)
-
 [node name="Platforms" type="Node" parent="." unique_id=1926211673]
 
 [node name="MultiRotatingPlatforms" parent="Platforms" unique_id=1418182564 instance=ExtResource("14_kegxj")]
@@ -145,5 +142,8 @@ plat_img = ExtResource("15_n5rds")
 [node name="Items" type="Node" parent="." unique_id=469266472]
 
 [node name="Badniks" type="Node" parent="." unique_id=284651171]
+
+[node name="CluckerBase" parent="Badniks" unique_id=185151935 instance=ExtResource("14_x2o55")]
+position = Vector2(2528, 1600)
 
 [node name="Rings" type="Node" parent="." unique_id=1181397963]

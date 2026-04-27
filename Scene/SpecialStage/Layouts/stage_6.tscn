@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://8segcgt8d8j1"]
+
+[ext_resource type="Script" uid="uid://bkjyltte0u76l" path="res://Scripts/Special3D/special_stage_requirments.gd" id="1_1fpaw"]
+[ext_resource type="MeshLibrary" uid="uid://bh7gsa0o3u6j" path="res://Resources/SpecialStages.tres" id="2_l83hn"]
+[ext_resource type="PackedScene" uid="uid://dpl1a2gtxk5t2" path="res://Entitites3D/ring_ss.tscn" id="3_xkrcb"]
+[ext_resource type="PackedScene" uid="uid://bsbgvrhfhrpev" path="res://Entitites3D/end_of_round.tscn" id="4_ws2fm"]
+[ext_resource type="PackedScene" uid="uid://dblrkngio3lkk" path="res://Entitites3D/ChaosEmerald.tscn" id="5_4sj0c"]
+[ext_resource type="PackedScene" uid="uid://d12iqp4cvtfy0" path="res://Entitites3D/fix_chararcter_rotation.tscn" id="6_nh1di"]
+
+[node name="Stage6" type="Node3D" unique_id=1721938570]
+script = ExtResource("1_1fpaw")
+ring_requirements = Array[int]([80, 120, 190])
+primary_color = Color(0.4, 0.4, 0.53333336, 1)
+secondary_color = Color(0.4, 0.8, 0.93333334, 1)
+lights_color = Color(0.8, 0.13333334, 0.93333334, 1)
+
+[node name="GridMap" type="GridMap" parent="." unique_id=1936340022]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, -2.4999998, 0)
+mesh_library = ExtResource("2_l83hn")
+cell_size = Vector3(5, 5, 5)
+data = {
+"cells": PackedInt32Array(-65536, 14, 0, -65536, 10, 0, -65536, 6, 0, -65536, 2, 0, -65536, 65534, 7, -65536, 18, 0, -65536, 22, 0, -65536, 65530, 0, -65536, 65526, 0)
+}
+metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="Entitites" type="Node3D" parent="." unique_id=1741435806]
+
+[node name="Ring_SS" parent="Entitites" unique_id=1413835606 instance=ExtResource("3_xkrcb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -50)
+
+[node name="Ring_SS2" parent="Entitites" unique_id=149996339 instance=ExtResource("3_xkrcb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -48)
+
+[node name="Ring_SS3" parent="Entitites" unique_id=451458990 instance=ExtResource("3_xkrcb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -46)
+
+[node name="Ring_SS4" parent="Entitites" unique_id=2070085429 instance=ExtResource("3_xkrcb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -44)
+
+[node name="Ring_SS5" parent="Entitites" unique_id=777694117 instance=ExtResource("3_xkrcb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -42)
+
+[node name="EndOfRound" parent="Entitites" unique_id=385446020 instance=ExtResource("4_ws2fm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 8, -429)
+
+[node name="ChaosEmerald" parent="Entitites" unique_id=225757864 instance=ExtResource("5_4sj0c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 12, -791)
+
+[node name="ForceChararcterRotation" parent="Entitites" unique_id=1844661616 instance=ExtResource("6_nh1di")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.9601)
+
+[node name="ForceChararcterRotation5" parent="Entitites" unique_id=2127948129 instance=ExtResource("6_nh1di")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -56.9601)
+
+[node name="ForceChararcterRotation3" parent="Entitites" unique_id=1316682225 instance=ExtResource("6_nh1di")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 14, -737.96)

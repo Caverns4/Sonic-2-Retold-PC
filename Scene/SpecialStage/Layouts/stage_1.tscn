@@ -1,0 +1,614 @@
+[gd_scene format=3 uid="uid://vnfel652ionu"]
+
+[ext_resource type="MeshLibrary" uid="uid://bh7gsa0o3u6j" path="res://Resources/SpecialStages.tres" id="1_6j7lo"]
+[ext_resource type="Script" uid="uid://bkjyltte0u76l" path="res://Scripts/Special3D/special_stage_requirments.gd" id="1_nse26"]
+[ext_resource type="PackedScene" uid="uid://dblrkngio3lkk" path="res://Entitites3D/ChaosEmerald.tscn" id="2_jyupk"]
+[ext_resource type="PackedScene" uid="uid://bpmdeyvoxjr88" path="res://Entitites3D/SS_Bumper.tscn" id="3_hiaxo"]
+[ext_resource type="PackedScene" uid="uid://dpl1a2gtxk5t2" path="res://Entitites3D/ring_ss.tscn" id="4_nqb0r"]
+[ext_resource type="PackedScene" uid="uid://brhngubcqwg7i" path="res://Entitites3D/bomb_ss.tscn" id="5_b7spd"]
+[ext_resource type="PackedScene" uid="uid://bsbgvrhfhrpev" path="res://Entitites3D/end_of_round.tscn" id="7_oq76d"]
+[ext_resource type="PackedScene" uid="uid://d12iqp4cvtfy0" path="res://Entitites3D/fix_chararcter_rotation.tscn" id="8_q2j35"]
+
+[node name="Stage1" type="Node3D" unique_id=1291704797]
+script = ExtResource("1_nse26")
+primary_color = Color(0, 0.6666667, 0.8, 1)
+secondary_color = Color(0.93333334, 0.6666667, 0.13333334, 1)
+
+[node name="GridMap" type="GridMap" parent="." unique_id=1295816448]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 0)
+mesh_library = ExtResource("1_6j7lo")
+cell_size = Vector3(5, 5, 5)
+data = {
+"cells": PackedInt32Array(-65536, 14, 0, -65536, 10, 0, -65536, 6, 0, -65536, 2, 0, -65536, 65534, 7, -65536, 18, 0, -65536, 22, 0, -65536, 65530, 0, -65536, 65526, 0, -65536, 65522, 3, -65532, 65521, 9, -65531, 65517, 0, -65531, 65513, 0, -65531, 65509, 0, -65531, 65505, 0, -65531, 65501, 0, -65531, 65497, 0, -65531, 65493, 0, -65531, 65489, 0, -65531, 65485, 0, -65531, 65481, 1, -65531, 65477, 1, -65528, 65474, 1, -65534, 65474, 1, -65534, 65470, 2, -65528, 65470, 2, 8, 65466, 1, 2, 65466, 1, 5, 65463, 1, 5, 65459, 0, 5, 65455, 0, 5, 65451, 7, 5, 65447, 7, 5, 65443, 7, 5, 65439, 0, 5, 65435, 0, 5, 65431, 1, 5, 65427, 1, 2, 65424, 1, 2, 65420, 1, 8, 65424, 1, 8, 65420, 1, 2, 65416, 2, 8, 65416, 2, 65544, 65412, 1, 65538, 65412, 1, 8, 65408, 655362, 2, 65408, 655362, 8, 65404, 2, 2, 65404, 2, 65538, 65400, 1, 65544, 65400, 1, 65541, 65397, 1, 65541, 65393, 1, 65541, 65389, 7, 65541, 65385, 7, 65541, 65381, 7, 65541, 65377, 0, 65541, 65373, 0, 65541, 65369, 0, 65541, 65365, 0, 65541, 65361, 0, 65541, 65357, 0, 65541, 65353, 0, 65541, 65349, 0, 65541, 65345, 0)
+}
+metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="Entitites" type="Node3D" parent="." unique_id=2129637734]
+
+[node name="SsBumper" parent="Entitites" unique_id=1087654116 instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -303)
+
+[node name="SsBumper2" parent="Entitites" unique_id=45380488 instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -303)
+
+[node name="SsBumper3" parent="Entitites" unique_id=1471807329 instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0, -303)
+
+[node name="Ring_SS" parent="Entitites" unique_id=1004704696 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -50)
+
+[node name="Ring_SS2" parent="Entitites" unique_id=979966699 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -48)
+
+[node name="Ring_SS3" parent="Entitites" unique_id=1286915354 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -46)
+
+[node name="Ring_SS4" parent="Entitites" unique_id=118746318 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -44)
+
+[node name="Ring_SS5" parent="Entitites" unique_id=227370387 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -42)
+
+[node name="Ring_SS6" parent="Entitites" unique_id=274069934 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -2, -106)
+
+[node name="Ring_SS7" parent="Entitites" unique_id=191214659 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -2, -108)
+
+[node name="Ring_SS8" parent="Entitites" unique_id=1583095709 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -2, -110)
+
+[node name="Ring_SS9" parent="Entitites" unique_id=1858938133 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -2, -112)
+
+[node name="Ring_SS10" parent="Entitites" unique_id=131692299 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -2, -114)
+
+[node name="Ring_SS11" parent="Entitites" unique_id=336432931 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 1, -145)
+
+[node name="Ring_SS12" parent="Entitites" unique_id=1497637185 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 1, -147)
+
+[node name="Ring_SS13" parent="Entitites" unique_id=288102817 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 1, -149)
+
+[node name="Ring_SS14" parent="Entitites" unique_id=1053776151 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 1, -151)
+
+[node name="Ring_SS15" parent="Entitites" unique_id=1967003773 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 1, -153)
+
+[node name="Ring_SS16" parent="Entitites" unique_id=1035457293 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 1, -168)
+
+[node name="Ring_SS17" parent="Entitites" unique_id=921195572 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 1, -170)
+
+[node name="Ring_SS18" parent="Entitites" unique_id=329079854 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 1, -172)
+
+[node name="Ring_SS19" parent="Entitites" unique_id=1712341877 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 1, -174)
+
+[node name="Ring_SS20" parent="Entitites" unique_id=1171831543 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 1, -176)
+
+[node name="Ring_SS21" parent="Entitites" unique_id=1905758184 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, -1, -225)
+
+[node name="Ring_SS22" parent="Entitites" unique_id=1397773353 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, -1, -227)
+
+[node name="Ring_SS23" parent="Entitites" unique_id=2047546481 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, -1, -229)
+
+[node name="Ring_SS24" parent="Entitites" unique_id=150083830 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, -1, -231)
+
+[node name="Ring_SS25" parent="Entitites" unique_id=534980752 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, -1, -233)
+
+[node name="Ring_SS26" parent="Entitites" unique_id=1855445174 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, -1, -225)
+
+[node name="Ring_SS27" parent="Entitites" unique_id=1779219233 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, -1, -227)
+
+[node name="Ring_SS28" parent="Entitites" unique_id=138206813 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, -1, -229)
+
+[node name="Ring_SS29" parent="Entitites" unique_id=371915184 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, -1, -231)
+
+[node name="Ring_SS30" parent="Entitites" unique_id=1738051306 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, -1, -233)
+
+[node name="Ring_SS31" parent="Entitites" unique_id=1396185359 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, -1, -268)
+
+[node name="Ring_SS32" parent="Entitites" unique_id=883732500 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, -1, -270)
+
+[node name="Ring_SS33" parent="Entitites" unique_id=928672567 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, -1, -272)
+
+[node name="Ring_SS34" parent="Entitites" unique_id=1093169897 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, -1, -274)
+
+[node name="Ring_SS35" parent="Entitites" unique_id=583060591 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, -1, -276)
+
+[node name="Ring_SS41" parent="Entitites" unique_id=1831697070 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5, -1, -308)
+
+[node name="Ring_SS42" parent="Entitites" unique_id=1665542581 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5, -1, -310)
+
+[node name="Ring_SS43" parent="Entitites" unique_id=504613484 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5, -1, -312)
+
+[node name="Ring_SS44" parent="Entitites" unique_id=1058036501 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5, -1, -314)
+
+[node name="Ring_SS45" parent="Entitites" unique_id=140268219 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5, -1, -316)
+
+[node name="Ring_SS51" parent="Entitites" unique_id=1690018495 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 3, -380)
+
+[node name="Ring_SS52" parent="Entitites" unique_id=1948112330 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 3, -382)
+
+[node name="Ring_SS53" parent="Entitites" unique_id=70376668 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 3, -384)
+
+[node name="Ring_SS54" parent="Entitites" unique_id=1462955026 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 3, -386)
+
+[node name="Ring_SS55" parent="Entitites" unique_id=1425509779 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 3, -388)
+
+[node name="Ring_SS56" parent="Entitites" unique_id=505003663 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, -8, -455)
+
+[node name="Ring_SS57" parent="Entitites" unique_id=1734682745 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, -8, -459)
+
+[node name="Ring_SS58" parent="Entitites" unique_id=114056924 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, -8, -457)
+
+[node name="Ring_SS59" parent="Entitites" unique_id=1122290509 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 3, -500)
+
+[node name="Ring_SS60" parent="Entitites" unique_id=1861068061 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 3, -502)
+
+[node name="Ring_SS61" parent="Entitites" unique_id=1612845991 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 3, -504)
+
+[node name="Ring_SS62" parent="Entitites" unique_id=48415424 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 6, -520)
+
+[node name="Ring_SS128" parent="Entitites" unique_id=1678527591 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 7, -529)
+
+[node name="Ring_SS63" parent="Entitites" unique_id=1724360593 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 7, -523)
+
+[node name="Ring_SS64" parent="Entitites" unique_id=566946174 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 7, -525)
+
+[node name="Ring_SS65" parent="Entitites" unique_id=2065268346 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 7, -527)
+
+[node name="Ring_SS66" parent="Entitites" unique_id=39538411 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 3, -543)
+
+[node name="Ring_SS67" parent="Entitites" unique_id=572390218 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 3, -545)
+
+[node name="Ring_SS68" parent="Entitites" unique_id=1377990947 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 3, -547)
+
+[node name="Ring_SS69" parent="Entitites" unique_id=733430011 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 3, -549)
+
+[node name="Ring_SS70" parent="Entitites" unique_id=1539017104 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 3, -551)
+
+[node name="Ring_SS71" parent="Entitites" unique_id=1265349812 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5, 3, -543)
+
+[node name="Ring_SS72" parent="Entitites" unique_id=1947287267 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5, 3, -545)
+
+[node name="Ring_SS73" parent="Entitites" unique_id=1988330364 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5, 3, -547)
+
+[node name="Ring_SS74" parent="Entitites" unique_id=1939678033 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5, 3, -549)
+
+[node name="Ring_SS75" parent="Entitites" unique_id=863995448 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5, 3, -551)
+
+[node name="Ring_SS76" parent="Entitites" unique_id=1207831085 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5, 3, -554)
+
+[node name="Ring_SS77" parent="Entitites" unique_id=2131463436 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5, 3, -556)
+
+[node name="Ring_SS78" parent="Entitites" unique_id=1778803984 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5, 3, -558)
+
+[node name="Ring_SS79" parent="Entitites" unique_id=1442294903 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5, 3, -560)
+
+[node name="Ring_SS80" parent="Entitites" unique_id=1148707828 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5, 3, -562)
+
+[node name="Ring_SS81" parent="Entitites" unique_id=1421401017 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 3, -554)
+
+[node name="Ring_SS82" parent="Entitites" unique_id=615400597 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 3, -556)
+
+[node name="Ring_SS83" parent="Entitites" unique_id=1567777040 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 3, -558)
+
+[node name="Ring_SS84" parent="Entitites" unique_id=781545644 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 3, -560)
+
+[node name="Ring_SS85" parent="Entitites" unique_id=1597279535 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 3, -562)
+
+[node name="Ring_SS86" parent="Entitites" unique_id=1748296382 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 3, -572)
+
+[node name="Ring_SS87" parent="Entitites" unique_id=1064899829 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 3, -574)
+
+[node name="Ring_SS88" parent="Entitites" unique_id=2026143184 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 3, -576)
+
+[node name="Ring_SS89" parent="Entitites" unique_id=117812128 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 3, -578)
+
+[node name="Ring_SS90" parent="Entitites" unique_id=1013786630 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 3, -580)
+
+[node name="Ring_SS91" parent="Entitites" unique_id=543986636 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 3, -572)
+
+[node name="Ring_SS92" parent="Entitites" unique_id=312936520 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 3, -574)
+
+[node name="Ring_SS93" parent="Entitites" unique_id=571988951 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 3, -576)
+
+[node name="Ring_SS94" parent="Entitites" unique_id=1637881023 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 3, -578)
+
+[node name="Ring_SS95" parent="Entitites" unique_id=1992214603 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 3, -580)
+
+[node name="Ring_SS96" parent="Entitites" unique_id=380227362 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 3, -572)
+
+[node name="Ring_SS97" parent="Entitites" unique_id=1866944019 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 3, -574)
+
+[node name="Ring_SS98" parent="Entitites" unique_id=1816083014 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 3, -576)
+
+[node name="Ring_SS99" parent="Entitites" unique_id=1348302166 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 3, -578)
+
+[node name="Ring_SS100" parent="Entitites" unique_id=1876682576 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 3, -580)
+
+[node name="Ring_SS101" parent="Entitites" unique_id=915399452 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5, 3, -572)
+
+[node name="Ring_SS102" parent="Entitites" unique_id=864906159 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5, 3, -574)
+
+[node name="Ring_SS103" parent="Entitites" unique_id=948790345 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5, 3, -576)
+
+[node name="Ring_SS104" parent="Entitites" unique_id=1123090669 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5, 3, -578)
+
+[node name="Ring_SS106" parent="Entitites" unique_id=719631235 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 8, -621)
+
+[node name="Ring_SS107" parent="Entitites" unique_id=1735308941 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 8, -623)
+
+[node name="Ring_SS108" parent="Entitites" unique_id=1019754778 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 8, -625)
+
+[node name="Ring_SS109" parent="Entitites" unique_id=1713293191 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 8, -627)
+
+[node name="Ring_SS110" parent="Entitites" unique_id=2039784655 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 8, -621)
+
+[node name="Ring_SS120" parent="Entitites" unique_id=970364243 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 12, -629)
+
+[node name="Ring_SS121" parent="Entitites" unique_id=2135846537 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 12, -629)
+
+[node name="Ring_SS122" parent="Entitites" unique_id=67428096 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 12, -631)
+
+[node name="Ring_SS123" parent="Entitites" unique_id=1732516860 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 12, -631)
+
+[node name="Ring_SS124" parent="Entitites" unique_id=1490315127 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 12, -633)
+
+[node name="Ring_SS125" parent="Entitites" unique_id=959981683 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 12, -633)
+
+[node name="Ring_SS126" parent="Entitites" unique_id=487283491 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 12, -635)
+
+[node name="Ring_SS127" parent="Entitites" unique_id=1782050396 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 12, -635)
+
+[node name="Ring_SS111" parent="Entitites" unique_id=1624210721 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 8, -623)
+
+[node name="Ring_SS112" parent="Entitites" unique_id=1278617668 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 8, -625)
+
+[node name="Ring_SS113" parent="Entitites" unique_id=1193140310 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 8, -627)
+
+[node name="Ring_SS129" parent="Entitites" unique_id=924979156 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 8, -604)
+
+[node name="Ring_SS130" parent="Entitites" unique_id=1044677211 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 8, -606)
+
+[node name="Ring_SS131" parent="Entitites" unique_id=1596413426 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 8, -608)
+
+[node name="Ring_SS132" parent="Entitites" unique_id=1040516878 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 8, -610)
+
+[node name="Ring_SS133" parent="Entitites" unique_id=839000888 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 8, -604)
+
+[node name="Ring_SS134" parent="Entitites" unique_id=489357164 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 8, -606)
+
+[node name="Ring_SS135" parent="Entitites" unique_id=1598012829 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 8, -608)
+
+[node name="Ring_SS136" parent="Entitites" unique_id=1462989735 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 8, -610)
+
+[node name="Ring_SS137" parent="Entitites" unique_id=956552418 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5, 8, -604)
+
+[node name="Ring_SS138" parent="Entitites" unique_id=2123415512 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5, 8, -606)
+
+[node name="Ring_SS139" parent="Entitites" unique_id=684078255 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5, 8, -608)
+
+[node name="Ring_SS140" parent="Entitites" unique_id=56068991 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5, 8, -610)
+
+[node name="Ring_SS141" parent="Entitites" unique_id=1216964371 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 8, -604)
+
+[node name="Ring_SS142" parent="Entitites" unique_id=1034626781 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 8, -606)
+
+[node name="Ring_SS143" parent="Entitites" unique_id=24854451 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 8, -608)
+
+[node name="Ring_SS144" parent="Entitites" unique_id=9272980 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 8, -610)
+
+[node name="Ring_SS114" parent="Entitites" unique_id=29559142 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 8, -700)
+
+[node name="Ring_SS115" parent="Entitites" unique_id=1240172675 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 8, -702)
+
+[node name="Ring_SS116" parent="Entitites" unique_id=1792933889 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 8, -704)
+
+[node name="Ring_SS117" parent="Entitites" unique_id=410736803 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 8, -706)
+
+[node name="Ring_SS118" parent="Entitites" unique_id=319630699 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 8, -708)
+
+[node name="Ring_SS119" parent="Entitites" unique_id=538815197 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 8, -710)
+
+[node name="Ring_SS105" parent="Entitites" unique_id=1762201333 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5, 3, -580)
+
+[node name="Ring_SS46" parent="Entitites" unique_id=889620518 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, -1, -308)
+
+[node name="Ring_SS47" parent="Entitites" unique_id=1214532648 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, -1, -310)
+
+[node name="Ring_SS48" parent="Entitites" unique_id=1283128355 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, -1, -312)
+
+[node name="Ring_SS49" parent="Entitites" unique_id=1941762695 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, -1, -314)
+
+[node name="Ring_SS50" parent="Entitites" unique_id=1582480069 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, -1, -316)
+
+[node name="Ring_SS36" parent="Entitites" unique_id=878022167 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, -1, -268)
+
+[node name="Ring_SS37" parent="Entitites" unique_id=932529402 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, -1, -270)
+
+[node name="Ring_SS38" parent="Entitites" unique_id=1647390526 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, -1, -272)
+
+[node name="Ring_SS39" parent="Entitites" unique_id=1151940739 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, -1, -274)
+
+[node name="Ring_SS40" parent="Entitites" unique_id=911329640 instance=ExtResource("4_nqb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, -1, -276)
+
+[node name="Bomb_SS" parent="Entitites" unique_id=1571668045 instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, -1, -310)
+
+[node name="Bomb_SS2" parent="Entitites" unique_id=1897059751 instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, -310)
+
+[node name="Bomb_SS5" parent="Entitites" unique_id=553085681 instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 4, -365)
+
+[node name="Bomb_SS6" parent="Entitites" unique_id=197323498 instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 4, -365)
+
+[node name="Bomb_SS7" parent="Entitites" unique_id=2096481945 instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 4, -356)
+
+[node name="Bomb_SS8" parent="Entitites" unique_id=277407691 instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 4, -568)
+
+[node name="Bomb_SS9" parent="Entitites" unique_id=2143363606 instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43, 4, -568)
+
+[node name="Bomb_SS10" parent="Entitites" unique_id=1300892525 instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 4, -568)
+
+[node name="Bomb_SS11" parent="Entitites" unique_id=1702386182 instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 4, -568)
+
+[node name="Bomb_SS12" parent="Entitites" unique_id=1217090960 instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 9, -697)
+
+[node name="Bomb_SS13" parent="Entitites" unique_id=189914787 instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 9, -697)
+
+[node name="Bomb_SS18" parent="Entitites" unique_id=244674321 instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 9, -697)
+
+[node name="Bomb_SS19" parent="Entitites" unique_id=1280071132 instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 9, -697)
+
+[node name="Bomb_SS20" parent="Entitites" unique_id=1427380448 instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 9, -697)
+
+[node name="Bomb_SS21" parent="Entitites" unique_id=616496668 instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 9, -697)
+
+[node name="Bomb_SS14" parent="Entitites" unique_id=1638561763 instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 4, -529)
+
+[node name="Bomb_SS15" parent="Entitites" unique_id=818963627 instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 4, -526)
+
+[node name="Bomb_SS16" parent="Entitites" unique_id=583447940 instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 4, -523)
+
+[node name="Bomb_SS17" parent="Entitites" unique_id=2074729571 instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 4, -520)
+
+[node name="Bomb_SS3" parent="Entitites" unique_id=1629773420 instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, -1, -310)
+
+[node name="Bomb_SS4" parent="Entitites" unique_id=1920897883 instance=ExtResource("5_b7spd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, -1, -310)
+
+[node name="SsBumper4" parent="Entitites" unique_id=1978771252 instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 4, -370)
+
+[node name="SsBumper5" parent="Entitites" unique_id=89078484 instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 4, -370)
+
+[node name="EndOfRound" parent="Entitites" unique_id=1114919795 instance=ExtResource("7_oq76d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 8, -429)
+
+[node name="ChaosEmerald" parent="Entitites" unique_id=196883324 instance=ExtResource("2_jyupk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 12, -791)
+
+[node name="ForceChararcterRotation" parent="Entitites" unique_id=134564937 instance=ExtResource("8_q2j35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.9601)
+
+[node name="ForceChararcterRotation2" parent="Entitites" unique_id=1136576368 instance=ExtResource("8_q2j35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -82.9601)
+
+[node name="ForceChararcterRotation5" parent="Entitites" unique_id=2132991973 instance=ExtResource("8_q2j35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -56.9601)
+
+[node name="ForceChararcterRotation6" parent="Entitites" unique_id=760880466 instance=ExtResource("8_q2j35")]
+transform = Transform3D(0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.49999997, 6, 0, -69.9601)
+
+[node name="ForceChararcterRotation8" parent="Entitites" unique_id=1970103191 instance=ExtResource("8_q2j35")]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 1, 0, -63.9601)
+
+[node name="ForceChararcterRotation7" parent="Entitites" unique_id=1752472624 instance=ExtResource("8_q2j35")]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 23, 0, -77.9601)
+
+[node name="ForceChararcterRotation9" parent="Entitites" unique_id=561192351 instance=ExtResource("8_q2j35")]
+transform = Transform3D(0.25881904, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.25881904, 17, 0, -72.9601)
+
+[node name="ForceChararcterRotation3" parent="Entitites" unique_id=955609760 instance=ExtResource("8_q2j35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 14, -737.96)
+
+[node name="ForceChararcterRotation4" parent="Entitites" unique_id=1048016032 instance=ExtResource("8_q2j35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 7, -489.96)
+
+[node name="SsBumper6" parent="Entitites" unique_id=1617444524 instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 5, -554)
+
+[node name="SsBumper7" parent="Entitites" unique_id=1971089188 instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 5, -554)
+
+[node name="SsBumper8" parent="Entitites" unique_id=39656972 instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 5, -554)
+
+[node name="SsBumper9" parent="Entitites" unique_id=1092390315 instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 9, -632)
+
+[node name="SsBumper10" parent="Entitites" unique_id=1648738580 instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 9, -632)
+
+[node name="SsBumper11" parent="Entitites" unique_id=532885055 instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 9, -632)
+
+[node name="SsBumper12" parent="Entitites" unique_id=532507324 instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 9, -632)
+
+[node name="SsBumper13" parent="Entitites" unique_id=71806346 instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 9, -632)
+
+[node name="SsBumper14" parent="Entitites" unique_id=557975996 instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 9, -632)
+
+[node name="SsBumper15" parent="Entitites" unique_id=318152812 instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 10, -688)
+
+[node name="SsBumper16" parent="Entitites" unique_id=57686779 instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 10, -688)
+
+[node name="SsBumper17" parent="Entitites" unique_id=1975441604 instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 10, -688)
+
+[node name="SsBumper18" parent="Entitites" unique_id=1204313804 instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 10, -688)
+
+[node name="SsBumper19" parent="Entitites" unique_id=1579302128 instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 10, -688)
+
+[node name="SsBumper20" parent="Entitites" unique_id=200874873 instance=ExtResource("3_hiaxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 10, -688)

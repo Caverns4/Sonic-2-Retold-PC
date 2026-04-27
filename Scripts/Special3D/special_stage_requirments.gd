@@ -1,4 +1,4 @@
-class_name SpecialStagePropertiesComponent extends Node3D
+class_name SpecialProperties extends Node3D
 
 @export var ring_requirements: Array[int] = [40,80,140]
 @export var primary_color: Color = Color.DEEP_SKY_BLUE
