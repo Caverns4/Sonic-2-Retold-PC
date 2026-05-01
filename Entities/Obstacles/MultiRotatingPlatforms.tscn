@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3yq46ay5g4ov"]
+[gd_scene format=3 uid="uid://c3yq46ay5g4ov"]
 
 [ext_resource type="Texture2D" uid="uid://bxo0l5r5ep0j4" path="res://Graphics/Obstacles/SwingPole.png" id="1_2e360"]
 [ext_resource type="Script" uid="uid://bd6l0hq1eteea" path="res://Scripts/Objects/multi_rotating_platforms.gd" id="1_4foj7"]
@@ -9,23 +9,23 @@
 resource_local_to_scene = true
 size = Vector2(80, 1)
 
-[node name="MultiRotatingPlatforms" type="Node2D"]
+[node name="MultiRotatingPlatforms" type="Node2D" unique_id=510099867]
 script = ExtResource("1_4foj7")
 plat_img = ExtResource("2_pnt1a")
 chain_img = ExtResource("3_cbeu8")
 
-[node name="SwingPlatform" type="AnimatableBody2D" parent="."]
+[node name="SwingPlatform" type="AnimatableBody2D" parent="." unique_id=245935627]
 visible = false
 collision_layer = 8193
 collision_mask = 8192
 
-[node name="Shape3D" type="CollisionShape2D" parent="SwingPlatform"]
+[node name="Shape2D" type="CollisionShape2D" parent="SwingPlatform" unique_id=1536099493]
 modulate = Color(1, 1, 1, 0.0980392)
 position = Vector2(0, -7.5)
 shape = SubResource("RectangleShape2D_u2ehn")
 one_way_collision = true
 
-[node name="Sprite2D" type="Sprite2D" parent="SwingPlatform"]
+[node name="Sprite2D" type="Sprite2D" parent="SwingPlatform" unique_id=299618369]
 
-[node name="SwingPole" type="Sprite2D" parent="."]
+[node name="SwingPole" type="Sprite2D" parent="." unique_id=74286477]
 texture = ExtResource("1_2e360")

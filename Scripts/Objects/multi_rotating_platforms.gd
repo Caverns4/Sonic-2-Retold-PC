@@ -11,10 +11,10 @@ extends Node2D
 @export var plat_img:Texture2D # Texture2D for the platform
 @export var chain_img:Texture2D # Texture2D for the chains
 # Declare time, previous position, editor time, and grab the platform's node
-var edittime = 0 # Time for the editor version
-@onready var platform = $SwingPlatform # Grab the platform's node.
+var edittime: float = 0 # Time for the editor version
+@onready var platform: AnimatableBody2D = $SwingPlatform # Grab the platform's node.
 
-var platforms = []
+var platforms: Array[AnimatableBody2D] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,9 +22,10 @@ func _ready() -> void:
 		platform.show()
 		platform.get_node("Sprite2D").texture = plat_img
 		# Change platform shape
-		platform.get_node("Shape3D").shape.size.x = plat_img.get_size().x
+		platform.get_node("Shape2D").shape.size.x = plat_img.get_size().x
+		platform.get_node("Shape2D").shape.size.y = plat_img.get_size().y
 		platforms.append(platform)
-		var nextChild = null
+		var nextChild: Node2D = null
 		for i in platformCount-1:
 			nextChild = platform.duplicate()
 			add_child(nextChild)
@@ -44,9 +45,9 @@ func _process(delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	if(!Engine.is_editor_hint()): # In-Game
 		# Calcutlate direction
-		var yOffset = chains * 16 + (float(16) / 2.0)
-		var direction = Vector2.DOWN
-		var xOffset = 0.0
+		var yOffset: float = chains * 16 + (float(16) / 2.0)
+		var direction: Vector2 = Vector2.DOWN
+		var xOffset: float = 0.0
 		for i in platforms.size():
 			direction = Vector2.DOWN.rotated((deg_to_rad(fmod(xOffset + Global.globalTimer * 60 * speed,360))))
 			xOffset += (360.0/platformCount)
@@ -56,20 +57,20 @@ func _draw() -> void:
 	if(!Engine.is_editor_hint()):  # Non-editor stuff
 		#for i # of platforms, in j # of chains
 		for i in platformCount:
-			var direction = platforms[i].position.normalized()
+			var direction: Vector2 = platforms[i].position.normalized()
 			for j in chains:
-				var chainPos = direction * ((j + 1) * 16)
+				var chainPos: Vector2 = direction * ((j + 1) * 16)
 				chainPos -= Vector2(float(chain_img.get_width()) / 2,float(chain_img.get_height()) / 2)
 				draw_texture(chain_img,chainPos,Color(1,1,1,1))
 		#End non-editor code loop
 		return
 	
 	# Draw moving platforms
-	var diff = 0
-	var temppos = Vector2.DOWN
-	var distance = chains * 16 + (float(16) / 2.0)
+	var x_off: float = 0
+	var temppos: Vector2 = Vector2.DOWN
+	var distance: float = chains * 16 + (float(16) / 2.0)
 	for i in platformCount:
-		temppos = Vector2(0,distance).rotated((deg_to_rad(fmod(diff + edittime * 60 * speed,360))))
-		diff += (360.0/platformCount)
+		temppos = Vector2(0,distance).rotated((deg_to_rad(fmod(x_off + edittime * 60 * speed,360))))
+		x_off += (360.0/platformCount)
 		temppos -= Vector2(float(plat_img.get_width()) / 2,float(plat_img.get_height()) / 2)
 		draw_texture(plat_img,temppos,Color(1,1,1,1))

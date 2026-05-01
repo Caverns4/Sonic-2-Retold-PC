@@ -14,6 +14,7 @@ collision_mask = 0
 position = Vector2(0, -32)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1784766345]
+clip_children = 2
 position = Vector2(0, -8)
 texture = ExtResource("1_saovm")
 
