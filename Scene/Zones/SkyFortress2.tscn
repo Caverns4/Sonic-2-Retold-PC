@@ -20,7 +20,11 @@
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="16_6be3y"]
 [ext_resource type="PackedScene" uid="uid://bbnywgk4cq5cq" path="res://Entities/Gimmicks/giant_fan.tscn" id="17_6be3y"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="17_m8uev"]
+[ext_resource type="PackedScene" uid="uid://ckauggfqax081" path="res://Scene/level_layouts/scz_cover_tiles.scn" id="18_ixjjw"]
 [ext_resource type="PackedScene" uid="uid://chyrwm1qwvlyt" path="res://Entities/Gimmicks/Switch.tscn" id="18_vkaj6"]
+[ext_resource type="PackedScene" uid="uid://btyydkc7grjn0" path="res://Entities/Hazards/scz_propeller.tscn" id="19_u6hen"]
+[ext_resource type="PackedScene" uid="uid://dyi111jvxw543" path="res://Entities/Gimmicks/shifting_platform.tscn" id="22_hb252"]
+[ext_resource type="PackedScene" uid="uid://bbbho8eh17vq4" path="res://Entities/Obstacles/vent_entrance.tscn" id="24_m6rwo"]
 
 [sub_resource type="Curve2D" id="Curve2D_ulsoj"]
 _data = {
@@ -130,6 +134,29 @@ position = Vector2(2880, 1320)
 [node name="GiantFan4" parent="Entities" unique_id=944304989 instance=ExtResource("17_6be3y")]
 position = Vector2(3264, 1384)
 
+[node name="ShiftingPlatform" parent="Entities" unique_id=107272240 instance=ExtResource("22_hb252")]
+position = Vector2(1712, 496)
+
+[node name="ShiftingPlatform2" parent="Entities" unique_id=326628212 instance=ExtResource("22_hb252")]
+position = Vector2(2080, 1128)
+
+[node name="ShiftingPlatform3" parent="Entities" unique_id=1112055229 instance=ExtResource("22_hb252")]
+position = Vector2(2144, 1224)
+
+[node name="ShiftingPlatform4" parent="Entities" unique_id=22265618 instance=ExtResource("22_hb252")]
+position = Vector2(2192, 1112)
+
+[node name="ShiftingPlatform5" parent="Entities" unique_id=1926169115 instance=ExtResource("22_hb252")]
+position = Vector2(2248, 1176)
+
+[node name="Vent_Entrance" parent="Entities" unique_id=1129070729 instance=ExtResource("24_m6rwo")]
+position = Vector2(10584, 1088)
+collision_layer = 65542
+lock_left_camera = 10368
+
+[node name="SCZ_CoverTiles" parent="Entities/Vent_Entrance" unique_id=1521323812 instance=ExtResource("18_ixjjw")]
+position = Vector2(-8, 0)
+
 [node name="Platforms" type="Node" parent="." unique_id=1926211673]
 
 [node name="MultiRotatingPlatforms" parent="Platforms" unique_id=1418182564 instance=ExtResource("14_kegxj")]
@@ -143,6 +170,40 @@ chains = 6
 plat_img = ExtResource("15_n5rds")
 
 [node name="Hazards" type="Node" parent="." unique_id=478815295]
+
+[node name="SCZ_Propeller" parent="Hazards" unique_id=1686632739 instance=ExtResource("19_u6hen")]
+position = Vector2(1496, 704)
+damage = false
+
+[node name="SCZ_Propeller2" parent="Hazards" unique_id=1802529001 instance=ExtResource("19_u6hen")]
+position = Vector2(1496, 832)
+damage = false
+
+[node name="SCZ_Propeller3" parent="Hazards" unique_id=898291822 instance=ExtResource("19_u6hen")]
+position = Vector2(1496, 960)
+damage = false
+
+[node name="SCZ_Propeller4" parent="Hazards" unique_id=1339179557 instance=ExtResource("19_u6hen")]
+position = Vector2(4056, 704)
+
+[node name="SCZ_Propeller5" parent="Hazards" unique_id=522492108 instance=ExtResource("19_u6hen")]
+position = Vector2(4056, 832)
+
+[node name="SCZ_Propeller6" parent="Hazards" unique_id=2075815760 instance=ExtResource("19_u6hen")]
+position = Vector2(4696, 1216)
+
+[node name="SCZ_Propeller7" parent="Hazards" unique_id=1011058000 instance=ExtResource("19_u6hen")]
+position = Vector2(4696, 1344)
+
+[node name="SCZ_Propeller8" parent="Hazards" unique_id=813251978 instance=ExtResource("19_u6hen")]
+position = Vector2(4824, 1472)
+
+[node name="SCZ_Propeller9" parent="Hazards" unique_id=114259939 instance=ExtResource("19_u6hen")]
+position = Vector2(4952, 1600)
+
+[node name="SCZ_Propeller10" parent="Hazards" unique_id=1594220898 instance=ExtResource("19_u6hen")]
+position = Vector2(10584, 960)
+damage = false
 
 [node name="Environment" type="Node" parent="." unique_id=347227390]
 

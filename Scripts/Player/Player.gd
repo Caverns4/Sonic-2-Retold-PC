@@ -620,8 +620,8 @@ func _process(delta:float ) -> void:
 		ring1upCounter += 100
 		# Award Exra Life
 		Global.lives += 1
-		if Global.hud and !Global.two_player_mode:
-			Global.hud.coins += 1
+		if !Global.two_player_mode:
+			Global.temporary_coins += 1
 		await SoundDriver.playExtraLifeMusic()
 
 	#Rotating stars

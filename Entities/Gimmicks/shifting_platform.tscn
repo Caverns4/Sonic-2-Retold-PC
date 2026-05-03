@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dyi111jvxw543"]
+
+[ext_resource type="Script" uid="uid://bgwofmbrn311f" path="res://Scripts/Gimmicks/shifting_platform.gd" id="1_gsbgo"]
+[ext_resource type="Script" uid="uid://dauxqdtsh5yvq" path="res://Scripts/Gimmicks/shifting_platform_child.gd" id="2_cc56p"]
+[ext_resource type="Texture2D" uid="uid://bxuj8ysnriji5" path="res://Graphics/Gimmicks/SCZ_ShiftingPlatform1.png" id="2_v7wjn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t65f4"]
+size = Vector2(48, 8)
+
+[node name="ShiftingPlatform" type="Node2D" unique_id=107272240]
+script = ExtResource("1_gsbgo")
+
+[node name="Timer" type="Timer" parent="." unique_id=2099195734]
+
+[node name="ShiftingPlatformChild" type="AnimatableBody2D" parent="." unique_id=26833785]
+script = ExtResource("2_cc56p")
+
+[node name="PlatformSprite" type="Sprite2D" parent="ShiftingPlatformChild" unique_id=1093289820]
+texture = ExtResource("2_v7wjn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShiftingPlatformChild" unique_id=950827192]
+shape = SubResource("RectangleShape2D_t65f4")
+one_way_collision = true

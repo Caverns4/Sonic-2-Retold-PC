@@ -50,7 +50,7 @@ func _process(delta: float) -> void:
 							i.emit_enemy_bounce()
 				# destroy
 				var playerID: int = Global.players.find(i)
-				Global.add_score(global_position,
+				Global.add_score_object(global_position,
 				Global.SCORE_COMBO[min(Global.SCORE_COMBO.size()-1,i.enemyCounter)],
 				playerID)
 				i.enemyCounter += 1

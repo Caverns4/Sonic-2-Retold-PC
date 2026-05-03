@@ -32,8 +32,6 @@ var timeBonus: int = 0
 var ringBonus: int = 0
 var perfectBonus: int = 0
 var perfectEnabled: bool = true
-## Number of coins collected in this level.
-var coins: int = 0
 ## Used to trigger the Game Over Animation
 var gameOver: bool = false
 
@@ -276,7 +274,7 @@ func UpdateHUD(_delta: float) -> void:
 		if Global.livesMode:
 			lifeText.text = "%3d" % Global.lives
 		else:
-			lifeText.text = "%3d" % min(Global.totalCoins + coins,999)
+			lifeText.text = "%3d" % min(Global.totalCoins + Global.temporary_coins,999)
 
 ## Called when the Water Level is updated.
 func UpdateWaterOverlay(value: int) -> void:
@@ -310,7 +308,7 @@ func WaterOverlay() -> void:
 						for j in get_tree().get_nodes_in_group("Enemy"):
 							if j.global_position.y >= Global.waterLevel and i.global_position.distance_to(j.global_position) <= 256:
 								if j.has_method("destroy"):
-									Global.add_score(j.global_position,Global.SCORE_COMBO[0],Global.players.find(i))
+									Global.add_score_object(j.global_position,Global.SCORE_COMBO[0],Global.players.find(i))
 									j.destroy()
 						# disable flash after a frame
 						await get_tree().process_frame
@@ -375,7 +373,7 @@ func ProcessStageClear() -> void:
 		
 		if Global.players[0].totalRings >= ringsForPerfect and perfectEnabled:
 			$LevelClear/PerfectBonusText.visible = true
-			perfectBonus = 50000
+			perfectBonus = Global.POINTS_FOR_LIFE
 	
 		# show level clear elements
 		$LevelClear.show()
@@ -396,7 +394,7 @@ func ProcessStageClear() -> void:
 		[60*1.5,4000],
 		[60,5000],
 		[45,10000],
-		[30,50000],
+		[30,Global.POINTS_FOR_LIFE],
 		]
 		# loop through the bonus table, if current time is less then the first value then set it to that bonus
 		# you'll want to make sure the order of the table goes down in time and up in score otherwise it could cause some weirdness
@@ -417,7 +415,6 @@ func ProcessStageClear() -> void:
 		# wait 2 seconds (reuse timer)
 		$LevelClear/CounterWait.start(3)
 		await $LevelClear/CounterWait.timeout
-		Global.totalCoins += coins
 		# after clear, change to next level in Global.next_zone_pointer (you can set the next zone in the level script node)
 		await Global.loadNextLevel()
 
@@ -473,6 +470,8 @@ func _on_counter_count_timeout(delta: float) -> void:
 func _reset_air() -> void:
 	for player: Player2D in Global.players:
 		player.airTimer = player.defaultAirTime
+
+## TODO: Rewrite the entire codeblock below.
 
 ## We count the number of points based on time passed since the previous frame.
 func _add_score(subtractFrom: int,delta: float) -> float:

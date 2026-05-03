@@ -11,7 +11,7 @@ func physics_collision(body: Player2D, hitVector: Vector2) -> void:
 	else:
 		body.movement = hitVector.rotated(deg_to_rad(180)) * 360
 	SoundDriver.play_sound(sfx)
-	Global.add_score(global_position,0,Global.players.find(body))
+	Global.add_score_object(global_position,0,Global.players.find(body))
 	state +=1
 	$Sprite2D.frame = wrapi(state,0,3)
 	if state > 2:

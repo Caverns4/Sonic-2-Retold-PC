@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bbbho8eh17vq4"]
+
+[ext_resource type="Texture2D" uid="uid://dqsgpnn51ny4i" path="res://Graphics/Objects_Zone/SCZ_Vent.png" id="1_5x48f"]
+[ext_resource type="Script" uid="uid://3fxdkjl5s3q8" path="res://Scripts/Objects/vent_entrance.gd" id="1_ffpk6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ffpk6"]
+size = Vector2(32, 16)
+
+[node name="Vent_Entrance" type="CharacterBody2D" unique_id=1129070729]
+collision_layer = 65536
+collision_mask = 0
+script = ExtResource("1_ffpk6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=277780844]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_ffpk6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1572803640]
+position = Vector2(0, -8)
+texture = ExtResource("1_5x48f")

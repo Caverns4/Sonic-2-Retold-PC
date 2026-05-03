@@ -70,7 +70,7 @@ var next_zone_pointer: String = ""
 ## MarkObjGone Table, nodes that have been used/collected
 var object_table: Array[String] = []
 
-# score instace for add_score()
+# score instace for add_score_object()
 var Score: PackedScene = preload("res://Entities/Misc/Score.tscn")
 # order for score combo
 const SCORE_COMBO: Array[int] = [1,2,3,4,4,4,4,4,4,4,4,4,4,4,4,5]
@@ -91,6 +91,7 @@ enum PLAYER_MODES {SONIC_AND_TAILS,SONIC,TAILS,KNUCKLES,AMY,MIGHTY,RAY}
 #Only used in menus for single player mode.
 var playerModes: PackedStringArray = ["SONIC & TAILS","SONIC","TAILS","KNUCKLES","AMY","MIGHTY","RAY"]
 # Gameplay values
+const POINTS_FOR_LIFE : int = 50000
 var score: int = 0
 var lives: int = 3
 var continues: int = 0 #Never used
@@ -135,6 +136,9 @@ var stage_cleared: bool = false:
 		stage_cleared = value
 		timerActive = !value
 		timerActiveP2 = !value
+
+## Number of coins in a zone. These get cleared when dying or quitting, saved on zone completion.
+var temporary_coins: int = 0
 
 #Save Data Atributes
 var totalCoins: int = 0
@@ -369,7 +373,7 @@ func Clean_Up_Object_References() -> void:
 
 
 # add a score object, see res://Scripts/Misc/Score.gd for reference
-func add_score(position: Vector2,value: int,playerID: int) -> void:
+func add_score_object(position: Vector2,value: int,playerID: int) -> void:
 	var scoreObj: Node = Score.instantiate()
 	scoreObj.scoreID = value
 	scoreObj.playerID = playerID
@@ -378,10 +382,9 @@ func add_score(position: Vector2,value: int,playerID: int) -> void:
 
 # use a check function to see if a score increase would go above 50,000
 func check_score_life(scoreAdd: int = 0) -> void:
-	if fmod(score,50000) > fmod(score+scoreAdd,50000):
-		lives += 1
-		if hud:
-			hud.coins += 1
+	if fmod(score,Global.POINTS_FOR_LIFE) > fmod(score+scoreAdd,Global.POINTS_FOR_LIFE):
+		if livesMode: lives += 1
+		if !two_player_mode: temporary_coins += 1
 		await SoundDriver.playExtraLifeMusic()
 
 
@@ -401,6 +404,7 @@ func loadNextLevel() -> void:
 	if special_exit > ZONES.EMERALD_HILL:
 		saved_act_id = 0
 		saved_zone_id = special_exit
+		save_coin_count()
 		return
 	
 	saved_act_id +=1
@@ -456,8 +460,13 @@ func loadNextLevel() -> void:
 				saved_zone_id = ZONES.DEATH_EGG
 			# Death Egg is a special case.
 		if !two_player_mode:
+			save_coin_count()
 			SaveGameFile()
 	await Main.change_scene("res://Scene/Presentation/ZoneLoader.tscn")
+
+func save_coin_count() -> void:
+	totalCoins += temporary_coins
+	temporary_coins = 0
 
 ## Build the respawn array
 func save_level_data(pos: Vector2) -> void:

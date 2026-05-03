@@ -35,7 +35,7 @@ func physics_collision(body:Player2D, hitVector: Vector2) -> void:
 		# set player variables
 		body.ground = false
 		body.movement.y = -3*60
-		Global.add_score(
+		Global.add_score_object(
 			global_position,
 			Global.SCORE_COMBO[min(Global.SCORE_COMBO.size()-1,body.enemyCounter)],
 			Global.players.find(body))
@@ -44,7 +44,7 @@ func physics_collision(body:Player2D, hitVector: Vector2) -> void:
 		_break_object_to_pieces()
 		_on_destruction()
 
-func _break_object_to_pieces():
+func _break_object_to_pieces() -> void:
 		# generate pieces of the block to scatter, use i and j to determine the velocity of each one
 		# and set the settings for each piece to match up with the $Sprite2D node
 		for i in range(pieces.x):

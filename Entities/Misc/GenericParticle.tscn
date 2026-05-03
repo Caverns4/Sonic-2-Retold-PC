@@ -852,9 +852,7 @@ animations = [{
 
 [node name="GenericParticle" type="AnimatedSprite2D" unique_id=2093924985]
 sprite_frames = SubResource("157")
-animation = &"Pop"
-frame = 3
-frame_progress = 1.0
+animation = &"Explosion"
 script = ExtResource("2")
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

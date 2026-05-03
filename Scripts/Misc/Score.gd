@@ -1,19 +1,6 @@
 extends Node2D
 
 const SCORE = [10,100,200,500,1000,10000]
-const RECTS = [
-	Rect2(Vector2(0,0),
-	Vector2(10,8)),
-	Rect2(Vector2(0,0),
-	Vector2(15,8)),
-	Rect2(Vector2(0,8),
-	Vector2(15,8)),
-	Rect2(Vector2(0,18),
-	Vector2(15,8)),
-	Rect2(Vector2(0,0),
-	Vector2(20,8)),
-	Rect2(Vector2(0,0),
-	Vector2(25,8))]
 
 var scoreID: int = 0
 var playerID: int = 0
@@ -29,7 +16,6 @@ func _ready() -> void:
 		Global.score += SCORE[scoreID]
 	else:
 		Global.scoreP2 += SCORE[scoreID]
-	# set sprite region to match (see RECTS for texture regions
 	$Sprite2D.frame = scoreID
 	
 

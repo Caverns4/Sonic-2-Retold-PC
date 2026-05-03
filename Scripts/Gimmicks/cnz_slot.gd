@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 					if sfxTimer < 0.0:
 						SoundDriver.play_sound(SFX)
 						sfxTimer = 0.25
-						Global.add_score(global_position,1,
+						Global.add_score_object(global_position,1,
 						Global.players.find(player))
 				else:
 					dropPlayer()

@@ -164,8 +164,8 @@ func destroy() -> void:
 			pass
 		ITEMTYPES.LIFEP1: # 1up
 			Global.lives += 1
-			if Global.hud and !Global.two_player_mode:
-				Global.hud.coins += 1
+			if !Global.two_player_mode:
+				Global.temporary_coins += 1
 			await SoundDriver.playExtraLifeMusic()
 		ITEMTYPES.LIFEP2: #2-Player 1up
 			Global.livesP2 +=1

@@ -1,12 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://ofg8xes04l1m"]
+[gd_scene format=3 uid="uid://ofg8xes04l1m"]
 
 [ext_resource type="Texture2D" uid="uid://cbwebn52lec80" path="res://Graphics/Misc/score_popup.png" id="1"]
 [ext_resource type="Script" uid="uid://dcjgec20jd8ju" path="res://Scripts/Misc/Score.gd" id="2"]
 
-[node name="Score" type="Node2D"]
+[node name="Score" type="Node2D" unique_id=740806318]
 script = ExtResource("2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1762644391]
 z_index = 100
 texture = ExtResource("1")
 vframes = 8

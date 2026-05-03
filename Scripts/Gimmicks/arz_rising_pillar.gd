@@ -55,7 +55,7 @@ func BreakPillar(body):
 	SoundDriver.play_sound(sound)
 	
 	if score:
-		Global.add_score(
+		Global.add_score_object(
 			global_position,
 		Global.SCORE_COMBO[min(Global.SCORE_COMBO.size()-1,body.enemyCounter)],
 		Global.players.find(body))

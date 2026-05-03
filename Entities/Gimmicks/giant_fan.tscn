@@ -82,6 +82,7 @@ stream = ExtResource("3_s1t6n")
 volume_db = 2.0
 autoplay = true
 max_distance = 256.0
+bus = &"SFX"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=470748355]
 position = Vector2(0, -40)

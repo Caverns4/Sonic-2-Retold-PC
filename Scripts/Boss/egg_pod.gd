@@ -62,9 +62,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			pass
 		elif !connected and (player.is_attacking() or player.super_time):
 			queue_free()
-			Global.add_score(global_position,1,Global.players.find(player))
+			Global.add_score_object(global_position,1,Global.players.find(player))
 			
-			var skipBounce = (player.animator.current_animation == "drop")
+			var skipBounce: bool = (player.animator.current_animation == "drop")
 			if !player.ground and !(skipBounce):
 				if player.movement.y > 0:
 					# Bounce high upward

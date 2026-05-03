@@ -18,7 +18,7 @@ func physics_collision(body: Player2D, hitVector: Vector2) -> bool:
 		body.ground = false
 		body.movement.y = -3*60
 		if score:
-			Global.add_score(
+			Global.add_score_object(
 				global_position,
 				Global.SCORE_COMBO[min(Global.SCORE_COMBO.size()-1,body.enemyCounter)],
 				Global.players.find(body))

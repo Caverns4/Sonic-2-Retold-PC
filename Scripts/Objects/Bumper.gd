@@ -3,7 +3,7 @@ extends StaticBody2D
 var bumperCount = 0
 
 
-func physics_collision(body, _hitVector):
+func physics_collision(body, _hitVector) -> void:
 	# on collision bump the player away and play animation, pretty simple
 	body.movement = (body.global_position-global_position).normalized()*7*60.0
 	
@@ -15,7 +15,7 @@ func physics_collision(body, _hitVector):
 	SoundDriver.play_sound($BumperSFX.stream)
 	# score counter
 	if bumperCount < 10:
-		Global.add_score(global_position,
+		Global.add_score_object(global_position,
 		0,
 		Global.players.find(body))
 		bumperCount += 1
