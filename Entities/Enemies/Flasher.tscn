@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://hl1q1loogiyw"]
+[gd_scene format=3 uid="uid://hl1q1loogiyw"]
 
 [ext_resource type="Script" uid="uid://bprtxc6dsfy3" path="res://Scripts/Enemies/flasher.gd" id="1_3r5q2"]
 [ext_resource type="Texture2D" uid="uid://ddvy6g30rxrq3" path="res://Graphics/Enemies/Flasher.png" id="2_ldsn8"]
@@ -206,36 +206,36 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_f8uw7"]
 radius = 16.0
 
-[node name="Flasher" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Flasher" type="CharacterBody2D" unique_id=1923594931 groups=["Enemy"]]
 collision_layer = 16384
 collision_mask = 0
 script = ExtResource("1_3r5q2")
 
-[node name="CollissionMask" type="CollisionShape2D" parent="."]
+[node name="CollissionMask" type="CollisionShape2D" parent="." unique_id=1102451206]
 shape = SubResource("1")
 
-[node name="DamageArea" type="Area2D" parent="."]
+[node name="DamageArea" type="Area2D" parent="." unique_id=820471330]
 collision_layer = 0
 collision_mask = 528384
 
-[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea" unique_id=994584320]
 modulate = Color(1, 0, 0, 1)
 shape = SubResource("1")
 
-[node name="FlasherSprite" type="Sprite2D" parent="."]
+[node name="FlasherSprite" type="Sprite2D" parent="." unique_id=1125288871]
 texture_filter = 1
 texture_repeat = 1
 texture = ExtResource("2_ldsn8")
 vframes = 2
 
-[node name="Light" type="Sprite2D" parent="FlasherSprite"]
+[node name="Light" type="Sprite2D" parent="FlasherSprite" unique_id=1808732864]
 light_mask = 0
 texture_filter = 1
 texture_repeat = 1
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("4_cbqp0")
 
-[node name="PointLight2D" type="PointLight2D" parent="FlasherSprite"]
+[node name="PointLight2D" type="PointLight2D" parent="FlasherSprite" unique_id=1088645469]
 enabled = false
 energy = 0.0
 range_layer_max = 9
@@ -245,26 +245,24 @@ shadow_filter = 1
 texture = ExtResource("4_cbqp0")
 height = 128.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_e33rt")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=680844488]
+libraries/ = SubResource("AnimationLibrary_e33rt")
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1738770889]
 visible = false
 position = Vector2(1.90735e-06, -1.90735e-06)
 rect = Rect2(-160, -120, 320, 240)
 
-[node name="SubSprite" type="Node2D" parent="."]
+[node name="SubSprite" type="Node2D" parent="." unique_id=1414654714]
 
-[node name="Area2D" type="Area2D" parent="SubSprite"]
+[node name="Area2D" type="Area2D" parent="SubSprite" unique_id=1366913386]
 collision_layer = 0
 collision_mask = 4096
 monitoring = false
 script = ExtResource("4_6kn75")
 damageType = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubSprite/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubSprite/Area2D" unique_id=572686474]
 shape = SubResource("CircleShape2D_f8uw7")
 debug_color = Color(1, 0, 0, 0.501961)
 

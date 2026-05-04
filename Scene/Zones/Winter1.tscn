@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_e7pco"]
 [ext_resource type="PackedScene" uid="uid://chfpewpugtp61" path="res://Scene/level_layouts/layout_ehz_1.scn" id="5_jsoys"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_8kp2y"]
+[ext_resource type="PackedScene" uid="uid://hl1q1loogiyw" path="res://Entities/Enemies/Flasher.tscn" id="7_djwlr"]
 
 [node name="Winter1" type="Node2D" unique_id=1326342612]
 script = ExtResource("1_8yfjs")
@@ -23,3 +24,6 @@ animal2 = 5
 
 [node name="Player" parent="." unique_id=2053401634 instance=ExtResource("6_8kp2y")]
 position = Vector2(96, 656)
+
+[node name="Flasher" parent="." unique_id=1987675271 instance=ExtResource("7_djwlr")]
+position = Vector2(312, 600)
