@@ -10,8 +10,8 @@ DEATH_EGG,ENDING,SPECIAL_STAGE}
 const zone_names: Array[StringName] = [
 	"Emerald Hill","Hidden Palace","Hill Top","Chemical Plant",
 	"Oil Ocean","Aquatic Ruin","Metropolis","Mystic Cave",
-	"Wood Gadget","Casino Night","Jewel Grotto","Null",
-	"Sand Shower","Null","Cyber City","Sky Fortress",
+	"Wood Gadget","Casino Night","Jewel Grotto","Emerald Hill",
+	"Sand Shower","Jade Cove","Cyber City","Sky Fortress",
 	"Death Egg","Emerald Hill"
 ]
 

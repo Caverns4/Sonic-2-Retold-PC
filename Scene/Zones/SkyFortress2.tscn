@@ -22,7 +22,9 @@
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="17_m8uev"]
 [ext_resource type="PackedScene" uid="uid://ckauggfqax081" path="res://Scene/level_layouts/scz_cover_tiles.scn" id="18_ixjjw"]
 [ext_resource type="PackedScene" uid="uid://chyrwm1qwvlyt" path="res://Entities/Gimmicks/Switch.tscn" id="18_vkaj6"]
+[ext_resource type="PackedScene" uid="uid://beebd7dn4ioe1" path="res://Entities/Gimmicks/WindCurrent.tscn" id="19_l0iqx"]
 [ext_resource type="PackedScene" uid="uid://btyydkc7grjn0" path="res://Entities/Hazards/scz_propeller.tscn" id="19_u6hen"]
+[ext_resource type="PackedScene" uid="uid://c43isa3fib6s6" path="res://Entities/Gimmicks/WaterBar.tscn" id="20_hk40m"]
 [ext_resource type="PackedScene" uid="uid://dyi111jvxw543" path="res://Entities/Gimmicks/shifting_platform.tscn" id="22_hb252"]
 [ext_resource type="PackedScene" uid="uid://bbbho8eh17vq4" path="res://Entities/Obstacles/vent_entrance.tscn" id="24_m6rwo"]
 
@@ -157,11 +159,20 @@ lock_left_camera = 10368
 [node name="SCZ_CoverTiles" parent="Entities/Vent_Entrance" unique_id=1521323812 instance=ExtResource("18_ixjjw")]
 position = Vector2(-8, 0)
 
+[node name="WindCurrent" parent="Entities" unique_id=418046058 instance=ExtResource("19_l0iqx")]
+position = Vector2(5248, 1200)
+scale = Vector2(104, 12)
+speed = -400.0
+
+[node name="WaterBar" parent="Entities" unique_id=1185438577 instance=ExtResource("20_hk40m")]
+position = Vector2(6272, 1184)
+
 [node name="Platforms" type="Node" parent="." unique_id=1926211673]
 
 [node name="MultiRotatingPlatforms" parent="Platforms" unique_id=1418182564 instance=ExtResource("14_kegxj")]
 position = Vector2(4096, 1792)
 platformCount = 1
+chains = 5
 plat_img = ExtResource("15_n5rds")
 
 [node name="MultiRotatingPlatforms2" parent="Platforms" unique_id=1912657389 instance=ExtResource("14_kegxj")]
