@@ -5,6 +5,14 @@ const GRAVITY = 600
 @export var idle_time: float = 1.0
 @export var move_speed: float = 60
 @export var shoot_time: float = 1.1
+@export_enum("Left","Right")var direction: int = 0
+
+@onready var sprite_node: Sprite2D = $Redz
+@onready var animator: AnimationPlayer = $AnimationPlayer
+@onready var floor_checker: RayCast2D = $Redz/FloorCheck
+@onready var state_time: Timer = $Timers/StateTime
+@onready var bulletPoint: Node2D = $Redz/BulletPoint
+@onready var fire_weaver: Timer = $Timers/FireWeave
 
 var Projectile: PackedScene = preload("res://Entities/Enemies/Projectiles/RedzFire.tscn")
 var bullet: Node2D = null
@@ -13,29 +21,19 @@ var bulletSound: AudioStream = preload("res://Audio/SFX/Objects/s2br_Flamethrowe
 enum STATES{WALK,IDLE,SHOOT}
 
 var state: STATES = STATES.WALK
-var direction: int = 1
 var shootTimer: float = 0.0
 
 var targets: Array[Player2D] = []
 
-@onready var animator: AnimationPlayer = $AnimationPlayer
-@onready var bulletPoint: Node2D = $Redz/BulletPoint
-@onready var floor_checker: RayCast2D = $Redz/FloorCheck
-@onready var state_time: Timer = $Timers/IdleTime
-@onready var fire_weaver: Timer = $Timers/FireWeave
-
 func _ready() -> void:
-	defaultMovement = false
-	$VisibleOnScreenEnabler2D.visible = true
-	animator.play("WALK")
-	global_scale = Vector2(1,1)
+	direction = (direction*2)-1
 	super()
-	
+	_change_direction(move_speed)
+	state_time.connect("timeout",_on_idle_time_timeout)
 
 func _physics_process(delta: float) -> void:
 	match state:
 		STATES.WALK:
-			# Edge check
 			EdgeCheck()
 		STATES.IDLE:
 			pass
@@ -51,9 +49,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func EdgeCheck() -> void:
-	#floor_checker.force_raycast_update()
 	if (is_on_wall() or !floor_checker.is_colliding()):
-		velocity.x = 0
+		velocity.x = 0.0
 		if targets:
 			state = STATES.SHOOT
 			animator.play("SHOOT")
@@ -62,6 +59,14 @@ func EdgeCheck() -> void:
 			state = STATES.IDLE
 			animator.play("RESET")
 			state_time.start(idle_time)
+
+func _change_direction(speed: float) -> void:
+	direction = -direction
+	sprite_node.scale.x = 0-sign(direction)
+	floor_checker.force_raycast_update()
+	velocity.x = speed*direction
+	state = STATES.WALK
+	animator.play("WALK")
 
 func shootBullet(delta: float) -> void:
 	shootTimer+=delta
@@ -84,13 +89,6 @@ func _on_player_check_body_entered(body: Node2D) -> void:
 func _on_player_check_body_exited(body: Node2D) -> void:
 	targets.erase(body)
 
-
 func _on_idle_time_timeout() -> void:
 	if state == STATES.IDLE:
-		direction = -direction
-		$Redz.scale.x = abs($Redz.scale.x)*-direction
-		state = STATES.WALK
-		animator.play("WALK")
-		floor_checker.force_raycast_update()
-		velocity.x = direction*move_speed
-		state = STATES.WALK
+		_change_direction(move_speed)

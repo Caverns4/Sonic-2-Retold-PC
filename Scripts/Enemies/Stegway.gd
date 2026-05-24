@@ -1,98 +1,69 @@
 extends EnemyBase
 
-const WALK_SPEED = 60 # 1 pixel per frame
-const DASH_SPEED = 240 # 4 pixels per frame
-const IDLE_TIME = 1.0
 const GRAVITY = 600
 const DASH_CHARGE_TIME = 0.5 #Time to rev before charaging a player
 
-@onready var animator = $SpriteNode/AnimationPlayer
-var revSound = preload("res://Audio/SFX/Player/s2br_SpindashRev.wav")
+@export var idle_time: float = 1.0
+@export var move_speed: float = 60
+@export var revSound: AudioStream = preload("res://Audio/SFX/Player/s2br_SpindashRev.wav")
+@export_enum("Left","Right")var direction: int = 0
 
-enum STATES{WALK,IDLE,CHARGE}
-var state = 0
-var stateTimer = 0
-var direction = 1
-var dashMem = false
+@onready var sprite_node: Sprite2D = $Stegway
+@onready var animator: AnimationPlayer = $AnimationPlayer
+@onready var floor_checker: RayCast2D = $Stegway/FloorCheck
+@onready var state_time: Timer = $Timers/StateTime
+@onready var flame_effect: AnimatedSprite2D = $Stegway/BuzzerFlame
 
-# Physics variables
-var ground = false
-var movement = Vector2.ZERO
-var targets = []
+enum STATES{WALK,IDLE,CHARGE,DASH}
+var state: STATES = STATES.WALK
+var targets: Array[Player2D] = []
 
 func _ready() -> void:
-	defaultMovement = false
-	$VisibleOnScreenEnabler2D.visible = true
-	$SpriteNode/PlayerCheck.visible = true
-	$SpriteNode/Flame.visible = false
-	if direction == 0:
-		direction = 1
-	movement.x = direction*WALK_SPEED
+	flame_effect.hide()
+	direction = (direction*2)-1
 	super()
+	_change_direction(move_speed)
+	state_time.connect("timeout",_on_idle_time_timeout)
 
 func _physics_process(delta: float) -> void:
-	stateTimer -= delta
-	# Direction checks
-	$SpriteNode.scale.x = abs($SpriteNode.scale.x)*-sign(direction)
-	$FloorCheck.position.x = abs($FloorCheck.position.x)*(direction)
-	$FloorCheck.force_raycast_update()
-	
 	match state:
-		STATES.IDLE:
-			if stateTimer <= 0.0:
-				state = STATES.WALK
-				direction = -direction
-				position.x += direction
-				movement.x = direction*WALK_SPEED
-				animator.play("WALK")
-		STATES.CHARGE:
-			if stateTimer <= 0.0 and !dashMem:
-				movement.x = direction*DASH_SPEED
-				animator.play("DASH")
-				dashMem = true
-				$SpriteNode/Flame.visible = true
+		STATES.WALK:
+			if targets: _charge_dash()
 			EdgeCheck()
-		_: # Walk
-			
-			if targets:
-				var waitTime = DASH_CHARGE_TIME
-				
-				for i in targets.size():
-					var node = targets[i]
-					if (node.get("super_time") != null):
-						if (node.super_time > 0):
-							direction = sign(global_position.x - node.global_position.x)
-							waitTime = DASH_CHARGE_TIME/2.0
-				movement.x = 0
-				stateTimer = waitTime
-				animator.play("CHARGE")
-				state = STATES.CHARGE
-				SoundDriver.play_sound(revSound)
-			# Edge check
+		STATES.DASH:
 			EdgeCheck()
-	
-	MoveWithGravity(delta)
-
-func EdgeCheck():
-	# Edge check
-	if (is_on_wall() or !$FloorCheck.is_colliding()):
-		stateTimer = IDLE_TIME
-		state = STATES.IDLE
-		movement.x = 0
-		animator.play("RESET")
-		dashMem = false
-		$SpriteNode/Flame.visible = false
-		direction = clamp(direction,-1,1)
-
-func MoveWithGravity(delta):
-	# Velocity movement
-	set_velocity(movement)
-	set_up_direction(Vector2.UP)
-	move_and_slide()
-	ground = is_on_floor()
-	# Gravity
 	if !is_on_floor():
-		movement.y += (GRAVITY*delta)
+		velocity.y += (GRAVITY*delta)
+	move_and_slide()
+
+func EdgeCheck() -> void:
+	if (is_on_wall() or !floor_checker.is_colliding()):
+		velocity.x = 0.0
+		state = STATES.IDLE
+		animator.play("RESET")
+		state_time.start(idle_time)
+		flame_effect.hide()
+
+func _change_direction(speed: float) -> void:
+	direction = -direction
+	sprite_node.scale.x = 0-sign(direction)
+	floor_checker.force_raycast_update()
+	velocity.x = speed*direction
+	state = STATES.WALK
+	animator.play("WALK")
+
+func _charge_dash() -> void:
+	var wait_time:float = DASH_CHARGE_TIME
+	for i:Player2D in targets:
+		if (i.super_time > 0):
+			direction = sign(global_position.x - i.global_position.x)
+			sprite_node.scale.x = abs(sprite_node.scale.x)*-direction
+			wait_time = wait_time/2
+	state_time.start(wait_time)
+	state = STATES.CHARGE
+	animator.play("CHARGE")
+	velocity.x = 0
+	SoundDriver.play_sound(revSound)
 
 
 func _on_player_check_body_entered(body: Node2D) -> void:
@@ -101,3 +72,14 @@ func _on_player_check_body_entered(body: Node2D) -> void:
 
 func _on_player_check_body_exited(body: Node2D) -> void:
 	targets.erase(body)
+
+
+func _on_idle_time_timeout() -> void:
+	if state == STATES.IDLE:
+		_change_direction(move_speed)
+	if state == STATES.CHARGE:
+		sprite_node.scale.x = abs(sprite_node.scale.x)*-direction
+		state = STATES.DASH
+		animator.play("DASH")
+		velocity.x = direction*move_speed*4
+		flame_effect.show()

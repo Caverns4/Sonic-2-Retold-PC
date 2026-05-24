@@ -1,8 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://coe83pap1gotn"]
+[gd_scene format=3 uid="uid://coe83pap1gotn"]
 
 [ext_resource type="Script" uid="uid://c52f7t2m5rvh1" path="res://Scripts/Enemies/grounder.gd" id="1_yhgh2"]
 [ext_resource type="Texture2D" uid="uid://dgpd0rq4u7li7" path="res://Graphics/Enemies/Grounder.png" id="2_tx5nm"]
 [ext_resource type="Texture2D" uid="uid://c5uvkroc7rufo" path="res://Graphics/Enemies/GrounderBrick.png" id="3_0cg2t"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eyh2r"]
+radius = 14.0
+height = 32.0
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(30, 36)
@@ -82,77 +86,78 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pab2j"]
 size = Vector2(128, 144)
 
-[node name="Grounder" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Grounder" type="CharacterBody2D" unique_id=1144728531 groups=["Enemy"]]
 collision_layer = 16384
-collision_mask = 4095
-slide_on_ceiling = false
-floor_stop_on_slope = false
+collision_mask = 12287
 floor_snap_length = 4.0
 script = ExtResource("1_yhgh2")
 behavior = 1
 
-[node name="CollissionMask" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
-shape = SubResource("1")
+[node name="CollissionMask" type="CollisionShape2D" parent="." unique_id=1011524372]
+shape = SubResource("CapsuleShape2D_eyh2r")
 
-[node name="DamageArea" type="Area2D" parent="."]
+[node name="DamageArea" type="Area2D" parent="." unique_id=108881906]
 collision_layer = 0
 collision_mask = 528384
-monitoring = false
 
-[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea" unique_id=686630270]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(0, -2)
 shape = SubResource("1")
 
-[node name="GrounderSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Grounder" type="AnimatedSprite2D" parent="." unique_id=701852087]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_wjupy")
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+[node name="FloorCheck" type="RayCast2D" parent="Grounder" unique_id=1325951794]
+position = Vector2(-8, 16)
+target_position = Vector2(0, 24)
+collision_mask = 8465
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1760296446]
 visible = false
 position = Vector2(1.90735e-06, -1.90735e-06)
 rect = Rect2(-160, -120, 320, 240)
 
-[node name="BrickA" type="Sprite2D" parent="."]
+[node name="BrickA" type="Sprite2D" parent="." unique_id=701500172]
 visible = false
 position = Vector2(0, -24)
 texture = ExtResource("3_0cg2t")
 
-[node name="BrickB" type="Sprite2D" parent="."]
+[node name="BrickB" type="Sprite2D" parent="." unique_id=1455703399]
 visible = false
 position = Vector2(-16, -8)
 texture = ExtResource("3_0cg2t")
 flip_h = true
 
-[node name="BrickC" type="Sprite2D" parent="."]
+[node name="BrickC" type="Sprite2D" parent="." unique_id=629073193]
 visible = false
 position = Vector2(16, -8)
 texture = ExtResource("3_0cg2t")
 
-[node name="BrickD" type="Sprite2D" parent="."]
+[node name="BrickD" type="Sprite2D" parent="." unique_id=465347140]
 visible = false
 position = Vector2(0, 8)
 texture = ExtResource("3_0cg2t")
 flip_h = true
 
-[node name="PlayerCheck" type="Area2D" parent="."]
+[node name="PlayerCheck" type="Area2D" parent="." unique_id=1915579835]
 visible = false
 collision_layer = 0
 collision_mask = 4096
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCheck"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCheck" unique_id=1146324747]
 position = Vector2(0, -56)
 shape = SubResource("RectangleShape2D_pab2j")
 debug_color = Color(0.333333, 0.333333, 0.584314, 0.286275)
 
-[node name="FloorCheck" type="RayCast2D" parent="."]
-position = Vector2(-15, 16)
-target_position = Vector2(0, 24)
-collision_mask = 273
+[node name="Timers" type="Node" parent="." unique_id=687153003]
+
+[node name="StateTime" type="Timer" parent="Timers" unique_id=1085033621]
+one_shot = true
 
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
-[connection signal="animation_finished" from="GrounderSprite2D" to="." method="_on_grounder_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="Grounder" to="." method="_on_grounder_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="PlayerCheck" to="." method="_on_player_check_body_entered"]

@@ -1,0 +1,30 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bt3tc4nx84w4k"]
+
+[ext_resource type="Texture2D" uid="uid://clihuhs0po6p0" path="res://Graphics/Enemies/BuzzerFlame.png" id="1_w4ty0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thy44"]
+atlas = ExtResource("1_w4ty0")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jjky"]
+atlas = ExtResource("1_w4ty0")
+region = Rect2(8, 0, 8, 8)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thy44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jjky")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"stop",
+"speed": 5.0
+}]

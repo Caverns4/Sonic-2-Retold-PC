@@ -8,20 +8,23 @@ var Projectile: PackedScene = preload("res://Entities/Enemies/Projectiles/BuzzBo
 ## Total distance travelled in pixels
 @export var x_range: int = 256
 @export var speed: float = 60
+
 @onready var origin: Vector2 = global_position
-@onready var animator: AnimationPlayer = $Sprite2D/AnimationPlayer
+
+@onready var sprite_node: Sprite2D = $Buzzer
+@onready var animator: AnimationPlayer = $AnimationPlayer
+@onready var flame_effect: AnimatedSprite2D = $Buzzer/BuzzerFlame
+@onready var state_time: Timer = $Timers/StateTime
 
 var editor_offset: float = 1.0
 var side: int = -1
 var target_pos: Vector2 = Vector2.ZERO
-var firing_flag: bool = false
+var bullet_ready: bool = false
 
 func _ready() -> void:
 	# clear fire if destroyed before shooting
 	#var _con = connect("destroyed",Callable(self,"clear_fire"))
 	if !Engine.is_editor_hint():
-		$VisibleOnScreenEnabler2D.visible = true
-		$Sprite2D/PlayerCheck.visible = true
 		var direction: Vector2 = Vector2(x_range*clamp(side,-1,0),0).rotated(deg_to_rad(flyDirection))
 		target_pos = origin + direction
 		super()
@@ -40,7 +43,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if !Engine.is_editor_hint():
 		# move if not firing
-		if !firing_flag:
+		if !bullet_ready:
 			# move position toward origin point with the travel distance
 			if side <= 0:
 				position = position.move_toward(
@@ -51,7 +54,7 @@ func _physics_process(delta: float) -> void:
 			# if at the destination point then turn around
 			
 			if position.distance_to(target_pos) <= 1:
-				$Sprite2D.scale.x = -$Sprite2D.scale.x
+				sprite_node.scale.x = -sprite_node.scale.x
 				#Calculate a new Target position
 				side = -side
 				if side <= 0:
@@ -60,12 +63,14 @@ func _physics_process(delta: float) -> void:
 					target_pos = origin
 				# pause during turn
 				animator.play("RESET")
-				firing_flag = true
-				$Timer.start(1)
-				await $Timer.timeout
+				flame_effect.hide()
+				bullet_ready = true
+				state_time.start(1.0)
+				await state_time.timeout
 				# resume movement
 				animator.play("FLY")
-				firing_flag = false
+				flame_effect.show()
+				bullet_ready = false
 			else:
 				calc_dir()
 
@@ -74,44 +79,46 @@ func calc_dir() -> void:
 	var getDir: int = sign(Vector2(side,0).rotated(deg_to_rad(flyDirection)).x)
 	# check that it's not 0 so it doesn't become invisible
 	if getDir != 0:
-		$Sprite2D.scale.x = -getDir
+		sprite_node.scale.x = -getDir
 
 
 func _draw() -> void:
 	if Engine.is_editor_hint():
-		var sprite: Sprite2D = $Sprite2D/Buzzer
-		var size: Vector2 = Vector2(sprite.texture.get_width()/sprite.hframes,sprite.texture.get_height()/sprite.vframes)
+		var size: Vector2 = Vector2(
+			sprite_node.texture.get_width()/sprite_node.hframes,
+			sprite_node.texture.get_height()/sprite_node.vframes)
 		# first buzzer pose
-		draw_texture_rect_region(sprite.texture,
+		draw_texture_rect_region(sprite_node.texture,
 		Rect2(Vector2(0,0).rotated(deg_to_rad(flyDirection))-size/2,
 		size),Rect2(Vector2(0,0),
 		size),Color(1,1,1,0.5))
 		
 		# second buzzer pose
-		draw_texture_rect_region(sprite.texture,
+		draw_texture_rect_region(sprite_node.texture,
 		Rect2(Vector2(-x_range,0).rotated(deg_to_rad(flyDirection))-size/2,
 		size),Rect2(Vector2(0,0),
 		size),Color(1,1,1,0.5))
 		
 		# estimated movement
-		draw_texture_rect_region(sprite.texture,
+		draw_texture_rect_region(sprite_node.texture,
 		Rect2(Vector2((x_range)*(editor_offset-1.0),0).rotated(deg_to_rad(flyDirection))-size/2,
 		size),Rect2(Vector2(0,0),
 		size),Color(1,1,1,0.5))
 
 
 func _on_PlayerCheck_body_entered(_body: Player2D) -> void:
-	if !firing_flag:
-		firing_flag = true
+	if !bullet_ready:
+		bullet_ready = true
 		
 		# pause
-		$Timer.start(0.25)
-		await $Timer.timeout
+		state_time.start(0.25)
+		await state_time.timeout
 		# set sprites to 
 		animator.play("AIM")
+		flame_effect.hide()
 		# start firing timer
-		$Timer.start(0.25)
-		await $Timer.timeout
+		state_time.start(0.25)
+		await state_time.timeout
 		
 		# fire projectile
 		var bullet: Node2D = Projectile.instantiate()
@@ -123,8 +130,8 @@ func _on_PlayerCheck_body_entered(_body: Player2D) -> void:
 		var alive: RefCounted = weakref(bullet)
 		
 		# wait for fire aniamtion to finish
-		$Timer.start(16.0/60.0)
-		await $Timer.timeout
+		state_time.start(16.0/60.0)
+		await state_time.timeout
 		# check that fire hasn't been deleted
 		if alive.get_ref():
 			SoundDriver.play_sound(bulletSound)
@@ -134,8 +141,9 @@ func _on_PlayerCheck_body_entered(_body: Player2D) -> void:
 		
 		# last timer before returning to normal
 		# account for how long the firing timer took
-		$Timer.start(0.5-(16.0/60.0))
-		await $Timer.timeout
+		state_time.start(0.5-(16.0/60.0))
+		await state_time.timeout
 		# reset sprites and resume movement
 		animator.play("FLY")
-		firing_flag = false
+		flame_effect.show()
+		bullet_ready = false

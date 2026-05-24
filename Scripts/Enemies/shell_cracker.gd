@@ -37,7 +37,6 @@ func _ready() -> void:
 	_claw.global_position = (global_position + currentPos)
 	
 	velocity.x = 30*move_dir
-	defaultMovement = false
 	super()
 
 func _physics_process(delta: float) -> void:

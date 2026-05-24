@@ -110,8 +110,7 @@ shape = SubResource("RectangleShape2D_y2anh")
 [node name="FloorCheck" type="RayCast2D" parent="Redz" unique_id=717496927]
 position = Vector2(-8, 8)
 target_position = Vector2(0, 24)
-collision_mask = 273
-hit_from_inside = true
+collision_mask = 8465
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=896810645]
 visible = false
@@ -123,11 +122,11 @@ libraries/ = SubResource("AnimationLibrary_34x7i")
 
 [node name="Timers" type="Node" parent="." unique_id=1480510924]
 
-[node name="IdleTime" type="Timer" parent="Timers" unique_id=1869122628]
+[node name="StateTime" type="Timer" parent="Timers" unique_id=1869122628]
 one_shot = true
 
 [node name="FireWeave" type="Timer" parent="Timers" unique_id=2007838924]
-wait_time = 1.0999999999999999
+wait_time = 1.1
 one_shot = true
 
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
@@ -135,4 +134,3 @@ one_shot = true
 [connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
 [connection signal="body_entered" from="Redz/PlayerCheck" to="." method="_on_player_check_body_entered"]
 [connection signal="body_exited" from="Redz/PlayerCheck" to="." method="_on_player_check_body_exited"]
-[connection signal="timeout" from="Timers/IdleTime" to="." method="_on_idle_time_timeout"]

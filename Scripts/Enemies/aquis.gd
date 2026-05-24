@@ -20,9 +20,6 @@ var stateTime: float = 0.0
 var shootFlag: bool = false
 var direction: int = -1
 
-func _ready() -> void:
-	defaultMovement = false
-	super()
 
 func _physics_process(delta: float) -> void:
 	match  state:

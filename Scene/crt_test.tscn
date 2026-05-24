@@ -1,16 +1,18 @@
 [gd_scene format=3 uid="uid://cg66wlapd6lpv"]
 
-[ext_resource type="PackedScene" uid="uid://deaxge481u7mk" path="res://Scene/Backgrounds/00-EmeraldHill.tscn" id="1_avp50"]
+[ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_vmtrv"]
 [ext_resource type="PackedScene" uid="uid://chfpewpugtp61" path="res://Scene/level_layouts/layout_ehz_1.scn" id="2_dkinl"]
 [ext_resource type="PackedScene" uid="uid://cqcgjcw101xxo" path="res://Entities/Enemies/MotoBug.tscn" id="3_dkinl"]
 [ext_resource type="Shader" uid="uid://bl6rkxasb1wlh" path="res://Shaders/Waterpalette.gdshader" id="4_dkinl"]
 [ext_resource type="Texture2D" uid="uid://t83ys4beivkw" path="res://Graphics/Palettes/NGHZ_Pal_Dry.png" id="5_dek6d"]
 [ext_resource type="Texture2D" uid="uid://bwnjh5ghvt0xs" path="res://Graphics/Palettes/NGHZ_Pal_Wet.png" id="6_ebf1g"]
-[ext_resource type="Script" uid="uid://de00qf17tl15p" path="res://Scripts/Level/water_overlay.gd" id="7_dek6d"]
-[ext_resource type="PackedScene" uid="uid://cvaf3mpyum5at" path="res://Entities/Enemies/Stegway.tscn" id="8_ebf1g"]
-[ext_resource type="PackedScene" uid="uid://jgm0h2yu3hvb" path="res://Entities/Enemies/Redz.tscn" id="9_0dglr"]
-[ext_resource type="PackedScene" uid="uid://bwlhmktikgcot" path="res://Entities/Enemies/EradiGator.tscn" id="10_hannx"]
+[ext_resource type="Script" uid="uid://de00qf17tl15p" path="res://Scripts/Level/water_overlay_new.gd" id="7_dek6d"]
 [ext_resource type="AudioStream" uid="uid://brayuk75sxk0i" path="res://Audio/SiivaGunner/Emerald Hill Zone 2P SiIvaGunner.ogg" id="11_vb1im"]
+[ext_resource type="PackedScene" uid="uid://bg66ofhfkxsx6" path="res://Entities/Gimmicks/Bridge.tscn" id="12_q4ll3"]
+[ext_resource type="Script" uid="uid://2ac4isxha7iy" path="res://Scripts/Level/TwoPlayerScreenView.gd" id="13_uenjp"]
+[ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="13_vmtrv"]
+[ext_resource type="PackedScene" uid="uid://cii6vdv1nbk6k" path="res://Entities/Enemies/Slicer.tscn" id="14_y5flj"]
+[ext_resource type="PackedScene" uid="uid://xbidybme3tde" path="res://Entities/Enemies/Spiny.tscn" id="16_iulvr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_js133"]
 shader = ExtResource("4_dkinl")
@@ -21,44 +23,119 @@ shader_parameter/speed = 2.0
 shader_parameter/waves = 30.0
 shader_parameter/magnitude = 0.25
 
-[node name="crtTest" type="Node" unique_id=410327418]
-
-[node name="00-EmeraldHill" parent="." unique_id=885171240 instance=ExtResource("1_avp50")]
+[node name="Water_Test" type="Node2D" unique_id=1394454319]
+script = ExtResource("1_vmtrv")
+zone_id = 18
+playLevelCard = false
+music = ExtResource("11_vb1im")
+music2P = ExtResource("11_vb1im")
+silvagunner_music = ExtResource("11_vb1im")
+defaultRightBoundry = 4096
+defaultBottomBoundry = 1024
 
 [node name="Layout_EHZ1" parent="." unique_id=917593673 instance=ExtResource("2_dkinl")]
 
 [node name="Motobug" parent="." unique_id=935586277 instance=ExtResource("3_dkinl")]
-position = Vector2(256, 496)
+position = Vector2(1080, 688)
 
-[node name="WaterOverlay" type="ColorRect" parent="." unique_id=34092467]
+[node name="Player" parent="." unique_id=1883722392 instance=ExtResource("13_vmtrv")]
+position = Vector2(64, 656)
+
+[node name="Slicer" parent="." unique_id=777494846 instance=ExtResource("14_y5flj")]
+position = Vector2(512, 624)
+model = 1
+
+[node name="Slicer3" parent="." unique_id=1286220937 instance=ExtResource("14_y5flj")]
+position = Vector2(608, 624)
+model = 2
+slicer_tracking_time = 10.0
+
+[node name="Slicer2" parent="." unique_id=1231075779 instance=ExtResource("14_y5flj")]
+position = Vector2(432, 624)
+
+[node name="Spiny" parent="." unique_id=973227541 instance=ExtResource("16_iulvr")]
+position = Vector2(960, 576)
+
+[node name="Bridge" parent="." unique_id=724398812 instance=ExtResource("12_q4ll3")]
+position = Vector2(1352, 648)
+
+[node name="TwoPlayerScreenView" type="Control" parent="." unique_id=1346944916]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("13_uenjp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="TwoPlayerScreenView" unique_id=1774293400]
+layer = 0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="TwoPlayerScreenView/CanvasLayer" unique_id=206176310]
+z_as_relative = false
+offset_right = 320.0
+offset_bottom = 112.0
+size_flags_vertical = 4
+
+[node name="SubViewport" type="SubViewport" parent="TwoPlayerScreenView/CanvasLayer/SubViewportContainer" unique_id=15576852]
+handle_input_locally = false
+fsr_sharpness = 0.0
+canvas_item_default_texture_filter = 0
+size = Vector2i(320, 112)
+size_2d_override = Vector2i(320, 224)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="CameraP1" type="Camera2D" parent="TwoPlayerScreenView/CanvasLayer/SubViewportContainer/SubViewport" unique_id=2099784029]
+limit_left = 0
+limit_top = 0
+limit_right = 16384
+limit_bottom = 2048
+
+[node name="WaterOverlay" type="ColorRect" parent="TwoPlayerScreenView/CanvasLayer/SubViewportContainer/SubViewport" unique_id=34092467 node_paths=PackedStringArray("camera")]
 z_index = 25
 material = SubResource("ShaderMaterial_js133")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 768.0
-offset_right = 320.0
-offset_bottom = 800.0
+offset_top = 592.0
+offset_bottom = 624.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_dek6d")
+camera = NodePath("../CameraP1")
 
-[node name="Redz" parent="." unique_id=1424983649 instance=ExtResource("9_0dglr")]
-position = Vector2(216, 504)
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="TwoPlayerScreenView/CanvasLayer" unique_id=490183573]
+z_as_relative = false
+offset_top = 112.0
+offset_right = 320.0
+offset_bottom = 224.0
+size_flags_vertical = 6
 
-[node name="Camera2D" type="Camera2D" parent="Redz" unique_id=1002696551]
+[node name="SubViewport" type="SubViewport" parent="TwoPlayerScreenView/CanvasLayer/SubViewportContainer2" unique_id=661822979]
+handle_input_locally = false
+fsr_sharpness = 0.0
+canvas_item_default_texture_filter = 0
+size = Vector2i(320, 112)
+size_2d_override = Vector2i(320, 224)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="CameraP2" type="Camera2D" parent="TwoPlayerScreenView/CanvasLayer/SubViewportContainer2/SubViewport" unique_id=1399793234]
 limit_left = 0
 limit_top = 0
-limit_right = 64000
-limit_bottom = 1024
+limit_right = 16384
+limit_bottom = 2048
 
-[node name="Stegway" parent="." unique_id=234528161 instance=ExtResource("8_ebf1g")]
-position = Vector2(296, 488)
-
-[node name="EradiGator" parent="." unique_id=805013688 instance=ExtResource("10_hannx")]
-position = Vector2(344, 488)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=874368235]
-stream = ExtResource("11_vb1im")
-autoplay = true
-bus = &"Music"
+[node name="WaterOverlay" type="ColorRect" parent="TwoPlayerScreenView/CanvasLayer/SubViewportContainer2/SubViewport" unique_id=448281240 node_paths=PackedStringArray("camera")]
+z_index = 25
+material = SubResource("ShaderMaterial_js133")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 592.0
+offset_bottom = 624.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_dek6d")
+camera = NodePath("../CameraP2")

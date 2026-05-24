@@ -3,9 +3,6 @@ extends EnemyBase
 const SPEED = 180.0
 const MAX_JUMP_VELOCITY = 360.0
 
-func _ready() -> void:
-	$VisibleOnScreenEnabler2D.visible = true
-	defaultMovement = false
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

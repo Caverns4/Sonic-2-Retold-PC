@@ -1,14 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://cvaf3mpyum5at"]
+[gd_scene format=3 uid="uid://cvaf3mpyum5at"]
 
 [ext_resource type="Script" uid="uid://baeiveqf2mn3b" path="res://Scripts/Enemies/Stegway.gd" id="1_3811d"]
 [ext_resource type="Texture2D" uid="uid://bwbirkbtmiumq" path="res://Graphics/Enemies/stegway.png" id="2_jmtwq"]
-[ext_resource type="Texture2D" uid="uid://clihuhs0po6p0" path="res://Graphics/Enemies/BuzzerFlame.png" id="3_13kku"]
+[ext_resource type="SpriteFrames" uid="uid://bt3tc4nx84w4k" path="res://Resources/animated_sprites/buzzer_flame.tres" id="3_40q80"]
 
-[sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(32, 24)
+[sub_resource type="CircleShape2D" id="CircleShape2D_40q80"]
+radius = 16.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pcbp3"]
 size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tohy3"]
+size = Vector2(64, 96)
 
 [sub_resource type="Animation" id="Animation_8ygeb"]
 resource_name = "CHARGE"
@@ -18,7 +21,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpriteNode/Stegway:frame")
+tracks/0/path = NodePath("Stegway:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -36,7 +39,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpriteNode/Stegway:frame")
+tracks/0/path = NodePath("Stegway:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -44,18 +47,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [6, 7]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SpriteNode/Flame:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
 }
 
 [sub_resource type="Animation" id="Animation_mexa1"]
@@ -65,22 +56,10 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpriteNode/Stegway:frame")
+tracks/0/path = NodePath("Stegway:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SpriteNode/Flame:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -95,7 +74,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpriteNode/Stegway:frame")
+tracks/0/path = NodePath("Stegway:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -113,67 +92,66 @@ _data = {
 &"WALK": SubResource("Animation_uy8ie")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tohy3"]
-size = Vector2(64, 96)
-
-[node name="Stegway" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Stegway" type="CharacterBody2D" unique_id=913216208 groups=["Enemy"]]
 collision_layer = 16384
 collision_mask = 15
+floor_snap_length = 4.0
 script = ExtResource("1_3811d")
 
-[node name="CollissionMask" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
-shape = SubResource("1")
+[node name="CollissionMask" type="CollisionShape2D" parent="." unique_id=1316175471]
+rotation = 1.5707964
+shape = SubResource("CircleShape2D_40q80")
 
-[node name="DamageArea" type="Area2D" parent="."]
+[node name="DamageArea" type="Area2D" parent="." unique_id=363591774]
 collision_layer = 0
 collision_mask = 528384
 
-[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea" unique_id=532429093]
 modulate = Color(1, 0, 0, 1)
 shape = SubResource("RectangleShape2D_pcbp3")
 
-[node name="SpriteNode" type="Node2D" parent="."]
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=2075501311]
+visible = false
+position = Vector2(1.90735e-06, -1.90735e-06)
+rect = Rect2(-160, -112, 320, 224)
 
-[node name="Stegway" type="Sprite2D" parent="SpriteNode"]
+[node name="Stegway" type="Sprite2D" parent="." unique_id=2135001452]
 texture = ExtResource("2_jmtwq")
 hframes = 3
 vframes = 3
 
-[node name="Flame" type="Sprite2D" parent="SpriteNode"]
+[node name="BuzzerFlame" type="AnimatedSprite2D" parent="Stegway" unique_id=5759963]
 position = Vector2(28, 7)
-texture = ExtResource("3_13kku")
-hframes = 2
+sprite_frames = ExtResource("3_40q80")
+autoplay = "default"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteNode"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_s2w5h")
-}
-
-[node name="PlayerCheck" type="Area2D" parent="SpriteNode"]
+[node name="PlayerCheck" type="Area2D" parent="Stegway" unique_id=251901887]
+visible = false
 z_index = -1
 position = Vector2(0, -4)
 collision_layer = 0
 collision_mask = 4096
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteNode/PlayerCheck"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stegway/PlayerCheck" unique_id=1271285412]
 modulate = Color(1, 1, 1, 0.352941)
 position = Vector2(-48, -12)
 shape = SubResource("RectangleShape2D_tohy3")
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-visible = false
-position = Vector2(1.90735e-06, -1.90735e-06)
-rect = Rect2(-160, -112, 320, 224)
+[node name="FloorCheck" type="RayCast2D" parent="Stegway" unique_id=1392781991]
+position = Vector2(-8, 8)
+target_position = Vector2(0, 24)
+collision_mask = 8465
 
-[node name="FloorCheck" type="RayCast2D" parent="."]
-position = Vector2(-16, 16)
-target_position = Vector2(0, 8)
-collision_mask = 15
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=260680980]
+libraries/ = SubResource("AnimationLibrary_s2w5h")
+
+[node name="Timers" type="Node" parent="." unique_id=1298583201]
+
+[node name="StateTime" type="Timer" parent="Timers" unique_id=1220682931]
+one_shot = true
 
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
-[connection signal="body_entered" from="SpriteNode/PlayerCheck" to="." method="_on_player_check_body_entered"]
-[connection signal="body_exited" from="SpriteNode/PlayerCheck" to="." method="_on_player_check_body_exited"]
+[connection signal="body_entered" from="Stegway/PlayerCheck" to="." method="_on_player_check_body_entered"]
+[connection signal="body_exited" from="Stegway/PlayerCheck" to="." method="_on_player_check_body_exited"]

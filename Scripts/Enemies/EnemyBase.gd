@@ -6,7 +6,6 @@ var playerHit: Array[Player2D] = []
 var Explosion: PackedScene = preload("res://Entities/Misc/BadnickSmoke.tscn")
 var Animal: PackedScene = preload("res://Entities/Misc/Animal.tscn")
 var forceDamage: bool = false
-var defaultMovement: bool = true
 
 signal destroyed
 
@@ -17,7 +16,7 @@ func  _ready() -> void:
 		$VisibleOnScreenEnabler2D.visible = true
 	destroyed.connect(_on_destroyed)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# checks if player hit has players inside
 	if (playerHit.size() > 0):
 		# loop through players as i
@@ -60,9 +59,6 @@ func _process(delta: float) -> void:
 			# if destroying the enemy fails and hit player exists then hit player
 			if (i.has_method("hit_player")):
 				i.hit_player(global_position,damageType)
-	# move
-	if defaultMovement:
-		translate(velocity*delta)
 
 func _on_body_entered(body: CharacterBody2D) -> void:
 	# add to player list
