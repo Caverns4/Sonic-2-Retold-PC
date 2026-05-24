@@ -19,8 +19,6 @@ var targets: Array[Player2D] = [] #Player objects, if any are detected.
 var Particle: PackedScene = preload("res://Entities/Misc/GenericParticle.tscn")
 
 func _ready() -> void:
-	direction = -sign(scale.x)
-	scale.x = 1
 	velocity.x = direction*30
 	$VisibleOnScreenEnabler2D.visible = true
 	$SpriteNode/Flame.visible = false

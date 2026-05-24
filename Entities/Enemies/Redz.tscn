@@ -1,16 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://jgm0h2yu3hvb"]
+[gd_scene format=3 uid="uid://jgm0h2yu3hvb"]
 
 [ext_resource type="Script" uid="uid://bkqguxbsdhv73" path="res://Scripts/Enemies/Redz.gd" id="1_acnt1"]
 [ext_resource type="Texture2D" uid="uid://c80rud4lvtufe" path="res://Graphics/Enemies/Redz.png" id="2_ufqqm"]
 
-[sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(22, 30)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1ouar"]
+radius = 12.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yaocm"]
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2anh"]
-size = Vector2(128, 256)
+size = Vector2(128, 160)
 
 [sub_resource type="Animation" id="Animation_usbbl"]
 resource_name = "RESET"
@@ -68,64 +68,71 @@ _data = {
 &"WALK": SubResource("Animation_povsi")
 }
 
-[node name="Redz" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Redz" type="CharacterBody2D" unique_id=329224098 groups=["Enemy"]]
 collision_layer = 16384
 collision_mask = 15
-floor_max_angle = 1.0472
 floor_snap_length = 4.0
 script = ExtResource("1_acnt1")
 
-[node name="CollissionMask" type="CollisionShape2D" parent="."]
+[node name="CollissionMask" type="CollisionShape2D" parent="." unique_id=1741513560]
 position = Vector2(0, 1)
-shape = SubResource("1")
+shape = SubResource("CapsuleShape2D_1ouar")
 
-[node name="DamageArea" type="Area2D" parent="."]
+[node name="DamageArea" type="Area2D" parent="." unique_id=1148048859]
 collision_layer = 0
 collision_mask = 528384
 
-[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea" unique_id=908378050]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_yaocm")
 
-[node name="Redz" type="Sprite2D" parent="."]
+[node name="Redz" type="Sprite2D" parent="." unique_id=2000755423]
 texture = ExtResource("2_ufqqm")
 hframes = 3
 vframes = 2
 
-[node name="BulletPoint" type="Node2D" parent="Redz"]
+[node name="BulletPoint" type="Node2D" parent="Redz" unique_id=1037661463]
 position = Vector2(-8, 0)
 
-[node name="PlayerCheck" type="Area2D" parent="Redz"]
+[node name="PlayerCheck" type="Area2D" parent="Redz" unique_id=911959892]
 visible = false
 z_index = -1
 position = Vector2(0, -4)
 collision_layer = 0
 collision_mask = 4096
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Redz/PlayerCheck"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Redz/PlayerCheck" unique_id=465334462]
 modulate = Color(1, 1, 1, 0.352941)
 position = Vector2(-64, 4)
 shape = SubResource("RectangleShape2D_y2anh")
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+[node name="FloorCheck" type="RayCast2D" parent="Redz" unique_id=717496927]
+position = Vector2(-8, 8)
+target_position = Vector2(0, 24)
+collision_mask = 273
+hit_from_inside = true
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=896810645]
 visible = false
 z_index = -100
 rect = Rect2(-160, -112, 320, 224)
 
-[node name="FloorCheck" type="RayCast2D" parent="."]
-position = Vector2(-11, 16)
-target_position = Vector2(0, 14)
-collision_mask = 273
-hit_from_inside = true
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1725605442]
+libraries/ = SubResource("AnimationLibrary_34x7i")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_34x7i")
-}
+[node name="Timers" type="Node" parent="." unique_id=1480510924]
+
+[node name="IdleTime" type="Timer" parent="Timers" unique_id=1869122628]
+one_shot = true
+
+[node name="FireWeave" type="Timer" parent="Timers" unique_id=2007838924]
+wait_time = 1.0999999999999999
+one_shot = true
 
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
 [connection signal="body_entered" from="Redz/PlayerCheck" to="." method="_on_player_check_body_entered"]
 [connection signal="body_exited" from="Redz/PlayerCheck" to="." method="_on_player_check_body_exited"]
+[connection signal="timeout" from="Timers/IdleTime" to="." method="_on_idle_time_timeout"]

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_bq4rn"]
 [ext_resource type="AudioStream" uid="uid://cmtn72t7dtgf" path="res://Audio/Soundtrack/s2br_Tropical.ogg" id="2_qonje"]
 [ext_resource type="AudioStream" uid="uid://bqki542g2mt4h" path="res://Audio/Soundtrack/s2br_Metropolis3.ogg" id="3_ofqvb"]
+[ext_resource type="AudioStream" uid="uid://brayuk75sxk0i" path="res://Audio/SiivaGunner/Emerald Hill Zone 2P SiIvaGunner.ogg" id="4_2so01"]
 [ext_resource type="PackedScene" uid="uid://da47pd80u7kac" path="res://Scene/Backgrounds/08-WoodGadget.tscn" id="5_lmmyl"]
 [ext_resource type="PackedScene" uid="uid://c30uceea18q1w" path="res://Entities/Misc/HUD.tscn" id="5_pa5el"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="6_13xdv"]
@@ -29,6 +30,7 @@ script = ExtResource("1_bq4rn")
 zone_id = 8
 music = ExtResource("2_qonje")
 music2P = ExtResource("3_ofqvb")
+silvagunner_music = ExtResource("4_2so01")
 animal1 = 11
 animal2 = 12
 defaultRightBoundry = 11008
@@ -169,50 +171,50 @@ texture = ExtResource("11_oxd0m")
 [node name="ConveyorBelt" parent="Entities" unique_id=1321823373 instance=ExtResource("12_t3h1o")]
 position = Vector2(2048, 208)
 constant_linear_velocity = Vector2(-60, 0)
-speed = -60
-length = 19
+speed = -60.0
+length = 19.0
 
 [node name="ConveyorBelt2" parent="Entities" unique_id=897630255 instance=ExtResource("12_t3h1o")]
 position = Vector2(2928, 1232)
 constant_linear_velocity = Vector2(-60, 0)
-speed = -60
-length = 18
+speed = -60.0
+length = 18.0
 
 [node name="ConveyorBelt3" parent="Entities" unique_id=1658783653 instance=ExtResource("12_t3h1o")]
 position = Vector2(6208, 1296)
 constant_linear_velocity = Vector2(-60, 0)
-speed = -60
-length = 11
+speed = -60.0
+length = 11.0
 
 [node name="ConveyorBelt4" parent="Entities" unique_id=1772598081 instance=ExtResource("12_t3h1o")]
 position = Vector2(6720, 1296)
 constant_linear_velocity = Vector2(-60, 0)
-speed = -60
-length = 11
+speed = -60.0
+length = 11.0
 
 [node name="ConveyorBelt5" parent="Entities" unique_id=1335574124 instance=ExtResource("12_t3h1o")]
 position = Vector2(8112, 1104)
 constant_linear_velocity = Vector2(-60, 0)
-speed = -60
-length = 6
+speed = -60.0
+length = 6.0
 
 [node name="ConveyorBelt6" parent="Entities" unique_id=1292311928 instance=ExtResource("12_t3h1o")]
 position = Vector2(8400, 1104)
 constant_linear_velocity = Vector2(-60, 0)
-speed = -60
-length = 6
+speed = -60.0
+length = 6.0
 
 [node name="ConveyorBelt7" parent="Entities" unique_id=1614454594 instance=ExtResource("12_t3h1o")]
 position = Vector2(8760, 1104)
 constant_linear_velocity = Vector2(-60, 0)
-speed = -60
-length = 7
+speed = -60.0
+length = 7.0
 
 [node name="ConveyorBelt8" parent="Entities" unique_id=1936074215 instance=ExtResource("12_t3h1o")]
 position = Vector2(9376, 1296)
 constant_linear_velocity = Vector2(-60, 0)
-speed = -60
-length = 9
+speed = -60.0
+length = 9.0
 
 [node name="Platforms" type="Node" parent="." unique_id=1727391949]
 

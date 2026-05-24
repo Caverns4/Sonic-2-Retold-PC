@@ -4,9 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cxgi4y30ctnyx" path="res://Graphics/Enemies/Motoroller.png" id="2_580bb"]
 [ext_resource type="Texture2D" uid="uid://clihuhs0po6p0" path="res://Graphics/Enemies/BuzzerFlame.png" id="3_ktssx"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_thy44"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_thy44"]
 radius = 16.0
-height = 32.0
 
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(32, 32)
@@ -43,7 +42,7 @@ floor_snap_length = 4.0
 script = ExtResource("2")
 
 [node name="CollissionMask" type="CollisionShape2D" parent="." unique_id=379332225]
-shape = SubResource("CapsuleShape2D_thy44")
+shape = SubResource("CircleShape2D_thy44")
 
 [node name="DamageArea" type="Area2D" parent="." unique_id=1624181436]
 collision_layer = 0

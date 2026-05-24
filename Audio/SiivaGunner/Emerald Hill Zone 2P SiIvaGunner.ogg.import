@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://brayuk75sxk0i"
+path="res://.godot/imported/Emerald Hill Zone 2P SiIvaGunner.ogg-2622f9479994e9e9651074521bf38ff4.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/SiivaGunner/Emerald Hill Zone 2P SiIvaGunner.ogg"
+dest_files=["res://.godot/imported/Emerald Hill Zone 2P SiIvaGunner.ogg-2622f9479994e9e9651074521bf38ff4.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=3.3449999999999998
+bpm=0.0
+beat_count=0
+bar_beats=4

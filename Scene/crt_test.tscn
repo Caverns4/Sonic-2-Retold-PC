@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cvaf3mpyum5at" path="res://Entities/Enemies/Stegway.tscn" id="8_ebf1g"]
 [ext_resource type="PackedScene" uid="uid://jgm0h2yu3hvb" path="res://Entities/Enemies/Redz.tscn" id="9_0dglr"]
 [ext_resource type="PackedScene" uid="uid://bwlhmktikgcot" path="res://Entities/Enemies/EradiGator.tscn" id="10_hannx"]
+[ext_resource type="AudioStream" uid="uid://brayuk75sxk0i" path="res://Audio/SiivaGunner/Emerald Hill Zone 2P SiIvaGunner.ogg" id="11_vb1im"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_js133"]
 shader = ExtResource("4_dkinl")
@@ -27,14 +28,7 @@ shader_parameter/magnitude = 0.25
 [node name="Layout_EHZ1" parent="." unique_id=917593673 instance=ExtResource("2_dkinl")]
 
 [node name="Motobug" parent="." unique_id=935586277 instance=ExtResource("3_dkinl")]
-position = Vector2(224, 104)
-
-[node name="Camera2D" type="Camera2D" parent="Motobug" unique_id=1002696551]
-position = Vector2(-16, 8)
-limit_left = 0
-limit_top = 0
-limit_right = 64000
-limit_bottom = 1024
+position = Vector2(256, 496)
 
 [node name="WaterOverlay" type="ColorRect" parent="." unique_id=34092467]
 z_index = 25
@@ -52,8 +46,19 @@ script = ExtResource("7_dek6d")
 [node name="Redz" parent="." unique_id=1424983649 instance=ExtResource("9_0dglr")]
 position = Vector2(216, 504)
 
+[node name="Camera2D" type="Camera2D" parent="Redz" unique_id=1002696551]
+limit_left = 0
+limit_top = 0
+limit_right = 64000
+limit_bottom = 1024
+
 [node name="Stegway" parent="." unique_id=234528161 instance=ExtResource("8_ebf1g")]
-position = Vector2(312, 560)
+position = Vector2(296, 488)
 
 [node name="EradiGator" parent="." unique_id=805013688 instance=ExtResource("10_hannx")]
-position = Vector2(400, 616)
+position = Vector2(344, 488)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=874368235]
+stream = ExtResource("11_vb1im")
+autoplay = true
+bus = &"Music"
