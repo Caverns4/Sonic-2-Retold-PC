@@ -1,87 +1,66 @@
 extends EnemyBase
 
 const GRAVITY = 600
-const IDLE_TIME = 1.0
+@export var idle_time: float = 1.0
+@export var move_speed: float = 30
+
+@onready var floor_checker: RayCast2D = $SpriteNode/FloorCheck
+@onready var state_time: Timer = $Timers/IdleTime
 
 enum STATES{WALK,IDLE,CHARGE}
-var state = 0
-var stateTimer = 0
+var state: STATES = STATES.WALK
 
 # Physics variables
-var ground = false
-var movement = Vector2.ZERO
-var direction = 1
-var animTime = 0
+var direction: int = 1
+var animTime: float = 0
 
 #Object variables
-var targets = [] #Player objects, if any are detected.
-var Particle = preload("res://Entities/Misc/GenericParticle.tscn")
+var targets: Array[Player2D] = [] #Player objects, if any are detected.
+var Particle: PackedScene = preload("res://Entities/Misc/GenericParticle.tscn")
 
-func _ready():
-	defaultMovement = false
+func _ready() -> void:
 	direction = -sign(scale.x)
 	scale.x = 1
-	movement.x = direction*30
+	velocity.x = direction*30
 	$VisibleOnScreenEnabler2D.visible = true
-	$SpriteNode/PlayerCheck.visible = true
 	$SpriteNode/Flame.visible = false
 	super()
 
-func _physics_process(delta):
-	stateTimer -= delta
-	# Direction checks
-	$SpriteNode.scale.x = abs($SpriteNode.scale.x)*-sign(direction)
-	$FloorCheck.position.x = abs($FloorCheck.position.x)*direction
-	$FloorCheck.force_raycast_update()
-	
+func _physics_process(delta: float) -> void:
 	match state:
-		STATES.IDLE:
-			if stateTimer <= 0.0:
-				state = STATES.WALK
-				direction = -direction
-				position.x += direction
-				movement.x = direction*30
 		STATES.CHARGE:
 			animTime = fmod(animTime+delta*4,1)
+			$SpriteNode/Motobug.frame = round(fmod(animTime,1))
 			EdgeCheck()
 			AnimateSmoke(delta)
-		_: #Walking
+		STATES.WALK:
 			animTime = fmod(animTime+delta*2,1)
+			$SpriteNode/Motobug.frame = round(fmod(animTime,1))
 			if targets:
-				movement.x = direction*120
+				velocity.x = direction*move_speed*4
 				$SpriteNode/Flame.visible = true
 				state = STATES.CHARGE
 			# Edge check
 			EdgeCheck()
-	
 	#Animate main sprite
 	$SpriteNode/Motobug.frame = round(fmod(animTime,1))
-	MoveWithGravity(delta)
+	if !is_on_floor():
+		velocity.y += (GRAVITY*delta)
+	move_and_slide()
 
-func EdgeCheck():
-	# Edge check
-	if (is_on_wall() or !$FloorCheck.is_colliding()):
-		stateTimer = IDLE_TIME
+func EdgeCheck() -> void:
+	#floor_checker.force_raycast_update()
+	if (is_on_wall() or !floor_checker.is_colliding()):
+		state_time.start(idle_time)
 		state = STATES.IDLE
-		movement.x = 0
+		velocity.x = 0
 		animTime = 0
 		$SpriteNode/Flame.visible = false
-		direction = clamp(direction,-1,1)
-
-func MoveWithGravity(delta):
-	# Velocity movement
-	set_velocity(movement)
-	set_up_direction(Vector2.UP)
-	move_and_slide()
-	ground = is_on_floor()
-	# Gravity
-	if !is_on_floor():
-		movement.y += (GRAVITY*delta)
 
 	# Moto bug smoke
-func AnimateSmoke(delta):
+func AnimateSmoke(delta: float) -> void:
 	if fmod(animTime+delta*2,1) < animTime:
-		var part = Particle.instantiate()
+		var part: Node2D = Particle.instantiate()
 		get_parent().add_child(part)
 		part.global_position = global_position-(Vector2(24,-2)*direction)
 		part.play("MotoBugSmoke")
@@ -91,3 +70,11 @@ func _on_player_check_body_entered(body: Node2D) -> void:
 
 func _on_player_check_body_exited(body: Node2D) -> void:
 	targets.erase(body)
+
+func _on_idle_time_timeout() -> void:
+	if state == STATES.IDLE:
+		direction = -direction
+		$SpriteNode.scale.x = abs($SpriteNode.scale.x)*-sign(direction)
+		floor_checker.force_raycast_update()
+		velocity.x = direction*move_speed
+		state = STATES.WALK

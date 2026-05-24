@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqcgjcw101xxo"]
+[gd_scene format=3 uid="uid://cqcgjcw101xxo"]
 
 [ext_resource type="Script" uid="uid://cba5ejca33cn8" path="res://Scripts/Enemies/MotoBug.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://cxgi4y30ctnyx" path="res://Graphics/Enemies/Motoroller.png" id="2_580bb"]
 [ext_resource type="Texture2D" uid="uid://clihuhs0po6p0" path="res://Graphics/Enemies/BuzzerFlame.png" id="3_ktssx"]
 
-[sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(32, 32)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_thy44"]
+radius = 16.0
+height = 32.0
 
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(32, 32)
@@ -35,64 +36,70 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2g5j"]
 size = Vector2(96, 88)
 
-[node name="Motobug" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Motobug" type="CharacterBody2D" unique_id=935586277 groups=["Enemy"]]
 collision_layer = 16384
-collision_mask = 15
+collision_mask = 12287
+floor_snap_length = 4.0
 script = ExtResource("2")
 
-[node name="CollissionMask" type="CollisionShape2D" parent="."]
-shape = SubResource("1")
+[node name="CollissionMask" type="CollisionShape2D" parent="." unique_id=379332225]
+shape = SubResource("CapsuleShape2D_thy44")
 
-[node name="DamageArea" type="Area2D" parent="."]
+[node name="DamageArea" type="Area2D" parent="." unique_id=1624181436]
 collision_layer = 0
 collision_mask = 528384
 
-[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea" unique_id=625556518]
 modulate = Color(1, 0, 0, 1)
 shape = SubResource("2")
 
-[node name="SpriteNode" type="Node2D" parent="."]
+[node name="SpriteNode" type="Node2D" parent="." unique_id=1671210684]
 
-[node name="Motobug" type="Sprite2D" parent="SpriteNode"]
+[node name="Motobug" type="Sprite2D" parent="SpriteNode" unique_id=619030773]
 position = Vector2(0, -4)
 texture = ExtResource("2_580bb")
 hframes = 2
 
-[node name="Flame" type="Sprite2D" parent="SpriteNode"]
+[node name="Flame" type="Sprite2D" parent="SpriteNode" unique_id=619012170]
 position = Vector2(20, 0)
 texture = ExtResource("3_ktssx")
 hframes = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteNode"]
-libraries = {
-&"": SubResource("AnimationLibrary_1xngc")
-}
-autoplay = "RESET"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteNode" unique_id=49963698]
+libraries/ = SubResource("AnimationLibrary_1xngc")
+autoplay = &"RESET"
 
-[node name="PlayerCheck" type="Area2D" parent="SpriteNode"]
+[node name="PlayerCheck" type="Area2D" parent="SpriteNode" unique_id=937019469]
 visible = false
 z_index = -1
 position = Vector2(0, -4)
 collision_layer = 0
 collision_mask = 4096
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteNode/PlayerCheck"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteNode/PlayerCheck" unique_id=615780780]
 modulate = Color(1, 1, 1, 0.352941)
 position = Vector2(-40, -12)
 shape = SubResource("RectangleShape2D_y2g5j")
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+[node name="FloorCheck" type="RayCast2D" parent="SpriteNode" unique_id=213628971]
+position = Vector2(-8, 8)
+target_position = Vector2(0, 24)
+collision_mask = 12287
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1093648385]
 visible = false
 z_index = -100
 position = Vector2(-1.90735e-06, -1.90735e-06)
 rect = Rect2(-160, -112, 320, 224)
 
-[node name="FloorCheck" type="RayCast2D" parent="."]
-position = Vector2(-16, 16)
-target_position = Vector2(0, 14)
+[node name="Timers" type="Node" parent="." unique_id=283742888]
+
+[node name="IdleTime" type="Timer" parent="Timers" unique_id=2041327593]
+one_shot = true
 
 [connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_body_exited"]
 [connection signal="body_entered" from="SpriteNode/PlayerCheck" to="." method="_on_player_check_body_entered"]
 [connection signal="body_exited" from="SpriteNode/PlayerCheck" to="." method="_on_player_check_body_exited"]
+[connection signal="timeout" from="Timers/IdleTime" to="." method="_on_idle_time_timeout"]
