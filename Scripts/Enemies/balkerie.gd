@@ -19,6 +19,7 @@ func _physics_process(_delta: float) -> void:
 	match state:
 		STATES.FLY:
 			velocity = Vector2(-180,0)
+	move_and_slide()
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

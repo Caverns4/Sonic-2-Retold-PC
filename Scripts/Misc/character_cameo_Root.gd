@@ -78,7 +78,7 @@ func ThrowGift() -> void:
 	get_parent().add_child(droppedItem)
 	# set position with offset
 	droppedItem.global_position = global_position
-	droppedItem.physics = true
+	droppedItem.state = 1
 	droppedItem.item = present
 	droppedItem.FrameUpdate()
 	droppedItem.velocity.x = 0-60*direction

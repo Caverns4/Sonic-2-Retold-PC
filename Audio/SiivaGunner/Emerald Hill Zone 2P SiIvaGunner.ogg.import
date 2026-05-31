@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Emerald Hill Zone 2P SiIvaGunner.ogg-2622f947
 [params]
 
 loop=true
-loop_offset=3.3449999999999998
+loop_offset=3.345
 bpm=0.0
 beat_count=0
 bar_beats=4

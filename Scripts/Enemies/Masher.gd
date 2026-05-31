@@ -20,6 +20,7 @@ func _physics_process(delta: float) -> void:
 	# reset velocity
 	if position.y >= 0:
 		velocity.y = 0-abs(jumpHeight)*60
+	move_and_slide()
 	
 
 func _process(delta: float) -> void:

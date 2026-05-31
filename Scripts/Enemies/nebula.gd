@@ -30,3 +30,4 @@ func _physics_process(delta: float) -> void:
 				get_parent().add_child(bullet)
 				# set position with offset
 				bullet.global_position = global_position+Vector2(0,16)
+	move_and_slide()

@@ -5,7 +5,6 @@ enum STATE{NORMAL,PHYSICS,BROKEN}
 var state: STATE = STATE.NORMAL
 
 var grv: float = 0.21875
-var yspeed: float = 0
 var playerTouch: Player2D = null
 
 ## The Item Type contained by default.
@@ -177,17 +176,17 @@ func _physics_process(delta: float) -> void:
 	if !Engine.is_editor_hint():
 		# if physics are on make it fall
 		if state == STATE.PHYSICS:
-			var collide: KinematicCollision2D = move_and_collide(Vector2(velocity.x,yspeed)*delta)
-			yspeed += grv/GlobalFunctions.div_by_delta(delta)
-			if collide and yspeed > 0:
-				yspeed = 0.0
+			var collide: KinematicCollision2D = move_and_collide(Vector2(velocity.x,velocity.y)*delta)
+			velocity.y += grv/GlobalFunctions.div_by_delta(delta)
+			if collide and velocity.y > 0:
+				velocity = Vector2.ZERO
 
 # physics collision check, see physics object
 func physics_collision(body: Player2D, hitVector: Vector2) -> void:
 	if state == STATE.BROKEN: return
 	# Monitor head bouncing
 	if hitVector.y < 0:
-		yspeed = -1.5*60
+		velocity.y = -1.5*60
 		state = STATE.PHYSICS
 		if body.movement.y < 0:
 			body.movement.y *= -1
@@ -240,4 +239,4 @@ func disable_collision() -> void:
 	$InstaArea.monitorable = false
 	$InstaArea.monitoring = false
 	state = STATE.PHYSICS
-	yspeed = 0.0
+	velocity.y = 0.0

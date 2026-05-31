@@ -7,7 +7,7 @@ extends Node2D
 
 var player: Player2D = null
 @onready var tornado: CharacterBody2D = get_node("Tornado")
-@onready var parent: Node2D = get_parent()
+@onready var parent: Node = get_parent()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
