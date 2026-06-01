@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @export_multiline var cutsceneTexts: Array[String]
-@export var printSpeed: float = 0.1
+@export var printSpeed: float = 0.02
 
 @onready var textField: RichTextLabel = $Labels/CustsceneText
 
@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 		delaycounter = printSpeed
 		#textField.text = currentString.left(currentCharacter)
 		textField.visible_characters += 1
-		
+	
 
 func AdvanceTextbox() -> void:
 	textboxID+=1

@@ -6,3 +6,6 @@ func _process(delta: float) -> void:
 	$ParallaxLayer.motion_offset.x -= delta*15
 	$ParallaxLayer2.motion_offset.x -= delta*10
 	$ParallaxLayer3.motion_offset.x -= delta*5
+
+func set_island_state(state: bool) -> void:
+	$IslandParallax.visible = state

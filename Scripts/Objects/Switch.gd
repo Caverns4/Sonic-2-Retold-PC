@@ -1,22 +1,22 @@
 extends StaticBody2D
 
 ## animator is optional
-@export_node_path("AnimationPlayer")var animator
+@export_node_path("AnimationPlayer")var animator: NodePath
 ## Animation mae if applicable
-@export var animationName = ""
+@export var animationName: StringName = ""
 ## If the button can activate again
-@export var reactivate = true
+@export var reactivate: bool = true
 
-var active = false
-var colCheck = false
+var active: bool = false
+var colCheck: bool = false
 
-var animatorNode = null
+var animatorNode: AnimationPlayer = null
 
-signal pressed_with_body(body)
+signal pressed_with_body(body: CharacterBody2D)
 signal pressed
 signal released
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	if animator != null:
 		animatorNode = get_node_or_null(animator)
 	if active:
@@ -26,7 +26,7 @@ func _process(_delta):
 		# set frame to unpressed frame
 		$Sprite2D.frame = 0
 	
-func _physics_process(_delta):
+func _physics_process(_delta: float) -> void:
 	# active gets set every physics process frame so we use collision check as a buffer, when col check isn't set then we deactivate
 	# note: only turn off if reactivate is off
 	if colCheck:
@@ -37,7 +37,7 @@ func _physics_process(_delta):
 	
 
 # Collision check
-func physics_collision(body, hitVector):
+func physics_collision(body: CharacterBody2D, hitVector: Vector2) -> void:
 	if hitVector.is_equal_approx((Vector2.DOWN*scale.sign()).rotated(deg_to_rad(snapped(rotation_degrees,90)))):
 		# set colCheck to true to prevent being deactivated next frame
 		colCheck = true

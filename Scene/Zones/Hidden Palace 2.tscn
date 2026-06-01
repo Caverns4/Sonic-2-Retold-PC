@@ -1035,7 +1035,7 @@ position = Vector2(1256, 368)
 
 [node name="Redz3" parent="Badniks" unique_id=882219136 instance=ExtResource("39_rlief")]
 position = Vector2(3152, 1072)
-scale = Vector2(-1, 1)
+direction = 1
 
 [node name="Redz4" parent="Badniks" unique_id=809468965 instance=ExtResource("39_rlief")]
 position = Vector2(3728, 496)

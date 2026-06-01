@@ -27,9 +27,11 @@ var targets: Array[Player2D] = []
 
 func _ready() -> void:
 	direction = (direction*2)-1
+	velocity.x = move_speed*direction
 	super()
-	_change_direction(move_speed)
+	#_change_direction(move_speed)
 	state_time.connect("timeout",_on_idle_time_timeout)
+	floor_checker.force_raycast_update()
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -65,6 +67,7 @@ func _change_direction(speed: float) -> void:
 	sprite_node.scale.x = 0-sign(direction)
 	floor_checker.force_raycast_update()
 	velocity.x = speed*direction
+	position.x -= sign(velocity.x)
 	state = STATES.WALK
 	animator.play("WALK")
 

@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://beebd7dn4ioe1" path="res://Entities/Gimmicks/WindCurrent.tscn" id="19_l0iqx"]
 [ext_resource type="PackedScene" uid="uid://btyydkc7grjn0" path="res://Entities/Hazards/scz_propeller.tscn" id="19_u6hen"]
 [ext_resource type="PackedScene" uid="uid://c43isa3fib6s6" path="res://Entities/Gimmicks/WaterBar.tscn" id="20_hk40m"]
+[ext_resource type="PackedScene" uid="uid://503ojkyystkg" path="res://Entities/ZoneObjects/SCZ_conveyor_belt.tscn" id="21_w7lrh"]
 [ext_resource type="PackedScene" uid="uid://dyi111jvxw543" path="res://Entities/Gimmicks/shifting_platform.tscn" id="22_hb252"]
 [ext_resource type="PackedScene" uid="uid://bbbho8eh17vq4" path="res://Entities/Obstacles/vent_entrance.tscn" id="24_m6rwo"]
 
@@ -166,6 +167,12 @@ speed = -400.0
 
 [node name="WaterBar" parent="Entities" unique_id=1185438577 instance=ExtResource("20_hk40m")]
 position = Vector2(6272, 1184)
+
+[node name="SCZ_ConveyorBelt" parent="Entities" unique_id=736197859 instance=ExtResource("21_w7lrh")]
+position = Vector2(7568, 1616)
+
+[node name="SCZ_ConveyorBelt2" parent="Entities" unique_id=600302069 instance=ExtResource("21_w7lrh")]
+position = Vector2(7792, 1560)
 
 [node name="Platforms" type="Node" parent="." unique_id=1926211673]
 

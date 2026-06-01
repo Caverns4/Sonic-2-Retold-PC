@@ -4,7 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://c80rud4lvtufe" path="res://Graphics/Enemies/Redz.png" id="2_ufqqm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1ouar"]
-radius = 12.0
+radius = 8.0
+height = 28.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yaocm"]
 size = Vector2(16, 16)
@@ -70,12 +71,12 @@ _data = {
 
 [node name="Redz" type="CharacterBody2D" unique_id=329224098 groups=["Enemy"]]
 collision_layer = 16384
-collision_mask = 15
+collision_mask = 287
 floor_snap_length = 4.0
 script = ExtResource("1_acnt1")
 
 [node name="CollissionMask" type="CollisionShape2D" parent="." unique_id=1741513560]
-position = Vector2(0, 1)
+position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_1ouar")
 
 [node name="DamageArea" type="Area2D" parent="." unique_id=1148048859]
@@ -110,7 +111,7 @@ shape = SubResource("RectangleShape2D_y2anh")
 [node name="FloorCheck" type="RayCast2D" parent="Redz" unique_id=717496927]
 position = Vector2(-8, 8)
 target_position = Vector2(0, 24)
-collision_mask = 8465
+collision_mask = 273
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=896810645]
 visible = false

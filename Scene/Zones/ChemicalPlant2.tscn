@@ -39,7 +39,6 @@
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="40_72dwk"]
 [ext_resource type="Texture2D" uid="uid://cudvcxoyjq5dn" path="res://Graphics/Misc/MetalCameo.png" id="40_m50kc"]
 [ext_resource type="PackedScene" uid="uid://c3yq46ay5g4ov" path="res://Entities/Obstacles/MultiRotatingPlatforms.tscn" id="41_r5m2v"]
-[ext_resource type="Script" uid="uid://ioiij6aukh60" path="res://Scripts/Misc/AltSpawn.gd" id="42_srg2o"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_n3r3v"]
 
@@ -1724,8 +1723,3 @@ position = Vector2(11712, 1184)
 
 [node name="Capsule" parent="Boss" unique_id=165819594 instance=ExtResource("19_2fboq")]
 position = Vector2(12224, 1248)
-
-[node name="BossTestSpawn" type="Node2D" parent="." unique_id=1010848853]
-position = Vector2(10680, 1152)
-script = ExtResource("42_srg2o")
-currentCharacter = 7

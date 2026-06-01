@@ -448,6 +448,10 @@ scale = Vector2(8, 1)
 [node name="InvisibleBarrier2" parent="Hazards" unique_id=907354256 instance=ExtResource("19_lge6b")]
 position = Vector2(6304, 1560)
 
+[node name="InvisibleBarrier3" parent="Hazards" unique_id=86358994 instance=ExtResource("19_lge6b")]
+position = Vector2(5408, 1952)
+scale = Vector2(5, 2)
+
 [node name="DhzChainedTrap" parent="Hazards" unique_id=1291932787 instance=ExtResource("29_ea05w")]
 position = Vector2(4640, 1144)
 chain_links = 10

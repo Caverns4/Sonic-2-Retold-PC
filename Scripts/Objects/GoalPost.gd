@@ -95,8 +95,13 @@ func SetSignpostAnimation(character: Global.CHARACTERS) -> void:
 				$Signpost/Animator.queue("Mighty")
 			Global.CHARACTERS.RAY:
 				$Signpost/Animator.queue("Ray")
+			Global.CHARACTERS.SONIC_BETA:
+				$Signpost/Animator.queue("BetaSonic")
 			_:
-				$Signpost/Animator.queue("Sonic")
+				if Global.beta_mode:
+					$Signpost/Animator.queue("BetaSonic")
+				else:
+					$Signpost/Animator.queue("Sonic")
 		$Signpost/GoalPost.play()
 
 func _on_animator_animation_finished(anim_name: StringName) -> void:

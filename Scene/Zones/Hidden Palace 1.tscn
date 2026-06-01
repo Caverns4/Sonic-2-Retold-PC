@@ -1147,7 +1147,7 @@ position = Vector2(1384, 1424)
 position = Vector2(2384, 2448)
 
 [node name="Redz3" parent="Badniks" unique_id=433731421 instance=ExtResource("9_7pp8m")]
-position = Vector2(4216, 2320)
+position = Vector2(4200, 2320)
 
 [node name="Redz4" parent="Badniks" unique_id=495448841 instance=ExtResource("9_7pp8m")]
 position = Vector2(4144, 2352)

@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://503ojkyystkg"]
+
+[ext_resource type="Texture2D" uid="uid://ddq585jejgxw1" path="res://Graphics/Objects_Zone/SCZ_ConveryorWheel.png" id="1_qj3f5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bq748"]
+atlas = ExtResource("1_qj3f5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wymmt"]
+atlas = ExtResource("1_qj3f5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6iyu"]
+atlas = ExtResource("1_qj3f5")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37cm1"]
+atlas = ExtResource("1_qj3f5")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4xmb4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bq748")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wymmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6iyu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37cm1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ed2sv"]
+size = Vector2(32, 32)
+
+[node name="SCZ_ConveyorBelt" type="StaticBody2D" unique_id=736197859]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=707428408]
+position = Vector2(0, -4)
+sprite_frames = SubResource("SpriteFrames_4xmb4")
+autoplay = "default"
+frame_progress = 0.4139037
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=871304012]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_ed2sv")

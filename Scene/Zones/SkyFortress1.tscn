@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://br14tmcem027e" path="res://Entities/Enemies/Balkerie.tscn" id="12_wkjyq"]
 [ext_resource type="PackedScene" uid="uid://b10okfgw0fy2x" path="res://Entities/Enemies/Nebula.tscn" id="13_wkjyq"]
 [ext_resource type="PackedScene" uid="uid://cl4msslpnhrue" path="res://Entities/Enemies/turtloid.tscn" id="14_4c6j4"]
+[ext_resource type="PackedScene" uid="uid://cb8fqvfn4u1ht" path="res://Scene/level_layouts/layout_sfz_2.scn" id="17_4ta1g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4ta1g"]
 shader = ExtResource("4_q8ivn")
@@ -213,3 +214,5 @@ position = Vector2(856, 32)
 
 [node name="Ring7" parent="Rings" unique_id=537499001 instance=ExtResource("12_g1ite")]
 position = Vector2(880, 32)
+
+[node name="Layout_SFZ2" parent="." unique_id=1698725087 instance=ExtResource("17_4ta1g")]
