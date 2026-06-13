@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://btyydkc7grjn0" path="res://Entities/Hazards/scz_propeller.tscn" id="19_u6hen"]
 [ext_resource type="PackedScene" uid="uid://c43isa3fib6s6" path="res://Entities/Gimmicks/WaterBar.tscn" id="20_hk40m"]
 [ext_resource type="PackedScene" uid="uid://503ojkyystkg" path="res://Entities/ZoneObjects/SCZ_conveyor_belt.tscn" id="21_w7lrh"]
+[ext_resource type="PackedScene" uid="uid://jfg4a5smuc5b" path="res://Entities/Gimmicks/scz_launcher.tscn" id="22_enrbk"]
 [ext_resource type="PackedScene" uid="uid://dyi111jvxw543" path="res://Entities/Gimmicks/shifting_platform.tscn" id="22_hb252"]
 [ext_resource type="PackedScene" uid="uid://bbbho8eh17vq4" path="res://Entities/Obstacles/vent_entrance.tscn" id="24_m6rwo"]
 
@@ -173,6 +174,16 @@ position = Vector2(7568, 1616)
 
 [node name="SCZ_ConveyorBelt2" parent="Entities" unique_id=600302069 instance=ExtResource("21_w7lrh")]
 position = Vector2(7792, 1560)
+
+[node name="SCZ_Launcher" parent="Entities" unique_id=498102923 instance=ExtResource("22_enrbk")]
+position = Vector2(6360, 1600)
+
+[node name="SCZ_Launcher3" parent="Entities" unique_id=677261116 instance=ExtResource("22_enrbk")]
+position = Vector2(896, 1248)
+
+[node name="SCZ_Launcher2" parent="Entities" unique_id=1943931278 instance=ExtResource("22_enrbk")]
+position = Vector2(7128, 1600)
+scale = Vector2(-1, 1)
 
 [node name="Platforms" type="Node" parent="." unique_id=1926211673]
 

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://jfg4a5smuc5b"]
+
+[ext_resource type="Script" uid="uid://d057anjvpg2gy" path="res://Scripts/Gimmicks/scz_launcher.gd" id="1_7gavv"]
+[ext_resource type="Texture2D" uid="uid://pym1vlfcofaf" path="res://Graphics/Gimmicks/SCZ_Launcher.png" id="1_fcsur"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b6bgn"]
+size = Vector2(26, 18)
+
+[node name="SCZ_Launcher" type="Area2D" unique_id=498102923]
+collision_layer = 0
+collision_mask = 4096
+script = ExtResource("1_7gavv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1130929108]
+z_index = 10
+position = Vector2(16, -8)
+texture = ExtResource("1_fcsur")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1921074889]
+position = Vector2(19, -7)
+shape = SubResource("RectangleShape2D_b6bgn")
+debug_color = Color(1, 0, 1, 0.5019608)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
