@@ -53,6 +53,7 @@ modulate = Color(1, 0, 0, 1)
 shape = SubResource("RectangleShape2D_hck2u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1732365160]
+z_index = 2
 sprite_frames = SubResource("SpriteFrames_skdnj")
 autoplay = "default"
 frame_progress = 0.14868279

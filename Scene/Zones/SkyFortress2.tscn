@@ -11,6 +11,7 @@
 [ext_resource type="Material" uid="uid://ucnsk4i53l42" path="res://Shaders/Materials/SCZ_PalCycle.tres" id="6_nc0k7"]
 [ext_resource type="Script" uid="uid://lekpwkfad1pq" path="res://Scripts/Misc/path_follow_2d.gd" id="6_pe4xw"]
 [ext_resource type="Script" uid="uid://cgc0jvkdayt0m" path="res://Scripts/Objects/tornado_mover.gd" id="6_ulsoj"]
+[ext_resource type="Script" uid="uid://b3w4d455am02d" path="res://Scripts/Scene/IntroCutsceneDeleter.gd" id="8_pdvm3"]
 [ext_resource type="PackedScene" uid="uid://cdr25gnarvsy8" path="res://Entities/Hazards/scz_h_laser.tscn" id="10_fx22q"]
 [ext_resource type="PackedScene" uid="uid://msycxndhmuin" path="res://Entities/Obstacles/InvisibleBarrier.tscn" id="11_t0ok7"]
 [ext_resource type="PackedScene" uid="uid://dkn7hhll7o4or" path="res://Entities/MainObjects/LayerSwitcher.tscn" id="13_pm2l4"]
@@ -29,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://jfg4a5smuc5b" path="res://Entities/Gimmicks/scz_launcher.tscn" id="22_enrbk"]
 [ext_resource type="PackedScene" uid="uid://dyi111jvxw543" path="res://Entities/Gimmicks/shifting_platform.tscn" id="22_hb252"]
 [ext_resource type="PackedScene" uid="uid://bbbho8eh17vq4" path="res://Entities/Obstacles/vent_entrance.tscn" id="24_m6rwo"]
+[ext_resource type="PackedScene" uid="uid://c55d2dd4iyrmr" path="res://Entities/Gimmicks/scz_rising_platforms_test.tscn" id="24_sla3t"]
 [ext_resource type="PackedScene" uid="uid://cma7d8l5wmqmd" path="res://Entities/Items/LampPost.tscn" id="27_b6bgn"]
 
 [sub_resource type="Curve2D" id="Curve2D_ulsoj"]
@@ -64,6 +66,7 @@ disablePartner = true
 [node name="Path2D" type="Path2D" parent="Entities" unique_id=677702498]
 position = Vector2(64, 1152)
 curve = SubResource("Curve2D_ulsoj")
+script = ExtResource("8_pdvm3")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Entities/Path2D" unique_id=1546597268]
 rotates = false
@@ -164,11 +167,20 @@ position = Vector2(-8, 0)
 
 [node name="WindCurrent" parent="Entities" unique_id=418046058 instance=ExtResource("19_l0iqx")]
 position = Vector2(5248, 1200)
-scale = Vector2(104, 12)
-speed = -400.0
+scale = Vector2(104, 8)
+speed = -600.0
 
 [node name="WaterBar" parent="Entities" unique_id=1185438577 instance=ExtResource("20_hk40m")]
 position = Vector2(6272, 1184)
+
+[node name="WaterBar2" parent="Entities" unique_id=1944229919 instance=ExtResource("20_hk40m")]
+position = Vector2(6144, 1184)
+
+[node name="WaterBar3" parent="Entities" unique_id=387852290 instance=ExtResource("20_hk40m")]
+position = Vector2(5824, 1248)
+
+[node name="WaterBar4" parent="Entities" unique_id=746804017 instance=ExtResource("20_hk40m")]
+position = Vector2(5632, 1184)
 
 [node name="SCZ_ConveyorBelt" parent="Entities" unique_id=736197859 instance=ExtResource("21_w7lrh")]
 position = Vector2(7568, 1616)
@@ -200,9 +212,33 @@ position = Vector2(8000, 1088)
 
 [node name="Platforms" type="Node" parent="." unique_id=1926211673]
 
+[node name="SCZRisingPlatformsTest" parent="Platforms" unique_id=108880094 instance=ExtResource("24_sla3t")]
+position = Vector2(768, 1232)
+scroll_height = -196.0
+
+[node name="SCZRisingPlatformsTest2" parent="Platforms" unique_id=757720224 instance=ExtResource("24_sla3t")]
+position = Vector2(1624, 992)
+scroll_height = -452.0
+
+[node name="SCZRisingPlatformsTest3" parent="Platforms" unique_id=145542587 instance=ExtResource("24_sla3t")]
+position = Vector2(4184, 864)
+scroll_height = -196.0
+
+[node name="SCZRisingPlatformsTest4" parent="Platforms" unique_id=1779000690 instance=ExtResource("24_sla3t")]
+position = Vector2(4840, 1176)
+scroll_height = 204.0
+
+[node name="SCZRisingPlatformsTest5" parent="Platforms" unique_id=806673324 instance=ExtResource("24_sla3t")]
+position = Vector2(4968, 1304)
+scroll_height = 204.0
+
+[node name="SCZRisingPlatformsTest6" parent="Platforms" unique_id=88072573 instance=ExtResource("24_sla3t")]
+position = Vector2(5096, 1432)
+scroll_height = 204.0
+
 [node name="MultiRotatingPlatforms" parent="Platforms" unique_id=1418182564 instance=ExtResource("14_kegxj")]
 position = Vector2(4096, 1792)
-platformCount = 1
+platformCount = 2
 chains = 5
 plat_img = ExtResource("15_n5rds")
 
@@ -270,8 +306,54 @@ position = Vector2(1744, 1232)
 position = Vector2(2832, 1456)
 item = 3
 
+[node name="Monitor6" parent="Items" unique_id=481687693 instance=ExtResource("17_m8uev")]
+position = Vector2(4912, 880)
+
+[node name="Monitor7" parent="Items" unique_id=483518212 instance=ExtResource("17_m8uev")]
+position = Vector2(4944, 880)
+
+[node name="Monitor8" parent="Items" unique_id=1946779845 instance=ExtResource("17_m8uev")]
+position = Vector2(4976, 880)
+item = 2
+
+[node name="Monitor9" parent="Items" unique_id=52141176 instance=ExtResource("17_m8uev")]
+position = Vector2(6176, 752)
+
+[node name="Monitor10" parent="Items" unique_id=305455494 instance=ExtResource("17_m8uev")]
+position = Vector2(6800, 584)
+
+[node name="Monitor11" parent="Items" unique_id=142272950 instance=ExtResource("17_m8uev")]
+position = Vector2(6832, 584)
+
+[node name="Monitor12" parent="Items" unique_id=52479258 instance=ExtResource("17_m8uev")]
+position = Vector2(6864, 584)
+
+[node name="Monitor13" parent="Items" unique_id=868775926 instance=ExtResource("17_m8uev")]
+position = Vector2(7328, 880)
+item = 10
+shieldAffinity = 1
+
+[node name="Monitor14" parent="Items" unique_id=1998071008 instance=ExtResource("17_m8uev")]
+position = Vector2(7392, 944)
+item = 2
+
+[node name="Monitor15" parent="Items" unique_id=1958384467 instance=ExtResource("17_m8uev")]
+position = Vector2(7568, 624)
+
+[node name="Monitor16" parent="Items" unique_id=973636415 instance=ExtResource("17_m8uev")]
+position = Vector2(7584, 1136)
+
+[node name="LampPost4" parent="Items" unique_id=2126318380 instance=ExtResource("27_b6bgn")]
+position = Vector2(1024, 1224)
+
 [node name="LampPost" parent="Items" unique_id=2106026625 instance=ExtResource("27_b6bgn")]
-position = Vector2(7344, 1576)
+position = Vector2(2688, 872)
+
+[node name="LampPost2" parent="Items" unique_id=288940271 instance=ExtResource("27_b6bgn")]
+position = Vector2(6128, 1576)
+
+[node name="LampPost3" parent="Items" unique_id=70466604 instance=ExtResource("27_b6bgn")]
+position = Vector2(10304, 1064)
 
 [node name="SignpostNew" parent="Items" unique_id=2084193526 instance=ExtResource("16_6be3y")]
 position = Vector2(11656, 1536)
