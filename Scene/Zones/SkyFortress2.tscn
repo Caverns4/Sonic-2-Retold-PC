@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://jfg4a5smuc5b" path="res://Entities/Gimmicks/scz_launcher.tscn" id="22_enrbk"]
 [ext_resource type="PackedScene" uid="uid://dyi111jvxw543" path="res://Entities/Gimmicks/shifting_platform.tscn" id="22_hb252"]
 [ext_resource type="PackedScene" uid="uid://bbbho8eh17vq4" path="res://Entities/Obstacles/vent_entrance.tscn" id="24_m6rwo"]
+[ext_resource type="PackedScene" uid="uid://cma7d8l5wmqmd" path="res://Entities/Items/LampPost.tscn" id="27_b6bgn"]
 
 [sub_resource type="Curve2D" id="Curve2D_ulsoj"]
 _data = {
@@ -117,7 +118,7 @@ player_can_shimmy = true
 
 [node name="Hanger4" parent="Entities" unique_id=488208457 instance=ExtResource("6_fox10")]
 position = Vector2(6784.0005, 1504)
-scale = Vector2(30, 1)
+scale = Vector2(30, 3)
 setCenter = false
 player_can_shimmy = true
 
@@ -175,15 +176,27 @@ position = Vector2(7568, 1616)
 [node name="SCZ_ConveyorBelt2" parent="Entities" unique_id=600302069 instance=ExtResource("21_w7lrh")]
 position = Vector2(7792, 1560)
 
-[node name="SCZ_Launcher" parent="Entities" unique_id=498102923 instance=ExtResource("22_enrbk")]
+[node name="SCZ_Launcher" parent="Entities" unique_id=677261116 instance=ExtResource("22_enrbk")]
+position = Vector2(640, 1248)
+
+[node name="SCZ_Launcher2" parent="Entities" unique_id=921502693 instance=ExtResource("22_enrbk")]
+position = Vector2(2624, 1600)
+
+[node name="SCZ_Launcher3" parent="Entities" unique_id=498102923 instance=ExtResource("22_enrbk")]
 position = Vector2(6360, 1600)
+launch_height = 5.0
 
-[node name="SCZ_Launcher3" parent="Entities" unique_id=677261116 instance=ExtResource("22_enrbk")]
-position = Vector2(896, 1248)
+[node name="SCZ_Launcher4" parent="Entities" unique_id=1391143820 instance=ExtResource("22_enrbk")]
+position = Vector2(7104, 1280)
 
-[node name="SCZ_Launcher2" parent="Entities" unique_id=1943931278 instance=ExtResource("22_enrbk")]
-position = Vector2(7128, 1600)
-scale = Vector2(-1, 1)
+[node name="SCZ_Launcher5" parent="Entities" unique_id=1943931278 instance=ExtResource("22_enrbk")]
+position = Vector2(7208, 1600)
+rotation = -3.1415927
+scale = Vector2(1, -1)
+launch_height = 5.0
+
+[node name="SCZ_Launcher6" parent="Entities" unique_id=1456501978 instance=ExtResource("22_enrbk")]
+position = Vector2(8000, 1088)
 
 [node name="Platforms" type="Node" parent="." unique_id=1926211673]
 
@@ -256,6 +269,9 @@ position = Vector2(1744, 1232)
 [node name="Monitor5" parent="Items" unique_id=2054791048 instance=ExtResource("17_m8uev")]
 position = Vector2(2832, 1456)
 item = 3
+
+[node name="LampPost" parent="Items" unique_id=2106026625 instance=ExtResource("27_b6bgn")]
+position = Vector2(7344, 1576)
 
 [node name="SignpostNew" parent="Items" unique_id=2084193526 instance=ExtResource("16_6be3y")]
 position = Vector2(11656, 1536)

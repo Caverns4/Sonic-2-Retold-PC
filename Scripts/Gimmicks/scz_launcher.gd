@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var launch_speed: float = 12.0
-@export var launch_height: float = 6.5
+@export var launch_height: float = 4
 
 var player: Player2D = null
 
@@ -12,7 +12,6 @@ var direction: int = 1
 
 func _ready() -> void:
 	direction = sign(scale.rotated(rotation).x)
-	print(direction)
 	launch_timer.one_shot = true
 	add_child(launch_timer)
 

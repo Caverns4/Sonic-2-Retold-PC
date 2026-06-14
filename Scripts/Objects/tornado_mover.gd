@@ -11,7 +11,8 @@ var player: Player2D = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	player = Global.players[0]
+	if Global.saved_checkpoint < 0:
+		player = Global.players[0]
 	tornado.plane_damaged.connect(tornado_damage)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

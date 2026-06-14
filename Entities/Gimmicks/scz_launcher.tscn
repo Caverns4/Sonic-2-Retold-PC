@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://pym1vlfcofaf" path="res://Graphics/Gimmicks/SCZ_Launcher.png" id="1_fcsur"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b6bgn"]
-size = Vector2(26, 18)
+size = Vector2(26, 16)
 
 [node name="SCZ_Launcher" type="Area2D" unique_id=498102923]
 collision_layer = 0
@@ -17,7 +17,7 @@ position = Vector2(16, -8)
 texture = ExtResource("1_fcsur")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1921074889]
-position = Vector2(19, -7)
+position = Vector2(19, -8)
 shape = SubResource("RectangleShape2D_b6bgn")
 debug_color = Color(1, 0, 1, 0.5019608)
 
