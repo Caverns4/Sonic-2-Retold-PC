@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b7f14jop4aapu"]
+
+[ext_resource type="Texture2D" uid="uid://dnetb4qhu7qkm" path="res://Graphics/Objects_Zone/SCZ_Platform.png" id="1_a7sv6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77ws5"]
+size = Vector2(64, 24)
+
+[node name="SCZ_Boss_Platform" type="StaticBody2D" unique_id=939047003]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1117948750]
+texture = ExtResource("1_a7sv6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1534583321]
+shape = SubResource("RectangleShape2D_77ws5")

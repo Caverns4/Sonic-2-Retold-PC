@@ -1,14 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvv78uhl8idjs"]
+[gd_scene format=3 uid="uid://bvv78uhl8idjs"]
 
 [ext_resource type="Script" uid="uid://boxk7eyab2sik" path="res://Scripts/Gimmicks/hanging_vine.gd" id="1_drbiq"]
 [ext_resource type="Texture2D" uid="uid://safasvc4e7j8" path="res://Graphics/Gimmicks/DHZ_VineLength.png" id="1_y7bl4"]
 [ext_resource type="Texture2D" uid="uid://31b52ioyj4vd" path="res://Graphics/Gimmicks/DHZ_VineHook.png" id="2_kaq1y"]
 [ext_resource type="PackedScene" uid="uid://b2qs2ji487f1t" path="res://Entities/Gimmicks/Hanger.tscn" id="3_5sfhf"]
 
-[node name="HangingVine" type="Node2D"]
+[node name="HangingVine" type="Node2D" unique_id=898979233]
 script = ExtResource("1_drbiq")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="VineSprite" type="TextureRect" parent="." unique_id=1866537023]
 z_index = 9
 offset_left = -12.0
 offset_right = 12.0
@@ -16,11 +16,11 @@ offset_bottom = 32.0
 texture = ExtResource("1_y7bl4")
 stretch_mode = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="HookSprite" type="Sprite2D" parent="." unique_id=1604707676]
 z_index = 9
 position = Vector2(-12, 32)
 texture = ExtResource("2_kaq1y")
 centered = false
 
-[node name="Hanger" parent="." instance=ExtResource("3_5sfhf")]
+[node name="Hanger" parent="." unique_id=783714592 instance=ExtResource("3_5sfhf")]
 position = Vector2(0, 56)

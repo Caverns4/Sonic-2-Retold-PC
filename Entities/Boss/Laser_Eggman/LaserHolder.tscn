@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cyyvgba5rqy12"]
+
+[ext_resource type="Script" uid="uid://b7hphh0wa7fwm" path="res://Scripts/Boss/BossBase.gd" id="1_eplxi"]
+[ext_resource type="Texture2D" uid="uid://dlgkk8wxk0bxc" path="res://Graphics/Boss/EggmobileLaser.png" id="2_5k8kx"]
+[ext_resource type="AudioStream" uid="uid://bq25mlko4saoj" path="res://Audio/SFX/Boss/s2br_BossHit.wav" id="5_rew13"]
+
+[sub_resource type="RectangleShape2D" id="5"]
+size = Vector2(48, 32)
+
+[node name="SkyLaser" type="CharacterBody2D" unique_id=1540087462]
+collision_layer = 16384
+collision_mask = 0
+script = ExtResource("1_eplxi")
+boss_name = "Sky Fortress"
+
+[node name="EggMobile" type="Sprite2D" parent="." unique_id=780171539]
+position = Vector2(0, 16)
+texture = ExtResource("2_5k8kx")
+offset = Vector2(0, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1516443891]
+shape = SubResource("5")
+
+[node name="Hit" type="AudioStreamPlayer" parent="." unique_id=663550420]
+stream = ExtResource("5_rew13")
+bus = &"SFX"
+
+[node name="HitBox" type="Area2D" parent="." unique_id=1834286469]
+collision_layer = 0
+collision_mask = 528384
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=472832086]
+modulate = Color(1, 0, 0, 1)
+shape = SubResource("5")
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_DamageArea_area_entered"]
+[connection signal="area_exited" from="HitBox" to="." method="_on_HitBox_area_exited"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="HitBox" to="." method="_on_body_exited"]

@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://m0m4jno5v1di"]
+
+[ext_resource type="Texture2D" uid="uid://donuljeh5ce32" path="res://Graphics/Gimmicks/SCZ_GrabBlocks.png" id="1_g58ej"]
+[ext_resource type="Script" uid="uid://dq2r537o6iqnm" path="res://Scripts/Gimmicks/scz_wall_panel.gd" id="1_s52kp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s52kp"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w77ul"]
+atlas = ExtResource("1_g58ej")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hbtu"]
+atlas = ExtResource("1_g58ej")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blxye"]
+atlas = ExtResource("1_g58ej")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsilk"]
+atlas = ExtResource("1_g58ej")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcjpn"]
+atlas = ExtResource("1_g58ej")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lusai"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w77ul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hbtu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blxye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsilk")
+}],
+"loop": true,
+"name": &"broken",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcjpn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="SCZ_WallPanel" type="CharacterBody2D" unique_id=2032666754]
+collision_layer = 0
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_s52kp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2113586786]
+shape = SubResource("RectangleShape2D_s52kp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1184555055]
+sprite_frames = SubResource("SpriteFrames_lusai")
+autoplay = "default"

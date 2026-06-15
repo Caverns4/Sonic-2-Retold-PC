@@ -214,7 +214,7 @@ var rachetScrollLeft: bool = false
 var rachetScrollRight: bool = false
 
 var rotatableSprites: PackedStringArray = ["walk", "run", "peelOut", "hammerSwing"]
-var direction: float = scale.x
+var direction: int = roundi(scale.x)
 
 # Ground speed is mostly used for timing and animations, there isn't any functionality to it.
 var groundSpeed: float = 0

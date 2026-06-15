@@ -1,7 +1,9 @@
 class_name CutsceneControlledCharacter
 extends CharacterBody2D
 
-@onready var sprite = $AnimatedSprite2D
+@export var controller: Node = null
+
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 enum STATES{NORMAL,AIR,HURT,LAUGH,FEAR}
 var state: int = 0
@@ -13,9 +15,7 @@ enum INPUTS {XINPUT, YINPUT, ACTION, ACTION2, ACTION3, SUPER, PAUSE}
 # XInput and YInput are directions and are either -1, 0 or 1.
 var inputs: Array[float] = [0,0,0,0,0,0,0,0]
 const INPUTACTIONS_P1 = [["ui_left","ui_right"],["ui_up","ui_down"],"ui_accept","ui_select","ui_cancel","ui_super","ui_pause"]
-var inputActions = INPUTACTIONS_P1
-
-var controller: Node = null
+var inputActions: Array = INPUTACTIONS_P1
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -300.0
@@ -47,7 +47,7 @@ func _physics_process(delta: float) -> void:
 	global_position.x = clampf(global_position.x,Global.hardBorderLeft,Global.hardBorderRight)
 
 
-func get_controls():
+func get_controls() -> void:
 	if controller:
 		inputs[INPUTS.ACTION] = controller.input_abc
 		inputs[INPUTS.XINPUT] = controller.input_x
@@ -60,7 +60,7 @@ func get_controls():
 		inputs[INPUTS.YINPUT] = -int(Input.is_action_pressed(inputActions[INPUTS.YINPUT][0]))+int(Input.is_action_pressed(inputActions[INPUTS.YINPUT][1]))
 
 
-func SetAnimation():
+func SetAnimation() -> void:
 	if velocity.y < 0:
 		sprite.play("Jump")
 	if is_on_floor():

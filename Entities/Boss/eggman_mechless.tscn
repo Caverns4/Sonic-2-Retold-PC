@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bmsutfc5bals8"]
+[gd_scene format=3 uid="uid://bmsutfc5bals8"]
 
 [ext_resource type="Texture2D" uid="uid://d12r0uq1qch01" path="res://Graphics/Boss/Eggman.png" id="1_5avtc"]
 [ext_resource type="Script" uid="uid://b3qp1fbv3mhos" path="res://Scripts/Boss/eggman_mechless.gd" id="1_rc3yn"]
@@ -166,18 +166,17 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Eggman_Mechless" type="CharacterBody2D"]
+[node name="Eggman_Mechless" type="CharacterBody2D" unique_id=977553081]
 light_mask = 4096
 z_index = 1
 collision_layer = 16384
-collision_mask = 4095
+collision_mask = 287
 script = ExtResource("1_rc3yn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1951454155]
 shape = SubResource("RectangleShape2D_gduji")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1599281182]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_hms3r")
-animation = &"Fear"
 autoplay = "default"
