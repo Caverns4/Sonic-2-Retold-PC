@@ -1,6 +1,7 @@
 class_name CutsceneControlledCharacter
 extends CharacterBody2D
 
+## A cutscene handler node that will send input to Eggman.
 @export var controller: Node = null
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -20,7 +21,7 @@ var inputActions: Array = INPUTACTIONS_P1
 const SPEED = 300.0
 const JUMP_VELOCITY = -300.0
 
-
+var target_animation: String = "default"
 
 func _physics_process(delta: float) -> void:
 	get_controls()
@@ -41,18 +42,13 @@ func _physics_process(delta: float) -> void:
 		sprite.scale.x = sign(direction)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED*2*delta)
-
-	SetAnimation()
 	move_and_slide()
+	animate_eggman()
 	global_position.x = clampf(global_position.x,Global.hardBorderLeft,Global.hardBorderRight)
 
 
 func get_controls() -> void:
-	if controller:
-		inputs[INPUTS.ACTION] = controller.input_abc
-		inputs[INPUTS.XINPUT] = controller.input_x
-		inputs[INPUTS.YINPUT] = controller.input_y
-	else:
+	if !controller:
 		inputs[INPUTS.ACTION] = (int(Input.is_action_pressed(inputActions[INPUTS.ACTION]))*2)-int(Input.is_action_just_pressed(inputActions[INPUTS.ACTION]))
 		inputs[INPUTS.ACTION2] = (int(Input.is_action_pressed(inputActions[INPUTS.ACTION2]))*2)-int(Input.is_action_just_pressed(inputActions[INPUTS.ACTION2]))
 		inputs[INPUTS.ACTION3] =  (int(Input.is_action_pressed(inputActions[INPUTS.ACTION3]))*2)-int(Input.is_action_just_pressed(inputActions[INPUTS.ACTION3]))
@@ -60,11 +56,11 @@ func get_controls() -> void:
 		inputs[INPUTS.YINPUT] = -int(Input.is_action_pressed(inputActions[INPUTS.YINPUT][0]))+int(Input.is_action_pressed(inputActions[INPUTS.YINPUT][1]))
 
 
-func SetAnimation() -> void:
+func animate_eggman() -> void:
 	if velocity.y < 0:
 		sprite.play("Jump")
 	if is_on_floor():
 		if velocity.x == 0:
-			sprite.play("default")
+			sprite.play(target_animation)
 		else:
 			sprite.play("Walk")

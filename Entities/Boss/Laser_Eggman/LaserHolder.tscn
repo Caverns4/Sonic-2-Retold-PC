@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b7hphh0wa7fwm" path="res://Scripts/Boss/BossBase.gd" id="1_eplxi"]
 [ext_resource type="Texture2D" uid="uid://dlgkk8wxk0bxc" path="res://Graphics/Boss/EggmobileLaser.png" id="2_5k8kx"]
+[ext_resource type="AudioStream" uid="uid://u14e5d6axr7x" path="res://Audio/SFX/Boss/s2br_BossExplosion.wav" id="4_c2v4m"]
 [ext_resource type="AudioStream" uid="uid://bq25mlko4saoj" path="res://Audio/SFX/Boss/s2br_BossHit.wav" id="5_rew13"]
 
 [sub_resource type="RectangleShape2D" id="5"]
@@ -32,6 +33,13 @@ collision_mask = 528384
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=472832086]
 modulate = Color(1, 0, 0, 1)
 shape = SubResource("5")
+
+[node name="Explode" type="AudioStreamPlayer" parent="." unique_id=22568011]
+stream = ExtResource("4_c2v4m")
+bus = &"SFX"
+
+[node name="SmokeTimer" type="Timer" parent="." unique_id=419119310]
+wait_time = 0.1
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_DamageArea_area_entered"]
 [connection signal="area_exited" from="HitBox" to="." method="_on_HitBox_area_exited"]

@@ -28,6 +28,7 @@ func boss_start(value: bool) -> void:
 	if value:
 		boss_started.emit()
 	active = value
+	boss_defeated.connect(_on_boss_defeated)
 
 
 func _ready() -> void:
@@ -81,6 +82,9 @@ func _on_body_exited(body: Player2D) -> void:
 	if (playerHit.has(body)):
 		playerHit.erase(body)
 
+func _on_boss_defeated() -> void:
+	defeated_flag = true
+	velocity = Vector2.ZERO
 
 func _mark_defeated() -> void:
 	boss_over.emit()
