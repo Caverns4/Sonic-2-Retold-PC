@@ -95,48 +95,55 @@ var character: int = Global.CHARACTERS.SONIC
 ## Strength level of this character.
 var strength: Global.STRENGTH_TIER = Global.STRENGTH_TIER.NORMAL
 
-# physics list order
-# 0 Acceleration
-# 1 Deceleration
-# 2 Friction
-# 3 Top Speed
-# 4 Null
-# 5 Rolling Friction 
-# 6 Rolling Deceleration
+## Physics update info
+enum PHYSICS{NORMAL,SPEED_SHOES,SUPER_SONIC,SUPER_CHARACTER}
+const physics_list: Dictionary = {
+	PHYSICS.NORMAL: {
+		acc = 0.046875, dec = 0.5, frc = 0.046875,
+		top = 6*60, air = 0.09375,
+		rollfrc = 0.0234375, rolldec = 0.125
+		},
+	PHYSICS.SPEED_SHOES: {
+		acc = 0.09375, dec = 0.5, frc = 0.09375,
+		top = 12*60, air = 0.1875,
+		rollfrc = 0.0234375, rolldec = 0.125
+		},
+	PHYSICS.SUPER_SONIC: {
+		acc = 0.1875, dec = 1.0, frc = 0.046875,
+		top = 10*60, air = 0.375,
+		rollfrc = 0.0234375, rolldec = 0.125
+		},
+	PHYSICS.SUPER_CHARACTER: {
+		acc = 0.09375, dec = 0.75, frc = 0.046875,
+		top = 8*60, air = 0.1875,
+		rollfrc = 0.0234375, rolldec = 0.125
+		},
+}
 
-const physicsList: Array = [
-# 0 Sonic (Primary Character physics)
-[12.0/256.0, 0.50, 12/256.0,  6*60, 0, 12/256.0, 32/256.0],
-# 1 Speed Shoes
-[24.0/256.0, 0.50, 24/256.0, 12*60, 0, 12/256.0, 32/256.0],
-# 2 Super Sonic
-[32.0/256.0, 1.00, 12/256.0, 10*60, 0,  6/256.0, 32/256.0],
-# 3 Super Forms besides Sonic
-[24.0/256.0, 0.75, 12/256.0,  8*60, 0,  6/256.0, 32/256.0],
-]
+const water_physics_list: Dictionary = {
+	PHYSICS.NORMAL: {
+		acc = 8/256.0, dec = 0.25, frc = 0.046875/2.0,
+		top = 5*60/2.0, air = 16/256.0,
+		rollfrc = 0.046875/2.0, rolldec = 0.125
+		},
+	# In the original games, Speed shoes did not account for water at all, so these are just ballpark values
+	PHYSICS.SPEED_SHOES: {
+		acc = 12/256.0, dec = 0.25, frc = 0.046875,
+		top = 6*60, air = 24/256.0,
+		rollfrc = 0.046875/2.0, rolldec = 0.125
+		},
+	PHYSICS.SUPER_SONIC: {
+		acc = 12/256.0, dec = 0.5, frc = 0.046875,
+		top = 7*60, air = 24/256.0,
+		rollfrc = 0.046875, rolldec = 0.125
+		},
+	PHYSICS.SUPER_CHARACTER: {
+		acc = 12/256.0, dec = 0.375, frc = 0.046875,
+		top = 6*60, air = 24/256.0,
+		rollfrc = 0.0234375,rolldec = 0.125
+		},
+}
 
-const waterPhysicsListNew: Array = [
-# 0 Sonic (Primary Character physics)
-[ 8/256.0, 0.250,  8/256.0, 4*60, 0, 8/256.0, 32/256.0],
-# 1 Speed Shoes
-[12/256.0, 0.250, 12/256.0, 8*60, 0, 8/256.0, 32/256.0],
-# 2 Super Sonic
-[12/256.0, 0.500, 12/256.0, 8*60, 0,12/256.0, 32/256.0],
-# 3 Super Forms besides Sonic
-[12/256.0, 0.375, 12/256.0,8*60, 0, 8/256.0, 32/256.0],
-]
-
-#Depricated
-const waterPhysicsList: Array = [
-# 0 Sonic (Primary Character physics)
-[0.046875/2.0, 0.5/2.0, 0.046875/2.0, 6*60/2.0, 0, 0.046875*0.5, 0.125],
-# 1 Speed Shoes
-[0.046875/2.0, 0.5/2.0, 0.046875/2.0, 6*60/2.0, 0, 0.046875*0.5, 0.125],
-# 2 Super Sonic
-[0.09375, 0.5, 0.046875, 5*60, 0, 0.046875, 0.125],
-# 3 Super Forms besides Sonic
-[0.046875, 0.375, 0.046875, 4*60, 0, 0.0234375, 0.125],
-]
 # ================
 
 var Ring: PackedScene = preload("res://Entities/Items/Ring.tscn")
@@ -1265,18 +1272,18 @@ func _on_PlayerAnimation_animation_started(_anim_name: StringName) -> void:
 
 
 # return the physics id variable, see physicsList array for reference
-func determine_physics() -> int:
+func determine_physics() -> PHYSICS:
 	# get physics from character
 	match (character):
 		Global.CHARACTERS.SONIC:
 			if is_super:
-				return 2 # Super Sonic
+				return PHYSICS.SUPER_SONIC # Super Sonic
 	#Anyone who isn't a special case:
 	if is_super:
-		return 3 # Super
+		return PHYSICS.SUPER_CHARACTER # Super besides Sonic
 	elif shoe_time > 0:
-		return 1 # Shoes
-	return 0 #Default to Sonic 
+		return PHYSICS.SPEED_SHOES # Shoes
+	return PHYSICS.NORMAL #Default
 
 func determine_jump_property() -> float:
 	if !is_in_water:
@@ -1293,28 +1300,20 @@ func determine_jump_property() -> float:
 				return 3*60
 		return 3.5*60
 
+const GRAVITY_NORMAL: float= 56.0 / 256.0
+const GRAVITY_WATER: float = 16.0 / 256.0
+
 func switch_physics() -> void:
-	var physicsID: int = determine_physics()
-	var getList: Array = physicsList[max(0,physicsID)]
-	if is_in_water:
-		getList = waterPhysicsListNew[max(0,physicsID)]
-	acc = getList[0]
-	dec = getList[1]
-	frc = getList[2]
-	top = getList[3]
-	#air = getList[0]*2.0
-	rollfrc = getList[5]
-	rolldec = getList[6]
-	# For Jump height:
+	var physics_set_id: PHYSICS = determine_physics()
+	#Get the dictionary from the resulting physics type
+	var got_list: Dictionary = physics_list.get(physics_set_id)
+	if is_in_water: got_list = water_physics_list.get(physics_set_id)
+	#incriment through each variable in sequence
+	for key:Variant in got_list: set(key,got_list[key])
+	
 	jmp = determine_jump_property()
-	if !is_in_water:
-		grv = 56/256.0
-		releaseJmp = 4
-	else:
-		grv = 16/256.0
-		releaseJmp = 2
-
-
+	grv = GRAVITY_WATER if is_in_water else GRAVITY_NORMAL
+	releaseJmp = 2.0 if is_in_water else 4.0
 
 
 func _on_SparkleTimer_timeout() -> void:
