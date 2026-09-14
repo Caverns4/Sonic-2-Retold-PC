@@ -7,8 +7,6 @@ var attackTimer: float = 0
 @onready var getPose: Array[Vector2] = [$LeftPoint.global_position,$RightPoint.global_position]
 var currentPoint: int = 1
 
-var animationPriority: Array = ["default","move","laugh","hit","exploded"]
-
 func boss_start(value: bool) -> void:
 	active = value
 
@@ -24,7 +22,7 @@ func _process(delta: float) -> void:
 	$EggMobile/EggmobileFlame.visible = !(velocity.x == 0 or $EggMobile/EggmobileFlame.visible)
 	
 	# flashing for the egg mobile 
-	if flashTimer > 0:
+	if !vulnerable and hp > 0:
 		$EggMobile/EggFlash.visible = !$EggMobile/EggFlash.visible
 	else:
 		$EggMobile/EggFlash.visible = false
@@ -70,7 +68,7 @@ func _physics_process(delta: float) -> void:
 					velocity = ((getPose[0].lerp(getPose[1],0.5)-global_position)*60).limit_length(64)
 				elif attackTimer < 2:
 					# do laugh
-					if flashTimer <= 0:
+					if vulnerable:
 						set_animation("laugh")
 					velocity = Vector2.ZERO
 					attackTimer += delta
@@ -101,36 +99,6 @@ func _physics_process(delta: float) -> void:
 				if attackTimer >= 5:
 					currentPoint = 1-currentPoint
 					attackTimer = 0
-	
-	# default reactions (use animation time to avoid running this every frame)
-	if $AnimationTime.is_stopped():
-		# if moving, then run move animation
-		if velocity.x != 0:
-			set_animation("move")
-		# check if defeated, this can cause a conflict where the idle animation would play when it shouldn't
-		elif !defeated_flag:
-			set_animation("default")
-	# only run hit if flash timer is above 0
-	if flashTimer > 0:
-		set_animation("hit",flashTimer)
-	
-
-# animation to play, time is how long the animation should play for until it stops
-func set_animation(animation: StringName = "default", time: float = 0.0) -> void:
-	# check that the animation exists in the animationPriority list
-	if animationPriority.has(animation):
-		# if the animation exists then compare the position
-		var animID = animationPriority.find(animation)
-		var currentAnimID = animationPriority.find($EggMobile/Robotnik.animation)
-		
-		# if the new animation ID is higher then the current one or the animation time isn't running then play the animation
-		if animID > currentAnimID or $AnimationTime.is_stopped():
-			$EggMobile/Robotnik.play(animation)
-			$AnimationTime.start(time)
-	# if there is no priority set then just run the new animation
-	else:
-		$EggMobile/Robotnik.play(animation)
-		$AnimationTime.start(time)
 
 # boss defeated
 func _on_boss_defeated() -> void:

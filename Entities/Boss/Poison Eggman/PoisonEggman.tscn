@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dw4ysdt7fckye"]
+[gd_scene format=3 uid="uid://dw4ysdt7fckye"]
 
 [ext_resource type="Script" uid="uid://da51tbw3wnq2s" path="res://Scripts/Boss/poison_eggman.gd" id="1_30xqr"]
 [ext_resource type="Texture2D" uid="uid://covcphiyrcwta" path="res://Graphics/Boss/CPZ/Boss_PoisonEggmanVTube.png" id="2_4s3qp"]
@@ -99,13 +99,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="5"]
 size = Vector2(48, 48)
 
-[node name="PoisonEggman" type="CharacterBody2D"]
+[node name="PoisonEggman" type="CharacterBody2D" unique_id=760537518]
 collision_layer = 16384
 collision_mask = 0
 script = ExtResource("1_30xqr")
 boss_name = "Egg Poison"
 
-[node name="PipeTexture" type="TextureRect" parent="."]
+[node name="PipeTexture" type="TextureRect" parent="." unique_id=427113238]
 offset_left = -2.0
 offset_right = 6.0
 offset_bottom = 24.0
@@ -113,68 +113,68 @@ texture = ExtResource("2_4s3qp")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="PumpPosition" type="Sprite2D" parent="."]
+[node name="PumpPosition" type="Sprite2D" parent="." unique_id=387284598]
 visible = false
 position = Vector2(-8, 128)
 texture = ExtResource("3_5t0m2")
 centered = false
 
-[node name="EggMobile" type="Sprite2D" parent="."]
+[node name="EggMobile" type="Sprite2D" parent="." unique_id=448721808]
 position = Vector2(0, 19)
 texture = ExtResource("2_18wch")
 offset = Vector2(0, -8)
 
-[node name="Eggmobile_Top" type="Sprite2D" parent="EggMobile"]
+[node name="Eggmobile_Top" type="Sprite2D" parent="EggMobile" unique_id=1348356973]
 position = Vector2(10, -48)
 texture = ExtResource("4_hwtff")
 
-[node name="EggmobileFlame" type="Sprite2D" parent="EggMobile"]
+[node name="EggmobileFlame" type="Sprite2D" parent="EggMobile" unique_id=1321833054]
 visible = false
 position = Vector2(36, -8)
 texture = ExtResource("4_fn1hm")
 
-[node name="Robotnik" type="AnimatedSprite2D" parent="EggMobile"]
+[node name="Robotnik" type="AnimatedSprite2D" parent="EggMobile" unique_id=387287429]
 z_index = -1
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_edd2b")
 
-[node name="EggFlash" type="Sprite2D" parent="EggMobile"]
+[node name="EggFlash" type="Sprite2D" parent="EggMobile" unique_id=1192873349]
 visible = false
 texture = ExtResource("5_k67mh")
 offset = Vector2(0, -8)
 
-[node name="WaterPump" parent="EggMobile" instance=ExtResource("7_bi04c")]
+[node name="WaterPump" parent="EggMobile" unique_id=158922947 instance=ExtResource("7_bi04c")]
 position = Vector2(-8, -91)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2143621207]
 shape = SubResource("5")
 
-[node name="Hit" type="AudioStreamPlayer" parent="."]
+[node name="Hit" type="AudioStreamPlayer" parent="." unique_id=2082571071]
 stream = ExtResource("10_fn1sk")
 bus = &"SFX"
 
-[node name="Explode" type="AudioStreamPlayer" parent="."]
+[node name="Explode" type="AudioStreamPlayer" parent="." unique_id=1875447417]
 stream = ExtResource("11_w25wj")
 bus = &"SFX"
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="HitBox" type="Area2D" parent="." unique_id=601457685]
 collision_layer = 0
 collision_mask = 528384
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=275205593]
 modulate = Color(1, 0, 0, 1)
 shape = SubResource("5")
 
-[node name="SmokeTimer" type="Timer" parent="."]
+[node name="SmokeTimer" type="Timer" parent="." unique_id=1067387721]
 wait_time = 0.1
 
-[node name="AnimationTime" type="Timer" parent="."]
+[node name="AnimationTime" type="Timer" parent="." unique_id=1531517567]
 one_shot = true
 
-[node name="LeftPoint" type="Node2D" parent="."]
+[node name="LeftPoint" type="Node2D" parent="." unique_id=736255200]
 position = Vector2(-128, 0)
 
-[node name="RightPoint" type="Node2D" parent="."]
+[node name="RightPoint" type="Node2D" parent="." unique_id=1451549287]
 position = Vector2(128, 0)
 
 [connection signal="boss_defeated" from="." to="." method="_on_boss_defeated"]

@@ -193,7 +193,7 @@ func _process(delta: float) -> void:
 		parent.get_node("HitBox").shape.size = parent.currentHitbox.NORMAL
 	
 	if parent.inputs[parent.INPUTS.XINPUT] != 0 and !skid:
-		parent.direction = parent.inputs[parent.INPUTS.XINPUT]
+		parent.direction = roundi(parent.inputs[parent.INPUTS.XINPUT])
 	elif parent.movement.x != 0 and skid:
 		parent.direction = sign(parent.movement.x)
 	

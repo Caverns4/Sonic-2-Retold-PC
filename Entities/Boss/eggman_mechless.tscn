@@ -179,4 +179,5 @@ shape = SubResource("RectangleShape2D_gduji")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1599281182]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_hms3r")
+animation = &"Fear"
 autoplay = "default"

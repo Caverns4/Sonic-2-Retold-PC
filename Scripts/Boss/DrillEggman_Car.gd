@@ -15,7 +15,7 @@ var readyToLaunch: bool = false #If true, shoot the drill when the player is in 
 var currentPoint: int = 1 #The point for the boss to move toward while alive
 
 ## The parent node, should be Helicopter Eggman
-@export_node_path var helicopter_eggman: NodePath
+@export var parent: BossBase
 
 @onready var tires: Array = [ #CharacterBody2D
 	#Back wheels
@@ -26,27 +26,19 @@ var currentPoint: int = 1 #The point for the boss to move toward while alive
 	$DrillEggmanWheel4
 	]
 @onready var drill: Variant = $DrillEggmanDrill # Area2D
-var parent: BossBase = null #The parent node, should be Helicopter Eggman
 
 signal carTouched()
 
 func _ready() -> void:
+	if !parent:
+		queue_free()
 	if Global.two_player_mode:
 		queue_free()
 	
-	tires[0].top_level = true
-	tires[0].global_position.y = global_position.y
-	tires[1].top_level = true
-	tires[1].global_position.y = global_position.y
-	tires[2].top_level = true
-	tires[2].global_position.y = global_position.y
-	tires[3].top_level = true
-	tires[3].global_position.y = global_position.y
-	
-	parent = get_node_or_null(helicopter_eggman)
-	if !parent:
-		queue_free()
-	top_level = true
+	for tire: CharacterBody2D in tires:
+		tire.top_level = true
+		tire.global_position.y = global_position.y
+		tire.parent = parent
 
 func _process(delta: float) -> void:
 	if active and !dead:
@@ -128,17 +120,16 @@ func die() -> void:
 	dead = true
 	pilot = false
 	velocity = Vector2.ZERO
-	tires[0].velocity.x = 200.0
-	tires[1].velocity.x = 300.0
-	tires[2].velocity.x = -200.0
-	tires[3].velocity.x = -300.0
-	tires[0].free = true
-	tires[1].free = true
-	tires[2].free = true
-	tires[3].free = true
+	
+	var vels: Array[float] = [200,300,-200,-300]
+	var index: int = 0
+	for i: CharacterBody2D in tires:
+		i.is_free = true
+		i.velocity.x = vels[index]
+		index += 1
 	if drill:
 		drill.monitoring = false
-		drill.free = true
+		drill.is_free = true
 		drill.position = drill.global_position
 		drill.direction = direction
 		drill.top_level = true
@@ -164,7 +155,7 @@ func _on_boss_boundry_setter_boss_start() -> void:
 
 func _on_drill_launch_box_body_entered(_body: Node2D) -> void:
 	if readyToLaunch and drill:
-		drill.free = true
+		drill.is_free = true
 		drill.position = drill.global_position
 		drill.direction = direction
 		drill.top_level = true

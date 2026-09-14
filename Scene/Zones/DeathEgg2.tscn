@@ -83,7 +83,6 @@ bottomBoundry = 416
 
 [node name="DEZ_Cutscene_Handler" type="Node" parent="." unique_id=2140210794]
 script = ExtResource("11_mn1ji")
-eggman_path = NodePath("../Boss/Eggman_Mechless")
 
 [node name="Items" type="Node" parent="." unique_id=1729718145]
 

@@ -4,16 +4,25 @@ class_name BossBase extends CharacterBody2D
 var playerHit: Array = []
 
 @export var hp: int = 8
-var flashTimer: float = 0.0
-var forceDamage: bool = false
-@export var hitTime: float = 32.0/60.0
-@export var boss_name: String = "Eggman" 
+@export var hit_time: float = 32.0/60.0
+@export var boss_name: String = "Eggman"
+@export var explosion_radius: Vector2 = Vector2(32,32)
 
-var deathTimer: float = 4.0
+const DEATH_TIME: float = 4.0
+
+var forceDamage: bool = false
+var vulnerable: bool = true
 var defeated_flag: bool = false
 
 var Explosion: PackedScene = preload("res://Entities/Misc/GenericParticle.tscn")
 var hoverOffset: float = 0.0
+
+@onready var flash_time: Timer = $Timers/FlashTime
+# This wil also control the time until the boss flees after the final hit.
+@onready var animation_timer: Timer = $Timers/AnimationTime
+@onready var smoke_timer: Timer = $Timers/SmokeTimer
+@onready var eggman_face: AnimatedSprite2D = $EggMobile/Robotnik
+var animationPriority: Array[StringName] = ["default","move","laugh","hit","exploded"]
 
 signal got_hit
 signal hit_player
@@ -28,48 +37,52 @@ func boss_start(value: bool) -> void:
 	if value:
 		boss_started.emit()
 	active = value
-	boss_defeated.connect(_on_boss_defeated)
 
 
 func _ready() -> void:
 	if Global.two_player_mode:
 		queue_free()
+	else:
+		flash_time.timeout.connect(_on_flash_timer_timeout)
+		animation_timer.timeout.connect(_on_animation_timer_timeout)
+		smoke_timer.timeout.connect(_on_smoke_timer_timeout)
+		boss_defeated.connect(_on_boss_defeated)
 
-func _physics_process(delta: float) -> void:
-	# flashing timer
-	if flashTimer > 0:
-		flashTimer -= delta
-		if flashTimer <= 0:
-			emit_signal("flash_finished")
-	# if not flashing do damage routine
-	elif hp > 0 and active:
+func _physics_process(_delta: float) -> void:
+	if active and hp > 0 and vulnerable:
 		# loop through player hit as i
 		for i: Player2D in playerHit:
 			# check if damage entity is on or supertime is bigger then 0
 			if (i.is_attacking() or i.super_time > 0 or forceDamage):
-				i.movement = i.movement*-1 #i.movement*-0.5
-				# hit
-				if hp > 0:
-					$Hit.play()
-					flashTimer = hitTime
-					emit_signal("got_hit")
-					hp -= 1
-					# check if gliding, if they are force them to fall
-					if i.get("currentState") != null:
-						if i.currentState == i.STATES.GLIDE:
-							i.animator.play("glideFall")
-							# reset player hitbox
-							i.set_hitbox(i.currentHitbox.NORMAL)
-							i.reflective = false
-							if i.get_node_or_null("States/Glide") != null:
-								i.get_node("States/Glide").isFall = true
-				# check if defeated
-				if hp <= 0:
-					boss_defeated.emit()
+				knockoff_player(i)
+				if hp > 0: _boss_hit()
 			# if destroying the enemy fails and hit player exists then hit player
-			elif (i.has_method("hit_player")):
-				if i.hit_player(global_position,damageType):
-					emit_signal("hit_player")
+			elif i.hit_player(global_position,damageType):
+				emit_signal("hit_player")
+
+func knockoff_player(i: Player2D) -> void:
+	i.movement = i.movement*-1 #i.movement*-0.5
+	# check if gliding, if they are force them to fall
+	if i.currentState == i.STATES.GLIDE:
+		i.animator.play("glideFall")
+		# reset player hitbox
+		i.set_hitbox(i.currentHitbox.NORMAL)
+		i.reflective = false
+		if i.get_node_or_null("States/Glide") != null:
+			i.get_node("States/Glide").isFall = true
+
+func _boss_hit() -> void:
+	hp -= 1
+	if hp > 0:
+		$Hit.play()
+		vulnerable = false
+		set_animation("hit",hit_time)
+		flash_time.start(hit_time)
+		emit_signal("got_hit")
+	else:
+		emit_signal("got_hit")
+		boss_defeated.emit()
+
 
 func _on_body_entered(body: Player2D) -> void:
 	# add to player list
@@ -82,13 +95,27 @@ func _on_body_exited(body: Player2D) -> void:
 	if (playerHit.has(body)):
 		playerHit.erase(body)
 
+# Run when the final hit is dealth
 func _on_boss_defeated() -> void:
+	flash_time.start(DEATH_TIME)
+	set_animation("exploded",DEATH_TIME)
 	defeated_flag = true
 	velocity = Vector2.ZERO
+	smoke_timer.start(0.01667*7)
 
-func _mark_defeated() -> void:
-	boss_over.emit()
-	destroyed.emit()
+# Laugh for 1 second
+func do_laugh() -> void:
+	set_animation("laugh",1)
+
+# animation to play, time is how long the animation should play for until it stops
+func set_animation(animation: StringName = "default", time: float = 0.0) -> void:
+	if animationPriority.has(animation) and eggman_face.is_playing():
+		var animID: int = animationPriority.find(animation)
+		var currentAnimID: int = animationPriority.find(eggman_face.animation)
+		if animID < currentAnimID:
+			return
+	if eggman_face: eggman_face.play(animation)
+	if time: animation_timer.start(time)
 
 
 func _on_DamageArea_area_entered(area: Area2D) -> void:
@@ -104,3 +131,44 @@ func _on_HitBox_area_exited(area: Area2D) -> void:
 	if area.get("parent") != null:
 		if playerHit.has(area.parent):
 			playerHit.erase(area.parent)
+
+func _on_flash_timer_timeout() -> void:
+	if hp > 0:
+		emit_signal("flash_finished")
+		vulnerable = true
+	else:
+		await start_defeated_phase()
+
+
+func start_defeated_phase() -> void:
+	smoke_timer.stop()
+	await get_tree().create_timer(1.0).timeout
+	_mark_defeated()
+
+func _mark_defeated() -> void:
+	boss_over.emit()
+	destroyed.emit()
+
+func _on_animation_timer_timeout() -> void:
+	if defeated_flag:
+		smoke_timer.stop()
+	eggman_face.stop()
+	if velocity.x != 0:
+		set_animation("move")
+	elif !defeated_flag:
+		set_animation("default")
+
+func _on_smoke_timer_timeout() -> void:
+	# play explosion sound
+	$Explode.play()
+	# spawn exposion particles
+	var expl: Node2D = Explosion.instantiate()
+	# set animation
+	expl.play("BossExplosion")
+	expl.z_index = 10
+	# add object
+	get_parent().add_child(expl)
+	# set position reletive to us
+	expl.global_position = global_position+Vector2(
+		randf_range(-explosion_radius.x,explosion_radius.x),
+		randf_range(-explosion_radius.y,explosion_radius.y))

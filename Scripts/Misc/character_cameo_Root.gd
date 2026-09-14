@@ -82,7 +82,7 @@ func ThrowGift() -> void:
 	droppedItem.item = present
 	droppedItem.FrameUpdate()
 	droppedItem.velocity.x = 0-60*direction
-	droppedItem.yspeed = 0-SPEED
+	droppedItem.velocity.y = 0-SPEED
 
 
 func _on_player_checker_body_entered(body: Node2D) -> void:

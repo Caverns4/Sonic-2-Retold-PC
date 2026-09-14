@@ -1,4 +1,4 @@
-class_name CutsceneControlledCharacter
+class_name CutsceneEggman
 extends CharacterBody2D
 
 ## A cutscene handler node that will send input to Eggman.
@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 enum STATES{NORMAL,AIR,HURT,LAUGH,FEAR}
-var state: int = 0
+var state: STATES = STATES.NORMAL
 var state_timer: float = 0.0
 
 enum INPUTS {XINPUT, YINPUT, ACTION, ACTION2, ACTION3, SUPER, PAUSE}
@@ -46,6 +46,8 @@ func _physics_process(delta: float) -> void:
 	animate_eggman()
 	global_position.x = clampf(global_position.x,Global.hardBorderLeft,Global.hardBorderRight)
 
+func set_facing_direction(left: bool = false) -> void:
+	sprite.scale.x = -1.0 if left else 1.0
 
 func get_controls() -> void:
 	if !controller:

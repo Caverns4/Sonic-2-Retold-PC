@@ -246,19 +246,22 @@ position = Vector2(-632, 0)
 [node name="RightPoint" type="Node2D" parent="." unique_id=2105544774]
 position = Vector2(72, 0)
 
-[node name="SmokeTimer" type="Timer" parent="." unique_id=723975249]
-wait_time = 0.25
-
-[node name="AnimationTime" type="Timer" parent="." unique_id=1293643713]
-one_shot = true
-
 [node name="Helicopter" type="AnimationPlayer" parent="." unique_id=1752975989]
 libraries/ = SubResource("AnimationLibrary_fbdxo")
 autoplay = &"SPIN"
 
-[connection signal="boss_defeated" from="." to="." method="_on_boss_defeated"]
+[node name="Timers" type="Node" parent="." unique_id=385946752]
+
+[node name="SmokeTimer" type="Timer" parent="Timers" unique_id=759612830]
+wait_time = 0.25
+
+[node name="FlashTime" type="Timer" parent="Timers" unique_id=647548638]
+one_shot = true
+
+[node name="AnimationTime" type="Timer" parent="Timers" unique_id=1552421820]
+one_shot = true
+
 [connection signal="area_entered" from="HitBox" to="." method="_on_DamageArea_area_entered"]
 [connection signal="area_exited" from="HitBox" to="." method="_on_HitBox_area_exited"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="HitBox" to="." method="_on_body_exited"]
-[connection signal="timeout" from="SmokeTimer" to="." method="_on_SmokeTimer_timeout"]

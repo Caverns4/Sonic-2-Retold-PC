@@ -2,26 +2,15 @@
 
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_vmtrv"]
 [ext_resource type="PackedScene" uid="uid://chfpewpugtp61" path="res://Scene/level_layouts/layout_ehz_1.scn" id="2_dkinl"]
-[ext_resource type="PackedScene" uid="uid://cqcgjcw101xxo" path="res://Entities/Enemies/MotoBug.tscn" id="3_dkinl"]
 [ext_resource type="Shader" uid="uid://bl6rkxasb1wlh" path="res://Shaders/Waterpalette.gdshader" id="4_dkinl"]
-[ext_resource type="PackedScene" uid="uid://c1ldunfxhq0he" path="res://Entities/Obstacles/ForceAngleSides.tscn" id="5_45sxx"]
 [ext_resource type="Texture2D" uid="uid://t83ys4beivkw" path="res://Graphics/Palettes/NGHZ_Pal_Dry.png" id="5_dek6d"]
-[ext_resource type="PackedScene" uid="uid://dkn7hhll7o4or" path="res://Entities/MainObjects/LayerSwitcher.tscn" id="6_8iq3b"]
 [ext_resource type="Texture2D" uid="uid://bwnjh5ghvt0xs" path="res://Graphics/Palettes/NGHZ_Pal_Wet.png" id="6_ebf1g"]
 [ext_resource type="Script" uid="uid://de00qf17tl15p" path="res://Scripts/Level/water_overlay_new.gd" id="7_dek6d"]
-[ext_resource type="PackedScene" uid="uid://fn82q8rojkjl" path="res://Entities/Gimmicks/CorkscrewLoop.tscn" id="7_m23it"]
-[ext_resource type="PackedScene" uid="uid://4q0hpddgto2k" path="res://Entities/Gimmicks/Spring.tscn" id="9_vtcn5"]
-[ext_resource type="PackedScene" uid="uid://bgodeg4oddje6" path="res://Entities/MainObjects/BoundrySetter.tscn" id="10_l72nf"]
-[ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="11_fl7as"]
+[ext_resource type="PackedScene" uid="uid://vh0ailk0432j" path="res://Entities/Boss/BossBoundrySetter.tscn" id="11_q4ll3"]
 [ext_resource type="AudioStream" uid="uid://brayuk75sxk0i" path="res://Audio/SiivaGunner/Emerald Hill Zone 2P SiIvaGunner.ogg" id="11_vb1im"]
-[ext_resource type="Texture2D" uid="uid://ci13nuikdwatn" path="res://Graphics/Tiles/EHZ_HTZ/EHZ_Platform_Large.png" id="12_g1lo7"]
-[ext_resource type="PackedScene" uid="uid://bg66ofhfkxsx6" path="res://Entities/Gimmicks/Bridge.tscn" id="12_q4ll3"]
-[ext_resource type="PackedScene" uid="uid://cfteqnft5ynr7" path="res://Entities/Hazards/Spikes.tscn" id="13_1hpfk"]
+[ext_resource type="PackedScene" uid="uid://ckrsmw0ki80m7" path="res://Entities/Boss/BossBase.tscn" id="12_vmtrv"]
 [ext_resource type="Script" uid="uid://2ac4isxha7iy" path="res://Scripts/Level/TwoPlayerScreenView.gd" id="13_uenjp"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="13_vmtrv"]
-[ext_resource type="AudioStream" uid="uid://uu55iumak4r5" path="res://Audio/SFX/Ambiance/waterfall.wav" id="14_bv6o7"]
-[ext_resource type="PackedScene" uid="uid://cii6vdv1nbk6k" path="res://Entities/Enemies/Slicer.tscn" id="14_y5flj"]
-[ext_resource type="PackedScene" uid="uid://xbidybme3tde" path="res://Entities/Enemies/Spiny.tscn" id="16_iulvr"]
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="18_8iq3b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_js133"]
@@ -46,339 +35,6 @@ defaultBottomBoundry = 1024
 
 [node name="Player" parent="." unique_id=1883722392 instance=ExtResource("13_vmtrv")]
 position = Vector2(64, 656)
-
-[node name="Entities" type="Node" parent="." unique_id=322253898]
-
-[node name="ForceAngleSides" parent="Entities" unique_id=1575252431 instance=ExtResource("5_45sxx")]
-position = Vector2(1238, 642)
-leftAngle = 86.0
-
-[node name="ForceAngleSides2" parent="Entities" unique_id=726125923 instance=ExtResource("5_45sxx")]
-position = Vector2(4310, 899)
-leftAngle = 86.0
-
-[node name="ForceAngleSides3" parent="Entities" unique_id=14922978 instance=ExtResource("5_45sxx")]
-position = Vector2(5336, 640)
-leftAngle = 86.0
-
-[node name="ForceAngleSides4" parent="Entities" unique_id=1192690825 instance=ExtResource("5_45sxx")]
-position = Vector2(7512, 900)
-leftAngle = 86.0
-
-[node name="ForceAngleSides5" parent="Entities" unique_id=1670676530 instance=ExtResource("5_45sxx")]
-position = Vector2(9302, 835)
-leftAngle = 86.0
-
-[node name="ForceAngleSides6" parent="Entities" unique_id=1696690961 instance=ExtResource("5_45sxx")]
-position = Vector2(2586, 579)
-rightAngle = 86.0
-
-[node name="LayerSwitcher" parent="Entities" unique_id=1142746471 instance=ExtResource("6_8iq3b")]
-position = Vector2(4089, 418)
-size = Vector2i(1, 20)
-leftLayer = 0
-
-[node name="LayerSwitcher2" parent="Entities" unique_id=1421965524 instance=ExtResource("6_8iq3b")]
-position = Vector2(4224, 424)
-onlyOnFloor = true
-
-[node name="LayerSwitcher3" parent="Entities" unique_id=824403098 instance=ExtResource("6_8iq3b")]
-position = Vector2(4344, 538)
-size = Vector2i(1, 16)
-
-[node name="LayerSwitcher4" parent="Entities" unique_id=2077646770 instance=ExtResource("6_8iq3b")]
-position = Vector2(6648, 544)
-size = Vector2i(1, 20)
-leftLayer = 0
-
-[node name="LayerSwitcher5" parent="Entities" unique_id=1528868270 instance=ExtResource("6_8iq3b")]
-position = Vector2(6784, 552)
-onlyOnFloor = true
-
-[node name="LayerSwitcher6" parent="Entities" unique_id=575130807 instance=ExtResource("6_8iq3b")]
-position = Vector2(6904, 668)
-size = Vector2i(1, 16)
-
-[node name="LayerSwitcher7" parent="Entities" unique_id=1532183223 instance=ExtResource("6_8iq3b")]
-position = Vector2(7033, 672)
-size = Vector2i(1, 20)
-leftLayer = 0
-
-[node name="LayerSwitcher8" parent="Entities" unique_id=402584690 instance=ExtResource("6_8iq3b")]
-position = Vector2(7168, 680)
-onlyOnFloor = true
-
-[node name="LayerSwitcher9" parent="Entities" unique_id=927062225 instance=ExtResource("6_8iq3b")]
-position = Vector2(7288, 796)
-size = Vector2i(1, 16)
-
-[node name="LayerSwitcher10" parent="Entities" unique_id=2026856318 instance=ExtResource("6_8iq3b")]
-position = Vector2(8697, 416)
-size = Vector2i(1, 20)
-leftLayer = 0
-
-[node name="LayerSwitcher11" parent="Entities" unique_id=1838789248 instance=ExtResource("6_8iq3b")]
-position = Vector2(8832, 424)
-onlyOnFloor = true
-
-[node name="LayerSwitcher12" parent="Entities" unique_id=1957703335 instance=ExtResource("6_8iq3b")]
-position = Vector2(8952, 536)
-size = Vector2i(1, 16)
-
-[node name="CorkscrewLoop" parent="Entities" unique_id=1280297207 instance=ExtResource("7_m23it")]
-position = Vector2(4800, 640)
-
-[node name="CorkscrewLoop2" parent="Entities" unique_id=207367701 instance=ExtResource("7_m23it")]
-position = Vector2(9408, 640)
-length = 2
-
-[node name="Bridge" parent="Entities" unique_id=724398812 instance=ExtResource("12_q4ll3")]
-position = Vector2(1352, 651)
-
-[node name="Bridge2" parent="Entities" unique_id=382909181 instance=ExtResource("12_q4ll3")]
-position = Vector2(4681, 907)
-
-[node name="Bridge3" parent="Entities" unique_id=1889176319 instance=ExtResource("12_q4ll3")]
-position = Vector2(5960, 710)
-length = 10
-
-[node name="Bridge4" parent="Entities" unique_id=473663392 instance=ExtResource("12_q4ll3")]
-position = Vector2(8072, 583)
-
-[node name="Bridge5" parent="Entities" unique_id=1360949168 instance=ExtResource("12_q4ll3")]
-position = Vector2(8328, 583)
-length = 8
-
-[node name="Bridge6" parent="Entities" unique_id=1706627940 instance=ExtResource("12_q4ll3")]
-position = Vector2(8137, 967)
-length = 16
-
-[node name="Bridge7" parent="Entities" unique_id=2074482848 instance=ExtResource("12_q4ll3")]
-position = Vector2(9480, 839)
-
-[node name="Spring" parent="Entities" unique_id=730727187 instance=ExtResource("9_vtcn5")]
-position = Vector2(1928, 883)
-type = 1
-spring_direction = 2
-
-[node name="Spring13" parent="Entities" unique_id=621879932 instance=ExtResource("9_vtcn5")]
-position = Vector2(2223, 569)
-
-[node name="Spring2" parent="Entities" unique_id=594923734 instance=ExtResource("9_vtcn5")]
-position = Vector2(2631, 942)
-type = 1
-spring_direction = 2
-
-[node name="Spring3" parent="Entities" unique_id=1132908806 instance=ExtResource("9_vtcn5")]
-position = Vector2(3640, 915)
-scale = Vector2(-1, 1)
-type = 1
-spring_direction = 3
-
-[node name="Spring4" parent="Entities" unique_id=373381611 instance=ExtResource("9_vtcn5")]
-position = Vector2(3720, 498)
-type = 1
-spring_direction = 2
-
-[node name="Spring5" parent="Entities" unique_id=449045453 instance=ExtResource("9_vtcn5")]
-position = Vector2(4152, 380)
-
-[node name="Spring6" parent="Entities" unique_id=1568090996 instance=ExtResource("9_vtcn5")]
-position = Vector2(5832, 943)
-spring_direction = 2
-
-[node name="Spring8" parent="Entities" unique_id=383094695 instance=ExtResource("9_vtcn5")]
-position = Vector2(9928, 847)
-spring_direction = 2
-
-[node name="Spring7" parent="Entities" unique_id=1069296308 instance=ExtResource("9_vtcn5")]
-position = Vector2(6000, 440)
-
-[node name="Spring9" parent="Entities" unique_id=1304438553 instance=ExtResource("9_vtcn5")]
-position = Vector2(5744, 495)
-spring_direction = 5
-
-[node name="Spring10" parent="Entities" unique_id=1410437605 instance=ExtResource("9_vtcn5")]
-position = Vector2(7313, 663)
-spring_direction = 4
-
-[node name="Spring11" parent="Entities" unique_id=1687138872 instance=ExtResource("9_vtcn5")]
-position = Vector2(7564, 888)
-spring_direction = 5
-
-[node name="Spring12" parent="Entities" unique_id=1971835734 instance=ExtResource("9_vtcn5")]
-position = Vector2(10160, 664)
-spring_direction = 5
-
-[node name="BoundrySetter" parent="Entities" unique_id=1598121200 instance=ExtResource("10_l72nf")]
-position = Vector2(10840, 656)
-leftBoundry = 10400
-topBoundry = 512
-setRight = false
-rightBoundry = 11000
-bottomBoundry = 784
-scroll_time = 4.0
-
-[node name="Platforms" type="Node" parent="." unique_id=826801334]
-
-[node name="Platform" parent="Platforms" unique_id=749932450 instance=ExtResource("11_fl7as")]
-position = Vector2(1988, 620)
-endPosition = Vector2(0, 192)
-floorOffset = 4
-
-[node name="Platform4" parent="Platforms" unique_id=2084681650 instance=ExtResource("11_fl7as")]
-position = Vector2(736, 588)
-endPosition = Vector2(128, 0)
-
-[node name="Platform6" parent="Platforms" unique_id=1461469959 instance=ExtResource("11_fl7as")]
-position = Vector2(7836, 448)
-endPosition = Vector2(192, 0)
-floorOffset = 4
-
-[node name="Platform7" parent="Platforms" unique_id=1425715339 instance=ExtResource("11_fl7as")]
-position = Vector2(8176, 432)
-endPosition = Vector2(192, 0)
-offset = 96.0
-floorOffset = 4
-
-[node name="Platform8" parent="Platforms" unique_id=646784287 instance=ExtResource("11_fl7as")]
-position = Vector2(8512, 400)
-endPosition = Vector2(0, 0)
-fallTimer = 1.0
-floorOffset = 4
-
-[node name="Platform2" parent="Platforms" unique_id=1870265760 instance=ExtResource("11_fl7as")]
-position = Vector2(2306, 620)
-endPosition = Vector2(0, 128)
-offset = 1.0
-floorOffset = 4
-
-[node name="Platform5" parent="Platforms" unique_id=1267850436 instance=ExtResource("11_fl7as")]
-position = Vector2(4048, 368)
-endPosition = Vector2(0, 128)
-floorOffset = 4
-
-[node name="Platform3" parent="Platforms" unique_id=552237086 instance=ExtResource("11_fl7as")]
-position = Vector2(2368, 976)
-platform_sprite = ExtResource("12_g1lo7")
-endPosition = Vector2(0, 64)
-dropSlightly = false
-fullySolid = true
-
-[node name="Hazards" type="Node" parent="." unique_id=320279976]
-
-[node name="Spikes" parent="Hazards" unique_id=1217299292 instance=ExtResource("13_1hpfk")]
-position = Vector2(2319, 1008)
-
-[node name="Spikes10" parent="Hazards" unique_id=931138626 instance=ExtResource("13_1hpfk")]
-position = Vector2(8512, 944)
-
-[node name="Spikes11" parent="Hazards" unique_id=1755389972 instance=ExtResource("13_1hpfk")]
-position = Vector2(8640, 944)
-
-[node name="Spikes2" parent="Hazards" unique_id=1872329798 instance=ExtResource("13_1hpfk")]
-position = Vector2(2416, 1008)
-
-[node name="Spikes5" parent="Hazards" unique_id=53059174 instance=ExtResource("13_1hpfk")]
-position = Vector2(3520, 436)
-
-[node name="Spikes3" parent="Hazards" unique_id=1037281806 instance=ExtResource("13_1hpfk")]
-position = Vector2(2625, 832)
-rotation = 3.14159
-
-[node name="Spikes4" parent="Hazards" unique_id=745074305 instance=ExtResource("13_1hpfk")]
-position = Vector2(2720, 880)
-rotation = 3.14159
-
-[node name="Spikes12" parent="Hazards" unique_id=512321322 instance=ExtResource("13_1hpfk")]
-position = Vector2(3408, 880)
-rotation = 3.14159
-
-[node name="Environment" type="Node" parent="." unique_id=1705680802]
-
-[node name="WaterFallSFX2D" type="AudioStreamPlayer2D" parent="Environment" unique_id=76367549]
-position = Vector2(1440, 704)
-stream = ExtResource("14_bv6o7")
-volume_db = -3.0
-pitch_scale = 1.5
-autoplay = true
-max_distance = 512.0
-attenuation = 1.5
-panning_strength = 0.5
-bus = &"SFX"
-
-[node name="WaterFallSFX2D3" type="AudioStreamPlayer2D" parent="Environment" unique_id=2110451095]
-position = Vector2(4768, 1024)
-stream = ExtResource("14_bv6o7")
-volume_db = -3.0
-pitch_scale = 1.5
-autoplay = true
-max_distance = 512.0
-attenuation = 1.5
-panning_strength = 0.5
-bus = &"SFX"
-
-[node name="WaterFallSFX2D6" type="AudioStreamPlayer2D" parent="Environment" unique_id=843710453]
-position = Vector2(9568, 960)
-stream = ExtResource("14_bv6o7")
-volume_db = -3.0
-pitch_scale = 1.5
-autoplay = true
-max_distance = 512.0
-attenuation = 1.5
-panning_strength = 0.5
-bus = &"SFX"
-
-[node name="WaterFallSFX2D4" type="AudioStreamPlayer2D" parent="Environment" unique_id=546568210]
-position = Vector2(5472, 832)
-stream = ExtResource("14_bv6o7")
-volume_db = -3.0
-pitch_scale = 1.5
-autoplay = true
-max_distance = 512.0
-attenuation = 1.5
-panning_strength = 0.5
-bus = &"SFX"
-
-[node name="WaterFallSFX2D2" type="AudioStreamPlayer2D" parent="Environment" unique_id=1029502667]
-position = Vector2(3104, 702)
-stream = ExtResource("14_bv6o7")
-volume_db = -3.0
-autoplay = true
-max_distance = 768.0
-attenuation = 0.5
-panning_strength = 0.5
-bus = &"SFX"
-
-[node name="WaterFallSFX2D5" type="AudioStreamPlayer2D" parent="Environment" unique_id=108256327]
-position = Vector2(8288, 768)
-stream = ExtResource("14_bv6o7")
-volume_db = -3.0
-autoplay = true
-max_distance = 1024.0
-attenuation = 0.5
-panning_strength = 0.5
-bus = &"SFX"
-
-[node name="Badniks" type="Node" parent="." unique_id=259434112]
-
-[node name="Slicer" parent="Badniks" unique_id=777494846 instance=ExtResource("14_y5flj")]
-position = Vector2(512, 624)
-model = 1
-
-[node name="Slicer3" parent="Badniks" unique_id=1286220937 instance=ExtResource("14_y5flj")]
-position = Vector2(608, 624)
-model = 2
-slicer_tracking_time = 10.0
-
-[node name="Slicer2" parent="Badniks" unique_id=1231075779 instance=ExtResource("14_y5flj")]
-position = Vector2(432, 624)
-
-[node name="Spiny" parent="Badniks" unique_id=973227541 instance=ExtResource("16_iulvr")]
-position = Vector2(960, 576)
-
-[node name="Motobug" parent="Badniks" unique_id=935586277 instance=ExtResource("3_dkinl")]
-position = Vector2(1080, 688)
 
 [node name="Rings" type="Node" parent="." unique_id=746008278]
 
@@ -1047,6 +703,7 @@ offset_bottom = 624.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_dek6d")
+water_level = 768
 camera = NodePath("../CameraP1")
 
 [node name="SubViewportContainer2" type="SubViewportContainer" parent="TwoPlayerScreenView/CanvasLayer" unique_id=490183573]
@@ -1082,4 +739,15 @@ offset_bottom = 624.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_dek6d")
+water_level = 768
 camera = NodePath("../CameraP2")
+
+[node name="BossBoundrySetter" parent="." unique_id=267494378 instance=ExtResource("11_q4ll3")]
+position = Vector2(512, 528)
+bossPath = NodePath("../Boss")
+keepTopLocked = false
+keepRightLocked = false
+keepBottomLocked = false
+
+[node name="Boss" parent="." unique_id=1177046724 instance=ExtResource("12_vmtrv")]
+position = Vector2(512, 536)

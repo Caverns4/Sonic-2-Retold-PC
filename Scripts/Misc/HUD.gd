@@ -496,12 +496,15 @@ func setup_boss_meter(boss: BossBase) -> void:
 	$"Boss Life".visible = true
 	boss.got_hit.connect(boss_hit)
 
+func update_boss_meter_max(boss: BossBase) -> void:
+	boss_max_health = boss.hp
+	boss_current_health = boss.hp
+
 func boss_hit() -> void:
 	boss_current_health -= 1
 	@warning_ignore("integer_division")
 	$"Boss Life/EggMeterFull".set_size(Vector2((128/min(boss_max_health,8))*min(boss_current_health,8),8))
-	if boss_current_health == 0:
-		#disconnect("boss.got_hit",boss_hit)
+	if boss_current_health <= 0:
 		$"Boss Life".visible = false
 
 

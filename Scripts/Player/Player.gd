@@ -1,3 +1,4 @@
+@icon("res://Graphics/EditorUI/player.png")
 class_name Player2D extends PhysicsObject
 # Sonic, Knuckles, Mighty, Ray
 const HITBOXESSONIC = {

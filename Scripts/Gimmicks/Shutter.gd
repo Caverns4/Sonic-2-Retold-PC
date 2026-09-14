@@ -1,5 +1,5 @@
 @tool
-class_name Cutscene_Eggman
+class_name Shuttter
 extends CharacterBody2D
 
 ## Texture2D that the object will be rendered with. Also determines collision size.
@@ -8,9 +8,9 @@ extends CharacterBody2D
 @export_node_path var node_path: NodePath
 
 var open: bool = false
-var playerList = []
+var playerList: Array[Player2D] = []
 
-func _ready():
+func _ready() -> void:
 	if !Engine.is_editor_hint():
 		# set areas
 		$Mask.shape.size = Vector2(texture.get_width(),texture.get_height())

@@ -41,6 +41,8 @@
 [ext_resource type="PackedScene" uid="uid://b7f14jop4aapu" path="res://Entities/Boss/Laser_Eggman/scz_boss_platform.tscn" id="39_x62n7"]
 [ext_resource type="Script" uid="uid://1lcvma8blpgd" path="res://Scripts/Boss/Sky_Fortress_Laser.gd" id="39_y3u1e"]
 [ext_resource type="PackedScene" uid="uid://cyyvgba5rqy12" path="res://Entities/Boss/Laser_Eggman/LaserHolder.tscn" id="40_w0x7d"]
+[ext_resource type="Script" uid="uid://717sk6crjpup" path="res://Scripts/Boss/scz_boss_platform.gd" id="42_ugna3"]
+[ext_resource type="Script" uid="uid://ioiij6aukh60" path="res://Scripts/Misc/AltSpawn.gd" id="43_vq7xd"]
 
 [sub_resource type="Curve2D" id="Curve2D_ulsoj"]
 _data = {
@@ -73,6 +75,7 @@ disablePartner = true
 [node name="Entities" type="Node" parent="." unique_id=993914512]
 
 [node name="Path2D" type="Path2D" parent="Entities" unique_id=677702498]
+visible = false
 position = Vector2(64, 1152)
 curve = SubResource("Curve2D_ulsoj")
 script = ExtResource("8_pdvm3")
@@ -167,6 +170,7 @@ position = Vector2(2192, 1112)
 position = Vector2(2248, 1176)
 
 [node name="Vent_Entrance" parent="Entities" unique_id=1129070729 instance=ExtResource("24_m6rwo")]
+visible = false
 position = Vector2(10584, 1088)
 collision_layer = 65542
 lock_left_camera = 10368
@@ -576,21 +580,34 @@ bossPath = NodePath("../SkyLaser")
 keepTopLocked = false
 keepRightLocked = false
 keepBottomLocked = false
+lockRight = false
 
-[node name="SkyLaser" parent="Boss" unique_id=1540087462 instance=ExtResource("40_w0x7d")]
+[node name="SkyLaser" parent="Boss" unique_id=1540087462 node_paths=PackedStringArray("eggman") instance=ExtResource("40_w0x7d")]
+z_index = 1
 position = Vector2(11136, 1120)
 script = ExtResource("39_y3u1e")
+eggman = NodePath("../Eggman_Mechless")
 
 [node name="Eggman_Mechless" parent="Boss" unique_id=350198519 node_paths=PackedStringArray("controller") instance=ExtResource("38_77ws5")]
 position = Vector2(11360, 1264)
 controller = NodePath("../SkyLaser")
 
-[node name="SCZ_Boss_Platform" parent="Boss" unique_id=939047003 instance=ExtResource("39_x62n7")]
+[node name="SCZ_Boss_Platform" parent="Boss" unique_id=939047003 node_paths=PackedStringArray("controller") instance=ExtResource("39_x62n7")]
+z_index = 1
 position = Vector2(11360, 1292)
 collision_mask = 0
+script = ExtResource("42_ugna3")
+controller = NodePath("../SkyLaser")
 
 [node name="SCZ_Boss_Platform2" parent="Boss" unique_id=5103134 instance=ExtResource("39_x62n7")]
+z_index = 1
 position = Vector2(11136, 1248)
 collision_mask = 0
 
 [node name="Cutscene_Obj" type="Node" parent="." unique_id=1468157296]
+
+[node name="Node2D" type="Node2D" parent="." unique_id=695749698]
+position = Vector2(10472, 1064)
+script = ExtResource("43_vq7xd")
+debug_only = true
+currentCharacter = 0

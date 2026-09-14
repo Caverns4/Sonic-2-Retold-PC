@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://ckrsmw0ki80m7"]
+[gd_scene format=3 uid="uid://ckrsmw0ki80m7"]
 
 [ext_resource type="Script" uid="uid://b7hphh0wa7fwm" path="res://Scripts/Boss/BossBase.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://6ds1jcc8jmyf" path="res://Graphics/Boss/Eggmobile.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://d0i06mnbra5yc" path="res://Graphics/Boss/Robotnik.png" id="3_4ehki"]
 [ext_resource type="Texture2D" uid="uid://c31pi0okhicpx" path="res://Graphics/Boss/Eggmobile_Top.png" id="4_o6854"]
 [ext_resource type="AudioStream" uid="uid://bq25mlko4saoj" path="res://Audio/SFX/Boss/s2br_BossHit.wav" id="5_lqswj"]
+[ext_resource type="AudioStream" uid="uid://u14e5d6axr7x" path="res://Audio/SFX/Boss/s2br_BossExplosion.wav" id="6_n0vwj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8gg6r"]
 atlas = ExtResource("3_4ehki")
@@ -93,40 +94,55 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="5"]
 size = Vector2(48, 48)
 
-[node name="Boss" type="CharacterBody2D"]
+[node name="Boss" type="CharacterBody2D" unique_id=1177046724]
 collision_layer = 16384
 collision_mask = 0
 script = ExtResource("1")
 
-[node name="EggMobile" type="Sprite2D" parent="."]
+[node name="EggMobile" type="Sprite2D" parent="." unique_id=758398964]
 position = Vector2(0, 19)
 texture = ExtResource("3")
 offset = Vector2(0, -8)
 
-[node name="Eggmobile_Top" type="Sprite2D" parent="EggMobile"]
+[node name="Eggmobile_Top" type="Sprite2D" parent="EggMobile" unique_id=741672205]
 position = Vector2(10, -48)
 texture = ExtResource("4_o6854")
 
-[node name="Robotnik" type="AnimatedSprite2D" parent="EggMobile"]
+[node name="Robotnik" type="AnimatedSprite2D" parent="EggMobile" unique_id=1890689789]
 z_index = -1
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_edd2b")
 animation = &"laugh"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=566918796]
 shape = SubResource("5")
 
-[node name="Hit" type="AudioStreamPlayer" parent="."]
+[node name="Hit" type="AudioStreamPlayer" parent="." unique_id=1703905064]
 stream = ExtResource("5_lqswj")
 bus = &"SFX"
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="Explode" type="AudioStreamPlayer" parent="." unique_id=325084176]
+stream = ExtResource("6_n0vwj")
+bus = &"SFX"
+
+[node name="HitBox" type="Area2D" parent="." unique_id=250372109]
 collision_layer = 0
 collision_mask = 528384
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=2055370287]
 modulate = Color(1, 0, 0, 1)
 shape = SubResource("5")
+
+[node name="Timers" type="Node" parent="." unique_id=47528520]
+
+[node name="SmokeTimer" type="Timer" parent="Timers" unique_id=814383302]
+wait_time = 0.25
+
+[node name="FlashTime" type="Timer" parent="Timers" unique_id=366456704]
+one_shot = true
+
+[node name="AnimationTime" type="Timer" parent="Timers" unique_id=623814693]
+one_shot = true
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_DamageArea_area_entered"]
 [connection signal="area_exited" from="HitBox" to="." method="_on_HitBox_area_exited"]

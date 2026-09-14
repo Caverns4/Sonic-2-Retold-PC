@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwr3g232p2psd"]
+[gd_scene format=3 uid="uid://bwr3g232p2psd"]
 
 [ext_resource type="Script" uid="uid://c8x7yqihiij8g" path="res://Scripts/Boss/silver_sonic.gd" id="1_muoi7"]
 [ext_resource type="Texture2D" uid="uid://bkgdgsmqi1lh5" path="res://Graphics/Boss/SilverSonic.png" id="2_muoi7"]
@@ -8,49 +8,56 @@
 [sub_resource type="RectangleShape2D" id="5"]
 size = Vector2(32, 48)
 
-[node name="SilverSonic" type="CharacterBody2D"]
+[node name="SilverSonic" type="CharacterBody2D" unique_id=99207705]
 collision_layer = 16384
 collision_mask = 0
 script = ExtResource("1_muoi7")
 
-[node name="SilverSonic" type="Sprite2D" parent="."]
+[node name="SilverSonic" type="Sprite2D" parent="." unique_id=1463250351]
 position = Vector2(0, -4)
 texture = ExtResource("2_muoi7")
 hframes = 8
 vframes = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="SilverSonic"]
+[node name="Sprite2D" type="Sprite2D" parent="SilverSonic" unique_id=1324840357]
 show_behind_parent = true
 texture = ExtResource("2_muoi7")
 hframes = 8
 vframes = 2
 frame = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=630900388]
 shape = SubResource("5")
 
-[node name="Hit" type="AudioStreamPlayer" parent="."]
+[node name="Hit" type="AudioStreamPlayer" parent="." unique_id=1827517530]
 stream = ExtResource("5_tdqkg")
 bus = &"SFX"
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="HitBox" type="Area2D" parent="." unique_id=1698789700]
 collision_layer = 0
 collision_mask = 528384
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=285212799]
 modulate = Color(1, 0, 0, 1)
 shape = SubResource("5")
 
-[node name="Explode" type="AudioStreamPlayer" parent="."]
+[node name="Explode" type="AudioStreamPlayer" parent="." unique_id=859930251]
 stream = ExtResource("4_d8vsg")
 bus = &"SFX"
 
-[node name="SmokeTimer" type="Timer" parent="."]
-wait_time = 0.1
+[node name="Timers" type="Node" parent="." unique_id=587116754]
+
+[node name="SmokeTimer" type="Timer" parent="Timers" unique_id=1932209694]
+wait_time = 0.25
+
+[node name="FlashTime" type="Timer" parent="Timers" unique_id=1372344124]
+one_shot = true
+
+[node name="AnimationTime" type="Timer" parent="Timers" unique_id=95596949]
+one_shot = true
 
 [connection signal="boss_defeated" from="." to="." method="_on_boss_defeated"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_DamageArea_area_entered"]
 [connection signal="area_exited" from="HitBox" to="." method="_on_HitBox_area_exited"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="HitBox" to="." method="_on_body_exited"]
-[connection signal="timeout" from="SmokeTimer" to="." method="_on_smoke_timer_timeout"]
