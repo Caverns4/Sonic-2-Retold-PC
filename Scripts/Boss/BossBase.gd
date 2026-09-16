@@ -8,6 +8,9 @@ var playerHit: Array = []
 @export var boss_name: String = "Eggman"
 @export var explosion_radius: Vector2 = Vector2(32,32)
 
+@export_group("Components")
+@export var flashing_sprite: Sprite2D = null
+
 const DEATH_TIME: float = 4.0
 
 var forceDamage: bool = false
@@ -46,10 +49,12 @@ func _ready() -> void:
 		flash_time.timeout.connect(_on_flash_timer_timeout)
 		animation_timer.timeout.connect(_on_animation_timer_timeout)
 		smoke_timer.timeout.connect(_on_smoke_timer_timeout)
-		boss_defeated.connect(_on_boss_defeated)
+		boss_defeated.connect(on_first_defeat)
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if active and hp > 0 and vulnerable:
+		update_flashing(delta)
+		
 		# loop through player hit as i
 		for i: Player2D in playerHit:
 			# check if damage entity is on or supertime is bigger then 0
@@ -59,6 +64,7 @@ func _physics_process(_delta: float) -> void:
 			# if destroying the enemy fails and hit player exists then hit player
 			elif i.hit_player(global_position,damageType):
 				emit_signal("hit_player")
+
 
 func knockoff_player(i: Player2D) -> void:
 	i.movement = i.movement*-1 #i.movement*-0.5
@@ -70,6 +76,14 @@ func knockoff_player(i: Player2D) -> void:
 		i.reflective = false
 		if i.get_node_or_null("States/Glide") != null:
 			i.get_node("States/Glide").isFall = true
+
+func update_flashing(_delta:float) -> void:
+	if !flashing_sprite: return
+	# flashing for the egg mobile 
+	if !vulnerable and hp > 0:
+		flashing_sprite.visible = !flashing_sprite.visible
+	else:
+		flashing_sprite.visible = false
 
 func _boss_hit() -> void:
 	hp -= 1
@@ -96,7 +110,7 @@ func _on_body_exited(body: Player2D) -> void:
 		playerHit.erase(body)
 
 # Run when the final hit is dealth
-func _on_boss_defeated() -> void:
+func on_first_defeat() -> void:
 	flash_time.start(DEATH_TIME)
 	set_animation("exploded",DEATH_TIME)
 	defeated_flag = true

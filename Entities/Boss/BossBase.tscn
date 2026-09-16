@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d0i06mnbra5yc" path="res://Graphics/Boss/Robotnik.png" id="3_4ehki"]
 [ext_resource type="Texture2D" uid="uid://c31pi0okhicpx" path="res://Graphics/Boss/Eggmobile_Top.png" id="4_o6854"]
 [ext_resource type="AudioStream" uid="uid://bq25mlko4saoj" path="res://Audio/SFX/Boss/s2br_BossHit.wav" id="5_lqswj"]
+[ext_resource type="Texture2D" uid="uid://bf0ytf63vlq5c" path="res://Graphics/Boss/EggmobileFlash.png" id="5_udyjc"]
 [ext_resource type="AudioStream" uid="uid://u14e5d6axr7x" path="res://Audio/SFX/Boss/s2br_BossExplosion.wav" id="6_n0vwj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8gg6r"]
@@ -94,10 +95,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="5"]
 size = Vector2(48, 48)
 
-[node name="Boss" type="CharacterBody2D" unique_id=1177046724]
+[node name="Boss" type="CharacterBody2D" unique_id=1177046724 node_paths=PackedStringArray("flashing_sprite")]
 collision_layer = 16384
 collision_mask = 0
 script = ExtResource("1")
+flashing_sprite = NodePath("EggMobile/EggFlash")
 
 [node name="EggMobile" type="Sprite2D" parent="." unique_id=758398964]
 position = Vector2(0, 19)
@@ -113,6 +115,11 @@ z_index = -1
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_edd2b")
 animation = &"laugh"
+
+[node name="EggFlash" type="Sprite2D" parent="EggMobile" unique_id=2001331835]
+visible = false
+texture = ExtResource("5_udyjc")
+offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=566918796]
 shape = SubResource("5")

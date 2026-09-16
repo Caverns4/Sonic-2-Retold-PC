@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://de00qf17tl15p" path="res://Scripts/Level/water_overlay_new.gd" id="7_dek6d"]
 [ext_resource type="PackedScene" uid="uid://vh0ailk0432j" path="res://Entities/Boss/BossBoundrySetter.tscn" id="11_q4ll3"]
 [ext_resource type="AudioStream" uid="uid://brayuk75sxk0i" path="res://Audio/SiivaGunner/Emerald Hill Zone 2P SiIvaGunner.ogg" id="11_vb1im"]
-[ext_resource type="PackedScene" uid="uid://ckrsmw0ki80m7" path="res://Entities/Boss/BossBase.tscn" id="12_vmtrv"]
+[ext_resource type="PackedScene" uid="uid://c8yrn3upxlkyv" path="res://Entities/Boss/Wrecking Eggman/WreckingEggman.tscn" id="12_q4ll3"]
 [ext_resource type="Script" uid="uid://2ac4isxha7iy" path="res://Scripts/Level/TwoPlayerScreenView.gd" id="13_uenjp"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="13_vmtrv"]
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="18_8iq3b"]
@@ -660,6 +660,7 @@ position = Vector2(9952, 672)
 position = Vector2(8764, 296)
 
 [node name="TwoPlayerScreenView" type="Control" parent="." unique_id=1346944916]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -670,6 +671,7 @@ script = ExtResource("13_uenjp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="TwoPlayerScreenView" unique_id=1774293400]
 layer = 0
+visible = false
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="TwoPlayerScreenView/CanvasLayer" unique_id=206176310]
 z_as_relative = false
@@ -684,7 +686,7 @@ canvas_item_default_texture_filter = 0
 size = Vector2i(320, 112)
 size_2d_override = Vector2i(320, 224)
 size_2d_override_stretch = true
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="CameraP1" type="Camera2D" parent="TwoPlayerScreenView/CanvasLayer/SubViewportContainer/SubViewport" unique_id=2099784029]
 limit_left = 0
@@ -720,7 +722,7 @@ canvas_item_default_texture_filter = 0
 size = Vector2i(320, 112)
 size_2d_override = Vector2i(320, 224)
 size_2d_override_stretch = true
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="CameraP2" type="Camera2D" parent="TwoPlayerScreenView/CanvasLayer/SubViewportContainer2/SubViewport" unique_id=1399793234]
 limit_left = 0
@@ -743,11 +745,12 @@ water_level = 768
 camera = NodePath("../CameraP2")
 
 [node name="BossBoundrySetter" parent="." unique_id=267494378 instance=ExtResource("11_q4ll3")]
-position = Vector2(512, 528)
-bossPath = NodePath("../Boss")
+position = Vector2(512, 560)
+bossPath = NodePath("../WreckingEggman")
 keepTopLocked = false
 keepRightLocked = false
 keepBottomLocked = false
+lockTop = false
 
-[node name="Boss" parent="." unique_id=1177046724 instance=ExtResource("12_vmtrv")]
-position = Vector2(512, 536)
+[node name="WreckingEggman" parent="." unique_id=2093113368 instance=ExtResource("12_q4ll3")]
+position = Vector2(512, 512)

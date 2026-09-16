@@ -27,14 +27,9 @@ func _ready() -> void:
 		drillCar.connect("carTouched",Callable(self,"_on_drill_eggman_car_car_position"))
 	hp = 255 #Can't kill Eggman til he lands, but can damage him for fun
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	updateDirection()
-	
-	# flashing for the egg mobile 
-	if !vulnerable and hp > 0:
-		$EggMobile/EggFlash.visible = !$EggMobile/EggFlash.visible
-	else:
-		$EggMobile/EggFlash.visible = false
+	update_flashing(delta)
 
 func _physics_process(delta: float) -> void:
 	# move boss
@@ -111,7 +106,7 @@ func updateDirection() -> void:
 	else:
 		$EggMobile.scale.x = 1
 
-func _on_boss_defeated() -> void:
+func on_first_defeat() -> void:
 	super()
 	if drillCar: drillCar.die()
 

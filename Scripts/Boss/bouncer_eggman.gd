@@ -16,10 +16,9 @@ var attackTimer = 0
 var currentPoint = 4
 var laser_y: float = 128
 
-var animationPriority = ["default","move","laugh","hit","exploded"]
 var laser: = preload("res://Entities/Boss/Bouncer Eggman/bouncer_eggman_laser.tscn")
 
-func _ready():
+func _ready() -> void:
 	# move to the set currentPoint position before the boss starts (plus 128 pixels higher)
 	global_position = getPose[currentPoint]+Vector2(0,-1)*160
 	# run laugh function for every time the player gets hit
@@ -27,16 +26,14 @@ func _ready():
 	connect("got_hit",Callable(self,"panic"))
 	super()
 
-func _process(delta):
+func _process(delta: float) -> void:
 	# flame jet (only visible when moving)
 	$EggMobile/EggmobileFlame.visible = !(velocity.x == 0 or $EggMobile/EggmobileFlame.visible)
-	
-	# flashing for the egg mobile 
-	if flashTimer > 0:
-		$EggMobile/EggFlash.visible = !$EggMobile/EggFlash.visible
-	else:
-		$EggMobile/EggFlash.visible = false
-	
+	update_flashing(delta)
+
+
+func scrap(delta:float = 0.0) -> void:
+	var deathTimer: float = 0.0
 	# defeated animation timer (default time is 3 seconds)
 	if defeated_flag and deathTimer > 0:
 		# count down
@@ -200,32 +197,13 @@ func set_animation(animation = "default", time = 0.0):
 		$AnimationTime.start(time)
 
 # boss defeated
-func _on_boss_defeated():
+func on_first_defeat():
 	defeated_flag = true
 	set_animation("hit",1.5)
 	velocity = Vector2.ZERO
 	$SmokeTimer.start(0.01667*7)
 
-# do a laugh for 1 second
-func do_laugh():
-	set_animation("laugh",1)
-
 func panic():
 	if phase == 1 and hp > 0 and eggpod_controller.children:
 		phase = 2
 		velocity = Vector2.ZERO
-
-func _on_SmokeTimer_timeout():
-	# check that deathtimer's still going and that we are actually defeated.
-	if defeated_flag and deathTimer > 1.5:
-		# play explosion sound
-		$Explode.play()
-		# spawn exposion particles
-		var expl = Explosion.instantiate()
-		# set animation
-		expl.play("BossExplosion")
-		expl.z_index = 10
-		# add object
-		get_parent().add_child(expl)
-		# set position reletive to us
-		expl.global_position = global_position+Vector2(randf_range(-32,32),randf_range(-32,32))

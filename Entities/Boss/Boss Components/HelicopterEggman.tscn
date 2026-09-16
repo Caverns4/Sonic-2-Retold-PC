@@ -188,12 +188,13 @@ _data = {
 &"SPIN": SubResource("Animation_mavgo")
 }
 
-[node name="HelicopterEggman" type="CharacterBody2D" unique_id=953478437]
+[node name="HelicopterEggman" type="CharacterBody2D" unique_id=953478437 node_paths=PackedStringArray("flashing_sprite")]
 z_index = 1
 collision_layer = 16384
 collision_mask = 8388608
 script = ExtResource("1_adpj0")
 boss_name = "Egg Drillster"
+flashing_sprite = NodePath("EggMobile/EggFlash")
 
 [node name="EggMobile" type="Sprite2D" parent="." unique_id=30230732]
 position = Vector2(0, 19)
@@ -240,16 +241,6 @@ collision_mask = 528384
 modulate = Color(1, 0, 0, 1)
 shape = SubResource("5")
 
-[node name="LeftPoint" type="Node2D" parent="." unique_id=2011290311]
-position = Vector2(-632, 0)
-
-[node name="RightPoint" type="Node2D" parent="." unique_id=2105544774]
-position = Vector2(72, 0)
-
-[node name="Helicopter" type="AnimationPlayer" parent="." unique_id=1752975989]
-libraries/ = SubResource("AnimationLibrary_fbdxo")
-autoplay = &"SPIN"
-
 [node name="Timers" type="Node" parent="." unique_id=385946752]
 
 [node name="SmokeTimer" type="Timer" parent="Timers" unique_id=759612830]
@@ -260,6 +251,16 @@ one_shot = true
 
 [node name="AnimationTime" type="Timer" parent="Timers" unique_id=1552421820]
 one_shot = true
+
+[node name="LeftPoint" type="Node2D" parent="." unique_id=2011290311]
+position = Vector2(-632, 0)
+
+[node name="RightPoint" type="Node2D" parent="." unique_id=2105544774]
+position = Vector2(72, 0)
+
+[node name="Helicopter" type="AnimationPlayer" parent="." unique_id=1752975989]
+libraries/ = SubResource("AnimationLibrary_fbdxo")
+autoplay = &"SPIN"
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_DamageArea_area_entered"]
 [connection signal="area_exited" from="HitBox" to="." method="_on_HitBox_area_exited"]

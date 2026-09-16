@@ -27,13 +27,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	# flame jet (only visible when moving)
 	$EggMobile/EggmobileFlame.visible = !(velocity.x == 0 or $EggMobile/EggmobileFlame.visible)
-	
-	# flashing for the egg mobile 
-	if !vulnerable and hp > 0:
-		$EggMobile/EggFlash.visible = !$EggMobile/EggFlash.visible
-	else:
-		$EggMobile/EggFlash.visible = false
-	
+	update_flashing(delta)
+	if wrecking_ball: wrecking_ball.position = global_position + Vector2(0,24)
+
+
+func scrap(delta:float = 0.0) -> void:
+	var deathTimer: float = 0.0
 	# defeated animation timer (default time is 3 seconds)
 	if defeated_flag:
 		# if above 0 then count down
@@ -58,8 +57,6 @@ func _process(delta: float) -> void:
 				velocity = Vector2(200,-25)
 				scale.x = -abs(scale.x)
 				_mark_defeated()
-	if wrecking_ball:
-		wrecking_ball.position = global_position + Vector2(0,24)
 
 func _physics_process(delta: float) -> void:
 	super(delta)
@@ -119,33 +116,14 @@ func _physics_process(delta: float) -> void:
 					attackTimer = 0
 
 # boss defeated
-func _on_boss_defeated() -> void:
+func on_first_defeat() -> void:
 	defeated_flag = true
 	set_animation("hit",1.5)
 	velocity = Vector2.ZERO
-	$SmokeTimer.start(0.01667*7)
+	smoke_timer.start(0.01667*7)
 	if wrecking_ball:
 		wrecking_ball.active = false
 		wrecking_ball.set_hazard_collsions(false)
 		await get_tree().create_timer(1.0).timeout
 		wrecking_ball.destroy_chan_and_hazard()
 		wrecking_ball = null
-
-# do a laugh for 1 second
-func do_laugh() -> void:
-	set_animation("laugh",1)
-
-func _on_SmokeTimer_timeout() -> void:
-	# check that deathtimer's still going and that we are actually defeated
-	if defeated_flag and deathTimer > 1.5:
-		# play explosion sound
-		$Explode.play()
-		# spawn exposion particles
-		var expl = Explosion.instantiate()
-		# set animation
-		expl.play("BossExplosion")
-		expl.z_index = 10
-		# add object
-		get_parent().add_child(expl)
-		# set position reletive to us
-		expl.global_position = global_position+Vector2(randf_range(-32,32),randf_range(-32,32))

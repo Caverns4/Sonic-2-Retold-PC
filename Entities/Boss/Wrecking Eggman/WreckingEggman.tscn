@@ -99,12 +99,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="5"]
 size = Vector2(48, 48)
 
-[node name="Robotnik" type="CharacterBody2D" unique_id=2093113368]
+[node name="WreckingEggman" type="CharacterBody2D" unique_id=2093113368 node_paths=PackedStringArray("flashing_sprite")]
 z_index = 1
 collision_layer = 16384
 collision_mask = 0
 script = ExtResource("1_rewhg")
 boss_name = "Egg Wrecker"
+flashing_sprite = NodePath("EggMobile/EggFlash")
 
 [node name="EggMobile" type="Sprite2D" parent="." unique_id=779842042]
 position = Vector2(0, 19)
@@ -156,12 +157,6 @@ position = Vector2(-32, 0)
 [node name="RightPoint" type="Node2D" parent="." unique_id=1212275241]
 position = Vector2(32, 0)
 
-[node name="SmokeTimer" type="Timer" parent="." unique_id=984387679]
-wait_time = 0.1
-
-[node name="AnimationTime" type="Timer" parent="." unique_id=1723827773]
-one_shot = true
-
 [node name="BallAndChain" parent="." unique_id=706640712 instance=ExtResource("9_r1mlw")]
 z_index = -1
 position = Vector2(0, 32)
@@ -170,9 +165,18 @@ chain_size = 0.0
 preview_img = ExtResource("10_e8p81")
 attached_object = ExtResource("11_cykmc")
 
-[connection signal="boss_defeated" from="." to="." method="_on_boss_defeated"]
+[node name="Timers" type="Node" parent="." unique_id=829004654]
+
+[node name="SmokeTimer" type="Timer" parent="Timers" unique_id=651421611]
+wait_time = 0.25
+
+[node name="FlashTime" type="Timer" parent="Timers" unique_id=1141217398]
+one_shot = true
+
+[node name="AnimationTime" type="Timer" parent="Timers" unique_id=428327205]
+one_shot = true
+
 [connection signal="area_entered" from="HitBox" to="." method="_on_DamageArea_area_entered"]
 [connection signal="area_exited" from="HitBox" to="." method="_on_HitBox_area_exited"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="HitBox" to="." method="_on_body_exited"]
-[connection signal="timeout" from="SmokeTimer" to="." method="_on_SmokeTimer_timeout"]

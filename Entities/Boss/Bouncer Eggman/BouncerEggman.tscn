@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://3n283yjcshus"]
+[gd_scene format=3 uid="uid://3n283yjcshus"]
 
 [ext_resource type="Script" uid="uid://kmbg52matmq3" path="res://Scripts/Boss/bouncer_eggman.gd" id="1_xy0pm"]
 [ext_resource type="Texture2D" uid="uid://6ds1jcc8jmyf" path="res://Graphics/Boss/Eggmobile.png" id="2_bpb65"]
@@ -99,103 +99,106 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="5"]
 size = Vector2(48, 48)
 
-[node name="BouncerEggman" type="CharacterBody2D"]
+[node name="BouncerEggman" type="CharacterBody2D" unique_id=1671196113]
 z_index = 3
 collision_layer = 16384
 collision_mask = 0
 script = ExtResource("1_xy0pm")
 boss_name = "Egg Bouncer"
 
-[node name="EggMobile" type="Sprite2D" parent="."]
+[node name="EggMobile" type="Sprite2D" parent="." unique_id=1970902264]
 position = Vector2(0, 19)
 texture = ExtResource("2_bpb65")
 offset = Vector2(0, -8)
 
-[node name="EggmobileFlame" type="Sprite2D" parent="EggMobile"]
+[node name="EggmobileFlame" type="Sprite2D" parent="EggMobile" unique_id=520380087]
 visible = false
 position = Vector2(36, -8)
 texture = ExtResource("3_iwerh")
 
-[node name="Eggmobile_Top" type="Sprite2D" parent="EggMobile"]
+[node name="Eggmobile_Top" type="Sprite2D" parent="EggMobile" unique_id=704300635]
 position = Vector2(10, -48)
 texture = ExtResource("4_el4kk")
 
-[node name="Eggmobile_Laser" type="Sprite2D" parent="EggMobile"]
+[node name="Eggmobile_Laser" type="Sprite2D" parent="EggMobile" unique_id=1895299835]
 position = Vector2(-24, -12)
 texture = ExtResource("5_bpb65")
 
-[node name="Robotnik" type="AnimatedSprite2D" parent="EggMobile"]
+[node name="Robotnik" type="AnimatedSprite2D" parent="EggMobile" unique_id=1025499588]
 z_index = -1
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_x1amu")
 animation = &"laugh"
 
-[node name="EggFlash" type="Sprite2D" parent="EggMobile"]
+[node name="EggFlash" type="Sprite2D" parent="EggMobile" unique_id=1507668969]
 visible = false
 texture = ExtResource("6_l2xn3")
 offset = Vector2(0, -8)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1959236083]
 shape = SubResource("5")
 
-[node name="Hit" type="AudioStreamPlayer" parent="."]
+[node name="Hit" type="AudioStreamPlayer" parent="." unique_id=44311943]
 stream = ExtResource("7_sgf7u")
 bus = &"SFX"
 
-[node name="Explode" type="AudioStreamPlayer" parent="."]
+[node name="Explode" type="AudioStreamPlayer" parent="." unique_id=552445086]
 stream = ExtResource("8_838d0")
 bus = &"SFX"
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="HitBox" type="Area2D" parent="." unique_id=423410480]
 collision_layer = 0
 collision_mask = 528384
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=338114889]
 modulate = Color(1, 0, 0, 1)
 shape = SubResource("5")
 
-[node name="LeftPoint" type="Node2D" parent="."]
+[node name="LeftPoint" type="Node2D" parent="." unique_id=584349889]
 position = Vector2(-128, 8)
 
-[node name="RightPoint" type="Node2D" parent="."]
+[node name="RightPoint" type="Node2D" parent="." unique_id=79276302]
 position = Vector2(128, 8)
 
-[node name="TopPoint" type="Node2D" parent="."]
+[node name="TopPoint" type="Node2D" parent="." unique_id=874951381]
 position = Vector2(0, -64)
 
-[node name="SmokeTimer" type="Timer" parent="."]
-wait_time = 0.1
+[node name="Timers" type="Node" parent="." unique_id=418974682]
 
-[node name="AnimationTime" type="Timer" parent="."]
+[node name="SmokeTimer" type="Timer" parent="Timers" unique_id=418087414]
+wait_time = 0.25
+
+[node name="FlashTime" type="Timer" parent="Timers" unique_id=1289121600]
 one_shot = true
 
-[node name="EggpodController" type="Node2D" parent="."]
+[node name="AnimationTime" type="Timer" parent="Timers" unique_id=351143078]
+one_shot = true
+
+[node name="EggpodController" type="Node2D" parent="." unique_id=1736380559]
 script = ExtResource("10_el4kk")
 
-[node name="EggPod" parent="EggpodController" instance=ExtResource("10_iwerh")]
+[node name="EggPod" parent="EggpodController" unique_id=1653919498 instance=ExtResource("10_iwerh")]
 position = Vector2(-72, 0)
 
-[node name="EggPod2" parent="EggpodController" instance=ExtResource("10_iwerh")]
+[node name="EggPod2" parent="EggpodController" unique_id=565935171 instance=ExtResource("10_iwerh")]
 position = Vector2(-48, -32)
 
-[node name="EggPod3" parent="EggpodController" instance=ExtResource("10_iwerh")]
+[node name="EggPod3" parent="EggpodController" unique_id=1300176397 instance=ExtResource("10_iwerh")]
 position = Vector2(-16, -56)
 
-[node name="EggPod4" parent="EggpodController" instance=ExtResource("10_iwerh")]
+[node name="EggPod4" parent="EggpodController" unique_id=1628785367 instance=ExtResource("10_iwerh")]
 position = Vector2(16, -56)
 
-[node name="EggPod5" parent="EggpodController" instance=ExtResource("10_iwerh")]
+[node name="EggPod5" parent="EggpodController" unique_id=1286329252 instance=ExtResource("10_iwerh")]
 position = Vector2(56, -32)
 
-[node name="EggPod6" parent="EggpodController" instance=ExtResource("10_iwerh")]
+[node name="EggPod6" parent="EggpodController" unique_id=1539240937 instance=ExtResource("10_iwerh")]
 position = Vector2(72, 0)
 
-[node name="EggPod7" parent="EggpodController" instance=ExtResource("10_iwerh")]
+[node name="EggPod7" parent="EggpodController" unique_id=58395045 instance=ExtResource("10_iwerh")]
 position = Vector2(0, 56)
 
-[connection signal="boss_defeated" from="." to="." method="_on_boss_defeated"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_DamageArea_area_entered"]
 [connection signal="area_exited" from="HitBox" to="." method="_on_HitBox_area_exited"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="HitBox" to="." method="_on_body_exited"]
-[connection signal="timeout" from="SmokeTimer" to="." method="_on_SmokeTimer_timeout"]

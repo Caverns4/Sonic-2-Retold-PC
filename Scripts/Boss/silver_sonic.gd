@@ -1,11 +1,11 @@
 extends BossBase
 
-func _process(_delta):
+func _process(_delta) -> void:
 	pass
 
 
-func set_animation(animation: StringName = "default", time: float = 0.0) -> void:
+func set_animation(_animation: StringName = "default", _time: float = 0.0) -> void:
 	pass
 
-func _on_boss_defeated() -> void:
+func on_first_defeat() -> void:
 	super()

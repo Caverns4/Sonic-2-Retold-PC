@@ -165,10 +165,15 @@ collision_mask = 528384
 modulate = Color(1, 0, 0, 1)
 shape = SubResource("5")
 
-[node name="SmokeTimer" type="Timer" parent="." unique_id=1067387721]
-wait_time = 0.1
+[node name="Timers" type="Node" parent="." unique_id=798389919]
 
-[node name="AnimationTime" type="Timer" parent="." unique_id=1531517567]
+[node name="SmokeTimer" type="Timer" parent="Timers" unique_id=573883989]
+wait_time = 0.25
+
+[node name="FlashTime" type="Timer" parent="Timers" unique_id=1761811773]
+one_shot = true
+
+[node name="AnimationTime" type="Timer" parent="Timers" unique_id=764373917]
 one_shot = true
 
 [node name="LeftPoint" type="Node2D" parent="." unique_id=736255200]
@@ -177,9 +182,7 @@ position = Vector2(-128, 0)
 [node name="RightPoint" type="Node2D" parent="." unique_id=1451549287]
 position = Vector2(128, 0)
 
-[connection signal="boss_defeated" from="." to="." method="_on_boss_defeated"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_DamageArea_area_entered"]
 [connection signal="area_exited" from="HitBox" to="." method="_on_HitBox_area_exited"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="HitBox" to="." method="_on_body_exited"]
-[connection signal="timeout" from="SmokeTimer" to="." method="_on_smoke_timer_timeout"]
