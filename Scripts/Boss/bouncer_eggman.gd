@@ -6,14 +6,14 @@ var attackTimer = 0
 
 @onready var eggpod_controller: Node2D = $EggpodController
 @onready var bulletpoint: = $EggMobile/Eggmobile_Laser
-@onready var getPose = [
+@onready var getPose: Array[Vector2] = [
 	$LeftPoint.global_position,
 	$RightPoint.global_position,
 	$LeftPoint.global_position,
 	$RightPoint.global_position,
 	$TopPoint.global_position
 	]
-var currentPoint = 4
+var currentPoint: int = 4
 var laser_y: float = 128
 
 var laser: = preload("res://Entities/Boss/Bouncer Eggman/bouncer_eggman_laser.tscn")
@@ -72,8 +72,8 @@ func _physics_process(delta):
 					velocity = ((getPose[0].lerp(getPose[1],0.5)-global_position)*60).limit_length(64)
 				elif attackTimer < 2:
 					# do laugh
-					if flashTimer <= 0:
-						set_animation("laugh")
+					if vulnerable:
+						do_laugh()
 					velocity = Vector2.ZERO
 					attackTimer += delta
 				else: # end intro
@@ -149,59 +149,11 @@ func _physics_process(delta):
 						laser_y = 96
 						currentPoint = wrapi(currentPoint+1,0,2)
 
-
-	# default reactions (use animation time to avoid running this every frame)
-	if $AnimationTime.is_stopped():
-		# if moving, then run move animation
-		if velocity.x != 0:
-			set_animation("move")
-		# check if defeated, this can cause a conflict where the idle animation would play when it shouldn't
-		elif !defeated_flag:
-			set_animation("default")
-	# only run hit if flash timer is above 0
-	if flashTimer > 0:
-		set_animation("hit",flashTimer)
-
-# Updated to allow precise calculate per-frame(hopefully)
-func updateHoveringPos(delta):
-	# change the hover offset
-	global_position.y = global_position.y-hoverOffset
-	hoverOffset = move_toward(hoverOffset,cos(Global.levelTime*4)*4,delta*10)
-	call_deferred("restore_hover_pose")
-
-func restore_hover_pose():
-	global_position.y = global_position.y+hoverOffset
-
 func fire_laser():
 	var bullet = laser.instantiate()
 	bullet.global_position = bulletpoint.global_position
 	bullet.speed *= scale.x
 	get_parent().add_child(bullet)
-
-
-# animation to play, time is how long the animation should play for until it stops
-func set_animation(animation = "default", time = 0.0):
-	# check that the animation exists in the animationPriority list
-	if animationPriority.has(animation):
-		# if the animation exists then compare the position
-		var animID = animationPriority.find(animation)
-		var currentAnimID = animationPriority.find($EggMobile/Robotnik.animation)
-		
-		# if the new animation ID is higher then the current one or the animation time isn't running then play the animation
-		if animID > currentAnimID or $AnimationTime.is_stopped():
-			$EggMobile/Robotnik.play(animation)
-			$AnimationTime.start(time)
-	# if there is no priority set then just run the new animation
-	else:
-		$EggMobile/Robotnik.play(animation)
-		$AnimationTime.start(time)
-
-# boss defeated
-func on_first_defeat():
-	defeated_flag = true
-	set_animation("hit",1.5)
-	velocity = Vector2.ZERO
-	$SmokeTimer.start(0.01667*7)
 
 func panic():
 	if phase == 1 and hp > 0 and eggpod_controller.children:

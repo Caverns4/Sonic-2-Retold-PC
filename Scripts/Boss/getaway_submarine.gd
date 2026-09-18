@@ -1,15 +1,12 @@
 extends BossBase
 
 # you can use these to control behaviour
-var phase = 0
-var soundTimer = 0.0
+var phase: int = 0
 
 @onready var getPose = [$TopPoint.global_position,$BottomPoint.global_position]
-var currentPoint = 1
+var currentPoint: int = 1
 
-var direction = -1 #left is -1, right is 1
-
-var targetPosition = Vector2.ZERO
+var targetPosition: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	# move to the set currentPoint position before the boss starts (plus 128 pixels higher)
@@ -46,7 +43,7 @@ func scrap(delta:float = 0.0) -> void:
 				#scale.x = -abs(scale.x)
 				_mark_defeated()
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	# move boss
 	global_position += velocity*delta
 	# check if alive
@@ -67,51 +64,3 @@ func _physics_process(delta):
 	
 	updateHoveringPos(delta)
 	super(delta)
-	# default reactions (use animation time to avoid running this every frame)
-	if $AnimationTime.is_stopped():
-		# if moving, then run move animation
-		if velocity.x != 0:
-			set_animation("move")
-		elif !defeated_flag:
-			set_animation("default")
-	# only run hit if flash timer is above 0
-	if flashTimer > 0:
-		set_animation("hit",flashTimer)
-	
-
-func updateHoveringPos(delta):
-	# change the hover offset
-	global_position.y = global_position.y-hoverOffset
-	hoverOffset = move_toward(hoverOffset,cos(Global.levelTime*4)*4,delta*10)
-	global_position.y = global_position.y+hoverOffset
-
-
-# animation to play, time is how long the animation should play for until it stops
-func set_animation(animation = "default", time = 0.0):
-	# check that the animation exists in the animationPriority list
-	if animationPriority.has(animation):
-		# if the animation exists then compare the position
-		var animID = animationPriority.find(animation)
-		var currentAnimID = animationPriority.find($EggMobile/Robotnik.animation)
-		
-		# if the new animation ID is higher then the current one or the animation time isn't running then play the animation
-		if animID > currentAnimID or $AnimationTime.is_stopped():
-			$EggMobile/Robotnik.play(animation)
-			$AnimationTime.start(time)
-	# if there is no priority set then just run the new animation
-	else:
-		$EggMobile/Robotnik.play(animation)
-		$AnimationTime.start(time)
-
-func updateDirection():
-	if direction > 0:
-		$EggMobile.scale.x = -1
-	else:
-		$EggMobile.scale.x = 1
-
-
-func on_first_defeat() -> void:
-	defeated_flag = true
-	set_animation("hit",1.5)
-	velocity = Vector2.ZERO
-	$SmokeTimer.start(0.01667*7)

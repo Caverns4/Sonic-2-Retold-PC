@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bp678wjhmnwip"]
+[gd_scene format=3 uid="uid://bp678wjhmnwip"]
 
 [ext_resource type="Script" uid="uid://cgclb7bmicgdq" path="res://Scripts/Boss/getaway_submarine.gd" id="1_afvjp"]
 [ext_resource type="Texture2D" uid="uid://k1klsldgs5tk" path="res://Graphics/Boss/OOZ/Boss_SubMarineEggman.png" id="2_uuclc"]
@@ -94,56 +94,61 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="5"]
 size = Vector2(96, 48)
 
-[node name="GetawaySubmarine" type="CharacterBody2D"]
+[node name="GetawaySubmarine" type="CharacterBody2D" unique_id=951483605 node_paths=PackedStringArray("flashing_sprite")]
 collision_layer = 16384
 collision_mask = 0
 script = ExtResource("1_afvjp")
 boss_name = "Egg Diver"
+flashing_sprite = NodePath("EggMobile/EggFlash")
 
-[node name="EggMobile" type="Sprite2D" parent="."]
+[node name="EggMobile" type="Sprite2D" parent="." unique_id=196275455]
 texture = ExtResource("2_uuclc")
 
-[node name="Robotnik" type="AnimatedSprite2D" parent="EggMobile"]
+[node name="Robotnik" type="AnimatedSprite2D" parent="EggMobile" unique_id=1193393591]
 z_index = 1
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_mca0c")
 
-[node name="EggFlash" type="Sprite2D" parent="EggMobile"]
+[node name="EggFlash" type="Sprite2D" parent="EggMobile" unique_id=970881044]
+visible = false
 texture = ExtResource("4_uyxo0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=644875254]
 shape = SubResource("5")
 
-[node name="Hit" type="AudioStreamPlayer" parent="."]
+[node name="Hit" type="AudioStreamPlayer" parent="." unique_id=2128873848]
 stream = ExtResource("5_3ovpq")
 bus = &"SFX"
 
-[node name="Explode" type="AudioStreamPlayer" parent="."]
+[node name="Explode" type="AudioStreamPlayer" parent="." unique_id=1740283112]
 stream = ExtResource("6_2uh3b")
 bus = &"SFX"
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="Timers" type="Node" parent="." unique_id=1798933919]
+
+[node name="SmokeTimer" type="Timer" parent="Timers" unique_id=620275373]
+wait_time = 0.25
+
+[node name="FlashTime" type="Timer" parent="Timers" unique_id=549619693]
+one_shot = true
+
+[node name="AnimationTime" type="Timer" parent="Timers" unique_id=1646218440]
+one_shot = true
+
+[node name="HitBox" type="Area2D" parent="." unique_id=744481210]
 collision_layer = 0
 collision_mask = 528384
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1723585823]
 modulate = Color(1, 0, 0, 1)
 shape = SubResource("5")
 
-[node name="SmokeTimer" type="Timer" parent="."]
-wait_time = 0.1
+[node name="TopPoint" type="Node2D" parent="." unique_id=1370456179]
 
-[node name="AnimationTime" type="Timer" parent="."]
-one_shot = true
-
-[node name="TopPoint" type="Node2D" parent="."]
-
-[node name="BottomPoint" type="Node2D" parent="."]
+[node name="BottomPoint" type="Node2D" parent="." unique_id=520394233]
 position = Vector2(0, 80)
 
-[connection signal="boss_defeated" from="." to="." method="_on_boss_defeated"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_DamageArea_area_entered"]
 [connection signal="area_exited" from="HitBox" to="." method="_on_HitBox_area_exited"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="HitBox" to="." method="_on_body_exited"]
-[connection signal="timeout" from="SmokeTimer" to="." method="_on_smoke_timer_timeout"]

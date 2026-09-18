@@ -11,6 +11,8 @@ var playerHit: Array = []
 @export_group("Components")
 @export var flashing_sprite: Sprite2D = null
 
+var direction: int = -1 #left is -1, right is 1
+
 const DEATH_TIME: float = 4.0
 
 var forceDamage: bool = false
@@ -111,11 +113,17 @@ func _on_body_exited(body: Player2D) -> void:
 
 # Run when the final hit is dealth
 func on_first_defeat() -> void:
+	defeated_flag = true
 	flash_time.start(DEATH_TIME)
 	set_animation("exploded",DEATH_TIME)
-	defeated_flag = true
 	velocity = Vector2.ZERO
 	smoke_timer.start(0.01667*7)
+
+func updateDirection() -> void:
+	if direction > 0:
+		$EggMobile.scale.x = -1
+	else:
+		$EggMobile.scale.x = 1
 
 # Laugh for 1 second
 func do_laugh() -> void:
@@ -131,6 +139,16 @@ func set_animation(animation: StringName = "default", time: float = 0.0) -> void
 	if eggman_face: eggman_face.play(animation)
 	if time: animation_timer.start(time)
 
+
+# Updated to allow precise calculate per-frame(hopefully)
+func updateHoveringPos(delta: float) -> void:
+	# change the hover offset
+	global_position.y = global_position.y-hoverOffset
+	hoverOffset = move_toward(hoverOffset,cos(Global.levelTime*4)*4,delta*10)
+	call_deferred("restore_hover_pose")
+
+func restore_hover_pose() -> void:
+	global_position.y = global_position.y+hoverOffset
 
 func _on_DamageArea_area_entered(area: Area2D) -> void:
 	# damage checking
@@ -152,7 +170,6 @@ func _on_flash_timer_timeout() -> void:
 		vulnerable = true
 	else:
 		await start_defeated_phase()
-
 
 func start_defeated_phase() -> void:
 	smoke_timer.stop()

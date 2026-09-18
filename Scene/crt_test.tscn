@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://de00qf17tl15p" path="res://Scripts/Level/water_overlay_new.gd" id="7_dek6d"]
 [ext_resource type="PackedScene" uid="uid://vh0ailk0432j" path="res://Entities/Boss/BossBoundrySetter.tscn" id="11_q4ll3"]
 [ext_resource type="AudioStream" uid="uid://brayuk75sxk0i" path="res://Audio/SiivaGunner/Emerald Hill Zone 2P SiIvaGunner.ogg" id="11_vb1im"]
-[ext_resource type="PackedScene" uid="uid://c8yrn3upxlkyv" path="res://Entities/Boss/Wrecking Eggman/WreckingEggman.tscn" id="12_q4ll3"]
+[ext_resource type="PackedScene" uid="uid://bp678wjhmnwip" path="res://Entities/Boss/Submarine Eggman/GetawaySubmarine.tscn" id="12_q4ll3"]
 [ext_resource type="Script" uid="uid://2ac4isxha7iy" path="res://Scripts/Level/TwoPlayerScreenView.gd" id="13_uenjp"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="13_vmtrv"]
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="18_8iq3b"]
@@ -746,11 +746,15 @@ camera = NodePath("../CameraP2")
 
 [node name="BossBoundrySetter" parent="." unique_id=267494378 instance=ExtResource("11_q4ll3")]
 position = Vector2(512, 560)
-bossPath = NodePath("../WreckingEggman")
+bossPath = NodePath("../GetawaySubmarine")
 keepTopLocked = false
 keepRightLocked = false
 keepBottomLocked = false
 lockTop = false
 
-[node name="WreckingEggman" parent="." unique_id=2093113368 instance=ExtResource("12_q4ll3")]
-position = Vector2(512, 512)
+[node name="GetawaySubmarine" parent="." unique_id=674120151 instance=ExtResource("12_q4ll3")]
+position = Vector2(512, 640)
+damageType = null
+hp = null
+hit_time = null
+explosion_radius = null

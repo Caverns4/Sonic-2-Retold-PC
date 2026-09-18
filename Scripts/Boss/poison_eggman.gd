@@ -1,20 +1,17 @@
 extends BossBase
 
 # you can use these to control behaviour
-var phase = 0
-var soundTimer = 0.0
+var phase: int = 0
 
-@onready var getPose = [$LeftPoint.global_position,$RightPoint.global_position]
+@onready var getPose: Array[Vector2] = [$LeftPoint.global_position,$RightPoint.global_position]
 @onready var pump = $EggMobile/WaterPump
 @onready var pipe = $PipeTexture
-var currentPoint = 1
+var currentPoint: int = 1
 
 var pipe_extension = 0
-var state_timer = 0
+var state_timer: float = 0
 
-var direction = -1 #left is -1, right is 1
-
-var targetPosition = Vector2.ZERO
+var targetPosition: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	# move to the set currentPoint position before the boss starts (plus 128 pixels higher)
@@ -26,6 +23,43 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	updateDirection()
 	update_flashing(delta)
+
+func _physics_process(delta: float) -> void:
+	# move boss
+	global_position += velocity*delta
+	# check if alive
+	if active and !defeated_flag:
+		# boss phase
+		match(phase):
+			0: # intro
+				#if flashTimer <= 0:
+				set_animation("laugh") #laugh
+				velocity = Vector2.ZERO
+				hp = 8
+				phase = 1
+			1: # Pump Poison
+				if pump and pipe:
+					if pipe_extension < 128:
+						pipe_extension += delta*256
+					if pump.fluid_level > 4:
+						phase += 1
+						print("Track Player")
+			2: # Track Player 1, dunk water
+				if pump and pipe:
+					if pipe_extension > 0:
+						pipe_extension -= delta*256
+						
+					pass
+			3: # Wait for Mega Mack to be destroyed
+				pass
+			4: # 
+				pass
+			8:
+				pass
+	
+	set_pipe_extension(delta)
+	super(delta)
+
 
 func scrap(delta:float = 0.0) -> void:
 	var deathTimer: float = 0.0
@@ -57,67 +91,13 @@ func scrap(delta:float = 0.0) -> void:
 				#scale.x = -abs(scale.x)
 				_mark_defeated()
 
-func _physics_process(delta):
-	# move boss
-	global_position += velocity*delta
-	# check if alive
-	if active and !defeated_flag:
-		# boss phase
-		match(phase):
-			0: # intro
-				#if flashTimer <= 0:
-				set_animation("laugh") #laugh
-				velocity = Vector2.ZERO
-				hp = 8
-				phase = 1
-			1: # Pump Poison
-				if pump and pipe:
-					if pipe_extension < 128:
-						pipe_extension += delta*256
-					if pump.fluid_level > 4:
-						phase += 1
-						print("Track Player")
-			2: # Track Player 1, dunk water
-				if pump and pipe:
-					if pipe_extension > 0:
-						pipe_extension -= delta*256
-						
-					pass
-			3: # Wait for Mega Mack to be destroyed
-				pass
-			4: # 
-				pass
-	
-	set_pipe_extension(delta)
-	super(delta)
-	# default reactions (use animation time to avoid running this every frame)
-	if $AnimationTime.is_stopped():
-		# if moving, then run move animation
-		if velocity.x != 0:
-			set_animation("move")
-		elif !defeated_flag:
-			set_animation("default")
-	# only run hit if flash timer is above 0
-	if flashTimer > 0:
-		set_animation("hit",flashTimer)
-
-
-func updateHoveringPos(delta):
-	# change the hover offset
-	global_position.y = global_position.y-hoverOffset
-	hoverOffset = move_toward(hoverOffset,cos(Global.levelTime*4)*4,delta*10)
-	call_deferred("restore_hover_pose")
-
-func restore_hover_pose():
-	global_position.y = global_position.y+hoverOffset
-
-func set_pipe_extension(delta):
+func set_pipe_extension(delta: float) -> void:
 	if pipe:
-		var d0 = 16 + pipe_extension
+		var d0: float = 16 + pipe_extension
 		$PipeTexture.size.y = d0
 		if pipe_extension > 128:
-			var d1 = $PumpPosition.global_position.y
-			var d2 = $PipeTexture.global_position.y
+			var d1: float = $PumpPosition.global_position.y
+			var d2: float = $PipeTexture.global_position.y
 			d1 -= 128*delta
 			if d1 <= d2 and pump:
 				pump.fluid_level += 1
@@ -126,24 +106,14 @@ func set_pipe_extension(delta):
 			$PumpPosition.global_position.y = d1
 		$PumpPosition.visible = (pipe_extension > 128)
 
-func updateDirection():
-	if direction > 0:
-		$EggMobile.scale.x = -1
-	else:
-		$EggMobile.scale.x = 1
-
 
 func on_first_defeat() -> void:
-	defeated_flag = true
-	set_animation("hit",1.5)
-	velocity = Vector2.ZERO
-	$SmokeTimer.start(0.01667*7)
-	
+	super()
 	$PipeTexture.queue_free()
 	$PumpPosition.queue_free()
 	pipe = null
 	if pump:
-		var d0 = pump.global_position
+		var d0: Vector2 = pump.global_position
 		pump.top_level = true
 		pump.global_position = d0
 		pump.velocity.x = -3*direction

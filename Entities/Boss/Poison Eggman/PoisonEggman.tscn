@@ -99,11 +99,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="5"]
 size = Vector2(48, 48)
 
-[node name="PoisonEggman" type="CharacterBody2D" unique_id=760537518]
+[node name="PoisonEggman" type="CharacterBody2D" unique_id=760537518 node_paths=PackedStringArray("flashing_sprite")]
 collision_layer = 16384
 collision_mask = 0
 script = ExtResource("1_30xqr")
 boss_name = "Egg Poison"
+flashing_sprite = NodePath("EggMobile/EggFlash")
 
 [node name="PipeTexture" type="TextureRect" parent="." unique_id=427113238]
 offset_left = -2.0
@@ -182,6 +183,7 @@ position = Vector2(-128, 0)
 [node name="RightPoint" type="Node2D" parent="." unique_id=1451549287]
 position = Vector2(128, 0)
 
+[connection signal="boss_defeated" from="." to="." method="_on_boss_defeated"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_DamageArea_area_entered"]
 [connection signal="area_exited" from="HitBox" to="." method="_on_HitBox_area_exited"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_body_entered"]

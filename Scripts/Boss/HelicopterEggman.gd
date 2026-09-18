@@ -9,8 +9,6 @@ var soundTimer: float = 0.0
 @onready var getPose: Array[Vector2] = [$LeftPoint.global_position,$RightPoint.global_position]
 var currentPoint: int = 1
 
-var direction: int = -1 #left is -1, right is 1
-
 @onready var topAnimator: AnimationPlayer = $Helicopter
 var drillCar: CharacterBody2D = null
 var readyEnterCar: bool = false
@@ -94,18 +92,6 @@ func _boss_hit() -> void:
 	if hp <=1 and drillCar:
 		drillCar.readyToLaunch = true
 
-func updateHoveringPos(delta: float) -> void:
-	# change the hover offset
-	global_position.y = global_position.y-hoverOffset
-	hoverOffset = move_toward(hoverOffset,cos(Global.levelTime*4)*4,delta*10)
-	global_position.y = global_position.y+hoverOffset
-
-func updateDirection() -> void:
-	if direction > 0:
-		$EggMobile.scale.x = -1
-	else:
-		$EggMobile.scale.x = 1
-
 func on_first_defeat() -> void:
 	super()
 	if drillCar: drillCar.die()
@@ -115,7 +101,7 @@ func start_defeated_phase() -> void:
 	z_index = 3
 	$EggMobile/EggmobileFlame.visible = !(velocity.x == 0 or $EggMobile/EggmobileFlame.visible)
 	phase = 8
-	topAnimator.play("OPEN")
+	topAnimator.play("SPIN")
 	await get_tree().create_timer(1.0).timeout
 	_mark_defeated()
 

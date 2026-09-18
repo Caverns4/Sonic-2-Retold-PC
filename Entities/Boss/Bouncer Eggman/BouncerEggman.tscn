@@ -99,12 +99,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="5"]
 size = Vector2(48, 48)
 
-[node name="BouncerEggman" type="CharacterBody2D" unique_id=1671196113]
+[node name="BouncerEggman" type="CharacterBody2D" unique_id=1671196113 node_paths=PackedStringArray("flashing_sprite")]
 z_index = 3
 collision_layer = 16384
 collision_mask = 0
 script = ExtResource("1_xy0pm")
 boss_name = "Egg Bouncer"
+flashing_sprite = NodePath("EggMobile/EggFlash")
 
 [node name="EggMobile" type="Sprite2D" parent="." unique_id=1970902264]
 position = Vector2(0, 19)
@@ -198,6 +199,7 @@ position = Vector2(72, 0)
 [node name="EggPod7" parent="EggpodController" unique_id=58395045 instance=ExtResource("10_iwerh")]
 position = Vector2(0, 56)
 
+[connection signal="boss_defeated" from="." to="." method="_on_boss_defeated"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_DamageArea_area_entered"]
 [connection signal="area_exited" from="HitBox" to="." method="_on_HitBox_area_exited"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_body_entered"]
