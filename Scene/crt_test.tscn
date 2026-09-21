@@ -3,12 +3,20 @@
 [ext_resource type="Script" uid="uid://b8tktdmoqx6ix" path="res://Scripts/Level/Level.gd" id="1_vmtrv"]
 [ext_resource type="PackedScene" uid="uid://chfpewpugtp61" path="res://Scene/level_layouts/layout_ehz_1.scn" id="2_dkinl"]
 [ext_resource type="Shader" uid="uid://bl6rkxasb1wlh" path="res://Shaders/Waterpalette.gdshader" id="4_dkinl"]
+[ext_resource type="PackedScene" uid="uid://c1ldunfxhq0he" path="res://Entities/Obstacles/ForceAngleSides.tscn" id="5_110fn"]
 [ext_resource type="Texture2D" uid="uid://t83ys4beivkw" path="res://Graphics/Palettes/NGHZ_Pal_Dry.png" id="5_dek6d"]
+[ext_resource type="PackedScene" uid="uid://dkn7hhll7o4or" path="res://Entities/MainObjects/LayerSwitcher.tscn" id="6_6q1oj"]
 [ext_resource type="Texture2D" uid="uid://bwnjh5ghvt0xs" path="res://Graphics/Palettes/NGHZ_Pal_Wet.png" id="6_ebf1g"]
 [ext_resource type="Script" uid="uid://de00qf17tl15p" path="res://Scripts/Level/water_overlay_new.gd" id="7_dek6d"]
+[ext_resource type="PackedScene" uid="uid://fn82q8rojkjl" path="res://Entities/Gimmicks/CorkscrewLoop.tscn" id="7_j3h70"]
+[ext_resource type="PackedScene" uid="uid://bg66ofhfkxsx6" path="res://Entities/Gimmicks/Bridge.tscn" id="8_wfulo"]
+[ext_resource type="PackedScene" uid="uid://4q0hpddgto2k" path="res://Entities/Gimmicks/Spring.tscn" id="9_45sxx"]
+[ext_resource type="PackedScene" uid="uid://bgodeg4oddje6" path="res://Entities/MainObjects/BoundrySetter.tscn" id="10_8iq3b"]
+[ext_resource type="PackedScene" uid="uid://dasp221fqgrno" path="res://Entities/Obstacles/Platform.tscn" id="11_j3h70"]
 [ext_resource type="PackedScene" uid="uid://vh0ailk0432j" path="res://Entities/Boss/BossBoundrySetter.tscn" id="11_q4ll3"]
 [ext_resource type="AudioStream" uid="uid://brayuk75sxk0i" path="res://Audio/SiivaGunner/Emerald Hill Zone 2P SiIvaGunner.ogg" id="11_vb1im"]
 [ext_resource type="PackedScene" uid="uid://bp678wjhmnwip" path="res://Entities/Boss/Submarine Eggman/GetawaySubmarine.tscn" id="12_q4ll3"]
+[ext_resource type="Texture2D" uid="uid://ci13nuikdwatn" path="res://Graphics/Tiles/EHZ_HTZ/EHZ_Platform_Large.png" id="12_wfulo"]
 [ext_resource type="Script" uid="uid://2ac4isxha7iy" path="res://Scripts/Level/TwoPlayerScreenView.gd" id="13_uenjp"]
 [ext_resource type="PackedScene" uid="uid://cioq5saowvqxj" path="res://Entities/MainObjects/Player.tscn" id="13_vmtrv"]
 [ext_resource type="PackedScene" uid="uid://dggjdwwkl527b" path="res://Entities/Items/Ring.tscn" id="18_8iq3b"]
@@ -35,6 +43,224 @@ defaultBottomBoundry = 1024
 
 [node name="Player" parent="." unique_id=1883722392 instance=ExtResource("13_vmtrv")]
 position = Vector2(64, 656)
+
+[node name="Entities" type="Node" parent="." unique_id=142647335]
+
+[node name="ForceAngleSides" parent="Entities" unique_id=1087625929 instance=ExtResource("5_110fn")]
+position = Vector2(1238, 642)
+leftAngle = 86.0
+
+[node name="ForceAngleSides2" parent="Entities" unique_id=2006380520 instance=ExtResource("5_110fn")]
+position = Vector2(4310, 899)
+leftAngle = 86.0
+
+[node name="ForceAngleSides3" parent="Entities" unique_id=268753216 instance=ExtResource("5_110fn")]
+position = Vector2(5336, 640)
+leftAngle = 86.0
+
+[node name="ForceAngleSides4" parent="Entities" unique_id=1065000617 instance=ExtResource("5_110fn")]
+position = Vector2(7512, 900)
+leftAngle = 86.0
+
+[node name="ForceAngleSides5" parent="Entities" unique_id=237898069 instance=ExtResource("5_110fn")]
+position = Vector2(9302, 835)
+leftAngle = 86.0
+
+[node name="ForceAngleSides6" parent="Entities" unique_id=1224161972 instance=ExtResource("5_110fn")]
+position = Vector2(2586, 579)
+rightAngle = 86.0
+
+[node name="LayerSwitcher" parent="Entities" unique_id=91069707 instance=ExtResource("6_6q1oj")]
+position = Vector2(4089, 418)
+size = Vector2i(1, 20)
+leftLayer = 0
+
+[node name="LayerSwitcher2" parent="Entities" unique_id=49982290 instance=ExtResource("6_6q1oj")]
+position = Vector2(4224, 424)
+onlyOnFloor = true
+
+[node name="LayerSwitcher3" parent="Entities" unique_id=1846457549 instance=ExtResource("6_6q1oj")]
+position = Vector2(4344, 538)
+size = Vector2i(1, 16)
+
+[node name="LayerSwitcher4" parent="Entities" unique_id=535323966 instance=ExtResource("6_6q1oj")]
+position = Vector2(6648, 544)
+size = Vector2i(1, 20)
+leftLayer = 0
+
+[node name="LayerSwitcher5" parent="Entities" unique_id=350216105 instance=ExtResource("6_6q1oj")]
+position = Vector2(6784, 552)
+onlyOnFloor = true
+
+[node name="LayerSwitcher6" parent="Entities" unique_id=74355277 instance=ExtResource("6_6q1oj")]
+position = Vector2(6904, 668)
+size = Vector2i(1, 16)
+
+[node name="LayerSwitcher7" parent="Entities" unique_id=2034969475 instance=ExtResource("6_6q1oj")]
+position = Vector2(7033, 672)
+size = Vector2i(1, 20)
+leftLayer = 0
+
+[node name="LayerSwitcher8" parent="Entities" unique_id=131661455 instance=ExtResource("6_6q1oj")]
+position = Vector2(7168, 680)
+onlyOnFloor = true
+
+[node name="LayerSwitcher9" parent="Entities" unique_id=1659050654 instance=ExtResource("6_6q1oj")]
+position = Vector2(7288, 796)
+size = Vector2i(1, 16)
+
+[node name="LayerSwitcher10" parent="Entities" unique_id=925258987 instance=ExtResource("6_6q1oj")]
+position = Vector2(8697, 416)
+size = Vector2i(1, 20)
+leftLayer = 0
+
+[node name="LayerSwitcher11" parent="Entities" unique_id=946530604 instance=ExtResource("6_6q1oj")]
+position = Vector2(8832, 424)
+onlyOnFloor = true
+
+[node name="LayerSwitcher12" parent="Entities" unique_id=1187021428 instance=ExtResource("6_6q1oj")]
+position = Vector2(8952, 536)
+size = Vector2i(1, 16)
+
+[node name="CorkscrewLoop" parent="Entities" unique_id=1280297207 instance=ExtResource("7_j3h70")]
+position = Vector2(4800, 640)
+
+[node name="CorkscrewLoop2" parent="Entities" unique_id=100660743 instance=ExtResource("7_j3h70")]
+position = Vector2(9408, 640)
+length = 2
+
+[node name="Bridge" parent="Entities" unique_id=724398812 instance=ExtResource("8_wfulo")]
+position = Vector2(1352, 651)
+
+[node name="Bridge2" parent="Entities" unique_id=944882714 instance=ExtResource("8_wfulo")]
+position = Vector2(4681, 907)
+
+[node name="Bridge3" parent="Entities" unique_id=283039385 instance=ExtResource("8_wfulo")]
+position = Vector2(5960, 710)
+length = 10
+
+[node name="Bridge4" parent="Entities" unique_id=1529541935 instance=ExtResource("8_wfulo")]
+position = Vector2(8072, 583)
+
+[node name="Bridge5" parent="Entities" unique_id=1536145510 instance=ExtResource("8_wfulo")]
+position = Vector2(8328, 583)
+length = 8
+
+[node name="Bridge6" parent="Entities" unique_id=1790195734 instance=ExtResource("8_wfulo")]
+position = Vector2(8137, 967)
+length = 16
+
+[node name="Bridge7" parent="Entities" unique_id=2043416083 instance=ExtResource("8_wfulo")]
+position = Vector2(9480, 839)
+
+[node name="Spring" parent="Entities" unique_id=939199925 instance=ExtResource("9_45sxx")]
+position = Vector2(1928, 883)
+type = 1
+spring_direction = 2
+
+[node name="Spring13" parent="Entities" unique_id=2097196324 instance=ExtResource("9_45sxx")]
+position = Vector2(2223, 569)
+
+[node name="Spring2" parent="Entities" unique_id=1776067731 instance=ExtResource("9_45sxx")]
+position = Vector2(2631, 942)
+type = 1
+spring_direction = 2
+
+[node name="Spring3" parent="Entities" unique_id=654596333 instance=ExtResource("9_45sxx")]
+position = Vector2(3640, 915)
+scale = Vector2(-1, 1)
+type = 1
+spring_direction = 3
+
+[node name="Spring4" parent="Entities" unique_id=1793970313 instance=ExtResource("9_45sxx")]
+position = Vector2(3720, 498)
+type = 1
+spring_direction = 2
+
+[node name="Spring5" parent="Entities" unique_id=1822572004 instance=ExtResource("9_45sxx")]
+position = Vector2(4152, 380)
+
+[node name="Spring6" parent="Entities" unique_id=467901048 instance=ExtResource("9_45sxx")]
+position = Vector2(5832, 943)
+spring_direction = 2
+
+[node name="Spring8" parent="Entities" unique_id=1507311287 instance=ExtResource("9_45sxx")]
+position = Vector2(9928, 847)
+spring_direction = 2
+
+[node name="Spring7" parent="Entities" unique_id=1236668457 instance=ExtResource("9_45sxx")]
+position = Vector2(6000, 440)
+
+[node name="Spring9" parent="Entities" unique_id=2025327382 instance=ExtResource("9_45sxx")]
+position = Vector2(5744, 495)
+spring_direction = 5
+
+[node name="Spring10" parent="Entities" unique_id=544024968 instance=ExtResource("9_45sxx")]
+position = Vector2(7313, 663)
+spring_direction = 4
+
+[node name="Spring11" parent="Entities" unique_id=1137670485 instance=ExtResource("9_45sxx")]
+position = Vector2(7564, 888)
+spring_direction = 5
+
+[node name="Spring12" parent="Entities" unique_id=1264089396 instance=ExtResource("9_45sxx")]
+position = Vector2(10160, 664)
+spring_direction = 5
+
+[node name="BoundrySetter" parent="Entities" unique_id=1473416092 instance=ExtResource("10_8iq3b")]
+position = Vector2(10840, 656)
+leftBoundry = 10400
+topBoundry = 512
+setRight = false
+rightBoundry = 11000
+bottomBoundry = 784
+scroll_time = 4.0
+
+[node name="Platforms" type="Node" parent="." unique_id=1717568565]
+
+[node name="Platform" parent="Platforms" unique_id=1296755678 instance=ExtResource("11_j3h70")]
+position = Vector2(1988, 620)
+endPosition = Vector2(0, 192)
+floorOffset = 4
+
+[node name="Platform4" parent="Platforms" unique_id=1734709722 instance=ExtResource("11_j3h70")]
+position = Vector2(736, 588)
+endPosition = Vector2(128, 0)
+
+[node name="Platform6" parent="Platforms" unique_id=1262082568 instance=ExtResource("11_j3h70")]
+position = Vector2(7836, 448)
+endPosition = Vector2(192, 0)
+floorOffset = 4
+
+[node name="Platform7" parent="Platforms" unique_id=1122232920 instance=ExtResource("11_j3h70")]
+position = Vector2(8176, 432)
+endPosition = Vector2(192, 0)
+offset = 96.0
+floorOffset = 4
+
+[node name="Platform8" parent="Platforms" unique_id=103483541 instance=ExtResource("11_j3h70")]
+position = Vector2(8512, 400)
+endPosition = Vector2(0, 0)
+fallTimer = 1.0
+floorOffset = 4
+
+[node name="Platform2" parent="Platforms" unique_id=1601412559 instance=ExtResource("11_j3h70")]
+position = Vector2(2306, 620)
+endPosition = Vector2(0, 128)
+offset = 1.0
+floorOffset = 4
+
+[node name="Platform5" parent="Platforms" unique_id=1909694988 instance=ExtResource("11_j3h70")]
+position = Vector2(4048, 368)
+endPosition = Vector2(0, 128)
+floorOffset = 4
+
+[node name="Platform3" parent="Platforms" unique_id=4412840 instance=ExtResource("11_j3h70")]
+position = Vector2(2368, 976)
+platform_sprite = ExtResource("12_wfulo")
+endPosition = Vector2(0, 64)
+dropSlightly = false
+fullySolid = true
 
 [node name="Rings" type="Node" parent="." unique_id=746008278]
 
@@ -660,7 +886,6 @@ position = Vector2(9952, 672)
 position = Vector2(8764, 296)
 
 [node name="TwoPlayerScreenView" type="Control" parent="." unique_id=1346944916]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -671,7 +896,6 @@ script = ExtResource("13_uenjp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="TwoPlayerScreenView" unique_id=1774293400]
 layer = 0
-visible = false
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="TwoPlayerScreenView/CanvasLayer" unique_id=206176310]
 z_as_relative = false
@@ -686,7 +910,7 @@ canvas_item_default_texture_filter = 0
 size = Vector2i(320, 112)
 size_2d_override = Vector2i(320, 224)
 size_2d_override_stretch = true
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="CameraP1" type="Camera2D" parent="TwoPlayerScreenView/CanvasLayer/SubViewportContainer/SubViewport" unique_id=2099784029]
 limit_left = 0
@@ -722,7 +946,7 @@ canvas_item_default_texture_filter = 0
 size = Vector2i(320, 112)
 size_2d_override = Vector2i(320, 224)
 size_2d_override_stretch = true
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="CameraP2" type="Camera2D" parent="TwoPlayerScreenView/CanvasLayer/SubViewportContainer2/SubViewport" unique_id=1399793234]
 limit_left = 0
@@ -754,7 +978,3 @@ lockTop = false
 
 [node name="GetawaySubmarine" parent="." unique_id=674120151 instance=ExtResource("12_q4ll3")]
 position = Vector2(512, 640)
-damageType = null
-hp = null
-hit_time = null
-explosion_radius = null

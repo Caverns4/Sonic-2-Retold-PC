@@ -95,6 +95,7 @@ animations = [{
 size = Vector2(96, 48)
 
 [node name="GetawaySubmarine" type="CharacterBody2D" unique_id=951483605 node_paths=PackedStringArray("flashing_sprite")]
+z_index = 8
 collision_layer = 16384
 collision_mask = 0
 script = ExtResource("1_afvjp")

@@ -2,8 +2,9 @@ extends BossBase
 
 # you can use these to control behaviour
 var phase: int = 0
+var phase_timer: float = 0
 
-@onready var getPose = [$TopPoint.global_position,$BottomPoint.global_position]
+@onready var getPose: Array[Vector2] = [$TopPoint.global_position,$BottomPoint.global_position]
 var currentPoint: int = 1
 
 var targetPosition: Vector2 = Vector2.ZERO
@@ -19,48 +20,54 @@ func _process(delta: float) -> void:
 	updateDirection()
 	update_flashing(delta)
 
-
-func scrap(delta:float = 0.0) -> void:
-	var deathTimer: float = 0.0
-	# defeated animation timer (default time is 3 seconds)
-	if defeated_flag:
-		# if above 0 then count down
-		if deathTimer > 0:
-			# count down
-			deathTimer -= delta
-			# if about to hit 1.5 seconds, set velocity downward
-			if deathTimer > 1.5:
-				if deathTimer-delta <= 1.5:
-					set_animation("exploded",1.5)
-					#velocity.y = 200
-			# if above 0.5 seconds left, move the momentum upwards until it's about -200
-			elif deathTimer > 0.5:
-				if velocity.y < 200:
-					velocity.y += 100*delta
-			
-			# start running away once timer hits 0
-			if deathTimer <= 0:
-				#scale.x = -abs(scale.x)
-				_mark_defeated()
-
 func _physics_process(delta: float) -> void:
-	# move boss
-	global_position += velocity*delta
-	# check if alive
-	if active and !defeated_flag:
-		# boss phase
-		match(phase):
-			0: # intro
-				if global_position.y > getPose[0].y:
-					velocity.y += -1
-				else:
-					global_position.y = getPose[0].y
-					set_animation("laugh") #laugh
-					velocity = Vector2.ZERO
-					hp = 8
-					phase = 1
-			_: # Controlled by external object.
-				pass
-	
+	if !active: return
+	# boss phase
+	match(phase):
+		0: # intro
+			if global_position.y > getPose[0].y:
+				velocity.y += -1
+			else:
+				global_position.y = getPose[0].y
+				do_laugh()
+				velocity = Vector2.ZERO
+				hp = 8
+				phase_timer = 3.0
+				phase = 1
+			move_and_slide()
+		1:
+			if hp > 0:
+				global_position.y = move_toward(global_position.y,getPose[0].y,delta*60)
+			phase_timer -= delta
+			if phase_timer <= 0.0:
+				phase_timer = 3.0
+				phase = 2
+		2:
+			if hp > 0:
+				global_position.y = move_toward(global_position.y,getPose[1].y,delta*60)
+			phase_timer -= delta
+			if phase_timer <= 0.0:
+				phase_timer = 3.0
+				phase = 1
+		8: # Awaiting Escaping phase.
+			run_escape_sequence(delta)
+		9:
+			pass
 	updateHoveringPos(delta)
 	super(delta)
+
+func start_defeated_phase() -> void:
+	set_animation("move")
+	phase = 8
+	await super()
+
+var escape_phase_time: float = 3.0
+
+func run_escape_sequence(delta:float = 0.0) -> void:
+	if !defeated_flag: return
+	escape_phase_time -= delta
+	if velocity.y < 200: velocity.y += 100*delta
+	if escape_phase_time <= 0.0:
+		phase = 9
+		queue_free()
+	move_and_slide()

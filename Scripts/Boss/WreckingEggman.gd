@@ -2,7 +2,7 @@ extends BossBase
 
 # you can use these to control behaviour
 var phase: int = 0
-var state_timer: float = 0
+var phase_timer: float = 0
 
 @onready var getPose: Array[Vector2] = [$LeftPoint.global_position,$RightPoint.global_position]
 var currentPoint: int = 1
@@ -62,8 +62,8 @@ func run_intro_phase(_delta: float) -> void:
 			wrecking_ball.set_hazard_collsions(true)
 
 func drop_ball(delta: float) -> void:
-	if state_timer < 2:
-		state_timer += delta
+	if phase_timer < 2:
+		phase_timer += delta
 	if wrecking_ball and wrecking_ball.chain_size < 16:
 		wrecking_ball.chain_size = move_toward(wrecking_ball.chain_size,16,delta*16)
 	else:
@@ -85,29 +85,29 @@ func move_left_right(delta: float) -> void:
 		direction = 0-roundi(remap(currentPoint,0,1,-1,1))
 		updateDirection()
 	# increase attack timer
-	state_timer += delta
+	phase_timer += delta
 	# switch positions after 5 seconds
-	if state_timer >= 3:
+	if phase_timer >= 3:
 		currentPoint = 1-currentPoint
-		state_timer = 0
+		phase_timer = 0
 
 func scrap(delta:float) -> void:
-	state_timer -= delta
+	phase_timer -= delta
 	# if about to hit 1.5 seconds, set velocity downward
-	if state_timer > 1.5:
-		if state_timer-delta <= 1.5:
+	if phase_timer > 1.5:
+		if phase_timer-delta <= 1.5:
 			set_animation("exploded",1.5)
 			velocity.y = 200
 	# if above 0.5 seconds left, move the momentum upwards until it's about -200
-	elif state_timer > 0.5:
+	elif phase_timer > 0.5:
 		if velocity.y > -200:
 			velocity.y -= 400*delta
 		# if the next step is going to be below 0.5 seconds then stop moving
-		if state_timer-delta <= 0.5:
+		if phase_timer-delta <= 0.5:
 			velocity.y = 0
 			
 	# start running away once timer hits 0
-	if state_timer <= 0:
+	if phase_timer <= 0:
 		velocity = Vector2(200,-25)
 		scale.x = -abs(scale.x)
 
@@ -126,7 +126,7 @@ func on_first_defeat() -> void:
 
 func start_defeated_phase() -> void:
 	phase = 8
-	state_timer = 0.0
+	phase_timer = 0.0
 	@warning_ignore("missing_await")
 	super()
 	_mark_defeated()

@@ -23,7 +23,7 @@ var Explosion: PackedScene = preload("res://Entities/Misc/GenericParticle.tscn")
 var hoverOffset: float = 0.0
 
 @onready var flash_time: Timer = $Timers/FlashTime
-# This wil also control the time until the boss flees after the final hit.
+## This wil also control the time until the boss flees after the final hit.
 @onready var animation_timer: Timer = $Timers/AnimationTime
 @onready var smoke_timer: Timer = $Timers/SmokeTimer
 @onready var eggman_face: AnimatedSprite2D = $EggMobile/Robotnik
@@ -113,8 +113,6 @@ func _on_body_exited(body: Player2D) -> void:
 
 # Run when the final hit is dealth
 func on_first_defeat() -> void:
-	defeated_flag = true
-	flash_time.start(DEATH_TIME)
 	set_animation("exploded",DEATH_TIME)
 	velocity = Vector2.ZERO
 	smoke_timer.start(0.01667*7)
@@ -168,10 +166,10 @@ func _on_flash_timer_timeout() -> void:
 	if hp > 0:
 		emit_signal("flash_finished")
 		vulnerable = true
-	else:
-		await start_defeated_phase()
 
 func start_defeated_phase() -> void:
+	defeated_flag = true
+	set_animation("move")
 	smoke_timer.stop()
 	await get_tree().create_timer(1.0).timeout
 	_mark_defeated()
@@ -181,12 +179,12 @@ func _mark_defeated() -> void:
 	destroyed.emit()
 
 func _on_animation_timer_timeout() -> void:
-	if defeated_flag:
-		smoke_timer.stop()
 	eggman_face.stop()
-	if velocity.x != 0:
+	if hp == 0 and !defeated_flag:
+		await start_defeated_phase()
+	elif velocity.x != 0:
 		set_animation("move")
-	elif !defeated_flag:
+	else:
 		set_animation("default")
 
 func _on_smoke_timer_timeout() -> void:

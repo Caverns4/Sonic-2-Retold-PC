@@ -4,7 +4,7 @@ extends BossBase
 
 # you can use these to control behaviour
 var phase: int = 0
-var soundTimer: float = 0.0
+var phase_timer: float = 0
 
 @onready var getPose: Array[Vector2] = [$LeftPoint.global_position,$RightPoint.global_position]
 var currentPoint: int = 1
@@ -30,23 +30,21 @@ func _process(delta: float) -> void:
 	update_flashing(delta)
 
 func _physics_process(delta: float) -> void:
-	# move boss
-	global_position += velocity*delta
-	# check if alive
-	if active:
-		# boss phase
-		match(phase):
-			0: # intro
-				await run_intro_state(delta)
-			1: #car-controlled
-				pass
-			8: #escape
-				run_escape_1(delta)
-			9: #escape
-				run_escape_2(delta)
-			_: # Controlled by external object.
-				if hp <= 1:
-					drillCar.readyToLaunch = true
+	if !active: return
+	# boss phase
+	match(phase):
+		0: # intro
+			await run_intro_state(delta)
+			move_and_slide()
+		1: #car-controlled
+			pass
+		8: #escape
+			run_escape_1(delta)
+		9: #escape
+			run_escape_2(delta)
+		_: # Controlled by external object.
+			if hp <= 1:
+				drillCar.readyToLaunch = true
 	super(delta)
 
 func run_intro_state(delta: float) -> void:
@@ -73,18 +71,23 @@ func run_intro_state(delta: float) -> void:
 var escape_phase_time: float = 1.5
 
 func run_escape_1(delta: float) -> void:
+	if !defeated_flag: return
 	escape_phase_time -= delta
 	if escape_phase_time > 0.5:
-		if velocity.y > -120: velocity.y -= delta*20
+		if velocity.y > -180: velocity.y -= delta*30
 		move_and_slide()
 	elif escape_phase_time <= 0.0:
 		phase = 9
-		velocity = Vector2(180,-25)
+		velocity = Vector2(300,-20)
 		direction = 1
 		eggman_face.stop()
-		set_animation("hit",0.0)
 
-func run_escape_2(_delta: float) -> void:
+func run_escape_2(delta: float) -> void:
+	if global_position.x < getPose[1].x + 640:
+		play_intro(delta)
+		if velocity.x > 360: velocity.x += delta*100
+	else:
+		queue_free()
 	move_and_slide()
 
 func _boss_hit() -> void:
@@ -97,20 +100,19 @@ func on_first_defeat() -> void:
 	if drillCar: drillCar.die()
 
 func start_defeated_phase() -> void:
-	defeated_flag = true
+	set_animation("move")
 	z_index = 3
 	$EggMobile/EggmobileFlame.visible = !(velocity.x == 0 or $EggMobile/EggmobileFlame.visible)
 	phase = 8
 	topAnimator.play("SPIN")
-	await get_tree().create_timer(1.0).timeout
-	_mark_defeated()
+	await super()
 
 
 func play_intro(delta: float) -> void:
-	soundTimer -= delta
-	if soundTimer <= 0.0:
+	phase_timer -= delta
+	if phase_timer <= 0.0:
 		SoundDriver.play_sound(entrySound)
-		soundTimer = 0.3
+		phase_timer = 0.3
 
 func _on_drill_eggman_car_car_touched() -> void:
 	if !defeated_flag:

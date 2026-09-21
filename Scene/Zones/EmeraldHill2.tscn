@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://l26y1wupkm3f" path="res://Entities/MainObjects/Signpost_New.tscn" id="25_je0kn"]
 [ext_resource type="AudioStream" uid="uid://uu55iumak4r5" path="res://Audio/SFX/Ambiance/waterfall.wav" id="26_1n4cr"]
 [ext_resource type="PackedScene" uid="uid://cfteqnft5ynr7" path="res://Entities/Hazards/Spikes.tscn" id="26_3yxfe"]
-[ext_resource type="Script" uid="uid://ioiij6aukh60" path="res://Scripts/Misc/AltSpawn.gd" id="26_x50je"]
 [ext_resource type="PackedScene" uid="uid://gklj3ebdwveu" path="res://Entities/Items/Monitor.tscn" id="27_hs17r"]
 [ext_resource type="PackedScene" uid="uid://bct374kjctkxr" path="res://Entities/Items/Checkpoint.tscn" id="28_6xh85"]
 [ext_resource type="PackedScene" uid="uid://b4oxfl2msl6e6" path="res://Entities/Enemies/Chomper.tscn" id="29_0lrej"]
@@ -1124,12 +1123,6 @@ parent = NodePath("../HelicopterEggman")
 
 [node name="Capsule" parent="Boss" unique_id=787191877 instance=ExtResource("36_lon64")]
 position = Vector2(11264, 1060)
-
-[node name="Node2D" type="Node2D" parent="Boss" unique_id=989576967]
-position = Vector2(10128.959, 980.5527)
-script = ExtResource("26_x50je")
-debug_only = true
-currentCharacter = 7
 
 [connection signal="boss_start" from="Boss/BossBoundrySetter" to="Boss/DrillEggmanCar" method="_on_boss_boundry_setter_boss_start"]
 [connection signal="carTouched" from="Boss/DrillEggmanCar" to="Boss/HelicopterEggman" method="_on_drill_eggman_car_car_touched"]
