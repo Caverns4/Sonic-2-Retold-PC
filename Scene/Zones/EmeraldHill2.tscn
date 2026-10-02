@@ -143,59 +143,74 @@ position = Vector2(9280, 896)
 [node name="Spring" parent="Entities" unique_id=488303540 instance=ExtResource("21_kclfh")]
 position = Vector2(784, 680)
 spring_direction = 4
+new_layer = 0
 
 [node name="Spring2" parent="Entities" unique_id=933338062 instance=ExtResource("21_kclfh")]
 position = Vector2(2116, 664)
 spring_direction = 5
+new_layer = 0
 
 [node name="Spring3" parent="Entities" unique_id=960041253 instance=ExtResource("21_kclfh")]
 position = Vector2(3176, 762)
+new_layer = 0
 
 [node name="Spring17" parent="Entities" unique_id=1179447695 instance=ExtResource("21_kclfh")]
 position = Vector2(3656, 718)
 scale = Vector2(-1, 1)
 type = 1
 spring_direction = 3
+new_layer = 0
 
 [node name="Spring4" parent="Entities" unique_id=806443748 instance=ExtResource("21_kclfh")]
 position = Vector2(4880, 920)
 spring_direction = 4
+new_layer = 0
 
 [node name="Spring5" parent="Entities" unique_id=662409624 instance=ExtResource("21_kclfh")]
 position = Vector2(5744, 1208)
+new_layer = 1
 
 [node name="Spring6" parent="Entities" unique_id=472826777 instance=ExtResource("21_kclfh")]
 position = Vector2(5264, 526)
 spring_direction = 4
+new_layer = 0
 
 [node name="Spring7" parent="Entities" unique_id=783230361 instance=ExtResource("21_kclfh")]
 position = Vector2(5618, 560)
 spring_direction = 5
+new_layer = 0
 
 [node name="Spring9" parent="Entities" unique_id=2135059964 instance=ExtResource("21_kclfh")]
 position = Vector2(6576, 928)
 spring_direction = 4
+new_layer = 0
 
 [node name="Spring10" parent="Entities" unique_id=155561519 instance=ExtResource("21_kclfh")]
 position = Vector2(6736, 743)
 scale = Vector2(1, -1)
+new_layer = 0
 
 [node name="Spring11" parent="Entities" unique_id=1000139169 instance=ExtResource("21_kclfh")]
 position = Vector2(6768, 743)
 scale = Vector2(1, -1)
+new_layer = 0
 
 [node name="Spring14" parent="Entities" unique_id=2024210764 instance=ExtResource("21_kclfh")]
 position = Vector2(8176, 1224)
+new_layer = 1
 
 [node name="Spring15" parent="Entities" unique_id=1117624407 instance=ExtResource("21_kclfh")]
 position = Vector2(8304, 1020)
+new_layer = 0
 
 [node name="Spring16" parent="Entities" unique_id=1612155788 instance=ExtResource("21_kclfh")]
 position = Vector2(8848, 664)
 spring_direction = 4
+new_layer = 0
 
 [node name="Spring13" parent="Entities" unique_id=1387179447 instance=ExtResource("21_kclfh")]
 position = Vector2(6640, 1208)
+new_layer = 0
 
 [node name="LayerSwitcher16" parent="Entities" unique_id=322761763 instance=ExtResource("18_p75ke")]
 position = Vector2(8128, 1032)
@@ -211,12 +226,13 @@ leftLayer = 0
 rightLayer = 1
 
 [node name="LayerSwitcher20" parent="Entities" unique_id=21699107 instance=ExtResource("18_p75ke")]
-position = Vector2(7840, 1184)
+position = Vector2(7432, 1184)
 size = Vector2i(1, 4)
 leftLayer = 0
+rightLayer = 1
 
 [node name="LayerSwitcher18" parent="Entities" unique_id=1761319065 instance=ExtResource("18_p75ke")]
-position = Vector2(8776, 1119)
+position = Vector2(6608, 864)
 size = Vector2i(1, 16)
 
 [node name="LayerSwitcher17" parent="Entities" unique_id=1033466601 instance=ExtResource("18_p75ke")]
@@ -227,8 +243,10 @@ leftLayer = 0
 rightLayer = 1
 
 [node name="LayerSwitcher19" parent="Entities" unique_id=1950085034 instance=ExtResource("18_p75ke")]
-position = Vector2(6472, 1088)
-size = Vector2i(1, 8)
+position = Vector2(5384, 1184)
+size = Vector2i(1, 4)
+leftLayer = 0
+rightLayer = 1
 
 [node name="ForceAngleSides" parent="Entities" unique_id=1550860729 instance=ExtResource("22_brwg2")]
 position = Vector2(1302, 770)

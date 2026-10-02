@@ -151,55 +151,68 @@ position = Vector2(9480, 839)
 position = Vector2(1928, 883)
 type = 1
 spring_direction = 2
+new_layer = 0
 
 [node name="Spring13" parent="Entities" unique_id=1172838491 instance=ExtResource("25_s0cc0")]
 position = Vector2(2223, 569)
+new_layer = 0
 
 [node name="Spring2" parent="Entities" unique_id=499483444 instance=ExtResource("25_s0cc0")]
 position = Vector2(2631, 942)
 type = 1
 spring_direction = 2
+new_layer = 0
 
 [node name="Spring3" parent="Entities" unique_id=1921511515 instance=ExtResource("25_s0cc0")]
 position = Vector2(3640, 915)
 scale = Vector2(-1, 1)
 type = 1
 spring_direction = 3
+new_layer = 0
 
 [node name="Spring4" parent="Entities" unique_id=1547052208 instance=ExtResource("25_s0cc0")]
 position = Vector2(3720, 498)
 type = 1
 spring_direction = 2
+new_layer = 1
 
 [node name="Spring5" parent="Entities" unique_id=1960109677 instance=ExtResource("25_s0cc0")]
 position = Vector2(4152, 380)
+new_layer = 0
 
 [node name="Spring6" parent="Entities" unique_id=961058409 instance=ExtResource("25_s0cc0")]
 position = Vector2(5832, 943)
 spring_direction = 2
+new_layer = 0
 
 [node name="Spring8" parent="Entities" unique_id=384307345 instance=ExtResource("25_s0cc0")]
 position = Vector2(9928, 847)
 spring_direction = 2
+new_layer = 0
 
 [node name="Spring7" parent="Entities" unique_id=1827238307 instance=ExtResource("25_s0cc0")]
 position = Vector2(6000, 440)
+new_layer = 0
 
 [node name="Spring9" parent="Entities" unique_id=1372184501 instance=ExtResource("25_s0cc0")]
 position = Vector2(5744, 495)
 spring_direction = 5
+new_layer = 0
 
 [node name="Spring10" parent="Entities" unique_id=752103472 instance=ExtResource("25_s0cc0")]
 position = Vector2(7313, 663)
 spring_direction = 4
+new_layer = 1
 
 [node name="Spring11" parent="Entities" unique_id=376282141 instance=ExtResource("25_s0cc0")]
 position = Vector2(7564, 888)
 spring_direction = 5
+new_layer = 0
 
 [node name="Spring12" parent="Entities" unique_id=440727689 instance=ExtResource("25_s0cc0")]
 position = Vector2(10160, 664)
 spring_direction = 5
+new_layer = 0
 
 [node name="BoundrySetter" parent="Entities" unique_id=711103774 instance=ExtResource("34_s73fn")]
 position = Vector2(10840, 656)
