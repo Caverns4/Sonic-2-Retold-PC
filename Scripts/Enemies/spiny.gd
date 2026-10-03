@@ -66,6 +66,7 @@ func _physics_process(delta: float) -> void:
 func _shoot_bullet(current_target: Player2D) -> void:
 	var bullet: CharacterBody2D = projectile.instantiate()
 	add_child(bullet)
+	bullet.top_level = true
 	bullet.gravity = true
 	bullet.global_position = bulletPoint.global_position
 	SoundDriver.play_sound(bullet_sfx)

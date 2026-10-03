@@ -1,46 +1,46 @@
 extends Node2D
 
-@export_enum("Tube Up", "Tube Down", "Arc Clockwise", "Arc CounterClowise") var behavior = 0
-@export_range (1, 128) var wormCount = 6
-@export var gloopSound = preload("res://Audio/SFX/Gimmicks/MegaMackGloop.ogg")
+@export_enum("Tube Up", "Tube Down", "Arc Clockwise", "Arc CounterClowise") var behavior: int = 0
+@export_range (1, 128) var wormCount: int = 6
+@export var gloopSound: AudioStream = preload("res://Audio/SFX/Gimmicks/MegaMackGloop.ogg")
 
-var child = preload("res://Entities/ZoneObjects/MackWorms.tscn")
-var origin = Vector2.ZERO
+@onready var origin: Vector2 = global_position
+
+var child: PackedScene = preload("res://Entities/ZoneObjects/MackWorms.tscn")
 
 enum STATES{BOTTOM,UP_TUBE,TOP,DOWN_TUBE,ARCHING}
-var childStates = []
-var soundCheck = false
+var childStates: Array[STATES] = []
+var soundCheck: bool = false
 
 # The initial time for each child before moving. * delta when using this.
-var childTimes = [
+var childTimes: Array[float] = [
 	 0.0
 ]
 # Fake Child velocity.
-var childSpeeds = [
+var childSpeeds: Array[Vector2] = [
 	Vector2.ZERO
 ]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#Set up initial values
-	origin = global_position
-	var initialState = STATES.BOTTOM
-	var initialPosition = global_position
+	var initialState: STATES = STATES.BOTTOM
+	var initialPosition: Vector2 = origin
 	if behavior == 1: #Start at top
 		initialState = STATES.TOP
 		initialPosition.y = origin.y-80
 	elif behavior == 3: #Arc left
 		initialPosition.x = origin.x+96
 	
-	var nextChild = null
-	var childTimer = 3/60.0
+	var nextChild: Node2D = null
+	var childTimer: float = 3/60.0
 	for i in wormCount-1:
 		nextChild = child.instantiate()
 		add_child(nextChild)
 		move_child($VisibleOnScreenEnabler2D,get_child_count())
 		$VisibleOnScreenEnabler2D.visible = true
 	for i in get_child_count(true)-1:
-		var currentChild = get_child(i)
+		var currentChild: Node2D = get_child(i)
 		if currentChild is Area2D:
 			get_child(i).monitoring = false
 			childStates.append(initialState)
@@ -50,9 +50,7 @@ func _ready() -> void:
 			childSpeeds.insert(childSpeeds.size(),Vector2.ZERO)
 			
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-# Mack Worm movement will be ontrolled entirely in this one script.
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	for i in get_child_count(true)-1:
 		childTimes[i] -= (1.0*delta)
 		match childStates[i]:
@@ -67,8 +65,8 @@ func _physics_process(delta):
 			STATES.ARCHING:
 				ArcMotion(i,delta)
 
-func DoTubeMotion(i,delta):
-	var currentChild = get_child(i)
+func DoTubeMotion(i:int,delta: float) -> void:
+	var currentChild: Node2D = get_child(i)
 	
 	if childStates[i] == STATES.UP_TUBE:
 		childSpeeds[i].y -= (0.09375/GlobalFunctions.div_by_delta(delta))
@@ -94,22 +92,19 @@ func DoTubeMotion(i,delta):
 			childStates[i] = STATES.TOP
 			get_child(i).monitoring = false
 
-func ArcMotion(i,delta):
-	var currentChild = get_child(i)
+func ArcMotion(i: int,delta: float) -> void:
+	var currentChild: Node2D = get_child(i)
 	#Do speed update first
 	currentChild.global_position += childSpeeds[i]
 	#add gravity
 	childSpeeds[i].y += ((0.09375/64.0)/GlobalFunctions.div_by_delta(delta))
 	childSpeeds[i].y = clampf(childSpeeds[i].y,-4.5,4.5)
 	# Add acceleration
-	var accel =  abs((11.00/4.0)*delta)
+	var accel: float =  abs((11.00/4.0)*delta)
 	if currentChild.global_position.x > origin.x + 48:
 		childSpeeds[i].x -= accel
 	else:
 		childSpeeds[i].x += accel
-		
-
-	
 	if currentChild.global_position.y > origin.y:
 		childTimes[i] = 1.0
 		childSpeeds[i] = Vector2.ZERO
@@ -121,8 +116,8 @@ func ArcMotion(i,delta):
 		else:
 			currentChild.global_position = origin
 
-func WaitTimer(i):
-	var currentChild = get_child(i)
+func WaitTimer(i: int) -> void:
+	var currentChild: Node2D = get_child(i)
 	if childTimes[i] <= 0.0:
 		if behavior > 1: #If type is arching
 			childStates[i] = STATES.ARCHING
@@ -139,10 +134,9 @@ func WaitTimer(i):
 			currentChild.monitoring = true
 
 # Try to play the pipe sound. Only ever *other* queue should play.
-func QueuePipeSoundEffect():
+func QueuePipeSoundEffect() -> void:
 	if soundCheck:
 		soundCheck = false
 		SoundDriver.play_sound2(gloopSound)
 	else:
 		soundCheck = true
-	
