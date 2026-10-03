@@ -116,7 +116,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Change parent direction
 	if (parent.get_x_input() != 0):
-		parent.direction = parent.get_x_input()
+		parent.direction = roundi(parent.get_x_input())
 	#	if carriedPlayer:
 	#		carriedPlayer.direction = parent.direction
 	

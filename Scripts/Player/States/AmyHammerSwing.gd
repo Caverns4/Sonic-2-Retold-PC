@@ -13,7 +13,7 @@ func _physics_process(delta: float) -> void:
 	
 	# set direction
 	if parent.inputs[parent.INPUTS.XINPUT] != 0:
-		parent.direction = parent.inputs[parent.INPUTS.XINPUT]
+		parent.direction = roundi(parent.inputs[parent.INPUTS.XINPUT])
 	elif parent.movement.x != 0:
 		parent.direction = sign(parent.movement.x)
 	

@@ -1,40 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqhwv80jkcib"]
+[gd_scene format=3 uid="uid://dqhwv80jkcib"]
 
 [ext_resource type="Texture2D" uid="uid://cmei7ujrbdqib" path="res://Graphics/Boss/CPZ/Boss_PoisonEggman_Attach.png" id="1_0v6lp"]
 [ext_resource type="Script" uid="uid://dkri2akqexbw6" path="res://Scripts/Boss/poison_eggman_water_pump.gd" id="2_bnwop"]
 [ext_resource type="Texture2D" uid="uid://dqggwc5wimt47" path="res://Graphics/Boss/CPZ/Boss_PoisonEggmanHTube.png" id="2_w2l01"]
 [ext_resource type="Texture2D" uid="uid://r6heondpx2vd" path="res://Graphics/Boss/CPZ/Boss_PoisonEggman_Jar.png" id="3_bpb76"]
 
-[node name="WaterPump" type="Sprite2D"]
-position = Vector2(-24, -32)
+[node name="WaterPump" type="Sprite2D" unique_id=1064781458]
 texture = ExtResource("1_0v6lp")
 centered = false
 script = ExtResource("2_bnwop")
 
-[node name="PumpPosition" type="Node2D" parent="."]
+[node name="PumpPosition" type="Node2D" parent="." unique_id=1857267648]
 position = Vector2(16, 32)
 
-[node name="GlassPipe" type="TextureRect" parent="PumpPosition"]
+[node name="GlassPipe" type="TextureRect" parent="PumpPosition" unique_id=1830164419]
 offset_left = -16.0
 offset_top = -8.0
 texture = ExtResource("2_w2l01")
 stretch_mode = 1
 
-[node name="Jar" type="Node2D" parent="PumpPosition"]
+[node name="Jar" type="Node2D" parent="PumpPosition" unique_id=813067493]
 
-[node name="JarBottom" type="Sprite2D" parent="PumpPosition/Jar"]
+[node name="JarBottom" type="Sprite2D" parent="PumpPosition/Jar" unique_id=1558601932]
 position = Vector2(-16, 0)
 texture = ExtResource("3_bpb76")
 hframes = 6
 
-[node name="ColorRect" type="ColorRect" parent="PumpPosition/Jar"]
+[node name="ColorRect" type="ColorRect" parent="PumpPosition/Jar" unique_id=1148743178]
 offset_left = -28.0
 offset_top = -8.0
 offset_right = -4.0
 offset_bottom = 6.0
 color = Color(0.26666668, 0.13333334, 0.8, 1)
 
-[node name="JarTop" type="Sprite2D" parent="PumpPosition/Jar"]
+[node name="JarTop" type="Sprite2D" parent="PumpPosition/Jar" unique_id=862389128]
 position = Vector2(-16, 0)
 texture = ExtResource("3_bpb76")
 hframes = 6

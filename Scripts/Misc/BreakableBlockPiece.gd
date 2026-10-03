@@ -1,10 +1,10 @@
 extends Sprite2D
 
-var gravity = 0.21875
-var velocity = Vector2.ZERO
-var lifeTime = 5 # 5 seconds
+var gravity: float = 0.21875
+var velocity: Vector2 = Vector2.ZERO
+var lifeTime: float = 5.0
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	# increase gravity
 	velocity.y += gravity/GlobalFunctions.div_by_delta(delta)
 	translate(velocity*delta)

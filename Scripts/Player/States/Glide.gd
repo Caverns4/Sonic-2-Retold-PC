@@ -75,7 +75,7 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	# Change parent direction
 	if parent.inputs[parent.INPUTS.XINPUT] != 0 and !sliding:
-		parent.direction = parent.inputs[parent.INPUTS.XINPUT]
+		parent.direction = roundi(parent.inputs[parent.INPUTS.XINPUT])
 	# check if not falling, if not then do glide routine
 	if !isFall and !sliding:
 		# Turning

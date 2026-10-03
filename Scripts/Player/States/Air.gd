@@ -140,7 +140,7 @@ func _physics_process(delta: float) -> void:
 	# Change parent direction
 	# Check that lock direction isn't on
 	if !lockDir and parent.inputs[parent.INPUTS.XINPUT] != 0:
-			parent.direction = parent.inputs[parent.INPUTS.XINPUT]
+			parent.direction = roundi(parent.inputs[parent.INPUTS.XINPUT])
 	
 	# set facing direction
 	parent.sprite.flip_h = (parent.direction < 0)

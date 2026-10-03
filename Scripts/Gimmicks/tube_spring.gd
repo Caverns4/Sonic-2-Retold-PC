@@ -1,24 +1,18 @@
 extends StaticBody2D
 
-@export_enum("Weak", "Strong") var power = 0 # The power of the spring when hopped on
-@export var springSound = preload("res://Audio/SFX/Gimmicks/s2br_Spring.wav")
+@export_enum("Weak", "Strong") var power: int = 0 # The power of the spring when hopped on
+@export var springSound: AudioStream = preload("res://Audio/SFX/Gimmicks/s2br_Spring.wav")
 
-@onready var animator = $AnimationPlayer
+@onready var animator: AnimationPlayer = $AnimationPlayer
 
-var speed = [10.5,16]
+var speed: Array[float] = [10.5,16]
 
 enum STATES{CLOSED,OPEN,CLOSING}
-var state = STATES.CLOSED
+var state: STATES = STATES.CLOSED
 
-var players = [] #Detected players in the Area2D
+var players: Array[Player2D] = [] #Detected players in the Area2D
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(_delta: float) -> void:
 	match state:
 		STATES.CLOSED:
 			if players.size() > 0:
@@ -28,17 +22,17 @@ func _process(_delta):
 			if players.size() == 0:
 				state = STATES.CLOSED
 				animator.play("CLOSE")
-		
 
-func physics_collision(body, hitVector):
+
+func physics_collision(body: CharacterBody2D, hitVector: Vector2) -> void:
 	if hitVector == Vector2.DOWN:
-		var setMove =  Vector2.UP.round()*speed[power]*60
+		var setMove: Vector2 =  Vector2.UP.round()*speed[power]*60
 		# disable ground
 		body.ground = false
 		body.set_state(body.STATES.AIR)
 		body.air_control = true
 		#Setup Player animation
-		var curAnim = "walk"
+		var curAnim: String = "walk"
 		match(body.animator.current_animation):
 			"walk", "run", "peelOut":
 				curAnim = body.animator.current_animation
@@ -56,8 +50,8 @@ func physics_collision(body, hitVector):
 		SoundDriver.play_sound(springSound)
 
 
-func _on_lid_area_body_entered(body):
+func _on_lid_area_body_entered(body: CharacterBody2D) -> void:
 	players.append(body)
 
-func _on_lid_area_body_exited(body):
+func _on_lid_area_body_exited(body: CharacterBody2D) -> void:
 	players.erase(body)

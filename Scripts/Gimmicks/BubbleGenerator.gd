@@ -4,9 +4,9 @@ extends Node2D
 
 var bubbleTimer: float = 0
 var bigBubbleTimer: float = 5
-var Bubble = preload("res://Entities/Misc/Bubbles.tscn")
+var Bubble: PackedScene = preload("res://Entities/Misc/Bubbles.tscn")
 
-func _process(delta):
+func _process(delta: float) -> void:
 	if Global.waterLevel > 0:
 		visible = global_position.y > Global.waterLevel
 	else:
@@ -19,7 +19,7 @@ func _process(delta):
 		else:
 			# if timer runs out, set to a random number between 0 and 3 and generate bubble
 			bubbleTimer = randf()*3
-			var bubble = Bubble.instantiate()
+			var bubble: Node2D = Bubble.instantiate()
 			# pick either 0 or 1 for the bubble type
 			bubble.bubbleType = int(round(randf()))
 			add_child(bubble)
@@ -31,7 +31,7 @@ func _process(delta):
 		else:
 			# if timer runs out generate bubble and reset timer to 10 seconds
 			bigBubbleTimer = 10
-			var bubble = Bubble.instantiate()
+			var bubble: Node2D = Bubble.instantiate()
 			# set type to 2 for big bubbles
 			bubble.bubbleType = 2
 			add_child(bubble)

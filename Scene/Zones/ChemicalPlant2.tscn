@@ -319,12 +319,12 @@ rightLayer = 1
 visible = false
 position = Vector2(9200, 1296)
 scale = Vector2(2, 164)
-setSpeed = 128
+setSpeed = 128.0
 
 [node name="SetWaterLevel2" parent="Entities" unique_id=1015286213 instance=ExtResource("11_0pnc2")]
 position = Vector2(11200, 1296)
 scale = Vector2(1, 28)
-setSpeed = 128
+setSpeed = 128.0
 
 [node name="Shutter" parent="Entities" unique_id=815385918 instance=ExtResource("12_lofkv")]
 position = Vector2(9208, 1504)
@@ -337,58 +337,72 @@ position = Vector2(9208, 1632)
 
 [node name="Spring" parent="Entities" unique_id=1565801184 instance=ExtResource("13_fvoj7")]
 position = Vector2(144, 1016)
+new_layer = 0
 
 [node name="Spring2" parent="Entities" unique_id=1933078434 instance=ExtResource("13_fvoj7")]
 position = Vector2(240, 888)
+new_layer = 0
 
 [node name="Spring3" parent="Entities" unique_id=344212806 instance=ExtResource("13_fvoj7")]
 position = Vector2(1400, 240)
 scale = Vector2(-1, 1)
 type = 1
 spring_direction = 3
+new_layer = 0
 
 [node name="Spring4" parent="Entities" unique_id=1815288581 instance=ExtResource("13_fvoj7")]
 position = Vector2(3568, 696)
+new_layer = 0
 
 [node name="Spring5" parent="Entities" unique_id=312473583 instance=ExtResource("13_fvoj7")]
 position = Vector2(4592, 504)
+new_layer = 0
 
 [node name="Spring6" parent="Entities" unique_id=2114791086 instance=ExtResource("13_fvoj7")]
 position = Vector2(6152, 624)
 spring_direction = 2
+new_layer = 0
 
 [node name="Spring7" parent="Entities" unique_id=666700959 instance=ExtResource("13_fvoj7")]
 position = Vector2(7032, 496)
 scale = Vector2(-1, 1)
 spring_direction = 3
+new_layer = 0
 
 [node name="Spring8" parent="Entities" unique_id=2066996610 instance=ExtResource("13_fvoj7")]
 position = Vector2(7176, 656)
 type = 1
 spring_direction = 2
+new_layer = 0
 
 [node name="Spring9" parent="Entities" unique_id=470664113 instance=ExtResource("13_fvoj7")]
 position = Vector2(7440, 1912)
+new_layer = 0
 
 [node name="Spring10" parent="Entities" unique_id=208382733 instance=ExtResource("13_fvoj7")]
 position = Vector2(7472, 1912)
+new_layer = 0
 
 [node name="Spring11" parent="Entities" unique_id=2102651280 instance=ExtResource("13_fvoj7")]
 position = Vector2(7560, 496)
 spring_direction = 2
+new_layer = 0
 
 [node name="Spring12" parent="Entities" unique_id=493924570 instance=ExtResource("13_fvoj7")]
 position = Vector2(8184, 368)
 scale = Vector2(-1, 1)
 spring_direction = 3
+new_layer = 0
 
 [node name="Spring13" parent="Entities" unique_id=1273786283 instance=ExtResource("13_fvoj7")]
 position = Vector2(9840, 1336)
+new_layer = 0
 
 [node name="Spring14" parent="Entities" unique_id=11063439 instance=ExtResource("13_fvoj7")]
 position = Vector2(9992, 1264)
 type = 1
 spring_direction = 2
+new_layer = 0
 
 [node name="SpeedBooster" parent="Entities" unique_id=592451464 instance=ExtResource("14_cb2w8")]
 position = Vector2(800, 376)
@@ -402,7 +416,7 @@ visible_sprite = true
 [node name="SpeedBooster17" parent="Entities" unique_id=524709000 instance=ExtResource("14_cb2w8")]
 position = Vector2(2592, 1784)
 boostDirection = 1
-speed = 12
+speed = 12.0
 visible_sprite = true
 
 [node name="SpeedBooster5" parent="Entities" unique_id=2058804162 instance=ExtResource("14_cb2w8")]
@@ -428,12 +442,12 @@ visible_sprite = true
 [node name="SpeedBooster8" parent="Entities" unique_id=1824773434 instance=ExtResource("14_cb2w8")]
 position = Vector2(5664, 888)
 boostDirection = 1
-speed = 10
+speed = 10.0
 visible_sprite = true
 
 [node name="SpeedBooster15" parent="Entities" unique_id=596878965 instance=ExtResource("14_cb2w8")]
 position = Vector2(4384, 1912)
-speed = 10
+speed = 10.0
 visible_sprite = true
 
 [node name="SpeedBooster9" parent="Entities" unique_id=452467001 instance=ExtResource("14_cb2w8")]
@@ -448,30 +462,30 @@ visible_sprite = true
 
 [node name="SpeedBooster10" parent="Entities" unique_id=786477698 instance=ExtResource("14_cb2w8")]
 position = Vector2(6688, 760)
-speed = 10
+speed = 10.0
 visible_sprite = true
 
 [node name="SpeedBooster12" parent="Entities" unique_id=1979071392 instance=ExtResource("14_cb2w8")]
 position = Vector2(7712, 888)
-speed = 10
+speed = 10.0
 visible_sprite = true
 
 [node name="SpeedBooster13" parent="Entities" unique_id=282919677 instance=ExtResource("14_cb2w8")]
 position = Vector2(7968, 760)
 boostDirection = 1
-speed = 10
+speed = 10.0
 visible_sprite = true
 
 [node name="SpeedBooster14" parent="Entities" unique_id=1779858615 instance=ExtResource("14_cb2w8")]
 position = Vector2(8736, 568)
 boostDirection = 1
-speed = 10
+speed = 10.0
 visible_sprite = true
 
 [node name="SpeedBooster11" parent="Entities" unique_id=617124770 instance=ExtResource("14_cb2w8")]
 position = Vector2(6176, 376)
 boostDirection = 1
-speed = 10
+speed = 10.0
 visible_sprite = true
 
 [node name="SpeedBooster19" parent="Entities" unique_id=720099786 instance=ExtResource("14_cb2w8")]
@@ -481,7 +495,7 @@ visible_sprite = true
 
 [node name="SpeedBooster4" parent="Entities" unique_id=151207208 instance=ExtResource("14_cb2w8")]
 position = Vector2(800, 1400)
-speed = 12
+speed = 12.0
 visible_sprite = true
 
 [node name="TubeSpring" parent="Entities" unique_id=2101027372 instance=ExtResource("15_ldhfe")]
@@ -1205,34 +1219,34 @@ multiplayerOnly = true
 [node name="Badniks" type="Node" parent="." unique_id=502751410]
 
 [node name="Spiny" parent="Badniks" unique_id=300235464 instance=ExtResource("30_po1yj")]
-position = Vector2(2688, 896)
+position = Vector2(2688, 888)
 
 [node name="Spiny2" parent="Badniks" unique_id=203596047 instance=ExtResource("30_po1yj")]
-position = Vector2(2368, 640)
+position = Vector2(2368, 632)
 
 [node name="Spiny3" parent="Badniks" unique_id=1755571711 instance=ExtResource("30_po1yj")]
-position = Vector2(2184, 384)
+position = Vector2(2184, 376)
 
 [node name="Spiny4" parent="Badniks" unique_id=705549153 instance=ExtResource("30_po1yj")]
-position = Vector2(1216, 1600)
+position = Vector2(1216, 1592)
 
 [node name="Spiny10" parent="Badniks" unique_id=1611911713 instance=ExtResource("30_po1yj")]
-position = Vector2(152, 1216)
+position = Vector2(152, 1208)
 
 [node name="Spiny5" parent="Badniks" unique_id=716750402 instance=ExtResource("30_po1yj")]
-position = Vector2(1344, 1600)
+position = Vector2(1344, 1592)
 
 [node name="Spiny6" parent="Badniks" unique_id=736165902 instance=ExtResource("30_po1yj")]
-position = Vector2(4096, 1152)
+position = Vector2(4112, 1144)
 
 [node name="Spiny8" parent="Badniks" unique_id=365164846 instance=ExtResource("30_po1yj")]
-position = Vector2(5440, 256)
+position = Vector2(5440, 248)
 
 [node name="Spiny9" parent="Badniks" unique_id=75697373 instance=ExtResource("30_po1yj")]
-position = Vector2(10048, 1472)
+position = Vector2(10048, 1464)
 
 [node name="Spiny7" parent="Badniks" unique_id=1746962527 instance=ExtResource("30_po1yj")]
-position = Vector2(4352, 1496)
+position = Vector2(4344, 1480)
 rotation = -1.5708
 
 [node name="Rings" type="Node" parent="." unique_id=2139067446]

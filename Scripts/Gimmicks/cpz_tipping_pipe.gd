@@ -1,16 +1,16 @@
 extends AnimatableBody2D
 
-@export var duration = 2.1333
-@export var delay = 0.0
+@export var duration: float = 2.1333
+@export var delay: float = 0.0
 
 enum STATES{DELAY,DROP}
-var state = STATES.DELAY
+var state: STATES = STATES.DELAY
 
-var stateTimer = float(1.0)
+var stateTimer: float = 1.0
 
-@onready var animator = $AnimationPlayer
+@onready var animator: AnimationPlayer = $AnimationPlayer
 
-func _ready():
+func _ready() -> void:
 	stateTimer = float(duration + (delay/60.0))
 
 func _process(delta: float) -> void:

@@ -29,11 +29,11 @@ func _ready() -> void:
 			$CloseShutter.queue_free()
 			$CloseShutter2.queue_free()
 			if node_path:
-				var unlocker = get_node_or_null(node_path)
+				var unlocker: Node2D = get_node_or_null(node_path)
 				if unlocker and unlocker.has_signal("destroyed"):
 					unlocker.destroyed.connect(force_open)
 
-func _process(delta):
+func _process(delta: float) -> void:
 	if !Engine.is_editor_hint():
 		# move shutter
 		$Shutter.position = $Shutter.position.move_toward(Vector2(0,-texture.get_height()*int(open)),delta*512)
@@ -56,21 +56,21 @@ func _process(delta):
 		$CloseShutter2.position.x = abs($CloseShutter2.position.x)*(1-(min(1,side)*2))
 
 # open on body touch (and player 1)
-func _on_OpenShutter_body_entered(body):
+func _on_OpenShutter_body_entered(body: Node2D) -> void:
 	playerList.append(body)
 	if body.playerControl == 1 or Global.two_player_mode:
 		open = true
 
 
 # close on body leave (and player 1)
-func _on_CloseShutter_body_entered(body):
+func _on_CloseShutter_body_entered(body: Node2D) -> void:
 	playerList.erase(body)
 	if body.playerControl == 1 or (Global.two_player_mode and playerList.size() == 0):
 		open = false
 
 # force open and force close is used for switches
-func force_open():
+func force_open() -> void:
 	open = true
 
-func force_close():
+func force_close() -> void:
 	open = false

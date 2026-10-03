@@ -1,6 +1,6 @@
 extends EnemyProjectileBase
 
-@export var gravity = false
+@export var gravity: bool = false
 
 func _process(delta: float) -> void:
 	if gravity:

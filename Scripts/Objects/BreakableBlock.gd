@@ -2,9 +2,9 @@
 class_name BreakableBlock
 extends StaticBody2D
 @export var pieces: Vector2i = Vector2i(2,2)
-@export var SpriteTexture = preload("res://Graphics/Obstacles/Blocks/breakable_block.png")
-var Piece = preload("res://Entities/Misc/BlockPiece.tscn")
-@export var sound = preload("res://Audio/SFX/Gimmicks/s2br_Collapse.wav")
+@export var SpriteTexture: Texture2D = preload("res://Graphics/Obstacles/Blocks/breakable_block.png")
+var Piece: PackedScene = preload("res://Entities/Misc/BlockPiece.tscn")
+@export var sound: AudioStream = preload("res://Audio/SFX/Gimmicks/s2br_Collapse.wav")
 @export var strength_tier: Global.STRENGTH_TIER = Global.STRENGTH_TIER.NORMAL
 
 
@@ -49,14 +49,14 @@ func _break_object_to_pieces() -> void:
 		# and set the settings for each piece to match up with the $Sprite2D node
 		for i in range(pieces.x):
 			for j in range (pieces.y):
-				var piece = Piece.instantiate()
+				var piece: Node2D = Piece.instantiate()
 				
 				piece.velocity = Vector2(
 				(pieces.y-j)*lerp(-1,1,i/(pieces.x-1)),
 				-pieces.y+j)*60
 				
-				var spriteWidth = $Sprite2D.texture.get_width()
-				var spriteHeight = $Sprite2D.texture.get_height()
+				var spriteWidth:int = $Sprite2D.texture.get_width()
+				var spriteHeight:int = $Sprite2D.texture.get_height()
 				if $Sprite2D.region_enabled:
 					spriteWidth = $Sprite2D.region_rect.size.x
 					spriteHeight = $Sprite2D.region_rect.size.y
@@ -72,10 +72,10 @@ func _break_object_to_pieces() -> void:
 				Vector2(spriteWidth/pieces.x,spriteHeight/pieces.y))
 				get_parent().add_child(piece)
 
-func _on_destruction():
+func _on_destruction() -> void:
 	pass
 
-func _draw():
+func _draw() -> void:
 	if Engine.is_editor_hint():
 		#draw_texture(SpriteTexture,SpriteTexture.get_size()/2,Color.WHITE)
 		draw_texture(SpriteTexture,-SpriteTexture.get_size()/2,Color.WHITE)
