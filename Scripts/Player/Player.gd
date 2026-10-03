@@ -288,8 +288,6 @@ var cameraMargin: float = 16
 
 # Variables responsible for shifting the camera's bound over time. left, top, right, bottom
 var camera_limits_target: Array[float] = [0,0,320,224]
-var camera_limits_current: Array[float] = [0,0,320,224]
-var camera_shift_time: float = 0.0
 
 ## A pole the player it grabbing onto.
 var poleGrabID: Node = null
@@ -308,7 +306,7 @@ func _ready() -> void:
 	intialize_camera()
 	init_player_bounds()
 	call_deferred("init_player_bounds") ## I hate that I have to do this
-	call_deferred("snap_camera_to_limits")
+	call_deferred("snap_camera_to_limits",0.01)
 	
 	# verify that we're player 1
 	if Global.players[0] == self:
@@ -780,7 +778,7 @@ func _physics_process(delta: float) -> void:
 			shakeStrength = lerpf(shakeStrength,0.0,shakefade * delta)
 			camera.offset = RandomOffset()
 		
-		update_camera_limits(delta)
+		#update_camera_limits(delta)
 		
 		if Global.y_wrap:
 			var test_pos: float = global_position.y
@@ -1367,11 +1365,11 @@ func cam_update(forceMove: bool = false) -> void:
 	# Ratchet camera scrolling (locks the camera behind the player)
 	if rachetScrollLeft:
 		limitLeft = max(limitLeft,camera.get_screen_center_position().x-viewSize.x/2)
-		camera_limits_current[0] = limitLeft
+		camera.limit_left = limitLeft
 		camera_limits_target[0] = max(camera_limits_target[0],limitLeft)
 	if rachetScrollRight:
 		limitRight = max(limitRight,camera.get_screen_center_position().x+viewSize.x/2)
-		camera_limits_current[2] = limitRight
+		camera.limit_right = limitRight
 		camera_limits_target[2] = min(camera_limits_target[2],limitRight)
 
 
@@ -1385,27 +1383,27 @@ func _adjust_camera_zoom() -> void:
 func lock_camera(time: float = 1) -> void:
 	camLockTime = max(time,camLockTime)
 
-func update_camera_limits(delta: float) -> void:
-	if camera_shift_time <= 0.0:
-		snap_camera_to_limits()
-		return
-	for i: int in 4:
-		camera_limits_current[i] = move_toward(camera_limits_current[i],camera_limits_target[i],camera_shift_time*(60*delta))
-	camera.limit_left = roundi(camera_limits_current[0])
-	camera.limit_top = roundi(camera_limits_current[1])
-	camera.limit_right = roundi(camera_limits_current[2])
-	camera.limit_bottom = roundi(camera_limits_current[3])
+var camera_limit_tween: Tween
 
-func snap_camera_to_limits() -> void:
-	for i in 4:
-		camera_limits_current[i] = camera_limits_target[i]
-	camera.limit_left = roundi(camera_limits_current[0])
-	camera.limit_top = roundi(camera_limits_current[1])
-	camera.limit_right = roundi(camera_limits_current[2])
-	camera.limit_bottom = roundi(camera_limits_current[3])
+func snap_camera_to_limits(move_time: float = 1.0) -> void:
+	if camera_limit_tween and camera_limit_tween.is_valid():
+		camera_limit_tween.kill()
+	
+	camera_limit_tween = create_tween()
+	
+	camera_limit_tween.tween_property(
+		camera,"limit_left",camera_limits_target[0],move_time)
+	camera_limit_tween.parallel().tween_property(
+		camera,"limit_top",camera_limits_target[1],move_time)
+	camera_limit_tween.parallel().tween_property(
+		camera,"limit_right",camera_limits_target[2],move_time)
+	camera_limit_tween.parallel().tween_property(
+		camera,"limit_bottom",camera_limits_target[3],move_time)
+	
 	if Global.y_wrap:
 		camera.limit_top = -4096
 		camera.limit_bottom = 4096
+
 
 # Water bubble timer
 func _on_BubbleTimer_timeout() -> void:

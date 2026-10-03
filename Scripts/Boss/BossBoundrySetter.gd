@@ -55,7 +55,7 @@ func _on_BoundrySetter_body_entered(body: Player2D) -> void:
 						if lockBottom:
 							i.limitBottom = min(global_position.y+screenSize.y/2,Global.hardBorderBottom)
 							i.camera_limits_target[3] = i.limitBottom
-						i.camera_shift_time = 0.0
+						i.snap_camera_to_limits(1.0)
 					
 					if !Global.players[0].is_super:
 						SoundDriver.set_volume(-50)

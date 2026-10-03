@@ -16,7 +16,7 @@ extends Area2D
 @export var screen_ranges: Vector2 = Vector2(1,1)
 
 ## The speed at which that camera should update.
-@export var scroll_time: float = 0.0
+@export var scroll_time: float = 1.0
 
 func _ready() -> void:
 	if (!Engine.is_editor_hint()):
@@ -43,7 +43,7 @@ func _on_BoundrySetter_body_entered(body: Player2D) -> void:
 			if setBottom:
 				body.limitBottom = min(bottomBoundry,Global.hardBorderBottom)
 				body.camera_limits_target[3] = bottomBoundry
-			body.camera_shift_time = scroll_time
+			body.snap_camera_to_limits(scroll_time)
 
 
 func _process(_delta: float) -> void:

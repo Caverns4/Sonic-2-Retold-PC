@@ -65,7 +65,7 @@ func activate() -> void:
 			playerObj.camera_limits_target[0] = int(global_position.x-screenXSize/2)
 			playerObj.camera_limits_target[2] = int(global_position.x+screenXSize/2)
 			playerObj.camera_limits_target[3] = int(global_position.y+48)
-			playerObj.camera_shift_time = 1.0
+			playerObj.snap_camera_to_limits(1.0)
 		state = STATE.SPAWN_ANIMALS
 
 

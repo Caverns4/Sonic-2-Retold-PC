@@ -17,6 +17,7 @@ func physics_collision(body: Player2D, hitVector: Vector2) -> void:
 			for i in Global.players:
 				i.limitLeft = lock_left_camera
 				i.camera_limits_target[0] = i.limitLeft
+				i.snap_camera_to_limits(1.0)
 		
 		queue_free()
 	#print("Echo")

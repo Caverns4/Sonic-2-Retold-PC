@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 			player.air_control = true
 			player.angle = 0
 			player.animator.play("spring")
-			player.animator.queue("curAnimwalk")
+			player.animator.queue("walk")
 			SoundDriver.play_sound(spring_sfx)
 	players.clear()
 

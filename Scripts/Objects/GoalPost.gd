@@ -46,7 +46,7 @@ func _check_players() -> void:
 				playerObj.limitRight = int(global_position.x +(screenXSize/2))+64
 				playerObj.camera_limits_target[0] = global_position.x -screenXSize/2
 				playerObj.camera_limits_target[2] = global_position.x +(screenXSize/2)
-				playerObj.camera_shift_time = 1.0
+				playerObj.snap_camera_to_limits(1.0)
 			camera = player.camera
 			player.camLockTime = 4096.0
 			SetSignpostAnimation(player.character)
@@ -62,7 +62,8 @@ func TriggerSignpostMultiPlayer() -> void:
 			playerObj.limitRight = int(global_position.x +(screenXSize/2))
 			playerObj.camera_limits_target[0] = global_position.x -screenXSize/2
 			playerObj.camera_limits_target[2] = global_position.x +(screenXSize/2)
-			playerObj.camera_shift_time = 1.0
+			
+			playerObj.snap_camera_to_limits(1.0)
 		
 			if !winner:
 				winner = playerObj.character as Global.CHARACTERS

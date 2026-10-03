@@ -104,44 +104,55 @@ bottomBoundry = 1376
 position = Vector2(1480, 1456)
 type = 1
 spring_direction = 2
+new_layer = 0
 
 [node name="Spring2" parent="Entities" unique_id=1380659370 instance=ExtResource("21_ejlob")]
 position = Vector2(2056, 2000)
 type = 1
 spring_direction = 2
+new_layer = 0
 
 [node name="Spring3" parent="Entities" unique_id=2023463752 instance=ExtResource("21_ejlob")]
 position = Vector2(2152, 1468)
 type = 1
+new_layer = 0
 
 [node name="Spring4" parent="Entities" unique_id=541587080 instance=ExtResource("21_ejlob")]
 position = Vector2(2496, 1432)
+new_layer = 0
 
 [node name="Spring5" parent="Entities" unique_id=1208584590 instance=ExtResource("21_ejlob")]
 position = Vector2(6576, 1336)
+new_layer = 0
 
 [node name="Spring6" parent="Entities" unique_id=769941895 instance=ExtResource("21_ejlob")]
 position = Vector2(8392, 1488)
 spring_direction = 2
+new_layer = 0
 
 [node name="Spring7" parent="Entities" unique_id=19572372 instance=ExtResource("21_ejlob")]
 position = Vector2(8504, 1488)
 scale = Vector2(-1, 1)
 spring_direction = 3
+new_layer = 0
 
 [node name="Spring8" parent="Entities" unique_id=307786598 instance=ExtResource("21_ejlob")]
 position = Vector2(8944, 1432)
 type = 1
+new_layer = 0
 
 [node name="Spring9" parent="Entities" unique_id=1076887517 instance=ExtResource("21_ejlob")]
 position = Vector2(9232, 1984)
 type = 1
+new_layer = 0
 
 [node name="Spring10" parent="Entities" unique_id=1114558915 instance=ExtResource("21_ejlob")]
 position = Vector2(11120, 1536)
+new_layer = 0
 
 [node name="Spring11" parent="Entities" unique_id=311559928 instance=ExtResource("21_ejlob")]
 position = Vector2(11248, 1408)
+new_layer = 0
 
 [node name="HtzSeeSaw" parent="Entities" unique_id=2033821177 instance=ExtResource("22_j50h5")]
 position = Vector2(2256, 1224)

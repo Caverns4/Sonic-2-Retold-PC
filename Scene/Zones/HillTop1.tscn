@@ -108,39 +108,49 @@ SpriteTexture = ExtResource("27_vnla0")
 [node name="Spring" parent="Entities" unique_id=1577437195 instance=ExtResource("24_tu1me")]
 position = Vector2(1840, 1848)
 type = 1
+new_layer = 0
 
 [node name="Spring2" parent="Entities" unique_id=1235304312 instance=ExtResource("24_tu1me")]
 position = Vector2(1904, 2040)
+new_layer = 0
 
 [node name="Spring3" parent="Entities" unique_id=1080330688 instance=ExtResource("24_tu1me")]
 position = Vector2(3088, 624)
 spring_direction = 4
+new_layer = 0
 
 [node name="Spring4" parent="Entities" unique_id=2019858191 instance=ExtResource("24_tu1me")]
 position = Vector2(3200, 1720)
+new_layer = 0
 
 [node name="Spring5" parent="Entities" unique_id=971980976 instance=ExtResource("24_tu1me")]
 position = Vector2(3472, 848)
 spring_direction = 4
+new_layer = 0
 
 [node name="Spring6" parent="Entities" unique_id=839415993 instance=ExtResource("24_tu1me")]
 position = Vector2(4016, 1464)
+new_layer = 0
 
 [node name="Spring7" parent="Entities" unique_id=850872099 instance=ExtResource("24_tu1me")]
 position = Vector2(4240, 240)
 spring_direction = 4
+new_layer = 0
 
 [node name="Spring8" parent="Entities" unique_id=1653845926 instance=ExtResource("24_tu1me")]
 position = Vector2(4584, 410)
+new_layer = 0
 
 [node name="Spring9" parent="Entities" unique_id=1540556889 instance=ExtResource("24_tu1me")]
 position = Vector2(5384, 1712)
 type = 1
 spring_direction = 2
+new_layer = 0
 
 [node name="Spring10" parent="Entities" unique_id=1938692409 instance=ExtResource("24_tu1me")]
 position = Vector2(5744, 1736)
 type = 1
+new_layer = 0
 
 [node name="LayerSwitcher" parent="Entities" unique_id=958159232 instance=ExtResource("25_0yxob")]
 position = Vector2(5760, 304)
@@ -329,7 +339,6 @@ position = Vector2(6392, 1392)
 setLeft = false
 topBoundry = 1152
 setRight = false
-rightBoundry = 320
 setBottom = false
 bottomBoundry = 2048
 

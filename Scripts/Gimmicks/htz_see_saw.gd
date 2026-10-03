@@ -145,13 +145,13 @@ func springObjectsOnBoard(delta):
 				node.air_control = true
 				node.angle = 0
 				node.animator.play("spring")
-				node.animator.queue("curAnimwalk")
+				node.animator.queue("walk")
 		SoundDriver.play_sound(springSound)
 		childRiding = true
 
 	# If the LAST object in weights is a player, bounce the counterweight if applicable.
 	elif child.ground and balance != balanceMemory:
-		var yspeed = 0 - (min(32,abs(
+		var yspeed: float = 0 - (min(32,abs(
 		(child.global_position.x-round(global_position.x+downSide))
 		)))*springPower
 		child.movement.y = yspeed
