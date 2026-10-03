@@ -11,10 +11,10 @@ var enteranceArea: Area2D = Area2D.new()
 var player: Player2D = null
 
 
-func _ready():
+func _ready() -> void:
 	# generate hitboxes
-	var hitbox = CollisionShape2D.new()
-	var shape = RectangleShape2D.new()
+	var hitbox: CollisionShape2D = CollisionShape2D.new()
+	var shape: RectangleShape2D = RectangleShape2D.new()
 	shape.size = hitBoxSize
 	hitbox.set_shape(shape)
 	enteranceArea.add_child(hitbox)
@@ -28,11 +28,12 @@ func _ready():
 	enteranceArea.global_position = global_position+get_point_position(0)
 
 
-func _on_hitbox_enter(body):
+func _on_hitbox_enter(body: CharacterBody2D) -> void:
+	if ! body is Player2D: return
 	if (body.currentState == body.STATES.ANIMATION) == split:
 		randomize()
-		var rng = randf_range(0,100)
-		var animatorNode = body.stateList[body.STATES.ANIMATION]
+		var rng: float = randf_range(0,100)
+		var animatorNode: PlayerState = body.stateList[body.STATES.ANIMATION]
 		# run a random chance of a path split, or just continue if it is not a split
 		if (rng <= splitChance or !split) and animatorNode.pipe != self:
 			if body.currentState != body.STATES.ANIMATION:

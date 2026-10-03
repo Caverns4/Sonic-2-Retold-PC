@@ -2,24 +2,24 @@
 extends Area2D
 
 
-@export_enum("left", "right") var boostDirection = 0
-var dirMemory = boostDirection
-@export var speed = 16
-@export var sfx = preload("res://Audio/SFX/Gimmicks/s2br_Spring.wav")
+@export_enum("left", "right") var boostDirection: int = 0
+@onready var dir_memory: int = boostDirection
+@export var speed: float = 16.0
+@export var sfx: AudioStream = preload("res://Audio/SFX/Gimmicks/s2br_Spring.wav")
 @export var visible_sprite: bool = true
 
-var players =[]
+var players: Array[Player2D] = []
 
-func _ready():
+func _ready() -> void:
 	# set direction
 	$Booster.flip_h = bool(boostDirection)
 	$Booster.visible = visible_sprite
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
-		if (boostDirection != dirMemory):
+		if (boostDirection != dir_memory):
 			$Booster.flip_h = bool(boostDirection)
-			dirMemory = boostDirection
+			dir_memory = boostDirection
 	else:
 		if players:
 			for i in players:
@@ -29,11 +29,11 @@ func _process(_delta):
 					if sfx:
 						SoundDriver.play_sound2(sfx)
 
-func _on_SpeedBooster_body_entered(body):
+func _on_SpeedBooster_body_entered(body: Node2D) -> void:
 	# DO THE BOOST, WHOOOOOSH!!!!!!!
 	if body.ground:
 		#If the sign is the same and player is moving slower.
-		var sameDir = sign(body.movement.x) == sign(-1+(boostDirection*2))
+		var sameDir: float = sign(body.movement.x) == sign(-1+(boostDirection*2))
 		#Don't change speed if player is already moving to fast.
 		if (sameDir and abs(body.movement.x) < abs(speed*60)) or !sameDir:
 			body.movement.x = speed*(-1+(boostDirection*2))*60
