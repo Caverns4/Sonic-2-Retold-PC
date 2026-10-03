@@ -193,7 +193,7 @@ func physics_collision(body: Player2D, hitVector: Vector2) -> void:
 	# check that player has the rolling layer bit set
 	elif body.is_attacking():
 		# Bounce from below
-		if hitVector.x != 0:
+		if hitVector.x != 0 and body.ground:
 			# check conditions for interaction (and the player is the first player)
 			if body.movement.y >= 0 and body.movement.x != 0 and (
 				body.playerControl == 1 or Global.two_player_mode):
@@ -235,8 +235,8 @@ func _on_destroyed() -> void:
 func disable_collision() -> void:
 	collision_layer = 0
 	collision_mask = 0
-	$CollisionShape2D.disabled = true
-	$InstaArea.monitorable = false
-	$InstaArea.monitoring = false
+	$CollisionShape2D.queue_free()
+	$InstaArea.queue_free()
+	$InstaArea.queue_free()
 	state = STATE.PHYSICS
 	velocity.y = 0.0
