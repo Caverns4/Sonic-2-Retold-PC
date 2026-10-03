@@ -244,18 +244,11 @@ rightLayer = 1
 [node name="LayerSwitcher17" parent="Entities" unique_id=1883798042 instance=ExtResource("7")]
 position = Vector2(5240, 64)
 size = Vector2i(1, 24)
-
-[node name="LayerSwitcher39" parent="Entities" unique_id=290709083 instance=ExtResource("7")]
-position = Vector2(5696, 64)
-size = Vector2i(1, 24)
-
-[node name="LayerSwitcher18" parent="Entities" unique_id=594527245 instance=ExtResource("7")]
-position = Vector2(5372, 336)
-size = Vector2i(1, 6)
+leftLayer = 0
 
 [node name="LayerSwitcher20" parent="Entities" unique_id=1844752751 instance=ExtResource("7")]
-position = Vector2(5372, 528)
-size = Vector2i(1, 14)
+position = Vector2(5368, 472)
+size = Vector2i(1, 24)
 
 [node name="LayerSwitcher21" parent="Entities" unique_id=768688741 instance=ExtResource("7")]
 position = Vector2(5696, 864)
@@ -272,23 +265,28 @@ position = Vector2(3512, 1136)
 scale = Vector2(-1, 1)
 type = 1
 spring_direction = 3
+new_layer = 0
 
 [node name="Spring2" parent="Entities" unique_id=281781103 instance=ExtResource("10_pxcy8")]
 position = Vector2(4624, 760)
+new_layer = 0
 
 [node name="Spring3" parent="Entities" unique_id=2142952559 instance=ExtResource("10_pxcy8")]
 position = Vector2(5256, 368)
 spring_direction = 2
+new_layer = 0
 
 [node name="Spring4" parent="Entities" unique_id=238017407 instance=ExtResource("10_pxcy8")]
 position = Vector2(5752, 240)
 scale = Vector2(-1, 1)
 spring_direction = 3
+new_layer = 2
 
 [node name="Spring5" parent="Entities" unique_id=1828577483 instance=ExtResource("10_pxcy8")]
 position = Vector2(5752, 496)
 scale = Vector2(-1, 1)
 spring_direction = 3
+new_layer = 0
 
 [node name="SpeedBooster" parent="Entities" unique_id=1097199893 instance=ExtResource("11_q0l1c")]
 position = Vector2(3872, 1080)
@@ -731,37 +729,37 @@ position = Vector2(10304, 1088)
 [node name="Badniks" type="Node" parent="." unique_id=1952502917]
 
 [node name="Spiny" parent="Badniks" unique_id=1721120179 instance=ExtResource("28_s6xc8")]
-position = Vector2(2384, 896)
+position = Vector2(2368, 888)
 
 [node name="Spiny2" parent="Badniks" unique_id=2085996616 instance=ExtResource("28_s6xc8")]
-position = Vector2(2312, 895)
+position = Vector2(2272, 888)
 
 [node name="Spiny3" parent="Badniks" unique_id=56031305 instance=ExtResource("28_s6xc8")]
-position = Vector2(3072, 448)
+position = Vector2(3040, 440)
 
 [node name="Spiny4" parent="Badniks" unique_id=513317745 instance=ExtResource("28_s6xc8")]
-position = Vector2(3160, 448)
+position = Vector2(3160, 440)
 
 [node name="Spiny5" parent="Badniks" unique_id=70480885 instance=ExtResource("28_s6xc8")]
-position = Vector2(3128, 1408)
+position = Vector2(3136, 1400)
 
 [node name="Spiny6" parent="Badniks" unique_id=1952120713 instance=ExtResource("28_s6xc8")]
-position = Vector2(4160, 1344)
+position = Vector2(4160, 1336)
 
 [node name="Spiny7" parent="Badniks" unique_id=258578011 instance=ExtResource("28_s6xc8")]
-position = Vector2(5440, 1024)
+position = Vector2(5440, 1016)
 
 [node name="Spiny8" parent="Badniks" unique_id=490772665 instance=ExtResource("28_s6xc8")]
-position = Vector2(4456, 384)
+position = Vector2(4456, 376)
 
 [node name="Spiny9" parent="Badniks" unique_id=60721126 instance=ExtResource("28_s6xc8")]
-position = Vector2(4584, 384)
+position = Vector2(4584, 376)
 
 [node name="Spiny10" parent="Badniks" unique_id=839310743 instance=ExtResource("28_s6xc8")]
-position = Vector2(6584, 1280)
+position = Vector2(6584, 1272)
 
 [node name="Spiny11" parent="Badniks" unique_id=105728619 instance=ExtResource("28_s6xc8")]
-position = Vector2(9472, 1200)
+position = Vector2(9464, 1176)
 rotation = -1.5708
 
 [node name="Rings" type="Node" parent="." unique_id=479478700]

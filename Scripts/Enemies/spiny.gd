@@ -1,76 +1,85 @@
 extends EnemyBase
 
-@export var bulletSound = preload("res://Audio/SFX/Objects/s2br_Projectile.wav")
+## Total distance travelled in pixels
+@export var x_range: int = 80
+const speed = 20.0
 
-const SPEED = 25.0 #Walk speed
-const MAX_MOVE_TIME = 4.0 #time to move in each direction
-const SHOOT_WAIT_TIME = 2.0
+const bullet_sfx: AudioStream = preload("res://Audio/SFX/Objects/s2br_Projectile.wav")
+const projectile: PackedScene = preload("res://Entities/Enemies/Projectiles/GenericProjectile.tscn")
 
-var targets = [] # targets in the sensor area
-var currentTarget = null # The target picked from targets. used to remember the player.
+@onready var bulletPoint: Node2D = $Sprite2D/BulletPoint
+@onready var animator: AnimationPlayer = $AnimationPlayer
+@onready var origin: Vector2 = global_position
 
-var Projectile = preload("res://Entities/Enemies/Projectiles/GenericProjectile.tscn")
-var bullet = null
+var side: int = -1
+var shoot_delay: float = 0.0
+var movement_locked: bool = false
+var target_pos: Vector2 = Vector2.ZERO
+var targets: Array[Player2D] = []
 
-@onready var bulletPoint = $Sprite2D/BulletPoint
-@onready var animator = $AnimationPlayer
-
-var moveTimer = 0.0
-var shootTime = 0.0
-var shootMemoryFlag = false
-var velocityPreVec = Vector2.ZERO #Movement speed before Vector is rortated
 
 func _ready() -> void:
-	velocityPreVec.x = SPEED
-	moveTimer = MAX_MOVE_TIME/2.0
-	animator.play("WALK")
-	$VisibleOnScreenEnabler2D.visible = true
-	$PlayerCheck.visible = true
-	super()
+	if !Engine.is_editor_hint():
+		var direction: Vector2 = Vector2(x_range*clamp(side,-1,0),0).rotated(deg_to_rad(rotation_degrees))
+		target_pos = origin + direction
+		super()
+		animator.play("WALK")
+		$PlayerCheck.visible = true
+
 
 func _physics_process(delta: float) -> void:
-	if !shootTime > 0.0:
-		if moveTimer > 0.0:
-			moveTimer -= delta
-		else:
-			moveTimer = MAX_MOVE_TIME
-			velocityPreVec.x = 0-velocityPreVec.x
-			shootMemoryFlag = false
-
-		velocity = Vector2(velocityPreVec).rotated(rotation)
-		if targets and shootMemoryFlag == false:
-			currentTarget = GlobalFunctions.get_nearest_player_x(global_position.x)
-			shootTime = SHOOT_WAIT_TIME
-			velocity = Vector2.ZERO
-			animator.play("RESET")
+	if Engine.is_editor_hint(): return
+	shoot_delay -= delta
+	
+	if shoot_delay <= 0.0 and targets:
+		var player: Player2D = targets[0]
+		animator.play("RESET")
+		shoot_delay = 2.0
+		movement_locked = true
+		await get_tree().create_timer(0.25).timeout
+		_shoot_bullet(player)
+		await get_tree().create_timer(0.25).timeout
+		movement_locked = false
+		return
+	
+	if movement_locked: return
+	# move position toward origin point with the travel distance
+	if side <= 0:
+		position = position.move_toward(
+			origin-Vector2(x_range,0).rotated(deg_to_rad(rotation_degrees)),
+			speed*delta)
 	else:
-		shootTime -= delta
-		if shootTime < 1.0 and shootMemoryFlag == false:
-			animator.play("SHOOT")
-			shootBullet()
-			shootMemoryFlag = true
-		elif shootTime <= 0.0:
-			animator.play("WALK")
+		position = position.move_toward(origin,speed*delta)
 
-func shootBullet():
-	# Shoot stabdard bullet
-	bullet = Projectile.instantiate()
-	get_parent().add_child(bullet)
-	# set position with offset
+	# if at the destination point, turn around
+	if position.distance_to(target_pos) <= 1:
+		#Calculate a new Target position
+		side = -side
+		if side <= 0:
+			target_pos = origin + Vector2(x_range*clamp(side,-1,0),0).rotated(deg_to_rad(rotation_degrees))
+		else:
+			target_pos = origin
+		animator.play("WALK")
+		shoot_delay = 0.0
+
+
+func _shoot_bullet(current_target: Player2D) -> void:
+	var bullet: CharacterBody2D = projectile.instantiate()
+	add_child(bullet)
 	bullet.gravity = true
 	bullet.global_position = bulletPoint.global_position
-	SoundDriver.play_sound(bulletSound)
-	
-	var temp = Vector2(0,-150).rotated(rotation)
-	if rotation == 0:
-		var balance = sign(currentTarget.global_position.x - global_position.x)
-		temp = Vector2(0,150).rotated(balance * -40)
+	SoundDriver.play_sound(bullet_sfx)
+	var temp: Vector2 = Vector2(0,-150).rotated(rotation)
+	var balance: int = sign(current_target.global_position.x - global_position.x)
+	temp = Vector2(0,150).rotated(balance * -40)
 	bullet.velocity = temp
 
 
 func _on_player_check_body_entered(body: Node2D) -> void:
-	targets.append(body)
+	if body is Player2D:
+		targets.append(body)
 
 
 func _on_player_check_body_exited(body: Node2D) -> void:
-	targets.erase(body)
+	if body is Player2D:
+		targets.erase(body)

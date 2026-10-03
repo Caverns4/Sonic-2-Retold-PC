@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://xbidybme3tde"]
+[gd_scene format=3 uid="uid://xbidybme3tde"]
 
 [ext_resource type="Script" uid="uid://bj506m46s33xo" path="res://Scripts/Enemies/spiny.gd" id="1_d667u"]
 [ext_resource type="Texture2D" uid="uid://blms2khcx3knr" path="res://Graphics/Enemies/Spiny_Floor.png" id="2_thbk4"]
@@ -66,50 +66,46 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rlu3j"]
 size = Vector2(128, 64)
 
-[node name="Spiny" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Spiny" type="CharacterBody2D" unique_id=1565038487 groups=["Enemy"]]
 collision_layer = 16384
 collision_mask = 0
 script = ExtResource("1_d667u")
 
-[node name="CollissionMask" type="CollisionShape2D" parent="."]
-position = Vector2(0, -8)
+[node name="CollissionMask" type="CollisionShape2D" parent="." unique_id=1167378787]
 shape = SubResource("1")
 
-[node name="DamageArea" type="Area2D" parent="."]
-position = Vector2(0, -8)
+[node name="DamageArea" type="Area2D" parent="." unique_id=819252308]
 collision_layer = 0
 collision_mask = 528384
 
-[node name="HitBox" type="CollisionShape2D" parent="DamageArea"]
+[node name="HitBox" type="CollisionShape2D" parent="DamageArea" unique_id=331390935]
 modulate = Color(1, 0, 0, 1)
 shape = SubResource("1")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -16)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=583915122]
+position = Vector2(0, -8)
 texture = ExtResource("2_thbk4")
 vframes = 3
 
-[node name="BulletPoint" type="Node2D" parent="Sprite2D"]
+[node name="BulletPoint" type="Node2D" parent="Sprite2D" unique_id=1667694290]
 position = Vector2(0, -3)
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=28482766]
 visible = false
 position = Vector2(5.72205e-06, 5.96046e-08)
 scale = Vector2(4.26667, 6.4)
 rect = Rect2(-15, -10, 30, 10)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_ab4dn")
-}
-autoplay = "RESET"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=234660916]
+libraries/ = SubResource("AnimationLibrary_ab4dn")
+autoplay = &"RESET"
 
-[node name="PlayerCheck" type="Area2D" parent="."]
-visible = false
+[node name="PlayerCheck" type="Area2D" parent="." unique_id=280682165]
+position = Vector2(0, 8)
 collision_layer = 0
 collision_mask = 4096
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCheck"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCheck" unique_id=657069565]
 position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_rlu3j")
 
