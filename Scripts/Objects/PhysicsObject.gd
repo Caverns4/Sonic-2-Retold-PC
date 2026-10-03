@@ -32,7 +32,7 @@ var moveStepLength: float = 8*60
 var angle: float = 0
 var gravityAngle: float = 0
 # the collission layer, 0 for low, 1 for high
-var collissionLayer: int = 0
+var current_path: int = 0
 
 # translate, (ignores physics)
 var allowTranslate: bool = false
@@ -192,10 +192,10 @@ func update_sensors() -> void:
 		i.set_collision_mask_value(12,false)
 		
 		# set layer masks
-		i.set_collision_mask_value(1+((collissionLayer+1)*4),i.get_collision_mask_value(1))
-		i.set_collision_mask_value(2+((collissionLayer+1)*4),i.get_collision_mask_value(2))
-		i.set_collision_mask_value(3+((collissionLayer+1)*4),i.get_collision_mask_value(3))
-		i.set_collision_mask_value(4+((collissionLayer+1)*4),i.get_collision_mask_value(4))
+		i.set_collision_mask_value(1+((current_path+1)*4),i.get_collision_mask_value(1))
+		i.set_collision_mask_value(2+((current_path+1)*4),i.get_collision_mask_value(2))
+		i.set_collision_mask_value(3+((current_path+1)*4),i.get_collision_mask_value(3))
+		i.set_collision_mask_value(4+((current_path+1)*4),i.get_collision_mask_value(4))
 	
 	
 	horizontalSensor.force_raycast_update()
@@ -449,7 +449,7 @@ func check_for_ceiling() -> bool:
 	ceilChecker.collision_mask = 2184
 	ceilChecker.set_collision_mask_value(4,true)
 	
-	if collissionLayer == 0:
+	if current_path == 0:
 		ceilChecker.set_collision_mask_value(12,false)
 	else:
 		ceilChecker.set_collision_mask_value(8,false)

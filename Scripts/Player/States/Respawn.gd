@@ -80,7 +80,7 @@ func _physics_process(delta: float) -> void:
 				parent.collision_mask = parent.defaultMask
 				parent.set_state(parent.STATES.AIR)
 				parent.movement = Vector2.ZERO
-				parent.collissionLayer = parent.partner.collissionLayer
+				parent.current_path = parent.partner.current_path
 				parent.z_index = parent.defaultZIndex
 				# copy limits to avoid out of bounds errors
 				parent.limitLeft = parent.partner.limitLeft

@@ -25,17 +25,17 @@ func _physics_process(_delta: float) -> void:
 	if playerList.size() > 0:
 		for i in playerList:
 			# check that these variables exist in the player
-			if "collissionLayer" in i and "ground" in i:
+			if "current_path" in i and "ground" in i:
 				# check if on the floor and if we're only check for grounded players
 				if i.ground or not onlyOnFloor:
 					match(orientation):
 						0: #Horizontal
 							var priorityDirection: int = -1
 							if (i.global_position.x > global_position.x):
-								i.collissionLayer = rightLayer
+								i.current_path = rightLayer
 								priorityDirection = rightLayer
 							else:
-								i.collissionLayer = leftLayer
+								i.current_path = leftLayer
 								priorityDirection = leftLayer
 							
 							if affectPriority and priorityDirection >= 0:
@@ -48,10 +48,10 @@ func _physics_process(_delta: float) -> void:
 						1: #Vertical
 							var priorityDirection: int = -1
 							if (i.global_position.y > global_position.y):
-								i.collissionLayer = rightLayer
+								i.current_path = rightLayer
 								priorityDirection = rightLayer
 							else:
-								i.collissionLayer = leftLayer
+								i.current_path = leftLayer
 								priorityDirection = leftLayer
 
 							if affectPriority and priorityDirection >= 0:

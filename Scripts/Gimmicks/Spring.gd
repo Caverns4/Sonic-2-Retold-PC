@@ -90,7 +90,7 @@ func physics_collision(body: Player2D, hitVector: Vector2) -> void:
 			body.position.y = global_position.y + (hitDirection.y*32)
 			body.set_state(body.STATES.AIR,body.currentHitbox.NORMAL)
 			body.disconect_from_floor()
-			if new_layer: body.collissionLayer = (new_layer-1)
+			if new_layer: body.current_path = (new_layer-1)
 			if kill_lateral_motion == true:
 				body.movement.x = 0
 			$SpringAnimator.play(animList[animID])
@@ -109,7 +109,7 @@ func physics_collision(body: Player2D, hitVector: Vector2) -> void:
 				body.movement.x = setMove.x
 				body.horizontalLockTimer = (15.0/60.0) # lock for 15 frames
 				body.direction = sign(setMove.x)
-				if new_layer: body.collissionLayer = (new_layer-1)
+				if new_layer: body.current_path = (new_layer-1)
 				$SpringAnimator.play(animList[animID])
 				if $VisibleOnScreenNotifier2D.is_on_screen():
 					SoundDriver.play_sound(spring_sfx)
@@ -126,7 +126,7 @@ func _on_Diagonal_body_entered(body:Player2D) -> void:
 	body.position.y = position.y-8
 	body.air_control = true
 	body.movement = hitDirection*(speed[type]*60)
-	if new_layer: body.collissionLayer = (new_layer-1)
+	if new_layer: body.current_path = (new_layer-1)
 	$SpringAnimator.play(animList[animID])
 	if (hitDirection.y < 0):
 		body.set_state(body.STATES.AIR)

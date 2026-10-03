@@ -5,7 +5,7 @@ var players: Array[Player2D] = []
 
 func _process(_delta: float)->void:
 	for i: Player2D in players:
-		if i.collissionLayer == 0:
+		if i.current_path == 0:
 			i.movement.y = (global_position.y-96 - i.global_position.y) * 6.0
 			if i.ground:
 				i.disconect_from_floor()
