@@ -52,10 +52,11 @@ func _on_BoundrySetter_body_entered(body: Player2D) -> void:
 						if lockRight:
 							i.limitRight = min(global_position.x+screenSize.x/2,Global.hardBorderRight)
 							i.camera_limits_target[2] = i.limitRight
+							i.camera.limit_right = i.limitRight
 						if lockBottom:
 							i.limitBottom = min(global_position.y+screenSize.y/2,Global.hardBorderBottom)
 							i.camera_limits_target[3] = i.limitBottom
-						i.snap_camera_to_limits(1.0)
+						i.snap_camera_to_limits(0.5)
 					
 					if !Global.players[0].is_super:
 						SoundDriver.set_volume(-50)
@@ -94,3 +95,4 @@ func boss_completed() -> void:
 			# set ratchetScrolling
 			i.rachetScrollLeft = ratchetScrollLeft
 			i.rachetScrollRight = ratchetScrollRight
+			i.snap_camera_to_limits(0.5)

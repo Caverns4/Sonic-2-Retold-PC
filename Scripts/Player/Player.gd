@@ -69,6 +69,8 @@ var is_super: bool = false:
 var shoe_time: float = 0
 ## Time remaining for the player can interact with Rings again (Seconds)
 var ringDisTime: float = 0 # ring collecting disable timer
+## If the Character is currently vulnerable, different from InvTime as this is state-controled.
+var vulnerable: bool = true
 
 # water settings
 ## If true, the Player is treated as underwater.
@@ -599,6 +601,7 @@ func _process(delta:float ) -> void:
 			if is_instance_valid(superAnimator) and is_super:
 				is_super = false
 				superAnimator.play("PowerDown")
+				sprite.texture = spriteController.normal_sprites
 				switch_physics()
 			SoundDriver.playNormalMusic()
 			invTime = 60
@@ -836,7 +839,7 @@ func _physics_process(delta: float) -> void:
 			get_parent().add_child(splash)
 	
 	# We don't check for crushing if the player is in an invulnerable state (note that invulernable means immune to crushing/death by falling)
-	if !stateList[currentState].get_state_invulnerable() and !controlObject:
+	if vulnerable and !controlObject:
 		var crushSensorLeft: Area2D = $CrushSensorLeft
 		var crushSensorRight: Area2D = $CrushSensorRight
 		var crushSensorUp: Area2D = $CrushSensorUp
@@ -963,7 +966,7 @@ func set_state(newState: STATES, forceMask: Vector2 = Vector2.ZERO) -> void:
 		var lastState: STATES = currentState
 		currentState = newState
 		stateList[lastState].state_exit()
-		stateList[newState].state_activated()
+		stateList[newState].state_enter()
 	
 	for i in stateList:
 		i.set_process(i == stateList[newState])
@@ -1068,7 +1071,7 @@ func is_attacking() -> bool:
 
 # see Global for damage types, 0 = none, 1 = Fire, 2 = Elec, 3 = Water
 func hit_player(damagePoint: Vector2 = global_position, damageType: int = 0, soundID: int = 6) -> bool:
-	if damageType != 0 and shield == damageType+1:
+	if (damageType != 0 and shield == damageType+1) or !vulnerable:
 		return false
 	if (currentState != STATES.HIT and invTime <= 0 and 
 	super_time <= 0 and (shieldSprite.get_node("InstaShieldHitbox/HitBox").disabled 
@@ -1157,7 +1160,8 @@ func super_form_ready() -> bool:
 	return false
 
 func kill(soundID: int = 6) -> void:
-	if currentState != STATES.DIE:
+	if currentState != STATES.DIE and vulnerable:
+		vulnerable = false
 		hitbox.disabled = true
 		disconect_from_floor()
 		super_time = 0

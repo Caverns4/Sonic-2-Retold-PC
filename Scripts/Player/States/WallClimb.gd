@@ -6,7 +6,7 @@ var climbTimer: float = 0
 
 var shiftPoses: Array[Vector2] = [Vector2(4,-4),Vector2(13,-15),Vector2(4,-28),Vector2(13,-34)]
 
-func state_activated() -> void:
+func state_enter() -> void:
 	climbUp = false
 	climbTimer = 0
 	

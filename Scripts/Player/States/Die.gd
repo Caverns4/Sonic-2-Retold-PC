@@ -1,7 +1,7 @@
 extends PlayerState
 
-func _ready() -> void:
-	invulnerability = true # ironic
+func state_enter() -> void:
+	parent.vulnerable = false
 
 func _physics_process(delta: float) -> void:
 	# gravity
@@ -54,7 +54,7 @@ func CheckGameOver(lifeCount: int,timerVal: float) -> void:
 		Global.checkpoint_time_p2 = 0
 
 func RespawnInTwoPlayer() -> void:
-	invulnerability = false
+	parent.vulnerable = true
 	parent.hitbox.disabled = false
 	parent.allowTranslate = false
 	parent.global_position = parent.respawnPosition

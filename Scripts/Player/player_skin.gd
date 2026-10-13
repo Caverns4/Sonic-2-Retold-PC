@@ -1,3 +1,4 @@
+class_name PlayerSkin2D
 extends Node2D
 
 @onready var normal_sprites: Texture2D = $Sprite2D.texture

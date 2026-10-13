@@ -17,7 +17,7 @@ func _ready() -> void:
 	carryHitBox = parent.get_node("TailsCarryBox/HitBox")
 	carryBox = parent.get_node("TailsCarryBox")
 
-func state_activated() -> void:
+func state_enter() -> void:
 	flightTime = 8
 	flyGrav = 0.03125
 	flyHitBox.disabled = false

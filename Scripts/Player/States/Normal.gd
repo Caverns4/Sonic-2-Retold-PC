@@ -27,7 +27,7 @@ var playerIdles: Array = [
 ["idle1","idle1","idle1","idle2","idle3"]
 ]
 
-func state_activated() -> void:
+func state_enter() -> void:
 	if (parent.playerControl < 1 and
 	parent.collision_layer == 0 and
 	parent.collision_mask == 0):

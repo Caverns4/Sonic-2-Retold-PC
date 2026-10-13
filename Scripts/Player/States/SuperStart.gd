@@ -2,6 +2,9 @@ extends PlayerState
 
 var activated: bool = true
 
+func state_enter() -> void:
+	parent.vulnerable = false
+
 func _process(_delta: float) -> void:
 	if activated and !parent.is_super:
 		var remVel: Vector2 = parent.movement
@@ -46,4 +49,5 @@ func _process(_delta: float) -> void:
 
 func state_exit() -> void:
 	activated = true
+	parent.vulnerable = true
 	parent.strength = Global.STRENGTH_TIER.SUPER

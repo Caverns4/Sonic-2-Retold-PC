@@ -38,7 +38,7 @@ func _process(_delta: float) -> void:
 		parent.set_state(parent.STATES.JUMP)
 
 # enable the instashield hitmask
-func state_activated() -> void:
+func state_enter() -> void:
 	hammerTime = 1.0
 	parent.shieldSprite.get_node("InstaShieldHitbox/HitBox").set_deferred("disabled",false)
 

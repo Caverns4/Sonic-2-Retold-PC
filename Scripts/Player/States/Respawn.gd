@@ -5,11 +5,9 @@ var targetPoint: Vector2 = Vector2.ZERO
 
 var spawnTicker: float = (1.0/64.0)*60.0
 
-func _ready() -> void:
-	invulnerability = true # ironic
-
-func state_activated() -> void:
+func state_enter() -> void:
 	targetPoint = parent.partner.global_position
+	parent.vulnerable = false
 
 func _process(_delta: float) -> void:
 	# Animation
@@ -76,6 +74,7 @@ func _physics_process(delta: float) -> void:
 				parent.groundSpeed = 0
 				parent.animator.play("walk")
 				parent.allowTranslate = false
+				parent.vulnerable = true
 				parent.collision_layer = parent.defaultLayer
 				parent.collision_mask = parent.defaultMask
 				parent.set_state(parent.STATES.AIR)

@@ -284,7 +284,7 @@ func _on_ShieldTimer_timeout() -> void:
 			parent.shieldSprite.play("Bubble")
 
 # reset drop dash timer and gripping when this state is set
-func state_activated() -> void:
+func state_enter() -> void:
 	dropTimer = 0
 	# parent.poleGrabID = null
 	# disable water run splash

@@ -16,7 +16,7 @@ var sliding: bool = false
 # add a ground buffer so that the player won't have just 1 frame on the ground send them into a slide (for example monitors)
 var groundBuffer: float = 0
 
-func state_activated() -> void:
+func state_enter() -> void:
 	groundBuffer = 0
 	# if no movement on the x axis then go into a fall immediately
 	if parent.movement.x == 0:

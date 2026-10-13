@@ -4,7 +4,7 @@ extends PlayerState
 func state_exit() -> void:
 	parent.get_node("HitBox").shape.size = parent.currentHitbox.NORMAL
 	
-func state_activated() -> void:
+func state_enter() -> void:
 	parent.get_node("HitBox").position = parent.hitBoxOffset.crouch
 	
 func _process(delta: float) -> void:
