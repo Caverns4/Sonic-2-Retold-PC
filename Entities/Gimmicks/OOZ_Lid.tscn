@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://chgov1cta70sn"]
+[gd_scene format=3 uid="uid://chgov1cta70sn"]
 
 [ext_resource type="Texture2D" uid="uid://bdkig5lewgpcq" path="res://Graphics/Gimmicks/OOZ_LidTop.png" id="1_5rgec"]
 [ext_resource type="Script" uid="uid://br27whgr53gae" path="res://Scripts/Gimmicks/ooz_lid.gd" id="1_n4dys"]
@@ -9,12 +9,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mmkh8"]
 size = Vector2(48, 8)
 
-[node name="OOZ_Lid" type="Node2D"]
+[node name="OOZ_Lid" type="Node2D" unique_id=1183548453]
 script = ExtResource("1_n4dys")
 
-[node name="BurnerFlames" parent="." instance=ExtResource("2_a5jou")]
+[node name="BurnerFlames" parent="." unique_id=1446797623 instance=ExtResource("2_a5jou")]
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="OilSlick" type="TextureRect" parent="." unique_id=1251719801]
 visible = false
 use_parent_material = true
 offset_left = -32.0
@@ -24,21 +24,21 @@ texture = ExtResource("2_8n1xm")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=900213614]
 collision_layer = 8192
 collision_mask = 0
 script = ExtResource("3_nn0l2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=1250549081]
 process_priority = 10
 position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_mmkh8")
 
-[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D" unique_id=1255383598]
 position = Vector2(0, -2)
 texture = ExtResource("1_5rgec")
 hframes = 4
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=589634583]
 visible = false
 rect = Rect2(-64, -224, 128, 256)

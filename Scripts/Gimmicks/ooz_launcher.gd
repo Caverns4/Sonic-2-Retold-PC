@@ -39,7 +39,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		var node = Global.players[Global.players.find(body)]
 		node.controlObject = self
 		node.set_state(body.STATES.ANIMATION)
-		node.animator.play("Roll")
+		node.animator.play("roll")
 		node.movement = Vector2.ZERO
 		node.global_position = global_position
 		node.allowTranslate = true

@@ -1,12 +1,10 @@
 extends AnimatableBody2D
 
-@onready var floorCheck = $RayCast2D
-
-var gravity = false
-var srpingPlayers = false
-var movement = Vector2.ZERO
-var worldPos = Vector2.ZERO
-var players = []
+var gravity: bool = false
+var srpingPlayers: bool = false
+var movement: Vector2 = Vector2.ZERO
+var worldPos: Vector2 = Vector2.ZERO
+var players: Array[Player2D] = []
 
 func  _ready() -> void:
 	worldPos = Vector2(round(global_position.x),round(global_position.y))
@@ -18,7 +16,7 @@ func _physics_process(delta: float) -> void:
 	worldPos += movement
 	global_position = round(worldPos)
 
-func physics_collision(body, hitVector):
+func physics_collision(body: CharacterBody2D, hitVector: Vector2) -> void:
 	if hitVector.y > 0 and body.ground and srpingPlayers:
 		players.append(body)
 		body.set_state(body.STATES.AIR)

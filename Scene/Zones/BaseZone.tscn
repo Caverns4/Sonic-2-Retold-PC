@@ -331,17 +331,21 @@ scale = Vector2(8, 0.555)
 
 [node name="Spring" parent="Entities" unique_id=1445857100 instance=ExtResource("13_i3joy")]
 position = Vector2(6128, 984)
+new_layer = 1
 
 [node name="Spring2" parent="Entities" unique_id=1453075215 instance=ExtResource("13_i3joy")]
 position = Vector2(10384, 1656)
+new_layer = 0
 
 [node name="Spring3" parent="Entities" unique_id=1267985141 instance=ExtResource("13_i3joy")]
 position = Vector2(10864, 1800)
 type = 1
 spring_direction = 5
+new_layer = 0
 
 [node name="Spring4" parent="Entities" unique_id=837813715 instance=ExtResource("13_i3joy")]
 position = Vector2(11184, 1400)
+new_layer = 0
 
 [node name="OOZ Launcher" parent="Entities" unique_id=1267350339 instance=ExtResource("14_pxnl8")]
 position = Vector2(9024, 56)

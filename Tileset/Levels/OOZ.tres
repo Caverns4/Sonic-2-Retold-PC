@@ -2134,9 +2134,9 @@ texture = ExtResource("2_0fi1o")
 15:5/0 = 0
 
 [resource]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 16
 physics_layer_0/collision_mask = 0
-physics_layer_1/collision_layer = 14
+physics_layer_1/collision_layer = 224
 physics_layer_1/collision_mask = 0
 physics_layer_2/collision_layer = 2097152
 physics_layer_2/collision_mask = 0
